@@ -48,12 +48,12 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      machineTypes: map['machineTypes'] == null ? null : (ResourceMachineTypes.fromMap((map['machineTypes'] as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      userAccessParam: map['userAccessParam'] == null ? null : (ResourceUserAccessParam.fromMap((map['userAccessParam'] as Map).cast<String, dynamic>())).input(),
+      clusterDesc: map['clusterDesc'] == null ? null : (map['clusterDesc']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      machineTypes: map['machineTypes'] == null ? null : (ResourceMachineTypes.fromMap((map['machineTypes']! as Map).cast<String, dynamic>())).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      userAccessParam: map['userAccessParam'] == null ? null : (ResourceUserAccessParam.fromMap((map['userAccessParam']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

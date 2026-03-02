@@ -70,14 +70,14 @@ class SuppressionResponse {
 
   factory SuppressionResponse.fromMap(Map<String, dynamic> map) {
     return SuppressionResponse(
-      conditions: map['conditions'] == null ? null : (ConditionsResponse.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (ConditionsResponse.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
       createdAt: (map['createdAt'] as String).input(),
       createdBy: (map['createdBy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       lastModifiedAt: (map['lastModifiedAt'] as String).input(),
       lastModifiedBy: (map['lastModifiedBy'] as String).input(),
-      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       suppressionConfig: (SuppressionConfigResponse.fromMap((map['suppressionConfig'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

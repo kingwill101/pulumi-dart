@@ -41,11 +41,11 @@ class ScriptActivityParameter {
 
   factory ScriptActivityParameter.fromMap(Map<String, dynamic> map) {
     return ScriptActivityParameter(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      name: map['name'] == null ? null : (map['name']).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      name: map['name'] == null ? null : (map['name']!).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

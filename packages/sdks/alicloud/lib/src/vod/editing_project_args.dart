@@ -44,10 +44,10 @@ class EditingProjectArgs {
 
   factory EditingProjectArgs.fromMap(Map<String, dynamic> map) {
     return EditingProjectArgs(
-      coverUrl: map['coverUrl'] == null ? null : (map['coverUrl'] as String).input(),
-      division: map['division'] == null ? null : (map['division'] as String).input(),
-      editingProjectName: map['editingProjectName'] == null ? null : (map['editingProjectName'] as String).input(),
-      timeline: map['timeline'] == null ? null : (map['timeline'] as String).input(),
+      coverUrl: map['coverUrl'] == null ? null : (map['coverUrl']! as String).input(),
+      division: map['division'] == null ? null : (map['division']! as String).input(),
+      editingProjectName: map['editingProjectName'] == null ? null : (map['editingProjectName']! as String).input(),
+      timeline: map['timeline'] == null ? null : (map['timeline']! as String).input(),
       title: (map['title'] as String).input(),
     );
   }

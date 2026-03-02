@@ -25,7 +25,7 @@ class BucketRetentionPolicy {
 
   factory BucketRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BucketRetentionPolicy(
-      isLocked: map['isLocked'] == null ? null : (map['isLocked'] as bool).input(),
+      isLocked: map['isLocked'] == null ? null : (map['isLocked']! as bool).input(),
       retentionPeriod: (map['retentionPeriod'] as String).input(),
     );
   }

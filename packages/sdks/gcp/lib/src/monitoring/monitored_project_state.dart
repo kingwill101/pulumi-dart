@@ -31,9 +31,9 @@ class MonitoredProjectState {
 
   factory MonitoredProjectState.fromMap(Map<String, dynamic> map) {
     return MonitoredProjectState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      metricsScope: map['metricsScope'] == null ? null : (map['metricsScope'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      metricsScope: map['metricsScope'] == null ? null : (map['metricsScope']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

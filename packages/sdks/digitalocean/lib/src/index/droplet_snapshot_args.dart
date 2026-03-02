@@ -30,7 +30,7 @@ class DropletSnapshotArgs {
   factory DropletSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return DropletSnapshotArgs(
       dropletId: (map['dropletId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

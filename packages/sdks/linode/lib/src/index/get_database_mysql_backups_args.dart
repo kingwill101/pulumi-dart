@@ -47,10 +47,10 @@ class GetDatabaseMysqlBackupsArgs {
   factory GetDatabaseMysqlBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlBackupsArgs(
       databaseId: (map['databaseId'] as int).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseMysqlBackupsFilter>(map['filters'], (value) => GetDatabaseMysqlBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseMysqlBackupsFilter>(map['filters']!, (value) => GetDatabaseMysqlBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latest: map['latest'] == null ? null : (map['latest']! as bool).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

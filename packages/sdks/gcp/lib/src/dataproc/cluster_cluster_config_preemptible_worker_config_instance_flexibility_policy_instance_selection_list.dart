@@ -25,8 +25,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 
   factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList(
-      machineTypes: map['machineTypes'] == null ? null : ((map['machineTypes'] as List).cast<String>()).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
+      machineTypes: map['machineTypes'] == null ? null : ((map['machineTypes']! as List).cast<String>()).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
     );
   }
 }

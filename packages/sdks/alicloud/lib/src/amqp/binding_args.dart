@@ -62,7 +62,7 @@ class BindingArgs {
 
   factory BindingArgs.fromMap(Map<String, dynamic> map) {
     return BindingArgs(
-      argument: map['argument'] == null ? null : (map['argument'] as String).input(),
+      argument: map['argument'] == null ? null : (map['argument']! as String).input(),
       bindingKey: (map['bindingKey'] as String).input(),
       bindingType: (map['bindingType'] as String).input(),
       destinationName: (map['destinationName'] as String).input(),

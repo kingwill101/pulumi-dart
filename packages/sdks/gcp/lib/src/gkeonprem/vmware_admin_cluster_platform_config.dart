@@ -49,10 +49,10 @@ class VmwareAdminClusterPlatformConfig {
 
   factory VmwareAdminClusterPlatformConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterPlatformConfig(
-      bundles: map['bundles'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigBundle>(map['bundles'], (value) => VmwareAdminClusterPlatformConfigBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
-      requiredPlatformVersion: map['requiredPlatformVersion'] == null ? null : (map['requiredPlatformVersion'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigStatus>(map['statuses'], (value) => VmwareAdminClusterPlatformConfigStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bundles: map['bundles'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigBundle>(map['bundles']!, (value) => VmwareAdminClusterPlatformConfigBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion']! as String).input(),
+      requiredPlatformVersion: map['requiredPlatformVersion'] == null ? null : (map['requiredPlatformVersion']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigStatus>(map['statuses']!, (value) => VmwareAdminClusterPlatformConfigStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

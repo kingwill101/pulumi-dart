@@ -45,11 +45,11 @@ class AzureCoreNetworkFunctionVhdApplication {
 
   factory AzureCoreNetworkFunctionVhdApplication.fromMap(Map<String, dynamic> map) {
     return AzureCoreNetworkFunctionVhdApplication(
-      artifactProfile: map['artifactProfile'] == null ? null : (AzureCoreVhdImageArtifactProfile.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactProfile: map['artifactProfile'] == null ? null : (AzureCoreVhdImageArtifactProfile.fromMap((map['artifactProfile']! as Map).cast<String, dynamic>())).input(),
       artifactType: (map['artifactType'] as String).input(),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
-      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureCoreVhdImageDeployMappingRuleProfile.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile']! as Map).cast<String, dynamic>())).input(),
+      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureCoreVhdImageDeployMappingRuleProfile.fromMap((map['deployParametersMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

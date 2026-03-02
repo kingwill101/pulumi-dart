@@ -62,15 +62,15 @@ class InstanceUpgradeHistory {
 
   factory InstanceUpgradeHistory.fromMap(Map<String, dynamic> map) {
     return InstanceUpgradeHistory(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      framework: map['framework'] == null ? null : (map['framework'] as String).input(),
-      snapshot: map['snapshot'] == null ? null : (map['snapshot'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      vmImage: map['vmImage'] == null ? null : (map['vmImage'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      framework: map['framework'] == null ? null : (map['framework']! as String).input(),
+      snapshot: map['snapshot'] == null ? null : (map['snapshot']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      vmImage: map['vmImage'] == null ? null : (map['vmImage']! as String).input(),
     );
   }
 }

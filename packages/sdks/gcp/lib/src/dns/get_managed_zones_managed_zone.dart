@@ -52,9 +52,9 @@ class GetManagedZonesManagedZone {
       dnsName: (map['dnsName'] as String).input(),
       id: (map['id'] as String).input(),
       managedZoneId: (map['managedZoneId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nameServers: ((map['nameServers'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       visibility: (map['visibility'] as String).input(),
     );
   }

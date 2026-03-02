@@ -43,7 +43,7 @@ class TriggerDestinationGke {
       cluster: (map['cluster'] as String).input(),
       location: (map['location'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

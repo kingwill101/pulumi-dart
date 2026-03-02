@@ -33,7 +33,7 @@ class ApiImport {
     return ApiImport(
       contentFormat: (map['contentFormat'] as String).input(),
       contentValue: (map['contentValue'] as String).input(),
-      wsdlSelector: map['wsdlSelector'] == null ? null : (ApiImportWsdlSelector.fromMap((map['wsdlSelector'] as Map).cast<String, dynamic>())).input(),
+      wsdlSelector: map['wsdlSelector'] == null ? null : (ApiImportWsdlSelector.fromMap((map['wsdlSelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

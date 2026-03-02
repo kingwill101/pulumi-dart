@@ -47,9 +47,9 @@ class PreventionJobTriggerInspectJobActionDeidentify {
   factory PreventionJobTriggerInspectJobActionDeidentify.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobActionDeidentify(
       cloudStorageOutput: (map['cloudStorageOutput'] as String).input(),
-      fileTypesToTransforms: map['fileTypesToTransforms'] == null ? null : ((map['fileTypesToTransforms'] as List).cast<String>()).input(),
-      transformationConfig: map['transformationConfig'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.fromMap((map['transformationConfig'] as Map).cast<String, dynamic>())).input(),
-      transformationDetailsStorageConfig: map['transformationDetailsStorageConfig'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig.fromMap((map['transformationDetailsStorageConfig'] as Map).cast<String, dynamic>())).input(),
+      fileTypesToTransforms: map['fileTypesToTransforms'] == null ? null : ((map['fileTypesToTransforms']! as List).cast<String>()).input(),
+      transformationConfig: map['transformationConfig'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.fromMap((map['transformationConfig']! as Map).cast<String, dynamic>())).input(),
+      transformationDetailsStorageConfig: map['transformationDetailsStorageConfig'] == null ? null : (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig.fromMap((map['transformationDetailsStorageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

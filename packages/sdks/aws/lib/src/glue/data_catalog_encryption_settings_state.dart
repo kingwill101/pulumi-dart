@@ -32,9 +32,9 @@ class DataCatalogEncryptionSettingsState {
 
   factory DataCatalogEncryptionSettingsState.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      dataCatalogEncryptionSettings: map['dataCatalogEncryptionSettings'] == null ? null : (DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      dataCatalogEncryptionSettings: map['dataCatalogEncryptionSettings'] == null ? null : ((DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

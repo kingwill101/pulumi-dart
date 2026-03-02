@@ -57,13 +57,13 @@ class NfsAccessRuleResponse {
   factory NfsAccessRuleResponse.fromMap(Map<String, dynamic> map) {
     return NfsAccessRuleResponse(
       access: (map['access'] as String).input(),
-      anonymousGID: map['anonymousGID'] == null ? null : (map['anonymousGID'] as String).input(),
-      anonymousUID: map['anonymousUID'] == null ? null : (map['anonymousUID'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash'] as bool).input(),
+      anonymousGID: map['anonymousGID'] == null ? null : (map['anonymousGID']! as String).input(),
+      anonymousUID: map['anonymousUID'] == null ? null : (map['anonymousUID']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      rootSquash: map['rootSquash'] == null ? null : (map['rootSquash']! as bool).input(),
       scope: (map['scope'] as String).input(),
-      submountAccess: map['submountAccess'] == null ? null : (map['submountAccess'] as bool).input(),
-      suid: map['suid'] == null ? null : (map['suid'] as bool).input(),
+      submountAccess: map['submountAccess'] == null ? null : (map['submountAccess']! as bool).input(),
+      suid: map['suid'] == null ? null : (map['suid']! as bool).input(),
     );
   }
 }

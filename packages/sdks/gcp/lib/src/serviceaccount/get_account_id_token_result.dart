@@ -41,12 +41,12 @@ class GetAccountIdTokenResult {
 
   factory GetAccountIdTokenResult.fromMap(Map<String, dynamic> map) {
     return GetAccountIdTokenResult(
-      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
+      delegates: map['delegates'] == null ? null : (map['delegates']! as List).cast<String>(),
       id: map['id'] as String,
       idToken: map['idToken'] as String,
-      includeEmail: map['includeEmail'] == null ? null : map['includeEmail'] as bool,
+      includeEmail: map['includeEmail'] == null ? null : map['includeEmail']! as bool,
       targetAudience: map['targetAudience'] as String,
-      targetServiceAccount: map['targetServiceAccount'] == null ? null : map['targetServiceAccount'] as String,
+      targetServiceAccount: map['targetServiceAccount'] == null ? null : map['targetServiceAccount']! as String,
     );
   }
 }

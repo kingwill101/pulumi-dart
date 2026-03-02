@@ -100,20 +100,20 @@ class GetPrivateStoreCollectionOfferResult {
     return GetPrivateStoreCollectionOfferResult(
       azureApiVersion: map['azureApiVersion'] as String,
       createdAt: map['createdAt'] as String,
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
-      iconFileUris: map['iconFileUris'] == null ? null : (map['iconFileUris'] as Map).cast<String, String>(),
+      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      iconFileUris: map['iconFileUris'] == null ? null : (map['iconFileUris']! as Map).cast<String, String>(),
       id: map['id'] as String,
       modifiedAt: map['modifiedAt'] as String,
       name: map['name'] as String,
       offerDisplayName: map['offerDisplayName'] as String,
-      plans: map['plans'] == null ? null : pulumi.Input.decodeList<PlanResponse>(map['plans'], (value) => PlanResponse.fromMap((value as Map).cast<String, dynamic>())),
+      plans: map['plans'] == null ? null : pulumi.Input.decodeList<PlanResponse>(map['plans']!, (value) => PlanResponse.fromMap((value as Map).cast<String, dynamic>())),
       privateStoreId: map['privateStoreId'] as String,
       publisherDisplayName: map['publisherDisplayName'] as String,
-      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : (map['specificPlanIdsLimitation'] as List).cast<String>(),
+      specificPlanIdsLimitation: map['specificPlanIdsLimitation'] == null ? null : (map['specificPlanIdsLimitation']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       uniqueOfferId: map['uniqueOfferId'] as String,
-      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : map['updateSuppressedDueIdempotence'] as bool,
+      updateSuppressedDueIdempotence: map['updateSuppressedDueIdempotence'] == null ? null : map['updateSuppressedDueIdempotence']! as bool,
     );
   }
 }

@@ -20,7 +20,7 @@ class SearchIndexSchemaIndexSetting {
 
   factory SearchIndexSchemaIndexSetting.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchemaIndexSetting(
-      routingFields: map['routingFields'] == null ? null : ((map['routingFields'] as List).cast<String>()).input(),
+      routingFields: map['routingFields'] == null ? null : ((map['routingFields']! as List).cast<String>()).input(),
     );
   }
 }

@@ -46,9 +46,9 @@ class DatastoreArgs {
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
       datastoreProperties: (AzureBlobDatastore.fromMap((map['datastoreProperties'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation'] as bool).input(),
+      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation']! as bool).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

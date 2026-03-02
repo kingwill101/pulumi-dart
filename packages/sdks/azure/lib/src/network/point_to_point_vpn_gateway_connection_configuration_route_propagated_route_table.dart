@@ -26,7 +26,7 @@ class PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable {
   factory PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayConnectionConfigurationRoutePropagatedRouteTable(
       ids: ((map['ids'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
     );
   }
 }

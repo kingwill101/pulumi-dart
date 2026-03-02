@@ -31,8 +31,8 @@ class VirtualHardDiskDownloadStatusResponse {
 
   factory VirtualHardDiskDownloadStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHardDiskDownloadStatusResponse(
-      downloadedSizeInMB: map['downloadedSizeInMB'] == null ? null : (map['downloadedSizeInMB'] as double).input(),
-      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage'] as double).input(),
+      downloadedSizeInMB: map['downloadedSizeInMB'] == null ? null : (map['downloadedSizeInMB']! as double).input(),
+      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage']! as double).input(),
       status: (map['status'] as String).input(),
     );
   }

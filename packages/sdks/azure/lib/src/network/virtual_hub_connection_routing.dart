@@ -52,13 +52,13 @@ class VirtualHubConnectionRouting {
 
   factory VirtualHubConnectionRouting.fromMap(Map<String, dynamic> map) {
     return VirtualHubConnectionRouting(
-      associatedRouteTableId: map['associatedRouteTableId'] == null ? null : (map['associatedRouteTableId'] as String).input(),
-      inboundRouteMapId: map['inboundRouteMapId'] == null ? null : (map['inboundRouteMapId'] as String).input(),
-      outboundRouteMapId: map['outboundRouteMapId'] == null ? null : (map['outboundRouteMapId'] as String).input(),
-      propagatedRouteTable: map['propagatedRouteTable'] == null ? null : (VirtualHubConnectionRoutingPropagatedRouteTable.fromMap((map['propagatedRouteTable'] as Map).cast<String, dynamic>())).input(),
-      staticVnetLocalRouteOverrideCriteria: map['staticVnetLocalRouteOverrideCriteria'] == null ? null : (map['staticVnetLocalRouteOverrideCriteria'] as String).input(),
-      staticVnetPropagateStaticRoutesEnabled: map['staticVnetPropagateStaticRoutesEnabled'] == null ? null : (map['staticVnetPropagateStaticRoutesEnabled'] as bool).input(),
-      staticVnetRoutes: map['staticVnetRoutes'] == null ? null : (pulumi.Input.decodeList<VirtualHubConnectionRoutingStaticVnetRoute>(map['staticVnetRoutes'], (value) => VirtualHubConnectionRoutingStaticVnetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      associatedRouteTableId: map['associatedRouteTableId'] == null ? null : (map['associatedRouteTableId']! as String).input(),
+      inboundRouteMapId: map['inboundRouteMapId'] == null ? null : (map['inboundRouteMapId']! as String).input(),
+      outboundRouteMapId: map['outboundRouteMapId'] == null ? null : (map['outboundRouteMapId']! as String).input(),
+      propagatedRouteTable: map['propagatedRouteTable'] == null ? null : (VirtualHubConnectionRoutingPropagatedRouteTable.fromMap((map['propagatedRouteTable']! as Map).cast<String, dynamic>())).input(),
+      staticVnetLocalRouteOverrideCriteria: map['staticVnetLocalRouteOverrideCriteria'] == null ? null : (map['staticVnetLocalRouteOverrideCriteria']! as String).input(),
+      staticVnetPropagateStaticRoutesEnabled: map['staticVnetPropagateStaticRoutesEnabled'] == null ? null : (map['staticVnetPropagateStaticRoutesEnabled']! as bool).input(),
+      staticVnetRoutes: map['staticVnetRoutes'] == null ? null : (pulumi.Input.decodeList<VirtualHubConnectionRoutingStaticVnetRoute>(map['staticVnetRoutes']!, (value) => VirtualHubConnectionRoutingStaticVnetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

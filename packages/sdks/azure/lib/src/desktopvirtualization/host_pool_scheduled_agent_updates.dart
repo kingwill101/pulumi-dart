@@ -38,10 +38,10 @@ class HostPoolScheduledAgentUpdates {
 
   factory HostPoolScheduledAgentUpdates.fromMap(Map<String, dynamic> map) {
     return HostPoolScheduledAgentUpdates(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<HostPoolScheduledAgentUpdatesSchedule>(map['schedules'], (value) => HostPoolScheduledAgentUpdatesSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      useSessionHostTimezone: map['useSessionHostTimezone'] == null ? null : (map['useSessionHostTimezone'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<HostPoolScheduledAgentUpdatesSchedule>(map['schedules']!, (value) => HostPoolScheduledAgentUpdatesSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      useSessionHostTimezone: map['useSessionHostTimezone'] == null ? null : (map['useSessionHostTimezone']! as bool).input(),
     );
   }
 }

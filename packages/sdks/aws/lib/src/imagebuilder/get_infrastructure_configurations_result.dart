@@ -41,7 +41,7 @@ class GetInfrastructureConfigurationsResult {
   factory GetInfrastructureConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationsResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(map['filters'], (value) => GetInfrastructureConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInfrastructureConfigurationsFilter>(map['filters']!, (value) => GetInfrastructureConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       region: map['region'] as String,

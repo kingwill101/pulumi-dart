@@ -61,14 +61,14 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
-      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<DomainCertInfo>(map['certInfos'], (value) => DomainCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
+      bizName: map['bizName'] == null ? null : (map['bizName']! as String).input(),
+      certInfos: map['certInfos'] == null ? null : (pulumi.Input.decodeList<DomainCertInfo>(map['certInfos']!, (value) => DomainCertInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl']! as String).input(),
       domainName: (map['domainName'] as String).input(),
-      forceSet: map['forceSet'] == null ? null : (map['forceSet'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      forceSet: map['forceSet'] == null ? null : (map['forceSet']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       sources: (pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

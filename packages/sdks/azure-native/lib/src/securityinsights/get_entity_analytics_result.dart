@@ -58,8 +58,8 @@ class GetEntityAnalyticsResult {
   factory GetEntityAnalyticsResult.fromMap(Map<String, dynamic> map) {
     return GetEntityAnalyticsResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      entityProviders: map['entityProviders'] == null ? null : (map['entityProviders'] as List).cast<String>(),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      entityProviders: map['entityProviders'] == null ? null : (map['entityProviders']! as List).cast<String>(),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

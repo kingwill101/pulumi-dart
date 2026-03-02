@@ -68,16 +68,16 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointId: (map['endpointId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       severity: (EndpointSeverity.fromValue(map['severity'] as String)).input(),
-      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions'] as List).cast<String>()).input(),
-      trafficLogs: map['trafficLogs'] == null ? null : (map['trafficLogs'] as bool).input(),
+      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions']! as List).cast<String>()).input(),
+      trafficLogs: map['trafficLogs'] == null ? null : (map['trafficLogs']! as bool).input(),
     );
   }
 }

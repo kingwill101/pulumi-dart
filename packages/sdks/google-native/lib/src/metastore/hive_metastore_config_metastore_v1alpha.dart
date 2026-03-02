@@ -43,11 +43,11 @@ class HiveMetastoreConfigMetastoreV1alpha {
 
   factory HiveMetastoreConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return HiveMetastoreConfigMetastoreV1alpha(
-      auxiliaryVersions: map['auxiliaryVersions'] == null ? null : ((map['auxiliaryVersions'] as Map).cast<String, String>()).input(),
-      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides'] as Map).cast<String, String>()).input(),
-      endpointProtocol: map['endpointProtocol'] == null ? null : (HiveMetastoreConfigEndpointProtocolMetastoreV1alpha.fromValue(map['endpointProtocol'] as String)).input(),
-      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfigMetastoreV1alpha.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      auxiliaryVersions: map['auxiliaryVersions'] == null ? null : ((map['auxiliaryVersions']! as Map).cast<String, String>()).input(),
+      configOverrides: map['configOverrides'] == null ? null : ((map['configOverrides']! as Map).cast<String, String>()).input(),
+      endpointProtocol: map['endpointProtocol'] == null ? null : (HiveMetastoreConfigEndpointProtocolMetastoreV1alpha.fromValue(map['endpointProtocol']! as String)).input(),
+      kerberosConfig: map['kerberosConfig'] == null ? null : (KerberosConfigMetastoreV1alpha.fromMap((map['kerberosConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -63,16 +63,16 @@ class GetGlobalDatabaseNetworksResult {
 
   factory GetGlobalDatabaseNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalDatabaseNetworksResult(
-      dbClusterId: map['dbClusterId'] == null ? null : map['dbClusterId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      gdnId: map['gdnId'] == null ? null : map['gdnId'] as String,
+      dbClusterId: map['dbClusterId'] == null ? null : map['dbClusterId']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      gdnId: map['gdnId'] == null ? null : map['gdnId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       networks: pulumi.Input.decodeList<GetGlobalDatabaseNetworksNetwork>(map['networks'], (value) => GetGlobalDatabaseNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

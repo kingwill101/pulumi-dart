@@ -21,7 +21,7 @@ class TransferManifest {
 
   factory TransferManifest.fromMap(Map<String, dynamic> map) {
     return TransferManifest(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

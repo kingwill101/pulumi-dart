@@ -37,8 +37,8 @@ class ProducerImageShareGroupArgs {
 
   factory ProducerImageShareGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProducerImageShareGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images'], (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ProducerImageShareGroupImage>(map['images']!, (value) => ProducerImageShareGroupImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
       label: (map['label'] as String).input(),
     );
   }

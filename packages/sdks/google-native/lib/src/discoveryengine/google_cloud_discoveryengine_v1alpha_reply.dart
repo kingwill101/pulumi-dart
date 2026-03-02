@@ -33,9 +33,9 @@ class GoogleCloudDiscoveryengineV1alphaReply {
 
   factory GoogleCloudDiscoveryengineV1alphaReply.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaReply(
-      references: map['references'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaReplyReference>(map['references'], (value) => GoogleCloudDiscoveryengineV1alphaReplyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reply: map['reply'] == null ? null : (map['reply'] as String).input(),
-      summary: map['summary'] == null ? null : (GoogleCloudDiscoveryengineV1alphaSearchResponseSummary.fromMap((map['summary'] as Map).cast<String, dynamic>())).input(),
+      references: map['references'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaReplyReference>(map['references']!, (value) => GoogleCloudDiscoveryengineV1alphaReplyReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reply: map['reply'] == null ? null : (map['reply']! as String).input(),
+      summary: map['summary'] == null ? null : (GoogleCloudDiscoveryengineV1alphaSearchResponseSummary.fromMap((map['summary']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

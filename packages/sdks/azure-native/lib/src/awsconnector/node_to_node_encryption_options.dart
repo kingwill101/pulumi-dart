@@ -21,7 +21,7 @@ class NodeToNodeEncryptionOptions {
 
   factory NodeToNodeEncryptionOptions.fromMap(Map<String, dynamic> map) {
     return NodeToNodeEncryptionOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

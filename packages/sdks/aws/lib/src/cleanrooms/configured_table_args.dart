@@ -59,11 +59,11 @@ class ConfiguredTableArgs {
     return ConfiguredTableArgs(
       allowedColumns: ((map['allowedColumns'] as List).cast<String>()).input(),
       analysisMethod: (map['analysisMethod'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableReference: (ConfiguredTableTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableReference: (ConfiguredTableTableReference.fromMap((map['tableReference']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

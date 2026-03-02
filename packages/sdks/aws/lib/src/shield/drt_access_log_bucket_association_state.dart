@@ -31,9 +31,9 @@ class DrtAccessLogBucketAssociationState {
 
   factory DrtAccessLogBucketAssociationState.fromMap(Map<String, dynamic> map) {
     return DrtAccessLogBucketAssociationState(
-      logBucket: map['logBucket'] == null ? null : (map['logBucket'] as String).input(),
-      roleArnAssociationId: map['roleArnAssociationId'] == null ? null : (map['roleArnAssociationId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DrtAccessLogBucketAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      logBucket: map['logBucket'] == null ? null : ((map['logBucket'] as String).input()).input(),
+      roleArnAssociationId: map['roleArnAssociationId'] == null ? null : ((map['roleArnAssociationId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DrtAccessLogBucketAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

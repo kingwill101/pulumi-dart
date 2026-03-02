@@ -68,16 +68,16 @@ class TargetPoolComputeV1Args {
 
   factory TargetPoolComputeV1Args.fromMap(Map<String, dynamic> map) {
     return TargetPoolComputeV1Args(
-      backupPool: map['backupPool'] == null ? null : (map['backupPool'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio'] as double).input(),
-      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks'] as List).cast<String>()).input(),
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      backupPool: map['backupPool'] == null ? null : (map['backupPool']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failoverRatio: map['failoverRatio'] == null ? null : (map['failoverRatio']! as double).input(),
+      healthChecks: map['healthChecks'] == null ? null : ((map['healthChecks']! as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (TargetPoolSessionAffinityComputeV1.fromValue(map['sessionAffinity'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (TargetPoolSessionAffinityComputeV1.fromValue(map['sessionAffinity']! as String)).input(),
     );
   }
 }

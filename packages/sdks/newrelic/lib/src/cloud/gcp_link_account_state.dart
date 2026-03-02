@@ -33,9 +33,9 @@ class GcpLinkAccountState {
 
   factory GcpLinkAccountState.fromMap(Map<String, dynamic> map) {
     return GcpLinkAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

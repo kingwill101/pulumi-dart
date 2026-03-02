@@ -47,12 +47,12 @@ class EndpointIamPolicyArgs {
 
   factory EndpointIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return EndpointIamPolicyArgs(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingAiplatformV1beta1>(map['bindings'], (value) => GoogleIamV1BindingAiplatformV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<GoogleIamV1BindingAiplatformV1beta1>(map['bindings']!, (value) => GoogleIamV1BindingAiplatformV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       endpointId: (map['endpointId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

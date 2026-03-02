@@ -22,7 +22,7 @@ class RegistryCredential {
 
   factory RegistryCredential.fromMap(Map<String, dynamic> map) {
     return RegistryCredential(
-      publicKeyCertificate: map['publicKeyCertificate'] == null ? null : (PublicKeyCertificate.fromMap((map['publicKeyCertificate'] as Map).cast<String, dynamic>())).input(),
+      publicKeyCertificate: map['publicKeyCertificate'] == null ? null : (PublicKeyCertificate.fromMap((map['publicKeyCertificate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

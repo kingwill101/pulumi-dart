@@ -34,7 +34,7 @@ class DataExportDetails {
   factory DataExportDetails.fromMap(Map<String, dynamic> map) {
     return DataExportDetails(
       accountDetails: (ManagedDiskDetails.fromMap((map['accountDetails'] as Map).cast<String, dynamic>())).input(),
-      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel'] as String).input(),
+      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel']! as String).input(),
       transferConfiguration: (TransferConfiguration.fromMap((map['transferConfiguration'] as Map).cast<String, dynamic>())).input(),
     );
   }

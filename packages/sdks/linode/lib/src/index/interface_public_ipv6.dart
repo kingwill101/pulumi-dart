@@ -39,10 +39,10 @@ class InterfacePublicIpv6 {
 
   factory InterfacePublicIpv6.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv6(
-      assignedRanges: map['assignedRanges'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6AssignedRange>(map['assignedRanges'], (value) => InterfacePublicIpv6AssignedRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6Range>(map['ranges'], (value) => InterfacePublicIpv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shareds: map['shareds'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6Shared>(map['shareds'], (value) => InterfacePublicIpv6Shared.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slaacs: map['slaacs'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6Slaac>(map['slaacs'], (value) => InterfacePublicIpv6Slaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedRanges: map['assignedRanges'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6AssignedRange>(map['assignedRanges']!, (value) => InterfacePublicIpv6AssignedRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6Range>(map['ranges']!, (value) => InterfacePublicIpv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareds: map['shareds'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6Shared>(map['shareds']!, (value) => InterfacePublicIpv6Shared.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slaacs: map['slaacs'] == null ? null : (pulumi.Input.decodeList<InterfacePublicIpv6Slaac>(map['slaacs']!, (value) => InterfacePublicIpv6Slaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

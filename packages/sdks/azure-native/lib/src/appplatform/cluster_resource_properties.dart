@@ -54,13 +54,13 @@ class ClusterResourceProperties {
 
   factory ClusterResourceProperties.fromMap(Map<String, dynamic> map) {
     return ClusterResourceProperties(
-      infraResourceGroup: map['infraResourceGroup'] == null ? null : (map['infraResourceGroup'] as String).input(),
-      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : (WeeklyMaintenanceScheduleConfiguration.fromMap((map['maintenanceScheduleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId'] as String).input(),
-      marketplaceResource: map['marketplaceResource'] == null ? null : (MarketplaceResource.fromMap((map['marketplaceResource'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      vnetAddons: map['vnetAddons'] == null ? null : (ServiceVNetAddons.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>())).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      infraResourceGroup: map['infraResourceGroup'] == null ? null : (map['infraResourceGroup']! as String).input(),
+      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : (WeeklyMaintenanceScheduleConfiguration.fromMap((map['maintenanceScheduleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId']! as String).input(),
+      marketplaceResource: map['marketplaceResource'] == null ? null : (MarketplaceResource.fromMap((map['marketplaceResource']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      vnetAddons: map['vnetAddons'] == null ? null : (ServiceVNetAddons.fromMap((map['vnetAddons']! as Map).cast<String, dynamic>())).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
 
   factory AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

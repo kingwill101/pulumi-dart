@@ -91,19 +91,19 @@ class FrameworkState {
 
   factory FrameworkState.fromMap(Map<String, dynamic> map) {
     return FrameworkState(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      cloudControlDetails: map['cloudControlDetails'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails'], (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      frameworkId: map['frameworkId'] == null ? null : (map['frameworkId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      majorRevisionId: map['majorRevisionId'] == null ? null : (map['majorRevisionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      supportedCloudProviders: map['supportedCloudProviders'] == null ? null : ((map['supportedCloudProviders'] as List).cast<String>()).input(),
-      supportedEnforcementModes: map['supportedEnforcementModes'] == null ? null : ((map['supportedEnforcementModes'] as List).cast<String>()).input(),
-      supportedTargetResourceTypes: map['supportedTargetResourceTypes'] == null ? null : ((map['supportedTargetResourceTypes'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      cloudControlDetails: map['cloudControlDetails'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails']!, (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      frameworkId: map['frameworkId'] == null ? null : (map['frameworkId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      majorRevisionId: map['majorRevisionId'] == null ? null : (map['majorRevisionId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      supportedCloudProviders: map['supportedCloudProviders'] == null ? null : ((map['supportedCloudProviders']! as List).cast<String>()).input(),
+      supportedEnforcementModes: map['supportedEnforcementModes'] == null ? null : ((map['supportedEnforcementModes']! as List).cast<String>()).input(),
+      supportedTargetResourceTypes: map['supportedTargetResourceTypes'] == null ? null : ((map['supportedTargetResourceTypes']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

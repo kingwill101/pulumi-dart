@@ -27,8 +27,8 @@ class DomainDevicesInputSource {
 
   factory DomainDevicesInputSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInputSource(
-      evDev: map['evDev'] == null ? null : (DomainDevicesInputSourceEvDev.fromMap((map['evDev'] as Map).cast<String, dynamic>())).input(),
-      passthrough: map['passthrough'] == null ? null : (DomainDevicesInputSourcePassthrough.fromMap((map['passthrough'] as Map).cast<String, dynamic>())).input(),
+      evDev: map['evDev'] == null ? null : (DomainDevicesInputSourceEvDev.fromMap((map['evDev']! as Map).cast<String, dynamic>())).input(),
+      passthrough: map['passthrough'] == null ? null : (DomainDevicesInputSourcePassthrough.fromMap((map['passthrough']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

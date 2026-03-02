@@ -71,16 +71,16 @@ class GetDatabaseAccountSqlDatabaseResult {
   factory GetDatabaseAccountSqlDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountSqlDatabaseResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      colls: map['colls'] == null ? null : map['colls'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      colls: map['colls'] == null ? null : map['colls']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      rid: map['rid'] == null ? null : map['rid'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      ts: map['ts'] == null ? null : map['ts'],
+      rid: map['rid'] == null ? null : map['rid']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      ts: map['ts'] == null ? null : map['ts']!,
       type: map['type'] as String,
-      users: map['users'] == null ? null : map['users'] as String,
+      users: map['users'] == null ? null : map['users']! as String,
     );
   }
 }

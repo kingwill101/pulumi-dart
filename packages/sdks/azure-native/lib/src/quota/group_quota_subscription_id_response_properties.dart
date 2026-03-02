@@ -26,7 +26,7 @@ class GroupQuotaSubscriptionIdResponseProperties {
   factory GroupQuotaSubscriptionIdResponseProperties.fromMap(Map<String, dynamic> map) {
     return GroupQuotaSubscriptionIdResponseProperties(
       provisioningState: (map['provisioningState'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

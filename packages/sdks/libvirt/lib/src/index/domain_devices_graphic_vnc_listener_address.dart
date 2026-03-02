@@ -20,7 +20,7 @@ class DomainDevicesGraphicVncListenerAddress {
 
   factory DomainDevicesGraphicVncListenerAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicVncListenerAddress(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
     );
   }
 }

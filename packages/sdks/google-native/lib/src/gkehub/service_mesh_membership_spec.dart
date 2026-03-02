@@ -28,8 +28,8 @@ class ServiceMeshMembershipSpec {
 
   factory ServiceMeshMembershipSpec.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpec(
-      controlPlane: map['controlPlane'] == null ? null : (ServiceMeshMembershipSpecControlPlane.fromValue(map['controlPlane'] as String)).input(),
-      management: map['management'] == null ? null : (ServiceMeshMembershipSpecManagement.fromValue(map['management'] as String)).input(),
+      controlPlane: map['controlPlane'] == null ? null : (ServiceMeshMembershipSpecControlPlane.fromValue(map['controlPlane']! as String)).input(),
+      management: map['management'] == null ? null : (ServiceMeshMembershipSpecManagement.fromValue(map['management']! as String)).input(),
     );
   }
 }

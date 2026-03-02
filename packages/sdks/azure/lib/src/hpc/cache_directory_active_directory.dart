@@ -52,7 +52,7 @@ class CacheDirectoryActiveDirectory {
     return CacheDirectoryActiveDirectory(
       cacheNetbiosName: (map['cacheNetbiosName'] as String).input(),
       dnsPrimaryIp: (map['dnsPrimaryIp'] as String).input(),
-      dnsSecondaryIp: map['dnsSecondaryIp'] == null ? null : (map['dnsSecondaryIp'] as String).input(),
+      dnsSecondaryIp: map['dnsSecondaryIp'] == null ? null : (map['dnsSecondaryIp']! as String).input(),
       domainName: (map['domainName'] as String).input(),
       domainNetbiosName: (map['domainNetbiosName'] as String).input(),
       password: (map['password'] as String).input(),

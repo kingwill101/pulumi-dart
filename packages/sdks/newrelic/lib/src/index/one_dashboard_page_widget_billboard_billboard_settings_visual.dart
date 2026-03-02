@@ -25,8 +25,8 @@ class OneDashboardPageWidgetBillboardBillboardSettingsVisual {
 
   factory OneDashboardPageWidgetBillboardBillboardSettingsVisual.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBillboardBillboardSettingsVisual(
-      alignment: map['alignment'] == null ? null : (map['alignment'] as String).input(),
-      display: map['display'] == null ? null : (map['display'] as String).input(),
+      alignment: map['alignment'] == null ? null : (map['alignment']! as String).input(),
+      display: map['display'] == null ? null : (map['display']! as String).input(),
     );
   }
 }

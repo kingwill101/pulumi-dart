@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig(
-      enableEntityExtraction: map['enableEntityExtraction'] == null ? null : (map['enableEntityExtraction'] as bool).input(),
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis'] as bool).input(),
+      enableEntityExtraction: map['enableEntityExtraction'] == null ? null : (map['enableEntityExtraction']! as bool).input(),
+      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis']! as bool).input(),
     );
   }
 }

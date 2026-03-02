@@ -21,7 +21,7 @@ class StreamGovernanceConfig {
 
   factory StreamGovernanceConfig.fromMap(Map<String, dynamic> map) {
     return StreamGovernanceConfig(
-      package: map['package'] == null ? null : (map['package'] as String).input(),
+      package: map['package'] == null ? null : (map['package']! as String).input(),
     );
   }
 }

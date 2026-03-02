@@ -46,7 +46,7 @@ class ListWebAppHybridConnectionKeysSlotResult {
   factory ListWebAppHybridConnectionKeysSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppHybridConnectionKeysSlotResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       sendKeyName: map['sendKeyName'] as String,
       sendKeyValue: map['sendKeyValue'] as String,

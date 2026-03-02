@@ -27,7 +27,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
 
   factory GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig(
-      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      genericWebService: map['genericWebService'] == null ? null : (GoogleCloudDialogflowCxV3beta1WebhookGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
       service: (map['service'] as String).input(),
     );
   }

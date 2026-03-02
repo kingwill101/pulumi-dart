@@ -25,8 +25,8 @@ class CollectionPolicyResourceDirectory {
 
   factory CollectionPolicyResourceDirectory.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyResourceDirectory(
-      accountGroupType: map['accountGroupType'] == null ? null : (map['accountGroupType'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      accountGroupType: map['accountGroupType'] == null ? null : (map['accountGroupType']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
     );
   }
 }

@@ -95,16 +95,16 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      connectionDrainConfig: map['connectionDrainConfig'] == null ? null : (ServerGroupConnectionDrainConfig.fromMap((map['connectionDrainConfig'] as Map).cast<String, dynamic>())).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : (ServerGroupHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scheduler: map['scheduler'] == null ? null : (map['scheduler'] as String).input(),
-      serverGroupName: map['serverGroupName'] == null ? null : (map['serverGroupName'] as String).input(),
-      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType'] as String).input(),
-      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      connectionDrainConfig: map['connectionDrainConfig'] == null ? null : (ServerGroupConnectionDrainConfig.fromMap((map['connectionDrainConfig']! as Map).cast<String, dynamic>())).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : (ServerGroupHealthCheckConfig.fromMap((map['healthCheckConfig']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scheduler: map['scheduler'] == null ? null : (map['scheduler']! as String).input(),
+      serverGroupName: map['serverGroupName'] == null ? null : (map['serverGroupName']! as String).input(),
+      serverGroupType: map['serverGroupType'] == null ? null : (map['serverGroupType']! as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ServerGroupServer>(map['servers']!, (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

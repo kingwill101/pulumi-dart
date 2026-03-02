@@ -25,7 +25,7 @@ class KeyVaultPropertiesResponse {
 
   factory KeyVaultPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPropertiesResponse(
-      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier'] as String).input(),
+      keyIdentifier: map['keyIdentifier'] == null ? null : (map['keyIdentifier']! as String).input(),
     );
   }
 }

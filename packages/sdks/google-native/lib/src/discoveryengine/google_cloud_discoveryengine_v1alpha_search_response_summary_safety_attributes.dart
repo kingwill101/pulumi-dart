@@ -26,8 +26,8 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes {
 
   factory GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
-      scores: map['scores'] == null ? null : ((map['scores'] as List).cast<double>()).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
+      scores: map['scores'] == null ? null : ((map['scores']! as List).cast<double>()).input(),
     );
   }
 }

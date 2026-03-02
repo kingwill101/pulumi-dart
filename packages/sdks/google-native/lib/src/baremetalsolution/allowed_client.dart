@@ -47,12 +47,12 @@ class AllowedClient {
 
   factory AllowedClient.fromMap(Map<String, dynamic> map) {
     return AllowedClient(
-      allowDev: map['allowDev'] == null ? null : (map['allowDev'] as bool).input(),
-      allowSuid: map['allowSuid'] == null ? null : (map['allowSuid'] as bool).input(),
-      allowedClientsCidr: map['allowedClientsCidr'] == null ? null : (map['allowedClientsCidr'] as String).input(),
-      mountPermissions: map['mountPermissions'] == null ? null : (AllowedClientMountPermissions.fromValue(map['mountPermissions'] as String)).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      noRootSquash: map['noRootSquash'] == null ? null : (map['noRootSquash'] as bool).input(),
+      allowDev: map['allowDev'] == null ? null : (map['allowDev']! as bool).input(),
+      allowSuid: map['allowSuid'] == null ? null : (map['allowSuid']! as bool).input(),
+      allowedClientsCidr: map['allowedClientsCidr'] == null ? null : (map['allowedClientsCidr']! as String).input(),
+      mountPermissions: map['mountPermissions'] == null ? null : (AllowedClientMountPermissions.fromValue(map['mountPermissions']! as String)).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      noRootSquash: map['noRootSquash'] == null ? null : (map['noRootSquash']! as bool).input(),
     );
   }
 }

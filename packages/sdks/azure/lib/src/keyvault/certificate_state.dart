@@ -96,21 +96,21 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      certificate: map['certificate'] == null ? null : (CertificateCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      certificateAttributes: map['certificateAttributes'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateAttribute>(map['certificateAttributes'], (value) => CertificateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificateData: map['certificateData'] == null ? null : (map['certificateData'] as String).input(),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64'] as String).input(),
-      certificatePolicy: map['certificatePolicy'] == null ? null : (CertificateCertificatePolicy.fromMap((map['certificatePolicy'] as Map).cast<String, dynamic>())).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
-      resourceManagerVersionlessId: map['resourceManagerVersionlessId'] == null ? null : (map['resourceManagerVersionlessId'] as String).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versionlessId: map['versionlessId'] == null ? null : (map['versionlessId'] as String).input(),
-      versionlessSecretId: map['versionlessSecretId'] == null ? null : (map['versionlessSecretId'] as String).input(),
+      certificate: map['certificate'] == null ? null : (CertificateCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      certificateAttributes: map['certificateAttributes'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateAttribute>(map['certificateAttributes']!, (value) => CertificateCertificateAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateData: map['certificateData'] == null ? null : (map['certificateData']! as String).input(),
+      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64']! as String).input(),
+      certificatePolicy: map['certificatePolicy'] == null ? null : (CertificateCertificatePolicy.fromMap((map['certificatePolicy']! as Map).cast<String, dynamic>())).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
+      resourceManagerVersionlessId: map['resourceManagerVersionlessId'] == null ? null : (map['resourceManagerVersionlessId']! as String).input(),
+      secretId: map['secretId'] == null ? null : (map['secretId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      versionlessId: map['versionlessId'] == null ? null : (map['versionlessId']! as String).input(),
+      versionlessSecretId: map['versionlessSecretId'] == null ? null : (map['versionlessSecretId']! as String).input(),
     );
   }
 }

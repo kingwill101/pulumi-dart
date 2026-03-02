@@ -44,10 +44,10 @@ class ImportCollectorsOperationArgs {
 
   factory ImportCollectorsOperationArgs.fromMap(Map<String, dynamic> map) {
     return ImportCollectorsOperationArgs(
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
-      importCollectorName: map['importCollectorName'] == null ? null : (map['importCollectorName'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
+      importCollectorName: map['importCollectorName'] == null ? null : (map['importCollectorName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

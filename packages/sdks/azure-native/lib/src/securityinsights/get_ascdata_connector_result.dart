@@ -64,12 +64,12 @@ class GetASCDataConnectorResult {
   factory GetASCDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetASCDataConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataTypes: map['dataTypes'] == null ? null : AlertsDataTypeOfDataConnectorResponse.fromMap((map['dataTypes'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      dataTypes: map['dataTypes'] == null ? null : AlertsDataTypeOfDataConnectorResponse.fromMap((map['dataTypes']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

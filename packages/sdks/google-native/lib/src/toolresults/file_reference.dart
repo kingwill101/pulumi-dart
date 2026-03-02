@@ -21,7 +21,7 @@ class FileReference {
 
   factory FileReference.fromMap(Map<String, dynamic> map) {
     return FileReference(
-      fileUri: map['fileUri'] == null ? null : (map['fileUri'] as String).input(),
+      fileUri: map['fileUri'] == null ? null : (map['fileUri']! as String).input(),
     );
   }
 }

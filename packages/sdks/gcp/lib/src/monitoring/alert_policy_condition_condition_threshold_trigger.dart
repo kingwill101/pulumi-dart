@@ -29,8 +29,8 @@ class AlertPolicyConditionConditionThresholdTrigger {
 
   factory AlertPolicyConditionConditionThresholdTrigger.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionThresholdTrigger(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as double).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as double).input(),
     );
   }
 }

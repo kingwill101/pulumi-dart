@@ -34,9 +34,9 @@ class GetCustomKeyStoreArgs {
 
   factory GetCustomKeyStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomKeyStoreArgs(
-      customKeyStoreId: map['customKeyStoreId'] == null ? null : (map['customKeyStoreId'] as String).input(),
-      customKeyStoreName: map['customKeyStoreName'] == null ? null : (map['customKeyStoreName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      customKeyStoreId: map['customKeyStoreId'] == null ? null : ((map['customKeyStoreId'] as String).input()).input(),
+      customKeyStoreName: map['customKeyStoreName'] == null ? null : ((map['customKeyStoreName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

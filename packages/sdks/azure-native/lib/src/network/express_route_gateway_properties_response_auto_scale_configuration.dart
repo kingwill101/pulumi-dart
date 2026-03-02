@@ -22,7 +22,7 @@ class ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration {
 
   factory ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration(
-      bounds: map['bounds'] == null ? null : (ExpressRouteGatewayPropertiesResponseBounds.fromMap((map['bounds'] as Map).cast<String, dynamic>())).input(),
+      bounds: map['bounds'] == null ? null : (ExpressRouteGatewayPropertiesResponseBounds.fromMap((map['bounds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

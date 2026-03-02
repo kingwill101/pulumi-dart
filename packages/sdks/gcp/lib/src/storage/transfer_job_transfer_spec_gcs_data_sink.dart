@@ -26,7 +26,7 @@ class TransferJobTransferSpecGcsDataSink {
   factory TransferJobTransferSpecGcsDataSink.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecGcsDataSink(
       bucketName: (map['bucketName'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

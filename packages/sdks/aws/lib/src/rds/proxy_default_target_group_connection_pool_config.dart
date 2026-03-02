@@ -40,11 +40,11 @@ class ProxyDefaultTargetGroupConnectionPoolConfig {
 
   factory ProxyDefaultTargetGroupConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return ProxyDefaultTargetGroupConnectionPoolConfig(
-      connectionBorrowTimeout: map['connectionBorrowTimeout'] == null ? null : (map['connectionBorrowTimeout'] as int).input(),
-      initQuery: map['initQuery'] == null ? null : (map['initQuery'] as String).input(),
-      maxConnectionsPercent: map['maxConnectionsPercent'] == null ? null : (map['maxConnectionsPercent'] as int).input(),
-      maxIdleConnectionsPercent: map['maxIdleConnectionsPercent'] == null ? null : (map['maxIdleConnectionsPercent'] as int).input(),
-      sessionPinningFilters: map['sessionPinningFilters'] == null ? null : ((map['sessionPinningFilters'] as List).cast<String>()).input(),
+      connectionBorrowTimeout: map['connectionBorrowTimeout'] == null ? null : ((map['connectionBorrowTimeout'] as int).input()).input(),
+      initQuery: map['initQuery'] == null ? null : ((map['initQuery'] as String).input()).input(),
+      maxConnectionsPercent: map['maxConnectionsPercent'] == null ? null : ((map['maxConnectionsPercent'] as int).input()).input(),
+      maxIdleConnectionsPercent: map['maxIdleConnectionsPercent'] == null ? null : ((map['maxIdleConnectionsPercent'] as int).input()).input(),
+      sessionPinningFilters: map['sessionPinningFilters'] == null ? null : (((map['sessionPinningFilters'] as List).cast<String>()).input()).input(),
     );
   }
 }

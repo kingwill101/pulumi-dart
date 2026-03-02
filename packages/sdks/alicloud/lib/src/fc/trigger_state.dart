@@ -75,17 +75,17 @@ class TriggerState {
 
   factory TriggerState.fromMap(Map<String, dynamic> map) {
     return TriggerState(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      configMns: map['configMns'] == null ? null : (map['configMns'] as String).input(),
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      configMns: map['configMns'] == null ? null : (map['configMns']! as String).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

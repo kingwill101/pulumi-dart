@@ -57,11 +57,11 @@ class RoutingRuleCollectionArgs {
     return RoutingRuleCollectionArgs(
       appliesTo: (pulumi.Input.decodeList<NetworkManagerRoutingGroupItem>(map['appliesTo'], (value) => NetworkManagerRoutingGroupItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       configurationName: (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : (map['disableBgpRoutePropagation'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : (map['disableBgpRoutePropagation']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleCollectionName: map['ruleCollectionName'] == null ? null : (map['ruleCollectionName'] as String).input(),
+      ruleCollectionName: map['ruleCollectionName'] == null ? null : (map['ruleCollectionName']! as String).input(),
     );
   }
 }

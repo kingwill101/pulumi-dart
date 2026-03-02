@@ -37,7 +37,7 @@ class ModelPrimaryContainerModelDataSourceS3DataSource {
   factory ModelPrimaryContainerModelDataSourceS3DataSource.fromMap(Map<String, dynamic> map) {
     return ModelPrimaryContainerModelDataSourceS3DataSource(
       compressionType: (map['compressionType'] as String).input(),
-      modelAccessConfig: map['modelAccessConfig'] == null ? null : (ModelPrimaryContainerModelDataSourceS3DataSourceModelAccessConfig.fromMap((map['modelAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      modelAccessConfig: map['modelAccessConfig'] == null ? null : ((ModelPrimaryContainerModelDataSourceS3DataSourceModelAccessConfig.fromMap((map['modelAccessConfig']! as Map).cast<String, dynamic>())).input()).input(),
       s3DataType: (map['s3DataType'] as String).input(),
       s3Uri: (map['s3Uri'] as String).input(),
     );

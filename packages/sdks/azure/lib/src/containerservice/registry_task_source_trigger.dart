@@ -51,9 +51,9 @@ class RegistryTaskSourceTrigger {
 
   factory RegistryTaskSourceTrigger.fromMap(Map<String, dynamic> map) {
     return RegistryTaskSourceTrigger(
-      authentication: map['authentication'] == null ? null : (RegistryTaskSourceTriggerAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      authentication: map['authentication'] == null ? null : (RegistryTaskSourceTriggerAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       events: ((map['events'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       repositoryUrl: (map['repositoryUrl'] as String).input(),

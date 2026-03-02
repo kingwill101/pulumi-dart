@@ -21,7 +21,7 @@ class FileUploadLimitState {
 
   factory FileUploadLimitState.fromMap(Map<String, dynamic> map) {
     return FileUploadLimitState(
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
     );
   }
 }

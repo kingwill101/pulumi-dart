@@ -63,15 +63,15 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(
-      containerImageSources: map['containerImageSources'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['containerImageSources'] as Map).cast<String, dynamic>())).input(),
-      dockerAddCapabilities: map['dockerAddCapabilities'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerAddCapabilities'] as Map).cast<String, dynamic>())).input(),
-      dockerChrootPath: map['dockerChrootPath'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerChrootPath'] as Map).cast<String, dynamic>())).input(),
-      dockerNetwork: map['dockerNetwork'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerNetwork'] as Map).cast<String, dynamic>())).input(),
-      dockerPrivileged: map['dockerPrivileged'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerPrivileged'] as Map).cast<String, dynamic>())).input(),
-      dockerRunAsRoot: map['dockerRunAsRoot'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerRunAsRoot'] as Map).cast<String, dynamic>())).input(),
-      dockerRuntime: map['dockerRuntime'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerRuntime'] as Map).cast<String, dynamic>())).input(),
-      dockerSiblingContainers: map['dockerSiblingContainers'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerSiblingContainers'] as Map).cast<String, dynamic>())).input(),
-      linuxIsolation: map['linuxIsolation'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation.fromValue(map['linuxIsolation'] as String)).input(),
+      containerImageSources: map['containerImageSources'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['containerImageSources']! as Map).cast<String, dynamic>())).input(),
+      dockerAddCapabilities: map['dockerAddCapabilities'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerAddCapabilities']! as Map).cast<String, dynamic>())).input(),
+      dockerChrootPath: map['dockerChrootPath'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerChrootPath']! as Map).cast<String, dynamic>())).input(),
+      dockerNetwork: map['dockerNetwork'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerNetwork']! as Map).cast<String, dynamic>())).input(),
+      dockerPrivileged: map['dockerPrivileged'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerPrivileged']! as Map).cast<String, dynamic>())).input(),
+      dockerRunAsRoot: map['dockerRunAsRoot'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerRunAsRoot']! as Map).cast<String, dynamic>())).input(),
+      dockerRuntime: map['dockerRuntime'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerRuntime']! as Map).cast<String, dynamic>())).input(),
+      dockerSiblingContainers: map['dockerSiblingContainers'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap((map['dockerSiblingContainers']! as Map).cast<String, dynamic>())).input(),
+      linuxIsolation: map['linuxIsolation'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation.fromValue(map['linuxIsolation']! as String)).input(),
     );
   }
 }

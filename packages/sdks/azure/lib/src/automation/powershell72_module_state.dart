@@ -37,10 +37,10 @@ class Powershell72ModuleState {
 
   factory Powershell72ModuleState.fromMap(Map<String, dynamic> map) {
     return Powershell72ModuleState(
-      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId'] as String).input(),
-      moduleLink: map['moduleLink'] == null ? null : (Powershell72ModuleModuleLink.fromMap((map['moduleLink'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId']! as String).input(),
+      moduleLink: map['moduleLink'] == null ? null : (Powershell72ModuleModuleLink.fromMap((map['moduleLink']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

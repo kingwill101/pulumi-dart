@@ -64,9 +64,9 @@ class GetDeploymentResult {
   factory GetDeploymentResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      deployedImages: map['deployedImages'] == null ? null : pulumi.Input.decodeList<ImageResponse>(map['deployedImages'], (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      deployedImages: map['deployedImages'] == null ? null : pulumi.Input.decodeList<ImageResponse>(map['deployedImages']!, (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>())),
       deploymentDateUtc: map['deploymentDateUtc'] as String,
-      deploymentId: map['deploymentId'] == null ? null : map['deploymentId'] as String,
+      deploymentId: map['deploymentId'] == null ? null : map['deploymentId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

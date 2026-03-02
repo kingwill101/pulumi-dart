@@ -39,10 +39,10 @@ class GetConsumerGroupsArgs {
 
   factory GetConsumerGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetConsumerGroupsArgs(
-      consumerIdRegex: map['consumerIdRegex'] == null ? null : (map['consumerIdRegex'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      consumerIdRegex: map['consumerIdRegex'] == null ? null : (map['consumerIdRegex']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

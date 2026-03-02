@@ -21,7 +21,7 @@ class IngressResponseStickySessions {
 
   factory IngressResponseStickySessions.fromMap(Map<String, dynamic> map) {
     return IngressResponseStickySessions(
-      affinity: map['affinity'] == null ? null : (map['affinity'] as String).input(),
+      affinity: map['affinity'] == null ? null : (map['affinity']! as String).input(),
     );
   }
 }

@@ -82,8 +82,8 @@ class GetRouterResult {
       nccGateway: map['nccGateway'] as String,
       network: map['network'] as String,
       params: pulumi.Input.decodeList<GetRouterParam>(map['params'], (value) => GetRouterParam.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

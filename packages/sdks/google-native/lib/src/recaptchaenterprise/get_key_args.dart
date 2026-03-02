@@ -28,7 +28,7 @@ class GetKeyArgs {
   factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyArgs(
       keyId: (map['keyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

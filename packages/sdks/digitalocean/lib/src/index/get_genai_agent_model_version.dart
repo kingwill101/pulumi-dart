@@ -30,9 +30,9 @@ class GetGenaiAgentModelVersion {
 
   factory GetGenaiAgentModelVersion.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentModelVersion(
-      major: map['major'] == null ? null : (map['major'] as int).input(),
-      minor: map['minor'] == null ? null : (map['minor'] as int).input(),
-      patch: map['patch'] == null ? null : (map['patch'] as int).input(),
+      major: map['major'] == null ? null : (map['major']! as int).input(),
+      minor: map['minor'] == null ? null : (map['minor']! as int).input(),
+      patch: map['patch'] == null ? null : (map['patch']! as int).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ManifestArtifactFormatResponse {
 
   factory ManifestArtifactFormatResponse.fromMap(Map<String, dynamic> map) {
     return ManifestArtifactFormatResponse(
-      artifactName: map['artifactName'] == null ? null : (map['artifactName'] as String).input(),
-      artifactType: map['artifactType'] == null ? null : (map['artifactType'] as String).input(),
-      artifactVersion: map['artifactVersion'] == null ? null : (map['artifactVersion'] as String).input(),
+      artifactName: map['artifactName'] == null ? null : (map['artifactName']! as String).input(),
+      artifactType: map['artifactType'] == null ? null : (map['artifactType']! as String).input(),
+      artifactVersion: map['artifactVersion'] == null ? null : (map['artifactVersion']! as String).input(),
     );
   }
 }

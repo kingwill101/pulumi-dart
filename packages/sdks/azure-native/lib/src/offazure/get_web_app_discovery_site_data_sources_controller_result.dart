@@ -52,7 +52,7 @@ class GetWebAppDiscoverySiteDataSourcesControllerResult {
   factory GetWebAppDiscoverySiteDataSourcesControllerResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppDiscoverySiteDataSourcesControllerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
+      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

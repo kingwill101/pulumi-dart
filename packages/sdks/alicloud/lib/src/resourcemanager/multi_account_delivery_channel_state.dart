@@ -44,11 +44,11 @@ class MultiAccountDeliveryChannelState {
 
   factory MultiAccountDeliveryChannelState.fromMap(Map<String, dynamic> map) {
     return MultiAccountDeliveryChannelState(
-      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription'] as String).input(),
-      deliveryChannelFilter: map['deliveryChannelFilter'] == null ? null : (MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())).input(),
-      multiAccountDeliveryChannelName: map['multiAccountDeliveryChannelName'] == null ? null : (map['multiAccountDeliveryChannelName'] as String).input(),
-      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())).input(),
-      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())).input(),
+      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription']! as String).input(),
+      deliveryChannelFilter: map['deliveryChannelFilter'] == null ? null : (MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter']! as Map).cast<String, dynamic>())).input(),
+      multiAccountDeliveryChannelName: map['multiAccountDeliveryChannelName'] == null ? null : (map['multiAccountDeliveryChannelName']! as String).input(),
+      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery']! as Map).cast<String, dynamic>())).input(),
+      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

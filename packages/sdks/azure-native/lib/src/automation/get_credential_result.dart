@@ -57,7 +57,7 @@ class GetCredentialResult {
     return GetCredentialResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationTime: map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       lastModifiedTime: map['lastModifiedTime'] as String,
       name: map['name'] as String,

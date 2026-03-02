@@ -28,8 +28,8 @@ class ConnectedEnvironmentStorageProperties {
 
   factory ConnectedEnvironmentStorageProperties.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentStorageProperties(
-      azureFile: map['azureFile'] == null ? null : (AzureFileProperties.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
-      smb: map['smb'] == null ? null : (SmbStorage.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
+      azureFile: map['azureFile'] == null ? null : (AzureFileProperties.fromMap((map['azureFile']! as Map).cast<String, dynamic>())).input(),
+      smb: map['smb'] == null ? null : (SmbStorage.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

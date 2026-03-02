@@ -27,8 +27,8 @@ class ProjectLogsConfig {
 
   factory ProjectLogsConfig.fromMap(Map<String, dynamic> map) {
     return ProjectLogsConfig(
-      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : (ProjectLogsConfigCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      s3Logs: map['s3Logs'] == null ? null : (ProjectLogsConfigS3Logs.fromMap((map['s3Logs'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: map['cloudwatchLogs'] == null ? null : ((ProjectLogsConfigCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Logs: map['s3Logs'] == null ? null : ((ProjectLogsConfigS3Logs.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

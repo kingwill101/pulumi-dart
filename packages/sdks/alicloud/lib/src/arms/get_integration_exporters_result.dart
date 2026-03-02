@@ -50,7 +50,7 @@ class GetIntegrationExportersResult {
       ids: (map['ids'] as List).cast<String>(),
       integrationExporters: pulumi.Input.decodeList<GetIntegrationExportersIntegrationExporter>(map['integrationExporters'], (value) => GetIntegrationExportersIntegrationExporter.fromMap((value as Map).cast<String, dynamic>())),
       integrationType: map['integrationType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

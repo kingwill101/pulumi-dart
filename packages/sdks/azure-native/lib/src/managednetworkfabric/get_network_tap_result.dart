@@ -94,7 +94,7 @@ class GetNetworkTapResult {
   factory GetNetworkTapResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkTapResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       destinations: pulumi.Input.decodeList<NetworkTapPropertiesResponseDestinations>(map['destinations'], (value) => NetworkTapPropertiesResponseDestinations.fromMap((value as Map).cast<String, dynamic>())),
@@ -102,11 +102,11 @@ class GetNetworkTapResult {
       location: map['location'] as String,
       name: map['name'] as String,
       networkPacketBrokerId: map['networkPacketBrokerId'] as String,
-      pollingType: map['pollingType'] == null ? null : map['pollingType'] as String,
+      pollingType: map['pollingType'] == null ? null : map['pollingType']! as String,
       provisioningState: map['provisioningState'] as String,
       sourceTapRuleId: map['sourceTapRuleId'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

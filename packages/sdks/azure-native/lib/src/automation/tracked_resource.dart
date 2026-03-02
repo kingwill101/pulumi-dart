@@ -27,7 +27,7 @@ class TrackedResource {
   factory TrackedResource.fromMap(Map<String, dynamic> map) {
     return TrackedResource(
       location: (map['location'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

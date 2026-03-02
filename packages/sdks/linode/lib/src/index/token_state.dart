@@ -41,11 +41,11 @@ class TokenState {
 
   factory TokenState.fromMap(Map<String, dynamic> map) {
     return TokenState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

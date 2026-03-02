@@ -33,9 +33,9 @@ class InstancePscConfig {
 
   factory InstancePscConfig.fromMap(Map<String, dynamic> map) {
     return InstancePscConfig(
-      allowedVpcs: map['allowedVpcs'] == null ? null : ((map['allowedVpcs'] as List).cast<String>()).input(),
-      lookerServiceAttachmentUri: map['lookerServiceAttachmentUri'] == null ? null : (map['lookerServiceAttachmentUri'] as String).input(),
-      serviceAttachments: map['serviceAttachments'] == null ? null : (pulumi.Input.decodeList<InstancePscConfigServiceAttachment>(map['serviceAttachments'], (value) => InstancePscConfigServiceAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedVpcs: map['allowedVpcs'] == null ? null : ((map['allowedVpcs']! as List).cast<String>()).input(),
+      lookerServiceAttachmentUri: map['lookerServiceAttachmentUri'] == null ? null : (map['lookerServiceAttachmentUri']! as String).input(),
+      serviceAttachments: map['serviceAttachments'] == null ? null : (pulumi.Input.decodeList<InstancePscConfigServiceAttachment>(map['serviceAttachments']!, (value) => InstancePscConfigServiceAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

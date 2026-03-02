@@ -36,10 +36,10 @@ class ReceiversState {
 
   factory ReceiversState.fromMap(Map<String, dynamic> map) {
     return ReceiversState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      receiversAlias: map['receiversAlias'] == null ? null : (map['receiversAlias'] as String).input(),
-      receiversName: map['receiversName'] == null ? null : (map['receiversName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      receiversAlias: map['receiversAlias'] == null ? null : (map['receiversAlias']! as String).input(),
+      receiversName: map['receiversName'] == null ? null : (map['receiversName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

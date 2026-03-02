@@ -85,14 +85,14 @@ class AlertPolicyCondition {
 
   factory AlertPolicyCondition.fromMap(Map<String, dynamic> map) {
     return AlertPolicyCondition(
-      conditionAbsent: map['conditionAbsent'] == null ? null : (AlertPolicyConditionConditionAbsent.fromMap((map['conditionAbsent'] as Map).cast<String, dynamic>())).input(),
-      conditionMatchedLog: map['conditionMatchedLog'] == null ? null : (AlertPolicyConditionConditionMatchedLog.fromMap((map['conditionMatchedLog'] as Map).cast<String, dynamic>())).input(),
-      conditionMonitoringQueryLanguage: map['conditionMonitoringQueryLanguage'] == null ? null : (AlertPolicyConditionConditionMonitoringQueryLanguage.fromMap((map['conditionMonitoringQueryLanguage'] as Map).cast<String, dynamic>())).input(),
-      conditionPrometheusQueryLanguage: map['conditionPrometheusQueryLanguage'] == null ? null : (AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap((map['conditionPrometheusQueryLanguage'] as Map).cast<String, dynamic>())).input(),
-      conditionSql: map['conditionSql'] == null ? null : (AlertPolicyConditionConditionSql.fromMap((map['conditionSql'] as Map).cast<String, dynamic>())).input(),
-      conditionThreshold: map['conditionThreshold'] == null ? null : (AlertPolicyConditionConditionThreshold.fromMap((map['conditionThreshold'] as Map).cast<String, dynamic>())).input(),
+      conditionAbsent: map['conditionAbsent'] == null ? null : (AlertPolicyConditionConditionAbsent.fromMap((map['conditionAbsent']! as Map).cast<String, dynamic>())).input(),
+      conditionMatchedLog: map['conditionMatchedLog'] == null ? null : (AlertPolicyConditionConditionMatchedLog.fromMap((map['conditionMatchedLog']! as Map).cast<String, dynamic>())).input(),
+      conditionMonitoringQueryLanguage: map['conditionMonitoringQueryLanguage'] == null ? null : (AlertPolicyConditionConditionMonitoringQueryLanguage.fromMap((map['conditionMonitoringQueryLanguage']! as Map).cast<String, dynamic>())).input(),
+      conditionPrometheusQueryLanguage: map['conditionPrometheusQueryLanguage'] == null ? null : (AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap((map['conditionPrometheusQueryLanguage']! as Map).cast<String, dynamic>())).input(),
+      conditionSql: map['conditionSql'] == null ? null : (AlertPolicyConditionConditionSql.fromMap((map['conditionSql']! as Map).cast<String, dynamic>())).input(),
+      conditionThreshold: map['conditionThreshold'] == null ? null : (AlertPolicyConditionConditionThreshold.fromMap((map['conditionThreshold']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

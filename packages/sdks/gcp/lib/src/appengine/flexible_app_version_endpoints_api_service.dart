@@ -43,10 +43,10 @@ class FlexibleAppVersionEndpointsApiService {
 
   factory FlexibleAppVersionEndpointsApiService.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionEndpointsApiService(
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling'] as bool).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
+      disableTraceSampling: map['disableTraceSampling'] == null ? null : (map['disableTraceSampling']! as bool).input(),
       name: (map['name'] as String).input(),
-      rolloutStrategy: map['rolloutStrategy'] == null ? null : (map['rolloutStrategy'] as String).input(),
+      rolloutStrategy: map['rolloutStrategy'] == null ? null : (map['rolloutStrategy']! as String).input(),
     );
   }
 }

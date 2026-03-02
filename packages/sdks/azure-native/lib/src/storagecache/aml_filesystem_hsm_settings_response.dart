@@ -37,8 +37,8 @@ class AmlFilesystemHsmSettingsResponse {
   factory AmlFilesystemHsmSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemHsmSettingsResponse(
       container: (map['container'] as String).input(),
-      importPrefix: map['importPrefix'] == null ? null : (map['importPrefix'] as String).input(),
-      importPrefixesInitial: map['importPrefixesInitial'] == null ? null : ((map['importPrefixesInitial'] as List).cast<String>()).input(),
+      importPrefix: map['importPrefix'] == null ? null : (map['importPrefix']! as String).input(),
+      importPrefixesInitial: map['importPrefixesInitial'] == null ? null : ((map['importPrefixesInitial']! as List).cast<String>()).input(),
       loggingContainer: (map['loggingContainer'] as String).input(),
     );
   }

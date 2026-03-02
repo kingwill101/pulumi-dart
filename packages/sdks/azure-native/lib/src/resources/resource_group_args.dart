@@ -39,10 +39,10 @@ class ResourceGroupArgs {
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGroupArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

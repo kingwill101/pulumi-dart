@@ -25,8 +25,8 @@ class DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsWorkspaceSettings(
-      s3ArtifactPath: map['s3ArtifactPath'] == null ? null : (map['s3ArtifactPath'] as String).input(),
-      s3KmsKeyId: map['s3KmsKeyId'] == null ? null : (map['s3KmsKeyId'] as String).input(),
+      s3ArtifactPath: map['s3ArtifactPath'] == null ? null : ((map['s3ArtifactPath'] as String).input()).input(),
+      s3KmsKeyId: map['s3KmsKeyId'] == null ? null : ((map['s3KmsKeyId'] as String).input()).input(),
     );
   }
 }

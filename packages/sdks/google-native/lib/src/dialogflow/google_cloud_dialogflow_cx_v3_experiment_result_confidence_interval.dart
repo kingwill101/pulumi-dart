@@ -36,10 +36,10 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
 
   factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval(
-      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel'] as double).input(),
-      lowerBound: map['lowerBound'] == null ? null : (map['lowerBound'] as double).input(),
-      ratio: map['ratio'] == null ? null : (map['ratio'] as double).input(),
-      upperBound: map['upperBound'] == null ? null : (map['upperBound'] as double).input(),
+      confidenceLevel: map['confidenceLevel'] == null ? null : (map['confidenceLevel']! as double).input(),
+      lowerBound: map['lowerBound'] == null ? null : (map['lowerBound']! as double).input(),
+      ratio: map['ratio'] == null ? null : (map['ratio']! as double).input(),
+      upperBound: map['upperBound'] == null ? null : (map['upperBound']! as double).input(),
     );
   }
 }

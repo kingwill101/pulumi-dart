@@ -20,7 +20,7 @@ class SecurityPolicyRecaptchaOptionsConfigComputeBeta {
 
   factory SecurityPolicyRecaptchaOptionsConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRecaptchaOptionsConfigComputeBeta(
-      redirectSiteKey: map['redirectSiteKey'] == null ? null : (map['redirectSiteKey'] as String).input(),
+      redirectSiteKey: map['redirectSiteKey'] == null ? null : (map['redirectSiteKey']! as String).input(),
     );
   }
 }

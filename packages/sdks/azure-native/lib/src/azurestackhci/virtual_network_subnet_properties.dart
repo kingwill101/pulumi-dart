@@ -40,9 +40,9 @@ class VirtualNetworkSubnetProperties {
   factory VirtualNetworkSubnetProperties.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnetProperties(
       addressPrefix: (map['addressPrefix'] as String).input(),
-      natGateway: map['natGateway'] == null ? null : (NatGatewayArmReference.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReference.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
-      routeTable: map['routeTable'] == null ? null : (RouteTable.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
+      natGateway: map['natGateway'] == null ? null : (NatGatewayArmReference.fromMap((map['natGateway']! as Map).cast<String, dynamic>())).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReference.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
+      routeTable: map['routeTable'] == null ? null : (RouteTable.fromMap((map['routeTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

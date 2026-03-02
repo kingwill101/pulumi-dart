@@ -24,8 +24,8 @@ class SecretStoreDetails {
 
   factory SecretStoreDetails.fromMap(Map<String, dynamic> map) {
     return SecretStoreDetails(
-      secretStore: map['secretStore'] == null ? null : (map['secretStore'] as String).input(),
-      secretStoreProperties: map['secretStoreProperties'] == null ? null : (SecretStoreProperties.fromMap((map['secretStoreProperties'] as Map).cast<String, dynamic>())).input(),
+      secretStore: map['secretStore'] == null ? null : (map['secretStore']! as String).input(),
+      secretStoreProperties: map['secretStoreProperties'] == null ? null : (SecretStoreProperties.fromMap((map['secretStoreProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

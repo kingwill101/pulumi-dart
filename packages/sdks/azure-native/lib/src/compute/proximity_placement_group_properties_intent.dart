@@ -21,7 +21,7 @@ class ProximityPlacementGroupPropertiesIntent {
 
   factory ProximityPlacementGroupPropertiesIntent.fromMap(Map<String, dynamic> map) {
     return ProximityPlacementGroupPropertiesIntent(
-      vmSizes: map['vmSizes'] == null ? null : ((map['vmSizes'] as List).cast<String>()).input(),
+      vmSizes: map['vmSizes'] == null ? null : ((map['vmSizes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -47,9 +47,9 @@ class TransitRouterCidrArgs {
   factory TransitRouterCidrArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterCidrArgs(
       cidr: (map['cidr'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      publishCidrRoute: map['publishCidrRoute'] == null ? null : (map['publishCidrRoute'] as bool).input(),
-      transitRouterCidrName: map['transitRouterCidrName'] == null ? null : (map['transitRouterCidrName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      publishCidrRoute: map['publishCidrRoute'] == null ? null : (map['publishCidrRoute']! as bool).input(),
+      transitRouterCidrName: map['transitRouterCidrName'] == null ? null : (map['transitRouterCidrName']! as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }

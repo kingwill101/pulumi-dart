@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2DiscoveryGenerationCadence {
 
   factory GooglePrivacyDlpV2DiscoveryGenerationCadence.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DiscoveryGenerationCadence(
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap((map['schemaModifiedCadence'] as Map).cast<String, dynamic>())).input(),
-      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : (GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap((map['tableModifiedCadence'] as Map).cast<String, dynamic>())).input(),
+      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (GooglePrivacyDlpV2DiscoverySchemaModifiedCadence.fromMap((map['schemaModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : (GooglePrivacyDlpV2DiscoveryTableModifiedCadence.fromMap((map['tableModifiedCadence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -63,10 +63,10 @@ class TableIamMemberArgs {
 
   factory TableIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return TableIamMemberArgs(
-      condition: map['condition'] == null ? null : (TableIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (TableIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       table: (map['table'] as String).input(),
     );

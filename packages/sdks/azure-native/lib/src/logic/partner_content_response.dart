@@ -22,7 +22,7 @@ class PartnerContentResponse {
 
   factory PartnerContentResponse.fromMap(Map<String, dynamic> map) {
     return PartnerContentResponse(
-      b2b: map['b2b'] == null ? null : (B2BPartnerContentResponse.fromMap((map['b2b'] as Map).cast<String, dynamic>())).input(),
+      b2b: map['b2b'] == null ? null : (B2BPartnerContentResponse.fromMap((map['b2b']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

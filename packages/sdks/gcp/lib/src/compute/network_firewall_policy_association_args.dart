@@ -42,8 +42,8 @@ class NetworkFirewallPolicyAssociationArgs {
     return NetworkFirewallPolicyAssociationArgs(
       attachmentTarget: (map['attachmentTarget'] as String).input(),
       firewallPolicy: (map['firewallPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

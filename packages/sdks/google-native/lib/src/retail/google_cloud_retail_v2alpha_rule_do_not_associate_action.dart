@@ -31,9 +31,9 @@ class GoogleCloudRetailV2alphaRuleDoNotAssociateAction {
 
   factory GoogleCloudRetailV2alphaRuleDoNotAssociateAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleDoNotAssociateAction(
-      doNotAssociateTerms: map['doNotAssociateTerms'] == null ? null : ((map['doNotAssociateTerms'] as List).cast<String>()).input(),
-      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms'] as List).cast<String>()).input(),
-      terms: map['terms'] == null ? null : ((map['terms'] as List).cast<String>()).input(),
+      doNotAssociateTerms: map['doNotAssociateTerms'] == null ? null : ((map['doNotAssociateTerms']! as List).cast<String>()).input(),
+      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms']! as List).cast<String>()).input(),
+      terms: map['terms'] == null ? null : ((map['terms']! as List).cast<String>()).input(),
     );
   }
 }

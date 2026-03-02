@@ -39,12 +39,12 @@ class ManagedIdentityProperties {
 
   factory ManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityProperties(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      managedIdentityName: map['managedIdentityName'] == null ? null : (map['managedIdentityName'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      managedIdentityName: map['managedIdentityName'] == null ? null : (map['managedIdentityName']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

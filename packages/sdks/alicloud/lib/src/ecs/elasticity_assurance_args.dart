@@ -108,20 +108,20 @@ class ElasticityAssuranceArgs {
 
   factory ElasticityAssuranceArgs.fromMap(Map<String, dynamic> map) {
     return ElasticityAssuranceArgs(
-      assuranceTimes: map['assuranceTimes'] == null ? null : (map['assuranceTimes'] as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
-      autoRenewPeriodUnit: map['autoRenewPeriodUnit'] == null ? null : (map['autoRenewPeriodUnit'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      assuranceTimes: map['assuranceTimes'] == null ? null : (map['assuranceTimes']! as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
+      autoRenewPeriodUnit: map['autoRenewPeriodUnit'] == null ? null : (map['autoRenewPeriodUnit']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceAmount: (map['instanceAmount'] as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] == null ? null : (map['privatePoolOptionsMatchCriteria'] as String).input(),
-      privatePoolOptionsName: map['privatePoolOptionsName'] == null ? null : (map['privatePoolOptionsName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      privatePoolOptionsMatchCriteria: map['privatePoolOptionsMatchCriteria'] == null ? null : (map['privatePoolOptionsMatchCriteria']! as String).input(),
+      privatePoolOptionsName: map['privatePoolOptionsName'] == null ? null : (map['privatePoolOptionsName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );
   }

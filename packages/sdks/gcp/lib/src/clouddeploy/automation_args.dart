@@ -83,17 +83,17 @@ class AutomationArgs {
 
   factory AutomationArgs.fromMap(Map<String, dynamic> map) {
     return AutomationArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       deliveryPipeline: (map['deliveryPipeline'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rules: (pulumi.Input.decodeList<AutomationRule>(map['rules'], (value) => AutomationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       selector: (AutomationSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
-      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended']! as bool).input(),
     );
   }
 }

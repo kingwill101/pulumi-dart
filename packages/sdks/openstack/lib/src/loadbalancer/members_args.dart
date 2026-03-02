@@ -40,9 +40,9 @@ class MembersArgs {
 
   factory MembersArgs.fromMap(Map<String, dynamic> map) {
     return MembersArgs(
-      members: map['members'] == null ? null : (pulumi.Input.decodeList<MembersMember>(map['members'], (value) => MembersMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<MembersMember>(map['members']!, (value) => MembersMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
       poolId: (map['poolId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -42,8 +42,8 @@ class RulesEngineArgs {
     return RulesEngineArgs(
       frontDoorName: (map['frontDoorName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules'], (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rulesEngineName: map['rulesEngineName'] == null ? null : (map['rulesEngineName'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRule>(map['rules']!, (value) => RulesEngineRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rulesEngineName: map['rulesEngineName'] == null ? null : (map['rulesEngineName']! as String).input(),
     );
   }
 }

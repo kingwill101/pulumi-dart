@@ -62,12 +62,12 @@ class CustomizableConnectorDefinitionArgs {
 
   factory CustomizableConnectorDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return CustomizableConnectorDefinitionArgs(
-      connectionsConfig: map['connectionsConfig'] == null ? null : (CustomizableConnectionsConfig.fromMap((map['connectionsConfig'] as Map).cast<String, dynamic>())).input(),
+      connectionsConfig: map['connectionsConfig'] == null ? null : (CustomizableConnectionsConfig.fromMap((map['connectionsConfig']! as Map).cast<String, dynamic>())).input(),
       connectorUiConfig: (CustomizableConnectorUiConfig.fromMap((map['connectorUiConfig'] as Map).cast<String, dynamic>())).input(),
-      createdTimeUtc: map['createdTimeUtc'] == null ? null : (map['createdTimeUtc'] as String).input(),
-      dataConnectorDefinitionName: map['dataConnectorDefinitionName'] == null ? null : (map['dataConnectorDefinitionName'] as String).input(),
+      createdTimeUtc: map['createdTimeUtc'] == null ? null : (map['createdTimeUtc']! as String).input(),
+      dataConnectorDefinitionName: map['dataConnectorDefinitionName'] == null ? null : (map['dataConnectorDefinitionName']! as String).input(),
       kind: (map['kind'] as String).input(),
-      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : (map['lastModifiedUtc'] as String).input(),
+      lastModifiedUtc: map['lastModifiedUtc'] == null ? null : (map['lastModifiedUtc']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

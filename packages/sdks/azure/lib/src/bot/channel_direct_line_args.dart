@@ -41,7 +41,7 @@ class ChannelDirectLineArgs {
   factory ChannelDirectLineArgs.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineArgs(
       botName: (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sites: (pulumi.Input.decodeList<ChannelDirectLineSite>(map['sites'], (value) => ChannelDirectLineSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

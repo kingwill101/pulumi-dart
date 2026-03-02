@@ -66,13 +66,13 @@ class TableExternalDataConfigurationCsvOptions {
 
   factory TableExternalDataConfigurationCsvOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationCsvOptions(
-      allowJaggedRows: map['allowJaggedRows'] == null ? null : (map['allowJaggedRows'] as bool).input(),
-      allowQuotedNewlines: map['allowQuotedNewlines'] == null ? null : (map['allowQuotedNewlines'] as bool).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
+      allowJaggedRows: map['allowJaggedRows'] == null ? null : (map['allowJaggedRows']! as bool).input(),
+      allowQuotedNewlines: map['allowQuotedNewlines'] == null ? null : (map['allowQuotedNewlines']! as bool).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter']! as String).input(),
       quote: (map['quote'] as String).input(),
-      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows'] as int).input(),
-      sourceColumnMatch: map['sourceColumnMatch'] == null ? null : (map['sourceColumnMatch'] as String).input(),
+      skipLeadingRows: map['skipLeadingRows'] == null ? null : (map['skipLeadingRows']! as int).input(),
+      sourceColumnMatch: map['sourceColumnMatch'] == null ? null : (map['sourceColumnMatch']! as String).input(),
     );
   }
 }

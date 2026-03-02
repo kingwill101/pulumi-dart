@@ -62,15 +62,15 @@ class ApplicationGatewayBackendSettings {
 
   factory ApplicationGatewayBackendSettings.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendSettings(
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      probe: map['probe'] == null ? null : (SubResource.fromMap((map['probe'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['trustedRootCertificates'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pickHostNameFromBackendAddress: map['pickHostNameFromBackendAddress'] == null ? null : (map['pickHostNameFromBackendAddress']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      probe: map['probe'] == null ? null : (SubResource.fromMap((map['probe']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : (pulumi.Input.decodeList<SubResource>(map['trustedRootCertificates']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

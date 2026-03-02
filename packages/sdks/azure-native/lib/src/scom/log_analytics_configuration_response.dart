@@ -31,9 +31,9 @@ class LogAnalyticsConfigurationResponse {
 
   factory LogAnalyticsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LogAnalyticsConfigurationResponse(
-      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes'] as List).cast<String>()).input(),
-      importData: map['importData'] == null ? null : (map['importData'] as bool).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes']! as List).cast<String>()).input(),
+      importData: map['importData'] == null ? null : (map['importData']! as bool).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

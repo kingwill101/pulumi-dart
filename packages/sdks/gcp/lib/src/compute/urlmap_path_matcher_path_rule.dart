@@ -62,11 +62,11 @@ class URLMapPathMatcherPathRule {
 
   factory URLMapPathMatcherPathRule.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRule(
-      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : (URLMapPathMatcherPathRuleCustomErrorResponsePolicy.fromMap((map['customErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
+      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : (URLMapPathMatcherPathRuleCustomErrorResponsePolicy.fromMap((map['customErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
       paths: ((map['paths'] as List).cast<String>()).input(),
-      routeAction: map['routeAction'] == null ? null : (URLMapPathMatcherPathRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (URLMapPathMatcherPathRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      routeAction: map['routeAction'] == null ? null : (URLMapPathMatcherPathRuleRouteAction.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (URLMapPathMatcherPathRuleUrlRedirect.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

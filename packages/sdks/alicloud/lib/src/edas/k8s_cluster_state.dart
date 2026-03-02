@@ -55,13 +55,13 @@ class K8sClusterState {
 
   factory K8sClusterState.fromMap(Map<String, dynamic> map) {
     return K8sClusterState(
-      clusterImportStatus: map['clusterImportStatus'] == null ? null : (map['clusterImportStatus'] as int).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterType: map['clusterType'] == null ? null : (map['clusterType'] as int).input(),
-      csClusterId: map['csClusterId'] == null ? null : (map['csClusterId'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as int).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      clusterImportStatus: map['clusterImportStatus'] == null ? null : (map['clusterImportStatus']! as int).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterType: map['clusterType'] == null ? null : (map['clusterType']! as int).input(),
+      csClusterId: map['csClusterId'] == null ? null : (map['csClusterId']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as int).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

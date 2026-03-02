@@ -84,22 +84,22 @@ class GetInstanceClassesResult {
 
   factory GetInstanceClassesResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassesResult(
-      category: map['category'] == null ? null : map['category'] as String,
-      commodityCode: map['commodityCode'] == null ? null : map['commodityCode'] as String,
-      dbInstanceClass: map['dbInstanceClass'] == null ? null : map['dbInstanceClass'] as String,
-      dbInstanceId: map['dbInstanceId'] == null ? null : map['dbInstanceId'] as String,
-      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType'] as String,
-      engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
+      category: map['category'] == null ? null : map['category']! as String,
+      commodityCode: map['commodityCode'] == null ? null : map['commodityCode']! as String,
+      dbInstanceClass: map['dbInstanceClass'] == null ? null : map['dbInstanceClass']! as String,
+      dbInstanceId: map['dbInstanceId'] == null ? null : map['dbInstanceId']! as String,
+      dbInstanceStorageType: map['dbInstanceStorageType'] == null ? null : map['dbInstanceStorageType']! as String,
+      engine: map['engine'] == null ? null : map['engine']! as String,
+      engineVersion: map['engineVersion'] == null ? null : map['engineVersion']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
       instanceClasses: pulumi.Input.decodeList<GetInstanceClassesInstanceClass>(map['instanceClasses'], (value) => GetInstanceClassesInstanceClass.fromMap((value as Map).cast<String, dynamic>())),
-      multiZone: map['multiZone'] == null ? null : map['multiZone'] as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      sortedBy: map['sortedBy'] == null ? null : map['sortedBy'] as String,
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      multiZone: map['multiZone'] == null ? null : map['multiZone']! as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      sortedBy: map['sortedBy'] == null ? null : map['sortedBy']! as String,
+      storageType: map['storageType'] == null ? null : map['storageType']! as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

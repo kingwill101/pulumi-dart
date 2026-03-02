@@ -33,9 +33,9 @@ class ProxyProtocolPolicyState {
 
   factory ProxyProtocolPolicyState.fromMap(Map<String, dynamic> map) {
     return ProxyProtocolPolicyState(
-      instancePorts: map['instancePorts'] == null ? null : ((map['instancePorts'] as List).cast<String>()).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (map['loadBalancer'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      instancePorts: map['instancePorts'] == null ? null : (((map['instancePorts'] as List).cast<String>()).input()).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : ((map['loadBalancer'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class ResizeRequestStatus {
 
   factory ResizeRequestStatus.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatus(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusError>(map['errors'], (value) => ResizeRequestStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastAttempts: map['lastAttempts'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusLastAttempt>(map['lastAttempts'], (value) => ResizeRequestStatusLastAttempt.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusError>(map['errors']!, (value) => ResizeRequestStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastAttempts: map['lastAttempts'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusLastAttempt>(map['lastAttempts']!, (value) => ResizeRequestStatusLastAttempt.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

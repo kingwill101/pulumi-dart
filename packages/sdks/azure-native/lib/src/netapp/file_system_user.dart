@@ -28,8 +28,8 @@ class FileSystemUser {
 
   factory FileSystemUser.fromMap(Map<String, dynamic> map) {
     return FileSystemUser(
-      cifsUser: map['cifsUser'] == null ? null : (CifsUser.fromMap((map['cifsUser'] as Map).cast<String, dynamic>())).input(),
-      nfsUser: map['nfsUser'] == null ? null : (NfsUser.fromMap((map['nfsUser'] as Map).cast<String, dynamic>())).input(),
+      cifsUser: map['cifsUser'] == null ? null : (CifsUser.fromMap((map['cifsUser']! as Map).cast<String, dynamic>())).input(),
+      nfsUser: map['nfsUser'] == null ? null : (NfsUser.fromMap((map['nfsUser']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

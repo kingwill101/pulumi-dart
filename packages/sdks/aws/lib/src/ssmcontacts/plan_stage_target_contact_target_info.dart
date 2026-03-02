@@ -25,7 +25,7 @@ class PlanStageTargetContactTargetInfo {
 
   factory PlanStageTargetContactTargetInfo.fromMap(Map<String, dynamic> map) {
     return PlanStageTargetContactTargetInfo(
-      contactId: map['contactId'] == null ? null : (map['contactId'] as String).input(),
+      contactId: map['contactId'] == null ? null : ((map['contactId'] as String).input()).input(),
       isEssential: (map['isEssential'] as bool).input(),
     );
   }

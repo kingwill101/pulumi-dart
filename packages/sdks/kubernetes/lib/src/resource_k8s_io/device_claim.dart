@@ -34,9 +34,9 @@ class DeviceClaim {
 
   factory DeviceClaim.fromMap(Map<String, dynamic> map) {
     return DeviceClaim(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfiguration>(map['config'], (value) => DeviceClaimConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraint>(map['constraints'], (value) => DeviceConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequest>(map['requests'], (value) => DeviceRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfiguration>(map['config']!, (value) => DeviceClaimConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraint>(map['constraints']!, (value) => DeviceConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequest>(map['requests']!, (value) => DeviceRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

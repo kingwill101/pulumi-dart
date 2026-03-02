@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2Trigger {
 
   factory GooglePrivacyDlpV2Trigger.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Trigger(
-      manual: map['manual'] == null ? null : ((map['manual'] as Map).cast<String, dynamic>()).input(),
-      schedule: map['schedule'] == null ? null : (GooglePrivacyDlpV2Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      manual: map['manual'] == null ? null : ((map['manual']! as Map).cast<String, dynamic>()).input(),
+      schedule: map['schedule'] == null ? null : (GooglePrivacyDlpV2Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

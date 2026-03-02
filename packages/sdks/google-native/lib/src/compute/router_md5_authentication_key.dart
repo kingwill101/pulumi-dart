@@ -25,8 +25,8 @@ class RouterMd5AuthenticationKey {
 
   factory RouterMd5AuthenticationKey.fromMap(Map<String, dynamic> map) {
     return RouterMd5AuthenticationKey(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class TaskArgs {
   factory TaskArgs.fromMap(Map<String, dynamic> map) {
     return TaskArgs(
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (TaskProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (TaskProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
     );
   }
 }

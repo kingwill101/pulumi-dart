@@ -48,10 +48,10 @@ class DefaultRouteTableArgs {
   factory DefaultRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTableArgs(
       defaultRouteTableId: (map['defaultRouteTableId'] as String).input(),
-      propagatingVgws: map['propagatingVgws'] == null ? null : ((map['propagatingVgws'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<DefaultRouteTableRoute>(map['routes'], (value) => DefaultRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      propagatingVgws: map['propagatingVgws'] == null ? null : (((map['propagatingVgws'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routes: map['routes'] == null ? null : ((pulumi.Input.decodeList<DefaultRouteTableRoute>(map['routes']!, (value) => DefaultRouteTableRoute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

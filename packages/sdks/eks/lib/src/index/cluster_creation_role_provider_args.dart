@@ -27,8 +27,8 @@ class ClusterCreationRoleProviderArgs {
 
   factory ClusterCreationRoleProviderArgs.fromMap(Map<String, dynamic> map) {
     return ClusterCreationRoleProviderArgs(
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -67,13 +67,13 @@ class GetListenerRuleAction {
 
   factory GetListenerRuleAction.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleAction(
-      authenticateCognitos: map['authenticateCognitos'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionAuthenticateCognito>(map['authenticateCognitos'], (value) => GetListenerRuleActionAuthenticateCognito.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authenticateOidcs: map['authenticateOidcs'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionAuthenticateOidc>(map['authenticateOidcs'], (value) => GetListenerRuleActionAuthenticateOidc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fixedResponses: map['fixedResponses'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionFixedResponse>(map['fixedResponses'], (value) => GetListenerRuleActionFixedResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forwards: map['forwards'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionForward>(map['forwards'], (value) => GetListenerRuleActionForward.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jwtValidations: map['jwtValidations'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionJwtValidation>(map['jwtValidations'], (value) => GetListenerRuleActionJwtValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authenticateCognitos: map['authenticateCognitos'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionAuthenticateCognito>(map['authenticateCognitos']!, (value) => GetListenerRuleActionAuthenticateCognito.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      authenticateOidcs: map['authenticateOidcs'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionAuthenticateOidc>(map['authenticateOidcs']!, (value) => GetListenerRuleActionAuthenticateOidc.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      fixedResponses: map['fixedResponses'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionFixedResponse>(map['fixedResponses']!, (value) => GetListenerRuleActionFixedResponse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      forwards: map['forwards'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionForward>(map['forwards']!, (value) => GetListenerRuleActionForward.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      jwtValidations: map['jwtValidations'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionJwtValidation>(map['jwtValidations']!, (value) => GetListenerRuleActionJwtValidation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       order: (map['order'] as int).input(),
-      redirects: map['redirects'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionRedirect>(map['redirects'], (value) => GetListenerRuleActionRedirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      redirects: map['redirects'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionRedirect>(map['redirects']!, (value) => GetListenerRuleActionRedirect.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -35,8 +35,8 @@ class ListenerAccessLogTracingConfig {
   factory ListenerAccessLogTracingConfig.fromMap(Map<String, dynamic> map) {
     return ListenerAccessLogTracingConfig(
       tracingEnabled: (map['tracingEnabled'] as bool).input(),
-      tracingSample: map['tracingSample'] == null ? null : (map['tracingSample'] as int).input(),
-      tracingType: map['tracingType'] == null ? null : (map['tracingType'] as String).input(),
+      tracingSample: map['tracingSample'] == null ? null : (map['tracingSample']! as int).input(),
+      tracingType: map['tracingType'] == null ? null : (map['tracingType']! as String).input(),
     );
   }
 }

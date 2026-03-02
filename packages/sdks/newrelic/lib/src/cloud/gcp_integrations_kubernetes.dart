@@ -20,7 +20,7 @@ class GcpIntegrationsKubernetes {
 
   factory GcpIntegrationsKubernetes.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsKubernetes(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

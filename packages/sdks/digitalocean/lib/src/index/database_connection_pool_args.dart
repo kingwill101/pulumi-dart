@@ -52,9 +52,9 @@ class DatabaseConnectionPoolArgs {
       clusterId: (map['clusterId'] as String).input(),
       dbName: (map['dbName'] as String).input(),
       mode: (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       size: (map['size'] as int).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

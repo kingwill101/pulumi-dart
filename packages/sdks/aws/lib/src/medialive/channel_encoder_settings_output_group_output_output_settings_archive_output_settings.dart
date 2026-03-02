@@ -31,9 +31,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings(
-      containerSettings: map['containerSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap((map['containerSettings'] as Map).cast<String, dynamic>())).input(),
-      extension: map['extension'] == null ? null : (map['extension'] as String).input(),
-      nameModifier: map['nameModifier'] == null ? null : (map['nameModifier'] as String).input(),
+      containerSettings: map['containerSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      extension: map['extension'] == null ? null : ((map['extension'] as String).input()).input(),
+      nameModifier: map['nameModifier'] == null ? null : ((map['nameModifier'] as String).input()).input(),
     );
   }
 }

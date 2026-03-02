@@ -32,7 +32,7 @@ class DataflowPropertiesResponse {
 
   factory DataflowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataflowPropertiesResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       operations: (pulumi.Input.decodeList<DataflowOperationResponse>(map['operations'], (value) => DataflowOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );

@@ -25,8 +25,8 @@ class GcpIntegrationsSpanner {
 
   factory GcpIntegrationsSpanner.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsSpanner(
-      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags'] as bool).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      fetchTags: map['fetchTags'] == null ? null : (map['fetchTags']! as bool).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

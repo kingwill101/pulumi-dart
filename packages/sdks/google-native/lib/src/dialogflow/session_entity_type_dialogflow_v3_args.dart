@@ -60,9 +60,9 @@ class SessionEntityTypeDialogflowV3Args {
       entities: (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeEntity>(map['entities'], (value) => GoogleCloudDialogflowCxV3EntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
       entityOverrideMode: (SessionEntityTypeEntityOverrideModeDialogflowV3.fromValue(map['entityOverrideMode'] as String)).input(),
       environmentId: (map['environmentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionId: (map['sessionId'] as String).input(),
     );
   }

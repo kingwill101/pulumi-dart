@@ -46,11 +46,11 @@ class TriggeredBuildResultResponse {
 
   factory TriggeredBuildResultResponse.fromMap(Map<String, dynamic> map) {
     return TriggeredBuildResultResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      lastTransitionReason: map['lastTransitionReason'] == null ? null : (map['lastTransitionReason'] as String).input(),
-      lastTransitionStatus: map['lastTransitionStatus'] == null ? null : (map['lastTransitionStatus'] as String).input(),
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      lastTransitionReason: map['lastTransitionReason'] == null ? null : (map['lastTransitionReason']! as String).input(),
+      lastTransitionStatus: map['lastTransitionStatus'] == null ? null : (map['lastTransitionStatus']! as String).input(),
+      lastTransitionTime: map['lastTransitionTime'] == null ? null : (map['lastTransitionTime']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

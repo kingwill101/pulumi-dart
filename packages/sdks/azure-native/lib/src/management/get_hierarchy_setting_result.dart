@@ -57,12 +57,12 @@ class GetHierarchySettingResult {
   factory GetHierarchySettingResult.fromMap(Map<String, dynamic> map) {
     return GetHierarchySettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : map['defaultManagementGroup'] as String,
+      defaultManagementGroup: map['defaultManagementGroup'] == null ? null : map['defaultManagementGroup']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : map['requireAuthorizationForGroupCreation'] as bool,
+      requireAuthorizationForGroupCreation: map['requireAuthorizationForGroupCreation'] == null ? null : map['requireAuthorizationForGroupCreation']! as bool,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

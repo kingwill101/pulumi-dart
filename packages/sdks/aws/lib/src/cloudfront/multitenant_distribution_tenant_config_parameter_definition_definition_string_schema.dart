@@ -30,8 +30,8 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSche
 
   factory MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as String).input()).input(),
       required: (map['required'] as bool).input(),
     );
   }

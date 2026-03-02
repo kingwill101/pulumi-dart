@@ -25,7 +25,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource(
-      amazonS3Bucket: map['amazonS3Bucket'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap((map['amazonS3Bucket'] as Map).cast<String, dynamic>())).input(),
+      amazonS3Bucket: map['amazonS3Bucket'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap((map['amazonS3Bucket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

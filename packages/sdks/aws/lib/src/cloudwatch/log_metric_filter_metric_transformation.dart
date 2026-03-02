@@ -45,11 +45,11 @@ class LogMetricFilterMetricTransformation {
 
   factory LogMetricFilterMetricTransformation.fromMap(Map<String, dynamic> map) {
     return LogMetricFilterMetricTransformation(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      defaultValue: map['defaultValue'] == null ? null : ((map['defaultValue'] as String).input()).input(),
+      dimensions: map['dimensions'] == null ? null : (((map['dimensions'] as Map).cast<String, String>()).input()).input(),
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

@@ -32,8 +32,8 @@ class RadiusServerResponse {
   factory RadiusServerResponse.fromMap(Map<String, dynamic> map) {
     return RadiusServerResponse(
       radiusServerAddress: (map['radiusServerAddress'] as String).input(),
-      radiusServerScore: map['radiusServerScore'] == null ? null : (map['radiusServerScore'] as double).input(),
-      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret'] as String).input(),
+      radiusServerScore: map['radiusServerScore'] == null ? null : (map['radiusServerScore']! as double).input(),
+      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret']! as String).input(),
     );
   }
 }

@@ -59,7 +59,7 @@ class ConsentStoreIamBindingArgs {
 
   factory ConsentStoreIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return ConsentStoreIamBindingArgs(
-      condition: map['condition'] == null ? null : (ConsentStoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ConsentStoreIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       consentStoreId: (map['consentStoreId'] as String).input(),
       dataset: (map['dataset'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),

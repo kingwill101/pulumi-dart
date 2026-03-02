@@ -63,12 +63,12 @@ class ConnectorArgs {
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
       clusterId: (map['clusterId'] as String).input(),
-      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : (ConnectorInfoBase.fromMap((map['connectorBasicInfo'] as Map).cast<String, dynamic>())).input(),
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : (AzureBlobStorageSinkConnectorServiceInfo.fromMap((map['connectorServiceTypeInfo'] as Map).cast<String, dynamic>())).input(),
+      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : (ConnectorInfoBase.fromMap((map['connectorBasicInfo']! as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : (AzureBlobStorageSinkConnectorServiceInfo.fromMap((map['connectorServiceTypeInfo']! as Map).cast<String, dynamic>())).input(),
       environmentId: (map['environmentId'] as String).input(),
       organizationName: (map['organizationName'] as String).input(),
-      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : (KafkaAzureBlobStorageSinkConnectorInfo.fromMap((map['partnerConnectorInfo'] as Map).cast<String, dynamic>())).input(),
+      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : (KafkaAzureBlobStorageSinkConnectorInfo.fromMap((map['partnerConnectorInfo']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

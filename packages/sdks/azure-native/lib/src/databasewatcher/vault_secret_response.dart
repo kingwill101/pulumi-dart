@@ -31,9 +31,9 @@ class VaultSecretResponse {
 
   factory VaultSecretResponse.fromMap(Map<String, dynamic> map) {
     return VaultSecretResponse(
-      akvResourceId: map['akvResourceId'] == null ? null : (map['akvResourceId'] as String).input(),
-      akvTargetPassword: map['akvTargetPassword'] == null ? null : (map['akvTargetPassword'] as String).input(),
-      akvTargetUser: map['akvTargetUser'] == null ? null : (map['akvTargetUser'] as String).input(),
+      akvResourceId: map['akvResourceId'] == null ? null : (map['akvResourceId']! as String).input(),
+      akvTargetPassword: map['akvTargetPassword'] == null ? null : (map['akvTargetPassword']! as String).input(),
+      akvTargetUser: map['akvTargetUser'] == null ? null : (map['akvTargetUser']! as String).input(),
     );
   }
 }

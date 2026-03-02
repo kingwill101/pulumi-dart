@@ -41,11 +41,11 @@ class WorkflowTriggerListCallbackUrlQueriesResponse {
 
   factory WorkflowTriggerListCallbackUrlQueriesResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowTriggerListCallbackUrlQueriesResponse(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      se: map['se'] == null ? null : (map['se'] as String).input(),
-      sig: map['sig'] == null ? null : (map['sig'] as String).input(),
-      sp: map['sp'] == null ? null : (map['sp'] as String).input(),
-      sv: map['sv'] == null ? null : (map['sv'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      se: map['se'] == null ? null : (map['se']! as String).input(),
+      sig: map['sig'] == null ? null : (map['sig']! as String).input(),
+      sp: map['sp'] == null ? null : (map['sp']! as String).input(),
+      sv: map['sv'] == null ? null : (map['sv']! as String).input(),
     );
   }
 }

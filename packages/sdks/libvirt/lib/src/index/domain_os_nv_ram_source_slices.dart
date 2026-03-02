@@ -21,7 +21,7 @@ class DomainOsNvRamSourceSlices {
 
   factory DomainOsNvRamSourceSlices.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceSlices(
-      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceSlicesSlice>(map['slices'], (value) => DomainOsNvRamSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slices: map['slices'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceSlicesSlice>(map['slices']!, (value) => DomainOsNvRamSourceSlicesSlice.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

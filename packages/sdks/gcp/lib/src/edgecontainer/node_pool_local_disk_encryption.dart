@@ -34,9 +34,9 @@ class NodePoolLocalDiskEncryption {
 
   factory NodePoolLocalDiskEncryption.fromMap(Map<String, dynamic> map) {
     return NodePoolLocalDiskEncryption(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      kmsKeyActiveVersion: map['kmsKeyActiveVersion'] == null ? null : (map['kmsKeyActiveVersion'] as String).input(),
-      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      kmsKeyActiveVersion: map['kmsKeyActiveVersion'] == null ? null : (map['kmsKeyActiveVersion']! as String).input(),
+      kmsKeyState: map['kmsKeyState'] == null ? null : (map['kmsKeyState']! as String).input(),
     );
   }
 }

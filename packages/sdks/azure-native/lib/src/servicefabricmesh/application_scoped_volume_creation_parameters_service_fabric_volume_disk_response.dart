@@ -32,7 +32,7 @@ class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse {
 
   factory ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationScopedVolumeCreationParametersServiceFabricVolumeDiskResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       kind: (map['kind'] as String).input(),
       sizeDisk: (map['sizeDisk'] as String).input(),
     );

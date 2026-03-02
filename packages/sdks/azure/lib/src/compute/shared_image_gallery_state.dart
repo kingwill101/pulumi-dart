@@ -52,13 +52,13 @@ class SharedImageGalleryState {
 
   factory SharedImageGalleryState.fromMap(Map<String, dynamic> map) {
     return SharedImageGalleryState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sharing: map['sharing'] == null ? null : (SharedImageGallerySharing.fromMap((map['sharing'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sharing: map['sharing'] == null ? null : (SharedImageGallerySharing.fromMap((map['sharing']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName']! as String).input(),
     );
   }
 }

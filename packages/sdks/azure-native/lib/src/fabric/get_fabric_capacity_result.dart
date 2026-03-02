@@ -82,7 +82,7 @@ class GetFabricCapacityResult {
       sku: RpSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       state: map['state'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -102,22 +102,22 @@ class AmazonS3DatasetResponse {
 
   factory AmazonS3DatasetResponse.fromMap(Map<String, dynamic> map) {
     return AmazonS3DatasetResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
       bucketName: (map['bucketName']).input(),
-      compression: map['compression'] == null ? null : (DatasetCompressionResponse.fromMap((map['compression'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (AvroFormatResponse.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (map['key']).input(),
+      compression: map['compression'] == null ? null : (DatasetCompressionResponse.fromMap((map['compression']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (DatasetResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (AvroFormatResponse.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (map['key']!).input(),
       linkedServiceName: (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
-      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']).input(),
-      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix']).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      structure: map['structure'] == null ? null : (map['structure']).input(),
+      modifiedDatetimeEnd: map['modifiedDatetimeEnd'] == null ? null : (map['modifiedDatetimeEnd']!).input(),
+      modifiedDatetimeStart: map['modifiedDatetimeStart'] == null ? null : (map['modifiedDatetimeStart']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']!).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      structure: map['structure'] == null ? null : (map['structure']!).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version']).input(),
+      version: map['version'] == null ? null : (map['version']!).input(),
     );
   }
 }

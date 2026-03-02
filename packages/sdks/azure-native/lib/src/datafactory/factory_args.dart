@@ -74,16 +74,16 @@ class FactoryArgs {
 
   factory FactoryArgs.fromMap(Map<String, dynamic> map) {
     return FactoryArgs(
-      encryption: map['encryption'] == null ? null : (EncryptionConfiguration.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      factoryName: map['factoryName'] == null ? null : (map['factoryName'] as String).input(),
-      globalParameters: map['globalParameters'] == null ? null : (pulumi.Input.decodeMapValues<GlobalParameterSpecification>(map['globalParameters'], (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (FactoryIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      purviewConfiguration: map['purviewConfiguration'] == null ? null : (PurviewConfiguration.fromMap((map['purviewConfiguration'] as Map).cast<String, dynamic>())).input(),
-      repoConfiguration: map['repoConfiguration'] == null ? null : (FactoryGitHubConfiguration.fromMap((map['repoConfiguration'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionConfiguration.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      factoryName: map['factoryName'] == null ? null : (map['factoryName']! as String).input(),
+      globalParameters: map['globalParameters'] == null ? null : (pulumi.Input.decodeMapValues<GlobalParameterSpecification>(map['globalParameters']!, (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (FactoryIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      purviewConfiguration: map['purviewConfiguration'] == null ? null : (PurviewConfiguration.fromMap((map['purviewConfiguration']! as Map).cast<String, dynamic>())).input(),
+      repoConfiguration: map['repoConfiguration'] == null ? null : (FactoryGitHubConfiguration.fromMap((map['repoConfiguration']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

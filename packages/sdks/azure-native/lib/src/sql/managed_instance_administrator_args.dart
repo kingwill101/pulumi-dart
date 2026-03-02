@@ -53,13 +53,13 @@ class ManagedInstanceAdministratorArgs {
 
   factory ManagedInstanceAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAdministratorArgs(
-      administratorName: map['administratorName'] == null ? null : (map['administratorName'] as String).input(),
+      administratorName: map['administratorName'] == null ? null : (map['administratorName']! as String).input(),
       administratorType: (map['administratorType'] as String).input(),
       login: (map['login'] as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sid: (map['sid'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -101,20 +101,20 @@ class GetKafkaConnectorTopicMapResult {
   factory GetKafkaConnectorTopicMapResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaConnectorTopicMapResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      batching: map['batching'] == null ? null : KafkaTopicMapBatchingResponse.fromMap((map['batching'] as Map).cast<String, dynamic>()),
-      compression: map['compression'] == null ? null : map['compression'] as String,
-      copyMqttProperties: map['copyMqttProperties'] == null ? null : map['copyMqttProperties'] as String,
+      batching: map['batching'] == null ? null : KafkaTopicMapBatchingResponse.fromMap((map['batching']! as Map).cast<String, dynamic>()),
+      compression: map['compression'] == null ? null : map['compression']! as String,
+      copyMqttProperties: map['copyMqttProperties'] == null ? null : map['copyMqttProperties']! as String,
       extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       kafkaConnectorRef: map['kafkaConnectorRef'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      partitionKeyProperty: map['partitionKeyProperty'] == null ? null : map['partitionKeyProperty'] as String,
-      partitionStrategy: map['partitionStrategy'] == null ? null : map['partitionStrategy'] as String,
+      partitionKeyProperty: map['partitionKeyProperty'] == null ? null : map['partitionKeyProperty']! as String,
+      partitionStrategy: map['partitionStrategy'] == null ? null : map['partitionStrategy']! as String,
       provisioningState: map['provisioningState'] as String,
       routes: pulumi.Input.decodeList<KafkaRoutesResponse>(map['routes'], (value) => KafkaRoutesResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -35,10 +35,10 @@ class ContainerGroupAcrRegistryInfo {
 
   factory ContainerGroupAcrRegistryInfo.fromMap(Map<String, dynamic> map) {
     return ContainerGroupAcrRegistryInfo(
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
     );
   }
 }

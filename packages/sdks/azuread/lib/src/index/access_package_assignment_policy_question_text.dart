@@ -27,7 +27,7 @@ class AccessPackageAssignmentPolicyQuestionText {
   factory AccessPackageAssignmentPolicyQuestionText.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyQuestionText(
       defaultText: (map['defaultText'] as String).input(),
-      localizedTexts: map['localizedTexts'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionTextLocalizedText>(map['localizedTexts'], (value) => AccessPackageAssignmentPolicyQuestionTextLocalizedText.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localizedTexts: map['localizedTexts'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestionTextLocalizedText>(map['localizedTexts']!, (value) => AccessPackageAssignmentPolicyQuestionTextLocalizedText.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

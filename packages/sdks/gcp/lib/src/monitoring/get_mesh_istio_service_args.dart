@@ -48,7 +48,7 @@ class GetMeshIstioServiceArgs {
   factory GetMeshIstioServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMeshIstioServiceArgs(
       meshUid: (map['meshUid'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       serviceNamespace: (map['serviceNamespace'] as String).input(),
     );

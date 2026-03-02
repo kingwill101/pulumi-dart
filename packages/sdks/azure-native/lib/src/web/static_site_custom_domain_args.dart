@@ -44,11 +44,11 @@ class StaticSiteCustomDomainArgs {
 
   factory StaticSiteCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteCustomDomainArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      validationMethod: map['validationMethod'] == null ? null : (map['validationMethod'] as String).input(),
+      validationMethod: map['validationMethod'] == null ? null : (map['validationMethod']! as String).input(),
     );
   }
 }

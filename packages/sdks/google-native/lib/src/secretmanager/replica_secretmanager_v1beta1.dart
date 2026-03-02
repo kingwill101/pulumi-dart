@@ -21,7 +21,7 @@ class ReplicaSecretmanagerV1beta1 {
 
   factory ReplicaSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReplicaSecretmanagerV1beta1(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

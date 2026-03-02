@@ -26,7 +26,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfig {
 
   factory FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigContentTypeProfileConfig(
-      contentTypeProfiles: (FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles.fromMap((map['contentTypeProfiles'] as Map).cast<String, dynamic>())).input(),
+      contentTypeProfiles: (FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfiles.fromMap((map['contentTypeProfiles']! as Map).cast<String, dynamic>())).input(),
       forwardWhenContentTypeIsUnknown: (map['forwardWhenContentTypeIsUnknown'] as bool).input(),
     );
   }

@@ -25,8 +25,8 @@ class AwsClusterFleet {
 
   factory AwsClusterFleet.fromMap(Map<String, dynamic> map) {
     return AwsClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

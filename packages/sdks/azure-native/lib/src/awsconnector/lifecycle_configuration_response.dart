@@ -22,7 +22,7 @@ class LifecycleConfigurationResponse {
 
   factory LifecycleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LifecycleConfigurationResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleResponse>(map['rules'], (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleResponse>(map['rules']!, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

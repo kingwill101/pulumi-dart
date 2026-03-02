@@ -46,8 +46,8 @@ class LinkedStorageAccountArgs {
       dataSourceType: (map['dataSourceType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storageAccountIds: ((map['storageAccountIds'] as List).cast<String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetReportDefinitionArgs {
   factory GetReportDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetReportDefinitionArgs(
       reportName: (map['reportName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

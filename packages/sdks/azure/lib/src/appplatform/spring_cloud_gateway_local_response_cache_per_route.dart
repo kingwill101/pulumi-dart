@@ -25,8 +25,8 @@ class SpringCloudGatewayLocalResponseCachePerRoute {
 
   factory SpringCloudGatewayLocalResponseCachePerRoute.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayLocalResponseCachePerRoute(
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as String).input(),
     );
   }
 }

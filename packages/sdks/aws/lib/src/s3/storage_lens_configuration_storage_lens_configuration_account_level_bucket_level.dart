@@ -45,11 +45,11 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel(
-      activityMetrics: map['activityMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap((map['activityMetrics'] as Map).cast<String, dynamic>())).input(),
-      advancedCostOptimizationMetrics: map['advancedCostOptimizationMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics.fromMap((map['advancedCostOptimizationMetrics'] as Map).cast<String, dynamic>())).input(),
-      advancedDataProtectionMetrics: map['advancedDataProtectionMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics.fromMap((map['advancedDataProtectionMetrics'] as Map).cast<String, dynamic>())).input(),
-      detailedStatusCodeMetrics: map['detailedStatusCodeMetrics'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap((map['detailedStatusCodeMetrics'] as Map).cast<String, dynamic>())).input(),
-      prefixLevel: map['prefixLevel'] == null ? null : (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap((map['prefixLevel'] as Map).cast<String, dynamic>())).input(),
+      activityMetrics: map['activityMetrics'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelActivityMetrics.fromMap((map['activityMetrics']! as Map).cast<String, dynamic>())).input()).input(),
+      advancedCostOptimizationMetrics: map['advancedCostOptimizationMetrics'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedCostOptimizationMetrics.fromMap((map['advancedCostOptimizationMetrics']! as Map).cast<String, dynamic>())).input()).input(),
+      advancedDataProtectionMetrics: map['advancedDataProtectionMetrics'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelAdvancedDataProtectionMetrics.fromMap((map['advancedDataProtectionMetrics']! as Map).cast<String, dynamic>())).input()).input(),
+      detailedStatusCodeMetrics: map['detailedStatusCodeMetrics'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelDetailedStatusCodeMetrics.fromMap((map['detailedStatusCodeMetrics']! as Map).cast<String, dynamic>())).input()).input(),
+      prefixLevel: map['prefixLevel'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap((map['prefixLevel']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

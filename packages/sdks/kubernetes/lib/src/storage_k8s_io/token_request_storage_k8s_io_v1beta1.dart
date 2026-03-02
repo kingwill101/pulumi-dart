@@ -27,7 +27,7 @@ class TokenRequestStorageK8sIoV1beta1 {
   factory TokenRequestStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return TokenRequestStorageK8sIoV1beta1(
       audience: (map['audience'] as String).input(),
-      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds']! as int).input(),
     );
   }
 }

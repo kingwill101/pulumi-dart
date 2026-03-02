@@ -29,8 +29,8 @@ class AiIndexMetadataConfigAlgorithmConfig {
 
   factory AiIndexMetadataConfigAlgorithmConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfigAlgorithmConfig(
-      bruteForceConfig: map['bruteForceConfig'] == null ? null : ((map['bruteForceConfig'] as Map).cast<String, dynamic>()).input(),
-      treeAhConfig: map['treeAhConfig'] == null ? null : (AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap((map['treeAhConfig'] as Map).cast<String, dynamic>())).input(),
+      bruteForceConfig: map['bruteForceConfig'] == null ? null : ((map['bruteForceConfig']! as Map).cast<String, dynamic>()).input(),
+      treeAhConfig: map['treeAhConfig'] == null ? null : (AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap((map['treeAhConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -48,10 +48,10 @@ class EdgeCacheOriginTimeout {
 
   factory EdgeCacheOriginTimeout.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginTimeout(
-      connectTimeout: map['connectTimeout'] == null ? null : (map['connectTimeout'] as String).input(),
-      maxAttemptsTimeout: map['maxAttemptsTimeout'] == null ? null : (map['maxAttemptsTimeout'] as String).input(),
-      readTimeout: map['readTimeout'] == null ? null : (map['readTimeout'] as String).input(),
-      responseTimeout: map['responseTimeout'] == null ? null : (map['responseTimeout'] as String).input(),
+      connectTimeout: map['connectTimeout'] == null ? null : (map['connectTimeout']! as String).input(),
+      maxAttemptsTimeout: map['maxAttemptsTimeout'] == null ? null : (map['maxAttemptsTimeout']! as String).input(),
+      readTimeout: map['readTimeout'] == null ? null : (map['readTimeout']! as String).input(),
+      responseTimeout: map['responseTimeout'] == null ? null : (map['responseTimeout']! as String).input(),
     );
   }
 }

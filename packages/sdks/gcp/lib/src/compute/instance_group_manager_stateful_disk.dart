@@ -25,7 +25,7 @@ class InstanceGroupManagerStatefulDisk {
 
   factory InstanceGroupManagerStatefulDisk.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatefulDisk(
-      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule'] as String).input(),
+      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
     );
   }

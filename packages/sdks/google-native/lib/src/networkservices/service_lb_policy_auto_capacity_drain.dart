@@ -21,7 +21,7 @@ class ServiceLbPolicyAutoCapacityDrain {
 
   factory ServiceLbPolicyAutoCapacityDrain.fromMap(Map<String, dynamic> map) {
     return ServiceLbPolicyAutoCapacityDrain(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

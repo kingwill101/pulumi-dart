@@ -21,7 +21,7 @@ class GoogleCloudRunV2TCPSocketAction {
 
   factory GoogleCloudRunV2TCPSocketAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2TCPSocketAction(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

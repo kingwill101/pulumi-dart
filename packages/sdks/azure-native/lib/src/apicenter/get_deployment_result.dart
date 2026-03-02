@@ -78,16 +78,16 @@ class GetDeploymentResult {
   factory GetDeploymentResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customProperties: map['customProperties'] == null ? null : map['customProperties'],
-      definitionId: map['definitionId'] == null ? null : map['definitionId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      environmentId: map['environmentId'] == null ? null : map['environmentId'] as String,
+      customProperties: map['customProperties'] == null ? null : map['customProperties']!,
+      definitionId: map['definitionId'] == null ? null : map['definitionId']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      environmentId: map['environmentId'] == null ? null : map['environmentId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      server: map['server'] == null ? null : DeploymentServerResponse.fromMap((map['server'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
+      server: map['server'] == null ? null : DeploymentServerResponse.fromMap((map['server']! as Map).cast<String, dynamic>()),
+      state: map['state'] == null ? null : map['state']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      title: map['title'] == null ? null : map['title'] as String,
+      title: map['title'] == null ? null : map['title']! as String,
       type: map['type'] as String,
     );
   }

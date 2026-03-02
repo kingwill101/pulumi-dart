@@ -98,22 +98,22 @@ class TeamsChannelConfigurationState {
 
   factory TeamsChannelConfigurationState.fromMap(Map<String, dynamic> map) {
     return TeamsChannelConfigurationState(
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
-      chatConfigurationArn: map['chatConfigurationArn'] == null ? null : (map['chatConfigurationArn'] as String).input(),
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : ((map['guardrailPolicyArns'] as List).cast<String>()).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snsTopicArns: map['snsTopicArns'] == null ? null : ((map['snsTopicArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
-      teamName: map['teamName'] == null ? null : (map['teamName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (TeamsChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : (map['userAuthorizationRequired'] as bool).input(),
+      channelId: map['channelId'] == null ? null : ((map['channelId'] as String).input()).input(),
+      channelName: map['channelName'] == null ? null : ((map['channelName'] as String).input()).input(),
+      chatConfigurationArn: map['chatConfigurationArn'] == null ? null : ((map['chatConfigurationArn'] as String).input()).input(),
+      configurationName: map['configurationName'] == null ? null : ((map['configurationName'] as String).input()).input(),
+      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : (((map['guardrailPolicyArns'] as List).cast<String>()).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : ((map['loggingLevel'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snsTopicArns: map['snsTopicArns'] == null ? null : (((map['snsTopicArns'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      teamId: map['teamId'] == null ? null : ((map['teamId'] as String).input()).input(),
+      teamName: map['teamName'] == null ? null : ((map['teamName'] as String).input()).input(),
+      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((TeamsChannelConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : ((map['userAuthorizationRequired'] as bool).input()).input(),
     );
   }
 }

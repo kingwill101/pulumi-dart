@@ -28,8 +28,8 @@ class ElasticPropertiesResponse {
 
   factory ElasticPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticPropertiesResponse(
-      elasticCloudDeployment: map['elasticCloudDeployment'] == null ? null : (ElasticCloudDeploymentResponse.fromMap((map['elasticCloudDeployment'] as Map).cast<String, dynamic>())).input(),
-      elasticCloudUser: map['elasticCloudUser'] == null ? null : (ElasticCloudUserResponse.fromMap((map['elasticCloudUser'] as Map).cast<String, dynamic>())).input(),
+      elasticCloudDeployment: map['elasticCloudDeployment'] == null ? null : (ElasticCloudDeploymentResponse.fromMap((map['elasticCloudDeployment']! as Map).cast<String, dynamic>())).input(),
+      elasticCloudUser: map['elasticCloudUser'] == null ? null : (ElasticCloudUserResponse.fromMap((map['elasticCloudUser']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

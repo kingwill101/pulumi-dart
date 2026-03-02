@@ -28,7 +28,7 @@ class ManagedClusterUpdateResponse {
 
   factory ManagedClusterUpdateResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterUpdateResponse(
-      nodeImageSelection: map['nodeImageSelection'] == null ? null : (NodeImageSelectionResponse.fromMap((map['nodeImageSelection'] as Map).cast<String, dynamic>())).input(),
+      nodeImageSelection: map['nodeImageSelection'] == null ? null : (NodeImageSelectionResponse.fromMap((map['nodeImageSelection']! as Map).cast<String, dynamic>())).input(),
       upgrade: (ManagedClusterUpgradeSpecResponse.fromMap((map['upgrade'] as Map).cast<String, dynamic>())).input(),
     );
   }

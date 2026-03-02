@@ -41,11 +41,11 @@ class AlertRuleNrtAlertDetailsOverride {
 
   factory AlertRuleNrtAlertDetailsOverride.fromMap(Map<String, dynamic> map) {
     return AlertRuleNrtAlertDetailsOverride(
-      descriptionFormat: map['descriptionFormat'] == null ? null : (map['descriptionFormat'] as String).input(),
-      displayNameFormat: map['displayNameFormat'] == null ? null : (map['displayNameFormat'] as String).input(),
-      dynamicProperties: map['dynamicProperties'] == null ? null : (pulumi.Input.decodeList<AlertRuleNrtAlertDetailsOverrideDynamicProperty>(map['dynamicProperties'], (value) => AlertRuleNrtAlertDetailsOverrideDynamicProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      severityColumnName: map['severityColumnName'] == null ? null : (map['severityColumnName'] as String).input(),
-      tacticsColumnName: map['tacticsColumnName'] == null ? null : (map['tacticsColumnName'] as String).input(),
+      descriptionFormat: map['descriptionFormat'] == null ? null : (map['descriptionFormat']! as String).input(),
+      displayNameFormat: map['displayNameFormat'] == null ? null : (map['displayNameFormat']! as String).input(),
+      dynamicProperties: map['dynamicProperties'] == null ? null : (pulumi.Input.decodeList<AlertRuleNrtAlertDetailsOverrideDynamicProperty>(map['dynamicProperties']!, (value) => AlertRuleNrtAlertDetailsOverrideDynamicProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      severityColumnName: map['severityColumnName'] == null ? null : (map['severityColumnName']! as String).input(),
+      tacticsColumnName: map['tacticsColumnName'] == null ? null : (map['tacticsColumnName']! as String).input(),
     );
   }
 }

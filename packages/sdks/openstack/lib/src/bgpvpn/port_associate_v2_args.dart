@@ -59,12 +59,12 @@ class PortAssociateV2Args {
 
   factory PortAssociateV2Args.fromMap(Map<String, dynamic> map) {
     return PortAssociateV2Args(
-      advertiseFixedIps: map['advertiseFixedIps'] == null ? null : (map['advertiseFixedIps'] as bool).input(),
+      advertiseFixedIps: map['advertiseFixedIps'] == null ? null : (map['advertiseFixedIps']! as bool).input(),
       bgpvpnId: (map['bgpvpnId'] as String).input(),
       portId: (map['portId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<PortAssociateV2Route>(map['routes'], (value) => PortAssociateV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<PortAssociateV2Route>(map['routes']!, (value) => PortAssociateV2Route.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

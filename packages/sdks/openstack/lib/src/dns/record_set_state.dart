@@ -76,16 +76,16 @@ class RecordSetState {
 
   factory RecordSetState.fromMap(Map<String, dynamic> map) {
     return RecordSetState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      records: map['records'] == null ? null : ((map['records'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      records: map['records'] == null ? null : ((map['records']! as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

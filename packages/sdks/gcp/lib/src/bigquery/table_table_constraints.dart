@@ -32,8 +32,8 @@ class TableTableConstraints {
 
   factory TableTableConstraints.fromMap(Map<String, dynamic> map) {
     return TableTableConstraints(
-      foreignKeys: map['foreignKeys'] == null ? null : (pulumi.Input.decodeList<TableTableConstraintsForeignKey>(map['foreignKeys'], (value) => TableTableConstraintsForeignKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      primaryKey: map['primaryKey'] == null ? null : (TableTableConstraintsPrimaryKey.fromMap((map['primaryKey'] as Map).cast<String, dynamic>())).input(),
+      foreignKeys: map['foreignKeys'] == null ? null : (pulumi.Input.decodeList<TableTableConstraintsForeignKey>(map['foreignKeys']!, (value) => TableTableConstraintsForeignKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      primaryKey: map['primaryKey'] == null ? null : (TableTableConstraintsPrimaryKey.fromMap((map['primaryKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

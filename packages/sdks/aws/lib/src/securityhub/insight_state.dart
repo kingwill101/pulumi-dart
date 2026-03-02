@@ -42,11 +42,11 @@ class InsightState {
 
   factory InsightState.fromMap(Map<String, dynamic> map) {
     return InsightState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      filters: map['filters'] == null ? null : (InsightFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
-      groupByAttribute: map['groupByAttribute'] == null ? null : (map['groupByAttribute'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      filters: map['filters'] == null ? null : ((InsightFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input()).input(),
+      groupByAttribute: map['groupByAttribute'] == null ? null : ((map['groupByAttribute'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

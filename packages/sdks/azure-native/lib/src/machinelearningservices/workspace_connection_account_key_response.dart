@@ -19,7 +19,7 @@ class WorkspaceConnectionAccountKeyResponse {
 
   factory WorkspaceConnectionAccountKeyResponse.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionAccountKeyResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

@@ -75,17 +75,17 @@ class DistributedAvailabilityGroupArgs {
 
   factory DistributedAvailabilityGroupArgs.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupArgs(
-      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<DistributedAvailabilityGroupDatabase>(map['databases'], (value) => DistributedAvailabilityGroupDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      distributedAvailabilityGroupName: map['distributedAvailabilityGroupName'] == null ? null : (map['distributedAvailabilityGroupName'] as String).input(),
-      failoverMode: map['failoverMode'] == null ? null : (map['failoverMode'] as String).input(),
-      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : (map['instanceAvailabilityGroupName'] as String).input(),
-      instanceLinkRole: map['instanceLinkRole'] == null ? null : (map['instanceLinkRole'] as String).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<DistributedAvailabilityGroupDatabase>(map['databases']!, (value) => DistributedAvailabilityGroupDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distributedAvailabilityGroupName: map['distributedAvailabilityGroupName'] == null ? null : (map['distributedAvailabilityGroupName']! as String).input(),
+      failoverMode: map['failoverMode'] == null ? null : (map['failoverMode']! as String).input(),
+      instanceAvailabilityGroupName: map['instanceAvailabilityGroupName'] == null ? null : (map['instanceAvailabilityGroupName']! as String).input(),
+      instanceLinkRole: map['instanceLinkRole'] == null ? null : (map['instanceLinkRole']! as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
-      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : (map['partnerAvailabilityGroupName'] as String).input(),
-      partnerEndpoint: map['partnerEndpoint'] == null ? null : (map['partnerEndpoint'] as String).input(),
-      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode'] as String).input(),
+      partnerAvailabilityGroupName: map['partnerAvailabilityGroupName'] == null ? null : (map['partnerAvailabilityGroupName']! as String).input(),
+      partnerEndpoint: map['partnerEndpoint'] == null ? null : (map['partnerEndpoint']! as String).input(),
+      replicationMode: map['replicationMode'] == null ? null : (map['replicationMode']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      seedingMode: map['seedingMode'] == null ? null : (map['seedingMode'] as String).input(),
+      seedingMode: map['seedingMode'] == null ? null : (map['seedingMode']! as String).input(),
     );
   }
 }

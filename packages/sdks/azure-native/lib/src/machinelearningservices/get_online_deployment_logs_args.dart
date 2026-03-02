@@ -49,11 +49,11 @@ class GetOnlineDeploymentLogsArgs {
 
   factory GetOnlineDeploymentLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetOnlineDeploymentLogsArgs(
-      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
+      containerType: map['containerType'] == null ? null : (map['containerType']! as String).input(),
       deploymentName: (map['deploymentName'] as String).input(),
       endpointName: (map['endpointName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tail: map['tail'] == null ? null : (map['tail'] as int).input(),
+      tail: map['tail'] == null ? null : (map['tail']! as int).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -48,11 +48,11 @@ class WorkloadNetworkDhcpRelayResponse {
   factory WorkloadNetworkDhcpRelayResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDhcpRelayResponse(
       dhcpType: (map['dhcpType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
       segments: ((map['segments'] as List).cast<String>()).input(),
-      serverAddresses: map['serverAddresses'] == null ? null : ((map['serverAddresses'] as List).cast<String>()).input(),
+      serverAddresses: map['serverAddresses'] == null ? null : ((map['serverAddresses']! as List).cast<String>()).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class VolumeMountOption {
 
   factory VolumeMountOption.fromMap(Map<String, dynamic> map) {
     return VolumeMountOption(
-      export: map['export'] == null ? null : (map['export'] as String).input(),
-      exportFull: map['exportFull'] == null ? null : (map['exportFull'] as String).input(),
-      instructions: map['instructions'] == null ? null : (map['instructions'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      export: map['export'] == null ? null : (map['export']! as String).input(),
+      exportFull: map['exportFull'] == null ? null : (map['exportFull']! as String).input(),
+      instructions: map['instructions'] == null ? null : (map['instructions']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

@@ -126,16 +126,16 @@ class GetBudgetResult {
 
   factory GetBudgetResult.fromMap(Map<String, dynamic> map) {
     return GetBudgetResult(
-      amount: map['amount'] == null ? null : map['amount'] as double,
+      amount: map['amount'] == null ? null : map['amount']! as double,
       azureApiVersion: map['azureApiVersion'] as String,
       category: map['category'] as String,
       currentSpend: CurrentSpendResponse.fromMap((map['currentSpend'] as Map).cast<String, dynamic>()),
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
-      filter: map['filter'] == null ? null : BudgetFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      eTag: map['eTag'] == null ? null : map['eTag']! as String,
+      filter: map['filter'] == null ? null : BudgetFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>()),
       forecastSpend: ForecastSpendResponse.fromMap((map['forecastSpend'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      notifications: map['notifications'] == null ? null : pulumi.Input.decodeMapValues<NotificationResponse>(map['notifications'], (value) => NotificationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      notifications: map['notifications'] == null ? null : pulumi.Input.decodeMapValues<NotificationResponse>(map['notifications']!, (value) => NotificationResponse.fromMap((value as Map).cast<String, dynamic>())),
       timeGrain: map['timeGrain'] as String,
       timePeriod: BudgetTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

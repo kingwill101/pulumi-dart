@@ -38,10 +38,10 @@ class NodePoolRollingPolicy {
 
   factory NodePoolRollingPolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolRollingPolicy(
-      batchInterval: map['batchInterval'] == null ? null : (map['batchInterval'] as String).input(),
-      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism'] as int).input(),
-      nodeNames: map['nodeNames'] == null ? null : ((map['nodeNames'] as List).cast<String>()).input(),
-      pausePolicy: map['pausePolicy'] == null ? null : (map['pausePolicy'] as String).input(),
+      batchInterval: map['batchInterval'] == null ? null : (map['batchInterval']! as String).input(),
+      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism']! as int).input(),
+      nodeNames: map['nodeNames'] == null ? null : ((map['nodeNames']! as List).cast<String>()).input(),
+      pausePolicy: map['pausePolicy'] == null ? null : (map['pausePolicy']! as String).input(),
     );
   }
 }

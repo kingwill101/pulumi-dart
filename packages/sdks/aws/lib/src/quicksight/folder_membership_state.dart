@@ -43,11 +43,11 @@ class FolderMembershipState {
 
   factory FolderMembershipState.fromMap(Map<String, dynamic> map) {
     return FolderMembershipState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      memberId: map['memberId'] == null ? null : (map['memberId'] as String).input(),
-      memberType: map['memberType'] == null ? null : (map['memberType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      folderId: map['folderId'] == null ? null : ((map['folderId'] as String).input()).input(),
+      memberId: map['memberId'] == null ? null : ((map['memberId'] as String).input()).input(),
+      memberType: map['memberType'] == null ? null : ((map['memberType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

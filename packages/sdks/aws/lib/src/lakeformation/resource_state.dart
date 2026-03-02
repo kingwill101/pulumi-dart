@@ -60,14 +60,14 @@ class ResourceState {
 
   factory ResourceState.fromMap(Map<String, dynamic> map) {
     return ResourceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      hybridAccessEnabled: map['hybridAccessEnabled'] == null ? null : (map['hybridAccessEnabled'] as bool).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      useServiceLinkedRole: map['useServiceLinkedRole'] == null ? null : (map['useServiceLinkedRole'] as bool).input(),
-      withFederation: map['withFederation'] == null ? null : (map['withFederation'] as bool).input(),
-      withPrivilegedAccess: map['withPrivilegedAccess'] == null ? null : (map['withPrivilegedAccess'] as bool).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      hybridAccessEnabled: map['hybridAccessEnabled'] == null ? null : ((map['hybridAccessEnabled'] as bool).input()).input(),
+      lastModified: map['lastModified'] == null ? null : ((map['lastModified'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      useServiceLinkedRole: map['useServiceLinkedRole'] == null ? null : ((map['useServiceLinkedRole'] as bool).input()).input(),
+      withFederation: map['withFederation'] == null ? null : ((map['withFederation'] as bool).input()).input(),
+      withPrivilegedAccess: map['withPrivilegedAccess'] == null ? null : ((map['withPrivilegedAccess'] as bool).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ResourceTypeRegistrationPropertiesResourceMovePolicy {
 
   factory ResourceTypeRegistrationPropertiesResourceMovePolicy.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceMovePolicy(
-      crossResourceGroupMoveEnabled: map['crossResourceGroupMoveEnabled'] == null ? null : (map['crossResourceGroupMoveEnabled'] as bool).input(),
-      crossSubscriptionMoveEnabled: map['crossSubscriptionMoveEnabled'] == null ? null : (map['crossSubscriptionMoveEnabled'] as bool).input(),
-      validationRequired: map['validationRequired'] == null ? null : (map['validationRequired'] as bool).input(),
+      crossResourceGroupMoveEnabled: map['crossResourceGroupMoveEnabled'] == null ? null : (map['crossResourceGroupMoveEnabled']! as bool).input(),
+      crossSubscriptionMoveEnabled: map['crossSubscriptionMoveEnabled'] == null ? null : (map['crossSubscriptionMoveEnabled']! as bool).input(),
+      validationRequired: map['validationRequired'] == null ? null : (map['validationRequired']! as bool).input(),
     );
   }
 }

@@ -53,10 +53,10 @@ class AutoSnapshotPolicyArgs {
 
   factory AutoSnapshotPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoSnapshotPolicyArgs(
-      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName'] as String).input(),
-      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType'] as String).input(),
+      autoSnapshotPolicyName: map['autoSnapshotPolicyName'] == null ? null : (map['autoSnapshotPolicyName']! as String).input(),
+      fileSystemType: map['fileSystemType'] == null ? null : (map['fileSystemType']! as String).input(),
       repeatWeekdays: ((map['repeatWeekdays'] as List).cast<String>()).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
       timePoints: ((map['timePoints'] as List).cast<String>()).input(),
     );
   }

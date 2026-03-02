@@ -42,11 +42,11 @@ class BasicSli {
 
   factory BasicSli.fromMap(Map<String, dynamic> map) {
     return BasicSli(
-      availability: map['availability'] == null ? null : ((map['availability'] as Map).cast<String, dynamic>()).input(),
-      latency: map['latency'] == null ? null : (LatencyCriteria.fromMap((map['latency'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : ((map['location'] as List).cast<String>()).input(),
-      method: map['method'] == null ? null : ((map['method'] as List).cast<String>()).input(),
-      version: map['version'] == null ? null : ((map['version'] as List).cast<String>()).input(),
+      availability: map['availability'] == null ? null : ((map['availability']! as Map).cast<String, dynamic>()).input(),
+      latency: map['latency'] == null ? null : (LatencyCriteria.fromMap((map['latency']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : ((map['location']! as List).cast<String>()).input(),
+      method: map['method'] == null ? null : ((map['method']! as List).cast<String>()).input(),
+      version: map['version'] == null ? null : ((map['version']! as List).cast<String>()).input(),
     );
   }
 }

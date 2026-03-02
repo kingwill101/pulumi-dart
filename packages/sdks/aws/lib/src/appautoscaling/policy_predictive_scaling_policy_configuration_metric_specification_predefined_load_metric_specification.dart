@@ -26,7 +26,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoa
   factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedLoadMetricSpecification(
       predefinedMetricType: (map['predefinedMetricType'] as String).input(),
-      resourceLabel: map['resourceLabel'] == null ? null : (map['resourceLabel'] as String).input(),
+      resourceLabel: map['resourceLabel'] == null ? null : ((map['resourceLabel'] as String).input()).input(),
     );
   }
 }

@@ -64,11 +64,11 @@ class VolumeAttachmentArgs {
   factory VolumeAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentArgs(
       deviceName: (map['deviceName'] as String).input(),
-      forceDetach: map['forceDetach'] == null ? null : (map['forceDetach'] as bool).input(),
+      forceDetach: map['forceDetach'] == null ? null : ((map['forceDetach'] as bool).input()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      stopInstanceBeforeDetaching: map['stopInstanceBeforeDetaching'] == null ? null : (map['stopInstanceBeforeDetaching'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      stopInstanceBeforeDetaching: map['stopInstanceBeforeDetaching'] == null ? null : ((map['stopInstanceBeforeDetaching'] as bool).input()).input(),
       volumeId: (map['volumeId'] as String).input(),
     );
   }

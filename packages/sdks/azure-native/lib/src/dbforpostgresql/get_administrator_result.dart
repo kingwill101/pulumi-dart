@@ -64,11 +64,11 @@ class GetAdministratorResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      principalName: map['principalName'] == null ? null : map['principalName'] as String,
-      principalType: map['principalType'] == null ? null : map['principalType'] as String,
+      objectId: map['objectId'] == null ? null : map['objectId']! as String,
+      principalName: map['principalName'] == null ? null : map['principalName']! as String,
+      principalType: map['principalType'] == null ? null : map['principalType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

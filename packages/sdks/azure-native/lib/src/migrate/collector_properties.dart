@@ -25,8 +25,8 @@ class CollectorProperties {
 
   factory CollectorProperties.fromMap(Map<String, dynamic> map) {
     return CollectorProperties(
-      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentProperties.fromMap((map['agentProperties'] as Map).cast<String, dynamic>())).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      agentProperties: map['agentProperties'] == null ? null : (CollectorAgentProperties.fromMap((map['agentProperties']! as Map).cast<String, dynamic>())).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
     );
   }
 }

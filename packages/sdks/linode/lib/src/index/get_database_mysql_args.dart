@@ -29,8 +29,8 @@ class GetDatabaseMysqlArgs {
 
   factory GetDatabaseMysqlArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMysqlArgs(
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
     );
   }
 }

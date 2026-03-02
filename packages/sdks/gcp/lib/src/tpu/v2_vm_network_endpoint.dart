@@ -35,9 +35,9 @@ class V2VmNetworkEndpoint {
 
   factory V2VmNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return V2VmNetworkEndpoint(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<V2VmNetworkEndpointAccessConfig>(map['accessConfigs'], (value) => V2VmNetworkEndpointAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<V2VmNetworkEndpointAccessConfig>(map['accessConfigs']!, (value) => V2VmNetworkEndpointAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

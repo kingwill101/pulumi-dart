@@ -31,9 +31,9 @@ class NodeTypeNatConfig {
 
   factory NodeTypeNatConfig.fromMap(Map<String, dynamic> map) {
     return NodeTypeNatConfig(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd'] as int).input(),
-      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart'] as int).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      frontendPortRangeEnd: map['frontendPortRangeEnd'] == null ? null : (map['frontendPortRangeEnd']! as int).input(),
+      frontendPortRangeStart: map['frontendPortRangeStart'] == null ? null : (map['frontendPortRangeStart']! as int).input(),
     );
   }
 }

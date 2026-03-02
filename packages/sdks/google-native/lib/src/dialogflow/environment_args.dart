@@ -54,13 +54,13 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
-      fulfillment: map['fulfillment'] == null ? null : (GoogleCloudDialogflowV2Fulfillment.fromMap((map['fulfillment'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      textToSpeechSettings: map['textToSpeechSettings'] == null ? null : (GoogleCloudDialogflowV2TextToSpeechSettings.fromMap((map['textToSpeechSettings'] as Map).cast<String, dynamic>())).input(),
+      fulfillment: map['fulfillment'] == null ? null : (GoogleCloudDialogflowV2Fulfillment.fromMap((map['fulfillment']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      textToSpeechSettings: map['textToSpeechSettings'] == null ? null : (GoogleCloudDialogflowV2TextToSpeechSettings.fromMap((map['textToSpeechSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

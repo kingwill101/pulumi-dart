@@ -32,9 +32,9 @@ class SoftwareConfigDataprocV1beta2 {
 
   factory SoftwareConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return SoftwareConfigDataprocV1beta2(
-      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion'] as String).input(),
-      optionalComponents: map['optionalComponents'] == null ? null : (pulumi.Input.decodeList<SoftwareConfigOptionalComponentsItemDataprocV1beta2>(map['optionalComponents'], (value) => SoftwareConfigOptionalComponentsItemDataprocV1beta2.fromValue(value as String))).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion']! as String).input(),
+      optionalComponents: map['optionalComponents'] == null ? null : (pulumi.Input.decodeList<SoftwareConfigOptionalComponentsItemDataprocV1beta2>(map['optionalComponents']!, (value) => SoftwareConfigOptionalComponentsItemDataprocV1beta2.fromValue(value as String))).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

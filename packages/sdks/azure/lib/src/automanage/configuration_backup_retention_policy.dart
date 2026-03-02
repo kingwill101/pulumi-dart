@@ -32,9 +32,9 @@ class ConfigurationBackupRetentionPolicy {
 
   factory ConfigurationBackupRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackupRetentionPolicy(
-      dailySchedule: map['dailySchedule'] == null ? null : (ConfigurationBackupRetentionPolicyDailySchedule.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      retentionPolicyType: map['retentionPolicyType'] == null ? null : (map['retentionPolicyType'] as String).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (ConfigurationBackupRetentionPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (ConfigurationBackupRetentionPolicyDailySchedule.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      retentionPolicyType: map['retentionPolicyType'] == null ? null : (map['retentionPolicyType']! as String).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (ConfigurationBackupRetentionPolicyWeeklySchedule.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

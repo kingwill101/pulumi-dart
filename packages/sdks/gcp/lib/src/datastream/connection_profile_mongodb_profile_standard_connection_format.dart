@@ -21,7 +21,7 @@ class ConnectionProfileMongodbProfileStandardConnectionFormat {
 
   factory ConnectionProfileMongodbProfileStandardConnectionFormat.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileMongodbProfileStandardConnectionFormat(
-      directConnection: map['directConnection'] == null ? null : (map['directConnection'] as bool).input(),
+      directConnection: map['directConnection'] == null ? null : (map['directConnection']! as bool).input(),
     );
   }
 }

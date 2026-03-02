@@ -27,8 +27,8 @@ class QueuingPolicy {
 
   factory QueuingPolicy.fromMap(Map<String, dynamic> map) {
     return QueuingPolicy(
-      validUntilDuration: map['validUntilDuration'] == null ? null : (Duration.fromMap((map['validUntilDuration'] as Map).cast<String, dynamic>())).input(),
-      validUntilTime: map['validUntilTime'] == null ? null : (map['validUntilTime'] as String).input(),
+      validUntilDuration: map['validUntilDuration'] == null ? null : (Duration.fromMap((map['validUntilDuration']! as Map).cast<String, dynamic>())).input(),
+      validUntilTime: map['validUntilTime'] == null ? null : (map['validUntilTime']! as String).input(),
     );
   }
 }

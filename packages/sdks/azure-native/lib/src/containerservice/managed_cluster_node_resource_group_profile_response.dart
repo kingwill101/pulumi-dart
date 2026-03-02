@@ -21,7 +21,7 @@ class ManagedClusterNodeResourceGroupProfileResponse {
 
   factory ManagedClusterNodeResourceGroupProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterNodeResourceGroupProfileResponse(
-      restrictionLevel: map['restrictionLevel'] == null ? null : (map['restrictionLevel'] as String).input(),
+      restrictionLevel: map['restrictionLevel'] == null ? null : (map['restrictionLevel']! as String).input(),
     );
   }
 }

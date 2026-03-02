@@ -44,11 +44,11 @@ class VirtualMachineOsProfileWindowsConfig {
 
   factory VirtualMachineOsProfileWindowsConfig.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileWindowsConfig(
-      additionalUnattendConfigs: map['additionalUnattendConfigs'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig>(map['additionalUnattendConfigs'], (value) => VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableAutomaticUpgrades: map['enableAutomaticUpgrades'] == null ? null : (map['enableAutomaticUpgrades'] as bool).input(),
-      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent'] as bool).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      winrms: map['winrms'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileWindowsConfigWinrm>(map['winrms'], (value) => VirtualMachineOsProfileWindowsConfigWinrm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalUnattendConfigs: map['additionalUnattendConfigs'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig>(map['additionalUnattendConfigs']!, (value) => VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableAutomaticUpgrades: map['enableAutomaticUpgrades'] == null ? null : (map['enableAutomaticUpgrades']! as bool).input(),
+      provisionVmAgent: map['provisionVmAgent'] == null ? null : (map['provisionVmAgent']! as bool).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
+      winrms: map['winrms'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileWindowsConfigWinrm>(map['winrms']!, (value) => VirtualMachineOsProfileWindowsConfigWinrm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

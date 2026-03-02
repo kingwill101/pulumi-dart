@@ -37,10 +37,10 @@ class ClusterCapacityProvidersState {
 
   factory ClusterCapacityProvidersState.fromMap(Map<String, dynamic> map) {
     return ClusterCapacityProvidersState(
-      capacityProviders: map['capacityProviders'] == null ? null : ((map['capacityProviders'] as List).cast<String>()).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      defaultCapacityProviderStrategies: map['defaultCapacityProviderStrategies'] == null ? null : (pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(map['defaultCapacityProviderStrategies'], (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      capacityProviders: map['capacityProviders'] == null ? null : (((map['capacityProviders'] as List).cast<String>()).input()).input(),
+      clusterName: map['clusterName'] == null ? null : ((map['clusterName'] as String).input()).input(),
+      defaultCapacityProviderStrategies: map['defaultCapacityProviderStrategies'] == null ? null : ((pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(map['defaultCapacityProviderStrategies']!, (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

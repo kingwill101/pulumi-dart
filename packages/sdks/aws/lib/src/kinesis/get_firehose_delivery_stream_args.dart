@@ -30,7 +30,7 @@ class GetFirehoseDeliveryStreamArgs {
   factory GetFirehoseDeliveryStreamArgs.fromMap(Map<String, dynamic> map) {
     return GetFirehoseDeliveryStreamArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

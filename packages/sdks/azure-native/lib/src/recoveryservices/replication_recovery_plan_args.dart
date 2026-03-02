@@ -41,7 +41,7 @@ class ReplicationRecoveryPlanArgs {
   factory ReplicationRecoveryPlanArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanArgs(
       properties: (CreateRecoveryPlanInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      recoveryPlanName: map['recoveryPlanName'] == null ? null : (map['recoveryPlanName'] as String).input(),
+      recoveryPlanName: map['recoveryPlanName'] == null ? null : (map['recoveryPlanName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

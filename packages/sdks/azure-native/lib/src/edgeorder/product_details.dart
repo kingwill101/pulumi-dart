@@ -35,8 +35,8 @@ class ProductDetails {
   factory ProductDetails.fromMap(Map<String, dynamic> map) {
     return ProductDetails(
       hierarchyInformation: (HierarchyInformation.fromMap((map['hierarchyInformation'] as Map).cast<String, dynamic>())).input(),
-      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : (pulumi.Input.decodeList<AdditionalConfiguration>(map['optInAdditionalConfigurations'], (value) => AdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : (ProvisioningDetails.fromMap((map['parentProvisioningDetails'] as Map).cast<String, dynamic>())).input(),
+      optInAdditionalConfigurations: map['optInAdditionalConfigurations'] == null ? null : (pulumi.Input.decodeList<AdditionalConfiguration>(map['optInAdditionalConfigurations']!, (value) => AdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parentProvisioningDetails: map['parentProvisioningDetails'] == null ? null : (ProvisioningDetails.fromMap((map['parentProvisioningDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

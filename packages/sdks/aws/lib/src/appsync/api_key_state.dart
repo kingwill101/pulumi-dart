@@ -45,12 +45,12 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      apiKeyId: map['apiKeyId'] == null ? null : (map['apiKeyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      apiKeyId: map['apiKeyId'] == null ? null : ((map['apiKeyId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      expires: map['expires'] == null ? null : ((map['expires'] as String).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

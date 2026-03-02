@@ -22,7 +22,7 @@ class WireGroupTopology {
 
   factory WireGroupTopology.fromMap(Map<String, dynamic> map) {
     return WireGroupTopology(
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<WireGroupTopologyEndpoint>(map['endpoints'], (value) => WireGroupTopologyEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<WireGroupTopologyEndpoint>(map['endpoints']!, (value) => WireGroupTopologyEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

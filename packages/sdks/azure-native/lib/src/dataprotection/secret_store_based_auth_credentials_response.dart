@@ -29,7 +29,7 @@ class SecretStoreBasedAuthCredentialsResponse {
   factory SecretStoreBasedAuthCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return SecretStoreBasedAuthCredentialsResponse(
       objectType: (map['objectType'] as String).input(),
-      secretStoreResource: map['secretStoreResource'] == null ? null : (SecretStoreResourceResponse.fromMap((map['secretStoreResource'] as Map).cast<String, dynamic>())).input(),
+      secretStoreResource: map['secretStoreResource'] == null ? null : (SecretStoreResourceResponse.fromMap((map['secretStoreResource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

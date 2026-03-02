@@ -25,7 +25,7 @@ class NamedValueValueFromKeyVault {
 
   factory NamedValueValueFromKeyVault.fromMap(Map<String, dynamic> map) {
     return NamedValueValueFromKeyVault(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

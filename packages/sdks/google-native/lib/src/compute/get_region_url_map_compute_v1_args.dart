@@ -31,7 +31,7 @@ class GetRegionUrlMapComputeV1Args {
 
   factory GetRegionUrlMapComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionUrlMapComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       urlMap: (map['urlMap'] as String).input(),
     );

@@ -46,11 +46,11 @@ class ChannelEncoderSettingsCaptionDescription {
 
   factory ChannelEncoderSettingsCaptionDescription.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescription(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : ((map['accessibility'] as String).input()).input(),
       captionSelectorName: (map['captionSelectorName'] as String).input(),
-      destinationSettings: map['destinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap((map['destinationSettings'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      languageDescription: map['languageDescription'] == null ? null : (map['languageDescription'] as String).input(),
+      destinationSettings: map['destinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap((map['destinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      languageDescription: map['languageDescription'] == null ? null : ((map['languageDescription'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

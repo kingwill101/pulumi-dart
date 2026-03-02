@@ -59,14 +59,14 @@ class SharedDiskReplicationItemProperties {
 
   factory SharedDiskReplicationItemProperties.fromMap(Map<String, dynamic> map) {
     return SharedDiskReplicationItemProperties(
-      activeLocation: map['activeLocation'] == null ? null : (map['activeLocation'] as String).input(),
-      allowedOperations: map['allowedOperations'] == null ? null : ((map['allowedOperations'] as List).cast<String>()).input(),
-      currentScenario: map['currentScenario'] == null ? null : (CurrentScenarioDetails.fromMap((map['currentScenario'] as Map).cast<String, dynamic>())).input(),
-      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthError>(map['healthErrors'], (value) => HealthError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      replicationHealth: map['replicationHealth'] == null ? null : (map['replicationHealth'] as String).input(),
-      sharedDiskProviderSpecificDetails: map['sharedDiskProviderSpecificDetails'] == null ? null : (A2ASharedDiskReplicationDetails.fromMap((map['sharedDiskProviderSpecificDetails'] as Map).cast<String, dynamic>())).input(),
-      testFailoverState: map['testFailoverState'] == null ? null : (map['testFailoverState'] as String).input(),
+      activeLocation: map['activeLocation'] == null ? null : (map['activeLocation']! as String).input(),
+      allowedOperations: map['allowedOperations'] == null ? null : ((map['allowedOperations']! as List).cast<String>()).input(),
+      currentScenario: map['currentScenario'] == null ? null : (CurrentScenarioDetails.fromMap((map['currentScenario']! as Map).cast<String, dynamic>())).input(),
+      healthErrors: map['healthErrors'] == null ? null : (pulumi.Input.decodeList<HealthError>(map['healthErrors']!, (value) => HealthError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      replicationHealth: map['replicationHealth'] == null ? null : (map['replicationHealth']! as String).input(),
+      sharedDiskProviderSpecificDetails: map['sharedDiskProviderSpecificDetails'] == null ? null : (A2ASharedDiskReplicationDetails.fromMap((map['sharedDiskProviderSpecificDetails']! as Map).cast<String, dynamic>())).input(),
+      testFailoverState: map['testFailoverState'] == null ? null : (map['testFailoverState']! as String).input(),
     );
   }
 }

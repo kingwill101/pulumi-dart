@@ -48,12 +48,12 @@ class ExpressRouteCircuitConnectionState {
 
   factory ExpressRouteCircuitConnectionState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitConnectionState(
-      addressPrefixIpv4: map['addressPrefixIpv4'] == null ? null : (map['addressPrefixIpv4'] as String).input(),
-      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : (map['addressPrefixIpv6'] as String).input(),
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerPeeringId: map['peerPeeringId'] == null ? null : (map['peerPeeringId'] as String).input(),
-      peeringId: map['peeringId'] == null ? null : (map['peeringId'] as String).input(),
+      addressPrefixIpv4: map['addressPrefixIpv4'] == null ? null : (map['addressPrefixIpv4']! as String).input(),
+      addressPrefixIpv6: map['addressPrefixIpv6'] == null ? null : (map['addressPrefixIpv6']! as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerPeeringId: map['peerPeeringId'] == null ? null : (map['peerPeeringId']! as String).input(),
+      peeringId: map['peeringId'] == null ? null : (map['peeringId']! as String).input(),
     );
   }
 }

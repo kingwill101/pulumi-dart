@@ -40,9 +40,9 @@ class AutoProvisioningGroupLaunchTemplateConfig {
 
   factory AutoProvisioningGroupLaunchTemplateConfig.fromMap(Map<String, dynamic> map) {
     return AutoProvisioningGroupLaunchTemplateConfig(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
       maxPrice: (map['maxPrice'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       weightedCapacity: (map['weightedCapacity'] as String).input(),
     );

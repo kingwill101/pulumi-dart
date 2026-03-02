@@ -33,7 +33,7 @@ class ResourceRequestsResponse {
   factory ResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceRequestsResponse(
       cpu: (map['cpu'] as double).input(),
-      gpu: map['gpu'] == null ? null : (GpuResourceResponse.fromMap((map['gpu'] as Map).cast<String, dynamic>())).input(),
+      gpu: map['gpu'] == null ? null : (GpuResourceResponse.fromMap((map['gpu']! as Map).cast<String, dynamic>())).input(),
       memoryInGB: (map['memoryInGB'] as double).input(),
     );
   }

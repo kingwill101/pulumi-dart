@@ -58,13 +58,13 @@ class BucketV2ReplicationConfigurationRule {
 
   factory BucketV2ReplicationConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketV2ReplicationConfigurationRule(
-      deleteMarkerReplicationStatus: map['deleteMarkerReplicationStatus'] == null ? null : (map['deleteMarkerReplicationStatus'] as String).input(),
-      destinations: (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestination>(map['destinations'], (value) => BucketV2ReplicationConfigurationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleFilter>(map['filters'], (value) => BucketV2ReplicationConfigurationRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      sourceSelectionCriterias: map['sourceSelectionCriterias'] == null ? null : (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>(map['sourceSelectionCriterias'], (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteMarkerReplicationStatus: map['deleteMarkerReplicationStatus'] == null ? null : ((map['deleteMarkerReplicationStatus'] as String).input()).input(),
+      destinations: (pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleDestination>(map['destinations']!, (value) => BucketV2ReplicationConfigurationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleFilter>(map['filters']!, (value) => BucketV2ReplicationConfigurationRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      sourceSelectionCriterias: map['sourceSelectionCriterias'] == null ? null : ((pulumi.Input.decodeList<BucketV2ReplicationConfigurationRuleSourceSelectionCriteria>(map['sourceSelectionCriterias']!, (value) => BucketV2ReplicationConfigurationRuleSourceSelectionCriteria.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       status: (map['status'] as String).input(),
     );
   }

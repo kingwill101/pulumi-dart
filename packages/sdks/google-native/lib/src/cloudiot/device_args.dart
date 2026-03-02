@@ -75,16 +75,16 @@ class DeviceArgs {
 
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
-      blocked: map['blocked'] == null ? null : (map['blocked'] as bool).input(),
-      config: map['config'] == null ? null : (DeviceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<DeviceCredential>(map['credentials'], (value) => DeviceCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gatewayConfig: map['gatewayConfig'] == null ? null : (GatewayConfig.fromMap((map['gatewayConfig'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (DeviceLogLevel.fromValue(map['logLevel'] as String)).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      blocked: map['blocked'] == null ? null : (map['blocked']! as bool).input(),
+      config: map['config'] == null ? null : (DeviceConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<DeviceCredential>(map['credentials']!, (value) => DeviceCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gatewayConfig: map['gatewayConfig'] == null ? null : (GatewayConfig.fromMap((map['gatewayConfig']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (DeviceLogLevel.fromValue(map['logLevel']! as String)).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       registryId: (map['registryId'] as String).input(),
     );
   }

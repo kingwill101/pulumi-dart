@@ -20,7 +20,7 @@ class ClusterApplication {
 
   factory ClusterApplication.fromMap(Map<String, dynamic> map) {
     return ClusterApplication(
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

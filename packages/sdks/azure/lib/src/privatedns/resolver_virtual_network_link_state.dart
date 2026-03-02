@@ -36,10 +36,10 @@ class ResolverVirtualNetworkLinkState {
 
   factory ResolverVirtualNetworkLinkState.fromMap(Map<String, dynamic> map) {
     return ResolverVirtualNetworkLinkState(
-      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : (map['dnsForwardingRulesetId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] == null ? null : (map['dnsForwardingRulesetId']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

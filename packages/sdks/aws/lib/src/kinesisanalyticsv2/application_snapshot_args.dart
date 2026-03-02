@@ -35,7 +35,7 @@ class ApplicationSnapshotArgs {
   factory ApplicationSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationSnapshotArgs(
       applicationName: (map['applicationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       snapshotName: (map['snapshotName'] as String).input(),
     );
   }

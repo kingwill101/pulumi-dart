@@ -52,10 +52,10 @@ class GetWebAppSwiftVirtualNetworkConnectionSlotResult {
     return GetWebAppSwiftVirtualNetworkConnectionSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      subnetResourceId: map['subnetResourceId'] == null ? null : map['subnetResourceId'] as String,
-      swiftSupported: map['swiftSupported'] == null ? null : map['swiftSupported'] as bool,
+      subnetResourceId: map['subnetResourceId'] == null ? null : map['subnetResourceId']! as String,
+      swiftSupported: map['swiftSupported'] == null ? null : map['swiftSupported']! as bool,
       type: map['type'] as String,
     );
   }

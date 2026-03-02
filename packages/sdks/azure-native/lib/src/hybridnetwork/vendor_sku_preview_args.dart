@@ -34,7 +34,7 @@ class VendorSkuPreviewArgs {
 
   factory VendorSkuPreviewArgs.fromMap(Map<String, dynamic> map) {
     return VendorSkuPreviewArgs(
-      previewSubscription: map['previewSubscription'] == null ? null : (map['previewSubscription'] as String).input(),
+      previewSubscription: map['previewSubscription'] == null ? null : (map['previewSubscription']! as String).input(),
       skuName: (map['skuName'] as String).input(),
       vendorName: (map['vendorName'] as String).input(),
     );

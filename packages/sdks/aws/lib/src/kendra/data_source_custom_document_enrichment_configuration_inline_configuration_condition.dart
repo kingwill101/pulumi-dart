@@ -32,7 +32,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditio
   factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationCondition(
       conditionDocumentAttributeKey: (map['conditionDocumentAttributeKey'] as String).input(),
-      conditionOnValue: map['conditionOnValue'] == null ? null : (DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue.fromMap((map['conditionOnValue'] as Map).cast<String, dynamic>())).input(),
+      conditionOnValue: map['conditionOnValue'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationConditionConditionOnValue.fromMap((map['conditionOnValue']! as Map).cast<String, dynamic>())).input()).input(),
       operator: (map['operator'] as String).input(),
     );
   }

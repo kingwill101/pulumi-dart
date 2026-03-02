@@ -36,11 +36,11 @@ class BillingHubUsageGroupedByUpdateTypeResponse {
 
   factory BillingHubUsageGroupedByUpdateTypeResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubUsageGroupedByUpdateTypeResponse(
-      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges'] as double).input(),
-      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours'] as double).input(),
-      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours'] as double).input(),
-      updateType: map['updateType'] == null ? null : (map['updateType'] as String).input(),
-      usageGroups: map['usageGroups'] == null ? null : (pulumi.Input.decodeList<BillingHubUsageGroupResponse>(map['usageGroups'], (value) => BillingHubUsageGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      totalCharges: map['totalCharges'] == null ? null : (map['totalCharges']! as double).input(),
+      totalUsedBillableHours: map['totalUsedBillableHours'] == null ? null : (map['totalUsedBillableHours']! as double).input(),
+      totalUsedFreeHours: map['totalUsedFreeHours'] == null ? null : (map['totalUsedFreeHours']! as double).input(),
+      updateType: map['updateType'] == null ? null : (map['updateType']! as String).input(),
+      usageGroups: map['usageGroups'] == null ? null : (pulumi.Input.decodeList<BillingHubUsageGroupResponse>(map['usageGroups']!, (value) => BillingHubUsageGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

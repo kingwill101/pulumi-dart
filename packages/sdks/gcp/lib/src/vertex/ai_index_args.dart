@@ -70,14 +70,14 @@ class AiIndexArgs {
 
   factory AiIndexArgs.fromMap(Map<String, dynamic> map) {
     return AiIndexArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      indexUpdateMethod: map['indexUpdateMethod'] == null ? null : (map['indexUpdateMethod'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiIndexEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      indexUpdateMethod: map['indexUpdateMethod'] == null ? null : (map['indexUpdateMethod']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       metadata: (AiIndexMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

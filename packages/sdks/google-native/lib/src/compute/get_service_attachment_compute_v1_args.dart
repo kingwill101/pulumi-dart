@@ -31,7 +31,7 @@ class GetServiceAttachmentComputeV1Args {
 
   factory GetServiceAttachmentComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetServiceAttachmentComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       serviceAttachment: (map['serviceAttachment'] as String).input(),
     );

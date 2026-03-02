@@ -50,13 +50,13 @@ class NatGatewayRegionalNatGatewayAddress {
 
   factory NatGatewayRegionalNatGatewayAddress.fromMap(Map<String, dynamic> map) {
     return NatGatewayRegionalNatGatewayAddress(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      publicIp: map['publicIp'] == null ? null : ((map['publicIp'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

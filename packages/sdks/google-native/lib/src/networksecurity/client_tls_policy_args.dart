@@ -64,15 +64,15 @@ class ClientTlsPolicyArgs {
 
   factory ClientTlsPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyArgs(
-      clientCertificate: map['clientCertificate'] == null ? null : (GoogleCloudNetworksecurityV1CertificateProvider.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (GoogleCloudNetworksecurityV1CertificateProvider.fromMap((map['clientCertificate']! as Map).cast<String, dynamic>())).input(),
       clientTlsPolicyId: (map['clientTlsPolicyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverValidationCa: map['serverValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCA>(map['serverValidationCa'], (value) => ValidationCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverValidationCa: map['serverValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCA>(map['serverValidationCa']!, (value) => ValidationCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sni: map['sni'] == null ? null : (map['sni']! as String).input(),
     );
   }
 }

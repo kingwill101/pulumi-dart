@@ -26,8 +26,8 @@ class Phrase {
 
   factory Phrase.fromMap(Map<String, dynamic> map) {
     return Phrase(
-      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      boost: map['boost'] == null ? null : (map['boost']! as double).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

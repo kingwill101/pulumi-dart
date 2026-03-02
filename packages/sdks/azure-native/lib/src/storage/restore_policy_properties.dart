@@ -26,7 +26,7 @@ class RestorePolicyProperties {
 
   factory RestorePolicyProperties.fromMap(Map<String, dynamic> map) {
     return RestorePolicyProperties(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : (map['days']! as int).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

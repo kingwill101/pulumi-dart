@@ -73,17 +73,17 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : (PipelineParallelismConfiguration.fromMap((map['parallelismConfiguration'] as Map).cast<String, dynamic>())).input(),
-      pipelineDefinition: map['pipelineDefinition'] == null ? null : (map['pipelineDefinition'] as String).input(),
-      pipelineDefinitionS3Location: map['pipelineDefinitionS3Location'] == null ? null : (PipelinePipelineDefinitionS3Location.fromMap((map['pipelineDefinitionS3Location'] as Map).cast<String, dynamic>())).input(),
-      pipelineDescription: map['pipelineDescription'] == null ? null : (map['pipelineDescription'] as String).input(),
-      pipelineDisplayName: map['pipelineDisplayName'] == null ? null : (map['pipelineDisplayName'] as String).input(),
-      pipelineName: map['pipelineName'] == null ? null : (map['pipelineName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : ((PipelineParallelismConfiguration.fromMap((map['parallelismConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      pipelineDefinition: map['pipelineDefinition'] == null ? null : ((map['pipelineDefinition'] as String).input()).input(),
+      pipelineDefinitionS3Location: map['pipelineDefinitionS3Location'] == null ? null : ((PipelinePipelineDefinitionS3Location.fromMap((map['pipelineDefinitionS3Location']! as Map).cast<String, dynamic>())).input()).input(),
+      pipelineDescription: map['pipelineDescription'] == null ? null : ((map['pipelineDescription'] as String).input()).input(),
+      pipelineDisplayName: map['pipelineDisplayName'] == null ? null : ((map['pipelineDisplayName'] as String).input()).input(),
+      pipelineName: map['pipelineName'] == null ? null : ((map['pipelineName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -67,16 +67,16 @@ class ServiceQueueState {
 
   factory ServiceQueueState.fromMap(Map<String, dynamic> map) {
     return ServiceQueueState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds'] as int).input(),
-      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceQueueDlqPolicy.fromMap((map['dlqPolicy'] as Map).cast<String, dynamic>())).input(),
-      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
-      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize'] as int).input(),
-      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod'] as int).input(),
-      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds'] as int).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      delaySeconds: map['delaySeconds'] == null ? null : (map['delaySeconds']! as int).input(),
+      dlqPolicy: map['dlqPolicy'] == null ? null : (ServiceQueueDlqPolicy.fromMap((map['dlqPolicy']! as Map).cast<String, dynamic>())).input(),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled']! as bool).input(),
+      maximumMessageSize: map['maximumMessageSize'] == null ? null : (map['maximumMessageSize']! as int).input(),
+      messageRetentionPeriod: map['messageRetentionPeriod'] == null ? null : (map['messageRetentionPeriod']! as int).input(),
+      pollingWaitSeconds: map['pollingWaitSeconds'] == null ? null : (map['pollingWaitSeconds']! as int).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      visibilityTimeout: map['visibilityTimeout'] == null ? null : (map['visibilityTimeout']! as int).input(),
     );
   }
 }

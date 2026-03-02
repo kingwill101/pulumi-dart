@@ -56,14 +56,14 @@ class ExportOCI {
 
   factory ExportOCI.fromMap(Map<String, dynamic> map) {
     return ExportOCI(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
-      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
-      dest: map['dest'] == null ? null : (map['dest'] as String).input(),
-      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
-      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes'] as bool).input(),
-      tar: map['tar'] == null ? null : (map['tar'] as bool).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression']! as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel']! as int).input(),
+      dest: map['dest'] == null ? null : (map['dest']! as String).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression']! as bool).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
+      ociMediaTypes: map['ociMediaTypes'] == null ? null : (map['ociMediaTypes']! as bool).input(),
+      tar: map['tar'] == null ? null : (map['tar']! as bool).input(),
     );
   }
 }

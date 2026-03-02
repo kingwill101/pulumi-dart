@@ -37,7 +37,7 @@ class GetRouteArgs {
     return GetRouteArgs(
       location: (map['location'] as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       routeId: (map['routeId'] as String).input(),
     );
   }

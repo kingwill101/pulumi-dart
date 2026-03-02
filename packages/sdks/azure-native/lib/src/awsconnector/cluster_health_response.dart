@@ -22,7 +22,7 @@ class ClusterHealthResponse {
 
   factory ClusterHealthResponse.fromMap(Map<String, dynamic> map) {
     return ClusterHealthResponse(
-      issues: map['issues'] == null ? null : (pulumi.Input.decodeList<ClusterIssueResponse>(map['issues'], (value) => ClusterIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      issues: map['issues'] == null ? null : (pulumi.Input.decodeList<ClusterIssueResponse>(map['issues']!, (value) => ClusterIssueResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

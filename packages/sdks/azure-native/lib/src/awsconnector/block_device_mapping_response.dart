@@ -37,10 +37,10 @@ class BlockDeviceMappingResponse {
 
   factory BlockDeviceMappingResponse.fromMap(Map<String, dynamic> map) {
     return BlockDeviceMappingResponse(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      ebs: map['ebs'] == null ? null : (EbsBlockDeviceResponse.fromMap((map['ebs'] as Map).cast<String, dynamic>())).input(),
-      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as String).input(),
-      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      ebs: map['ebs'] == null ? null : (EbsBlockDeviceResponse.fromMap((map['ebs']! as Map).cast<String, dynamic>())).input(),
+      noDevice: map['noDevice'] == null ? null : (map['noDevice']! as String).input(),
+      virtualName: map['virtualName'] == null ? null : (map['virtualName']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class AppLoggingSettingsConversationLoggingSettings {
 
   factory AppLoggingSettingsConversationLoggingSettings.fromMap(Map<String, dynamic> map) {
     return AppLoggingSettingsConversationLoggingSettings(
-      disableConversationLogging: map['disableConversationLogging'] == null ? null : (map['disableConversationLogging'] as bool).input(),
+      disableConversationLogging: map['disableConversationLogging'] == null ? null : (map['disableConversationLogging']! as bool).input(),
     );
   }
 }

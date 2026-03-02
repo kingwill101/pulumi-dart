@@ -40,7 +40,7 @@ class VpcAccessArgs {
   factory VpcAccessArgs.fromMap(Map<String, dynamic> map) {
     return VpcAccessArgs(
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       port: (map['port'] as int).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

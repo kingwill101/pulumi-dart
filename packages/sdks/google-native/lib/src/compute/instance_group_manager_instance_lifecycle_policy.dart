@@ -33,9 +33,9 @@ class InstanceGroupManagerInstanceLifecyclePolicy {
 
   factory InstanceGroupManagerInstanceLifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicy(
-      defaultActionOnFailure: map['defaultActionOnFailure'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure.fromValue(map['defaultActionOnFailure'] as String)).input(),
-      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair.fromValue(map['forceUpdateOnRepair'] as String)).input(),
-      metadataBasedReadinessSignal: map['metadataBasedReadinessSignal'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap((map['metadataBasedReadinessSignal'] as Map).cast<String, dynamic>())).input(),
+      defaultActionOnFailure: map['defaultActionOnFailure'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure.fromValue(map['defaultActionOnFailure']! as String)).input(),
+      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair.fromValue(map['forceUpdateOnRepair']! as String)).input(),
+      metadataBasedReadinessSignal: map['metadataBasedReadinessSignal'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal.fromMap((map['metadataBasedReadinessSignal']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

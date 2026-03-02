@@ -23,8 +23,8 @@ class NetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange {
 
   factory NetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange(
-      from: map['from'] == null ? null : (map['from'] as int).input(),
-      to: map['to'] == null ? null : (map['to'] as int).input(),
+      from: map['from'] == null ? null : ((map['from'] as int).input()).input(),
+      to: map['to'] == null ? null : ((map['to'] as int).input()).input(),
     );
   }
 }

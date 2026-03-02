@@ -35,8 +35,8 @@ class VoiceConnectorTerminationCredentialsArgs {
 
   factory VoiceConnectorTerminationCredentialsArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorTerminationCredentialsArgs(
-      credentials: (pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(map['credentials'], (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      credentials: (pulumi.Input.decodeList<VoiceConnectorTerminationCredentialsCredential>(map['credentials']!, (value) => VoiceConnectorTerminationCredentialsCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       voiceConnectorId: (map['voiceConnectorId'] as String).input(),
     );
   }

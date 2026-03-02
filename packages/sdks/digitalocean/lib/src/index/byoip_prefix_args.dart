@@ -41,10 +41,10 @@ class ByoipPrefixArgs {
 
   factory ByoipPrefixArgs.fromMap(Map<String, dynamic> map) {
     return ByoipPrefixArgs(
-      advertised: map['advertised'] == null ? null : (map['advertised'] as bool).input(),
+      advertised: map['advertised'] == null ? null : (map['advertised']! as bool).input(),
       prefix: (map['prefix'] as String).input(),
       region: (map['region'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
     );
   }
 }

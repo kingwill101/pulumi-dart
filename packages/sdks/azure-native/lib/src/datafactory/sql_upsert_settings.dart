@@ -31,9 +31,9 @@ class SqlUpsertSettings {
 
   factory SqlUpsertSettings.fromMap(Map<String, dynamic> map) {
     return SqlUpsertSettings(
-      interimSchemaName: map['interimSchemaName'] == null ? null : (map['interimSchemaName']).input(),
-      keys: map['keys'] == null ? null : (map['keys']).input(),
-      useTempDB: map['useTempDB'] == null ? null : (map['useTempDB']).input(),
+      interimSchemaName: map['interimSchemaName'] == null ? null : (map['interimSchemaName']!).input(),
+      keys: map['keys'] == null ? null : (map['keys']!).input(),
+      useTempDB: map['useTempDB'] == null ? null : (map['useTempDB']!).input(),
     );
   }
 }

@@ -41,8 +41,8 @@ class MoveResourceArgs {
   factory MoveResourceArgs.fromMap(Map<String, dynamic> map) {
     return MoveResourceArgs(
       moveCollectionName: (map['moveCollectionName'] as String).input(),
-      moveResourceName: map['moveResourceName'] == null ? null : (map['moveResourceName'] as String).input(),
-      properties: map['properties'] == null ? null : (MoveResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      moveResourceName: map['moveResourceName'] == null ? null : (map['moveResourceName']! as String).input(),
+      properties: map['properties'] == null ? null : (MoveResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSet {
 
   factory AuthzPolicyHttpRuleToOperationHeaderSet.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleToOperationHeaderSet(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHeaderSetHeader>(map['headers'], (value) => AuthzPolicyHttpRuleToOperationHeaderSetHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<AuthzPolicyHttpRuleToOperationHeaderSetHeader>(map['headers']!, (value) => AuthzPolicyHttpRuleToOperationHeaderSetHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

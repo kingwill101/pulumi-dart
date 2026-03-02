@@ -66,16 +66,16 @@ class GroupInstanceRefreshPreferences {
 
   factory GroupInstanceRefreshPreferences.fromMap(Map<String, dynamic> map) {
     return GroupInstanceRefreshPreferences(
-      alarmSpecification: map['alarmSpecification'] == null ? null : (GroupInstanceRefreshPreferencesAlarmSpecification.fromMap((map['alarmSpecification'] as Map).cast<String, dynamic>())).input(),
-      autoRollback: map['autoRollback'] == null ? null : (map['autoRollback'] as bool).input(),
-      checkpointDelay: map['checkpointDelay'] == null ? null : (map['checkpointDelay'] as String).input(),
-      checkpointPercentages: map['checkpointPercentages'] == null ? null : ((map['checkpointPercentages'] as List).cast<int>()).input(),
-      instanceWarmup: map['instanceWarmup'] == null ? null : (map['instanceWarmup'] as String).input(),
-      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : (map['maxHealthyPercentage'] as int).input(),
-      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : (map['minHealthyPercentage'] as int).input(),
-      scaleInProtectedInstances: map['scaleInProtectedInstances'] == null ? null : (map['scaleInProtectedInstances'] as String).input(),
-      skipMatching: map['skipMatching'] == null ? null : (map['skipMatching'] as bool).input(),
-      standbyInstances: map['standbyInstances'] == null ? null : (map['standbyInstances'] as String).input(),
+      alarmSpecification: map['alarmSpecification'] == null ? null : ((GroupInstanceRefreshPreferencesAlarmSpecification.fromMap((map['alarmSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      autoRollback: map['autoRollback'] == null ? null : ((map['autoRollback'] as bool).input()).input(),
+      checkpointDelay: map['checkpointDelay'] == null ? null : ((map['checkpointDelay'] as String).input()).input(),
+      checkpointPercentages: map['checkpointPercentages'] == null ? null : (((map['checkpointPercentages'] as List).cast<int>()).input()).input(),
+      instanceWarmup: map['instanceWarmup'] == null ? null : ((map['instanceWarmup'] as String).input()).input(),
+      maxHealthyPercentage: map['maxHealthyPercentage'] == null ? null : ((map['maxHealthyPercentage'] as int).input()).input(),
+      minHealthyPercentage: map['minHealthyPercentage'] == null ? null : ((map['minHealthyPercentage'] as int).input()).input(),
+      scaleInProtectedInstances: map['scaleInProtectedInstances'] == null ? null : ((map['scaleInProtectedInstances'] as String).input()).input(),
+      skipMatching: map['skipMatching'] == null ? null : ((map['skipMatching'] as bool).input()).input(),
+      standbyInstances: map['standbyInstances'] == null ? null : ((map['standbyInstances'] as String).input()).input(),
     );
   }
 }

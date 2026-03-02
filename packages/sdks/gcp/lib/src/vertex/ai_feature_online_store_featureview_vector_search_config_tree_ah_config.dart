@@ -20,7 +20,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
 
   factory AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount'] as String).input(),
+      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount']! as String).input(),
     );
   }
 }

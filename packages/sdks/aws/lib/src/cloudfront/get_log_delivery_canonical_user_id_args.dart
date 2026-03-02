@@ -24,7 +24,7 @@ class GetLogDeliveryCanonicalUserIdArgs {
 
   factory GetLogDeliveryCanonicalUserIdArgs.fromMap(Map<String, dynamic> map) {
     return GetLogDeliveryCanonicalUserIdArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

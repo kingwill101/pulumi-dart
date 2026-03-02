@@ -20,7 +20,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
 
   factory ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig(
-      dataprocMetastoreService: map['dataprocMetastoreService'] == null ? null : (map['dataprocMetastoreService'] as String).input(),
+      dataprocMetastoreService: map['dataprocMetastoreService'] == null ? null : (map['dataprocMetastoreService']! as String).input(),
     );
   }
 }

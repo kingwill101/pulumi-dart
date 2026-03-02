@@ -27,8 +27,8 @@ class NetworkPolicy {
 
   factory NetworkPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkPolicy(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      provider: map['provider'] == null ? null : (NetworkPolicyProvider.fromValue(map['provider'] as String)).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      provider: map['provider'] == null ? null : (NetworkPolicyProvider.fromValue(map['provider']! as String)).input(),
     );
   }
 }

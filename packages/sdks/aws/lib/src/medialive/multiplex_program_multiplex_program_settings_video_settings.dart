@@ -26,8 +26,8 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettings {
 
   factory MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettings(
-      constantBitrate: map['constantBitrate'] == null ? null : (map['constantBitrate'] as int).input(),
-      statmuxSettings: map['statmuxSettings'] == null ? null : (MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap((map['statmuxSettings'] as Map).cast<String, dynamic>())).input(),
+      constantBitrate: map['constantBitrate'] == null ? null : ((map['constantBitrate'] as int).input()).input(),
+      statmuxSettings: map['statmuxSettings'] == null ? null : ((MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap((map['statmuxSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -67,16 +67,16 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      listen: map['listen'] == null ? null : (DomainListen.fromMap((map['listen'] as Map).cast<String, dynamic>())).input(),
-      redirect: map['redirect'] == null ? null : (DomainRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      listen: map['listen'] == null ? null : (DomainListen.fromMap((map['listen']! as Map).cast<String, dynamic>())).input(),
+      redirect: map['redirect'] == null ? null : (DomainRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class DeviceClaimResourceK8sIoV1alpha3 {
 
   factory DeviceClaimResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceClaimResourceK8sIoV1alpha3(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfigurationResourceK8sIoV1alpha3>(map['config'], (value) => DeviceClaimConfigurationResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraintResourceK8sIoV1alpha3>(map['constraints'], (value) => DeviceConstraintResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequestResourceK8sIoV1alpha3>(map['requests'], (value) => DeviceRequestResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfigurationResourceK8sIoV1alpha3>(map['config']!, (value) => DeviceClaimConfigurationResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraintResourceK8sIoV1alpha3>(map['constraints']!, (value) => DeviceConstraintResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequestResourceK8sIoV1alpha3>(map['requests']!, (value) => DeviceRequestResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class CertificateReferenceResponse {
   factory CertificateReferenceResponse.fromMap(Map<String, dynamic> map) {
     return CertificateReferenceResponse(
       id: (map['id'] as String).input(),
-      storeLocation: map['storeLocation'] == null ? null : (map['storeLocation'] as String).input(),
-      storeName: map['storeName'] == null ? null : (map['storeName'] as String).input(),
-      visibility: map['visibility'] == null ? null : ((map['visibility'] as List).cast<String>()).input(),
+      storeLocation: map['storeLocation'] == null ? null : (map['storeLocation']! as String).input(),
+      storeName: map['storeName'] == null ? null : (map['storeName']! as String).input(),
+      visibility: map['visibility'] == null ? null : ((map['visibility']! as List).cast<String>()).input(),
     );
   }
 }

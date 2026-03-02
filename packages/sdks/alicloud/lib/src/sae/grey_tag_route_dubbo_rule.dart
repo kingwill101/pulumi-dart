@@ -46,12 +46,12 @@ class GreyTagRouteDubboRule {
 
   factory GreyTagRouteDubboRule.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteDubboRule(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteDubboRuleItem>(map['items'], (value) => GreyTagRouteDubboRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methodName: map['methodName'] == null ? null : (map['methodName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<GreyTagRouteDubboRuleItem>(map['items']!, (value) => GreyTagRouteDubboRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methodName: map['methodName'] == null ? null : (map['methodName']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

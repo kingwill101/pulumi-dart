@@ -41,10 +41,10 @@ class TagRulesArgs {
 
   factory TagRulesArgs.fromMap(Map<String, dynamic> map) {
     return TagRulesArgs(
-      logRule: map['logRule'] == null ? null : (TagRulesLogRule.fromMap((map['logRule'] as Map).cast<String, dynamic>())).input(),
-      metricRule: map['metricRule'] == null ? null : (TagRulesMetricRule.fromMap((map['metricRule'] as Map).cast<String, dynamic>())).input(),
+      logRule: map['logRule'] == null ? null : (TagRulesLogRule.fromMap((map['logRule']! as Map).cast<String, dynamic>())).input(),
+      metricRule: map['metricRule'] == null ? null : (TagRulesMetricRule.fromMap((map['metricRule']! as Map).cast<String, dynamic>())).input(),
       monitorId: (map['monitorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

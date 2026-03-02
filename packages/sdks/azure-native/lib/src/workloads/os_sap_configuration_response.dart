@@ -27,8 +27,8 @@ class OsSapConfigurationResponse {
 
   factory OsSapConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return OsSapConfigurationResponse(
-      deployerVmPackages: map['deployerVmPackages'] == null ? null : (DeployerVmPackagesResponse.fromMap((map['deployerVmPackages'] as Map).cast<String, dynamic>())).input(),
-      sapFqdn: map['sapFqdn'] == null ? null : (map['sapFqdn'] as String).input(),
+      deployerVmPackages: map['deployerVmPackages'] == null ? null : (DeployerVmPackagesResponse.fromMap((map['deployerVmPackages']! as Map).cast<String, dynamic>())).input(),
+      sapFqdn: map['sapFqdn'] == null ? null : (map['sapFqdn']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ApplicationGatewayFirewallDisabledRuleGroupResponse {
   factory ApplicationGatewayFirewallDisabledRuleGroupResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayFirewallDisabledRuleGroupResponse(
       ruleGroupName: (map['ruleGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : ((map['rules'] as List).cast<int>()).input(),
+      rules: map['rules'] == null ? null : ((map['rules']! as List).cast<int>()).input(),
     );
   }
 }

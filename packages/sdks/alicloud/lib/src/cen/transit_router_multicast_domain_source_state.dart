@@ -41,11 +41,11 @@ class TransitRouterMulticastDomainSourceState {
 
   factory TransitRouterMulticastDomainSourceState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainSourceState(
-      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress']! as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

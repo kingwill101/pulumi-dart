@@ -37,10 +37,10 @@ class AzureSourceDetailsVmmigrationV1alpha1 {
 
   factory AzureSourceDetailsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return AzureSourceDetailsVmmigrationV1alpha1(
-      azureLocation: map['azureLocation'] == null ? null : (map['azureLocation'] as String).input(),
-      clientSecretCreds: map['clientSecretCreds'] == null ? null : (ClientSecretCredentialsVmmigrationV1alpha1.fromMap((map['clientSecretCreds'] as Map).cast<String, dynamic>())).input(),
-      migrationResourcesUserTags: map['migrationResourcesUserTags'] == null ? null : ((map['migrationResourcesUserTags'] as Map).cast<String, String>()).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      azureLocation: map['azureLocation'] == null ? null : (map['azureLocation']! as String).input(),
+      clientSecretCreds: map['clientSecretCreds'] == null ? null : (ClientSecretCredentialsVmmigrationV1alpha1.fromMap((map['clientSecretCreds']! as Map).cast<String, dynamic>())).input(),
+      migrationResourcesUserTags: map['migrationResourcesUserTags'] == null ? null : ((map['migrationResourcesUserTags']! as Map).cast<String, String>()).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

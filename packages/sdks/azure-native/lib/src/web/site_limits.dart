@@ -31,9 +31,9 @@ class SiteLimits {
 
   factory SiteLimits.fromMap(Map<String, dynamic> map) {
     return SiteLimits(
-      maxDiskSizeInMb: map['maxDiskSizeInMb'] == null ? null : (map['maxDiskSizeInMb'] as double).input(),
-      maxMemoryInMb: map['maxMemoryInMb'] == null ? null : (map['maxMemoryInMb'] as double).input(),
-      maxPercentageCpu: map['maxPercentageCpu'] == null ? null : (map['maxPercentageCpu'] as double).input(),
+      maxDiskSizeInMb: map['maxDiskSizeInMb'] == null ? null : (map['maxDiskSizeInMb']! as double).input(),
+      maxMemoryInMb: map['maxMemoryInMb'] == null ? null : (map['maxMemoryInMb']! as double).input(),
+      maxPercentageCpu: map['maxPercentageCpu'] == null ? null : (map['maxPercentageCpu']! as double).input(),
     );
   }
 }

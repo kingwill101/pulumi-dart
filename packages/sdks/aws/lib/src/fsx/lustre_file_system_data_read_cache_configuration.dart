@@ -25,7 +25,7 @@ class LustreFileSystemDataReadCacheConfiguration {
 
   factory LustreFileSystemDataReadCacheConfiguration.fromMap(Map<String, dynamic> map) {
     return LustreFileSystemDataReadCacheConfiguration(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      size: map['size'] == null ? null : ((map['size'] as int).input()).input(),
       sizingMode: (map['sizingMode'] as String).input(),
     );
   }

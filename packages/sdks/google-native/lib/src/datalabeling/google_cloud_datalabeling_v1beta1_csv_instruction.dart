@@ -21,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1CsvInstruction {
 
   factory GoogleCloudDatalabelingV1beta1CsvInstruction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1CsvInstruction(
-      gcsFileUri: map['gcsFileUri'] == null ? null : (map['gcsFileUri'] as String).input(),
+      gcsFileUri: map['gcsFileUri'] == null ? null : (map['gcsFileUri']! as String).input(),
     );
   }
 }

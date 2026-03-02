@@ -44,7 +44,7 @@ class EndpointDeploymentArgs {
 
   factory EndpointDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentArgs(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
       endpointName: (map['endpointName'] as String).input(),
       properties: (ContentSafetyEndpointDeploymentResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

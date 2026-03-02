@@ -52,10 +52,10 @@ class OrganizationBucketViewArgs {
   factory OrganizationBucketViewArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationBucketViewArgs(
       bucketId: (map['bucketId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       viewId: (map['viewId'] as String).input(),
     );

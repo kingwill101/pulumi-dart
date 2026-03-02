@@ -38,7 +38,7 @@ class GetMetadataSchemaArgs {
       location: (map['location'] as String).input(),
       metadataSchemaId: (map['metadataSchemaId'] as String).input(),
       metadataStoreId: (map['metadataStoreId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

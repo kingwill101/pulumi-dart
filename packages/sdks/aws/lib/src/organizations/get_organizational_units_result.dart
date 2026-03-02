@@ -31,7 +31,7 @@ class GetOrganizationalUnitsResult {
 
   factory GetOrganizationalUnitsResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitsResult(
-      children: pulumi.Input.decodeList<GetOrganizationalUnitsChild>(map['children'], (value) => GetOrganizationalUnitsChild.fromMap((value as Map).cast<String, dynamic>())),
+      children: pulumi.Input.decodeList<GetOrganizationalUnitsChild>(map['children']!, (value) => GetOrganizationalUnitsChild.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       parentId: map['parentId'] as String,
     );

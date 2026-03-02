@@ -51,13 +51,13 @@ class DbInstanceEndpointAddressState {
 
   factory DbInstanceEndpointAddressState.fromMap(Map<String, dynamic> map) {
     return DbInstanceEndpointAddressState(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
-      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : (map['dbInstanceEndpointId'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
+      dbInstanceEndpointId: map['dbInstanceEndpointId'] == null ? null : (map['dbInstanceEndpointId']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

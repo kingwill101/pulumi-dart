@@ -29,8 +29,8 @@ class VolumeRestoreParameters {
 
   factory VolumeRestoreParameters.fromMap(Map<String, dynamic> map) {
     return VolumeRestoreParameters(
-      sourceBackup: map['sourceBackup'] == null ? null : (map['sourceBackup'] as String).input(),
-      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot'] as String).input(),
+      sourceBackup: map['sourceBackup'] == null ? null : (map['sourceBackup']! as String).input(),
+      sourceSnapshot: map['sourceSnapshot'] == null ? null : (map['sourceSnapshot']! as String).input(),
     );
   }
 }

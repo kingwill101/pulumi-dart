@@ -23,7 +23,7 @@ class GetGradientaiOpenaiApiKeysSort {
 
   factory GetGradientaiOpenaiApiKeysSort.fromMap(Map<String, dynamic> map) {
     return GetGradientaiOpenaiApiKeysSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

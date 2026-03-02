@@ -37,10 +37,10 @@ class ContainerRegistry {
 
   factory ContainerRegistry.fromMap(Map<String, dynamic> map) {
     return ContainerRegistry(
-      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['identityReference'] as Map).cast<String, dynamic>())).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      registryServer: map['registryServer'] == null ? null : (map['registryServer'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      identityReference: map['identityReference'] == null ? null : (ComputeNodeIdentityReference.fromMap((map['identityReference']! as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      registryServer: map['registryServer'] == null ? null : (map['registryServer']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

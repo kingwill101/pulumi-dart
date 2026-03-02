@@ -55,14 +55,14 @@ class GetBasicAccelerateIpEndpointRelationsResult {
 
   factory GetBasicAccelerateIpEndpointRelationsResult.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpEndpointRelationsResult(
-      accelerateIpId: map['accelerateIpId'] == null ? null : map['accelerateIpId'] as String,
+      accelerateIpId: map['accelerateIpId'] == null ? null : map['accelerateIpId']! as String,
       acceleratorId: map['acceleratorId'] as String,
-      endpointId: map['endpointId'] == null ? null : map['endpointId'] as String,
+      endpointId: map['endpointId'] == null ? null : map['endpointId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       relations: pulumi.Input.decodeList<GetBasicAccelerateIpEndpointRelationsRelation>(map['relations'], (value) => GetBasicAccelerateIpEndpointRelationsRelation.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

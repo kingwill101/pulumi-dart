@@ -27,8 +27,8 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   factory AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration(
-      intermediateStorage: map['intermediateStorage'] == null ? null : (AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage.fromMap((map['intermediateStorage'] as Map).cast<String, dynamic>())).input(),
-      transformation: map['transformation'] == null ? null : (AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap((map['transformation'] as Map).cast<String, dynamic>())).input(),
+      intermediateStorage: map['intermediateStorage'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorage.fromMap((map['intermediateStorage']! as Map).cast<String, dynamic>())).input()).input(),
+      transformation: map['transformation'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation.fromMap((map['transformation']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

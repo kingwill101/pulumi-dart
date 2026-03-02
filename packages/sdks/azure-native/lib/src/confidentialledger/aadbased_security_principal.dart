@@ -31,9 +31,9 @@ class AADBasedSecurityPrincipal {
 
   factory AADBasedSecurityPrincipal.fromMap(Map<String, dynamic> map) {
     return AADBasedSecurityPrincipal(
-      ledgerRoleName: map['ledgerRoleName'] == null ? null : (map['ledgerRoleName'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      ledgerRoleName: map['ledgerRoleName'] == null ? null : (map['ledgerRoleName']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

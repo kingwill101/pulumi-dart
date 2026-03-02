@@ -77,16 +77,16 @@ class VNetPeeringArgs {
 
   factory VNetPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VNetPeeringArgs(
-      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic'] as bool).input(),
-      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit'] as bool).input(),
-      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess'] as bool).input(),
-      databricksAddressSpace: map['databricksAddressSpace'] == null ? null : (AddressSpace.fromMap((map['databricksAddressSpace'] as Map).cast<String, dynamic>())).input(),
-      databricksVirtualNetwork: map['databricksVirtualNetwork'] == null ? null : (VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.fromMap((map['databricksVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
-      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
-      remoteAddressSpace: map['remoteAddressSpace'] == null ? null : (AddressSpace.fromMap((map['remoteAddressSpace'] as Map).cast<String, dynamic>())).input(),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : (map['allowForwardedTraffic']! as bool).input(),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : (map['allowGatewayTransit']! as bool).input(),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : (map['allowVirtualNetworkAccess']! as bool).input(),
+      databricksAddressSpace: map['databricksAddressSpace'] == null ? null : (AddressSpace.fromMap((map['databricksAddressSpace']! as Map).cast<String, dynamic>())).input(),
+      databricksVirtualNetwork: map['databricksVirtualNetwork'] == null ? null : (VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork.fromMap((map['databricksVirtualNetwork']! as Map).cast<String, dynamic>())).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName']! as String).input(),
+      remoteAddressSpace: map['remoteAddressSpace'] == null ? null : (AddressSpace.fromMap((map['remoteAddressSpace']! as Map).cast<String, dynamic>())).input(),
       remoteVirtualNetwork: (VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways'] as bool).input(),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : (map['useRemoteGateways']! as bool).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

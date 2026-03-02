@@ -53,13 +53,13 @@ class ComputeVmPropertiesResponse {
 
   factory ComputeVmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ComputeVmPropertiesResponse(
-      dataDiskIds: map['dataDiskIds'] == null ? null : ((map['dataDiskIds'] as List).cast<String>()).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ComputeDataDiskResponse>(map['dataDisks'], (value) => ComputeDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      osDiskId: map['osDiskId'] == null ? null : (map['osDiskId'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ComputeVmInstanceViewStatusResponse>(map['statuses'], (value) => ComputeVmInstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      dataDiskIds: map['dataDiskIds'] == null ? null : ((map['dataDiskIds']! as List).cast<String>()).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ComputeDataDiskResponse>(map['dataDisks']!, (value) => ComputeDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
+      osDiskId: map['osDiskId'] == null ? null : (map['osDiskId']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<ComputeVmInstanceViewStatusResponse>(map['statuses']!, (value) => ComputeVmInstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetRegionInstanceGroupManagerComputeV1Args {
   factory GetRegionInstanceGroupManagerComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerComputeV1Args(
       instanceGroupManager: (map['instanceGroupManager'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

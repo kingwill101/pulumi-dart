@@ -75,18 +75,18 @@ class RouteServerState {
 
   factory RouteServerState.fromMap(Map<String, dynamic> map) {
     return RouteServerState(
-      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled'] as bool).input(),
-      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      routingState: map['routingState'] == null ? null : (map['routingState'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn'] as int).input(),
-      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps'] as List).cast<String>()).input(),
+      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled']! as bool).input(),
+      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      routingState: map['routingState'] == null ? null : (map['routingState']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualRouterAsn: map['virtualRouterAsn'] == null ? null : (map['virtualRouterAsn']! as int).input(),
+      virtualRouterIps: map['virtualRouterIps'] == null ? null : ((map['virtualRouterIps']! as List).cast<String>()).input(),
     );
   }
 }

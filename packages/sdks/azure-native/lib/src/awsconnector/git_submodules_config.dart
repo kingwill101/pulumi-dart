@@ -21,7 +21,7 @@ class GitSubmodulesConfig {
 
   factory GitSubmodulesConfig.fromMap(Map<String, dynamic> map) {
     return GitSubmodulesConfig(
-      fetchSubmodules: map['fetchSubmodules'] == null ? null : (map['fetchSubmodules'] as bool).input(),
+      fetchSubmodules: map['fetchSubmodules'] == null ? null : (map['fetchSubmodules']! as bool).input(),
     );
   }
 }

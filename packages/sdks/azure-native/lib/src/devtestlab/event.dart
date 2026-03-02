@@ -21,7 +21,7 @@ class Event {
 
   factory Event.fromMap(Map<String, dynamic> map) {
     return Event(
-      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
+      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
     );
   }
 }

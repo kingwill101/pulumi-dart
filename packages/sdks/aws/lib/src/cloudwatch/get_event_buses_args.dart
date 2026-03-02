@@ -29,8 +29,8 @@ class GetEventBusesArgs {
 
   factory GetEventBusesArgs.fromMap(Map<String, dynamic> map) {
     return GetEventBusesArgs(
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

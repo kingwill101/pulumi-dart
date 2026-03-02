@@ -45,10 +45,10 @@ class ListEndpointManagedProxyDetailsArgs {
   factory ListEndpointManagedProxyDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListEndpointManagedProxyDetailsArgs(
       endpointName: (map['endpointName'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
       service: (map['service'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

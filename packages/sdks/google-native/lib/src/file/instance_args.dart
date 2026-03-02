@@ -70,16 +70,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareConfig>(map['fileShares'], (value) => FileShareConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareConfig>(map['fileShares']!, (value) => FileShareConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceId: (map['instanceId'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<NetworkConfig>(map['networks'], (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tier: map['tier'] == null ? null : (InstanceTier.fromValue(map['tier'] as String)).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<NetworkConfig>(map['networks']!, (value) => NetworkConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tier: map['tier'] == null ? null : (InstanceTier.fromValue(map['tier']! as String)).input(),
     );
   }
 }

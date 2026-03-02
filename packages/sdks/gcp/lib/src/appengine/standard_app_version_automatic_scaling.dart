@@ -50,12 +50,12 @@ class StandardAppVersionAutomaticScaling {
 
   factory StandardAppVersionAutomaticScaling.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionAutomaticScaling(
-      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests'] as int).input(),
-      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances'] as int).input(),
-      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency'] as String).input(),
-      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances'] as int).input(),
-      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency'] as String).input(),
-      standardSchedulerSettings: map['standardSchedulerSettings'] == null ? null : (StandardAppVersionAutomaticScalingStandardSchedulerSettings.fromMap((map['standardSchedulerSettings'] as Map).cast<String, dynamic>())).input(),
+      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests']! as int).input(),
+      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances']! as int).input(),
+      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency']! as String).input(),
+      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances']! as int).input(),
+      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency']! as String).input(),
+      standardSchedulerSettings: map['standardSchedulerSettings'] == null ? null : (StandardAppVersionAutomaticScalingStandardSchedulerSettings.fromMap((map['standardSchedulerSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

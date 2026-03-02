@@ -31,9 +31,9 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
-      defaultVisibility: map['defaultVisibility'] == null ? null : (map['defaultVisibility'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate']! as bool).input(),
+      defaultVisibility: map['defaultVisibility'] == null ? null : (map['defaultVisibility']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

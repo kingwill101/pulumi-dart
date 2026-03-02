@@ -50,12 +50,12 @@ class HybridIdentityMetadatumArgs {
 
   factory HybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return HybridIdentityMetadatumArgs(
-      hybridIdentityMetadataResourceName: map['hybridIdentityMetadataResourceName'] == null ? null : (map['hybridIdentityMetadataResourceName'] as String).input(),
-      identity: map['identity'] == null ? null : (ProvisionedClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      hybridIdentityMetadataResourceName: map['hybridIdentityMetadataResourceName'] == null ? null : (map['hybridIdentityMetadataResourceName']! as String).input(),
+      identity: map['identity'] == null ? null : (ProvisionedClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
     );
   }
 }

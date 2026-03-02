@@ -21,7 +21,7 @@ class AzureCredentialsResponse {
 
   factory AzureCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return AzureCredentialsResponse(
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

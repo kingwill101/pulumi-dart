@@ -20,7 +20,7 @@ class EndpointClientRouteEnforcementOptions {
 
   factory EndpointClientRouteEnforcementOptions.fromMap(Map<String, dynamic> map) {
     return EndpointClientRouteEnforcementOptions(
-      enforced: map['enforced'] == null ? null : (map['enforced'] as bool).input(),
+      enforced: map['enforced'] == null ? null : ((map['enforced'] as bool).input()).input(),
     );
   }
 }

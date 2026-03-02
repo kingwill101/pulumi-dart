@@ -47,11 +47,11 @@ class AccountNetworkRules {
 
   factory AccountNetworkRules.fromMap(Map<String, dynamic> map) {
     return AccountNetworkRules(
-      bypasses: map['bypasses'] == null ? null : ((map['bypasses'] as List).cast<String>()).input(),
+      bypasses: map['bypasses'] == null ? null : ((map['bypasses']! as List).cast<String>()).input(),
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : ((map['ipRules'] as List).cast<String>()).input(),
-      privateLinkAccesses: map['privateLinkAccesses'] == null ? null : (pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccess>(map['privateLinkAccesses'], (value) => AccountNetworkRulesPrivateLinkAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualNetworkSubnetIds: map['virtualNetworkSubnetIds'] == null ? null : ((map['virtualNetworkSubnetIds'] as List).cast<String>()).input(),
+      ipRules: map['ipRules'] == null ? null : ((map['ipRules']! as List).cast<String>()).input(),
+      privateLinkAccesses: map['privateLinkAccesses'] == null ? null : (pulumi.Input.decodeList<AccountNetworkRulesPrivateLinkAccess>(map['privateLinkAccesses']!, (value) => AccountNetworkRulesPrivateLinkAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualNetworkSubnetIds: map['virtualNetworkSubnetIds'] == null ? null : ((map['virtualNetworkSubnetIds']! as List).cast<String>()).input(),
     );
   }
 }

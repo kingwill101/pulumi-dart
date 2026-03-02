@@ -65,16 +65,16 @@ class ProfilesResourceAssociationState {
 
   factory ProfilesResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return ProfilesResourceAssociationState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      resourceProperties: map['resourceProperties'] == null ? null : (map['resourceProperties'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ProfilesResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      profileId: map['profileId'] == null ? null : ((map['profileId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      resourceProperties: map['resourceProperties'] == null ? null : ((map['resourceProperties'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusMessage: map['statusMessage'] == null ? null : ((map['statusMessage'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ProfilesResourceAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

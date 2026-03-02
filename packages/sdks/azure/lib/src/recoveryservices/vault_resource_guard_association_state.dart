@@ -26,8 +26,8 @@ class VaultResourceGuardAssociationState {
 
   factory VaultResourceGuardAssociationState.fromMap(Map<String, dynamic> map) {
     return VaultResourceGuardAssociationState(
-      resourceGuardId: map['resourceGuardId'] == null ? null : (map['resourceGuardId'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      resourceGuardId: map['resourceGuardId'] == null ? null : (map['resourceGuardId']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class CxAgentAdvancedSettingsDtmfSettings {
 
   factory CxAgentAdvancedSettingsDtmfSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettingsDtmfSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
-      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
+      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits']! as int).input(),
     );
   }
 }

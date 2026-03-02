@@ -21,7 +21,7 @@ class HostingEnvironmentProfile {
 
   factory HostingEnvironmentProfile.fromMap(Map<String, dynamic> map) {
     return HostingEnvironmentProfile(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

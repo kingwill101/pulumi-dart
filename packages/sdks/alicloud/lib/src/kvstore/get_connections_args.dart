@@ -30,7 +30,7 @@ class GetConnectionsArgs {
   factory GetConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectionsArgs(
       ids: (map['ids'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfig {
 
   factory EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskUiModuleConfig(
-      moduleId: map['moduleId'] == null ? null : (EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.fromValue(map['moduleId'] as String)).input(),
+      moduleId: map['moduleId'] == null ? null : (EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.fromValue(map['moduleId']! as String)).input(),
     );
   }
 }

@@ -68,16 +68,16 @@ class VolumeState {
 
   factory VolumeState.fromMap(Map<String, dynamic> map) {
     return VolumeState(
-      encryption: map['encryption'] == null ? null : (map['encryption'] as String).input(),
-      filesystemPath: map['filesystemPath'] == null ? null : (map['filesystemPath'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      sourceVolumeId: map['sourceVolumeId'] == null ? null : (map['sourceVolumeId'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VolumeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (map['encryption']! as String).input(),
+      filesystemPath: map['filesystemPath'] == null ? null : (map['filesystemPath']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      sourceVolumeId: map['sourceVolumeId'] == null ? null : (map['sourceVolumeId']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VolumeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

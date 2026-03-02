@@ -66,16 +66,16 @@ class GenerateSecretStringResponse {
 
   factory GenerateSecretStringResponse.fromMap(Map<String, dynamic> map) {
     return GenerateSecretStringResponse(
-      excludeCharacters: map['excludeCharacters'] == null ? null : (map['excludeCharacters'] as String).input(),
-      excludeLowercase: map['excludeLowercase'] == null ? null : (map['excludeLowercase'] as bool).input(),
-      excludeNumbers: map['excludeNumbers'] == null ? null : (map['excludeNumbers'] as bool).input(),
-      excludePunctuation: map['excludePunctuation'] == null ? null : (map['excludePunctuation'] as bool).input(),
-      excludeUppercase: map['excludeUppercase'] == null ? null : (map['excludeUppercase'] as bool).input(),
-      generateStringKey: map['generateStringKey'] == null ? null : (map['generateStringKey'] as String).input(),
-      includeSpace: map['includeSpace'] == null ? null : (map['includeSpace'] as bool).input(),
-      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
-      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : (map['requireEachIncludedType'] as bool).input(),
-      secretStringTemplate: map['secretStringTemplate'] == null ? null : (map['secretStringTemplate'] as String).input(),
+      excludeCharacters: map['excludeCharacters'] == null ? null : (map['excludeCharacters']! as String).input(),
+      excludeLowercase: map['excludeLowercase'] == null ? null : (map['excludeLowercase']! as bool).input(),
+      excludeNumbers: map['excludeNumbers'] == null ? null : (map['excludeNumbers']! as bool).input(),
+      excludePunctuation: map['excludePunctuation'] == null ? null : (map['excludePunctuation']! as bool).input(),
+      excludeUppercase: map['excludeUppercase'] == null ? null : (map['excludeUppercase']! as bool).input(),
+      generateStringKey: map['generateStringKey'] == null ? null : (map['generateStringKey']! as String).input(),
+      includeSpace: map['includeSpace'] == null ? null : (map['includeSpace']! as bool).input(),
+      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength']! as int).input(),
+      requireEachIncludedType: map['requireEachIncludedType'] == null ? null : (map['requireEachIncludedType']! as bool).input(),
+      secretStringTemplate: map['secretStringTemplate'] == null ? null : (map['secretStringTemplate']! as String).input(),
     );
   }
 }

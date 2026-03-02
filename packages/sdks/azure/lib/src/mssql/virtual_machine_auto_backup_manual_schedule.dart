@@ -42,7 +42,7 @@ class VirtualMachineAutoBackupManualSchedule {
 
   factory VirtualMachineAutoBackupManualSchedule.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAutoBackupManualSchedule(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
       fullBackupFrequency: (map['fullBackupFrequency'] as String).input(),
       fullBackupStartHour: (map['fullBackupStartHour'] as int).input(),
       fullBackupWindowInHours: (map['fullBackupWindowInHours'] as int).input(),

@@ -121,22 +121,22 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
-      consistencyGroupId: map['consistencyGroupId'] == null ? null : (map['consistencyGroupId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableOnlineResize: map['enableOnlineResize'] == null ? null : (map['enableOnlineResize'] as bool).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedulerHints: map['schedulerHints'] == null ? null : (pulumi.Input.decodeList<VolumeSchedulerHint>(map['schedulerHints'], (value) => VolumeSchedulerHint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
+      consistencyGroupId: map['consistencyGroupId'] == null ? null : (map['consistencyGroupId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableOnlineResize: map['enableOnlineResize'] == null ? null : (map['enableOnlineResize']! as bool).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      schedulerHints: map['schedulerHints'] == null ? null : (pulumi.Input.decodeList<VolumeSchedulerHint>(map['schedulerHints']!, (value) => VolumeSchedulerHint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       size: (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
-      sourceReplica: map['sourceReplica'] == null ? null : (map['sourceReplica'] as String).input(),
-      sourceVolId: map['sourceVolId'] == null ? null : (map['sourceVolId'] as String).input(),
-      volumeRetypePolicy: map['volumeRetypePolicy'] == null ? null : (map['volumeRetypePolicy'] as String).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
+      sourceReplica: map['sourceReplica'] == null ? null : (map['sourceReplica']! as String).input(),
+      sourceVolId: map['sourceVolId'] == null ? null : (map['sourceVolId']! as String).input(),
+      volumeRetypePolicy: map['volumeRetypePolicy'] == null ? null : (map['volumeRetypePolicy']! as String).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ManagedRuleOverrideResponse {
 
   factory ManagedRuleOverrideResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverrideResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       ruleId: (map['ruleId'] as String).input(),
-      sensitivity: map['sensitivity'] == null ? null : (map['sensitivity'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      sensitivity: map['sensitivity'] == null ? null : (map['sensitivity']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

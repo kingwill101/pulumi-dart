@@ -29,7 +29,7 @@ class RegistryListCredentialsResultResponse {
   factory RegistryListCredentialsResultResponse.fromMap(Map<String, dynamic> map) {
     return RegistryListCredentialsResultResponse(
       location: (map['location'] as String).input(),
-      passwords: map['passwords'] == null ? null : (pulumi.Input.decodeList<PasswordResponse>(map['passwords'], (value) => PasswordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passwords: map['passwords'] == null ? null : (pulumi.Input.decodeList<PasswordResponse>(map['passwords']!, (value) => PasswordResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       username: (map['username'] as String).input(),
     );
   }

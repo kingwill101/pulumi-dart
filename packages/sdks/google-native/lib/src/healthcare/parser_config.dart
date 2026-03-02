@@ -38,10 +38,10 @@ class ParserConfig {
 
   factory ParserConfig.fromMap(Map<String, dynamic> map) {
     return ParserConfig(
-      allowNullHeader: map['allowNullHeader'] == null ? null : (map['allowNullHeader'] as bool).input(),
-      schema: map['schema'] == null ? null : (SchemaPackage.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      segmentTerminator: map['segmentTerminator'] == null ? null : (map['segmentTerminator'] as String).input(),
-      version: map['version'] == null ? null : (ParserConfigVersion.fromValue(map['version'] as String)).input(),
+      allowNullHeader: map['allowNullHeader'] == null ? null : (map['allowNullHeader']! as bool).input(),
+      schema: map['schema'] == null ? null : (SchemaPackage.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      segmentTerminator: map['segmentTerminator'] == null ? null : (map['segmentTerminator']! as String).input(),
+      version: map['version'] == null ? null : (ParserConfigVersion.fromValue(map['version']! as String)).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class BucketAccessKeyArgs {
   factory BucketAccessKeyArgs.fromMap(Map<String, dynamic> map) {
     return BucketAccessKeyArgs(
       bucketName: (map['bucketName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

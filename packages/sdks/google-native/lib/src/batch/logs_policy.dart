@@ -32,9 +32,9 @@ class LogsPolicy {
 
   factory LogsPolicy.fromMap(Map<String, dynamic> map) {
     return LogsPolicy(
-      cloudLoggingOption: map['cloudLoggingOption'] == null ? null : ((map['cloudLoggingOption'] as Map).cast<String, dynamic>()).input(),
-      destination: map['destination'] == null ? null : (LogsPolicyDestination.fromValue(map['destination'] as String)).input(),
-      logsPath: map['logsPath'] == null ? null : (map['logsPath'] as String).input(),
+      cloudLoggingOption: map['cloudLoggingOption'] == null ? null : ((map['cloudLoggingOption']! as Map).cast<String, dynamic>()).input(),
+      destination: map['destination'] == null ? null : (LogsPolicyDestination.fromValue(map['destination']! as String)).input(),
+      logsPath: map['logsPath'] == null ? null : (map['logsPath']! as String).input(),
     );
   }
 }

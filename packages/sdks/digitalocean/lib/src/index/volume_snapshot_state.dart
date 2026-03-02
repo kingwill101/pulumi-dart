@@ -51,13 +51,13 @@ class VolumeSnapshotState {
 
   factory VolumeSnapshotState.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
     );
   }
 }

@@ -24,8 +24,8 @@ class GetAppSpecJobAlertDestinations {
 
   factory GetAppSpecJobAlertDestinations.fromMap(Map<String, dynamic> map) {
     return GetAppSpecJobAlertDestinations(
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
-      slackWebhooks: map['slackWebhooks'] == null ? null : (pulumi.Input.decodeList<GetAppSpecJobAlertDestinationsSlackWebhook>(map['slackWebhooks'], (value) => GetAppSpecJobAlertDestinationsSlackWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      slackWebhooks: map['slackWebhooks'] == null ? null : (pulumi.Input.decodeList<GetAppSpecJobAlertDestinationsSlackWebhook>(map['slackWebhooks']!, (value) => GetAppSpecJobAlertDestinationsSlackWebhook.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

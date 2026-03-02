@@ -84,19 +84,19 @@ class LinkedServiceAzureFileStorageState {
 
   factory LinkedServiceAzureFileStorageState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureFileStorageState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fileShare: map['fileShare'] == null ? null : (map['fileShare'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fileShare: map['fileShare'] == null ? null : (map['fileShare']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceAzureFileStorageKeyVaultPassword.fromMap((map['keyVaultPassword']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

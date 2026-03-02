@@ -31,9 +31,9 @@ class DomainUserCredentialsResponse {
 
   factory DomainUserCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return DomainUserCredentialsResponse(
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
-      passwordSecret: map['passwordSecret'] == null ? null : (map['passwordSecret'] as String).input(),
-      userNameSecret: map['userNameSecret'] == null ? null : (map['userNameSecret'] as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
+      passwordSecret: map['passwordSecret'] == null ? null : (map['passwordSecret']! as String).input(),
+      userNameSecret: map['userNameSecret'] == null ? null : (map['userNameSecret']! as String).input(),
     );
   }
 }

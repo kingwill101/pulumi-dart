@@ -21,7 +21,7 @@ class DataplexConfig {
 
   factory DataplexConfig.fromMap(Map<String, dynamic> map) {
     return DataplexConfig(
-      lakeResources: map['lakeResources'] == null ? null : ((map['lakeResources'] as Map).cast<String, String>()).input(),
+      lakeResources: map['lakeResources'] == null ? null : ((map['lakeResources']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -68,12 +68,12 @@ class OdbSubnetArgs {
   factory OdbSubnetArgs.fromMap(Map<String, dynamic> map) {
     return OdbSubnetArgs(
       cidrRange: (map['cidrRange'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       odbSubnetId: (map['odbSubnetId'] as String).input(),
       odbnetwork: (map['odbnetwork'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       purpose: (map['purpose'] as String).input(),
     );
   }

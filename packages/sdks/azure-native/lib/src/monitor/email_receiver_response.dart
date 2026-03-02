@@ -39,7 +39,7 @@ class EmailReceiverResponse {
       emailAddress: (map['emailAddress'] as String).input(),
       name: (map['name'] as String).input(),
       status: (map['status'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
     );
   }
 }

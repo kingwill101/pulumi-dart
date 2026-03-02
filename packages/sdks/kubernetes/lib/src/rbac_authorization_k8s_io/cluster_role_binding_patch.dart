@@ -44,11 +44,11 @@ class ClusterRoleBindingPatch {
 
   factory ClusterRoleBindingPatch.fromMap(Map<String, dynamic> map) {
     return ClusterRoleBindingPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      roleRef: map['roleRef'] == null ? null : (RoleRefPatch.fromMap((map['roleRef'] as Map).cast<String, dynamic>())).input(),
-      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatch>(map['subjects'], (value) => SubjectPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      roleRef: map['roleRef'] == null ? null : (RoleRefPatch.fromMap((map['roleRef']! as Map).cast<String, dynamic>())).input(),
+      subjects: map['subjects'] == null ? null : (pulumi.Input.decodeList<SubjectPatch>(map['subjects']!, (value) => SubjectPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class BareMetalBgpLbConfig {
       addressPools: (pulumi.Input.decodeList<BareMetalLoadBalancerAddressPool>(map['addressPools'], (value) => BareMetalLoadBalancerAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
       asn: (map['asn'] as String).input(),
       bgpPeerConfigs: (pulumi.Input.decodeList<BareMetalBgpPeerConfig>(map['bgpPeerConfigs'], (value) => BareMetalBgpPeerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerNodePoolConfig: map['loadBalancerNodePoolConfig'] == null ? null : (BareMetalLoadBalancerNodePoolConfig.fromMap((map['loadBalancerNodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      loadBalancerNodePoolConfig: map['loadBalancerNodePoolConfig'] == null ? null : (BareMetalLoadBalancerNodePoolConfig.fromMap((map['loadBalancerNodePoolConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

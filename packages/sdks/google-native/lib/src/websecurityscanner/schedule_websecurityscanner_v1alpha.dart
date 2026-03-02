@@ -27,7 +27,7 @@ class ScheduleWebsecurityscannerV1alpha {
   factory ScheduleWebsecurityscannerV1alpha.fromMap(Map<String, dynamic> map) {
     return ScheduleWebsecurityscannerV1alpha(
       intervalDurationDays: (map['intervalDurationDays'] as int).input(),
-      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime']! as String).input(),
     );
   }
 }

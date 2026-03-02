@@ -39,8 +39,8 @@ class GetKubeconfigArgs {
   factory GetKubeconfigArgs.fromMap(Map<String, dynamic> map) {
     return GetKubeconfigArgs(
       self: (map['__self__'] as Cluster).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

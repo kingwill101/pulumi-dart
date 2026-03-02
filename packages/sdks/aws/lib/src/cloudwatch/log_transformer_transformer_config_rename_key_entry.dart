@@ -31,7 +31,7 @@ class LogTransformerTransformerConfigRenameKeyEntry {
   factory LogTransformerTransformerConfigRenameKeyEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigRenameKeyEntry(
       key: (map['key'] as String).input(),
-      overwriteIfExists: map['overwriteIfExists'] == null ? null : (map['overwriteIfExists'] as bool).input(),
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : ((map['overwriteIfExists'] as bool).input()).input(),
       renameTo: (map['renameTo'] as String).input(),
     );
   }

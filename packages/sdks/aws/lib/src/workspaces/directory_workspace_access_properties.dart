@@ -55,14 +55,14 @@ class DirectoryWorkspaceAccessProperties {
 
   factory DirectoryWorkspaceAccessProperties.fromMap(Map<String, dynamic> map) {
     return DirectoryWorkspaceAccessProperties(
-      deviceTypeAndroid: map['deviceTypeAndroid'] == null ? null : (map['deviceTypeAndroid'] as String).input(),
-      deviceTypeChromeos: map['deviceTypeChromeos'] == null ? null : (map['deviceTypeChromeos'] as String).input(),
-      deviceTypeIos: map['deviceTypeIos'] == null ? null : (map['deviceTypeIos'] as String).input(),
-      deviceTypeLinux: map['deviceTypeLinux'] == null ? null : (map['deviceTypeLinux'] as String).input(),
-      deviceTypeOsx: map['deviceTypeOsx'] == null ? null : (map['deviceTypeOsx'] as String).input(),
-      deviceTypeWeb: map['deviceTypeWeb'] == null ? null : (map['deviceTypeWeb'] as String).input(),
-      deviceTypeWindows: map['deviceTypeWindows'] == null ? null : (map['deviceTypeWindows'] as String).input(),
-      deviceTypeZeroclient: map['deviceTypeZeroclient'] == null ? null : (map['deviceTypeZeroclient'] as String).input(),
+      deviceTypeAndroid: map['deviceTypeAndroid'] == null ? null : ((map['deviceTypeAndroid'] as String).input()).input(),
+      deviceTypeChromeos: map['deviceTypeChromeos'] == null ? null : ((map['deviceTypeChromeos'] as String).input()).input(),
+      deviceTypeIos: map['deviceTypeIos'] == null ? null : ((map['deviceTypeIos'] as String).input()).input(),
+      deviceTypeLinux: map['deviceTypeLinux'] == null ? null : ((map['deviceTypeLinux'] as String).input()).input(),
+      deviceTypeOsx: map['deviceTypeOsx'] == null ? null : ((map['deviceTypeOsx'] as String).input()).input(),
+      deviceTypeWeb: map['deviceTypeWeb'] == null ? null : ((map['deviceTypeWeb'] as String).input()).input(),
+      deviceTypeWindows: map['deviceTypeWindows'] == null ? null : ((map['deviceTypeWindows'] as String).input()).input(),
+      deviceTypeZeroclient: map['deviceTypeZeroclient'] == null ? null : ((map['deviceTypeZeroclient'] as String).input()).input(),
     );
   }
 }

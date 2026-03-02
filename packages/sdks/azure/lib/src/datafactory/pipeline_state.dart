@@ -66,16 +66,16 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      activitiesJson: map['activitiesJson'] == null ? null : (map['activitiesJson'] as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      moniterMetricsAfterDuration: map['moniterMetricsAfterDuration'] == null ? null : (map['moniterMetricsAfterDuration'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
+      activitiesJson: map['activitiesJson'] == null ? null : (map['activitiesJson']! as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency']! as int).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      moniterMetricsAfterDuration: map['moniterMetricsAfterDuration'] == null ? null : (map['moniterMetricsAfterDuration']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, String>()).input(),
     );
   }
 }

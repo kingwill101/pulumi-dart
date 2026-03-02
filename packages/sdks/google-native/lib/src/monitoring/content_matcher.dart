@@ -33,9 +33,9 @@ class ContentMatcher {
 
   factory ContentMatcher.fromMap(Map<String, dynamic> map) {
     return ContentMatcher(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      jsonPathMatcher: map['jsonPathMatcher'] == null ? null : (JsonPathMatcher.fromMap((map['jsonPathMatcher'] as Map).cast<String, dynamic>())).input(),
-      matcher: map['matcher'] == null ? null : (ContentMatcherMatcher.fromValue(map['matcher'] as String)).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      jsonPathMatcher: map['jsonPathMatcher'] == null ? null : (JsonPathMatcher.fromMap((map['jsonPathMatcher']! as Map).cast<String, dynamic>())).input(),
+      matcher: map['matcher'] == null ? null : (ContentMatcherMatcher.fromValue(map['matcher']! as String)).input(),
     );
   }
 }

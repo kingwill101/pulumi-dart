@@ -21,7 +21,7 @@ class SourceContext {
 
   factory SourceContext.fromMap(Map<String, dynamic> map) {
     return SourceContext(
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
     );
   }
 }

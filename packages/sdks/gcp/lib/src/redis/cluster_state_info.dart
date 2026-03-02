@@ -22,7 +22,7 @@ class ClusterStateInfo {
 
   factory ClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return ClusterStateInfo(
-      updateInfo: map['updateInfo'] == null ? null : (ClusterStateInfoUpdateInfo.fromMap((map['updateInfo'] as Map).cast<String, dynamic>())).input(),
+      updateInfo: map['updateInfo'] == null ? null : (ClusterStateInfoUpdateInfo.fromMap((map['updateInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

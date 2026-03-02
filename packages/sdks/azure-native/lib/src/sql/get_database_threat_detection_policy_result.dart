@@ -81,18 +81,18 @@ class GetDatabaseThreatDetectionPolicyResult {
   factory GetDatabaseThreatDetectionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseThreatDetectionPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      disabledAlerts: map['disabledAlerts'] == null ? null : map['disabledAlerts'] as String,
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : map['emailAccountAdmins'] as String,
-      emailAddresses: map['emailAddresses'] == null ? null : map['emailAddresses'] as String,
+      disabledAlerts: map['disabledAlerts'] == null ? null : map['disabledAlerts']! as String,
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : map['emailAccountAdmins']! as String,
+      emailAddresses: map['emailAddresses'] == null ? null : map['emailAddresses']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      retentionDays: map['retentionDays'] == null ? null : map['retentionDays']! as int,
       state: map['state'] as String,
-      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint'] as String,
+      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint']! as String,
       type: map['type'] as String,
-      useServerDefault: map['useServerDefault'] == null ? null : map['useServerDefault'] as String,
+      useServerDefault: map['useServerDefault'] == null ? null : map['useServerDefault']! as String,
     );
   }
 }

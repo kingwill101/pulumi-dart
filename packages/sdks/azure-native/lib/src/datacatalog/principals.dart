@@ -26,8 +26,8 @@ class Principals {
 
   factory Principals.fromMap(Map<String, dynamic> map) {
     return Principals(
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      upn: map['upn'] == null ? null : (map['upn'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      upn: map['upn'] == null ? null : (map['upn']! as String).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class AutoShutdownProfileResponse {
 
   factory AutoShutdownProfileResponse.fromMap(Map<String, dynamic> map) {
     return AutoShutdownProfileResponse(
-      disconnectDelay: map['disconnectDelay'] == null ? null : (map['disconnectDelay'] as String).input(),
-      idleDelay: map['idleDelay'] == null ? null : (map['idleDelay'] as String).input(),
-      noConnectDelay: map['noConnectDelay'] == null ? null : (map['noConnectDelay'] as String).input(),
-      shutdownOnDisconnect: map['shutdownOnDisconnect'] == null ? null : (map['shutdownOnDisconnect'] as String).input(),
-      shutdownOnIdle: map['shutdownOnIdle'] == null ? null : (map['shutdownOnIdle'] as String).input(),
-      shutdownWhenNotConnected: map['shutdownWhenNotConnected'] == null ? null : (map['shutdownWhenNotConnected'] as String).input(),
+      disconnectDelay: map['disconnectDelay'] == null ? null : (map['disconnectDelay']! as String).input(),
+      idleDelay: map['idleDelay'] == null ? null : (map['idleDelay']! as String).input(),
+      noConnectDelay: map['noConnectDelay'] == null ? null : (map['noConnectDelay']! as String).input(),
+      shutdownOnDisconnect: map['shutdownOnDisconnect'] == null ? null : (map['shutdownOnDisconnect']! as String).input(),
+      shutdownOnIdle: map['shutdownOnIdle'] == null ? null : (map['shutdownOnIdle']! as String).input(),
+      shutdownWhenNotConnected: map['shutdownWhenNotConnected'] == null ? null : (map['shutdownWhenNotConnected']! as String).input(),
     );
   }
 }

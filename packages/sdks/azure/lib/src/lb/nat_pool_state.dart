@@ -75,18 +75,18 @@ class NatPoolState {
 
   factory NatPoolState.fromMap(Map<String, dynamic> map) {
     return NatPoolState(
-      backendPort: map['backendPort'] == null ? null : (map['backendPort'] as int).input(),
-      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled'] as bool).input(),
-      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId'] as String).input(),
-      frontendIpConfigurationName: map['frontendIpConfigurationName'] == null ? null : (map['frontendIpConfigurationName'] as String).input(),
-      frontendPortEnd: map['frontendPortEnd'] == null ? null : (map['frontendPortEnd'] as int).input(),
-      frontendPortStart: map['frontendPortStart'] == null ? null : (map['frontendPortStart'] as int).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled'] as bool).input(),
+      backendPort: map['backendPort'] == null ? null : (map['backendPort']! as int).input(),
+      floatingIpEnabled: map['floatingIpEnabled'] == null ? null : (map['floatingIpEnabled']! as bool).input(),
+      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId']! as String).input(),
+      frontendIpConfigurationName: map['frontendIpConfigurationName'] == null ? null : (map['frontendIpConfigurationName']! as String).input(),
+      frontendPortEnd: map['frontendPortEnd'] == null ? null : (map['frontendPortEnd']! as int).input(),
+      frontendPortStart: map['frontendPortStart'] == null ? null : (map['frontendPortStart']! as int).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tcpResetEnabled: map['tcpResetEnabled'] == null ? null : (map['tcpResetEnabled']! as bool).input(),
     );
   }
 }

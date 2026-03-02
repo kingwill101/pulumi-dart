@@ -33,9 +33,9 @@ class ObjectMetricSourcePatchAutoscalingV2beta2 {
 
   factory ObjectMetricSourcePatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return ObjectMetricSourcePatchAutoscalingV2beta2(
-      describedObject: map['describedObject'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2beta2.fromMap((map['describedObject'] as Map).cast<String, dynamic>())).input(),
-      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (MetricTargetPatchAutoscalingV2beta2.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      describedObject: map['describedObject'] == null ? null : (CrossVersionObjectReferencePatchAutoscalingV2beta2.fromMap((map['describedObject']! as Map).cast<String, dynamic>())).input(),
+      metric: map['metric'] == null ? null : (MetricIdentifierPatchAutoscalingV2beta2.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (MetricTargetPatchAutoscalingV2beta2.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

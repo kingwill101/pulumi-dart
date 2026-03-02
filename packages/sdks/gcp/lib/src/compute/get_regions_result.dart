@@ -36,7 +36,7 @@ class GetRegionsResult {
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       project: map['project'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

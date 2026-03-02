@@ -34,9 +34,9 @@ class DataLakeTargetStorageResponse {
 
   factory DataLakeTargetStorageResponse.fromMap(Map<String, dynamic> map) {
     return DataLakeTargetStorageResponse(
-      datalakeStorage: map['datalakeStorage'] == null ? null : (DataLakeServiceStorageResponse.fromMap((map['datalakeStorage'] as Map).cast<String, dynamic>())).input(),
-      fabricOneLake: map['fabricOneLake'] == null ? null : (DataLakeFabricStorageResponse.fromMap((map['fabricOneLake'] as Map).cast<String, dynamic>())).input(),
-      localStorage: map['localStorage'] == null ? null : (DataLakeLocalStorageResponse.fromMap((map['localStorage'] as Map).cast<String, dynamic>())).input(),
+      datalakeStorage: map['datalakeStorage'] == null ? null : (DataLakeServiceStorageResponse.fromMap((map['datalakeStorage']! as Map).cast<String, dynamic>())).input(),
+      fabricOneLake: map['fabricOneLake'] == null ? null : (DataLakeFabricStorageResponse.fromMap((map['fabricOneLake']! as Map).cast<String, dynamic>())).input(),
+      localStorage: map['localStorage'] == null ? null : (DataLakeLocalStorageResponse.fromMap((map['localStorage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

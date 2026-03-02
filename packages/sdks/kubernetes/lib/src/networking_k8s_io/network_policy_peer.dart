@@ -37,9 +37,9 @@ class NetworkPolicyPeer {
 
   factory NetworkPolicyPeer.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyPeer(
-      ipBlock: map['ipBlock'] == null ? null : (IPBlock.fromMap((map['ipBlock'] as Map).cast<String, dynamic>())).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      podSelector: map['podSelector'] == null ? null : (LabelSelector.fromMap((map['podSelector'] as Map).cast<String, dynamic>())).input(),
+      ipBlock: map['ipBlock'] == null ? null : (IPBlock.fromMap((map['ipBlock']! as Map).cast<String, dynamic>())).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      podSelector: map['podSelector'] == null ? null : (LabelSelector.fromMap((map['podSelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class ContainerServiceDeploymentVersionPublicEndpointHealthCheck {
 
   factory ContainerServiceDeploymentVersionPublicEndpointHealthCheck.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionPublicEndpointHealthCheck(
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      intervalSeconds: map['intervalSeconds'] == null ? null : (map['intervalSeconds'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      successCodes: map['successCodes'] == null ? null : (map['successCodes'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : ((map['healthyThreshold'] as int).input()).input(),
+      intervalSeconds: map['intervalSeconds'] == null ? null : ((map['intervalSeconds'] as int).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      successCodes: map['successCodes'] == null ? null : ((map['successCodes'] as String).input()).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : ((map['timeoutSeconds'] as int).input()).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : ((map['unhealthyThreshold'] as int).input()).input(),
     );
   }
 }

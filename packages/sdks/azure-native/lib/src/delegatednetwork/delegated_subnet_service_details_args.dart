@@ -57,13 +57,13 @@ class DelegatedSubnetServiceDetailsArgs {
 
   factory DelegatedSubnetServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedSubnetServiceDetailsArgs(
-      allocationBlockPrefixSize: map['allocationBlockPrefixSize'] == null ? null : (map['allocationBlockPrefixSize'] as int).input(),
-      controllerDetails: map['controllerDetails'] == null ? null : (map['controllerDetails'] as ControllerDetailsDelegatednetwork).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      allocationBlockPrefixSize: map['allocationBlockPrefixSize'] == null ? null : (map['allocationBlockPrefixSize']! as int).input(),
+      controllerDetails: map['controllerDetails'] == null ? null : (map['controllerDetails']! as ControllerDetailsDelegatednetwork).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      subnetDetails: map['subnetDetails'] == null ? null : (SubnetDetails.fromMap((map['subnetDetails'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      subnetDetails: map['subnetDetails'] == null ? null : (SubnetDetails.fromMap((map['subnetDetails']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

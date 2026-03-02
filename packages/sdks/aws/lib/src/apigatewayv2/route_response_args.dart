@@ -50,9 +50,9 @@ class RouteResponseArgs {
   factory RouteResponseArgs.fromMap(Map<String, dynamic> map) {
     return RouteResponseArgs(
       apiId: (map['apiId'] as String).input(),
-      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : (map['modelSelectionExpression'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      responseModels: map['responseModels'] == null ? null : ((map['responseModels'] as Map).cast<String, String>()).input(),
+      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : ((map['modelSelectionExpression'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      responseModels: map['responseModels'] == null ? null : (((map['responseModels'] as Map).cast<String, String>()).input()).input(),
       routeId: (map['routeId'] as String).input(),
       routeResponseKey: (map['routeResponseKey'] as String).input(),
     );

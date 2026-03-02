@@ -83,16 +83,16 @@ class SoftwareUpdateConfigurationArgs {
   factory SoftwareUpdateConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationArgs(
       automationAccountId: (map['automationAccountId'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      linux: map['linux'] == null ? null : (SoftwareUpdateConfigurationLinux.fromMap((map['linux'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : ((map['nonAzureComputerNames'] as List).cast<String>()).input(),
-      postTask: map['postTask'] == null ? null : (SoftwareUpdateConfigurationPostTask.fromMap((map['postTask'] as Map).cast<String, dynamic>())).input(),
-      preTask: map['preTask'] == null ? null : (SoftwareUpdateConfigurationPreTask.fromMap((map['preTask'] as Map).cast<String, dynamic>())).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      linux: map['linux'] == null ? null : (SoftwareUpdateConfigurationLinux.fromMap((map['linux']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nonAzureComputerNames: map['nonAzureComputerNames'] == null ? null : ((map['nonAzureComputerNames']! as List).cast<String>()).input(),
+      postTask: map['postTask'] == null ? null : (SoftwareUpdateConfigurationPostTask.fromMap((map['postTask']! as Map).cast<String, dynamic>())).input(),
+      preTask: map['preTask'] == null ? null : (SoftwareUpdateConfigurationPreTask.fromMap((map['preTask']! as Map).cast<String, dynamic>())).input(),
       schedule: (SoftwareUpdateConfigurationSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (SoftwareUpdateConfigurationTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      virtualMachineIds: map['virtualMachineIds'] == null ? null : ((map['virtualMachineIds'] as List).cast<String>()).input(),
-      windows: map['windows'] == null ? null : (SoftwareUpdateConfigurationWindows.fromMap((map['windows'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (SoftwareUpdateConfigurationTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      virtualMachineIds: map['virtualMachineIds'] == null ? null : ((map['virtualMachineIds']! as List).cast<String>()).input(),
+      windows: map['windows'] == null ? null : (SoftwareUpdateConfigurationWindows.fromMap((map['windows']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

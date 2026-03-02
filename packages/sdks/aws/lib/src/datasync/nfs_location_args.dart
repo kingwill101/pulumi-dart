@@ -51,12 +51,12 @@ class NfsLocationArgs {
 
   factory NfsLocationArgs.fromMap(Map<String, dynamic> map) {
     return NfsLocationArgs(
-      mountOptions: map['mountOptions'] == null ? null : (NfsLocationMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
-      onPremConfig: (NfsLocationOnPremConfig.fromMap((map['onPremConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((NfsLocationMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      onPremConfig: (NfsLocationOnPremConfig.fromMap((map['onPremConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverHostname: (map['serverHostname'] as String).input(),
       subdirectory: (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

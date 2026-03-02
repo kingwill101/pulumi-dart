@@ -75,17 +75,17 @@ class TimeSeriesAiplatformV1beta1Args {
 
   factory TimeSeriesAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TimeSeriesAiplatformV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       experimentId: (map['experimentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pluginData: map['pluginData'] == null ? null : (map['pluginData'] as String).input(),
-      pluginName: map['pluginName'] == null ? null : (map['pluginName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pluginData: map['pluginData'] == null ? null : (map['pluginData']! as String).input(),
+      pluginName: map['pluginName'] == null ? null : (map['pluginName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runId: (map['runId'] as String).input(),
       tensorboardId: (map['tensorboardId'] as String).input(),
-      tensorboardTimeSeriesId: map['tensorboardTimeSeriesId'] == null ? null : (map['tensorboardTimeSeriesId'] as String).input(),
+      tensorboardTimeSeriesId: map['tensorboardTimeSeriesId'] == null ? null : (map['tensorboardTimeSeriesId']! as String).input(),
       valueType: (TimeSeriesValueTypeAiplatformV1beta1.fromValue(map['valueType'] as String)).input(),
     );
   }

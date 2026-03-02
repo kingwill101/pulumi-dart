@@ -61,15 +61,15 @@ class ComputeInstanceDataMountResponse {
 
   factory ComputeInstanceDataMountResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceDataMountResponse(
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      mountAction: map['mountAction'] == null ? null : (map['mountAction'] as String).input(),
-      mountName: map['mountName'] == null ? null : (map['mountName'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      mountState: map['mountState'] == null ? null : (map['mountState'] as String).input(),
-      mountedOn: map['mountedOn'] == null ? null : (map['mountedOn'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      mountAction: map['mountAction'] == null ? null : (map['mountAction']! as String).input(),
+      mountName: map['mountName'] == null ? null : (map['mountName']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      mountState: map['mountState'] == null ? null : (map['mountState']! as String).input(),
+      mountedOn: map['mountedOn'] == null ? null : (map['mountedOn']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

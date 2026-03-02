@@ -31,8 +31,8 @@ class PoolSourceDevice {
 
   factory PoolSourceDevice.fromMap(Map<String, dynamic> map) {
     return PoolSourceDevice(
-      freeExtents: map['freeExtents'] == null ? null : (pulumi.Input.decodeList<PoolSourceDeviceFreeExtent>(map['freeExtents'], (value) => PoolSourceDeviceFreeExtent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partSeparator: map['partSeparator'] == null ? null : (map['partSeparator'] as String).input(),
+      freeExtents: map['freeExtents'] == null ? null : (pulumi.Input.decodeList<PoolSourceDeviceFreeExtent>(map['freeExtents']!, (value) => PoolSourceDeviceFreeExtent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partSeparator: map['partSeparator'] == null ? null : (map['partSeparator']! as String).input(),
       path: (map['path'] as String).input(),
     );
   }

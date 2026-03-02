@@ -31,9 +31,9 @@ class StorageAccountResponse {
 
   factory StorageAccountResponse.fromMap(Map<String, dynamic> map) {
     return StorageAccountResponse(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

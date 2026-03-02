@@ -26,8 +26,8 @@ class AnalyzerConfigurationUnusedAccess {
 
   factory AnalyzerConfigurationUnusedAccess.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationUnusedAccess(
-      analysisRule: map['analysisRule'] == null ? null : (AnalyzerConfigurationUnusedAccessAnalysisRule.fromMap((map['analysisRule'] as Map).cast<String, dynamic>())).input(),
-      unusedAccessAge: map['unusedAccessAge'] == null ? null : (map['unusedAccessAge'] as int).input(),
+      analysisRule: map['analysisRule'] == null ? null : ((AnalyzerConfigurationUnusedAccessAnalysisRule.fromMap((map['analysisRule']! as Map).cast<String, dynamic>())).input()).input(),
+      unusedAccessAge: map['unusedAccessAge'] == null ? null : ((map['unusedAccessAge'] as int).input()).input(),
     );
   }
 }

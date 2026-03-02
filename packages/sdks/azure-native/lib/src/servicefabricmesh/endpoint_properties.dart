@@ -27,7 +27,7 @@ class EndpointProperties {
   factory EndpointProperties.fromMap(Map<String, dynamic> map) {
     return EndpointProperties(
       name: (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

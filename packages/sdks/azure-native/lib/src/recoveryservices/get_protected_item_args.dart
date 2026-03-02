@@ -51,7 +51,7 @@ class GetProtectedItemArgs {
     return GetProtectedItemArgs(
       containerName: (map['containerName'] as String).input(),
       fabricName: (map['fabricName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       protectedItemName: (map['protectedItemName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),

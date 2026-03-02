@@ -39,8 +39,8 @@ class GetNetworkArgs {
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkArgs(
       name: (map['name'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

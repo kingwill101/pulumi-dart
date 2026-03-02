@@ -26,8 +26,8 @@ class CertificateCertificateDescriptionX509DescriptionCaOption {
 
   factory CertificateCertificateDescriptionX509DescriptionCaOption.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509DescriptionCaOption(
-      isCa: map['isCa'] == null ? null : (map['isCa'] as bool).input(),
-      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength'] as int).input(),
+      isCa: map['isCa'] == null ? null : (map['isCa']! as bool).input(),
+      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength']! as int).input(),
     );
   }
 }

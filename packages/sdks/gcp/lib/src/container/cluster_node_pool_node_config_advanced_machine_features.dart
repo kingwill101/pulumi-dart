@@ -30,8 +30,8 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures {
 
   factory ClusterNodePoolNodeConfigAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (map['performanceMonitoringUnit'] as String).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (map['performanceMonitoringUnit']! as String).input(),
       threadsPerCore: (map['threadsPerCore'] as int).input(),
     );
   }

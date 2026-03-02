@@ -20,7 +20,7 @@ class AutoscaleSettingsResponse {
 
   factory AutoscaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingsResponse(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
     );
   }
 }

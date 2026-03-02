@@ -60,12 +60,12 @@ class InstanceV2EngineList {
 
   factory InstanceV2EngineList.fromMap(Map<String, dynamic> map) {
     return InstanceV2EngineList(
-      connectAddressLists: map['connectAddressLists'] == null ? null : (pulumi.Input.decodeList<InstanceV2EngineListConnectAddressList>(map['connectAddressLists'], (value) => InstanceV2EngineListConnectAddressList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectAddressLists: map['connectAddressLists'] == null ? null : (pulumi.Input.decodeList<InstanceV2EngineListConnectAddressList>(map['connectAddressLists']!, (value) => InstanceV2EngineListConnectAddressList.fromMap((value as Map).cast<String, dynamic>()))).input(),
       engineType: (map['engineType'] as String).input(),
-      isLastVersion: map['isLastVersion'] == null ? null : (map['isLastVersion'] as bool).input(),
-      latestVersion: map['latestVersion'] == null ? null : (map['latestVersion'] as String).input(),
-      nodeGroups: map['nodeGroups'] == null ? null : (pulumi.Input.decodeList<InstanceV2EngineListNodeGroup>(map['nodeGroups'], (value) => InstanceV2EngineListNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      isLastVersion: map['isLastVersion'] == null ? null : (map['isLastVersion']! as bool).input(),
+      latestVersion: map['latestVersion'] == null ? null : (map['latestVersion']! as String).input(),
+      nodeGroups: map['nodeGroups'] == null ? null : (pulumi.Input.decodeList<InstanceV2EngineListNodeGroup>(map['nodeGroups']!, (value) => InstanceV2EngineListNodeGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

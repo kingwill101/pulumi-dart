@@ -26,8 +26,8 @@ class WorkflowAccessControlTrigger {
 
   factory WorkflowAccessControlTrigger.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessControlTrigger(
-      allowedCallerIpAddressRanges: map['allowedCallerIpAddressRanges'] == null ? null : ((map['allowedCallerIpAddressRanges'] as List).cast<String>()).input(),
-      openAuthenticationPolicies: map['openAuthenticationPolicies'] == null ? null : (pulumi.Input.decodeList<WorkflowAccessControlTriggerOpenAuthenticationPolicy>(map['openAuthenticationPolicies'], (value) => WorkflowAccessControlTriggerOpenAuthenticationPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedCallerIpAddressRanges: map['allowedCallerIpAddressRanges'] == null ? null : ((map['allowedCallerIpAddressRanges']! as List).cast<String>()).input(),
+      openAuthenticationPolicies: map['openAuthenticationPolicies'] == null ? null : (pulumi.Input.decodeList<WorkflowAccessControlTriggerOpenAuthenticationPolicy>(map['openAuthenticationPolicies']!, (value) => WorkflowAccessControlTriggerOpenAuthenticationPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

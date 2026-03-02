@@ -45,11 +45,11 @@ class CodeSigningAccountArgs {
 
   factory CodeSigningAccountArgs.fromMap(Map<String, dynamic> map) {
     return CodeSigningAccountArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (AccountSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (AccountSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

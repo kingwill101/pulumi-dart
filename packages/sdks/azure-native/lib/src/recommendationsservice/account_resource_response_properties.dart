@@ -43,11 +43,11 @@ class AccountResourceResponseProperties {
 
   factory AccountResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return AccountResourceResponseProperties(
-      configuration: map['configuration'] == null ? null : (map['configuration'] as String).input(),
-      cors: map['cors'] == null ? null : (pulumi.Input.decodeList<CorsRuleResponse>(map['cors'], (value) => CorsRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endpointAuthentications: map['endpointAuthentications'] == null ? null : (pulumi.Input.decodeList<EndpointAuthenticationResponse>(map['endpointAuthentications'], (value) => EndpointAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration']! as String).input(),
+      cors: map['cors'] == null ? null : (pulumi.Input.decodeList<CorsRuleResponse>(map['cors']!, (value) => CorsRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointAuthentications: map['endpointAuthentications'] == null ? null : (pulumi.Input.decodeList<EndpointAuthenticationResponse>(map['endpointAuthentications']!, (value) => EndpointAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      reportsConnectionString: map['reportsConnectionString'] == null ? null : (map['reportsConnectionString'] as String).input(),
+      reportsConnectionString: map['reportsConnectionString'] == null ? null : (map['reportsConnectionString']! as String).input(),
     );
   }
 }

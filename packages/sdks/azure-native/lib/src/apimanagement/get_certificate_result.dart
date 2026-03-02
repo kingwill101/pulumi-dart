@@ -59,7 +59,7 @@ class GetCertificateResult {
       azureApiVersion: map['azureApiVersion'] as String,
       expirationDate: map['expirationDate'] as String,
       id: map['id'] as String,
-      keyVault: map['keyVault'] == null ? null : KeyVaultContractPropertiesResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>()),
+      keyVault: map['keyVault'] == null ? null : KeyVaultContractPropertiesResponse.fromMap((map['keyVault']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       subject: map['subject'] as String,
       thumbprint: map['thumbprint'] as String,

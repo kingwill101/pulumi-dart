@@ -30,9 +30,9 @@ class JobTemplateConfigEditList {
 
   factory JobTemplateConfigEditList.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigEditList(
-      inputs: map['inputs'] == null ? null : ((map['inputs'] as List).cast<String>()).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      inputs: map['inputs'] == null ? null : ((map['inputs']! as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
     );
   }
 }

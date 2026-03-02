@@ -32,7 +32,7 @@ class GetAccountKeyArgs {
   factory GetAccountKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountKeyArgs(
       name: (map['name'] as String).input(),
-      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType'] as String).input(),
+      publicKeyType: map['publicKeyType'] == null ? null : (map['publicKeyType']! as String).input(),
     );
   }
 }

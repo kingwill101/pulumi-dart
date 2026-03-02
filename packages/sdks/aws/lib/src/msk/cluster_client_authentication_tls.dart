@@ -20,7 +20,7 @@ class ClusterClientAuthenticationTls {
 
   factory ClusterClientAuthenticationTls.fromMap(Map<String, dynamic> map) {
     return ClusterClientAuthenticationTls(
-      certificateAuthorityArns: map['certificateAuthorityArns'] == null ? null : ((map['certificateAuthorityArns'] as List).cast<String>()).input(),
+      certificateAuthorityArns: map['certificateAuthorityArns'] == null ? null : (((map['certificateAuthorityArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

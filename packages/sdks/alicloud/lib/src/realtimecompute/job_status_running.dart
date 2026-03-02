@@ -25,8 +25,8 @@ class JobStatusRunning {
 
   factory JobStatusRunning.fromMap(Map<String, dynamic> map) {
     return JobStatusRunning(
-      observedFlinkJobRestarts: map['observedFlinkJobRestarts'] == null ? null : (map['observedFlinkJobRestarts'] as int).input(),
-      observedFlinkJobStatus: map['observedFlinkJobStatus'] == null ? null : (map['observedFlinkJobStatus'] as String).input(),
+      observedFlinkJobRestarts: map['observedFlinkJobRestarts'] == null ? null : (map['observedFlinkJobRestarts']! as int).input(),
+      observedFlinkJobStatus: map['observedFlinkJobStatus'] == null ? null : (map['observedFlinkJobStatus']! as String).input(),
     );
   }
 }

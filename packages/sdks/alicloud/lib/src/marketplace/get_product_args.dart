@@ -29,7 +29,7 @@ class GetProductArgs {
 
   factory GetProductArgs.fromMap(Map<String, dynamic> map) {
     return GetProductArgs(
-      availableRegion: map['availableRegion'] == null ? null : (map['availableRegion'] as String).input(),
+      availableRegion: map['availableRegion'] == null ? null : (map['availableRegion']! as String).input(),
       productCode: (map['productCode'] as String).input(),
     );
   }

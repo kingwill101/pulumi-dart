@@ -49,12 +49,12 @@ class GetListenersResult {
 
   factory GetListenersResult.fromMap(Map<String, dynamic> map) {
     return GetListenersResult(
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
-      frontendPort: map['frontendPort'] == null ? null : map['frontendPort'] as int,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
+      frontendPort: map['frontendPort'] == null ? null : map['frontendPort']! as int,
       id: map['id'] as String,
       loadBalancerId: map['loadBalancerId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      protocol: map['protocol'] == null ? null : map['protocol'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      protocol: map['protocol'] == null ? null : map['protocol']! as String,
       slbListeners: pulumi.Input.decodeList<GetListenersSlbListener>(map['slbListeners'], (value) => GetListenersSlbListener.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -64,12 +64,12 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore {
 
   factory AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore(
-      connectorConfigs: map['connectorConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>(map['connectorConfigs'], (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      connectorConfigs: map['connectorConfigs'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>(map['connectorConfigs']!, (value) => AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

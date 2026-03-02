@@ -33,9 +33,9 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
 
   factory FlowSourceFlowConfigSourceConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigSourceConnectorPropertiesSalesforce(
-      dataTransferApi: map['dataTransferApi'] == null ? null : (map['dataTransferApi'] as String).input(),
-      enableDynamicFieldUpdate: map['enableDynamicFieldUpdate'] == null ? null : (map['enableDynamicFieldUpdate'] as bool).input(),
-      includeDeletedRecords: map['includeDeletedRecords'] == null ? null : (map['includeDeletedRecords'] as bool).input(),
+      dataTransferApi: map['dataTransferApi'] == null ? null : ((map['dataTransferApi'] as String).input()).input(),
+      enableDynamicFieldUpdate: map['enableDynamicFieldUpdate'] == null ? null : ((map['enableDynamicFieldUpdate'] as bool).input()).input(),
+      includeDeletedRecords: map['includeDeletedRecords'] == null ? null : ((map['includeDeletedRecords'] as bool).input()).input(),
       object: (map['object'] as String).input(),
     );
   }

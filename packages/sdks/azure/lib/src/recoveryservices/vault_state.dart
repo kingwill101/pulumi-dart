@@ -95,20 +95,20 @@ class VaultState {
 
   factory VaultState.fromMap(Map<String, dynamic> map) {
     return VaultState(
-      classicVmwareReplicationEnabled: map['classicVmwareReplicationEnabled'] == null ? null : (map['classicVmwareReplicationEnabled'] as bool).input(),
-      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : (map['crossRegionRestoreEnabled'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (VaultEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (VaultIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      immutability: map['immutability'] == null ? null : (map['immutability'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      monitoring: map['monitoring'] == null ? null : (VaultMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      softDeleteEnabled: map['softDeleteEnabled'] == null ? null : (map['softDeleteEnabled'] as bool).input(),
-      storageModeType: map['storageModeType'] == null ? null : (map['storageModeType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      classicVmwareReplicationEnabled: map['classicVmwareReplicationEnabled'] == null ? null : (map['classicVmwareReplicationEnabled']! as bool).input(),
+      crossRegionRestoreEnabled: map['crossRegionRestoreEnabled'] == null ? null : (map['crossRegionRestoreEnabled']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (VaultEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (VaultIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      immutability: map['immutability'] == null ? null : (map['immutability']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      monitoring: map['monitoring'] == null ? null : (VaultMonitoring.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      softDeleteEnabled: map['softDeleteEnabled'] == null ? null : (map['softDeleteEnabled']! as bool).input(),
+      storageModeType: map['storageModeType'] == null ? null : (map['storageModeType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

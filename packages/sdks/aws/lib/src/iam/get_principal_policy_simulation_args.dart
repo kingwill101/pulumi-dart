@@ -85,15 +85,15 @@ class GetPrincipalPolicySimulationArgs {
   factory GetPrincipalPolicySimulationArgs.fromMap(Map<String, dynamic> map) {
     return GetPrincipalPolicySimulationArgs(
       actionNames: ((map['actionNames'] as List).cast<String>()).input(),
-      additionalPoliciesJsons: map['additionalPoliciesJsons'] == null ? null : ((map['additionalPoliciesJsons'] as List).cast<String>()).input(),
-      callerArn: map['callerArn'] == null ? null : (map['callerArn'] as String).input(),
-      contexts: map['contexts'] == null ? null : (pulumi.Input.decodeList<GetPrincipalPolicySimulationContext>(map['contexts'], (value) => GetPrincipalPolicySimulationContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permissionsBoundaryPoliciesJsons: map['permissionsBoundaryPoliciesJsons'] == null ? null : ((map['permissionsBoundaryPoliciesJsons'] as List).cast<String>()).input(),
+      additionalPoliciesJsons: map['additionalPoliciesJsons'] == null ? null : (((map['additionalPoliciesJsons'] as List).cast<String>()).input()).input(),
+      callerArn: map['callerArn'] == null ? null : ((map['callerArn'] as String).input()).input(),
+      contexts: map['contexts'] == null ? null : ((pulumi.Input.decodeList<GetPrincipalPolicySimulationContext>(map['contexts']!, (value) => GetPrincipalPolicySimulationContext.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      permissionsBoundaryPoliciesJsons: map['permissionsBoundaryPoliciesJsons'] == null ? null : (((map['permissionsBoundaryPoliciesJsons'] as List).cast<String>()).input()).input(),
       policySourceArn: (map['policySourceArn'] as String).input(),
-      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
-      resourceHandlingOption: map['resourceHandlingOption'] == null ? null : (map['resourceHandlingOption'] as String).input(),
-      resourceOwnerAccountId: map['resourceOwnerAccountId'] == null ? null : (map['resourceOwnerAccountId'] as String).input(),
-      resourcePolicyJson: map['resourcePolicyJson'] == null ? null : (map['resourcePolicyJson'] as String).input(),
+      resourceArns: map['resourceArns'] == null ? null : (((map['resourceArns'] as List).cast<String>()).input()).input(),
+      resourceHandlingOption: map['resourceHandlingOption'] == null ? null : ((map['resourceHandlingOption'] as String).input()).input(),
+      resourceOwnerAccountId: map['resourceOwnerAccountId'] == null ? null : ((map['resourceOwnerAccountId'] as String).input()).input(),
+      resourcePolicyJson: map['resourcePolicyJson'] == null ? null : ((map['resourcePolicyJson'] as String).input()).input(),
     );
   }
 }

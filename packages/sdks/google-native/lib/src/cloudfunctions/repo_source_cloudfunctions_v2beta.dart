@@ -46,12 +46,12 @@ class RepoSourceCloudfunctionsV2beta {
 
   factory RepoSourceCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return RepoSourceCloudfunctionsV2beta(
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      tagName: map['tagName'] == null ? null : (map['tagName'] as String).input(),
+      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
+      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
     );
   }
 }

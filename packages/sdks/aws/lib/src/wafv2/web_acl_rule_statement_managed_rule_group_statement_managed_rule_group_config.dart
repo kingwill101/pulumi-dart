@@ -61,14 +61,14 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig {
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig(
-      awsManagedRulesAcfpRuleSet: map['awsManagedRulesAcfpRuleSet'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet.fromMap((map['awsManagedRulesAcfpRuleSet'] as Map).cast<String, dynamic>())).input(),
-      awsManagedRulesAntiDdosRuleSet: map['awsManagedRulesAntiDdosRuleSet'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet.fromMap((map['awsManagedRulesAntiDdosRuleSet'] as Map).cast<String, dynamic>())).input(),
-      awsManagedRulesAtpRuleSet: map['awsManagedRulesAtpRuleSet'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet.fromMap((map['awsManagedRulesAtpRuleSet'] as Map).cast<String, dynamic>())).input(),
-      awsManagedRulesBotControlRuleSet: map['awsManagedRulesBotControlRuleSet'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet.fromMap((map['awsManagedRulesBotControlRuleSet'] as Map).cast<String, dynamic>())).input(),
-      loginPath: map['loginPath'] == null ? null : (map['loginPath'] as String).input(),
-      passwordField: map['passwordField'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField.fromMap((map['passwordField'] as Map).cast<String, dynamic>())).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
-      usernameField: map['usernameField'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField.fromMap((map['usernameField'] as Map).cast<String, dynamic>())).input(),
+      awsManagedRulesAcfpRuleSet: map['awsManagedRulesAcfpRuleSet'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAcfpRuleSet.fromMap((map['awsManagedRulesAcfpRuleSet']! as Map).cast<String, dynamic>())).input()).input(),
+      awsManagedRulesAntiDdosRuleSet: map['awsManagedRulesAntiDdosRuleSet'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAntiDdosRuleSet.fromMap((map['awsManagedRulesAntiDdosRuleSet']! as Map).cast<String, dynamic>())).input()).input(),
+      awsManagedRulesAtpRuleSet: map['awsManagedRulesAtpRuleSet'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet.fromMap((map['awsManagedRulesAtpRuleSet']! as Map).cast<String, dynamic>())).input()).input(),
+      awsManagedRulesBotControlRuleSet: map['awsManagedRulesBotControlRuleSet'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesBotControlRuleSet.fromMap((map['awsManagedRulesBotControlRuleSet']! as Map).cast<String, dynamic>())).input()).input(),
+      loginPath: map['loginPath'] == null ? null : ((map['loginPath'] as String).input()).input(),
+      passwordField: map['passwordField'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigPasswordField.fromMap((map['passwordField']! as Map).cast<String, dynamic>())).input()).input(),
+      payloadType: map['payloadType'] == null ? null : ((map['payloadType'] as String).input()).input(),
+      usernameField: map['usernameField'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField.fromMap((map['usernameField']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

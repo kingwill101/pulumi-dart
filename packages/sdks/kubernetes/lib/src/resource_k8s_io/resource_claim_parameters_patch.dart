@@ -51,12 +51,12 @@ class ResourceClaimParametersPatch {
 
   factory ResourceClaimParametersPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimParametersPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      driverRequests: map['driverRequests'] == null ? null : (pulumi.Input.decodeList<DriverRequestsPatch>(map['driverRequests'], (value) => DriverRequestsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['generatedFrom'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      driverRequests: map['driverRequests'] == null ? null : (pulumi.Input.decodeList<DriverRequestsPatch>(map['driverRequests']!, (value) => DriverRequestsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedFrom: map['generatedFrom'] == null ? null : (ResourceClaimParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['generatedFrom']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable']! as bool).input(),
     );
   }
 }

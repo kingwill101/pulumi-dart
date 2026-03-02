@@ -25,8 +25,8 @@ class PipelineContentConfig {
 
   factory PipelineContentConfig.fromMap(Map<String, dynamic> map) {
     return PipelineContentConfig(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
     );
   }
 }

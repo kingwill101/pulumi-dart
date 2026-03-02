@@ -53,10 +53,10 @@ class RoleAssignmentArgs {
   factory RoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentArgs(
       principalId: (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
       roleName: (map['roleName'] as String).input(),
-      synapseSparkPoolId: map['synapseSparkPoolId'] == null ? null : (map['synapseSparkPoolId'] as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      synapseSparkPoolId: map['synapseSparkPoolId'] == null ? null : (map['synapseSparkPoolId']! as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
     );
   }
 }

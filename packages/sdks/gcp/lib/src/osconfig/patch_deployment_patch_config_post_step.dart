@@ -29,8 +29,8 @@ class PatchDeploymentPatchConfigPostStep {
 
   factory PatchDeploymentPatchConfigPostStep.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfigPostStep(
-      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>())).input(),
-      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (PatchDeploymentPatchConfigPostStepWindowsExecStepConfig.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>())).input(),
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (PatchDeploymentPatchConfigPostStepLinuxExecStepConfig.fromMap((map['linuxExecStepConfig']! as Map).cast<String, dynamic>())).input(),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (PatchDeploymentPatchConfigPostStepWindowsExecStepConfig.fromMap((map['windowsExecStepConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
   factory RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky(
       operator: (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

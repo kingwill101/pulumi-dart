@@ -28,7 +28,7 @@ class DeviceTaintRuleSpec {
 
   factory DeviceTaintRuleSpec.fromMap(Map<String, dynamic> map) {
     return DeviceTaintRuleSpec(
-      deviceSelector: map['deviceSelector'] == null ? null : (DeviceTaintSelector.fromMap((map['deviceSelector'] as Map).cast<String, dynamic>())).input(),
+      deviceSelector: map['deviceSelector'] == null ? null : (DeviceTaintSelector.fromMap((map['deviceSelector']! as Map).cast<String, dynamic>())).input(),
       taint: (DeviceTaintResourceK8sIoV1alpha3.fromMap((map['taint'] as Map).cast<String, dynamic>())).input(),
     );
   }

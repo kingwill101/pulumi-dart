@@ -62,14 +62,14 @@ class AgentFlowArgs {
 
   factory AgentFlowArgs.fromMap(Map<String, dynamic> map) {
     return AgentFlowArgs(
-      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : (map['customerEncryptionKeyArn'] as String).input(),
-      definition: map['definition'] == null ? null : (AgentFlowDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : ((map['customerEncryptionKeyArn'] as String).input()).input(),
+      definition: map['definition'] == null ? null : ((AgentFlowDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       executionRoleArn: (map['executionRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentFlowTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentFlowTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

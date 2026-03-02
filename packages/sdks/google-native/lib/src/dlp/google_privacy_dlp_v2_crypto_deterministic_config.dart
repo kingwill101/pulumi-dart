@@ -34,9 +34,9 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
 
   factory GooglePrivacyDlpV2CryptoDeterministicConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoDeterministicConfig(
-      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
-      surrogateInfoType: map['surrogateInfoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['surrogateInfoType'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
+      surrogateInfoType: map['surrogateInfoType'] == null ? null : (GooglePrivacyDlpV2InfoType.fromMap((map['surrogateInfoType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

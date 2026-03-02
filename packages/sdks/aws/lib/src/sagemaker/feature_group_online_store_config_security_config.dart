@@ -20,7 +20,7 @@ class FeatureGroupOnlineStoreConfigSecurityConfig {
 
   factory FeatureGroupOnlineStoreConfigSecurityConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOnlineStoreConfigSecurityConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class GetUsersArgs {
 
   factory GetUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetUsersArgs(
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
+      pathPrefix: map['pathPrefix'] == null ? null : ((map['pathPrefix'] as String).input()).input(),
     );
   }
 }

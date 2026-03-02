@@ -46,7 +46,7 @@ class IotHubResourceEventHubConsumerGroupArgs {
   factory IotHubResourceEventHubConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return IotHubResourceEventHubConsumerGroupArgs(
       eventHubEndpointName: (map['eventHubEndpointName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       properties: (EventHubConsumerGroupName.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

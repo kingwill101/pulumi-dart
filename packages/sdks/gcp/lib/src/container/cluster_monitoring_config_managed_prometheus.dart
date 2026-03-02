@@ -26,7 +26,7 @@ class ClusterMonitoringConfigManagedPrometheus {
 
   factory ClusterMonitoringConfigManagedPrometheus.fromMap(Map<String, dynamic> map) {
     return ClusterMonitoringConfigManagedPrometheus(
-      autoMonitoringConfig: map['autoMonitoringConfig'] == null ? null : (ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap((map['autoMonitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      autoMonitoringConfig: map['autoMonitoringConfig'] == null ? null : (ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap((map['autoMonitoringConfig']! as Map).cast<String, dynamic>())).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

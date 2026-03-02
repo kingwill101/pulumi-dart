@@ -20,7 +20,7 @@ class ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig {
 
   factory ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig(
-      invokeType: map['invokeType'] == null ? null : (map['invokeType'] as String).input(),
+      invokeType: map['invokeType'] == null ? null : ((map['invokeType'] as String).input()).input(),
     );
   }
 }

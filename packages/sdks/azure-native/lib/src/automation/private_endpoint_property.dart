@@ -21,7 +21,7 @@ class PrivateEndpointProperty {
 
   factory PrivateEndpointProperty.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointProperty(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

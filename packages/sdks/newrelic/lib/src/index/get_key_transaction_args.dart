@@ -36,8 +36,8 @@ class GetKeyTransactionArgs {
 
   factory GetKeyTransactionArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyTransactionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

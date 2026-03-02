@@ -43,11 +43,11 @@ class RecorderState {
 
   factory RecorderState.fromMap(Map<String, dynamic> map) {
     return RecorderState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recordingGroup: map['recordingGroup'] == null ? null : (RecorderRecordingGroup.fromMap((map['recordingGroup'] as Map).cast<String, dynamic>())).input(),
-      recordingMode: map['recordingMode'] == null ? null : (RecorderRecordingMode.fromMap((map['recordingMode'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recordingGroup: map['recordingGroup'] == null ? null : ((RecorderRecordingGroup.fromMap((map['recordingGroup']! as Map).cast<String, dynamic>())).input()).input(),
+      recordingMode: map['recordingMode'] == null ? null : ((RecorderRecordingMode.fromMap((map['recordingMode']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

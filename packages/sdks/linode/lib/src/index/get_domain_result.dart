@@ -87,10 +87,10 @@ class GetDomainResult {
     return GetDomainResult(
       axfrIps: (map['axfrIps'] as List).cast<String>(),
       description: map['description'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
+      domain: map['domain'] == null ? null : map['domain']! as String,
       expireSec: map['expireSec'] as int,
       group: map['group'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
+      id: map['id'] == null ? null : map['id']! as int,
       masterIps: (map['masterIps'] as List).cast<String>(),
       refreshSec: map['refreshSec'] as int,
       retrySec: map['retrySec'] as int,

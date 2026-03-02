@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2PubSubExpressions {
 
   factory GooglePrivacyDlpV2PubSubExpressions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubExpressions(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2PubSubCondition>(map['conditions'], (value) => GooglePrivacyDlpV2PubSubCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logicalOperator: map['logicalOperator'] == null ? null : (GooglePrivacyDlpV2PubSubExpressionsLogicalOperator.fromValue(map['logicalOperator'] as String)).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2PubSubCondition>(map['conditions']!, (value) => GooglePrivacyDlpV2PubSubCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logicalOperator: map['logicalOperator'] == null ? null : (GooglePrivacyDlpV2PubSubExpressionsLogicalOperator.fromValue(map['logicalOperator']! as String)).input(),
     );
   }
 }

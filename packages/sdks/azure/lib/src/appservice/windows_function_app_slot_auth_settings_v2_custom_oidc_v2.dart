@@ -72,17 +72,17 @@ class WindowsFunctionAppSlotAuthSettingsV2CustomOidcV2 {
 
   factory WindowsFunctionAppSlotAuthSettingsV2CustomOidcV2.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppSlotAuthSettingsV2CustomOidcV2(
-      authorisationEndpoint: map['authorisationEndpoint'] == null ? null : (map['authorisationEndpoint'] as String).input(),
-      certificationUri: map['certificationUri'] == null ? null : (map['certificationUri'] as String).input(),
-      clientCredentialMethod: map['clientCredentialMethod'] == null ? null : (map['clientCredentialMethod'] as String).input(),
+      authorisationEndpoint: map['authorisationEndpoint'] == null ? null : (map['authorisationEndpoint']! as String).input(),
+      certificationUri: map['certificationUri'] == null ? null : (map['certificationUri']! as String).input(),
+      clientCredentialMethod: map['clientCredentialMethod'] == null ? null : (map['clientCredentialMethod']! as String).input(),
       clientId: (map['clientId'] as String).input(),
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
-      issuerEndpoint: map['issuerEndpoint'] == null ? null : (map['issuerEndpoint'] as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
+      issuerEndpoint: map['issuerEndpoint'] == null ? null : (map['issuerEndpoint']! as String).input(),
       name: (map['name'] as String).input(),
-      nameClaimType: map['nameClaimType'] == null ? null : (map['nameClaimType'] as String).input(),
+      nameClaimType: map['nameClaimType'] == null ? null : (map['nameClaimType']! as String).input(),
       openidConfigurationEndpoint: (map['openidConfigurationEndpoint'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
     );
   }
 }

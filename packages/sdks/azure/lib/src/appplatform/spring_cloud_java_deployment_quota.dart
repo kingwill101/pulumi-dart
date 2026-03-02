@@ -29,8 +29,8 @@ class SpringCloudJavaDeploymentQuota {
 
   factory SpringCloudJavaDeploymentQuota.fromMap(Map<String, dynamic> map) {
     return SpringCloudJavaDeploymentQuota(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as String).input(),
     );
   }
 }

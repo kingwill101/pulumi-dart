@@ -27,8 +27,8 @@ class FlowEndpointsResponse {
 
   factory FlowEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return FlowEndpointsResponse(
-      accessEndpointIpAddresses: map['accessEndpointIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['accessEndpointIpAddresses'], (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outgoingIpAddresses: map['outgoingIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['outgoingIpAddresses'], (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessEndpointIpAddresses: map['accessEndpointIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['accessEndpointIpAddresses']!, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outgoingIpAddresses: map['outgoingIpAddresses'] == null ? null : (pulumi.Input.decodeList<IpAddressResponse>(map['outgoingIpAddresses']!, (value) => IpAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

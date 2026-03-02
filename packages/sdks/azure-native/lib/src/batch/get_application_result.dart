@@ -66,15 +66,15 @@ class GetApplicationResult {
 
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
-      allowUpdates: map['allowUpdates'] == null ? null : map['allowUpdates'] as bool,
+      allowUpdates: map['allowUpdates'] == null ? null : map['allowUpdates']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultVersion: map['defaultVersion'] == null ? null : map['defaultVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      defaultVersion: map['defaultVersion'] == null ? null : map['defaultVersion']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

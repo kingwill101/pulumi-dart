@@ -20,7 +20,7 @@ class FlowSourceFlowConfigIncrementalPullConfig {
 
   factory FlowSourceFlowConfigIncrementalPullConfig.fromMap(Map<String, dynamic> map) {
     return FlowSourceFlowConfigIncrementalPullConfig(
-      datetimeTypeFieldName: map['datetimeTypeFieldName'] == null ? null : (map['datetimeTypeFieldName'] as String).input(),
+      datetimeTypeFieldName: map['datetimeTypeFieldName'] == null ? null : ((map['datetimeTypeFieldName'] as String).input()).input(),
     );
   }
 }

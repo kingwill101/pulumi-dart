@@ -96,20 +96,20 @@ class ClusterCreateProperties {
 
   factory ClusterCreateProperties.fromMap(Map<String, dynamic> map) {
     return ClusterCreateProperties(
-      clusterDefinition: map['clusterDefinition'] == null ? null : (ClusterDefinition.fromMap((map['clusterDefinition'] as Map).cast<String, dynamic>())).input(),
-      clusterVersion: map['clusterVersion'] == null ? null : (map['clusterVersion'] as String).input(),
-      computeIsolationProperties: map['computeIsolationProperties'] == null ? null : (ComputeIsolationProperties.fromMap((map['computeIsolationProperties'] as Map).cast<String, dynamic>())).input(),
-      computeProfile: map['computeProfile'] == null ? null : (ComputeProfile.fromMap((map['computeProfile'] as Map).cast<String, dynamic>())).input(),
-      diskEncryptionProperties: map['diskEncryptionProperties'] == null ? null : (DiskEncryptionProperties.fromMap((map['diskEncryptionProperties'] as Map).cast<String, dynamic>())).input(),
-      encryptionInTransitProperties: map['encryptionInTransitProperties'] == null ? null : (EncryptionInTransitProperties.fromMap((map['encryptionInTransitProperties'] as Map).cast<String, dynamic>())).input(),
-      kafkaRestProperties: map['kafkaRestProperties'] == null ? null : (KafkaRestProperties.fromMap((map['kafkaRestProperties'] as Map).cast<String, dynamic>())).input(),
-      minSupportedTlsVersion: map['minSupportedTlsVersion'] == null ? null : (map['minSupportedTlsVersion'] as String).input(),
-      networkProperties: map['networkProperties'] == null ? null : (NetworkProperties.fromMap((map['networkProperties'] as Map).cast<String, dynamic>())).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      privateLinkConfigurations: map['privateLinkConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkConfiguration>(map['privateLinkConfigurations'], (value) => PrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      clusterDefinition: map['clusterDefinition'] == null ? null : (ClusterDefinition.fromMap((map['clusterDefinition']! as Map).cast<String, dynamic>())).input(),
+      clusterVersion: map['clusterVersion'] == null ? null : (map['clusterVersion']! as String).input(),
+      computeIsolationProperties: map['computeIsolationProperties'] == null ? null : (ComputeIsolationProperties.fromMap((map['computeIsolationProperties']! as Map).cast<String, dynamic>())).input(),
+      computeProfile: map['computeProfile'] == null ? null : (ComputeProfile.fromMap((map['computeProfile']! as Map).cast<String, dynamic>())).input(),
+      diskEncryptionProperties: map['diskEncryptionProperties'] == null ? null : (DiskEncryptionProperties.fromMap((map['diskEncryptionProperties']! as Map).cast<String, dynamic>())).input(),
+      encryptionInTransitProperties: map['encryptionInTransitProperties'] == null ? null : (EncryptionInTransitProperties.fromMap((map['encryptionInTransitProperties']! as Map).cast<String, dynamic>())).input(),
+      kafkaRestProperties: map['kafkaRestProperties'] == null ? null : (KafkaRestProperties.fromMap((map['kafkaRestProperties']! as Map).cast<String, dynamic>())).input(),
+      minSupportedTlsVersion: map['minSupportedTlsVersion'] == null ? null : (map['minSupportedTlsVersion']! as String).input(),
+      networkProperties: map['networkProperties'] == null ? null : (NetworkProperties.fromMap((map['networkProperties']! as Map).cast<String, dynamic>())).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      privateLinkConfigurations: map['privateLinkConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkConfiguration>(map['privateLinkConfigurations']!, (value) => PrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

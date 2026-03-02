@@ -45,10 +45,10 @@ class BackendEnvironmentArgs {
   factory BackendEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return BackendEnvironmentArgs(
       appId: (map['appId'] as String).input(),
-      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : (map['deploymentArtifacts'] as String).input(),
+      deploymentArtifacts: map['deploymentArtifacts'] == null ? null : ((map['deploymentArtifacts'] as String).input()).input(),
       environmentName: (map['environmentName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stackName: map['stackName'] == null ? null : (map['stackName'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      stackName: map['stackName'] == null ? null : ((map['stackName'] as String).input()).input(),
     );
   }
 }

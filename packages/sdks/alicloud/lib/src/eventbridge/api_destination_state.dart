@@ -42,11 +42,11 @@ class ApiDestinationState {
 
   factory ApiDestinationState.fromMap(Map<String, dynamic> map) {
     return ApiDestinationState(
-      apiDestinationName: map['apiDestinationName'] == null ? null : (map['apiDestinationName'] as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpApiParameters: map['httpApiParameters'] == null ? null : (ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters'] as Map).cast<String, dynamic>())).input(),
+      apiDestinationName: map['apiDestinationName'] == null ? null : (map['apiDestinationName']! as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpApiParameters: map['httpApiParameters'] == null ? null : (ApiDestinationHttpApiParameters.fromMap((map['httpApiParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class GetJobDefinitionEksPropertyPodProperty {
 
   factory GetJobDefinitionEksPropertyPodProperty.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionEksPropertyPodProperty(
-      containers: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyContainer>(map['containers'], (value) => GetJobDefinitionEksPropertyPodPropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyContainer>(map['containers']!, (value) => GetJobDefinitionEksPropertyPodPropertyContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dnsPolicy: (map['dnsPolicy'] as String).input(),
       hostNetwork: (map['hostNetwork'] as bool).input(),
-      imagePullSecrets: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyImagePullSecret>(map['imagePullSecrets'], (value) => GetJobDefinitionEksPropertyPodPropertyImagePullSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainer>(map['initContainers'], (value) => GetJobDefinitionEksPropertyPodPropertyInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadatas: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyMetadata>(map['metadatas'], (value) => GetJobDefinitionEksPropertyPodPropertyMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imagePullSecrets: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyImagePullSecret>(map['imagePullSecrets']!, (value) => GetJobDefinitionEksPropertyPodPropertyImagePullSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainer>(map['initContainers']!, (value) => GetJobDefinitionEksPropertyPodPropertyInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadatas: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyMetadata>(map['metadatas']!, (value) => GetJobDefinitionEksPropertyPodPropertyMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceAccountName: (map['serviceAccountName'] as String).input(),
       shareProcessNamespace: (map['shareProcessNamespace'] as bool).input(),
-      volumes: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolume>(map['volumes'], (value) => GetJobDefinitionEksPropertyPodPropertyVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyVolume>(map['volumes']!, (value) => GetJobDefinitionEksPropertyPodPropertyVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

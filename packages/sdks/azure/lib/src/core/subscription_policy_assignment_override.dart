@@ -26,7 +26,7 @@ class SubscriptionPolicyAssignmentOverride {
 
   factory SubscriptionPolicyAssignmentOverride.fromMap(Map<String, dynamic> map) {
     return SubscriptionPolicyAssignmentOverride(
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<SubscriptionPolicyAssignmentOverrideSelector>(map['selectors'], (value) => SubscriptionPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<SubscriptionPolicyAssignmentOverrideSelector>(map['selectors']!, (value) => SubscriptionPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
       value: (map['value'] as String).input(),
     );
   }

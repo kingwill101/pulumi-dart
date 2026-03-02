@@ -31,7 +31,7 @@ class GetListenerRuleActionJwtValidation {
 
   factory GetListenerRuleActionJwtValidation.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionJwtValidation(
-      additionalClaims: map['additionalClaims'] == null ? null : (pulumi.Input.decodeList<GetListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims'], (value) => GetListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalClaims: map['additionalClaims'] == null ? null : ((pulumi.Input.decodeList<GetListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims']!, (value) => GetListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       issuer: (map['issuer'] as String).input(),
       jwksEndpoint: (map['jwksEndpoint'] as String).input(),
     );

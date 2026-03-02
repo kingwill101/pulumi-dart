@@ -51,9 +51,9 @@ class CodeToolsSettingArgs {
     return CodeToolsSettingArgs(
       codeToolsSettingId: (map['codeToolsSettingId'] as String).input(),
       enabledTools: (pulumi.Input.decodeList<CodeToolsSettingEnabledTool>(map['enabledTools'], (value) => CodeToolsSettingEnabledTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

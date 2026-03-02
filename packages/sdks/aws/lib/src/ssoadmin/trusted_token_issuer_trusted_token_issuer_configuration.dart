@@ -21,7 +21,7 @@ class TrustedTokenIssuerTrustedTokenIssuerConfiguration {
 
   factory TrustedTokenIssuerTrustedTokenIssuerConfiguration.fromMap(Map<String, dynamic> map) {
     return TrustedTokenIssuerTrustedTokenIssuerConfiguration(
-      oidcJwtConfiguration: (TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration.fromMap((map['oidcJwtConfiguration'] as Map).cast<String, dynamic>())).input(),
+      oidcJwtConfiguration: (TrustedTokenIssuerTrustedTokenIssuerConfigurationOidcJwtConfiguration.fromMap((map['oidcJwtConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

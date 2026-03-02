@@ -30,9 +30,9 @@ class InstanceConfigInterfaceIpv6Slaac {
 
   factory InstanceConfigInterfaceIpv6Slaac.fromMap(Map<String, dynamic> map) {
     return InstanceConfigInterfaceIpv6Slaac(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      assignedRange: map['assignedRange'] == null ? null : (map['assignedRange'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      assignedRange: map['assignedRange'] == null ? null : (map['assignedRange']! as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

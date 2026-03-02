@@ -26,7 +26,7 @@ class LoadedCertificate {
 
   factory LoadedCertificate.fromMap(Map<String, dynamic> map) {
     return LoadedCertificate(
-      loadTrustStore: map['loadTrustStore'] == null ? null : (map['loadTrustStore'] as bool).input(),
+      loadTrustStore: map['loadTrustStore'] == null ? null : (map['loadTrustStore']! as bool).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

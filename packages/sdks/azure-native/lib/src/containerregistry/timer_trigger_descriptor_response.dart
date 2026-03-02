@@ -25,8 +25,8 @@ class TimerTriggerDescriptorResponse {
 
   factory TimerTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return TimerTriggerDescriptorResponse(
-      scheduleOccurrence: map['scheduleOccurrence'] == null ? null : (map['scheduleOccurrence'] as String).input(),
-      timerTriggerName: map['timerTriggerName'] == null ? null : (map['timerTriggerName'] as String).input(),
+      scheduleOccurrence: map['scheduleOccurrence'] == null ? null : (map['scheduleOccurrence']! as String).input(),
+      timerTriggerName: map['timerTriggerName'] == null ? null : (map['timerTriggerName']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class VpcSubnetState {
 
   factory VpcSubnetState.fromMap(Map<String, dynamic> map) {
     return VpcSubnetState(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
-      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s'], (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      linodes: map['linodes'] == null ? null : (pulumi.Input.decodeList<VpcSubnetLinode>(map['linodes'], (value) => VpcSubnetLinode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as int).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
+      ipv6s: map['ipv6s'] == null ? null : (pulumi.Input.decodeList<VpcSubnetIpv6>(map['ipv6s']!, (value) => VpcSubnetIpv6.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      linodes: map['linodes'] == null ? null : (pulumi.Input.decodeList<VpcSubnetLinode>(map['linodes']!, (value) => VpcSubnetLinode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as int).input(),
     );
   }
 }

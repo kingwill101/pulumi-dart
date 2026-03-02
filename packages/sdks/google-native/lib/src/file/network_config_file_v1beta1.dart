@@ -38,10 +38,10 @@ class NetworkConfigFileV1beta1 {
 
   factory NetworkConfigFileV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkConfigFileV1beta1(
-      connectMode: map['connectMode'] == null ? null : (NetworkConfigConnectModeFileV1beta1.fromValue(map['connectMode'] as String)).input(),
-      modes: map['modes'] == null ? null : (pulumi.Input.decodeList<NetworkConfigModesItemFileV1beta1>(map['modes'], (value) => NetworkConfigModesItemFileV1beta1.fromValue(value as String))).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
+      connectMode: map['connectMode'] == null ? null : (NetworkConfigConnectModeFileV1beta1.fromValue(map['connectMode']! as String)).input(),
+      modes: map['modes'] == null ? null : (pulumi.Input.decodeList<NetworkConfigModesItemFileV1beta1>(map['modes']!, (value) => NetworkConfigModesItemFileV1beta1.fromValue(value as String))).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange']! as String).input(),
     );
   }
 }

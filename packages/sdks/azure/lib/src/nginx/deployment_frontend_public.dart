@@ -20,7 +20,7 @@ class DeploymentFrontendPublic {
 
   factory DeploymentFrontendPublic.fromMap(Map<String, dynamic> map) {
     return DeploymentFrontendPublic(
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
     );
   }
 }

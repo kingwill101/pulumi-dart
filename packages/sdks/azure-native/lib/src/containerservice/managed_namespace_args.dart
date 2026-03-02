@@ -50,12 +50,12 @@ class ManagedNamespaceArgs {
 
   factory ManagedNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNamespaceArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedNamespaceName: map['managedNamespaceName'] == null ? null : (map['managedNamespaceName'] as String).input(),
-      properties: map['properties'] == null ? null : (NamespaceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedNamespaceName: map['managedNamespaceName'] == null ? null : (map['managedNamespaceName']! as String).input(),
+      properties: map['properties'] == null ? null : (NamespaceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

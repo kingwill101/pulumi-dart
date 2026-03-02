@@ -35,7 +35,7 @@ class PostgresqlRoleArgs {
   factory PostgresqlRoleArgs.fromMap(Map<String, dynamic> map) {
     return PostgresqlRoleArgs(
       clusterId: (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
     );
   }

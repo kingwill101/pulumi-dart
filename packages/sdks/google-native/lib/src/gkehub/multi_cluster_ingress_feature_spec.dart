@@ -21,7 +21,7 @@ class MultiClusterIngressFeatureSpec {
 
   factory MultiClusterIngressFeatureSpec.fromMap(Map<String, dynamic> map) {
     return MultiClusterIngressFeatureSpec(
-      configMembership: map['configMembership'] == null ? null : (map['configMembership'] as String).input(),
+      configMembership: map['configMembership'] == null ? null : (map['configMembership']! as String).input(),
     );
   }
 }

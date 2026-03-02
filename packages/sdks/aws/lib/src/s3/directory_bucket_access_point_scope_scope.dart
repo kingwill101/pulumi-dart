@@ -27,8 +27,8 @@ class DirectoryBucketAccessPointScopeScope {
 
   factory DirectoryBucketAccessPointScopeScope.fromMap(Map<String, dynamic> map) {
     return DirectoryBucketAccessPointScopeScope(
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      prefixes: map['prefixes'] == null ? null : ((map['prefixes'] as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : (((map['permissions'] as List).cast<String>()).input()).input(),
+      prefixes: map['prefixes'] == null ? null : (((map['prefixes'] as List).cast<String>()).input()).input(),
     );
   }
 }

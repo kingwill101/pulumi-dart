@@ -99,21 +99,21 @@ class ContainerRecipeArgs {
 
   factory ContainerRecipeArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeArgs(
-      components: (pulumi.Input.decodeList<ContainerRecipeComponent>(map['components'], (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: (pulumi.Input.decodeList<ContainerRecipeComponent>(map['components']!, (value) => ContainerRecipeComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
       containerType: (map['containerType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dockerfileTemplateData: map['dockerfileTemplateData'] == null ? null : (map['dockerfileTemplateData'] as String).input(),
-      dockerfileTemplateUri: map['dockerfileTemplateUri'] == null ? null : (map['dockerfileTemplateUri'] as String).input(),
-      instanceConfiguration: map['instanceConfiguration'] == null ? null : (ContainerRecipeInstanceConfiguration.fromMap((map['instanceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      dockerfileTemplateData: map['dockerfileTemplateData'] == null ? null : ((map['dockerfileTemplateData'] as String).input()).input(),
+      dockerfileTemplateUri: map['dockerfileTemplateUri'] == null ? null : ((map['dockerfileTemplateUri'] as String).input()).input(),
+      instanceConfiguration: map['instanceConfiguration'] == null ? null : ((ContainerRecipeInstanceConfiguration.fromMap((map['instanceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       parentImage: (map['parentImage'] as String).input(),
-      platformOverride: map['platformOverride'] == null ? null : (map['platformOverride'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetRepository: (ContainerRecipeTargetRepository.fromMap((map['targetRepository'] as Map).cast<String, dynamic>())).input(),
+      platformOverride: map['platformOverride'] == null ? null : ((map['platformOverride'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetRepository: (ContainerRecipeTargetRepository.fromMap((map['targetRepository']! as Map).cast<String, dynamic>())).input(),
       version: (map['version'] as String).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : ((map['workingDirectory'] as String).input()).input(),
     );
   }
 }

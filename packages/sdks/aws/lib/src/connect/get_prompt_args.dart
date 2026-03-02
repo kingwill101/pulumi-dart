@@ -36,7 +36,7 @@ class GetPromptArgs {
     return GetPromptArgs(
       instanceId: (map['instanceId'] as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

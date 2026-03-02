@@ -119,18 +119,18 @@ class WorkspaceDatasetArgs {
 
   factory WorkspaceDatasetArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceDatasetArgs(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
       dataSourceType: (map['dataSourceType'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
       datasetName: (map['datasetName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetLabel>(map['labels'], (value) => WorkspaceDatasetLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetLabel>(map['labels']!, (value) => WorkspaceDatasetLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
       property: (map['property'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
       uri: (map['uri'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

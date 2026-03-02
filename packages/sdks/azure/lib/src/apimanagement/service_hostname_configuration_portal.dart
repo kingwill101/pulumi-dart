@@ -80,18 +80,18 @@ class ServiceHostnameConfigurationPortal {
 
   factory ServiceHostnameConfigurationPortal.fromMap(Map<String, dynamic> map) {
     return ServiceHostnameConfigurationPortal(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource'] as String).input(),
-      certificateStatus: map['certificateStatus'] == null ? null : (map['certificateStatus'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      certificateSource: map['certificateSource'] == null ? null : (map['certificateSource']! as String).input(),
+      certificateStatus: map['certificateStatus'] == null ? null : (map['certificateStatus']! as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
       hostName: (map['hostName'] as String).input(),
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate'] as bool).input(),
-      sslKeyvaultIdentityClientId: map['sslKeyvaultIdentityClientId'] == null ? null : (map['sslKeyvaultIdentityClientId'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId']! as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate']! as bool).input(),
+      sslKeyvaultIdentityClientId: map['sslKeyvaultIdentityClientId'] == null ? null : (map['sslKeyvaultIdentityClientId']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

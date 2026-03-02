@@ -27,8 +27,8 @@ class TargetConfigurationDeploymentmanagerV2 {
 
   factory TargetConfigurationDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
     return TargetConfigurationDeploymentmanagerV2(
-      config: map['config'] == null ? null : (ConfigFileDeploymentmanagerV2.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFileDeploymentmanagerV2>(map['imports'], (value) => ImportFileDeploymentmanagerV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (ConfigFileDeploymentmanagerV2.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFileDeploymentmanagerV2>(map['imports']!, (value) => ImportFileDeploymentmanagerV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

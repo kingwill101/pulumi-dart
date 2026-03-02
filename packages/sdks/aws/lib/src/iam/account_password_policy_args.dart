@@ -64,15 +64,15 @@ class AccountPasswordPolicyArgs {
 
   factory AccountPasswordPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccountPasswordPolicyArgs(
-      allowUsersToChangePassword: map['allowUsersToChangePassword'] == null ? null : (map['allowUsersToChangePassword'] as bool).input(),
-      hardExpiry: map['hardExpiry'] == null ? null : (map['hardExpiry'] as bool).input(),
-      maxPasswordAge: map['maxPasswordAge'] == null ? null : (map['maxPasswordAge'] as int).input(),
-      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : (map['minimumPasswordLength'] as int).input(),
-      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : (map['passwordReusePrevention'] as int).input(),
-      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : (map['requireLowercaseCharacters'] as bool).input(),
-      requireNumbers: map['requireNumbers'] == null ? null : (map['requireNumbers'] as bool).input(),
-      requireSymbols: map['requireSymbols'] == null ? null : (map['requireSymbols'] as bool).input(),
-      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : (map['requireUppercaseCharacters'] as bool).input(),
+      allowUsersToChangePassword: map['allowUsersToChangePassword'] == null ? null : ((map['allowUsersToChangePassword'] as bool).input()).input(),
+      hardExpiry: map['hardExpiry'] == null ? null : ((map['hardExpiry'] as bool).input()).input(),
+      maxPasswordAge: map['maxPasswordAge'] == null ? null : ((map['maxPasswordAge'] as int).input()).input(),
+      minimumPasswordLength: map['minimumPasswordLength'] == null ? null : ((map['minimumPasswordLength'] as int).input()).input(),
+      passwordReusePrevention: map['passwordReusePrevention'] == null ? null : ((map['passwordReusePrevention'] as int).input()).input(),
+      requireLowercaseCharacters: map['requireLowercaseCharacters'] == null ? null : ((map['requireLowercaseCharacters'] as bool).input()).input(),
+      requireNumbers: map['requireNumbers'] == null ? null : ((map['requireNumbers'] as bool).input()).input(),
+      requireSymbols: map['requireSymbols'] == null ? null : ((map['requireSymbols'] as bool).input()).input(),
+      requireUppercaseCharacters: map['requireUppercaseCharacters'] == null ? null : ((map['requireUppercaseCharacters'] as bool).input()).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class GetVolumeArgs {
 
   factory GetVolumeArgs.fromMap(Map<String, dynamic> map) {
     return GetVolumeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

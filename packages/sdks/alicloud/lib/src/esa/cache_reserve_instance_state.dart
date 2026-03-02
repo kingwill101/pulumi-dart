@@ -58,14 +58,14 @@ class CacheReserveInstanceState {
 
   factory CacheReserveInstanceState.fromMap(Map<String, dynamic> map) {
     return CacheReserveInstanceState(
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      crRegion: map['crRegion'] == null ? null : (map['crRegion'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      crRegion: map['crRegion'] == null ? null : (map['crRegion']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      quotaGb: map['quotaGb'] == null ? null : (map['quotaGb']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

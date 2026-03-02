@@ -24,8 +24,8 @@ class ExtendedLocationOptions {
 
   factory ExtendedLocationOptions.fromMap(Map<String, dynamic> map) {
     return ExtendedLocationOptions(
-      supportedPolicy: map['supportedPolicy'] == null ? null : (map['supportedPolicy'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      supportedPolicy: map['supportedPolicy'] == null ? null : (map['supportedPolicy']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

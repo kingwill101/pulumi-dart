@@ -27,8 +27,8 @@ class UserSettingsCookieSynchronizationConfiguration {
 
   factory UserSettingsCookieSynchronizationConfiguration.fromMap(Map<String, dynamic> map) {
     return UserSettingsCookieSynchronizationConfiguration(
-      allowlists: map['allowlists'] == null ? null : (pulumi.Input.decodeList<UserSettingsCookieSynchronizationConfigurationAllowlist>(map['allowlists'], (value) => UserSettingsCookieSynchronizationConfigurationAllowlist.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      blocklists: map['blocklists'] == null ? null : (pulumi.Input.decodeList<UserSettingsCookieSynchronizationConfigurationBlocklist>(map['blocklists'], (value) => UserSettingsCookieSynchronizationConfigurationBlocklist.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowlists: map['allowlists'] == null ? null : ((pulumi.Input.decodeList<UserSettingsCookieSynchronizationConfigurationAllowlist>(map['allowlists']!, (value) => UserSettingsCookieSynchronizationConfigurationAllowlist.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      blocklists: map['blocklists'] == null ? null : ((pulumi.Input.decodeList<UserSettingsCookieSynchronizationConfigurationBlocklist>(map['blocklists']!, (value) => UserSettingsCookieSynchronizationConfigurationBlocklist.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

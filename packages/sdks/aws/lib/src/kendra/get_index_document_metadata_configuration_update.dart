@@ -38,8 +38,8 @@ class GetIndexDocumentMetadataConfigurationUpdate {
   factory GetIndexDocumentMetadataConfigurationUpdate.fromMap(Map<String, dynamic> map) {
     return GetIndexDocumentMetadataConfigurationUpdate(
       name: (map['name'] as String).input(),
-      relevances: (pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateRelevance>(map['relevances'], (value) => GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searches: (pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateSearch>(map['searches'], (value) => GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relevances: (pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateRelevance>(map['relevances']!, (value) => GetIndexDocumentMetadataConfigurationUpdateRelevance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searches: (pulumi.Input.decodeList<GetIndexDocumentMetadataConfigurationUpdateSearch>(map['searches']!, (value) => GetIndexDocumentMetadataConfigurationUpdateSearch.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

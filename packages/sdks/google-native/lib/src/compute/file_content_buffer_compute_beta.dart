@@ -26,8 +26,8 @@ class FileContentBufferComputeBeta {
 
   factory FileContentBufferComputeBeta.fromMap(Map<String, dynamic> map) {
     return FileContentBufferComputeBeta(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      fileType: map['fileType'] == null ? null : (FileContentBufferFileTypeComputeBeta.fromValue(map['fileType'] as String)).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      fileType: map['fileType'] == null ? null : (FileContentBufferFileTypeComputeBeta.fromValue(map['fileType']! as String)).input(),
     );
   }
 }

@@ -47,9 +47,9 @@ class ScopeArgs {
 
   factory ScopeArgs.fromMap(Map<String, dynamic> map) {
     return ScopeArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scopeId: (map['scopeId'] as String).input(),
     );
   }

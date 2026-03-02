@@ -38,7 +38,7 @@ class OnlineExperimentationWorkspaceProperties {
   factory OnlineExperimentationWorkspaceProperties.fromMap(Map<String, dynamic> map) {
     return OnlineExperimentationWorkspaceProperties(
       appConfigurationResourceId: (map['appConfigurationResourceId'] as String).input(),
-      encryption: map['encryption'] == null ? null : (ResourceEncryptionConfiguration.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (ResourceEncryptionConfiguration.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       logAnalyticsWorkspaceResourceId: (map['logAnalyticsWorkspaceResourceId'] as String).input(),
       logsExporterStorageAccountResourceId: (map['logsExporterStorageAccountResourceId'] as String).input(),
     );

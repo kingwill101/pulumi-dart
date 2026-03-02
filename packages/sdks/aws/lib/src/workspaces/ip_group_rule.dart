@@ -25,7 +25,7 @@ class IpGroupRule {
 
   factory IpGroupRule.fromMap(Map<String, dynamic> map) {
     return IpGroupRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       source: (map['source'] as String).input(),
     );
   }

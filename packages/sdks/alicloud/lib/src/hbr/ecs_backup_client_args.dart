@@ -74,17 +74,17 @@ class EcsBackupClientArgs {
 
   factory EcsBackupClientArgs.fromMap(Map<String, dynamic> map) {
     return EcsBackupClientArgs(
-      dataNetworkType: map['dataNetworkType'] == null ? null : (map['dataNetworkType'] as String).input(),
-      dataProxySetting: map['dataProxySetting'] == null ? null : (map['dataProxySetting'] as String).input(),
+      dataNetworkType: map['dataNetworkType'] == null ? null : (map['dataNetworkType']! as String).input(),
+      dataProxySetting: map['dataProxySetting'] == null ? null : (map['dataProxySetting']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      maxCpuCore: map['maxCpuCore'] == null ? null : (map['maxCpuCore'] as String).input(),
-      maxWorker: map['maxWorker'] == null ? null : (map['maxWorker'] as String).input(),
-      proxyHost: map['proxyHost'] == null ? null : (map['proxyHost'] as String).input(),
-      proxyPassword: map['proxyPassword'] == null ? null : (map['proxyPassword'] as String).input(),
-      proxyPort: map['proxyPort'] == null ? null : (map['proxyPort'] as String).input(),
-      proxyUser: map['proxyUser'] == null ? null : (map['proxyUser'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      useHttps: map['useHttps'] == null ? null : (map['useHttps'] as bool).input(),
+      maxCpuCore: map['maxCpuCore'] == null ? null : (map['maxCpuCore']! as String).input(),
+      maxWorker: map['maxWorker'] == null ? null : (map['maxWorker']! as String).input(),
+      proxyHost: map['proxyHost'] == null ? null : (map['proxyHost']! as String).input(),
+      proxyPassword: map['proxyPassword'] == null ? null : (map['proxyPassword']! as String).input(),
+      proxyPort: map['proxyPort'] == null ? null : (map['proxyPort']! as String).input(),
+      proxyUser: map['proxyUser'] == null ? null : (map['proxyUser']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      useHttps: map['useHttps'] == null ? null : (map['useHttps']! as bool).input(),
     );
   }
 }

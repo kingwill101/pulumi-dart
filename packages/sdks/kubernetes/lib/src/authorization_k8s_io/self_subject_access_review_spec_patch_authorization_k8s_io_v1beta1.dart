@@ -28,8 +28,8 @@ class SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1 {
 
   factory SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SelfSubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1(
-      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributesPatchAuthorizationK8sIoV1beta1.fromMap((map['nonResourceAttributes'] as Map).cast<String, dynamic>())).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributesPatchAuthorizationK8sIoV1beta1.fromMap((map['resourceAttributes'] as Map).cast<String, dynamic>())).input(),
+      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributesPatchAuthorizationK8sIoV1beta1.fromMap((map['nonResourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributesPatchAuthorizationK8sIoV1beta1.fromMap((map['resourceAttributes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

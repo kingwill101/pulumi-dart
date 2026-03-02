@@ -47,8 +47,8 @@ class EnvironmentRotationScheduleArgs {
       environment: (map['environment'] as String).input(),
       organization: (map['organization'] as String).input(),
       project: (map['project'] as String).input(),
-      scheduleCron: map['scheduleCron'] == null ? null : (map['scheduleCron'] as String).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      scheduleCron: map['scheduleCron'] == null ? null : (map['scheduleCron']! as String).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

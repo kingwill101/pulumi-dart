@@ -46,12 +46,12 @@ class HttpProxyConfig {
 
   factory HttpProxyConfig.fromMap(Map<String, dynamic> map) {
     return HttpProxyConfig(
-      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy'] as String).input(),
-      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy'] as String).input(),
-      noProxy: map['noProxy'] == null ? null : ((map['noProxy'] as List).cast<String>()).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      httpProxy: map['httpProxy'] == null ? null : (map['httpProxy']! as String).input(),
+      httpsProxy: map['httpsProxy'] == null ? null : (map['httpsProxy']! as String).input(),
+      noProxy: map['noProxy'] == null ? null : ((map['noProxy']! as List).cast<String>()).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      trustedCa: map['trustedCa'] == null ? null : (map['trustedCa']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class FhirConfig {
 
   factory FhirConfig.fromMap(Map<String, dynamic> map) {
     return FhirConfig(
-      defaultKeepExtensions: map['defaultKeepExtensions'] == null ? null : (map['defaultKeepExtensions'] as bool).input(),
-      fieldMetadataList: map['fieldMetadataList'] == null ? null : (pulumi.Input.decodeList<FieldMetadata>(map['fieldMetadataList'], (value) => FieldMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultKeepExtensions: map['defaultKeepExtensions'] == null ? null : (map['defaultKeepExtensions']! as bool).input(),
+      fieldMetadataList: map['fieldMetadataList'] == null ? null : (pulumi.Input.decodeList<FieldMetadata>(map['fieldMetadataList']!, (value) => FieldMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

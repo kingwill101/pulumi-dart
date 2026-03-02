@@ -94,21 +94,21 @@ class ContainerGroupInitContainer {
 
   factory ContainerGroupInitContainer.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerEnvironmentVar>(map['environmentVars'], (value) => ContainerGroupInitContainerEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gpu: map['gpu'] == null ? null : (map['gpu'] as int).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerPort>(map['ports'], (value) => ContainerGroupInitContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ready: map['ready'] == null ? null : (map['ready'] as bool).input(),
-      restartCount: map['restartCount'] == null ? null : (map['restartCount'] as int).input(),
-      securityContexts: map['securityContexts'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerSecurityContext>(map['securityContexts'], (value) => ContainerGroupInitContainerSecurityContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerVolumeMount>(map['volumeMounts'], (value) => ContainerGroupInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      environmentVars: map['environmentVars'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerEnvironmentVar>(map['environmentVars']!, (value) => ContainerGroupInitContainerEnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gpu: map['gpu'] == null ? null : (map['gpu']! as int).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy']! as String).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerPort>(map['ports']!, (value) => ContainerGroupInitContainerPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
+      restartCount: map['restartCount'] == null ? null : (map['restartCount']! as int).input(),
+      securityContexts: map['securityContexts'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerSecurityContext>(map['securityContexts']!, (value) => ContainerGroupInitContainerSecurityContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<ContainerGroupInitContainerVolumeMount>(map['volumeMounts']!, (value) => ContainerGroupInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

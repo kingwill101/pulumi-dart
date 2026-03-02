@@ -40,11 +40,11 @@ class DomainDevicesDiskTarget {
 
   factory DomainDevicesDiskTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskTarget(
-      bus: map['bus'] == null ? null : (map['bus'] as String).input(),
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
-      removable: map['removable'] == null ? null : (map['removable'] as String).input(),
-      rotationRate: map['rotationRate'] == null ? null : (map['rotationRate'] as double).input(),
-      tray: map['tray'] == null ? null : (map['tray'] as String).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as String).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
+      removable: map['removable'] == null ? null : (map['removable']! as String).input(),
+      rotationRate: map['rotationRate'] == null ? null : (map['rotationRate']! as double).input(),
+      tray: map['tray'] == null ? null : (map['tray']! as String).input(),
     );
   }
 }

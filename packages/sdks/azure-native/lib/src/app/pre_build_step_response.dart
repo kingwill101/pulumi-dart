@@ -32,9 +32,9 @@ class PreBuildStepResponse {
 
   factory PreBuildStepResponse.fromMap(Map<String, dynamic> map) {
     return PreBuildStepResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpGet: map['httpGet'] == null ? null : (HttpGetResponse.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      scripts: map['scripts'] == null ? null : ((map['scripts'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpGet: map['httpGet'] == null ? null : (HttpGetResponse.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      scripts: map['scripts'] == null ? null : ((map['scripts']! as List).cast<String>()).input(),
     );
   }
 }

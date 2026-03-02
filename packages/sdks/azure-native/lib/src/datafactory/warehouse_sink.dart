@@ -78,18 +78,18 @@ class WarehouseSink {
 
   factory WarehouseSink.fromMap(Map<String, dynamic> map) {
     return WarehouseSink(
-      allowCopyCommand: map['allowCopyCommand'] == null ? null : (map['allowCopyCommand']).input(),
-      copyCommandSettings: map['copyCommandSettings'] == null ? null : (DWCopyCommandSettings.fromMap((map['copyCommandSettings'] as Map).cast<String, dynamic>())).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
-      tableOption: map['tableOption'] == null ? null : (map['tableOption']).input(),
+      allowCopyCommand: map['allowCopyCommand'] == null ? null : (map['allowCopyCommand']!).input(),
+      copyCommandSettings: map['copyCommandSettings'] == null ? null : (DWCopyCommandSettings.fromMap((map['copyCommandSettings']! as Map).cast<String, dynamic>())).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']!).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
+      tableOption: map['tableOption'] == null ? null : (map['tableOption']!).input(),
       type: (map['type'] as String).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
-      writeBehavior: map['writeBehavior'] == null ? null : (map['writeBehavior']).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
+      writeBehavior: map['writeBehavior'] == null ? null : (map['writeBehavior']!).input(),
     );
   }
 }

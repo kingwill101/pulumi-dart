@@ -58,13 +58,13 @@ class FirewallEndpointAssociationArgs {
   factory FirewallEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FirewallEndpointAssociationArgs(
       firewallEndpoint: (map['firewallEndpoint'] as String).input(),
-      firewallEndpointAssociationId: map['firewallEndpointAssociationId'] == null ? null : (map['firewallEndpointAssociationId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      firewallEndpointAssociationId: map['firewallEndpointAssociationId'] == null ? null : (map['firewallEndpointAssociationId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      tlsInspectionPolicy: map['tlsInspectionPolicy'] == null ? null : (map['tlsInspectionPolicy']! as String).input(),
     );
   }
 }

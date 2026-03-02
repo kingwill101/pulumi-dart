@@ -72,7 +72,7 @@ class GetApplicationResult {
       id: map['id'] as String,
       instanceArn: map['instanceArn'] as String,
       name: map['name'] as String,
-      portalOptions: pulumi.Input.decodeList<GetApplicationPortalOption>(map['portalOptions'], (value) => GetApplicationPortalOption.fromMap((value as Map).cast<String, dynamic>())),
+      portalOptions: pulumi.Input.decodeList<GetApplicationPortalOption>(map['portalOptions']!, (value) => GetApplicationPortalOption.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       status: map['status'] as String,
     );

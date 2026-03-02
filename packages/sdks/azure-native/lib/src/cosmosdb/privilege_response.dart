@@ -27,8 +27,8 @@ class PrivilegeResponse {
 
   factory PrivilegeResponse.fromMap(Map<String, dynamic> map) {
     return PrivilegeResponse(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      resource: map['resource'] == null ? null : (PrivilegeResponseResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      resource: map['resource'] == null ? null : (PrivilegeResponseResource.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class VirtualNetworkSubnet {
 
   factory VirtualNetworkSubnet.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkSubnet(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sharedPublicIpAddress: map['sharedPublicIpAddress'] == null ? null : (VirtualNetworkSubnetSharedPublicIpAddress.fromMap((map['sharedPublicIpAddress'] as Map).cast<String, dynamic>())).input(),
-      useInVirtualMachineCreation: map['useInVirtualMachineCreation'] == null ? null : (map['useInVirtualMachineCreation'] as String).input(),
-      usePublicIpAddress: map['usePublicIpAddress'] == null ? null : (map['usePublicIpAddress'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sharedPublicIpAddress: map['sharedPublicIpAddress'] == null ? null : (VirtualNetworkSubnetSharedPublicIpAddress.fromMap((map['sharedPublicIpAddress']! as Map).cast<String, dynamic>())).input(),
+      useInVirtualMachineCreation: map['useInVirtualMachineCreation'] == null ? null : (map['useInVirtualMachineCreation']! as String).input(),
+      usePublicIpAddress: map['usePublicIpAddress'] == null ? null : (map['usePublicIpAddress']! as String).input(),
     );
   }
 }

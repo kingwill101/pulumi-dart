@@ -34,9 +34,9 @@ class GoogleCloudMlV1ExplanationConfig {
 
   factory GoogleCloudMlV1ExplanationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ExplanationConfig(
-      integratedGradientsAttribution: map['integratedGradientsAttribution'] == null ? null : (GoogleCloudMlV1IntegratedGradientsAttribution.fromMap((map['integratedGradientsAttribution'] as Map).cast<String, dynamic>())).input(),
-      sampledShapleyAttribution: map['sampledShapleyAttribution'] == null ? null : (GoogleCloudMlV1SampledShapleyAttribution.fromMap((map['sampledShapleyAttribution'] as Map).cast<String, dynamic>())).input(),
-      xraiAttribution: map['xraiAttribution'] == null ? null : (GoogleCloudMlV1XraiAttribution.fromMap((map['xraiAttribution'] as Map).cast<String, dynamic>())).input(),
+      integratedGradientsAttribution: map['integratedGradientsAttribution'] == null ? null : (GoogleCloudMlV1IntegratedGradientsAttribution.fromMap((map['integratedGradientsAttribution']! as Map).cast<String, dynamic>())).input(),
+      sampledShapleyAttribution: map['sampledShapleyAttribution'] == null ? null : (GoogleCloudMlV1SampledShapleyAttribution.fromMap((map['sampledShapleyAttribution']! as Map).cast<String, dynamic>())).input(),
+      xraiAttribution: map['xraiAttribution'] == null ? null : (GoogleCloudMlV1XraiAttribution.fromMap((map['xraiAttribution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class DomainDevicesGraphicRdp {
 
   factory DomainDevicesGraphicRdp.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicRdp(
-      autoPort: map['autoPort'] == null ? null : (map['autoPort'] as bool).input(),
-      listen: map['listen'] == null ? null : (map['listen'] as String).input(),
-      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<DomainDevicesGraphicRdpListener>(map['listeners'], (value) => DomainDevicesGraphicRdpListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multiUser: map['multiUser'] == null ? null : (map['multiUser'] as String).input(),
-      passwd: map['passwd'] == null ? null : (map['passwd'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      replaceUser: map['replaceUser'] == null ? null : (map['replaceUser'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      autoPort: map['autoPort'] == null ? null : (map['autoPort']! as bool).input(),
+      listen: map['listen'] == null ? null : (map['listen']! as String).input(),
+      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<DomainDevicesGraphicRdpListener>(map['listeners']!, (value) => DomainDevicesGraphicRdpListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multiUser: map['multiUser'] == null ? null : (map['multiUser']! as String).input(),
+      passwd: map['passwd'] == null ? null : (map['passwd']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      replaceUser: map['replaceUser'] == null ? null : (map['replaceUser']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

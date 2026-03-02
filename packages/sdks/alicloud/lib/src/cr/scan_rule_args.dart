@@ -68,8 +68,8 @@ class ScanRuleArgs {
   factory ScanRuleArgs.fromMap(Map<String, dynamic> map) {
     return ScanRuleArgs(
       instanceId: (map['instanceId'] as String).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      repoNames: map['repoNames'] == null ? null : ((map['repoNames'] as List).cast<String>()).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      repoNames: map['repoNames'] == null ? null : ((map['repoNames']! as List).cast<String>()).input(),
       repoTagFilterPattern: (map['repoTagFilterPattern'] as String).input(),
       ruleName: (map['ruleName'] as String).input(),
       scanScope: (map['scanScope'] as String).input(),

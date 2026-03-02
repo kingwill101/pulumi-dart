@@ -25,8 +25,8 @@ class DiJobResourceSettingsScheduleResourceSettings {
 
   factory DiJobResourceSettingsScheduleResourceSettings.fromMap(Map<String, dynamic> map) {
     return DiJobResourceSettingsScheduleResourceSettings(
-      requestedCu: map['requestedCu'] == null ? null : (map['requestedCu'] as double).input(),
-      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : (map['resourceGroupIdentifier'] as String).input(),
+      requestedCu: map['requestedCu'] == null ? null : (map['requestedCu']! as double).input(),
+      resourceGroupIdentifier: map['resourceGroupIdentifier'] == null ? null : (map['resourceGroupIdentifier']! as String).input(),
     );
   }
 }

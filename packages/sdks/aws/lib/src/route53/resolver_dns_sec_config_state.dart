@@ -41,11 +41,11 @@ class ResolverDnsSecConfigState {
 
   factory ResolverDnsSecConfigState.fromMap(Map<String, dynamic> map) {
     return ResolverDnsSecConfigState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      validationStatus: map['validationStatus'] == null ? null : (map['validationStatus'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      validationStatus: map['validationStatus'] == null ? null : ((map['validationStatus'] as String).input()).input(),
     );
   }
 }

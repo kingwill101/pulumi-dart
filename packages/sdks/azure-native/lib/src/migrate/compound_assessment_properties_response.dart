@@ -39,7 +39,7 @@ class CompoundAssessmentPropertiesResponse {
   factory CompoundAssessmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentPropertiesResponse(
       details: (CompoundAssessmentDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       targetAssessmentArmIds: (TargetAssessmentArmIdsResponse.fromMap((map['targetAssessmentArmIds'] as Map).cast<String, dynamic>())).input(),
     );

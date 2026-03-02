@@ -21,7 +21,7 @@ class ServiceCIDRSpecPatchNetworkingK8sIoV1alpha1 {
 
   factory ServiceCIDRSpecPatchNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ServiceCIDRSpecPatchNetworkingK8sIoV1alpha1(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
     );
   }
 }

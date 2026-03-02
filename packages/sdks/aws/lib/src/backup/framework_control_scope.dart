@@ -30,9 +30,9 @@ class FrameworkControlScope {
 
   factory FrameworkControlScope.fromMap(Map<String, dynamic> map) {
     return FrameworkControlScope(
-      complianceResourceIds: map['complianceResourceIds'] == null ? null : ((map['complianceResourceIds'] as List).cast<String>()).input(),
-      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : ((map['complianceResourceTypes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      complianceResourceIds: map['complianceResourceIds'] == null ? null : (((map['complianceResourceIds'] as List).cast<String>()).input()).input(),
+      complianceResourceTypes: map['complianceResourceTypes'] == null ? null : (((map['complianceResourceTypes'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ClusterWorkloadIdentityConfig {
 
   factory ClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return ClusterWorkloadIdentityConfig(
-      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool'] as String).input(),
+      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool']! as String).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class CrawlerCatalogTarget {
 
   factory CrawlerCatalogTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerCatalogTarget(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : (map['dlqEventQueueArn'] as String).input(),
-      eventQueueArn: map['eventQueueArn'] == null ? null : (map['eventQueueArn'] as String).input(),
+      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : ((map['dlqEventQueueArn'] as String).input()).input(),
+      eventQueueArn: map['eventQueueArn'] == null ? null : ((map['eventQueueArn'] as String).input()).input(),
       tables: ((map['tables'] as List).cast<String>()).input(),
     );
   }

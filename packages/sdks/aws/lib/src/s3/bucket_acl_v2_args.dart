@@ -45,11 +45,11 @@ class BucketAclV2Args {
 
   factory BucketAclV2Args.fromMap(Map<String, dynamic> map) {
     return BucketAclV2Args(
-      accessControlPolicy: map['accessControlPolicy'] == null ? null : (BucketAclV2AccessControlPolicy.fromMap((map['accessControlPolicy'] as Map).cast<String, dynamic>())).input(),
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
+      accessControlPolicy: map['accessControlPolicy'] == null ? null : ((BucketAclV2AccessControlPolicy.fromMap((map['accessControlPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      acl: map['acl'] == null ? null : ((map['acl'] as String).input()).input(),
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

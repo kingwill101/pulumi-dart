@@ -55,13 +55,13 @@ class VpnServerConfigurationArgs {
 
   factory VpnServerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VpnServerConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (VpnServerConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpnServerConfigurationName: map['vpnServerConfigurationName'] == null ? null : (map['vpnServerConfigurationName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpnServerConfigurationName: map['vpnServerConfigurationName'] == null ? null : (map['vpnServerConfigurationName']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class StaticAccountState {
 
   factory StaticAccountState.fromMap(Map<String, dynamic> map) {
     return StaticAccountState(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      masterUid: map['masterUid'] == null ? null : (map['masterUid'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      masterUid: map['masterUid'] == null ? null : (map['masterUid']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      secretKey: map['secretKey'] == null ? null : (map['secretKey']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

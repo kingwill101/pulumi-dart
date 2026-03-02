@@ -31,9 +31,9 @@ class GoogleCloudRetailV2Rating {
 
   factory GoogleCloudRetailV2Rating.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2Rating(
-      averageRating: map['averageRating'] == null ? null : (map['averageRating'] as double).input(),
-      ratingCount: map['ratingCount'] == null ? null : (map['ratingCount'] as int).input(),
-      ratingHistogram: map['ratingHistogram'] == null ? null : ((map['ratingHistogram'] as List).cast<int>()).input(),
+      averageRating: map['averageRating'] == null ? null : (map['averageRating']! as double).input(),
+      ratingCount: map['ratingCount'] == null ? null : (map['ratingCount']! as int).input(),
+      ratingHistogram: map['ratingHistogram'] == null ? null : ((map['ratingHistogram']! as List).cast<int>()).input(),
     );
   }
 }

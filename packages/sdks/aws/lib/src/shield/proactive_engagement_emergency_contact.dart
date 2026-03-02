@@ -30,9 +30,9 @@ class ProactiveEngagementEmergencyContact {
 
   factory ProactiveEngagementEmergencyContact.fromMap(Map<String, dynamic> map) {
     return ProactiveEngagementEmergencyContact(
-      contactNotes: map['contactNotes'] == null ? null : (map['contactNotes'] as String).input(),
+      contactNotes: map['contactNotes'] == null ? null : ((map['contactNotes'] as String).input()).input(),
       emailAddress: (map['emailAddress'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : ((map['phoneNumber'] as String).input()).input(),
     );
   }
 }

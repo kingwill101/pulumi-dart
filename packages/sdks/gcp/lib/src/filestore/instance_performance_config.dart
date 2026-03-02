@@ -32,8 +32,8 @@ class InstancePerformanceConfig {
 
   factory InstancePerformanceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePerformanceConfig(
-      fixedIops: map['fixedIops'] == null ? null : (InstancePerformanceConfigFixedIops.fromMap((map['fixedIops'] as Map).cast<String, dynamic>())).input(),
-      iopsPerTb: map['iopsPerTb'] == null ? null : (InstancePerformanceConfigIopsPerTb.fromMap((map['iopsPerTb'] as Map).cast<String, dynamic>())).input(),
+      fixedIops: map['fixedIops'] == null ? null : (InstancePerformanceConfigFixedIops.fromMap((map['fixedIops']! as Map).cast<String, dynamic>())).input(),
+      iopsPerTb: map['iopsPerTb'] == null ? null : (InstancePerformanceConfigIopsPerTb.fromMap((map['iopsPerTb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

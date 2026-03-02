@@ -88,19 +88,19 @@ class ElasticSanState {
 
   factory ElasticSanState.fromMap(Map<String, dynamic> map) {
     return ElasticSanState(
-      baseSizeInTib: map['baseSizeInTib'] == null ? null : (map['baseSizeInTib'] as int).input(),
-      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (ElasticSanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      totalIops: map['totalIops'] == null ? null : (map['totalIops'] as int).input(),
-      totalMbps: map['totalMbps'] == null ? null : (map['totalMbps'] as int).input(),
-      totalSizeInTib: map['totalSizeInTib'] == null ? null : (map['totalSizeInTib'] as int).input(),
-      totalVolumeSizeInGib: map['totalVolumeSizeInGib'] == null ? null : (map['totalVolumeSizeInGib'] as int).input(),
-      volumeGroupCount: map['volumeGroupCount'] == null ? null : (map['volumeGroupCount'] as int).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      baseSizeInTib: map['baseSizeInTib'] == null ? null : (map['baseSizeInTib']! as int).input(),
+      extendedSizeInTib: map['extendedSizeInTib'] == null ? null : (map['extendedSizeInTib']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (ElasticSanSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      totalIops: map['totalIops'] == null ? null : (map['totalIops']! as int).input(),
+      totalMbps: map['totalMbps'] == null ? null : (map['totalMbps']! as int).input(),
+      totalSizeInTib: map['totalSizeInTib'] == null ? null : (map['totalSizeInTib']! as int).input(),
+      totalVolumeSizeInGib: map['totalVolumeSizeInGib'] == null ? null : (map['totalVolumeSizeInGib']! as int).input(),
+      volumeGroupCount: map['volumeGroupCount'] == null ? null : (map['volumeGroupCount']! as int).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

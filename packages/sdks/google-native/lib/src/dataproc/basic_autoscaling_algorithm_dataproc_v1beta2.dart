@@ -27,8 +27,8 @@ class BasicAutoscalingAlgorithmDataprocV1beta2 {
 
   factory BasicAutoscalingAlgorithmDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return BasicAutoscalingAlgorithmDataprocV1beta2(
-      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod'] as String).input(),
-      yarnConfig: map['yarnConfig'] == null ? null : (BasicYarnAutoscalingConfigDataprocV1beta2.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>())).input(),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod']! as String).input(),
+      yarnConfig: map['yarnConfig'] == null ? null : (BasicYarnAutoscalingConfigDataprocV1beta2.fromMap((map['yarnConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

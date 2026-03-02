@@ -31,9 +31,9 @@ class RoleEligibilityScheduleRequestPropertiesExpiration {
 
   factory RoleEligibilityScheduleRequestPropertiesExpiration.fromMap(Map<String, dynamic> map) {
     return RoleEligibilityScheduleRequestPropertiesExpiration(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

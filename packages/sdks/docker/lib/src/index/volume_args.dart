@@ -46,11 +46,11 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      cluster: map['cluster'] == null ? null : (VolumeCluster.fromMap((map['cluster'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<VolumeLabel>(map['labels'], (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cluster: map['cluster'] == null ? null : (VolumeCluster.fromMap((map['cluster']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<VolumeLabel>(map['labels']!, (value) => VolumeLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class MetastoreServiceScheduledBackup {
   factory MetastoreServiceScheduledBackup.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceScheduledBackup(
       backupLocation: (map['backupLocation'] as String).input(),
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

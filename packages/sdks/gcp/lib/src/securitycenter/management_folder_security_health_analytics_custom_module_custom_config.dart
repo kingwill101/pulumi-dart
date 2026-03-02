@@ -58,12 +58,12 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig {
 
   factory ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(Map<String, dynamic> map) {
     return ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfig(
-      customOutput: map['customOutput'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput.fromMap((map['customOutput'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      predicate: map['predicate'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      recommendation: map['recommendation'] == null ? null : (map['recommendation'] as String).input(),
-      resourceSelector: map['resourceSelector'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      customOutput: map['customOutput'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput.fromMap((map['customOutput']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      predicate: map['predicate'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate.fromMap((map['predicate']! as Map).cast<String, dynamic>())).input(),
+      recommendation: map['recommendation'] == null ? null : (map['recommendation']! as String).input(),
+      resourceSelector: map['resourceSelector'] == null ? null : (ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector.fromMap((map['resourceSelector']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

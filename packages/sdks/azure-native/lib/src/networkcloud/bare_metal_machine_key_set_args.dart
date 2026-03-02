@@ -82,16 +82,16 @@ class BareMetalMachineKeySetArgs {
   factory BareMetalMachineKeySetArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalMachineKeySetArgs(
       azureGroupId: (map['azureGroupId'] as String).input(),
-      bareMetalMachineKeySetName: map['bareMetalMachineKeySetName'] == null ? null : (map['bareMetalMachineKeySetName'] as String).input(),
+      bareMetalMachineKeySetName: map['bareMetalMachineKeySetName'] == null ? null : (map['bareMetalMachineKeySetName']! as String).input(),
       clusterName: (map['clusterName'] as String).input(),
       expiration: (map['expiration'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       jumpHostsAllowed: ((map['jumpHostsAllowed'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      osGroupName: map['osGroupName'] == null ? null : (map['osGroupName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      osGroupName: map['osGroupName'] == null ? null : (map['osGroupName']! as String).input(),
       privilegeLevel: (map['privilegeLevel'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userList: (pulumi.Input.decodeList<KeySetUser>(map['userList'], (value) => KeySetUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

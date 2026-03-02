@@ -45,9 +45,9 @@ class AppAudioProcessingConfigAmbientSoundConfig {
 
   factory AppAudioProcessingConfigAmbientSoundConfig.fromMap(Map<String, dynamic> map) {
     return AppAudioProcessingConfigAmbientSoundConfig(
-      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri'] as String).input(),
-      prebuiltAmbientSound: map['prebuiltAmbientSound'] == null ? null : (map['prebuiltAmbientSound'] as String).input(),
-      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb'] as double).input(),
+      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri']! as String).input(),
+      prebuiltAmbientSound: map['prebuiltAmbientSound'] == null ? null : (map['prebuiltAmbientSound']! as String).input(),
+      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb']! as double).input(),
     );
   }
 }

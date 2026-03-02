@@ -52,12 +52,12 @@ class BackupScheduleState {
 
   factory BackupScheduleState.fromMap(Map<String, dynamic> map) {
     return BackupScheduleState(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : ((map['dailyRecurrence'] as Map).cast<String, dynamic>()).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (BackupScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>())).input(),
+      dailyRecurrence: map['dailyRecurrence'] == null ? null : ((map['dailyRecurrence']! as Map).cast<String, dynamic>()).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : (BackupScheduleWeeklyRecurrence.fromMap((map['weeklyRecurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

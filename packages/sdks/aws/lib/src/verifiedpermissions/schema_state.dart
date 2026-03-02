@@ -37,10 +37,10 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      definition: map['definition'] == null ? null : (SchemaDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      definition: map['definition'] == null ? null : ((SchemaDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input()).input(),
+      namespaces: map['namespaces'] == null ? null : (((map['namespaces'] as List).cast<String>()).input()).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : ((map['policyStoreId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

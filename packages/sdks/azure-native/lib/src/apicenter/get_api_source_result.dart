@@ -68,15 +68,15 @@ class GetApiSourceResult {
 
   factory GetApiSourceResult.fromMap(Map<String, dynamic> map) {
     return GetApiSourceResult(
-      azureApiManagementSource: map['azureApiManagementSource'] == null ? null : AzureApiManagementSourceResponse.fromMap((map['azureApiManagementSource'] as Map).cast<String, dynamic>()),
+      azureApiManagementSource: map['azureApiManagementSource'] == null ? null : AzureApiManagementSourceResponse.fromMap((map['azureApiManagementSource']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      importSpecification: map['importSpecification'] == null ? null : map['importSpecification'] as String,
+      importSpecification: map['importSpecification'] == null ? null : map['importSpecification']! as String,
       linkState: LinkStateResponse.fromMap((map['linkState'] as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      targetEnvironmentId: map['targetEnvironmentId'] == null ? null : map['targetEnvironmentId'] as String,
-      targetLifecycleStage: map['targetLifecycleStage'] == null ? null : map['targetLifecycleStage'] as String,
+      targetEnvironmentId: map['targetEnvironmentId'] == null ? null : map['targetEnvironmentId']! as String,
+      targetLifecycleStage: map['targetLifecycleStage'] == null ? null : map['targetLifecycleStage']! as String,
       type: map['type'] as String,
     );
   }

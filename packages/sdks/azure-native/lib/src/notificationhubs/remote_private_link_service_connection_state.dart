@@ -21,7 +21,7 @@ class RemotePrivateLinkServiceConnectionState {
 
   factory RemotePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return RemotePrivateLinkServiceConnectionState(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

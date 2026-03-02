@@ -71,13 +71,13 @@ class InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker {
 
   factory InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentGroupConfiguredAvailabilitySlaIntendedSlaBlocker(
-      attachments: map['attachments'] == null ? null : ((map['attachments'] as List).cast<String>()).input(),
-      blockerType: map['blockerType'] == null ? null : (map['blockerType'] as String).input(),
-      documentationLink: map['documentationLink'] == null ? null : (map['documentationLink'] as String).input(),
-      explanation: map['explanation'] == null ? null : (map['explanation'] as String).input(),
-      metros: map['metros'] == null ? null : ((map['metros'] as List).cast<String>()).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      attachments: map['attachments'] == null ? null : ((map['attachments']! as List).cast<String>()).input(),
+      blockerType: map['blockerType'] == null ? null : (map['blockerType']! as String).input(),
+      documentationLink: map['documentationLink'] == null ? null : (map['documentationLink']! as String).input(),
+      explanation: map['explanation'] == null ? null : (map['explanation']! as String).input(),
+      metros: map['metros'] == null ? null : ((map['metros']! as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

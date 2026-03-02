@@ -26,7 +26,7 @@ class DomainEncryptAtRest {
   factory DomainEncryptAtRest.fromMap(Map<String, dynamic> map) {
     return DomainEncryptAtRest(
       enabled: (map['enabled'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
     );
   }
 }

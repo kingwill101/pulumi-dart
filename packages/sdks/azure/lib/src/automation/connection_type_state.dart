@@ -42,11 +42,11 @@ class ConnectionTypeState {
 
   factory ConnectionTypeState.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<ConnectionTypeField>(map['fields'], (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<ConnectionTypeField>(map['fields']!, (value) => ConnectionTypeField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

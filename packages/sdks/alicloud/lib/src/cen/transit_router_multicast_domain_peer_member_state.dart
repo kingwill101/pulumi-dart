@@ -44,11 +44,11 @@ class TransitRouterMulticastDomainPeerMemberState {
 
   factory TransitRouterMulticastDomainPeerMemberState.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainPeerMemberState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress'] as String).input(),
-      peerTransitRouterMulticastDomainId: map['peerTransitRouterMulticastDomainId'] == null ? null : (map['peerTransitRouterMulticastDomainId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      groupIpAddress: map['groupIpAddress'] == null ? null : (map['groupIpAddress']! as String).input(),
+      peerTransitRouterMulticastDomainId: map['peerTransitRouterMulticastDomainId'] == null ? null : (map['peerTransitRouterMulticastDomainId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] == null ? null : (map['transitRouterMulticastDomainId']! as String).input(),
     );
   }
 }

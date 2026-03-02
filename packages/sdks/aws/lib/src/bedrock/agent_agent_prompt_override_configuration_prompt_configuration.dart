@@ -47,7 +47,7 @@ class AgentAgentPromptOverrideConfigurationPromptConfiguration {
   factory AgentAgentPromptOverrideConfigurationPromptConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfigurationPromptConfiguration(
       basePromptTemplate: (map['basePromptTemplate'] as String).input(),
-      inferenceConfigurations: (pulumi.Input.decodeList<AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration>(map['inferenceConfigurations'], (value) => AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inferenceConfigurations: (pulumi.Input.decodeList<AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration>(map['inferenceConfigurations']!, (value) => AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parserMode: (map['parserMode'] as String).input(),
       promptCreationMode: (map['promptCreationMode'] as String).input(),
       promptState: (map['promptState'] as String).input(),

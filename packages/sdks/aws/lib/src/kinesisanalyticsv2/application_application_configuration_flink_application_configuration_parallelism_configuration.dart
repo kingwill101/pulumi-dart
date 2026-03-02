@@ -35,10 +35,10 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelis
 
   factory ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration(
-      autoScalingEnabled: map['autoScalingEnabled'] == null ? null : (map['autoScalingEnabled'] as bool).input(),
+      autoScalingEnabled: map['autoScalingEnabled'] == null ? null : ((map['autoScalingEnabled'] as bool).input()).input(),
       configurationType: (map['configurationType'] as String).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      parallelismPerKpu: map['parallelismPerKpu'] == null ? null : (map['parallelismPerKpu'] as int).input(),
+      parallelism: map['parallelism'] == null ? null : ((map['parallelism'] as int).input()).input(),
+      parallelismPerKpu: map['parallelismPerKpu'] == null ? null : ((map['parallelismPerKpu'] as int).input()).input(),
     );
   }
 }

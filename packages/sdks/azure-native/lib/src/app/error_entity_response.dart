@@ -56,14 +56,14 @@ class ErrorEntityResponse {
 
   factory ErrorEntityResponse.fromMap(Map<String, dynamic> map) {
     return ErrorEntityResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ErrorEntityResponse>(map['details'], (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extendedCode: map['extendedCode'] == null ? null : (map['extendedCode'] as String).input(),
-      innerErrors: map['innerErrors'] == null ? null : (pulumi.Input.decodeList<ErrorEntityResponse>(map['innerErrors'], (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      messageTemplate: map['messageTemplate'] == null ? null : (map['messageTemplate'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ErrorEntityResponse>(map['details']!, (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedCode: map['extendedCode'] == null ? null : (map['extendedCode']! as String).input(),
+      innerErrors: map['innerErrors'] == null ? null : (pulumi.Input.decodeList<ErrorEntityResponse>(map['innerErrors']!, (value) => ErrorEntityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      messageTemplate: map['messageTemplate'] == null ? null : (map['messageTemplate']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

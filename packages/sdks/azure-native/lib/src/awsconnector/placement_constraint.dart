@@ -26,8 +26,8 @@ class PlacementConstraint {
 
   factory PlacementConstraint.fromMap(Map<String, dynamic> map) {
     return PlacementConstraint(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

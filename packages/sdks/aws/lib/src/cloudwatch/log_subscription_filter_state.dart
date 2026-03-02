@@ -61,15 +61,15 @@ class LogSubscriptionFilterState {
 
   factory LogSubscriptionFilterState.fromMap(Map<String, dynamic> map) {
     return LogSubscriptionFilterState(
-      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : (map['applyOnTransformedLogs'] as bool).input(),
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
-      emitSystemFields: map['emitSystemFields'] == null ? null : ((map['emitSystemFields'] as List).cast<String>()).input(),
-      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      applyOnTransformedLogs: map['applyOnTransformedLogs'] == null ? null : ((map['applyOnTransformedLogs'] as bool).input()).input(),
+      destinationArn: map['destinationArn'] == null ? null : ((map['destinationArn'] as String).input()).input(),
+      distribution: map['distribution'] == null ? null : ((map['distribution'] as String).input()).input(),
+      emitSystemFields: map['emitSystemFields'] == null ? null : (((map['emitSystemFields'] as List).cast<String>()).input()).input(),
+      filterPattern: map['filterPattern'] == null ? null : ((map['filterPattern'] as String).input()).input(),
+      logGroup: map['logGroup'] == null ? null : ((map['logGroup'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration {
 
   factory AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfiguration(
-      code: map['code'] == null ? null : (AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
+      code: map['code'] == null ? null : ((AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode.fromMap((map['code']! as Map).cast<String, dynamic>())).input()).input(),
       entryPoints: ((map['entryPoints'] as List).cast<String>()).input(),
       runtime: (map['runtime'] as String).input(),
     );

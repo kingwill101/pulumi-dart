@@ -32,8 +32,8 @@ class TargetRegionResponse {
   factory TargetRegionResponse.fromMap(Map<String, dynamic> map) {
     return TargetRegionResponse(
       name: (map['name'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

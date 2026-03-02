@@ -49,11 +49,11 @@ class MaintenanceWindowResponse {
   factory MaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponse(
       durationHours: (map['durationHours'] as int).input(),
-      notAllowedDates: map['notAllowedDates'] == null ? null : (pulumi.Input.decodeList<DateSpanResponse>(map['notAllowedDates'], (value) => DateSpanResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notAllowedDates: map['notAllowedDates'] == null ? null : (pulumi.Input.decodeList<DateSpanResponse>(map['notAllowedDates']!, (value) => DateSpanResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       schedule: (ScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
       startTime: (map['startTime'] as String).input(),
-      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset'] as String).input(),
+      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset']! as String).input(),
     );
   }
 }

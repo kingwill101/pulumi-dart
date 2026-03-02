@@ -26,8 +26,8 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystem(
-      cachePoint: map['cachePoint'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      cachePoint: map['cachePoint'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatSystemCachePoint.fromMap((map['cachePoint']! as Map).cast<String, dynamic>())).input()).input(),
+      text: map['text'] == null ? null : ((map['text'] as String).input()).input(),
     );
   }
 }

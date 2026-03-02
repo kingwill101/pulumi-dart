@@ -35,10 +35,10 @@ class SpringCloudServiceConfigServerGitSettingRepositorySshAuth {
 
   factory SpringCloudServiceConfigServerGitSettingRepositorySshAuth.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceConfigServerGitSettingRepositorySshAuth(
-      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm'] as String).input(),
+      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
+      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
-      strictHostKeyCheckingEnabled: map['strictHostKeyCheckingEnabled'] == null ? null : (map['strictHostKeyCheckingEnabled'] as bool).input(),
+      strictHostKeyCheckingEnabled: map['strictHostKeyCheckingEnabled'] == null ? null : (map['strictHostKeyCheckingEnabled']! as bool).input(),
     );
   }
 }

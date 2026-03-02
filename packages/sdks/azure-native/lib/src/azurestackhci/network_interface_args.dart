@@ -73,16 +73,16 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal'] as bool).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (InterfaceDNSSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<IPConfiguration>(map['ipConfigurations'], (value) => IPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReference.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      createFromLocal: map['createFromLocal'] == null ? null : (map['createFromLocal']! as bool).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (InterfaceDNSSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<IPConfiguration>(map['ipConfigurations']!, (value) => IPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReference.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

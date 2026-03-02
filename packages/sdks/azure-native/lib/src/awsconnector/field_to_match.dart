@@ -37,10 +37,10 @@ class FieldToMatch {
 
   factory FieldToMatch.fromMap(Map<String, dynamic> map) {
     return FieldToMatch(
-      method: map['method'] == null ? null : (map['method']).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString']).input(),
-      singleHeader: map['singleHeader'] == null ? null : (SingleHeaderModelProperties.fromMap((map['singleHeader'] as Map).cast<String, dynamic>())).input(),
-      uriPath: map['uriPath'] == null ? null : (map['uriPath']).input(),
+      method: map['method'] == null ? null : (map['method']!).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']!).input(),
+      singleHeader: map['singleHeader'] == null ? null : (SingleHeaderModelProperties.fromMap((map['singleHeader']! as Map).cast<String, dynamic>())).input(),
+      uriPath: map['uriPath'] == null ? null : (map['uriPath']!).input(),
     );
   }
 }

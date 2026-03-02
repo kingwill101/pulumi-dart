@@ -21,7 +21,7 @@ class AnalyticsConfigurationStorageClassAnalysis {
 
   factory AnalyticsConfigurationStorageClassAnalysis.fromMap(Map<String, dynamic> map) {
     return AnalyticsConfigurationStorageClassAnalysis(
-      dataExport: (AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap((map['dataExport'] as Map).cast<String, dynamic>())).input(),
+      dataExport: (AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap((map['dataExport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

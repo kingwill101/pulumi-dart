@@ -102,16 +102,16 @@ class ServicePerimeterState {
 
   factory ServicePerimeterState.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      perimeterType: map['perimeterType'] == null ? null : (map['perimeterType'] as String).input(),
-      spec: map['spec'] == null ? null : (ServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (ServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec'] as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (map['perimeterType']! as String).input(),
+      spec: map['spec'] == null ? null : (ServicePerimeterSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (ServicePerimeterStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec']! as bool).input(),
     );
   }
 }

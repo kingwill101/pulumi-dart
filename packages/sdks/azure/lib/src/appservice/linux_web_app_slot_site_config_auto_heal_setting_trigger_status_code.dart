@@ -47,10 +47,10 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode {
     return LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode(
       count: (map['count'] as int).input(),
       interval: (map['interval'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       statusCodeRange: (map['statusCodeRange'] as String).input(),
-      subStatus: map['subStatus'] == null ? null : (map['subStatus'] as int).input(),
-      win32StatusCode: map['win32StatusCode'] == null ? null : (map['win32StatusCode'] as int).input(),
+      subStatus: map['subStatus'] == null ? null : (map['subStatus']! as int).input(),
+      win32StatusCode: map['win32StatusCode'] == null ? null : (map['win32StatusCode']! as int).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AppVersionSnapshotGuardrailActionGenerativeAnswer {
 
   factory AppVersionSnapshotGuardrailActionGenerativeAnswer.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailActionGenerativeAnswer(
-      prompt: map['prompt'] == null ? null : (map['prompt'] as String).input(),
+      prompt: map['prompt'] == null ? null : (map['prompt']! as String).input(),
     );
   }
 }

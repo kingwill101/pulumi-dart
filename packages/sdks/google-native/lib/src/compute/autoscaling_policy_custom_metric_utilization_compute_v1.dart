@@ -42,11 +42,11 @@ class AutoscalingPolicyCustomMetricUtilizationComputeV1 {
 
   factory AutoscalingPolicyCustomMetricUtilizationComputeV1.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyCustomMetricUtilizationComputeV1(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment'] as double).input(),
-      utilizationTarget: map['utilizationTarget'] == null ? null : (map['utilizationTarget'] as double).input(),
-      utilizationTargetType: map['utilizationTargetType'] == null ? null : (AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeV1.fromValue(map['utilizationTargetType'] as String)).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment']! as double).input(),
+      utilizationTarget: map['utilizationTarget'] == null ? null : (map['utilizationTarget']! as double).input(),
+      utilizationTargetType: map['utilizationTargetType'] == null ? null : (AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeComputeV1.fromValue(map['utilizationTargetType']! as String)).input(),
     );
   }
 }

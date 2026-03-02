@@ -51,12 +51,12 @@ class GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment {
   factory GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment(
       createdAt: (map['createdAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

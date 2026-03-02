@@ -53,13 +53,13 @@ class TenantState {
 
   factory TenantState.fromMap(Map<String, dynamic> map) {
     return TenantState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sendingStatus: map['sendingStatus'] == null ? null : (map['sendingStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      tenantArn: map['tenantArn'] == null ? null : (map['tenantArn'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      tenantName: map['tenantName'] == null ? null : (map['tenantName'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sendingStatus: map['sendingStatus'] == null ? null : ((map['sendingStatus'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      tenantArn: map['tenantArn'] == null ? null : ((map['tenantArn'] as String).input()).input(),
+      tenantId: map['tenantId'] == null ? null : ((map['tenantId'] as String).input()).input(),
+      tenantName: map['tenantName'] == null ? null : ((map['tenantName'] as String).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PosturePolicySetPolicyComplianceStandard {
 
   factory PosturePolicySetPolicyComplianceStandard.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyComplianceStandard(
-      control: map['control'] == null ? null : (map['control'] as String).input(),
-      standard: map['standard'] == null ? null : (map['standard'] as String).input(),
+      control: map['control'] == null ? null : (map['control']! as String).input(),
+      standard: map['standard'] == null ? null : (map['standard']! as String).input(),
     );
   }
 }

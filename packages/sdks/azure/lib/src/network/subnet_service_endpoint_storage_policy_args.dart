@@ -45,11 +45,11 @@ class SubnetServiceEndpointStoragePolicyArgs {
 
   factory SubnetServiceEndpointStoragePolicyArgs.fromMap(Map<String, dynamic> map) {
     return SubnetServiceEndpointStoragePolicyArgs(
-      definitions: map['definitions'] == null ? null : (pulumi.Input.decodeList<SubnetServiceEndpointStoragePolicyDefinition>(map['definitions'], (value) => SubnetServiceEndpointStoragePolicyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      definitions: map['definitions'] == null ? null : (pulumi.Input.decodeList<SubnetServiceEndpointStoragePolicyDefinition>(map['definitions']!, (value) => SubnetServiceEndpointStoragePolicyDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

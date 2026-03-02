@@ -21,7 +21,7 @@ class DiskEncryptionSetParametersResponse {
 
   factory DiskEncryptionSetParametersResponse.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetParametersResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

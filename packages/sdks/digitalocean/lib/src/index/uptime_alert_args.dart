@@ -56,11 +56,11 @@ class UptimeAlertArgs {
   factory UptimeAlertArgs.fromMap(Map<String, dynamic> map) {
     return UptimeAlertArgs(
       checkId: (map['checkId'] as String).input(),
-      comparison: map['comparison'] == null ? null : (map['comparison'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comparison: map['comparison'] == null ? null : (map['comparison']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       notifications: (pulumi.Input.decodeList<UptimeAlertNotification>(map['notifications'], (value) => UptimeAlertNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

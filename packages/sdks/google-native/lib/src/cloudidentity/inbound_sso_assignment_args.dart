@@ -57,13 +57,13 @@ class InboundSsoAssignmentArgs {
 
   factory InboundSsoAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return InboundSsoAssignmentArgs(
-      customer: map['customer'] == null ? null : (map['customer'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
-      samlSsoInfo: map['samlSsoInfo'] == null ? null : (SamlSsoInfo.fromMap((map['samlSsoInfo'] as Map).cast<String, dynamic>())).input(),
-      signInBehavior: map['signInBehavior'] == null ? null : (SignInBehavior.fromMap((map['signInBehavior'] as Map).cast<String, dynamic>())).input(),
-      ssoMode: map['ssoMode'] == null ? null : (InboundSsoAssignmentSsoMode.fromValue(map['ssoMode'] as String)).input(),
-      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup'] as String).input(),
-      targetOrgUnit: map['targetOrgUnit'] == null ? null : (map['targetOrgUnit'] as String).input(),
+      customer: map['customer'] == null ? null : (map['customer']! as String).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
+      samlSsoInfo: map['samlSsoInfo'] == null ? null : (SamlSsoInfo.fromMap((map['samlSsoInfo']! as Map).cast<String, dynamic>())).input(),
+      signInBehavior: map['signInBehavior'] == null ? null : (SignInBehavior.fromMap((map['signInBehavior']! as Map).cast<String, dynamic>())).input(),
+      ssoMode: map['ssoMode'] == null ? null : (InboundSsoAssignmentSsoMode.fromValue(map['ssoMode']! as String)).input(),
+      targetGroup: map['targetGroup'] == null ? null : (map['targetGroup']! as String).input(),
+      targetOrgUnit: map['targetOrgUnit'] == null ? null : (map['targetOrgUnit']! as String).input(),
     );
   }
 }

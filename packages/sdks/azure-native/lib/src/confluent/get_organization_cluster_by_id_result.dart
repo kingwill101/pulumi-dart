@@ -66,11 +66,11 @@ class GetOrganizationClusterByIdResult {
     return GetOrganizationClusterByIdResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : SCMetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      metadata: map['metadata'] == null ? null : SCMetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      spec: map['spec'] == null ? null : SCClusterSpecEntityResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ClusterStatusEntityResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null ? null : SCClusterSpecEntityResponse.fromMap((map['spec']! as Map).cast<String, dynamic>()),
+      status: map['status'] == null ? null : ClusterStatusEntityResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

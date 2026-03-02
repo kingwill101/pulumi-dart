@@ -48,7 +48,7 @@ class RuleArgs {
       endpointId: (map['endpointId'] as String).input(),
       forwardIps: (pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps'], (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleName: (map['ruleName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       zoneName: (map['zoneName'] as String).input(),
     );
   }

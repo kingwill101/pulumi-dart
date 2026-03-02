@@ -22,7 +22,7 @@ class OrganizationConfigurationDatasourcesKubernetes {
 
   factory OrganizationConfigurationDatasourcesKubernetes.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationDatasourcesKubernetes(
-      auditLogs: (OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs'] as Map).cast<String, dynamic>())).input(),
+      auditLogs: (OrganizationConfigurationDatasourcesKubernetesAuditLogs.fromMap((map['auditLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class GkeClusterConfig {
 
   factory GkeClusterConfig.fromMap(Map<String, dynamic> map) {
     return GkeClusterConfig(
-      gkeClusterTarget: map['gkeClusterTarget'] == null ? null : (map['gkeClusterTarget'] as String).input(),
-      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (NamespacedGkeDeploymentTarget.fromMap((map['namespacedGkeDeploymentTarget'] as Map).cast<String, dynamic>())).input(),
-      nodePoolTarget: map['nodePoolTarget'] == null ? null : (pulumi.Input.decodeList<GkeNodePoolTarget>(map['nodePoolTarget'], (value) => GkeNodePoolTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gkeClusterTarget: map['gkeClusterTarget'] == null ? null : (map['gkeClusterTarget']! as String).input(),
+      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (NamespacedGkeDeploymentTarget.fromMap((map['namespacedGkeDeploymentTarget']! as Map).cast<String, dynamic>())).input(),
+      nodePoolTarget: map['nodePoolTarget'] == null ? null : (pulumi.Input.decodeList<GkeNodePoolTarget>(map['nodePoolTarget']!, (value) => GkeNodePoolTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

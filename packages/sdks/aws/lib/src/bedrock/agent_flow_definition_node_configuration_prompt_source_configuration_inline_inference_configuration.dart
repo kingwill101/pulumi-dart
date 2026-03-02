@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferen
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration(
-      text: map['text'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfigurationText.fromMap((map['text']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

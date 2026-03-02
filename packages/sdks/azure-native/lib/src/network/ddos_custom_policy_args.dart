@@ -44,11 +44,11 @@ class DdosCustomPolicyArgs {
 
   factory DdosCustomPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DdosCustomPolicyArgs(
-      ddosCustomPolicyName: map['ddosCustomPolicyName'] == null ? null : (map['ddosCustomPolicyName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      ddosCustomPolicyName: map['ddosCustomPolicyName'] == null ? null : (map['ddosCustomPolicyName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

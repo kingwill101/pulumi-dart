@@ -27,7 +27,7 @@ class MetricStreamStatisticsConfiguration {
   factory MetricStreamStatisticsConfiguration.fromMap(Map<String, dynamic> map) {
     return MetricStreamStatisticsConfiguration(
       additionalStatistics: ((map['additionalStatistics'] as List).cast<String>()).input(),
-      includeMetrics: (pulumi.Input.decodeList<MetricStreamStatisticsConfigurationIncludeMetric>(map['includeMetrics'], (value) => MetricStreamStatisticsConfigurationIncludeMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includeMetrics: (pulumi.Input.decodeList<MetricStreamStatisticsConfigurationIncludeMetric>(map['includeMetrics']!, (value) => MetricStreamStatisticsConfigurationIncludeMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

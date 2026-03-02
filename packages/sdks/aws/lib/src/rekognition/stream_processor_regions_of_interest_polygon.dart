@@ -25,8 +25,8 @@ class StreamProcessorRegionsOfInterestPolygon {
 
   factory StreamProcessorRegionsOfInterestPolygon.fromMap(Map<String, dynamic> map) {
     return StreamProcessorRegionsOfInterestPolygon(
-      x: map['x'] == null ? null : (map['x'] as double).input(),
-      y: map['y'] == null ? null : (map['y'] as double).input(),
+      x: map['x'] == null ? null : ((map['x'] as double).input()).input(),
+      y: map['y'] == null ? null : ((map['y'] as double).input()).input(),
     );
   }
 }

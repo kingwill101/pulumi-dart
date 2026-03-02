@@ -51,12 +51,12 @@ class ConditionalAccessPolicyState {
 
   factory ConditionalAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyState(
-      conditions: map['conditions'] == null ? null : (ConditionalAccessPolicyConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      grantControls: map['grantControls'] == null ? null : (ConditionalAccessPolicyGrantControls.fromMap((map['grantControls'] as Map).cast<String, dynamic>())).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      sessionControls: map['sessionControls'] == null ? null : (ConditionalAccessPolicySessionControls.fromMap((map['sessionControls'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      conditions: map['conditions'] == null ? null : (ConditionalAccessPolicyConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      grantControls: map['grantControls'] == null ? null : (ConditionalAccessPolicyGrantControls.fromMap((map['grantControls']! as Map).cast<String, dynamic>())).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      sessionControls: map['sessionControls'] == null ? null : (ConditionalAccessPolicySessionControls.fromMap((map['sessionControls']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

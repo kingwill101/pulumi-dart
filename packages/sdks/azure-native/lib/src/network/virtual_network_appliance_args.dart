@@ -55,13 +55,13 @@ class VirtualNetworkApplianceArgs {
 
   factory VirtualNetworkApplianceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkApplianceArgs(
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : (map['bandwidthInGbps']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetworkApplianceName: map['virtualNetworkApplianceName'] == null ? null : (map['virtualNetworkApplianceName'] as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as SubnetNetwork).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetworkApplianceName: map['virtualNetworkApplianceName'] == null ? null : (map['virtualNetworkApplianceName']! as String).input(),
     );
   }
 }

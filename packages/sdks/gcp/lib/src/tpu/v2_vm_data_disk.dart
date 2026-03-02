@@ -29,7 +29,7 @@ class V2VmDataDisk {
 
   factory V2VmDataDisk.fromMap(Map<String, dynamic> map) {
     return V2VmDataDisk(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       sourceDisk: (map['sourceDisk'] as String).input(),
     );
   }

@@ -69,14 +69,14 @@ class AuthConfigDecryptedCredential {
 
   factory AuthConfigDecryptedCredential.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredential(
-      authToken: map['authToken'] == null ? null : (AuthConfigDecryptedCredentialAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>())).input(),
+      authToken: map['authToken'] == null ? null : (AuthConfigDecryptedCredentialAuthToken.fromMap((map['authToken']! as Map).cast<String, dynamic>())).input(),
       credentialType: (map['credentialType'] as String).input(),
-      jwt: map['jwt'] == null ? null : (AuthConfigDecryptedCredentialJwt.fromMap((map['jwt'] as Map).cast<String, dynamic>())).input(),
-      oauth2AuthorizationCode: map['oauth2AuthorizationCode'] == null ? null : (AuthConfigDecryptedCredentialOauth2AuthorizationCode.fromMap((map['oauth2AuthorizationCode'] as Map).cast<String, dynamic>())).input(),
-      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (AuthConfigDecryptedCredentialOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : (AuthConfigDecryptedCredentialServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>())).input(),
-      usernameAndPassword: map['usernameAndPassword'] == null ? null : (AuthConfigDecryptedCredentialUsernameAndPassword.fromMap((map['usernameAndPassword'] as Map).cast<String, dynamic>())).input(),
+      jwt: map['jwt'] == null ? null : (AuthConfigDecryptedCredentialJwt.fromMap((map['jwt']! as Map).cast<String, dynamic>())).input(),
+      oauth2AuthorizationCode: map['oauth2AuthorizationCode'] == null ? null : (AuthConfigDecryptedCredentialOauth2AuthorizationCode.fromMap((map['oauth2AuthorizationCode']! as Map).cast<String, dynamic>())).input(),
+      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (AuthConfigDecryptedCredentialOidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : (AuthConfigDecryptedCredentialServiceAccountCredentials.fromMap((map['serviceAccountCredentials']! as Map).cast<String, dynamic>())).input(),
+      usernameAndPassword: map['usernameAndPassword'] == null ? null : (AuthConfigDecryptedCredentialUsernameAndPassword.fromMap((map['usernameAndPassword']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

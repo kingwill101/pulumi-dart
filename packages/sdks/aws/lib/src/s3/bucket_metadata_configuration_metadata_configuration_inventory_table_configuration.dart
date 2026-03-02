@@ -37,9 +37,9 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   factory BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration(
       configurationState: (map['configurationState'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tableArn: map['tableArn'] == null ? null : ((map['tableArn'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

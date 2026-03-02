@@ -42,7 +42,7 @@ class OrganizationArgs {
       displayName: (map['displayName'] as String).input(),
       iotcentralApplicationId: (map['iotcentralApplicationId'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      parentOrganizationId: map['parentOrganizationId'] == null ? null : (map['parentOrganizationId'] as String).input(),
+      parentOrganizationId: map['parentOrganizationId'] == null ? null : (map['parentOrganizationId']! as String).input(),
     );
   }
 }

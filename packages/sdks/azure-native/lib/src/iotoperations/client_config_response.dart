@@ -47,12 +47,12 @@ class ClientConfigResponse {
 
   factory ClientConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClientConfigResponse(
-      maxKeepAliveSeconds: map['maxKeepAliveSeconds'] == null ? null : (map['maxKeepAliveSeconds'] as int).input(),
-      maxMessageExpirySeconds: map['maxMessageExpirySeconds'] == null ? null : (map['maxMessageExpirySeconds'] as int).input(),
-      maxPacketSizeBytes: map['maxPacketSizeBytes'] == null ? null : (map['maxPacketSizeBytes'] as int).input(),
-      maxReceiveMaximum: map['maxReceiveMaximum'] == null ? null : (map['maxReceiveMaximum'] as int).input(),
-      maxSessionExpirySeconds: map['maxSessionExpirySeconds'] == null ? null : (map['maxSessionExpirySeconds'] as int).input(),
-      subscriberQueueLimit: map['subscriberQueueLimit'] == null ? null : (SubscriberQueueLimitResponse.fromMap((map['subscriberQueueLimit'] as Map).cast<String, dynamic>())).input(),
+      maxKeepAliveSeconds: map['maxKeepAliveSeconds'] == null ? null : (map['maxKeepAliveSeconds']! as int).input(),
+      maxMessageExpirySeconds: map['maxMessageExpirySeconds'] == null ? null : (map['maxMessageExpirySeconds']! as int).input(),
+      maxPacketSizeBytes: map['maxPacketSizeBytes'] == null ? null : (map['maxPacketSizeBytes']! as int).input(),
+      maxReceiveMaximum: map['maxReceiveMaximum'] == null ? null : (map['maxReceiveMaximum']! as int).input(),
+      maxSessionExpirySeconds: map['maxSessionExpirySeconds'] == null ? null : (map['maxSessionExpirySeconds']! as int).input(),
+      subscriberQueueLimit: map['subscriberQueueLimit'] == null ? null : (SubscriberQueueLimitResponse.fromMap((map['subscriberQueueLimit']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

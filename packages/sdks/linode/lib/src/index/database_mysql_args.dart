@@ -78,16 +78,16 @@ class DatabaseMysqlArgs {
 
   factory DatabaseMysqlArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMysqlArgs(
-      allowLists: map['allowLists'] == null ? null : ((map['allowLists'] as List).cast<String>()).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      allowLists: map['allowLists'] == null ? null : ((map['allowLists']! as List).cast<String>()).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
       engineId: (map['engineId'] as String).input(),
       label: (map['label'] as String).input(),
       region: (map['region'] as String).input(),
-      replicationType: map['replicationType'] == null ? null : (map['replicationType'] as String).input(),
-      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection'] as bool).input(),
+      replicationType: map['replicationType'] == null ? null : (map['replicationType']! as String).input(),
+      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection']! as bool).input(),
       type: (map['type'] as String).input(),
-      updates: map['updates'] == null ? null : (DatabaseMysqlUpdates.fromMap((map['updates'] as Map).cast<String, dynamic>())).input(),
+      updates: map['updates'] == null ? null : (DatabaseMysqlUpdates.fromMap((map['updates']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

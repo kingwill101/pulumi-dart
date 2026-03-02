@@ -32,9 +32,9 @@ class ClusterDbClusterIpArray {
 
   factory ClusterDbClusterIpArray.fromMap(Map<String, dynamic> map) {
     return ClusterDbClusterIpArray(
-      dbClusterIpArrayName: map['dbClusterIpArrayName'] == null ? null : (map['dbClusterIpArrayName'] as String).input(),
-      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode'] as String).input(),
-      securityIps: map['securityIps'] == null ? null : ((map['securityIps'] as List).cast<String>()).input(),
+      dbClusterIpArrayName: map['dbClusterIpArrayName'] == null ? null : (map['dbClusterIpArrayName']! as String).input(),
+      modifyMode: map['modifyMode'] == null ? null : (map['modifyMode']! as String).input(),
+      securityIps: map['securityIps'] == null ? null : ((map['securityIps']! as List).cast<String>()).input(),
     );
   }
 }

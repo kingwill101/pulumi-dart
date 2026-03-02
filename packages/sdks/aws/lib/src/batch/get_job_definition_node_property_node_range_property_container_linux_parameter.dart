@@ -47,12 +47,12 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter(
-      devices: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice>(map['devices'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      devices: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice>(map['devices']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
       initProcessEnabled: (map['initProcessEnabled'] as bool).input(),
       maxSwap: (map['maxSwap'] as int).input(),
       sharedMemorySize: (map['sharedMemorySize'] as int).input(),
       swappiness: (map['swappiness'] as int).input(),
-      tmpfs: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf>(map['tmpfs'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tmpfs: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf>(map['tmpfs']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

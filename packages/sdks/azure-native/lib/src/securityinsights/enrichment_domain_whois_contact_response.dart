@@ -66,16 +66,16 @@ class EnrichmentDomainWhoisContactResponse {
 
   factory EnrichmentDomainWhoisContactResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentDomainWhoisContactResponse(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      fax: map['fax'] == null ? null : (map['fax'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      org: map['org'] == null ? null : (map['org'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      postal: map['postal'] == null ? null : (map['postal'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      street: map['street'] == null ? null : ((map['street'] as List).cast<String>()).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      country: map['country'] == null ? null : (map['country']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      fax: map['fax'] == null ? null : (map['fax']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      org: map['org'] == null ? null : (map['org']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      postal: map['postal'] == null ? null : (map['postal']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      street: map['street'] == null ? null : ((map['street']! as List).cast<String>()).input(),
     );
   }
 }

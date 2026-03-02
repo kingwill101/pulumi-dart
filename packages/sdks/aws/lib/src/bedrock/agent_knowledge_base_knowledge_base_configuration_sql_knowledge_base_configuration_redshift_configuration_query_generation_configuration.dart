@@ -26,8 +26,8 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration(
-      executionTimeoutSeconds: map['executionTimeoutSeconds'] == null ? null : (map['executionTimeoutSeconds'] as int).input(),
-      generationContext: map['generationContext'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext.fromMap((map['generationContext'] as Map).cast<String, dynamic>())).input(),
+      executionTimeoutSeconds: map['executionTimeoutSeconds'] == null ? null : ((map['executionTimeoutSeconds'] as int).input()).input(),
+      generationContext: map['generationContext'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContext.fromMap((map['generationContext']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

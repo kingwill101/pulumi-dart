@@ -27,8 +27,8 @@ class ClassificationJobS3JobDefinitionBucketCriteria {
 
   factory ClassificationJobS3JobDefinitionBucketCriteria.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionBucketCriteria(
-      excludes: map['excludes'] == null ? null : (ClassificationJobS3JobDefinitionBucketCriteriaExcludes.fromMap((map['excludes'] as Map).cast<String, dynamic>())).input(),
-      includes: map['includes'] == null ? null : (ClassificationJobS3JobDefinitionBucketCriteriaIncludes.fromMap((map['includes'] as Map).cast<String, dynamic>())).input(),
+      excludes: map['excludes'] == null ? null : ((ClassificationJobS3JobDefinitionBucketCriteriaExcludes.fromMap((map['excludes']! as Map).cast<String, dynamic>())).input()).input(),
+      includes: map['includes'] == null ? null : ((ClassificationJobS3JobDefinitionBucketCriteriaIncludes.fromMap((map['includes']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

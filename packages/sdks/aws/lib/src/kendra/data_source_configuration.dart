@@ -33,9 +33,9 @@ class DataSourceConfiguration {
 
   factory DataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfiguration(
-      s3Configuration: map['s3Configuration'] == null ? null : (DataSourceConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
-      templateConfiguration: map['templateConfiguration'] == null ? null : (DataSourceConfigurationTemplateConfiguration.fromMap((map['templateConfiguration'] as Map).cast<String, dynamic>())).input(),
-      webCrawlerConfiguration: map['webCrawlerConfiguration'] == null ? null : (DataSourceConfigurationWebCrawlerConfiguration.fromMap((map['webCrawlerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : ((DataSourceConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      templateConfiguration: map['templateConfiguration'] == null ? null : ((DataSourceConfigurationTemplateConfiguration.fromMap((map['templateConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      webCrawlerConfiguration: map['webCrawlerConfiguration'] == null ? null : ((DataSourceConfigurationWebCrawlerConfiguration.fromMap((map['webCrawlerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

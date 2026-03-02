@@ -22,7 +22,7 @@ class StreamRuleSetObjectFilter {
 
   factory StreamRuleSetObjectFilter.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetObjectFilter(
-      sourceObjectIdentifier: map['sourceObjectIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap((map['sourceObjectIdentifier'] as Map).cast<String, dynamic>())).input(),
+      sourceObjectIdentifier: map['sourceObjectIdentifier'] == null ? null : (StreamRuleSetObjectFilterSourceObjectIdentifier.fromMap((map['sourceObjectIdentifier']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

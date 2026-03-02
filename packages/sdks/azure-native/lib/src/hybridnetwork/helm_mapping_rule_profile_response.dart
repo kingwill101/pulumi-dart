@@ -42,11 +42,11 @@ class HelmMappingRuleProfileResponse {
 
   factory HelmMappingRuleProfileResponse.fromMap(Map<String, dynamic> map) {
     return HelmMappingRuleProfileResponse(
-      helmPackageVersion: map['helmPackageVersion'] == null ? null : (map['helmPackageVersion'] as String).input(),
-      options: map['options'] == null ? null : (HelmMappingRuleProfileResponseOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      releaseName: map['releaseName'] == null ? null : (map['releaseName'] as String).input(),
-      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace'] as String).input(),
-      values: map['values'] == null ? null : (map['values'] as String).input(),
+      helmPackageVersion: map['helmPackageVersion'] == null ? null : (map['helmPackageVersion']! as String).input(),
+      options: map['options'] == null ? null : (HelmMappingRuleProfileResponseOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      releaseName: map['releaseName'] == null ? null : (map['releaseName']! as String).input(),
+      releaseNamespace: map['releaseNamespace'] == null ? null : (map['releaseNamespace']! as String).input(),
+      values: map['values'] == null ? null : (map['values']! as String).input(),
     );
   }
 }

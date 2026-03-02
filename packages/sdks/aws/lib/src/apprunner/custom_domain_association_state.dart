@@ -52,13 +52,13 @@ class CustomDomainAssociationState {
 
   factory CustomDomainAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationState(
-      certificateValidationRecords: map['certificateValidationRecords'] == null ? null : (pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(map['certificateValidationRecords'], (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsTarget: map['dnsTarget'] == null ? null : (map['dnsTarget'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : (map['enableWwwSubdomain'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      certificateValidationRecords: map['certificateValidationRecords'] == null ? null : ((pulumi.Input.decodeList<CustomDomainAssociationCertificateValidationRecord>(map['certificateValidationRecords']!, (value) => CustomDomainAssociationCertificateValidationRecord.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      dnsTarget: map['dnsTarget'] == null ? null : ((map['dnsTarget'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : ((map['enableWwwSubdomain'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceArn: map['serviceArn'] == null ? null : ((map['serviceArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

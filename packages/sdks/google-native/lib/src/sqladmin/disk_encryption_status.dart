@@ -26,8 +26,8 @@ class DiskEncryptionStatus {
 
   factory DiskEncryptionStatus.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionStatus(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      kmsKeyVersionName: map['kmsKeyVersionName'] == null ? null : (map['kmsKeyVersionName']! as String).input(),
     );
   }
 }

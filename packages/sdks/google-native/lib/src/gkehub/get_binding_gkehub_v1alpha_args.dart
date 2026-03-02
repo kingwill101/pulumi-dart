@@ -38,7 +38,7 @@ class GetBindingGkehubV1alphaArgs {
       bindingId: (map['bindingId'] as String).input(),
       location: (map['location'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

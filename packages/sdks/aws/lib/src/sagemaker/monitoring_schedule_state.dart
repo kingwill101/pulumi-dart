@@ -47,12 +47,12 @@ class MonitoringScheduleState {
 
   factory MonitoringScheduleState.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      monitoringScheduleConfig: map['monitoringScheduleConfig'] == null ? null : (MonitoringScheduleMonitoringScheduleConfig.fromMap((map['monitoringScheduleConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      monitoringScheduleConfig: map['monitoringScheduleConfig'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfig.fromMap((map['monitoringScheduleConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

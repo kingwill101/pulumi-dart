@@ -64,16 +64,16 @@ class GetQuotaAlarmsResult {
   factory GetQuotaAlarmsResult.fromMap(Map<String, dynamic> map) {
     return GetQuotaAlarmsResult(
       alarms: pulumi.Input.decodeList<GetQuotaAlarmsAlarm>(map['alarms'], (value) => GetQuotaAlarmsAlarm.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      productCode: map['productCode'] == null ? null : map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode'] as String,
-      quotaAlarmName: map['quotaAlarmName'] == null ? null : map['quotaAlarmName'] as String,
-      quotaDimensions: map['quotaDimensions'] == null ? null : pulumi.Input.decodeList<GetQuotaAlarmsQuotaDimension>(map['quotaDimensions'], (value) => GetQuotaAlarmsQuotaDimension.fromMap((value as Map).cast<String, dynamic>())),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      productCode: map['productCode'] == null ? null : map['productCode']! as String,
+      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode']! as String,
+      quotaAlarmName: map['quotaAlarmName'] == null ? null : map['quotaAlarmName']! as String,
+      quotaDimensions: map['quotaDimensions'] == null ? null : pulumi.Input.decodeList<GetQuotaAlarmsQuotaDimension>(map['quotaDimensions']!, (value) => GetQuotaAlarmsQuotaDimension.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -50,11 +50,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageTableCard.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCard(
-      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(map['buttons'], (value) => GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      columnProperties: map['columnProperties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>(map['columnProperties'], (value) => GoogleCloudDialogflowV2beta1IntentMessageColumnProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>(map['rows'], (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
+      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(map['buttons']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      columnProperties: map['columnProperties'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>(map['columnProperties']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageColumnProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      rows: map['rows'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>(map['rows']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subtitle: map['subtitle'] == null ? null : (map['subtitle']! as String).input(),
       title: (map['title'] as String).input(),
     );
   }

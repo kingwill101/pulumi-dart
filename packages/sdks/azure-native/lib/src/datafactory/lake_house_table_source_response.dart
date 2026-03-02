@@ -57,14 +57,14 @@ class LakeHouseTableSourceResponse {
 
   factory LakeHouseTableSourceResponse.fromMap(Map<String, dynamic> map) {
     return LakeHouseTableSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
-      timestampAsOf: map['timestampAsOf'] == null ? null : (map['timestampAsOf']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
+      timestampAsOf: map['timestampAsOf'] == null ? null : (map['timestampAsOf']!).input(),
       type: (map['type'] as String).input(),
-      versionAsOf: map['versionAsOf'] == null ? null : (map['versionAsOf']).input(),
+      versionAsOf: map['versionAsOf'] == null ? null : (map['versionAsOf']!).input(),
     );
   }
 }

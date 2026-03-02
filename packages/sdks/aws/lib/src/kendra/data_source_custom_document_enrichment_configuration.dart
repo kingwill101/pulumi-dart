@@ -38,10 +38,10 @@ class DataSourceCustomDocumentEnrichmentConfiguration {
 
   factory DataSourceCustomDocumentEnrichmentConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfiguration(
-      inlineConfigurations: map['inlineConfigurations'] == null ? null : (pulumi.Input.decodeList<DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration>(map['inlineConfigurations'], (value) => DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      postExtractionHookConfiguration: map['postExtractionHookConfiguration'] == null ? null : (DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfiguration.fromMap((map['postExtractionHookConfiguration'] as Map).cast<String, dynamic>())).input(),
-      preExtractionHookConfiguration: map['preExtractionHookConfiguration'] == null ? null : (DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfiguration.fromMap((map['preExtractionHookConfiguration'] as Map).cast<String, dynamic>())).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      inlineConfigurations: map['inlineConfigurations'] == null ? null : ((pulumi.Input.decodeList<DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration>(map['inlineConfigurations']!, (value) => DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      postExtractionHookConfiguration: map['postExtractionHookConfiguration'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfiguration.fromMap((map['postExtractionHookConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      preExtractionHookConfiguration: map['preExtractionHookConfiguration'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfiguration.fromMap((map['preExtractionHookConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class BandwidthPackageAttachmentState {
 
   factory BandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageAttachmentState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      accelerators: map['accelerators'] == null ? null : ((map['accelerators'] as List).cast<String>()).input(),
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      accelerators: map['accelerators'] == null ? null : ((map['accelerators']! as List).cast<String>()).input(),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

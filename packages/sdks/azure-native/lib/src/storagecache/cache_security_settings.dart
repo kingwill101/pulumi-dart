@@ -22,7 +22,7 @@ class CacheSecuritySettings {
 
   factory CacheSecuritySettings.fromMap(Map<String, dynamic> map) {
     return CacheSecuritySettings(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<NfsAccessPolicy>(map['accessPolicies'], (value) => NfsAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<NfsAccessPolicy>(map['accessPolicies']!, (value) => NfsAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

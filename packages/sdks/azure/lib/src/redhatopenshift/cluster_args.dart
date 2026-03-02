@@ -84,13 +84,13 @@ class ClusterArgs {
       apiServerProfile: (ClusterApiServerProfile.fromMap((map['apiServerProfile'] as Map).cast<String, dynamic>())).input(),
       clusterProfile: (ClusterClusterProfile.fromMap((map['clusterProfile'] as Map).cast<String, dynamic>())).input(),
       ingressProfile: (ClusterIngressProfile.fromMap((map['ingressProfile'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mainProfile: (ClusterMainProfile.fromMap((map['mainProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkProfile: (ClusterNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       servicePrincipal: (ClusterServicePrincipal.fromMap((map['servicePrincipal'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workerProfile: (ClusterWorkerProfile.fromMap((map['workerProfile'] as Map).cast<String, dynamic>())).input(),
     );
   }

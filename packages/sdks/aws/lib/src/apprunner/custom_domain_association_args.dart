@@ -40,8 +40,8 @@ class CustomDomainAssociationArgs {
   factory CustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationArgs(
       domainName: (map['domainName'] as String).input(),
-      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : (map['enableWwwSubdomain'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : ((map['enableWwwSubdomain'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceArn: (map['serviceArn'] as String).input(),
     );
   }

@@ -38,10 +38,10 @@ class SbomReferenceIntotoPayload {
 
   factory SbomReferenceIntotoPayload.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPayload(
-      predicate: map['predicate'] == null ? null : (SbomReferenceIntotoPredicate.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      predicateType: map['predicateType'] == null ? null : (map['predicateType'] as String).input(),
-      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<Subject>(map['subject'], (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      predicate: map['predicate'] == null ? null : (SbomReferenceIntotoPredicate.fromMap((map['predicate']! as Map).cast<String, dynamic>())).input(),
+      predicateType: map['predicateType'] == null ? null : (map['predicateType']! as String).input(),
+      subject: map['subject'] == null ? null : (pulumi.Input.decodeList<Subject>(map['subject']!, (value) => Subject.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

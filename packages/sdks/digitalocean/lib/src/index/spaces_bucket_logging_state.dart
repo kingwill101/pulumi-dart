@@ -36,10 +36,10 @@ class SpacesBucketLoggingState {
 
   factory SpacesBucketLoggingState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketLoggingState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket'] as String).input(),
-      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket']! as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix']! as String).input(),
     );
   }
 }

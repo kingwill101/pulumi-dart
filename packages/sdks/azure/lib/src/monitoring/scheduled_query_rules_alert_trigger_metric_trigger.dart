@@ -35,7 +35,7 @@ class ScheduledQueryRulesAlertTriggerMetricTrigger {
 
   factory ScheduledQueryRulesAlertTriggerMetricTrigger.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertTriggerMetricTrigger(
-      metricColumn: map['metricColumn'] == null ? null : (map['metricColumn'] as String).input(),
+      metricColumn: map['metricColumn'] == null ? null : (map['metricColumn']! as String).input(),
       metricTriggerType: (map['metricTriggerType'] as String).input(),
       operator: (map['operator'] as String).input(),
       threshold: (map['threshold'] as double).input(),

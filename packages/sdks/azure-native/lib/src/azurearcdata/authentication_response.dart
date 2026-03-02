@@ -27,8 +27,8 @@ class AuthenticationResponse {
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      sqlServerEntraIdentity: map['sqlServerEntraIdentity'] == null ? null : (pulumi.Input.decodeList<EntraAuthenticationResponse>(map['sqlServerEntraIdentity'], (value) => EntraAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      sqlServerEntraIdentity: map['sqlServerEntraIdentity'] == null ? null : (pulumi.Input.decodeList<EntraAuthenticationResponse>(map['sqlServerEntraIdentity']!, (value) => EntraAuthenticationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

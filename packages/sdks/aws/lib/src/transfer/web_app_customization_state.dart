@@ -43,11 +43,11 @@ class WebAppCustomizationState {
 
   factory WebAppCustomizationState.fromMap(Map<String, dynamic> map) {
     return WebAppCustomizationState(
-      faviconFile: map['faviconFile'] == null ? null : (map['faviconFile'] as String).input(),
-      logoFile: map['logoFile'] == null ? null : (map['logoFile'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      webAppId: map['webAppId'] == null ? null : (map['webAppId'] as String).input(),
+      faviconFile: map['faviconFile'] == null ? null : ((map['faviconFile'] as String).input()).input(),
+      logoFile: map['logoFile'] == null ? null : ((map['logoFile'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      title: map['title'] == null ? null : ((map['title'] as String).input()).input(),
+      webAppId: map['webAppId'] == null ? null : ((map['webAppId'] as String).input()).input(),
     );
   }
 }

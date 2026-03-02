@@ -58,10 +58,10 @@ class VirtualNetworkSubnetPropertiesResponse {
     return VirtualNetworkSubnetPropertiesResponse(
       addressPrefix: (map['addressPrefix'] as String).input(),
       ipConfigurations: (pulumi.Input.decodeList<VirtualNetworkSubnetIpConfigurationReferenceResponse>(map['ipConfigurations'], (value) => VirtualNetworkSubnetIpConfigurationReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      natGateway: map['natGateway'] == null ? null : (NatGatewayArmReferenceResponse.fromMap((map['natGateway'] as Map).cast<String, dynamic>())).input(),
-      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup'] as Map).cast<String, dynamic>())).input(),
+      natGateway: map['natGateway'] == null ? null : (NatGatewayArmReferenceResponse.fromMap((map['natGateway']! as Map).cast<String, dynamic>())).input(),
+      networkSecurityGroup: map['networkSecurityGroup'] == null ? null : (NetworkSecurityGroupArmReferenceResponse.fromMap((map['networkSecurityGroup']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      routeTable: map['routeTable'] == null ? null : (RouteTableResponse.fromMap((map['routeTable'] as Map).cast<String, dynamic>())).input(),
+      routeTable: map['routeTable'] == null ? null : (RouteTableResponse.fromMap((map['routeTable']! as Map).cast<String, dynamic>())).input(),
       status: (VirtualNetworkSubnetStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );
   }

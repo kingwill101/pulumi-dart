@@ -32,7 +32,7 @@ class GetNetworkPeeringConnectionsResult {
   factory GetNetworkPeeringConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionsResult(
       id: map['id'] as String,
-      odbPeeringConnections: pulumi.Input.decodeList<GetNetworkPeeringConnectionsOdbPeeringConnection>(map['odbPeeringConnections'], (value) => GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap((value as Map).cast<String, dynamic>())),
+      odbPeeringConnections: pulumi.Input.decodeList<GetNetworkPeeringConnectionsOdbPeeringConnection>(map['odbPeeringConnections']!, (value) => GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

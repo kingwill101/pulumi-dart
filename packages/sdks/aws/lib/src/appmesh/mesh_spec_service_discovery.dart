@@ -20,7 +20,7 @@ class MeshSpecServiceDiscovery {
 
   factory MeshSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return MeshSpecServiceDiscovery(
-      ipPreference: map['ipPreference'] == null ? null : (map['ipPreference'] as String).input(),
+      ipPreference: map['ipPreference'] == null ? null : ((map['ipPreference'] as String).input()).input(),
     );
   }
 }

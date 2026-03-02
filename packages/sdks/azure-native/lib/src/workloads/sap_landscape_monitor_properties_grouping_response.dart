@@ -27,8 +27,8 @@ class SapLandscapeMonitorPropertiesGroupingResponse {
 
   factory SapLandscapeMonitorPropertiesGroupingResponse.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorPropertiesGroupingResponse(
-      landscape: map['landscape'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorSidMappingResponse>(map['landscape'], (value) => SapLandscapeMonitorSidMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sapApplication: map['sapApplication'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorSidMappingResponse>(map['sapApplication'], (value) => SapLandscapeMonitorSidMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      landscape: map['landscape'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorSidMappingResponse>(map['landscape']!, (value) => SapLandscapeMonitorSidMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sapApplication: map['sapApplication'] == null ? null : (pulumi.Input.decodeList<SapLandscapeMonitorSidMappingResponse>(map['sapApplication']!, (value) => SapLandscapeMonitorSidMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

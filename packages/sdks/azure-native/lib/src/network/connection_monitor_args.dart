@@ -100,21 +100,21 @@ class ConnectionMonitorArgs {
 
   factory ConnectionMonitorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorArgs(
-      autoStart: map['autoStart'] == null ? null : (map['autoStart'] as bool).input(),
-      connectionMonitorName: map['connectionMonitorName'] == null ? null : (map['connectionMonitorName'] as String).input(),
-      destination: map['destination'] == null ? null : (ConnectionMonitorDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpoint>(map['endpoints'], (value) => ConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      migrate: map['migrate'] == null ? null : (map['migrate'] as String).input(),
-      monitoringIntervalInSeconds: map['monitoringIntervalInSeconds'] == null ? null : (map['monitoringIntervalInSeconds'] as int).input(),
+      autoStart: map['autoStart'] == null ? null : (map['autoStart']! as bool).input(),
+      connectionMonitorName: map['connectionMonitorName'] == null ? null : (map['connectionMonitorName']! as String).input(),
+      destination: map['destination'] == null ? null : (ConnectionMonitorDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorEndpoint>(map['endpoints']!, (value) => ConnectionMonitorEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      migrate: map['migrate'] == null ? null : (map['migrate']! as String).input(),
+      monitoringIntervalInSeconds: map['monitoringIntervalInSeconds'] == null ? null : (map['monitoringIntervalInSeconds']! as int).input(),
       networkWatcherName: (map['networkWatcherName'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorOutput>(map['outputs'], (value) => ConnectionMonitorOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorOutput>(map['outputs']!, (value) => ConnectionMonitorOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (ConnectionMonitorSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      testConfigurations: map['testConfigurations'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorTestConfiguration>(map['testConfigurations'], (value) => ConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testGroups: map['testGroups'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorTestGroup>(map['testGroups'], (value) => ConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (ConnectionMonitorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      testConfigurations: map['testConfigurations'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorTestConfiguration>(map['testConfigurations']!, (value) => ConnectionMonitorTestConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testGroups: map['testGroups'] == null ? null : (pulumi.Input.decodeList<ConnectionMonitorTestGroup>(map['testGroups']!, (value) => ConnectionMonitorTestGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,9 +42,9 @@ class MigrateSqlServerSqlMIDatabaseInput {
 
   factory MigrateSqlServerSqlMIDatabaseInput.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMIDatabaseInput(
-      backupFilePaths: map['backupFilePaths'] == null ? null : ((map['backupFilePaths'] as List).cast<String>()).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      backupFilePaths: map['backupFilePaths'] == null ? null : ((map['backupFilePaths']! as List).cast<String>()).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShare.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       restoreDatabaseName: (map['restoreDatabaseName'] as String).input(),
     );

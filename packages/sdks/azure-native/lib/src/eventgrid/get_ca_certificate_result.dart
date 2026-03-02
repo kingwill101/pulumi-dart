@@ -67,8 +67,8 @@ class GetCaCertificateResult {
   factory GetCaCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetCaCertificateResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      encodedCertificate: map['encodedCertificate'] == null ? null : map['encodedCertificate'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      encodedCertificate: map['encodedCertificate'] == null ? null : map['encodedCertificate']! as String,
       expiryTimeInUtc: map['expiryTimeInUtc'] as String,
       id: map['id'] as String,
       issueTimeInUtc: map['issueTimeInUtc'] as String,

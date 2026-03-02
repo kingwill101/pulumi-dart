@@ -48,12 +48,12 @@ class NamespaceEvent {
 
   factory NamespaceEvent.fromMap(Map<String, dynamic> map) {
     return NamespaceEvent(
-      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceEventDataPoint>(map['dataPoints'], (value) => NamespaceEventDataPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<EventMqttDestination>(map['destinations'], (value) => EventMqttDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration'] as String).input(),
+      dataPoints: map['dataPoints'] == null ? null : (pulumi.Input.decodeList<NamespaceEventDataPoint>(map['dataPoints']!, (value) => NamespaceEventDataPoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<EventMqttDestination>(map['destinations']!, (value) => EventMqttDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration']! as String).input(),
       eventNotifier: (map['eventNotifier'] as String).input(),
       name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

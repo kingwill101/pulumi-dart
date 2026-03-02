@@ -28,8 +28,8 @@ class LaunchConfigurationEphemeralBlockDevice {
   factory LaunchConfigurationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return LaunchConfigurationEphemeralBlockDevice(
       deviceName: (map['deviceName'] as String).input(),
-      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as bool).input(),
-      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
+      noDevice: map['noDevice'] == null ? null : ((map['noDevice'] as bool).input()).input(),
+      virtualName: map['virtualName'] == null ? null : ((map['virtualName'] as String).input()).input(),
     );
   }
 }

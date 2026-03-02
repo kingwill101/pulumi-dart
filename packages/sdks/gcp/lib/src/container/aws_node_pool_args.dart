@@ -93,18 +93,18 @@ class AwsNodePoolArgs {
 
   factory AwsNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       autoscaling: (AwsNodePoolAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
       cluster: (map['cluster'] as String).input(),
       config: (AwsNodePoolConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      kubeletConfig: map['kubeletConfig'] == null ? null : (AwsNodePoolKubeletConfig.fromMap((map['kubeletConfig'] as Map).cast<String, dynamic>())).input(),
+      kubeletConfig: map['kubeletConfig'] == null ? null : (AwsNodePoolKubeletConfig.fromMap((map['kubeletConfig']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      management: map['management'] == null ? null : (AwsNodePoolManagement.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
+      management: map['management'] == null ? null : (AwsNodePoolManagement.fromMap((map['management']! as Map).cast<String, dynamic>())).input(),
       maxPodsConstraint: (AwsNodePoolMaxPodsConstraint.fromMap((map['maxPodsConstraint'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      updateSettings: map['updateSettings'] == null ? null : (AwsNodePoolUpdateSettings.fromMap((map['updateSettings'] as Map).cast<String, dynamic>())).input(),
+      updateSettings: map['updateSettings'] == null ? null : (AwsNodePoolUpdateSettings.fromMap((map['updateSettings']! as Map).cast<String, dynamic>())).input(),
       version: (map['version'] as String).input(),
     );
   }

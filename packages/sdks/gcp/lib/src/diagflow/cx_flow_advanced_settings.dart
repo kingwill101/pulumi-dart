@@ -54,10 +54,10 @@ class CxFlowAdvancedSettings {
 
   factory CxFlowAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowAdvancedSettings(
-      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (CxFlowAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>())).input(),
-      dtmfSettings: map['dtmfSettings'] == null ? null : (CxFlowAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
-      loggingSettings: map['loggingSettings'] == null ? null : (CxFlowAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>())).input(),
-      speechSettings: map['speechSettings'] == null ? null : (CxFlowAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>())).input(),
+      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (CxFlowAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination']! as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxFlowAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
+      loggingSettings: map['loggingSettings'] == null ? null : (CxFlowAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings']! as Map).cast<String, dynamic>())).input(),
+      speechSettings: map['speechSettings'] == null ? null : (CxFlowAdvancedSettingsSpeechSettings.fromMap((map['speechSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

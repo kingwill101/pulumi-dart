@@ -29,7 +29,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings(
       networkId: (map['networkId'] as int).input(),
       networkName: (map['networkName'] as String).input(),
-      repInterval: map['repInterval'] == null ? null : (map['repInterval'] as int).input(),
+      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
     );
   }
 }

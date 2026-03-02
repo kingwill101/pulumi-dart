@@ -28,8 +28,8 @@ class NetworkProfile {
 
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnet: map['subnet'] == null ? null : (ApiEntityReference.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces']!, (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnet: map['subnet'] == null ? null : (ApiEntityReference.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

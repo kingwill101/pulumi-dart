@@ -37,10 +37,10 @@ class HorizontalPodAutoscalerSpecPatch {
 
   factory HorizontalPodAutoscalerSpecPatch.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerSpecPatch(
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      scaleTargetRef: map['scaleTargetRef'] == null ? null : (CrossVersionObjectReferencePatch.fromMap((map['scaleTargetRef'] as Map).cast<String, dynamic>())).input(),
-      targetCPUUtilizationPercentage: map['targetCPUUtilizationPercentage'] == null ? null : (map['targetCPUUtilizationPercentage'] as int).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      scaleTargetRef: map['scaleTargetRef'] == null ? null : (CrossVersionObjectReferencePatch.fromMap((map['scaleTargetRef']! as Map).cast<String, dynamic>())).input(),
+      targetCPUUtilizationPercentage: map['targetCPUUtilizationPercentage'] == null ? null : (map['targetCPUUtilizationPercentage']! as int).input(),
     );
   }
 }

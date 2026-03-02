@@ -42,10 +42,10 @@ class EventHandler {
 
   factory EventHandler.fromMap(Map<String, dynamic> map) {
     return EventHandler(
-      auth: map['auth'] == null ? null : (UpstreamAuthSettings.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents'] as List).cast<String>()).input(),
+      auth: map['auth'] == null ? null : (UpstreamAuthSettings.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      systemEvents: map['systemEvents'] == null ? null : ((map['systemEvents']! as List).cast<String>()).input(),
       urlTemplate: (map['urlTemplate'] as String).input(),
-      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern'] as String).input(),
+      userEventPattern: map['userEventPattern'] == null ? null : (map['userEventPattern']! as String).input(),
     );
   }
 }

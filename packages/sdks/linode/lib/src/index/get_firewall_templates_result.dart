@@ -30,7 +30,7 @@ class GetFirewallTemplatesResult {
 
   factory GetFirewallTemplatesResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallTemplatesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetFirewallTemplatesFilter>(map['filters'], (value) => GetFirewallTemplatesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetFirewallTemplatesFilter>(map['filters']!, (value) => GetFirewallTemplatesFilter.fromMap((value as Map).cast<String, dynamic>())),
       firewallTemplates: pulumi.Input.decodeList<GetFirewallTemplatesFirewallTemplate>(map['firewallTemplates'], (value) => GetFirewallTemplatesFirewallTemplate.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
     );

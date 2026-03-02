@@ -51,7 +51,7 @@ class MCASDataConnectorArgs {
 
   factory MCASDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return MCASDataConnectorArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
       dataTypes: (MCASDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

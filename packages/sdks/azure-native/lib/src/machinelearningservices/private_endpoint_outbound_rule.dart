@@ -42,10 +42,10 @@ class PrivateEndpointOutboundRule {
 
   factory PrivateEndpointOutboundRule.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointOutboundRule(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      destination: map['destination'] == null ? null : (PrivateEndpointDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      destination: map['destination'] == null ? null : (PrivateEndpointDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

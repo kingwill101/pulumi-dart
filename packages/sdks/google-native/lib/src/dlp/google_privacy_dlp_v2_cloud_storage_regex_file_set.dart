@@ -31,9 +31,9 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
 
   factory GooglePrivacyDlpV2CloudStorageRegexFileSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageRegexFileSet(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      excludeRegex: map['excludeRegex'] == null ? null : ((map['excludeRegex'] as List).cast<String>()).input(),
-      includeRegex: map['includeRegex'] == null ? null : ((map['includeRegex'] as List).cast<String>()).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      excludeRegex: map['excludeRegex'] == null ? null : ((map['excludeRegex']! as List).cast<String>()).input(),
+      includeRegex: map['includeRegex'] == null ? null : ((map['includeRegex']! as List).cast<String>()).input(),
     );
   }
 }

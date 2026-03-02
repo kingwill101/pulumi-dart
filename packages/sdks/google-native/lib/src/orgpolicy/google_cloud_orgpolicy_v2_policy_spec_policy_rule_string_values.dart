@@ -26,8 +26,8 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
 
   factory GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromMap(Map<String, dynamic> map) {
     return GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<String>()).input(),
-      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues'] as List).cast<String>()).input(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<String>()).input(),
+      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues']! as List).cast<String>()).input(),
     );
   }
 }

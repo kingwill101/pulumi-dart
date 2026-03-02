@@ -40,8 +40,8 @@ class TriggerTrigger {
 
   factory TriggerTrigger.fromMap(Map<String, dynamic> map) {
     return TriggerTrigger(
-      branches: map['branches'] == null ? null : ((map['branches'] as List).cast<String>()).input(),
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
+      branches: map['branches'] == null ? null : (((map['branches'] as List).cast<String>()).input()).input(),
+      customData: map['customData'] == null ? null : ((map['customData'] as String).input()).input(),
       destinationArn: (map['destinationArn'] as String).input(),
       events: ((map['events'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),

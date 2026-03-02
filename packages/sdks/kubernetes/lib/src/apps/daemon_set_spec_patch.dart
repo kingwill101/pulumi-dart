@@ -44,11 +44,11 @@ class DaemonSetSpecPatch {
 
   factory DaemonSetSpecPatch.fromMap(Map<String, dynamic> map) {
     return DaemonSetSpecPatch(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (DaemonSetUpdateStrategyPatch.fromMap((map['updateStrategy'] as Map).cast<String, dynamic>())).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (DaemonSetUpdateStrategyPatch.fromMap((map['updateStrategy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

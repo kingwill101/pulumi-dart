@@ -54,7 +54,7 @@ class NetworkMappingArgs {
 
   factory NetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return NetworkMappingArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryVaultName: (map['recoveryVaultName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceNetworkId: (map['sourceNetworkId'] as String).input(),

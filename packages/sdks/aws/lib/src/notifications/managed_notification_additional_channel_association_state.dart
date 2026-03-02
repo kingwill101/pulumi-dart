@@ -26,8 +26,8 @@ class ManagedNotificationAdditionalChannelAssociationState {
 
   factory ManagedNotificationAdditionalChannelAssociationState.fromMap(Map<String, dynamic> map) {
     return ManagedNotificationAdditionalChannelAssociationState(
-      channelArn: map['channelArn'] == null ? null : (map['channelArn'] as String).input(),
-      managedNotificationArn: map['managedNotificationArn'] == null ? null : (map['managedNotificationArn'] as String).input(),
+      channelArn: map['channelArn'] == null ? null : ((map['channelArn'] as String).input()).input(),
+      managedNotificationArn: map['managedNotificationArn'] == null ? null : ((map['managedNotificationArn'] as String).input()).input(),
     );
   }
 }

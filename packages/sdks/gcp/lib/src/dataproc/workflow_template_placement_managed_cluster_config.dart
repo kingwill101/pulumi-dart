@@ -105,21 +105,21 @@ class WorkflowTemplatePlacementManagedClusterConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfig(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      endpointConfig: map['endpointConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigEndpointConfig.fromMap((map['endpointConfig'] as Map).cast<String, dynamic>())).input(),
-      gceClusterConfig: map['gceClusterConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig.fromMap((map['gceClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      gkeClusterConfig: map['gkeClusterConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap((map['gkeClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      initializationActions: map['initializationActions'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigInitializationAction>(map['initializationActions'], (value) => WorkflowTemplatePlacementManagedClusterConfigInitializationAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecycleConfig: map['lifecycleConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig.fromMap((map['lifecycleConfig'] as Map).cast<String, dynamic>())).input(),
-      masterConfig: map['masterConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigMasterConfig.fromMap((map['masterConfig'] as Map).cast<String, dynamic>())).input(),
-      metastoreConfig: map['metastoreConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>())).input(),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
-      securityConfig: map['securityConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
-      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket'] as String).input(),
-      tempBucket: map['tempBucket'] == null ? null : (map['tempBucket'] as String).input(),
-      workerConfig: map['workerConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig.fromMap((map['autoscalingConfig']! as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      endpointConfig: map['endpointConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigEndpointConfig.fromMap((map['endpointConfig']! as Map).cast<String, dynamic>())).input(),
+      gceClusterConfig: map['gceClusterConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig.fromMap((map['gceClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      gkeClusterConfig: map['gkeClusterConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap((map['gkeClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      initializationActions: map['initializationActions'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigInitializationAction>(map['initializationActions']!, (value) => WorkflowTemplatePlacementManagedClusterConfigInitializationAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleConfig: map['lifecycleConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig.fromMap((map['lifecycleConfig']! as Map).cast<String, dynamic>())).input(),
+      masterConfig: map['masterConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigMasterConfig.fromMap((map['masterConfig']! as Map).cast<String, dynamic>())).input(),
+      metastoreConfig: map['metastoreConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap((map['metastoreConfig']! as Map).cast<String, dynamic>())).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig.fromMap((map['secondaryWorkerConfig']! as Map).cast<String, dynamic>())).input(),
+      securityConfig: map['securityConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecurityConfig.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
+      stagingBucket: map['stagingBucket'] == null ? null : (map['stagingBucket']! as String).input(),
+      tempBucket: map['tempBucket'] == null ? null : (map['tempBucket']! as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigWorkerConfig.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

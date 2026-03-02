@@ -21,7 +21,7 @@ class IPSetReference {
 
   factory IPSetReference.fromMap(Map<String, dynamic> map) {
     return IPSetReference(
-      referenceArn: map['referenceArn'] == null ? null : (map['referenceArn'] as String).input(),
+      referenceArn: map['referenceArn'] == null ? null : (map['referenceArn']! as String).input(),
     );
   }
 }

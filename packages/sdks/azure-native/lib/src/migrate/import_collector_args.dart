@@ -43,10 +43,10 @@ class ImportCollectorArgs {
 
   factory ImportCollectorArgs.fromMap(Map<String, dynamic> map) {
     return ImportCollectorArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      importCollectorName: map['importCollectorName'] == null ? null : (map['importCollectorName'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      importCollectorName: map['importCollectorName'] == null ? null : (map['importCollectorName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ImportCollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ImportCollectorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

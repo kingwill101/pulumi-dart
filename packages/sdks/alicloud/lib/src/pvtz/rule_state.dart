@@ -42,11 +42,11 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      forwardIps: map['forwardIps'] == null ? null : (pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps'], (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      forwardIps: map['forwardIps'] == null ? null : (pulumi.Input.decodeList<RuleForwardIp>(map['forwardIps']!, (value) => RuleForwardIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
     );
   }
 }

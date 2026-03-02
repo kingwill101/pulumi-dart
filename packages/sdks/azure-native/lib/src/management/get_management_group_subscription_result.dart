@@ -63,13 +63,13 @@ class GetManagementGroupSubscriptionResult {
   factory GetManagementGroupSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      parent: map['parent'] == null ? null : DescendantParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
+      parent: map['parent'] == null ? null : DescendantParentGroupInfoResponse.fromMap((map['parent']! as Map).cast<String, dynamic>()),
+      state: map['state'] == null ? null : map['state']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenant: map['tenant'] == null ? null : map['tenant'] as String,
+      tenant: map['tenant'] == null ? null : map['tenant']! as String,
       type: map['type'] as String,
     );
   }

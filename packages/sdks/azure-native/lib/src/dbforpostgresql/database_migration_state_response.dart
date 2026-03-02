@@ -96,22 +96,22 @@ class DatabaseMigrationStateResponse {
 
   factory DatabaseMigrationStateResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationStateResponse(
-      appliedChanges: map['appliedChanges'] == null ? null : (map['appliedChanges'] as int).input(),
-      cdcDeleteCounter: map['cdcDeleteCounter'] == null ? null : (map['cdcDeleteCounter'] as int).input(),
-      cdcInsertCounter: map['cdcInsertCounter'] == null ? null : (map['cdcInsertCounter'] as int).input(),
-      cdcUpdateCounter: map['cdcUpdateCounter'] == null ? null : (map['cdcUpdateCounter'] as int).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      endedOn: map['endedOn'] == null ? null : (map['endedOn'] as String).input(),
-      fullLoadCompletedTables: map['fullLoadCompletedTables'] == null ? null : (map['fullLoadCompletedTables'] as int).input(),
-      fullLoadErroredTables: map['fullLoadErroredTables'] == null ? null : (map['fullLoadErroredTables'] as int).input(),
-      fullLoadLoadingTables: map['fullLoadLoadingTables'] == null ? null : (map['fullLoadLoadingTables'] as int).input(),
-      fullLoadQueuedTables: map['fullLoadQueuedTables'] == null ? null : (map['fullLoadQueuedTables'] as int).input(),
-      incomingChanges: map['incomingChanges'] == null ? null : (map['incomingChanges'] as int).input(),
-      latency: map['latency'] == null ? null : (map['latency'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      migrationOperation: map['migrationOperation'] == null ? null : (map['migrationOperation'] as String).input(),
-      migrationState: map['migrationState'] == null ? null : (map['migrationState'] as String).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      appliedChanges: map['appliedChanges'] == null ? null : (map['appliedChanges']! as int).input(),
+      cdcDeleteCounter: map['cdcDeleteCounter'] == null ? null : (map['cdcDeleteCounter']! as int).input(),
+      cdcInsertCounter: map['cdcInsertCounter'] == null ? null : (map['cdcInsertCounter']! as int).input(),
+      cdcUpdateCounter: map['cdcUpdateCounter'] == null ? null : (map['cdcUpdateCounter']! as int).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      endedOn: map['endedOn'] == null ? null : (map['endedOn']! as String).input(),
+      fullLoadCompletedTables: map['fullLoadCompletedTables'] == null ? null : (map['fullLoadCompletedTables']! as int).input(),
+      fullLoadErroredTables: map['fullLoadErroredTables'] == null ? null : (map['fullLoadErroredTables']! as int).input(),
+      fullLoadLoadingTables: map['fullLoadLoadingTables'] == null ? null : (map['fullLoadLoadingTables']! as int).input(),
+      fullLoadQueuedTables: map['fullLoadQueuedTables'] == null ? null : (map['fullLoadQueuedTables']! as int).input(),
+      incomingChanges: map['incomingChanges'] == null ? null : (map['incomingChanges']! as int).input(),
+      latency: map['latency'] == null ? null : (map['latency']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      migrationOperation: map['migrationOperation'] == null ? null : (map['migrationOperation']! as String).input(),
+      migrationState: map['migrationState'] == null ? null : (map['migrationState']! as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
     );
   }
 }

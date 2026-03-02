@@ -37,9 +37,9 @@ class KeySetUserResponse {
   factory KeySetUserResponse.fromMap(Map<String, dynamic> map) {
     return KeySetUserResponse(
       azureUserName: (map['azureUserName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       sshPublicKey: (SshPublicKeyResponse.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>())).input(),
-      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName']! as String).input(),
     );
   }
 }

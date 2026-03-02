@@ -25,7 +25,7 @@ class ServiceAttributesOperatorOwner {
 
   factory ServiceAttributesOperatorOwner.fromMap(Map<String, dynamic> map) {
     return ServiceAttributesOperatorOwner(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       email: (map['email'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s {
 
   factory DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s.fromMap(Map<String, dynamic> map) {
     return DefenderCspmAwsOfferingResponseMdcContainersAgentlessDiscoveryK8s(
-      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cloudRoleArn: map['cloudRoleArn'] == null ? null : (map['cloudRoleArn']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

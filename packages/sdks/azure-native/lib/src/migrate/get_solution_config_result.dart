@@ -20,7 +20,7 @@ class GetSolutionConfigResult {
 
   factory GetSolutionConfigResult.fromMap(Map<String, dynamic> map) {
     return GetSolutionConfigResult(
-      publisherSasUri: map['publisherSasUri'] == null ? null : map['publisherSasUri'] as String,
+      publisherSasUri: map['publisherSasUri'] == null ? null : map['publisherSasUri']! as String,
     );
   }
 }

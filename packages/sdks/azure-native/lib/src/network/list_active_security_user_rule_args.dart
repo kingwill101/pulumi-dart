@@ -40,9 +40,9 @@ class ListActiveSecurityUserRuleArgs {
   factory ListActiveSecurityUserRuleArgs.fromMap(Map<String, dynamic> map) {
     return ListActiveSecurityUserRuleArgs(
       networkManagerName: (map['networkManagerName'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

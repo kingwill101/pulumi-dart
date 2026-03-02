@@ -30,9 +30,9 @@ class CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNam
 
   factory CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames(
-      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
-      emails: map['emails'] == null ? null : ((map['emails'] as List).cast<String>()).input(),
-      upns: map['upns'] == null ? null : ((map['upns'] as List).cast<String>()).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames']! as List).cast<String>()).input(),
+      emails: map['emails'] == null ? null : ((map['emails']! as List).cast<String>()).input(),
+      upns: map['upns'] == null ? null : ((map['upns']! as List).cast<String>()).input(),
     );
   }
 }

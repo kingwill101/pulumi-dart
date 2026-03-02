@@ -37,10 +37,10 @@ class DnsKeySpec {
 
   factory DnsKeySpec.fromMap(Map<String, dynamic> map) {
     return DnsKeySpec(
-      algorithm: map['algorithm'] == null ? null : (DnsKeySpecAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      keyLength: map['keyLength'] == null ? null : (map['keyLength'] as int).input(),
-      keyType: map['keyType'] == null ? null : (DnsKeySpecKeyType.fromValue(map['keyType'] as String)).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (DnsKeySpecAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      keyLength: map['keyLength'] == null ? null : (map['keyLength']! as int).input(),
+      keyType: map['keyType'] == null ? null : (DnsKeySpecKeyType.fromValue(map['keyType']! as String)).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

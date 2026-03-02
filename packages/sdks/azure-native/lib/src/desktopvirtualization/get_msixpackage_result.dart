@@ -100,21 +100,21 @@ class GetMSIXPackageResult {
   factory GetMSIXPackageResult.fromMap(Map<String, dynamic> map) {
     return GetMSIXPackageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
-      imagePath: map['imagePath'] == null ? null : map['imagePath'] as String,
-      isActive: map['isActive'] == null ? null : map['isActive'] as bool,
-      isRegularRegistration: map['isRegularRegistration'] == null ? null : map['isRegularRegistration'] as bool,
-      lastUpdated: map['lastUpdated'] == null ? null : map['lastUpdated'] as String,
+      imagePath: map['imagePath'] == null ? null : map['imagePath']! as String,
+      isActive: map['isActive'] == null ? null : map['isActive']! as bool,
+      isRegularRegistration: map['isRegularRegistration'] == null ? null : map['isRegularRegistration']! as bool,
+      lastUpdated: map['lastUpdated'] == null ? null : map['lastUpdated']! as String,
       name: map['name'] as String,
-      packageApplications: map['packageApplications'] == null ? null : pulumi.Input.decodeList<MsixPackageApplicationsResponse>(map['packageApplications'], (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      packageDependencies: map['packageDependencies'] == null ? null : pulumi.Input.decodeList<MsixPackageDependenciesResponse>(map['packageDependencies'], (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      packageFamilyName: map['packageFamilyName'] == null ? null : map['packageFamilyName'] as String,
-      packageName: map['packageName'] == null ? null : map['packageName'] as String,
-      packageRelativePath: map['packageRelativePath'] == null ? null : map['packageRelativePath'] as String,
+      packageApplications: map['packageApplications'] == null ? null : pulumi.Input.decodeList<MsixPackageApplicationsResponse>(map['packageApplications']!, (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      packageDependencies: map['packageDependencies'] == null ? null : pulumi.Input.decodeList<MsixPackageDependenciesResponse>(map['packageDependencies']!, (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      packageFamilyName: map['packageFamilyName'] == null ? null : map['packageFamilyName']! as String,
+      packageName: map['packageName'] == null ? null : map['packageName']! as String,
+      packageRelativePath: map['packageRelativePath'] == null ? null : map['packageRelativePath']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

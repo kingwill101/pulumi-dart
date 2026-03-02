@@ -70,15 +70,15 @@ class Hl7V2StoreHealthcareV1beta1Args {
   factory Hl7V2StoreHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
     return Hl7V2StoreHealthcareV1beta1Args(
       datasetId: (map['datasetId'] as String).input(),
-      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<Hl7V2NotificationConfigHealthcareV1beta1>(map['notificationConfigs'], (value) => Hl7V2NotificationConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parserConfig: map['parserConfig'] == null ? null : (ParserConfigHealthcareV1beta1.fromMap((map['parserConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : (map['rejectDuplicateMessage'] as bool).input(),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : (map['hl7V2StoreId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfigHealthcareV1beta1.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<Hl7V2NotificationConfigHealthcareV1beta1>(map['notificationConfigs']!, (value) => Hl7V2NotificationConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parserConfig: map['parserConfig'] == null ? null : (ParserConfigHealthcareV1beta1.fromMap((map['parserConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rejectDuplicateMessage: map['rejectDuplicateMessage'] == null ? null : (map['rejectDuplicateMessage']! as bool).input(),
     );
   }
 }

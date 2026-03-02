@@ -22,7 +22,7 @@ class ConfigQuota {
 
   factory ConfigQuota.fromMap(Map<String, dynamic> map) {
     return ConfigQuota(
-      signUpQuotaConfig: map['signUpQuotaConfig'] == null ? null : (ConfigQuotaSignUpQuotaConfig.fromMap((map['signUpQuotaConfig'] as Map).cast<String, dynamic>())).input(),
+      signUpQuotaConfig: map['signUpQuotaConfig'] == null ? null : (ConfigQuotaSignUpQuotaConfig.fromMap((map['signUpQuotaConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,9 +39,9 @@ class GetSecurityGroupRuleArgs {
 
   factory GetSecurityGroupRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRuleArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(map['filters'], (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : (map['securityGroupRuleId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(map['filters']!, (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupRuleId: map['securityGroupRuleId'] == null ? null : ((map['securityGroupRuleId'] as String).input()).input(),
     );
   }
 }

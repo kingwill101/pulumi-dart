@@ -25,8 +25,8 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
 
   factory GoogleCloudApigeeV1TlsInfoCommonName.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1TlsInfoCommonName(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      wildcardMatch: map['wildcardMatch'] == null ? null : (map['wildcardMatch'] as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      wildcardMatch: map['wildcardMatch'] == null ? null : (map['wildcardMatch']! as bool).input(),
     );
   }
 }

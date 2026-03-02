@@ -25,7 +25,7 @@ class SpringCloudAppPersistentDisk {
 
   factory SpringCloudAppPersistentDisk.fromMap(Map<String, dynamic> map) {
     return SpringCloudAppPersistentDisk(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
       sizeInGb: (map['sizeInGb'] as int).input(),
     );
   }

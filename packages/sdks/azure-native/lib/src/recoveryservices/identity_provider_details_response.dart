@@ -41,11 +41,11 @@ class IdentityProviderDetailsResponse {
 
   factory IdentityProviderDetailsResponse.fromMap(Map<String, dynamic> map) {
     return IdentityProviderDetailsResponse(
-      aadAuthority: map['aadAuthority'] == null ? null : (map['aadAuthority'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      aadAuthority: map['aadAuthority'] == null ? null : (map['aadAuthority']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

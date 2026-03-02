@@ -27,8 +27,8 @@ class TaskOption {
 
   factory TaskOption.fromMap(Map<String, dynamic> map) {
     return TaskOption(
-      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
-      errorAction: map['errorAction'] == null ? null : (ErrorAction.fromMap((map['errorAction'] as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency']! as int).input(),
+      errorAction: map['errorAction'] == null ? null : (ErrorAction.fromMap((map['errorAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class BackendServiceUsedByComputeV1 {
 
   factory BackendServiceUsedByComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendServiceUsedByComputeV1(
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
     );
   }
 }

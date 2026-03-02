@@ -21,7 +21,7 @@ class BigQueryDestination {
 
   factory BigQueryDestination.fromMap(Map<String, dynamic> map) {
     return BigQueryDestination(
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
     );
   }
 }

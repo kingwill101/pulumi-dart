@@ -27,7 +27,7 @@ class WorkflowVersionProperties {
 
   factory WorkflowVersionProperties.fromMap(Map<String, dynamic> map) {
     return WorkflowVersionProperties(
-      specification: map['specification'] == null ? null : (map['specification']).input(),
+      specification: map['specification'] == null ? null : (map['specification']!).input(),
       stageSpec: (pulumi.Input.decodeList<StageSpec>(map['stageSpec'], (value) => StageSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

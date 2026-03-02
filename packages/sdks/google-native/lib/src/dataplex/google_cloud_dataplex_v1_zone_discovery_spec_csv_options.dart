@@ -36,10 +36,10 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
 
   factory GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      disableTypeInference: map['disableTypeInference'] == null ? null : (map['disableTypeInference'] as bool).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      headerRows: map['headerRows'] == null ? null : (map['headerRows'] as int).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      disableTypeInference: map['disableTypeInference'] == null ? null : (map['disableTypeInference']! as bool).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      headerRows: map['headerRows'] == null ? null : (map['headerRows']! as int).input(),
     );
   }
 }

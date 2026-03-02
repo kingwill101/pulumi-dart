@@ -27,8 +27,8 @@ class CacheEncryptionSettings {
 
   factory CacheEncryptionSettings.fromMap(Map<String, dynamic> map) {
     return CacheEncryptionSettings(
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReference.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled'] as bool).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyVaultKeyReference.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      rotationToLatestKeyVersionEnabled: map['rotationToLatestKeyVersionEnabled'] == null ? null : (map['rotationToLatestKeyVersionEnabled']! as bool).input(),
     );
   }
 }

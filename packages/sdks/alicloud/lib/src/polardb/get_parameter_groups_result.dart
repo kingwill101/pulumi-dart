@@ -54,14 +54,14 @@ class GetParameterGroupsResult {
 
   factory GetParameterGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetParameterGroupsResult(
-      dbType: map['dbType'] == null ? null : map['dbType'] as String,
-      dbVersion: map['dbVersion'] == null ? null : map['dbVersion'] as String,
+      dbType: map['dbType'] == null ? null : map['dbType']! as String,
+      dbVersion: map['dbVersion'] == null ? null : map['dbVersion']! as String,
       groups: pulumi.Input.decodeList<GetParameterGroupsGroup>(map['groups'], (value) => GetParameterGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

@@ -27,7 +27,7 @@ class GatewayMessageBusOutputDataSource {
 
   factory GatewayMessageBusOutputDataSource.fromMap(Map<String, dynamic> map) {
     return GatewayMessageBusOutputDataSource(
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class DirectoryMfaAuthenticationSettingInfo {
 
   factory DirectoryMfaAuthenticationSettingInfo.fromMap(Map<String, dynamic> map) {
     return DirectoryMfaAuthenticationSettingInfo(
-      mfaAuthenticationAdvanceSettings: map['mfaAuthenticationAdvanceSettings'] == null ? null : (map['mfaAuthenticationAdvanceSettings'] as String).input(),
-      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : (map['operationForRiskLogin'] as String).input(),
+      mfaAuthenticationAdvanceSettings: map['mfaAuthenticationAdvanceSettings'] == null ? null : (map['mfaAuthenticationAdvanceSettings']! as String).input(),
+      operationForRiskLogin: map['operationForRiskLogin'] == null ? null : (map['operationForRiskLogin']! as String).input(),
     );
   }
 }

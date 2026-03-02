@@ -27,8 +27,8 @@ class FilterOptions {
 
   factory FilterOptions.fromMap(Map<String, dynamic> map) {
     return FilterOptions(
-      filter: map['filter'] == null ? null : (Filter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      objectType: map['objectType'] == null ? null : (map['objectType'] as String).input(),
+      filter: map['filter'] == null ? null : (Filter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      objectType: map['objectType'] == null ? null : (map['objectType']! as String).input(),
     );
   }
 }

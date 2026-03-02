@@ -87,20 +87,20 @@ class SecondarySubnetState {
 
   factory SecondarySubnetState.fromMap(Map<String, dynamic> map) {
     return SecondarySubnetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
-      ipv4CidrBlock: map['ipv4CidrBlock'] == null ? null : (map['ipv4CidrBlock'] as String).input(),
-      ipv4CidrBlockAssociations: map['ipv4CidrBlockAssociations'] == null ? null : (pulumi.Input.decodeList<SecondarySubnetIpv4CidrBlockAssociation>(map['ipv4CidrBlockAssociations'], (value) => SecondarySubnetIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secondaryNetworkId: map['secondaryNetworkId'] == null ? null : (map['secondaryNetworkId'] as String).input(),
-      secondaryNetworkType: map['secondaryNetworkType'] == null ? null : (map['secondaryNetworkType'] as String).input(),
-      secondarySubnetId: map['secondarySubnetId'] == null ? null : (map['secondarySubnetId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (SecondarySubnetTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
+      ipv4CidrBlock: map['ipv4CidrBlock'] == null ? null : ((map['ipv4CidrBlock'] as String).input()).input(),
+      ipv4CidrBlockAssociations: map['ipv4CidrBlockAssociations'] == null ? null : ((pulumi.Input.decodeList<SecondarySubnetIpv4CidrBlockAssociation>(map['ipv4CidrBlockAssociations']!, (value) => SecondarySubnetIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secondaryNetworkId: map['secondaryNetworkId'] == null ? null : ((map['secondaryNetworkId'] as String).input()).input(),
+      secondaryNetworkType: map['secondaryNetworkType'] == null ? null : ((map['secondaryNetworkType'] as String).input()).input(),
+      secondarySubnetId: map['secondarySubnetId'] == null ? null : ((map['secondarySubnetId'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SecondarySubnetTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

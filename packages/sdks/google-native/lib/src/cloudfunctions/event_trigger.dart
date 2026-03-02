@@ -38,9 +38,9 @@ class EventTrigger {
   factory EventTrigger.fromMap(Map<String, dynamic> map) {
     return EventTrigger(
       eventType: (map['eventType'] as String).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (FailurePolicy.fromMap((map['failurePolicy'] as Map).cast<String, dynamic>())).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (FailurePolicy.fromMap((map['failurePolicy']! as Map).cast<String, dynamic>())).input(),
       resource: (map['resource'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

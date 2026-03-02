@@ -57,13 +57,13 @@ class OutboundConnectionArgs {
 
   factory OutboundConnectionArgs.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionArgs(
-      acceptConnection: map['acceptConnection'] == null ? null : (map['acceptConnection'] as bool).input(),
+      acceptConnection: map['acceptConnection'] == null ? null : ((map['acceptConnection'] as bool).input()).input(),
       connectionAlias: (map['connectionAlias'] as String).input(),
-      connectionMode: map['connectionMode'] == null ? null : (map['connectionMode'] as String).input(),
-      connectionProperties: map['connectionProperties'] == null ? null : (OutboundConnectionConnectionProperties.fromMap((map['connectionProperties'] as Map).cast<String, dynamic>())).input(),
-      localDomainInfo: (OutboundConnectionLocalDomainInfo.fromMap((map['localDomainInfo'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteDomainInfo: (OutboundConnectionRemoteDomainInfo.fromMap((map['remoteDomainInfo'] as Map).cast<String, dynamic>())).input(),
+      connectionMode: map['connectionMode'] == null ? null : ((map['connectionMode'] as String).input()).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : ((OutboundConnectionConnectionProperties.fromMap((map['connectionProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      localDomainInfo: (OutboundConnectionLocalDomainInfo.fromMap((map['localDomainInfo']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remoteDomainInfo: (OutboundConnectionRemoteDomainInfo.fromMap((map['remoteDomainInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

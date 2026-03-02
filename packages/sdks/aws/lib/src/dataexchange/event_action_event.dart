@@ -22,7 +22,7 @@ class EventActionEvent {
 
   factory EventActionEvent.fromMap(Map<String, dynamic> map) {
     return EventActionEvent(
-      revisionPublished: (EventActionEventRevisionPublished.fromMap((map['revisionPublished'] as Map).cast<String, dynamic>())).input(),
+      revisionPublished: (EventActionEventRevisionPublished.fromMap((map['revisionPublished']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

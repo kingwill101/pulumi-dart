@@ -48,10 +48,10 @@ class RegionSecurityPolicyUserDefinedField {
   factory RegionSecurityPolicyUserDefinedField.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyUserDefinedField(
       base: (map['base'] as String).input(),
-      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offset: map['offset'] == null ? null : (map['offset'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      mask: map['mask'] == null ? null : (map['mask']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

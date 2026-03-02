@@ -39,11 +39,11 @@ class BucketLoggingTargetGrantGrantee {
 
   factory BucketLoggingTargetGrantGrantee.fromMap(Map<String, dynamic> map) {
     return BucketLoggingTargetGrantGrantee(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      emailAddress: map['emailAddress'] == null ? null : ((map['emailAddress'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
       type: (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

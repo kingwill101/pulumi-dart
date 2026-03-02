@@ -53,14 +53,14 @@ class GetConsumerGroupsResult {
 
   factory GetConsumerGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetConsumerGroupsResult(
-      consumerIdRegex: map['consumerIdRegex'] == null ? null : map['consumerIdRegex'] as String,
+      consumerIdRegex: map['consumerIdRegex'] == null ? null : map['consumerIdRegex']! as String,
       consumerIds: (map['consumerIds'] as List).cast<String>(),
       groups: pulumi.Input.decodeList<GetConsumerGroupsGroup>(map['groups'], (value) => GetConsumerGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

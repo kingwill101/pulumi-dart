@@ -77,13 +77,13 @@ class MoveResourcePropertiesResponse {
   factory MoveResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MoveResourcePropertiesResponse(
       dependsOn: (pulumi.Input.decodeList<MoveResourceDependencyResponse>(map['dependsOn'], (value) => MoveResourceDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : (pulumi.Input.decodeList<MoveResourceDependencyOverrideResponse>(map['dependsOnOverrides'], (value) => MoveResourceDependencyOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dependsOnOverrides: map['dependsOnOverrides'] == null ? null : (pulumi.Input.decodeList<MoveResourceDependencyOverrideResponse>(map['dependsOnOverrides']!, (value) => MoveResourceDependencyOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       errors: (MoveResourcePropertiesResponseErrors.fromMap((map['errors'] as Map).cast<String, dynamic>())).input(),
-      existingTargetId: map['existingTargetId'] == null ? null : (map['existingTargetId'] as String).input(),
+      existingTargetId: map['existingTargetId'] == null ? null : (map['existingTargetId']! as String).input(),
       isResolveRequired: (map['isResolveRequired'] as bool).input(),
       moveStatus: (MoveResourcePropertiesResponseMoveStatus.fromMap((map['moveStatus'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      resourceSettings: map['resourceSettings'] == null ? null : (AvailabilitySetResourceSettingsResponse.fromMap((map['resourceSettings'] as Map).cast<String, dynamic>())).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (AvailabilitySetResourceSettingsResponse.fromMap((map['resourceSettings']! as Map).cast<String, dynamic>())).input(),
       sourceId: (map['sourceId'] as String).input(),
       sourceResourceSettings: (AvailabilitySetResourceSettingsResponse.fromMap((map['sourceResourceSettings'] as Map).cast<String, dynamic>())).input(),
       targetId: (map['targetId'] as String).input(),

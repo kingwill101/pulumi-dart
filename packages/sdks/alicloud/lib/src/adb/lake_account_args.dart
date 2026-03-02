@@ -50,11 +50,11 @@ class LakeAccountArgs {
 
   factory LakeAccountArgs.fromMap(Map<String, dynamic> map) {
     return LakeAccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
       accountName: (map['accountName'] as String).input(),
       accountPassword: (map['accountPassword'] as String).input(),
-      accountPrivileges: map['accountPrivileges'] == null ? null : (pulumi.Input.decodeList<LakeAccountAccountPrivilege>(map['accountPrivileges'], (value) => LakeAccountAccountPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      accountPrivileges: map['accountPrivileges'] == null ? null : (pulumi.Input.decodeList<LakeAccountAccountPrivilege>(map['accountPrivileges']!, (value) => LakeAccountAccountPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
     );
   }

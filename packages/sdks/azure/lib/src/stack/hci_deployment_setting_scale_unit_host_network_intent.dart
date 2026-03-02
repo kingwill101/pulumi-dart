@@ -63,15 +63,15 @@ class HciDeploymentSettingScaleUnitHostNetworkIntent {
 
   factory HciDeploymentSettingScaleUnitHostNetworkIntent.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitHostNetworkIntent(
-      adapterPropertyOverride: map['adapterPropertyOverride'] == null ? null : (HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride.fromMap((map['adapterPropertyOverride'] as Map).cast<String, dynamic>())).input(),
-      adapterPropertyOverrideEnabled: map['adapterPropertyOverrideEnabled'] == null ? null : (map['adapterPropertyOverrideEnabled'] as bool).input(),
+      adapterPropertyOverride: map['adapterPropertyOverride'] == null ? null : (HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride.fromMap((map['adapterPropertyOverride']! as Map).cast<String, dynamic>())).input(),
+      adapterPropertyOverrideEnabled: map['adapterPropertyOverrideEnabled'] == null ? null : (map['adapterPropertyOverrideEnabled']! as bool).input(),
       adapters: ((map['adapters'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      qosPolicyOverride: map['qosPolicyOverride'] == null ? null : (HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride.fromMap((map['qosPolicyOverride'] as Map).cast<String, dynamic>())).input(),
-      qosPolicyOverrideEnabled: map['qosPolicyOverrideEnabled'] == null ? null : (map['qosPolicyOverrideEnabled'] as bool).input(),
+      qosPolicyOverride: map['qosPolicyOverride'] == null ? null : (HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride.fromMap((map['qosPolicyOverride']! as Map).cast<String, dynamic>())).input(),
+      qosPolicyOverrideEnabled: map['qosPolicyOverrideEnabled'] == null ? null : (map['qosPolicyOverrideEnabled']! as bool).input(),
       trafficTypes: ((map['trafficTypes'] as List).cast<String>()).input(),
-      virtualSwitchConfigurationOverride: map['virtualSwitchConfigurationOverride'] == null ? null : (HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOverride.fromMap((map['virtualSwitchConfigurationOverride'] as Map).cast<String, dynamic>())).input(),
-      virtualSwitchConfigurationOverrideEnabled: map['virtualSwitchConfigurationOverrideEnabled'] == null ? null : (map['virtualSwitchConfigurationOverrideEnabled'] as bool).input(),
+      virtualSwitchConfigurationOverride: map['virtualSwitchConfigurationOverride'] == null ? null : (HciDeploymentSettingScaleUnitHostNetworkIntentVirtualSwitchConfigurationOverride.fromMap((map['virtualSwitchConfigurationOverride']! as Map).cast<String, dynamic>())).input(),
+      virtualSwitchConfigurationOverrideEnabled: map['virtualSwitchConfigurationOverrideEnabled'] == null ? null : (map['virtualSwitchConfigurationOverrideEnabled']! as bool).input(),
     );
   }
 }

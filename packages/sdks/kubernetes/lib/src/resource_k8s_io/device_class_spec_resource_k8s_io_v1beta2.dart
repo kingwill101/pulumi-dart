@@ -37,9 +37,9 @@ class DeviceClassSpecResourceK8sIoV1beta2 {
 
   factory DeviceClassSpecResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceClassSpecResourceK8sIoV1beta2(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClassConfigurationResourceK8sIoV1beta2>(map['config'], (value) => DeviceClassConfigurationResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extendedResourceName: map['extendedResourceName'] == null ? null : (map['extendedResourceName'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1beta2>(map['selectors'], (value) => DeviceSelectorResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClassConfigurationResourceK8sIoV1beta2>(map['config']!, (value) => DeviceClassConfigurationResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedResourceName: map['extendedResourceName'] == null ? null : (map['extendedResourceName']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelectorResourceK8sIoV1beta2>(map['selectors']!, (value) => DeviceSelectorResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

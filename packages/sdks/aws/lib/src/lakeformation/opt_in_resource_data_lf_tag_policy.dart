@@ -35,9 +35,9 @@ class OptInResourceDataLfTagPolicy {
 
   factory OptInResourceDataLfTagPolicy.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataLfTagPolicy(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      expressionName: map['expressionName'] == null ? null : (map['expressionName'] as String).input(),
-      expressions: map['expressions'] == null ? null : ((map['expressions'] as List).cast<String>()).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      expressionName: map['expressionName'] == null ? null : ((map['expressionName'] as String).input()).input(),
+      expressions: map['expressions'] == null ? null : (((map['expressions'] as List).cast<String>()).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
     );
   }

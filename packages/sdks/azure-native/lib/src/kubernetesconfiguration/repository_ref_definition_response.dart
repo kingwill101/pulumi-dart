@@ -36,10 +36,10 @@ class RepositoryRefDefinitionResponse {
 
   factory RepositoryRefDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryRefDefinitionResponse(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      commit: map['commit'] == null ? null : (map['commit'] as String).input(),
-      semver: map['semver'] == null ? null : (map['semver'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      commit: map['commit'] == null ? null : (map['commit']! as String).input(),
+      semver: map['semver'] == null ? null : (map['semver']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

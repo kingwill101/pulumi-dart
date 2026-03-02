@@ -28,9 +28,9 @@ class ProvenanceBuilder {
 
   factory ProvenanceBuilder.fromMap(Map<String, dynamic> map) {
     return ProvenanceBuilder(
-      builderDependencies: map['builderDependencies'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['builderDependencies'], (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      version: map['version'] == null ? null : ((map['version'] as Map).cast<String, String>()).input(),
+      builderDependencies: map['builderDependencies'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['builderDependencies']!, (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      version: map['version'] == null ? null : ((map['version']! as Map).cast<String, String>()).input(),
     );
   }
 }

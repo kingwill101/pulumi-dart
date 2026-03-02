@@ -67,15 +67,15 @@ class GroupContainerVolume {
 
   factory GroupContainerVolume.fromMap(Map<String, dynamic> map) {
     return GroupContainerVolume(
-      emptyDir: map['emptyDir'] == null ? null : (map['emptyDir'] as bool).input(),
-      gitRepo: map['gitRepo'] == null ? null : (GroupContainerVolumeGitRepo.fromMap((map['gitRepo'] as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (map['emptyDir']! as bool).input(),
+      gitRepo: map['gitRepo'] == null ? null : (GroupContainerVolumeGitRepo.fromMap((map['gitRepo']! as Map).cast<String, dynamic>())).input(),
       mountPath: (map['mountPath'] as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secret: map['secret'] == null ? null : ((map['secret'] as Map).cast<String, String>()).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secret: map['secret'] == null ? null : ((map['secret']! as Map).cast<String, String>()).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

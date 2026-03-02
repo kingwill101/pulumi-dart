@@ -47,11 +47,11 @@ class ServiceTagOutboundRuleResponse {
 
   factory ServiceTagOutboundRuleResponse.fromMap(Map<String, dynamic> map) {
     return ServiceTagOutboundRuleResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      destination: map['destination'] == null ? null : (ServiceTagDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      destination: map['destination'] == null ? null : (ServiceTagDestinationResponse.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
       errorInformation: (map['errorInformation'] as String).input(),
       parentRuleNames: ((map['parentRuleNames'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

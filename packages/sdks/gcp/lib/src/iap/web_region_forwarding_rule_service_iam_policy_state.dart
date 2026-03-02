@@ -45,11 +45,11 @@ class WebRegionForwardingRuleServiceIamPolicyState {
 
   factory WebRegionForwardingRuleServiceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WebRegionForwardingRuleServiceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      forwardingRuleRegionServiceName: map['forwardingRuleRegionServiceName'] == null ? null : (map['forwardingRuleRegionServiceName'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      forwardingRuleRegionServiceName: map['forwardingRuleRegionServiceName'] == null ? null : (map['forwardingRuleRegionServiceName']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

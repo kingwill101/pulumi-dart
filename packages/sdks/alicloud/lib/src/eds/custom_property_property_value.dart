@@ -25,8 +25,8 @@ class CustomPropertyPropertyValue {
 
   factory CustomPropertyPropertyValue.fromMap(Map<String, dynamic> map) {
     return CustomPropertyPropertyValue(
-      propertyValue: map['propertyValue'] == null ? null : (map['propertyValue'] as String).input(),
-      propertyValueId: map['propertyValueId'] == null ? null : (map['propertyValueId'] as String).input(),
+      propertyValue: map['propertyValue'] == null ? null : (map['propertyValue']! as String).input(),
+      propertyValueId: map['propertyValueId'] == null ? null : (map['propertyValueId']! as String).input(),
     );
   }
 }

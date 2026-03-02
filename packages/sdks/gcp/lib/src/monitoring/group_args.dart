@@ -53,9 +53,9 @@ class GroupArgs {
     return GroupArgs(
       displayName: (map['displayName'] as String).input(),
       filter: (map['filter'] as String).input(),
-      isCluster: map['isCluster'] == null ? null : (map['isCluster'] as bool).input(),
-      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      isCluster: map['isCluster'] == null ? null : (map['isCluster']! as bool).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetRoutingProfileMediaConcurrency {
     return GetRoutingProfileMediaConcurrency(
       channel: (map['channel'] as String).input(),
       concurrency: (map['concurrency'] as int).input(),
-      crossChannelBehaviors: (pulumi.Input.decodeList<GetRoutingProfileMediaConcurrencyCrossChannelBehavior>(map['crossChannelBehaviors'], (value) => GetRoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crossChannelBehaviors: (pulumi.Input.decodeList<GetRoutingProfileMediaConcurrencyCrossChannelBehavior>(map['crossChannelBehaviors']!, (value) => GetRoutingProfileMediaConcurrencyCrossChannelBehavior.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

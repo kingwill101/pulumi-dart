@@ -42,11 +42,11 @@ class ResourcesAppengineV1beta {
 
   factory ResourcesAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ResourcesAppengineV1beta(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      diskGb: map['diskGb'] == null ? null : (map['diskGb'] as double).input(),
-      kmsKeyReference: map['kmsKeyReference'] == null ? null : (map['kmsKeyReference'] as String).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeAppengineV1beta>(map['volumes'], (value) => VolumeAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      diskGb: map['diskGb'] == null ? null : (map['diskGb']! as double).input(),
+      kmsKeyReference: map['kmsKeyReference'] == null ? null : (map['kmsKeyReference']! as String).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeAppengineV1beta>(map['volumes']!, (value) => VolumeAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class TriggerArgs {
       imageTemplateName: (map['imageTemplateName'] as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class GetInstancesArgs {
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstancesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInstancesFilter>(map['filters'], (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceStateNames: map['instanceStateNames'] == null ? null : ((map['instanceStateNames'] as List).cast<String>()).input(),
-      instanceTags: map['instanceTags'] == null ? null : ((map['instanceTags'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetInstancesFilter>(map['filters']!, (value) => GetInstancesFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceStateNames: map['instanceStateNames'] == null ? null : (((map['instanceStateNames'] as List).cast<String>()).input()).input(),
+      instanceTags: map['instanceTags'] == null ? null : (((map['instanceTags'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

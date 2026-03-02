@@ -32,9 +32,9 @@ class ListingBigqueryDatasetEffectiveReplica {
 
   factory ListingBigqueryDatasetEffectiveReplica.fromMap(Map<String, dynamic> map) {
     return ListingBigqueryDatasetEffectiveReplica(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      primaryState: map['primaryState'] == null ? null : (map['primaryState'] as String).input(),
-      replicaState: map['replicaState'] == null ? null : (map['replicaState'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      primaryState: map['primaryState'] == null ? null : (map['primaryState']! as String).input(),
+      replicaState: map['replicaState'] == null ? null : (map['replicaState']! as String).input(),
     );
   }
 }

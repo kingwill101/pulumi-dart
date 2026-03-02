@@ -21,7 +21,7 @@ class ManagedClusterStaticEgressGatewayProfile {
 
   factory ManagedClusterStaticEgressGatewayProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterStaticEgressGatewayProfile(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

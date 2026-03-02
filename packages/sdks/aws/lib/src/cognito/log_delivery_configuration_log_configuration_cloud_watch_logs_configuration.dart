@@ -20,7 +20,7 @@ class LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration {
 
   factory LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationLogConfigurationCloudWatchLogsConfiguration(
-      logGroupArn: map['logGroupArn'] == null ? null : (map['logGroupArn'] as String).input(),
+      logGroupArn: map['logGroupArn'] == null ? null : ((map['logGroupArn'] as String).input()).input(),
     );
   }
 }

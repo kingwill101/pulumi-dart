@@ -28,8 +28,8 @@ class CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig {
 
   factory CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig.fromMap(Map<String, dynamic> map) {
     return CxToolVersionToolOpenApiSpecAuthenticationBearerTokenConfig(
-      secretVersionForToken: map['secretVersionForToken'] == null ? null : (map['secretVersionForToken'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      secretVersionForToken: map['secretVersionForToken'] == null ? null : (map['secretVersionForToken']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

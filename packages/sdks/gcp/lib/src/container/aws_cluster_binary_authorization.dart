@@ -20,7 +20,7 @@ class AwsClusterBinaryAuthorization {
 
   factory AwsClusterBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return AwsClusterBinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode'] as String).input(),
+      evaluationMode: map['evaluationMode'] == null ? null : (map['evaluationMode']! as String).input(),
     );
   }
 }

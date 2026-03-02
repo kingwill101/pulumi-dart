@@ -75,13 +75,13 @@ class GetActivityLogAlertResult {
       actions: ActionListResponse.fromMap((map['actions'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       condition: AlertRuleAllOfConditionResponse.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+      description: map['description'] == null ? null : map['description']! as String,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       scopes: (map['scopes'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

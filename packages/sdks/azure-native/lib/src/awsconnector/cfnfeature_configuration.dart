@@ -32,9 +32,9 @@ class CFNFeatureConfiguration {
 
   factory CFNFeatureConfiguration.fromMap(Map<String, dynamic> map) {
     return CFNFeatureConfiguration(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (pulumi.Input.decodeList<CFNFeatureAdditionalConfiguration>(map['additionalConfiguration'], (value) => CFNFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (pulumi.Input.decodeList<CFNFeatureAdditionalConfiguration>(map['additionalConfiguration']!, (value) => CFNFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState {
 
   factory NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationResourceId: map['destinationResourceId'] == null ? null : (map['destinationResourceId'] as String).input(),
-      ipTraffic: map['ipTraffic'] == null ? null : (NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((map['ipTraffic'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      verifierWorkspaceId: map['verifierWorkspaceId'] == null ? null : (map['verifierWorkspaceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationResourceId: map['destinationResourceId'] == null ? null : (map['destinationResourceId']! as String).input(),
+      ipTraffic: map['ipTraffic'] == null ? null : (NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((map['ipTraffic']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      verifierWorkspaceId: map['verifierWorkspaceId'] == null ? null : (map['verifierWorkspaceId']! as String).input(),
     );
   }
 }

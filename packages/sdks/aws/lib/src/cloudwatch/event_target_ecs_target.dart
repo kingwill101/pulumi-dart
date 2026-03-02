@@ -84,18 +84,18 @@ class EventTargetEcsTarget {
 
   factory EventTargetEcsTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetEcsTarget(
-      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : (pulumi.Input.decodeList<EventTargetEcsTargetCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => EventTargetEcsTargetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : (map['enableEcsManagedTags'] as bool).input(),
-      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : (map['enableExecuteCommand'] as bool).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      launchType: map['launchType'] == null ? null : (map['launchType'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (EventTargetEcsTargetNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      orderedPlacementStrategies: map['orderedPlacementStrategies'] == null ? null : (pulumi.Input.decodeList<EventTargetEcsTargetOrderedPlacementStrategy>(map['orderedPlacementStrategies'], (value) => EventTargetEcsTargetOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      placementConstraints: map['placementConstraints'] == null ? null : (pulumi.Input.decodeList<EventTargetEcsTargetPlacementConstraint>(map['placementConstraints'], (value) => EventTargetEcsTargetPlacementConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
-      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taskCount: map['taskCount'] == null ? null : (map['taskCount'] as int).input(),
+      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : ((pulumi.Input.decodeList<EventTargetEcsTargetCapacityProviderStrategy>(map['capacityProviderStrategies']!, (value) => EventTargetEcsTargetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : ((map['enableEcsManagedTags'] as bool).input()).input(),
+      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : ((map['enableExecuteCommand'] as bool).input()).input(),
+      group: map['group'] == null ? null : ((map['group'] as String).input()).input(),
+      launchType: map['launchType'] == null ? null : ((map['launchType'] as String).input()).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : ((EventTargetEcsTargetNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      orderedPlacementStrategies: map['orderedPlacementStrategies'] == null ? null : ((pulumi.Input.decodeList<EventTargetEcsTargetOrderedPlacementStrategy>(map['orderedPlacementStrategies']!, (value) => EventTargetEcsTargetOrderedPlacementStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      placementConstraints: map['placementConstraints'] == null ? null : ((pulumi.Input.decodeList<EventTargetEcsTargetPlacementConstraint>(map['placementConstraints']!, (value) => EventTargetEcsTargetPlacementConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      platformVersion: map['platformVersion'] == null ? null : ((map['platformVersion'] as String).input()).input(),
+      propagateTags: map['propagateTags'] == null ? null : ((map['propagateTags'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      taskCount: map['taskCount'] == null ? null : ((map['taskCount'] as int).input()).input(),
       taskDefinitionArn: (map['taskDefinitionArn'] as String).input(),
     );
   }

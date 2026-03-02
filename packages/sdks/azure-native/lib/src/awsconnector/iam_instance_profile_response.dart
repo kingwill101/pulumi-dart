@@ -26,8 +26,8 @@ class IamInstanceProfileResponse {
 
   factory IamInstanceProfileResponse.fromMap(Map<String, dynamic> map) {
     return IamInstanceProfileResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

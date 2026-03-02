@@ -22,7 +22,7 @@ class SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1 {
 
   factory SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return SelfSubjectReviewStatusPatchAuthenticationK8sIoV1alpha1(
-      userInfo: map['userInfo'] == null ? null : (UserInfoPatch.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      userInfo: map['userInfo'] == null ? null : (UserInfoPatch.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

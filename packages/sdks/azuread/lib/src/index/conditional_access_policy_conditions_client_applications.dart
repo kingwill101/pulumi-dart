@@ -33,9 +33,9 @@ class ConditionalAccessPolicyConditionsClientApplications {
 
   factory ConditionalAccessPolicyConditionsClientApplications.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsClientApplications(
-      excludedServicePrincipals: map['excludedServicePrincipals'] == null ? null : ((map['excludedServicePrincipals'] as List).cast<String>()).input(),
-      filter: map['filter'] == null ? null : (ConditionalAccessPolicyConditionsClientApplicationsFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      includedServicePrincipals: map['includedServicePrincipals'] == null ? null : ((map['includedServicePrincipals'] as List).cast<String>()).input(),
+      excludedServicePrincipals: map['excludedServicePrincipals'] == null ? null : ((map['excludedServicePrincipals']! as List).cast<String>()).input(),
+      filter: map['filter'] == null ? null : (ConditionalAccessPolicyConditionsClientApplicationsFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      includedServicePrincipals: map['includedServicePrincipals'] == null ? null : ((map['includedServicePrincipals']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ServiceTaskSpecLogDriver {
   factory ServiceTaskSpecLogDriver.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecLogDriver(
       name: (map['name'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
     );
   }
 }

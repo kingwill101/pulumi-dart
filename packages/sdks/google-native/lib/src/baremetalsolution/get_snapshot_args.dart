@@ -36,7 +36,7 @@ class GetSnapshotArgs {
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       snapshotId: (map['snapshotId'] as String).input(),
       volumeId: (map['volumeId'] as String).input(),
     );

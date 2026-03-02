@@ -35,8 +35,8 @@ class ResourceShareResource {
 
   factory ResourceShareResource.fromMap(Map<String, dynamic> map) {
     return ResourceShareResource(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

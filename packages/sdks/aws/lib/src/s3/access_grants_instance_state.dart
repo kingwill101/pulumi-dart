@@ -56,14 +56,14 @@ class AccessGrantsInstanceState {
 
   factory AccessGrantsInstanceState.fromMap(Map<String, dynamic> map) {
     return AccessGrantsInstanceState(
-      accessGrantsInstanceArn: map['accessGrantsInstanceArn'] == null ? null : (map['accessGrantsInstanceArn'] as String).input(),
-      accessGrantsInstanceId: map['accessGrantsInstanceId'] == null ? null : (map['accessGrantsInstanceId'] as String).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : (map['identityCenterApplicationArn'] as String).input(),
-      identityCenterArn: map['identityCenterArn'] == null ? null : (map['identityCenterArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accessGrantsInstanceArn: map['accessGrantsInstanceArn'] == null ? null : ((map['accessGrantsInstanceArn'] as String).input()).input(),
+      accessGrantsInstanceId: map['accessGrantsInstanceId'] == null ? null : ((map['accessGrantsInstanceId'] as String).input()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      identityCenterApplicationArn: map['identityCenterApplicationArn'] == null ? null : ((map['identityCenterApplicationArn'] as String).input()).input(),
+      identityCenterArn: map['identityCenterArn'] == null ? null : ((map['identityCenterArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

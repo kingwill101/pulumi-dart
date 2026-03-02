@@ -26,8 +26,8 @@ class StatelessRuleGroupReference {
 
   factory StatelessRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return StatelessRuleGroupReference(
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
     );
   }
 }

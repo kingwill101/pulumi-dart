@@ -54,12 +54,12 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
 
   factory ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>(map['accelerators'], (value) => ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskConfig: map['diskConfig'] == null ? null : (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames'] as List).cast<String>()).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      numInstances: map['numInstances'] == null ? null : (map['numInstances'] as int).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>(map['accelerators']!, (value) => ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfig: map['diskConfig'] == null ? null : (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames']! as List).cast<String>()).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      numInstances: map['numInstances'] == null ? null : (map['numInstances']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class Hl7V2NotificationConfig {
 
   factory Hl7V2NotificationConfig.fromMap(Map<String, dynamic> map) {
     return Hl7V2NotificationConfig(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      pubsubTopic: map['pubsubTopic'] == null ? null : (map['pubsubTopic']! as String).input(),
     );
   }
 }

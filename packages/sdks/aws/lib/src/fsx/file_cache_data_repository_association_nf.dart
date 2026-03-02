@@ -25,7 +25,7 @@ class FileCacheDataRepositoryAssociationNf {
 
   factory FileCacheDataRepositoryAssociationNf.fromMap(Map<String, dynamic> map) {
     return FileCacheDataRepositoryAssociationNf(
-      dnsIps: map['dnsIps'] == null ? null : ((map['dnsIps'] as List).cast<String>()).input(),
+      dnsIps: map['dnsIps'] == null ? null : (((map['dnsIps'] as List).cast<String>()).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

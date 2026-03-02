@@ -21,7 +21,7 @@ class FsxOpenZfsFileSystemProtocolNfs {
 
   factory FsxOpenZfsFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
     return FsxOpenZfsFileSystemProtocolNfs(
-      mountOptions: (FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      mountOptions: (FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

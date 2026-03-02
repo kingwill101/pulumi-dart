@@ -27,8 +27,8 @@ class LifetimeAction {
 
   factory LifetimeAction.fromMap(Map<String, dynamic> map) {
     return LifetimeAction(
-      action: map['action'] == null ? null : (Action.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (Action.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (Trigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

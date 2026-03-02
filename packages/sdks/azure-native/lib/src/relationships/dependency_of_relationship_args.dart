@@ -35,8 +35,8 @@ class DependencyOfRelationshipArgs {
 
   factory DependencyOfRelationshipArgs.fromMap(Map<String, dynamic> map) {
     return DependencyOfRelationshipArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (DependencyOfRelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (DependencyOfRelationshipProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

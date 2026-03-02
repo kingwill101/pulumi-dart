@@ -21,7 +21,7 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

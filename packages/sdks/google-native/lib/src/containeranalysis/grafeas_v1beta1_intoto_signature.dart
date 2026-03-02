@@ -24,8 +24,8 @@ class GrafeasV1beta1IntotoSignature {
 
   factory GrafeasV1beta1IntotoSignature.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoSignature(
-      keyid: map['keyid'] == null ? null : (map['keyid'] as String).input(),
-      sig: map['sig'] == null ? null : (map['sig'] as String).input(),
+      keyid: map['keyid'] == null ? null : (map['keyid']! as String).input(),
+      sig: map['sig'] == null ? null : (map['sig']! as String).input(),
     );
   }
 }

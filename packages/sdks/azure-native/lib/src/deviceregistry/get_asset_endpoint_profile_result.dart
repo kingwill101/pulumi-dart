@@ -99,10 +99,10 @@ class GetAssetEndpointProfileResult {
 
   factory GetAssetEndpointProfileResult.fromMap(Map<String, dynamic> map) {
     return GetAssetEndpointProfileResult(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : map['additionalConfiguration'] as String,
-      authentication: map['authentication'] == null ? null : AuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>()),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : map['additionalConfiguration']! as String,
+      authentication: map['authentication'] == null ? null : AuthenticationResponse.fromMap((map['authentication']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : map['discoveredAssetEndpointProfileRef'] as String,
+      discoveredAssetEndpointProfileRef: map['discoveredAssetEndpointProfileRef'] == null ? null : map['discoveredAssetEndpointProfileRef']! as String,
       endpointProfileType: map['endpointProfileType'] as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
@@ -111,7 +111,7 @@ class GetAssetEndpointProfileResult {
       provisioningState: map['provisioningState'] as String,
       status: AssetEndpointProfileStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       targetAddress: map['targetAddress'] as String,
       type: map['type'] as String,
       uuid: map['uuid'] as String,

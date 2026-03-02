@@ -21,7 +21,7 @@ class IPAddressTypeEnumValueResponse {
 
   factory IPAddressTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return IPAddressTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

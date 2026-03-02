@@ -53,13 +53,13 @@ class ReplicaSetRoleState {
 
   factory ReplicaSetRoleState.fromMap(Map<String, dynamic> map) {
     return ReplicaSetRoleState(
-      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain'] as String).input(),
-      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort'] as int).input(),
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      connectionDomain: map['connectionDomain'] == null ? null : (map['connectionDomain']! as String).input(),
+      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort']! as int).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      replicaSetRole: map['replicaSetRole'] == null ? null : (map['replicaSetRole']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
     );
   }
 }

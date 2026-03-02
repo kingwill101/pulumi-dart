@@ -89,18 +89,18 @@ class SamplingRuleArgs {
 
   factory SamplingRuleArgs.fromMap(Map<String, dynamic> map) {
     return SamplingRuleArgs(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
+      attributes: map['attributes'] == null ? null : (((map['attributes'] as Map).cast<String, String>()).input()).input(),
       fixedRate: (map['fixedRate'] as double).input(),
       host: (map['host'] as String).input(),
       httpMethod: (map['httpMethod'] as String).input(),
       priority: (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       reservoirSize: (map['reservoirSize'] as int).input(),
       resourceArn: (map['resourceArn'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : ((map['ruleName'] as String).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
       serviceType: (map['serviceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       urlPath: (map['urlPath'] as String).input(),
       version: (map['version'] as int).input(),
     );

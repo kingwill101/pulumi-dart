@@ -73,15 +73,15 @@ class GetWorkbookTemplateResult {
 
   factory GetWorkbookTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetWorkbookTemplateResult(
-      author: map['author'] == null ? null : map['author'] as String,
+      author: map['author'] == null ? null : map['author']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       galleries: pulumi.Input.decodeList<WorkbookTemplateGalleryResponse>(map['galleries'], (value) => WorkbookTemplateGalleryResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      localized: map['localized'] == null ? null : pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGalleryResponse>>(map['localized'], (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGalleryResponse>(value, (value) => WorkbookTemplateLocalizedGalleryResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      localized: map['localized'] == null ? null : pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGalleryResponse>>(map['localized']!, (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGalleryResponse>(value, (value) => WorkbookTemplateLocalizedGalleryResponse.fromMap((value as Map).cast<String, dynamic>()))),
       location: map['location'] as String,
       name: map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      priority: map['priority'] == null ? null : map['priority']! as int,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       templateData: map['templateData'],
       type: map['type'] as String,
     );

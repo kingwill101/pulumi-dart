@@ -21,7 +21,7 @@ class FileSystemTokenStore {
 
   factory FileSystemTokenStore.fromMap(Map<String, dynamic> map) {
     return FileSystemTokenStore(
-      directory: map['directory'] == null ? null : (map['directory'] as String).input(),
+      directory: map['directory'] == null ? null : (map['directory']! as String).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class WorkbookTemplateState {
 
   factory WorkbookTemplateState.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateState(
-      author: map['author'] == null ? null : (map['author'] as String).input(),
-      galleries: map['galleries'] == null ? null : (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries'], (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localized: map['localized'] == null ? null : (map['localized'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateData: map['templateData'] == null ? null : (map['templateData'] as String).input(),
+      author: map['author'] == null ? null : (map['author']! as String).input(),
+      galleries: map['galleries'] == null ? null : (pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries']!, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localized: map['localized'] == null ? null : (map['localized']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateData: map['templateData'] == null ? null : (map['templateData']! as String).input(),
     );
   }
 }

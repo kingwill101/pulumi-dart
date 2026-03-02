@@ -20,7 +20,7 @@ class V2modelsSlotMultipleValuesSetting {
 
   factory V2modelsSlotMultipleValuesSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotMultipleValuesSetting(
-      allowMultipleValues: map['allowMultipleValues'] == null ? null : (map['allowMultipleValues'] as bool).input(),
+      allowMultipleValues: map['allowMultipleValues'] == null ? null : ((map['allowMultipleValues'] as bool).input()).input(),
     );
   }
 }

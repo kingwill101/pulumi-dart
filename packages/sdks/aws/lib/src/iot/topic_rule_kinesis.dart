@@ -30,7 +30,7 @@ class TopicRuleKinesis {
 
   factory TopicRuleKinesis.fromMap(Map<String, dynamic> map) {
     return TopicRuleKinesis(
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : ((map['partitionKey'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       streamName: (map['streamName'] as String).input(),
     );

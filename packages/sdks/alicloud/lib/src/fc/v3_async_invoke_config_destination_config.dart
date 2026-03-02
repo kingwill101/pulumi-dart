@@ -27,8 +27,8 @@ class V3AsyncInvokeConfigDestinationConfig {
 
   factory V3AsyncInvokeConfigDestinationConfig.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigDestinationConfig(
-      onFailure: map['onFailure'] == null ? null : (V3AsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
-      onSuccess: map['onSuccess'] == null ? null : (V3AsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
+      onFailure: map['onFailure'] == null ? null : (V3AsyncInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure']! as Map).cast<String, dynamic>())).input(),
+      onSuccess: map['onSuccess'] == null ? null : (V3AsyncInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

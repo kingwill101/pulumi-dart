@@ -37,7 +37,7 @@ class CacheExpirationActionParametersResponse {
   factory CacheExpirationActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return CacheExpirationActionParametersResponse(
       cacheBehavior: (map['cacheBehavior'] as String).input(),
-      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration']! as String).input(),
       cacheType: (map['cacheType'] as String).input(),
       typeName: (map['typeName'] as String).input(),
     );

@@ -42,9 +42,9 @@ class GetNotificationsResult {
   factory GetNotificationsResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationsResult(
       id: map['id'] as String,
-      ids: map['ids'] == null ? null : (map['ids'] as List).cast<String>(),
+      ids: map['ids'] == null ? null : (map['ids']! as List).cast<String>(),
       notifications: pulumi.Input.decodeList<GetNotificationsNotification>(map['notifications'], (value) => GetNotificationsNotification.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       scalingGroupId: map['scalingGroupId'] as String,
     );
   }

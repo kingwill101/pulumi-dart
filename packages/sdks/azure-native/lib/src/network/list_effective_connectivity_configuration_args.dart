@@ -35,7 +35,7 @@ class ListEffectiveConnectivityConfigurationArgs {
   factory ListEffectiveConnectivityConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ListEffectiveConnectivityConfigurationArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
       virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }

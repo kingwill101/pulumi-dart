@@ -34,7 +34,7 @@ class CrossAccountArgs {
 
   factory CrossAccountArgs.fromMap(Map<String, dynamic> map) {
     return CrossAccountArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
       crossAccountRoleName: (map['crossAccountRoleName'] as String).input(),
       crossAccountUserId: (map['crossAccountUserId'] as int).input(),
     );

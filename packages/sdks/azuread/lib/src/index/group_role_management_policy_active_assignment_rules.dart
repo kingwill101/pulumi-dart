@@ -42,11 +42,11 @@ class GroupRoleManagementPolicyActiveAssignmentRules {
 
   factory GroupRoleManagementPolicyActiveAssignmentRules.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyActiveAssignmentRules(
-      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired'] as bool).input(),
-      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter'] as String).input(),
-      requireJustification: map['requireJustification'] == null ? null : (map['requireJustification'] as bool).input(),
-      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] == null ? null : (map['requireMultifactorAuthentication'] as bool).input(),
-      requireTicketInfo: map['requireTicketInfo'] == null ? null : (map['requireTicketInfo'] as bool).input(),
+      expirationRequired: map['expirationRequired'] == null ? null : (map['expirationRequired']! as bool).input(),
+      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter']! as String).input(),
+      requireJustification: map['requireJustification'] == null ? null : (map['requireJustification']! as bool).input(),
+      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] == null ? null : (map['requireMultifactorAuthentication']! as bool).input(),
+      requireTicketInfo: map['requireTicketInfo'] == null ? null : (map['requireTicketInfo']! as bool).input(),
     );
   }
 }

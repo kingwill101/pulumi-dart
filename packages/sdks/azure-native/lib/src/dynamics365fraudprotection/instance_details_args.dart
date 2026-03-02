@@ -45,11 +45,11 @@ class InstanceDetailsArgs {
 
   factory InstanceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceDetailsArgs(
-      administration: map['administration'] == null ? null : (DFPInstanceAdministrators.fromMap((map['administration'] as Map).cast<String, dynamic>())).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      administration: map['administration'] == null ? null : (DFPInstanceAdministrators.fromMap((map['administration']! as Map).cast<String, dynamic>())).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

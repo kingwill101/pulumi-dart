@@ -27,8 +27,8 @@ class ExecStep {
 
   factory ExecStep.fromMap(Map<String, dynamic> map) {
     return ExecStep(
-      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (ExecStepConfig.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>())).input(),
-      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (ExecStepConfig.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>())).input(),
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (ExecStepConfig.fromMap((map['linuxExecStepConfig']! as Map).cast<String, dynamic>())).input(),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (ExecStepConfig.fromMap((map['windowsExecStepConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class DatabaseDbArgs {
   factory DatabaseDbArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseDbArgs(
       clusterId: (map['clusterId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

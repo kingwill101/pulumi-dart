@@ -34,7 +34,7 @@ class ModelPackageGroupPolicyArgs {
   factory ModelPackageGroupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ModelPackageGroupPolicyArgs(
       modelPackageGroupName: (map['modelPackageGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourcePolicy: (map['resourcePolicy'] as String).input(),
     );
   }

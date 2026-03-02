@@ -26,8 +26,8 @@ class GroupIdentifierResponse {
 
   factory GroupIdentifierResponse.fromMap(Map<String, dynamic> map) {
     return GroupIdentifierResponse(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
     );
   }
 }

@@ -60,10 +60,10 @@ class GetInstanceClassInfosArgs {
   factory GetInstanceClassInfosArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceClassInfosArgs(
       commodityCode: (map['commodityCode'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      infos: map['infos'] == null ? null : (pulumi.Input.decodeList<GetInstanceClassInfosInfo>(map['infos'], (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      infos: map['infos'] == null ? null : (pulumi.Input.decodeList<GetInstanceClassInfosInfo>(map['infos']!, (value) => GetInstanceClassInfosInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       orderType: (map['orderType'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

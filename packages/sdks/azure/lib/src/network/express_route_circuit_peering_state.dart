@@ -101,22 +101,22 @@ class ExpressRouteCircuitPeeringState {
 
   factory ExpressRouteCircuitPeeringState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringState(
-      azureAsn: map['azureAsn'] == null ? null : (map['azureAsn'] as int).input(),
-      expressRouteCircuitName: map['expressRouteCircuitName'] == null ? null : (map['expressRouteCircuitName'] as String).input(),
-      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : (map['gatewayManagerEtag'] as String).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
-      ipv6: map['ipv6'] == null ? null : (ExpressRouteCircuitPeeringIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
-      peeringType: map['peeringType'] == null ? null : (map['peeringType'] as String).input(),
-      primaryAzurePort: map['primaryAzurePort'] == null ? null : (map['primaryAzurePort'] as String).input(),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId'] as String).input(),
-      secondaryAzurePort: map['secondaryAzurePort'] == null ? null : (map['secondaryAzurePort'] as String).input(),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix'] as String).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
+      azureAsn: map['azureAsn'] == null ? null : (map['azureAsn']! as int).input(),
+      expressRouteCircuitName: map['expressRouteCircuitName'] == null ? null : (map['expressRouteCircuitName']! as String).input(),
+      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : (map['gatewayManagerEtag']! as String).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (ExpressRouteCircuitPeeringIpv6.fromMap((map['ipv6']! as Map).cast<String, dynamic>())).input(),
+      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((map['microsoftPeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
+      peeringType: map['peeringType'] == null ? null : (map['peeringType']! as String).input(),
+      primaryAzurePort: map['primaryAzurePort'] == null ? null : (map['primaryAzurePort']! as String).input(),
+      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId']! as String).input(),
+      secondaryAzurePort: map['secondaryAzurePort'] == null ? null : (map['secondaryAzurePort']! as String).input(),
+      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix']! as String).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
     );
   }
 }

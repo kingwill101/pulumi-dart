@@ -48,10 +48,10 @@ class BareMetalNodePoolNodePoolConfig {
 
   factory BareMetalNodePoolNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolNodePoolConfig(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       nodeConfigs: (pulumi.Input.decodeList<BareMetalNodePoolNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalNodePoolNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalNodePoolNodePoolConfigTaint>(map['taints'], (value) => BareMetalNodePoolNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalNodePoolNodePoolConfigTaint>(map['taints']!, (value) => BareMetalNodePoolNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

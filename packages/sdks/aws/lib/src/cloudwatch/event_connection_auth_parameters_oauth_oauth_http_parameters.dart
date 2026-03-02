@@ -33,9 +33,9 @@ class EventConnectionAuthParametersOauthOauthHttpParameters {
 
   factory EventConnectionAuthParametersOauthOauthHttpParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersOauthOauthHttpParameters(
-      bodies: map['bodies'] == null ? null : (pulumi.Input.decodeList<EventConnectionAuthParametersOauthOauthHttpParametersBody>(map['bodies'], (value) => EventConnectionAuthParametersOauthOauthHttpParametersBody.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<EventConnectionAuthParametersOauthOauthHttpParametersHeader>(map['headers'], (value) => EventConnectionAuthParametersOauthOauthHttpParametersHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryStrings: map['queryStrings'] == null ? null : (pulumi.Input.decodeList<EventConnectionAuthParametersOauthOauthHttpParametersQueryString>(map['queryStrings'], (value) => EventConnectionAuthParametersOauthOauthHttpParametersQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bodies: map['bodies'] == null ? null : ((pulumi.Input.decodeList<EventConnectionAuthParametersOauthOauthHttpParametersBody>(map['bodies']!, (value) => EventConnectionAuthParametersOauthOauthHttpParametersBody.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<EventConnectionAuthParametersOauthOauthHttpParametersHeader>(map['headers']!, (value) => EventConnectionAuthParametersOauthOauthHttpParametersHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((pulumi.Input.decodeList<EventConnectionAuthParametersOauthOauthHttpParametersQueryString>(map['queryStrings']!, (value) => EventConnectionAuthParametersOauthOauthHttpParametersQueryString.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

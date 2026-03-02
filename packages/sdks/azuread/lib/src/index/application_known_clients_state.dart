@@ -26,8 +26,8 @@ class ApplicationKnownClientsState {
 
   factory ApplicationKnownClientsState.fromMap(Map<String, dynamic> map) {
     return ApplicationKnownClientsState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      knownClientIds: map['knownClientIds'] == null ? null : ((map['knownClientIds'] as List).cast<String>()).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      knownClientIds: map['knownClientIds'] == null ? null : ((map['knownClientIds']! as List).cast<String>()).input(),
     );
   }
 }

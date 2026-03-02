@@ -28,7 +28,7 @@ class AzureResourceManagerManagedIdentityProperties {
   factory AzureResourceManagerManagedIdentityProperties.fromMap(Map<String, dynamic> map) {
     return AzureResourceManagerManagedIdentityProperties(
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentity>(map['userAssignedIdentities'], (value) => AzureResourceManagerUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<AzureResourceManagerUserAssignedIdentity>(map['userAssignedIdentities']!, (value) => AzureResourceManagerUserAssignedIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

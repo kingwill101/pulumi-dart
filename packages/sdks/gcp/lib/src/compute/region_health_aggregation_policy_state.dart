@@ -106,16 +106,16 @@ class RegionHealthAggregationPolicyState {
 
   factory RegionHealthAggregationPolicyState.fromMap(Map<String, dynamic> map) {
     return RegionHealthAggregationPolicyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : (map['healthyPercentThreshold'] as int).input(),
-      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : (map['minHealthyThreshold'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      healthyPercentThreshold: map['healthyPercentThreshold'] == null ? null : (map['healthyPercentThreshold']! as int).input(),
+      minHealthyThreshold: map['minHealthyThreshold'] == null ? null : (map['minHealthyThreshold']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
     );
   }
 }

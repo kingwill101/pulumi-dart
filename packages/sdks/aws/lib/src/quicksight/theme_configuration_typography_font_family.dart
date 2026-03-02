@@ -20,7 +20,7 @@ class ThemeConfigurationTypographyFontFamily {
 
   factory ThemeConfigurationTypographyFontFamily.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationTypographyFontFamily(
-      fontFamily: map['fontFamily'] == null ? null : (map['fontFamily'] as String).input(),
+      fontFamily: map['fontFamily'] == null ? null : ((map['fontFamily'] as String).input()).input(),
     );
   }
 }

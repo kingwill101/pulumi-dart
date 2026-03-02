@@ -36,10 +36,10 @@ class IpMatchConditionResponse {
 
   factory IpMatchConditionResponse.fromMap(Map<String, dynamic> map) {
     return IpMatchConditionResponse(
-      ipGroupNames: map['ipGroupNames'] == null ? null : ((map['ipGroupNames'] as List).cast<String>()).input(),
-      ipPrefixValues: map['ipPrefixValues'] == null ? null : ((map['ipPrefixValues'] as List).cast<String>()).input(),
-      prefixType: map['prefixType'] == null ? null : (map['prefixType'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      ipGroupNames: map['ipGroupNames'] == null ? null : ((map['ipGroupNames']! as List).cast<String>()).input(),
+      ipPrefixValues: map['ipPrefixValues'] == null ? null : ((map['ipPrefixValues']! as List).cast<String>()).input(),
+      prefixType: map['prefixType'] == null ? null : (map['prefixType']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

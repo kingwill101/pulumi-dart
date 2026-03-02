@@ -43,10 +43,10 @@ class SubscriberNotificationConfigurationHttpsNotificationConfiguration {
 
   factory SubscriberNotificationConfigurationHttpsNotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return SubscriberNotificationConfigurationHttpsNotificationConfiguration(
-      authorizationApiKeyName: map['authorizationApiKeyName'] == null ? null : (map['authorizationApiKeyName'] as String).input(),
-      authorizationApiKeyValue: map['authorizationApiKeyValue'] == null ? null : (map['authorizationApiKeyValue'] as String).input(),
+      authorizationApiKeyName: map['authorizationApiKeyName'] == null ? null : ((map['authorizationApiKeyName'] as String).input()).input(),
+      authorizationApiKeyValue: map['authorizationApiKeyValue'] == null ? null : ((map['authorizationApiKeyValue'] as String).input()).input(),
       endpoint: (map['endpoint'] as String).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as String).input()).input(),
       targetRoleArn: (map['targetRoleArn'] as String).input(),
     );
   }

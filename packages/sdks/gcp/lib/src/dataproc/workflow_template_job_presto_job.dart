@@ -52,13 +52,13 @@ class WorkflowTemplateJobPrestoJob {
 
   factory WorkflowTemplateJobPrestoJob.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobPrestoJob(
-      clientTags: map['clientTags'] == null ? null : ((map['clientTags'] as List).cast<String>()).input(),
-      continueOnFailure: map['continueOnFailure'] == null ? null : (map['continueOnFailure'] as bool).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (WorkflowTemplateJobPrestoJobLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri'] as String).input(),
-      queryList: map['queryList'] == null ? null : (WorkflowTemplateJobPrestoJobQueryList.fromMap((map['queryList'] as Map).cast<String, dynamic>())).input(),
+      clientTags: map['clientTags'] == null ? null : ((map['clientTags']! as List).cast<String>()).input(),
+      continueOnFailure: map['continueOnFailure'] == null ? null : (map['continueOnFailure']! as bool).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (WorkflowTemplateJobPrestoJobLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri']! as String).input(),
+      queryList: map['queryList'] == null ? null : (WorkflowTemplateJobPrestoJobQueryList.fromMap((map['queryList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

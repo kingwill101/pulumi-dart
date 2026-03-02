@@ -29,8 +29,8 @@ class ClientTlsPolicyClientCertificate {
 
   factory ClientTlsPolicyClientCertificate.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyClientCertificate(
-      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : (ClientTlsPolicyClientCertificateCertificateProviderInstance.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>())).input(),
-      grpcEndpoint: map['grpcEndpoint'] == null ? null : (ClientTlsPolicyClientCertificateGrpcEndpoint.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>())).input(),
+      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : (ClientTlsPolicyClientCertificateCertificateProviderInstance.fromMap((map['certificateProviderInstance']! as Map).cast<String, dynamic>())).input(),
+      grpcEndpoint: map['grpcEndpoint'] == null ? null : (ClientTlsPolicyClientCertificateGrpcEndpoint.fromMap((map['grpcEndpoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

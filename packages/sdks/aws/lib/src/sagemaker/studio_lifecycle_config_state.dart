@@ -51,13 +51,13 @@ class StudioLifecycleConfigState {
 
   factory StudioLifecycleConfigState.fromMap(Map<String, dynamic> map) {
     return StudioLifecycleConfigState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      studioLifecycleConfigAppType: map['studioLifecycleConfigAppType'] == null ? null : (map['studioLifecycleConfigAppType'] as String).input(),
-      studioLifecycleConfigContent: map['studioLifecycleConfigContent'] == null ? null : (map['studioLifecycleConfigContent'] as String).input(),
-      studioLifecycleConfigName: map['studioLifecycleConfigName'] == null ? null : (map['studioLifecycleConfigName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      studioLifecycleConfigAppType: map['studioLifecycleConfigAppType'] == null ? null : ((map['studioLifecycleConfigAppType'] as String).input()).input(),
+      studioLifecycleConfigContent: map['studioLifecycleConfigContent'] == null ? null : ((map['studioLifecycleConfigContent'] as String).input()).input(),
+      studioLifecycleConfigName: map['studioLifecycleConfigName'] == null ? null : ((map['studioLifecycleConfigName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

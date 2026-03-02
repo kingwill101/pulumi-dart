@@ -32,8 +32,8 @@ class DocumentClassifierOutputDataConfig {
 
   factory DocumentClassifierOutputDataConfig.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierOutputDataConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      outputS3Uri: map['outputS3Uri'] == null ? null : (map['outputS3Uri'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      outputS3Uri: map['outputS3Uri'] == null ? null : ((map['outputS3Uri'] as String).input()).input(),
       s3Uri: (map['s3Uri'] as String).input(),
     );
   }

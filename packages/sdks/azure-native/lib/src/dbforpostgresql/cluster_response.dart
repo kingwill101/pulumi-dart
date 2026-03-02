@@ -26,8 +26,8 @@ class ClusterResponse {
 
   factory ClusterResponse.fromMap(Map<String, dynamic> map) {
     return ClusterResponse(
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
-      defaultDatabaseName: map['defaultDatabaseName'] == null ? null : (map['defaultDatabaseName'] as String).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
+      defaultDatabaseName: map['defaultDatabaseName'] == null ? null : (map['defaultDatabaseName']! as String).input(),
     );
   }
 }

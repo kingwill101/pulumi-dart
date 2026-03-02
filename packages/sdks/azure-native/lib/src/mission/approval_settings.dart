@@ -92,21 +92,21 @@ class ApprovalSettings {
 
   factory ApprovalSettings.fromMap(Map<String, dynamic> map) {
     return ApprovalSettings(
-      connectionCreation: map['connectionCreation'] == null ? null : (map['connectionCreation'] as String).input(),
-      connectionDeletion: map['connectionDeletion'] == null ? null : (map['connectionDeletion'] as String).input(),
-      connectionUpdate: map['connectionUpdate'] == null ? null : (map['connectionUpdate'] as String).input(),
-      enclaveCreation: map['enclaveCreation'] == null ? null : (map['enclaveCreation'] as String).input(),
-      enclaveDeletion: map['enclaveDeletion'] == null ? null : (map['enclaveDeletion'] as String).input(),
-      endpointCreation: map['endpointCreation'] == null ? null : (map['endpointCreation'] as String).input(),
-      endpointDeletion: map['endpointDeletion'] == null ? null : (map['endpointDeletion'] as String).input(),
-      endpointUpdate: map['endpointUpdate'] == null ? null : (map['endpointUpdate'] as String).input(),
-      maintenanceMode: map['maintenanceMode'] == null ? null : (map['maintenanceMode'] as String).input(),
-      mandatoryApprovers: map['mandatoryApprovers'] == null ? null : (pulumi.Input.decodeList<MandatoryApprover>(map['mandatoryApprovers'], (value) => MandatoryApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minimumApproversRequired: map['minimumApproversRequired'] == null ? null : (map['minimumApproversRequired'] as double).input(),
-      notificationOnApprovalAction: map['notificationOnApprovalAction'] == null ? null : (map['notificationOnApprovalAction'] as String).input(),
-      notificationOnApprovalCreation: map['notificationOnApprovalCreation'] == null ? null : (map['notificationOnApprovalCreation'] as String).input(),
-      notificationOnApprovalDeletion: map['notificationOnApprovalDeletion'] == null ? null : (map['notificationOnApprovalDeletion'] as String).input(),
-      serviceCatalogDeployment: map['serviceCatalogDeployment'] == null ? null : (map['serviceCatalogDeployment'] as String).input(),
+      connectionCreation: map['connectionCreation'] == null ? null : (map['connectionCreation']! as String).input(),
+      connectionDeletion: map['connectionDeletion'] == null ? null : (map['connectionDeletion']! as String).input(),
+      connectionUpdate: map['connectionUpdate'] == null ? null : (map['connectionUpdate']! as String).input(),
+      enclaveCreation: map['enclaveCreation'] == null ? null : (map['enclaveCreation']! as String).input(),
+      enclaveDeletion: map['enclaveDeletion'] == null ? null : (map['enclaveDeletion']! as String).input(),
+      endpointCreation: map['endpointCreation'] == null ? null : (map['endpointCreation']! as String).input(),
+      endpointDeletion: map['endpointDeletion'] == null ? null : (map['endpointDeletion']! as String).input(),
+      endpointUpdate: map['endpointUpdate'] == null ? null : (map['endpointUpdate']! as String).input(),
+      maintenanceMode: map['maintenanceMode'] == null ? null : (map['maintenanceMode']! as String).input(),
+      mandatoryApprovers: map['mandatoryApprovers'] == null ? null : (pulumi.Input.decodeList<MandatoryApprover>(map['mandatoryApprovers']!, (value) => MandatoryApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minimumApproversRequired: map['minimumApproversRequired'] == null ? null : (map['minimumApproversRequired']! as double).input(),
+      notificationOnApprovalAction: map['notificationOnApprovalAction'] == null ? null : (map['notificationOnApprovalAction']! as String).input(),
+      notificationOnApprovalCreation: map['notificationOnApprovalCreation'] == null ? null : (map['notificationOnApprovalCreation']! as String).input(),
+      notificationOnApprovalDeletion: map['notificationOnApprovalDeletion'] == null ? null : (map['notificationOnApprovalDeletion']! as String).input(),
+      serviceCatalogDeployment: map['serviceCatalogDeployment'] == null ? null : (map['serviceCatalogDeployment']! as String).input(),
     );
   }
 }

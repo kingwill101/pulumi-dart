@@ -66,15 +66,15 @@ class DevBoxDefinitionArgs {
 
   factory DevBoxDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DevBoxDefinitionArgs(
-      devBoxDefinitionName: map['devBoxDefinitionName'] == null ? null : (map['devBoxDefinitionName'] as String).input(),
+      devBoxDefinitionName: map['devBoxDefinitionName'] == null ? null : (map['devBoxDefinitionName']! as String).input(),
       devCenterName: (map['devCenterName'] as String).input(),
-      hibernateSupport: map['hibernateSupport'] == null ? null : (map['hibernateSupport'] as String).input(),
+      hibernateSupport: map['hibernateSupport'] == null ? null : (map['hibernateSupport']! as String).input(),
       imageReference: (ImageReference.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      osStorageType: map['osStorageType'] == null ? null : (map['osStorageType'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      osStorageType: map['osStorageType'] == null ? null : (map['osStorageType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

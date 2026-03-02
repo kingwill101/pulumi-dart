@@ -46,11 +46,11 @@ class NetworkInsightsAnalysisArgs {
 
   factory NetworkInsightsAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisArgs(
-      filterInArns: map['filterInArns'] == null ? null : ((map['filterInArns'] as List).cast<String>()).input(),
+      filterInArns: map['filterInArns'] == null ? null : (((map['filterInArns'] as List).cast<String>()).input()).input(),
       networkInsightsPathId: (map['networkInsightsPathId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      waitForCompletion: map['waitForCompletion'] == null ? null : (map['waitForCompletion'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      waitForCompletion: map['waitForCompletion'] == null ? null : ((map['waitForCompletion'] as bool).input()).input(),
     );
   }
 }

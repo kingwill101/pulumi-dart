@@ -60,13 +60,13 @@ class DiscountProductResponse {
   factory DiscountProductResponse.fromMap(Map<String, dynamic> map) {
     return DiscountProductResponse(
       applyDiscountOn: (map['applyDiscountOn'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionsItemResponse>(map['conditions'], (value) => ConditionsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discountCombinationRule: map['discountCombinationRule'] == null ? null : (map['discountCombinationRule'] as String).input(),
-      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionsItemResponse>(map['conditions']!, (value) => ConditionsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discountCombinationRule: map['discountCombinationRule'] == null ? null : (map['discountCombinationRule']! as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage']! as double).input(),
       discountType: (map['discountType'] as String).input(),
-      priceGuaranteeProperties: map['priceGuaranteeProperties'] == null ? null : (PriceGuaranteePropertiesResponse.fromMap((map['priceGuaranteeProperties'] as Map).cast<String, dynamic>())).input(),
-      productFamilyName: map['productFamilyName'] == null ? null : (map['productFamilyName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
+      priceGuaranteeProperties: map['priceGuaranteeProperties'] == null ? null : (PriceGuaranteePropertiesResponse.fromMap((map['priceGuaranteeProperties']! as Map).cast<String, dynamic>())).input(),
+      productFamilyName: map['productFamilyName'] == null ? null : (map['productFamilyName']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
     );
   }
 }

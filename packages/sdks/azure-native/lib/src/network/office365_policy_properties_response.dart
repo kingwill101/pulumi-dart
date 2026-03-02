@@ -22,7 +22,7 @@ class Office365PolicyPropertiesResponse {
 
   factory Office365PolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return Office365PolicyPropertiesResponse(
-      breakOutCategories: map['breakOutCategories'] == null ? null : (BreakOutCategoryPoliciesResponse.fromMap((map['breakOutCategories'] as Map).cast<String, dynamic>())).input(),
+      breakOutCategories: map['breakOutCategories'] == null ? null : (BreakOutCategoryPoliciesResponse.fromMap((map['breakOutCategories']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

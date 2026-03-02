@@ -64,15 +64,15 @@ class V2modelsBotLocaleState {
 
   factory V2modelsBotLocaleState.fromMap(Map<String, dynamic> map) {
     return V2modelsBotLocaleState(
-      botId: map['botId'] == null ? null : (map['botId'] as String).input(),
-      botVersion: map['botVersion'] == null ? null : (map['botVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      localeId: map['localeId'] == null ? null : (map['localeId'] as String).input(),
-      nLuIntentConfidenceThreshold: map['nLuIntentConfidenceThreshold'] == null ? null : (map['nLuIntentConfidenceThreshold'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsBotLocaleTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      voiceSettings: map['voiceSettings'] == null ? null : (V2modelsBotLocaleVoiceSettings.fromMap((map['voiceSettings'] as Map).cast<String, dynamic>())).input(),
+      botId: map['botId'] == null ? null : ((map['botId'] as String).input()).input(),
+      botVersion: map['botVersion'] == null ? null : ((map['botVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      localeId: map['localeId'] == null ? null : ((map['localeId'] as String).input()).input(),
+      nLuIntentConfidenceThreshold: map['nLuIntentConfidenceThreshold'] == null ? null : ((map['nLuIntentConfidenceThreshold'] as double).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsBotLocaleTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      voiceSettings: map['voiceSettings'] == null ? null : ((V2modelsBotLocaleVoiceSettings.fromMap((map['voiceSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

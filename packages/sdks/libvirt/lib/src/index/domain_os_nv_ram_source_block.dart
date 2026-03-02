@@ -26,8 +26,8 @@ class DomainOsNvRamSourceBlock {
 
   factory DomainOsNvRamSourceBlock.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceBlock(
-      dev: map['dev'] == null ? null : (map['dev'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceBlockSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceBlockSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceBlockSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceBlockSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

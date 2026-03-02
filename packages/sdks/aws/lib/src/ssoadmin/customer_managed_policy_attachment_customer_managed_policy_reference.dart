@@ -26,7 +26,7 @@ class CustomerManagedPolicyAttachmentCustomerManagedPolicyReference {
   factory CustomerManagedPolicyAttachmentCustomerManagedPolicyReference.fromMap(Map<String, dynamic> map) {
     return CustomerManagedPolicyAttachmentCustomerManagedPolicyReference(
       name: (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
     );
   }
 }

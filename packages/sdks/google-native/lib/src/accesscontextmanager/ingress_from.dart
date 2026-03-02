@@ -33,9 +33,9 @@ class IngressFrom {
 
   factory IngressFrom.fromMap(Map<String, dynamic> map) {
     return IngressFrom(
-      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
-      identityType: map['identityType'] == null ? null : (IngressFromIdentityType.fromValue(map['identityType'] as String)).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<IngressSource>(map['sources'], (value) => IngressSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: map['identities'] == null ? null : ((map['identities']! as List).cast<String>()).input(),
+      identityType: map['identityType'] == null ? null : (IngressFromIdentityType.fromValue(map['identityType']! as String)).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<IngressSource>(map['sources']!, (value) => IngressSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

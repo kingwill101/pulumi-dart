@@ -40,7 +40,7 @@ class DigitalTwinsEndpointArgs {
 
   factory DigitalTwinsEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DigitalTwinsEndpointArgs(
-      endpointName: map['endpointName'] == null ? null : (map['endpointName'] as String).input(),
+      endpointName: map['endpointName'] == null ? null : (map['endpointName']! as String).input(),
       properties: (EventGrid.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

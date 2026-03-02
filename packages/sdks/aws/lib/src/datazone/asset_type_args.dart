@@ -57,13 +57,13 @@ class AssetTypeArgs {
 
   factory AssetTypeArgs.fromMap(Map<String, dynamic> map) {
     return AssetTypeArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domainIdentifier: (map['domainIdentifier'] as String).input(),
-      formsInputs: map['formsInputs'] == null ? null : (pulumi.Input.decodeList<AssetTypeFormsInput>(map['formsInputs'], (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      formsInputs: map['formsInputs'] == null ? null : ((pulumi.Input.decodeList<AssetTypeFormsInput>(map['formsInputs']!, (value) => AssetTypeFormsInput.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       owningProjectIdentifier: (map['owningProjectIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (AssetTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AssetTypeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

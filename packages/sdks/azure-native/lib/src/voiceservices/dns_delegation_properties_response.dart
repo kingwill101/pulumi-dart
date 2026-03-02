@@ -26,7 +26,7 @@ class DnsDelegationPropertiesResponse {
 
   factory DnsDelegationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DnsDelegationPropertiesResponse(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
       nameServers: ((map['nameServers'] as List).cast<String>()).input(),
     );
   }

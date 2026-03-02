@@ -37,10 +37,10 @@ class SqlIpConfigDatamigrationV1beta1 {
 
   factory SqlIpConfigDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
     return SqlIpConfigDatamigrationV1beta1(
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<SqlAclEntryDatamigrationV1beta1>(map['authorizedNetworks'], (value) => SqlAclEntryDatamigrationV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableIpv4: map['enableIpv4'] == null ? null : (map['enableIpv4'] as bool).input(),
-      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork'] as String).input(),
-      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl'] as bool).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : (pulumi.Input.decodeList<SqlAclEntryDatamigrationV1beta1>(map['authorizedNetworks']!, (value) => SqlAclEntryDatamigrationV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableIpv4: map['enableIpv4'] == null ? null : (map['enableIpv4']! as bool).input(),
+      privateNetwork: map['privateNetwork'] == null ? null : (map['privateNetwork']! as String).input(),
+      requireSsl: map['requireSsl'] == null ? null : (map['requireSsl']! as bool).input(),
     );
   }
 }

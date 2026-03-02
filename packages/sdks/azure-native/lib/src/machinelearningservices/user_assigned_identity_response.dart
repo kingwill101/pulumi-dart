@@ -33,7 +33,7 @@ class UserAssignedIdentityResponse {
     return UserAssignedIdentityResponse(
       clientId: (map['clientId'] as String).input(),
       principalId: (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

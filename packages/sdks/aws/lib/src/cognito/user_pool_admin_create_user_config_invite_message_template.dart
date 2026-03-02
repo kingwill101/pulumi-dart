@@ -30,9 +30,9 @@ class UserPoolAdminCreateUserConfigInviteMessageTemplate {
 
   factory UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(Map<String, dynamic> map) {
     return UserPoolAdminCreateUserConfigInviteMessageTemplate(
-      emailMessage: map['emailMessage'] == null ? null : (map['emailMessage'] as String).input(),
-      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
-      smsMessage: map['smsMessage'] == null ? null : (map['smsMessage'] as String).input(),
+      emailMessage: map['emailMessage'] == null ? null : ((map['emailMessage'] as String).input()).input(),
+      emailSubject: map['emailSubject'] == null ? null : ((map['emailSubject'] as String).input()).input(),
+      smsMessage: map['smsMessage'] == null ? null : ((map['smsMessage'] as String).input()).input(),
     );
   }
 }

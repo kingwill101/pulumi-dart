@@ -58,8 +58,8 @@ class DocumentAiWarehouseLocationArgs {
     return DocumentAiWarehouseLocationArgs(
       accessControlMode: (map['accessControlMode'] as String).input(),
       databaseType: (map['databaseType'] as String).input(),
-      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : (map['documentCreatorDefaultRole'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      documentCreatorDefaultRole: map['documentCreatorDefaultRole'] == null ? null : (map['documentCreatorDefaultRole']! as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
       location: (map['location'] as String).input(),
       projectNumber: (map['projectNumber'] as String).input(),
     );

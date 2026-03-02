@@ -79,14 +79,14 @@ class ProjectFeedArgs {
 
   factory ProjectFeedArgs.fromMap(Map<String, dynamic> map) {
     return ProjectFeedArgs(
-      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
-      billingProject: map['billingProject'] == null ? null : (map['billingProject'] as String).input(),
-      condition: map['condition'] == null ? null : (ProjectFeedCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames']! as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
+      billingProject: map['billingProject'] == null ? null : (map['billingProject']! as String).input(),
+      condition: map['condition'] == null ? null : (ProjectFeedCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
       feedId: (map['feedId'] as String).input(),
       feedOutputConfig: (ProjectFeedFeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class CurrentScenarioDetails {
 
   factory CurrentScenarioDetails.fromMap(Map<String, dynamic> map) {
     return CurrentScenarioDetails(
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      scenarioName: map['scenarioName'] == null ? null : (map['scenarioName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      scenarioName: map['scenarioName'] == null ? null : (map['scenarioName']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

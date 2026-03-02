@@ -27,8 +27,8 @@ class ReplicationRecoveryPlanShutdownRecoveryGroup {
 
   factory ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanShutdownRecoveryGroup(
-      postActions: map['postActions'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanShutdownRecoveryGroupPostAction>(map['postActions'], (value) => ReplicationRecoveryPlanShutdownRecoveryGroupPostAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      preActions: map['preActions'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanShutdownRecoveryGroupPreAction>(map['preActions'], (value) => ReplicationRecoveryPlanShutdownRecoveryGroupPreAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postActions: map['postActions'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanShutdownRecoveryGroupPostAction>(map['postActions']!, (value) => ReplicationRecoveryPlanShutdownRecoveryGroupPostAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      preActions: map['preActions'] == null ? null : (pulumi.Input.decodeList<ReplicationRecoveryPlanShutdownRecoveryGroupPreAction>(map['preActions']!, (value) => ReplicationRecoveryPlanShutdownRecoveryGroupPreAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

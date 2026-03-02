@@ -29,8 +29,8 @@ class HadoopClusterRolesWorkerNodeAutoscale {
 
   factory HadoopClusterRolesWorkerNodeAutoscale.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesWorkerNodeAutoscale(
-      capacity: map['capacity'] == null ? null : (HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      recurrence: map['recurrence'] == null ? null : (HadoopClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (HadoopClusterRolesWorkerNodeAutoscaleCapacity.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (HadoopClusterRolesWorkerNodeAutoscaleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

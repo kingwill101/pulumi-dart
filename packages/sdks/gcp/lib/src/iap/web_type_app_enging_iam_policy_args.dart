@@ -38,7 +38,7 @@ class WebTypeAppEngingIamPolicyArgs {
     return WebTypeAppEngingIamPolicyArgs(
       appId: (map['appId'] as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

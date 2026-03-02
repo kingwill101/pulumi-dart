@@ -72,16 +72,16 @@ class ShareFileArgs {
 
   factory ShareFileArgs.fromMap(Map<String, dynamic> map) {
     return ShareFileArgs(
-      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      storageShareId: map['storageShareId'] == null ? null : (map['storageShareId'] as String).input(),
-      storageShareUrl: map['storageShareUrl'] == null ? null : (map['storageShareUrl'] as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      storageShareId: map['storageShareId'] == null ? null : (map['storageShareId']! as String).input(),
+      storageShareUrl: map['storageShareUrl'] == null ? null : (map['storageShareUrl']! as String).input(),
     );
   }
 }

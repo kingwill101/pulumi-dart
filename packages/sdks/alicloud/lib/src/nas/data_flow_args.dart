@@ -64,13 +64,13 @@ class DataFlowArgs {
 
   factory DataFlowArgs.fromMap(Map<String, dynamic> map) {
     return DataFlowArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       fsetId: (map['fsetId'] as String).input(),
-      sourceSecurityType: map['sourceSecurityType'] == null ? null : (map['sourceSecurityType'] as String).input(),
+      sourceSecurityType: map['sourceSecurityType'] == null ? null : (map['sourceSecurityType']! as String).input(),
       sourceStorage: (map['sourceStorage'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       throughput: (map['throughput'] as int).input(),
     );
   }

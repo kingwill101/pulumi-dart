@@ -96,20 +96,20 @@ class TrustState {
 
   factory TrustState.fromMap(Map<String, dynamic> map) {
     return TrustState(
-      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : ((map['conditionalForwarderIpAddrs'] as List).cast<String>()).input(),
-      createdDateTime: map['createdDateTime'] == null ? null : (map['createdDateTime'] as String).input(),
-      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : (map['deleteAssociatedConditionalForwarder'] as bool).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      lastUpdatedDateTime: map['lastUpdatedDateTime'] == null ? null : (map['lastUpdatedDateTime'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      remoteDomainName: map['remoteDomainName'] == null ? null : (map['remoteDomainName'] as String).input(),
-      selectiveAuth: map['selectiveAuth'] == null ? null : (map['selectiveAuth'] as String).input(),
-      stateLastUpdatedDateTime: map['stateLastUpdatedDateTime'] == null ? null : (map['stateLastUpdatedDateTime'] as String).input(),
-      trustDirection: map['trustDirection'] == null ? null : (map['trustDirection'] as String).input(),
-      trustPassword: map['trustPassword'] == null ? null : (map['trustPassword'] as String).input(),
-      trustState: map['trustState'] == null ? null : (map['trustState'] as String).input(),
-      trustStateReason: map['trustStateReason'] == null ? null : (map['trustStateReason'] as String).input(),
-      trustType: map['trustType'] == null ? null : (map['trustType'] as String).input(),
+      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : (((map['conditionalForwarderIpAddrs'] as List).cast<String>()).input()).input(),
+      createdDateTime: map['createdDateTime'] == null ? null : ((map['createdDateTime'] as String).input()).input(),
+      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : ((map['deleteAssociatedConditionalForwarder'] as bool).input()).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      lastUpdatedDateTime: map['lastUpdatedDateTime'] == null ? null : ((map['lastUpdatedDateTime'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      remoteDomainName: map['remoteDomainName'] == null ? null : ((map['remoteDomainName'] as String).input()).input(),
+      selectiveAuth: map['selectiveAuth'] == null ? null : ((map['selectiveAuth'] as String).input()).input(),
+      stateLastUpdatedDateTime: map['stateLastUpdatedDateTime'] == null ? null : ((map['stateLastUpdatedDateTime'] as String).input()).input(),
+      trustDirection: map['trustDirection'] == null ? null : ((map['trustDirection'] as String).input()).input(),
+      trustPassword: map['trustPassword'] == null ? null : ((map['trustPassword'] as String).input()).input(),
+      trustState: map['trustState'] == null ? null : ((map['trustState'] as String).input()).input(),
+      trustStateReason: map['trustStateReason'] == null ? null : ((map['trustStateReason'] as String).input()).input(),
+      trustType: map['trustType'] == null ? null : ((map['trustType'] as String).input()).input(),
     );
   }
 }

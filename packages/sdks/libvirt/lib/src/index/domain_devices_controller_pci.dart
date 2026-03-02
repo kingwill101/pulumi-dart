@@ -36,10 +36,10 @@ class DomainDevicesControllerPci {
 
   factory DomainDevicesControllerPci.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerPci(
-      hole64: map['hole64'] == null ? null : (map['hole64'] as double).input(),
-      hole64Unit: map['hole64Unit'] == null ? null : (map['hole64Unit'] as String).input(),
-      model: map['model'] == null ? null : (DomainDevicesControllerPciModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : ((map['target'] as Map).cast<String, dynamic>()).input(),
+      hole64: map['hole64'] == null ? null : (map['hole64']! as double).input(),
+      hole64Unit: map['hole64Unit'] == null ? null : (map['hole64Unit']! as String).input(),
+      model: map['model'] == null ? null : (DomainDevicesControllerPciModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : ((map['target']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class ApiProductGraphqlOperationGroupOperationConfigQuota {
 
   factory ApiProductGraphqlOperationGroupOperationConfigQuota.fromMap(Map<String, dynamic> map) {
     return ApiProductGraphqlOperationGroupOperationConfigQuota(
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as String).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as String).input(),
+      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit']! as String).input(),
     );
   }
 }

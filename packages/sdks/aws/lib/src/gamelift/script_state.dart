@@ -57,14 +57,14 @@ class ScriptState {
 
   factory ScriptState.fromMap(Map<String, dynamic> map) {
     return ScriptState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (ScriptStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      zipFile: map['zipFile'] == null ? null : (map['zipFile'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageLocation: map['storageLocation'] == null ? null : ((ScriptStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      zipFile: map['zipFile'] == null ? null : ((map['zipFile'] as String).input()).input(),
     );
   }
 }

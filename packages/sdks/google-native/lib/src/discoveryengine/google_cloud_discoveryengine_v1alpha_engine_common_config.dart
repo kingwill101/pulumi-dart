@@ -21,7 +21,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig {
 
   factory GoogleCloudDiscoveryengineV1alphaEngineCommonConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineCommonConfig(
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName']! as String).input(),
     );
   }
 }

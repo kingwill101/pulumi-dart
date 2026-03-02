@@ -37,7 +37,7 @@ class ManagementConfigurationProperties {
 
   factory ManagementConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return ManagementConfigurationProperties(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
       parameters: (pulumi.Input.decodeList<ArmTemplateParameter>(map['parameters'], (value) => ArmTemplateParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parentResourceType: (map['parentResourceType'] as String).input(),
       template: (map['template']).input(),

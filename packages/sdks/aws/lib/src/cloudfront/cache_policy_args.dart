@@ -50,12 +50,12 @@ class CachePolicyArgs {
 
   factory CachePolicyArgs.fromMap(Map<String, dynamic> map) {
     return CachePolicyArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      maxTtl: map['maxTtl'] == null ? null : (map['maxTtl'] as int).input(),
-      minTtl: map['minTtl'] == null ? null : (map['minTtl'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parametersInCacheKeyAndForwardedToOrigin: (CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((map['parametersInCacheKeyAndForwardedToOrigin'] as Map).cast<String, dynamic>())).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : ((map['defaultTtl'] as int).input()).input(),
+      maxTtl: map['maxTtl'] == null ? null : ((map['maxTtl'] as int).input()).input(),
+      minTtl: map['minTtl'] == null ? null : ((map['minTtl'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parametersInCacheKeyAndForwardedToOrigin: (CachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((map['parametersInCacheKeyAndForwardedToOrigin']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

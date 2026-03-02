@@ -25,8 +25,8 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyBond {
 
   factory NodeGroupIpAllocationPolicyMachineTypePolicyBond.fromMap(Map<String, dynamic> map) {
     return NodeGroupIpAllocationPolicyMachineTypePolicyBond(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
     );
   }
 }

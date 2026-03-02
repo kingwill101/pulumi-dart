@@ -26,7 +26,7 @@ class AgentPromptVariantTemplateConfigurationChatMessage {
 
   factory AgentPromptVariantTemplateConfigurationChatMessage.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatMessage(
-      content: map['content'] == null ? null : (AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatMessageContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input()).input(),
       role: (map['role'] as String).input(),
     );
   }

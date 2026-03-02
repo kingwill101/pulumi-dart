@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2SaveFindings {
 
   factory GooglePrivacyDlpV2SaveFindings.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2SaveFindings(
-      outputConfig: map['outputConfig'] == null ? null : (GooglePrivacyDlpV2OutputStorageConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
+      outputConfig: map['outputConfig'] == null ? null : (GooglePrivacyDlpV2OutputStorageConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

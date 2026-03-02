@@ -31,9 +31,9 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration {
 
   factory ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration(
-      disabledControlIdentifiers: map['disabledControlIdentifiers'] == null ? null : ((map['disabledControlIdentifiers'] as List).cast<String>()).input(),
-      enabledControlIdentifiers: map['enabledControlIdentifiers'] == null ? null : ((map['enabledControlIdentifiers'] as List).cast<String>()).input(),
-      securityControlCustomParameters: map['securityControlCustomParameters'] == null ? null : (pulumi.Input.decodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>(map['securityControlCustomParameters'], (value) => ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabledControlIdentifiers: map['disabledControlIdentifiers'] == null ? null : (((map['disabledControlIdentifiers'] as List).cast<String>()).input()).input(),
+      enabledControlIdentifiers: map['enabledControlIdentifiers'] == null ? null : (((map['enabledControlIdentifiers'] as List).cast<String>()).input()).input(),
+      securityControlCustomParameters: map['securityControlCustomParameters'] == null ? null : ((pulumi.Input.decodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter>(map['securityControlCustomParameters']!, (value) => ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

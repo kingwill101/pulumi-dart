@@ -41,7 +41,7 @@ class EnvironmentContainerArgs {
   factory EnvironmentContainerArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentContainerArgs(
       environmentContainerProperties: (map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

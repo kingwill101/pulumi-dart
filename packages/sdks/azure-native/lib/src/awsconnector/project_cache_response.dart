@@ -32,9 +32,9 @@ class ProjectCacheResponse {
 
   factory ProjectCacheResponse.fromMap(Map<String, dynamic> map) {
     return ProjectCacheResponse(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      modes: map['modes'] == null ? null : ((map['modes'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (CacheTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      modes: map['modes'] == null ? null : ((map['modes']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (CacheTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

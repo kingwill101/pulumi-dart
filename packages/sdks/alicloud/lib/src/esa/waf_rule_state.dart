@@ -51,13 +51,13 @@ class WafRuleState {
 
   factory WafRuleState.fromMap(Map<String, dynamic> map) {
     return WafRuleState(
-      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId'] as int).input(),
-      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared'] as Map).cast<String, dynamic>())).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      wafRuleId: map['wafRuleId'] == null ? null : (map['wafRuleId'] as int).input(),
+      config: map['config'] == null ? null : (WafRuleConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId']! as int).input(),
+      shared: map['shared'] == null ? null : (WafRuleShared.fromMap((map['shared']! as Map).cast<String, dynamic>())).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      wafRuleId: map['wafRuleId'] == null ? null : (map['wafRuleId']! as int).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ListVpnServerConfigurationRadiusSecretsResult {
 
   factory ListVpnServerConfigurationRadiusSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListVpnServerConfigurationRadiusSecretsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<RadiusAuthServerResponse>(map['value'], (value) => RadiusAuthServerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<RadiusAuthServerResponse>(map['value']!, (value) => RadiusAuthServerResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

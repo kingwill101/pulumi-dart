@@ -21,7 +21,7 @@ class ClientCertificateConfig {
 
   factory ClientCertificateConfig.fromMap(Map<String, dynamic> map) {
     return ClientCertificateConfig(
-      issueClientCertificate: map['issueClientCertificate'] == null ? null : (map['issueClientCertificate'] as bool).input(),
+      issueClientCertificate: map['issueClientCertificate'] == null ? null : (map['issueClientCertificate']! as bool).input(),
     );
   }
 }

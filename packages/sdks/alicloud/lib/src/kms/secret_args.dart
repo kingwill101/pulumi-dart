@@ -105,22 +105,22 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dkmsInstanceId: map['dkmsInstanceId'] == null ? null : (map['dkmsInstanceId'] as String).input(),
-      enableAutomaticRotation: map['enableAutomaticRotation'] == null ? null : (map['enableAutomaticRotation'] as bool).input(),
-      encryptionKeyId: map['encryptionKeyId'] == null ? null : (map['encryptionKeyId'] as String).input(),
-      extendedConfig: map['extendedConfig'] == null ? null : (map['extendedConfig'] as String).input(),
-      forceDeleteWithoutRecovery: map['forceDeleteWithoutRecovery'] == null ? null : (map['forceDeleteWithoutRecovery'] as bool).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : (map['recoveryWindowInDays'] as int).input(),
-      rotationInterval: map['rotationInterval'] == null ? null : (map['rotationInterval'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dkmsInstanceId: map['dkmsInstanceId'] == null ? null : (map['dkmsInstanceId']! as String).input(),
+      enableAutomaticRotation: map['enableAutomaticRotation'] == null ? null : (map['enableAutomaticRotation']! as bool).input(),
+      encryptionKeyId: map['encryptionKeyId'] == null ? null : (map['encryptionKeyId']! as String).input(),
+      extendedConfig: map['extendedConfig'] == null ? null : (map['extendedConfig']! as String).input(),
+      forceDeleteWithoutRecovery: map['forceDeleteWithoutRecovery'] == null ? null : (map['forceDeleteWithoutRecovery']! as bool).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      recoveryWindowInDays: map['recoveryWindowInDays'] == null ? null : (map['recoveryWindowInDays']! as int).input(),
+      rotationInterval: map['rotationInterval'] == null ? null : (map['rotationInterval']! as String).input(),
       secretData: (map['secretData'] as String).input(),
-      secretDataType: map['secretDataType'] == null ? null : (map['secretDataType'] as String).input(),
+      secretDataType: map['secretDataType'] == null ? null : (map['secretDataType']! as String).input(),
       secretName: (map['secretName'] as String).input(),
-      secretType: map['secretType'] == null ? null : (map['secretType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      secretType: map['secretType'] == null ? null : (map['secretType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       versionId: (map['versionId'] as String).input(),
-      versionStages: map['versionStages'] == null ? null : ((map['versionStages'] as List).cast<String>()).input(),
+      versionStages: map['versionStages'] == null ? null : ((map['versionStages']! as List).cast<String>()).input(),
     );
   }
 }

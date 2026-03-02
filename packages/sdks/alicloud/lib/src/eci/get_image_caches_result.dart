@@ -67,13 +67,13 @@ class GetImageCachesResult {
       caches: pulumi.Input.decodeList<GetImageCachesCache>(map['caches'], (value) => GetImageCachesCache.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      image: map['image'] == null ? null : map['image'] as String,
-      imageCacheName: map['imageCacheName'] == null ? null : map['imageCacheName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      image: map['image'] == null ? null : map['image']! as String,
+      imageCacheName: map['imageCacheName'] == null ? null : map['imageCacheName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      snapshotId: map['snapshotId'] == null ? null : map['snapshotId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      snapshotId: map['snapshotId'] == null ? null : map['snapshotId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

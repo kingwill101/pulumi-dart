@@ -92,20 +92,20 @@ class FunctionAppSlotAuthSettings {
 
   factory FunctionAppSlotAuthSettings.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotAuthSettings(
-      activeDirectory: map['activeDirectory'] == null ? null : (FunctionAppSlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      additionalLoginParams: map['additionalLoginParams'] == null ? null : ((map['additionalLoginParams'] as Map).cast<String, String>()).input(),
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
-      defaultProvider: map['defaultProvider'] == null ? null : (map['defaultProvider'] as String).input(),
+      activeDirectory: map['activeDirectory'] == null ? null : (FunctionAppSlotAuthSettingsActiveDirectory.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())).input(),
+      additionalLoginParams: map['additionalLoginParams'] == null ? null : ((map['additionalLoginParams']! as Map).cast<String, String>()).input(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls']! as List).cast<String>()).input(),
+      defaultProvider: map['defaultProvider'] == null ? null : (map['defaultProvider']! as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      facebook: map['facebook'] == null ? null : (FunctionAppSlotAuthSettingsFacebook.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
-      google: map['google'] == null ? null : (FunctionAppSlotAuthSettingsGoogle.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      microsoft: map['microsoft'] == null ? null : (FunctionAppSlotAuthSettingsMicrosoft.fromMap((map['microsoft'] as Map).cast<String, dynamic>())).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
-      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours'] as double).input(),
-      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled'] as bool).input(),
-      twitter: map['twitter'] == null ? null : (FunctionAppSlotAuthSettingsTwitter.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
-      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (map['unauthenticatedClientAction'] as String).input(),
+      facebook: map['facebook'] == null ? null : (FunctionAppSlotAuthSettingsFacebook.fromMap((map['facebook']! as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (FunctionAppSlotAuthSettingsGoogle.fromMap((map['google']! as Map).cast<String, dynamic>())).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      microsoft: map['microsoft'] == null ? null : (FunctionAppSlotAuthSettingsMicrosoft.fromMap((map['microsoft']! as Map).cast<String, dynamic>())).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
+      tokenRefreshExtensionHours: map['tokenRefreshExtensionHours'] == null ? null : (map['tokenRefreshExtensionHours']! as double).input(),
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled']! as bool).input(),
+      twitter: map['twitter'] == null ? null : (FunctionAppSlotAuthSettingsTwitter.fromMap((map['twitter']! as Map).cast<String, dynamic>())).input(),
+      unauthenticatedClientAction: map['unauthenticatedClientAction'] == null ? null : (map['unauthenticatedClientAction']! as String).input(),
     );
   }
 }

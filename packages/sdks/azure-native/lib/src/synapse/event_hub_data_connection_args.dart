@@ -95,20 +95,20 @@ class EventHubDataConnectionArgs {
 
   factory EventHubDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EventHubDataConnectionArgs(
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
       consumerGroup: (map['consumerGroup'] as String).input(),
-      dataConnectionName: map['dataConnectionName'] == null ? null : (map['dataConnectionName'] as String).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
+      dataConnectionName: map['dataConnectionName'] == null ? null : (map['dataConnectionName']! as String).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       eventHubResourceId: (map['eventHubResourceId'] as String).input(),
-      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties'] as List).cast<String>()).input(),
+      eventSystemProperties: map['eventSystemProperties'] == null ? null : ((map['eventSystemProperties']! as List).cast<String>()).input(),
       kind: (map['kind'] as String).input(),
       kustoPoolName: (map['kustoPoolName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId'] as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedIdentityResourceId: map['managedIdentityResourceId'] == null ? null : (map['managedIdentityResourceId']! as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

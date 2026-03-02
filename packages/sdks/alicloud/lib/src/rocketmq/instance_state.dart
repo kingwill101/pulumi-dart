@@ -58,14 +58,14 @@ class InstanceState {
 
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      instanceStatus: map['instanceStatus'] == null ? null : (map['instanceStatus'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      instanceStatus: map['instanceStatus'] == null ? null : (map['instanceStatus']! as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

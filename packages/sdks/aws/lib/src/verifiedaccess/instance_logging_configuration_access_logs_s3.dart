@@ -35,10 +35,10 @@ class InstanceLoggingConfigurationAccessLogsS3 {
 
   factory InstanceLoggingConfigurationAccessLogsS3.fromMap(Map<String, dynamic> map) {
     return InstanceLoggingConfigurationAccessLogsS3(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      bucketOwner: map['bucketOwner'] == null ? null : (map['bucketOwner'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      bucketOwner: map['bucketOwner'] == null ? null : ((map['bucketOwner'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class PipelineInput {
 
   factory PipelineInput.fromMap(Map<String, dynamic> map) {
     return PipelineInput(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       next: ((map['next'] as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
     );

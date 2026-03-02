@@ -57,12 +57,12 @@ class GetLoadTestMappingResult {
   factory GetLoadTestMappingResult.fromMap(Map<String, dynamic> map) {
     return GetLoadTestMappingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : map['azureLoadTestingResourceId'] as String,
+      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : map['azureLoadTestingResourceId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId'] as String,
+      sourceResourceId: map['sourceResourceId'] == null ? null : map['sourceResourceId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      testId: map['testId'] == null ? null : map['testId'] as String,
+      testId: map['testId'] == null ? null : map['testId']! as String,
       type: map['type'] as String,
     );
   }

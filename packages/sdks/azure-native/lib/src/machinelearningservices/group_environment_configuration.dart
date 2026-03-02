@@ -43,11 +43,11 @@ class GroupEnvironmentConfiguration {
 
   factory GroupEnvironmentConfiguration.fromMap(Map<String, dynamic> map) {
     return GroupEnvironmentConfiguration(
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['environmentVariables'], (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (ProbeSettings.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      readinessProbe: map['readinessProbe'] == null ? null : (ProbeSettings.fromMap((map['readinessProbe'] as Map).cast<String, dynamic>())).input(),
-      startupProbe: map['startupProbe'] == null ? null : (ProbeSettings.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePair>(map['environmentVariables']!, (value) => StringStringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (ProbeSettings.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      readinessProbe: map['readinessProbe'] == null ? null : (ProbeSettings.fromMap((map['readinessProbe']! as Map).cast<String, dynamic>())).input(),
+      startupProbe: map['startupProbe'] == null ? null : (ProbeSettings.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

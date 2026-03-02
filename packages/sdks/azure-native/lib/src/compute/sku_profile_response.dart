@@ -27,8 +27,8 @@ class SkuProfileResponse {
 
   factory SkuProfileResponse.fromMap(Map<String, dynamic> map) {
     return SkuProfileResponse(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
-      vmSizes: map['vmSizes'] == null ? null : (pulumi.Input.decodeList<SkuProfileVMSizeResponse>(map['vmSizes'], (value) => SkuProfileVMSizeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy']! as String).input(),
+      vmSizes: map['vmSizes'] == null ? null : (pulumi.Input.decodeList<SkuProfileVMSizeResponse>(map['vmSizes']!, (value) => SkuProfileVMSizeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

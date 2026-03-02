@@ -26,8 +26,8 @@ class CspmMonitorGcpOfferingResponseNativeCloudConnection {
 
   factory CspmMonitorGcpOfferingResponseNativeCloudConnection.fromMap(Map<String, dynamic> map) {
     return CspmMonitorGcpOfferingResponseNativeCloudConnection(
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

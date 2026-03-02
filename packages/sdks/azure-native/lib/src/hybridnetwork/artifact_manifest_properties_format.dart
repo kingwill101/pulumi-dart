@@ -22,7 +22,7 @@ class ArtifactManifestPropertiesFormat {
 
   factory ArtifactManifestPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ArtifactManifestPropertiesFormat(
-      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<ManifestArtifactFormat>(map['artifacts'], (value) => ManifestArtifactFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<ManifestArtifactFormat>(map['artifacts']!, (value) => ManifestArtifactFormat.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

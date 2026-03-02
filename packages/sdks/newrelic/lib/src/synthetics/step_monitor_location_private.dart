@@ -26,7 +26,7 @@ class StepMonitorLocationPrivate {
   factory StepMonitorLocationPrivate.fromMap(Map<String, dynamic> map) {
     return StepMonitorLocationPrivate(
       guid: (map['guid'] as String).input(),
-      vsePassword: map['vsePassword'] == null ? null : (map['vsePassword'] as String).input(),
+      vsePassword: map['vsePassword'] == null ? null : (map['vsePassword']! as String).input(),
     );
   }
 }

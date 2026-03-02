@@ -65,14 +65,14 @@ class ClusterAutomatedBackupPolicy {
 
   factory ClusterAutomatedBackupPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicy(
-      backupWindow: map['backupWindow'] == null ? null : (map['backupWindow'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (ClusterAutomatedBackupPolicyEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      quantityBasedRetention: map['quantityBasedRetention'] == null ? null : (ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap((map['quantityBasedRetention'] as Map).cast<String, dynamic>())).input(),
-      timeBasedRetention: map['timeBasedRetention'] == null ? null : (ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap((map['timeBasedRetention'] as Map).cast<String, dynamic>())).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (ClusterAutomatedBackupPolicyWeeklySchedule.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
+      backupWindow: map['backupWindow'] == null ? null : (map['backupWindow']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (ClusterAutomatedBackupPolicyEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      quantityBasedRetention: map['quantityBasedRetention'] == null ? null : (ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap((map['quantityBasedRetention']! as Map).cast<String, dynamic>())).input(),
+      timeBasedRetention: map['timeBasedRetention'] == null ? null : (ClusterAutomatedBackupPolicyTimeBasedRetention.fromMap((map['timeBasedRetention']! as Map).cast<String, dynamic>())).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (ClusterAutomatedBackupPolicyWeeklySchedule.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

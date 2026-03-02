@@ -32,8 +32,8 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
 
   factory GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume(
-      efsVolumeConfigurations: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration>(map['efsVolumeConfigurations'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hosts: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost>(map['hosts'], (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      efsVolumeConfigurations: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration>(map['efsVolumeConfigurations']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hosts: (pulumi.Input.decodeList<GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost>(map['hosts']!, (value) => GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

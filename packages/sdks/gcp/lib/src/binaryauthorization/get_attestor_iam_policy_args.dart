@@ -31,7 +31,7 @@ class GetAttestorIamPolicyArgs {
   factory GetAttestorIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAttestorIamPolicyArgs(
       attestor: (map['attestor'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

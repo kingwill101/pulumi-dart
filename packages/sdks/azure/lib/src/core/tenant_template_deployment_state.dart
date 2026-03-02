@@ -56,14 +56,14 @@ class TenantTemplateDeploymentState {
 
   factory TenantTemplateDeploymentState.fromMap(Map<String, dynamic> map) {
     return TenantTemplateDeploymentState(
-      debugLevel: map['debugLevel'] == null ? null : (map['debugLevel'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputContent: map['outputContent'] == null ? null : (map['outputContent'] as String).input(),
-      parametersContent: map['parametersContent'] == null ? null : (map['parametersContent'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateContent: map['templateContent'] == null ? null : (map['templateContent'] as String).input(),
-      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : (map['templateSpecVersionId'] as String).input(),
+      debugLevel: map['debugLevel'] == null ? null : (map['debugLevel']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputContent: map['outputContent'] == null ? null : (map['outputContent']! as String).input(),
+      parametersContent: map['parametersContent'] == null ? null : (map['parametersContent']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateContent: map['templateContent'] == null ? null : (map['templateContent']! as String).input(),
+      templateSpecVersionId: map['templateSpecVersionId'] == null ? null : (map['templateSpecVersionId']! as String).input(),
     );
   }
 }

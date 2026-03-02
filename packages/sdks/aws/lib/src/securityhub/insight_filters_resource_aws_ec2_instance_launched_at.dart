@@ -31,9 +31,9 @@ class InsightFiltersResourceAwsEc2InstanceLaunchedAt {
 
   factory InsightFiltersResourceAwsEc2InstanceLaunchedAt.fromMap(Map<String, dynamic> map) {
     return InsightFiltersResourceAwsEc2InstanceLaunchedAt(
-      dateRange: map['dateRange'] == null ? null : (InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>())).input(),
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      dateRange: map['dateRange'] == null ? null : ((InsightFiltersResourceAwsEc2InstanceLaunchedAtDateRange.fromMap((map['dateRange']! as Map).cast<String, dynamic>())).input()).input(),
+      end: map['end'] == null ? null : ((map['end'] as String).input()).input(),
+      start: map['start'] == null ? null : ((map['start'] as String).input()).input(),
     );
   }
 }

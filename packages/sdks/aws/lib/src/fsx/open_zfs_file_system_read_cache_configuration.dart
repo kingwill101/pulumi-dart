@@ -25,8 +25,8 @@ class OpenZfsFileSystemReadCacheConfiguration {
 
   factory OpenZfsFileSystemReadCacheConfiguration.fromMap(Map<String, dynamic> map) {
     return OpenZfsFileSystemReadCacheConfiguration(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      sizingMode: map['sizingMode'] == null ? null : (map['sizingMode'] as String).input(),
+      size: map['size'] == null ? null : ((map['size'] as int).input()).input(),
+      sizingMode: map['sizingMode'] == null ? null : ((map['sizingMode'] as String).input()).input(),
     );
   }
 }

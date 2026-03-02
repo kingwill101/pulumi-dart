@@ -123,23 +123,23 @@ class DiskReplicaPairArgs {
 
   factory DiskReplicaPairArgs.fromMap(Map<String, dynamic> map) {
     return DiskReplicaPairArgs(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationDiskId: (map['destinationDiskId'] as String).input(),
       destinationRegionId: (map['destinationRegionId'] as String).input(),
       destinationZoneId: (map['destinationZoneId'] as String).input(),
       diskId: (map['diskId'] as String).input(),
-      diskReplicaPairName: map['diskReplicaPairName'] == null ? null : (map['diskReplicaPairName'] as String).input(),
-      oneShot: map['oneShot'] == null ? null : (map['oneShot'] as bool).input(),
-      pairName: map['pairName'] == null ? null : (map['pairName'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      reverseReplicate: map['reverseReplicate'] == null ? null : (map['reverseReplicate'] as bool).input(),
-      rpo: map['rpo'] == null ? null : (map['rpo'] as int).input(),
+      diskReplicaPairName: map['diskReplicaPairName'] == null ? null : (map['diskReplicaPairName']! as String).input(),
+      oneShot: map['oneShot'] == null ? null : (map['oneShot']! as bool).input(),
+      pairName: map['pairName'] == null ? null : (map['pairName']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      reverseReplicate: map['reverseReplicate'] == null ? null : (map['reverseReplicate']! as bool).input(),
+      rpo: map['rpo'] == null ? null : (map['rpo']! as int).input(),
       sourceZoneId: (map['sourceZoneId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

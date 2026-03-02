@@ -41,11 +41,11 @@ class CompanyInfo {
 
   factory CompanyInfo.fromMap(Map<String, dynamic> map) {
     return CompanyInfo(
-      business: map['business'] == null ? null : (map['business'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      employeesNumber: map['employeesNumber'] == null ? null : (map['employeesNumber'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      business: map['business'] == null ? null : (map['business']! as String).input(),
+      country: map['country'] == null ? null : (map['country']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      employeesNumber: map['employeesNumber'] == null ? null : (map['employeesNumber']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

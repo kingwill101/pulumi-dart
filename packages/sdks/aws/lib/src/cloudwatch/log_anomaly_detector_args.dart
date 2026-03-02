@@ -64,15 +64,15 @@ class LogAnomalyDetectorArgs {
 
   factory LogAnomalyDetectorArgs.fromMap(Map<String, dynamic> map) {
     return LogAnomalyDetectorArgs(
-      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : (map['anomalyVisibilityTime'] as int).input(),
-      detectorName: map['detectorName'] == null ? null : (map['detectorName'] as String).input(),
+      anomalyVisibilityTime: map['anomalyVisibilityTime'] == null ? null : ((map['anomalyVisibilityTime'] as int).input()).input(),
+      detectorName: map['detectorName'] == null ? null : ((map['detectorName'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      evaluationFrequency: map['evaluationFrequency'] == null ? null : (map['evaluationFrequency'] as String).input(),
-      filterPattern: map['filterPattern'] == null ? null : (map['filterPattern'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      evaluationFrequency: map['evaluationFrequency'] == null ? null : ((map['evaluationFrequency'] as String).input()).input(),
+      filterPattern: map['filterPattern'] == null ? null : ((map['filterPattern'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
       logGroupArnLists: ((map['logGroupArnLists'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

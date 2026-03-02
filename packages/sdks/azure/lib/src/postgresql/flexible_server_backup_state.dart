@@ -31,9 +31,9 @@ class FlexibleServerBackupState {
 
   factory FlexibleServerBackupState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerBackupState(
-      completedTime: map['completedTime'] == null ? null : (map['completedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      completedTime: map['completedTime'] == null ? null : (map['completedTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class HorizontalPodAutoscalerBehaviorAutoscalingV2beta2 {
 
   factory HorizontalPodAutoscalerBehaviorAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerBehaviorAutoscalingV2beta2(
-      scaleDown: map['scaleDown'] == null ? null : (HPAScalingRulesAutoscalingV2beta2.fromMap((map['scaleDown'] as Map).cast<String, dynamic>())).input(),
-      scaleUp: map['scaleUp'] == null ? null : (HPAScalingRulesAutoscalingV2beta2.fromMap((map['scaleUp'] as Map).cast<String, dynamic>())).input(),
+      scaleDown: map['scaleDown'] == null ? null : (HPAScalingRulesAutoscalingV2beta2.fromMap((map['scaleDown']! as Map).cast<String, dynamic>())).input(),
+      scaleUp: map['scaleUp'] == null ? null : (HPAScalingRulesAutoscalingV2beta2.fromMap((map['scaleUp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

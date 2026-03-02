@@ -31,9 +31,9 @@ class InnerErrorResponse {
 
   factory InnerErrorResponse.fromMap(Map<String, dynamic> map) {
     return InnerErrorResponse(
-      additionalInfo: map['additionalInfo'] == null ? null : ((map['additionalInfo'] as Map).cast<String, String>()).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      embeddedInnerError: map['embeddedInnerError'] == null ? null : (InnerErrorResponse.fromMap((map['embeddedInnerError'] as Map).cast<String, dynamic>())).input(),
+      additionalInfo: map['additionalInfo'] == null ? null : ((map['additionalInfo']! as Map).cast<String, String>()).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      embeddedInnerError: map['embeddedInnerError'] == null ? null : (InnerErrorResponse.fromMap((map['embeddedInnerError']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class AdditionalPodNetworkConfigContainerV1beta1 {
 
   factory AdditionalPodNetworkConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdditionalPodNetworkConfigContainerV1beta1(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (MaxPodsConstraintContainerV1beta1.fromMap((map['maxPodsPerNode'] as Map).cast<String, dynamic>())).input(),
-      secondaryPodRange: map['secondaryPodRange'] == null ? null : (map['secondaryPodRange'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (MaxPodsConstraintContainerV1beta1.fromMap((map['maxPodsPerNode']! as Map).cast<String, dynamic>())).input(),
+      secondaryPodRange: map['secondaryPodRange'] == null ? null : (map['secondaryPodRange']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

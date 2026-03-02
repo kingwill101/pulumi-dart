@@ -51,13 +51,13 @@ class SubscriptionRuleState {
 
   factory SubscriptionRuleState.fromMap(Map<String, dynamic> map) {
     return SubscriptionRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      correlationFilter: map['correlationFilter'] == null ? null : (SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>())).input(),
-      filterType: map['filterType'] == null ? null : (map['filterType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter'] as String).input(),
-      sqlFilterCompatibilityLevel: map['sqlFilterCompatibilityLevel'] == null ? null : (map['sqlFilterCompatibilityLevel'] as int).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      correlationFilter: map['correlationFilter'] == null ? null : (SubscriptionRuleCorrelationFilter.fromMap((map['correlationFilter']! as Map).cast<String, dynamic>())).input(),
+      filterType: map['filterType'] == null ? null : (map['filterType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter']! as String).input(),
+      sqlFilterCompatibilityLevel: map['sqlFilterCompatibilityLevel'] == null ? null : (map['sqlFilterCompatibilityLevel']! as int).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

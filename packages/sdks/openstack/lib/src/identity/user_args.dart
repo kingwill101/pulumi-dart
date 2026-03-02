@@ -95,19 +95,19 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      defaultProjectId: map['defaultProjectId'] == null ? null : (map['defaultProjectId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      extra: map['extra'] == null ? null : ((map['extra'] as Map).cast<String, String>()).input(),
-      ignoreChangePasswordUponFirstUse: map['ignoreChangePasswordUponFirstUse'] == null ? null : (map['ignoreChangePasswordUponFirstUse'] as bool).input(),
-      ignoreLockoutFailureAttempts: map['ignoreLockoutFailureAttempts'] == null ? null : (map['ignoreLockoutFailureAttempts'] as bool).input(),
-      ignorePasswordExpiry: map['ignorePasswordExpiry'] == null ? null : (map['ignorePasswordExpiry'] as bool).input(),
-      multiFactorAuthEnabled: map['multiFactorAuthEnabled'] == null ? null : (map['multiFactorAuthEnabled'] as bool).input(),
-      multiFactorAuthRules: map['multiFactorAuthRules'] == null ? null : (pulumi.Input.decodeList<UserMultiFactorAuthRule>(map['multiFactorAuthRules'], (value) => UserMultiFactorAuthRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      defaultProjectId: map['defaultProjectId'] == null ? null : (map['defaultProjectId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, String>()).input(),
+      ignoreChangePasswordUponFirstUse: map['ignoreChangePasswordUponFirstUse'] == null ? null : (map['ignoreChangePasswordUponFirstUse']! as bool).input(),
+      ignoreLockoutFailureAttempts: map['ignoreLockoutFailureAttempts'] == null ? null : (map['ignoreLockoutFailureAttempts']! as bool).input(),
+      ignorePasswordExpiry: map['ignorePasswordExpiry'] == null ? null : (map['ignorePasswordExpiry']! as bool).input(),
+      multiFactorAuthEnabled: map['multiFactorAuthEnabled'] == null ? null : (map['multiFactorAuthEnabled']! as bool).input(),
+      multiFactorAuthRules: map['multiFactorAuthRules'] == null ? null : (pulumi.Input.decodeList<UserMultiFactorAuthRule>(map['multiFactorAuthRules']!, (value) => UserMultiFactorAuthRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

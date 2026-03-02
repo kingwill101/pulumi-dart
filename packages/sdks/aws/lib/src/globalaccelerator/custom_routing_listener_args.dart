@@ -31,7 +31,7 @@ class CustomRoutingListenerArgs {
   factory CustomRoutingListenerArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingListenerArgs(
       acceleratorArn: (map['acceleratorArn'] as String).input(),
-      portRanges: (pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges'], (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portRanges: (pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges']!, (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

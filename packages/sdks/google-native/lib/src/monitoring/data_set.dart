@@ -62,13 +62,13 @@ class DataSet {
 
   factory DataSet.fromMap(Map<String, dynamic> map) {
     return DataSet(
-      breakdowns: map['breakdowns'] == null ? null : (pulumi.Input.decodeList<Breakdown>(map['breakdowns'], (value) => Breakdown.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      legendTemplate: map['legendTemplate'] == null ? null : (map['legendTemplate'] as String).input(),
-      measures: map['measures'] == null ? null : (pulumi.Input.decodeList<Measure>(map['measures'], (value) => Measure.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod'] as String).input(),
-      plotType: map['plotType'] == null ? null : (DataSetPlotType.fromValue(map['plotType'] as String)).input(),
-      targetAxis: map['targetAxis'] == null ? null : (DataSetTargetAxis.fromValue(map['targetAxis'] as String)).input(),
+      breakdowns: map['breakdowns'] == null ? null : (pulumi.Input.decodeList<Breakdown>(map['breakdowns']!, (value) => Breakdown.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions']!, (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      legendTemplate: map['legendTemplate'] == null ? null : (map['legendTemplate']! as String).input(),
+      measures: map['measures'] == null ? null : (pulumi.Input.decodeList<Measure>(map['measures']!, (value) => Measure.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod']! as String).input(),
+      plotType: map['plotType'] == null ? null : (DataSetPlotType.fromValue(map['plotType']! as String)).input(),
+      targetAxis: map['targetAxis'] == null ? null : (DataSetTargetAxis.fromValue(map['targetAxis']! as String)).input(),
       timeSeriesQuery: (TimeSeriesQuery.fromMap((map['timeSeriesQuery'] as Map).cast<String, dynamic>())).input(),
     );
   }

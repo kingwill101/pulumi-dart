@@ -50,13 +50,13 @@ class LogTransformerTransformerConfigDateTimeConverter {
 
   factory LogTransformerTransformerConfigDateTimeConverter.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigDateTimeConverter(
-      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
+      locale: map['locale'] == null ? null : ((map['locale'] as String).input()).input(),
       matchPatterns: ((map['matchPatterns'] as List).cast<String>()).input(),
       source: (map['source'] as String).input(),
-      sourceTimezone: map['sourceTimezone'] == null ? null : (map['sourceTimezone'] as String).input(),
+      sourceTimezone: map['sourceTimezone'] == null ? null : ((map['sourceTimezone'] as String).input()).input(),
       target: (map['target'] as String).input(),
-      targetFormat: map['targetFormat'] == null ? null : (map['targetFormat'] as String).input(),
-      targetTimezone: map['targetTimezone'] == null ? null : (map['targetTimezone'] as String).input(),
+      targetFormat: map['targetFormat'] == null ? null : ((map['targetFormat'] as String).input()).input(),
+      targetTimezone: map['targetTimezone'] == null ? null : ((map['targetTimezone'] as String).input()).input(),
     );
   }
 }

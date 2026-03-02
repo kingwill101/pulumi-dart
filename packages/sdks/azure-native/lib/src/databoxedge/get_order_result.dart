@@ -107,8 +107,8 @@ class GetOrderResult {
       orderId: map['orderId'] as String,
       returnTrackingInfo: pulumi.Input.decodeList<TrackingInfoResponse>(map['returnTrackingInfo'], (value) => TrackingInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
       serialNumber: map['serialNumber'] as String,
-      shipmentType: map['shipmentType'] == null ? null : map['shipmentType'] as String,
-      shippingAddress: map['shippingAddress'] == null ? null : AddressResponse.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>()),
+      shipmentType: map['shipmentType'] == null ? null : map['shipmentType']! as String,
+      shippingAddress: map['shippingAddress'] == null ? null : AddressResponse.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

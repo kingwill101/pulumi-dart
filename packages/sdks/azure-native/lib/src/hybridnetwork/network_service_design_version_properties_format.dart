@@ -39,10 +39,10 @@ class NetworkServiceDesignVersionPropertiesFormat {
 
   factory NetworkServiceDesignVersionPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return NetworkServiceDesignVersionPropertiesFormat(
-      configurationGroupSchemaReferences: map['configurationGroupSchemaReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResource>(map['configurationGroupSchemaReferences'], (value) => ReferencedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      nfvisFromSite: map['nfvisFromSite'] == null ? null : (pulumi.Input.decodeMapValues<NfviDetails>(map['nfvisFromSite'], (value) => NfviDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceElementTemplates: map['resourceElementTemplates'] == null ? null : (pulumi.Input.decodeList<ArmResourceDefinitionResourceElementTemplateDetails>(map['resourceElementTemplates'], (value) => ArmResourceDefinitionResourceElementTemplateDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationGroupSchemaReferences: map['configurationGroupSchemaReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResource>(map['configurationGroupSchemaReferences']!, (value) => ReferencedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      nfvisFromSite: map['nfvisFromSite'] == null ? null : (pulumi.Input.decodeMapValues<NfviDetails>(map['nfvisFromSite']!, (value) => NfviDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceElementTemplates: map['resourceElementTemplates'] == null ? null : (pulumi.Input.decodeList<ArmResourceDefinitionResourceElementTemplateDetails>(map['resourceElementTemplates']!, (value) => ArmResourceDefinitionResourceElementTemplateDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

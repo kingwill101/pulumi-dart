@@ -148,7 +148,7 @@ class GetServiceResult {
       resourceGroupName: map['resourceGroupName'] as String,
       scmUrl: map['scmUrl'] as String,
       skuName: map['skuName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       tenantAccesses: pulumi.Input.decodeList<GetServiceTenantAccess>(map['tenantAccesses'], (value) => GetServiceTenantAccess.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

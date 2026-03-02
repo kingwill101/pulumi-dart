@@ -58,12 +58,12 @@ class TableBucketArgs {
 
   factory TableBucketArgs.fromMap(Map<String, dynamic> map) {
     return TableBucketArgs(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (TableBucketEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : (TableBucketMaintenanceConfiguration.fromMap((map['maintenanceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((TableBucketEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      maintenanceConfiguration: map['maintenanceConfiguration'] == null ? null : ((TableBucketMaintenanceConfiguration.fromMap((map['maintenanceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

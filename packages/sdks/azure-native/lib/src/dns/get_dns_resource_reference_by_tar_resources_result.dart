@@ -22,7 +22,7 @@ class GetDnsResourceReferenceByTarResourcesResult {
 
   factory GetDnsResourceReferenceByTarResourcesResult.fromMap(Map<String, dynamic> map) {
     return GetDnsResourceReferenceByTarResourcesResult(
-      dnsResourceReferences: map['dnsResourceReferences'] == null ? null : pulumi.Input.decodeList<DnsResourceReferenceResponse>(map['dnsResourceReferences'], (value) => DnsResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dnsResourceReferences: map['dnsResourceReferences'] == null ? null : pulumi.Input.decodeList<DnsResourceReferenceResponse>(map['dnsResourceReferences']!, (value) => DnsResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

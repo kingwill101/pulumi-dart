@@ -87,16 +87,16 @@ class DeviceRequestAllocationResultResourceK8sIoV1beta2 {
 
   factory DeviceRequestAllocationResultResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceRequestAllocationResultResourceK8sIoV1beta2(
-      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess'] as bool).input(),
-      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions'] as List).cast<String>()).input(),
-      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions'] as List).cast<String>()).input(),
-      consumedCapacity: map['consumedCapacity'] == null ? null : ((map['consumedCapacity'] as Map).cast<String, String>()).input(),
+      adminAccess: map['adminAccess'] == null ? null : (map['adminAccess']! as bool).input(),
+      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions']! as List).cast<String>()).input(),
+      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions']! as List).cast<String>()).input(),
+      consumedCapacity: map['consumedCapacity'] == null ? null : ((map['consumedCapacity']! as Map).cast<String, String>()).input(),
       device: (map['device'] as String).input(),
       driver: (map['driver'] as String).input(),
       pool: (map['pool'] as String).input(),
       request: (map['request'] as String).input(),
-      shareID: map['shareID'] == null ? null : (map['shareID'] as String).input(),
-      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationResourceK8sIoV1beta2>(map['tolerations'], (value) => DeviceTolerationResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareID: map['shareID'] == null ? null : (map['shareID']! as String).input(),
+      tolerations: map['tolerations'] == null ? null : (pulumi.Input.decodeList<DeviceTolerationResourceK8sIoV1beta2>(map['tolerations']!, (value) => DeviceTolerationResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

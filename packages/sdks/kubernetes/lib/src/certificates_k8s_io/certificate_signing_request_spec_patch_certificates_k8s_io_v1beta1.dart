@@ -58,13 +58,13 @@ class CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1 {
 
   factory CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestSpecPatchCertificatesK8sIoV1beta1(
-      extra: map['extra'] == null ? null : ((map['extra'] as Map).cast<String, List<String>>()).input(),
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
-      request: map['request'] == null ? null : (map['request'] as String).input(),
-      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      usages: map['usages'] == null ? null : ((map['usages'] as List).cast<String>()).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, List<String>>()).input(),
+      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
+      request: map['request'] == null ? null : (map['request']! as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      usages: map['usages'] == null ? null : ((map['usages']! as List).cast<String>()).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -54,7 +54,7 @@ class ServiceInitiatedSoftwareConfiguration {
   factory ServiceInitiatedSoftwareConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceInitiatedSoftwareConfiguration(
       bomUrl: (map['bomUrl'] as String).input(),
-      highAvailabilitySoftwareConfiguration: map['highAvailabilitySoftwareConfiguration'] == null ? null : (HighAvailabilitySoftwareConfiguration.fromMap((map['highAvailabilitySoftwareConfiguration'] as Map).cast<String, dynamic>())).input(),
+      highAvailabilitySoftwareConfiguration: map['highAvailabilitySoftwareConfiguration'] == null ? null : (HighAvailabilitySoftwareConfiguration.fromMap((map['highAvailabilitySoftwareConfiguration']! as Map).cast<String, dynamic>())).input(),
       sapBitsStorageAccountId: (map['sapBitsStorageAccountId'] as String).input(),
       sapFqdn: (map['sapFqdn'] as String).input(),
       softwareInstallationType: (map['softwareInstallationType'] as String).input(),

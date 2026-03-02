@@ -20,7 +20,7 @@ class GetFlowSourceAddressesResult {
 
   factory GetFlowSourceAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetFlowSourceAddressesResult(
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses']! as List).cast<String>(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GetEventSubscriptionFullUrlResult {
 
   factory GetEventSubscriptionFullUrlResult.fromMap(Map<String, dynamic> map) {
     return GetEventSubscriptionFullUrlResult(
-      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl'] as String,
+      endpointUrl: map['endpointUrl'] == null ? null : map['endpointUrl']! as String,
     );
   }
 }

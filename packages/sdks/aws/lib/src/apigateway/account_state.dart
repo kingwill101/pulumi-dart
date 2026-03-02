@@ -42,11 +42,11 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      apiKeyVersion: map['apiKeyVersion'] == null ? null : (map['apiKeyVersion'] as String).input(),
-      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : (map['cloudwatchRoleArn'] as String).input(),
-      features: map['features'] == null ? null : ((map['features'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      throttleSettings: map['throttleSettings'] == null ? null : (pulumi.Input.decodeList<AccountThrottleSetting>(map['throttleSettings'], (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiKeyVersion: map['apiKeyVersion'] == null ? null : ((map['apiKeyVersion'] as String).input()).input(),
+      cloudwatchRoleArn: map['cloudwatchRoleArn'] == null ? null : ((map['cloudwatchRoleArn'] as String).input()).input(),
+      features: map['features'] == null ? null : (((map['features'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      throttleSettings: map['throttleSettings'] == null ? null : ((pulumi.Input.decodeList<AccountThrottleSetting>(map['throttleSettings']!, (value) => AccountThrottleSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

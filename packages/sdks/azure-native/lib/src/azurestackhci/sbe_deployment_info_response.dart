@@ -41,11 +41,11 @@ class SbeDeploymentInfoResponse {
 
   factory SbeDeploymentInfoResponse.fromMap(Map<String, dynamic> map) {
     return SbeDeploymentInfoResponse(
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      sbeManifestCreationDate: map['sbeManifestCreationDate'] == null ? null : (map['sbeManifestCreationDate'] as String).input(),
-      sbeManifestSource: map['sbeManifestSource'] == null ? null : (map['sbeManifestSource'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      sbeManifestCreationDate: map['sbeManifestCreationDate'] == null ? null : (map['sbeManifestCreationDate']! as String).input(),
+      sbeManifestSource: map['sbeManifestSource'] == null ? null : (map['sbeManifestSource']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

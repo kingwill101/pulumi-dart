@@ -26,7 +26,7 @@ class NamedResourcesFilterPatch {
 
   factory NamedResourcesFilterPatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesFilterPatch(
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

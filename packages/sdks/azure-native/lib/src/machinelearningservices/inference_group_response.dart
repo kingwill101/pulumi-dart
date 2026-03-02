@@ -54,13 +54,13 @@ class InferenceGroupResponse {
 
   factory InferenceGroupResponse.fromMap(Map<String, dynamic> map) {
     return InferenceGroupResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentConfiguration: map['environmentConfiguration'] == null ? null : (GroupEnvironmentConfigurationResponse.fromMap((map['environmentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      modelConfiguration: map['modelConfiguration'] == null ? null : (GroupModelConfigurationResponse.fromMap((map['modelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      nodeSkuType: map['nodeSkuType'] == null ? null : (map['nodeSkuType'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties'], (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentConfiguration: map['environmentConfiguration'] == null ? null : (GroupEnvironmentConfigurationResponse.fromMap((map['environmentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      modelConfiguration: map['modelConfiguration'] == null ? null : (GroupModelConfigurationResponse.fromMap((map['modelConfiguration']! as Map).cast<String, dynamic>())).input(),
+      nodeSkuType: map['nodeSkuType'] == null ? null : (map['nodeSkuType']! as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<StringStringKeyValuePairResponse>(map['properties']!, (value) => StringStringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scaleUnitSize: map['scaleUnitSize'] == null ? null : (map['scaleUnitSize'] as int).input(),
+      scaleUnitSize: map['scaleUnitSize'] == null ? null : (map['scaleUnitSize']! as int).input(),
     );
   }
 }

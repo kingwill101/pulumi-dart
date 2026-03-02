@@ -31,7 +31,7 @@ class ApplicationPackageContactResponse {
 
   factory ApplicationPackageContactResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageContactResponse(
-      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
       email: (map['email'] as String).input(),
       phone: (map['phone'] as String).input(),
     );

@@ -33,9 +33,9 @@ class Type {
 
   factory Type.fromMap(Map<String, dynamic> map) {
     return Type(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<Field>(map['fields'], (value) => Field.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primitive: map['primitive'] == null ? null : (TypePrimitive.fromValue(map['primitive'] as String)).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<Field>(map['fields']!, (value) => Field.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primitive: map['primitive'] == null ? null : (TypePrimitive.fromValue(map['primitive']! as String)).input(),
     );
   }
 }

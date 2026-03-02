@@ -25,8 +25,8 @@ class ContainerCapabilities {
 
   factory ContainerCapabilities.fromMap(Map<String, dynamic> map) {
     return ContainerCapabilities(
-      adds: map['adds'] == null ? null : ((map['adds'] as List).cast<String>()).input(),
-      drops: map['drops'] == null ? null : ((map['drops'] as List).cast<String>()).input(),
+      adds: map['adds'] == null ? null : ((map['adds']! as List).cast<String>()).input(),
+      drops: map['drops'] == null ? null : ((map['drops']! as List).cast<String>()).input(),
     );
   }
 }

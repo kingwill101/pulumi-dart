@@ -55,11 +55,11 @@ class ContextArgs {
   factory ContextArgs.fromMap(Map<String, dynamic> map) {
     return ContextArgs(
       environmentId: (map['environmentId'] as String).input(),
-      lifespanCount: map['lifespanCount'] == null ? null : (map['lifespanCount'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      lifespanCount: map['lifespanCount'] == null ? null : (map['lifespanCount']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionId: (map['sessionId'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

@@ -90,19 +90,19 @@ class AmlFilesystemArgs {
 
   factory AmlFilesystemArgs.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemArgs(
-      amlFilesystemName: map['amlFilesystemName'] == null ? null : (map['amlFilesystemName'] as String).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (AmlFilesystemEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
+      amlFilesystemName: map['amlFilesystemName'] == null ? null : (map['amlFilesystemName']! as String).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (AmlFilesystemEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
       filesystemSubnet: (map['filesystemSubnet'] as String).input(),
-      hsm: map['hsm'] == null ? null : (AmlFilesystemHsm.fromMap((map['hsm'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (AmlFilesystemIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      hsm: map['hsm'] == null ? null : (AmlFilesystemHsm.fromMap((map['hsm']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (AmlFilesystemIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       maintenanceWindow: (AmlFilesystemMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rootSquashSettings: map['rootSquashSettings'] == null ? null : (AmlFilesystemRootSquashSettings.fromMap((map['rootSquashSettings'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      rootSquashSettings: map['rootSquashSettings'] == null ? null : (AmlFilesystemRootSquashSettings.fromMap((map['rootSquashSettings']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
       storageCapacityTiB: (map['storageCapacityTiB'] as double).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

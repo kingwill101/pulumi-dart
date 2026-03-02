@@ -74,11 +74,11 @@ class GetCertificateResult {
       fingerprint: map['fingerprint'] as String,
       id: map['id'] as int,
       labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       notValidAfter: map['notValidAfter'] as String,
       notValidBefore: map['notValidBefore'] as String,
       type: map['type'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

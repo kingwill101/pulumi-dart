@@ -79,17 +79,17 @@ class ReportDefinitionArgs {
 
   factory ReportDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ReportDefinitionArgs(
-      additionalArtifacts: map['additionalArtifacts'] == null ? null : ((map['additionalArtifacts'] as List).cast<String>()).input(),
+      additionalArtifacts: map['additionalArtifacts'] == null ? null : (((map['additionalArtifacts'] as List).cast<String>()).input()).input(),
       additionalSchemaElements: ((map['additionalSchemaElements'] as List).cast<String>()).input(),
       compression: (map['compression'] as String).input(),
       format: (map['format'] as String).input(),
-      refreshClosedReports: map['refreshClosedReports'] == null ? null : (map['refreshClosedReports'] as bool).input(),
+      refreshClosedReports: map['refreshClosedReports'] == null ? null : ((map['refreshClosedReports'] as bool).input()).input(),
       reportName: (map['reportName'] as String).input(),
-      reportVersioning: map['reportVersioning'] == null ? null : (map['reportVersioning'] as String).input(),
+      reportVersioning: map['reportVersioning'] == null ? null : ((map['reportVersioning'] as String).input()).input(),
       s3Bucket: (map['s3Bucket'] as String).input(),
       s3Prefix: (map['s3Prefix'] as String).input(),
       s3Region: (map['s3Region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       timeUnit: (map['timeUnit'] as String).input(),
     );
   }

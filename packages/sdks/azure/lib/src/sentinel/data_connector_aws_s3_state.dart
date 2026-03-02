@@ -41,11 +41,11 @@ class DataConnectorAwsS3State {
 
   factory DataConnectorAwsS3State.fromMap(Map<String, dynamic> map) {
     return DataConnectorAwsS3State(
-      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn'] as String).input(),
-      destinationTable: map['destinationTable'] == null ? null : (map['destinationTable'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sqsUrls: map['sqsUrls'] == null ? null : ((map['sqsUrls'] as List).cast<String>()).input(),
+      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn']! as String).input(),
+      destinationTable: map['destinationTable'] == null ? null : (map['destinationTable']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sqsUrls: map['sqsUrls'] == null ? null : ((map['sqsUrls']! as List).cast<String>()).input(),
     );
   }
 }

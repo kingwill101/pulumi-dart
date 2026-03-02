@@ -48,11 +48,11 @@ class APIGroup {
 
   factory APIGroup.fromMap(Map<String, dynamic> map) {
     return APIGroup(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      preferredVersion: map['preferredVersion'] == null ? null : (GroupVersionForDiscovery.fromMap((map['preferredVersion'] as Map).cast<String, dynamic>())).input(),
-      serverAddressByClientCIDRs: map['serverAddressByClientCIDRs'] == null ? null : (pulumi.Input.decodeList<ServerAddressByClientCIDR>(map['serverAddressByClientCIDRs'], (value) => ServerAddressByClientCIDR.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      preferredVersion: map['preferredVersion'] == null ? null : (GroupVersionForDiscovery.fromMap((map['preferredVersion']! as Map).cast<String, dynamic>())).input(),
+      serverAddressByClientCIDRs: map['serverAddressByClientCIDRs'] == null ? null : (pulumi.Input.decodeList<ServerAddressByClientCIDR>(map['serverAddressByClientCIDRs']!, (value) => ServerAddressByClientCIDR.fromMap((value as Map).cast<String, dynamic>()))).input(),
       versions: (pulumi.Input.decodeList<GroupVersionForDiscovery>(map['versions'], (value) => GroupVersionForDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

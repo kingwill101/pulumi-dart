@@ -41,11 +41,11 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      endUserId: map['endUserId'] == null ? null : (map['endUserId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      endUserId: map['endUserId'] == null ? null : (map['endUserId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

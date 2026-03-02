@@ -33,9 +33,9 @@ class DeliveryPipelineCondition {
 
   factory DeliveryPipelineCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineCondition(
-      pipelineReadyConditions: map['pipelineReadyConditions'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineConditionPipelineReadyCondition>(map['pipelineReadyConditions'], (value) => DeliveryPipelineConditionPipelineReadyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetsPresentConditions: map['targetsPresentConditions'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineConditionTargetsPresentCondition>(map['targetsPresentConditions'], (value) => DeliveryPipelineConditionTargetsPresentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetsTypeConditions: map['targetsTypeConditions'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineConditionTargetsTypeCondition>(map['targetsTypeConditions'], (value) => DeliveryPipelineConditionTargetsTypeCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pipelineReadyConditions: map['pipelineReadyConditions'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineConditionPipelineReadyCondition>(map['pipelineReadyConditions']!, (value) => DeliveryPipelineConditionPipelineReadyCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetsPresentConditions: map['targetsPresentConditions'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineConditionTargetsPresentCondition>(map['targetsPresentConditions']!, (value) => DeliveryPipelineConditionTargetsPresentCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetsTypeConditions: map['targetsTypeConditions'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineConditionTargetsTypeCondition>(map['targetsTypeConditions']!, (value) => DeliveryPipelineConditionTargetsTypeCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

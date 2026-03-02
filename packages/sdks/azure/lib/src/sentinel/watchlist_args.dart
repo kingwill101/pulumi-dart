@@ -54,13 +54,13 @@ class WatchlistArgs {
 
   factory WatchlistArgs.fromMap(Map<String, dynamic> map) {
     return WatchlistArgs(
-      defaultDuration: map['defaultDuration'] == null ? null : (map['defaultDuration'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      defaultDuration: map['defaultDuration'] == null ? null : (map['defaultDuration']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       itemSearchKey: (map['itemSearchKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

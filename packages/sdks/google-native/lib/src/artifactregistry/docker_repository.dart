@@ -22,7 +22,7 @@ class DockerRepository {
 
   factory DockerRepository.fromMap(Map<String, dynamic> map) {
     return DockerRepository(
-      publicRepository: map['publicRepository'] == null ? null : (DockerRepositoryPublicRepository.fromValue(map['publicRepository'] as String)).input(),
+      publicRepository: map['publicRepository'] == null ? null : (DockerRepositoryPublicRepository.fromValue(map['publicRepository']! as String)).input(),
     );
   }
 }

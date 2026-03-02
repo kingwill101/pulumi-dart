@@ -35,7 +35,7 @@ class GetProductResult {
 
   factory GetProductResult.fromMap(Map<String, dynamic> map) {
     return GetProductResult(
-      availableRegion: map['availableRegion'] == null ? null : map['availableRegion'] as String,
+      availableRegion: map['availableRegion'] == null ? null : map['availableRegion']! as String,
       id: map['id'] as String,
       productCode: map['productCode'] as String,
       products: pulumi.Input.decodeList<GetProductProduct>(map['products'], (value) => GetProductProduct.fromMap((value as Map).cast<String, dynamic>())),

@@ -51,13 +51,13 @@ class OSDetailsResponse {
 
   factory OSDetailsResponse.fromMap(Map<String, dynamic> map) {
     return OSDetailsResponse(
-      oSMajorVersion: map['oSMajorVersion'] == null ? null : (map['oSMajorVersion'] as String).input(),
-      oSMinorVersion: map['oSMinorVersion'] == null ? null : (map['oSMinorVersion'] as String).input(),
-      oSVersion: map['oSVersion'] == null ? null : (map['oSVersion'] as String).input(),
-      osEdition: map['osEdition'] == null ? null : (map['osEdition'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      userSelectedOSName: map['userSelectedOSName'] == null ? null : (map['userSelectedOSName'] as String).input(),
+      oSMajorVersion: map['oSMajorVersion'] == null ? null : (map['oSMajorVersion']! as String).input(),
+      oSMinorVersion: map['oSMinorVersion'] == null ? null : (map['oSMinorVersion']! as String).input(),
+      oSVersion: map['oSVersion'] == null ? null : (map['oSVersion']! as String).input(),
+      osEdition: map['osEdition'] == null ? null : (map['osEdition']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      userSelectedOSName: map['userSelectedOSName'] == null ? null : (map['userSelectedOSName']! as String).input(),
     );
   }
 }

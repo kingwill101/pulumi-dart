@@ -22,7 +22,7 @@ class PluginHostingService {
 
   factory PluginHostingService.fromMap(Map<String, dynamic> map) {
     return PluginHostingService(
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
     );
   }
 }

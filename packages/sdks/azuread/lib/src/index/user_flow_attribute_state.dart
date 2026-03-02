@@ -36,10 +36,10 @@ class UserFlowAttributeState {
 
   factory UserFlowAttributeState.fromMap(Map<String, dynamic> map) {
     return UserFlowAttributeState(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

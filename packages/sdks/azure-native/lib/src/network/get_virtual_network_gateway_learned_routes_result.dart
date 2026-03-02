@@ -22,7 +22,7 @@ class GetVirtualNetworkGatewayLearnedRoutesResult {
 
   factory GetVirtualNetworkGatewayLearnedRoutesResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayLearnedRoutesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<GatewayRouteResponse>(map['value'], (value) => GatewayRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<GatewayRouteResponse>(map['value']!, (value) => GatewayRouteResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

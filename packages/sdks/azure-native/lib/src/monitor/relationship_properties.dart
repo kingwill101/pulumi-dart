@@ -37,9 +37,9 @@ class RelationshipProperties {
   factory RelationshipProperties.fromMap(Map<String, dynamic> map) {
     return RelationshipProperties(
       childEntityName: (map['childEntityName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       parentEntityName: (map['parentEntityName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

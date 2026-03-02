@@ -24,8 +24,8 @@ class PolicyNetwork {
 
   factory PolicyNetwork.fromMap(Map<String, dynamic> map) {
     return PolicyNetwork(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl']! as String).input(),
     );
   }
 }

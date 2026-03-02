@@ -72,17 +72,17 @@ class DataQualityRulesetState {
 
   factory DataQualityRulesetState.fromMap(Map<String, dynamic> map) {
     return DataQualityRulesetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastModifiedOn: map['lastModifiedOn'] == null ? null : (map['lastModifiedOn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recommendationRunId: map['recommendationRunId'] == null ? null : (map['recommendationRunId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleset: map['ruleset'] == null ? null : (map['ruleset'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetTable: map['targetTable'] == null ? null : (DataQualityRulesetTargetTable.fromMap((map['targetTable'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdOn: map['createdOn'] == null ? null : ((map['createdOn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lastModifiedOn: map['lastModifiedOn'] == null ? null : ((map['lastModifiedOn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      recommendationRunId: map['recommendationRunId'] == null ? null : ((map['recommendationRunId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleset: map['ruleset'] == null ? null : ((map['ruleset'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetTable: map['targetTable'] == null ? null : ((DataQualityRulesetTargetTable.fromMap((map['targetTable']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

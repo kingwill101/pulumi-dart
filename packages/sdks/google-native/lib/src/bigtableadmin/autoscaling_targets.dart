@@ -26,8 +26,8 @@ class AutoscalingTargets {
 
   factory AutoscalingTargets.fromMap(Map<String, dynamic> map) {
     return AutoscalingTargets(
-      cpuUtilizationPercent: map['cpuUtilizationPercent'] == null ? null : (map['cpuUtilizationPercent'] as int).input(),
-      storageUtilizationGibPerNode: map['storageUtilizationGibPerNode'] == null ? null : (map['storageUtilizationGibPerNode'] as int).input(),
+      cpuUtilizationPercent: map['cpuUtilizationPercent'] == null ? null : (map['cpuUtilizationPercent']! as int).input(),
+      storageUtilizationGibPerNode: map['storageUtilizationGibPerNode'] == null ? null : (map['storageUtilizationGibPerNode']! as int).input(),
     );
   }
 }

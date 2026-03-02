@@ -46,11 +46,11 @@ class ApplicationGetHttpsEndpointResponse {
 
   factory ApplicationGetHttpsEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpointResponse(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth'] as bool).input(),
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth']! as bool).input(),
       location: (map['location'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
       publicPort: (map['publicPort'] as int).input(),
     );
   }

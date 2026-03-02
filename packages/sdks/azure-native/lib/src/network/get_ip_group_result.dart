@@ -76,12 +76,12 @@ class GetIpGroupResult {
       etag: map['etag'] as String,
       firewallPolicies: pulumi.Input.decodeList<SubResourceResponse>(map['firewallPolicies'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       firewalls: pulumi.Input.decodeList<SubResourceResponse>(map['firewalls'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses']! as List).cast<String>(),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

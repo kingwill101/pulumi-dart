@@ -25,8 +25,8 @@ class ServiceMeshMeshConfigAudit {
 
   factory ServiceMeshMeshConfigAudit.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigAudit(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class InMageAzureV2DiskInputDetails {
 
   factory InMageAzureV2DiskInputDetails.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2DiskInputDetails(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      logStorageAccountId: map['logStorageAccountId'] == null ? null : (map['logStorageAccountId']! as String).input(),
     );
   }
 }

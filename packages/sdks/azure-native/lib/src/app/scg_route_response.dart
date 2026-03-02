@@ -41,10 +41,10 @@ class ScgRouteResponse {
 
   factory ScgRouteResponse.fromMap(Map<String, dynamic> map) {
     return ScgRouteResponse(
-      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
+      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as double).input(),
-      predicates: map['predicates'] == null ? null : ((map['predicates'] as List).cast<String>()).input(),
+      order: map['order'] == null ? null : (map['order']! as double).input(),
+      predicates: map['predicates'] == null ? null : ((map['predicates']! as List).cast<String>()).input(),
       uri: (map['uri'] as String).input(),
     );
   }

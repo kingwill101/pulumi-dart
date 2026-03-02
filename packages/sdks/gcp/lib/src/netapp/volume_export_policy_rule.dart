@@ -84,19 +84,19 @@ class VolumeExportPolicyRule {
 
   factory VolumeExportPolicyRule.fromMap(Map<String, dynamic> map) {
     return VolumeExportPolicyRule(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      allowedClients: map['allowedClients'] == null ? null : (map['allowedClients'] as String).input(),
-      anonUid: map['anonUid'] == null ? null : (map['anonUid'] as int).input(),
-      hasRootAccess: map['hasRootAccess'] == null ? null : (map['hasRootAccess'] as String).input(),
-      kerberos5ReadOnly: map['kerberos5ReadOnly'] == null ? null : (map['kerberos5ReadOnly'] as bool).input(),
-      kerberos5ReadWrite: map['kerberos5ReadWrite'] == null ? null : (map['kerberos5ReadWrite'] as bool).input(),
-      kerberos5iReadOnly: map['kerberos5iReadOnly'] == null ? null : (map['kerberos5iReadOnly'] as bool).input(),
-      kerberos5iReadWrite: map['kerberos5iReadWrite'] == null ? null : (map['kerberos5iReadWrite'] as bool).input(),
-      kerberos5pReadOnly: map['kerberos5pReadOnly'] == null ? null : (map['kerberos5pReadOnly'] as bool).input(),
-      kerberos5pReadWrite: map['kerberos5pReadWrite'] == null ? null : (map['kerberos5pReadWrite'] as bool).input(),
-      nfsv3: map['nfsv3'] == null ? null : (map['nfsv3'] as bool).input(),
-      nfsv4: map['nfsv4'] == null ? null : (map['nfsv4'] as bool).input(),
-      squashMode: map['squashMode'] == null ? null : (map['squashMode'] as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      allowedClients: map['allowedClients'] == null ? null : (map['allowedClients']! as String).input(),
+      anonUid: map['anonUid'] == null ? null : (map['anonUid']! as int).input(),
+      hasRootAccess: map['hasRootAccess'] == null ? null : (map['hasRootAccess']! as String).input(),
+      kerberos5ReadOnly: map['kerberos5ReadOnly'] == null ? null : (map['kerberos5ReadOnly']! as bool).input(),
+      kerberos5ReadWrite: map['kerberos5ReadWrite'] == null ? null : (map['kerberos5ReadWrite']! as bool).input(),
+      kerberos5iReadOnly: map['kerberos5iReadOnly'] == null ? null : (map['kerberos5iReadOnly']! as bool).input(),
+      kerberos5iReadWrite: map['kerberos5iReadWrite'] == null ? null : (map['kerberos5iReadWrite']! as bool).input(),
+      kerberos5pReadOnly: map['kerberos5pReadOnly'] == null ? null : (map['kerberos5pReadOnly']! as bool).input(),
+      kerberos5pReadWrite: map['kerberos5pReadWrite'] == null ? null : (map['kerberos5pReadWrite']! as bool).input(),
+      nfsv3: map['nfsv3'] == null ? null : (map['nfsv3']! as bool).input(),
+      nfsv4: map['nfsv4'] == null ? null : (map['nfsv4']! as bool).input(),
+      squashMode: map['squashMode'] == null ? null : (map['squashMode']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
 
   factory RuntimeTemplateSoftwareConfigPostStartupScriptConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateSoftwareConfigPostStartupScriptConfig(
-      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript'] as String).input(),
-      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : (map['postStartupScriptBehavior'] as String).input(),
-      postStartupScriptUrl: map['postStartupScriptUrl'] == null ? null : (map['postStartupScriptUrl'] as String).input(),
+      postStartupScript: map['postStartupScript'] == null ? null : (map['postStartupScript']! as String).input(),
+      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : (map['postStartupScriptBehavior']! as String).input(),
+      postStartupScriptUrl: map['postStartupScriptUrl'] == null ? null : (map['postStartupScriptUrl']! as String).input(),
     );
   }
 }

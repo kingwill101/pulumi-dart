@@ -57,13 +57,13 @@ class VolumeAttachState {
 
   factory VolumeAttachState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachState(
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      multiattach: map['multiattach'] == null ? null : (map['multiattach'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      vendorOptions: map['vendorOptions'] == null ? null : (VolumeAttachVendorOptions.fromMap((map['vendorOptions'] as Map).cast<String, dynamic>())).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      multiattach: map['multiattach'] == null ? null : (map['multiattach']! as bool).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      vendorOptions: map['vendorOptions'] == null ? null : (VolumeAttachVendorOptions.fromMap((map['vendorOptions']! as Map).cast<String, dynamic>())).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
     );
   }
 }

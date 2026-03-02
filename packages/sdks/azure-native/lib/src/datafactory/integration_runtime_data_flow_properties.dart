@@ -42,11 +42,11 @@ class IntegrationRuntimeDataFlowProperties {
 
   factory IntegrationRuntimeDataFlowProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeDataFlowProperties(
-      cleanup: map['cleanup'] == null ? null : (map['cleanup'] as bool).input(),
-      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      customProperties: map['customProperties'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesCustomProperties>(map['customProperties'], (value) => IntegrationRuntimeDataFlowPropertiesCustomProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      cleanup: map['cleanup'] == null ? null : (map['cleanup']! as bool).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType']! as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
+      customProperties: map['customProperties'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeDataFlowPropertiesCustomProperties>(map['customProperties']!, (value) => IntegrationRuntimeDataFlowPropertiesCustomProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class LaunchTemplateOverrides {
 
   factory LaunchTemplateOverrides.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateOverrides(
-      instanceRequirements: map['instanceRequirements'] == null ? null : (InstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>())).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : (LaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>())).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as String).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : (InstanceRequirements.fromMap((map['instanceRequirements']! as Map).cast<String, dynamic>())).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      launchTemplateSpecification: map['launchTemplateSpecification'] == null ? null : (LaunchTemplateSpecification.fromMap((map['launchTemplateSpecification']! as Map).cast<String, dynamic>())).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity']! as String).input(),
     );
   }
 }

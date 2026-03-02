@@ -27,8 +27,8 @@ class IPConfiguration {
 
   factory IPConfiguration.fromMap(Map<String, dynamic> map) {
     return IPConfiguration(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (IPConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (IPConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

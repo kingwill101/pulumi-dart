@@ -33,8 +33,8 @@ class RaiToolLabelProperties {
 
   factory RaiToolLabelProperties.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelProperties(
-      accountScope: map['accountScope'] == null ? null : (RaiToolLabelPropertiesAccountScope.fromMap((map['accountScope'] as Map).cast<String, dynamic>())).input(),
-      projectScopes: map['projectScopes'] == null ? null : (pulumi.Input.decodeList<RaiToolLabelPropertiesProjectScopes>(map['projectScopes'], (value) => RaiToolLabelPropertiesProjectScopes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountScope: map['accountScope'] == null ? null : (RaiToolLabelPropertiesAccountScope.fromMap((map['accountScope']! as Map).cast<String, dynamic>())).input(),
+      projectScopes: map['projectScopes'] == null ? null : (pulumi.Input.decodeList<RaiToolLabelPropertiesProjectScopes>(map['projectScopes']!, (value) => RaiToolLabelPropertiesProjectScopes.fromMap((value as Map).cast<String, dynamic>()))).input(),
       toolConnectionName: (map['toolConnectionName'] as String).input(),
     );
   }

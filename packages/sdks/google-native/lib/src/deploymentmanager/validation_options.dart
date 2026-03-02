@@ -28,8 +28,8 @@ class ValidationOptions {
 
   factory ValidationOptions.fromMap(Map<String, dynamic> map) {
     return ValidationOptions(
-      schemaValidation: map['schemaValidation'] == null ? null : (ValidationOptionsSchemaValidation.fromValue(map['schemaValidation'] as String)).input(),
-      undeclaredProperties: map['undeclaredProperties'] == null ? null : (ValidationOptionsUndeclaredProperties.fromValue(map['undeclaredProperties'] as String)).input(),
+      schemaValidation: map['schemaValidation'] == null ? null : (ValidationOptionsSchemaValidation.fromValue(map['schemaValidation']! as String)).input(),
+      undeclaredProperties: map['undeclaredProperties'] == null ? null : (ValidationOptionsUndeclaredProperties.fromValue(map['undeclaredProperties']! as String)).input(),
     );
   }
 }

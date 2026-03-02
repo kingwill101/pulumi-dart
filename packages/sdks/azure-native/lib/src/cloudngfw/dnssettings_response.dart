@@ -32,9 +32,9 @@ class DNSSettingsResponse {
 
   factory DNSSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DNSSettingsResponse(
-      dnsServers: map['dnsServers'] == null ? null : (pulumi.Input.decodeList<IPAddressResponse>(map['dnsServers'], (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableDnsProxy: map['enableDnsProxy'] == null ? null : (map['enableDnsProxy'] as String).input(),
-      enabledDnsType: map['enabledDnsType'] == null ? null : (map['enabledDnsType'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : (pulumi.Input.decodeList<IPAddressResponse>(map['dnsServers']!, (value) => IPAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableDnsProxy: map['enableDnsProxy'] == null ? null : (map['enableDnsProxy']! as String).input(),
+      enabledDnsType: map['enabledDnsType'] == null ? null : (map['enabledDnsType']! as String).input(),
     );
   }
 }

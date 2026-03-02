@@ -39,12 +39,12 @@ class DomainCreate {
 
   factory DomainCreate.fromMap(Map<String, dynamic> map) {
     return DomainCreate(
-      autodestroy: map['autodestroy'] == null ? null : (map['autodestroy'] as bool).input(),
-      bypassCache: map['bypassCache'] == null ? null : (map['bypassCache'] as bool).input(),
-      forceBoot: map['forceBoot'] == null ? null : (map['forceBoot'] as bool).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
-      resetNvram: map['resetNvram'] == null ? null : (map['resetNvram'] as bool).input(),
-      validate: map['validate'] == null ? null : (map['validate'] as bool).input(),
+      autodestroy: map['autodestroy'] == null ? null : (map['autodestroy']! as bool).input(),
+      bypassCache: map['bypassCache'] == null ? null : (map['bypassCache']! as bool).input(),
+      forceBoot: map['forceBoot'] == null ? null : (map['forceBoot']! as bool).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
+      resetNvram: map['resetNvram'] == null ? null : (map['resetNvram']! as bool).input(),
+      validate: map['validate'] == null ? null : (map['validate']! as bool).input(),
     );
   }
 }

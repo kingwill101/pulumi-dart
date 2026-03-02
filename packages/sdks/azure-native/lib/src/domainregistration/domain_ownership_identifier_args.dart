@@ -45,9 +45,9 @@ class DomainOwnershipIdentifierArgs {
   factory DomainOwnershipIdentifierArgs.fromMap(Map<String, dynamic> map) {
     return DomainOwnershipIdentifierArgs(
       domainName: (map['domainName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownershipId: map['ownershipId'] == null ? null : (map['ownershipId'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ownershipId: map['ownershipId'] == null ? null : (map['ownershipId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

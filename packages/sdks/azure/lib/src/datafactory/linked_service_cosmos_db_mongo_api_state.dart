@@ -68,16 +68,16 @@ class LinkedServiceCosmosDbMongoApiState {
 
   factory LinkedServiceCosmosDbMongoApiState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceCosmosDbMongoApiState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      serverVersionIs32OrHigher: map['serverVersionIs32OrHigher'] == null ? null : (map['serverVersionIs32OrHigher'] as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      serverVersionIs32OrHigher: map['serverVersionIs32OrHigher'] == null ? null : (map['serverVersionIs32OrHigher']! as bool).input(),
     );
   }
 }

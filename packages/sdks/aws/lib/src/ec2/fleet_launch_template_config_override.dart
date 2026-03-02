@@ -51,13 +51,13 @@ class FleetLaunchTemplateConfigOverride {
 
   factory FleetLaunchTemplateConfigOverride.fromMap(Map<String, dynamic> map) {
     return FleetLaunchTemplateConfigOverride(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      instanceRequirements: map['instanceRequirements'] == null ? null : (FleetLaunchTemplateConfigOverrideInstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>())).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      maxPrice: map['maxPrice'] == null ? null : (map['maxPrice'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as double).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as double).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : ((FleetLaunchTemplateConfigOverrideInstanceRequirements.fromMap((map['instanceRequirements']! as Map).cast<String, dynamic>())).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      maxPrice: map['maxPrice'] == null ? null : ((map['maxPrice'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as double).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : ((map['weightedCapacity'] as double).input()).input(),
     );
   }
 }

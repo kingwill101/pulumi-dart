@@ -43,11 +43,11 @@ class AwsSourceDetails {
 
   factory AwsSourceDetails.fromMap(Map<String, dynamic> map) {
     return AwsSourceDetails(
-      accessKeyCreds: map['accessKeyCreds'] == null ? null : (AccessKeyCredentials.fromMap((map['accessKeyCreds'] as Map).cast<String, dynamic>())).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      inventorySecurityGroupNames: map['inventorySecurityGroupNames'] == null ? null : ((map['inventorySecurityGroupNames'] as List).cast<String>()).input(),
-      inventoryTagList: map['inventoryTagList'] == null ? null : (pulumi.Input.decodeList<Tag>(map['inventoryTagList'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      migrationResourcesUserTags: map['migrationResourcesUserTags'] == null ? null : ((map['migrationResourcesUserTags'] as Map).cast<String, String>()).input(),
+      accessKeyCreds: map['accessKeyCreds'] == null ? null : (AccessKeyCredentials.fromMap((map['accessKeyCreds']! as Map).cast<String, dynamic>())).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      inventorySecurityGroupNames: map['inventorySecurityGroupNames'] == null ? null : ((map['inventorySecurityGroupNames']! as List).cast<String>()).input(),
+      inventoryTagList: map['inventoryTagList'] == null ? null : (pulumi.Input.decodeList<Tag>(map['inventoryTagList']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      migrationResourcesUserTags: map['migrationResourcesUserTags'] == null ? null : ((map['migrationResourcesUserTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

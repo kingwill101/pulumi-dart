@@ -45,9 +45,9 @@ class FleetMemberArgs {
   factory FleetMemberArgs.fromMap(Map<String, dynamic> map) {
     return FleetMemberArgs(
       clusterResourceId: (map['clusterResourceId'] as String).input(),
-      fleetMemberName: map['fleetMemberName'] == null ? null : (map['fleetMemberName'] as String).input(),
+      fleetMemberName: map['fleetMemberName'] == null ? null : (map['fleetMemberName']! as String).input(),
       fleetName: (map['fleetName'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

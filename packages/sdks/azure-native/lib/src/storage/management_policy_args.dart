@@ -41,7 +41,7 @@ class ManagementPolicyArgs {
   factory ManagementPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyArgs(
       accountName: (map['accountName'] as String).input(),
-      managementPolicyName: map['managementPolicyName'] == null ? null : (map['managementPolicyName'] as String).input(),
+      managementPolicyName: map['managementPolicyName'] == null ? null : (map['managementPolicyName']! as String).input(),
       policy: (ManagementPolicySchema.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

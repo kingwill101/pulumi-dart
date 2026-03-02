@@ -53,7 +53,7 @@ class ChannelFacebookArgs {
       botName: (map['botName'] as String).input(),
       facebookApplicationId: (map['facebookApplicationId'] as String).input(),
       facebookApplicationSecret: (map['facebookApplicationSecret'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       pages: (pulumi.Input.decodeList<ChannelFacebookPage>(map['pages'], (value) => ChannelFacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

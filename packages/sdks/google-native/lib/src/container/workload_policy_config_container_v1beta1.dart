@@ -21,7 +21,7 @@ class WorkloadPolicyConfigContainerV1beta1 {
 
   factory WorkloadPolicyConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadPolicyConfigContainerV1beta1(
-      allowNetAdmin: map['allowNetAdmin'] == null ? null : (map['allowNetAdmin'] as bool).input(),
+      allowNetAdmin: map['allowNetAdmin'] == null ? null : (map['allowNetAdmin']! as bool).input(),
     );
   }
 }

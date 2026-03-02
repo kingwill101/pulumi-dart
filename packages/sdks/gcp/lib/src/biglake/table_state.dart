@@ -80,15 +80,15 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      hiveOptions: map['hiveOptions'] == null ? null : (TableHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (TableHiveOptions.fromMap((map['hiveOptions']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

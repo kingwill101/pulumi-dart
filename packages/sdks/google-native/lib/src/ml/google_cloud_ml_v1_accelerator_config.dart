@@ -27,8 +27,8 @@ class GoogleCloudMlV1AcceleratorConfig {
 
   factory GoogleCloudMlV1AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AcceleratorConfig(
-      count: map['count'] == null ? null : (map['count'] as String).input(),
-      type: map['type'] == null ? null : (GoogleCloudMlV1AcceleratorConfigType.fromValue(map['type'] as String)).input(),
+      count: map['count'] == null ? null : (map['count']! as String).input(),
+      type: map['type'] == null ? null : (GoogleCloudMlV1AcceleratorConfigType.fromValue(map['type']! as String)).input(),
     );
   }
 }

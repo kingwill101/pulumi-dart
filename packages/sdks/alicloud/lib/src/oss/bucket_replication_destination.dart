@@ -34,7 +34,7 @@ class BucketReplicationDestination {
     return BucketReplicationDestination(
       bucket: (map['bucket'] as String).input(),
       location: (map['location'] as String).input(),
-      transferType: map['transferType'] == null ? null : (map['transferType'] as String).input(),
+      transferType: map['transferType'] == null ? null : (map['transferType']! as String).input(),
     );
   }
 }

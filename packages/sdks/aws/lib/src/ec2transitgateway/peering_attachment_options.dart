@@ -20,7 +20,7 @@ class PeeringAttachmentOptions {
 
   factory PeeringAttachmentOptions.fromMap(Map<String, dynamic> map) {
     return PeeringAttachmentOptions(
-      dynamicRouting: map['dynamicRouting'] == null ? null : (map['dynamicRouting'] as String).input(),
+      dynamicRouting: map['dynamicRouting'] == null ? null : ((map['dynamicRouting'] as String).input()).input(),
     );
   }
 }

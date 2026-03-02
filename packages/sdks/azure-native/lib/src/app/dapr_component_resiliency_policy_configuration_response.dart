@@ -34,9 +34,9 @@ class DaprComponentResiliencyPolicyConfigurationResponse {
 
   factory DaprComponentResiliencyPolicyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyConfigurationResponse(
-      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap((map['circuitBreakerPolicy'] as Map).cast<String, dynamic>())).input(),
-      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap((map['httpRetryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeoutPolicy: map['timeoutPolicy'] == null ? null : (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap((map['timeoutPolicy'] as Map).cast<String, dynamic>())).input(),
+      circuitBreakerPolicy: map['circuitBreakerPolicy'] == null ? null : (DaprComponentResiliencyPolicyCircuitBreakerPolicyConfigurationResponse.fromMap((map['circuitBreakerPolicy']! as Map).cast<String, dynamic>())).input(),
+      httpRetryPolicy: map['httpRetryPolicy'] == null ? null : (DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse.fromMap((map['httpRetryPolicy']! as Map).cast<String, dynamic>())).input(),
+      timeoutPolicy: map['timeoutPolicy'] == null ? null : (DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse.fromMap((map['timeoutPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

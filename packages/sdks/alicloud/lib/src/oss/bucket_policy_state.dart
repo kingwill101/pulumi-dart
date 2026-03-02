@@ -26,8 +26,8 @@ class BucketPolicyState {
 
   factory BucketPolicyState.fromMap(Map<String, dynamic> map) {
     return BucketPolicyState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

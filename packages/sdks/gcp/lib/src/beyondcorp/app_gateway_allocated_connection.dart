@@ -25,8 +25,8 @@ class AppGatewayAllocatedConnection {
 
   factory AppGatewayAllocatedConnection.fromMap(Map<String, dynamic> map) {
     return AppGatewayAllocatedConnection(
-      ingressPort: map['ingressPort'] == null ? null : (map['ingressPort'] as int).input(),
-      pscUri: map['pscUri'] == null ? null : (map['pscUri'] as String).input(),
+      ingressPort: map['ingressPort'] == null ? null : (map['ingressPort']! as int).input(),
+      pscUri: map['pscUri'] == null ? null : (map['pscUri']! as String).input(),
     );
   }
 }

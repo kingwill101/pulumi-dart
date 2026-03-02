@@ -26,8 +26,8 @@ class WorkgroupConfigurationManagedQueryResultsConfiguration {
 
   factory WorkgroupConfigurationManagedQueryResultsConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationManagedQueryResultsConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

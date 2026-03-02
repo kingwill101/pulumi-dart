@@ -40,10 +40,10 @@ class AdditionalAuthenticationProvider {
 
   factory AdditionalAuthenticationProvider.fromMap(Map<String, dynamic> map) {
     return AdditionalAuthenticationProvider(
-      authenticationType: map['authenticationType'] == null ? null : (AuthenticationTypeEnumValue.fromMap((map['authenticationType'] as Map).cast<String, dynamic>())).input(),
-      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : (LambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig'] as Map).cast<String, dynamic>())).input(),
-      openIDConnectConfig: map['openIDConnectConfig'] == null ? null : (OpenIDConnectConfig.fromMap((map['openIDConnectConfig'] as Map).cast<String, dynamic>())).input(),
-      userPoolConfig: map['userPoolConfig'] == null ? null : (CognitoUserPoolConfig.fromMap((map['userPoolConfig'] as Map).cast<String, dynamic>())).input(),
+      authenticationType: map['authenticationType'] == null ? null : (AuthenticationTypeEnumValue.fromMap((map['authenticationType']! as Map).cast<String, dynamic>())).input(),
+      lambdaAuthorizerConfig: map['lambdaAuthorizerConfig'] == null ? null : (LambdaAuthorizerConfig.fromMap((map['lambdaAuthorizerConfig']! as Map).cast<String, dynamic>())).input(),
+      openIDConnectConfig: map['openIDConnectConfig'] == null ? null : (OpenIDConnectConfig.fromMap((map['openIDConnectConfig']! as Map).cast<String, dynamic>())).input(),
+      userPoolConfig: map['userPoolConfig'] == null ? null : (CognitoUserPoolConfig.fromMap((map['userPoolConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

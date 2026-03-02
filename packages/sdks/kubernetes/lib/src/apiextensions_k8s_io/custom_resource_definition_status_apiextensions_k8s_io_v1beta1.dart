@@ -34,7 +34,7 @@ class CustomResourceDefinitionStatusApiextensionsK8sIoV1beta1 {
   factory CustomResourceDefinitionStatusApiextensionsK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionStatusApiextensionsK8sIoV1beta1(
       acceptedNames: (CustomResourceDefinitionNamesApiextensionsK8sIoV1beta1.fromMap((map['acceptedNames'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionConditionApiextensionsK8sIoV1beta1>(map['conditions'], (value) => CustomResourceDefinitionConditionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionConditionApiextensionsK8sIoV1beta1>(map['conditions']!, (value) => CustomResourceDefinitionConditionApiextensionsK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       storedVersions: ((map['storedVersions'] as List).cast<String>()).input(),
     );
   }

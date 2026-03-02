@@ -70,15 +70,15 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
-      bindResourceId: map['bindResourceId'] == null ? null : (map['bindResourceId'] as String).input(),
-      dropMetrics: map['dropMetrics'] == null ? null : (map['dropMetrics'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
+      bindResourceId: map['bindResourceId'] == null ? null : (map['bindResourceId']! as String).input(),
+      dropMetrics: map['dropMetrics'] == null ? null : (map['dropMetrics']! as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
       environmentSubType: (map['environmentSubType'] as String).input(),
       environmentType: (map['environmentType'] as String).input(),
-      managedType: map['managedType'] == null ? null : (map['managedType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      managedType: map['managedType'] == null ? null : (map['managedType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -57,12 +57,12 @@ class InstanceNetwork {
 
   factory InstanceNetwork.fromMap(Map<String, dynamic> map) {
     return InstanceNetwork(
-      connectMode: map['connectMode'] == null ? null : (map['connectMode'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      connectMode: map['connectMode'] == null ? null : (map['connectMode']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
       modes: ((map['modes'] as List).cast<String>()).input(),
       network: (map['network'] as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (InstanceNetworkPscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
-      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange'] as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (InstanceNetworkPscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
+      reservedIpRange: map['reservedIpRange'] == null ? null : (map['reservedIpRange']! as String).input(),
     );
   }
 }

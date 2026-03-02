@@ -27,8 +27,8 @@ class AccessConfigResponse {
 
   factory AccessConfigResponse.fromMap(Map<String, dynamic> map) {
     return AccessConfigResponse(
-      authenticationMode: map['authenticationMode'] == null ? null : (AuthenticationModeEnumValue.fromMap((map['authenticationMode'] as Map).cast<String, dynamic>())).input(),
-      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : (map['bootstrapClusterCreatorAdminPermissions'] as bool).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (AuthenticationModeEnumValue.fromMap((map['authenticationMode']! as Map).cast<String, dynamic>())).input(),
+      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : (map['bootstrapClusterCreatorAdminPermissions']! as bool).input(),
     );
   }
 }

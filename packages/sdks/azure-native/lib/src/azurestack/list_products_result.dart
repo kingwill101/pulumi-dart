@@ -27,8 +27,8 @@ class ListProductsResult {
 
   factory ListProductsResult.fromMap(Map<String, dynamic> map) {
     return ListProductsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ProductResponse>(map['value'], (value) => ProductResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ProductResponse>(map['value']!, (value) => ProductResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

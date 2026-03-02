@@ -52,8 +52,8 @@ class AppCheckDeviceCheckConfigArgs {
       appId: (map['appId'] as String).input(),
       keyId: (map['keyId'] as String).input(),
       privateKey: (map['privateKey'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
     );
   }
 }

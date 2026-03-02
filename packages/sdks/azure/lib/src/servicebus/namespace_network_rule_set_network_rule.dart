@@ -25,7 +25,7 @@ class NamespaceNetworkRuleSetNetworkRule {
 
   factory NamespaceNetworkRuleSetNetworkRule.fromMap(Map<String, dynamic> map) {
     return NamespaceNetworkRuleSetNetworkRule(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

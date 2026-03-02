@@ -26,8 +26,8 @@ class SchedulingConfig {
 
   factory SchedulingConfig.fromMap(Map<String, dynamic> map) {
     return SchedulingConfig(
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
     );
   }
 }

@@ -67,16 +67,16 @@ class TunnelState {
 
   factory TunnelState.fromMap(Map<String, dynamic> map) {
     return TunnelState(
-      channels: map['channels'] == null ? null : (pulumi.Input.decodeList<TunnelChannel>(map['channels'], (value) => TunnelChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      expired: map['expired'] == null ? null : (map['expired'] as bool).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId'] as String).input(),
-      tunnelName: map['tunnelName'] == null ? null : (map['tunnelName'] as String).input(),
-      tunnelRpo: map['tunnelRpo'] == null ? null : (map['tunnelRpo'] as int).input(),
-      tunnelStage: map['tunnelStage'] == null ? null : (map['tunnelStage'] as String).input(),
-      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType'] as String).input(),
+      channels: map['channels'] == null ? null : (pulumi.Input.decodeList<TunnelChannel>(map['channels']!, (value) => TunnelChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      expired: map['expired'] == null ? null : (map['expired']! as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      tunnelId: map['tunnelId'] == null ? null : (map['tunnelId']! as String).input(),
+      tunnelName: map['tunnelName'] == null ? null : (map['tunnelName']! as String).input(),
+      tunnelRpo: map['tunnelRpo'] == null ? null : (map['tunnelRpo']! as int).input(),
+      tunnelStage: map['tunnelStage'] == null ? null : (map['tunnelStage']! as String).input(),
+      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType']! as String).input(),
     );
   }
 }

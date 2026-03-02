@@ -32,9 +32,9 @@ class DiskVolumeConfiguration {
 
   factory DiskVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskVolumeConfiguration(
-      count: map['count'] == null ? null : (map['count'] as double).input(),
-      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB'] as double).input(),
-      sku: map['sku'] == null ? null : (DiskSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as double).input(),
+      sizeGB: map['sizeGB'] == null ? null : (map['sizeGB']! as double).input(),
+      sku: map['sku'] == null ? null : (DiskSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DeidentifyOperationMetadata {
 
   factory DeidentifyOperationMetadata.fromMap(Map<String, dynamic> map) {
     return DeidentifyOperationMetadata(
-      fhirOutput: map['fhirOutput'] == null ? null : (FhirOutput.fromMap((map['fhirOutput'] as Map).cast<String, dynamic>())).input(),
+      fhirOutput: map['fhirOutput'] == null ? null : (FhirOutput.fromMap((map['fhirOutput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

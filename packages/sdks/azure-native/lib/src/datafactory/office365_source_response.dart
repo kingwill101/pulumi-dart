@@ -72,17 +72,17 @@ class Office365SourceResponse {
 
   factory Office365SourceResponse.fromMap(Map<String, dynamic> map) {
     return Office365SourceResponse(
-      allowedGroups: map['allowedGroups'] == null ? null : (map['allowedGroups']).input(),
-      dateFilterColumn: map['dateFilterColumn'] == null ? null : (map['dateFilterColumn']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      outputColumns: map['outputColumns'] == null ? null : (map['outputColumns']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime']).input(),
+      allowedGroups: map['allowedGroups'] == null ? null : (map['allowedGroups']!).input(),
+      dateFilterColumn: map['dateFilterColumn'] == null ? null : (map['dateFilterColumn']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      outputColumns: map['outputColumns'] == null ? null : (map['outputColumns']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']!).input(),
       type: (map['type'] as String).input(),
-      userScopeFilterUri: map['userScopeFilterUri'] == null ? null : (map['userScopeFilterUri']).input(),
+      userScopeFilterUri: map['userScopeFilterUri'] == null ? null : (map['userScopeFilterUri']!).input(),
     );
   }
 }

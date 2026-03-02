@@ -59,11 +59,11 @@ class InterceptEndpointGroupAssociationArgs {
   factory InterceptEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return InterceptEndpointGroupAssociationArgs(
       interceptEndpointGroup: (map['interceptEndpointGroup'] as String).input(),
-      interceptEndpointGroupAssociationId: map['interceptEndpointGroupAssociationId'] == null ? null : (map['interceptEndpointGroupAssociationId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      interceptEndpointGroupAssociationId: map['interceptEndpointGroupAssociationId'] == null ? null : (map['interceptEndpointGroupAssociationId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

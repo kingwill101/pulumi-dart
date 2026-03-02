@@ -97,7 +97,7 @@ class GetGalleryInVMAccessControlProfileVersionResult {
     return GetGalleryInVMAccessControlProfileVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       defaultAccess: map['defaultAccess'] as String,
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : map['excludeFromLatest'] as bool,
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : map['excludeFromLatest']! as bool,
       id: map['id'] as String,
       location: map['location'] as String,
       mode: map['mode'] as String,
@@ -105,10 +105,10 @@ class GetGalleryInVMAccessControlProfileVersionResult {
       provisioningState: map['provisioningState'] as String,
       publishedDate: map['publishedDate'] as String,
       replicationStatus: ReplicationStatusResponse.fromMap((map['replicationStatus'] as Map).cast<String, dynamic>()),
-      rules: map['rules'] == null ? null : AccessControlRulesResponse.fromMap((map['rules'] as Map).cast<String, dynamic>()),
+      rules: map['rules'] == null ? null : AccessControlRulesResponse.fromMap((map['rules']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      targetLocations: map['targetLocations'] == null ? null : pulumi.Input.decodeList<TargetRegionResponse>(map['targetLocations'], (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      targetLocations: map['targetLocations'] == null ? null : pulumi.Input.decodeList<TargetRegionResponse>(map['targetLocations']!, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

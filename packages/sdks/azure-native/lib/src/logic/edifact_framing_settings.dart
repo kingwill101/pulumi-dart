@@ -73,7 +73,7 @@ class EdifactFramingSettings {
 
   factory EdifactFramingSettings.fromMap(Map<String, dynamic> map) {
     return EdifactFramingSettings(
-      characterEncoding: map['characterEncoding'] == null ? null : (map['characterEncoding'] as String).input(),
+      characterEncoding: map['characterEncoding'] == null ? null : (map['characterEncoding']! as String).input(),
       characterSet: (map['characterSet'] as String).input(),
       componentSeparator: (map['componentSeparator'] as int).input(),
       dataElementSeparator: (map['dataElementSeparator'] as int).input(),
@@ -83,7 +83,7 @@ class EdifactFramingSettings {
       repetitionSeparator: (map['repetitionSeparator'] as int).input(),
       segmentTerminator: (map['segmentTerminator'] as int).input(),
       segmentTerminatorSuffix: (SegmentTerminatorSuffix.fromValue(map['segmentTerminatorSuffix'] as String)).input(),
-      serviceCodeListDirectoryVersion: map['serviceCodeListDirectoryVersion'] == null ? null : (map['serviceCodeListDirectoryVersion'] as String).input(),
+      serviceCodeListDirectoryVersion: map['serviceCodeListDirectoryVersion'] == null ? null : (map['serviceCodeListDirectoryVersion']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class DateAfterCreationResponse {
   factory DateAfterCreationResponse.fromMap(Map<String, dynamic> map) {
     return DateAfterCreationResponse(
       daysAfterCreationGreaterThan: (map['daysAfterCreationGreaterThan'] as double).input(),
-      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : (map['daysAfterLastTierChangeGreaterThan'] as double).input(),
+      daysAfterLastTierChangeGreaterThan: map['daysAfterLastTierChangeGreaterThan'] == null ? null : (map['daysAfterLastTierChangeGreaterThan']! as double).input(),
     );
   }
 }

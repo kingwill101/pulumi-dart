@@ -51,9 +51,9 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as int).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as int).input(),
       childInstanceId: (map['childInstanceId'] as String).input(),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as int).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId']! as int).input(),
       childInstanceRegionId: (map['childInstanceRegionId'] as String).input(),
       childInstanceType: (map['childInstanceType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),

@@ -21,7 +21,7 @@ class SessionIngressResponse {
 
   factory SessionIngressResponse.fromMap(Map<String, dynamic> map) {
     return SessionIngressResponse(
-      targetPort: map['targetPort'] == null ? null : (map['targetPort'] as int).input(),
+      targetPort: map['targetPort'] == null ? null : (map['targetPort']! as int).input(),
     );
   }
 }

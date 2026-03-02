@@ -21,7 +21,7 @@ class RunbookAssociationProperty {
 
   factory RunbookAssociationProperty.fromMap(Map<String, dynamic> map) {
     return RunbookAssociationProperty(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

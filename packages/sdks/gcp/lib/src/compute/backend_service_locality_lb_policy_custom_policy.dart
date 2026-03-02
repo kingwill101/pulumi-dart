@@ -32,7 +32,7 @@ class BackendServiceLocalityLbPolicyCustomPolicy {
 
   factory BackendServiceLocalityLbPolicyCustomPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLbPolicyCustomPolicy(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

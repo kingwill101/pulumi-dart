@@ -52,13 +52,13 @@ class GetZonesResult {
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      engine: map['engine'] == null ? null : map['engine'] as String,
+      engine: map['engine'] == null ? null : map['engine']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType'] as String,
-      multi: map['multi'] == null ? null : map['multi'] as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      productType: map['productType'] == null ? null : map['productType'] as String,
+      instanceChargeType: map['instanceChargeType'] == null ? null : map['instanceChargeType']! as String,
+      multi: map['multi'] == null ? null : map['multi']! as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      productType: map['productType'] == null ? null : map['productType']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -41,10 +41,10 @@ class WorkflowDestination {
   factory WorkflowDestination.fromMap(Map<String, dynamic> map) {
     return WorkflowDestination(
       channelId: (map['channelId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationTriggers: map['notificationTriggers'] == null ? null : ((map['notificationTriggers'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateOriginalMessage: map['updateOriginalMessage'] == null ? null : (map['updateOriginalMessage'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationTriggers: map['notificationTriggers'] == null ? null : ((map['notificationTriggers']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateOriginalMessage: map['updateOriginalMessage'] == null ? null : (map['updateOriginalMessage']! as bool).input(),
     );
   }
 }

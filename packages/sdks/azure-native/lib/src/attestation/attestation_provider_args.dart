@@ -45,11 +45,11 @@ class AttestationProviderArgs {
 
   factory AttestationProviderArgs.fromMap(Map<String, dynamic> map) {
     return AttestationProviderArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (AttestationServiceCreationSpecificParams.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

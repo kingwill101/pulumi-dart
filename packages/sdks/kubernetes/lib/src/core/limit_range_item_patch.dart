@@ -46,12 +46,12 @@ class LimitRangeItemPatch {
 
   factory LimitRangeItemPatch.fromMap(Map<String, dynamic> map) {
     return LimitRangeItemPatch(
-      default_: map['default'] == null ? null : ((map['default'] as Map).cast<String, String>()).input(),
-      defaultRequest: map['defaultRequest'] == null ? null : ((map['defaultRequest'] as Map).cast<String, String>()).input(),
-      max: map['max'] == null ? null : ((map['max'] as Map).cast<String, String>()).input(),
-      maxLimitRequestRatio: map['maxLimitRequestRatio'] == null ? null : ((map['maxLimitRequestRatio'] as Map).cast<String, String>()).input(),
-      min: map['min'] == null ? null : ((map['min'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      default_: map['default'] == null ? null : ((map['default']! as Map).cast<String, String>()).input(),
+      defaultRequest: map['defaultRequest'] == null ? null : ((map['defaultRequest']! as Map).cast<String, String>()).input(),
+      max: map['max'] == null ? null : ((map['max']! as Map).cast<String, String>()).input(),
+      maxLimitRequestRatio: map['maxLimitRequestRatio'] == null ? null : ((map['maxLimitRequestRatio']! as Map).cast<String, String>()).input(),
+      min: map['min'] == null ? null : ((map['min']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

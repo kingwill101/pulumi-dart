@@ -27,7 +27,7 @@ class LimitResponseFlowcontrolApiserverK8sIoV1alpha1 {
 
   factory LimitResponseFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return LimitResponseFlowcontrolApiserverK8sIoV1alpha1(
-      queuing: map['queuing'] == null ? null : (QueuingConfigurationFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['queuing'] as Map).cast<String, dynamic>())).input(),
+      queuing: map['queuing'] == null ? null : (QueuingConfigurationFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['queuing']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

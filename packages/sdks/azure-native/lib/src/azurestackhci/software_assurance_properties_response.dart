@@ -32,7 +32,7 @@ class SoftwareAssurancePropertiesResponse {
   factory SoftwareAssurancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareAssurancePropertiesResponse(
       lastUpdated: (map['lastUpdated'] as String).input(),
-      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : (map['softwareAssuranceIntent'] as String).input(),
+      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : (map['softwareAssuranceIntent']! as String).input(),
       softwareAssuranceStatus: (map['softwareAssuranceStatus'] as String).input(),
     );
   }

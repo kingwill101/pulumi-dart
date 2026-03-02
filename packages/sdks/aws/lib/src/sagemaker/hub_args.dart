@@ -56,12 +56,12 @@ class HubArgs {
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
       hubDescription: (map['hubDescription'] as String).input(),
-      hubDisplayName: map['hubDisplayName'] == null ? null : (map['hubDisplayName'] as String).input(),
+      hubDisplayName: map['hubDisplayName'] == null ? null : ((map['hubDisplayName'] as String).input()).input(),
       hubName: (map['hubName'] as String).input(),
-      hubSearchKeywords: map['hubSearchKeywords'] == null ? null : ((map['hubSearchKeywords'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3StorageConfig: map['s3StorageConfig'] == null ? null : (HubS3StorageConfig.fromMap((map['s3StorageConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      hubSearchKeywords: map['hubSearchKeywords'] == null ? null : (((map['hubSearchKeywords'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3StorageConfig: map['s3StorageConfig'] == null ? null : ((HubS3StorageConfig.fromMap((map['s3StorageConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class ImageImportDiskDeviceMapping {
 
   factory ImageImportDiskDeviceMapping.fromMap(Map<String, dynamic> map) {
     return ImageImportDiskDeviceMapping(
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      diskImageSize: map['diskImageSize'] == null ? null : (map['diskImageSize'] as int).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      ossBucket: map['ossBucket'] == null ? null : (map['ossBucket'] as String).input(),
-      ossObject: map['ossObject'] == null ? null : (map['ossObject'] as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      diskImageSize: map['diskImageSize'] == null ? null : (map['diskImageSize']! as int).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      ossBucket: map['ossBucket'] == null ? null : (map['ossBucket']! as String).input(),
+      ossObject: map['ossObject'] == null ? null : (map['ossObject']! as String).input(),
     );
   }
 }

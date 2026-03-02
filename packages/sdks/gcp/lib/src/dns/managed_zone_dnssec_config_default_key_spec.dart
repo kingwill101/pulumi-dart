@@ -42,10 +42,10 @@ class ManagedZoneDnssecConfigDefaultKeySpec {
 
   factory ManagedZoneDnssecConfigDefaultKeySpec.fromMap(Map<String, dynamic> map) {
     return ManagedZoneDnssecConfigDefaultKeySpec(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      keyLength: map['keyLength'] == null ? null : (map['keyLength'] as int).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (map['algorithm']! as String).input(),
+      keyLength: map['keyLength'] == null ? null : (map['keyLength']! as int).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

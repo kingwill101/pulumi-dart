@@ -30,9 +30,9 @@ class EventSourceMappingProvisionedPollerConfig {
 
   factory EventSourceMappingProvisionedPollerConfig.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingProvisionedPollerConfig(
-      maximumPollers: map['maximumPollers'] == null ? null : (map['maximumPollers'] as int).input(),
-      minimumPollers: map['minimumPollers'] == null ? null : (map['minimumPollers'] as int).input(),
-      pollerGroupName: map['pollerGroupName'] == null ? null : (map['pollerGroupName'] as String).input(),
+      maximumPollers: map['maximumPollers'] == null ? null : ((map['maximumPollers'] as int).input()).input(),
+      minimumPollers: map['minimumPollers'] == null ? null : ((map['minimumPollers'] as int).input()).input(),
+      pollerGroupName: map['pollerGroupName'] == null ? null : ((map['pollerGroupName'] as String).input()).input(),
     );
   }
 }

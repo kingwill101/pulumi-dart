@@ -25,8 +25,8 @@ class ApplicationCustomHostAliasV2 {
 
   factory ApplicationCustomHostAliasV2.fromMap(Map<String, dynamic> map) {
     return ApplicationCustomHostAliasV2(
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
     );
   }
 }

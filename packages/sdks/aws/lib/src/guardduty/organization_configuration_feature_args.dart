@@ -45,11 +45,11 @@ class OrganizationConfigurationFeatureArgs {
 
   factory OrganizationConfigurationFeatureArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationFeatureArgs(
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((pulumi.Input.decodeList<OrganizationConfigurationFeatureAdditionalConfiguration>(map['additionalConfigurations']!, (value) => OrganizationConfigurationFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       autoEnable: (map['autoEnable'] as String).input(),
       detectorId: (map['detectorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class UpdateConfigResponse {
 
   factory UpdateConfigResponse.fromMap(Map<String, dynamic> map) {
     return UpdateConfigResponse(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : (map['maxUnavailablePercentage'] as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
+      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : (map['maxUnavailablePercentage']! as int).input(),
     );
   }
 }

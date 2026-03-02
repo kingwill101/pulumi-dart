@@ -40,10 +40,10 @@ class DocumentationPartLocation {
 
   factory DocumentationPartLocation.fromMap(Map<String, dynamic> map) {
     return DocumentationPartLocation(
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

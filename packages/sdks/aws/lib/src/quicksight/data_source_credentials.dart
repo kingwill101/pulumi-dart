@@ -32,9 +32,9 @@ class DataSourceCredentials {
 
   factory DataSourceCredentials.fromMap(Map<String, dynamic> map) {
     return DataSourceCredentials(
-      copySourceArn: map['copySourceArn'] == null ? null : (map['copySourceArn'] as String).input(),
-      credentialPair: map['credentialPair'] == null ? null : (DataSourceCredentialsCredentialPair.fromMap((map['credentialPair'] as Map).cast<String, dynamic>())).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      copySourceArn: map['copySourceArn'] == null ? null : ((map['copySourceArn'] as String).input()).input(),
+      credentialPair: map['credentialPair'] == null ? null : ((DataSourceCredentialsCredentialPair.fromMap((map['credentialPair']! as Map).cast<String, dynamic>())).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class SkuResponse {
   factory SkuResponse.fromMap(Map<String, dynamic> map) {
     return SkuResponse(
       name: (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (ResourceReferenceResponse.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      plan: map['plan'] == null ? null : (ResourceReferenceResponse.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

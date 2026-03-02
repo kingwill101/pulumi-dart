@@ -49,12 +49,12 @@ class YearlyRetentionScheduleResponse {
 
   factory YearlyRetentionScheduleResponse.fromMap(Map<String, dynamic> map) {
     return YearlyRetentionScheduleResponse(
-      monthsOfYear: map['monthsOfYear'] == null ? null : ((map['monthsOfYear'] as List).cast<String>()).input(),
-      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDurationResponse.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
-      retentionScheduleDaily: map['retentionScheduleDaily'] == null ? null : (DailyRetentionFormatResponse.fromMap((map['retentionScheduleDaily'] as Map).cast<String, dynamic>())).input(),
-      retentionScheduleFormatType: map['retentionScheduleFormatType'] == null ? null : (map['retentionScheduleFormatType'] as String).input(),
-      retentionScheduleWeekly: map['retentionScheduleWeekly'] == null ? null : (WeeklyRetentionFormatResponse.fromMap((map['retentionScheduleWeekly'] as Map).cast<String, dynamic>())).input(),
-      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
+      monthsOfYear: map['monthsOfYear'] == null ? null : ((map['monthsOfYear']! as List).cast<String>()).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (RetentionDurationResponse.fromMap((map['retentionDuration']! as Map).cast<String, dynamic>())).input(),
+      retentionScheduleDaily: map['retentionScheduleDaily'] == null ? null : (DailyRetentionFormatResponse.fromMap((map['retentionScheduleDaily']! as Map).cast<String, dynamic>())).input(),
+      retentionScheduleFormatType: map['retentionScheduleFormatType'] == null ? null : (map['retentionScheduleFormatType']! as String).input(),
+      retentionScheduleWeekly: map['retentionScheduleWeekly'] == null ? null : (WeeklyRetentionFormatResponse.fromMap((map['retentionScheduleWeekly']! as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes']! as List).cast<String>()).input(),
     );
   }
 }

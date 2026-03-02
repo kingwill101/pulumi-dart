@@ -34,9 +34,9 @@ class SamlProviderArgs {
 
   factory SamlProviderArgs.fromMap(Map<String, dynamic> map) {
     return SamlProviderArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       samlMetadataDocument: (map['samlMetadataDocument'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

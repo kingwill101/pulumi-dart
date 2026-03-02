@@ -21,7 +21,7 @@ class RuleGroupRuleActionAllow {
 
   factory RuleGroupRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionAllow(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (RuleGroupRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((RuleGroupRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

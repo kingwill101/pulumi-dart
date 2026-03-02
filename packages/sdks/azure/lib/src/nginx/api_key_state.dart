@@ -41,11 +41,11 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
-      hint: map['hint'] == null ? null : (map['hint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId'] as String).input(),
-      secretText: map['secretText'] == null ? null : (map['secretText'] as String).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
+      hint: map['hint'] == null ? null : (map['hint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nginxDeploymentId: map['nginxDeploymentId'] == null ? null : (map['nginxDeploymentId']! as String).input(),
+      secretText: map['secretText'] == null ? null : (map['secretText']! as String).input(),
     );
   }
 }

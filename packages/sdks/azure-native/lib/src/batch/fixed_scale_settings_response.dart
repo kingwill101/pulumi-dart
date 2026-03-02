@@ -31,9 +31,9 @@ class FixedScaleSettingsResponse {
 
   factory FixedScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FixedScaleSettingsResponse(
-      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout'] as String).input(),
-      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes'] as int).input(),
-      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes'] as int).input(),
+      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout']! as String).input(),
+      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes']! as int).input(),
+      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes']! as int).input(),
     );
   }
 }

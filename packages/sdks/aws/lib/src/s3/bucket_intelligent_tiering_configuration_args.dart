@@ -52,11 +52,11 @@ class BucketIntelligentTieringConfigurationArgs {
   factory BucketIntelligentTieringConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return BucketIntelligentTieringConfigurationArgs(
       bucket: (map['bucket'] as String).input(),
-      filter: map['filter'] == null ? null : (BucketIntelligentTieringConfigurationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tierings: (pulumi.Input.decodeList<BucketIntelligentTieringConfigurationTiering>(map['tierings'], (value) => BucketIntelligentTieringConfigurationTiering.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : ((BucketIntelligentTieringConfigurationFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tierings: (pulumi.Input.decodeList<BucketIntelligentTieringConfigurationTiering>(map['tierings']!, (value) => BucketIntelligentTieringConfigurationTiering.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

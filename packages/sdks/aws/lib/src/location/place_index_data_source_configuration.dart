@@ -20,7 +20,7 @@ class PlaceIndexDataSourceConfiguration {
 
   factory PlaceIndexDataSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return PlaceIndexDataSourceConfiguration(
-      intendedUse: map['intendedUse'] == null ? null : (map['intendedUse'] as String).input(),
+      intendedUse: map['intendedUse'] == null ? null : ((map['intendedUse'] as String).input()).input(),
     );
   }
 }

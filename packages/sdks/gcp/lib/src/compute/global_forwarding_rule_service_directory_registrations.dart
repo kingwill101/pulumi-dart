@@ -28,8 +28,8 @@ class GlobalForwardingRuleServiceDirectoryRegistrations {
 
   factory GlobalForwardingRuleServiceDirectoryRegistrations.fromMap(Map<String, dynamic> map) {
     return GlobalForwardingRuleServiceDirectoryRegistrations(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null ? null : (map['serviceDirectoryRegion'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null ? null : (map['serviceDirectoryRegion']! as String).input(),
     );
   }
 }

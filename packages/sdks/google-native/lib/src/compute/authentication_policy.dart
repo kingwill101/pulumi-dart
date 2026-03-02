@@ -40,10 +40,10 @@ class AuthenticationPolicy {
 
   factory AuthenticationPolicy.fromMap(Map<String, dynamic> map) {
     return AuthenticationPolicy(
-      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginAuthenticationMethod>(map['origins'], (value) => OriginAuthenticationMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      peers: map['peers'] == null ? null : (pulumi.Input.decodeList<PeerAuthenticationMethod>(map['peers'], (value) => PeerAuthenticationMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      principalBinding: map['principalBinding'] == null ? null : (AuthenticationPolicyPrincipalBinding.fromValue(map['principalBinding'] as String)).input(),
-      serverTlsContext: map['serverTlsContext'] == null ? null : (TlsContext.fromMap((map['serverTlsContext'] as Map).cast<String, dynamic>())).input(),
+      origins: map['origins'] == null ? null : (pulumi.Input.decodeList<OriginAuthenticationMethod>(map['origins']!, (value) => OriginAuthenticationMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peers: map['peers'] == null ? null : (pulumi.Input.decodeList<PeerAuthenticationMethod>(map['peers']!, (value) => PeerAuthenticationMethod.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principalBinding: map['principalBinding'] == null ? null : (AuthenticationPolicyPrincipalBinding.fromValue(map['principalBinding']! as String)).input(),
+      serverTlsContext: map['serverTlsContext'] == null ? null : (TlsContext.fromMap((map['serverTlsContext']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

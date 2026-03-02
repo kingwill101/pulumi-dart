@@ -32,7 +32,7 @@ class GetNetworkEndpointGroupComputeBetaArgs {
   factory GetNetworkEndpointGroupComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkEndpointGroupComputeBetaArgs(
       networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

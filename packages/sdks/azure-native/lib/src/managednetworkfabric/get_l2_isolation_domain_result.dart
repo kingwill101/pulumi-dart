@@ -87,17 +87,17 @@ class GetL2IsolationDomainResult {
   factory GetL2IsolationDomainResult.fromMap(Map<String, dynamic> map) {
     return GetL2IsolationDomainResult(
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      mtu: map['mtu'] == null ? null : map['mtu'] as int,
+      mtu: map['mtu'] == null ? null : map['mtu']! as int,
       name: map['name'] as String,
       networkFabricId: map['networkFabricId'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       vlanId: map['vlanId'] as int,
     );

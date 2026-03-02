@@ -27,8 +27,8 @@ class TransitOptionResponse {
 
   factory TransitOptionResponse.fromMap(Map<String, dynamic> map) {
     return TransitOptionResponse(
-      params: map['params'] == null ? null : (TransitOptionParamsResponse.fromMap((map['params'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      params: map['params'] == null ? null : (TransitOptionParamsResponse.fromMap((map['params']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

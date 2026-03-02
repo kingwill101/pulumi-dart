@@ -31,8 +31,8 @@ class JobTemplateInitContainerEnv {
   factory JobTemplateInitContainerEnv.fromMap(Map<String, dynamic> map) {
     return JobTemplateInitContainerEnv(
       name: (map['name'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

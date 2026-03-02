@@ -41,7 +41,7 @@ class GetBackupPlansResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       plans: pulumi.Input.decodeList<GetBackupPlansPlan>(map['plans'], (value) => GetBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

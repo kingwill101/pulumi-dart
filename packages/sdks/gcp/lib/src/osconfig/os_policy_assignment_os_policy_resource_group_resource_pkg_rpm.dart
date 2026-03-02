@@ -29,7 +29,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(
-      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps'] as bool).input(),
+      pullDeps: map['pullDeps'] == null ? null : (map['pullDeps']! as bool).input(),
       source: (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

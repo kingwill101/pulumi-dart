@@ -56,13 +56,13 @@ class V3ProvisionConfigArgs {
 
   factory V3ProvisionConfigArgs.fromMap(Map<String, dynamic> map) {
     return V3ProvisionConfigArgs(
-      alwaysAllocateCpu: map['alwaysAllocateCpu'] == null ? null : (map['alwaysAllocateCpu'] as bool).input(),
-      alwaysAllocateGpu: map['alwaysAllocateGpu'] == null ? null : (map['alwaysAllocateGpu'] as bool).input(),
+      alwaysAllocateCpu: map['alwaysAllocateCpu'] == null ? null : (map['alwaysAllocateCpu']! as bool).input(),
+      alwaysAllocateGpu: map['alwaysAllocateGpu'] == null ? null : (map['alwaysAllocateGpu']! as bool).input(),
       functionName: (map['functionName'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      scheduledActions: map['scheduledActions'] == null ? null : (pulumi.Input.decodeList<V3ProvisionConfigScheduledAction>(map['scheduledActions'], (value) => V3ProvisionConfigScheduledAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      target: map['target'] == null ? null : (map['target'] as int).input(),
-      targetTrackingPolicies: map['targetTrackingPolicies'] == null ? null : (pulumi.Input.decodeList<V3ProvisionConfigTargetTrackingPolicy>(map['targetTrackingPolicies'], (value) => V3ProvisionConfigTargetTrackingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
+      scheduledActions: map['scheduledActions'] == null ? null : (pulumi.Input.decodeList<V3ProvisionConfigScheduledAction>(map['scheduledActions']!, (value) => V3ProvisionConfigScheduledAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      target: map['target'] == null ? null : (map['target']! as int).input(),
+      targetTrackingPolicies: map['targetTrackingPolicies'] == null ? null : (pulumi.Input.decodeList<V3ProvisionConfigTargetTrackingPolicy>(map['targetTrackingPolicies']!, (value) => V3ProvisionConfigTargetTrackingPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

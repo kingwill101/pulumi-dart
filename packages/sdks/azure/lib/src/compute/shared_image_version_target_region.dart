@@ -40,11 +40,11 @@ class SharedImageVersionTargetRegion {
 
   factory SharedImageVersionTargetRegion.fromMap(Map<String, dynamic> map) {
     return SharedImageVersionTargetRegion(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      excludeFromLatestEnabled: map['excludeFromLatestEnabled'] == null ? null : (map['excludeFromLatestEnabled'] as bool).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      excludeFromLatestEnabled: map['excludeFromLatestEnabled'] == null ? null : (map['excludeFromLatestEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
       regionalReplicaCount: (map['regionalReplicaCount'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

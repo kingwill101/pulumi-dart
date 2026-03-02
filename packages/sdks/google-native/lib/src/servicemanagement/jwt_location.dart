@@ -36,10 +36,10 @@ class JwtLocation {
 
   factory JwtLocation.fromMap(Map<String, dynamic> map) {
     return JwtLocation(
-      cookie: map['cookie'] == null ? null : (map['cookie'] as String).input(),
-      header: map['header'] == null ? null : (map['header'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      valuePrefix: map['valuePrefix'] == null ? null : (map['valuePrefix'] as String).input(),
+      cookie: map['cookie'] == null ? null : (map['cookie']! as String).input(),
+      header: map['header'] == null ? null : (map['header']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      valuePrefix: map['valuePrefix'] == null ? null : (map['valuePrefix']! as String).input(),
     );
   }
 }

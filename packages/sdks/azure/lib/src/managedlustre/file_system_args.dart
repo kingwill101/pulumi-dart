@@ -91,18 +91,18 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      encryptionKey: map['encryptionKey'] == null ? null : (FileSystemEncryptionKey.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())).input(),
-      hsmSetting: map['hsmSetting'] == null ? null : (FileSystemHsmSetting.fromMap((map['hsmSetting'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (FileSystemIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (FileSystemEncryptionKey.fromMap((map['encryptionKey']! as Map).cast<String, dynamic>())).input(),
+      hsmSetting: map['hsmSetting'] == null ? null : (FileSystemHsmSetting.fromMap((map['hsmSetting']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (FileSystemIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       maintenanceWindow: (FileSystemMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rootSquash: map['rootSquash'] == null ? null : (FileSystemRootSquash.fromMap((map['rootSquash'] as Map).cast<String, dynamic>())).input(),
+      rootSquash: map['rootSquash'] == null ? null : (FileSystemRootSquash.fromMap((map['rootSquash']! as Map).cast<String, dynamic>())).input(),
       skuName: (map['skuName'] as String).input(),
       storageCapacityInTb: (map['storageCapacityInTb'] as int).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       zones: ((map['zones'] as List).cast<String>()).input(),
     );
   }

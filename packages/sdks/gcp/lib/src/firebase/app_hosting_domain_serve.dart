@@ -22,7 +22,7 @@ class AppHostingDomainServe {
 
   factory AppHostingDomainServe.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainServe(
-      redirect: map['redirect'] == null ? null : (AppHostingDomainServeRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
+      redirect: map['redirect'] == null ? null : (AppHostingDomainServeRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

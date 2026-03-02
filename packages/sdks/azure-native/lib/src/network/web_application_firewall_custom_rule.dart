@@ -64,14 +64,14 @@ class WebApplicationFirewallCustomRule {
   factory WebApplicationFirewallCustomRule.fromMap(Map<String, dynamic> map) {
     return WebApplicationFirewallCustomRule(
       action: (map['action'] as String).input(),
-      groupByUserSession: map['groupByUserSession'] == null ? null : (pulumi.Input.decodeList<GroupByUserSession>(map['groupByUserSession'], (value) => GroupByUserSession.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupByUserSession: map['groupByUserSession'] == null ? null : (pulumi.Input.decodeList<GroupByUserSession>(map['groupByUserSession']!, (value) => GroupByUserSession.fromMap((value as Map).cast<String, dynamic>()))).input(),
       matchConditions: (pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
-      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration'] as String).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold'] as int).input(),
+      rateLimitDuration: map['rateLimitDuration'] == null ? null : (map['rateLimitDuration']! as String).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold']! as int).input(),
       ruleType: (map['ruleType'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

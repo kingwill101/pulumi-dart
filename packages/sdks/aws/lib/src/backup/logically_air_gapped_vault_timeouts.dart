@@ -20,7 +20,7 @@ class LogicallyAirGappedVaultTimeouts {
 
   factory LogicallyAirGappedVaultTimeouts.fromMap(Map<String, dynamic> map) {
     return LogicallyAirGappedVaultTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

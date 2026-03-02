@@ -52,7 +52,7 @@ class FirewallNetworkRuleCollectionArgs {
     return FirewallNetworkRuleCollectionArgs(
       action: (map['action'] as String).input(),
       azureFirewallName: (map['azureFirewallName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       rules: (pulumi.Input.decodeList<FirewallNetworkRuleCollectionRule>(map['rules'], (value) => FirewallNetworkRuleCollectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),

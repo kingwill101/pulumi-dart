@@ -35,7 +35,7 @@ class ListDnsResolverByVirtualNetworkArgs {
   factory ListDnsResolverByVirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ListDnsResolverByVirtualNetworkArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
       virtualNetworkName: (map['virtualNetworkName'] as String).input(),
     );
   }

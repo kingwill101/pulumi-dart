@@ -40,9 +40,9 @@ class GetParametersByPathArgs {
   factory GetParametersByPathArgs.fromMap(Map<String, dynamic> map) {
     return GetParametersByPathArgs(
       path: (map['path'] as String).input(),
-      recursive: map['recursive'] == null ? null : (map['recursive'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      withDecryption: map['withDecryption'] == null ? null : (map['withDecryption'] as bool).input(),
+      recursive: map['recursive'] == null ? null : ((map['recursive'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      withDecryption: map['withDecryption'] == null ? null : ((map['withDecryption'] as bool).input()).input(),
     );
   }
 }

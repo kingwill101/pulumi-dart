@@ -43,11 +43,11 @@ class LicenseProfileMachineInstanceView {
 
   factory LicenseProfileMachineInstanceView.fromMap(Map<String, dynamic> map) {
     return LicenseProfileMachineInstanceView(
-      esuProfile: map['esuProfile'] == null ? null : (LicenseProfileMachineInstanceViewEsuProperties.fromMap((map['esuProfile'] as Map).cast<String, dynamic>())).input(),
-      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeature>(map['productFeatures'], (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer'] as bool).input(),
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus'] as String).input(),
+      esuProfile: map['esuProfile'] == null ? null : (LicenseProfileMachineInstanceViewEsuProperties.fromMap((map['esuProfile']! as Map).cast<String, dynamic>())).input(),
+      productFeatures: map['productFeatures'] == null ? null : (pulumi.Input.decodeList<ProductFeature>(map['productFeatures']!, (value) => ProductFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : (map['softwareAssuranceCustomer']! as bool).input(),
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : (map['subscriptionStatus']! as String).input(),
     );
   }
 }

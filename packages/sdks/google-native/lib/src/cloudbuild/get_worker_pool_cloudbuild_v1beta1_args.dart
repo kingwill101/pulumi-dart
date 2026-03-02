@@ -32,7 +32,7 @@ class GetWorkerPoolCloudbuildV1beta1Args {
   factory GetWorkerPoolCloudbuildV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolCloudbuildV1beta1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workerPoolId: (map['workerPoolId'] as String).input(),
     );
   }

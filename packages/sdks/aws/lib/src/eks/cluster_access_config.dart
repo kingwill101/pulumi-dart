@@ -25,8 +25,8 @@ class ClusterAccessConfig {
 
   factory ClusterAccessConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAccessConfig(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : (map['bootstrapClusterCreatorAdminPermissions'] as bool).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : ((map['authenticationMode'] as String).input()).input(),
+      bootstrapClusterCreatorAdminPermissions: map['bootstrapClusterCreatorAdminPermissions'] == null ? null : ((map['bootstrapClusterCreatorAdminPermissions'] as bool).input()).input(),
     );
   }
 }

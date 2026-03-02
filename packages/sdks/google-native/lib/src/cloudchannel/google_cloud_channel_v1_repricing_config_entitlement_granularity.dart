@@ -21,7 +21,7 @@ class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
 
   factory GoogleCloudChannelV1RepricingConfigEntitlementGranularity.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingConfigEntitlementGranularity(
-      entitlement: map['entitlement'] == null ? null : (map['entitlement'] as String).input(),
+      entitlement: map['entitlement'] == null ? null : (map['entitlement']! as String).input(),
     );
   }
 }

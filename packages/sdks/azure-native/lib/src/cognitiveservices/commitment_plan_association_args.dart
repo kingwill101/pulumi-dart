@@ -44,11 +44,11 @@ class CommitmentPlanAssociationArgs {
 
   factory CommitmentPlanAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CommitmentPlanAssociationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      commitmentPlanAssociationName: map['commitmentPlanAssociationName'] == null ? null : (map['commitmentPlanAssociationName'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      commitmentPlanAssociationName: map['commitmentPlanAssociationName'] == null ? null : (map['commitmentPlanAssociationName']! as String).input(),
       commitmentPlanName: (map['commitmentPlanName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

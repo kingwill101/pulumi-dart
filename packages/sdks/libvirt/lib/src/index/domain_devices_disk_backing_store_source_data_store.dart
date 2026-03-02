@@ -21,7 +21,7 @@ class DomainDevicesDiskBackingStoreSourceDataStore {
 
   factory DomainDevicesDiskBackingStoreSourceDataStore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceDataStore(
-      format: map['format'] == null ? null : (DomainDevicesDiskBackingStoreSourceDataStoreFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (DomainDevicesDiskBackingStoreSourceDataStoreFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

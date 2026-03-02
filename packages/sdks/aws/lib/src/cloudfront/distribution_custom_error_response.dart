@@ -35,10 +35,10 @@ class DistributionCustomErrorResponse {
 
   factory DistributionCustomErrorResponse.fromMap(Map<String, dynamic> map) {
     return DistributionCustomErrorResponse(
-      errorCachingMinTtl: map['errorCachingMinTtl'] == null ? null : (map['errorCachingMinTtl'] as int).input(),
+      errorCachingMinTtl: map['errorCachingMinTtl'] == null ? null : ((map['errorCachingMinTtl'] as int).input()).input(),
       errorCode: (map['errorCode'] as int).input(),
-      responseCode: map['responseCode'] == null ? null : (map['responseCode'] as int).input(),
-      responsePagePath: map['responsePagePath'] == null ? null : (map['responsePagePath'] as String).input(),
+      responseCode: map['responseCode'] == null ? null : ((map['responseCode'] as int).input()).input(),
+      responsePagePath: map['responsePagePath'] == null ? null : ((map['responsePagePath'] as String).input()).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class ApplicationGatewayPrivateLinkConfigurationIpConfiguration {
     return ApplicationGatewayPrivateLinkConfigurationIpConfiguration(
       name: (map['name'] as String).input(),
       primary: (map['primary'] as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
       privateIpAddressAllocation: (map['privateIpAddressAllocation'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );

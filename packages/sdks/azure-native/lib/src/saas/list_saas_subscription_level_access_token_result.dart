@@ -25,8 +25,8 @@ class ListSaasSubscriptionLevelAccessTokenResult {
 
   factory ListSaasSubscriptionLevelAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return ListSaasSubscriptionLevelAccessTokenResult(
-      publisherOfferBaseUri: map['publisherOfferBaseUri'] == null ? null : map['publisherOfferBaseUri'] as String,
-      token: map['token'] == null ? null : map['token'] as String,
+      publisherOfferBaseUri: map['publisherOfferBaseUri'] == null ? null : map['publisherOfferBaseUri']! as String,
+      token: map['token'] == null ? null : map['token']! as String,
     );
   }
 }

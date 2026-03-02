@@ -65,16 +65,16 @@ class CertRequestSubject {
 
   factory CertRequestSubject.fromMap(Map<String, dynamic> map) {
     return CertRequestSubject(
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      country: map['country'] == null ? null : (map['country'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
-      postalCode: map['postalCode'] == null ? null : (map['postalCode'] as String).input(),
-      province: map['province'] == null ? null : (map['province'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      streetAddresses: map['streetAddresses'] == null ? null : ((map['streetAddresses'] as List).cast<String>()).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
+      country: map['country'] == null ? null : (map['country']! as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      locality: map['locality'] == null ? null : (map['locality']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit']! as String).input(),
+      postalCode: map['postalCode'] == null ? null : (map['postalCode']! as String).input(),
+      province: map['province'] == null ? null : (map['province']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      streetAddresses: map['streetAddresses'] == null ? null : ((map['streetAddresses']! as List).cast<String>()).input(),
     );
   }
 }

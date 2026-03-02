@@ -21,7 +21,7 @@ class BodyDiagnosticSettingsResponse {
 
   factory BodyDiagnosticSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BodyDiagnosticSettingsResponse(
-      bytes: map['bytes'] == null ? null : (map['bytes'] as int).input(),
+      bytes: map['bytes'] == null ? null : (map['bytes']! as int).input(),
     );
   }
 }

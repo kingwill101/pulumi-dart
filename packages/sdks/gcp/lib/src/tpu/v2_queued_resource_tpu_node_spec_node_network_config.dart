@@ -44,11 +44,11 @@ class V2QueuedResourceTpuNodeSpecNodeNetworkConfig {
 
   factory V2QueuedResourceTpuNodeSpecNodeNetworkConfig.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpuNodeSpecNodeNetworkConfig(
-      canIpForward: map['canIpForward'] == null ? null : (map['canIpForward'] as bool).input(),
-      enableExternalIps: map['enableExternalIps'] == null ? null : (map['enableExternalIps'] as bool).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      queueCount: map['queueCount'] == null ? null : (map['queueCount'] as int).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      canIpForward: map['canIpForward'] == null ? null : (map['canIpForward']! as bool).input(),
+      enableExternalIps: map['enableExternalIps'] == null ? null : (map['enableExternalIps']! as bool).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      queueCount: map['queueCount'] == null ? null : (map['queueCount']! as int).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

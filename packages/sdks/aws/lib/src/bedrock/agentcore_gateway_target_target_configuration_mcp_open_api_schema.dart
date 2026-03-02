@@ -25,8 +25,8 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema {
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema(
-      inlinePayload: map['inlinePayload'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload.fromMap((map['inlinePayload'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      inlinePayload: map['inlinePayload'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload.fromMap((map['inlinePayload']! as Map).cast<String, dynamic>())).input()).input(),
+      s3: map['s3'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

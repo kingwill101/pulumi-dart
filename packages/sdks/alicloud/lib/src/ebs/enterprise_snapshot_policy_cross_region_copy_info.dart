@@ -26,8 +26,8 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfo {
 
   factory EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyCrossRegionCopyInfo(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion>(map['regions'], (value) => EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion>(map['regions']!, (value) => EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

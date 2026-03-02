@@ -26,8 +26,8 @@ class NodeIpAllocationPolicyMachineTypePolicy {
 
   factory NodeIpAllocationPolicyMachineTypePolicy.fromMap(Map<String, dynamic> map) {
     return NodeIpAllocationPolicyMachineTypePolicy(
-      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyMachineTypePolicyBond>(map['bonds'], (value) => NodeIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
+      bonds: map['bonds'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyMachineTypePolicyBond>(map['bonds']!, (value) => NodeIpAllocationPolicyMachineTypePolicyBond.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
     );
   }
 }

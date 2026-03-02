@@ -20,7 +20,7 @@ class ResourceDeploymentScriptAzureCliContainer {
 
   factory ResourceDeploymentScriptAzureCliContainer.fromMap(Map<String, dynamic> map) {
     return ResourceDeploymentScriptAzureCliContainer(
-      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName'] as String).input(),
+      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName']! as String).input(),
     );
   }
 }

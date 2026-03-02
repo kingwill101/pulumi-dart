@@ -76,7 +76,7 @@ class ClusterReportedPropertiesResponse {
       clusterName: (map['clusterName'] as String).input(),
       clusterType: (map['clusterType'] as String).input(),
       clusterVersion: (map['clusterVersion'] as String).input(),
-      diagnosticLevel: map['diagnosticLevel'] == null ? null : (map['diagnosticLevel'] as String).input(),
+      diagnosticLevel: map['diagnosticLevel'] == null ? null : (map['diagnosticLevel']! as String).input(),
       imdsAttestation: (map['imdsAttestation'] as String).input(),
       lastUpdated: (map['lastUpdated'] as String).input(),
       manufacturer: (map['manufacturer'] as String).input(),

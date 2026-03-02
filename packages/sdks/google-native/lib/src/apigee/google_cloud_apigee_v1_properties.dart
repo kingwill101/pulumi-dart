@@ -22,7 +22,7 @@ class GoogleCloudApigeeV1Properties {
 
   factory GoogleCloudApigeeV1Properties.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1Properties(
-      property: map['property'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(map['property'], (value) => GoogleCloudApigeeV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      property: map['property'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Property>(map['property']!, (value) => GoogleCloudApigeeV1Property.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

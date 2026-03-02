@@ -67,16 +67,16 @@ class UserDefinedFunctionState {
 
   factory UserDefinedFunctionState.fromMap(Map<String, dynamic> map) {
     return UserDefinedFunctionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      className: map['className'] == null ? null : (map['className'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerName: map['ownerName'] == null ? null : (map['ownerName'] as String).input(),
-      ownerType: map['ownerType'] == null ? null : (map['ownerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceUris: map['resourceUris'] == null ? null : (pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris'], (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      className: map['className'] == null ? null : ((map['className'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerName: map['ownerName'] == null ? null : ((map['ownerName'] as String).input()).input(),
+      ownerType: map['ownerType'] == null ? null : ((map['ownerType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceUris: map['resourceUris'] == null ? null : ((pulumi.Input.decodeList<UserDefinedFunctionResourceUri>(map['resourceUris']!, (value) => UserDefinedFunctionResourceUri.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

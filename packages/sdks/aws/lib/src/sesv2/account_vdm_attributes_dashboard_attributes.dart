@@ -20,7 +20,7 @@ class AccountVdmAttributesDashboardAttributes {
 
   factory AccountVdmAttributesDashboardAttributes.fromMap(Map<String, dynamic> map) {
     return AccountVdmAttributesDashboardAttributes(
-      engagementMetrics: map['engagementMetrics'] == null ? null : (map['engagementMetrics'] as String).input(),
+      engagementMetrics: map['engagementMetrics'] == null ? null : ((map['engagementMetrics'] as String).input()).input(),
     );
   }
 }

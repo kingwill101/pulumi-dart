@@ -87,16 +87,16 @@ class ExascaleDbStorageVaultProperties {
 
   factory ExascaleDbStorageVaultProperties.fromMap(Map<String, dynamic> map) {
     return ExascaleDbStorageVaultProperties(
-      additionalFlashCachePercent: map['additionalFlashCachePercent'] == null ? null : (map['additionalFlashCachePercent'] as int).input(),
-      attachedShapeAttributes: map['attachedShapeAttributes'] == null ? null : ((map['attachedShapeAttributes'] as List).cast<String>()).input(),
-      availableShapeAttributes: map['availableShapeAttributes'] == null ? null : ((map['availableShapeAttributes'] as List).cast<String>()).input(),
+      additionalFlashCachePercent: map['additionalFlashCachePercent'] == null ? null : (map['additionalFlashCachePercent']! as int).input(),
+      attachedShapeAttributes: map['attachedShapeAttributes'] == null ? null : ((map['attachedShapeAttributes']! as List).cast<String>()).input(),
+      availableShapeAttributes: map['availableShapeAttributes'] == null ? null : ((map['availableShapeAttributes']! as List).cast<String>()).input(),
       exascaleDbStorageDetails: (ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails.fromMap((map['exascaleDbStorageDetails'] as Map).cast<String, dynamic>())).input(),
-      ociUri: map['ociUri'] == null ? null : (map['ociUri'] as String).input(),
-      ocid: map['ocid'] == null ? null : (map['ocid'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (ExascaleDbStorageVaultPropertiesTimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
-      vmClusterCount: map['vmClusterCount'] == null ? null : (map['vmClusterCount'] as int).input(),
-      vmClusterIds: map['vmClusterIds'] == null ? null : ((map['vmClusterIds'] as List).cast<String>()).input(),
+      ociUri: map['ociUri'] == null ? null : (map['ociUri']! as String).input(),
+      ocid: map['ocid'] == null ? null : (map['ocid']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (ExascaleDbStorageVaultPropertiesTimeZone.fromMap((map['timeZone']! as Map).cast<String, dynamic>())).input(),
+      vmClusterCount: map['vmClusterCount'] == null ? null : (map['vmClusterCount']! as int).input(),
+      vmClusterIds: map['vmClusterIds'] == null ? null : ((map['vmClusterIds']! as List).cast<String>()).input(),
     );
   }
 }

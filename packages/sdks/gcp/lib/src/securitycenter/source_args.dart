@@ -39,7 +39,7 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       organization: (map['organization'] as String).input(),
     );

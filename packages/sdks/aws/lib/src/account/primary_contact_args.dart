@@ -84,19 +84,19 @@ class PrimaryContactArgs {
 
   factory PrimaryContactArgs.fromMap(Map<String, dynamic> map) {
     return PrimaryContactArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       addressLine1: (map['addressLine1'] as String).input(),
-      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
-      addressLine3: map['addressLine3'] == null ? null : (map['addressLine3'] as String).input(),
+      addressLine2: map['addressLine2'] == null ? null : ((map['addressLine2'] as String).input()).input(),
+      addressLine3: map['addressLine3'] == null ? null : ((map['addressLine3'] as String).input()).input(),
       city: (map['city'] as String).input(),
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      companyName: map['companyName'] == null ? null : ((map['companyName'] as String).input()).input(),
       countryCode: (map['countryCode'] as String).input(),
-      districtOrCounty: map['districtOrCounty'] == null ? null : (map['districtOrCounty'] as String).input(),
+      districtOrCounty: map['districtOrCounty'] == null ? null : ((map['districtOrCounty'] as String).input()).input(),
       fullName: (map['fullName'] as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       postalCode: (map['postalCode'] as String).input(),
-      stateOrRegion: map['stateOrRegion'] == null ? null : (map['stateOrRegion'] as String).input(),
-      websiteUrl: map['websiteUrl'] == null ? null : (map['websiteUrl'] as String).input(),
+      stateOrRegion: map['stateOrRegion'] == null ? null : ((map['stateOrRegion'] as String).input()).input(),
+      websiteUrl: map['websiteUrl'] == null ? null : ((map['websiteUrl'] as String).input()).input(),
     );
   }
 }

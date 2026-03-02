@@ -40,8 +40,8 @@ class PrivateEndpointConnectionProxyArgs {
 
   factory PrivateEndpointConnectionProxyArgs.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyArgs(
-      privateEndpointConnectionProxyName: map['privateEndpointConnectionProxyName'] == null ? null : (map['privateEndpointConnectionProxyName'] as String).input(),
-      properties: map['properties'] == null ? null : (PrivateEndpointConnectionProxyProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      privateEndpointConnectionProxyName: map['privateEndpointConnectionProxyName'] == null ? null : (map['privateEndpointConnectionProxyName']! as String).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionProxyProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );

@@ -25,8 +25,8 @@ class BuildxBuilderKubernetesQemu {
 
   factory BuildxBuilderKubernetesQemu.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderKubernetesQemu(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      install: map['install'] == null ? null : (map['install'] as bool).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      install: map['install'] == null ? null : (map['install']! as bool).input(),
     );
   }
 }

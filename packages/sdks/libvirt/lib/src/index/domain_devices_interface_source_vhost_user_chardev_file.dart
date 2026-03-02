@@ -31,9 +31,9 @@ class DomainDevicesInterfaceSourceVhostUserChardevFile {
 
   factory DomainDevicesInterfaceSourceVhostUserChardevFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUserChardevFile(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>(map['secLabels'], (value) => DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel>(map['secLabels']!, (value) => DomainDevicesInterfaceSourceVhostUserChardevFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

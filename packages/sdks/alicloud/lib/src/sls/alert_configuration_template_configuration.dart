@@ -44,12 +44,12 @@ class AlertConfigurationTemplateConfiguration {
 
   factory AlertConfigurationTemplateConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationTemplateConfiguration(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      tokens: map['tokens'] == null ? null : ((map['tokens'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      tokens: map['tokens'] == null ? null : ((map['tokens']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

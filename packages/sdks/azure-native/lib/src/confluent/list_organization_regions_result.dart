@@ -22,7 +22,7 @@ class ListOrganizationRegionsResult {
 
   factory ListOrganizationRegionsResult.fromMap(Map<String, dynamic> map) {
     return ListOrganizationRegionsResult(
-      data: map['data'] == null ? null : pulumi.Input.decodeList<RegionRecordResponse>(map['data'], (value) => RegionRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      data: map['data'] == null ? null : pulumi.Input.decodeList<RegionRecordResponse>(map['data']!, (value) => RegionRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

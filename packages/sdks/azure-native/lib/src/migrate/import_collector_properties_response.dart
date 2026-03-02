@@ -28,7 +28,7 @@ class ImportCollectorPropertiesResponse {
   factory ImportCollectorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImportCollectorPropertiesResponse(
       createdTimestamp: (map['createdTimestamp'] as String).input(),
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
       updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );
   }

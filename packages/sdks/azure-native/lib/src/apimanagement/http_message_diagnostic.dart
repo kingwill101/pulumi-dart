@@ -33,9 +33,9 @@ class HttpMessageDiagnostic {
 
   factory HttpMessageDiagnostic.fromMap(Map<String, dynamic> map) {
     return HttpMessageDiagnostic(
-      body: map['body'] == null ? null : (BodyDiagnosticSettings.fromMap((map['body'] as Map).cast<String, dynamic>())).input(),
-      dataMasking: map['dataMasking'] == null ? null : (DataMasking.fromMap((map['dataMasking'] as Map).cast<String, dynamic>())).input(),
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
+      body: map['body'] == null ? null : (BodyDiagnosticSettings.fromMap((map['body']! as Map).cast<String, dynamic>())).input(),
+      dataMasking: map['dataMasking'] == null ? null : (DataMasking.fromMap((map['dataMasking']! as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as List).cast<String>()).input(),
     );
   }
 }

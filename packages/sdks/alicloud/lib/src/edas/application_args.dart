@@ -75,16 +75,16 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       applicationName: (map['applicationName'] as String).input(),
-      buildPackId: map['buildPackId'] == null ? null : (map['buildPackId'] as int).input(),
+      buildPackId: map['buildPackId'] == null ? null : (map['buildPackId']! as int).input(),
       clusterId: (map['clusterId'] as String).input(),
-      descriotion: map['descriotion'] == null ? null : (map['descriotion'] as String).input(),
-      ecuInfos: map['ecuInfos'] == null ? null : ((map['ecuInfos'] as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      healthCheckUrl: map['healthCheckUrl'] == null ? null : (map['healthCheckUrl'] as String).input(),
-      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId'] as String).input(),
+      descriotion: map['descriotion'] == null ? null : (map['descriotion']! as String).input(),
+      ecuInfos: map['ecuInfos'] == null ? null : ((map['ecuInfos']! as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      healthCheckUrl: map['healthCheckUrl'] == null ? null : (map['healthCheckUrl']! as String).input(),
+      logicalRegionId: map['logicalRegionId'] == null ? null : (map['logicalRegionId']! as String).input(),
       packageType: (map['packageType'] as String).input(),
-      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion'] as String).input(),
-      warUrl: map['warUrl'] == null ? null : (map['warUrl'] as String).input(),
+      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion']! as String).input(),
+      warUrl: map['warUrl'] == null ? null : (map['warUrl']! as String).input(),
     );
   }
 }

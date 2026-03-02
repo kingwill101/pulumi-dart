@@ -21,7 +21,7 @@ class DomainVcpus {
 
   factory DomainVcpus.fromMap(Map<String, dynamic> map) {
     return DomainVcpus(
-      vcpus: map['vcpus'] == null ? null : (pulumi.Input.decodeList<DomainVcpusVcpus>(map['vcpus'], (value) => DomainVcpusVcpus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vcpus: map['vcpus'] == null ? null : (pulumi.Input.decodeList<DomainVcpusVcpus>(map['vcpus']!, (value) => DomainVcpusVcpus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

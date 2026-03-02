@@ -35,10 +35,10 @@ class DataQualityJobDefinitionDataQualityAppSpecification {
 
   factory DataQualityJobDefinitionDataQualityAppSpecification.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityAppSpecification(
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      environment: map['environment'] == null ? null : (((map['environment'] as Map).cast<String, String>()).input()).input(),
       imageUri: (map['imageUri'] as String).input(),
-      postAnalyticsProcessorSourceUri: map['postAnalyticsProcessorSourceUri'] == null ? null : (map['postAnalyticsProcessorSourceUri'] as String).input(),
-      recordPreprocessorSourceUri: map['recordPreprocessorSourceUri'] == null ? null : (map['recordPreprocessorSourceUri'] as String).input(),
+      postAnalyticsProcessorSourceUri: map['postAnalyticsProcessorSourceUri'] == null ? null : ((map['postAnalyticsProcessorSourceUri'] as String).input()).input(),
+      recordPreprocessorSourceUri: map['recordPreprocessorSourceUri'] == null ? null : ((map['recordPreprocessorSourceUri'] as String).input()).input(),
     );
   }
 }

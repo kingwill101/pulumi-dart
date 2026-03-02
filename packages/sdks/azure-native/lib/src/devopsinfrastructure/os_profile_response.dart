@@ -27,8 +27,8 @@ class OsProfileResponse {
 
   factory OsProfileResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileResponse(
-      logonType: map['logonType'] == null ? null : (map['logonType'] as String).input(),
-      secretsManagementSettings: map['secretsManagementSettings'] == null ? null : (SecretsManagementSettingsResponse.fromMap((map['secretsManagementSettings'] as Map).cast<String, dynamic>())).input(),
+      logonType: map['logonType'] == null ? null : (map['logonType']! as String).input(),
+      secretsManagementSettings: map['secretsManagementSettings'] == null ? null : (SecretsManagementSettingsResponse.fromMap((map['secretsManagementSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

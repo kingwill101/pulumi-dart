@@ -84,18 +84,18 @@ class VbrPconnAssociationState {
 
   factory VbrPconnAssociationState.fromMap(Map<String, dynamic> map) {
     return VbrPconnAssociationState(
-      circuitCode: map['circuitCode'] == null ? null : (map['circuitCode'] as String).input(),
-      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6'] as bool).input(),
-      localGatewayIp: map['localGatewayIp'] == null ? null : (map['localGatewayIp'] as String).input(),
-      localIpv6GatewayIp: map['localIpv6GatewayIp'] == null ? null : (map['localIpv6GatewayIp'] as String).input(),
-      peerGatewayIp: map['peerGatewayIp'] == null ? null : (map['peerGatewayIp'] as String).input(),
-      peerIpv6GatewayIp: map['peerIpv6GatewayIp'] == null ? null : (map['peerIpv6GatewayIp'] as String).input(),
-      peeringIpv6SubnetMask: map['peeringIpv6SubnetMask'] == null ? null : (map['peeringIpv6SubnetMask'] as String).input(),
-      peeringSubnetMask: map['peeringSubnetMask'] == null ? null : (map['peeringSubnetMask'] as String).input(),
-      physicalConnectionId: map['physicalConnectionId'] == null ? null : (map['physicalConnectionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vbrId: map['vbrId'] == null ? null : (map['vbrId'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
+      circuitCode: map['circuitCode'] == null ? null : (map['circuitCode']! as String).input(),
+      enableIpv6: map['enableIpv6'] == null ? null : (map['enableIpv6']! as bool).input(),
+      localGatewayIp: map['localGatewayIp'] == null ? null : (map['localGatewayIp']! as String).input(),
+      localIpv6GatewayIp: map['localIpv6GatewayIp'] == null ? null : (map['localIpv6GatewayIp']! as String).input(),
+      peerGatewayIp: map['peerGatewayIp'] == null ? null : (map['peerGatewayIp']! as String).input(),
+      peerIpv6GatewayIp: map['peerIpv6GatewayIp'] == null ? null : (map['peerIpv6GatewayIp']! as String).input(),
+      peeringIpv6SubnetMask: map['peeringIpv6SubnetMask'] == null ? null : (map['peeringIpv6SubnetMask']! as String).input(),
+      peeringSubnetMask: map['peeringSubnetMask'] == null ? null : (map['peeringSubnetMask']! as String).input(),
+      physicalConnectionId: map['physicalConnectionId'] == null ? null : (map['physicalConnectionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vbrId: map['vbrId'] == null ? null : (map['vbrId']! as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
     );
   }
 }

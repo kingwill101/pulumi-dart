@@ -26,8 +26,8 @@ class GcpProjectDetails {
 
   factory GcpProjectDetails.fromMap(Map<String, dynamic> map) {
     return GcpProjectDetails(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
     );
   }
 }

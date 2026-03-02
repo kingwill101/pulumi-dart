@@ -24,7 +24,7 @@ class SubResource {
 
   factory SubResource.fromMap(Map<String, dynamic> map) {
     return SubResource(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

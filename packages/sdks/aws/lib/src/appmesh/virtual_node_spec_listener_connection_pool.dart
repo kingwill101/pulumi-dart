@@ -39,10 +39,10 @@ class VirtualNodeSpecListenerConnectionPool {
 
   factory VirtualNodeSpecListenerConnectionPool.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerConnectionPool(
-      grpc: map['grpc'] == null ? null : (VirtualNodeSpecListenerConnectionPoolGrpc.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      http2s: map['http2s'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp2>(map['http2s'], (value) => VirtualNodeSpecListenerConnectionPoolHttp2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      https: map['https'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp>(map['https'], (value) => VirtualNodeSpecListenerConnectionPoolHttp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tcps: map['tcps'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolTcp>(map['tcps'], (value) => VirtualNodeSpecListenerConnectionPoolTcp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpc: map['grpc'] == null ? null : ((VirtualNodeSpecListenerConnectionPoolGrpc.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input()).input(),
+      http2s: map['http2s'] == null ? null : ((pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp2>(map['http2s']!, (value) => VirtualNodeSpecListenerConnectionPoolHttp2.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      https: map['https'] == null ? null : ((pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolHttp>(map['https']!, (value) => VirtualNodeSpecListenerConnectionPoolHttp.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tcps: map['tcps'] == null ? null : ((pulumi.Input.decodeList<VirtualNodeSpecListenerConnectionPoolTcp>(map['tcps']!, (value) => VirtualNodeSpecListenerConnectionPoolTcp.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

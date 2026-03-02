@@ -80,19 +80,19 @@ class PresetVideo {
 
   factory PresetVideo.fromMap(Map<String, dynamic> map) {
     return PresetVideo(
-      aspectRatio: map['aspectRatio'] == null ? null : (map['aspectRatio'] as String).input(),
-      bitRate: map['bitRate'] == null ? null : (map['bitRate'] as String).input(),
-      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
-      displayAspectRatio: map['displayAspectRatio'] == null ? null : (map['displayAspectRatio'] as String).input(),
-      fixedGop: map['fixedGop'] == null ? null : (map['fixedGop'] as String).input(),
-      frameRate: map['frameRate'] == null ? null : (map['frameRate'] as String).input(),
-      keyframesMaxDist: map['keyframesMaxDist'] == null ? null : (map['keyframesMaxDist'] as String).input(),
-      maxFrameRate: map['maxFrameRate'] == null ? null : (map['maxFrameRate'] as String).input(),
-      maxHeight: map['maxHeight'] == null ? null : (map['maxHeight'] as String).input(),
-      maxWidth: map['maxWidth'] == null ? null : (map['maxWidth'] as String).input(),
-      paddingPolicy: map['paddingPolicy'] == null ? null : (map['paddingPolicy'] as String).input(),
-      resolution: map['resolution'] == null ? null : (map['resolution'] as String).input(),
-      sizingPolicy: map['sizingPolicy'] == null ? null : (map['sizingPolicy'] as String).input(),
+      aspectRatio: map['aspectRatio'] == null ? null : ((map['aspectRatio'] as String).input()).input(),
+      bitRate: map['bitRate'] == null ? null : ((map['bitRate'] as String).input()).input(),
+      codec: map['codec'] == null ? null : ((map['codec'] as String).input()).input(),
+      displayAspectRatio: map['displayAspectRatio'] == null ? null : ((map['displayAspectRatio'] as String).input()).input(),
+      fixedGop: map['fixedGop'] == null ? null : ((map['fixedGop'] as String).input()).input(),
+      frameRate: map['frameRate'] == null ? null : ((map['frameRate'] as String).input()).input(),
+      keyframesMaxDist: map['keyframesMaxDist'] == null ? null : ((map['keyframesMaxDist'] as String).input()).input(),
+      maxFrameRate: map['maxFrameRate'] == null ? null : ((map['maxFrameRate'] as String).input()).input(),
+      maxHeight: map['maxHeight'] == null ? null : ((map['maxHeight'] as String).input()).input(),
+      maxWidth: map['maxWidth'] == null ? null : ((map['maxWidth'] as String).input()).input(),
+      paddingPolicy: map['paddingPolicy'] == null ? null : ((map['paddingPolicy'] as String).input()).input(),
+      resolution: map['resolution'] == null ? null : ((map['resolution'] as String).input()).input(),
+      sizingPolicy: map['sizingPolicy'] == null ? null : ((map['sizingPolicy'] as String).input()).input(),
     );
   }
 }

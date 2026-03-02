@@ -27,7 +27,7 @@ class KubernetesConfigurationPrivateLinkScopeProperties {
   factory KubernetesConfigurationPrivateLinkScopeProperties.fromMap(Map<String, dynamic> map) {
     return KubernetesConfigurationPrivateLinkScopeProperties(
       clusterResourceId: (map['clusterResourceId'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
     );
   }
 }

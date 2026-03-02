@@ -45,9 +45,9 @@ class ClusterV2ManagerManagerNodeSystemDisk {
 
   factory ClusterV2ManagerManagerNodeSystemDisk.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerManagerNodeSystemDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

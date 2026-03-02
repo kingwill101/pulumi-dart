@@ -26,8 +26,8 @@ class ResourceProviderManagementExpeditedRolloutMetadata {
 
   factory ResourceProviderManagementExpeditedRolloutMetadata.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManagementExpeditedRolloutMetadata(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expeditedRolloutIntent: map['expeditedRolloutIntent'] == null ? null : (map['expeditedRolloutIntent'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expeditedRolloutIntent: map['expeditedRolloutIntent'] == null ? null : (map['expeditedRolloutIntent']! as String).input(),
     );
   }
 }

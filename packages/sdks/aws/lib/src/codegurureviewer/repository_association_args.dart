@@ -42,10 +42,10 @@ class RepositoryAssociationArgs {
 
   factory RepositoryAssociationArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationArgs(
-      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : (RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repository: (RepositoryAssociationRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : ((RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repository: (RepositoryAssociationRepository.fromMap((map['repository']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

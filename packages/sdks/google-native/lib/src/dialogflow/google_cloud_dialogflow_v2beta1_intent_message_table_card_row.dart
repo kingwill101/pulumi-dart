@@ -27,8 +27,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageTableCardRow(
-      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(map['cells'], (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dividerAfter: map['dividerAfter'] == null ? null : (map['dividerAfter'] as bool).input(),
+      cells: map['cells'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(map['cells']!, (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dividerAfter: map['dividerAfter'] == null ? null : (map['dividerAfter']! as bool).input(),
     );
   }
 }

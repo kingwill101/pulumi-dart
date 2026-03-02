@@ -83,17 +83,17 @@ class OtsBackupPlanArgs {
   factory OtsBackupPlanArgs.fromMap(Map<String, dynamic> map) {
     return OtsBackupPlanArgs(
       backupType: (map['backupType'] as String).input(),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
-      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType']! as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
       otsBackupPlanName: (map['otsBackupPlanName'] as String).input(),
-      otsDetails: map['otsDetails'] == null ? null : (pulumi.Input.decodeList<OtsBackupPlanOtsDetail>(map['otsDetails'], (value) => OtsBackupPlanOtsDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      otsDetails: map['otsDetails'] == null ? null : (pulumi.Input.decodeList<OtsBackupPlanOtsDetail>(map['otsDetails']!, (value) => OtsBackupPlanOtsDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
       retention: (map['retention'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<OtsBackupPlanRule>(map['rules'], (value) => OtsBackupPlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<OtsBackupPlanRule>(map['rules']!, (value) => OtsBackupPlanRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

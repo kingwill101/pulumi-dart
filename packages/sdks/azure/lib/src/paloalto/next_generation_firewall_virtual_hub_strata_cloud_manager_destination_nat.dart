@@ -37,8 +37,8 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat {
 
   factory NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat(
-      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig.fromMap((map['backendConfig'] as Map).cast<String, dynamic>())).input(),
-      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig.fromMap((map['frontendConfig'] as Map).cast<String, dynamic>())).input(),
+      backendConfig: map['backendConfig'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatBackendConfig.fromMap((map['backendConfig']! as Map).cast<String, dynamic>())).input(),
+      frontendConfig: map['frontendConfig'] == null ? null : (NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig.fromMap((map['frontendConfig']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       protocol: (map['protocol'] as String).input(),
     );

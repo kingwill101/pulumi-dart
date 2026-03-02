@@ -69,15 +69,15 @@ class SecurityProfileGroupArgs {
 
   factory SecurityProfileGroupArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileGroupArgs(
-      customInterceptProfile: map['customInterceptProfile'] == null ? null : (map['customInterceptProfile'] as String).input(),
-      customMirroringProfile: map['customMirroringProfile'] == null ? null : (map['customMirroringProfile'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile'] as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
+      customInterceptProfile: map['customInterceptProfile'] == null ? null : (map['customInterceptProfile']! as String).input(),
+      customMirroringProfile: map['customMirroringProfile'] == null ? null : (map['customMirroringProfile']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      threatPreventionProfile: map['threatPreventionProfile'] == null ? null : (map['threatPreventionProfile']! as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile']! as String).input(),
     );
   }
 }

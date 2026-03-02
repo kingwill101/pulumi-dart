@@ -38,7 +38,7 @@ class IotHubDpsIpFilterRule {
       action: (map['action'] as String).input(),
       ipMask: (map['ipMask'] as String).input(),
       name: (map['name'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class TlsContext {
 
   factory TlsContext.fromMap(Map<String, dynamic> map) {
     return TlsContext(
-      certificateContext: map['certificateContext'] == null ? null : (TlsCertificateContext.fromMap((map['certificateContext'] as Map).cast<String, dynamic>())).input(),
-      validationContext: map['validationContext'] == null ? null : (TlsValidationContext.fromMap((map['validationContext'] as Map).cast<String, dynamic>())).input(),
+      certificateContext: map['certificateContext'] == null ? null : (TlsCertificateContext.fromMap((map['certificateContext']! as Map).cast<String, dynamic>())).input(),
+      validationContext: map['validationContext'] == null ? null : (TlsValidationContext.fromMap((map['validationContext']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

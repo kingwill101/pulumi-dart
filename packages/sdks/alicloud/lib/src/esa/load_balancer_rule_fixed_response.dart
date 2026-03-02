@@ -35,10 +35,10 @@ class LoadBalancerRuleFixedResponse {
 
   factory LoadBalancerRuleFixedResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerRuleFixedResponse(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      messageBody: map['messageBody'] == null ? null : (map['messageBody'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as int).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      messageBody: map['messageBody'] == null ? null : (map['messageBody']! as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as int).input(),
     );
   }
 }

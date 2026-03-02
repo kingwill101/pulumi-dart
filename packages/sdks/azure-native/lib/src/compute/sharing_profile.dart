@@ -27,8 +27,8 @@ class SharingProfile {
 
   factory SharingProfile.fromMap(Map<String, dynamic> map) {
     return SharingProfile(
-      communityGalleryInfo: map['communityGalleryInfo'] == null ? null : (CommunityGalleryInfo.fromMap((map['communityGalleryInfo'] as Map).cast<String, dynamic>())).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      communityGalleryInfo: map['communityGalleryInfo'] == null ? null : (CommunityGalleryInfo.fromMap((map['communityGalleryInfo']! as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
     );
   }
 }

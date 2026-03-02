@@ -71,17 +71,17 @@ class SegmentState {
 
   factory SegmentState.fromMap(Map<String, dynamic> map) {
     return SegmentState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      experimentCount: map['experimentCount'] == null ? null : (map['experimentCount'] as int).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      launchCount: map['launchCount'] == null ? null : (map['launchCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      experimentCount: map['experimentCount'] == null ? null : ((map['experimentCount'] as int).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      launchCount: map['launchCount'] == null ? null : ((map['launchCount'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      pattern: map['pattern'] == null ? null : ((map['pattern'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

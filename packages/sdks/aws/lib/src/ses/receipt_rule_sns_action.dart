@@ -30,7 +30,7 @@ class ReceiptRuleSnsAction {
 
   factory ReceiptRuleSnsAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleSnsAction(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      encoding: map['encoding'] == null ? null : ((map['encoding'] as String).input()).input(),
       position: (map['position'] as int).input(),
       topicArn: (map['topicArn'] as String).input(),
     );

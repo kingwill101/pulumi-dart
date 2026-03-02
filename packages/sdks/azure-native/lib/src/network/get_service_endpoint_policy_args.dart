@@ -34,7 +34,7 @@ class GetServiceEndpointPolicyArgs {
 
   factory GetServiceEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointPolicyArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceEndpointPolicyName: (map['serviceEndpointPolicyName'] as String).input(),
     );

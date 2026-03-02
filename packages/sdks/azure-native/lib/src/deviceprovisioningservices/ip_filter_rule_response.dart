@@ -39,7 +39,7 @@ class IpFilterRuleResponse {
       action: (map['action'] as String).input(),
       filterName: (map['filterName'] as String).input(),
       ipMask: (map['ipMask'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

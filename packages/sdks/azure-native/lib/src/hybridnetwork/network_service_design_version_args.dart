@@ -55,13 +55,13 @@ class NetworkServiceDesignVersionArgs {
 
   factory NetworkServiceDesignVersionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkServiceDesignVersionArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkServiceDesignGroupName: (map['networkServiceDesignGroupName'] as String).input(),
-      networkServiceDesignVersionName: map['networkServiceDesignVersionName'] == null ? null : (map['networkServiceDesignVersionName'] as String).input(),
-      properties: map['properties'] == null ? null : (NetworkServiceDesignVersionPropertiesFormat.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      networkServiceDesignVersionName: map['networkServiceDesignVersionName'] == null ? null : (map['networkServiceDesignVersionName']! as String).input(),
+      properties: map['properties'] == null ? null : (NetworkServiceDesignVersionPropertiesFormat.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       publisherName: (map['publisherName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

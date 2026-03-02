@@ -30,9 +30,9 @@ class EndpointConfigurationShadowProductionVariantManagedInstanceScaling {
 
   factory EndpointConfigurationShadowProductionVariantManagedInstanceScaling.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationShadowProductionVariantManagedInstanceScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : ((map['maxInstanceCount'] as int).input()).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : ((map['minInstanceCount'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

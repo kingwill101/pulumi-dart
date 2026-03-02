@@ -31,9 +31,9 @@ class ElasticProfileResponse {
 
   factory ElasticProfileResponse.fromMap(Map<String, dynamic> map) {
     return ElasticProfileResponse(
-      containerGroupNamingPolicy: map['containerGroupNamingPolicy'] == null ? null : (ElasticProfileResponseContainerGroupNamingPolicy.fromMap((map['containerGroupNamingPolicy'] as Map).cast<String, dynamic>())).input(),
-      desiredCount: map['desiredCount'] == null ? null : (map['desiredCount'] as int).input(),
-      maintainDesiredCount: map['maintainDesiredCount'] == null ? null : (map['maintainDesiredCount'] as bool).input(),
+      containerGroupNamingPolicy: map['containerGroupNamingPolicy'] == null ? null : (ElasticProfileResponseContainerGroupNamingPolicy.fromMap((map['containerGroupNamingPolicy']! as Map).cast<String, dynamic>())).input(),
+      desiredCount: map['desiredCount'] == null ? null : (map['desiredCount']! as int).input(),
+      maintainDesiredCount: map['maintainDesiredCount'] == null ? null : (map['maintainDesiredCount']! as bool).input(),
     );
   }
 }

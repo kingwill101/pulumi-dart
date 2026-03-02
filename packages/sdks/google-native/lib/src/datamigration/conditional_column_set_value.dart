@@ -39,9 +39,9 @@ class ConditionalColumnSetValue {
 
   factory ConditionalColumnSetValue.fromMap(Map<String, dynamic> map) {
     return ConditionalColumnSetValue(
-      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as Map).cast<String, String>()).input(),
-      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : (SourceNumericFilter.fromMap((map['sourceNumericFilter'] as Map).cast<String, dynamic>())).input(),
-      sourceTextFilter: map['sourceTextFilter'] == null ? null : (SourceTextFilter.fromMap((map['sourceTextFilter'] as Map).cast<String, dynamic>())).input(),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures']! as Map).cast<String, String>()).input(),
+      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : (SourceNumericFilter.fromMap((map['sourceNumericFilter']! as Map).cast<String, dynamic>())).input(),
+      sourceTextFilter: map['sourceTextFilter'] == null ? null : (SourceTextFilter.fromMap((map['sourceTextFilter']! as Map).cast<String, dynamic>())).input(),
       valueTransformation: (ValueTransformation.fromMap((map['valueTransformation'] as Map).cast<String, dynamic>())).input(),
     );
   }

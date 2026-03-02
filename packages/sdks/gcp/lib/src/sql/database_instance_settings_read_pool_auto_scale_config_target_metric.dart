@@ -25,8 +25,8 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
 
   factory DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric(
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      targetValue: map['targetValue'] == null ? null : (map['targetValue'] as double).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      targetValue: map['targetValue'] == null ? null : (map['targetValue']! as double).input(),
     );
   }
 }

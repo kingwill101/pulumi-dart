@@ -78,20 +78,20 @@ class GetSnapshotsResult {
 
   factory GetSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsResult(
-      bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      completeTime: map['completeTime'] == null ? null : map['completeTime'] as String,
-      completeTimeChecker: map['completeTimeChecker'] == null ? null : map['completeTimeChecker'] as String,
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
-      fileSystemId: map['fileSystemId'] == null ? null : map['fileSystemId'] as String,
+      bucket: map['bucket'] == null ? null : map['bucket']! as String,
+      completeTime: map['completeTime'] == null ? null : map['completeTime']! as String,
+      completeTimeChecker: map['completeTimeChecker'] == null ? null : map['completeTimeChecker']! as String,
+      createTime: map['createTime'] == null ? null : map['createTime']! as String,
+      fileSystemId: map['fileSystemId'] == null ? null : map['fileSystemId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      limit: map['limit'] == null ? null : map['limit'] as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      query: map['query'] == null ? null : map['query'] as String,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      limit: map['limit'] == null ? null : map['limit']! as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      query: map['query'] == null ? null : map['query']! as String,
       snapshots: pulumi.Input.decodeList<GetSnapshotsSnapshot>(map['snapshots'], (value) => GetSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
       sourceType: map['sourceType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
       vaultId: map['vaultId'] as String,
     );
   }

@@ -44,7 +44,7 @@ class WCFRelayAuthorizationRuleArgs {
 
   factory WCFRelayAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return WCFRelayAuthorizationRuleArgs(
-      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName'] as String).input(),
+      authorizationRuleName: map['authorizationRuleName'] == null ? null : (map['authorizationRuleName']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       relayName: (map['relayName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

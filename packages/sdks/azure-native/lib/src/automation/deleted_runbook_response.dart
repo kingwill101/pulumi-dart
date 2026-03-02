@@ -61,15 +61,15 @@ class DeletedRunbookResponse {
 
   factory DeletedRunbookResponse.fromMap(Map<String, dynamic> map) {
     return DeletedRunbookResponse(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      runbookId: map['runbookId'] == null ? null : (map['runbookId'] as String).input(),
-      runbookType: map['runbookType'] == null ? null : (map['runbookType'] as String).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
-      runtimeEnvironment: map['runtimeEnvironment'] == null ? null : (map['runtimeEnvironment'] as String).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      deletionTime: map['deletionTime'] == null ? null : (map['deletionTime']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      runbookId: map['runbookId'] == null ? null : (map['runbookId']! as String).input(),
+      runbookType: map['runbookType'] == null ? null : (map['runbookType']! as String).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']! as String).input(),
+      runtimeEnvironment: map['runtimeEnvironment'] == null ? null : (map['runtimeEnvironment']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class InstanceConfigDevicesSda {
 
   factory InstanceConfigDevicesSda.fromMap(Map<String, dynamic> map) {
     return InstanceConfigDevicesSda(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as int).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as int).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as int).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as int).input(),
     );
   }
 }

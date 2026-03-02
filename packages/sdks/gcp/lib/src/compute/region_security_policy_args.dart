@@ -82,15 +82,15 @@ class RegionSecurityPolicyArgs {
 
   factory RegionSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyArgs(
-      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (RegionSecurityPolicyAdvancedOptionsConfig.fromMap((map['advancedOptionsConfig'] as Map).cast<String, dynamic>())).input(),
-      ddosProtectionConfig: map['ddosProtectionConfig'] == null ? null : (RegionSecurityPolicyDdosProtectionConfig.fromMap((map['ddosProtectionConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRule>(map['rules'], (value) => RegionSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyUserDefinedField>(map['userDefinedFields'], (value) => RegionSecurityPolicyUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advancedOptionsConfig: map['advancedOptionsConfig'] == null ? null : (RegionSecurityPolicyAdvancedOptionsConfig.fromMap((map['advancedOptionsConfig']! as Map).cast<String, dynamic>())).input(),
+      ddosProtectionConfig: map['ddosProtectionConfig'] == null ? null : (RegionSecurityPolicyDdosProtectionConfig.fromMap((map['ddosProtectionConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyRule>(map['rules']!, (value) => RegionSecurityPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userDefinedFields: map['userDefinedFields'] == null ? null : (pulumi.Input.decodeList<RegionSecurityPolicyUserDefinedField>(map['userDefinedFields']!, (value) => RegionSecurityPolicyUserDefinedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

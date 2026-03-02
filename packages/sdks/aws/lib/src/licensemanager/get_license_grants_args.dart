@@ -30,8 +30,8 @@ class GetLicenseGrantsArgs {
 
   factory GetLicenseGrantsArgs.fromMap(Map<String, dynamic> map) {
     return GetLicenseGrantsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetLicenseGrantsFilter>(map['filters'], (value) => GetLicenseGrantsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetLicenseGrantsFilter>(map['filters']!, (value) => GetLicenseGrantsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

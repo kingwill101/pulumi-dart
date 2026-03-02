@@ -27,8 +27,8 @@ class MonitorGroupInstancesState {
 
   factory MonitorGroupInstancesState.fromMap(Map<String, dynamic> map) {
     return MonitorGroupInstancesState(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<MonitorGroupInstancesInstance>(map['instances'], (value) => MonitorGroupInstancesInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<MonitorGroupInstancesInstance>(map['instances']!, (value) => MonitorGroupInstancesInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class OneDashboardPageWidgetLineYAxisRight {
 
   factory OneDashboardPageWidgetLineYAxisRight.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetLineYAxisRight(
-      yAxisRightMax: map['yAxisRightMax'] == null ? null : (map['yAxisRightMax'] as double).input(),
-      yAxisRightMin: map['yAxisRightMin'] == null ? null : (map['yAxisRightMin'] as double).input(),
-      yAxisRightSeries: map['yAxisRightSeries'] == null ? null : ((map['yAxisRightSeries'] as List).cast<String>()).input(),
-      yAxisRightZero: map['yAxisRightZero'] == null ? null : (map['yAxisRightZero'] as bool).input(),
+      yAxisRightMax: map['yAxisRightMax'] == null ? null : (map['yAxisRightMax']! as double).input(),
+      yAxisRightMin: map['yAxisRightMin'] == null ? null : (map['yAxisRightMin']! as double).input(),
+      yAxisRightSeries: map['yAxisRightSeries'] == null ? null : ((map['yAxisRightSeries']! as List).cast<String>()).input(),
+      yAxisRightZero: map['yAxisRightZero'] == null ? null : (map['yAxisRightZero']! as bool).input(),
     );
   }
 }

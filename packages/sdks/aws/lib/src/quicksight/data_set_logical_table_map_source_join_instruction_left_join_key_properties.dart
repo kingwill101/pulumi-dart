@@ -20,7 +20,7 @@ class DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties {
 
   factory DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties(
-      uniqueKey: map['uniqueKey'] == null ? null : (map['uniqueKey'] as bool).input(),
+      uniqueKey: map['uniqueKey'] == null ? null : ((map['uniqueKey'] as bool).input()).input(),
     );
   }
 }

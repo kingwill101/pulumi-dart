@@ -31,9 +31,9 @@ class SecretResponse {
 
   factory SecretResponse.fromMap(Map<String, dynamic> map) {
     return SecretResponse(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

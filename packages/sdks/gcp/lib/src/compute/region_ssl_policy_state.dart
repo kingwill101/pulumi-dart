@@ -99,17 +99,17 @@ class RegionSslPolicyState {
 
   factory RegionSslPolicyState.fromMap(Map<String, dynamic> map) {
     return RegionSslPolicyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabledFeatures: map['enabledFeatures'] == null ? null : ((map['enabledFeatures'] as List).cast<String>()).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      customFeatures: map['customFeatures'] == null ? null : ((map['customFeatures']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabledFeatures: map['enabledFeatures'] == null ? null : ((map['enabledFeatures']! as List).cast<String>()).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      minTlsVersion: map['minTlsVersion'] == null ? null : (map['minTlsVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

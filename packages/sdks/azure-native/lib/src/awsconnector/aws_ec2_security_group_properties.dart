@@ -58,14 +58,14 @@ class AwsEc2SecurityGroupProperties {
 
   factory AwsEc2SecurityGroupProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2SecurityGroupProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      ipPermissions: map['ipPermissions'] == null ? null : (pulumi.Input.decodeList<IpPermission>(map['ipPermissions'], (value) => IpPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipPermissionsEgress: map['ipPermissionsEgress'] == null ? null : (pulumi.Input.decodeList<IpPermission>(map['ipPermissionsEgress'], (value) => IpPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      ipPermissions: map['ipPermissions'] == null ? null : (pulumi.Input.decodeList<IpPermission>(map['ipPermissions']!, (value) => IpPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipPermissionsEgress: map['ipPermissionsEgress'] == null ? null : (pulumi.Input.decodeList<IpPermission>(map['ipPermissionsEgress']!, (value) => IpPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ownerId: map['ownerId'] == null ? null : (map['ownerId']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class BackupInstancePostgresqlArgs {
   factory BackupInstancePostgresqlArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstancePostgresqlArgs(
       backupPolicyId: (map['backupPolicyId'] as String).input(),
-      databaseCredentialKeyVaultSecretId: map['databaseCredentialKeyVaultSecretId'] == null ? null : (map['databaseCredentialKeyVaultSecretId'] as String).input(),
+      databaseCredentialKeyVaultSecretId: map['databaseCredentialKeyVaultSecretId'] == null ? null : (map['databaseCredentialKeyVaultSecretId']! as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );
   }

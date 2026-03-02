@@ -55,12 +55,12 @@ class HubRouteTableArgs {
 
   factory HubRouteTableArgs.fromMap(Map<String, dynamic> map) {
     return HubRouteTableArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<HubRoute>(map['routes'], (value) => HubRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeTableName: map['routeTableName'] == null ? null : (map['routeTableName']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<HubRoute>(map['routes']!, (value) => HubRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }

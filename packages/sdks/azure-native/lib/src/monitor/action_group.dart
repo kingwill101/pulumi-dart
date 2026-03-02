@@ -27,7 +27,7 @@ class ActionGroup {
   factory ActionGroup.fromMap(Map<String, dynamic> map) {
     return ActionGroup(
       actionGroupId: (map['actionGroupId'] as String).input(),
-      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties'] as Map).cast<String, String>()).input(),
+      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

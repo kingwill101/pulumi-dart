@@ -20,7 +20,7 @@ class BucketResponseHeaderRuleHideHeaders {
 
   factory BucketResponseHeaderRuleHideHeaders.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderRuleHideHeaders(
-      headers: map['headers'] == null ? null : ((map['headers'] as List).cast<String>()).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as List).cast<String>()).input(),
     );
   }
 }

@@ -64,12 +64,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig(
-      commonAlphabet: map['commonAlphabet'] == null ? null : (map['commonAlphabet'] as String).input(),
-      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
-      customAlphabet: map['customAlphabet'] == null ? null : (map['customAlphabet'] as String).input(),
-      radix: map['radix'] == null ? null : (map['radix'] as int).input(),
-      surrogateInfoType: map['surrogateInfoType'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType.fromMap((map['surrogateInfoType'] as Map).cast<String, dynamic>())).input(),
+      commonAlphabet: map['commonAlphabet'] == null ? null : (map['commonAlphabet']! as String).input(),
+      context: map['context'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
+      customAlphabet: map['customAlphabet'] == null ? null : (map['customAlphabet']! as String).input(),
+      radix: map['radix'] == null ? null : (map['radix']! as int).input(),
+      surrogateInfoType: map['surrogateInfoType'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType.fromMap((map['surrogateInfoType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

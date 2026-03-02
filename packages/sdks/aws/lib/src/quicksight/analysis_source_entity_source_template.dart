@@ -27,7 +27,7 @@ class AnalysisSourceEntitySourceTemplate {
   factory AnalysisSourceEntitySourceTemplate.fromMap(Map<String, dynamic> map) {
     return AnalysisSourceEntitySourceTemplate(
       arn: (map['arn'] as String).input(),
-      dataSetReferences: (pulumi.Input.decodeList<AnalysisSourceEntitySourceTemplateDataSetReference>(map['dataSetReferences'], (value) => AnalysisSourceEntitySourceTemplateDataSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSetReferences: (pulumi.Input.decodeList<AnalysisSourceEntitySourceTemplateDataSetReference>(map['dataSetReferences']!, (value) => AnalysisSourceEntitySourceTemplateDataSetReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

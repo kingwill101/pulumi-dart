@@ -64,15 +64,15 @@ class AgentArgs {
 
   factory AgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentArgs(
-      activationKey: map['activationKey'] == null ? null : (map['activationKey'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateLinkEndpoint: map['privateLinkEndpoint'] == null ? null : (map['privateLinkEndpoint'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupArns: map['securityGroupArns'] == null ? null : ((map['securityGroupArns'] as List).cast<String>()).input(),
-      subnetArns: map['subnetArns'] == null ? null : ((map['subnetArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      activationKey: map['activationKey'] == null ? null : ((map['activationKey'] as String).input()).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      privateLinkEndpoint: map['privateLinkEndpoint'] == null ? null : ((map['privateLinkEndpoint'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupArns: map['securityGroupArns'] == null ? null : (((map['securityGroupArns'] as List).cast<String>()).input()).input(),
+      subnetArns: map['subnetArns'] == null ? null : (((map['subnetArns'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class AppServiceAuthSettingsFacebook {
     return AppServiceAuthSettingsFacebook(
       appId: (map['appId'] as String).input(),
       appSecret: (map['appSecret'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
     );
   }
 }

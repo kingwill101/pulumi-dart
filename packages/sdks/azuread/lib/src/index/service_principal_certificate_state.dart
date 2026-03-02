@@ -60,14 +60,14 @@ class ServicePrincipalCertificateState {
 
   factory ServicePrincipalCertificateState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalCertificateState(
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      endDateRelative: map['endDateRelative'] == null ? null : (map['endDateRelative']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

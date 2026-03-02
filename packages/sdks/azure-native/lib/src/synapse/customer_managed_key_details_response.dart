@@ -33,8 +33,8 @@ class CustomerManagedKeyDetailsResponse {
 
   factory CustomerManagedKeyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CustomerManagedKeyDetailsResponse(
-      kekIdentity: map['kekIdentity'] == null ? null : (KekIdentityPropertiesResponse.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (WorkspaceKeyDetailsResponse.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      kekIdentity: map['kekIdentity'] == null ? null : (KekIdentityPropertiesResponse.fromMap((map['kekIdentity']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (WorkspaceKeyDetailsResponse.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
       status: (map['status'] as String).input(),
     );
   }

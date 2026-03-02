@@ -30,9 +30,9 @@ class FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions {
 
   factory FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
+      logStreamName: map['logStreamName'] == null ? null : ((map['logStreamName'] as String).input()).input(),
     );
   }
 }

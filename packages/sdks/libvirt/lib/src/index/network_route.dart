@@ -45,12 +45,12 @@ class NetworkRoute {
 
   factory NetworkRoute.fromMap(Map<String, dynamic> map) {
     return NetworkRoute(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      netmask: map['netmask'] == null ? null : (map['netmask'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as double).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      metric: map['metric'] == null ? null : (map['metric']! as String).input(),
+      netmask: map['netmask'] == null ? null : (map['netmask']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as double).input(),
     );
   }
 }

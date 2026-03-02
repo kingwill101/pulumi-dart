@@ -31,9 +31,9 @@ class DomainDevicesRngBackend {
 
   factory DomainDevicesRngBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRngBackend(
-      builtIn: map['builtIn'] == null ? null : (map['builtIn'] as bool).input(),
-      egd: map['egd'] == null ? null : (DomainDevicesRngBackendEgd.fromMap((map['egd'] as Map).cast<String, dynamic>())).input(),
-      random: map['random'] == null ? null : (map['random'] as String).input(),
+      builtIn: map['builtIn'] == null ? null : (map['builtIn']! as bool).input(),
+      egd: map['egd'] == null ? null : (DomainDevicesRngBackendEgd.fromMap((map['egd']! as Map).cast<String, dynamic>())).input(),
+      random: map['random'] == null ? null : (map['random']! as String).input(),
     );
   }
 }

@@ -66,14 +66,14 @@ class GetRegistrationResult {
   factory GetRegistrationResult.fromMap(Map<String, dynamic> map) {
     return GetRegistrationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      billingModel: map['billingModel'] == null ? null : map['billingModel'] as String,
-      cloudId: map['cloudId'] == null ? null : map['cloudId'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      billingModel: map['billingModel'] == null ? null : map['billingModel']! as String,
+      cloudId: map['cloudId'] == null ? null : map['cloudId']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      objectId: map['objectId'] == null ? null : map['objectId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      objectId: map['objectId'] == null ? null : map['objectId']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -45,12 +45,12 @@ class ListLocalRulestackAppIdsArgs {
 
   factory ListLocalRulestackAppIdsArgs.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackAppIdsArgs(
-      appIdVersion: map['appIdVersion'] == null ? null : (map['appIdVersion'] as String).input(),
-      appPrefix: map['appPrefix'] == null ? null : (map['appPrefix'] as String).input(),
+      appIdVersion: map['appIdVersion'] == null ? null : (map['appIdVersion']! as String).input(),
+      appPrefix: map['appPrefix'] == null ? null : (map['appPrefix']! as String).input(),
       localRulestackName: (map['localRulestackName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

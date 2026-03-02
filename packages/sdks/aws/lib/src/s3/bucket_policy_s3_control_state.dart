@@ -31,9 +31,9 @@ class BucketPolicyS3ControlState {
 
   factory BucketPolicyS3ControlState.fromMap(Map<String, dynamic> map) {
     return BucketPolicyS3ControlState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

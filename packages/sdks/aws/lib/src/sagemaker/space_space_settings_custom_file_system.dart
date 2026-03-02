@@ -21,7 +21,7 @@ class SpaceSpaceSettingsCustomFileSystem {
 
   factory SpaceSpaceSettingsCustomFileSystem.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCustomFileSystem(
-      efsFileSystem: (SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap((map['efsFileSystem'] as Map).cast<String, dynamic>())).input(),
+      efsFileSystem: (SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap((map['efsFileSystem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

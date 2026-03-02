@@ -32,9 +32,9 @@ class WebAclRuleStatementRegexMatchStatement {
 
   factory WebAclRuleStatementRegexMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRegexMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementRegexMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementRegexMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       regexString: (map['regexString'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRegexMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRegexMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRegexMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

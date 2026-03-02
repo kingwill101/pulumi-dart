@@ -27,7 +27,7 @@ class GetJobDefinitionRetryStrategy {
   factory GetJobDefinitionRetryStrategy.fromMap(Map<String, dynamic> map) {
     return GetJobDefinitionRetryStrategy(
       attempts: (map['attempts'] as int).input(),
-      evaluateOnExits: (pulumi.Input.decodeList<GetJobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits'], (value) => GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluateOnExits: (pulumi.Input.decodeList<GetJobDefinitionRetryStrategyEvaluateOnExit>(map['evaluateOnExits']!, (value) => GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

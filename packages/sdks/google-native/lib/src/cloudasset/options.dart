@@ -46,12 +46,12 @@ class Options {
 
   factory Options.fromMap(Map<String, dynamic> map) {
     return Options(
-      analyzeServiceAccountImpersonation: map['analyzeServiceAccountImpersonation'] == null ? null : (map['analyzeServiceAccountImpersonation'] as bool).input(),
-      expandGroups: map['expandGroups'] == null ? null : (map['expandGroups'] as bool).input(),
-      expandResources: map['expandResources'] == null ? null : (map['expandResources'] as bool).input(),
-      expandRoles: map['expandRoles'] == null ? null : (map['expandRoles'] as bool).input(),
-      outputGroupEdges: map['outputGroupEdges'] == null ? null : (map['outputGroupEdges'] as bool).input(),
-      outputResourceEdges: map['outputResourceEdges'] == null ? null : (map['outputResourceEdges'] as bool).input(),
+      analyzeServiceAccountImpersonation: map['analyzeServiceAccountImpersonation'] == null ? null : (map['analyzeServiceAccountImpersonation']! as bool).input(),
+      expandGroups: map['expandGroups'] == null ? null : (map['expandGroups']! as bool).input(),
+      expandResources: map['expandResources'] == null ? null : (map['expandResources']! as bool).input(),
+      expandRoles: map['expandRoles'] == null ? null : (map['expandRoles']! as bool).input(),
+      outputGroupEdges: map['outputGroupEdges'] == null ? null : (map['outputGroupEdges']! as bool).input(),
+      outputResourceEdges: map['outputResourceEdges'] == null ? null : (map['outputResourceEdges']! as bool).input(),
     );
   }
 }

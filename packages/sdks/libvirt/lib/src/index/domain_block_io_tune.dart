@@ -26,8 +26,8 @@ class DomainBlockIoTune {
 
   factory DomainBlockIoTune.fromMap(Map<String, dynamic> map) {
     return DomainBlockIoTune(
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DomainBlockIoTuneDevice>(map['devices'], (value) => DomainBlockIoTuneDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as double).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DomainBlockIoTuneDevice>(map['devices']!, (value) => DomainBlockIoTuneDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as double).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class LinuxVirtualMachineScaleSetSpotRestore {
 
   factory LinuxVirtualMachineScaleSetSpotRestore.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineScaleSetSpotRestore(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ObjectLockRule {
 
   factory ObjectLockRule.fromMap(Map<String, dynamic> map) {
     return ObjectLockRule(
-      defaultRetention: map['defaultRetention'] == null ? null : (DefaultRetention.fromMap((map['defaultRetention'] as Map).cast<String, dynamic>())).input(),
+      defaultRetention: map['defaultRetention'] == null ? null : (DefaultRetention.fromMap((map['defaultRetention']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

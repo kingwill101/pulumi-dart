@@ -21,7 +21,7 @@ class RuleGroupRuleActionCount {
 
   factory RuleGroupRuleActionCount.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionCount(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (RuleGroupRuleActionCountCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((RuleGroupRuleActionCountCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

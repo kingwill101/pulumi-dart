@@ -54,13 +54,13 @@ class GoogleCloudRunV2Probe {
 
   factory GoogleCloudRunV2Probe.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2Probe(
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      grpc: map['grpc'] == null ? null : (GoogleCloudRunV2GRPCAction.fromMap((map['grpc'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (GoogleCloudRunV2HTTPGetAction.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (GoogleCloudRunV2TCPSocketAction.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      grpc: map['grpc'] == null ? null : (GoogleCloudRunV2GRPCAction.fromMap((map['grpc']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (GoogleCloudRunV2HTTPGetAction.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (GoogleCloudRunV2TCPSocketAction.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

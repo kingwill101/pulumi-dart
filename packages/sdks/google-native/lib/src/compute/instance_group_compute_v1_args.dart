@@ -48,12 +48,12 @@ class InstanceGroupComputeV1Args {
 
   factory InstanceGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return InstanceGroupComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<NamedPortComputeV1>(map['namedPorts'], (value) => NamedPortComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<NamedPortComputeV1>(map['namedPorts']!, (value) => NamedPortComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ClusterEncryptionInfo {
 
   factory ClusterEncryptionInfo.fromMap(Map<String, dynamic> map) {
     return ClusterEncryptionInfo(
-      encryptionAtRestKmsKeyArn: map['encryptionAtRestKmsKeyArn'] == null ? null : (map['encryptionAtRestKmsKeyArn'] as String).input(),
-      encryptionInTransit: map['encryptionInTransit'] == null ? null : (ClusterEncryptionInfoEncryptionInTransit.fromMap((map['encryptionInTransit'] as Map).cast<String, dynamic>())).input(),
+      encryptionAtRestKmsKeyArn: map['encryptionAtRestKmsKeyArn'] == null ? null : ((map['encryptionAtRestKmsKeyArn'] as String).input()).input(),
+      encryptionInTransit: map['encryptionInTransit'] == null ? null : ((ClusterEncryptionInfoEncryptionInTransit.fromMap((map['encryptionInTransit']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

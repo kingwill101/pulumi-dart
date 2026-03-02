@@ -59,14 +59,14 @@ class EnterpriseCrmEventbusProtoAttributes {
 
   factory EnterpriseCrmEventbusProtoAttributes.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoAttributes(
-      dataType: map['dataType'] == null ? null : (EnterpriseCrmEventbusProtoAttributesDataType.fromValue(map['dataType'] as String)).input(),
-      defaultValue: map['defaultValue'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
-      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
-      isSearchable: map['isSearchable'] == null ? null : (map['isSearchable'] as bool).input(),
-      logSettings: map['logSettings'] == null ? null : (EnterpriseCrmEventbusProtoLogSettings.fromMap((map['logSettings'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      searchable: map['searchable'] == null ? null : (EnterpriseCrmEventbusProtoAttributesSearchable.fromValue(map['searchable'] as String)).input(),
-      taskVisibility: map['taskVisibility'] == null ? null : ((map['taskVisibility'] as List).cast<String>()).input(),
+      dataType: map['dataType'] == null ? null : (EnterpriseCrmEventbusProtoAttributesDataType.fromValue(map['dataType']! as String)).input(),
+      defaultValue: map['defaultValue'] == null ? null : (EnterpriseCrmEventbusProtoValueType.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired']! as bool).input(),
+      isSearchable: map['isSearchable'] == null ? null : (map['isSearchable']! as bool).input(),
+      logSettings: map['logSettings'] == null ? null : (EnterpriseCrmEventbusProtoLogSettings.fromMap((map['logSettings']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      searchable: map['searchable'] == null ? null : (EnterpriseCrmEventbusProtoAttributesSearchable.fromValue(map['searchable']! as String)).input(),
+      taskVisibility: map['taskVisibility'] == null ? null : ((map['taskVisibility']! as List).cast<String>()).input(),
     );
   }
 }

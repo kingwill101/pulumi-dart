@@ -41,10 +41,10 @@ class GetScriptArgs {
 
   factory GetScriptArgs.fromMap(Map<String, dynamic> map) {
     return GetScriptArgs(
-      dagEdges: (pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges'], (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dagNodes: (pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes'], (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dagEdges: (pulumi.Input.decodeList<GetScriptDagEdge>(map['dagEdges']!, (value) => GetScriptDagEdge.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dagNodes: (pulumi.Input.decodeList<GetScriptDagNode>(map['dagNodes']!, (value) => GetScriptDagNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      language: map['language'] == null ? null : ((map['language'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

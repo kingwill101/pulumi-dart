@@ -80,18 +80,18 @@ class ClusterConfigResponse {
 
   factory ClusterConfigResponse.fromMap(Map<String, dynamic> map) {
     return ClusterConfigResponse(
-      coldStorageOptions: map['coldStorageOptions'] == null ? null : (ColdStorageOptionsResponse.fromMap((map['coldStorageOptions'] as Map).cast<String, dynamic>())).input(),
-      dedicatedMasterCount: map['dedicatedMasterCount'] == null ? null : (map['dedicatedMasterCount'] as int).input(),
-      dedicatedMasterEnabled: map['dedicatedMasterEnabled'] == null ? null : (map['dedicatedMasterEnabled'] as bool).input(),
-      dedicatedMasterType: map['dedicatedMasterType'] == null ? null : (OpenSearchPartitionInstanceTypeEnumValueResponse.fromMap((map['dedicatedMasterType'] as Map).cast<String, dynamic>())).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceType: map['instanceType'] == null ? null : (OpenSearchPartitionInstanceTypeEnumValueResponse.fromMap((map['instanceType'] as Map).cast<String, dynamic>())).input(),
-      multiAZWithStandbyEnabled: map['multiAZWithStandbyEnabled'] == null ? null : (map['multiAZWithStandbyEnabled'] as bool).input(),
-      warmCount: map['warmCount'] == null ? null : (map['warmCount'] as int).input(),
-      warmEnabled: map['warmEnabled'] == null ? null : (map['warmEnabled'] as bool).input(),
-      warmType: map['warmType'] == null ? null : (OpenSearchWarmPartitionInstanceTypeEnumValueResponse.fromMap((map['warmType'] as Map).cast<String, dynamic>())).input(),
-      zoneAwarenessConfig: map['zoneAwarenessConfig'] == null ? null : (ZoneAwarenessConfigResponse.fromMap((map['zoneAwarenessConfig'] as Map).cast<String, dynamic>())).input(),
-      zoneAwarenessEnabled: map['zoneAwarenessEnabled'] == null ? null : (map['zoneAwarenessEnabled'] as bool).input(),
+      coldStorageOptions: map['coldStorageOptions'] == null ? null : (ColdStorageOptionsResponse.fromMap((map['coldStorageOptions']! as Map).cast<String, dynamic>())).input(),
+      dedicatedMasterCount: map['dedicatedMasterCount'] == null ? null : (map['dedicatedMasterCount']! as int).input(),
+      dedicatedMasterEnabled: map['dedicatedMasterEnabled'] == null ? null : (map['dedicatedMasterEnabled']! as bool).input(),
+      dedicatedMasterType: map['dedicatedMasterType'] == null ? null : (OpenSearchPartitionInstanceTypeEnumValueResponse.fromMap((map['dedicatedMasterType']! as Map).cast<String, dynamic>())).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceType: map['instanceType'] == null ? null : (OpenSearchPartitionInstanceTypeEnumValueResponse.fromMap((map['instanceType']! as Map).cast<String, dynamic>())).input(),
+      multiAZWithStandbyEnabled: map['multiAZWithStandbyEnabled'] == null ? null : (map['multiAZWithStandbyEnabled']! as bool).input(),
+      warmCount: map['warmCount'] == null ? null : (map['warmCount']! as int).input(),
+      warmEnabled: map['warmEnabled'] == null ? null : (map['warmEnabled']! as bool).input(),
+      warmType: map['warmType'] == null ? null : (OpenSearchWarmPartitionInstanceTypeEnumValueResponse.fromMap((map['warmType']! as Map).cast<String, dynamic>())).input(),
+      zoneAwarenessConfig: map['zoneAwarenessConfig'] == null ? null : (ZoneAwarenessConfigResponse.fromMap((map['zoneAwarenessConfig']! as Map).cast<String, dynamic>())).input(),
+      zoneAwarenessEnabled: map['zoneAwarenessEnabled'] == null ? null : (map['zoneAwarenessEnabled']! as bool).input(),
     );
   }
 }

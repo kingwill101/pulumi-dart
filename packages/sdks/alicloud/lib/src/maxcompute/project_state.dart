@@ -96,21 +96,21 @@ class ProjectState {
 
   factory ProjectState.fromMap(Map<String, dynamic> map) {
     return ProjectState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota'] as String).input(),
-      ipWhiteList: map['ipWhiteList'] == null ? null : (ProjectIpWhiteList.fromMap((map['ipWhiteList'] as Map).cast<String, dynamic>())).input(),
-      isLogical: map['isLogical'] == null ? null : (map['isLogical'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      securityProperties: map['securityProperties'] == null ? null : (ProjectSecurityProperties.fromMap((map['securityProperties'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      threeTierModel: map['threeTierModel'] == null ? null : (map['threeTierModel'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      defaultQuota: map['defaultQuota'] == null ? null : (map['defaultQuota']! as String).input(),
+      ipWhiteList: map['ipWhiteList'] == null ? null : (ProjectIpWhiteList.fromMap((map['ipWhiteList']! as Map).cast<String, dynamic>())).input(),
+      isLogical: map['isLogical'] == null ? null : (map['isLogical']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      securityProperties: map['securityProperties'] == null ? null : (ProjectSecurityProperties.fromMap((map['securityProperties']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      threeTierModel: map['threeTierModel'] == null ? null : (map['threeTierModel']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

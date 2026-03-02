@@ -40,11 +40,11 @@ class TargetUtilizationScaleSettingsResponse {
 
   factory TargetUtilizationScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TargetUtilizationScaleSettingsResponse(
-      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances'] as int).input(),
-      minInstances: map['minInstances'] == null ? null : (map['minInstances'] as int).input(),
-      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval'] as String).input(),
+      maxInstances: map['maxInstances'] == null ? null : (map['maxInstances']! as int).input(),
+      minInstances: map['minInstances'] == null ? null : (map['minInstances']! as int).input(),
+      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval']! as String).input(),
       scaleType: (map['scaleType'] as String).input(),
-      targetUtilizationPercentage: map['targetUtilizationPercentage'] == null ? null : (map['targetUtilizationPercentage'] as int).input(),
+      targetUtilizationPercentage: map['targetUtilizationPercentage'] == null ? null : (map['targetUtilizationPercentage']! as int).input(),
     );
   }
 }

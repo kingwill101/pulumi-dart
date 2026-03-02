@@ -40,10 +40,10 @@ class RuleGroupResponse {
 
   factory RuleGroupResponse.fromMap(Map<String, dynamic> map) {
     return RuleGroupResponse(
-      referenceSets: map['referenceSets'] == null ? null : (ReferenceSetsResponse.fromMap((map['referenceSets'] as Map).cast<String, dynamic>())).input(),
-      ruleVariables: map['ruleVariables'] == null ? null : (RuleVariablesResponse.fromMap((map['ruleVariables'] as Map).cast<String, dynamic>())).input(),
-      rulesSource: map['rulesSource'] == null ? null : (RulesSourceResponse.fromMap((map['rulesSource'] as Map).cast<String, dynamic>())).input(),
-      statefulRuleOptions: map['statefulRuleOptions'] == null ? null : (StatefulRuleOptionsResponse.fromMap((map['statefulRuleOptions'] as Map).cast<String, dynamic>())).input(),
+      referenceSets: map['referenceSets'] == null ? null : (ReferenceSetsResponse.fromMap((map['referenceSets']! as Map).cast<String, dynamic>())).input(),
+      ruleVariables: map['ruleVariables'] == null ? null : (RuleVariablesResponse.fromMap((map['ruleVariables']! as Map).cast<String, dynamic>())).input(),
+      rulesSource: map['rulesSource'] == null ? null : (RulesSourceResponse.fromMap((map['rulesSource']! as Map).cast<String, dynamic>())).input(),
+      statefulRuleOptions: map['statefulRuleOptions'] == null ? null : (StatefulRuleOptionsResponse.fromMap((map['statefulRuleOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

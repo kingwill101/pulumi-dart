@@ -25,8 +25,8 @@ class ApplicationDataSource {
 
   factory ApplicationDataSource.fromMap(Map<String, dynamic> map) {
     return ApplicationDataSource(
-      dataSourceArn: map['dataSourceArn'] == null ? null : (map['dataSourceArn'] as String).input(),
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
+      dataSourceArn: map['dataSourceArn'] == null ? null : ((map['dataSourceArn'] as String).input()).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : ((map['dataSourceDescription'] as String).input()).input(),
     );
   }
 }

@@ -84,18 +84,18 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      accessControl: map['accessControl'] == null ? null : (FlowAccessControlConfiguration.fromMap((map['accessControl'] as Map).cast<String, dynamic>())).input(),
-      definition: map['definition'] == null ? null : (map['definition']).input(),
-      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      integrationAccount: map['integrationAccount'] == null ? null : (ResourceReference.fromMap((map['integrationAccount'] as Map).cast<String, dynamic>())).input(),
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<WorkflowParameter>(map['parameters'], (value) => WorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessControl: map['accessControl'] == null ? null : (FlowAccessControlConfiguration.fromMap((map['accessControl']! as Map).cast<String, dynamic>())).input(),
+      definition: map['definition'] == null ? null : (map['definition']!).input(),
+      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfiguration.fromMap((map['endpointsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      integrationAccount: map['integrationAccount'] == null ? null : (ResourceReference.fromMap((map['integrationAccount']! as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : (ResourceReference.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<WorkflowParameter>(map['parameters']!, (value) => WorkflowParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workflowName: map['workflowName'] == null ? null : (map['workflowName']! as String).input(),
     );
   }
 }

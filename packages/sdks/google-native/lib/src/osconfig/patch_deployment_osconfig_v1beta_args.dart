@@ -73,16 +73,16 @@ class PatchDeploymentOsconfigV1betaArgs {
 
   factory PatchDeploymentOsconfigV1betaArgs.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentOsconfigV1betaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       instanceFilter: (PatchInstanceFilterOsconfigV1beta.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       oneTimeSchedule: (OneTimeScheduleOsconfigV1beta.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>())).input(),
-      patchConfig: map['patchConfig'] == null ? null : (PatchConfigOsconfigV1beta.fromMap((map['patchConfig'] as Map).cast<String, dynamic>())).input(),
+      patchConfig: map['patchConfig'] == null ? null : (PatchConfigOsconfigV1beta.fromMap((map['patchConfig']! as Map).cast<String, dynamic>())).input(),
       patchDeploymentId: (map['patchDeploymentId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       recurringSchedule: (RecurringScheduleOsconfigV1beta.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>())).input(),
-      rollout: map['rollout'] == null ? null : (PatchRolloutOsconfigV1beta.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
+      rollout: map['rollout'] == null ? null : (PatchRolloutOsconfigV1beta.fromMap((map['rollout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

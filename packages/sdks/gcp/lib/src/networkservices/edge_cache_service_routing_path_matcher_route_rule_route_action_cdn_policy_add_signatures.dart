@@ -55,10 +55,10 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures(
       actions: (map['actions'] as String).input(),
-      copiedParameters: map['copiedParameters'] == null ? null : ((map['copiedParameters'] as List).cast<String>()).input(),
-      keyset: map['keyset'] == null ? null : (map['keyset'] as String).input(),
-      tokenQueryParameter: map['tokenQueryParameter'] == null ? null : (map['tokenQueryParameter'] as String).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
+      copiedParameters: map['copiedParameters'] == null ? null : ((map['copiedParameters']! as List).cast<String>()).input(),
+      keyset: map['keyset'] == null ? null : (map['keyset']! as String).input(),
+      tokenQueryParameter: map['tokenQueryParameter'] == null ? null : (map['tokenQueryParameter']! as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
     );
   }
 }

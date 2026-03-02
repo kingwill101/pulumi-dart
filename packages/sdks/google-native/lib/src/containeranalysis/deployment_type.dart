@@ -52,13 +52,13 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      deployTime: map['deployTime'] == null ? null : (map['deployTime'] as String).input(),
-      platform: map['platform'] == null ? null : (DeploymentPlatform.fromValue(map['platform'] as String)).input(),
-      resourceUri: map['resourceUri'] == null ? null : ((map['resourceUri'] as List).cast<String>()).input(),
-      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime'] as String).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      deployTime: map['deployTime'] == null ? null : (map['deployTime']! as String).input(),
+      platform: map['platform'] == null ? null : (DeploymentPlatform.fromValue(map['platform']! as String)).input(),
+      resourceUri: map['resourceUri'] == null ? null : ((map['resourceUri']! as List).cast<String>()).input(),
+      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime']! as String).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

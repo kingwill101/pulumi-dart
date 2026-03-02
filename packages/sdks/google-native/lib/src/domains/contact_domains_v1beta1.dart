@@ -38,7 +38,7 @@ class ContactDomainsV1beta1 {
   factory ContactDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return ContactDomainsV1beta1(
       email: (map['email'] as String).input(),
-      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber'] as String).input(),
+      faxNumber: map['faxNumber'] == null ? null : (map['faxNumber']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       postalAddress: (PostalAddressDomainsV1beta1.fromMap((map['postalAddress'] as Map).cast<String, dynamic>())).input(),
     );

@@ -32,8 +32,8 @@ class ConsoleCreateProperties {
   factory ConsoleCreateProperties.fromMap(Map<String, dynamic> map) {
     return ConsoleCreateProperties(
       osType: (map['osType'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

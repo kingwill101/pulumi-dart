@@ -21,7 +21,7 @@ class NGroupCGPropertyContainerProperties {
 
   factory NGroupCGPropertyContainerProperties.fromMap(Map<String, dynamic> map) {
     return NGroupCGPropertyContainerProperties(
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMount>(map['volumeMounts'], (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMount>(map['volumeMounts']!, (value) => VolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

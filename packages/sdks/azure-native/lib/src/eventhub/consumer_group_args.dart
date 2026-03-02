@@ -44,11 +44,11 @@ class ConsumerGroupArgs {
 
   factory ConsumerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupArgs(
-      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName']! as String).input(),
       eventHubName: (map['eventHubName'] as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata'] as String).input(),
+      userMetadata: map['userMetadata'] == null ? null : (map['userMetadata']! as String).input(),
     );
   }
 }

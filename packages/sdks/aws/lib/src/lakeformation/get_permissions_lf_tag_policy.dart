@@ -34,7 +34,7 @@ class GetPermissionsLfTagPolicy {
   factory GetPermissionsLfTagPolicy.fromMap(Map<String, dynamic> map) {
     return GetPermissionsLfTagPolicy(
       catalogId: (map['catalogId'] as String).input(),
-      expressions: (pulumi.Input.decodeList<GetPermissionsLfTagPolicyExpression>(map['expressions'], (value) => GetPermissionsLfTagPolicyExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expressions: (pulumi.Input.decodeList<GetPermissionsLfTagPolicyExpression>(map['expressions']!, (value) => GetPermissionsLfTagPolicyExpression.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceType: (map['resourceType'] as String).input(),
     );
   }

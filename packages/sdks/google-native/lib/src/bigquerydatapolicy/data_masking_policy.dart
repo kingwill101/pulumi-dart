@@ -27,8 +27,8 @@ class DataMaskingPolicy {
 
   factory DataMaskingPolicy.fromMap(Map<String, dynamic> map) {
     return DataMaskingPolicy(
-      predefinedExpression: map['predefinedExpression'] == null ? null : (DataMaskingPolicyPredefinedExpression.fromValue(map['predefinedExpression'] as String)).input(),
-      routine: map['routine'] == null ? null : (map['routine'] as String).input(),
+      predefinedExpression: map['predefinedExpression'] == null ? null : (DataMaskingPolicyPredefinedExpression.fromValue(map['predefinedExpression']! as String)).input(),
+      routine: map['routine'] == null ? null : (map['routine']! as String).input(),
     );
   }
 }

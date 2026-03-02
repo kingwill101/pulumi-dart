@@ -39,10 +39,10 @@ class GetManagementGroupArgs {
 
   factory GetManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       groupId: (map['groupId'] as String).input(),
-      recurse: map['recurse'] == null ? null : (map['recurse'] as bool).input(),
+      recurse: map['recurse'] == null ? null : (map['recurse']! as bool).input(),
     );
   }
 }

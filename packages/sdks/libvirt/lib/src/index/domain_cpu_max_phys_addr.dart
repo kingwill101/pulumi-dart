@@ -30,8 +30,8 @@ class DomainCpuMaxPhysAddr {
 
   factory DomainCpuMaxPhysAddr.fromMap(Map<String, dynamic> map) {
     return DomainCpuMaxPhysAddr(
-      bits: map['bits'] == null ? null : (map['bits'] as double).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as double).input(),
+      bits: map['bits'] == null ? null : (map['bits']! as double).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as double).input(),
       mode: (map['mode'] as String).input(),
     );
   }

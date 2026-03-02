@@ -30,7 +30,7 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
   factory ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs.fromMap(Map<String, dynamic> map) {
     return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs(
       billingAccountName: (map['billingAccountName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

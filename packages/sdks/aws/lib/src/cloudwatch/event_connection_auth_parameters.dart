@@ -39,10 +39,10 @@ class EventConnectionAuthParameters {
 
   factory EventConnectionAuthParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParameters(
-      apiKey: map['apiKey'] == null ? null : (EventConnectionAuthParametersApiKey.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
-      basic: map['basic'] == null ? null : (EventConnectionAuthParametersBasic.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
-      invocationHttpParameters: map['invocationHttpParameters'] == null ? null : (EventConnectionAuthParametersInvocationHttpParameters.fromMap((map['invocationHttpParameters'] as Map).cast<String, dynamic>())).input(),
-      oauth: map['oauth'] == null ? null : (EventConnectionAuthParametersOauth.fromMap((map['oauth'] as Map).cast<String, dynamic>())).input(),
+      apiKey: map['apiKey'] == null ? null : ((EventConnectionAuthParametersApiKey.fromMap((map['apiKey']! as Map).cast<String, dynamic>())).input()).input(),
+      basic: map['basic'] == null ? null : ((EventConnectionAuthParametersBasic.fromMap((map['basic']! as Map).cast<String, dynamic>())).input()).input(),
+      invocationHttpParameters: map['invocationHttpParameters'] == null ? null : ((EventConnectionAuthParametersInvocationHttpParameters.fromMap((map['invocationHttpParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      oauth: map['oauth'] == null ? null : ((EventConnectionAuthParametersOauth.fromMap((map['oauth']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class WebAclRuleActionCaptchaCustomRequestHandling {
 
   factory WebAclRuleActionCaptchaCustomRequestHandling.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionCaptchaCustomRequestHandling(
-      insertHeaders: (pulumi.Input.decodeList<WebAclRuleActionCaptchaCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      insertHeaders: (pulumi.Input.decodeList<WebAclRuleActionCaptchaCustomRequestHandlingInsertHeader>(map['insertHeaders']!, (value) => WebAclRuleActionCaptchaCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues {
 
   factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<String>()).input(),
-      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues'] as List).cast<String>()).input(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<String>()).input(),
+      deniedValues: map['deniedValues'] == null ? null : ((map['deniedValues']! as List).cast<String>()).input(),
     );
   }
 }

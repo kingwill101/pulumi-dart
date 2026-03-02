@@ -34,7 +34,7 @@ class ComponentSetup {
   factory ComponentSetup.fromMap(Map<String, dynamic> map) {
     return ComponentSetup(
       componentName: (map['componentName'] as String).input(),
-      licenseKey: map['licenseKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['licenseKey'] as Map).cast<String, dynamic>())).input(),
+      licenseKey: map['licenseKey'] == null ? null : (AzureKeyVaultSecretReference.fromMap((map['licenseKey']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

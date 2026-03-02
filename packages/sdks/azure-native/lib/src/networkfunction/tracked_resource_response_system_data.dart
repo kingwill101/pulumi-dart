@@ -41,11 +41,11 @@ class TrackedResourceResponseSystemData {
 
   factory TrackedResourceResponseSystemData.fromMap(Map<String, dynamic> map) {
     return TrackedResourceResponseSystemData(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      createdByType: map['createdByType'] == null ? null : (map['createdByType'] as String).input(),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy'] as String).input(),
-      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
+      createdByType: map['createdByType'] == null ? null : (map['createdByType']! as String).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy']! as String).input(),
+      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType']! as String).input(),
     );
   }
 }

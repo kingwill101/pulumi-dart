@@ -83,18 +83,18 @@ class ExportRunResponse {
 
   factory ExportRunResponse.fromMap(Map<String, dynamic> map) {
     return ExportRunResponse(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      error: map['error'] == null ? null : (ErrorDetailsResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      executionType: map['executionType'] == null ? null : (map['executionType'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      error: map['error'] == null ? null : (ErrorDetailsResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      executionType: map['executionType'] == null ? null : (map['executionType']! as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      processingEndTime: map['processingEndTime'] == null ? null : (map['processingEndTime'] as String).input(),
-      processingStartTime: map['processingStartTime'] == null ? null : (map['processingStartTime'] as String).input(),
-      runSettings: map['runSettings'] == null ? null : (CommonExportPropertiesResponse.fromMap((map['runSettings'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      submittedBy: map['submittedBy'] == null ? null : (map['submittedBy'] as String).input(),
-      submittedTime: map['submittedTime'] == null ? null : (map['submittedTime'] as String).input(),
+      processingEndTime: map['processingEndTime'] == null ? null : (map['processingEndTime']! as String).input(),
+      processingStartTime: map['processingStartTime'] == null ? null : (map['processingStartTime']! as String).input(),
+      runSettings: map['runSettings'] == null ? null : (CommonExportPropertiesResponse.fromMap((map['runSettings']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      submittedBy: map['submittedBy'] == null ? null : (map['submittedBy']! as String).input(),
+      submittedTime: map['submittedTime'] == null ? null : (map['submittedTime']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

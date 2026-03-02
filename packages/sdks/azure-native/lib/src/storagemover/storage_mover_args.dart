@@ -44,11 +44,11 @@ class StorageMoverArgs {
 
   factory StorageMoverArgs.fromMap(Map<String, dynamic> map) {
     return StorageMoverArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageMoverName: map['storageMoverName'] == null ? null : (map['storageMoverName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageMoverName: map['storageMoverName'] == null ? null : (map['storageMoverName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

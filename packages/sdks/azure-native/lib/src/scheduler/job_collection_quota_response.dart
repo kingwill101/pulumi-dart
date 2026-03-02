@@ -31,9 +31,9 @@ class JobCollectionQuotaResponse {
 
   factory JobCollectionQuotaResponse.fromMap(Map<String, dynamic> map) {
     return JobCollectionQuotaResponse(
-      maxJobCount: map['maxJobCount'] == null ? null : (map['maxJobCount'] as int).input(),
-      maxJobOccurrence: map['maxJobOccurrence'] == null ? null : (map['maxJobOccurrence'] as int).input(),
-      maxRecurrence: map['maxRecurrence'] == null ? null : (JobMaxRecurrenceResponse.fromMap((map['maxRecurrence'] as Map).cast<String, dynamic>())).input(),
+      maxJobCount: map['maxJobCount'] == null ? null : (map['maxJobCount']! as int).input(),
+      maxJobOccurrence: map['maxJobOccurrence'] == null ? null : (map['maxJobOccurrence']! as int).input(),
+      maxRecurrence: map['maxRecurrence'] == null ? null : (JobMaxRecurrenceResponse.fromMap((map['maxRecurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

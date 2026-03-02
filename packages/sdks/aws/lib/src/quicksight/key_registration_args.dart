@@ -35,9 +35,9 @@ class KeyRegistrationArgs {
 
   factory KeyRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return KeyRegistrationArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      keyRegistrations: (pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(map['keyRegistrations'], (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      keyRegistrations: (pulumi.Input.decodeList<KeyRegistrationKeyRegistration>(map['keyRegistrations']!, (value) => KeyRegistrationKeyRegistration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

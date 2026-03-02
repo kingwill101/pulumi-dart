@@ -78,16 +78,16 @@ class DataSourceArgs {
 
   factory DataSourceArgs.fromMap(Map<String, dynamic> map) {
     return DataSourceArgs(
-      configuration: map['configuration'] == null ? null : (DataSourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      customDocumentEnrichmentConfiguration: map['customDocumentEnrichmentConfiguration'] == null ? null : (DataSourceCustomDocumentEnrichmentConfiguration.fromMap((map['customDocumentEnrichmentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((DataSourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      customDocumentEnrichmentConfiguration: map['customDocumentEnrichmentConfiguration'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfiguration.fromMap((map['customDocumentEnrichmentConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       indexId: (map['indexId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((map['schedule'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

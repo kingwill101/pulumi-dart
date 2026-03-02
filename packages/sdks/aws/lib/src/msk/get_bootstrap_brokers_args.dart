@@ -30,7 +30,7 @@ class GetBootstrapBrokersArgs {
   factory GetBootstrapBrokersArgs.fromMap(Map<String, dynamic> map) {
     return GetBootstrapBrokersArgs(
       clusterArn: (map['clusterArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

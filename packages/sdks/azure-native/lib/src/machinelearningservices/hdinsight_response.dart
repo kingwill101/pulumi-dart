@@ -74,17 +74,17 @@ class HDInsightResponse {
 
   factory HDInsightResponse.fromMap(Map<String, dynamic> map) {
     return HDInsightResponse(
-      computeLocation: map['computeLocation'] == null ? null : (map['computeLocation'] as String).input(),
+      computeLocation: map['computeLocation'] == null ? null : (map['computeLocation']! as String).input(),
       computeType: (map['computeType'] as String).input(),
       createdOn: (map['createdOn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
       isAttachedCompute: (map['isAttachedCompute'] as bool).input(),
       modifiedOn: (map['modifiedOn'] as String).input(),
-      properties: map['properties'] == null ? null : (HDInsightPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (HDInsightPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       provisioningErrors: (pulumi.Input.decodeList<ErrorResponseResponse>(map['provisioningErrors'], (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

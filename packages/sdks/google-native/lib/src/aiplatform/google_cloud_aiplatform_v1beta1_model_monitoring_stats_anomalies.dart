@@ -38,10 +38,10 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies(
-      anomalyCount: map['anomalyCount'] == null ? null : (map['anomalyCount'] as int).input(),
-      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId'] as String).input(),
-      featureStats: map['featureStats'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>(map['featureStats'], (value) => GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objective: map['objective'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective.fromValue(map['objective'] as String)).input(),
+      anomalyCount: map['anomalyCount'] == null ? null : (map['anomalyCount']! as int).input(),
+      deployedModelId: map['deployedModelId'] == null ? null : (map['deployedModelId']! as String).input(),
+      featureStats: map['featureStats'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies>(map['featureStats']!, (value) => GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesFeatureHistoricStatsAnomalies.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objective: map['objective'] == null ? null : (GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomaliesObjective.fromValue(map['objective']! as String)).input(),
     );
   }
 }

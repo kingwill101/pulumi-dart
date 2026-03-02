@@ -31,9 +31,9 @@ class IPv4FirewallRuleResponse {
 
   factory IPv4FirewallRuleResponse.fromMap(Map<String, dynamic> map) {
     return IPv4FirewallRuleResponse(
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
-      rangeEnd: map['rangeEnd'] == null ? null : (map['rangeEnd'] as String).input(),
-      rangeStart: map['rangeStart'] == null ? null : (map['rangeStart'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
+      rangeEnd: map['rangeEnd'] == null ? null : (map['rangeEnd']! as String).input(),
+      rangeStart: map['rangeStart'] == null ? null : (map['rangeStart']! as String).input(),
     );
   }
 }

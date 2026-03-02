@@ -51,13 +51,13 @@ class IdentityProviderAadState {
 
   factory IdentityProviderAadState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadState(
-      allowedTenants: map['allowedTenants'] == null ? null : ((map['allowedTenants'] as List).cast<String>()).input(),
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant'] as String).input(),
+      allowedTenants: map['allowedTenants'] == null ? null : ((map['allowedTenants']! as List).cast<String>()).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant']! as String).input(),
     );
   }
 }

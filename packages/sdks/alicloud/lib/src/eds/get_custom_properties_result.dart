@@ -36,7 +36,7 @@ class GetCustomPropertiesResult {
     return GetCustomPropertiesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       properties: pulumi.Input.decodeList<GetCustomPropertiesProperty>(map['properties'], (value) => GetCustomPropertiesProperty.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

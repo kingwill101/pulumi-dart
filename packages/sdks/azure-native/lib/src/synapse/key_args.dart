@@ -44,9 +44,9 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      isActiveCMK: map['isActiveCMK'] == null ? null : (map['isActiveCMK'] as bool).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl'] as String).input(),
+      isActiveCMK: map['isActiveCMK'] == null ? null : (map['isActiveCMK']! as bool).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : (map['keyVaultUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

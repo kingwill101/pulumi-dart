@@ -92,20 +92,20 @@ class AssignmentArgs {
 
   factory AssignmentArgs.fromMap(Map<String, dynamic> map) {
     return AssignmentArgs(
-      additionalData: map['additionalData'] == null ? null : (AssignmentPropertiesAdditionalData.fromMap((map['additionalData'] as Map).cast<String, dynamic>())).input(),
-      assignedComponent: map['assignedComponent'] == null ? null : (AssignedComponentItem.fromMap((map['assignedComponent'] as Map).cast<String, dynamic>())).input(),
-      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard'] as Map).cast<String, dynamic>())).input(),
-      assignmentId: map['assignmentId'] == null ? null : (map['assignmentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effect: map['effect'] == null ? null : (map['effect'] as String).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      additionalData: map['additionalData'] == null ? null : (AssignmentPropertiesAdditionalData.fromMap((map['additionalData']! as Map).cast<String, dynamic>())).input(),
+      assignedComponent: map['assignedComponent'] == null ? null : (AssignedComponentItem.fromMap((map['assignedComponent']! as Map).cast<String, dynamic>())).input(),
+      assignedStandard: map['assignedStandard'] == null ? null : (AssignedStandardItem.fromMap((map['assignedStandard']! as Map).cast<String, dynamic>())).input(),
+      assignmentId: map['assignmentId'] == null ? null : (map['assignmentId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effect: map['effect'] == null ? null : (map['effect']! as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

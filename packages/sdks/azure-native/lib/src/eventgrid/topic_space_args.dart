@@ -48,11 +48,11 @@ class TopicSpaceArgs {
 
   factory TopicSpaceArgs.fromMap(Map<String, dynamic> map) {
     return TopicSpaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName'] as String).input(),
-      topicTemplates: map['topicTemplates'] == null ? null : ((map['topicTemplates'] as List).cast<String>()).input(),
+      topicSpaceName: map['topicSpaceName'] == null ? null : (map['topicSpaceName']! as String).input(),
+      topicTemplates: map['topicTemplates'] == null ? null : ((map['topicTemplates']! as List).cast<String>()).input(),
     );
   }
 }

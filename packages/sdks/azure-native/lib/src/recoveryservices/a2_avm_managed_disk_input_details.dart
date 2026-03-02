@@ -52,13 +52,13 @@ class A2AVmManagedDiskInputDetails {
 
   factory A2AVmManagedDiskInputDetails.fromMap(Map<String, dynamic> map) {
     return A2AVmManagedDiskInputDetails(
-      diskEncryptionInfo: map['diskEncryptionInfo'] == null ? null : (DiskEncryptionInfo.fromMap((map['diskEncryptionInfo'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionInfo: map['diskEncryptionInfo'] == null ? null : (DiskEncryptionInfo.fromMap((map['diskEncryptionInfo']! as Map).cast<String, dynamic>())).input(),
       diskId: (map['diskId'] as String).input(),
       primaryStagingAzureStorageAccountId: (map['primaryStagingAzureStorageAccountId'] as String).input(),
-      recoveryDiskEncryptionSetId: map['recoveryDiskEncryptionSetId'] == null ? null : (map['recoveryDiskEncryptionSetId'] as String).input(),
-      recoveryReplicaDiskAccountType: map['recoveryReplicaDiskAccountType'] == null ? null : (map['recoveryReplicaDiskAccountType'] as String).input(),
+      recoveryDiskEncryptionSetId: map['recoveryDiskEncryptionSetId'] == null ? null : (map['recoveryDiskEncryptionSetId']! as String).input(),
+      recoveryReplicaDiskAccountType: map['recoveryReplicaDiskAccountType'] == null ? null : (map['recoveryReplicaDiskAccountType']! as String).input(),
       recoveryResourceGroupId: (map['recoveryResourceGroupId'] as String).input(),
-      recoveryTargetDiskAccountType: map['recoveryTargetDiskAccountType'] == null ? null : (map['recoveryTargetDiskAccountType'] as String).input(),
+      recoveryTargetDiskAccountType: map['recoveryTargetDiskAccountType'] == null ? null : (map['recoveryTargetDiskAccountType']! as String).input(),
     );
   }
 }

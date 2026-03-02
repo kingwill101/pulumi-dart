@@ -41,10 +41,10 @@ class IdentityProperties {
 
   factory IdentityProperties.fromMap(Map<String, dynamic> map) {
     return IdentityProperties(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityProperties>(map['userAssignedIdentities'], (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityProperties>(map['userAssignedIdentities']!, (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

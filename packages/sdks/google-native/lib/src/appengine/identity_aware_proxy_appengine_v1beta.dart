@@ -31,9 +31,9 @@ class IdentityAwareProxyAppengineV1beta {
 
   factory IdentityAwareProxyAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityAwareProxyAppengineV1beta(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
-      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId']! as String).input(),
+      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret']! as String).input(),
     );
   }
 }

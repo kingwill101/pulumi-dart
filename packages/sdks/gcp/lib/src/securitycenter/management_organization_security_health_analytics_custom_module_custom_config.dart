@@ -58,8 +58,8 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig {
 
   factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap(Map<String, dynamic> map) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig(
-      customOutput: map['customOutput'] == null ? null : (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput.fromMap((map['customOutput'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customOutput: map['customOutput'] == null ? null : (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput.fromMap((map['customOutput']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       predicate: (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigPredicate.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
       recommendation: (map['recommendation'] as String).input(),
       resourceSelector: (ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>())).input(),

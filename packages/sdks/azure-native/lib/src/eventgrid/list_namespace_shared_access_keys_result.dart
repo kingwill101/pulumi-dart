@@ -25,8 +25,8 @@ class ListNamespaceSharedAccessKeysResult {
 
   factory ListNamespaceSharedAccessKeysResult.fromMap(Map<String, dynamic> map) {
     return ListNamespaceSharedAccessKeysResult(
-      key1: map['key1'] == null ? null : map['key1'] as String,
-      key2: map['key2'] == null ? null : map['key2'] as String,
+      key1: map['key1'] == null ? null : map['key1']! as String,
+      key2: map['key2'] == null ? null : map['key2']! as String,
     );
   }
 }

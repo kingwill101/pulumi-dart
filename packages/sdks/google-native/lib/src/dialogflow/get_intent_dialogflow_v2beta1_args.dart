@@ -40,10 +40,10 @@ class GetIntentDialogflowV2beta1Args {
   factory GetIntentDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetIntentDialogflowV2beta1Args(
       intentId: (map['intentId'] as String).input(),
-      intentView: map['intentView'] == null ? null : (map['intentView'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      intentView: map['intentView'] == null ? null : (map['intentView']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class AccessRuleState {
 
   factory AccessRuleState.fromMap(Map<String, dynamic> map) {
     return AccessRuleState(
-      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId'] as String).input(),
-      accessRuleId: map['accessRuleId'] == null ? null : (map['accessRuleId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkSegment: map['networkSegment'] == null ? null : (map['networkSegment'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType'] as String).input(),
+      accessGroupId: map['accessGroupId'] == null ? null : (map['accessGroupId']! as String).input(),
+      accessRuleId: map['accessRuleId'] == null ? null : (map['accessRuleId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkSegment: map['networkSegment'] == null ? null : (map['networkSegment']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      rwAccessType: map['rwAccessType'] == null ? null : (map['rwAccessType']! as String).input(),
     );
   }
 }

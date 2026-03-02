@@ -40,7 +40,7 @@ class ListIssueResourcesArgs {
   factory ListIssueResourcesArgs.fromMap(Map<String, dynamic> map) {
     return ListIssueResourcesArgs(
       azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       issueName: (map['issueName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

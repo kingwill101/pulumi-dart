@@ -48,12 +48,12 @@ class WaitingRoomRuleState {
 
   factory WaitingRoomRuleState.fromMap(Map<String, dynamic> map) {
     return WaitingRoomRuleState(
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      waitingRoomId: map['waitingRoomId'] == null ? null : (map['waitingRoomId'] as String).input(),
-      waitingRoomRuleId: map['waitingRoomRuleId'] == null ? null : (map['waitingRoomRuleId'] as int).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      waitingRoomId: map['waitingRoomId'] == null ? null : (map['waitingRoomId']! as String).input(),
+      waitingRoomRuleId: map['waitingRoomRuleId'] == null ? null : (map['waitingRoomRuleId']! as int).input(),
     );
   }
 }

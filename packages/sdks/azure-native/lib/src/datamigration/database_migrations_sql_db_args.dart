@@ -39,10 +39,10 @@ class DatabaseMigrationsSqlDbArgs {
 
   factory DatabaseMigrationsSqlDbArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlDbArgs(
-      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlDb.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlDb.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlDbInstanceName: (map['sqlDbInstanceName'] as String).input(),
-      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName'] as String).input(),
+      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName']! as String).input(),
     );
   }
 }

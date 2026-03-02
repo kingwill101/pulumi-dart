@@ -30,7 +30,7 @@ class EksClusterArgs {
 
   factory EksClusterArgs.fromMap(Map<String, dynamic> map) {
     return EksClusterArgs(
-      properties: map['properties'] == null ? null : (EksClusterProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (EksClusterProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

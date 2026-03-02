@@ -27,7 +27,7 @@ class ImageShieldedInstanceInitialStateDbx {
   factory ImageShieldedInstanceInitialStateDbx.fromMap(Map<String, dynamic> map) {
     return ImageShieldedInstanceInitialStateDbx(
       content: (map['content'] as String).input(),
-      fileType: map['fileType'] == null ? null : (map['fileType'] as String).input(),
+      fileType: map['fileType'] == null ? null : (map['fileType']! as String).input(),
     );
   }
 }

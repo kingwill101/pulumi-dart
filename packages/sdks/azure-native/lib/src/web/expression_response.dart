@@ -36,10 +36,10 @@ class ExpressionResponse {
 
   factory ExpressionResponse.fromMap(Map<String, dynamic> map) {
     return ExpressionResponse(
-      error: map['error'] == null ? null : (AzureResourceErrorInfoResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      subexpressions: map['subexpressions'] == null ? null : (pulumi.Input.decodeList<ExpressionResponse>(map['subexpressions'], (value) => ExpressionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      error: map['error'] == null ? null : (AzureResourceErrorInfoResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      subexpressions: map['subexpressions'] == null ? null : (pulumi.Input.decodeList<ExpressionResponse>(map['subexpressions']!, (value) => ExpressionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

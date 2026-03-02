@@ -53,13 +53,13 @@ class InstanceAttachmentState {
 
   factory InstanceAttachmentState.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentState(
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as int).input(),
-      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId'] as String).input(),
-      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId'] as int).input(),
-      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId'] as String).input(),
-      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as int).input(),
+      childInstanceId: map['childInstanceId'] == null ? null : (map['childInstanceId']! as String).input(),
+      childInstanceOwnerId: map['childInstanceOwnerId'] == null ? null : (map['childInstanceOwnerId']! as int).input(),
+      childInstanceRegionId: map['childInstanceRegionId'] == null ? null : (map['childInstanceRegionId']! as String).input(),
+      childInstanceType: map['childInstanceType'] == null ? null : (map['childInstanceType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

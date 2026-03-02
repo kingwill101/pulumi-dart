@@ -25,8 +25,8 @@ class InfrastructureConfigurationInstanceMetadataOptions {
 
   factory InfrastructureConfigurationInstanceMetadataOptions.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationInstanceMetadataOptions(
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
-      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : ((map['httpPutResponseHopLimit'] as int).input()).input(),
+      httpTokens: map['httpTokens'] == null ? null : ((map['httpTokens'] as String).input()).input(),
     );
   }
 }

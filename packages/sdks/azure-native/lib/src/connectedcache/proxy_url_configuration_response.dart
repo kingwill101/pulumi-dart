@@ -21,7 +21,7 @@ class ProxyUrlConfigurationResponse {
 
   factory ProxyUrlConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ProxyUrlConfigurationResponse(
-      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl'] as String).input(),
+      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl']! as String).input(),
     );
   }
 }

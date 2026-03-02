@@ -36,7 +36,7 @@ class GetRestoreArgs {
   factory GetRestoreArgs.fromMap(Map<String, dynamic> map) {
     return GetRestoreArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       restoreId: (map['restoreId'] as String).input(),
       restorePlanId: (map['restorePlanId'] as String).input(),
     );

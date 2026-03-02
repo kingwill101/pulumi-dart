@@ -43,11 +43,11 @@ class CooDomainPreciseAccessRuleState {
 
   factory CooDomainPreciseAccessRuleState.fromMap(Map<String, dynamic> map) {
     return CooDomainPreciseAccessRuleState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CooDomainPreciseAccessRuleCondition>(map['conditions'], (value) => CooDomainPreciseAccessRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CooDomainPreciseAccessRuleCondition>(map['conditions']!, (value) => CooDomainPreciseAccessRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

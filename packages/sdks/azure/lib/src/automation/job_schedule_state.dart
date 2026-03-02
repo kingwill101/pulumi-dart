@@ -58,14 +58,14 @@ class JobScheduleState {
 
   factory JobScheduleState.fromMap(Map<String, dynamic> map) {
     return JobScheduleState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
-      runOn: map['runOn'] == null ? null : (map['runOn'] as String).input(),
-      runbookName: map['runbookName'] == null ? null : (map['runbookName'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      jobScheduleId: map['jobScheduleId'] == null ? null : (map['jobScheduleId']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
+      runOn: map['runOn'] == null ? null : (map['runOn']! as String).input(),
+      runbookName: map['runbookName'] == null ? null : (map['runbookName']! as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
     );
   }
 }

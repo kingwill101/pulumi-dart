@@ -20,7 +20,7 @@ class RegionInstanceGroupManagerParams {
 
   factory RegionInstanceGroupManagerParams.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

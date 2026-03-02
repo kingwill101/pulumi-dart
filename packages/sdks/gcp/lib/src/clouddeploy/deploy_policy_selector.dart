@@ -29,8 +29,8 @@ class DeployPolicySelector {
 
   factory DeployPolicySelector.fromMap(Map<String, dynamic> map) {
     return DeployPolicySelector(
-      deliveryPipeline: map['deliveryPipeline'] == null ? null : (DeployPolicySelectorDeliveryPipeline.fromMap((map['deliveryPipeline'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (DeployPolicySelectorTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      deliveryPipeline: map['deliveryPipeline'] == null ? null : (DeployPolicySelectorDeliveryPipeline.fromMap((map['deliveryPipeline']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (DeployPolicySelectorTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

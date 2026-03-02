@@ -91,20 +91,20 @@ class MSIXPackageArgs {
 
   factory MSIXPackageArgs.fromMap(Map<String, dynamic> map) {
     return MSIXPackageArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       hostPoolName: (map['hostPoolName'] as String).input(),
-      imagePath: map['imagePath'] == null ? null : (map['imagePath'] as String).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
-      isRegularRegistration: map['isRegularRegistration'] == null ? null : (map['isRegularRegistration'] as bool).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
-      msixPackageFullName: map['msixPackageFullName'] == null ? null : (map['msixPackageFullName'] as String).input(),
-      packageApplications: map['packageApplications'] == null ? null : (pulumi.Input.decodeList<MsixPackageApplications>(map['packageApplications'], (value) => MsixPackageApplications.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packageDependencies: map['packageDependencies'] == null ? null : (pulumi.Input.decodeList<MsixPackageDependencies>(map['packageDependencies'], (value) => MsixPackageDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packageFamilyName: map['packageFamilyName'] == null ? null : (map['packageFamilyName'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      packageRelativePath: map['packageRelativePath'] == null ? null : (map['packageRelativePath'] as String).input(),
+      imagePath: map['imagePath'] == null ? null : (map['imagePath']! as String).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
+      isRegularRegistration: map['isRegularRegistration'] == null ? null : (map['isRegularRegistration']! as bool).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
+      msixPackageFullName: map['msixPackageFullName'] == null ? null : (map['msixPackageFullName']! as String).input(),
+      packageApplications: map['packageApplications'] == null ? null : (pulumi.Input.decodeList<MsixPackageApplications>(map['packageApplications']!, (value) => MsixPackageApplications.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageDependencies: map['packageDependencies'] == null ? null : (pulumi.Input.decodeList<MsixPackageDependencies>(map['packageDependencies']!, (value) => MsixPackageDependencies.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageFamilyName: map['packageFamilyName'] == null ? null : (map['packageFamilyName']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      packageRelativePath: map['packageRelativePath'] == null ? null : (map['packageRelativePath']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

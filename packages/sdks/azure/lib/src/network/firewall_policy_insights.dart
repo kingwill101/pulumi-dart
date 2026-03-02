@@ -38,8 +38,8 @@ class FirewallPolicyInsights {
     return FirewallPolicyInsights(
       defaultLogAnalyticsWorkspaceId: (map['defaultLogAnalyticsWorkspaceId'] as String).input(),
       enabled: (map['enabled'] as bool).input(),
-      logAnalyticsWorkspaces: map['logAnalyticsWorkspaces'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyInsightsLogAnalyticsWorkspace>(map['logAnalyticsWorkspaces'], (value) => FirewallPolicyInsightsLogAnalyticsWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      logAnalyticsWorkspaces: map['logAnalyticsWorkspaces'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyInsightsLogAnalyticsWorkspace>(map['logAnalyticsWorkspaces']!, (value) => FirewallPolicyInsightsLogAnalyticsWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
     );
   }
 }

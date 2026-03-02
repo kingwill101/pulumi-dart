@@ -71,16 +71,16 @@ class SourceArgs {
 
   factory SourceArgs.fromMap(Map<String, dynamic> map) {
     return SourceArgs(
-      aws: map['aws'] == null ? null : (AwsSourceDetails.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
-      azure: map['azure'] == null ? null : (AzureSourceDetails.fromMap((map['azure'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      aws: map['aws'] == null ? null : (AwsSourceDetails.fromMap((map['aws']! as Map).cast<String, dynamic>())).input(),
+      azure: map['azure'] == null ? null : (AzureSourceDetails.fromMap((map['azure']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      vmware: map['vmware'] == null ? null : (VmwareSourceDetails.fromMap((map['vmware'] as Map).cast<String, dynamic>())).input(),
+      vmware: map['vmware'] == null ? null : (VmwareSourceDetails.fromMap((map['vmware']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir {
 
   factory JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesVolumeEmptyDir(
-      medium: map['medium'] == null ? null : (map['medium'] as String).input(),
+      medium: map['medium'] == null ? null : ((map['medium'] as String).input()).input(),
       sizeLimit: (map['sizeLimit'] as String).input(),
     );
   }

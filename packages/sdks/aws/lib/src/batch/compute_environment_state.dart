@@ -94,21 +94,21 @@ class ComputeEnvironmentState {
 
   factory ComputeEnvironmentState.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      computeResources: map['computeResources'] == null ? null : (ComputeEnvironmentComputeResources.fromMap((map['computeResources'] as Map).cast<String, dynamic>())).input(),
-      ecsClusterArn: map['ecsClusterArn'] == null ? null : (map['ecsClusterArn'] as String).input(),
-      eksConfiguration: map['eksConfiguration'] == null ? null : (ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updatePolicy: map['updatePolicy'] == null ? null : (ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      computeResources: map['computeResources'] == null ? null : ((ComputeEnvironmentComputeResources.fromMap((map['computeResources']! as Map).cast<String, dynamic>())).input()).input(),
+      ecsClusterArn: map['ecsClusterArn'] == null ? null : ((map['ecsClusterArn'] as String).input()).input(),
+      eksConfiguration: map['eksConfiguration'] == null ? null : ((ComputeEnvironmentEksConfiguration.fromMap((map['eksConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceRole: map['serviceRole'] == null ? null : ((map['serviceRole'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      updatePolicy: map['updatePolicy'] == null ? null : ((ComputeEnvironmentUpdatePolicy.fromMap((map['updatePolicy']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

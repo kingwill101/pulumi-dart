@@ -31,9 +31,9 @@ class KubernetesClusterDefaultNodePoolNodeNetworkProfile {
 
   factory KubernetesClusterDefaultNodePoolNodeNetworkProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePoolNodeNetworkProfile(
-      allowedHostPorts: map['allowedHostPorts'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort>(map['allowedHostPorts'], (value) => KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds'] as List).cast<String>()).input(),
-      nodePublicIpTags: map['nodePublicIpTags'] == null ? null : ((map['nodePublicIpTags'] as Map).cast<String, String>()).input(),
+      allowedHostPorts: map['allowedHostPorts'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort>(map['allowedHostPorts']!, (value) => KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationSecurityGroupIds: map['applicationSecurityGroupIds'] == null ? null : ((map['applicationSecurityGroupIds']! as List).cast<String>()).input(),
+      nodePublicIpTags: map['nodePublicIpTags'] == null ? null : ((map['nodePublicIpTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

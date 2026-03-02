@@ -27,8 +27,8 @@ class CustomDomain {
 
   factory CustomDomain.fromMap(Map<String, dynamic> map) {
     return CustomDomain(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      state: map['state'] == null ? null : (CustomDomainState.fromValue(map['state'] as String)).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      state: map['state'] == null ? null : (CustomDomainState.fromValue(map['state']! as String)).input(),
     );
   }
 }

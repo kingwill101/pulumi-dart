@@ -27,8 +27,8 @@ class OriginGroups {
 
   factory OriginGroups.fromMap(Map<String, dynamic> map) {
     return OriginGroups(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<OriginGroup>(map['items'], (value) => OriginGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<OriginGroup>(map['items']!, (value) => OriginGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
     );
   }
 }

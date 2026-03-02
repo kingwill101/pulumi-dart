@@ -47,12 +47,12 @@ class ManagementGroup {
 
   factory ManagementGroup.fromMap(Map<String, dynamic> map) {
     return ManagementGroup(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ManagementAction>(map['actions'], (value) => ManagementAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultTimeoutInSeconds: map['defaultTimeoutInSeconds'] == null ? null : (map['defaultTimeoutInSeconds'] as int).input(),
-      defaultTopic: map['defaultTopic'] == null ? null : (map['defaultTopic'] as String).input(),
-      managementGroupConfiguration: map['managementGroupConfiguration'] == null ? null : (map['managementGroupConfiguration'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ManagementAction>(map['actions']!, (value) => ManagementAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultTimeoutInSeconds: map['defaultTimeoutInSeconds'] == null ? null : (map['defaultTimeoutInSeconds']! as int).input(),
+      defaultTopic: map['defaultTopic'] == null ? null : (map['defaultTopic']! as String).input(),
+      managementGroupConfiguration: map['managementGroupConfiguration'] == null ? null : (map['managementGroupConfiguration']! as String).input(),
       name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

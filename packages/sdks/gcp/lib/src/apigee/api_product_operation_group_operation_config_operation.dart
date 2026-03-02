@@ -25,8 +25,8 @@ class ApiProductOperationGroupOperationConfigOperation {
 
   factory ApiProductOperationGroupOperationConfigOperation.fromMap(Map<String, dynamic> map) {
     return ApiProductOperationGroupOperationConfigOperation(
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

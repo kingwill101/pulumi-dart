@@ -46,7 +46,7 @@ class DatabaseAccountMongoDBDatabaseArgs {
   factory DatabaseAccountMongoDBDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAccountMongoDBDatabaseArgs(
       accountName: (map['accountName'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
       options: ((map['options'] as Map).cast<String, String>()).input(),
       resource: (MongoDBDatabaseResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

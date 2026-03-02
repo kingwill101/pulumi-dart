@@ -86,18 +86,18 @@ class FlexibleAppVersionAutomaticScaling {
 
   factory FlexibleAppVersionAutomaticScaling.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionAutomaticScaling(
-      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod'] as String).input(),
+      coolDownPeriod: map['coolDownPeriod'] == null ? null : (map['coolDownPeriod']! as String).input(),
       cpuUtilization: (FlexibleAppVersionAutomaticScalingCpuUtilization.fromMap((map['cpuUtilization'] as Map).cast<String, dynamic>())).input(),
-      diskUtilization: map['diskUtilization'] == null ? null : (FlexibleAppVersionAutomaticScalingDiskUtilization.fromMap((map['diskUtilization'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests'] as int).input(),
-      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances'] as int).input(),
-      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency'] as String).input(),
-      maxTotalInstances: map['maxTotalInstances'] == null ? null : (map['maxTotalInstances'] as int).input(),
-      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances'] as int).input(),
-      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency'] as String).input(),
-      minTotalInstances: map['minTotalInstances'] == null ? null : (map['minTotalInstances'] as int).input(),
-      networkUtilization: map['networkUtilization'] == null ? null : (FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap((map['networkUtilization'] as Map).cast<String, dynamic>())).input(),
-      requestUtilization: map['requestUtilization'] == null ? null : (FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap((map['requestUtilization'] as Map).cast<String, dynamic>())).input(),
+      diskUtilization: map['diskUtilization'] == null ? null : (FlexibleAppVersionAutomaticScalingDiskUtilization.fromMap((map['diskUtilization']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentRequests: map['maxConcurrentRequests'] == null ? null : (map['maxConcurrentRequests']! as int).input(),
+      maxIdleInstances: map['maxIdleInstances'] == null ? null : (map['maxIdleInstances']! as int).input(),
+      maxPendingLatency: map['maxPendingLatency'] == null ? null : (map['maxPendingLatency']! as String).input(),
+      maxTotalInstances: map['maxTotalInstances'] == null ? null : (map['maxTotalInstances']! as int).input(),
+      minIdleInstances: map['minIdleInstances'] == null ? null : (map['minIdleInstances']! as int).input(),
+      minPendingLatency: map['minPendingLatency'] == null ? null : (map['minPendingLatency']! as String).input(),
+      minTotalInstances: map['minTotalInstances'] == null ? null : (map['minTotalInstances']! as int).input(),
+      networkUtilization: map['networkUtilization'] == null ? null : (FlexibleAppVersionAutomaticScalingNetworkUtilization.fromMap((map['networkUtilization']! as Map).cast<String, dynamic>())).input(),
+      requestUtilization: map['requestUtilization'] == null ? null : (FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap((map['requestUtilization']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

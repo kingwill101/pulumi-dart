@@ -26,7 +26,7 @@ class ExecutionProperties {
 
   factory ExecutionProperties.fromMap(Map<String, dynamic> map) {
     return ExecutionProperties(
-      specification: map['specification'] == null ? null : (map['specification']).input(),
+      specification: map['specification'] == null ? null : (map['specification']!).input(),
       workflowVersionId: (map['workflowVersionId'] as String).input(),
     );
   }

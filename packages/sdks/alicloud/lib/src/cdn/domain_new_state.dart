@@ -73,17 +73,17 @@ class DomainNewState {
 
   factory DomainNewState.fromMap(Map<String, dynamic> map) {
     return DomainNewState(
-      cdnType: map['cdnType'] == null ? null : (map['cdnType'] as String).input(),
-      certificateConfig: map['certificateConfig'] == null ? null : (DomainNewCertificateConfig.fromMap((map['certificateConfig'] as Map).cast<String, dynamic>())).input(),
-      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      env: map['env'] == null ? null : (map['env'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DomainNewSource>(map['sources'], (value) => DomainNewSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cdnType: map['cdnType'] == null ? null : (map['cdnType']! as String).input(),
+      certificateConfig: map['certificateConfig'] == null ? null : (DomainNewCertificateConfig.fromMap((map['certificateConfig']! as Map).cast<String, dynamic>())).input(),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl']! as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      env: map['env'] == null ? null : (map['env']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DomainNewSource>(map['sources']!, (value) => DomainNewSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

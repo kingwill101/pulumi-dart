@@ -22,7 +22,7 @@ class ManagedIdentitySettings {
 
   factory ManagedIdentitySettings.fromMap(Map<String, dynamic> map) {
     return ManagedIdentitySettings(
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
     );
   }
 }

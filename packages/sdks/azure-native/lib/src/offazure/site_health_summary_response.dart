@@ -76,15 +76,15 @@ class SiteHealthSummaryResponse {
 
   factory SiteHealthSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SiteHealthSummaryResponse(
-      affectedObjectsCount: map['affectedObjectsCount'] == null ? null : (map['affectedObjectsCount'] as double).input(),
+      affectedObjectsCount: map['affectedObjectsCount'] == null ? null : (map['affectedObjectsCount']! as double).input(),
       affectedResourceType: (map['affectedResourceType'] as String).input(),
-      affectedResources: map['affectedResources'] == null ? null : ((map['affectedResources'] as List).cast<String>()).input(),
+      affectedResources: map['affectedResources'] == null ? null : ((map['affectedResources']! as List).cast<String>()).input(),
       applianceName: (map['applianceName'] as String).input(),
       errorCode: (map['errorCode'] as String).input(),
       errorId: (map['errorId'] as double).input(),
       errorMessage: (map['errorMessage'] as String).input(),
-      fabricLayoutUpdateSources: map['fabricLayoutUpdateSources'] == null ? null : ((map['fabricLayoutUpdateSources'] as List).cast<String>()).input(),
-      hitCount: map['hitCount'] == null ? null : (map['hitCount'] as double).input(),
+      fabricLayoutUpdateSources: map['fabricLayoutUpdateSources'] == null ? null : ((map['fabricLayoutUpdateSources']! as List).cast<String>()).input(),
+      hitCount: map['hitCount'] == null ? null : (map['hitCount']! as double).input(),
       remediationGuidance: (map['remediationGuidance'] as String).input(),
       severity: (map['severity'] as String).input(),
       summaryMessage: (map['summaryMessage'] as String).input(),

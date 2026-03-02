@@ -39,10 +39,10 @@ class GetCertificateArgs {
 
   factory GetCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificateArgs(
-      defaultForNewLaunches: map['defaultForNewLaunches'] == null ? null : (map['defaultForNewLaunches'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      latestValidTill: map['latestValidTill'] == null ? null : (map['latestValidTill'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      defaultForNewLaunches: map['defaultForNewLaunches'] == null ? null : ((map['defaultForNewLaunches'] as bool).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      latestValidTill: map['latestValidTill'] == null ? null : ((map['latestValidTill'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

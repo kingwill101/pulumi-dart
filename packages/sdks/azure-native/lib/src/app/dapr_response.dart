@@ -67,16 +67,16 @@ class DaprResponse {
 
   factory DaprResponse.fromMap(Map<String, dynamic> map) {
     return DaprResponse(
-      appHealth: map['appHealth'] == null ? null : (DaprResponseAppHealth.fromMap((map['appHealth'] as Map).cast<String, dynamic>())).input(),
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appPort: map['appPort'] == null ? null : (map['appPort'] as int).input(),
-      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol'] as String).input(),
-      enableApiLogging: map['enableApiLogging'] == null ? null : (map['enableApiLogging'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : (map['httpMaxRequestSize'] as int).input(),
-      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : (map['httpReadBufferSize'] as int).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
+      appHealth: map['appHealth'] == null ? null : (DaprResponseAppHealth.fromMap((map['appHealth']! as Map).cast<String, dynamic>())).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appPort: map['appPort'] == null ? null : (map['appPort']! as int).input(),
+      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol']! as String).input(),
+      enableApiLogging: map['enableApiLogging'] == null ? null : (map['enableApiLogging']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      httpMaxRequestSize: map['httpMaxRequestSize'] == null ? null : (map['httpMaxRequestSize']! as int).input(),
+      httpReadBufferSize: map['httpReadBufferSize'] == null ? null : (map['httpReadBufferSize']! as int).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency']! as int).input(),
     );
   }
 }

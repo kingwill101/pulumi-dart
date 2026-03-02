@@ -37,7 +37,7 @@ class GetRecordsResult {
     return GetRecordsResult(
       id: map['id'] as String,
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
-      resourceRecordSets: pulumi.Input.decodeList<GetRecordsResourceRecordSet>(map['resourceRecordSets'], (value) => GetRecordsResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())),
+      resourceRecordSets: pulumi.Input.decodeList<GetRecordsResourceRecordSet>(map['resourceRecordSets']!, (value) => GetRecordsResourceRecordSet.fromMap((value as Map).cast<String, dynamic>())),
       zoneId: map['zoneId'] as String,
     );
   }

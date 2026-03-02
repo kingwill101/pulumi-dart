@@ -32,9 +32,9 @@ class DomainDefaultUserSettingsKernelGatewayAppSettings {
 
   factory DomainDefaultUserSettingsKernelGatewayAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsKernelGatewayAppSettings(
-      customImages: map['customImages'] == null ? null : (pulumi.Input.decodeList<DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImage>(map['customImages'], (value) => DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (DomainDefaultUserSettingsKernelGatewayAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : ((map['lifecycleConfigArns'] as List).cast<String>()).input(),
+      customImages: map['customImages'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImage>(map['customImages']!, (value) => DomainDefaultUserSettingsKernelGatewayAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((DomainDefaultUserSettingsKernelGatewayAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

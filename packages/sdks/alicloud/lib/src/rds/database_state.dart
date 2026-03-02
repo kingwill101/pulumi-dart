@@ -62,12 +62,12 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      characterSet: map['characterSet'] == null ? null : (map['characterSet'] as String).input(),
-      dataBaseName: map['dataBaseName'] == null ? null : (map['dataBaseName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      characterSet: map['characterSet'] == null ? null : (map['characterSet']! as String).input(),
+      dataBaseName: map['dataBaseName'] == null ? null : (map['dataBaseName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

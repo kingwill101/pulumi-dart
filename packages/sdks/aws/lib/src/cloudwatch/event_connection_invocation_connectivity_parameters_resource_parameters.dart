@@ -24,7 +24,7 @@ class EventConnectionInvocationConnectivityParametersResourceParameters {
 
   factory EventConnectionInvocationConnectivityParametersResourceParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionInvocationConnectivityParametersResourceParameters(
-      resourceAssociationArn: map['resourceAssociationArn'] == null ? null : (map['resourceAssociationArn'] as String).input(),
+      resourceAssociationArn: map['resourceAssociationArn'] == null ? null : ((map['resourceAssociationArn'] as String).input()).input(),
       resourceConfigurationArn: (map['resourceConfigurationArn'] as String).input(),
     );
   }

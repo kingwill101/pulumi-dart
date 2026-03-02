@@ -75,16 +75,16 @@ class JobTemplateTemplate {
 
   factory JobTemplateTemplate.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplate(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainer>(map['containers'], (value) => JobTemplateTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      executionEnvironment: map['executionEnvironment'] == null ? null : (map['executionEnvironment'] as String).input(),
-      gpuZonalRedundancyDisabled: map['gpuZonalRedundancyDisabled'] == null ? null : (map['gpuZonalRedundancyDisabled'] as bool).input(),
-      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries'] as int).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (JobTemplateTemplateNodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateVolume>(map['volumes'], (value) => JobTemplateTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcAccess: map['vpcAccess'] == null ? null : (JobTemplateTemplateVpcAccess.fromMap((map['vpcAccess'] as Map).cast<String, dynamic>())).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateContainer>(map['containers']!, (value) => JobTemplateTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey']! as String).input(),
+      executionEnvironment: map['executionEnvironment'] == null ? null : (map['executionEnvironment']! as String).input(),
+      gpuZonalRedundancyDisabled: map['gpuZonalRedundancyDisabled'] == null ? null : (map['gpuZonalRedundancyDisabled']! as bool).input(),
+      maxRetries: map['maxRetries'] == null ? null : (map['maxRetries']! as int).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (JobTemplateTemplateNodeSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateVolume>(map['volumes']!, (value) => JobTemplateTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcAccess: map['vpcAccess'] == null ? null : (JobTemplateTemplateVpcAccess.fromMap((map['vpcAccess']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

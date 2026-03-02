@@ -26,8 +26,8 @@ class DotNetComponentServiceBind {
 
   factory DotNetComponentServiceBind.fromMap(Map<String, dynamic> map) {
     return DotNetComponentServiceBind(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
     );
   }
 }

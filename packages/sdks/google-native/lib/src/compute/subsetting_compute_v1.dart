@@ -21,7 +21,7 @@ class SubsettingComputeV1 {
 
   factory SubsettingComputeV1.fromMap(Map<String, dynamic> map) {
     return SubsettingComputeV1(
-      policy: map['policy'] == null ? null : (SubsettingPolicyComputeV1.fromValue(map['policy'] as String)).input(),
+      policy: map['policy'] == null ? null : (SubsettingPolicyComputeV1.fromValue(map['policy']! as String)).input(),
     );
   }
 }

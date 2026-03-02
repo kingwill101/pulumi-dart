@@ -40,10 +40,10 @@ class SecurityPolicyArgs {
 
   factory SecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyArgs(
-      parameters: map['parameters'] == null ? null : (SecurityPolicyWebApplicationFirewallParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (SecurityPolicyWebApplicationFirewallParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName']! as String).input(),
     );
   }
 }

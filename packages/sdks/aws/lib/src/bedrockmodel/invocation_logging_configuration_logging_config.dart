@@ -47,12 +47,12 @@ class InvocationLoggingConfigurationLoggingConfig {
 
   factory InvocationLoggingConfigurationLoggingConfig.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationLoggingConfig(
-      cloudwatchConfig: map['cloudwatchConfig'] == null ? null : (InvocationLoggingConfigurationLoggingConfigCloudwatchConfig.fromMap((map['cloudwatchConfig'] as Map).cast<String, dynamic>())).input(),
-      embeddingDataDeliveryEnabled: map['embeddingDataDeliveryEnabled'] == null ? null : (map['embeddingDataDeliveryEnabled'] as bool).input(),
-      imageDataDeliveryEnabled: map['imageDataDeliveryEnabled'] == null ? null : (map['imageDataDeliveryEnabled'] as bool).input(),
-      s3Config: map['s3Config'] == null ? null : (InvocationLoggingConfigurationLoggingConfigS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
-      textDataDeliveryEnabled: map['textDataDeliveryEnabled'] == null ? null : (map['textDataDeliveryEnabled'] as bool).input(),
-      videoDataDeliveryEnabled: map['videoDataDeliveryEnabled'] == null ? null : (map['videoDataDeliveryEnabled'] as bool).input(),
+      cloudwatchConfig: map['cloudwatchConfig'] == null ? null : ((InvocationLoggingConfigurationLoggingConfigCloudwatchConfig.fromMap((map['cloudwatchConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      embeddingDataDeliveryEnabled: map['embeddingDataDeliveryEnabled'] == null ? null : ((map['embeddingDataDeliveryEnabled'] as bool).input()).input(),
+      imageDataDeliveryEnabled: map['imageDataDeliveryEnabled'] == null ? null : ((map['imageDataDeliveryEnabled'] as bool).input()).input(),
+      s3Config: map['s3Config'] == null ? null : ((InvocationLoggingConfigurationLoggingConfigS3Config.fromMap((map['s3Config']! as Map).cast<String, dynamic>())).input()).input(),
+      textDataDeliveryEnabled: map['textDataDeliveryEnabled'] == null ? null : ((map['textDataDeliveryEnabled'] as bool).input()).input(),
+      videoDataDeliveryEnabled: map['videoDataDeliveryEnabled'] == null ? null : ((map['videoDataDeliveryEnabled'] as bool).input()).input(),
     );
   }
 }

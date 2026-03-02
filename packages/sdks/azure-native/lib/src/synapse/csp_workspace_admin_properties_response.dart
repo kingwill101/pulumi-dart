@@ -21,7 +21,7 @@ class CspWorkspaceAdminPropertiesResponse {
 
   factory CspWorkspaceAdminPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CspWorkspaceAdminPropertiesResponse(
-      initialWorkspaceAdminObjectId: map['initialWorkspaceAdminObjectId'] == null ? null : (map['initialWorkspaceAdminObjectId'] as String).input(),
+      initialWorkspaceAdminObjectId: map['initialWorkspaceAdminObjectId'] == null ? null : (map['initialWorkspaceAdminObjectId']! as String).input(),
     );
   }
 }

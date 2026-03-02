@@ -56,13 +56,13 @@ class TenantState {
 
   factory TenantState.fromMap(Map<String, dynamic> map) {
     return TenantState(
-      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup'] as bool).input(),
-      client: map['client'] == null ? null : (TenantClient.fromMap((map['client'] as Map).cast<String, dynamic>())).input(),
-      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : (map['allowPasswordSignup']! as bool).input(),
+      client: map['client'] == null ? null : (TenantClient.fromMap((map['client']! as Map).cast<String, dynamic>())).input(),
+      disableAuth: map['disableAuth'] == null ? null : (map['disableAuth']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : (map['enableEmailLinkSignin']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

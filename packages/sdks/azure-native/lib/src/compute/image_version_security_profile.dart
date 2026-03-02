@@ -22,7 +22,7 @@ class ImageVersionSecurityProfile {
 
   factory ImageVersionSecurityProfile.fromMap(Map<String, dynamic> map) {
     return ImageVersionSecurityProfile(
-      uefiSettings: map['uefiSettings'] == null ? null : (GalleryImageVersionUefiSettings.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>())).input(),
+      uefiSettings: map['uefiSettings'] == null ? null : (GalleryImageVersionUefiSettings.fromMap((map['uefiSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

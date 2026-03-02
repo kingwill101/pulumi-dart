@@ -27,7 +27,7 @@ class ServiceOrderedPlacementStrategy {
 
   factory ServiceOrderedPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return ServiceOrderedPlacementStrategy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : ((map['field'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

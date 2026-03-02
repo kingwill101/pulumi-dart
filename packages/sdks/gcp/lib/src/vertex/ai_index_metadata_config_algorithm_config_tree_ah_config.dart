@@ -26,8 +26,8 @@ class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 
   factory AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(Map<String, dynamic> map) {
     return AiIndexMetadataConfigAlgorithmConfigTreeAhConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount'] as int).input(),
-      leafNodesToSearchPercent: map['leafNodesToSearchPercent'] == null ? null : (map['leafNodesToSearchPercent'] as int).input(),
+      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount']! as int).input(),
+      leafNodesToSearchPercent: map['leafNodesToSearchPercent'] == null ? null : (map['leafNodesToSearchPercent']! as int).input(),
     );
   }
 }

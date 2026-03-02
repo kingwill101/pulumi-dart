@@ -30,9 +30,9 @@ class FunctionImageConfig {
 
   factory FunctionImageConfig.fromMap(Map<String, dynamic> map) {
     return FunctionImageConfig(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      entryPoints: map['entryPoints'] == null ? null : ((map['entryPoints'] as List).cast<String>()).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
+      entryPoints: map['entryPoints'] == null ? null : (((map['entryPoints'] as List).cast<String>()).input()).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : ((map['workingDirectory'] as String).input()).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class NetworkManagerCrossTenantScope {
 
   factory NetworkManagerCrossTenantScope.fromMap(Map<String, dynamic> map) {
     return NetworkManagerCrossTenantScope(
-      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups'] as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      managementGroups: map['managementGroups'] == null ? null : ((map['managementGroups']! as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

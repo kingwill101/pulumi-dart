@@ -22,7 +22,7 @@ class TelemetryConfigMetastoreV1alpha {
 
   factory TelemetryConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return TelemetryConfigMetastoreV1alpha(
-      logFormat: map['logFormat'] == null ? null : (TelemetryConfigLogFormatMetastoreV1alpha.fromValue(map['logFormat'] as String)).input(),
+      logFormat: map['logFormat'] == null ? null : (TelemetryConfigLogFormatMetastoreV1alpha.fromValue(map['logFormat']! as String)).input(),
     );
   }
 }

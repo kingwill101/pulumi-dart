@@ -66,15 +66,15 @@ class SchedulingComputeV1 {
 
   factory SchedulingComputeV1.fromMap(Map<String, dynamic> map) {
     return SchedulingComputeV1(
-      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart'] as bool).input(),
-      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (SchedulingInstanceTerminationActionComputeV1.fromValue(map['instanceTerminationAction'] as String)).input(),
-      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (DurationComputeV1.fromMap((map['localSsdRecoveryTimeout'] as Map).cast<String, dynamic>())).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinityComputeV1>(map['nodeAffinities'], (value) => SchedulingNodeAffinityComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (SchedulingOnHostMaintenanceComputeV1.fromValue(map['onHostMaintenance'] as String)).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      provisioningModel: map['provisioningModel'] == null ? null : (SchedulingProvisioningModelComputeV1.fromValue(map['provisioningModel'] as String)).input(),
+      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart']! as bool).input(),
+      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (SchedulingInstanceTerminationActionComputeV1.fromValue(map['instanceTerminationAction']! as String)).input(),
+      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (DurationComputeV1.fromMap((map['localSsdRecoveryTimeout']! as Map).cast<String, dynamic>())).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinityComputeV1>(map['nodeAffinities']!, (value) => SchedulingNodeAffinityComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onHostMaintenance: map['onHostMaintenance'] == null ? null : (SchedulingOnHostMaintenanceComputeV1.fromValue(map['onHostMaintenance']! as String)).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      provisioningModel: map['provisioningModel'] == null ? null : (SchedulingProvisioningModelComputeV1.fromValue(map['provisioningModel']! as String)).input(),
     );
   }
 }

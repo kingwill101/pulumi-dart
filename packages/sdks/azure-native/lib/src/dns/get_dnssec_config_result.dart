@@ -59,7 +59,7 @@ class GetDnssecConfigResult {
   factory GetDnssecConfigResult.fromMap(Map<String, dynamic> map) {
     return GetDnssecConfigResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

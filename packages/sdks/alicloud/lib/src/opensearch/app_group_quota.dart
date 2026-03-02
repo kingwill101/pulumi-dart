@@ -44,7 +44,7 @@ class AppGroupQuota {
     return AppGroupQuota(
       computeResource: (map['computeResource'] as int).input(),
       docSize: (map['docSize'] as int).input(),
-      qps: map['qps'] == null ? null : (map['qps'] as int).input(),
+      qps: map['qps'] == null ? null : (map['qps']! as int).input(),
       spec: (map['spec'] as String).input(),
     );
   }

@@ -32,8 +32,8 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBinding {
 
   factory EntitlementPrivilegedAccessGcpIamAccessRoleBinding.fromMap(Map<String, dynamic> map) {
     return EntitlementPrivilegedAccessGcpIamAccessRoleBinding(
-      conditionExpression: map['conditionExpression'] == null ? null : (map['conditionExpression'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      conditionExpression: map['conditionExpression'] == null ? null : (map['conditionExpression']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

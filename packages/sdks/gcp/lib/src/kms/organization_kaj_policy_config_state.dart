@@ -30,8 +30,8 @@ class OrganizationKajPolicyConfigState {
 
   factory OrganizationKajPolicyConfigState.fromMap(Map<String, dynamic> map) {
     return OrganizationKajPolicyConfigState(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>())).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : (OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy']! as Map).cast<String, dynamic>())).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
     );
   }
 }

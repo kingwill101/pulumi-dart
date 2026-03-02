@@ -26,8 +26,8 @@ class ApplicationPortalOptions {
 
   factory ApplicationPortalOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationPortalOptions(
-      signInOptions: map['signInOptions'] == null ? null : (ApplicationPortalOptionsSignInOptions.fromMap((map['signInOptions'] as Map).cast<String, dynamic>())).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      signInOptions: map['signInOptions'] == null ? null : ((ApplicationPortalOptionsSignInOptions.fromMap((map['signInOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      visibility: map['visibility'] == null ? null : ((map['visibility'] as String).input()).input(),
     );
   }
 }

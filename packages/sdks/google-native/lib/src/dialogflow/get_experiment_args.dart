@@ -43,7 +43,7 @@ class GetExperimentArgs {
       environmentId: (map['environmentId'] as String).input(),
       experimentId: (map['experimentId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

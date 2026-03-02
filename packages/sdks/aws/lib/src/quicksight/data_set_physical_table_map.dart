@@ -38,10 +38,10 @@ class DataSetPhysicalTableMap {
 
   factory DataSetPhysicalTableMap.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMap(
-      customSql: map['customSql'] == null ? null : (DataSetPhysicalTableMapCustomSql.fromMap((map['customSql'] as Map).cast<String, dynamic>())).input(),
+      customSql: map['customSql'] == null ? null : ((DataSetPhysicalTableMapCustomSql.fromMap((map['customSql']! as Map).cast<String, dynamic>())).input()).input(),
       physicalTableMapId: (map['physicalTableMapId'] as String).input(),
-      relationalTable: map['relationalTable'] == null ? null : (DataSetPhysicalTableMapRelationalTable.fromMap((map['relationalTable'] as Map).cast<String, dynamic>())).input(),
-      s3Source: map['s3Source'] == null ? null : (DataSetPhysicalTableMapS3Source.fromMap((map['s3Source'] as Map).cast<String, dynamic>())).input(),
+      relationalTable: map['relationalTable'] == null ? null : ((DataSetPhysicalTableMapRelationalTable.fromMap((map['relationalTable']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Source: map['s3Source'] == null ? null : ((DataSetPhysicalTableMapS3Source.fromMap((map['s3Source']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

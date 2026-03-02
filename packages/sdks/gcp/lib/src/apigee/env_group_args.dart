@@ -35,8 +35,8 @@ class EnvGroupArgs {
 
   factory EnvGroupArgs.fromMap(Map<String, dynamic> map) {
     return EnvGroupArgs(
-      hostnames: map['hostnames'] == null ? null : ((map['hostnames'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      hostnames: map['hostnames'] == null ? null : ((map['hostnames']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
     );
   }

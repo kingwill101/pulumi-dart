@@ -40,9 +40,9 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule {
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule(
-      hotwordRegex: map['hotwordRegex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>())).input(),
-      likelihoodAdjustment: map['likelihoodAdjustment'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap((map['likelihoodAdjustment'] as Map).cast<String, dynamic>())).input(),
-      proximity: map['proximity'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity.fromMap((map['proximity'] as Map).cast<String, dynamic>())).input(),
+      hotwordRegex: map['hotwordRegex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex.fromMap((map['hotwordRegex']! as Map).cast<String, dynamic>())).input(),
+      likelihoodAdjustment: map['likelihoodAdjustment'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment.fromMap((map['likelihoodAdjustment']! as Map).cast<String, dynamic>())).input(),
+      proximity: map['proximity'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity.fromMap((map['proximity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -48,8 +48,8 @@ class ServiceGroupMonitoringAgentProcessArgs {
     return ServiceGroupMonitoringAgentProcessArgs(
       alertConfigs: (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfig>(map['alertConfigs'], (value) => ServiceGroupMonitoringAgentProcessAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       groupId: (map['groupId'] as String).input(),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
-      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessMatchExpress>(map['matchExpresses'], (value) => ServiceGroupMonitoringAgentProcessMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation']! as String).input(),
+      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessMatchExpress>(map['matchExpresses']!, (value) => ServiceGroupMonitoringAgentProcessMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
       processName: (map['processName'] as String).input(),
     );
   }

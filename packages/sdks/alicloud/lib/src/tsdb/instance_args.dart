@@ -91,16 +91,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      appKey: map['appKey'] == null ? null : (map['appKey'] as String).input(),
-      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias'] as String).input(),
+      appKey: map['appKey'] == null ? null : (map['appKey']! as String).input(),
+      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType']! as String).input(),
+      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias']! as String).input(),
       instanceClass: (map['instanceClass'] as String).input(),
       instanceStorage: (map['instanceStorage'] as String).input(),
       paymentType: (map['paymentType'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

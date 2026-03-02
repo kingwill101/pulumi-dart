@@ -20,7 +20,7 @@ class JobTemplateConfigPubsubDestination {
 
   factory JobTemplateConfigPubsubDestination.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigPubsubDestination(
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

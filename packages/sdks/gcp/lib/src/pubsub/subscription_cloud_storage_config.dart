@@ -73,16 +73,16 @@ class SubscriptionCloudStorageConfig {
 
   factory SubscriptionCloudStorageConfig.fromMap(Map<String, dynamic> map) {
     return SubscriptionCloudStorageConfig(
-      avroConfig: map['avroConfig'] == null ? null : (SubscriptionCloudStorageConfigAvroConfig.fromMap((map['avroConfig'] as Map).cast<String, dynamic>())).input(),
+      avroConfig: map['avroConfig'] == null ? null : (SubscriptionCloudStorageConfigAvroConfig.fromMap((map['avroConfig']! as Map).cast<String, dynamic>())).input(),
       bucket: (map['bucket'] as String).input(),
-      filenameDatetimeFormat: map['filenameDatetimeFormat'] == null ? null : (map['filenameDatetimeFormat'] as String).input(),
-      filenamePrefix: map['filenamePrefix'] == null ? null : (map['filenamePrefix'] as String).input(),
-      filenameSuffix: map['filenameSuffix'] == null ? null : (map['filenameSuffix'] as String).input(),
-      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes'] as int).input(),
-      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration'] as String).input(),
-      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages'] as int).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      filenameDatetimeFormat: map['filenameDatetimeFormat'] == null ? null : (map['filenameDatetimeFormat']! as String).input(),
+      filenamePrefix: map['filenamePrefix'] == null ? null : (map['filenamePrefix']! as String).input(),
+      filenameSuffix: map['filenameSuffix'] == null ? null : (map['filenameSuffix']! as String).input(),
+      maxBytes: map['maxBytes'] == null ? null : (map['maxBytes']! as int).input(),
+      maxDuration: map['maxDuration'] == null ? null : (map['maxDuration']! as String).input(),
+      maxMessages: map['maxMessages'] == null ? null : (map['maxMessages']! as int).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

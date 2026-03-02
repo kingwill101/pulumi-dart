@@ -35,7 +35,7 @@ class GetGroupsResult {
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups']!, (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,

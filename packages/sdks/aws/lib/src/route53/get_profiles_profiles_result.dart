@@ -32,7 +32,7 @@ class GetProfilesProfilesResult {
   factory GetProfilesProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetProfilesProfilesResult(
       id: map['id'] as String,
-      profiles: pulumi.Input.decodeList<GetProfilesProfilesProfile>(map['profiles'], (value) => GetProfilesProfilesProfile.fromMap((value as Map).cast<String, dynamic>())),
+      profiles: pulumi.Input.decodeList<GetProfilesProfilesProfile>(map['profiles']!, (value) => GetProfilesProfilesProfile.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

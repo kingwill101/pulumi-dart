@@ -75,18 +75,18 @@ class InstancePostPayModuleSwitchObj {
 
   factory InstancePostPayModuleSwitchObj.fromMap(Map<String, dynamic> map) {
     return InstancePostPayModuleSwitchObj(
-      agentless: map['agentless'] == null ? null : (map['agentless'] as int).input(),
-      antiRansomware: map['antiRansomware'] == null ? null : (map['antiRansomware'] as int).input(),
-      basicService: map['basicService'] == null ? null : (map['basicService'] as int).input(),
-      cspm: map['cspm'] == null ? null : (map['cspm'] as int).input(),
-      ctdr: map['ctdr'] == null ? null : (map['ctdr'] as int).input(),
-      ctdrStorage: map['ctdrStorage'] == null ? null : (map['ctdrStorage'] as int).input(),
-      postHost: map['postHost'] == null ? null : (map['postHost'] as int).input(),
-      rasp: map['rasp'] == null ? null : (map['rasp'] as int).input(),
-      sdk: map['sdk'] == null ? null : (map['sdk'] as int).input(),
-      serverless: map['serverless'] == null ? null : (map['serverless'] as int).input(),
-      vul: map['vul'] == null ? null : (map['vul'] as int).input(),
-      webLock: map['webLock'] == null ? null : (map['webLock'] as int).input(),
+      agentless: map['agentless'] == null ? null : (map['agentless']! as int).input(),
+      antiRansomware: map['antiRansomware'] == null ? null : (map['antiRansomware']! as int).input(),
+      basicService: map['basicService'] == null ? null : (map['basicService']! as int).input(),
+      cspm: map['cspm'] == null ? null : (map['cspm']! as int).input(),
+      ctdr: map['ctdr'] == null ? null : (map['ctdr']! as int).input(),
+      ctdrStorage: map['ctdrStorage'] == null ? null : (map['ctdrStorage']! as int).input(),
+      postHost: map['postHost'] == null ? null : (map['postHost']! as int).input(),
+      rasp: map['rasp'] == null ? null : (map['rasp']! as int).input(),
+      sdk: map['sdk'] == null ? null : (map['sdk']! as int).input(),
+      serverless: map['serverless'] == null ? null : (map['serverless']! as int).input(),
+      vul: map['vul'] == null ? null : (map['vul']! as int).input(),
+      webLock: map['webLock'] == null ? null : (map['webLock']! as int).input(),
     );
   }
 }

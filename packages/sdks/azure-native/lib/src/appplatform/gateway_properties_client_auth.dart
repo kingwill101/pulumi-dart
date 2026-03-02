@@ -26,8 +26,8 @@ class GatewayPropertiesClientAuth {
 
   factory GatewayPropertiesClientAuth.fromMap(Map<String, dynamic> map) {
     return GatewayPropertiesClientAuth(
-      certificateVerification: map['certificateVerification'] == null ? null : (map['certificateVerification'] as String).input(),
-      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
+      certificateVerification: map['certificateVerification'] == null ? null : (map['certificateVerification']! as String).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<String>()).input(),
     );
   }
 }

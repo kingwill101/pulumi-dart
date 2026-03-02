@@ -31,9 +31,9 @@ class InputLinuxParameters {
 
   factory InputLinuxParameters.fromMap(Map<String, dynamic> map) {
     return InputLinuxParameters(
-      classificationsToInclude: map['classificationsToInclude'] == null ? null : ((map['classificationsToInclude'] as List).cast<String>()).input(),
-      packageNameMasksToExclude: map['packageNameMasksToExclude'] == null ? null : ((map['packageNameMasksToExclude'] as List).cast<String>()).input(),
-      packageNameMasksToInclude: map['packageNameMasksToInclude'] == null ? null : ((map['packageNameMasksToInclude'] as List).cast<String>()).input(),
+      classificationsToInclude: map['classificationsToInclude'] == null ? null : ((map['classificationsToInclude']! as List).cast<String>()).input(),
+      packageNameMasksToExclude: map['packageNameMasksToExclude'] == null ? null : ((map['packageNameMasksToExclude']! as List).cast<String>()).input(),
+      packageNameMasksToInclude: map['packageNameMasksToInclude'] == null ? null : ((map['packageNameMasksToInclude']! as List).cast<String>()).input(),
     );
   }
 }

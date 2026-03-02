@@ -21,7 +21,7 @@ class InMageDiskSignatureExclusionOptions {
 
   factory InMageDiskSignatureExclusionOptions.fromMap(Map<String, dynamic> map) {
     return InMageDiskSignatureExclusionOptions(
-      diskSignature: map['diskSignature'] == null ? null : (map['diskSignature'] as String).input(),
+      diskSignature: map['diskSignature'] == null ? null : (map['diskSignature']! as String).input(),
     );
   }
 }

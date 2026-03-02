@@ -21,7 +21,7 @@ class IdentityServiceGoogleConfig {
 
   factory IdentityServiceGoogleConfig.fromMap(Map<String, dynamic> map) {
     return IdentityServiceGoogleConfig(
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
     );
   }
 }

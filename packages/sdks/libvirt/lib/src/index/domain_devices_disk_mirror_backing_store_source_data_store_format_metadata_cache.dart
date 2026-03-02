@@ -21,7 +21,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache {
 
   factory DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCache(
-      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.fromMap((map['maxSize'] as Map).cast<String, dynamic>())).input(),
+      maxSize: map['maxSize'] == null ? null : (DomainDevicesDiskMirrorBackingStoreSourceDataStoreFormatMetadataCacheMaxSize.fromMap((map['maxSize']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class GetZonesResult {
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       project: map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

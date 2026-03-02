@@ -71,15 +71,15 @@ class StackInstanceState {
 
   factory StackInstanceState.fromMap(Map<String, dynamic> map) {
     return StackInstanceState(
-      operationDescription: map['operationDescription'] == null ? null : (map['operationDescription'] as String).input(),
-      operationPreferences: map['operationPreferences'] == null ? null : (map['operationPreferences'] as String).input(),
-      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<StackInstanceParameterOverride>(map['parameterOverrides'], (value) => StackInstanceParameterOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks'] as bool).input(),
-      stackGroupName: map['stackGroupName'] == null ? null : (map['stackGroupName'] as String).input(),
-      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : (map['stackInstanceAccountId'] as String).input(),
-      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : (map['stackInstanceRegionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as String).input(),
+      operationDescription: map['operationDescription'] == null ? null : (map['operationDescription']! as String).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (map['operationPreferences']! as String).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<StackInstanceParameterOverride>(map['parameterOverrides']!, (value) => StackInstanceParameterOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retainStacks: map['retainStacks'] == null ? null : (map['retainStacks']! as bool).input(),
+      stackGroupName: map['stackGroupName'] == null ? null : (map['stackGroupName']! as String).input(),
+      stackInstanceAccountId: map['stackInstanceAccountId'] == null ? null : (map['stackInstanceAccountId']! as String).input(),
+      stackInstanceRegionId: map['stackInstanceRegionId'] == null ? null : (map['stackInstanceRegionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes']! as String).input(),
     );
   }
 }

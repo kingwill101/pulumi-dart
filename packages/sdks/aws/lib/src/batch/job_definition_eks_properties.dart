@@ -21,7 +21,7 @@ class JobDefinitionEksProperties {
 
   factory JobDefinitionEksProperties.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksProperties(
-      podProperties: (JobDefinitionEksPropertiesPodProperties.fromMap((map['podProperties'] as Map).cast<String, dynamic>())).input(),
+      podProperties: (JobDefinitionEksPropertiesPodProperties.fromMap((map['podProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

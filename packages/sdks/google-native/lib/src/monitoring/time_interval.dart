@@ -27,7 +27,7 @@ class TimeInterval {
   factory TimeInterval.fromMap(Map<String, dynamic> map) {
     return TimeInterval(
       endTime: (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

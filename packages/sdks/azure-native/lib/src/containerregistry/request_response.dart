@@ -41,11 +41,11 @@ class RequestResponse {
 
   factory RequestResponse.fromMap(Map<String, dynamic> map) {
     return RequestResponse(
-      addr: map['addr'] == null ? null : (map['addr'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      useragent: map['useragent'] == null ? null : (map['useragent'] as String).input(),
+      addr: map['addr'] == null ? null : (map['addr']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      useragent: map['useragent'] == null ? null : (map['useragent']! as String).input(),
     );
   }
 }

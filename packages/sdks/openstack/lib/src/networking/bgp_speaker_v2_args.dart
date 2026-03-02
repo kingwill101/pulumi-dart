@@ -73,15 +73,15 @@ class BgpSpeakerV2Args {
 
   factory BgpSpeakerV2Args.fromMap(Map<String, dynamic> map) {
     return BgpSpeakerV2Args(
-      advertiseFloatingIpHostRoutes: map['advertiseFloatingIpHostRoutes'] == null ? null : (map['advertiseFloatingIpHostRoutes'] as bool).input(),
-      advertiseTenantNetworks: map['advertiseTenantNetworks'] == null ? null : (map['advertiseTenantNetworks'] as bool).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
+      advertiseFloatingIpHostRoutes: map['advertiseFloatingIpHostRoutes'] == null ? null : (map['advertiseFloatingIpHostRoutes']! as bool).input(),
+      advertiseTenantNetworks: map['advertiseTenantNetworks'] == null ? null : (map['advertiseTenantNetworks']! as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
       localAs: (map['localAs'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : ((map['networks'] as List).cast<String>()).input(),
-      peers: map['peers'] == null ? null : ((map['peers'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networks: map['networks'] == null ? null : ((map['networks']! as List).cast<String>()).input(),
+      peers: map['peers'] == null ? null : ((map['peers']! as List).cast<String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

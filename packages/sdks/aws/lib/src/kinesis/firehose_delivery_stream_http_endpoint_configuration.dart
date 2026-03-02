@@ -85,18 +85,18 @@ class FirehoseDeliveryStreamHttpEndpointConfiguration {
 
   factory FirehoseDeliveryStreamHttpEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamHttpEndpointConfiguration(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      bufferingInterval: map['bufferingInterval'] == null ? null : (map['bufferingInterval'] as int).input(),
-      bufferingSize: map['bufferingSize'] == null ? null : (map['bufferingSize'] as int).input(),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      requestConfiguration: map['requestConfiguration'] == null ? null : (FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration.fromMap((map['requestConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      s3BackupMode: map['s3BackupMode'] == null ? null : (map['s3BackupMode'] as String).input(),
-      s3Configuration: (FirehoseDeliveryStreamHttpEndpointConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
-      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : (FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      accessKey: map['accessKey'] == null ? null : ((map['accessKey'] as String).input()).input(),
+      bufferingInterval: map['bufferingInterval'] == null ? null : ((map['bufferingInterval'] as int).input()).input(),
+      bufferingSize: map['bufferingSize'] == null ? null : ((map['bufferingSize'] as int).input()).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((FirehoseDeliveryStreamHttpEndpointConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      requestConfiguration: map['requestConfiguration'] == null ? null : ((FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfiguration.fromMap((map['requestConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      retryDuration: map['retryDuration'] == null ? null : ((map['retryDuration'] as int).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      s3BackupMode: map['s3BackupMode'] == null ? null : ((map['s3BackupMode'] as String).input()).input(),
+      s3Configuration: (FirehoseDeliveryStreamHttpEndpointConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input(),
+      secretsManagerConfiguration: map['secretsManagerConfiguration'] == null ? null : ((FirehoseDeliveryStreamHttpEndpointConfigurationSecretsManagerConfiguration.fromMap((map['secretsManagerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       url: (map['url'] as String).input(),
     );
   }

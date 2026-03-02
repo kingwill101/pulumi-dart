@@ -26,8 +26,8 @@ class GoogleCloudDataplexV1EnvironmentSessionSpec {
 
   factory GoogleCloudDataplexV1EnvironmentSessionSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentSessionSpec(
-      enableFastStartup: map['enableFastStartup'] == null ? null : (map['enableFastStartup'] as bool).input(),
-      maxIdleDuration: map['maxIdleDuration'] == null ? null : (map['maxIdleDuration'] as String).input(),
+      enableFastStartup: map['enableFastStartup'] == null ? null : (map['enableFastStartup']! as bool).input(),
+      maxIdleDuration: map['maxIdleDuration'] == null ? null : (map['maxIdleDuration']! as String).input(),
     );
   }
 }

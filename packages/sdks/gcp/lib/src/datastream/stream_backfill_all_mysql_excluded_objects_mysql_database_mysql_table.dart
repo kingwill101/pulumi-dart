@@ -27,7 +27,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
 
   factory StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable(
-      mysqlColumns: map['mysqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>(map['mysqlColumns'], (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mysqlColumns: map['mysqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>(map['mysqlColumns']!, (value) => StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

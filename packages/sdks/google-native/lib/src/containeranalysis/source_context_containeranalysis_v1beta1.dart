@@ -39,10 +39,10 @@ class SourceContextContaineranalysisV1beta1 {
 
   factory SourceContextContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SourceContextContaineranalysisV1beta1(
-      cloudRepo: map['cloudRepo'] == null ? null : (CloudRepoSourceContextContaineranalysisV1beta1.fromMap((map['cloudRepo'] as Map).cast<String, dynamic>())).input(),
-      gerrit: map['gerrit'] == null ? null : (GerritSourceContextContaineranalysisV1beta1.fromMap((map['gerrit'] as Map).cast<String, dynamic>())).input(),
-      git: map['git'] == null ? null : (GitSourceContextContaineranalysisV1beta1.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      cloudRepo: map['cloudRepo'] == null ? null : (CloudRepoSourceContextContaineranalysisV1beta1.fromMap((map['cloudRepo']! as Map).cast<String, dynamic>())).input(),
+      gerrit: map['gerrit'] == null ? null : (GerritSourceContextContaineranalysisV1beta1.fromMap((map['gerrit']! as Map).cast<String, dynamic>())).input(),
+      git: map['git'] == null ? null : (GitSourceContextContaineranalysisV1beta1.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

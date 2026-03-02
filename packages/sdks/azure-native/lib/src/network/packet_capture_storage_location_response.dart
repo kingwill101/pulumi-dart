@@ -36,10 +36,10 @@ class PacketCaptureStorageLocationResponse {
 
   factory PacketCaptureStorageLocationResponse.fromMap(Map<String, dynamic> map) {
     return PacketCaptureStorageLocationResponse(
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      storageId: map['storageId'] == null ? null : (map['storageId'] as String).input(),
-      storagePath: map['storagePath'] == null ? null : (map['storagePath'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
+      storageId: map['storageId'] == null ? null : (map['storageId']! as String).input(),
+      storagePath: map['storagePath'] == null ? null : (map['storagePath']! as String).input(),
     );
   }
 }

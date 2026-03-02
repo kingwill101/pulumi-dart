@@ -21,7 +21,7 @@ class StandardComponentProperties {
 
   factory StandardComponentProperties.fromMap(Map<String, dynamic> map) {
     return StandardComponentProperties(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class PlacementV1ClusterSelectorTerm {
 
   factory PlacementV1ClusterSelectorTerm.fromMap(Map<String, dynamic> map) {
     return PlacementV1ClusterSelectorTerm(
-      labelSelector: map['labelSelector'] == null ? null : (MetaV1LabelSelector.fromMap((map['labelSelector'] as Map).cast<String, dynamic>())).input(),
-      propertySelector: map['propertySelector'] == null ? null : (PlacementV1PropertySelector.fromMap((map['propertySelector'] as Map).cast<String, dynamic>())).input(),
+      labelSelector: map['labelSelector'] == null ? null : (MetaV1LabelSelector.fromMap((map['labelSelector']! as Map).cast<String, dynamic>())).input(),
+      propertySelector: map['propertySelector'] == null ? null : (PlacementV1PropertySelector.fromMap((map['propertySelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

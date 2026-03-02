@@ -22,7 +22,7 @@ class LoadBalancerResponse {
 
   factory LoadBalancerResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerResponse(
-      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressPoolResponse>(map['backendAddressPools'], (value) => LoadBalancerBackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendAddressPools: map['backendAddressPools'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendAddressPoolResponse>(map['backendAddressPools']!, (value) => LoadBalancerBackendAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

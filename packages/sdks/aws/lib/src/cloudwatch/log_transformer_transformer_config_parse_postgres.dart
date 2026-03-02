@@ -20,7 +20,7 @@ class LogTransformerTransformerConfigParsePostgres {
 
   factory LogTransformerTransformerConfigParsePostgres.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigParsePostgres(
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

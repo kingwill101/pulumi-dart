@@ -46,10 +46,10 @@ class DataflowEndpointArgs {
 
   factory DataflowEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointArgs(
-      dataflowEndpointName: map['dataflowEndpointName'] == null ? null : (map['dataflowEndpointName'] as String).input(),
+      dataflowEndpointName: map['dataflowEndpointName'] == null ? null : (map['dataflowEndpointName']! as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (DataflowEndpointProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DataflowEndpointProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

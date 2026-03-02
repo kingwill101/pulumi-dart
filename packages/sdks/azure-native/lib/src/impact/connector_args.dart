@@ -30,8 +30,8 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConnectorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

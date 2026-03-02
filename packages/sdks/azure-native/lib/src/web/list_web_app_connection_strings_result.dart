@@ -43,7 +43,7 @@ class ListWebAppConnectionStringsResult {
   factory ListWebAppConnectionStringsResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppConnectionStringsResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       properties: pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(map['properties'], (value) => ConnStringValueTypePairResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,

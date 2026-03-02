@@ -28,8 +28,8 @@ class ServiceSpec {
 
   factory ServiceSpec.fromMap(Map<String, dynamic> map) {
     return ServiceSpec(
-      template: map['template'] == null ? null : (RevisionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficTarget>(map['traffic'], (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      template: map['template'] == null ? null : (RevisionTemplate.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<TrafficTarget>(map['traffic']!, (value) => TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

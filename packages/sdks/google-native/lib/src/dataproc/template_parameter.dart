@@ -37,10 +37,10 @@ class TemplateParameter {
 
   factory TemplateParameter.fromMap(Map<String, dynamic> map) {
     return TemplateParameter(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fields: ((map['fields'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      validation: map['validation'] == null ? null : (ParameterValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (ParameterValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

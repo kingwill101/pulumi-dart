@@ -37,10 +37,10 @@ class SpringCloudBuildPackBindingState {
 
   factory SpringCloudBuildPackBindingState.fromMap(Map<String, dynamic> map) {
     return SpringCloudBuildPackBindingState(
-      bindingType: map['bindingType'] == null ? null : (map['bindingType'] as String).input(),
-      launch: map['launch'] == null ? null : (SpringCloudBuildPackBindingLaunch.fromMap((map['launch'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudBuilderId: map['springCloudBuilderId'] == null ? null : (map['springCloudBuilderId'] as String).input(),
+      bindingType: map['bindingType'] == null ? null : (map['bindingType']! as String).input(),
+      launch: map['launch'] == null ? null : (SpringCloudBuildPackBindingLaunch.fromMap((map['launch']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudBuilderId: map['springCloudBuilderId'] == null ? null : (map['springCloudBuilderId']! as String).input(),
     );
   }
 }

@@ -46,9 +46,9 @@ class LicenseGrantArgs {
     return LicenseGrantArgs(
       allowedOperations: ((map['allowedOperations'] as List).cast<String>()).input(),
       licenseArn: (map['licenseArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       principal: (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

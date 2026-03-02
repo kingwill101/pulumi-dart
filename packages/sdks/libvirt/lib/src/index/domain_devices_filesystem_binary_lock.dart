@@ -25,8 +25,8 @@ class DomainDevicesFilesystemBinaryLock {
 
   factory DomainDevicesFilesystemBinaryLock.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemBinaryLock(
-      flock: map['flock'] == null ? null : (map['flock'] as String).input(),
-      posix: map['posix'] == null ? null : (map['posix'] as String).input(),
+      flock: map['flock'] == null ? null : (map['flock']! as String).input(),
+      posix: map['posix'] == null ? null : (map['posix']! as String).input(),
     );
   }
 }

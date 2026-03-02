@@ -47,9 +47,9 @@ class ResourcePolicyArgs {
   factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyArgs(
       policyDocument: (map['policyDocument'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ResourcePolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revisionId: map['revisionId'] == null ? null : ((map['revisionId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ResourcePolicyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

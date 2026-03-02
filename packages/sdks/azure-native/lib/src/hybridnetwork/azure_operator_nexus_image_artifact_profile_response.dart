@@ -28,8 +28,8 @@ class AzureOperatorNexusImageArtifactProfileResponse {
 
   factory AzureOperatorNexusImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusImageArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
-      imageArtifactProfile: map['imageArtifactProfile'] == null ? null : (ImageArtifactProfileResponse.fromMap((map['imageArtifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
+      imageArtifactProfile: map['imageArtifactProfile'] == null ? null : (ImageArtifactProfileResponse.fromMap((map['imageArtifactProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

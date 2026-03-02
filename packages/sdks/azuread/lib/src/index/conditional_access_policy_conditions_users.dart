@@ -59,14 +59,14 @@ class ConditionalAccessPolicyConditionsUsers {
 
   factory ConditionalAccessPolicyConditionsUsers.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsUsers(
-      excludedGroups: map['excludedGroups'] == null ? null : ((map['excludedGroups'] as List).cast<String>()).input(),
-      excludedGuestsOrExternalUsers: map['excludedGuestsOrExternalUsers'] == null ? null : (pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>(map['excludedGuestsOrExternalUsers'], (value) => ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedRoles: map['excludedRoles'] == null ? null : ((map['excludedRoles'] as List).cast<String>()).input(),
-      excludedUsers: map['excludedUsers'] == null ? null : ((map['excludedUsers'] as List).cast<String>()).input(),
-      includedGroups: map['includedGroups'] == null ? null : ((map['includedGroups'] as List).cast<String>()).input(),
-      includedGuestsOrExternalUsers: map['includedGuestsOrExternalUsers'] == null ? null : (pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>(map['includedGuestsOrExternalUsers'], (value) => ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedRoles: map['includedRoles'] == null ? null : ((map['includedRoles'] as List).cast<String>()).input(),
-      includedUsers: map['includedUsers'] == null ? null : ((map['includedUsers'] as List).cast<String>()).input(),
+      excludedGroups: map['excludedGroups'] == null ? null : ((map['excludedGroups']! as List).cast<String>()).input(),
+      excludedGuestsOrExternalUsers: map['excludedGuestsOrExternalUsers'] == null ? null : (pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser>(map['excludedGuestsOrExternalUsers']!, (value) => ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedRoles: map['excludedRoles'] == null ? null : ((map['excludedRoles']! as List).cast<String>()).input(),
+      excludedUsers: map['excludedUsers'] == null ? null : ((map['excludedUsers']! as List).cast<String>()).input(),
+      includedGroups: map['includedGroups'] == null ? null : ((map['includedGroups']! as List).cast<String>()).input(),
+      includedGuestsOrExternalUsers: map['includedGuestsOrExternalUsers'] == null ? null : (pulumi.Input.decodeList<ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser>(map['includedGuestsOrExternalUsers']!, (value) => ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedRoles: map['includedRoles'] == null ? null : ((map['includedRoles']! as List).cast<String>()).input(),
+      includedUsers: map['includedUsers'] == null ? null : ((map['includedUsers']! as List).cast<String>()).input(),
     );
   }
 }

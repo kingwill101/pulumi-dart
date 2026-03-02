@@ -62,15 +62,15 @@ class SpringCloudApiPortalState {
 
   factory SpringCloudApiPortalState.fromMap(Map<String, dynamic> map) {
     return SpringCloudApiPortalState(
-      apiTryOutEnabled: map['apiTryOutEnabled'] == null ? null : (map['apiTryOutEnabled'] as bool).input(),
-      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds'] as List).cast<String>()).input(),
-      httpsOnlyEnabled: map['httpsOnlyEnabled'] == null ? null : (map['httpsOnlyEnabled'] as bool).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
-      sso: map['sso'] == null ? null : (SpringCloudApiPortalSso.fromMap((map['sso'] as Map).cast<String, dynamic>())).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      apiTryOutEnabled: map['apiTryOutEnabled'] == null ? null : (map['apiTryOutEnabled']! as bool).input(),
+      gatewayIds: map['gatewayIds'] == null ? null : ((map['gatewayIds']! as List).cast<String>()).input(),
+      httpsOnlyEnabled: map['httpsOnlyEnabled'] == null ? null : (map['httpsOnlyEnabled']! as bool).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
+      sso: map['sso'] == null ? null : (SpringCloudApiPortalSso.fromMap((map['sso']! as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

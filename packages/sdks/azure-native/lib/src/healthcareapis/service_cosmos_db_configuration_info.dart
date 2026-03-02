@@ -31,9 +31,9 @@ class ServiceCosmosDbConfigurationInfo {
 
   factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfo(
-      crossTenantCmkApplicationId: map['crossTenantCmkApplicationId'] == null ? null : (map['crossTenantCmkApplicationId'] as String).input(),
-      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri'] as String).input(),
-      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput'] as int).input(),
+      crossTenantCmkApplicationId: map['crossTenantCmkApplicationId'] == null ? null : (map['crossTenantCmkApplicationId']! as String).input(),
+      keyVaultKeyUri: map['keyVaultKeyUri'] == null ? null : (map['keyVaultKeyUri']! as String).input(),
+      offerThroughput: map['offerThroughput'] == null ? null : (map['offerThroughput']! as int).input(),
     );
   }
 }

@@ -94,21 +94,21 @@ class DedicatedHostState {
 
   factory DedicatedHostState.fromMap(Map<String, dynamic> map) {
     return DedicatedHostState(
-      allocationStatus: map['allocationStatus'] == null ? null : (map['allocationStatus'] as String).input(),
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      dedicatedHostGroupId: map['dedicatedHostGroupId'] == null ? null : (map['dedicatedHostGroupId'] as String).input(),
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId'] as String).input(),
-      hostClass: map['hostClass'] == null ? null : (map['hostClass'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory'] as String).input(),
-      osPassword: map['osPassword'] == null ? null : (map['osPassword'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      usedTime: map['usedTime'] == null ? null : (map['usedTime'] as int).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      allocationStatus: map['allocationStatus'] == null ? null : (map['allocationStatus']! as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      dedicatedHostGroupId: map['dedicatedHostGroupId'] == null ? null : (map['dedicatedHostGroupId']! as String).input(),
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId']! as String).input(),
+      hostClass: map['hostClass'] == null ? null : (map['hostClass']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      imageCategory: map['imageCategory'] == null ? null : (map['imageCategory']! as String).input(),
+      osPassword: map['osPassword'] == null ? null : (map['osPassword']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      usedTime: map['usedTime'] == null ? null : (map['usedTime']! as int).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

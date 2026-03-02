@@ -32,9 +32,9 @@ class NodeAffinity {
 
   factory NodeAffinity.fromMap(Map<String, dynamic> map) {
     return NodeAffinity(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      operator: map['operator'] == null ? null : (NodeAffinityOperator.fromValue(map['operator'] as String)).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      operator: map['operator'] == null ? null : (NodeAffinityOperator.fromValue(map['operator']! as String)).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

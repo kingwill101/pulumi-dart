@@ -39,8 +39,8 @@ class AuthorizationArgs {
 
   factory AuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationArgs(
-      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName'] as String).input(),
-      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId'] as String).input(),
+      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName']! as String).input(),
+      expressRouteId: map['expressRouteId'] == null ? null : (map['expressRouteId']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

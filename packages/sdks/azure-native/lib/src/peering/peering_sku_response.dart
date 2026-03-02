@@ -37,7 +37,7 @@ class PeeringSkuResponse {
   factory PeeringSkuResponse.fromMap(Map<String, dynamic> map) {
     return PeeringSkuResponse(
       family: (map['family'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       size: (map['size'] as String).input(),
       tier: (map['tier'] as String).input(),
     );

@@ -39,7 +39,7 @@ class BuildContext {
   factory BuildContext.fromMap(Map<String, dynamic> map) {
     return BuildContext(
       location: (map['location'] as String).input(),
-      named: map['named'] == null ? null : (pulumi.Input.decodeMapValues<Context>(map['named'], (value) => Context.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      named: map['named'] == null ? null : (pulumi.Input.decodeMapValues<Context>(map['named']!, (value) => Context.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

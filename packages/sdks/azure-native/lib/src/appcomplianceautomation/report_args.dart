@@ -52,10 +52,10 @@ class ReportArgs {
 
   factory ReportArgs.fromMap(Map<String, dynamic> map) {
     return ReportArgs(
-      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid'] as String).input(),
-      reportName: map['reportName'] == null ? null : (map['reportName'] as String).input(),
+      offerGuid: map['offerGuid'] == null ? null : (map['offerGuid']! as String).input(),
+      reportName: map['reportName'] == null ? null : (map['reportName']! as String).input(),
       resources: (pulumi.Input.decodeList<ResourceMetadata>(map['resources'], (value) => ResourceMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageInfo: map['storageInfo'] == null ? null : (StorageInfo.fromMap((map['storageInfo'] as Map).cast<String, dynamic>())).input(),
+      storageInfo: map['storageInfo'] == null ? null : (StorageInfo.fromMap((map['storageInfo']! as Map).cast<String, dynamic>())).input(),
       timeZone: (map['timeZone'] as String).input(),
       triggerTime: (map['triggerTime'] as String).input(),
     );

@@ -19,7 +19,7 @@ class GetGetPrivateDnsZoneSuffixExecuteResult {
 
   factory GetGetPrivateDnsZoneSuffixExecuteResult.fromMap(Map<String, dynamic> map) {
     return GetGetPrivateDnsZoneSuffixExecuteResult(
-      value: map['value'] == null ? null : map['value'] as String,
+      value: map['value'] == null ? null : map['value']! as String,
     );
   }
 }

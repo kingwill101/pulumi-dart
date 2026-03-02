@@ -60,14 +60,14 @@ class NetworkTapArgs {
 
   factory NetworkTapArgs.fromMap(Map<String, dynamic> map) {
     return NetworkTapArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       destinations: (pulumi.Input.decodeList<NetworkTapPropertiesDestinations>(map['destinations'], (value) => NetworkTapPropertiesDestinations.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkPacketBrokerId: (map['networkPacketBrokerId'] as String).input(),
-      networkTapName: map['networkTapName'] == null ? null : (map['networkTapName'] as String).input(),
-      pollingType: map['pollingType'] == null ? null : (map['pollingType'] as String).input(),
+      networkTapName: map['networkTapName'] == null ? null : (map['networkTapName']! as String).input(),
+      pollingType: map['pollingType'] == null ? null : (map['pollingType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

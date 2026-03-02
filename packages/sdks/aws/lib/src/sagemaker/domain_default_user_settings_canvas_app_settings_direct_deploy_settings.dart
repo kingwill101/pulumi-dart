@@ -20,7 +20,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

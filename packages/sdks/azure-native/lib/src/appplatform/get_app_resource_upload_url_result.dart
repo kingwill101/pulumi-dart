@@ -25,8 +25,8 @@ class GetAppResourceUploadUrlResult {
 
   factory GetAppResourceUploadUrlResult.fromMap(Map<String, dynamic> map) {
     return GetAppResourceUploadUrlResult(
-      relativePath: map['relativePath'] == null ? null : map['relativePath'] as String,
-      uploadUrl: map['uploadUrl'] == null ? null : map['uploadUrl'] as String,
+      relativePath: map['relativePath'] == null ? null : map['relativePath']! as String,
+      uploadUrl: map['uploadUrl'] == null ? null : map['uploadUrl']! as String,
     );
   }
 }

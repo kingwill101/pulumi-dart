@@ -21,7 +21,7 @@ class Subnet {
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

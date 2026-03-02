@@ -28,8 +28,8 @@ class InstanceStatusSummary {
 
   factory InstanceStatusSummary.fromMap(Map<String, dynamic> map) {
     return InstanceStatusSummary(
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<InstanceStatusDetails>(map['details'], (value) => InstanceStatusDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (SummaryStatusEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<InstanceStatusDetails>(map['details']!, (value) => InstanceStatusDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (SummaryStatusEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

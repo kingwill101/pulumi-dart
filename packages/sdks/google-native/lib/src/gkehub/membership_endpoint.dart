@@ -52,12 +52,12 @@ class MembershipEndpoint {
 
   factory MembershipEndpoint.fromMap(Map<String, dynamic> map) {
     return MembershipEndpoint(
-      applianceCluster: map['applianceCluster'] == null ? null : (ApplianceCluster.fromMap((map['applianceCluster'] as Map).cast<String, dynamic>())).input(),
-      edgeCluster: map['edgeCluster'] == null ? null : (EdgeCluster.fromMap((map['edgeCluster'] as Map).cast<String, dynamic>())).input(),
-      gkeCluster: map['gkeCluster'] == null ? null : (GkeCluster.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>())).input(),
-      kubernetesResource: map['kubernetesResource'] == null ? null : (KubernetesResource.fromMap((map['kubernetesResource'] as Map).cast<String, dynamic>())).input(),
-      multiCloudCluster: map['multiCloudCluster'] == null ? null : (MultiCloudCluster.fromMap((map['multiCloudCluster'] as Map).cast<String, dynamic>())).input(),
-      onPremCluster: map['onPremCluster'] == null ? null : (OnPremCluster.fromMap((map['onPremCluster'] as Map).cast<String, dynamic>())).input(),
+      applianceCluster: map['applianceCluster'] == null ? null : (ApplianceCluster.fromMap((map['applianceCluster']! as Map).cast<String, dynamic>())).input(),
+      edgeCluster: map['edgeCluster'] == null ? null : (EdgeCluster.fromMap((map['edgeCluster']! as Map).cast<String, dynamic>())).input(),
+      gkeCluster: map['gkeCluster'] == null ? null : (GkeCluster.fromMap((map['gkeCluster']! as Map).cast<String, dynamic>())).input(),
+      kubernetesResource: map['kubernetesResource'] == null ? null : (KubernetesResource.fromMap((map['kubernetesResource']! as Map).cast<String, dynamic>())).input(),
+      multiCloudCluster: map['multiCloudCluster'] == null ? null : (MultiCloudCluster.fromMap((map['multiCloudCluster']! as Map).cast<String, dynamic>())).input(),
+      onPremCluster: map['onPremCluster'] == null ? null : (OnPremCluster.fromMap((map['onPremCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class PrivateLinkServiceConnectionStateResponse {
   factory PrivateLinkServiceConnectionStateResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStateResponse(
       actionsRequired: (map['actionsRequired'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

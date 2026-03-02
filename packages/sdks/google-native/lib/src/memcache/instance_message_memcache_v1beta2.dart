@@ -26,8 +26,8 @@ class InstanceMessageMemcacheV1beta2 {
 
   factory InstanceMessageMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
     return InstanceMessageMemcacheV1beta2(
-      code: map['code'] == null ? null : (InstanceMessageCodeMemcacheV1beta2.fromValue(map['code'] as String)).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (InstanceMessageCodeMemcacheV1beta2.fromValue(map['code']! as String)).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

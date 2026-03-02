@@ -41,7 +41,7 @@ class DataSourceSharedRuleArgs {
     return DataSourceSharedRuleArgs(
       dataSourceId: (map['dataSourceId'] as int).input(),
       envType: (map['envType'] as String).input(),
-      sharedUser: map['sharedUser'] == null ? null : (map['sharedUser'] as String).input(),
+      sharedUser: map['sharedUser'] == null ? null : (map['sharedUser']! as String).input(),
       targetProjectId: (map['targetProjectId'] as int).input(),
     );
   }

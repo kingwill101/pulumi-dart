@@ -23,8 +23,8 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   factory TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationCheckCertificateRevocationStatus(
-      revokedStatusAction: map['revokedStatusAction'] == null ? null : (map['revokedStatusAction'] as String).input(),
-      unknownStatusAction: map['unknownStatusAction'] == null ? null : (map['unknownStatusAction'] as String).input(),
+      revokedStatusAction: map['revokedStatusAction'] == null ? null : ((map['revokedStatusAction'] as String).input()).input(),
+      unknownStatusAction: map['unknownStatusAction'] == null ? null : ((map['unknownStatusAction'] as String).input()).input(),
     );
   }
 }

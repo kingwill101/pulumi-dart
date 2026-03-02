@@ -66,14 +66,14 @@ class P2SConnectionConfigurationResponse {
   factory P2SConnectionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return P2SConnectionConfigurationResponse(
       configurationPolicyGroupAssociations: (pulumi.Input.decodeList<SubResourceResponse>(map['configurationPolicyGroupAssociations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       previousConfigurationPolicyGroupAssociations: (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupResponse>(map['previousConfigurationPolicyGroupAssociations'], (value) => VpnServerConfigurationPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpaceResponse.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfigurationResponse.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpaceResponse.fromMap((map['vpnClientAddressPool']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

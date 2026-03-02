@@ -25,8 +25,8 @@ class ComplianceSecurityProfileDefinition {
 
   factory ComplianceSecurityProfileDefinition.fromMap(Map<String, dynamic> map) {
     return ComplianceSecurityProfileDefinition(
-      complianceStandards: map['complianceStandards'] == null ? null : ((map['complianceStandards'] as List).cast<String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      complianceStandards: map['complianceStandards'] == null ? null : ((map['complianceStandards']! as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

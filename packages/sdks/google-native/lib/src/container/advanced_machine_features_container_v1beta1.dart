@@ -21,7 +21,7 @@ class AdvancedMachineFeaturesContainerV1beta1 {
 
   factory AdvancedMachineFeaturesContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesContainerV1beta1(
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as String).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as String).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class RemotePrivateLinkServiceConnectionStateResponse {
     return RemotePrivateLinkServiceConnectionStateResponse(
       actionsRequired: (map['actionsRequired'] as String).input(),
       description: (map['description'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

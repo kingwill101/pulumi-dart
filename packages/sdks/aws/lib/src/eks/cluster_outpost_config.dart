@@ -41,7 +41,7 @@ class ClusterOutpostConfig {
   factory ClusterOutpostConfig.fromMap(Map<String, dynamic> map) {
     return ClusterOutpostConfig(
       controlPlaneInstanceType: (map['controlPlaneInstanceType'] as String).input(),
-      controlPlanePlacement: map['controlPlanePlacement'] == null ? null : (ClusterOutpostConfigControlPlanePlacement.fromMap((map['controlPlanePlacement'] as Map).cast<String, dynamic>())).input(),
+      controlPlanePlacement: map['controlPlanePlacement'] == null ? null : ((ClusterOutpostConfigControlPlanePlacement.fromMap((map['controlPlanePlacement']! as Map).cast<String, dynamic>())).input()).input(),
       outpostArns: ((map['outpostArns'] as List).cast<String>()).input(),
     );
   }

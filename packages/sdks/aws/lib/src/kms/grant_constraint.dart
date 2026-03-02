@@ -25,8 +25,8 @@ class GrantConstraint {
 
   factory GrantConstraint.fromMap(Map<String, dynamic> map) {
     return GrantConstraint(
-      encryptionContextEquals: map['encryptionContextEquals'] == null ? null : ((map['encryptionContextEquals'] as Map).cast<String, String>()).input(),
-      encryptionContextSubset: map['encryptionContextSubset'] == null ? null : ((map['encryptionContextSubset'] as Map).cast<String, String>()).input(),
+      encryptionContextEquals: map['encryptionContextEquals'] == null ? null : (((map['encryptionContextEquals'] as Map).cast<String, String>()).input()).input(),
+      encryptionContextSubset: map['encryptionContextSubset'] == null ? null : (((map['encryptionContextSubset'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

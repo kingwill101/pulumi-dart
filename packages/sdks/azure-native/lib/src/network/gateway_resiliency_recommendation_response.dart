@@ -46,12 +46,12 @@ class GatewayResiliencyRecommendationResponse {
 
   factory GatewayResiliencyRecommendationResponse.fromMap(Map<String, dynamic> map) {
     return GatewayResiliencyRecommendationResponse(
-      callToActionLink: map['callToActionLink'] == null ? null : (map['callToActionLink'] as String).input(),
-      callToActionText: map['callToActionText'] == null ? null : (map['callToActionText'] as String).input(),
-      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId'] as String).input(),
-      recommendationText: map['recommendationText'] == null ? null : (map['recommendationText'] as String).input(),
-      recommendationTitle: map['recommendationTitle'] == null ? null : (map['recommendationTitle'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      callToActionLink: map['callToActionLink'] == null ? null : (map['callToActionLink']! as String).input(),
+      callToActionText: map['callToActionText'] == null ? null : (map['callToActionText']! as String).input(),
+      recommendationId: map['recommendationId'] == null ? null : (map['recommendationId']! as String).input(),
+      recommendationText: map['recommendationText'] == null ? null : (map['recommendationText']! as String).input(),
+      recommendationTitle: map['recommendationTitle'] == null ? null : (map['recommendationTitle']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

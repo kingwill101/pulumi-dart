@@ -27,8 +27,8 @@ class Hash {
 
   factory Hash.fromMap(Map<String, dynamic> map) {
     return Hash(
-      type: map['type'] == null ? null : (HashType.fromValue(map['type'] as String)).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      type: map['type'] == null ? null : (HashType.fromValue(map['type']! as String)).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

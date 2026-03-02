@@ -31,9 +31,9 @@ class PacketCaptureSettings {
 
   factory PacketCaptureSettings.fromMap(Map<String, dynamic> map) {
     return PacketCaptureSettings(
-      fileCount: map['fileCount'] == null ? null : (map['fileCount'] as int).input(),
-      fileSizeInBytes: map['fileSizeInBytes'] == null ? null : (map['fileSizeInBytes'] as double).input(),
-      sessionTimeLimitInSeconds: map['sessionTimeLimitInSeconds'] == null ? null : (map['sessionTimeLimitInSeconds'] as int).input(),
+      fileCount: map['fileCount'] == null ? null : (map['fileCount']! as int).input(),
+      fileSizeInBytes: map['fileSizeInBytes'] == null ? null : (map['fileSizeInBytes']! as double).input(),
+      sessionTimeLimitInSeconds: map['sessionTimeLimitInSeconds'] == null ? null : (map['sessionTimeLimitInSeconds']! as int).input(),
     );
   }
 }

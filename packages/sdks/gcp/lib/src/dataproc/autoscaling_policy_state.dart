@@ -61,13 +61,13 @@ class AutoscalingPolicyState {
 
   factory AutoscalingPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyState(
-      basicAlgorithm: map['basicAlgorithm'] == null ? null : (AutoscalingPolicyBasicAlgorithm.fromMap((map['basicAlgorithm'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (AutoscalingPolicySecondaryWorkerConfig.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>())).input(),
-      workerConfig: map['workerConfig'] == null ? null : (AutoscalingPolicyWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      basicAlgorithm: map['basicAlgorithm'] == null ? null : (AutoscalingPolicyBasicAlgorithm.fromMap((map['basicAlgorithm']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secondaryWorkerConfig: map['secondaryWorkerConfig'] == null ? null : (AutoscalingPolicySecondaryWorkerConfig.fromMap((map['secondaryWorkerConfig']! as Map).cast<String, dynamic>())).input(),
+      workerConfig: map['workerConfig'] == null ? null : (AutoscalingPolicyWorkerConfig.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,8 +33,8 @@ class AccountConsistencyPolicy {
   factory AccountConsistencyPolicy.fromMap(Map<String, dynamic> map) {
     return AccountConsistencyPolicy(
       consistencyLevel: (map['consistencyLevel'] as String).input(),
-      maxIntervalInSeconds: map['maxIntervalInSeconds'] == null ? null : (map['maxIntervalInSeconds'] as int).input(),
-      maxStalenessPrefix: map['maxStalenessPrefix'] == null ? null : (map['maxStalenessPrefix'] as int).input(),
+      maxIntervalInSeconds: map['maxIntervalInSeconds'] == null ? null : (map['maxIntervalInSeconds']! as int).input(),
+      maxStalenessPrefix: map['maxStalenessPrefix'] == null ? null : (map['maxStalenessPrefix']! as int).input(),
     );
   }
 }

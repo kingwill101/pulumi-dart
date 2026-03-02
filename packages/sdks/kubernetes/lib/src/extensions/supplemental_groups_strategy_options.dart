@@ -27,8 +27,8 @@ class SupplementalGroupsStrategyOptions {
 
   factory SupplementalGroupsStrategyOptions.fromMap(Map<String, dynamic> map) {
     return SupplementalGroupsStrategyOptions(
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRange>(map['ranges'], (value) => IDRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<IDRange>(map['ranges']!, (value) => IDRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ClusterMonitoringConfig {
 
   factory ClusterMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return ClusterMonitoringConfig(
-      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : (ClusterMonitoringConfigAdvancedDatapathObservabilityConfig.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>())).input(),
-      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents'] as List).cast<String>()).input(),
-      managedPrometheus: map['managedPrometheus'] == null ? null : (ClusterMonitoringConfigManagedPrometheus.fromMap((map['managedPrometheus'] as Map).cast<String, dynamic>())).input(),
+      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : (ClusterMonitoringConfigAdvancedDatapathObservabilityConfig.fromMap((map['advancedDatapathObservabilityConfig']! as Map).cast<String, dynamic>())).input(),
+      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents']! as List).cast<String>()).input(),
+      managedPrometheus: map['managedPrometheus'] == null ? null : (ClusterMonitoringConfigManagedPrometheus.fromMap((map['managedPrometheus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

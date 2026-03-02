@@ -88,19 +88,19 @@ class EndpointStorageContainerArgs {
 
   factory EndpointStorageContainerArgs.fromMap(Map<String, dynamic> map) {
     return EndpointStorageContainerArgs(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds'] as int).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      batchFrequencyInSeconds: map['batchFrequencyInSeconds'] == null ? null : (map['batchFrequencyInSeconds']! as int).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
       containerName: (map['containerName'] as String).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      fileNameFormat: map['fileNameFormat'] == null ? null : (map['fileNameFormat']! as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
       iothubId: (map['iothubId'] as String).input(),
-      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      maxChunkSizeInBytes: map['maxChunkSizeInBytes'] == null ? null : (map['maxChunkSizeInBytes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

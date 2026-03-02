@@ -90,7 +90,7 @@ class GetWorkloadIdentityPoolProviderResult {
       id: map['id'] as String,
       name: map['name'] as String,
       oidcs: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderOidc>(map['oidcs'], (value) => GetWorkloadIdentityPoolProviderOidc.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       samls: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderSaml>(map['samls'], (value) => GetWorkloadIdentityPoolProviderSaml.fromMap((value as Map).cast<String, dynamic>())),
       state: map['state'] as String,
       workloadIdentityPoolId: map['workloadIdentityPoolId'] as String,

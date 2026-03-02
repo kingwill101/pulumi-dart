@@ -24,7 +24,7 @@ class GetKvAccountArgs {
 
   factory GetKvAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetKvAccountArgs(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

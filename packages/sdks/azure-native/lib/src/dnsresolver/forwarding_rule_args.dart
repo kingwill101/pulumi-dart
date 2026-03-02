@@ -57,9 +57,9 @@ class ForwardingRuleArgs {
     return ForwardingRuleArgs(
       dnsForwardingRulesetName: (map['dnsForwardingRulesetName'] as String).input(),
       domainName: (map['domainName'] as String).input(),
-      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName'] as String).input(),
-      forwardingRuleState: map['forwardingRuleState'] == null ? null : (map['forwardingRuleState'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      forwardingRuleName: map['forwardingRuleName'] == null ? null : (map['forwardingRuleName']! as String).input(),
+      forwardingRuleState: map['forwardingRuleState'] == null ? null : (map['forwardingRuleState']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       targetDnsServers: (pulumi.Input.decodeList<TargetDnsServer>(map['targetDnsServers'], (value) => TargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

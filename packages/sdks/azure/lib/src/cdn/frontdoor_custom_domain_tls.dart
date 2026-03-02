@@ -34,9 +34,9 @@ class FrontdoorCustomDomainTls {
 
   factory FrontdoorCustomDomainTls.fromMap(Map<String, dynamic> map) {
     return FrontdoorCustomDomainTls(
-      cdnFrontdoorSecretId: map['cdnFrontdoorSecretId'] == null ? null : (map['cdnFrontdoorSecretId'] as String).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
+      cdnFrontdoorSecretId: map['cdnFrontdoorSecretId'] == null ? null : (map['cdnFrontdoorSecretId']! as String).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
     );
   }
 }

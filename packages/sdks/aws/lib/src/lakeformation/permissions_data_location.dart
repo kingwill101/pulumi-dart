@@ -28,7 +28,7 @@ class PermissionsDataLocation {
   factory PermissionsDataLocation.fromMap(Map<String, dynamic> map) {
     return PermissionsDataLocation(
       arn: (map['arn'] as String).input(),
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
     );
   }
 }

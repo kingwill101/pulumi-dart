@@ -27,8 +27,8 @@ class AcceleratorConfig {
 
   factory AcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return AcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
-      type: map['type'] == null ? null : (AcceleratorConfigType.fromValue(map['type'] as String)).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as String).input(),
+      type: map['type'] == null ? null : (AcceleratorConfigType.fromValue(map['type']! as String)).input(),
     );
   }
 }

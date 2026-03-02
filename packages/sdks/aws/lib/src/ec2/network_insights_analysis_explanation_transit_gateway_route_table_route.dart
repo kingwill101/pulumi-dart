@@ -43,13 +43,13 @@ class NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute {
 
   factory NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationTransitGatewayRouteTableRoute(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
-      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      routeOrigin: map['routeOrigin'] == null ? null : (map['routeOrigin'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
+      destinationCidr: map['destinationCidr'] == null ? null : ((map['destinationCidr'] as String).input()).input(),
+      prefixListId: map['prefixListId'] == null ? null : ((map['prefixListId'] as String).input()).input(),
+      resourceId: map['resourceId'] == null ? null : ((map['resourceId'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      routeOrigin: map['routeOrigin'] == null ? null : ((map['routeOrigin'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

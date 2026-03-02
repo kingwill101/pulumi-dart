@@ -86,20 +86,20 @@ class HanaInstanceState {
 
   factory HanaInstanceState.fromMap(Map<String, dynamic> map) {
     return HanaInstanceState(
-      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting'] as String).input(),
-      ecsInstanceIds: map['ecsInstanceIds'] == null ? null : ((map['ecsInstanceIds'] as List).cast<String>()).input(),
-      hanaInstanceId: map['hanaInstanceId'] == null ? null : (map['hanaInstanceId'] as String).input(),
-      hanaName: map['hanaName'] == null ? null : (map['hanaName'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      instanceNumber: map['instanceNumber'] == null ? null : (map['instanceNumber'] as int).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      validateCertificate: map['validateCertificate'] == null ? null : (map['validateCertificate'] as bool).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting']! as String).input(),
+      ecsInstanceIds: map['ecsInstanceIds'] == null ? null : ((map['ecsInstanceIds']! as List).cast<String>()).input(),
+      hanaInstanceId: map['hanaInstanceId'] == null ? null : (map['hanaInstanceId']! as String).input(),
+      hanaName: map['hanaName'] == null ? null : (map['hanaName']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      instanceNumber: map['instanceNumber'] == null ? null : (map['instanceNumber']! as int).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl']! as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      validateCertificate: map['validateCertificate'] == null ? null : (map['validateCertificate']! as bool).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

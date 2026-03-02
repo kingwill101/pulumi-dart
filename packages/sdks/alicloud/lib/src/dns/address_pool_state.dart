@@ -42,11 +42,11 @@ class AddressPoolState {
 
   factory AddressPoolState.fromMap(Map<String, dynamic> map) {
     return AddressPoolState(
-      addressPoolName: map['addressPoolName'] == null ? null : (map['addressPoolName'] as String).input(),
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<AddressPoolAddress>(map['addresses'], (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      lbaStrategy: map['lbaStrategy'] == null ? null : (map['lbaStrategy'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      addressPoolName: map['addressPoolName'] == null ? null : (map['addressPoolName']! as String).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<AddressPoolAddress>(map['addresses']!, (value) => AddressPoolAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      lbaStrategy: map['lbaStrategy'] == null ? null : (map['lbaStrategy']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

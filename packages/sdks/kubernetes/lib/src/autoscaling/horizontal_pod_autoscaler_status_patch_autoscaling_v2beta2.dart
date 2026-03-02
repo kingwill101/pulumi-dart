@@ -48,12 +48,12 @@ class HorizontalPodAutoscalerStatusPatchAutoscalingV2beta2 {
 
   factory HorizontalPodAutoscalerStatusPatchAutoscalingV2beta2.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerStatusPatchAutoscalingV2beta2(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<HorizontalPodAutoscalerConditionPatchAutoscalingV2beta2>(map['conditions'], (value) => HorizontalPodAutoscalerConditionPatchAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentMetrics: map['currentMetrics'] == null ? null : (pulumi.Input.decodeList<MetricStatusPatchAutoscalingV2beta2>(map['currentMetrics'], (value) => MetricStatusPatchAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas'] as int).input(),
-      desiredReplicas: map['desiredReplicas'] == null ? null : (map['desiredReplicas'] as int).input(),
-      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<HorizontalPodAutoscalerConditionPatchAutoscalingV2beta2>(map['conditions']!, (value) => HorizontalPodAutoscalerConditionPatchAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentMetrics: map['currentMetrics'] == null ? null : (pulumi.Input.decodeList<MetricStatusPatchAutoscalingV2beta2>(map['currentMetrics']!, (value) => MetricStatusPatchAutoscalingV2beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas']! as int).input(),
+      desiredReplicas: map['desiredReplicas'] == null ? null : (map['desiredReplicas']! as int).input(),
+      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
     );
   }
 }

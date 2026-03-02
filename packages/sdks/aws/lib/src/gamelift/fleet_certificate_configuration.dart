@@ -20,7 +20,7 @@ class FleetCertificateConfiguration {
 
   factory FleetCertificateConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetCertificateConfiguration(
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
+      certificateType: map['certificateType'] == null ? null : ((map['certificateType'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class EntityAlerts {
 
   factory EntityAlerts.fromMap(Map<String, dynamic> map) {
     return EntityAlerts(
-      degraded: map['degraded'] == null ? null : (AlertConfiguration.fromMap((map['degraded'] as Map).cast<String, dynamic>())).input(),
-      unhealthy: map['unhealthy'] == null ? null : (AlertConfiguration.fromMap((map['unhealthy'] as Map).cast<String, dynamic>())).input(),
+      degraded: map['degraded'] == null ? null : (AlertConfiguration.fromMap((map['degraded']! as Map).cast<String, dynamic>())).input(),
+      unhealthy: map['unhealthy'] == null ? null : (AlertConfiguration.fromMap((map['unhealthy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class TransitionResponse {
 
   factory TransitionResponse.fromMap(Map<String, dynamic> map) {
     return TransitionResponse(
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
-      transitionDate: map['transitionDate'] == null ? null : (map['transitionDate'] as String).input(),
-      transitionInDays: map['transitionInDays'] == null ? null : (map['transitionInDays'] as int).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
+      transitionDate: map['transitionDate'] == null ? null : (map['transitionDate']! as String).input(),
+      transitionInDays: map['transitionInDays'] == null ? null : (map['transitionInDays']! as int).input(),
     );
   }
 }

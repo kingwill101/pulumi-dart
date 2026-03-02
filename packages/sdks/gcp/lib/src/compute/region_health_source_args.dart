@@ -76,13 +76,13 @@ class RegionHealthSourceArgs {
 
   factory RegionHealthSourceArgs.fromMap(Map<String, dynamic> map) {
     return RegionHealthSourceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      healthAggregationPolicy: map['healthAggregationPolicy'] == null ? null : (map['healthAggregationPolicy'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      healthAggregationPolicy: map['healthAggregationPolicy'] == null ? null : (map['healthAggregationPolicy']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       sourceType: (map['sourceType'] as String).input(),
-      sources: map['sources'] == null ? null : (map['sources'] as String).input(),
+      sources: map['sources'] == null ? null : (map['sources']! as String).input(),
     );
   }
 }

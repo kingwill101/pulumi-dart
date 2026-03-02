@@ -22,7 +22,7 @@ class StorageConfiguration {
 
   factory StorageConfiguration.fromMap(Map<String, dynamic> map) {
     return StorageConfiguration(
-      transportFileShareConfiguration: map['transportFileShareConfiguration'] == null ? null : (CreateAndMountFileShareConfiguration.fromMap((map['transportFileShareConfiguration'] as Map).cast<String, dynamic>())).input(),
+      transportFileShareConfiguration: map['transportFileShareConfiguration'] == null ? null : (CreateAndMountFileShareConfiguration.fromMap((map['transportFileShareConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

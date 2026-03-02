@@ -21,7 +21,7 @@ class FileShareSnapshotProperties {
 
   factory FileShareSnapshotProperties.fromMap(Map<String, dynamic> map) {
     return FileShareSnapshotProperties(
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
     );
   }
 }

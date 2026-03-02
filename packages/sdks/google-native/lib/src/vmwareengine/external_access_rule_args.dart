@@ -83,19 +83,19 @@ class ExternalAccessRuleArgs {
 
   factory ExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleArgs(
-      action: map['action'] == null ? null : (ExternalAccessRuleAction.fromValue(map['action'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['destinationIpRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
+      action: map['action'] == null ? null : (ExternalAccessRuleAction.fromValue(map['action']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationIpRanges: map['destinationIpRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['destinationIpRanges']!, (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
       externalAccessRuleId: (map['externalAccessRuleId'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkPolicyId: (map['networkPolicyId'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['sourceIpRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts'] as List).cast<String>()).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      sourceIpRanges: map['sourceIpRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['sourceIpRanges']!, (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePorts: map['sourcePorts'] == null ? null : ((map['sourcePorts']! as List).cast<String>()).input(),
     );
   }
 }

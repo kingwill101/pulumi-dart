@@ -29,8 +29,8 @@ class GetGenaiOpenaiApiKeysArgs {
 
   factory GetGenaiOpenaiApiKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetGenaiOpenaiApiKeysArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysFilter>(map['filters'], (value) => GetGenaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysSort>(map['sorts'], (value) => GetGenaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysFilter>(map['filters']!, (value) => GetGenaiOpenaiApiKeysFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetGenaiOpenaiApiKeysSort>(map['sorts']!, (value) => GetGenaiOpenaiApiKeysSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

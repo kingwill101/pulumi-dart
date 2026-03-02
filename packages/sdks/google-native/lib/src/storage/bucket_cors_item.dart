@@ -35,10 +35,10 @@ class BucketCorsItem {
 
   factory BucketCorsItem.fromMap(Map<String, dynamic> map) {
     return BucketCorsItem(
-      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds'] as int).input(),
-      method: map['method'] == null ? null : ((map['method'] as List).cast<String>()).input(),
-      origin: map['origin'] == null ? null : ((map['origin'] as List).cast<String>()).input(),
-      responseHeader: map['responseHeader'] == null ? null : ((map['responseHeader'] as List).cast<String>()).input(),
+      maxAgeSeconds: map['maxAgeSeconds'] == null ? null : (map['maxAgeSeconds']! as int).input(),
+      method: map['method'] == null ? null : ((map['method']! as List).cast<String>()).input(),
+      origin: map['origin'] == null ? null : ((map['origin']! as List).cast<String>()).input(),
+      responseHeader: map['responseHeader'] == null ? null : ((map['responseHeader']! as List).cast<String>()).input(),
     );
   }
 }

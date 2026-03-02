@@ -37,10 +37,10 @@ class Logging {
 
   factory Logging.fromMap(Map<String, dynamic> map) {
     return Logging(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      clusterLogging: map['clusterLogging'] == null ? null : (pulumi.Input.decodeList<LogSetup>(map['clusterLogging'], (value) => LogSetup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeCookies: map['includeCookies'] == null ? null : (map['includeCookies'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      clusterLogging: map['clusterLogging'] == null ? null : (pulumi.Input.decodeList<LogSetup>(map['clusterLogging']!, (value) => LogSetup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includeCookies: map['includeCookies'] == null ? null : (map['includeCookies']! as bool).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

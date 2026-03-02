@@ -36,9 +36,9 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      authenticationDetails: map['authenticationDetails'] == null ? null : (AwAssumeRoleAuthenticationDetailsProperties.fromMap((map['authenticationDetails'] as Map).cast<String, dynamic>())).input(),
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      hybridComputeSettings: map['hybridComputeSettings'] == null ? null : (HybridComputeSettingsProperties.fromMap((map['hybridComputeSettings'] as Map).cast<String, dynamic>())).input(),
+      authenticationDetails: map['authenticationDetails'] == null ? null : (AwAssumeRoleAuthenticationDetailsProperties.fromMap((map['authenticationDetails']! as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      hybridComputeSettings: map['hybridComputeSettings'] == null ? null : (HybridComputeSettingsProperties.fromMap((map['hybridComputeSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

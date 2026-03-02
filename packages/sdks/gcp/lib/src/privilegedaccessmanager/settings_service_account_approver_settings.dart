@@ -20,7 +20,7 @@ class SettingsServiceAccountApproverSettings {
 
   factory SettingsServiceAccountApproverSettings.fromMap(Map<String, dynamic> map) {
     return SettingsServiceAccountApproverSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

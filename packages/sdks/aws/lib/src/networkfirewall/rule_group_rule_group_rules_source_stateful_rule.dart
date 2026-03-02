@@ -33,8 +33,8 @@ class RuleGroupRuleGroupRulesSourceStatefulRule {
   factory RuleGroupRuleGroupRulesSourceStatefulRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatefulRule(
       action: (map['action'] as String).input(),
-      header: (RuleGroupRuleGroupRulesSourceStatefulRuleHeader.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
-      ruleOptions: (pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption>(map['ruleOptions'], (value) => RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      header: (RuleGroupRuleGroupRulesSourceStatefulRuleHeader.fromMap((map['header']! as Map).cast<String, dynamic>())).input(),
+      ruleOptions: (pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption>(map['ruleOptions']!, (value) => RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

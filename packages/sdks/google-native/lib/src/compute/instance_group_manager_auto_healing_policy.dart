@@ -37,10 +37,10 @@ class InstanceGroupManagerAutoHealingPolicy {
 
   factory InstanceGroupManagerAutoHealingPolicy.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAutoHealingPolicy(
-      autoHealingTriggers: map['autoHealingTriggers'] == null ? null : (InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers.fromMap((map['autoHealingTriggers'] as Map).cast<String, dynamic>())).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
-      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec'] as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (FixedOrPercent.fromMap((map['maxUnavailable'] as Map).cast<String, dynamic>())).input(),
+      autoHealingTriggers: map['autoHealingTriggers'] == null ? null : (InstanceGroupManagerAutoHealingPolicyAutoHealingTriggers.fromMap((map['autoHealingTriggers']! as Map).cast<String, dynamic>())).input(),
+      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck']! as String).input(),
+      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec']! as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (FixedOrPercent.fromMap((map['maxUnavailable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

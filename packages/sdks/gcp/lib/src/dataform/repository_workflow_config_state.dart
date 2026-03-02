@@ -66,15 +66,15 @@ class RepositoryWorkflowConfigState {
 
   factory RepositoryWorkflowConfigState.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigState(
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      invocationConfig: map['invocationConfig'] == null ? null : (RepositoryWorkflowConfigInvocationConfig.fromMap((map['invocationConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      recentScheduledExecutionRecords: map['recentScheduledExecutionRecords'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(map['recentScheduledExecutionRecords'], (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      releaseConfig: map['releaseConfig'] == null ? null : (map['releaseConfig'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      invocationConfig: map['invocationConfig'] == null ? null : (RepositoryWorkflowConfigInvocationConfig.fromMap((map['invocationConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      recentScheduledExecutionRecords: map['recentScheduledExecutionRecords'] == null ? null : (pulumi.Input.decodeList<RepositoryWorkflowConfigRecentScheduledExecutionRecord>(map['recentScheduledExecutionRecords']!, (value) => RepositoryWorkflowConfigRecentScheduledExecutionRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      releaseConfig: map['releaseConfig'] == null ? null : (map['releaseConfig']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

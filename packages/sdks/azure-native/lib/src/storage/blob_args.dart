@@ -71,16 +71,16 @@ class BlobArgs {
 
   factory BlobArgs.fromMap(Map<String, dynamic> map) {
     return BlobArgs(
-      accessTier: map['accessTier'] == null ? null : (BlobAccessTier.fromValue(map['accessTier'] as String)).input(),
+      accessTier: map['accessTier'] == null ? null : (BlobAccessTier.fromValue(map['accessTier']! as String)).input(),
       accountName: (map['accountName'] as String).input(),
-      blobName: map['blobName'] == null ? null : (map['blobName'] as String).input(),
+      blobName: map['blobName'] == null ? null : (map['blobName']! as String).input(),
       containerName: (map['containerName'] as String).input(),
-      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      contentMd5: map['contentMd5'] == null ? null : (map['contentMd5']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source']).input(),
-      type: map['type'] == null ? null : (BlobType.fromValue(map['type'] as String)).input(),
+      source: map['source'] == null ? null : (map['source']!).input(),
+      type: map['type'] == null ? null : (BlobType.fromValue(map['type']! as String)).input(),
     );
   }
 }

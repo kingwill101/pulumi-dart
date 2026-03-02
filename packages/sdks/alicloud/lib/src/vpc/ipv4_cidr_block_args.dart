@@ -41,9 +41,9 @@ class Ipv4CidrBlockArgs {
 
   factory Ipv4CidrBlockArgs.fromMap(Map<String, dynamic> map) {
     return Ipv4CidrBlockArgs(
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
-      secondaryCidrBlock: map['secondaryCidrBlock'] == null ? null : (map['secondaryCidrBlock'] as String).input(),
-      secondaryCidrMask: map['secondaryCidrMask'] == null ? null : (map['secondaryCidrMask'] as int).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId']! as String).input(),
+      secondaryCidrBlock: map['secondaryCidrBlock'] == null ? null : (map['secondaryCidrBlock']! as String).input(),
+      secondaryCidrMask: map['secondaryCidrMask'] == null ? null : (map['secondaryCidrMask']! as int).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

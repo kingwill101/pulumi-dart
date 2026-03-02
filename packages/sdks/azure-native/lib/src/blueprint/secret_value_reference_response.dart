@@ -34,7 +34,7 @@ class SecretValueReferenceResponse {
     return SecretValueReferenceResponse(
       keyVault: (KeyVaultReferenceResponse.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
       secretName: (map['secretName'] as String).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
     );
   }
 }

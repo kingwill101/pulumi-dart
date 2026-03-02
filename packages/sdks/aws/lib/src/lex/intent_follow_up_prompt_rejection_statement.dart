@@ -24,8 +24,8 @@ class IntentFollowUpPromptRejectionStatement {
 
   factory IntentFollowUpPromptRejectionStatement.fromMap(Map<String, dynamic> map) {
     return IntentFollowUpPromptRejectionStatement(
-      messages: (pulumi.Input.decodeList<IntentFollowUpPromptRejectionStatementMessage>(map['messages'], (value) => IntentFollowUpPromptRejectionStatementMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<IntentFollowUpPromptRejectionStatementMessage>(map['messages']!, (value) => IntentFollowUpPromptRejectionStatementMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

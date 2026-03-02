@@ -44,11 +44,11 @@ class IdentityServiceAuthMethod {
 
   factory IdentityServiceAuthMethod.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAuthMethod(
-      azureadConfig: map['azureadConfig'] == null ? null : (IdentityServiceAzureADConfig.fromMap((map['azureadConfig'] as Map).cast<String, dynamic>())).input(),
-      googleConfig: map['googleConfig'] == null ? null : (IdentityServiceGoogleConfig.fromMap((map['googleConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oidcConfig: map['oidcConfig'] == null ? null : (IdentityServiceOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>())).input(),
-      proxy: map['proxy'] == null ? null : (map['proxy'] as String).input(),
+      azureadConfig: map['azureadConfig'] == null ? null : (IdentityServiceAzureADConfig.fromMap((map['azureadConfig']! as Map).cast<String, dynamic>())).input(),
+      googleConfig: map['googleConfig'] == null ? null : (IdentityServiceGoogleConfig.fromMap((map['googleConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oidcConfig: map['oidcConfig'] == null ? null : (IdentityServiceOidcConfig.fromMap((map['oidcConfig']! as Map).cast<String, dynamic>())).input(),
+      proxy: map['proxy'] == null ? null : (map['proxy']! as String).input(),
     );
   }
 }

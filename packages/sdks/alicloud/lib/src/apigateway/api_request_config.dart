@@ -40,7 +40,7 @@ class ApiRequestConfig {
 
   factory ApiRequestConfig.fromMap(Map<String, dynamic> map) {
     return ApiRequestConfig(
-      bodyFormat: map['bodyFormat'] == null ? null : (map['bodyFormat'] as String).input(),
+      bodyFormat: map['bodyFormat'] == null ? null : (map['bodyFormat']! as String).input(),
       method: (map['method'] as String).input(),
       mode: (map['mode'] as String).input(),
       path: (map['path'] as String).input(),

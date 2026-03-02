@@ -26,8 +26,8 @@ class ImageHealthcareV1beta1 {
 
   factory ImageHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return ImageHealthcareV1beta1(
-      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri'] as String).input(),
-      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes'] as String).input(),
+      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri']! as String).input(),
+      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes']! as String).input(),
     );
   }
 }

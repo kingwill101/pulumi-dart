@@ -60,14 +60,14 @@ class AccessKeyState {
 
   factory AccessKeyState.fromMap(Map<String, dynamic> map) {
     return AccessKeyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      encryptedSecret: map['encryptedSecret'] == null ? null : (map['encryptedSecret'] as String).input(),
-      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      secretFile: map['secretFile'] == null ? null : (map['secretFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      encryptedSecret: map['encryptedSecret'] == null ? null : (map['encryptedSecret']! as String).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint']! as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      secretFile: map['secretFile'] == null ? null : (map['secretFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

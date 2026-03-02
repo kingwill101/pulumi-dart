@@ -50,13 +50,13 @@ class SyntheticTaskMonitorConfNetTcp {
 
   factory SyntheticTaskMonitorConfNetTcp.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfNetTcp(
-      connectTimes: map['connectTimes'] == null ? null : (map['connectTimes'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
+      connectTimes: map['connectTimes'] == null ? null : (map['connectTimes']! as int).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
       targetUrl: (map['targetUrl'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      tracertEnable: map['tracertEnable'] == null ? null : (map['tracertEnable'] as bool).input(),
-      tracertNumMax: map['tracertNumMax'] == null ? null : (map['tracertNumMax'] as int).input(),
-      tracertTimeout: map['tracertTimeout'] == null ? null : (map['tracertTimeout'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      tracertEnable: map['tracertEnable'] == null ? null : (map['tracertEnable']! as bool).input(),
+      tracertNumMax: map['tracertNumMax'] == null ? null : (map['tracertNumMax']! as int).input(),
+      tracertTimeout: map['tracertTimeout'] == null ? null : (map['tracertTimeout']! as int).input(),
     );
   }
 }

@@ -58,11 +58,11 @@ class AlertArgs {
     return AlertArgs(
       alertName: (map['alertName'] as String).input(),
       configuration: (AlertConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
       schedule: (AlertSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

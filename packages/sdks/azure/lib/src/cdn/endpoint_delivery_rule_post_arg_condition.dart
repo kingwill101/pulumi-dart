@@ -40,11 +40,11 @@ class EndpointDeliveryRulePostArgCondition {
 
   factory EndpointDeliveryRulePostArgCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRulePostArgCondition(
-      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues']! as List).cast<String>()).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
       operator: (map['operator'] as String).input(),
       selector: (map['selector'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
     );
   }
 }

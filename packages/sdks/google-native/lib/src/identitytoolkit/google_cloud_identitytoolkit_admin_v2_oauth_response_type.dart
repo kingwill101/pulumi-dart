@@ -31,9 +31,9 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
 
   factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2OAuthResponseType(
-      code: map['code'] == null ? null : (map['code'] as bool).input(),
-      idToken: map['idToken'] == null ? null : (map['idToken'] as bool).input(),
-      token: map['token'] == null ? null : (map['token'] as bool).input(),
+      code: map['code'] == null ? null : (map['code']! as bool).input(),
+      idToken: map['idToken'] == null ? null : (map['idToken']! as bool).input(),
+      token: map['token'] == null ? null : (map['token']! as bool).input(),
     );
   }
 }

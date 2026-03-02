@@ -33,9 +33,9 @@ class InputPatchConfiguration {
 
   factory InputPatchConfiguration.fromMap(Map<String, dynamic> map) {
     return InputPatchConfiguration(
-      linuxParameters: map['linuxParameters'] == null ? null : (InputLinuxParameters.fromMap((map['linuxParameters'] as Map).cast<String, dynamic>())).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
-      windowsParameters: map['windowsParameters'] == null ? null : (InputWindowsParameters.fromMap((map['windowsParameters'] as Map).cast<String, dynamic>())).input(),
+      linuxParameters: map['linuxParameters'] == null ? null : (InputLinuxParameters.fromMap((map['linuxParameters']! as Map).cast<String, dynamic>())).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
+      windowsParameters: map['windowsParameters'] == null ? null : (InputWindowsParameters.fromMap((map['windowsParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

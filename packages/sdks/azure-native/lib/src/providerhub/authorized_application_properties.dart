@@ -26,8 +26,8 @@ class AuthorizedApplicationProperties {
 
   factory AuthorizedApplicationProperties.fromMap(Map<String, dynamic> map) {
     return AuthorizedApplicationProperties(
-      dataAuthorizations: map['dataAuthorizations'] == null ? null : (pulumi.Input.decodeList<ApplicationDataAuthorization>(map['dataAuthorizations'], (value) => ApplicationDataAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      providerAuthorization: map['providerAuthorization'] == null ? null : (ApplicationProviderAuthorization.fromMap((map['providerAuthorization'] as Map).cast<String, dynamic>())).input(),
+      dataAuthorizations: map['dataAuthorizations'] == null ? null : (pulumi.Input.decodeList<ApplicationDataAuthorization>(map['dataAuthorizations']!, (value) => ApplicationDataAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providerAuthorization: map['providerAuthorization'] == null ? null : (ApplicationProviderAuthorization.fromMap((map['providerAuthorization']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

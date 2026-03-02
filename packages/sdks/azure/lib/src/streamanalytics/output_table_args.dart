@@ -70,8 +70,8 @@ class OutputTableArgs {
   factory OutputTableArgs.fromMap(Map<String, dynamic> map) {
     return OutputTableArgs(
       batchSize: (map['batchSize'] as int).input(),
-      columnsToRemoves: map['columnsToRemoves'] == null ? null : ((map['columnsToRemoves'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      columnsToRemoves: map['columnsToRemoves'] == null ? null : ((map['columnsToRemoves']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       partitionKey: (map['partitionKey'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       rowKey: (map['rowKey'] as String).input(),

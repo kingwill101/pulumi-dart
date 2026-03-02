@@ -36,10 +36,10 @@ class BlobNfsTarget {
 
   factory BlobNfsTarget.fromMap(Map<String, dynamic> map) {
     return BlobNfsTarget(
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      usageModel: map['usageModel'] == null ? null : (map['usageModel'] as String).input(),
-      verificationTimer: map['verificationTimer'] == null ? null : (map['verificationTimer'] as int).input(),
-      writeBackTimer: map['writeBackTimer'] == null ? null : (map['writeBackTimer'] as int).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      usageModel: map['usageModel'] == null ? null : (map['usageModel']! as String).input(),
+      verificationTimer: map['verificationTimer'] == null ? null : (map['verificationTimer']! as int).input(),
+      writeBackTimer: map['writeBackTimer'] == null ? null : (map['writeBackTimer']! as int).input(),
     );
   }
 }

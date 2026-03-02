@@ -47,10 +47,10 @@ class ImmutabilityPolicyPropertiesResponse {
 
   factory ImmutabilityPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ImmutabilityPolicyPropertiesResponse(
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites'] as bool).input(),
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll'] as bool).input(),
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites']! as bool).input(),
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll']! as bool).input(),
       etag: (map['etag'] as String).input(),
-      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays'] as int).input(),
+      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays']! as int).input(),
       state: (map['state'] as String).input(),
       updateHistory: (pulumi.Input.decodeList<UpdateHistoryPropertyResponse>(map['updateHistory'], (value) => UpdateHistoryPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

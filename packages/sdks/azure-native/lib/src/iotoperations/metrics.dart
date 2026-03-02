@@ -21,7 +21,7 @@ class Metrics {
 
   factory Metrics.fromMap(Map<String, dynamic> map) {
     return Metrics(
-      prometheusPort: map['prometheusPort'] == null ? null : (map['prometheusPort'] as int).input(),
+      prometheusPort: map['prometheusPort'] == null ? null : (map['prometheusPort']! as int).input(),
     );
   }
 }

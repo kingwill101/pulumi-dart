@@ -108,9 +108,9 @@ class GetStudentResult {
       name: map['name'] as String,
       role: map['role'] as String,
       status: map['status'] as String,
-      subscriptionAlias: map['subscriptionAlias'] == null ? null : map['subscriptionAlias'] as String,
+      subscriptionAlias: map['subscriptionAlias'] == null ? null : map['subscriptionAlias']! as String,
       subscriptionId: map['subscriptionId'] as String,
-      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : map['subscriptionInviteLastSentDate'] as String,
+      subscriptionInviteLastSentDate: map['subscriptionInviteLastSentDate'] == null ? null : map['subscriptionInviteLastSentDate']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

@@ -31,9 +31,9 @@ class ExpressSyncShareAttachmentState {
 
   factory ExpressSyncShareAttachmentState.fromMap(Map<String, dynamic> map) {
     return ExpressSyncShareAttachmentState(
-      expressSyncId: map['expressSyncId'] == null ? null : (map['expressSyncId'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      expressSyncId: map['expressSyncId'] == null ? null : (map['expressSyncId']! as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
     );
   }
 }

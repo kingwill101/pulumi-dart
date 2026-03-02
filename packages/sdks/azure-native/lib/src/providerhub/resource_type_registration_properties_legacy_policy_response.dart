@@ -25,8 +25,8 @@ class ResourceTypeRegistrationPropertiesLegacyPolicyResponse {
 
   factory ResourceTypeRegistrationPropertiesLegacyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesLegacyPolicyResponse(
-      disallowedConditions: map['disallowedConditions'] == null ? null : (pulumi.Input.decodeList<LegacyDisallowedConditionResponse>(map['disallowedConditions'], (value) => LegacyDisallowedConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disallowedLegacyOperations: map['disallowedLegacyOperations'] == null ? null : ((map['disallowedLegacyOperations'] as List).cast<String>()).input(),
+      disallowedConditions: map['disallowedConditions'] == null ? null : (pulumi.Input.decodeList<LegacyDisallowedConditionResponse>(map['disallowedConditions']!, (value) => LegacyDisallowedConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disallowedLegacyOperations: map['disallowedLegacyOperations'] == null ? null : ((map['disallowedLegacyOperations']! as List).cast<String>()).input(),
     );
   }
 }

@@ -58,13 +58,13 @@ class ManagementServerState {
 
   factory ManagementServerState.fromMap(Map<String, dynamic> map) {
     return ManagementServerState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementUris: map['managementUris'] == null ? null : (pulumi.Input.decodeList<ManagementServerManagementUri>(map['managementUris'], (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ManagementServerNetwork>(map['networks'], (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementUris: map['managementUris'] == null ? null : (pulumi.Input.decodeList<ManagementServerManagementUri>(map['managementUris']!, (value) => ManagementServerManagementUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<ManagementServerNetwork>(map['networks']!, (value) => ManagementServerNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

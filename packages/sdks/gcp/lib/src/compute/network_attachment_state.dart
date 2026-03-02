@@ -97,21 +97,21 @@ class NetworkAttachmentState {
 
   factory NetworkAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentState(
-      connectionEndpoints: map['connectionEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(map['connectionEndpoints'], (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectionPreference: map['connectionPreference'] == null ? null : (map['connectionPreference'] as String).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists'] as List).cast<String>()).input(),
-      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId'] as String).input(),
-      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks'] as List).cast<String>()).input(),
+      connectionEndpoints: map['connectionEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkAttachmentConnectionEndpoint>(map['connectionEndpoints']!, (value) => NetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionPreference: map['connectionPreference'] == null ? null : (map['connectionPreference']! as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      producerAcceptLists: map['producerAcceptLists'] == null ? null : ((map['producerAcceptLists']! as List).cast<String>()).input(),
+      producerRejectLists: map['producerRejectLists'] == null ? null : ((map['producerRejectLists']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      selfLinkWithId: map['selfLinkWithId'] == null ? null : (map['selfLinkWithId']! as String).input(),
+      subnetworks: map['subnetworks'] == null ? null : ((map['subnetworks']! as List).cast<String>()).input(),
     );
   }
 }

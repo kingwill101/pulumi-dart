@@ -66,16 +66,16 @@ class SparkOptions {
 
   factory SparkOptions.fromMap(Map<String, dynamic> map) {
     return SparkOptions(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
-      connection: map['connection'] == null ? null : (map['connection'] as String).input(),
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
-      jarUris: map['jarUris'] == null ? null : ((map['jarUris'] as List).cast<String>()).input(),
-      mainClass: map['mainClass'] == null ? null : (map['mainClass'] as String).input(),
-      mainFileUri: map['mainFileUri'] == null ? null : (map['mainFileUri'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      pyFileUris: map['pyFileUris'] == null ? null : ((map['pyFileUris'] as List).cast<String>()).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
+      connection: map['connection'] == null ? null : (map['connection']! as String).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
+      jarUris: map['jarUris'] == null ? null : ((map['jarUris']! as List).cast<String>()).input(),
+      mainClass: map['mainClass'] == null ? null : (map['mainClass']! as String).input(),
+      mainFileUri: map['mainFileUri'] == null ? null : (map['mainFileUri']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      pyFileUris: map['pyFileUris'] == null ? null : ((map['pyFileUris']! as List).cast<String>()).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

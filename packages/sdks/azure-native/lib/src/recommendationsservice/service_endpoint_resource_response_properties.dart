@@ -37,7 +37,7 @@ class ServiceEndpointResourceResponseProperties {
   factory ServiceEndpointResourceResponseProperties.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointResourceResponseProperties(
       pairedLocation: (map['pairedLocation'] as String).input(),
-      preAllocatedCapacity: map['preAllocatedCapacity'] == null ? null : (map['preAllocatedCapacity'] as int).input(),
+      preAllocatedCapacity: map['preAllocatedCapacity'] == null ? null : (map['preAllocatedCapacity']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       url: (map['url'] as String).input(),
     );

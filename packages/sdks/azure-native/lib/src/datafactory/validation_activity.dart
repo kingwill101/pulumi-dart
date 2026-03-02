@@ -80,18 +80,18 @@ class ValidationActivity {
 
   factory ValidationActivity.fromMap(Map<String, dynamic> map) {
     return ValidationActivity(
-      childItems: map['childItems'] == null ? null : (map['childItems']).input(),
+      childItems: map['childItems'] == null ? null : (map['childItems']!).input(),
       dataset: (DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      minimumSize: map['minimumSize'] == null ? null : (map['minimumSize']).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      minimumSize: map['minimumSize'] == null ? null : (map['minimumSize']!).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      sleep: map['sleep'] == null ? null : (map['sleep']).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout']).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      sleep: map['sleep'] == null ? null : (map['sleep']!).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']!).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

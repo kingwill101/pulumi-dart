@@ -35,9 +35,9 @@ class DataCatalogEncryptionSettingsArgs {
 
   factory DataCatalogEncryptionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      dataCatalogEncryptionSettings: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      dataCatalogEncryptionSettings: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((map['dataCatalogEncryptionSettings']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

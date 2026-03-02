@@ -54,8 +54,8 @@ class V2OrganizationNotificationConfigArgs {
   factory V2OrganizationNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationNotificationConfigArgs(
       configId: (map['configId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       organization: (map['organization'] as String).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
       streamingConfig: (V2OrganizationNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),

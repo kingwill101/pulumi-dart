@@ -40,10 +40,10 @@ class NamespaceCustomerManagedKeyState {
 
   factory NamespaceCustomerManagedKeyState.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKeyState(
-      eventhubNamespaceId: map['eventhubNamespaceId'] == null ? null : (map['eventhubNamespaceId'] as String).input(),
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled'] as bool).input(),
-      keyVaultKeyIds: map['keyVaultKeyIds'] == null ? null : ((map['keyVaultKeyIds'] as List).cast<String>()).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      eventhubNamespaceId: map['eventhubNamespaceId'] == null ? null : (map['eventhubNamespaceId']! as String).input(),
+      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled']! as bool).input(),
+      keyVaultKeyIds: map['keyVaultKeyIds'] == null ? null : ((map['keyVaultKeyIds']! as List).cast<String>()).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

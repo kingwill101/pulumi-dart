@@ -58,14 +58,14 @@ class DatabaseUserState {
 
   factory DatabaseUserState.fromMap(Map<String, dynamic> map) {
     return DatabaseUserState(
-      accessCert: map['accessCert'] == null ? null : (map['accessCert'] as String).input(),
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings'], (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessCert: map['accessCert'] == null ? null : (map['accessCert']! as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      mysqlAuthPlugin: map['mysqlAuthPlugin'] == null ? null : (map['mysqlAuthPlugin']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<DatabaseUserSetting>(map['settings']!, (value) => DatabaseUserSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

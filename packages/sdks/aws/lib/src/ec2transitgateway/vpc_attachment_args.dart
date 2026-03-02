@@ -74,15 +74,15 @@ class VpcAttachmentArgs {
 
   factory VpcAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpcAttachmentArgs(
-      applianceModeSupport: map['applianceModeSupport'] == null ? null : (map['applianceModeSupport'] as String).input(),
-      dnsSupport: map['dnsSupport'] == null ? null : (map['dnsSupport'] as String).input(),
-      ipv6Support: map['ipv6Support'] == null ? null : (map['ipv6Support'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : (map['securityGroupReferencingSupport'] as String).input(),
+      applianceModeSupport: map['applianceModeSupport'] == null ? null : ((map['applianceModeSupport'] as String).input()).input(),
+      dnsSupport: map['dnsSupport'] == null ? null : ((map['dnsSupport'] as String).input()).input(),
+      ipv6Support: map['ipv6Support'] == null ? null : ((map['ipv6Support'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupReferencingSupport: map['securityGroupReferencingSupport'] == null ? null : ((map['securityGroupReferencingSupport'] as String).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : (map['transitGatewayDefaultRouteTableAssociation'] as bool).input(),
-      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : (map['transitGatewayDefaultRouteTablePropagation'] as bool).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayDefaultRouteTableAssociation: map['transitGatewayDefaultRouteTableAssociation'] == null ? null : ((map['transitGatewayDefaultRouteTableAssociation'] as bool).input()).input(),
+      transitGatewayDefaultRouteTablePropagation: map['transitGatewayDefaultRouteTablePropagation'] == null ? null : ((map['transitGatewayDefaultRouteTablePropagation'] as bool).input()).input(),
       transitGatewayId: (map['transitGatewayId'] as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );

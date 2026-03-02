@@ -54,13 +54,13 @@ class BucketReplicationConfigRuleDestination {
 
   factory BucketReplicationConfigRuleDestination.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestination(
-      accessControlTranslation: map['accessControlTranslation'] == null ? null : (BucketReplicationConfigRuleDestinationAccessControlTranslation.fromMap((map['accessControlTranslation'] as Map).cast<String, dynamic>())).input(),
-      account: map['account'] == null ? null : (map['account'] as String).input(),
+      accessControlTranslation: map['accessControlTranslation'] == null ? null : ((BucketReplicationConfigRuleDestinationAccessControlTranslation.fromMap((map['accessControlTranslation']! as Map).cast<String, dynamic>())).input()).input(),
+      account: map['account'] == null ? null : ((map['account'] as String).input()).input(),
       bucket: (map['bucket'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (BucketReplicationConfigRuleDestinationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      metrics: map['metrics'] == null ? null : (BucketReplicationConfigRuleDestinationMetrics.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
-      replicationTime: map['replicationTime'] == null ? null : (BucketReplicationConfigRuleDestinationReplicationTime.fromMap((map['replicationTime'] as Map).cast<String, dynamic>())).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((BucketReplicationConfigRuleDestinationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      metrics: map['metrics'] == null ? null : ((BucketReplicationConfigRuleDestinationMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input()).input(),
+      replicationTime: map['replicationTime'] == null ? null : ((BucketReplicationConfigRuleDestinationReplicationTime.fromMap((map['replicationTime']! as Map).cast<String, dynamic>())).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
     );
   }
 }

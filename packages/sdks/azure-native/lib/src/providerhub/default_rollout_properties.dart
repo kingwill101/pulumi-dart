@@ -27,8 +27,8 @@ class DefaultRolloutProperties {
 
   factory DefaultRolloutProperties.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutProperties(
-      specification: map['specification'] == null ? null : (DefaultRolloutPropertiesSpecification.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (DefaultRolloutPropertiesStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      specification: map['specification'] == null ? null : (DefaultRolloutPropertiesSpecification.fromMap((map['specification']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (DefaultRolloutPropertiesStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

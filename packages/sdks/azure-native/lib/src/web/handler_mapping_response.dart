@@ -32,9 +32,9 @@ class HandlerMappingResponse {
 
   factory HandlerMappingResponse.fromMap(Map<String, dynamic> map) {
     return HandlerMappingResponse(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
-      extension: map['extension'] == null ? null : (map['extension'] as String).input(),
-      scriptProcessor: map['scriptProcessor'] == null ? null : (map['scriptProcessor'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
+      extension: map['extension'] == null ? null : (map['extension']! as String).input(),
+      scriptProcessor: map['scriptProcessor'] == null ? null : (map['scriptProcessor']! as String).input(),
     );
   }
 }

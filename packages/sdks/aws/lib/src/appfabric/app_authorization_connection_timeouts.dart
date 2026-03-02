@@ -20,7 +20,7 @@ class AppAuthorizationConnectionTimeouts {
 
   factory AppAuthorizationConnectionTimeouts.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationConnectionTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GuardrailTopicPolicyConfig {
 
   factory GuardrailTopicPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailTopicPolicyConfig(
-      tierConfigs: map['tierConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailTopicPolicyConfigTierConfig>(map['tierConfigs'], (value) => GuardrailTopicPolicyConfigTierConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      topicsConfigs: map['topicsConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailTopicPolicyConfigTopicsConfig>(map['topicsConfigs'], (value) => GuardrailTopicPolicyConfigTopicsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tierConfigs: map['tierConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailTopicPolicyConfigTierConfig>(map['tierConfigs']!, (value) => GuardrailTopicPolicyConfigTierConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      topicsConfigs: map['topicsConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailTopicPolicyConfigTopicsConfig>(map['topicsConfigs']!, (value) => GuardrailTopicPolicyConfigTopicsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

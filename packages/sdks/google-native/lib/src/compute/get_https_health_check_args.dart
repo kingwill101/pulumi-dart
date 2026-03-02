@@ -28,7 +28,7 @@ class GetHttpsHealthCheckArgs {
   factory GetHttpsHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return GetHttpsHealthCheckArgs(
       httpsHealthCheck: (map['httpsHealthCheck'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

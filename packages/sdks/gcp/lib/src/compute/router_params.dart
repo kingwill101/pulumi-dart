@@ -22,7 +22,7 @@ class RouterParams {
 
   factory RouterParams.fromMap(Map<String, dynamic> map) {
     return RouterParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

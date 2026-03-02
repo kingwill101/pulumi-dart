@@ -36,10 +36,10 @@ class InferenceContainerProperties {
 
   factory InferenceContainerProperties.fromMap(Map<String, dynamic> map) {
     return InferenceContainerProperties(
-      livenessRoute: map['livenessRoute'] == null ? null : (Route.fromMap((map['livenessRoute'] as Map).cast<String, dynamic>())).input(),
-      readinessRoute: map['readinessRoute'] == null ? null : (Route.fromMap((map['readinessRoute'] as Map).cast<String, dynamic>())).input(),
-      scoringRoute: map['scoringRoute'] == null ? null : (Route.fromMap((map['scoringRoute'] as Map).cast<String, dynamic>())).input(),
-      startupRoute: map['startupRoute'] == null ? null : (Route.fromMap((map['startupRoute'] as Map).cast<String, dynamic>())).input(),
+      livenessRoute: map['livenessRoute'] == null ? null : (Route.fromMap((map['livenessRoute']! as Map).cast<String, dynamic>())).input(),
+      readinessRoute: map['readinessRoute'] == null ? null : (Route.fromMap((map['readinessRoute']! as Map).cast<String, dynamic>())).input(),
+      scoringRoute: map['scoringRoute'] == null ? null : (Route.fromMap((map['scoringRoute']! as Map).cast<String, dynamic>())).input(),
+      startupRoute: map['startupRoute'] == null ? null : (Route.fromMap((map['startupRoute']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

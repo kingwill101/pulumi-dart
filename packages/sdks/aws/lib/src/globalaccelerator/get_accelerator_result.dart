@@ -63,14 +63,14 @@ class GetAcceleratorResult {
   factory GetAcceleratorResult.fromMap(Map<String, dynamic> map) {
     return GetAcceleratorResult(
       arn: map['arn'] as String,
-      attributes: pulumi.Input.decodeList<GetAcceleratorAttribute>(map['attributes'], (value) => GetAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())),
+      attributes: pulumi.Input.decodeList<GetAcceleratorAttribute>(map['attributes']!, (value) => GetAcceleratorAttribute.fromMap((value as Map).cast<String, dynamic>())),
       dnsName: map['dnsName'] as String,
       dualStackDnsName: map['dualStackDnsName'] as String,
       enabled: map['enabled'] as bool,
       hostedZoneId: map['hostedZoneId'] as String,
       id: map['id'] as String,
       ipAddressType: map['ipAddressType'] as String,
-      ipSets: pulumi.Input.decodeList<GetAcceleratorIpSet>(map['ipSets'], (value) => GetAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())),
+      ipSets: pulumi.Input.decodeList<GetAcceleratorIpSet>(map['ipSets']!, (value) => GetAcceleratorIpSet.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

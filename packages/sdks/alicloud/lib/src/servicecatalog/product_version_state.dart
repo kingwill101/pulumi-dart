@@ -56,14 +56,14 @@ class ProductVersionState {
 
   factory ProductVersionState.fromMap(Map<String, dynamic> map) {
     return ProductVersionState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guidance: map['guidance'] == null ? null : (map['guidance'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      productVersionName: map['productVersionName'] == null ? null : (map['productVersionName'] as String).input(),
-      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guidance: map['guidance'] == null ? null : (map['guidance']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      productVersionName: map['productVersionName'] == null ? null : (map['productVersionName']! as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType']! as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl']! as String).input(),
     );
   }
 }

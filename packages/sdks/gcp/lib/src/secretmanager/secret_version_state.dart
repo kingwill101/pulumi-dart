@@ -89,18 +89,18 @@ class SecretVersionState {
 
   factory SecretVersionState.fromMap(Map<String, dynamic> map) {
     return SecretVersionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      destroyTime: map['destroyTime'] == null ? null : (map['destroyTime'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      secretData: map['secretData'] == null ? null : (map['secretData'] as String).input(),
-      secretDataWo: map['secretDataWo'] == null ? null : (map['secretDataWo'] as String).input(),
-      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : (map['secretDataWoVersion'] as int).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      destroyTime: map['destroyTime'] == null ? null : (map['destroyTime']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : (map['isSecretDataBase64']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      secretData: map['secretData'] == null ? null : (map['secretData']! as String).input(),
+      secretDataWo: map['secretDataWo'] == null ? null : (map['secretDataWo']! as String).input(),
+      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : (map['secretDataWoVersion']! as int).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

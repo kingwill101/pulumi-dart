@@ -41,11 +41,11 @@ class ApplicationGatewaySslProfileSslPolicy {
 
   factory ApplicationGatewaySslProfileSslPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslProfileSslPolicy(
-      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites'] as List).cast<String>()).input(),
-      disabledProtocols: map['disabledProtocols'] == null ? null : ((map['disabledProtocols'] as List).cast<String>()).input(),
-      minProtocolVersion: map['minProtocolVersion'] == null ? null : (map['minProtocolVersion'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
+      cipherSuites: map['cipherSuites'] == null ? null : ((map['cipherSuites']! as List).cast<String>()).input(),
+      disabledProtocols: map['disabledProtocols'] == null ? null : ((map['disabledProtocols']! as List).cast<String>()).input(),
+      minProtocolVersion: map['minProtocolVersion'] == null ? null : (map['minProtocolVersion']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
     );
   }
 }

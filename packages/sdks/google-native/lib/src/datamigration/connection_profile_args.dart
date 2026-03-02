@@ -99,21 +99,21 @@ class ConnectionProfileArgs {
 
   factory ConnectionProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileArgs(
-      alloydb: map['alloydb'] == null ? null : (AlloyDbConnectionProfile.fromMap((map['alloydb'] as Map).cast<String, dynamic>())).input(),
-      cloudsql: map['cloudsql'] == null ? null : (CloudSqlConnectionProfile.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())).input(),
+      alloydb: map['alloydb'] == null ? null : (AlloyDbConnectionProfile.fromMap((map['alloydb']! as Map).cast<String, dynamic>())).input(),
+      cloudsql: map['cloudsql'] == null ? null : (CloudSqlConnectionProfile.fromMap((map['cloudsql']! as Map).cast<String, dynamic>())).input(),
       connectionProfileId: (map['connectionProfileId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mysql: map['mysql'] == null ? null : (MySqlConnectionProfile.fromMap((map['mysql'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oracle: map['oracle'] == null ? null : (OracleConnectionProfile.fromMap((map['oracle'] as Map).cast<String, dynamic>())).input(),
-      postgresql: map['postgresql'] == null ? null : (PostgreSqlConnectionProfile.fromMap((map['postgresql'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      provider: map['provider'] == null ? null : (ConnectionProfileProvider.fromValue(map['provider'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation'] as bool).input(),
-      state: map['state'] == null ? null : (ConnectionProfileState.fromValue(map['state'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mysql: map['mysql'] == null ? null : (MySqlConnectionProfile.fromMap((map['mysql']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oracle: map['oracle'] == null ? null : (OracleConnectionProfile.fromMap((map['oracle']! as Map).cast<String, dynamic>())).input(),
+      postgresql: map['postgresql'] == null ? null : (PostgreSqlConnectionProfile.fromMap((map['postgresql']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      provider: map['provider'] == null ? null : (ConnectionProfileProvider.fromValue(map['provider']! as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation']! as bool).input(),
+      state: map['state'] == null ? null : (ConnectionProfileState.fromValue(map['state']! as String)).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ExprAccesscontextmanagerV1beta {
 
   factory ExprAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
     return ExprAccesscontextmanagerV1beta(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

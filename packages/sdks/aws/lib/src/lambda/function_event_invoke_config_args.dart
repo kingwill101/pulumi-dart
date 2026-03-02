@@ -52,12 +52,12 @@ class FunctionEventInvokeConfigArgs {
 
   factory FunctionEventInvokeConfigArgs.fromMap(Map<String, dynamic> map) {
     return FunctionEventInvokeConfigArgs(
-      destinationConfig: map['destinationConfig'] == null ? null : (FunctionEventInvokeConfigDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
+      destinationConfig: map['destinationConfig'] == null ? null : ((FunctionEventInvokeConfigDestinationConfig.fromMap((map['destinationConfig']! as Map).cast<String, dynamic>())).input()).input(),
       functionName: (map['functionName'] as String).input(),
-      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : (map['maximumEventAgeInSeconds'] as int).input(),
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : (map['maximumRetryAttempts'] as int).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : ((map['maximumEventAgeInSeconds'] as int).input()).input(),
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : ((map['maximumRetryAttempts'] as int).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

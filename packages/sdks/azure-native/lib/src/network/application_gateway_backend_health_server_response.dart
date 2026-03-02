@@ -37,10 +37,10 @@ class ApplicationGatewayBackendHealthServerResponse {
 
   factory ApplicationGatewayBackendHealthServerResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendHealthServerResponse(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      health: map['health'] == null ? null : (map['health'] as String).input(),
-      healthProbeLog: map['healthProbeLog'] == null ? null : (map['healthProbeLog'] as String).input(),
-      ipConfiguration: map['ipConfiguration'] == null ? null : (NetworkInterfaceIPConfigurationResponse.fromMap((map['ipConfiguration'] as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      health: map['health'] == null ? null : (map['health']! as String).input(),
+      healthProbeLog: map['healthProbeLog'] == null ? null : (map['healthProbeLog']! as String).input(),
+      ipConfiguration: map['ipConfiguration'] == null ? null : (NetworkInterfaceIPConfigurationResponse.fromMap((map['ipConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

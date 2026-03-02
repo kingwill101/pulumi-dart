@@ -28,8 +28,8 @@ class EnvironmentConfig {
 
   factory EnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfig(
-      executionConfig: map['executionConfig'] == null ? null : (ExecutionConfig.fromMap((map['executionConfig'] as Map).cast<String, dynamic>())).input(),
-      peripheralsConfig: map['peripheralsConfig'] == null ? null : (PeripheralsConfig.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>())).input(),
+      executionConfig: map['executionConfig'] == null ? null : (ExecutionConfig.fromMap((map['executionConfig']! as Map).cast<String, dynamic>())).input(),
+      peripheralsConfig: map['peripheralsConfig'] == null ? null : (PeripheralsConfig.fromMap((map['peripheralsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

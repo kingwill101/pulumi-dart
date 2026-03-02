@@ -24,7 +24,7 @@ class GetApplicationPortalOption {
 
   factory GetApplicationPortalOption.fromMap(Map<String, dynamic> map) {
     return GetApplicationPortalOption(
-      signInOptions: (pulumi.Input.decodeList<GetApplicationPortalOptionSignInOption>(map['signInOptions'], (value) => GetApplicationPortalOptionSignInOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signInOptions: (pulumi.Input.decodeList<GetApplicationPortalOptionSignInOption>(map['signInOptions']!, (value) => GetApplicationPortalOptionSignInOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
       visibility: (map['visibility'] as String).input(),
     );
   }

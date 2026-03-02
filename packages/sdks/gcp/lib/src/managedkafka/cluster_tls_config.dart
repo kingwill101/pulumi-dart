@@ -27,8 +27,8 @@ class ClusterTlsConfig {
 
   factory ClusterTlsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterTlsConfig(
-      sslPrincipalMappingRules: map['sslPrincipalMappingRules'] == null ? null : (map['sslPrincipalMappingRules'] as String).input(),
-      trustConfig: map['trustConfig'] == null ? null : (ClusterTlsConfigTrustConfig.fromMap((map['trustConfig'] as Map).cast<String, dynamic>())).input(),
+      sslPrincipalMappingRules: map['sslPrincipalMappingRules'] == null ? null : (map['sslPrincipalMappingRules']! as String).input(),
+      trustConfig: map['trustConfig'] == null ? null : (ClusterTlsConfigTrustConfig.fromMap((map['trustConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

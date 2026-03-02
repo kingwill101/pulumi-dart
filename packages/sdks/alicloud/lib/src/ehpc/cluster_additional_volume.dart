@@ -66,16 +66,16 @@ class ClusterAdditionalVolume {
 
   factory ClusterAdditionalVolume.fromMap(Map<String, dynamic> map) {
     return ClusterAdditionalVolume(
-      jobQueue: map['jobQueue'] == null ? null : (map['jobQueue'] as String).input(),
-      localDirectory: map['localDirectory'] == null ? null : (map['localDirectory'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      remoteDirectory: map['remoteDirectory'] == null ? null : (map['remoteDirectory'] as String).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ClusterAdditionalVolumeRole>(map['roles'], (value) => ClusterAdditionalVolumeRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
-      volumeMountOption: map['volumeMountOption'] == null ? null : (map['volumeMountOption'] as String).input(),
-      volumeMountpoint: map['volumeMountpoint'] == null ? null : (map['volumeMountpoint'] as String).input(),
-      volumeProtocol: map['volumeProtocol'] == null ? null : (map['volumeProtocol'] as String).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      jobQueue: map['jobQueue'] == null ? null : (map['jobQueue']! as String).input(),
+      localDirectory: map['localDirectory'] == null ? null : (map['localDirectory']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      remoteDirectory: map['remoteDirectory'] == null ? null : (map['remoteDirectory']! as String).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ClusterAdditionalVolumeRole>(map['roles']!, (value) => ClusterAdditionalVolumeRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
+      volumeMountOption: map['volumeMountOption'] == null ? null : (map['volumeMountOption']! as String).input(),
+      volumeMountpoint: map['volumeMountpoint'] == null ? null : (map['volumeMountpoint']! as String).input(),
+      volumeProtocol: map['volumeProtocol'] == null ? null : (map['volumeProtocol']! as String).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

@@ -87,18 +87,18 @@ class HadoopDataSourceArgs {
 
   factory HadoopDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return HadoopDataSourceArgs(
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription']! as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      emrInstanceId: map['emrInstanceId'] == null ? null : (map['emrInstanceId'] as String).input(),
-      hadoopCoreConf: map['hadoopCoreConf'] == null ? null : (map['hadoopCoreConf'] as String).input(),
-      hadoopCreateType: map['hadoopCreateType'] == null ? null : (map['hadoopCreateType'] as String).input(),
-      hadoopHostsAddress: map['hadoopHostsAddress'] == null ? null : (map['hadoopHostsAddress'] as String).input(),
-      hdfsConf: map['hdfsConf'] == null ? null : (map['hdfsConf'] as String).input(),
-      hiveConf: map['hiveConf'] == null ? null : (map['hiveConf'] as String).input(),
-      mapReduceConf: map['mapReduceConf'] == null ? null : (map['mapReduceConf'] as String).input(),
-      yarnConf: map['yarnConf'] == null ? null : (map['yarnConf'] as String).input(),
+      emrInstanceId: map['emrInstanceId'] == null ? null : (map['emrInstanceId']! as String).input(),
+      hadoopCoreConf: map['hadoopCoreConf'] == null ? null : (map['hadoopCoreConf']! as String).input(),
+      hadoopCreateType: map['hadoopCreateType'] == null ? null : (map['hadoopCreateType']! as String).input(),
+      hadoopHostsAddress: map['hadoopHostsAddress'] == null ? null : (map['hadoopHostsAddress']! as String).input(),
+      hdfsConf: map['hdfsConf'] == null ? null : (map['hdfsConf']! as String).input(),
+      hiveConf: map['hiveConf'] == null ? null : (map['hiveConf']! as String).input(),
+      mapReduceConf: map['mapReduceConf'] == null ? null : (map['mapReduceConf']! as String).input(),
+      yarnConf: map['yarnConf'] == null ? null : (map['yarnConf']! as String).input(),
     );
   }
 }

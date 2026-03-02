@@ -26,8 +26,8 @@ class EncryptionResponse {
 
   factory EncryptionResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionResponse(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

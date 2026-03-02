@@ -20,7 +20,7 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig {
 
   factory ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig(
-      invokeType: map['invokeType'] == null ? null : (map['invokeType'] as String).input(),
+      invokeType: map['invokeType'] == null ? null : ((map['invokeType'] as String).input()).input(),
     );
   }
 }

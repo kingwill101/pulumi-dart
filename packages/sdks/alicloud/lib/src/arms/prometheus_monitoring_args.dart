@@ -41,7 +41,7 @@ class PrometheusMonitoringArgs {
     return PrometheusMonitoringArgs(
       clusterId: (map['clusterId'] as String).input(),
       configYaml: (map['configYaml'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

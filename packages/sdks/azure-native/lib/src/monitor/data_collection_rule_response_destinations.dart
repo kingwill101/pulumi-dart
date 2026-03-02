@@ -63,14 +63,14 @@ class DataCollectionRuleResponseDestinations {
 
   factory DataCollectionRuleResponseDestinations.fromMap(Map<String, dynamic> map) {
     return DataCollectionRuleResponseDestinations(
-      azureMonitorMetrics: map['azureMonitorMetrics'] == null ? null : (DestinationsSpecResponseAzureMonitorMetrics.fromMap((map['azureMonitorMetrics'] as Map).cast<String, dynamic>())).input(),
-      eventHubs: map['eventHubs'] == null ? null : (pulumi.Input.decodeList<EventHubDestinationResponse>(map['eventHubs'], (value) => EventHubDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventHubsDirect: map['eventHubsDirect'] == null ? null : (pulumi.Input.decodeList<EventHubDirectDestinationResponse>(map['eventHubsDirect'], (value) => EventHubDirectDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logAnalytics: map['logAnalytics'] == null ? null : (pulumi.Input.decodeList<LogAnalyticsDestinationResponse>(map['logAnalytics'], (value) => LogAnalyticsDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      monitoringAccounts: map['monitoringAccounts'] == null ? null : (pulumi.Input.decodeList<MonitoringAccountDestinationResponse>(map['monitoringAccounts'], (value) => MonitoringAccountDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<StorageBlobDestinationResponse>(map['storageAccounts'], (value) => StorageBlobDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageBlobsDirect: map['storageBlobsDirect'] == null ? null : (pulumi.Input.decodeList<StorageBlobDestinationResponse>(map['storageBlobsDirect'], (value) => StorageBlobDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageTablesDirect: map['storageTablesDirect'] == null ? null : (pulumi.Input.decodeList<StorageTableDestinationResponse>(map['storageTablesDirect'], (value) => StorageTableDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      azureMonitorMetrics: map['azureMonitorMetrics'] == null ? null : (DestinationsSpecResponseAzureMonitorMetrics.fromMap((map['azureMonitorMetrics']! as Map).cast<String, dynamic>())).input(),
+      eventHubs: map['eventHubs'] == null ? null : (pulumi.Input.decodeList<EventHubDestinationResponse>(map['eventHubs']!, (value) => EventHubDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventHubsDirect: map['eventHubsDirect'] == null ? null : (pulumi.Input.decodeList<EventHubDirectDestinationResponse>(map['eventHubsDirect']!, (value) => EventHubDirectDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logAnalytics: map['logAnalytics'] == null ? null : (pulumi.Input.decodeList<LogAnalyticsDestinationResponse>(map['logAnalytics']!, (value) => LogAnalyticsDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitoringAccounts: map['monitoringAccounts'] == null ? null : (pulumi.Input.decodeList<MonitoringAccountDestinationResponse>(map['monitoringAccounts']!, (value) => MonitoringAccountDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<StorageBlobDestinationResponse>(map['storageAccounts']!, (value) => StorageBlobDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageBlobsDirect: map['storageBlobsDirect'] == null ? null : (pulumi.Input.decodeList<StorageBlobDestinationResponse>(map['storageBlobsDirect']!, (value) => StorageBlobDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageTablesDirect: map['storageTablesDirect'] == null ? null : (pulumi.Input.decodeList<StorageTableDestinationResponse>(map['storageTablesDirect']!, (value) => StorageTableDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

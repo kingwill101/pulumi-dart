@@ -63,14 +63,14 @@ class SignalRReplicaArgs {
 
   factory SignalRReplicaArgs.fromMap(Map<String, dynamic> map) {
     return SignalRReplicaArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : (map['regionEndpointEnabled'] as String).input(),
-      replicaName: map['replicaName'] == null ? null : (map['replicaName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      regionEndpointEnabled: map['regionEndpointEnabled'] == null ? null : (map['regionEndpointEnabled']! as String).input(),
+      replicaName: map['replicaName'] == null ? null : (map['replicaName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      resourceStopped: map['resourceStopped'] == null ? null : (map['resourceStopped'] as String).input(),
-      sku: map['sku'] == null ? null : (ResourceSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceStopped: map['resourceStopped'] == null ? null : (map['resourceStopped']! as String).input(),
+      sku: map['sku'] == null ? null : (ResourceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

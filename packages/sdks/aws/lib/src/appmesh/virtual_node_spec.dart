@@ -45,11 +45,11 @@ class VirtualNodeSpec {
 
   factory VirtualNodeSpec.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpec(
-      backendDefaults: map['backendDefaults'] == null ? null : (VirtualNodeSpecBackendDefaults.fromMap((map['backendDefaults'] as Map).cast<String, dynamic>())).input(),
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecBackend>(map['backends'], (value) => VirtualNodeSpecBackend.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<VirtualNodeSpecListener>(map['listeners'], (value) => VirtualNodeSpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logging: map['logging'] == null ? null : (VirtualNodeSpecLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
-      serviceDiscovery: map['serviceDiscovery'] == null ? null : (VirtualNodeSpecServiceDiscovery.fromMap((map['serviceDiscovery'] as Map).cast<String, dynamic>())).input(),
+      backendDefaults: map['backendDefaults'] == null ? null : ((VirtualNodeSpecBackendDefaults.fromMap((map['backendDefaults']! as Map).cast<String, dynamic>())).input()).input(),
+      backends: map['backends'] == null ? null : ((pulumi.Input.decodeList<VirtualNodeSpecBackend>(map['backends']!, (value) => VirtualNodeSpecBackend.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      listeners: map['listeners'] == null ? null : ((pulumi.Input.decodeList<VirtualNodeSpecListener>(map['listeners']!, (value) => VirtualNodeSpecListener.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      logging: map['logging'] == null ? null : ((VirtualNodeSpecLogging.fromMap((map['logging']! as Map).cast<String, dynamic>())).input()).input(),
+      serviceDiscovery: map['serviceDiscovery'] == null ? null : ((VirtualNodeSpecServiceDiscovery.fromMap((map['serviceDiscovery']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

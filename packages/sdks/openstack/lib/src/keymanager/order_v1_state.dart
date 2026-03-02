@@ -80,18 +80,18 @@ class OrderV1State {
 
   factory OrderV1State.fromMap(Map<String, dynamic> map) {
     return OrderV1State(
-      containerRef: map['containerRef'] == null ? null : (map['containerRef'] as String).input(),
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      creatorId: map['creatorId'] == null ? null : (map['creatorId'] as String).input(),
-      meta: map['meta'] == null ? null : (OrderV1Meta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
-      orderRef: map['orderRef'] == null ? null : (map['orderRef'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretRef: map['secretRef'] == null ? null : (map['secretRef'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subStatus: map['subStatus'] == null ? null : (map['subStatus'] as String).input(),
-      subStatusMessage: map['subStatusMessage'] == null ? null : (map['subStatusMessage'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      containerRef: map['containerRef'] == null ? null : (map['containerRef']! as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      creatorId: map['creatorId'] == null ? null : (map['creatorId']! as String).input(),
+      meta: map['meta'] == null ? null : (OrderV1Meta.fromMap((map['meta']! as Map).cast<String, dynamic>())).input(),
+      orderRef: map['orderRef'] == null ? null : (map['orderRef']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      secretRef: map['secretRef'] == null ? null : (map['secretRef']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subStatus: map['subStatus'] == null ? null : (map['subStatus']! as String).input(),
+      subStatusMessage: map['subStatusMessage'] == null ? null : (map['subStatusMessage']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

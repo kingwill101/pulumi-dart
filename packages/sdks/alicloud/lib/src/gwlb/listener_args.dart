@@ -46,11 +46,11 @@ class ListenerArgs {
 
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      listenerDescription: map['listenerDescription'] == null ? null : (map['listenerDescription'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      listenerDescription: map['listenerDescription'] == null ? null : (map['listenerDescription']! as String).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
       serverGroupId: (map['serverGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

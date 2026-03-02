@@ -44,7 +44,7 @@ class ServiceUpstreamEndpoint {
       eventPatterns: ((map['eventPatterns'] as List).cast<String>()).input(),
       hubPatterns: ((map['hubPatterns'] as List).cast<String>()).input(),
       urlTemplate: (map['urlTemplate'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

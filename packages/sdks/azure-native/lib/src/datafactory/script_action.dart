@@ -37,7 +37,7 @@ class ScriptAction {
   factory ScriptAction.fromMap(Map<String, dynamic> map) {
     return ScriptAction(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
       roles: (map['roles']).input(),
       uri: (map['uri'] as String).input(),
     );

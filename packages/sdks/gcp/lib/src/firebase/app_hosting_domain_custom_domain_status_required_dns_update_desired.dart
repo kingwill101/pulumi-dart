@@ -42,9 +42,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired {
 
   factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired(
-      checkErrors: map['checkErrors'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError>(map['checkErrors'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord>(map['records'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      checkErrors: map['checkErrors'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError>(map['checkErrors']!, (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord>(map['records']!, (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

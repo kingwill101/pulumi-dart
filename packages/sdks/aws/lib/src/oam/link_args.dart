@@ -53,11 +53,11 @@ class LinkArgs {
   factory LinkArgs.fromMap(Map<String, dynamic> map) {
     return LinkArgs(
       labelTemplate: (map['labelTemplate'] as String).input(),
-      linkConfiguration: map['linkConfiguration'] == null ? null : (LinkLinkConfiguration.fromMap((map['linkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      linkConfiguration: map['linkConfiguration'] == null ? null : ((LinkLinkConfiguration.fromMap((map['linkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceTypes: ((map['resourceTypes'] as List).cast<String>()).input(),
       sinkIdentifier: (map['sinkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

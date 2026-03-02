@@ -30,9 +30,9 @@ class KubernetesClusterMaintenancePolicy {
 
   factory KubernetesClusterMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMaintenancePolicy(
-      day: map['day'] == null ? null : (map['day'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      day: map['day'] == null ? null : (map['day']! as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

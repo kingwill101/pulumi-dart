@@ -32,7 +32,7 @@ class GetSslCertArgs {
   factory GetSslCertArgs.fromMap(Map<String, dynamic> map) {
     return GetSslCertArgs(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
     );
   }

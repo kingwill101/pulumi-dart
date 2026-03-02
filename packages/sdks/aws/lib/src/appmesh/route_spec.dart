@@ -45,11 +45,11 @@ class RouteSpec {
 
   factory RouteSpec.fromMap(Map<String, dynamic> map) {
     return RouteSpec(
-      grpcRoute: map['grpcRoute'] == null ? null : (RouteSpecGrpcRoute.fromMap((map['grpcRoute'] as Map).cast<String, dynamic>())).input(),
-      http2Route: map['http2Route'] == null ? null : (RouteSpecHttp2Route.fromMap((map['http2Route'] as Map).cast<String, dynamic>())).input(),
-      httpRoute: map['httpRoute'] == null ? null : (RouteSpecHttpRoute.fromMap((map['httpRoute'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      tcpRoute: map['tcpRoute'] == null ? null : (RouteSpecTcpRoute.fromMap((map['tcpRoute'] as Map).cast<String, dynamic>())).input(),
+      grpcRoute: map['grpcRoute'] == null ? null : ((RouteSpecGrpcRoute.fromMap((map['grpcRoute']! as Map).cast<String, dynamic>())).input()).input(),
+      http2Route: map['http2Route'] == null ? null : ((RouteSpecHttp2Route.fromMap((map['http2Route']! as Map).cast<String, dynamic>())).input()).input(),
+      httpRoute: map['httpRoute'] == null ? null : ((RouteSpecHttpRoute.fromMap((map['httpRoute']! as Map).cast<String, dynamic>())).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      tcpRoute: map['tcpRoute'] == null ? null : ((RouteSpecTcpRoute.fromMap((map['tcpRoute']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

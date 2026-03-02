@@ -26,8 +26,8 @@ class GetCertificateAuthorityRevocationConfiguration {
 
   factory GetCertificateAuthorityRevocationConfiguration.fromMap(Map<String, dynamic> map) {
     return GetCertificateAuthorityRevocationConfiguration(
-      crlConfigurations: (pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfigurationCrlConfiguration>(map['crlConfigurations'], (value) => GetCertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ocspConfigurations: (pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfigurationOcspConfiguration>(map['ocspConfigurations'], (value) => GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crlConfigurations: (pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfigurationCrlConfiguration>(map['crlConfigurations']!, (value) => GetCertificateAuthorityRevocationConfigurationCrlConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ocspConfigurations: (pulumi.Input.decodeList<GetCertificateAuthorityRevocationConfigurationOcspConfiguration>(map['ocspConfigurations']!, (value) => GetCertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

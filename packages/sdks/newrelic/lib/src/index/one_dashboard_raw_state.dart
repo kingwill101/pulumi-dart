@@ -52,13 +52,13 @@ class OneDashboardRawState {
 
   factory OneDashboardRawState.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<OneDashboardRawPage>(map['pages'], (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permalink: map['permalink'] == null ? null : (map['permalink'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<OneDashboardRawPage>(map['pages']!, (value) => OneDashboardRawPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permalink: map['permalink'] == null ? null : (map['permalink']! as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
     );
   }
 }

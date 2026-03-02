@@ -30,9 +30,9 @@ class GetRouteSpecTcpRoute {
 
   factory GetRouteSpecTcpRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecTcpRoute(
-      actions: (pulumi.Input.decodeList<GetRouteSpecTcpRouteAction>(map['actions'], (value) => GetRouteSpecTcpRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matches: (pulumi.Input.decodeList<GetRouteSpecTcpRouteMatch>(map['matches'], (value) => GetRouteSpecTcpRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: (pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeout>(map['timeouts'], (value) => GetRouteSpecTcpRouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<GetRouteSpecTcpRouteAction>(map['actions']!, (value) => GetRouteSpecTcpRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecTcpRouteMatch>(map['matches']!, (value) => GetRouteSpecTcpRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: (pulumi.Input.decodeList<GetRouteSpecTcpRouteTimeout>(map['timeouts']!, (value) => GetRouteSpecTcpRouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

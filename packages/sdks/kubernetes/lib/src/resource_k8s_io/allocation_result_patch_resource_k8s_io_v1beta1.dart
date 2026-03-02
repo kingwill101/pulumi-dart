@@ -35,9 +35,9 @@ class AllocationResultPatchResourceK8sIoV1beta1 {
 
   factory AllocationResultPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return AllocationResultPatchResourceK8sIoV1beta1(
-      allocationTimestamp: map['allocationTimestamp'] == null ? null : (map['allocationTimestamp'] as String).input(),
-      devices: map['devices'] == null ? null : (DeviceAllocationResultPatchResourceK8sIoV1beta1.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
+      allocationTimestamp: map['allocationTimestamp'] == null ? null : (map['allocationTimestamp']! as String).input(),
+      devices: map['devices'] == null ? null : (DeviceAllocationResultPatchResourceK8sIoV1beta1.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

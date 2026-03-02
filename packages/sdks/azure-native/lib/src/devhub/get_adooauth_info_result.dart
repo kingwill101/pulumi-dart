@@ -25,8 +25,8 @@ class GetADOOAuthInfoResult {
 
   factory GetADOOAuthInfoResult.fromMap(Map<String, dynamic> map) {
     return GetADOOAuthInfoResult(
-      authURL: map['authURL'] == null ? null : map['authURL'] as String,
-      token: map['token'] == null ? null : map['token'] as String,
+      authURL: map['authURL'] == null ? null : map['authURL']! as String,
+      token: map['token'] == null ? null : map['token']! as String,
     );
   }
 }

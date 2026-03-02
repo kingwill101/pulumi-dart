@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1AddToFolderAction {
 
   factory GoogleCloudContentwarehouseV1AddToFolderAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1AddToFolderAction(
-      folders: map['folders'] == null ? null : ((map['folders'] as List).cast<String>()).input(),
+      folders: map['folders'] == null ? null : ((map['folders']! as List).cast<String>()).input(),
     );
   }
 }

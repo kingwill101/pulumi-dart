@@ -25,8 +25,8 @@ class Notification {
 
   factory Notification.fromMap(Map<String, dynamic> map) {
     return Notification(
-      notificationType: map['notificationType'] == null ? null : (map['notificationType'] as String).input(),
-      skipNotifications: map['skipNotifications'] == null ? null : (map['skipNotifications'] as String).input(),
+      notificationType: map['notificationType'] == null ? null : (map['notificationType']! as String).input(),
+      skipNotifications: map['skipNotifications'] == null ? null : (map['skipNotifications']! as String).input(),
     );
   }
 }

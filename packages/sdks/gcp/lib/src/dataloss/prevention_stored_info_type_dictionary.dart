@@ -29,8 +29,8 @@ class PreventionStoredInfoTypeDictionary {
 
   factory PreventionStoredInfoTypeDictionary.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeDictionary(
-      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionStoredInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath'] as Map).cast<String, dynamic>())).input(),
-      wordList: map['wordList'] == null ? null : (PreventionStoredInfoTypeDictionaryWordList.fromMap((map['wordList'] as Map).cast<String, dynamic>())).input(),
+      cloudStoragePath: map['cloudStoragePath'] == null ? null : (PreventionStoredInfoTypeDictionaryCloudStoragePath.fromMap((map['cloudStoragePath']! as Map).cast<String, dynamic>())).input(),
+      wordList: map['wordList'] == null ? null : (PreventionStoredInfoTypeDictionaryWordList.fromMap((map['wordList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

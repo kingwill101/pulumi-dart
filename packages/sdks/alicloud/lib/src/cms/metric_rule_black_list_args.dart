@@ -76,16 +76,16 @@ class MetricRuleBlackListArgs {
   factory MetricRuleBlackListArgs.fromMap(Map<String, dynamic> map) {
     return MetricRuleBlackListArgs(
       category: (map['category'] as String).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime'] as String).input(),
-      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime'] as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      enableEndTime: map['enableEndTime'] == null ? null : (map['enableEndTime']! as String).input(),
+      enableStartTime: map['enableStartTime'] == null ? null : (map['enableStartTime']! as String).input(),
       instances: ((map['instances'] as List).cast<String>()).input(),
-      isEnable: map['isEnable'] == null ? null : (map['isEnable'] as bool).input(),
+      isEnable: map['isEnable'] == null ? null : (map['isEnable']! as bool).input(),
       metricRuleBlackListName: (map['metricRuleBlackListName'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricRuleBlackListMetric>(map['metrics'], (value) => MetricRuleBlackListMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MetricRuleBlackListMetric>(map['metrics']!, (value) => MetricRuleBlackListMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
       namespace: (map['namespace'] as String).input(),
-      scopeType: map['scopeType'] == null ? null : (map['scopeType'] as String).input(),
-      scopeValues: map['scopeValues'] == null ? null : ((map['scopeValues'] as List).cast<String>()).input(),
+      scopeType: map['scopeType'] == null ? null : (map['scopeType']! as String).input(),
+      scopeValues: map['scopeValues'] == null ? null : ((map['scopeValues']! as List).cast<String>()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfigurati
 
   factory CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration(
-      cleanExpiredFiles: map['cleanExpiredFiles'] == null ? null : (map['cleanExpiredFiles'] as bool).input(),
-      numberOfSnapshotsToRetain: map['numberOfSnapshotsToRetain'] == null ? null : (map['numberOfSnapshotsToRetain'] as int).input(),
-      runRateInHours: map['runRateInHours'] == null ? null : (map['runRateInHours'] as int).input(),
-      snapshotRetentionPeriodInDays: map['snapshotRetentionPeriodInDays'] == null ? null : (map['snapshotRetentionPeriodInDays'] as int).input(),
+      cleanExpiredFiles: map['cleanExpiredFiles'] == null ? null : ((map['cleanExpiredFiles'] as bool).input()).input(),
+      numberOfSnapshotsToRetain: map['numberOfSnapshotsToRetain'] == null ? null : ((map['numberOfSnapshotsToRetain'] as int).input()).input(),
+      runRateInHours: map['runRateInHours'] == null ? null : ((map['runRateInHours'] as int).input()).input(),
+      snapshotRetentionPeriodInDays: map['snapshotRetentionPeriodInDays'] == null ? null : ((map['snapshotRetentionPeriodInDays'] as int).input()).input(),
     );
   }
 }

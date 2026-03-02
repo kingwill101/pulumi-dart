@@ -30,9 +30,9 @@ class PolicyDocument {
 
   factory PolicyDocument.fromMap(Map<String, dynamic> map) {
     return PolicyDocument(
-      id: map['Id'] == null ? null : (map['Id'] as String).input(),
-      statement: (pulumi.Input.decodeList<PolicyStatement>(map['Statement'], (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: (PolicyDocumentVersion.fromValue(map['Version'] as String)).input(),
+      id: map['Id'] == null ? null : ((map['Id'] as String).input()).input(),
+      statement: (pulumi.Input.decodeList<PolicyStatement>(map['Statement']!, (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: (PolicyDocumentVersion.fromValue(map['Version']! as String)).input(),
     );
   }
 }

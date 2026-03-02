@@ -76,17 +76,17 @@ class FunctionCloudfunctionsV2betaArgs {
 
   factory FunctionCloudfunctionsV2betaArgs.fromMap(Map<String, dynamic> map) {
     return FunctionCloudfunctionsV2betaArgs(
-      buildConfig: map['buildConfig'] == null ? null : (BuildConfigCloudfunctionsV2beta.fromMap((map['buildConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environment: map['environment'] == null ? null : (FunctionEnvironmentCloudfunctionsV2beta.fromValue(map['environment'] as String)).input(),
-      eventTrigger: map['eventTrigger'] == null ? null : (EventTriggerCloudfunctionsV2beta.fromMap((map['eventTrigger'] as Map).cast<String, dynamic>())).input(),
-      functionId: map['functionId'] == null ? null : (map['functionId'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceConfig: map['serviceConfig'] == null ? null : (ServiceConfigCloudfunctionsV2beta.fromMap((map['serviceConfig'] as Map).cast<String, dynamic>())).input(),
+      buildConfig: map['buildConfig'] == null ? null : (BuildConfigCloudfunctionsV2beta.fromMap((map['buildConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environment: map['environment'] == null ? null : (FunctionEnvironmentCloudfunctionsV2beta.fromValue(map['environment']! as String)).input(),
+      eventTrigger: map['eventTrigger'] == null ? null : (EventTriggerCloudfunctionsV2beta.fromMap((map['eventTrigger']! as Map).cast<String, dynamic>())).input(),
+      functionId: map['functionId'] == null ? null : (map['functionId']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceConfig: map['serviceConfig'] == null ? null : (ServiceConfigCloudfunctionsV2beta.fromMap((map['serviceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

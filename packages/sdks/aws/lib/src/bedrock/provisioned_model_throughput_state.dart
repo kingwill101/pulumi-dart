@@ -61,15 +61,15 @@ class ProvisionedModelThroughputState {
 
   factory ProvisionedModelThroughputState.fromMap(Map<String, dynamic> map) {
     return ProvisionedModelThroughputState(
-      commitmentDuration: map['commitmentDuration'] == null ? null : (map['commitmentDuration'] as String).input(),
-      modelArn: map['modelArn'] == null ? null : (map['modelArn'] as String).input(),
-      modelUnits: map['modelUnits'] == null ? null : (map['modelUnits'] as int).input(),
-      provisionedModelArn: map['provisionedModelArn'] == null ? null : (map['provisionedModelArn'] as String).input(),
-      provisionedModelName: map['provisionedModelName'] == null ? null : (map['provisionedModelName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ProvisionedModelThroughputTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      commitmentDuration: map['commitmentDuration'] == null ? null : ((map['commitmentDuration'] as String).input()).input(),
+      modelArn: map['modelArn'] == null ? null : ((map['modelArn'] as String).input()).input(),
+      modelUnits: map['modelUnits'] == null ? null : ((map['modelUnits'] as int).input()).input(),
+      provisionedModelArn: map['provisionedModelArn'] == null ? null : ((map['provisionedModelArn'] as String).input()).input(),
+      provisionedModelName: map['provisionedModelName'] == null ? null : ((map['provisionedModelName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ProvisionedModelThroughputTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

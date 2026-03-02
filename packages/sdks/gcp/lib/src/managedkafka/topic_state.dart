@@ -57,14 +57,14 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      configs: map['configs'] == null ? null : ((map['configs'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as int).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      configs: map['configs'] == null ? null : ((map['configs']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as int).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
     );
   }
 }

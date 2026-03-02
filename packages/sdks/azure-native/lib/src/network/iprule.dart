@@ -20,7 +20,7 @@ class IPRule {
 
   factory IPRule.fromMap(Map<String, dynamic> map) {
     return IPRule(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
     );
   }
 }

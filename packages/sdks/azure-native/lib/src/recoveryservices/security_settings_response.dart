@@ -33,9 +33,9 @@ class SecuritySettingsResponse {
 
   factory SecuritySettingsResponse.fromMap(Map<String, dynamic> map) {
     return SecuritySettingsResponse(
-      immutabilitySettings: map['immutabilitySettings'] == null ? null : (ImmutabilitySettingsResponse.fromMap((map['immutabilitySettings'] as Map).cast<String, dynamic>())).input(),
+      immutabilitySettings: map['immutabilitySettings'] == null ? null : (ImmutabilitySettingsResponse.fromMap((map['immutabilitySettings']! as Map).cast<String, dynamic>())).input(),
       multiUserAuthorization: (map['multiUserAuthorization'] as String).input(),
-      softDeleteSettings: map['softDeleteSettings'] == null ? null : (SoftDeleteSettingsResponse.fromMap((map['softDeleteSettings'] as Map).cast<String, dynamic>())).input(),
+      softDeleteSettings: map['softDeleteSettings'] == null ? null : (SoftDeleteSettingsResponse.fromMap((map['softDeleteSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

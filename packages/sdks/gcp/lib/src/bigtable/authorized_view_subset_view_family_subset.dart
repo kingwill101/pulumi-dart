@@ -32,8 +32,8 @@ class AuthorizedViewSubsetViewFamilySubset {
   factory AuthorizedViewSubsetViewFamilySubset.fromMap(Map<String, dynamic> map) {
     return AuthorizedViewSubsetViewFamilySubset(
       familyName: (map['familyName'] as String).input(),
-      qualifierPrefixes: map['qualifierPrefixes'] == null ? null : ((map['qualifierPrefixes'] as List).cast<String>()).input(),
-      qualifiers: map['qualifiers'] == null ? null : ((map['qualifiers'] as List).cast<String>()).input(),
+      qualifierPrefixes: map['qualifierPrefixes'] == null ? null : ((map['qualifierPrefixes']! as List).cast<String>()).input(),
+      qualifiers: map['qualifiers'] == null ? null : ((map['qualifiers']! as List).cast<String>()).input(),
     );
   }
 }

@@ -63,10 +63,10 @@ class GetAwsCloudTrailDataConnectorResult {
 
   factory GetAwsCloudTrailDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAwsCloudTrailDataConnectorResult(
-      awsRoleArn: map['awsRoleArn'] == null ? null : map['awsRoleArn'] as String,
+      awsRoleArn: map['awsRoleArn'] == null ? null : map['awsRoleArn']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       dataTypes: AwsCloudTrailDataConnectorDataTypesResponse.fromMap((map['dataTypes'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

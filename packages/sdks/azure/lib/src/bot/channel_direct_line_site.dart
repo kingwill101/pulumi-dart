@@ -75,18 +75,18 @@ class ChannelDirectLineSite {
 
   factory ChannelDirectLineSite.fromMap(Map<String, dynamic> map) {
     return ChannelDirectLineSite(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointParametersEnabled: map['endpointParametersEnabled'] == null ? null : (map['endpointParametersEnabled'] as bool).input(),
-      enhancedAuthenticationEnabled: map['enhancedAuthenticationEnabled'] == null ? null : (map['enhancedAuthenticationEnabled'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      key2: map['key2'] == null ? null : (map['key2'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointParametersEnabled: map['endpointParametersEnabled'] == null ? null : (map['endpointParametersEnabled']! as bool).input(),
+      enhancedAuthenticationEnabled: map['enhancedAuthenticationEnabled'] == null ? null : (map['enhancedAuthenticationEnabled']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      key2: map['key2'] == null ? null : (map['key2']! as String).input(),
       name: (map['name'] as String).input(),
-      storageEnabled: map['storageEnabled'] == null ? null : (map['storageEnabled'] as bool).input(),
-      trustedOrigins: map['trustedOrigins'] == null ? null : ((map['trustedOrigins'] as List).cast<String>()).input(),
-      userUploadEnabled: map['userUploadEnabled'] == null ? null : (map['userUploadEnabled'] as bool).input(),
-      v1Allowed: map['v1Allowed'] == null ? null : (map['v1Allowed'] as bool).input(),
-      v3Allowed: map['v3Allowed'] == null ? null : (map['v3Allowed'] as bool).input(),
+      storageEnabled: map['storageEnabled'] == null ? null : (map['storageEnabled']! as bool).input(),
+      trustedOrigins: map['trustedOrigins'] == null ? null : ((map['trustedOrigins']! as List).cast<String>()).input(),
+      userUploadEnabled: map['userUploadEnabled'] == null ? null : (map['userUploadEnabled']! as bool).input(),
+      v1Allowed: map['v1Allowed'] == null ? null : (map['v1Allowed']! as bool).input(),
+      v3Allowed: map['v3Allowed'] == null ? null : (map['v3Allowed']! as bool).input(),
     );
   }
 }

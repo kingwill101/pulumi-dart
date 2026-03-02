@@ -36,8 +36,8 @@ class GetScopeIamPolicyGkehubV1betaArgs {
   factory GetScopeIamPolicyGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeIamPolicyGkehubV1betaArgs(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scopeId: (map['scopeId'] as String).input(),
     );
   }

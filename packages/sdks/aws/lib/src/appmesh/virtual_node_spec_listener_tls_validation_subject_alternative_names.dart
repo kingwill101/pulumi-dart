@@ -21,7 +21,7 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
 
   factory VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames(
-      match: (VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      match: (VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

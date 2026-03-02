@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3SpeechToTextSettings {
 
   factory GoogleCloudDialogflowCxV3SpeechToTextSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3SpeechToTextSettings(
-      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation'] as bool).input(),
+      enableSpeechAdaptation: map['enableSpeechAdaptation'] == null ? null : (map['enableSpeechAdaptation']! as bool).input(),
     );
   }
 }

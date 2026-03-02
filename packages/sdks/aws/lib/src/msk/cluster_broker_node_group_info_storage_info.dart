@@ -21,7 +21,7 @@ class ClusterBrokerNodeGroupInfoStorageInfo {
 
   factory ClusterBrokerNodeGroupInfoStorageInfo.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoStorageInfo(
-      ebsStorageInfo: map['ebsStorageInfo'] == null ? null : (ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap((map['ebsStorageInfo'] as Map).cast<String, dynamic>())).input(),
+      ebsStorageInfo: map['ebsStorageInfo'] == null ? null : ((ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap((map['ebsStorageInfo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

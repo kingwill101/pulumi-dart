@@ -41,10 +41,10 @@ class EventSubscriptionDeliveryProperty {
   factory EventSubscriptionDeliveryProperty.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDeliveryProperty(
       headerName: (map['headerName'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as bool).input(),
-      sourceField: map['sourceField'] == null ? null : (map['sourceField'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as bool).input(),
+      sourceField: map['sourceField'] == null ? null : (map['sourceField']! as String).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class NamespaceDisasterRecoveryConfigState {
 
   factory NamespaceDisasterRecoveryConfigState.fromMap(Map<String, dynamic> map) {
     return NamespaceDisasterRecoveryConfigState(
-      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId'] as String).input(),
-      defaultPrimaryKey: map['defaultPrimaryKey'] == null ? null : (map['defaultPrimaryKey'] as String).input(),
-      defaultSecondaryKey: map['defaultSecondaryKey'] == null ? null : (map['defaultSecondaryKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId'] as String).input(),
-      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] == null ? null : (map['primaryConnectionStringAlias'] as String).input(),
-      primaryNamespaceId: map['primaryNamespaceId'] == null ? null : (map['primaryNamespaceId'] as String).input(),
-      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] == null ? null : (map['secondaryConnectionStringAlias'] as String).input(),
+      aliasAuthorizationRuleId: map['aliasAuthorizationRuleId'] == null ? null : (map['aliasAuthorizationRuleId']! as String).input(),
+      defaultPrimaryKey: map['defaultPrimaryKey'] == null ? null : (map['defaultPrimaryKey']! as String).input(),
+      defaultSecondaryKey: map['defaultSecondaryKey'] == null ? null : (map['defaultSecondaryKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partnerNamespaceId: map['partnerNamespaceId'] == null ? null : (map['partnerNamespaceId']! as String).input(),
+      primaryConnectionStringAlias: map['primaryConnectionStringAlias'] == null ? null : (map['primaryConnectionStringAlias']! as String).input(),
+      primaryNamespaceId: map['primaryNamespaceId'] == null ? null : (map['primaryNamespaceId']! as String).input(),
+      secondaryConnectionStringAlias: map['secondaryConnectionStringAlias'] == null ? null : (map['secondaryConnectionStringAlias']! as String).input(),
     );
   }
 }

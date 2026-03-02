@@ -32,9 +32,9 @@ class DeliveryPipelineSerialPipelineStageStrategyStandard {
 
   factory DeliveryPipelineSerialPipelineStageStrategyStandard.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyStandard(
-      postdeploy: map['postdeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy.fromMap((map['postdeploy'] as Map).cast<String, dynamic>())).input(),
-      predeploy: map['predeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy.fromMap((map['predeploy'] as Map).cast<String, dynamic>())).input(),
-      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
+      postdeploy: map['postdeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy.fromMap((map['postdeploy']! as Map).cast<String, dynamic>())).input(),
+      predeploy: map['predeploy'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy.fromMap((map['predeploy']! as Map).cast<String, dynamic>())).input(),
+      verify: map['verify'] == null ? null : (map['verify']! as bool).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class FleetObservabilityFeatureSpecGkehubV1beta {
 
   factory FleetObservabilityFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFeatureSpecGkehubV1beta(
-      loggingConfig: map['loggingConfig'] == null ? null : (FleetObservabilityLoggingConfigGkehubV1beta.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (FleetObservabilityLoggingConfigGkehubV1beta.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

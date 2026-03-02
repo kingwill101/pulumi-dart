@@ -26,8 +26,8 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      ipAllocation: map['ipAllocation'] == null ? null : (map['ipAllocation'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      ipAllocation: map['ipAllocation'] == null ? null : (map['ipAllocation']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
     );
   }
 }

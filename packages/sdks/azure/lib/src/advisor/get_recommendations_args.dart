@@ -29,8 +29,8 @@ class GetRecommendationsArgs {
 
   factory GetRecommendationsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecommendationsArgs(
-      filterByCategories: map['filterByCategories'] == null ? null : ((map['filterByCategories'] as List).cast<String>()).input(),
-      filterByResourceGroups: map['filterByResourceGroups'] == null ? null : ((map['filterByResourceGroups'] as List).cast<String>()).input(),
+      filterByCategories: map['filterByCategories'] == null ? null : ((map['filterByCategories']! as List).cast<String>()).input(),
+      filterByResourceGroups: map['filterByResourceGroups'] == null ? null : ((map['filterByResourceGroups']! as List).cast<String>()).input(),
     );
   }
 }

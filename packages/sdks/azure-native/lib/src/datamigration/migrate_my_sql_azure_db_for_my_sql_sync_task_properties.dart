@@ -33,8 +33,8 @@ class MigrateMySqlAzureDbForMySqlSyncTaskProperties {
 
   factory MigrateMySqlAzureDbForMySqlSyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return MigrateMySqlAzureDbForMySqlSyncTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (MigrateMySqlAzureDbForMySqlSyncTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (MigrateMySqlAzureDbForMySqlSyncTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

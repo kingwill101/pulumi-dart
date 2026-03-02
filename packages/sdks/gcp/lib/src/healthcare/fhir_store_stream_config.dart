@@ -34,7 +34,7 @@ class FhirStoreStreamConfig {
   factory FhirStoreStreamConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreStreamConfig(
       bigqueryDestination: (FhirStoreStreamConfigBigqueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

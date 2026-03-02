@@ -51,10 +51,10 @@ class ModelCardExportJobArgs {
     return ModelCardExportJobArgs(
       modelCardExportJobName: (map['modelCardExportJobName'] as String).input(),
       modelCardName: (map['modelCardName'] as String).input(),
-      modelCardVersion: map['modelCardVersion'] == null ? null : (map['modelCardVersion'] as int).input(),
-      outputConfig: (ModelCardExportJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ModelCardExportJobTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      modelCardVersion: map['modelCardVersion'] == null ? null : ((map['modelCardVersion'] as int).input()).input(),
+      outputConfig: (ModelCardExportJobOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ModelCardExportJobTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

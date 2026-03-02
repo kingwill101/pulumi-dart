@@ -36,8 +36,8 @@ class ControlPlaneNodeConfiguration {
 
   factory ControlPlaneNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return ControlPlaneNodeConfiguration(
-      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration'] as Map).cast<String, dynamic>())).input(),
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
+      administratorConfiguration: map['administratorConfiguration'] == null ? null : (AdministratorConfiguration.fromMap((map['administratorConfiguration']! as Map).cast<String, dynamic>())).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones']! as List).cast<String>()).input(),
       count: (map['count'] as double).input(),
       vmSkuName: (map['vmSkuName'] as String).input(),
     );

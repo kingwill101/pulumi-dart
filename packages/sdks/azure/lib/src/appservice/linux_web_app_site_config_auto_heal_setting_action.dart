@@ -26,7 +26,7 @@ class LinuxWebAppSiteConfigAutoHealSettingAction {
   factory LinuxWebAppSiteConfigAutoHealSettingAction.fromMap(Map<String, dynamic> map) {
     return LinuxWebAppSiteConfigAutoHealSettingAction(
       actionType: (map['actionType'] as String).input(),
-      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] == null ? null : (map['minimumProcessExecutionTime'] as String).input(),
+      minimumProcessExecutionTime: map['minimumProcessExecutionTime'] == null ? null : (map['minimumProcessExecutionTime']! as String).input(),
     );
   }
 }

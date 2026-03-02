@@ -32,7 +32,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
   factory AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration(
       collectionArn: (map['collectionArn'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
       vectorIndexName: (map['vectorIndexName'] as String).input(),
     );
   }

@@ -40,10 +40,10 @@ class TestExecutionStep {
 
   factory TestExecutionStep.fromMap(Map<String, dynamic> map) {
     return TestExecutionStep(
-      testIssues: map['testIssues'] == null ? null : (pulumi.Input.decodeList<TestIssue>(map['testIssues'], (value) => TestIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testSuiteOverviews: map['testSuiteOverviews'] == null ? null : (pulumi.Input.decodeList<TestSuiteOverview>(map['testSuiteOverviews'], (value) => TestSuiteOverview.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testTiming: map['testTiming'] == null ? null : (TestTiming.fromMap((map['testTiming'] as Map).cast<String, dynamic>())).input(),
-      toolExecution: map['toolExecution'] == null ? null : (ToolExecution.fromMap((map['toolExecution'] as Map).cast<String, dynamic>())).input(),
+      testIssues: map['testIssues'] == null ? null : (pulumi.Input.decodeList<TestIssue>(map['testIssues']!, (value) => TestIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testSuiteOverviews: map['testSuiteOverviews'] == null ? null : (pulumi.Input.decodeList<TestSuiteOverview>(map['testSuiteOverviews']!, (value) => TestSuiteOverview.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testTiming: map['testTiming'] == null ? null : (TestTiming.fromMap((map['testTiming']! as Map).cast<String, dynamic>())).input(),
+      toolExecution: map['toolExecution'] == null ? null : (ToolExecution.fromMap((map['toolExecution']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

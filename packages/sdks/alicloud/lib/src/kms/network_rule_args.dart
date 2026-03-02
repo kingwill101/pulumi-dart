@@ -34,8 +34,8 @@ class NetworkRuleArgs {
 
   factory NetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkRuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkRuleName: map['networkRuleName'] == null ? null : (map['networkRuleName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkRuleName: map['networkRuleName'] == null ? null : (map['networkRuleName']! as String).input(),
       sourcePrivateIps: ((map['sourcePrivateIps'] as List).cast<String>()).input(),
     );
   }

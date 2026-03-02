@@ -21,7 +21,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
 
   factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo(
-      outputType: map['outputType'] == null ? null : (map['outputType'] as String).input(),
+      outputType: map['outputType'] == null ? null : (map['outputType']! as String).input(),
     );
   }
 }

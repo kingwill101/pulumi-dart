@@ -30,8 +30,8 @@ class SpringCloudCustomizedAcceleratorGitRepositorySshAuth {
 
   factory SpringCloudCustomizedAcceleratorGitRepositorySshAuth.fromMap(Map<String, dynamic> map) {
     return SpringCloudCustomizedAcceleratorGitRepositorySshAuth(
-      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm'] as String).input(),
+      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
+      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
     );
   }

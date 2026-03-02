@@ -53,9 +53,9 @@ class DeploymentScheduleArgs {
       organization: (map['organization'] as String).input(),
       project: (map['project'] as String).input(),
       pulumiOperation: (PulumiOperation.fromValue(map['pulumiOperation'] as String)).input(),
-      scheduleCron: map['scheduleCron'] == null ? null : (map['scheduleCron'] as String).input(),
+      scheduleCron: map['scheduleCron'] == null ? null : (map['scheduleCron']! as String).input(),
       stack: (map['stack'] as String).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

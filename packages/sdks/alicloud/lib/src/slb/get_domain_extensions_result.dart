@@ -48,7 +48,7 @@ class GetDomainExtensionsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       loadBalancerId: map['loadBalancerId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

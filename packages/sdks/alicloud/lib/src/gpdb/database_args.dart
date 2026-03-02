@@ -54,12 +54,12 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      characterSetName: map['characterSetName'] == null ? null : (map['characterSetName'] as String).input(),
-      collate: map['collate'] == null ? null : (map['collate'] as String).input(),
-      ctype: map['ctype'] == null ? null : (map['ctype'] as String).input(),
+      characterSetName: map['characterSetName'] == null ? null : (map['characterSetName']! as String).input(),
+      collate: map['collate'] == null ? null : (map['collate']! as String).input(),
+      ctype: map['ctype'] == null ? null : (map['ctype']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       owner: (map['owner'] as String).input(),
     );
   }

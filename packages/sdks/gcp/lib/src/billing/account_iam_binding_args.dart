@@ -51,7 +51,7 @@ class AccountIamBindingArgs {
   factory AccountIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AccountIamBindingArgs(
       billingAccountId: (map['billingAccountId'] as String).input(),
-      condition: map['condition'] == null ? null : (AccountIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AccountIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),
     );

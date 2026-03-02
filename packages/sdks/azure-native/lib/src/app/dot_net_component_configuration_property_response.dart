@@ -26,8 +26,8 @@ class DotNetComponentConfigurationPropertyResponse {
 
   factory DotNetComponentConfigurationPropertyResponse.fromMap(Map<String, dynamic> map) {
     return DotNetComponentConfigurationPropertyResponse(
-      propertyName: map['propertyName'] == null ? null : (map['propertyName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      propertyName: map['propertyName'] == null ? null : (map['propertyName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

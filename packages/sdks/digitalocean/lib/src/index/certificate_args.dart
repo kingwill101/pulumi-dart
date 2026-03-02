@@ -56,12 +56,12 @@ class CertificateArgs {
 
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      leafCertificate: map['leafCertificate'] == null ? null : (map['leafCertificate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain']! as String).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      leafCertificate: map['leafCertificate'] == null ? null : (map['leafCertificate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

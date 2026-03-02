@@ -86,16 +86,16 @@ class AzureNodePoolArgs {
 
   factory AzureNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       autoscaling: (AzureNodePoolAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
-      azureAvailabilityZone: map['azureAvailabilityZone'] == null ? null : (map['azureAvailabilityZone'] as String).input(),
+      azureAvailabilityZone: map['azureAvailabilityZone'] == null ? null : (map['azureAvailabilityZone']! as String).input(),
       cluster: (map['cluster'] as String).input(),
       config: (AzureNodePoolConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      management: map['management'] == null ? null : (AzureNodePoolManagement.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
+      management: map['management'] == null ? null : (AzureNodePoolManagement.fromMap((map['management']! as Map).cast<String, dynamic>())).input(),
       maxPodsConstraint: (AzureNodePoolMaxPodsConstraint.fromMap((map['maxPodsConstraint'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
       version: (map['version'] as String).input(),
     );

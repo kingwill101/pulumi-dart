@@ -48,7 +48,7 @@ class GuestAgentProfileResponse {
   factory GuestAgentProfileResponse.fromMap(Map<String, dynamic> map) {
     return GuestAgentProfileResponse(
       agentVersion: (map['agentVersion'] as String).input(),
-      clientPublicKey: map['clientPublicKey'] == null ? null : (map['clientPublicKey'] as String).input(),
+      clientPublicKey: map['clientPublicKey'] == null ? null : (map['clientPublicKey']! as String).input(),
       errorDetails: (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastStatusChange: (map['lastStatusChange'] as String).input(),
       status: (map['status'] as String).input(),

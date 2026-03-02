@@ -26,8 +26,8 @@ class RecoveryPlanProtectedItem {
 
   factory RecoveryPlanProtectedItem.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanProtectedItem(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

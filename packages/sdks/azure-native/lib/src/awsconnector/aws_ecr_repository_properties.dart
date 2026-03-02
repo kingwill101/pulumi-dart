@@ -70,16 +70,16 @@ class AwsEcrRepositoryProperties {
 
   factory AwsEcrRepositoryProperties.fromMap(Map<String, dynamic> map) {
     return AwsEcrRepositoryProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      emptyOnDelete: map['emptyOnDelete'] == null ? null : (map['emptyOnDelete'] as bool).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (EncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (ImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())).input(),
-      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability'] as String).input(),
-      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (LifecyclePolicy.fromMap((map['lifecyclePolicy'] as Map).cast<String, dynamic>())).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      repositoryPolicyText: map['repositoryPolicyText'] == null ? null : (map['repositoryPolicyText']).input(),
-      repositoryUri: map['repositoryUri'] == null ? null : (map['repositoryUri'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      emptyOnDelete: map['emptyOnDelete'] == null ? null : (map['emptyOnDelete']! as bool).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (EncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (ImageScanningConfiguration.fromMap((map['imageScanningConfiguration']! as Map).cast<String, dynamic>())).input(),
+      imageTagMutability: map['imageTagMutability'] == null ? null : (map['imageTagMutability']! as String).input(),
+      lifecyclePolicy: map['lifecyclePolicy'] == null ? null : (LifecyclePolicy.fromMap((map['lifecyclePolicy']! as Map).cast<String, dynamic>())).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
+      repositoryPolicyText: map['repositoryPolicyText'] == null ? null : (map['repositoryPolicyText']!).input(),
+      repositoryUri: map['repositoryUri'] == null ? null : (map['repositoryUri']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

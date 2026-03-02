@@ -23,8 +23,8 @@ class GetTrafficPolicyDocumentRuleItem {
 
   factory GetTrafficPolicyDocumentRuleItem.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleItem(
-      endpointReference: map['endpointReference'] == null ? null : (map['endpointReference'] as String).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
+      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
     );
   }
 }

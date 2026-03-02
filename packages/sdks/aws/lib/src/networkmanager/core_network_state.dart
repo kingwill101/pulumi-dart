@@ -105,18 +105,18 @@ class CoreNetworkState {
 
   factory CoreNetworkState.fromMap(Map<String, dynamic> map) {
     return CoreNetworkState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      basePolicyDocument: map['basePolicyDocument'] == null ? null : (map['basePolicyDocument'] as String).input(),
-      basePolicyRegions: map['basePolicyRegions'] == null ? null : ((map['basePolicyRegions'] as List).cast<String>()).input(),
-      createBasePolicy: map['createBasePolicy'] == null ? null : (map['createBasePolicy'] as bool).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      edges: map['edges'] == null ? null : (pulumi.Input.decodeList<CoreNetworkEdge>(map['edges'], (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<CoreNetworkSegment>(map['segments'], (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      basePolicyDocument: map['basePolicyDocument'] == null ? null : ((map['basePolicyDocument'] as String).input()).input(),
+      basePolicyRegions: map['basePolicyRegions'] == null ? null : (((map['basePolicyRegions'] as List).cast<String>()).input()).input(),
+      createBasePolicy: map['createBasePolicy'] == null ? null : ((map['createBasePolicy'] as bool).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      edges: map['edges'] == null ? null : ((pulumi.Input.decodeList<CoreNetworkEdge>(map['edges']!, (value) => CoreNetworkEdge.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      segments: map['segments'] == null ? null : ((pulumi.Input.decodeList<CoreNetworkSegment>(map['segments']!, (value) => CoreNetworkSegment.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

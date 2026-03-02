@@ -62,15 +62,15 @@ class PolicyStatement {
 
   factory PolicyStatement.fromMap(Map<String, dynamic> map) {
     return PolicyStatement(
-      action: map['Action'] == null ? null : (map['Action'] as String).input(),
-      condition: map['Condition'] == null ? null : ((map['Condition'] as Map).cast<String, dynamic>()).input(),
-      effect: (PolicyStatementEffect.fromValue(map['Effect'] as String)).input(),
-      notAction: map['NotAction'] == null ? null : (map['NotAction'] as String).input(),
-      notPrincipal: map['NotPrincipal'] == null ? null : (map['NotPrincipal'] as String).input(),
-      notResource: map['NotResource'] == null ? null : (map['NotResource'] as String).input(),
-      principal: map['Principal'] == null ? null : (map['Principal'] as String).input(),
-      resource: map['Resource'] == null ? null : (map['Resource'] as String).input(),
-      sid: map['Sid'] == null ? null : (map['Sid'] as String).input(),
+      action: map['Action'] == null ? null : ((map['Action'] as String).input()).input(),
+      condition: map['Condition'] == null ? null : (((map['Condition'] as Map).cast<String, dynamic>()).input()).input(),
+      effect: (PolicyStatementEffect.fromValue(map['Effect']! as String)).input(),
+      notAction: map['NotAction'] == null ? null : ((map['NotAction'] as String).input()).input(),
+      notPrincipal: map['NotPrincipal'] == null ? null : ((map['NotPrincipal'] as String).input()).input(),
+      notResource: map['NotResource'] == null ? null : ((map['NotResource'] as String).input()).input(),
+      principal: map['Principal'] == null ? null : ((map['Principal'] as String).input()).input(),
+      resource: map['Resource'] == null ? null : ((map['Resource'] as String).input()).input(),
+      sid: map['Sid'] == null ? null : ((map['Sid'] as String).input()).input(),
     );
   }
 }

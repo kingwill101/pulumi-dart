@@ -20,7 +20,7 @@ class DomainDevicesSmartcardAcpi {
 
   factory DomainDevicesSmartcardAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

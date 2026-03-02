@@ -7,7 +7,7 @@ class ExampleStack extends pulumi.Stack {
     final bucket = gcp.storage.Bucket(
       'bucket',
       args: gcp.storage.BucketArgs(
-        location: 'US',
+        location: 'US'.output(),
       ),
     );
 
@@ -15,17 +15,17 @@ class ExampleStack extends pulumi.Stack {
       'python-zip',
       args: gcp.storage.BucketObjectArgs(
         bucket: bucket.name,
-        source: pulumi.FileArchive('pythonfunc'),
+        source: pulumi.FileArchive('pythonfunc').output(),
       ),
     );
 
     final function = gcp.cloudfunctions.FunctionType(
       'basicFunction',
-      args: gcp.cloudfunctions.FunctionTypeArgs(
+      args: gcp.cloudfunctions.FunctionArgs(
         sourceArchiveBucket: bucket.name,
         runtime: 'python310'.output(),
         sourceArchiveObject: sourceArchiveObject.name,
-        entryPoint: 'handler',
+        entryPoint: 'handler'.output(),
         triggerHttp: true.output(),
         availableMemoryMb: 128.output(),
       ),
@@ -37,8 +37,8 @@ class ExampleStack extends pulumi.Stack {
         project: function.project,
         region: function.region,
         cloudFunction: function.name,
-        role: 'roles/cloudfunctions.invoker',
-        member: 'allUsers',
+        role: 'roles/cloudfunctions.invoker'.output(),
+        member: 'allUsers'.output(),
       ),
     );
 

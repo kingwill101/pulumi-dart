@@ -43,11 +43,11 @@ class AppEngineServiceIamPolicyState {
 
   factory AppEngineServiceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AppEngineServiceIamPolicyState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class SmartDetectionRuleState {
 
   factory SmartDetectionRuleState.fromMap(Map<String, dynamic> map) {
     return SmartDetectionRuleState(
-      additionalEmailRecipients: map['additionalEmailRecipients'] == null ? null : ((map['additionalEmailRecipients'] as List).cast<String>()).input(),
-      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners'] as bool).input(),
+      additionalEmailRecipients: map['additionalEmailRecipients'] == null ? null : ((map['additionalEmailRecipients']! as List).cast<String>()).input(),
+      applicationInsightsId: map['applicationInsightsId'] == null ? null : (map['applicationInsightsId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sendEmailsToSubscriptionOwners: map['sendEmailsToSubscriptionOwners'] == null ? null : (map['sendEmailsToSubscriptionOwners']! as bool).input(),
     );
   }
 }

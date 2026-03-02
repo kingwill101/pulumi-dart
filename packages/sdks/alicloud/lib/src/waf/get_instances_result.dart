@@ -51,11 +51,11 @@ class GetInstancesResult {
     return GetInstancesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceSource: map['instanceSource'] == null ? null : map['instanceSource'] as String,
+      instanceSource: map['instanceSource'] == null ? null : map['instanceSource']! as String,
       instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as int,
     );
   }
 }

@@ -30,9 +30,9 @@ class ServerlessInstanceSecurityIpGroup {
 
   factory ServerlessInstanceSecurityIpGroup.fromMap(Map<String, dynamic> map) {
     return ServerlessInstanceSecurityIpGroup(
-      securityIpGroupAttribute: map['securityIpGroupAttribute'] == null ? null : (map['securityIpGroupAttribute'] as String).input(),
-      securityIpGroupName: map['securityIpGroupName'] == null ? null : (map['securityIpGroupName'] as String).input(),
-      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList'] as String).input(),
+      securityIpGroupAttribute: map['securityIpGroupAttribute'] == null ? null : (map['securityIpGroupAttribute']! as String).input(),
+      securityIpGroupName: map['securityIpGroupName'] == null ? null : (map['securityIpGroupName']! as String).input(),
+      securityIpList: map['securityIpList'] == null ? null : (map['securityIpList']! as String).input(),
     );
   }
 }

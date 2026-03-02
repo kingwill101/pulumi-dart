@@ -36,10 +36,10 @@ class ClusterMasterAuth {
 
   factory ClusterMasterAuth.fromMap(Map<String, dynamic> map) {
     return ClusterMasterAuth(
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
       clientCertificateConfig: (ClusterMasterAuthClientCertificateConfig.fromMap((map['clientCertificateConfig'] as Map).cast<String, dynamic>())).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate'] as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate']! as String).input(),
     );
   }
 }

@@ -103,22 +103,22 @@ class ServiceRunV2Args {
 
   factory ServiceRunV2Args.fromMap(Map<String, dynamic> map) {
     return ServiceRunV2Args(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      binaryAuthorization: map['binaryAuthorization'] == null ? null : (GoogleCloudRunV2BinaryAuthorization.fromMap((map['binaryAuthorization'] as Map).cast<String, dynamic>())).input(),
-      client: map['client'] == null ? null : (map['client'] as String).input(),
-      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion'] as String).input(),
-      customAudiences: map['customAudiences'] == null ? null : ((map['customAudiences'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ingress: map['ingress'] == null ? null : (ServiceIngress.fromValue(map['ingress'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      launchStage: map['launchStage'] == null ? null : (ServiceLaunchStage.fromValue(map['launchStage'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scaling: map['scaling'] == null ? null : (GoogleCloudRunV2ServiceScaling.fromMap((map['scaling'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      binaryAuthorization: map['binaryAuthorization'] == null ? null : (GoogleCloudRunV2BinaryAuthorization.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>())).input(),
+      client: map['client'] == null ? null : (map['client']! as String).input(),
+      clientVersion: map['clientVersion'] == null ? null : (map['clientVersion']! as String).input(),
+      customAudiences: map['customAudiences'] == null ? null : ((map['customAudiences']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ingress: map['ingress'] == null ? null : (ServiceIngress.fromValue(map['ingress']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      launchStage: map['launchStage'] == null ? null : (ServiceLaunchStage.fromValue(map['launchStage']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scaling: map['scaling'] == null ? null : (GoogleCloudRunV2ServiceScaling.fromMap((map['scaling']! as Map).cast<String, dynamic>())).input(),
       serviceId: (map['serviceId'] as String).input(),
       template: (GoogleCloudRunV2RevisionTemplate.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2TrafficTarget>(map['traffic'], (value) => GoogleCloudRunV2TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      traffic: map['traffic'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2TrafficTarget>(map['traffic']!, (value) => GoogleCloudRunV2TrafficTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

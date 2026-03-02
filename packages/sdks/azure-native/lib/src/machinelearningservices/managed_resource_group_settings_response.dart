@@ -22,7 +22,7 @@ class ManagedResourceGroupSettingsResponse {
 
   factory ManagedResourceGroupSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceGroupSettingsResponse(
-      assignedIdentities: map['assignedIdentities'] == null ? null : (pulumi.Input.decodeList<ManagedResourceGroupAssignedIdentitiesResponse>(map['assignedIdentities'], (value) => ManagedResourceGroupAssignedIdentitiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedIdentities: map['assignedIdentities'] == null ? null : (pulumi.Input.decodeList<ManagedResourceGroupAssignedIdentitiesResponse>(map['assignedIdentities']!, (value) => ManagedResourceGroupAssignedIdentitiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

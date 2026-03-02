@@ -87,15 +87,15 @@ class WorkloadIdentityPoolManagedIdentityState {
 
   factory WorkloadIdentityPoolManagedIdentityState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolManagedIdentityState(
-      attestationRules: map['attestationRules'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolManagedIdentityAttestationRule>(map['attestationRules'], (value) => WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId'] as String).input(),
-      workloadIdentityPoolManagedIdentityId: map['workloadIdentityPoolManagedIdentityId'] == null ? null : (map['workloadIdentityPoolManagedIdentityId'] as String).input(),
-      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : (map['workloadIdentityPoolNamespaceId'] as String).input(),
+      attestationRules: map['attestationRules'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolManagedIdentityAttestationRule>(map['attestationRules']!, (value) => WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId']! as String).input(),
+      workloadIdentityPoolManagedIdentityId: map['workloadIdentityPoolManagedIdentityId'] == null ? null : (map['workloadIdentityPoolManagedIdentityId']! as String).input(),
+      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : (map['workloadIdentityPoolNamespaceId']! as String).input(),
     );
   }
 }

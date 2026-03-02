@@ -44,9 +44,9 @@ class LabelByWorkspaceArgs {
 
   factory LabelByWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return LabelByWorkspaceArgs(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labelName: map['labelName'] == null ? null : (map['labelName'] as String).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labelName: map['labelName'] == null ? null : (map['labelName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

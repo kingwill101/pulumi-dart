@@ -38,10 +38,10 @@ class ServiceIdentityState {
 
   factory ServiceIdentityState.fromMap(Map<String, dynamic> map) {
     return ServiceIdentityState(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

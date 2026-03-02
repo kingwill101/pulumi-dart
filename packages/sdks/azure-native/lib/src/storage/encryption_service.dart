@@ -26,8 +26,8 @@ class EncryptionService {
 
   factory EncryptionService.fromMap(Map<String, dynamic> map) {
     return EncryptionService(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
     );
   }
 }

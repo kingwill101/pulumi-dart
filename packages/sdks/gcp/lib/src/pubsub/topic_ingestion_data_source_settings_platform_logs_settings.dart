@@ -23,7 +23,7 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettings {
 
   factory TopicIngestionDataSourceSettingsPlatformLogsSettings.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsPlatformLogsSettings(
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

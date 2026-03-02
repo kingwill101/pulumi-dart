@@ -26,8 +26,8 @@ class SAMLIdp {
 
   factory SAMLIdp.fromMap(Map<String, dynamic> map) {
     return SAMLIdp(
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      metadataContent: map['metadataContent'] == null ? null : (map['metadataContent'] as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      metadataContent: map['metadataContent'] == null ? null : (map['metadataContent']! as String).input(),
     );
   }
 }

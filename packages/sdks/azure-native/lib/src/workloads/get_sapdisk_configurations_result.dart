@@ -22,7 +22,7 @@ class GetSAPDiskConfigurationsResult {
 
   factory GetSAPDiskConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return GetSAPDiskConfigurationsResult(
-      volumeConfigurations: map['volumeConfigurations'] == null ? null : pulumi.Input.decodeMapValues<SAPDiskConfigurationResponse>(map['volumeConfigurations'], (value) => SAPDiskConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      volumeConfigurations: map['volumeConfigurations'] == null ? null : pulumi.Input.decodeMapValues<SAPDiskConfigurationResponse>(map['volumeConfigurations']!, (value) => SAPDiskConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -28,8 +28,8 @@ class AutoscaleResponse {
 
   factory AutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleResponse(
-      capacity: map['capacity'] == null ? null : (AutoscaleCapacityResponse.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      recurrence: map['recurrence'] == null ? null : (AutoscaleRecurrenceResponse.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (AutoscaleCapacityResponse.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      recurrence: map['recurrence'] == null ? null : (AutoscaleRecurrenceResponse.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

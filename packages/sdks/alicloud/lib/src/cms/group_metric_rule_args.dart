@@ -106,23 +106,23 @@ class GroupMetricRuleArgs {
 
   factory GroupMetricRuleArgs.fromMap(Map<String, dynamic> map) {
     return GroupMetricRuleArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      contactGroups: map['contactGroups'] == null ? null : (map['contactGroups'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as String).input(),
-      effectiveInterval: map['effectiveInterval'] == null ? null : (map['effectiveInterval'] as String).input(),
-      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      contactGroups: map['contactGroups'] == null ? null : (map['contactGroups']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : (map['dimensions']! as String).input(),
+      effectiveInterval: map['effectiveInterval'] == null ? null : (map['effectiveInterval']! as String).input(),
+      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject']! as String).input(),
       escalations: (GroupMetricRuleEscalations.fromMap((map['escalations'] as Map).cast<String, dynamic>())).input(),
       groupId: (map['groupId'] as String).input(),
       groupMetricRuleName: (map['groupMetricRuleName'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
       metricName: (map['metricName'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      noEffectiveInterval: map['noEffectiveInterval'] == null ? null : (map['noEffectiveInterval'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
+      noEffectiveInterval: map['noEffectiveInterval'] == null ? null : (map['noEffectiveInterval']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
       ruleId: (map['ruleId'] as String).input(),
-      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime'] as int).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<GroupMetricRuleTarget>(map['targets'], (value) => GroupMetricRuleTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime']! as int).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<GroupMetricRuleTarget>(map['targets']!, (value) => GroupMetricRuleTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

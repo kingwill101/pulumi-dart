@@ -27,7 +27,7 @@ class TcpRouteRouteDestination {
   factory TcpRouteRouteDestination.fromMap(Map<String, dynamic> map) {
     return TcpRouteRouteDestination(
       serviceName: (map['serviceName'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

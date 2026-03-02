@@ -57,14 +57,14 @@ class AutonomousDatabasePropertiesConnectionUrl {
 
   factory AutonomousDatabasePropertiesConnectionUrl.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesConnectionUrl(
-      apexUri: map['apexUri'] == null ? null : (map['apexUri'] as String).input(),
-      databaseTransformsUri: map['databaseTransformsUri'] == null ? null : (map['databaseTransformsUri'] as String).input(),
-      graphStudioUri: map['graphStudioUri'] == null ? null : (map['graphStudioUri'] as String).input(),
-      machineLearningNotebookUri: map['machineLearningNotebookUri'] == null ? null : (map['machineLearningNotebookUri'] as String).input(),
-      machineLearningUserManagementUri: map['machineLearningUserManagementUri'] == null ? null : (map['machineLearningUserManagementUri'] as String).input(),
-      mongoDbUri: map['mongoDbUri'] == null ? null : (map['mongoDbUri'] as String).input(),
-      ordsUri: map['ordsUri'] == null ? null : (map['ordsUri'] as String).input(),
-      sqlDevWebUri: map['sqlDevWebUri'] == null ? null : (map['sqlDevWebUri'] as String).input(),
+      apexUri: map['apexUri'] == null ? null : (map['apexUri']! as String).input(),
+      databaseTransformsUri: map['databaseTransformsUri'] == null ? null : (map['databaseTransformsUri']! as String).input(),
+      graphStudioUri: map['graphStudioUri'] == null ? null : (map['graphStudioUri']! as String).input(),
+      machineLearningNotebookUri: map['machineLearningNotebookUri'] == null ? null : (map['machineLearningNotebookUri']! as String).input(),
+      machineLearningUserManagementUri: map['machineLearningUserManagementUri'] == null ? null : (map['machineLearningUserManagementUri']! as String).input(),
+      mongoDbUri: map['mongoDbUri'] == null ? null : (map['mongoDbUri']! as String).input(),
+      ordsUri: map['ordsUri'] == null ? null : (map['ordsUri']! as String).input(),
+      sqlDevWebUri: map['sqlDevWebUri'] == null ? null : (map['sqlDevWebUri']! as String).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class UserPoolDomainArgs {
 
   factory UserPoolDomainArgs.fromMap(Map<String, dynamic> map) {
     return UserPoolDomainArgs(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
       domain: (map['domain'] as String).input(),
-      managedLoginVersion: map['managedLoginVersion'] == null ? null : (map['managedLoginVersion'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      managedLoginVersion: map['managedLoginVersion'] == null ? null : ((map['managedLoginVersion'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

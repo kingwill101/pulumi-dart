@@ -38,10 +38,10 @@ class NetworkManagerStaticMemberState {
 
   factory NetworkManagerStaticMemberState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerStaticMemberState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkGroupId: map['networkGroupId'] == null ? null : (map['networkGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetVirtualNetworkId: map['targetVirtualNetworkId'] == null ? null : (map['targetVirtualNetworkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkGroupId: map['networkGroupId'] == null ? null : (map['networkGroupId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      targetVirtualNetworkId: map['targetVirtualNetworkId'] == null ? null : (map['targetVirtualNetworkId']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DomainDefaultUserSettingsRSessionAppSettings {
 
   factory DomainDefaultUserSettingsRSessionAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsRSessionAppSettings(
-      customImages: map['customImages'] == null ? null : (pulumi.Input.decodeList<DomainDefaultUserSettingsRSessionAppSettingsCustomImage>(map['customImages'], (value) => DomainDefaultUserSettingsRSessionAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (DomainDefaultUserSettingsRSessionAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
+      customImages: map['customImages'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultUserSettingsRSessionAppSettingsCustomImage>(map['customImages']!, (value) => DomainDefaultUserSettingsRSessionAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((DomainDefaultUserSettingsRSessionAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

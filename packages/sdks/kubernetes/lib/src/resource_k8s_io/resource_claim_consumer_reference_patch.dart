@@ -36,10 +36,10 @@ class ResourceClaimConsumerReferencePatch {
 
   factory ResourceClaimConsumerReferencePatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimConsumerReferencePatch(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

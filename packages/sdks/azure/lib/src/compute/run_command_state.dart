@@ -91,20 +91,20 @@ class RunCommandState {
 
   factory RunCommandState.fromMap(Map<String, dynamic> map) {
     return RunCommandState(
-      errorBlobManagedIdentity: map['errorBlobManagedIdentity'] == null ? null : (RunCommandErrorBlobManagedIdentity.fromMap((map['errorBlobManagedIdentity'] as Map).cast<String, dynamic>())).input(),
-      errorBlobUri: map['errorBlobUri'] == null ? null : (map['errorBlobUri'] as String).input(),
-      instanceViews: map['instanceViews'] == null ? null : (pulumi.Input.decodeList<RunCommandInstanceView>(map['instanceViews'], (value) => RunCommandInstanceView.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputBlobManagedIdentity: map['outputBlobManagedIdentity'] == null ? null : (RunCommandOutputBlobManagedIdentity.fromMap((map['outputBlobManagedIdentity'] as Map).cast<String, dynamic>())).input(),
-      outputBlobUri: map['outputBlobUri'] == null ? null : (map['outputBlobUri'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RunCommandParameter>(map['parameters'], (value) => RunCommandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protectedParameters: map['protectedParameters'] == null ? null : (pulumi.Input.decodeList<RunCommandProtectedParameter>(map['protectedParameters'], (value) => RunCommandProtectedParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      runAsPassword: map['runAsPassword'] == null ? null : (map['runAsPassword'] as String).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as String).input(),
-      source: map['source'] == null ? null : (RunCommandSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      errorBlobManagedIdentity: map['errorBlobManagedIdentity'] == null ? null : (RunCommandErrorBlobManagedIdentity.fromMap((map['errorBlobManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      errorBlobUri: map['errorBlobUri'] == null ? null : (map['errorBlobUri']! as String).input(),
+      instanceViews: map['instanceViews'] == null ? null : (pulumi.Input.decodeList<RunCommandInstanceView>(map['instanceViews']!, (value) => RunCommandInstanceView.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputBlobManagedIdentity: map['outputBlobManagedIdentity'] == null ? null : (RunCommandOutputBlobManagedIdentity.fromMap((map['outputBlobManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      outputBlobUri: map['outputBlobUri'] == null ? null : (map['outputBlobUri']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RunCommandParameter>(map['parameters']!, (value) => RunCommandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedParameters: map['protectedParameters'] == null ? null : (pulumi.Input.decodeList<RunCommandProtectedParameter>(map['protectedParameters']!, (value) => RunCommandProtectedParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runAsPassword: map['runAsPassword'] == null ? null : (map['runAsPassword']! as String).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as String).input(),
+      source: map['source'] == null ? null : (RunCommandSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class NetworkConfigurationResponse {
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      networkAdapters: map['networkAdapters'] == null ? null : (pulumi.Input.decodeList<NetworkAdapterResponse>(map['networkAdapters'], (value) => NetworkAdapterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkAdapters: map['networkAdapters'] == null ? null : (pulumi.Input.decodeList<NetworkAdapterResponse>(map['networkAdapters']!, (value) => NetworkAdapterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

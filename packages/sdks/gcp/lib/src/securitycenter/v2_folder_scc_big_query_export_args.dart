@@ -73,11 +73,11 @@ class V2FolderSccBigQueryExportArgs {
   factory V2FolderSccBigQueryExportArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderSccBigQueryExportArgs(
       bigQueryExportId: (map['bigQueryExportId'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       folder: (map['folder'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

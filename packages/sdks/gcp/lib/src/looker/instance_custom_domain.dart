@@ -26,8 +26,8 @@ class InstanceCustomDomain {
 
   factory InstanceCustomDomain.fromMap(Map<String, dynamic> map) {
     return InstanceCustomDomain(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GoogleCloudSecuritycenterV1Property {
 
   factory GoogleCloudSecuritycenterV1Property.fromMap(Map<String, dynamic> map) {
     return GoogleCloudSecuritycenterV1Property(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (Expr.fromMap((map['valueExpression'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      valueExpression: map['valueExpression'] == null ? null : (Expr.fromMap((map['valueExpression']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

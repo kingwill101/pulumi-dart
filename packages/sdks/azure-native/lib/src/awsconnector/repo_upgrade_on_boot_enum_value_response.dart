@@ -21,7 +21,7 @@ class RepoUpgradeOnBootEnumValueResponse {
 
   factory RepoUpgradeOnBootEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return RepoUpgradeOnBootEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

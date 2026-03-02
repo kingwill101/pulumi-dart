@@ -82,16 +82,16 @@ class MethodArgs {
 
   factory MethodArgs.fromMap(Map<String, dynamic> map) {
     return MethodArgs(
-      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired'] as bool).input(),
+      apiKeyRequired: map['apiKeyRequired'] == null ? null : ((map['apiKeyRequired'] as bool).input()).input(),
       authorization: (map['authorization'] as String).input(),
-      authorizationScopes: map['authorizationScopes'] == null ? null : ((map['authorizationScopes'] as List).cast<String>()).input(),
-      authorizerId: map['authorizerId'] == null ? null : (map['authorizerId'] as String).input(),
+      authorizationScopes: map['authorizationScopes'] == null ? null : (((map['authorizationScopes'] as List).cast<String>()).input()).input(),
+      authorizerId: map['authorizerId'] == null ? null : ((map['authorizerId'] as String).input()).input(),
       httpMethod: (map['httpMethod'] as String).input(),
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestModels: map['requestModels'] == null ? null : ((map['requestModels'] as Map).cast<String, String>()).input(),
-      requestParameters: map['requestParameters'] == null ? null : ((map['requestParameters'] as Map).cast<String, bool>()).input(),
-      requestValidatorId: map['requestValidatorId'] == null ? null : (map['requestValidatorId'] as String).input(),
+      operationName: map['operationName'] == null ? null : ((map['operationName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestModels: map['requestModels'] == null ? null : (((map['requestModels'] as Map).cast<String, String>()).input()).input(),
+      requestParameters: map['requestParameters'] == null ? null : (((map['requestParameters'] as Map).cast<String, bool>()).input()).input(),
+      requestValidatorId: map['requestValidatorId'] == null ? null : ((map['requestValidatorId'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
       restApi: (map['restApi'] as String).input(),
     );

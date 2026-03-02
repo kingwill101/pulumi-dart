@@ -19,7 +19,7 @@ class DeliveryChannelResourceChangeDeliverySlsProperties {
 
   factory DeliveryChannelResourceChangeDeliverySlsProperties.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelResourceChangeDeliverySlsProperties(
-      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : (map['oversizedDataOssTargetArn'] as String).input(),
+      oversizedDataOssTargetArn: map['oversizedDataOssTargetArn'] == null ? null : (map['oversizedDataOssTargetArn']! as String).input(),
     );
   }
 }

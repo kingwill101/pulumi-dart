@@ -38,7 +38,7 @@ class HandshakeArgs {
 
   factory HandshakeArgs.fromMap(Map<String, dynamic> map) {
     return HandshakeArgs(
-      note: map['note'] == null ? null : (map['note'] as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
       targetEntity: (map['targetEntity'] as String).input(),
       targetType: (map['targetType'] as String).input(),
     );

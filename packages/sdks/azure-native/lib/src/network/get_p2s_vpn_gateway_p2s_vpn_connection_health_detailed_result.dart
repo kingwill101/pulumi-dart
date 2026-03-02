@@ -20,7 +20,7 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult {
 
   factory GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult.fromMap(Map<String, dynamic> map) {
     return GetP2sVpnGatewayP2sVpnConnectionHealthDetailedResult(
-      sasUrl: map['sasUrl'] == null ? null : map['sasUrl'] as String,
+      sasUrl: map['sasUrl'] == null ? null : map['sasUrl']! as String,
     );
   }
 }

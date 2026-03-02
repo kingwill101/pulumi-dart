@@ -30,8 +30,8 @@ class V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextSt
 
   factory V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepDialogAction.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingFailureConditionalConditionalBranchNextStepDialogAction(
-      slotToElicit: map['slotToElicit'] == null ? null : (map['slotToElicit'] as String).input(),
-      suppressNextMessage: map['suppressNextMessage'] == null ? null : (map['suppressNextMessage'] as bool).input(),
+      slotToElicit: map['slotToElicit'] == null ? null : ((map['slotToElicit'] as String).input()).input(),
+      suppressNextMessage: map['suppressNextMessage'] == null ? null : ((map['suppressNextMessage'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

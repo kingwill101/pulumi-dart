@@ -60,14 +60,14 @@ class IntegrationAccountCertificateArgs {
 
   factory IntegrationAccountCertificateArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountCertificateArgs(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      key: map['key'] == null ? null : (KeyVaultKeyReference.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate'] as String).input(),
+      key: map['key'] == null ? null : (KeyVaultKeyReference.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

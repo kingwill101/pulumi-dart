@@ -32,9 +32,9 @@ class RbacPolicy {
 
   factory RbacPolicy.fromMap(Map<String, dynamic> map) {
     return RbacPolicy(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<Permission>(map['permissions'], (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals'], (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<Permission>(map['permissions']!, (value) => Permission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      principals: map['principals'] == null ? null : (pulumi.Input.decodeList<Principal>(map['principals']!, (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

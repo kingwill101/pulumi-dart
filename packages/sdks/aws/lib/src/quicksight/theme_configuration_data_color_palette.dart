@@ -30,9 +30,9 @@ class ThemeConfigurationDataColorPalette {
 
   factory ThemeConfigurationDataColorPalette.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationDataColorPalette(
-      colors: map['colors'] == null ? null : ((map['colors'] as List).cast<String>()).input(),
-      emptyFillColor: map['emptyFillColor'] == null ? null : (map['emptyFillColor'] as String).input(),
-      minMaxGradients: map['minMaxGradients'] == null ? null : ((map['minMaxGradients'] as List).cast<String>()).input(),
+      colors: map['colors'] == null ? null : (((map['colors'] as List).cast<String>()).input()).input(),
+      emptyFillColor: map['emptyFillColor'] == null ? null : ((map['emptyFillColor'] as String).input()).input(),
+      minMaxGradients: map['minMaxGradients'] == null ? null : (((map['minMaxGradients'] as List).cast<String>()).input()).input(),
     );
   }
 }

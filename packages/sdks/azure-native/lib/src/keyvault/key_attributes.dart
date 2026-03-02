@@ -36,10 +36,10 @@ class KeyAttributes {
 
   factory KeyAttributes.fromMap(Map<String, dynamic> map) {
     return KeyAttributes(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as double).input(),
-      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as double).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as double).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable']! as bool).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as double).input(),
     );
   }
 }

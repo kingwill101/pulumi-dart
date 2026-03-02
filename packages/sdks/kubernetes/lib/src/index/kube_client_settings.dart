@@ -31,9 +31,9 @@ class KubeClientSettings {
 
   factory KubeClientSettings.fromMap(Map<String, dynamic> map) {
     return KubeClientSettings(
-      burst: map['burst'] == null ? null : (map['burst'] as int).input(),
-      qps: map['qps'] == null ? null : (map['qps'] as double).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      burst: map['burst'] == null ? null : (map['burst']! as int).input(),
+      qps: map['qps'] == null ? null : (map['qps']! as double).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

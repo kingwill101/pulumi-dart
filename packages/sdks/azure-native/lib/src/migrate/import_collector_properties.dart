@@ -19,7 +19,7 @@ class ImportCollectorProperties {
 
   factory ImportCollectorProperties.fromMap(Map<String, dynamic> map) {
     return ImportCollectorProperties(
-      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId'] as String).input(),
+      discoverySiteId: map['discoverySiteId'] == null ? null : (map['discoverySiteId']! as String).input(),
     );
   }
 }

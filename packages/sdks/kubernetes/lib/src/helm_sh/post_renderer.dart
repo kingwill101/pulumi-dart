@@ -26,7 +26,7 @@ class PostRenderer {
 
   factory PostRenderer.fromMap(Map<String, dynamic> map) {
     return PostRenderer(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
       command: (map['command'] as String).input(),
     );
   }

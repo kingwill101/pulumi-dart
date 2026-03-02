@@ -93,21 +93,21 @@ class GatewayNetworkservicesV1beta1Args {
 
   factory GatewayNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GatewayNetworkservicesV1beta1Args(
-      addresses: map['addresses'] == null ? null : ((map['addresses'] as List).cast<String>()).input(),
-      certificateUrls: map['certificateUrls'] == null ? null : ((map['certificateUrls'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      addresses: map['addresses'] == null ? null : ((map['addresses']! as List).cast<String>()).input(),
+      certificateUrls: map['certificateUrls'] == null ? null : ((map['certificateUrls']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      gatewaySecurityPolicy: map['gatewaySecurityPolicy'] == null ? null : (map['gatewaySecurityPolicy'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      gatewaySecurityPolicy: map['gatewaySecurityPolicy'] == null ? null : (map['gatewaySecurityPolicy']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
       ports: ((map['ports'] as List).cast<int>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      type: map['type'] == null ? null : (GatewayTypeNetworkservicesV1beta1.fromValue(map['type'] as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      type: map['type'] == null ? null : (GatewayTypeNetworkservicesV1beta1.fromValue(map['type']! as String)).input(),
     );
   }
 }

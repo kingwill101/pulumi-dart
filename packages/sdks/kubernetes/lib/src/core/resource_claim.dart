@@ -27,7 +27,7 @@ class ResourceClaim {
   factory ResourceClaim.fromMap(Map<String, dynamic> map) {
     return ResourceClaim(
       name: (map['name'] as String).input(),
-      request: map['request'] == null ? null : (map['request'] as String).input(),
+      request: map['request'] == null ? null : (map['request']! as String).input(),
     );
   }
 }

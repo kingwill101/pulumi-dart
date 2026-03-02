@@ -51,12 +51,12 @@ class GetTagsFilter {
 
   factory GetTagsFilter.fromMap(Map<String, dynamic> map) {
     return GetTagsFilter(
-      ands: map['ands'] == null ? null : (pulumi.Input.decodeList<GetTagsFilterAnd>(map['ands'], (value) => GetTagsFilterAnd.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      costCategory: map['costCategory'] == null ? null : (GetTagsFilterCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
-      dimension: map['dimension'] == null ? null : (GetTagsFilterDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
-      not: map['not'] == null ? null : (GetTagsFilterNot.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
-      ors: map['ors'] == null ? null : (pulumi.Input.decodeList<GetTagsFilterOr>(map['ors'], (value) => GetTagsFilterOr.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (GetTagsFilterTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      ands: map['ands'] == null ? null : ((pulumi.Input.decodeList<GetTagsFilterAnd>(map['ands']!, (value) => GetTagsFilterAnd.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      costCategory: map['costCategory'] == null ? null : ((GetTagsFilterCostCategory.fromMap((map['costCategory']! as Map).cast<String, dynamic>())).input()).input(),
+      dimension: map['dimension'] == null ? null : ((GetTagsFilterDimension.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input()).input(),
+      not: map['not'] == null ? null : ((GetTagsFilterNot.fromMap((map['not']! as Map).cast<String, dynamic>())).input()).input(),
+      ors: map['ors'] == null ? null : ((pulumi.Input.decodeList<GetTagsFilterOr>(map['ors']!, (value) => GetTagsFilterOr.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : ((GetTagsFilterTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -62,11 +62,11 @@ class GetUsersResult {
     return GetUsersResult(
       employeeIds: (map['employeeIds'] as List).cast<String>(),
       id: map['id'] as String,
-      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing'] as bool,
+      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing']! as bool,
       mailNicknames: (map['mailNicknames'] as List).cast<String>(),
       mails: (map['mails'] as List).cast<String>(),
       objectIds: (map['objectIds'] as List).cast<String>(),
-      returnAll: map['returnAll'] == null ? null : map['returnAll'] as bool,
+      returnAll: map['returnAll'] == null ? null : map['returnAll']! as bool,
       userPrincipalNames: (map['userPrincipalNames'] as List).cast<String>(),
       users: pulumi.Input.decodeList<GetUsersUser>(map['users'], (value) => GetUsersUser.fromMap((value as Map).cast<String, dynamic>())),
     );

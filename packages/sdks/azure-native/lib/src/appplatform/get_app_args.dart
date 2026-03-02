@@ -42,7 +42,7 @@ class GetAppArgs {
       appName: (map['appName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      syncStatus: map['syncStatus'] == null ? null : (map['syncStatus'] as String).input(),
+      syncStatus: map['syncStatus'] == null ? null : (map['syncStatus']! as String).input(),
     );
   }
 }

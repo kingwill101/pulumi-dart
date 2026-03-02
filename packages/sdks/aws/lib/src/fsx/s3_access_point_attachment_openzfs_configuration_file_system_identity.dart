@@ -26,7 +26,7 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
 
   factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity(
-      posixUser: map['posixUser'] == null ? null : (S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
+      posixUser: map['posixUser'] == null ? null : ((S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap((map['posixUser']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

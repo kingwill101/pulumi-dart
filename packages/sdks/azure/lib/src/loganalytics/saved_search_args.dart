@@ -61,12 +61,12 @@ class SavedSearchArgs {
     return SavedSearchArgs(
       category: (map['category'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      functionParameters: map['functionParameters'] == null ? null : ((map['functionParameters'] as List).cast<String>()).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      functionParameters: map['functionParameters'] == null ? null : ((map['functionParameters']! as List).cast<String>()).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       query: (map['query'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

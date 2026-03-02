@@ -35,9 +35,9 @@ class TrustStoreArgs {
 
   factory TrustStoreArgs.fromMap(Map<String, dynamic> map) {
     return TrustStoreArgs(
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TrustStoreCertificate>(map['certificates'], (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      certificates: map['certificates'] == null ? null : ((pulumi.Input.decodeList<TrustStoreCertificate>(map['certificates']!, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

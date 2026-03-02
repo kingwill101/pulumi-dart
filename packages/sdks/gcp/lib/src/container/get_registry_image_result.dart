@@ -45,13 +45,13 @@ class GetRegistryImageResult {
 
   factory GetRegistryImageResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageResult(
-      digest: map['digest'] == null ? null : map['digest'] as String,
+      digest: map['digest'] == null ? null : map['digest']! as String,
       id: map['id'] as String,
       imageUrl: map['imageUrl'] as String,
       name: map['name'] as String,
       project: map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
-      tag: map['tag'] == null ? null : map['tag'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
+      tag: map['tag'] == null ? null : map['tag']! as String,
     );
   }
 }

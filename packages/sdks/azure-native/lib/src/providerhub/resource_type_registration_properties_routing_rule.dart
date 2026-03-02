@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesRoutingRule {
 
   factory ResourceTypeRegistrationPropertiesRoutingRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesRoutingRule(
-      hostResourceType: map['hostResourceType'] == null ? null : (map['hostResourceType'] as String).input(),
+      hostResourceType: map['hostResourceType'] == null ? null : (map['hostResourceType']! as String).input(),
     );
   }
 }

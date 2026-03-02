@@ -60,14 +60,14 @@ class StatefulSetSpecPatchAppsV1beta1 {
 
   factory StatefulSetSpecPatchAppsV1beta1.fromMap(Map<String, dynamic> map) {
     return StatefulSetSpecPatchAppsV1beta1(
-      podManagementPolicy: map['podManagementPolicy'] == null ? null : (map['podManagementPolicy'] as String).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit'] as int).input(),
-      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (StatefulSetUpdateStrategyPatchAppsV1beta1.fromMap((map['updateStrategy'] as Map).cast<String, dynamic>())).input(),
-      volumeClaimTemplates: map['volumeClaimTemplates'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaimPatch>(map['volumeClaimTemplates'], (value) => PersistentVolumeClaimPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      podManagementPolicy: map['podManagementPolicy'] == null ? null : (map['podManagementPolicy']! as String).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      revisionHistoryLimit: map['revisionHistoryLimit'] == null ? null : (map['revisionHistoryLimit']! as int).input(),
+      selector: map['selector'] == null ? null : (LabelSelectorPatch.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      template: map['template'] == null ? null : (PodTemplateSpecPatch.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (StatefulSetUpdateStrategyPatchAppsV1beta1.fromMap((map['updateStrategy']! as Map).cast<String, dynamic>())).input(),
+      volumeClaimTemplates: map['volumeClaimTemplates'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaimPatch>(map['volumeClaimTemplates']!, (value) => PersistentVolumeClaimPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

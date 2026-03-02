@@ -27,8 +27,8 @@ class DomainDevicesTpmBackendEmulatorSource {
 
   factory DomainDevicesTpmBackendEmulatorSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulatorSource(
-      dir: map['dir'] == null ? null : (DomainDevicesTpmBackendEmulatorSourceDir.fromMap((map['dir'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesTpmBackendEmulatorSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      dir: map['dir'] == null ? null : (DomainDevicesTpmBackendEmulatorSourceDir.fromMap((map['dir']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesTpmBackendEmulatorSourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

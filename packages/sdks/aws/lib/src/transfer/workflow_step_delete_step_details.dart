@@ -25,8 +25,8 @@ class WorkflowStepDeleteStepDetails {
 
   factory WorkflowStepDeleteStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowStepDeleteStepDetails(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceFileLocation: map['sourceFileLocation'] == null ? null : (map['sourceFileLocation'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      sourceFileLocation: map['sourceFileLocation'] == null ? null : ((map['sourceFileLocation'] as String).input()).input(),
     );
   }
 }

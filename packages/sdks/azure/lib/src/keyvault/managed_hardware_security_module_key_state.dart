@@ -68,16 +68,16 @@ class ManagedHardwareSecurityModuleKeyState {
 
   factory ManagedHardwareSecurityModuleKeyState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleKeyState(
-      curve: map['curve'] == null ? null : (map['curve'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      keyOpts: map['keyOpts'] == null ? null : ((map['keyOpts'] as List).cast<String>()).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      versionedId: map['versionedId'] == null ? null : (map['versionedId'] as String).input(),
+      curve: map['curve'] == null ? null : (map['curve']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      keyOpts: map['keyOpts'] == null ? null : ((map['keyOpts']! as List).cast<String>()).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as int).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
+      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notBeforeDate: map['notBeforeDate'] == null ? null : (map['notBeforeDate']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      versionedId: map['versionedId'] == null ? null : (map['versionedId']! as String).input(),
     );
   }
 }

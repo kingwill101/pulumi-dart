@@ -20,7 +20,7 @@ class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
 
   factory EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig(
-      storageMode: map['storageMode'] == null ? null : (map['storageMode'] as String).input(),
+      storageMode: map['storageMode'] == null ? null : (map['storageMode']! as String).input(),
     );
   }
 }

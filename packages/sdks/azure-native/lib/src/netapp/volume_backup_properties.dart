@@ -31,9 +31,9 @@ class VolumeBackupProperties {
 
   factory VolumeBackupProperties.fromMap(Map<String, dynamic> map) {
     return VolumeBackupProperties(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      backupVaultId: map['backupVaultId'] == null ? null : (map['backupVaultId'] as String).input(),
-      policyEnforced: map['policyEnforced'] == null ? null : (map['policyEnforced'] as bool).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      backupVaultId: map['backupVaultId'] == null ? null : (map['backupVaultId']! as String).input(),
+      policyEnforced: map['policyEnforced'] == null ? null : (map['policyEnforced']! as bool).input(),
     );
   }
 }

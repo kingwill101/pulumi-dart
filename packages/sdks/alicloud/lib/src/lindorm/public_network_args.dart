@@ -34,7 +34,7 @@ class PublicNetworkArgs {
 
   factory PublicNetworkArgs.fromMap(Map<String, dynamic> map) {
     return PublicNetworkArgs(
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork'] as int).input(),
+      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork']! as int).input(),
       engineType: (map['engineType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
     );

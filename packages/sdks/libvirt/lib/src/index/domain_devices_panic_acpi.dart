@@ -20,7 +20,7 @@ class DomainDevicesPanicAcpi {
 
   factory DomainDevicesPanicAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesPanicAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

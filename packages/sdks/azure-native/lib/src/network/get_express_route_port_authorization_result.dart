@@ -65,8 +65,8 @@ class GetExpressRoutePortAuthorizationResult {
       azureApiVersion: map['azureApiVersion'] as String,
       circuitResourceUri: map['circuitResourceUri'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,
     );

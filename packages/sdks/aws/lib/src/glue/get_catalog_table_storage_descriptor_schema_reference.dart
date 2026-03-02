@@ -31,7 +31,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
 
   factory GetCatalogTableStorageDescriptorSchemaReference.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableStorageDescriptorSchemaReference(
-      schemaIds: (pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(map['schemaIds'], (value) => GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaIds: (pulumi.Input.decodeList<GetCatalogTableStorageDescriptorSchemaReferenceSchemaId>(map['schemaIds']!, (value) => GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap((value as Map).cast<String, dynamic>()))).input(),
       schemaVersionId: (map['schemaVersionId'] as String).input(),
       schemaVersionNumber: (map['schemaVersionNumber'] as int).input(),
     );

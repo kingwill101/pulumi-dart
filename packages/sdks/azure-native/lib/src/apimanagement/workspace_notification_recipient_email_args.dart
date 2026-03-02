@@ -44,7 +44,7 @@ class WorkspaceNotificationRecipientEmailArgs {
 
   factory WorkspaceNotificationRecipientEmailArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNotificationRecipientEmailArgs(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
       notificationName: (map['notificationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

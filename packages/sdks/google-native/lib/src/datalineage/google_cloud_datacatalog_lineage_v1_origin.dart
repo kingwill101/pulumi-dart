@@ -27,8 +27,8 @@ class GoogleCloudDatacatalogLineageV1Origin {
 
   factory GoogleCloudDatacatalogLineageV1Origin.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogLineageV1Origin(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (GoogleCloudDatacatalogLineageV1OriginSourceType.fromValue(map['sourceType'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (GoogleCloudDatacatalogLineageV1OriginSourceType.fromValue(map['sourceType']! as String)).input(),
     );
   }
 }

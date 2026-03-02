@@ -26,8 +26,8 @@ class Signature {
 
   factory Signature.fromMap(Map<String, dynamic> map) {
     return Signature(
-      publicKeyId: map['publicKeyId'] == null ? null : (map['publicKeyId'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      publicKeyId: map['publicKeyId'] == null ? null : (map['publicKeyId']! as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
     );
   }
 }

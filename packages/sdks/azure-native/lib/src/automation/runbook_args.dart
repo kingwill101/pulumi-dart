@@ -87,18 +87,18 @@ class RunbookArgs {
   factory RunbookArgs.fromMap(Map<String, dynamic> map) {
     return RunbookArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      draft: map['draft'] == null ? null : (RunbookDraft.fromMap((map['draft'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logActivityTrace: map['logActivityTrace'] == null ? null : (map['logActivityTrace'] as int).input(),
-      logProgress: map['logProgress'] == null ? null : (map['logProgress'] as bool).input(),
-      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publishContentLink: map['publishContentLink'] == null ? null : (ContentLink.fromMap((map['publishContentLink'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      draft: map['draft'] == null ? null : (RunbookDraft.fromMap((map['draft']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logActivityTrace: map['logActivityTrace'] == null ? null : (map['logActivityTrace']! as int).input(),
+      logProgress: map['logProgress'] == null ? null : (map['logProgress']! as bool).input(),
+      logVerbose: map['logVerbose'] == null ? null : (map['logVerbose']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publishContentLink: map['publishContentLink'] == null ? null : (ContentLink.fromMap((map['publishContentLink']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runbookName: map['runbookName'] == null ? null : (map['runbookName'] as String).input(),
+      runbookName: map['runbookName'] == null ? null : (map['runbookName']! as String).input(),
       runbookType: (map['runbookType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

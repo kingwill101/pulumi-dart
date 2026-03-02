@@ -46,12 +46,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentials {
 
   factory AuthConfigDecryptedCredentialOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentials(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      requestType: map['requestType'] == null ? null : (map['requestType'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint'] as String).input(),
-      tokenParams: map['tokenParams'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap((map['tokenParams'] as Map).cast<String, dynamic>())).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      requestType: map['requestType'] == null ? null : (map['requestType']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      tokenEndpoint: map['tokenEndpoint'] == null ? null : (map['tokenEndpoint']! as String).input(),
+      tokenParams: map['tokenParams'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap((map['tokenParams']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

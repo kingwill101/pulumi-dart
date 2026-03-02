@@ -25,8 +25,8 @@ class ClusterPostInstallScript {
 
   factory ClusterPostInstallScript.fromMap(Map<String, dynamic> map) {
     return ClusterPostInstallScript(
-      args: map['args'] == null ? null : (map['args'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

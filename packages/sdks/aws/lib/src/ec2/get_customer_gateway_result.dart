@@ -74,7 +74,7 @@ class GetCustomerGatewayResult {
       bgpAsnExtended: map['bgpAsnExtended'] as int,
       certificateArn: map['certificateArn'] as String,
       deviceName: map['deviceName'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCustomerGatewayFilter>(map['filters'], (value) => GetCustomerGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetCustomerGatewayFilter>(map['filters']!, (value) => GetCustomerGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddress: map['ipAddress'] as String,
       region: map['region'] as String,

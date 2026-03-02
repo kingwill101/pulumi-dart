@@ -39,8 +39,8 @@ class RecoveryPlanAutomationRunbookActionDetailsResponse {
     return RecoveryPlanAutomationRunbookActionDetailsResponse(
       fabricLocation: (map['fabricLocation'] as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      runbookId: map['runbookId'] == null ? null : (map['runbookId'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      runbookId: map['runbookId'] == null ? null : (map['runbookId']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

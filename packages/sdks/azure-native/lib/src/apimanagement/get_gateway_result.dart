@@ -47,9 +47,9 @@ class GetGatewayResult {
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      locationData: map['locationData'] == null ? null : ResourceLocationDataContractResponse.fromMap((map['locationData'] as Map).cast<String, dynamic>()),
+      locationData: map['locationData'] == null ? null : ResourceLocationDataContractResponse.fromMap((map['locationData']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       type: map['type'] as String,
     );

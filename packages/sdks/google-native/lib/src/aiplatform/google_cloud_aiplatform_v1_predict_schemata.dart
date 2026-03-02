@@ -31,9 +31,9 @@ class GoogleCloudAiplatformV1PredictSchemata {
 
   factory GoogleCloudAiplatformV1PredictSchemata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1PredictSchemata(
-      instanceSchemaUri: map['instanceSchemaUri'] == null ? null : (map['instanceSchemaUri'] as String).input(),
-      parametersSchemaUri: map['parametersSchemaUri'] == null ? null : (map['parametersSchemaUri'] as String).input(),
-      predictionSchemaUri: map['predictionSchemaUri'] == null ? null : (map['predictionSchemaUri'] as String).input(),
+      instanceSchemaUri: map['instanceSchemaUri'] == null ? null : (map['instanceSchemaUri']! as String).input(),
+      parametersSchemaUri: map['parametersSchemaUri'] == null ? null : (map['parametersSchemaUri']! as String).input(),
+      predictionSchemaUri: map['predictionSchemaUri'] == null ? null : (map['predictionSchemaUri']! as String).input(),
     );
   }
 }

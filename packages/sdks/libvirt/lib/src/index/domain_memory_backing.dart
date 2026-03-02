@@ -54,13 +54,13 @@ class DomainMemoryBacking {
 
   factory DomainMemoryBacking.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBacking(
-      memoryAccess: map['memoryAccess'] == null ? null : (DomainMemoryBackingMemoryAccess.fromMap((map['memoryAccess'] as Map).cast<String, dynamic>())).input(),
-      memoryAllocation: map['memoryAllocation'] == null ? null : (DomainMemoryBackingMemoryAllocation.fromMap((map['memoryAllocation'] as Map).cast<String, dynamic>())).input(),
-      memoryDiscard: map['memoryDiscard'] == null ? null : (map['memoryDiscard'] as bool).input(),
-      memoryHugePages: map['memoryHugePages'] == null ? null : (DomainMemoryBackingMemoryHugePages.fromMap((map['memoryHugePages'] as Map).cast<String, dynamic>())).input(),
-      memoryLocked: map['memoryLocked'] == null ? null : (map['memoryLocked'] as bool).input(),
-      memoryNosharepages: map['memoryNosharepages'] == null ? null : (map['memoryNosharepages'] as bool).input(),
-      memorySource: map['memorySource'] == null ? null : (DomainMemoryBackingMemorySource.fromMap((map['memorySource'] as Map).cast<String, dynamic>())).input(),
+      memoryAccess: map['memoryAccess'] == null ? null : (DomainMemoryBackingMemoryAccess.fromMap((map['memoryAccess']! as Map).cast<String, dynamic>())).input(),
+      memoryAllocation: map['memoryAllocation'] == null ? null : (DomainMemoryBackingMemoryAllocation.fromMap((map['memoryAllocation']! as Map).cast<String, dynamic>())).input(),
+      memoryDiscard: map['memoryDiscard'] == null ? null : (map['memoryDiscard']! as bool).input(),
+      memoryHugePages: map['memoryHugePages'] == null ? null : (DomainMemoryBackingMemoryHugePages.fromMap((map['memoryHugePages']! as Map).cast<String, dynamic>())).input(),
+      memoryLocked: map['memoryLocked'] == null ? null : (map['memoryLocked']! as bool).input(),
+      memoryNosharepages: map['memoryNosharepages'] == null ? null : (map['memoryNosharepages']! as bool).input(),
+      memorySource: map['memorySource'] == null ? null : (DomainMemoryBackingMemorySource.fromMap((map['memorySource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

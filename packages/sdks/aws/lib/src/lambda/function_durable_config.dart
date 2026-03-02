@@ -26,7 +26,7 @@ class FunctionDurableConfig {
   factory FunctionDurableConfig.fromMap(Map<String, dynamic> map) {
     return FunctionDurableConfig(
       executionTimeout: (map['executionTimeout'] as int).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
     );
   }
 }

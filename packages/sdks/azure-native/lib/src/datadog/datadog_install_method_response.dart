@@ -30,9 +30,9 @@ class DatadogInstallMethodResponse {
 
   factory DatadogInstallMethodResponse.fromMap(Map<String, dynamic> map) {
     return DatadogInstallMethodResponse(
-      installerVersion: map['installerVersion'] == null ? null : (map['installerVersion'] as String).input(),
-      tool: map['tool'] == null ? null : (map['tool'] as String).input(),
-      toolVersion: map['toolVersion'] == null ? null : (map['toolVersion'] as String).input(),
+      installerVersion: map['installerVersion'] == null ? null : (map['installerVersion']! as String).input(),
+      tool: map['tool'] == null ? null : (map['tool']! as String).input(),
+      toolVersion: map['toolVersion'] == null ? null : (map['toolVersion']! as String).input(),
     );
   }
 }

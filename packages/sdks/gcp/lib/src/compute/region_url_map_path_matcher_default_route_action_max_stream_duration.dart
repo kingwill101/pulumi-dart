@@ -27,7 +27,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDuration {
 
   factory RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDuration.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherDefaultRouteActionMaxStreamDuration(
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
       seconds: (map['seconds'] as String).input(),
     );
   }

@@ -88,20 +88,20 @@ class AccountState {
 
   factory AccountState.fromMap(Map<String, dynamic> map) {
     return AccountState(
-      dscPrimaryAccessKey: map['dscPrimaryAccessKey'] == null ? null : (map['dscPrimaryAccessKey'] as String).input(),
-      dscSecondaryAccessKey: map['dscSecondaryAccessKey'] == null ? null : (map['dscSecondaryAccessKey'] as String).input(),
-      dscServerEndpoint: map['dscServerEndpoint'] == null ? null : (map['dscServerEndpoint'] as String).input(),
-      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<AccountEncryption>(map['encryptions'], (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hybridServiceUrl: map['hybridServiceUrl'] == null ? null : (map['hybridServiceUrl'] as String).input(),
-      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<AccountPrivateEndpointConnection>(map['privateEndpointConnections'], (value) => AccountPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dscPrimaryAccessKey: map['dscPrimaryAccessKey'] == null ? null : (map['dscPrimaryAccessKey']! as String).input(),
+      dscSecondaryAccessKey: map['dscSecondaryAccessKey'] == null ? null : (map['dscSecondaryAccessKey']! as String).input(),
+      dscServerEndpoint: map['dscServerEndpoint'] == null ? null : (map['dscServerEndpoint']! as String).input(),
+      encryptions: map['encryptions'] == null ? null : (pulumi.Input.decodeList<AccountEncryption>(map['encryptions']!, (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hybridServiceUrl: map['hybridServiceUrl'] == null ? null : (map['hybridServiceUrl']! as String).input(),
+      identity: map['identity'] == null ? null : (AccountIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<AccountPrivateEndpointConnection>(map['privateEndpointConnections']!, (value) => AccountPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -69,13 +69,13 @@ class WorkforcePoolArgs {
 
   factory WorkforcePoolArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolArgs(
-      accessRestrictions: map['accessRestrictions'] == null ? null : (WorkforcePoolAccessRestrictions.fromMap((map['accessRestrictions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      accessRestrictions: map['accessRestrictions'] == null ? null : (WorkforcePoolAccessRestrictions.fromMap((map['accessRestrictions']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       parent: (map['parent'] as String).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration']! as String).input(),
       workforcePoolId: (map['workforcePoolId'] as String).input(),
     );
   }

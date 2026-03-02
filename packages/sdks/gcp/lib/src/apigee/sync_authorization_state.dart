@@ -35,9 +35,9 @@ class SyncAuthorizationState {
 
   factory SyncAuthorizationState.fromMap(Map<String, dynamic> map) {
     return SyncAuthorizationState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      identities: map['identities'] == null ? null : ((map['identities'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      identities: map['identities'] == null ? null : ((map['identities']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class GetDomainsSort {
 
   factory GetDomainsSort.fromMap(Map<String, dynamic> map) {
     return GetDomainsSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

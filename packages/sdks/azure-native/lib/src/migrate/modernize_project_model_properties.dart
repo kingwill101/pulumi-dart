@@ -22,7 +22,7 @@ class ModernizeProjectModelProperties {
 
   factory ModernizeProjectModelProperties.fromMap(Map<String, dynamic> map) {
     return ModernizeProjectModelProperties(
-      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfiguration.fromMap((map['migrationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfiguration.fromMap((map['migrationConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

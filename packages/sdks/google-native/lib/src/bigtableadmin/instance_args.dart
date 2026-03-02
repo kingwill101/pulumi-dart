@@ -62,11 +62,11 @@ class InstanceArgs {
       clusters: ((map['clusters'] as Map).cast<String, String>()).input(),
       displayName: (map['displayName'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (InstanceType.fromValue(map['type'] as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (InstanceType.fromValue(map['type']! as String)).input(),
     );
   }
 }

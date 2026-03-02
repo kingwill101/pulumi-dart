@@ -42,7 +42,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRule {
     return GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRule(
       cidr: (map['cidr'] as String).input(),
       direction: (map['direction'] as String).input(),
-      portRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange>(map['portRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portRanges: (pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange>(map['portRanges']!, (value) => GetNetworkInsightsAnalysisForwardPathComponentSecurityGroupRulePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       prefixListId: (map['prefixListId'] as String).input(),
       protocol: (map['protocol'] as String).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),

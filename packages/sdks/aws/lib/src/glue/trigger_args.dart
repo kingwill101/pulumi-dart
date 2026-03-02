@@ -82,18 +82,18 @@ class TriggerArgs {
 
   factory TriggerArgs.fromMap(Map<String, dynamic> map) {
     return TriggerArgs(
-      actions: (pulumi.Input.decodeList<TriggerAction>(map['actions'], (value) => TriggerAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      eventBatchingConditions: map['eventBatchingConditions'] == null ? null : (pulumi.Input.decodeList<TriggerEventBatchingCondition>(map['eventBatchingConditions'], (value) => TriggerEventBatchingCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      predicate: map['predicate'] == null ? null : (TriggerPredicate.fromMap((map['predicate'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      startOnCreation: map['startOnCreation'] == null ? null : (map['startOnCreation'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      actions: (pulumi.Input.decodeList<TriggerAction>(map['actions']!, (value) => TriggerAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      eventBatchingConditions: map['eventBatchingConditions'] == null ? null : ((pulumi.Input.decodeList<TriggerEventBatchingCondition>(map['eventBatchingConditions']!, (value) => TriggerEventBatchingCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      predicate: map['predicate'] == null ? null : ((TriggerPredicate.fromMap((map['predicate']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((map['schedule'] as String).input()).input(),
+      startOnCreation: map['startOnCreation'] == null ? null : ((map['startOnCreation'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
-      workflowName: map['workflowName'] == null ? null : (map['workflowName'] as String).input(),
+      workflowName: map['workflowName'] == null ? null : ((map['workflowName'] as String).input()).input(),
     );
   }
 }

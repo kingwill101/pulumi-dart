@@ -67,13 +67,13 @@ class CloudControlParameterSpecSubParameter {
 
   factory CloudControlParameterSpecSubParameter.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecSubParameter(
-      defaultValue: map['defaultValue'] == null ? null : (CloudControlParameterSpecSubParameterDefaultValue.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (CloudControlParameterSpecSubParameterDefaultValue.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       isRequired: (map['isRequired'] as bool).input(),
       name: (map['name'] as String).input(),
-      substitutionRules: map['substitutionRules'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpecSubParameterSubstitutionRule>(map['substitutionRules'], (value) => CloudControlParameterSpecSubParameterSubstitutionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validation: map['validation'] == null ? null : (CloudControlParameterSpecSubParameterValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      substitutionRules: map['substitutionRules'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpecSubParameterSubstitutionRule>(map['substitutionRules']!, (value) => CloudControlParameterSpecSubParameterSubstitutionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validation: map['validation'] == null ? null : (CloudControlParameterSpecSubParameterValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

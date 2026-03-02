@@ -26,7 +26,7 @@ class CacheActiveDirectorySettingsCredentials {
 
   factory CacheActiveDirectorySettingsCredentials.fromMap(Map<String, dynamic> map) {
     return CacheActiveDirectorySettingsCredentials(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

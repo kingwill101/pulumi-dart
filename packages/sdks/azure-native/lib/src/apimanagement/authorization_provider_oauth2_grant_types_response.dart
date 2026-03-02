@@ -26,8 +26,8 @@ class AuthorizationProviderOAuth2GrantTypesResponse {
 
   factory AuthorizationProviderOAuth2GrantTypesResponse.fromMap(Map<String, dynamic> map) {
     return AuthorizationProviderOAuth2GrantTypesResponse(
-      authorizationCode: map['authorizationCode'] == null ? null : ((map['authorizationCode'] as Map).cast<String, String>()).input(),
-      clientCredentials: map['clientCredentials'] == null ? null : ((map['clientCredentials'] as Map).cast<String, String>()).input(),
+      authorizationCode: map['authorizationCode'] == null ? null : ((map['authorizationCode']! as Map).cast<String, String>()).input(),
+      clientCredentials: map['clientCredentials'] == null ? null : ((map['clientCredentials']! as Map).cast<String, String>()).input(),
     );
   }
 }

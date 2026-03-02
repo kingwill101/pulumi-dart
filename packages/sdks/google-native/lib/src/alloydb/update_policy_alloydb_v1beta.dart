@@ -22,7 +22,7 @@ class UpdatePolicyAlloydbV1beta {
 
   factory UpdatePolicyAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return UpdatePolicyAlloydbV1beta(
-      mode: map['mode'] == null ? null : (UpdatePolicyModeAlloydbV1beta.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (UpdatePolicyModeAlloydbV1beta.fromValue(map['mode']! as String)).input(),
     );
   }
 }

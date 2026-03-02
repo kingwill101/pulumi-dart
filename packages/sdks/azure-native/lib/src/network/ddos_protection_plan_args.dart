@@ -39,10 +39,10 @@ class DdosProtectionPlanArgs {
 
   factory DdosProtectionPlanArgs.fromMap(Map<String, dynamic> map) {
     return DdosProtectionPlanArgs(
-      ddosProtectionPlanName: map['ddosProtectionPlanName'] == null ? null : (map['ddosProtectionPlanName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      ddosProtectionPlanName: map['ddosProtectionPlanName'] == null ? null : (map['ddosProtectionPlanName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class AgentFlowDefinitionNodeConfigurationConditionCondition {
 
   factory AgentFlowDefinitionNodeConfigurationConditionCondition.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationConditionCondition(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

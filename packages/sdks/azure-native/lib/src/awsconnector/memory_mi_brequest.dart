@@ -26,8 +26,8 @@ class MemoryMiBRequest {
 
   factory MemoryMiBRequest.fromMap(Map<String, dynamic> map) {
     return MemoryMiBRequest(
-      max: map['max'] == null ? null : (map['max'] as int).input(),
-      min: map['min'] == null ? null : (map['min'] as int).input(),
+      max: map['max'] == null ? null : (map['max']! as int).input(),
+      min: map['min'] == null ? null : (map['min']! as int).input(),
     );
   }
 }

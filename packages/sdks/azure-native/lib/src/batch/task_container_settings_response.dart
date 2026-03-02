@@ -43,11 +43,11 @@ class TaskContainerSettingsResponse {
 
   factory TaskContainerSettingsResponse.fromMap(Map<String, dynamic> map) {
     return TaskContainerSettingsResponse(
-      containerHostBatchBindMounts: map['containerHostBatchBindMounts'] == null ? null : (pulumi.Input.decodeList<ContainerHostBatchBindMountEntryResponse>(map['containerHostBatchBindMounts'], (value) => ContainerHostBatchBindMountEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerRunOptions: map['containerRunOptions'] == null ? null : (map['containerRunOptions'] as String).input(),
+      containerHostBatchBindMounts: map['containerHostBatchBindMounts'] == null ? null : (pulumi.Input.decodeList<ContainerHostBatchBindMountEntryResponse>(map['containerHostBatchBindMounts']!, (value) => ContainerHostBatchBindMountEntryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerRunOptions: map['containerRunOptions'] == null ? null : (map['containerRunOptions']! as String).input(),
       imageName: (map['imageName'] as String).input(),
-      registry: map['registry'] == null ? null : (ContainerRegistryResponse.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
+      registry: map['registry'] == null ? null : (ContainerRegistryResponse.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory']! as String).input(),
     );
   }
 }

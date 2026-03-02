@@ -43,7 +43,7 @@ class PipelineResponse {
     return PipelineResponse(
       exporters: ((map['exporters'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      processors: map['processors'] == null ? null : ((map['processors'] as List).cast<String>()).input(),
+      processors: map['processors'] == null ? null : ((map['processors']! as List).cast<String>()).input(),
       receivers: ((map['receivers'] as List).cast<String>()).input(),
       type: (map['type'] as String).input(),
     );

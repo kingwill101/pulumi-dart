@@ -46,7 +46,7 @@ class GeoBackupPolicyArgs {
   factory GeoBackupPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GeoBackupPolicyArgs(
       databaseName: (map['databaseName'] as String).input(),
-      geoBackupPolicyName: map['geoBackupPolicyName'] == null ? null : (map['geoBackupPolicyName'] as String).input(),
+      geoBackupPolicyName: map['geoBackupPolicyName'] == null ? null : (map['geoBackupPolicyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       state: (GeoBackupPolicyState.fromValue(map['state'] as String)).input(),

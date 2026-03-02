@@ -49,12 +49,12 @@ class GetOtsBackupPlansArgs {
 
   factory GetOtsBackupPlansArgs.fromMap(Map<String, dynamic> map) {
     return GetOtsBackupPlansArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
-      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
+      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

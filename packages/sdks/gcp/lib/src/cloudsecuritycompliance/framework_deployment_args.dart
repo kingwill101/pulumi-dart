@@ -65,7 +65,7 @@ class FrameworkDeploymentArgs {
   factory FrameworkDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentArgs(
       cloudControlMetadatas: (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(map['cloudControlMetadatas'], (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       framework: (FrameworkDeploymentFramework.fromMap((map['framework'] as Map).cast<String, dynamic>())).input(),
       frameworkDeploymentId: (map['frameworkDeploymentId'] as String).input(),
       location: (map['location'] as String).input(),

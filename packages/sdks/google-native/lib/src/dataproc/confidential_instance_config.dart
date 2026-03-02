@@ -21,7 +21,7 @@ class ConfidentialInstanceConfig {
 
   factory ConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return ConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

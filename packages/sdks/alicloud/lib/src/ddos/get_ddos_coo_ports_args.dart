@@ -44,11 +44,11 @@ class GetDdosCooPortsArgs {
 
   factory GetDdosCooPortsArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCooPortsArgs(
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as String).input(),
-      frontendProtocol: map['frontendProtocol'] == null ? null : (map['frontendProtocol'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as String).input(),
+      frontendProtocol: map['frontendProtocol'] == null ? null : (map['frontendProtocol']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

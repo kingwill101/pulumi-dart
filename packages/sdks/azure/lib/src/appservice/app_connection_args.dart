@@ -56,12 +56,12 @@ class AppConnectionArgs {
   factory AppConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectionArgs(
       authentication: (AppConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
       functionAppId: (map['functionAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretStore: map['secretStore'] == null ? null : (AppConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretStore: map['secretStore'] == null ? null : (AppConnectionSecretStore.fromMap((map['secretStore']! as Map).cast<String, dynamic>())).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
-      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution'] as String).input(),
+      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution']! as String).input(),
     );
   }
 }

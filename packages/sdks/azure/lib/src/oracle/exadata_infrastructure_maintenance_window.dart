@@ -50,13 +50,13 @@ class ExadataInfrastructureMaintenanceWindow {
 
   factory ExadataInfrastructureMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ExadataInfrastructureMaintenanceWindow(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      hoursOfDays: map['hoursOfDays'] == null ? null : ((map['hoursOfDays'] as List).cast<int>()).input(),
-      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : (map['leadTimeInWeeks'] as int).input(),
-      months: map['months'] == null ? null : ((map['months'] as List).cast<String>()).input(),
-      patchingMode: map['patchingMode'] == null ? null : (map['patchingMode'] as String).input(),
-      preference: map['preference'] == null ? null : (map['preference'] as String).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<int>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
+      hoursOfDays: map['hoursOfDays'] == null ? null : ((map['hoursOfDays']! as List).cast<int>()).input(),
+      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : (map['leadTimeInWeeks']! as int).input(),
+      months: map['months'] == null ? null : ((map['months']! as List).cast<String>()).input(),
+      patchingMode: map['patchingMode'] == null ? null : (map['patchingMode']! as String).input(),
+      preference: map['preference'] == null ? null : (map['preference']! as String).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths']! as List).cast<int>()).input(),
     );
   }
 }

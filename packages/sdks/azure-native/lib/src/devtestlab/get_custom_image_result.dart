@@ -110,24 +110,24 @@ class GetCustomImageResult {
 
   factory GetCustomImageResult.fromMap(Map<String, dynamic> map) {
     return GetCustomImageResult(
-      author: map['author'] == null ? null : map['author'] as String,
+      author: map['author'] == null ? null : map['author']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      customImagePlan: map['customImagePlan'] == null ? null : CustomImagePropertiesFromPlanResponse.fromMap((map['customImagePlan'] as Map).cast<String, dynamic>()),
-      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : pulumi.Input.decodeList<DataDiskStorageTypeInfoResponse>(map['dataDiskStorageInfo'], (value) => DataDiskStorageTypeInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
+      customImagePlan: map['customImagePlan'] == null ? null : CustomImagePropertiesFromPlanResponse.fromMap((map['customImagePlan']! as Map).cast<String, dynamic>()),
+      dataDiskStorageInfo: map['dataDiskStorageInfo'] == null ? null : pulumi.Input.decodeList<DataDiskStorageTypeInfoResponse>(map['dataDiskStorageInfo']!, (value) => DataDiskStorageTypeInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : map['isPlanAuthorized'] as bool,
-      location: map['location'] == null ? null : map['location'] as String,
-      managedImageId: map['managedImageId'] == null ? null : map['managedImageId'] as String,
-      managedSnapshotId: map['managedSnapshotId'] == null ? null : map['managedSnapshotId'] as String,
+      isPlanAuthorized: map['isPlanAuthorized'] == null ? null : map['isPlanAuthorized']! as bool,
+      location: map['location'] == null ? null : map['location']! as String,
+      managedImageId: map['managedImageId'] == null ? null : map['managedImageId']! as String,
+      managedSnapshotId: map['managedSnapshotId'] == null ? null : map['managedSnapshotId']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      vhd: map['vhd'] == null ? null : CustomImagePropertiesCustomResponse.fromMap((map['vhd'] as Map).cast<String, dynamic>()),
-      vm: map['vm'] == null ? null : CustomImagePropertiesFromVmResponse.fromMap((map['vm'] as Map).cast<String, dynamic>()),
+      vhd: map['vhd'] == null ? null : CustomImagePropertiesCustomResponse.fromMap((map['vhd']! as Map).cast<String, dynamic>()),
+      vm: map['vm'] == null ? null : CustomImagePropertiesFromVmResponse.fromMap((map['vm']! as Map).cast<String, dynamic>()),
     );
   }
 }

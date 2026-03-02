@@ -83,17 +83,17 @@ class BucketAccessControl {
 
   factory BucketAccessControl.fromMap(Map<String, dynamic> map) {
     return BucketAccessControl(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      projectTeam: map['projectTeam'] == null ? null : (BucketAccessControlProjectTeam.fromMap((map['projectTeam'] as Map).cast<String, dynamic>())).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      projectTeam: map['projectTeam'] == null ? null : (BucketAccessControlProjectTeam.fromMap((map['projectTeam']! as Map).cast<String, dynamic>())).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
     );
   }
 }

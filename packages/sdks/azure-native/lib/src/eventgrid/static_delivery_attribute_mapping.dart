@@ -37,10 +37,10 @@ class StaticDeliveryAttributeMapping {
 
   factory StaticDeliveryAttributeMapping.fromMap(Map<String, dynamic> map) {
     return StaticDeliveryAttributeMapping(
-      isSecret: map['isSecret'] == null ? null : (map['isSecret'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isSecret: map['isSecret'] == null ? null : (map['isSecret']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class ProjectCloudArmorTierArgs {
   factory ProjectCloudArmorTierArgs.fromMap(Map<String, dynamic> map) {
     return ProjectCloudArmorTierArgs(
       cloudArmorTier: (map['cloudArmorTier'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

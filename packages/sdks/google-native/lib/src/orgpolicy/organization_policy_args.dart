@@ -45,11 +45,11 @@ class OrganizationPolicyArgs {
 
   factory OrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyArgs(
-      alternate: map['alternate'] == null ? null : (GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>())).input(),
-      dryRunSpec: map['dryRunSpec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      alternate: map['alternate'] == null ? null : (GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate']! as Map).cast<String, dynamic>())).input(),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

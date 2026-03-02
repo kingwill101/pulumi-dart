@@ -41,7 +41,7 @@ class ScaleAction {
       cooldown: (map['cooldown'] as String).input(),
       direction: (ScaleDirection.fromValue(map['direction'] as String)).input(),
       type: (ScaleType.fromValue(map['type'] as String)).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

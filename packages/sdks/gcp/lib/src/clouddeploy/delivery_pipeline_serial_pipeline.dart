@@ -21,7 +21,7 @@ class DeliveryPipelineSerialPipeline {
 
   factory DeliveryPipelineSerialPipeline.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipeline(
-      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStage>(map['stages'], (value) => DeliveryPipelineSerialPipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<DeliveryPipelineSerialPipelineStage>(map['stages']!, (value) => DeliveryPipelineSerialPipelineStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class ObjectACLState {
 
   factory ObjectACLState.fromMap(Map<String, dynamic> map) {
     return ObjectACLState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
-      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl'] as String).input(),
-      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
+      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl']! as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities']! as List).cast<String>()).input(),
     );
   }
 }

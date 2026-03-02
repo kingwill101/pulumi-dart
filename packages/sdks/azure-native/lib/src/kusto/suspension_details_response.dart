@@ -21,7 +21,7 @@ class SuspensionDetailsResponse {
 
   factory SuspensionDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SuspensionDetailsResponse(
-      suspensionStartDate: map['suspensionStartDate'] == null ? null : (map['suspensionStartDate'] as String).input(),
+      suspensionStartDate: map['suspensionStartDate'] == null ? null : (map['suspensionStartDate']! as String).input(),
     );
   }
 }

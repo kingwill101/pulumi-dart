@@ -78,14 +78,14 @@ class InterconnectGroupState {
 
   factory InterconnectGroupState.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupState(
-      configureds: map['configureds'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfigured>(map['configureds'], (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      intent: map['intent'] == null ? null : (InterconnectGroupIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
-      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupInterconnect>(map['interconnects'], (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      physicalStructures: map['physicalStructures'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructure>(map['physicalStructures'], (value) => InterconnectGroupPhysicalStructure.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      configureds: map['configureds'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfigured>(map['configureds']!, (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      intent: map['intent'] == null ? null : (InterconnectGroupIntent.fromMap((map['intent']! as Map).cast<String, dynamic>())).input(),
+      interconnects: map['interconnects'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupInterconnect>(map['interconnects']!, (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      physicalStructures: map['physicalStructures'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupPhysicalStructure>(map['physicalStructures']!, (value) => InterconnectGroupPhysicalStructure.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

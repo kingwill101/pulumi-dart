@@ -43,9 +43,9 @@ class ResourceCollectionArgs {
 
   factory ResourceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return ResourceCollectionArgs(
-      cloudformation: map['cloudformation'] == null ? null : (ResourceCollectionCloudformation.fromMap((map['cloudformation'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : (ResourceCollectionTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      cloudformation: map['cloudformation'] == null ? null : ((ResourceCollectionCloudformation.fromMap((map['cloudformation']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : ((ResourceCollectionTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

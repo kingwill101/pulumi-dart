@@ -58,12 +58,12 @@ class EndpointAttachmentArgs {
 
   factory EndpointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAttachmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointGlobalAccess: map['endpointGlobalAccess'] == null ? null : (map['endpointGlobalAccess'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpointGlobalAccess: map['endpointGlobalAccess'] == null ? null : (map['endpointGlobalAccess']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceAttachment: (map['serviceAttachment'] as String).input(),
     );
   }

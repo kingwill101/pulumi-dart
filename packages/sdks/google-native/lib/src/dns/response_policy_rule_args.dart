@@ -58,14 +58,14 @@ class ResponsePolicyRuleArgs {
 
   factory ResponsePolicyRuleArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePolicyRuleArgs(
-      behavior: map['behavior'] == null ? null : (ResponsePolicyRuleBehaviorDnsV1beta2.fromValue(map['behavior'] as String)).input(),
-      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId'] as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalDataDnsV1beta2.fromMap((map['localData'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      behavior: map['behavior'] == null ? null : (ResponsePolicyRuleBehaviorDnsV1beta2.fromValue(map['behavior']! as String)).input(),
+      clientOperationId: map['clientOperationId'] == null ? null : (map['clientOperationId']! as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      localData: map['localData'] == null ? null : (ResponsePolicyRuleLocalDataDnsV1beta2.fromMap((map['localData']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       responsePolicy: (map['responsePolicy'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class K8sNetworkSettingsResponse {
 
   factory K8sNetworkSettingsResponse.fromMap(Map<String, dynamic> map) {
     return K8sNetworkSettingsResponse(
-      forceencryption: map['forceencryption'] == null ? null : (map['forceencryption'] as int).input(),
-      tlsciphers: map['tlsciphers'] == null ? null : (map['tlsciphers'] as String).input(),
-      tlsprotocols: map['tlsprotocols'] == null ? null : (map['tlsprotocols'] as String).input(),
+      forceencryption: map['forceencryption'] == null ? null : (map['forceencryption']! as int).input(),
+      tlsciphers: map['tlsciphers'] == null ? null : (map['tlsciphers']! as String).input(),
+      tlsprotocols: map['tlsprotocols'] == null ? null : (map['tlsprotocols']! as String).input(),
     );
   }
 }

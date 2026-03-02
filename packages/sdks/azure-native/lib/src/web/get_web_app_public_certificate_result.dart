@@ -56,11 +56,11 @@ class GetWebAppPublicCertificateResult {
   factory GetWebAppPublicCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppPublicCertificateResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      blob: map['blob'] == null ? null : map['blob'] as String,
+      blob: map['blob'] == null ? null : map['blob']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : map['publicCertificateLocation'] as String,
+      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : map['publicCertificateLocation']! as String,
       thumbprint: map['thumbprint'] as String,
       type: map['type'] as String,
     );

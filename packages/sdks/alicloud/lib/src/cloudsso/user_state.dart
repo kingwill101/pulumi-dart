@@ -81,19 +81,19 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      mfaAuthenticationSettings: map['mfaAuthenticationSettings'] == null ? null : (map['mfaAuthenticationSettings'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      mfaAuthenticationSettings: map['mfaAuthenticationSettings'] == null ? null : (map['mfaAuthenticationSettings']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

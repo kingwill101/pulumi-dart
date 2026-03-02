@@ -90,18 +90,18 @@ class PipelineState {
 
   factory PipelineState.fromMap(Map<String, dynamic> map) {
     return PipelineState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsKmsKeyArn: map['awsKmsKeyArn'] == null ? null : (map['awsKmsKeyArn'] as String).input(),
-      contentConfig: map['contentConfig'] == null ? null : (PipelineContentConfig.fromMap((map['contentConfig'] as Map).cast<String, dynamic>())).input(),
-      contentConfigPermissions: map['contentConfigPermissions'] == null ? null : (pulumi.Input.decodeList<PipelineContentConfigPermission>(map['contentConfigPermissions'], (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputBucket: map['inputBucket'] == null ? null : (map['inputBucket'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notifications: map['notifications'] == null ? null : (PipelineNotifications.fromMap((map['notifications'] as Map).cast<String, dynamic>())).input(),
-      outputBucket: map['outputBucket'] == null ? null : (map['outputBucket'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      thumbnailConfig: map['thumbnailConfig'] == null ? null : (PipelineThumbnailConfig.fromMap((map['thumbnailConfig'] as Map).cast<String, dynamic>())).input(),
-      thumbnailConfigPermissions: map['thumbnailConfigPermissions'] == null ? null : (pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(map['thumbnailConfigPermissions'], (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsKmsKeyArn: map['awsKmsKeyArn'] == null ? null : ((map['awsKmsKeyArn'] as String).input()).input(),
+      contentConfig: map['contentConfig'] == null ? null : ((PipelineContentConfig.fromMap((map['contentConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      contentConfigPermissions: map['contentConfigPermissions'] == null ? null : ((pulumi.Input.decodeList<PipelineContentConfigPermission>(map['contentConfigPermissions']!, (value) => PipelineContentConfigPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputBucket: map['inputBucket'] == null ? null : ((map['inputBucket'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notifications: map['notifications'] == null ? null : ((PipelineNotifications.fromMap((map['notifications']! as Map).cast<String, dynamic>())).input()).input(),
+      outputBucket: map['outputBucket'] == null ? null : ((map['outputBucket'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      role: map['role'] == null ? null : ((map['role'] as String).input()).input(),
+      thumbnailConfig: map['thumbnailConfig'] == null ? null : ((PipelineThumbnailConfig.fromMap((map['thumbnailConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      thumbnailConfigPermissions: map['thumbnailConfigPermissions'] == null ? null : ((pulumi.Input.decodeList<PipelineThumbnailConfigPermission>(map['thumbnailConfigPermissions']!, (value) => PipelineThumbnailConfigPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

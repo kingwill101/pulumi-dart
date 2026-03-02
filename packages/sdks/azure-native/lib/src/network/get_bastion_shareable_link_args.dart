@@ -37,7 +37,7 @@ class GetBastionShareableLinkArgs {
     return GetBastionShareableLinkArgs(
       bastionHostName: (map['bastionHostName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vms: map['vms'] == null ? null : (pulumi.Input.decodeList<BastionShareableLink>(map['vms'], (value) => BastionShareableLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vms: map['vms'] == null ? null : (pulumi.Input.decodeList<BastionShareableLink>(map['vms']!, (value) => BastionShareableLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

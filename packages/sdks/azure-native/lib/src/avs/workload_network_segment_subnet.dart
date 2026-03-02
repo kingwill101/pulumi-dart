@@ -26,8 +26,8 @@ class WorkloadNetworkSegmentSubnet {
 
   factory WorkloadNetworkSegmentSubnet.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkSegmentSubnet(
-      dhcpRanges: map['dhcpRanges'] == null ? null : ((map['dhcpRanges'] as List).cast<String>()).input(),
-      gatewayAddress: map['gatewayAddress'] == null ? null : (map['gatewayAddress'] as String).input(),
+      dhcpRanges: map['dhcpRanges'] == null ? null : ((map['dhcpRanges']! as List).cast<String>()).input(),
+      gatewayAddress: map['gatewayAddress'] == null ? null : (map['gatewayAddress']! as String).input(),
     );
   }
 }

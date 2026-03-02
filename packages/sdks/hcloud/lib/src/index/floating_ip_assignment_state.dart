@@ -26,8 +26,8 @@ class FloatingIpAssignmentState {
 
   factory FloatingIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return FloatingIpAssignmentState(
-      floatingIpId: map['floatingIpId'] == null ? null : (map['floatingIpId'] as int).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as int).input(),
+      floatingIpId: map['floatingIpId'] == null ? null : (map['floatingIpId']! as int).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as int).input(),
     );
   }
 }

@@ -67,12 +67,12 @@ class AccessPointArgs {
   factory AccessPointArgs.fromMap(Map<String, dynamic> map) {
     return AccessPointArgs(
       accessGroup: (map['accessGroup'] as String).input(),
-      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName'] as String).input(),
-      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam'] as bool).input(),
+      accessPointName: map['accessPointName'] == null ? null : (map['accessPointName']! as String).input(),
+      enabledRam: map['enabledRam'] == null ? null : (map['enabledRam']! as bool).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser'] as Map).cast<String, dynamic>())).input(),
-      rootPath: map['rootPath'] == null ? null : (map['rootPath'] as String).input(),
-      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission'] as Map).cast<String, dynamic>())).input(),
+      posixUser: map['posixUser'] == null ? null : (AccessPointPosixUser.fromMap((map['posixUser']! as Map).cast<String, dynamic>())).input(),
+      rootPath: map['rootPath'] == null ? null : (map['rootPath']! as String).input(),
+      rootPathPermission: map['rootPathPermission'] == null ? null : (AccessPointRootPathPermission.fromMap((map['rootPathPermission']! as Map).cast<String, dynamic>())).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
     );

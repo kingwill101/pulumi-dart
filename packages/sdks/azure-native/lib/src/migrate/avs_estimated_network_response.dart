@@ -26,8 +26,8 @@ class AvsEstimatedNetworkResponse {
 
   factory AvsEstimatedNetworkResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedNetworkResponse(
-      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice'] as double).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice']! as double).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig {
 
   factory AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig(
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

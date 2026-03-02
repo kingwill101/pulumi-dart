@@ -27,7 +27,7 @@ class GetUrlMapArgs {
 
   factory GetUrlMapArgs.fromMap(Map<String, dynamic> map) {
     return GetUrlMapArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       urlMap: (map['urlMap'] as String).input(),
     );
   }

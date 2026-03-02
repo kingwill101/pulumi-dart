@@ -67,13 +67,13 @@ class GetAppServiceCertificateOrderCertificateResult {
     return GetAppServiceCertificateOrderCertificateResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId'] as String,
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : map['keyVaultSecretName'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      keyVaultId: map['keyVaultId'] == null ? null : map['keyVaultId']! as String,
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : map['keyVaultSecretName']! as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

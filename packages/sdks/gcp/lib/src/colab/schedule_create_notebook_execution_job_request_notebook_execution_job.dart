@@ -59,14 +59,14 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
 
   factory ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob(
-      dataformRepositorySource: map['dataformRepositorySource'] == null ? null : (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.fromMap((map['dataformRepositorySource'] as Map).cast<String, dynamic>())).input(),
+      dataformRepositorySource: map['dataformRepositorySource'] == null ? null : (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.fromMap((map['dataformRepositorySource']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
-      executionUser: map['executionUser'] == null ? null : (map['executionUser'] as String).input(),
-      gcsNotebookSource: map['gcsNotebookSource'] == null ? null : (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.fromMap((map['gcsNotebookSource'] as Map).cast<String, dynamic>())).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
+      executionUser: map['executionUser'] == null ? null : (map['executionUser']! as String).input(),
+      gcsNotebookSource: map['gcsNotebookSource'] == null ? null : (ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource.fromMap((map['gcsNotebookSource']! as Map).cast<String, dynamic>())).input(),
       gcsOutputUri: (map['gcsOutputUri'] as String).input(),
       notebookRuntimeTemplateResourceName: (map['notebookRuntimeTemplateResourceName'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

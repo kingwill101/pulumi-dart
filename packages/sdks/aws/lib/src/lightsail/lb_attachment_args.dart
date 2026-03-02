@@ -38,7 +38,7 @@ class LbAttachmentArgs {
     return LbAttachmentArgs(
       instanceName: (map['instanceName'] as String).input(),
       lbName: (map['lbName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

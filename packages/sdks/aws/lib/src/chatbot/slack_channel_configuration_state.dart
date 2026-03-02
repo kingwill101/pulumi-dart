@@ -93,21 +93,21 @@ class SlackChannelConfigurationState {
 
   factory SlackChannelConfigurationState.fromMap(Map<String, dynamic> map) {
     return SlackChannelConfigurationState(
-      chatConfigurationArn: map['chatConfigurationArn'] == null ? null : (map['chatConfigurationArn'] as String).input(),
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : ((map['guardrailPolicyArns'] as List).cast<String>()).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      slackChannelId: map['slackChannelId'] == null ? null : (map['slackChannelId'] as String).input(),
-      slackChannelName: map['slackChannelName'] == null ? null : (map['slackChannelName'] as String).input(),
-      slackTeamId: map['slackTeamId'] == null ? null : (map['slackTeamId'] as String).input(),
-      slackTeamName: map['slackTeamName'] == null ? null : (map['slackTeamName'] as String).input(),
-      snsTopicArns: map['snsTopicArns'] == null ? null : ((map['snsTopicArns'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (SlackChannelConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : (map['userAuthorizationRequired'] as bool).input(),
+      chatConfigurationArn: map['chatConfigurationArn'] == null ? null : ((map['chatConfigurationArn'] as String).input()).input(),
+      configurationName: map['configurationName'] == null ? null : ((map['configurationName'] as String).input()).input(),
+      guardrailPolicyArns: map['guardrailPolicyArns'] == null ? null : (((map['guardrailPolicyArns'] as List).cast<String>()).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : ((map['loggingLevel'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      slackChannelId: map['slackChannelId'] == null ? null : ((map['slackChannelId'] as String).input()).input(),
+      slackChannelName: map['slackChannelName'] == null ? null : ((map['slackChannelName'] as String).input()).input(),
+      slackTeamId: map['slackTeamId'] == null ? null : ((map['slackTeamId'] as String).input()).input(),
+      slackTeamName: map['slackTeamName'] == null ? null : ((map['slackTeamName'] as String).input()).input(),
+      snsTopicArns: map['snsTopicArns'] == null ? null : (((map['snsTopicArns'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SlackChannelConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      userAuthorizationRequired: map['userAuthorizationRequired'] == null ? null : ((map['userAuthorizationRequired'] as bool).input()).input(),
     );
   }
 }

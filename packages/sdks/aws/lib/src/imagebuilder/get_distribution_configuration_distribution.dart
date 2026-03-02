@@ -61,14 +61,14 @@ class GetDistributionConfigurationDistribution {
 
   factory GetDistributionConfigurationDistribution.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationDistribution(
-      amiDistributionConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionAmiDistributionConfiguration>(map['amiDistributionConfigurations'], (value) => GetDistributionConfigurationDistributionAmiDistributionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containerDistributionConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionContainerDistributionConfiguration>(map['containerDistributionConfigurations'], (value) => GetDistributionConfigurationDistributionContainerDistributionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fastLaunchConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionFastLaunchConfiguration>(map['fastLaunchConfigurations'], (value) => GetDistributionConfigurationDistributionFastLaunchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchTemplateConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionLaunchTemplateConfiguration>(map['launchTemplateConfigurations'], (value) => GetDistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      amiDistributionConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionAmiDistributionConfiguration>(map['amiDistributionConfigurations']!, (value) => GetDistributionConfigurationDistributionAmiDistributionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerDistributionConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionContainerDistributionConfiguration>(map['containerDistributionConfigurations']!, (value) => GetDistributionConfigurationDistributionContainerDistributionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fastLaunchConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionFastLaunchConfiguration>(map['fastLaunchConfigurations']!, (value) => GetDistributionConfigurationDistributionFastLaunchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplateConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionLaunchTemplateConfiguration>(map['launchTemplateConfigurations']!, (value) => GetDistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       licenseConfigurationArns: ((map['licenseConfigurationArns'] as List).cast<String>()).input(),
       region: (map['region'] as String).input(),
-      s3ExportConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionS3ExportConfiguration>(map['s3ExportConfigurations'], (value) => GetDistributionConfigurationDistributionS3ExportConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ssmParameterConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionSsmParameterConfiguration>(map['ssmParameterConfigurations'], (value) => GetDistributionConfigurationDistributionSsmParameterConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3ExportConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionS3ExportConfiguration>(map['s3ExportConfigurations']!, (value) => GetDistributionConfigurationDistributionS3ExportConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ssmParameterConfigurations: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionSsmParameterConfiguration>(map['ssmParameterConfigurations']!, (value) => GetDistributionConfigurationDistributionSsmParameterConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

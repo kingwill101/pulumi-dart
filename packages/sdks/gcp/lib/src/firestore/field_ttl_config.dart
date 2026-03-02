@@ -21,7 +21,7 @@ class FieldTtlConfig {
 
   factory FieldTtlConfig.fromMap(Map<String, dynamic> map) {
     return FieldTtlConfig(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

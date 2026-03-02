@@ -64,12 +64,12 @@ class CSIStorageCapacityArgs {
 
   factory CSIStorageCapacityArgs.fromMap(Map<String, dynamic> map) {
     return CSIStorageCapacityArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : (map['maximumVolumeSize'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      nodeTopology: map['nodeTopology'] == null ? null : (LabelSelector.fromMap((map['nodeTopology'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      maximumVolumeSize: map['maximumVolumeSize'] == null ? null : (map['maximumVolumeSize']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      nodeTopology: map['nodeTopology'] == null ? null : (LabelSelector.fromMap((map['nodeTopology']! as Map).cast<String, dynamic>())).input(),
       storageClassName: (map['storageClassName'] as String).input(),
     );
   }

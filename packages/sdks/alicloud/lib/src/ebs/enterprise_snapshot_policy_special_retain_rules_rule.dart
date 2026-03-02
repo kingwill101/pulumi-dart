@@ -31,9 +31,9 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRule {
 
   factory EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicySpecialRetainRulesRule(
-      specialPeriodUnit: map['specialPeriodUnit'] == null ? null : (map['specialPeriodUnit'] as String).input(),
-      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval'] as int).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
+      specialPeriodUnit: map['specialPeriodUnit'] == null ? null : (map['specialPeriodUnit']! as String).input(),
+      timeInterval: map['timeInterval'] == null ? null : (map['timeInterval']! as int).input(),
+      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit']! as String).input(),
     );
   }
 }

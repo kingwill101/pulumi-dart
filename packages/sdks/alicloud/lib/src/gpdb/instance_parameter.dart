@@ -50,12 +50,12 @@ class InstanceParameter {
 
   factory InstanceParameter.fromMap(Map<String, dynamic> map) {
     return InstanceParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      forceRestartInstance: map['forceRestartInstance'] == null ? null : (map['forceRestartInstance'] as String).input(),
-      isChangeableConfig: map['isChangeableConfig'] == null ? null : (map['isChangeableConfig'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      forceRestartInstance: map['forceRestartInstance'] == null ? null : (map['forceRestartInstance']! as String).input(),
+      isChangeableConfig: map['isChangeableConfig'] == null ? null : (map['isChangeableConfig']! as String).input(),
       name: (map['name'] as String).input(),
-      optionalRange: map['optionalRange'] == null ? null : (map['optionalRange'] as String).input(),
-      parameterDescription: map['parameterDescription'] == null ? null : (map['parameterDescription'] as String).input(),
+      optionalRange: map['optionalRange'] == null ? null : (map['optionalRange']! as String).input(),
+      parameterDescription: map['parameterDescription'] == null ? null : (map['parameterDescription']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

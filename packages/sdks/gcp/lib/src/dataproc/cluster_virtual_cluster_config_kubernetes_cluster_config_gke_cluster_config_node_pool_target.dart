@@ -36,7 +36,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget(
       nodePool: (map['nodePool'] as String).input(),
-      nodePoolConfig: map['nodePoolConfig'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>())).input(),
+      nodePoolConfig: map['nodePoolConfig'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>())).input(),
       roles: ((map['roles'] as List).cast<String>()).input(),
     );
   }

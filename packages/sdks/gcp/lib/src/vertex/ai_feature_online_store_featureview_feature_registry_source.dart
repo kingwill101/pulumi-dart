@@ -28,7 +28,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
   factory AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(
       featureGroups: (pulumi.Input.decodeList<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup>(map['featureGroups'], (value) => AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
     );
   }
 }

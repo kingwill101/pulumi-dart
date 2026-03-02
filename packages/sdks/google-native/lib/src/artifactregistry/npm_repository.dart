@@ -22,7 +22,7 @@ class NpmRepository {
 
   factory NpmRepository.fromMap(Map<String, dynamic> map) {
     return NpmRepository(
-      publicRepository: map['publicRepository'] == null ? null : (NpmRepositoryPublicRepository.fromValue(map['publicRepository'] as String)).input(),
+      publicRepository: map['publicRepository'] == null ? null : (NpmRepositoryPublicRepository.fromValue(map['publicRepository']! as String)).input(),
     );
   }
 }

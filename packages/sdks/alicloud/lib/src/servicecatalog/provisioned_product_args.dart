@@ -60,14 +60,14 @@ class ProvisionedProductArgs {
 
   factory ProvisionedProductArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedProductArgs(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ProvisionedProductParameter>(map['parameters'], (value) => ProvisionedProductParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ProvisionedProductParameter>(map['parameters']!, (value) => ProvisionedProductParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portfolioId: map['portfolioId'] == null ? null : (map['portfolioId']! as String).input(),
       productId: (map['productId'] as String).input(),
       productVersionId: (map['productVersionId'] as String).input(),
-      provisionedProductId: map['provisionedProductId'] == null ? null : (map['provisionedProductId'] as String).input(),
+      provisionedProductId: map['provisionedProductId'] == null ? null : (map['provisionedProductId']! as String).input(),
       provisionedProductName: (map['provisionedProductName'] as String).input(),
       stackRegionId: (map['stackRegionId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

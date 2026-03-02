@@ -36,10 +36,10 @@ class ServiceRegistryResponse {
 
   factory ServiceRegistryResponse.fromMap(Map<String, dynamic> map) {
     return ServiceRegistryResponse(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      registryArn: map['registryArn'] == null ? null : (map['registryArn'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      registryArn: map['registryArn'] == null ? null : (map['registryArn']! as String).input(),
     );
   }
 }

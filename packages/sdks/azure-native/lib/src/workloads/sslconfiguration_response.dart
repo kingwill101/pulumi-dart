@@ -36,10 +36,10 @@ class SSLConfigurationResponse {
 
   factory SSLConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SSLConfigurationResponse(
-      sslCryptoProvider: map['sslCryptoProvider'] == null ? null : (map['sslCryptoProvider'] as String).input(),
-      sslHostNameInCertificate: map['sslHostNameInCertificate'] == null ? null : (map['sslHostNameInCertificate'] as String).input(),
-      sslKeyStore: map['sslKeyStore'] == null ? null : (map['sslKeyStore'] as String).input(),
-      sslTrustStore: map['sslTrustStore'] == null ? null : (map['sslTrustStore'] as String).input(),
+      sslCryptoProvider: map['sslCryptoProvider'] == null ? null : (map['sslCryptoProvider']! as String).input(),
+      sslHostNameInCertificate: map['sslHostNameInCertificate'] == null ? null : (map['sslHostNameInCertificate']! as String).input(),
+      sslKeyStore: map['sslKeyStore'] == null ? null : (map['sslKeyStore']! as String).input(),
+      sslTrustStore: map['sslTrustStore'] == null ? null : (map['sslTrustStore']! as String).input(),
     );
   }
 }

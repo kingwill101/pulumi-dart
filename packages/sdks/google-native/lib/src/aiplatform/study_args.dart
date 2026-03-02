@@ -39,8 +39,8 @@ class StudyArgs {
   factory StudyArgs.fromMap(Map<String, dynamic> map) {
     return StudyArgs(
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       studySpec: (GoogleCloudAiplatformV1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>())).input(),
     );
   }

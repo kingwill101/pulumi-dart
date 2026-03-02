@@ -41,7 +41,7 @@ class RegistryEnvironmentContainerArgs {
   factory RegistryEnvironmentContainerArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnvironmentContainerArgs(
       environmentContainerProperties: (map['environmentContainerProperties'] as EnvironmentContainerMachinelearningservices).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

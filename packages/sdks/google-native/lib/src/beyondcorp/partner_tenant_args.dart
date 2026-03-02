@@ -45,11 +45,11 @@ class PartnerTenantArgs {
 
   factory PartnerTenantArgs.fromMap(Map<String, dynamic> map) {
     return PartnerTenantArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      group: map['group'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      group: map['group'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap((map['group']! as Map).cast<String, dynamic>())).input(),
       organizationId: (map['organizationId'] as String).input(),
-      partnerMetadata: map['partnerMetadata'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata.fromMap((map['partnerMetadata'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      partnerMetadata: map['partnerMetadata'] == null ? null : (GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata.fromMap((map['partnerMetadata']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

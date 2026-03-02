@@ -38,10 +38,10 @@ class CreditBreakdownItem {
 
   factory CreditBreakdownItem.fromMap(Map<String, dynamic> map) {
     return CreditBreakdownItem(
-      allocation: map['allocation'] == null ? null : (Commitment.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<CreditDimension>(map['dimensions'], (value) => CreditDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
-      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
+      allocation: map['allocation'] == null ? null : (Commitment.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<CreditDimension>(map['dimensions']!, (value) => CreditDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt']! as String).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt']! as String).input(),
     );
   }
 }

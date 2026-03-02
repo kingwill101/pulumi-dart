@@ -39,10 +39,10 @@ class ManagedDiskSasTokenState {
 
   factory ManagedDiskSasTokenState.fromMap(Map<String, dynamic> map) {
     return ManagedDiskSasTokenState(
-      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel'] as String).input(),
-      durationInSeconds: map['durationInSeconds'] == null ? null : (map['durationInSeconds'] as int).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
-      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl'] as String).input(),
+      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel']! as String).input(),
+      durationInSeconds: map['durationInSeconds'] == null ? null : (map['durationInSeconds']! as int).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
+      sasUrl: map['sasUrl'] == null ? null : (map['sasUrl']! as String).input(),
     );
   }
 }

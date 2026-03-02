@@ -54,10 +54,10 @@ class Endpoints {
 
   factory Endpoints.fromMap(Map<String, dynamic> map) {
     return Endpoints(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      subsets: map['subsets'] == null ? null : (pulumi.Input.decodeList<EndpointSubset>(map['subsets'], (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      subsets: map['subsets'] == null ? null : (pulumi.Input.decodeList<EndpointSubset>(map['subsets']!, (value) => EndpointSubset.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

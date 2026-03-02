@@ -38,10 +38,10 @@ class DataflowGraphProperties {
 
   factory DataflowGraphProperties.fromMap(Map<String, dynamic> map) {
     return DataflowGraphProperties(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
       nodeConnections: (pulumi.Input.decodeList<DataflowGraphNodeConnection>(map['nodeConnections'], (value) => DataflowGraphNodeConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nodes: (pulumi.Input.decodeList<DataflowGraphDestinationNode>(map['nodes'], (value) => DataflowGraphDestinationNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestDiskPersistence: map['requestDiskPersistence'] == null ? null : (map['requestDiskPersistence'] as String).input(),
+      requestDiskPersistence: map['requestDiskPersistence'] == null ? null : (map['requestDiskPersistence']! as String).input(),
     );
   }
 }

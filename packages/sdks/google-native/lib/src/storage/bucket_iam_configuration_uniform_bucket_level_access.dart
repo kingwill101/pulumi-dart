@@ -26,8 +26,8 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
   factory BucketIamConfigurationUniformBucketLevelAccess.fromMap(Map<String, dynamic> map) {
     return BucketIamConfigurationUniformBucketLevelAccess(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      lockedTime: map['lockedTime'] == null ? null : (map['lockedTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      lockedTime: map['lockedTime'] == null ? null : (map['lockedTime']! as String).input(),
     );
   }
 }

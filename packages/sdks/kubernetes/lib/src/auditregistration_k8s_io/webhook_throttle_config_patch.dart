@@ -26,8 +26,8 @@ class WebhookThrottleConfigPatch {
 
   factory WebhookThrottleConfigPatch.fromMap(Map<String, dynamic> map) {
     return WebhookThrottleConfigPatch(
-      burst: map['burst'] == null ? null : (map['burst'] as int).input(),
-      qps: map['qps'] == null ? null : (map['qps'] as int).input(),
+      burst: map['burst'] == null ? null : (map['burst']! as int).input(),
+      qps: map['qps'] == null ? null : (map['qps']! as int).input(),
     );
   }
 }

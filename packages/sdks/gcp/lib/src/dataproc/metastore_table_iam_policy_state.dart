@@ -55,13 +55,13 @@ class MetastoreTableIamPolicyState {
 
   factory MetastoreTableIamPolicyState.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamPolicyState(
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

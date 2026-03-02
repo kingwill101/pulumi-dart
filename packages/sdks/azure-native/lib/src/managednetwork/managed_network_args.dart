@@ -45,11 +45,11 @@ class ManagedNetworkArgs {
 
   factory ManagedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedNetworkName: map['managedNetworkName'] == null ? null : (map['managedNetworkName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedNetworkName: map['managedNetworkName'] == null ? null : (map['managedNetworkName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

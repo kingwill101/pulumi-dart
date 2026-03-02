@@ -53,11 +53,11 @@ class WorkforcePoolProviderKeyKeyData {
 
   factory WorkforcePoolProviderKeyKeyData.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyKeyData(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       keySpec: (map['keySpec'] as String).input(),
-      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime'] as String).input(),
-      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime'] as String).input(),
+      notAfterTime: map['notAfterTime'] == null ? null : (map['notAfterTime']! as String).input(),
+      notBeforeTime: map['notBeforeTime'] == null ? null : (map['notBeforeTime']! as String).input(),
     );
   }
 }

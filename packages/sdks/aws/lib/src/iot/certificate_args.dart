@@ -53,10 +53,10 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       active: (map['active'] as bool).input(),
-      caPem: map['caPem'] == null ? null : (map['caPem'] as String).input(),
-      certificatePem: map['certificatePem'] == null ? null : (map['certificatePem'] as String).input(),
-      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      caPem: map['caPem'] == null ? null : ((map['caPem'] as String).input()).input(),
+      certificatePem: map['certificatePem'] == null ? null : ((map['certificatePem'] as String).input()).input(),
+      csr: map['csr'] == null ? null : ((map['csr'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class ChannelSlackState {
 
   factory ChannelSlackState.fromMap(Map<String, dynamic> map) {
     return ChannelSlackState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret'] as String).input(),
-      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret']! as String).input(),
+      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken']! as String).input(),
     );
   }
 }

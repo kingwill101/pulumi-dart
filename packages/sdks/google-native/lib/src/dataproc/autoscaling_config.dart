@@ -21,7 +21,7 @@ class AutoscalingConfig {
 
   factory AutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingConfig(
-      policyUri: map['policyUri'] == null ? null : (map['policyUri'] as String).input(),
+      policyUri: map['policyUri'] == null ? null : (map['policyUri']! as String).input(),
     );
   }
 }

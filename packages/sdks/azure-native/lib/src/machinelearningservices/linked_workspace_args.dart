@@ -45,9 +45,9 @@ class LinkedWorkspaceArgs {
 
   factory LinkedWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return LinkedWorkspaceArgs(
-      linkName: map['linkName'] == null ? null : (map['linkName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (LinkedWorkspaceProps.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      linkName: map['linkName'] == null ? null : (map['linkName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (LinkedWorkspaceProps.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

@@ -101,23 +101,23 @@ class AzureSettingsResponse {
 
   factory AzureSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureSettingsResponse(
-      avsLaborCostPercentage: map['avsLaborCostPercentage'] == null ? null : (map['avsLaborCostPercentage'] as double).input(),
-      businessCaseType: map['businessCaseType'] == null ? null : (map['businessCaseType'] as String).input(),
-      comfortFactor: map['comfortFactor'] == null ? null : (map['comfortFactor'] as double).input(),
+      avsLaborCostPercentage: map['avsLaborCostPercentage'] == null ? null : (map['avsLaborCostPercentage']! as double).input(),
+      businessCaseType: map['businessCaseType'] == null ? null : (map['businessCaseType']! as String).input(),
+      comfortFactor: map['comfortFactor'] == null ? null : (map['comfortFactor']! as double).input(),
       currency: (map['currency'] as String).input(),
-      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage'] as double).input(),
-      iaasLaborCostPercentage: map['iaasLaborCostPercentage'] == null ? null : (map['iaasLaborCostPercentage'] as double).input(),
-      infrastructureGrowthRate: map['infrastructureGrowthRate'] == null ? null : (map['infrastructureGrowthRate'] as double).input(),
-      networkCostPercentage: map['networkCostPercentage'] == null ? null : (map['networkCostPercentage'] as double).input(),
-      paasLaborCostPercentage: map['paasLaborCostPercentage'] == null ? null : (map['paasLaborCostPercentage'] as double).input(),
-      perYearMigrationCompletionPercentage: map['perYearMigrationCompletionPercentage'] == null ? null : ((map['perYearMigrationCompletionPercentage'] as Map).cast<String, double>()).input(),
-      performanceDataEndTime: map['performanceDataEndTime'] == null ? null : (map['performanceDataEndTime'] as String).input(),
-      performanceDataStartTime: map['performanceDataStartTime'] == null ? null : (map['performanceDataStartTime'] as String).input(),
-      performanceUtilizationPercentile: map['performanceUtilizationPercentile'] == null ? null : (map['performanceUtilizationPercentile'] as double).input(),
-      savingsOption: map['savingsOption'] == null ? null : (map['savingsOption'] as String).input(),
+      discountPercentage: map['discountPercentage'] == null ? null : (map['discountPercentage']! as double).input(),
+      iaasLaborCostPercentage: map['iaasLaborCostPercentage'] == null ? null : (map['iaasLaborCostPercentage']! as double).input(),
+      infrastructureGrowthRate: map['infrastructureGrowthRate'] == null ? null : (map['infrastructureGrowthRate']! as double).input(),
+      networkCostPercentage: map['networkCostPercentage'] == null ? null : (map['networkCostPercentage']! as double).input(),
+      paasLaborCostPercentage: map['paasLaborCostPercentage'] == null ? null : (map['paasLaborCostPercentage']! as double).input(),
+      perYearMigrationCompletionPercentage: map['perYearMigrationCompletionPercentage'] == null ? null : ((map['perYearMigrationCompletionPercentage']! as Map).cast<String, double>()).input(),
+      performanceDataEndTime: map['performanceDataEndTime'] == null ? null : (map['performanceDataEndTime']! as String).input(),
+      performanceDataStartTime: map['performanceDataStartTime'] == null ? null : (map['performanceDataStartTime']! as String).input(),
+      performanceUtilizationPercentile: map['performanceUtilizationPercentile'] == null ? null : (map['performanceUtilizationPercentile']! as double).input(),
+      savingsOption: map['savingsOption'] == null ? null : (map['savingsOption']! as String).input(),
       targetLocation: (map['targetLocation'] as String).input(),
-      wacc: map['wacc'] == null ? null : (map['wacc'] as double).input(),
-      workloadDiscoverySource: map['workloadDiscoverySource'] == null ? null : (map['workloadDiscoverySource'] as String).input(),
+      wacc: map['wacc'] == null ? null : (map['wacc']! as double).input(),
+      workloadDiscoverySource: map['workloadDiscoverySource'] == null ? null : (map['workloadDiscoverySource']! as String).input(),
     );
   }
 }

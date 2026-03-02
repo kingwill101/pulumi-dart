@@ -70,16 +70,16 @@ class RegionSslCertificateArgs {
 
   factory RegionSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return RegionSslCertificateArgs(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managed: map['managed'] == null ? null : (SslCertificateManagedSslCertificate.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managed: map['managed'] == null ? null : (SslCertificateManagedSslCertificate.fromMap((map['managed']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      selfManaged: map['selfManaged'] == null ? null : (SslCertificateSelfManagedSslCertificate.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (RegionSslCertificateType.fromValue(map['type'] as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      selfManaged: map['selfManaged'] == null ? null : (SslCertificateSelfManagedSslCertificate.fromMap((map['selfManaged']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (RegionSslCertificateType.fromValue(map['type']! as String)).input(),
     );
   }
 }

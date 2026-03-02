@@ -20,7 +20,7 @@ class NodePoolManagementAutoUpgradePolicy {
 
   factory NodePoolManagementAutoUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return NodePoolManagementAutoUpgradePolicy(
-      autoUpgradeKubelet: map['autoUpgradeKubelet'] == null ? null : (map['autoUpgradeKubelet'] as bool).input(),
+      autoUpgradeKubelet: map['autoUpgradeKubelet'] == null ? null : (map['autoUpgradeKubelet']! as bool).input(),
     );
   }
 }

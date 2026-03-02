@@ -33,7 +33,7 @@ class IoTEdgeAgentInfo {
   factory IoTEdgeAgentInfo.fromMap(Map<String, dynamic> map) {
     return IoTEdgeAgentInfo(
       imageName: (map['imageName'] as String).input(),
-      imageRepository: map['imageRepository'] == null ? null : (ImageRepositoryCredential.fromMap((map['imageRepository'] as Map).cast<String, dynamic>())).input(),
+      imageRepository: map['imageRepository'] == null ? null : (ImageRepositoryCredential.fromMap((map['imageRepository']! as Map).cast<String, dynamic>())).input(),
       tag: (map['tag'] as String).input(),
     );
   }

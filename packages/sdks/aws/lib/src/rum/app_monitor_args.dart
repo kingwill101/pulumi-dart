@@ -59,14 +59,14 @@ class AppMonitorArgs {
 
   factory AppMonitorArgs.fromMap(Map<String, dynamic> map) {
     return AppMonitorArgs(
-      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : (AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration'] as Map).cast<String, dynamic>())).input(),
-      customEvents: map['customEvents'] == null ? null : (AppMonitorCustomEvents.fromMap((map['customEvents'] as Map).cast<String, dynamic>())).input(),
-      cwLogEnabled: map['cwLogEnabled'] == null ? null : (map['cwLogEnabled'] as bool).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      domainLists: map['domainLists'] == null ? null : ((map['domainLists'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : ((AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      customEvents: map['customEvents'] == null ? null : ((AppMonitorCustomEvents.fromMap((map['customEvents']! as Map).cast<String, dynamic>())).input()).input(),
+      cwLogEnabled: map['cwLogEnabled'] == null ? null : ((map['cwLogEnabled'] as bool).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      domainLists: map['domainLists'] == null ? null : (((map['domainLists'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

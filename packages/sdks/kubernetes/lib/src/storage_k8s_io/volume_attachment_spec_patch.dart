@@ -32,9 +32,9 @@ class VolumeAttachmentSpecPatch {
 
   factory VolumeAttachmentSpecPatch.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentSpecPatch(
-      attacher: map['attacher'] == null ? null : (map['attacher'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      source: map['source'] == null ? null : (VolumeAttachmentSourcePatch.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      attacher: map['attacher'] == null ? null : (map['attacher']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      source: map['source'] == null ? null : (VolumeAttachmentSourcePatch.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

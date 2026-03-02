@@ -27,9 +27,9 @@ class VolumeAttachment {
 
   factory VolumeAttachment.fromMap(Map<String, dynamic> map) {
     return VolumeAttachment(
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

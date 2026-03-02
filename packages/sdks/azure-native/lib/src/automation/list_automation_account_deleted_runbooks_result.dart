@@ -27,8 +27,8 @@ class ListAutomationAccountDeletedRunbooksResult {
 
   factory ListAutomationAccountDeletedRunbooksResult.fromMap(Map<String, dynamic> map) {
     return ListAutomationAccountDeletedRunbooksResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DeletedRunbookResponse>(map['value'], (value) => DeletedRunbookResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DeletedRunbookResponse>(map['value']!, (value) => DeletedRunbookResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

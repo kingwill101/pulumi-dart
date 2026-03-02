@@ -36,10 +36,10 @@ class DiskDetailsResponse {
 
   factory DiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DiskDetailsResponse(
-      maxSizeMB: map['maxSizeMB'] == null ? null : (map['maxSizeMB'] as double).input(),
-      vhdId: map['vhdId'] == null ? null : (map['vhdId'] as String).input(),
-      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
-      vhdType: map['vhdType'] == null ? null : (map['vhdType'] as String).input(),
+      maxSizeMB: map['maxSizeMB'] == null ? null : (map['maxSizeMB']! as double).input(),
+      vhdId: map['vhdId'] == null ? null : (map['vhdId']! as String).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName']! as String).input(),
+      vhdType: map['vhdType'] == null ? null : (map['vhdType']! as String).input(),
     );
   }
 }

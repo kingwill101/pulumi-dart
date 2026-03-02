@@ -29,8 +29,8 @@ class InquiryInfo {
 
   factory InquiryInfo.fromMap(Map<String, dynamic> map) {
     return InquiryInfo(
-      inquiryDetails: map['inquiryDetails'] == null ? null : (pulumi.Input.decodeList<WorkloadInquiryDetails>(map['inquiryDetails'], (value) => WorkloadInquiryDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      inquiryDetails: map['inquiryDetails'] == null ? null : (pulumi.Input.decodeList<WorkloadInquiryDetails>(map['inquiryDetails']!, (value) => WorkloadInquiryDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

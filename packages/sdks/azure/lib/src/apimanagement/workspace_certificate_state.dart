@@ -65,15 +65,15 @@ class WorkspaceCertificateState {
 
   factory WorkspaceCertificateState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCertificateState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId'] as String).input(),
-      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64'] as String).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
-      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId'] as String).input(),
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
+      certificateDataBase64: map['certificateDataBase64'] == null ? null : (map['certificateDataBase64']! as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
+      userAssignedIdentityClientId: map['userAssignedIdentityClientId'] == null ? null : (map['userAssignedIdentityClientId']! as String).input(),
     );
   }
 }

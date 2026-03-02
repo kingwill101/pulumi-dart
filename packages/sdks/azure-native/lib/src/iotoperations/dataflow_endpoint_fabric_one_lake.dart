@@ -45,7 +45,7 @@ class DataflowEndpointFabricOneLake {
   factory DataflowEndpointFabricOneLake.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointFabricOneLake(
       authentication: (DataflowEndpointFabricOneLakeAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      batching: map['batching'] == null ? null : (BatchingConfiguration.fromMap((map['batching'] as Map).cast<String, dynamic>())).input(),
+      batching: map['batching'] == null ? null : (BatchingConfiguration.fromMap((map['batching']! as Map).cast<String, dynamic>())).input(),
       host: (map['host'] as String).input(),
       names: (DataflowEndpointFabricOneLakeNames.fromMap((map['names'] as Map).cast<String, dynamic>())).input(),
       oneLakePathType: (map['oneLakePathType'] as String).input(),

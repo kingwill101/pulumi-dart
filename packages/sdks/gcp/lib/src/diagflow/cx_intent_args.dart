@@ -96,17 +96,17 @@ class CxIntentArgs {
 
   factory CxIntentArgs.fromMap(Map<String, dynamic> map) {
     return CxIntentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      isDefaultNegativeIntent: map['isDefaultNegativeIntent'] == null ? null : (map['isDefaultNegativeIntent'] as bool).input(),
-      isDefaultWelcomeIntent: map['isDefaultWelcomeIntent'] == null ? null : (map['isDefaultWelcomeIntent'] as bool).input(),
-      isFallback: map['isFallback'] == null ? null : (map['isFallback'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxIntentParameter>(map['parameters'], (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<CxIntentTrainingPhrase>(map['trainingPhrases'], (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isDefaultNegativeIntent: map['isDefaultNegativeIntent'] == null ? null : (map['isDefaultNegativeIntent']! as bool).input(),
+      isDefaultWelcomeIntent: map['isDefaultWelcomeIntent'] == null ? null : (map['isDefaultWelcomeIntent']! as bool).input(),
+      isFallback: map['isFallback'] == null ? null : (map['isFallback']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<CxIntentParameter>(map['parameters']!, (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      trainingPhrases: map['trainingPhrases'] == null ? null : (pulumi.Input.decodeList<CxIntentTrainingPhrase>(map['trainingPhrases']!, (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

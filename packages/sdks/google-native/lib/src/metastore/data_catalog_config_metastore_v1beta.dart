@@ -21,7 +21,7 @@ class DataCatalogConfigMetastoreV1beta {
 
   factory DataCatalogConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return DataCatalogConfigMetastoreV1beta(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

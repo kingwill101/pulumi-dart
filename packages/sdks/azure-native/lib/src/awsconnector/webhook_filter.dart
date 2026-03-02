@@ -32,9 +32,9 @@ class WebhookFilter {
 
   factory WebhookFilter.fromMap(Map<String, dynamic> map) {
     return WebhookFilter(
-      excludeMatchedPattern: map['excludeMatchedPattern'] == null ? null : (map['excludeMatchedPattern'] as bool).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
-      type: map['type'] == null ? null : (WebhookFilterTypeEnumValue.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      excludeMatchedPattern: map['excludeMatchedPattern'] == null ? null : (map['excludeMatchedPattern']! as bool).input(),
+      pattern: map['pattern'] == null ? null : (map['pattern']! as String).input(),
+      type: map['type'] == null ? null : (WebhookFilterTypeEnumValue.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

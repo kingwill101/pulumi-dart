@@ -31,9 +31,9 @@ class JobState {
 
   factory JobState.fromMap(Map<String, dynamic> map) {
     return JobState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

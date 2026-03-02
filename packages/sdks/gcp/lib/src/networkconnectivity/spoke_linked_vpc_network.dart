@@ -30,8 +30,8 @@ class SpokeLinkedVpcNetwork {
 
   factory SpokeLinkedVpcNetwork.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges'] as List).cast<String>()).input(),
-      includeExportRanges: map['includeExportRanges'] == null ? null : ((map['includeExportRanges'] as List).cast<String>()).input(),
+      excludeExportRanges: map['excludeExportRanges'] == null ? null : ((map['excludeExportRanges']! as List).cast<String>()).input(),
+      includeExportRanges: map['includeExportRanges'] == null ? null : ((map['includeExportRanges']! as List).cast<String>()).input(),
       uri: (map['uri'] as String).input(),
     );
   }

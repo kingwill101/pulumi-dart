@@ -31,7 +31,7 @@ class PipelineReferenceResponse {
 
   factory PipelineReferenceResponse.fromMap(Map<String, dynamic> map) {
     return PipelineReferenceResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       referenceName: (map['referenceName'] as String).input(),
       type: (map['type'] as String).input(),
     );

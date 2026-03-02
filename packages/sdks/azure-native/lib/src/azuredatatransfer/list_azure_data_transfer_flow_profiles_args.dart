@@ -24,7 +24,7 @@ class ListAzureDataTransferFlowProfilesArgs {
 
   factory ListAzureDataTransferFlowProfilesArgs.fromMap(Map<String, dynamic> map) {
     return ListAzureDataTransferFlowProfilesArgs(
-      pipeline: map['pipeline'] == null ? null : (map['pipeline'] as String).input(),
+      pipeline: map['pipeline'] == null ? null : (map['pipeline']! as String).input(),
     );
   }
 }

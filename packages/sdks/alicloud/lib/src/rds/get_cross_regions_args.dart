@@ -23,7 +23,7 @@ class GetCrossRegionsArgs {
 
   factory GetCrossRegionsArgs.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionsArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

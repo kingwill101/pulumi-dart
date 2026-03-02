@@ -49,8 +49,8 @@ class WorkspaceGithubRepo {
     return WorkspaceGithubRepo(
       accountName: (map['accountName'] as String).input(),
       branchName: (map['branchName'] as String).input(),
-      gitUrl: map['gitUrl'] == null ? null : (map['gitUrl'] as String).input(),
-      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId'] as String).input(),
+      gitUrl: map['gitUrl'] == null ? null : (map['gitUrl']! as String).input(),
+      lastCommitId: map['lastCommitId'] == null ? null : (map['lastCommitId']! as String).input(),
       repositoryName: (map['repositoryName'] as String).input(),
       rootFolder: (map['rootFolder'] as String).input(),
     );

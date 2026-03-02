@@ -57,10 +57,10 @@ class IdentityProviderAadArgs {
       allowedTenants: ((map['allowedTenants'] as List).cast<String>()).input(),
       apiManagementName: (map['apiManagementName'] as String).input(),
       clientId: (map['clientId'] as String).input(),
-      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary']! as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant'] as String).input(),
+      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant']! as String).input(),
     );
   }
 }

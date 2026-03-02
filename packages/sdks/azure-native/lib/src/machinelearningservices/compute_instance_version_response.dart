@@ -21,7 +21,7 @@ class ComputeInstanceVersionResponse {
 
   factory ComputeInstanceVersionResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceVersionResponse(
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']! as String).input(),
     );
   }
 }

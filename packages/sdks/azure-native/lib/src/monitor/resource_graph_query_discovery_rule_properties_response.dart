@@ -73,7 +73,7 @@ class ResourceGraphQueryDiscoveryRulePropertiesResponse {
       deletionDate: (map['deletionDate'] as String).input(),
       discoverRelationships: (map['discoverRelationships'] as String).input(),
       discoveryRuleKind: (map['discoveryRuleKind'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       entityName: (map['entityName'] as String).input(),
       error: (DiscoveryErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),

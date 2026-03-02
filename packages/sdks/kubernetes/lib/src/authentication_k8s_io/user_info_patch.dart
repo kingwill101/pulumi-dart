@@ -36,10 +36,10 @@ class UserInfoPatch {
 
   factory UserInfoPatch.fromMap(Map<String, dynamic> map) {
     return UserInfoPatch(
-      extra: map['extra'] == null ? null : ((map['extra'] as Map).cast<String, List<String>>()).input(),
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, List<String>>()).input(),
+      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class ClientInstanceAttachmentArgs {
 
   factory ClientInstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ClientInstanceAttachmentArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
       clientInstanceId: (map['clientInstanceId'] as String).input(),
-      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType'] as String).input(),
+      eiInstanceType: map['eiInstanceType'] == null ? null : (map['eiInstanceType']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

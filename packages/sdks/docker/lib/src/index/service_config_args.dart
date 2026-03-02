@@ -30,7 +30,7 @@ class ServiceConfigArgs {
   factory ServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigArgs(
       data: (map['data'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

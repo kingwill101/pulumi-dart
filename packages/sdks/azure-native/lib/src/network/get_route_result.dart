@@ -65,16 +65,16 @@ class GetRouteResult {
 
   factory GetRouteResult.fromMap(Map<String, dynamic> map) {
     return GetRouteResult(
-      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix'] as String,
+      addressPrefix: map['addressPrefix'] == null ? null : map['addressPrefix']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       hasBgpOverride: map['hasBgpOverride'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : map['nextHopIpAddress'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nextHopIpAddress: map['nextHopIpAddress'] == null ? null : map['nextHopIpAddress']! as String,
       nextHopType: map['nextHopType'] as String,
       provisioningState: map['provisioningState'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

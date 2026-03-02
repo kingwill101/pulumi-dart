@@ -43,7 +43,7 @@ class KeyVaultPropertiesResponse {
     return KeyVaultPropertiesResponse(
       keyName: (map['keyName'] as String).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId'] as String).input(),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : (map['keyVaultResourceId']! as String).input(),
       keyVaultUri: (map['keyVaultUri'] as String).input(),
       status: (map['status'] as String).input(),
     );

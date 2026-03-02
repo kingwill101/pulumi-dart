@@ -25,8 +25,8 @@ class DeviceGroupDevice {
 
   factory DeviceGroupDevice.fromMap(Map<String, dynamic> map) {
     return DeviceGroupDevice(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      setSyncLeader: map['setSyncLeader'] == null ? null : (map['setSyncLeader'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      setSyncLeader: map['setSyncLeader'] == null ? null : (map['setSyncLeader']! as bool).input(),
     );
   }
 }

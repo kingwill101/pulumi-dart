@@ -69,14 +69,14 @@ class GetStudioApplicationsResult {
       applications: pulumi.Input.decodeList<GetStudioApplicationsApplication>(map['applications'], (value) => GetStudioApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      maxResults: map['maxResults'] == null ? null : map['maxResults'] as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyword: map['keyword'] == null ? null : map['keyword']! as String,
+      maxResults: map['maxResults'] == null ? null : map['maxResults']! as int,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      orderType: map['orderType'] == null ? null : map['orderType'] as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      orderType: map['orderType'] == null ? null : map['orderType']! as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

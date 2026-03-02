@@ -55,12 +55,12 @@ class StandbyVirtualMachinePoolArgs {
 
   factory StandbyVirtualMachinePoolArgs.fromMap(Map<String, dynamic> map) {
     return StandbyVirtualMachinePoolArgs(
-      attachedVirtualMachineScaleSetId: map['attachedVirtualMachineScaleSetId'] == null ? null : (map['attachedVirtualMachineScaleSetId'] as String).input(),
-      elasticityProfile: map['elasticityProfile'] == null ? null : (StandbyVirtualMachinePoolElasticityProfile.fromMap((map['elasticityProfile'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      attachedVirtualMachineScaleSetId: map['attachedVirtualMachineScaleSetId'] == null ? null : (map['attachedVirtualMachineScaleSetId']! as String).input(),
+      elasticityProfile: map['elasticityProfile'] == null ? null : (StandbyVirtualMachinePoolElasticityProfile.fromMap((map['elasticityProfile']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      standbyVirtualMachinePoolName: map['standbyVirtualMachinePoolName'] == null ? null : (map['standbyVirtualMachinePoolName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      standbyVirtualMachinePoolName: map['standbyVirtualMachinePoolName'] == null ? null : (map['standbyVirtualMachinePoolName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualMachineState: (map['virtualMachineState'] as String).input(),
     );
   }

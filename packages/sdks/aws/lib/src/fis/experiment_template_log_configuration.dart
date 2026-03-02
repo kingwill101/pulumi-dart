@@ -32,9 +32,9 @@ class ExperimentTemplateLogConfiguration {
 
   factory ExperimentTemplateLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateLogConfiguration(
-      cloudwatchLogsConfiguration: map['cloudwatchLogsConfiguration'] == null ? null : (ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap((map['cloudwatchLogsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogsConfiguration: map['cloudwatchLogsConfiguration'] == null ? null : ((ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap((map['cloudwatchLogsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       logSchemaVersion: (map['logSchemaVersion'] as int).input(),
-      s3Configuration: map['s3Configuration'] == null ? null : (ExperimentTemplateLogConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : ((ExperimentTemplateLogConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -51,11 +51,11 @@ class GalleryInVMAccessControlProfileArgs {
   factory GalleryInVMAccessControlProfileArgs.fromMap(Map<String, dynamic> map) {
     return GalleryInVMAccessControlProfileArgs(
       galleryName: (map['galleryName'] as String).input(),
-      inVMAccessControlProfileName: map['inVMAccessControlProfileName'] == null ? null : (map['inVMAccessControlProfileName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (GalleryInVMAccessControlProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      inVMAccessControlProfileName: map['inVMAccessControlProfileName'] == null ? null : (map['inVMAccessControlProfileName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (GalleryInVMAccessControlProfileProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

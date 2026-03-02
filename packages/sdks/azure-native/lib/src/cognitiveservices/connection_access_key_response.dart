@@ -23,8 +23,8 @@ class ConnectionAccessKeyResponse {
 
   factory ConnectionAccessKeyResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionAccessKeyResponse(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
     );
   }
 }

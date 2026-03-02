@@ -21,7 +21,7 @@ class SignalRTlsSettingsResponse {
 
   factory SignalRTlsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SignalRTlsSettingsResponse(
-      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled'] as bool).input(),
+      clientCertEnabled: map['clientCertEnabled'] == null ? null : (map['clientCertEnabled']! as bool).input(),
     );
   }
 }

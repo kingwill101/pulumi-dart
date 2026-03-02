@@ -30,9 +30,9 @@ class FunctionAppSlotAuthSettingsActiveDirectory {
 
   factory FunctionAppSlotAuthSettingsActiveDirectory.fromMap(Map<String, dynamic> map) {
     return FunctionAppSlotAuthSettingsActiveDirectory(
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
       clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
     );
   }
 }

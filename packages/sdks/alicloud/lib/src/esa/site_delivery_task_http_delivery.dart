@@ -65,18 +65,18 @@ class SiteDeliveryTaskHttpDelivery {
 
   factory SiteDeliveryTaskHttpDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskHttpDelivery(
-      compress: map['compress'] == null ? null : (map['compress'] as String).input(),
-      destUrl: map['destUrl'] == null ? null : (map['destUrl'] as String).input(),
-      headerParam: map['headerParam'] == null ? null : ((map['headerParam'] as Map).cast<String, String>()).input(),
-      logBodyPrefix: map['logBodyPrefix'] == null ? null : (map['logBodyPrefix'] as String).input(),
-      logBodySuffix: map['logBodySuffix'] == null ? null : (map['logBodySuffix'] as String).input(),
-      maxBatchMb: map['maxBatchMb'] == null ? null : (map['maxBatchMb'] as int).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as int).input(),
-      maxRetry: map['maxRetry'] == null ? null : (map['maxRetry'] as int).input(),
-      queryParam: map['queryParam'] == null ? null : ((map['queryParam'] as Map).cast<String, String>()).input(),
-      standardAuthOn: map['standardAuthOn'] == null ? null : (map['standardAuthOn'] as bool).input(),
-      standardAuthParam: map['standardAuthParam'] == null ? null : (SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap((map['standardAuthParam'] as Map).cast<String, dynamic>())).input(),
-      transformTimeout: map['transformTimeout'] == null ? null : (map['transformTimeout'] as int).input(),
+      compress: map['compress'] == null ? null : (map['compress']! as String).input(),
+      destUrl: map['destUrl'] == null ? null : (map['destUrl']! as String).input(),
+      headerParam: map['headerParam'] == null ? null : ((map['headerParam']! as Map).cast<String, String>()).input(),
+      logBodyPrefix: map['logBodyPrefix'] == null ? null : (map['logBodyPrefix']! as String).input(),
+      logBodySuffix: map['logBodySuffix'] == null ? null : (map['logBodySuffix']! as String).input(),
+      maxBatchMb: map['maxBatchMb'] == null ? null : (map['maxBatchMb']! as int).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize']! as int).input(),
+      maxRetry: map['maxRetry'] == null ? null : (map['maxRetry']! as int).input(),
+      queryParam: map['queryParam'] == null ? null : ((map['queryParam']! as Map).cast<String, String>()).input(),
+      standardAuthOn: map['standardAuthOn'] == null ? null : (map['standardAuthOn']! as bool).input(),
+      standardAuthParam: map['standardAuthParam'] == null ? null : (SiteDeliveryTaskHttpDeliveryStandardAuthParam.fromMap((map['standardAuthParam']! as Map).cast<String, dynamic>())).input(),
+      transformTimeout: map['transformTimeout'] == null ? null : (map['transformTimeout']! as int).input(),
     );
   }
 }

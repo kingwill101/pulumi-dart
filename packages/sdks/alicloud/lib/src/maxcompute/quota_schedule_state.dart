@@ -32,9 +32,9 @@ class QuotaScheduleState {
 
   factory QuotaScheduleState.fromMap(Map<String, dynamic> map) {
     return QuotaScheduleState(
-      nickname: map['nickname'] == null ? null : (map['nickname'] as String).input(),
-      scheduleLists: map['scheduleLists'] == null ? null : (pulumi.Input.decodeList<QuotaScheduleScheduleList>(map['scheduleLists'], (value) => QuotaScheduleScheduleList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      nickname: map['nickname'] == null ? null : (map['nickname']! as String).input(),
+      scheduleLists: map['scheduleLists'] == null ? null : (pulumi.Input.decodeList<QuotaScheduleScheduleList>(map['scheduleLists']!, (value) => QuotaScheduleScheduleList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

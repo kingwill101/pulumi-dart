@@ -51,10 +51,10 @@ class CertificatePropertiesResponse {
 
   factory CertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CertificatePropertiesResponse(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
       created: (map['created'] as String).input(),
       expiry: (map['expiry'] as String).input(),
-      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified']! as bool).input(),
       subject: (map['subject'] as String).input(),
       thumbprint: (map['thumbprint'] as String).input(),
       updated: (map['updated'] as String).input(),

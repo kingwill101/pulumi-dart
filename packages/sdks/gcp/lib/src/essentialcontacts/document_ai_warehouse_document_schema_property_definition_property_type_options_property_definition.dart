@@ -100,22 +100,22 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
 
   factory DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition.fromMap(Map<String, dynamic> map) {
     return DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition(
-      dateTimeTypeOptions: map['dateTimeTypeOptions'] == null ? null : ((map['dateTimeTypeOptions'] as Map).cast<String, dynamic>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enumTypeOptions: map['enumTypeOptions'] == null ? null : (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions.fromMap((map['enumTypeOptions'] as Map).cast<String, dynamic>())).input(),
-      floatTypeOptions: map['floatTypeOptions'] == null ? null : ((map['floatTypeOptions'] as Map).cast<String, dynamic>()).input(),
-      integerTypeOptions: map['integerTypeOptions'] == null ? null : ((map['integerTypeOptions'] as Map).cast<String, dynamic>()).input(),
-      isFilterable: map['isFilterable'] == null ? null : (map['isFilterable'] as bool).input(),
-      isMetadata: map['isMetadata'] == null ? null : (map['isMetadata'] as bool).input(),
-      isRepeatable: map['isRepeatable'] == null ? null : (map['isRepeatable'] as bool).input(),
-      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
-      isSearchable: map['isSearchable'] == null ? null : (map['isSearchable'] as bool).input(),
-      mapTypeOptions: map['mapTypeOptions'] == null ? null : ((map['mapTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      dateTimeTypeOptions: map['dateTimeTypeOptions'] == null ? null : ((map['dateTimeTypeOptions']! as Map).cast<String, dynamic>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enumTypeOptions: map['enumTypeOptions'] == null ? null : (DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions.fromMap((map['enumTypeOptions']! as Map).cast<String, dynamic>())).input(),
+      floatTypeOptions: map['floatTypeOptions'] == null ? null : ((map['floatTypeOptions']! as Map).cast<String, dynamic>()).input(),
+      integerTypeOptions: map['integerTypeOptions'] == null ? null : ((map['integerTypeOptions']! as Map).cast<String, dynamic>()).input(),
+      isFilterable: map['isFilterable'] == null ? null : (map['isFilterable']! as bool).input(),
+      isMetadata: map['isMetadata'] == null ? null : (map['isMetadata']! as bool).input(),
+      isRepeatable: map['isRepeatable'] == null ? null : (map['isRepeatable']! as bool).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired']! as bool).input(),
+      isSearchable: map['isSearchable'] == null ? null : (map['isSearchable']! as bool).input(),
+      mapTypeOptions: map['mapTypeOptions'] == null ? null : ((map['mapTypeOptions']! as Map).cast<String, dynamic>()).input(),
       name: (map['name'] as String).input(),
-      retrievalImportance: map['retrievalImportance'] == null ? null : (map['retrievalImportance'] as String).input(),
-      schemaSources: map['schemaSources'] == null ? null : (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource>(map['schemaSources'], (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      textTypeOptions: map['textTypeOptions'] == null ? null : ((map['textTypeOptions'] as Map).cast<String, dynamic>()).input(),
-      timestampTypeOptions: map['timestampTypeOptions'] == null ? null : ((map['timestampTypeOptions'] as Map).cast<String, dynamic>()).input(),
+      retrievalImportance: map['retrievalImportance'] == null ? null : (map['retrievalImportance']! as String).input(),
+      schemaSources: map['schemaSources'] == null ? null : (pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource>(map['schemaSources']!, (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTypeOptions: map['textTypeOptions'] == null ? null : ((map['textTypeOptions']! as Map).cast<String, dynamic>()).input(),
+      timestampTypeOptions: map['timestampTypeOptions'] == null ? null : ((map['timestampTypeOptions']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

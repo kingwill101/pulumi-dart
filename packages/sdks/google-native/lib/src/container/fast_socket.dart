@@ -21,7 +21,7 @@ class FastSocket {
 
   factory FastSocket.fromMap(Map<String, dynamic> map) {
     return FastSocket(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

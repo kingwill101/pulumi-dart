@@ -37,10 +37,10 @@ class IdentityPoolRoleAttachmentState {
 
   factory IdentityPoolRoleAttachmentState.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentState(
-      identityPoolId: map['identityPoolId'] == null ? null : (map['identityPoolId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleMappings: map['roleMappings'] == null ? null : (pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings'], (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as Map).cast<String, String>()).input(),
+      identityPoolId: map['identityPoolId'] == null ? null : ((map['identityPoolId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleMappings: map['roleMappings'] == null ? null : ((pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMapping>(map['roleMappings']!, (value) => IdentityPoolRoleAttachmentRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      roles: map['roles'] == null ? null : (((map['roles'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

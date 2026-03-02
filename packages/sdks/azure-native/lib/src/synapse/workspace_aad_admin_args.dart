@@ -49,11 +49,11 @@ class WorkspaceAadAdminArgs {
 
   factory WorkspaceAadAdminArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceAadAdminArgs(
-      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
+      administratorType: map['administratorType'] == null ? null : (map['administratorType']! as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -76,18 +76,18 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      casId: map['casId'] == null ? null : (map['casId'] as String).input(),
-      certId: map['certId'] == null ? null : (map['certId'] as String).input(),
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      createdType: map['createdType'] == null ? null : (map['createdType'] as String).input(),
-      domains: map['domains'] == null ? null : (map['domains'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      casId: map['casId'] == null ? null : (map['casId']! as String).input(),
+      certId: map['certId'] == null ? null : (map['certId']! as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      createdType: map['createdType'] == null ? null : (map['createdType']! as String).input(),
+      domains: map['domains'] == null ? null : (map['domains']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

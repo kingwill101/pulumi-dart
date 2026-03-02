@@ -27,8 +27,8 @@ class UserPassword {
 
   factory UserPassword.fromMap(Map<String, dynamic> map) {
     return UserPassword(
-      password: map['password'] == null ? null : (Secret.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (Secret.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

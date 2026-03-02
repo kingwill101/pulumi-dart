@@ -54,7 +54,7 @@ class SolutionProperties {
       marketplacePublisherId: (map['marketplacePublisherId'] as String).input(),
       offerId: (map['offerId'] as String).input(),
       planId: (map['planId'] as String).input(),
-      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId'] as String).input(),
+      roleAssignmentId: map['roleAssignmentId'] == null ? null : (map['roleAssignmentId']! as String).input(),
       saasSubscriptionId: (map['saasSubscriptionId'] as String).input(),
       saasSubscriptionName: (map['saasSubscriptionName'] as String).input(),
       termId: (map['termId'] as String).input(),

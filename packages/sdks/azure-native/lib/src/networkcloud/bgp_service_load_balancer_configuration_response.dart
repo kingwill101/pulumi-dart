@@ -38,10 +38,10 @@ class BgpServiceLoadBalancerConfigurationResponse {
 
   factory BgpServiceLoadBalancerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return BgpServiceLoadBalancerConfigurationResponse(
-      bgpAdvertisements: map['bgpAdvertisements'] == null ? null : (pulumi.Input.decodeList<BgpAdvertisementResponse>(map['bgpAdvertisements'], (value) => BgpAdvertisementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bgpPeers: map['bgpPeers'] == null ? null : (pulumi.Input.decodeList<ServiceLoadBalancerBgpPeerResponse>(map['bgpPeers'], (value) => ServiceLoadBalancerBgpPeerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fabricPeeringEnabled: map['fabricPeeringEnabled'] == null ? null : (map['fabricPeeringEnabled'] as String).input(),
-      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPoolResponse>(map['ipAddressPools'], (value) => IpAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bgpAdvertisements: map['bgpAdvertisements'] == null ? null : (pulumi.Input.decodeList<BgpAdvertisementResponse>(map['bgpAdvertisements']!, (value) => BgpAdvertisementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bgpPeers: map['bgpPeers'] == null ? null : (pulumi.Input.decodeList<ServiceLoadBalancerBgpPeerResponse>(map['bgpPeers']!, (value) => ServiceLoadBalancerBgpPeerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fabricPeeringEnabled: map['fabricPeeringEnabled'] == null ? null : (map['fabricPeeringEnabled']! as String).input(),
+      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<IpAddressPoolResponse>(map['ipAddressPools']!, (value) => IpAddressPoolResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

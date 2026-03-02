@@ -68,14 +68,14 @@ class GetStorageInsightConfigResult {
   factory GetStorageInsightConfigResult.fromMap(Map<String, dynamic> map) {
     return GetStorageInsightConfigResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      containers: map['containers'] == null ? null : (map['containers'] as List).cast<String>(),
-      eTag: map['eTag'] == null ? null : map['eTag'] as String,
+      containers: map['containers'] == null ? null : (map['containers']! as List).cast<String>(),
+      eTag: map['eTag'] == null ? null : map['eTag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       status: StorageInsightStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       storageAccount: StorageAccountResponse.fromMap((map['storageAccount'] as Map).cast<String, dynamic>()),
-      tables: map['tables'] == null ? null : (map['tables'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tables: map['tables'] == null ? null : (map['tables']! as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

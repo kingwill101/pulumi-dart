@@ -40,9 +40,9 @@ class DomainNameArgs {
   factory DomainNameArgs.fromMap(Map<String, dynamic> map) {
     return DomainNameArgs(
       certificateArn: (map['certificateArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

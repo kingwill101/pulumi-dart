@@ -34,9 +34,9 @@ class RegionCommitmentResource {
 
   factory RegionCommitmentResource.fromMap(Map<String, dynamic> map) {
     return RegionCommitmentResource(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      amount: map['amount'] == null ? null : (map['amount'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -86,18 +86,18 @@ class PipeTargetParameters {
 
   factory PipeTargetParameters.fromMap(Map<String, dynamic> map) {
     return PipeTargetParameters(
-      batchJobParameters: map['batchJobParameters'] == null ? null : (PipeTargetParametersBatchJobParameters.fromMap((map['batchJobParameters'] as Map).cast<String, dynamic>())).input(),
-      cloudwatchLogsParameters: map['cloudwatchLogsParameters'] == null ? null : (PipeTargetParametersCloudwatchLogsParameters.fromMap((map['cloudwatchLogsParameters'] as Map).cast<String, dynamic>())).input(),
-      ecsTaskParameters: map['ecsTaskParameters'] == null ? null : (PipeTargetParametersEcsTaskParameters.fromMap((map['ecsTaskParameters'] as Map).cast<String, dynamic>())).input(),
-      eventbridgeEventBusParameters: map['eventbridgeEventBusParameters'] == null ? null : (PipeTargetParametersEventbridgeEventBusParameters.fromMap((map['eventbridgeEventBusParameters'] as Map).cast<String, dynamic>())).input(),
-      httpParameters: map['httpParameters'] == null ? null : (PipeTargetParametersHttpParameters.fromMap((map['httpParameters'] as Map).cast<String, dynamic>())).input(),
-      inputTemplate: map['inputTemplate'] == null ? null : (map['inputTemplate'] as String).input(),
-      kinesisStreamParameters: map['kinesisStreamParameters'] == null ? null : (PipeTargetParametersKinesisStreamParameters.fromMap((map['kinesisStreamParameters'] as Map).cast<String, dynamic>())).input(),
-      lambdaFunctionParameters: map['lambdaFunctionParameters'] == null ? null : (PipeTargetParametersLambdaFunctionParameters.fromMap((map['lambdaFunctionParameters'] as Map).cast<String, dynamic>())).input(),
-      redshiftDataParameters: map['redshiftDataParameters'] == null ? null : (PipeTargetParametersRedshiftDataParameters.fromMap((map['redshiftDataParameters'] as Map).cast<String, dynamic>())).input(),
-      sagemakerPipelineParameters: map['sagemakerPipelineParameters'] == null ? null : (PipeTargetParametersSagemakerPipelineParameters.fromMap((map['sagemakerPipelineParameters'] as Map).cast<String, dynamic>())).input(),
-      sqsQueueParameters: map['sqsQueueParameters'] == null ? null : (PipeTargetParametersSqsQueueParameters.fromMap((map['sqsQueueParameters'] as Map).cast<String, dynamic>())).input(),
-      stepFunctionStateMachineParameters: map['stepFunctionStateMachineParameters'] == null ? null : (PipeTargetParametersStepFunctionStateMachineParameters.fromMap((map['stepFunctionStateMachineParameters'] as Map).cast<String, dynamic>())).input(),
+      batchJobParameters: map['batchJobParameters'] == null ? null : ((PipeTargetParametersBatchJobParameters.fromMap((map['batchJobParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      cloudwatchLogsParameters: map['cloudwatchLogsParameters'] == null ? null : ((PipeTargetParametersCloudwatchLogsParameters.fromMap((map['cloudwatchLogsParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      ecsTaskParameters: map['ecsTaskParameters'] == null ? null : ((PipeTargetParametersEcsTaskParameters.fromMap((map['ecsTaskParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      eventbridgeEventBusParameters: map['eventbridgeEventBusParameters'] == null ? null : ((PipeTargetParametersEventbridgeEventBusParameters.fromMap((map['eventbridgeEventBusParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      httpParameters: map['httpParameters'] == null ? null : ((PipeTargetParametersHttpParameters.fromMap((map['httpParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      inputTemplate: map['inputTemplate'] == null ? null : ((map['inputTemplate'] as String).input()).input(),
+      kinesisStreamParameters: map['kinesisStreamParameters'] == null ? null : ((PipeTargetParametersKinesisStreamParameters.fromMap((map['kinesisStreamParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaFunctionParameters: map['lambdaFunctionParameters'] == null ? null : ((PipeTargetParametersLambdaFunctionParameters.fromMap((map['lambdaFunctionParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      redshiftDataParameters: map['redshiftDataParameters'] == null ? null : ((PipeTargetParametersRedshiftDataParameters.fromMap((map['redshiftDataParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      sagemakerPipelineParameters: map['sagemakerPipelineParameters'] == null ? null : ((PipeTargetParametersSagemakerPipelineParameters.fromMap((map['sagemakerPipelineParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      sqsQueueParameters: map['sqsQueueParameters'] == null ? null : ((PipeTargetParametersSqsQueueParameters.fromMap((map['sqsQueueParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      stepFunctionStateMachineParameters: map['stepFunctionStateMachineParameters'] == null ? null : ((PipeTargetParametersStepFunctionStateMachineParameters.fromMap((map['stepFunctionStateMachineParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

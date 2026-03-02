@@ -51,13 +51,13 @@ class FlowState {
 
   factory FlowState.fromMap(Map<String, dynamic> map) {
     return FlowState(
-      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowId: map['flowId'] == null ? null : (map['flowId'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      definition: map['definition'] == null ? null : (map['definition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowId: map['flowId'] == null ? null : (map['flowId']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

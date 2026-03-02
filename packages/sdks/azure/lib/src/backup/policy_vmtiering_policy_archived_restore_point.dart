@@ -30,8 +30,8 @@ class PolicyVMTieringPolicyArchivedRestorePoint {
 
   factory PolicyVMTieringPolicyArchivedRestorePoint.fromMap(Map<String, dynamic> map) {
     return PolicyVMTieringPolicyArchivedRestorePoint(
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      durationType: map['durationType'] == null ? null : (map['durationType'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      durationType: map['durationType'] == null ? null : (map['durationType']! as String).input(),
       mode: (map['mode'] as String).input(),
     );
   }

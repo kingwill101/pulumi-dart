@@ -63,15 +63,15 @@ class AnywhereCacheState {
 
   factory AnywhereCacheState.fromMap(Map<String, dynamic> map) {
     return AnywhereCacheState(
-      admissionPolicy: map['admissionPolicy'] == null ? null : (map['admissionPolicy'] as String).input(),
-      anywhereCacheId: map['anywhereCacheId'] == null ? null : (map['anywhereCacheId'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      pendingUpdate: map['pendingUpdate'] == null ? null : (map['pendingUpdate'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      admissionPolicy: map['admissionPolicy'] == null ? null : (map['admissionPolicy']! as String).input(),
+      anywhereCacheId: map['anywhereCacheId'] == null ? null : (map['anywhereCacheId']! as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      pendingUpdate: map['pendingUpdate'] == null ? null : (map['pendingUpdate']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

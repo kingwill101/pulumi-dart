@@ -21,7 +21,7 @@ class ConnectionTypeAssociationProperty {
 
   factory ConnectionTypeAssociationProperty.fromMap(Map<String, dynamic> map) {
     return ConnectionTypeAssociationProperty(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

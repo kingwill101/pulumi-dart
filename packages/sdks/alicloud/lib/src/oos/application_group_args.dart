@@ -53,9 +53,9 @@ class ApplicationGroupArgs {
       applicationGroupName: (map['applicationGroupName'] as String).input(),
       applicationName: (map['applicationName'] as String).input(),
       deployRegionId: (map['deployRegionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      importTagKey: map['importTagKey'] == null ? null : (map['importTagKey'] as String).input(),
-      importTagValue: map['importTagValue'] == null ? null : (map['importTagValue'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      importTagKey: map['importTagKey'] == null ? null : (map['importTagKey']! as String).input(),
+      importTagValue: map['importTagValue'] == null ? null : (map['importTagValue']! as String).input(),
     );
   }
 }

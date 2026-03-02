@@ -117,7 +117,7 @@ class GetHealthCheckResult {
       id: map['id'] as String,
       logConfigs: pulumi.Input.decodeList<GetHealthCheckLogConfig>(map['logConfigs'], (value) => GetHealthCheckLogConfig.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
       sourceRegions: (map['sourceRegions'] as List).cast<String>(),
       sslHealthChecks: pulumi.Input.decodeList<GetHealthCheckSslHealthCheck>(map['sslHealthChecks'], (value) => GetHealthCheckSslHealthCheck.fromMap((value as Map).cast<String, dynamic>())),

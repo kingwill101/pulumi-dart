@@ -51,13 +51,13 @@ class BillingRoleAssignmentProperties {
 
   factory BillingRoleAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return BillingRoleAssignmentProperties(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalPuid: map['principalPuid'] == null ? null : (map['principalPuid'] as String).input(),
-      principalTenantId: map['principalTenantId'] == null ? null : (map['principalTenantId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalPuid: map['principalPuid'] == null ? null : (map['principalPuid']! as String).input(),
+      principalTenantId: map['principalTenantId'] == null ? null : (map['principalTenantId']! as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      userAuthenticationType: map['userAuthenticationType'] == null ? null : (map['userAuthenticationType'] as String).input(),
-      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      userAuthenticationType: map['userAuthenticationType'] == null ? null : (map['userAuthenticationType']! as String).input(),
+      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress']! as String).input(),
     );
   }
 }

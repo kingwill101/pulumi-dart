@@ -85,13 +85,13 @@ class RegionUrlMapPathMatcherPathRuleRouteAction {
 
   factory RegionUrlMapPathMatcherPathRuleRouteAction.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherPathRuleRouteAction(
-      corsPolicy: map['corsPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy.fromMap((map['corsPolicy'] as Map).cast<String, dynamic>())).input(),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
-      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy.fromMap((map['requestMirrorPolicy'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
-      urlRewrite: map['urlRewrite'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite.fromMap((map['urlRewrite'] as Map).cast<String, dynamic>())).input(),
-      weightedBackendServices: map['weightedBackendServices'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService>(map['weightedBackendServices'], (value) => RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      corsPolicy: map['corsPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy.fromMap((map['corsPolicy']! as Map).cast<String, dynamic>())).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())).input(),
+      requestMirrorPolicy: map['requestMirrorPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy.fromMap((map['requestMirrorPolicy']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input(),
+      urlRewrite: map['urlRewrite'] == null ? null : (RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite.fromMap((map['urlRewrite']! as Map).cast<String, dynamic>())).input(),
+      weightedBackendServices: map['weightedBackendServices'] == null ? null : (pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService>(map['weightedBackendServices']!, (value) => RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

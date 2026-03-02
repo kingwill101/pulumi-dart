@@ -27,8 +27,8 @@ class DomainSysInfo {
 
   factory DomainSysInfo.fromMap(Map<String, dynamic> map) {
     return DomainSysInfo(
-      fwCfg: map['fwCfg'] == null ? null : (DomainSysInfoFwCfg.fromMap((map['fwCfg'] as Map).cast<String, dynamic>())).input(),
-      smbios: map['smbios'] == null ? null : (DomainSysInfoSmbios.fromMap((map['smbios'] as Map).cast<String, dynamic>())).input(),
+      fwCfg: map['fwCfg'] == null ? null : (DomainSysInfoFwCfg.fromMap((map['fwCfg']! as Map).cast<String, dynamic>())).input(),
+      smbios: map['smbios'] == null ? null : (DomainSysInfoSmbios.fromMap((map['smbios']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -53,7 +53,7 @@ class GetTargetResult {
     return GetTargetResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       properties: map['properties'],
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

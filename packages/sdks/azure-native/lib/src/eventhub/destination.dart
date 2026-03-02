@@ -57,14 +57,14 @@ class Destination {
 
   factory Destination.fromMap(Map<String, dynamic> map) {
     return Destination(
-      archiveNameFormat: map['archiveNameFormat'] == null ? null : (map['archiveNameFormat'] as String).input(),
-      blobContainer: map['blobContainer'] == null ? null : (map['blobContainer'] as String).input(),
-      dataLakeAccountName: map['dataLakeAccountName'] == null ? null : (map['dataLakeAccountName'] as String).input(),
-      dataLakeFolderPath: map['dataLakeFolderPath'] == null ? null : (map['dataLakeFolderPath'] as String).input(),
-      dataLakeSubscriptionId: map['dataLakeSubscriptionId'] == null ? null : (map['dataLakeSubscriptionId'] as String).input(),
-      identity: map['identity'] == null ? null : (CaptureIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      archiveNameFormat: map['archiveNameFormat'] == null ? null : (map['archiveNameFormat']! as String).input(),
+      blobContainer: map['blobContainer'] == null ? null : (map['blobContainer']! as String).input(),
+      dataLakeAccountName: map['dataLakeAccountName'] == null ? null : (map['dataLakeAccountName']! as String).input(),
+      dataLakeFolderPath: map['dataLakeFolderPath'] == null ? null : (map['dataLakeFolderPath']! as String).input(),
+      dataLakeSubscriptionId: map['dataLakeSubscriptionId'] == null ? null : (map['dataLakeSubscriptionId']! as String).input(),
+      identity: map['identity'] == null ? null : (CaptureIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
     );
   }
 }

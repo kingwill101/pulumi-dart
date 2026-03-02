@@ -34,8 +34,8 @@ class VirtualMfaDeviceArgs {
 
   factory VirtualMfaDeviceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceArgs(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       virtualMfaDeviceName: (map['virtualMfaDeviceName'] as String).input(),
     );
   }

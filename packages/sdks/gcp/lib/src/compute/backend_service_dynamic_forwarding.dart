@@ -22,7 +22,7 @@ class BackendServiceDynamicForwarding {
 
   factory BackendServiceDynamicForwarding.fromMap(Map<String, dynamic> map) {
     return BackendServiceDynamicForwarding(
-      ipPortSelection: map['ipPortSelection'] == null ? null : (BackendServiceDynamicForwardingIpPortSelection.fromMap((map['ipPortSelection'] as Map).cast<String, dynamic>())).input(),
+      ipPortSelection: map['ipPortSelection'] == null ? null : (BackendServiceDynamicForwardingIpPortSelection.fromMap((map['ipPortSelection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

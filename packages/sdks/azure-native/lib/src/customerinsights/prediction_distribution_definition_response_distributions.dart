@@ -41,11 +41,11 @@ class PredictionDistributionDefinitionResponseDistributions {
 
   factory PredictionDistributionDefinitionResponseDistributions.fromMap(Map<String, dynamic> map) {
     return PredictionDistributionDefinitionResponseDistributions(
-      negatives: map['negatives'] == null ? null : (map['negatives'] as double).input(),
-      negativesAboveThreshold: map['negativesAboveThreshold'] == null ? null : (map['negativesAboveThreshold'] as double).input(),
-      positives: map['positives'] == null ? null : (map['positives'] as double).input(),
-      positivesAboveThreshold: map['positivesAboveThreshold'] == null ? null : (map['positivesAboveThreshold'] as double).input(),
-      scoreThreshold: map['scoreThreshold'] == null ? null : (map['scoreThreshold'] as int).input(),
+      negatives: map['negatives'] == null ? null : (map['negatives']! as double).input(),
+      negativesAboveThreshold: map['negativesAboveThreshold'] == null ? null : (map['negativesAboveThreshold']! as double).input(),
+      positives: map['positives'] == null ? null : (map['positives']! as double).input(),
+      positivesAboveThreshold: map['positivesAboveThreshold'] == null ? null : (map['positivesAboveThreshold']! as double).input(),
+      scoreThreshold: map['scoreThreshold'] == null ? null : (map['scoreThreshold']! as int).input(),
     );
   }
 }

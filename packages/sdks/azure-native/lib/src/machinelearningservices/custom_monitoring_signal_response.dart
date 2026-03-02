@@ -54,11 +54,11 @@ class CustomMonitoringSignalResponse {
   factory CustomMonitoringSignalResponse.fromMap(Map<String, dynamic> map) {
     return CustomMonitoringSignalResponse(
       componentId: (map['componentId'] as String).input(),
-      inputAssets: map['inputAssets'] == null ? null : (pulumi.Input.decodeMapValues<FixedInputDataResponse>(map['inputAssets'], (value) => FixedInputDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobInputResponse>(map['inputs'], (value) => CustomModelJobInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputAssets: map['inputAssets'] == null ? null : (pulumi.Input.decodeMapValues<FixedInputDataResponse>(map['inputAssets']!, (value) => FixedInputDataResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeMapValues<CustomModelJobInputResponse>(map['inputs']!, (value) => CustomModelJobInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       metricThresholds: (pulumi.Input.decodeList<CustomMetricThresholdResponse>(map['metricThresholds'], (value) => CustomMetricThresholdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes']! as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       signalType: (map['signalType'] as String).input(),
     );
   }

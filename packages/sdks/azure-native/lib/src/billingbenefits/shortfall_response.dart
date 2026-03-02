@@ -52,13 +52,13 @@ class ShortfallResponse {
 
   factory ShortfallResponse.fromMap(Map<String, dynamic> map) {
     return ShortfallResponse(
-      balanceVersion: map['balanceVersion'] == null ? null : (map['balanceVersion'] as double).input(),
-      charge: map['charge'] == null ? null : (CommitmentResponse.fromMap((map['charge'] as Map).cast<String, dynamic>())).input(),
-      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
-      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
+      balanceVersion: map['balanceVersion'] == null ? null : (map['balanceVersion']! as double).input(),
+      charge: map['charge'] == null ? null : (CommitmentResponse.fromMap((map['charge']! as Map).cast<String, dynamic>())).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt']! as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt']! as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']! as String).input(),
     );
   }
 }

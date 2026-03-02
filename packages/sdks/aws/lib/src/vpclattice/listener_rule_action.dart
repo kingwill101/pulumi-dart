@@ -29,8 +29,8 @@ class ListenerRuleAction {
 
   factory ListenerRuleAction.fromMap(Map<String, dynamic> map) {
     return ListenerRuleAction(
-      fixedResponse: map['fixedResponse'] == null ? null : (ListenerRuleActionFixedResponse.fromMap((map['fixedResponse'] as Map).cast<String, dynamic>())).input(),
-      forward: map['forward'] == null ? null : (ListenerRuleActionForward.fromMap((map['forward'] as Map).cast<String, dynamic>())).input(),
+      fixedResponse: map['fixedResponse'] == null ? null : ((ListenerRuleActionFixedResponse.fromMap((map['fixedResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      forward: map['forward'] == null ? null : ((ListenerRuleActionForward.fromMap((map['forward']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

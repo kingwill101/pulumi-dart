@@ -26,8 +26,8 @@ class AttributeHealthcareV1beta1 {
 
   factory AttributeHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return AttributeHealthcareV1beta1(
-      attributeDefinitionId: map['attributeDefinitionId'] == null ? null : (map['attributeDefinitionId'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      attributeDefinitionId: map['attributeDefinitionId'] == null ? null : (map['attributeDefinitionId']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

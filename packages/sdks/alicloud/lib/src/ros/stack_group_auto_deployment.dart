@@ -25,8 +25,8 @@ class StackGroupAutoDeployment {
 
   factory StackGroupAutoDeployment.fromMap(Map<String, dynamic> map) {
     return StackGroupAutoDeployment(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retainStacksOnAccountRemoval: map['retainStacksOnAccountRemoval'] == null ? null : (map['retainStacksOnAccountRemoval'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      retainStacksOnAccountRemoval: map['retainStacksOnAccountRemoval'] == null ? null : (map['retainStacksOnAccountRemoval']! as bool).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class GroupImageRegistryCredential {
 
   factory GroupImageRegistryCredential.fromMap(Map<String, dynamic> map) {
     return GroupImageRegistryCredential(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       server: (map['server'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

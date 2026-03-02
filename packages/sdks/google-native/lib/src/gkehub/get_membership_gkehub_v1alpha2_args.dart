@@ -33,7 +33,7 @@ class GetMembershipGkehubV1alpha2Args {
     return GetMembershipGkehubV1alpha2Args(
       location: (map['location'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

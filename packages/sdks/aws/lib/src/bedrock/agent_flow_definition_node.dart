@@ -43,10 +43,10 @@ class AgentFlowDefinitionNode {
 
   factory AgentFlowDefinitionNode.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNode(
-      configuration: map['configuration'] == null ? null : (AgentFlowDefinitionNodeConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionNodeInput>(map['inputs'], (value) => AgentFlowDefinitionNodeInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : ((AgentFlowDefinitionNodeConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      inputs: map['inputs'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionNodeInput>(map['inputs']!, (value) => AgentFlowDefinitionNodeInput.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       name: (map['name'] as String).input(),
-      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<AgentFlowDefinitionNodeOutput>(map['outputs'], (value) => AgentFlowDefinitionNodeOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputs: map['outputs'] == null ? null : ((pulumi.Input.decodeList<AgentFlowDefinitionNodeOutput>(map['outputs']!, (value) => AgentFlowDefinitionNodeOutput.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

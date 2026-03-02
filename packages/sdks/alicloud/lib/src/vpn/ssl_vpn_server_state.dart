@@ -74,17 +74,17 @@ class SslVpnServerState {
 
   factory SslVpnServerState.fromMap(Map<String, dynamic> map) {
     return SslVpnServerState(
-      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
-      clientIpPool: map['clientIpPool'] == null ? null : (map['clientIpPool'] as String).input(),
-      compress: map['compress'] == null ? null : (map['compress'] as bool).input(),
-      connections: map['connections'] == null ? null : (map['connections'] as int).input(),
-      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
-      localSubnet: map['localSubnet'] == null ? null : (map['localSubnet'] as String).input(),
-      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      cipher: map['cipher'] == null ? null : (map['cipher']! as String).input(),
+      clientIpPool: map['clientIpPool'] == null ? null : (map['clientIpPool']! as String).input(),
+      compress: map['compress'] == null ? null : (map['compress']! as bool).input(),
+      connections: map['connections'] == null ? null : (map['connections']! as int).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp']! as String).input(),
+      localSubnet: map['localSubnet'] == null ? null : (map['localSubnet']! as String).input(),
+      maxConnections: map['maxConnections'] == null ? null : (map['maxConnections']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class CustomResourceSubresourceScale {
 
   factory CustomResourceSubresourceScale.fromMap(Map<String, dynamic> map) {
     return CustomResourceSubresourceScale(
-      labelSelectorPath: map['labelSelectorPath'] == null ? null : (map['labelSelectorPath'] as String).input(),
+      labelSelectorPath: map['labelSelectorPath'] == null ? null : (map['labelSelectorPath']! as String).input(),
       specReplicasPath: (map['specReplicasPath'] as String).input(),
       statusReplicasPath: (map['statusReplicasPath'] as String).input(),
     );

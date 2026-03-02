@@ -50,7 +50,7 @@ class SqlRoleAssignmentArgs {
   factory SqlRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return SqlRoleAssignmentArgs(
       accountName: (map['accountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),

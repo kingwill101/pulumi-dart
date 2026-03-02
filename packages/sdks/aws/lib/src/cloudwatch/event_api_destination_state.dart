@@ -56,14 +56,14 @@ class EventApiDestinationState {
 
   factory EventApiDestinationState.fromMap(Map<String, dynamic> map) {
     return EventApiDestinationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      connectionArn: map['connectionArn'] == null ? null : (map['connectionArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      invocationEndpoint: map['invocationEndpoint'] == null ? null : (map['invocationEndpoint'] as String).input(),
-      invocationRateLimitPerSecond: map['invocationRateLimitPerSecond'] == null ? null : (map['invocationRateLimitPerSecond'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      connectionArn: map['connectionArn'] == null ? null : ((map['connectionArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      httpMethod: map['httpMethod'] == null ? null : ((map['httpMethod'] as String).input()).input(),
+      invocationEndpoint: map['invocationEndpoint'] == null ? null : ((map['invocationEndpoint'] as String).input()).input(),
+      invocationRateLimitPerSecond: map['invocationRateLimitPerSecond'] == null ? null : ((map['invocationRateLimitPerSecond'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

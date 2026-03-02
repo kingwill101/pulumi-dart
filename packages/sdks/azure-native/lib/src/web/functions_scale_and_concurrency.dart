@@ -38,10 +38,10 @@ class FunctionsScaleAndConcurrency {
 
   factory FunctionsScaleAndConcurrency.fromMap(Map<String, dynamic> map) {
     return FunctionsScaleAndConcurrency(
-      alwaysReady: map['alwaysReady'] == null ? null : (pulumi.Input.decodeList<FunctionsAlwaysReadyConfig>(map['alwaysReady'], (value) => FunctionsAlwaysReadyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceMemoryMB: map['instanceMemoryMB'] == null ? null : (map['instanceMemoryMB'] as int).input(),
-      maximumInstanceCount: map['maximumInstanceCount'] == null ? null : (map['maximumInstanceCount'] as int).input(),
-      triggers: map['triggers'] == null ? null : (FunctionsScaleAndConcurrencyTriggers.fromMap((map['triggers'] as Map).cast<String, dynamic>())).input(),
+      alwaysReady: map['alwaysReady'] == null ? null : (pulumi.Input.decodeList<FunctionsAlwaysReadyConfig>(map['alwaysReady']!, (value) => FunctionsAlwaysReadyConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceMemoryMB: map['instanceMemoryMB'] == null ? null : (map['instanceMemoryMB']! as int).input(),
+      maximumInstanceCount: map['maximumInstanceCount'] == null ? null : (map['maximumInstanceCount']! as int).input(),
+      triggers: map['triggers'] == null ? null : (FunctionsScaleAndConcurrencyTriggers.fromMap((map['triggers']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

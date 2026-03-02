@@ -36,10 +36,10 @@ class ExtensionProviderState {
 
   factory ExtensionProviderState.fromMap(Map<String, dynamic> map) {
     return ExtensionProviderState(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      extensionProviderName: map['extensionProviderName'] == null ? null : (map['extensionProviderName'] as String).input(),
-      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      extensionProviderName: map['extensionProviderName'] == null ? null : (map['extensionProviderName']! as String).input(),
+      serviceMeshId: map['serviceMeshId'] == null ? null : (map['serviceMeshId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -59,14 +59,14 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      deliveryConfig: map['deliveryConfig'] == null ? null : (DeliveryConfig.fromMap((map['deliveryConfig'] as Map).cast<String, dynamic>())).input(),
-      exportConfig: map['exportConfig'] == null ? null : (ExportConfig.fromMap((map['exportConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      skipBacklog: map['skipBacklog'] == null ? null : (map['skipBacklog'] as bool).input(),
+      deliveryConfig: map['deliveryConfig'] == null ? null : (DeliveryConfig.fromMap((map['deliveryConfig']! as Map).cast<String, dynamic>())).input(),
+      exportConfig: map['exportConfig'] == null ? null : (ExportConfig.fromMap((map['exportConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      skipBacklog: map['skipBacklog'] == null ? null : (map['skipBacklog']! as bool).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

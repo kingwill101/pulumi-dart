@@ -32,9 +32,9 @@ class ServiceConnectTlsConfigurationResponse {
 
   factory ServiceConnectTlsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConnectTlsConfigurationResponse(
-      issuerCertificateAuthority: map['issuerCertificateAuthority'] == null ? null : (ServiceConnectTlsCertificateAuthorityResponse.fromMap((map['issuerCertificateAuthority'] as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      issuerCertificateAuthority: map['issuerCertificateAuthority'] == null ? null : (ServiceConnectTlsCertificateAuthorityResponse.fromMap((map['issuerCertificateAuthority']! as Map).cast<String, dynamic>())).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

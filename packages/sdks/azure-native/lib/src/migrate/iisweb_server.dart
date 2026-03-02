@@ -71,17 +71,17 @@ class IISWebServer {
 
   factory IISWebServer.fromMap(Map<String, dynamic> map) {
     return IISWebServer(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      machines: map['machines'] == null ? null : ((map['machines'] as List).cast<String>()).input(),
-      operatingSystemDetails: map['operatingSystemDetails'] == null ? null : (OperatingSystemDetails.fromMap((map['operatingSystemDetails'] as Map).cast<String, dynamic>())).input(),
-      rootConfigurationLocation: map['rootConfigurationLocation'] == null ? null : (map['rootConfigurationLocation'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
-      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      webApplications: map['webApplications'] == null ? null : ((map['webApplications'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      machines: map['machines'] == null ? null : ((map['machines']! as List).cast<String>()).input(),
+      operatingSystemDetails: map['operatingSystemDetails'] == null ? null : (OperatingSystemDetails.fromMap((map['operatingSystemDetails']! as Map).cast<String, dynamic>())).input(),
+      rootConfigurationLocation: map['rootConfigurationLocation'] == null ? null : (map['rootConfigurationLocation']! as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
+      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      webApplications: map['webApplications'] == null ? null : ((map['webApplications']! as List).cast<String>()).input(),
     );
   }
 }

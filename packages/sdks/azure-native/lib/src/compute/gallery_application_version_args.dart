@@ -62,13 +62,13 @@ class GalleryApplicationVersionArgs {
   factory GalleryApplicationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryApplicationVersionArgs(
       galleryApplicationName: (map['galleryApplicationName'] as String).input(),
-      galleryApplicationVersionName: map['galleryApplicationVersionName'] == null ? null : (map['galleryApplicationVersionName'] as String).input(),
+      galleryApplicationVersionName: map['galleryApplicationVersionName'] == null ? null : (map['galleryApplicationVersionName']! as String).input(),
       galleryName: (map['galleryName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       publishingProfile: (GalleryApplicationVersionPublishingProfile.fromMap((map['publishingProfile'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      safetyProfile: map['safetyProfile'] == null ? null : (GalleryApplicationVersionSafetyProfile.fromMap((map['safetyProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      safetyProfile: map['safetyProfile'] == null ? null : (GalleryApplicationVersionSafetyProfile.fromMap((map['safetyProfile']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

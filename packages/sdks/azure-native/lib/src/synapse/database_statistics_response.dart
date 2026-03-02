@@ -21,7 +21,7 @@ class DatabaseStatisticsResponse {
 
   factory DatabaseStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseStatisticsResponse(
-      size: map['size'] == null ? null : (map['size'] as double).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
     );
   }
 }

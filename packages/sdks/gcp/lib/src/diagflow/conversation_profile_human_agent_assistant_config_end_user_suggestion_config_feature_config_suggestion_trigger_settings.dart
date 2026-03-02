@@ -25,8 +25,8 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings.fromMap(Map<String, dynamic> map) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings(
-      noSmallTalk: map['noSmallTalk'] == null ? null : (map['noSmallTalk'] as bool).input(),
-      onlyEndUser: map['onlyEndUser'] == null ? null : (map['onlyEndUser'] as bool).input(),
+      noSmallTalk: map['noSmallTalk'] == null ? null : (map['noSmallTalk']! as bool).input(),
+      onlyEndUser: map['onlyEndUser'] == null ? null : (map['onlyEndUser']! as bool).input(),
     );
   }
 }

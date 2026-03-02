@@ -28,7 +28,7 @@ class GetOccurrenceArgs {
   factory GetOccurrenceArgs.fromMap(Map<String, dynamic> map) {
     return GetOccurrenceArgs(
       occurrenceId: (map['occurrenceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

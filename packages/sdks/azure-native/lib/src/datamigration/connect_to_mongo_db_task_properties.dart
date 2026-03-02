@@ -33,8 +33,8 @@ class ConnectToMongoDbTaskProperties {
 
   factory ConnectToMongoDbTaskProperties.fromMap(Map<String, dynamic> map) {
     return ConnectToMongoDbTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (MongoDbConnectionInfo.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (MongoDbConnectionInfo.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

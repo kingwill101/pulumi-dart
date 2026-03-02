@@ -25,8 +25,8 @@ class KubernetesClusterNetworkProfileAdvancedNetworking {
 
   factory KubernetesClusterNetworkProfileAdvancedNetworking.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfileAdvancedNetworking(
-      observabilityEnabled: map['observabilityEnabled'] == null ? null : (map['observabilityEnabled'] as bool).input(),
-      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled'] as bool).input(),
+      observabilityEnabled: map['observabilityEnabled'] == null ? null : (map['observabilityEnabled']! as bool).input(),
+      securityEnabled: map['securityEnabled'] == null ? null : (map['securityEnabled']! as bool).input(),
     );
   }
 }

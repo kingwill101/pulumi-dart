@@ -30,9 +30,9 @@ class FirewallPolicyAssociation {
 
   factory FirewallPolicyAssociation.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyAssociation(
-      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      attachmentTarget: map['attachmentTarget'] == null ? null : (map['attachmentTarget']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
     );
   }
 }

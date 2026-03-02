@@ -21,7 +21,7 @@ class RemediationConfigurationExecutionControls {
 
   factory RemediationConfigurationExecutionControls.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationExecutionControls(
-      ssmControls: map['ssmControls'] == null ? null : (RemediationConfigurationExecutionControlsSsmControls.fromMap((map['ssmControls'] as Map).cast<String, dynamic>())).input(),
+      ssmControls: map['ssmControls'] == null ? null : ((RemediationConfigurationExecutionControlsSsmControls.fromMap((map['ssmControls']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -72,16 +72,16 @@ class DataFlowArgs {
 
   factory DataFlowArgs.fromMap(Map<String, dynamic> map) {
     return DataFlowArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      scriptLines: map['scriptLines'] == null ? null : ((map['scriptLines'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      scriptLines: map['scriptLines'] == null ? null : ((map['scriptLines']! as List).cast<String>()).input(),
       sinks: (pulumi.Input.decodeList<DataFlowSink>(map['sinks'], (value) => DataFlowSink.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sources: (pulumi.Input.decodeList<DataFlowSource>(map['sources'], (value) => DataFlowSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<DataFlowTransformation>(map['transformations'], (value) => DataFlowTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<DataFlowTransformation>(map['transformations']!, (value) => DataFlowTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

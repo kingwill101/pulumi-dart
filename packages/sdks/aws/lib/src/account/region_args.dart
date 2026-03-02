@@ -34,7 +34,7 @@ class RegionArgs {
 
   factory RegionArgs.fromMap(Map<String, dynamic> map) {
     return RegionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
       regionName: (map['regionName'] as String).input(),
     );

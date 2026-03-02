@@ -142,7 +142,7 @@ class GetVolumeResult {
       poolName: map['poolName'] as String,
       protocols: (map['protocols'] as List).cast<String>(),
       resourceGroupName: map['resourceGroupName'] as String,
-      securityStyle: map['securityStyle'] == null ? null : map['securityStyle'] as String,
+      securityStyle: map['securityStyle'] == null ? null : map['securityStyle']! as String,
       serviceLevel: map['serviceLevel'] as String,
       smbAccessBasedEnumerationEnabled: map['smbAccessBasedEnumerationEnabled'] as bool,
       smbNonBrowsableEnabled: map['smbNonBrowsableEnabled'] as bool,

@@ -85,20 +85,20 @@ class GetClustersResult {
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
     return GetClustersResult(
-      clusterName: map['clusterName'] == null ? null : map['clusterName'] as String,
-      clusterStates: map['clusterStates'] == null ? null : (map['clusterStates'] as List).cast<String>(),
-      clusterTypes: map['clusterTypes'] == null ? null : (map['clusterTypes'] as List).cast<String>(),
+      clusterName: map['clusterName'] == null ? null : map['clusterName']! as String,
+      clusterStates: map['clusterStates'] == null ? null : (map['clusterStates']! as List).cast<String>(),
+      clusterTypes: map['clusterTypes'] == null ? null : (map['clusterTypes']! as List).cast<String>(),
       clusters: pulumi.Input.decodeList<GetClustersCluster>(map['clusters'], (value) => GetClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      maxResults: map['maxResults'] == null ? null : map['maxResults'] as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      maxResults: map['maxResults'] == null ? null : map['maxResults']! as int,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      nextToken: map['nextToken'] == null ? null : map['nextToken'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      paymentTypes: map['paymentTypes'] == null ? null : (map['paymentTypes'] as List).cast<String>(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      nextToken: map['nextToken'] == null ? null : map['nextToken']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      paymentTypes: map['paymentTypes'] == null ? null : (map['paymentTypes']! as List).cast<String>(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       totalCount: map['totalCount'] as int,
     );
   }

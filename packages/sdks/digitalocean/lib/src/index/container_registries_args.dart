@@ -31,8 +31,8 @@ class ContainerRegistriesArgs {
 
   factory ContainerRegistriesArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistriesArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       subscriptionTierSlug: (map['subscriptionTierSlug'] as String).input(),
     );
   }

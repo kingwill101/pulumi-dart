@@ -26,8 +26,8 @@ class InstanceMessage {
 
   factory InstanceMessage.fromMap(Map<String, dynamic> map) {
     return InstanceMessage(
-      code: map['code'] == null ? null : (InstanceMessageCode.fromValue(map['code'] as String)).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (InstanceMessageCode.fromValue(map['code']! as String)).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

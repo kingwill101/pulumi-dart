@@ -36,10 +36,10 @@ class ImportSourceProperties {
 
   factory ImportSourceProperties.fromMap(Map<String, dynamic> map) {
     return ImportSourceProperties(
-      dataDirPath: map['dataDirPath'] == null ? null : (map['dataDirPath'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      storageUrl: map['storageUrl'] == null ? null : (map['storageUrl'] as String).input(),
+      dataDirPath: map['dataDirPath'] == null ? null : (map['dataDirPath']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      storageUrl: map['storageUrl'] == null ? null : (map['storageUrl']! as String).input(),
     );
   }
 }

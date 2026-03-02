@@ -31,9 +31,9 @@ class ResourceLimitContainerV1beta1 {
 
   factory ResourceLimitContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceLimitContainerV1beta1(
-      maximum: map['maximum'] == null ? null : (map['maximum'] as String).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum']! as String).input(),
+      minimum: map['minimum'] == null ? null : (map['minimum']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

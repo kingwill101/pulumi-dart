@@ -42,11 +42,11 @@ class ConversationProfileTtsConfig {
 
   factory ConversationProfileTtsConfig.fromMap(Map<String, dynamic> map) {
     return ConversationProfileTtsConfig(
-      effectsProfileIds: map['effectsProfileIds'] == null ? null : ((map['effectsProfileIds'] as List).cast<String>()).input(),
-      pitch: map['pitch'] == null ? null : (map['pitch'] as double).input(),
-      speakingRate: map['speakingRate'] == null ? null : (map['speakingRate'] as double).input(),
-      voice: map['voice'] == null ? null : (ConversationProfileTtsConfigVoice.fromMap((map['voice'] as Map).cast<String, dynamic>())).input(),
-      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb'] as double).input(),
+      effectsProfileIds: map['effectsProfileIds'] == null ? null : ((map['effectsProfileIds']! as List).cast<String>()).input(),
+      pitch: map['pitch'] == null ? null : (map['pitch']! as double).input(),
+      speakingRate: map['speakingRate'] == null ? null : (map['speakingRate']! as double).input(),
+      voice: map['voice'] == null ? null : (ConversationProfileTtsConfigVoice.fromMap((map['voice']! as Map).cast<String, dynamic>())).input(),
+      volumeGainDb: map['volumeGainDb'] == null ? null : (map['volumeGainDb']! as double).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class EnvironmentDaprComponentSecret {
 
   factory EnvironmentDaprComponentSecret.fromMap(Map<String, dynamic> map) {
     return EnvironmentDaprComponentSecret(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

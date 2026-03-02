@@ -74,15 +74,15 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
-      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp'] as bool).input(),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
-      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes']! as bool).input(),
+      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp']! as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes']! as bool).input(),
+      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       peerNetwork: (map['peerNetwork'] as String).input(),
       peerNetworkType: (map['peerNetworkType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
     );
   }

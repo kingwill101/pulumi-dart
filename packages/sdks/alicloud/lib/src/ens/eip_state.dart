@@ -61,15 +61,15 @@ class EipState {
 
   factory EipState.fromMap(Map<String, dynamic> map) {
     return EipState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eipName: map['eipName'] == null ? null : (map['eipName'] as String).input(),
-      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId'] as String).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      isp: map['isp'] == null ? null : (map['isp'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eipName: map['eipName'] == null ? null : (map['eipName']! as String).input(),
+      ensRegionId: map['ensRegionId'] == null ? null : (map['ensRegionId']! as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      isp: map['isp'] == null ? null : (map['isp']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

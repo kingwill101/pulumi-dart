@@ -33,9 +33,9 @@ class SessionLoggerAssociationState {
 
   factory SessionLoggerAssociationState.fromMap(Map<String, dynamic> map) {
     return SessionLoggerAssociationState(
-      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sessionLoggerArn: map['sessionLoggerArn'] == null ? null : (map['sessionLoggerArn'] as String).input(),
+      portalArn: map['portalArn'] == null ? null : ((map['portalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sessionLoggerArn: map['sessionLoggerArn'] == null ? null : ((map['sessionLoggerArn'] as String).input()).input(),
     );
   }
 }

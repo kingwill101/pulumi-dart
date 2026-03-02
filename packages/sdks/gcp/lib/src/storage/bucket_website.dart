@@ -27,8 +27,8 @@ class BucketWebsite {
 
   factory BucketWebsite.fromMap(Map<String, dynamic> map) {
     return BucketWebsite(
-      mainPageSuffix: map['mainPageSuffix'] == null ? null : (map['mainPageSuffix'] as String).input(),
-      notFoundPage: map['notFoundPage'] == null ? null : (map['notFoundPage'] as String).input(),
+      mainPageSuffix: map['mainPageSuffix'] == null ? null : (map['mainPageSuffix']! as String).input(),
+      notFoundPage: map['notFoundPage'] == null ? null : (map['notFoundPage']! as String).input(),
     );
   }
 }

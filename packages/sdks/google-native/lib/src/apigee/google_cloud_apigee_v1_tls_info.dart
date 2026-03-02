@@ -62,15 +62,15 @@ class GoogleCloudApigeeV1TlsInfo {
 
   factory GoogleCloudApigeeV1TlsInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1TlsInfo(
-      ciphers: map['ciphers'] == null ? null : ((map['ciphers'] as List).cast<String>()).input(),
-      clientAuthEnabled: map['clientAuthEnabled'] == null ? null : (map['clientAuthEnabled'] as bool).input(),
-      commonName: map['commonName'] == null ? null : (GoogleCloudApigeeV1TlsInfoCommonName.fromMap((map['commonName'] as Map).cast<String, dynamic>())).input(),
+      ciphers: map['ciphers'] == null ? null : ((map['ciphers']! as List).cast<String>()).input(),
+      clientAuthEnabled: map['clientAuthEnabled'] == null ? null : (map['clientAuthEnabled']! as bool).input(),
+      commonName: map['commonName'] == null ? null : (GoogleCloudApigeeV1TlsInfoCommonName.fromMap((map['commonName']! as Map).cast<String, dynamic>())).input(),
       enabled: (map['enabled'] as bool).input(),
-      ignoreValidationErrors: map['ignoreValidationErrors'] == null ? null : (map['ignoreValidationErrors'] as bool).input(),
-      keyAlias: map['keyAlias'] == null ? null : (map['keyAlias'] as String).input(),
-      keyStore: map['keyStore'] == null ? null : (map['keyStore'] as String).input(),
-      protocols: map['protocols'] == null ? null : ((map['protocols'] as List).cast<String>()).input(),
-      trustStore: map['trustStore'] == null ? null : (map['trustStore'] as String).input(),
+      ignoreValidationErrors: map['ignoreValidationErrors'] == null ? null : (map['ignoreValidationErrors']! as bool).input(),
+      keyAlias: map['keyAlias'] == null ? null : (map['keyAlias']! as String).input(),
+      keyStore: map['keyStore'] == null ? null : (map['keyStore']! as String).input(),
+      protocols: map['protocols'] == null ? null : ((map['protocols']! as List).cast<String>()).input(),
+      trustStore: map['trustStore'] == null ? null : (map['trustStore']! as String).input(),
     );
   }
 }

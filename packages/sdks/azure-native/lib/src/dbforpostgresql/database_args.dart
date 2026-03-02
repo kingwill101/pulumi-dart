@@ -44,9 +44,9 @@ class DatabaseArgs {
 
   factory DatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseArgs(
-      charset: map['charset'] == null ? null : (map['charset'] as String).input(),
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      charset: map['charset'] == null ? null : (map['charset']! as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

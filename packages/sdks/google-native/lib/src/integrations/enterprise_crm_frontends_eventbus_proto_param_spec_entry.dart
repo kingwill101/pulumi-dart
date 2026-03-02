@@ -80,18 +80,18 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
 
   factory EnterpriseCrmFrontendsEventbusProtoParamSpecEntry.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoParamSpecEntry(
-      className: map['className'] == null ? null : (map['className'] as String).input(),
-      collectionElementClassName: map['collectionElementClassName'] == null ? null : (map['collectionElementClassName'] as String).input(),
-      config: map['config'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      dataType: map['dataType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType.fromValue(map['dataType'] as String)).input(),
-      defaultValue: map['defaultValue'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
-      isDeprecated: map['isDeprecated'] == null ? null : (map['isDeprecated'] as bool).input(),
-      isOutput: map['isOutput'] == null ? null : (map['isOutput'] as bool).input(),
-      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      protoDef: map['protoDef'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition.fromMap((map['protoDef'] as Map).cast<String, dynamic>())).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      validationRule: map['validationRule'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromMap((map['validationRule'] as Map).cast<String, dynamic>())).input(),
+      className: map['className'] == null ? null : (map['className']! as String).input(),
+      collectionElementClassName: map['collectionElementClassName'] == null ? null : (map['collectionElementClassName']! as String).input(),
+      config: map['config'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      dataType: map['dataType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType.fromValue(map['dataType']! as String)).input(),
+      defaultValue: map['defaultValue'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())).input(),
+      isDeprecated: map['isDeprecated'] == null ? null : (map['isDeprecated']! as bool).input(),
+      isOutput: map['isOutput'] == null ? null : (map['isOutput']! as bool).input(),
+      jsonSchema: map['jsonSchema'] == null ? null : (map['jsonSchema']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      protoDef: map['protoDef'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinition.fromMap((map['protoDef']! as Map).cast<String, dynamic>())).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
+      validationRule: map['validationRule'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromMap((map['validationRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

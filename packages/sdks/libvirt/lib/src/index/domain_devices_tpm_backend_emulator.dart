@@ -54,13 +54,13 @@ class DomainDevicesTpmBackendEmulator {
 
   factory DomainDevicesTpmBackendEmulator.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackendEmulator(
-      activePcrBanks: map['activePcrBanks'] == null ? null : (DomainDevicesTpmBackendEmulatorActivePcrBanks.fromMap((map['activePcrBanks'] as Map).cast<String, dynamic>())).input(),
-      debug: map['debug'] == null ? null : (map['debug'] as double).input(),
-      encryption: map['encryption'] == null ? null : (DomainDevicesTpmBackendEmulatorEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      persistentState: map['persistentState'] == null ? null : (map['persistentState'] as String).input(),
-      profile: map['profile'] == null ? null : (DomainDevicesTpmBackendEmulatorProfile.fromMap((map['profile'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (DomainDevicesTpmBackendEmulatorSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      activePcrBanks: map['activePcrBanks'] == null ? null : (DomainDevicesTpmBackendEmulatorActivePcrBanks.fromMap((map['activePcrBanks']! as Map).cast<String, dynamic>())).input(),
+      debug: map['debug'] == null ? null : (map['debug']! as double).input(),
+      encryption: map['encryption'] == null ? null : (DomainDevicesTpmBackendEmulatorEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      persistentState: map['persistentState'] == null ? null : (map['persistentState']! as String).input(),
+      profile: map['profile'] == null ? null : (DomainDevicesTpmBackendEmulatorProfile.fromMap((map['profile']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesTpmBackendEmulatorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

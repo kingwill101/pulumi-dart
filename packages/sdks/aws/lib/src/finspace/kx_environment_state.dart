@@ -90,20 +90,20 @@ class KxEnvironmentState {
 
   factory KxEnvironmentState.fromMap(Map<String, dynamic> map) {
     return KxEnvironmentState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
-      customDnsConfigurations: map['customDnsConfigurations'] == null ? null : (pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(map['customDnsConfigurations'], (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      infrastructureAccountId: map['infrastructureAccountId'] == null ? null : (map['infrastructureAccountId'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : (map['lastModifiedTimestamp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      transitGatewayConfiguration: map['transitGatewayConfiguration'] == null ? null : (KxEnvironmentTransitGatewayConfiguration.fromMap((map['transitGatewayConfiguration'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : ((map['createdTimestamp'] as String).input()).input(),
+      customDnsConfigurations: map['customDnsConfigurations'] == null ? null : ((pulumi.Input.decodeList<KxEnvironmentCustomDnsConfiguration>(map['customDnsConfigurations']!, (value) => KxEnvironmentCustomDnsConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      infrastructureAccountId: map['infrastructureAccountId'] == null ? null : ((map['infrastructureAccountId'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : ((map['lastModifiedTimestamp'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayConfiguration: map['transitGatewayConfiguration'] == null ? null : ((KxEnvironmentTransitGatewayConfiguration.fromMap((map['transitGatewayConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

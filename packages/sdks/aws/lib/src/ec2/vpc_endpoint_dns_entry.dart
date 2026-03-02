@@ -25,8 +25,8 @@ class VpcEndpointDnsEntry {
 
   factory VpcEndpointDnsEntry.fromMap(Map<String, dynamic> map) {
     return VpcEndpointDnsEntry(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
     );
   }
 }

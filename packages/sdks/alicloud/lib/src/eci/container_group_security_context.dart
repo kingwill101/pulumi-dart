@@ -21,7 +21,7 @@ class ContainerGroupSecurityContext {
 
   factory ContainerGroupSecurityContext.fromMap(Map<String, dynamic> map) {
     return ContainerGroupSecurityContext(
-      sysctls: map['sysctls'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSecurityContextSysctl>(map['sysctls'], (value) => ContainerGroupSecurityContextSysctl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sysctls: map['sysctls'] == null ? null : (pulumi.Input.decodeList<ContainerGroupSecurityContextSysctl>(map['sysctls']!, (value) => ContainerGroupSecurityContextSysctl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class AutomationAction {
 
   factory AutomationAction.fromMap(Map<String, dynamic> map) {
     return AutomationAction(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      triggerUrl: map['triggerUrl'] == null ? null : (map['triggerUrl'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      triggerUrl: map['triggerUrl'] == null ? null : (map['triggerUrl']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

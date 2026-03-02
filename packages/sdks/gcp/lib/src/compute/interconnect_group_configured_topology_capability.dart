@@ -32,8 +32,8 @@ class InterconnectGroupConfiguredTopologyCapability {
 
   factory InterconnectGroupConfiguredTopologyCapability.fromMap(Map<String, dynamic> map) {
     return InterconnectGroupConfiguredTopologyCapability(
-      intendedCapabilityBlockers: map['intendedCapabilityBlockers'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>(map['intendedCapabilityBlockers'], (value) => InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      supportedSla: map['supportedSla'] == null ? null : (map['supportedSla'] as String).input(),
+      intendedCapabilityBlockers: map['intendedCapabilityBlockers'] == null ? null : (pulumi.Input.decodeList<InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker>(map['intendedCapabilityBlockers']!, (value) => InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      supportedSla: map['supportedSla'] == null ? null : (map['supportedSla']! as String).input(),
     );
   }
 }

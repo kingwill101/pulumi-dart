@@ -26,8 +26,8 @@ class RelatedUrlContaineranalysisV1beta1 {
 
   factory RelatedUrlContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RelatedUrlContaineranalysisV1beta1(
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

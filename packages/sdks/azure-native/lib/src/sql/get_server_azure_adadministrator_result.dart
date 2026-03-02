@@ -60,14 +60,14 @@ class GetServerAzureADAdministratorResult {
 
   factory GetServerAzureADAdministratorResult.fromMap(Map<String, dynamic> map) {
     return GetServerAzureADAdministratorResult(
-      administratorType: map['administratorType'] == null ? null : map['administratorType'] as String,
+      administratorType: map['administratorType'] == null ? null : map['administratorType']! as String,
       azureADOnlyAuthentication: map['azureADOnlyAuthentication'] as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       login: map['login'] as String,
       name: map['name'] as String,
       sid: map['sid'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

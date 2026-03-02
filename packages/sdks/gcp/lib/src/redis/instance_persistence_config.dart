@@ -52,10 +52,10 @@ class InstancePersistenceConfig {
 
   factory InstancePersistenceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfig(
-      persistenceMode: map['persistenceMode'] == null ? null : (map['persistenceMode'] as String).input(),
-      rdbNextSnapshotTime: map['rdbNextSnapshotTime'] == null ? null : (map['rdbNextSnapshotTime'] as String).input(),
-      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (map['rdbSnapshotPeriod'] as String).input(),
-      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime'] as String).input(),
+      persistenceMode: map['persistenceMode'] == null ? null : (map['persistenceMode']! as String).input(),
+      rdbNextSnapshotTime: map['rdbNextSnapshotTime'] == null ? null : (map['rdbNextSnapshotTime']! as String).input(),
+      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (map['rdbSnapshotPeriod']! as String).input(),
+      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime']! as String).input(),
     );
   }
 }

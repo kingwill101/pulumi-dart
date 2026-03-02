@@ -67,16 +67,16 @@ class ManagedPrefixListState {
 
   factory ManagedPrefixListState.fromMap(Map<String, dynamic> map) {
     return ManagedPrefixListState(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      entries: map['entries'] == null ? null : (pulumi.Input.decodeList<ManagedPrefixListEntry>(map['entries'], (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxEntries: map['maxEntries'] == null ? null : (map['maxEntries'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      addressFamily: map['addressFamily'] == null ? null : ((map['addressFamily'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      entries: map['entries'] == null ? null : ((pulumi.Input.decodeList<ManagedPrefixListEntry>(map['entries']!, (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      maxEntries: map['maxEntries'] == null ? null : ((map['maxEntries'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

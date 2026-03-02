@@ -27,7 +27,7 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 
   factory GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBillingBudgetsV1beta1ThresholdRule(
-      spendBasis: map['spendBasis'] == null ? null : (GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis.fromValue(map['spendBasis'] as String)).input(),
+      spendBasis: map['spendBasis'] == null ? null : (GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis.fromValue(map['spendBasis']! as String)).input(),
       thresholdPercent: (map['thresholdPercent'] as double).input(),
     );
   }

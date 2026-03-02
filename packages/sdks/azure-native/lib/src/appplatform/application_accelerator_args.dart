@@ -40,10 +40,10 @@ class ApplicationAcceleratorArgs {
 
   factory ApplicationAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorArgs(
-      applicationAcceleratorName: map['applicationAcceleratorName'] == null ? null : (map['applicationAcceleratorName'] as String).input(),
+      applicationAcceleratorName: map['applicationAcceleratorName'] == null ? null : (map['applicationAcceleratorName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

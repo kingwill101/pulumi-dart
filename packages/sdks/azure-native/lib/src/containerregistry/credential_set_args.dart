@@ -52,10 +52,10 @@ class CredentialSetArgs {
 
   factory CredentialSetArgs.fromMap(Map<String, dynamic> map) {
     return CredentialSetArgs(
-      authCredentials: map['authCredentials'] == null ? null : (pulumi.Input.decodeList<AuthCredential>(map['authCredentials'], (value) => AuthCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credentialSetName: map['credentialSetName'] == null ? null : (map['credentialSetName'] as String).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      loginServer: map['loginServer'] == null ? null : (map['loginServer'] as String).input(),
+      authCredentials: map['authCredentials'] == null ? null : (pulumi.Input.decodeList<AuthCredential>(map['authCredentials']!, (value) => AuthCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credentialSetName: map['credentialSetName'] == null ? null : (map['credentialSetName']! as String).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      loginServer: map['loginServer'] == null ? null : (map['loginServer']! as String).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

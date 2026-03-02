@@ -55,13 +55,13 @@ class Registry {
 
   factory Registry.fromMap(Map<String, dynamic> map) {
     return Registry(
-      discoveryUrl: map['discoveryUrl'] == null ? null : (map['discoveryUrl'] as String).input(),
-      intellectualPropertyPublisher: map['intellectualPropertyPublisher'] == null ? null : (map['intellectualPropertyPublisher'] as String).input(),
-      managedResourceGroup: map['managedResourceGroup'] == null ? null : (ArmResourceId.fromMap((map['managedResourceGroup'] as Map).cast<String, dynamic>())).input(),
-      mlFlowRegistryUri: map['mlFlowRegistryUri'] == null ? null : (map['mlFlowRegistryUri'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      regionDetails: map['regionDetails'] == null ? null : (pulumi.Input.decodeList<RegistryRegionArmDetails>(map['regionDetails'], (value) => RegistryRegionArmDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      registryPrivateEndpointConnections: map['registryPrivateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<RegistryPrivateEndpointConnection>(map['registryPrivateEndpointConnections'], (value) => RegistryPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discoveryUrl: map['discoveryUrl'] == null ? null : (map['discoveryUrl']! as String).input(),
+      intellectualPropertyPublisher: map['intellectualPropertyPublisher'] == null ? null : (map['intellectualPropertyPublisher']! as String).input(),
+      managedResourceGroup: map['managedResourceGroup'] == null ? null : (ArmResourceId.fromMap((map['managedResourceGroup']! as Map).cast<String, dynamic>())).input(),
+      mlFlowRegistryUri: map['mlFlowRegistryUri'] == null ? null : (map['mlFlowRegistryUri']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      regionDetails: map['regionDetails'] == null ? null : (pulumi.Input.decodeList<RegistryRegionArmDetails>(map['regionDetails']!, (value) => RegistryRegionArmDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      registryPrivateEndpointConnections: map['registryPrivateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<RegistryPrivateEndpointConnection>(map['registryPrivateEndpointConnections']!, (value) => RegistryPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

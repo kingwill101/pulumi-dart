@@ -26,8 +26,8 @@ class LinkedInterconnectAttachments {
 
   factory LinkedInterconnectAttachments.fromMap(Map<String, dynamic> map) {
     return LinkedInterconnectAttachments(
-      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer'] as bool).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      siteToSiteDataTransfer: map['siteToSiteDataTransfer'] == null ? null : (map['siteToSiteDataTransfer']! as bool).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
     );
   }
 }

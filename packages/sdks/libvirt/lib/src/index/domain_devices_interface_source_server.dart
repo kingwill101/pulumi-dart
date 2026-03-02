@@ -31,9 +31,9 @@ class DomainDevicesInterfaceSourceServer {
 
   factory DomainDevicesInterfaceSourceServer.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceServer(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      local: map['local'] == null ? null : (DomainDevicesInterfaceSourceServerLocal.fromMap((map['local'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      local: map['local'] == null ? null : (DomainDevicesInterfaceSourceServerLocal.fromMap((map['local']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
     );
   }
 }

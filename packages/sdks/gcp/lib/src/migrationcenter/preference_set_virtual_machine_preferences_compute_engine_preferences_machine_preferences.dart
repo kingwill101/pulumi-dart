@@ -22,7 +22,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 
   factory PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferences(
-      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : (pulumi.Input.decodeList<PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries>(map['allowedMachineSeries'], (value) => PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : (pulumi.Input.decodeList<PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries>(map['allowedMachineSeries']!, (value) => PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

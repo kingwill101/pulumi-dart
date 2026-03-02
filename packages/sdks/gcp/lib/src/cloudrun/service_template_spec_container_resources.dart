@@ -35,8 +35,8 @@ class ServiceTemplateSpecContainerResources {
 
   factory ServiceTemplateSpecContainerResources.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerResources(
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
     );
   }
 }

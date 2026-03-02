@@ -25,8 +25,8 @@ class SecurityConfigurationEncryptionConfigurationS3Encryption {
 
   factory SecurityConfigurationEncryptionConfigurationS3Encryption.fromMap(Map<String, dynamic> map) {
     return SecurityConfigurationEncryptionConfigurationS3Encryption(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      s3EncryptionMode: map['s3EncryptionMode'] == null ? null : (map['s3EncryptionMode'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      s3EncryptionMode: map['s3EncryptionMode'] == null ? null : ((map['s3EncryptionMode'] as String).input()).input(),
     );
   }
 }

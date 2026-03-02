@@ -41,11 +41,11 @@ class EncryptionScopeState {
 
   factory EncryptionScopeState.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeState(
-      infrastructureEncryptionRequired: map['infrastructureEncryptionRequired'] == null ? null : (map['infrastructureEncryptionRequired'] as bool).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      infrastructureEncryptionRequired: map['infrastructureEncryptionRequired'] == null ? null : (map['infrastructureEncryptionRequired']! as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

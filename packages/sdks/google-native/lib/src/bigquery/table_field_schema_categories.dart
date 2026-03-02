@@ -21,7 +21,7 @@ class TableFieldSchemaCategories {
 
   factory TableFieldSchemaCategories.fromMap(Map<String, dynamic> map) {
     return TableFieldSchemaCategories(
-      names: map['names'] == null ? null : ((map['names'] as List).cast<String>()).input(),
+      names: map['names'] == null ? null : ((map['names']! as List).cast<String>()).input(),
     );
   }
 }

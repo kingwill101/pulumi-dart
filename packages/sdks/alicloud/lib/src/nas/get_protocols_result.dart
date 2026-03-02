@@ -38,10 +38,10 @@ class GetProtocolsResult {
   factory GetProtocolsResult.fromMap(Map<String, dynamic> map) {
     return GetProtocolsResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       protocols: (map['protocols'] as List).cast<String>(),
       type: map['type'] as String,
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

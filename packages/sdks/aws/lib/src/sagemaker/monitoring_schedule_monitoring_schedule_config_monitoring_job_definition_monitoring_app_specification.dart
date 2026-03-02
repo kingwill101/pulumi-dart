@@ -40,11 +40,11 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification(
-      containerArguments: map['containerArguments'] == null ? null : ((map['containerArguments'] as List).cast<String>()).input(),
-      containerEntrypoints: map['containerEntrypoints'] == null ? null : ((map['containerEntrypoints'] as List).cast<String>()).input(),
+      containerArguments: map['containerArguments'] == null ? null : (((map['containerArguments'] as List).cast<String>()).input()).input(),
+      containerEntrypoints: map['containerEntrypoints'] == null ? null : (((map['containerEntrypoints'] as List).cast<String>()).input()).input(),
       imageUri: (map['imageUri'] as String).input(),
-      postAnalyticsProcessorSourceUri: map['postAnalyticsProcessorSourceUri'] == null ? null : (map['postAnalyticsProcessorSourceUri'] as String).input(),
-      recordPreprocessorSourceUri: map['recordPreprocessorSourceUri'] == null ? null : (map['recordPreprocessorSourceUri'] as String).input(),
+      postAnalyticsProcessorSourceUri: map['postAnalyticsProcessorSourceUri'] == null ? null : ((map['postAnalyticsProcessorSourceUri'] as String).input()).input(),
+      recordPreprocessorSourceUri: map['recordPreprocessorSourceUri'] == null ? null : ((map['recordPreprocessorSourceUri'] as String).input()).input(),
     );
   }
 }

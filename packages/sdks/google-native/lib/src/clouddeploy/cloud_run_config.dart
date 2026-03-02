@@ -21,7 +21,7 @@ class CloudRunConfig {
 
   factory CloudRunConfig.fromMap(Map<String, dynamic> map) {
     return CloudRunConfig(
-      automaticTrafficControl: map['automaticTrafficControl'] == null ? null : (map['automaticTrafficControl'] as bool).input(),
+      automaticTrafficControl: map['automaticTrafficControl'] == null ? null : (map['automaticTrafficControl']! as bool).input(),
     );
   }
 }

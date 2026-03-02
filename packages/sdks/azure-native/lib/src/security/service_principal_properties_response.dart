@@ -26,8 +26,8 @@ class ServicePrincipalPropertiesResponse {
 
   factory ServicePrincipalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalPropertiesResponse(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
     );
   }
 }

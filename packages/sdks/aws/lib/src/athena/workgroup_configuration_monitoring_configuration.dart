@@ -33,9 +33,9 @@ class WorkgroupConfigurationMonitoringConfiguration {
 
   factory WorkgroupConfigurationMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfiguration(
-      cloudWatchLoggingConfiguration: map['cloudWatchLoggingConfiguration'] == null ? null : (WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration.fromMap((map['cloudWatchLoggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedLoggingConfiguration: map['managedLoggingConfiguration'] == null ? null : (WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration.fromMap((map['managedLoggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      s3LoggingConfiguration: map['s3LoggingConfiguration'] == null ? null : (WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration.fromMap((map['s3LoggingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cloudWatchLoggingConfiguration: map['cloudWatchLoggingConfiguration'] == null ? null : ((WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration.fromMap((map['cloudWatchLoggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      managedLoggingConfiguration: map['managedLoggingConfiguration'] == null ? null : ((WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration.fromMap((map['managedLoggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      s3LoggingConfiguration: map['s3LoggingConfiguration'] == null ? null : ((WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration.fromMap((map['s3LoggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

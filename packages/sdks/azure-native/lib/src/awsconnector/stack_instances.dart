@@ -33,9 +33,9 @@ class StackInstances {
 
   factory StackInstances.fromMap(Map<String, dynamic> map) {
     return StackInstances(
-      deploymentTargets: map['deploymentTargets'] == null ? null : (DeploymentTargets.fromMap((map['deploymentTargets'] as Map).cast<String, dynamic>())).input(),
-      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameterOverrides'], (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      deploymentTargets: map['deploymentTargets'] == null ? null : (DeploymentTargets.fromMap((map['deploymentTargets']! as Map).cast<String, dynamic>())).input(),
+      parameterOverrides: map['parameterOverrides'] == null ? null : (pulumi.Input.decodeList<Parameter>(map['parameterOverrides']!, (value) => Parameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
     );
   }
 }

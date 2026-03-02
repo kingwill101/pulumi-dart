@@ -51,11 +51,11 @@ class UrlRedirectActionParametersResponse {
 
   factory UrlRedirectActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return UrlRedirectActionParametersResponse(
-      customFragment: map['customFragment'] == null ? null : (map['customFragment'] as String).input(),
-      customHostname: map['customHostname'] == null ? null : (map['customHostname'] as String).input(),
-      customPath: map['customPath'] == null ? null : (map['customPath'] as String).input(),
-      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString'] as String).input(),
-      destinationProtocol: map['destinationProtocol'] == null ? null : (map['destinationProtocol'] as String).input(),
+      customFragment: map['customFragment'] == null ? null : (map['customFragment']! as String).input(),
+      customHostname: map['customHostname'] == null ? null : (map['customHostname']! as String).input(),
+      customPath: map['customPath'] == null ? null : (map['customPath']! as String).input(),
+      customQueryString: map['customQueryString'] == null ? null : (map['customQueryString']! as String).input(),
+      destinationProtocol: map['destinationProtocol'] == null ? null : (map['destinationProtocol']! as String).input(),
       redirectType: (map['redirectType'] as String).input(),
       typeName: (map['typeName'] as String).input(),
     );

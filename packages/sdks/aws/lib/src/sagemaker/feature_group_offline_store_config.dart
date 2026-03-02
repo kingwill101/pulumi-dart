@@ -37,10 +37,10 @@ class FeatureGroupOfflineStoreConfig {
 
   factory FeatureGroupOfflineStoreConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupOfflineStoreConfig(
-      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : (FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>())).input(),
-      disableGlueTableCreation: map['disableGlueTableCreation'] == null ? null : (map['disableGlueTableCreation'] as bool).input(),
-      s3StorageConfig: (FeatureGroupOfflineStoreConfigS3StorageConfig.fromMap((map['s3StorageConfig'] as Map).cast<String, dynamic>())).input(),
-      tableFormat: map['tableFormat'] == null ? null : (map['tableFormat'] as String).input(),
+      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : ((FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap((map['dataCatalogConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      disableGlueTableCreation: map['disableGlueTableCreation'] == null ? null : ((map['disableGlueTableCreation'] as bool).input()).input(),
+      s3StorageConfig: (FeatureGroupOfflineStoreConfigS3StorageConfig.fromMap((map['s3StorageConfig']! as Map).cast<String, dynamic>())).input(),
+      tableFormat: map['tableFormat'] == null ? null : ((map['tableFormat'] as String).input()).input(),
     );
   }
 }

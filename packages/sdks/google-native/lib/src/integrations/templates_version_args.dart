@@ -91,20 +91,20 @@ class TemplatesVersionArgs {
 
   factory TemplatesVersionArgs.fromMap(Map<String, dynamic> map) {
     return TemplatesVersionArgs(
-      databasePersistencePolicy: map['databasePersistencePolicy'] == null ? null : (TemplatesVersionDatabasePersistencePolicy.fromValue(map['databasePersistencePolicy'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      errorCatcherConfigs: map['errorCatcherConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>(map['errorCatcherConfigs'], (value) => GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databasePersistencePolicy: map['databasePersistencePolicy'] == null ? null : (TemplatesVersionDatabasePersistencePolicy.fromValue(map['databasePersistencePolicy']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      errorCatcherConfigs: map['errorCatcherConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaErrorCatcherConfig>(map['errorCatcherConfigs']!, (value) => GoogleCloudIntegrationsV1alphaErrorCatcherConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       integrationtemplateId: (map['integrationtemplateId'] as String).input(),
-      lastModifierEmail: map['lastModifierEmail'] == null ? null : (map['lastModifierEmail'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      parentIntegrationVersionId: map['parentIntegrationVersionId'] == null ? null : (map['parentIntegrationVersionId'] as String).input(),
+      lastModifierEmail: map['lastModifierEmail'] == null ? null : (map['lastModifierEmail']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      parentIntegrationVersionId: map['parentIntegrationVersionId'] == null ? null : (map['parentIntegrationVersionId']! as String).input(),
       productId: (map['productId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      taskConfigs: map['taskConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTaskConfig>(map['taskConfigs'], (value) => EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      teardown: map['teardown'] == null ? null : (EnterpriseCrmEventbusProtoTeardown.fromMap((map['teardown'] as Map).cast<String, dynamic>())).input(),
-      templateParameters: map['templateParameters'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromMap((map['templateParameters'] as Map).cast<String, dynamic>())).input(),
-      triggerConfigs: map['triggerConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>(map['triggerConfigs'], (value) => EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      userLabel: map['userLabel'] == null ? null : (map['userLabel'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      taskConfigs: map['taskConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTaskConfig>(map['taskConfigs']!, (value) => EnterpriseCrmFrontendsEventbusProtoTaskConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      teardown: map['teardown'] == null ? null : (EnterpriseCrmEventbusProtoTeardown.fromMap((map['teardown']! as Map).cast<String, dynamic>())).input(),
+      templateParameters: map['templateParameters'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoWorkflowParameters.fromMap((map['templateParameters']! as Map).cast<String, dynamic>())).input(),
+      triggerConfigs: map['triggerConfigs'] == null ? null : (pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoTriggerConfig>(map['triggerConfigs']!, (value) => EnterpriseCrmFrontendsEventbusProtoTriggerConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userLabel: map['userLabel'] == null ? null : (map['userLabel']! as String).input(),
     );
   }
 }

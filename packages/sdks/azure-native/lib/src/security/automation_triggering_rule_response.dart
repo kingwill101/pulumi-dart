@@ -36,10 +36,10 @@ class AutomationTriggeringRuleResponse {
 
   factory AutomationTriggeringRuleResponse.fromMap(Map<String, dynamic> map) {
     return AutomationTriggeringRuleResponse(
-      expectedValue: map['expectedValue'] == null ? null : (map['expectedValue'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      propertyJPath: map['propertyJPath'] == null ? null : (map['propertyJPath'] as String).input(),
-      propertyType: map['propertyType'] == null ? null : (map['propertyType'] as String).input(),
+      expectedValue: map['expectedValue'] == null ? null : (map['expectedValue']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      propertyJPath: map['propertyJPath'] == null ? null : (map['propertyJPath']! as String).input(),
+      propertyType: map['propertyType'] == null ? null : (map['propertyType']! as String).input(),
     );
   }
 }

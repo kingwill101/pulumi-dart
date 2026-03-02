@@ -21,7 +21,7 @@ class PubSubConfig {
 
   factory PubSubConfig.fromMap(Map<String, dynamic> map) {
     return PubSubConfig(
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

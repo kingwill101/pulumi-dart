@@ -99,21 +99,21 @@ class RegistryArgs {
 
   factory RegistryArgs.fromMap(Map<String, dynamic> map) {
     return RegistryArgs(
-      adminUserEnabled: map['adminUserEnabled'] == null ? null : (map['adminUserEnabled'] as bool).input(),
-      anonymousPullEnabled: map['anonymousPullEnabled'] == null ? null : (map['anonymousPullEnabled'] as bool).input(),
-      dataEndpointEnabled: map['dataEndpointEnabled'] == null ? null : (map['dataEndpointEnabled'] as bool).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionProperty.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkRuleBypassOptions: map['networkRuleBypassOptions'] == null ? null : (map['networkRuleBypassOptions'] as String).input(),
-      networkRuleSet: map['networkRuleSet'] == null ? null : (NetworkRuleSet.fromMap((map['networkRuleSet'] as Map).cast<String, dynamic>())).input(),
-      policies: map['policies'] == null ? null : (Policies.fromMap((map['policies'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      registryName: map['registryName'] == null ? null : (map['registryName'] as String).input(),
+      adminUserEnabled: map['adminUserEnabled'] == null ? null : (map['adminUserEnabled']! as bool).input(),
+      anonymousPullEnabled: map['anonymousPullEnabled'] == null ? null : (map['anonymousPullEnabled']! as bool).input(),
+      dataEndpointEnabled: map['dataEndpointEnabled'] == null ? null : (map['dataEndpointEnabled']! as bool).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionProperty.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (IdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkRuleBypassOptions: map['networkRuleBypassOptions'] == null ? null : (map['networkRuleBypassOptions']! as String).input(),
+      networkRuleSet: map['networkRuleSet'] == null ? null : (NetworkRuleSet.fromMap((map['networkRuleSet']! as Map).cast<String, dynamic>())).input(),
+      policies: map['policies'] == null ? null : (Policies.fromMap((map['policies']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      registryName: map['registryName'] == null ? null : (map['registryName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy']! as String).input(),
     );
   }
 }

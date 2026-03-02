@@ -21,7 +21,7 @@ class EdgeClusterGkehubV1alpha2 {
 
   factory EdgeClusterGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return EdgeClusterGkehubV1alpha2(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

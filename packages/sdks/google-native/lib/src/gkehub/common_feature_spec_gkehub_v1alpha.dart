@@ -63,14 +63,14 @@ class CommonFeatureSpecGkehubV1alpha {
 
   factory CommonFeatureSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return CommonFeatureSpecGkehubV1alpha(
-      anthosobservability: map['anthosobservability'] == null ? null : (AnthosObservabilityFeatureSpec.fromMap((map['anthosobservability'] as Map).cast<String, dynamic>())).input(),
-      appdevexperience: map['appdevexperience'] == null ? null : ((map['appdevexperience'] as Map).cast<String, dynamic>()).input(),
-      cloudauditlogging: map['cloudauditlogging'] == null ? null : (CloudAuditLoggingFeatureSpec.fromMap((map['cloudauditlogging'] as Map).cast<String, dynamic>())).input(),
-      clusterupgrade: map['clusterupgrade'] == null ? null : (ClusterUpgradeFleetSpecGkehubV1alpha.fromMap((map['clusterupgrade'] as Map).cast<String, dynamic>())).input(),
-      fleetobservability: map['fleetobservability'] == null ? null : (FleetObservabilityFeatureSpecGkehubV1alpha.fromMap((map['fleetobservability'] as Map).cast<String, dynamic>())).input(),
-      multiclusteringress: map['multiclusteringress'] == null ? null : (MultiClusterIngressFeatureSpecGkehubV1alpha.fromMap((map['multiclusteringress'] as Map).cast<String, dynamic>())).input(),
-      namespaceactuation: map['namespaceactuation'] == null ? null : (NamespaceActuationFeatureSpec.fromMap((map['namespaceactuation'] as Map).cast<String, dynamic>())).input(),
-      workloadcertificate: map['workloadcertificate'] == null ? null : (FeatureSpec.fromMap((map['workloadcertificate'] as Map).cast<String, dynamic>())).input(),
+      anthosobservability: map['anthosobservability'] == null ? null : (AnthosObservabilityFeatureSpec.fromMap((map['anthosobservability']! as Map).cast<String, dynamic>())).input(),
+      appdevexperience: map['appdevexperience'] == null ? null : ((map['appdevexperience']! as Map).cast<String, dynamic>()).input(),
+      cloudauditlogging: map['cloudauditlogging'] == null ? null : (CloudAuditLoggingFeatureSpec.fromMap((map['cloudauditlogging']! as Map).cast<String, dynamic>())).input(),
+      clusterupgrade: map['clusterupgrade'] == null ? null : (ClusterUpgradeFleetSpecGkehubV1alpha.fromMap((map['clusterupgrade']! as Map).cast<String, dynamic>())).input(),
+      fleetobservability: map['fleetobservability'] == null ? null : (FleetObservabilityFeatureSpecGkehubV1alpha.fromMap((map['fleetobservability']! as Map).cast<String, dynamic>())).input(),
+      multiclusteringress: map['multiclusteringress'] == null ? null : (MultiClusterIngressFeatureSpecGkehubV1alpha.fromMap((map['multiclusteringress']! as Map).cast<String, dynamic>())).input(),
+      namespaceactuation: map['namespaceactuation'] == null ? null : (NamespaceActuationFeatureSpec.fromMap((map['namespaceactuation']! as Map).cast<String, dynamic>())).input(),
+      workloadcertificate: map['workloadcertificate'] == null ? null : (FeatureSpec.fromMap((map['workloadcertificate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

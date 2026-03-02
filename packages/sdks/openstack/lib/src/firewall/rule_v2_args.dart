@@ -119,20 +119,20 @@ class RuleV2Args {
 
   factory RuleV2Args.fromMap(Map<String, dynamic> map) {
     return RuleV2Args(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationIpAddress: map['destinationIpAddress'] == null ? null : (map['destinationIpAddress'] as String).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
-      sourceIpAddress: map['sourceIpAddress'] == null ? null : (map['sourceIpAddress'] as String).input(),
-      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationIpAddress: map['destinationIpAddress'] == null ? null : (map['destinationIpAddress']! as String).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      sourceIpAddress: map['sourceIpAddress'] == null ? null : (map['sourceIpAddress']! as String).input(),
+      sourcePort: map['sourcePort'] == null ? null : (map['sourcePort']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

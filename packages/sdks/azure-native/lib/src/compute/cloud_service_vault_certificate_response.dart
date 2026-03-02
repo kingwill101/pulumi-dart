@@ -21,7 +21,7 @@ class CloudServiceVaultCertificateResponse {
 
   factory CloudServiceVaultCertificateResponse.fromMap(Map<String, dynamic> map) {
     return CloudServiceVaultCertificateResponse(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
     );
   }
 }

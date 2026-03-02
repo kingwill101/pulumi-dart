@@ -40,10 +40,10 @@ class GetAttachmentArgs {
 
   factory GetAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return GetAttachmentArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAttachmentFilter>(map['filters'], (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAttachmentFilter>(map['filters']!, (value) => GetAttachmentFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
     );
   }
 }

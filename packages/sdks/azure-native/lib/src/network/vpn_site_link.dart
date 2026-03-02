@@ -48,12 +48,12 @@ class VpnSiteLink {
 
   factory VpnSiteLink.fromMap(Map<String, dynamic> map) {
     return VpnSiteLink(
-      bgpProperties: map['bgpProperties'] == null ? null : (VpnLinkBgpSettings.fromMap((map['bgpProperties'] as Map).cast<String, dynamic>())).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      linkProperties: map['linkProperties'] == null ? null : (VpnLinkProviderProperties.fromMap((map['linkProperties'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      bgpProperties: map['bgpProperties'] == null ? null : (VpnLinkBgpSettings.fromMap((map['bgpProperties']! as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      linkProperties: map['linkProperties'] == null ? null : (VpnLinkProviderProperties.fromMap((map['linkProperties']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

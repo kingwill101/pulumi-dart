@@ -33,9 +33,9 @@ class FeatureStateState {
 
   factory FeatureStateState.fromMap(Map<String, dynamic> map) {
     return FeatureStateState(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

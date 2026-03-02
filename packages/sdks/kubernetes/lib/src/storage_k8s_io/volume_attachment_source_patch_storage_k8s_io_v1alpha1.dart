@@ -27,8 +27,8 @@ class VolumeAttachmentSourcePatchStorageK8sIoV1alpha1 {
 
   factory VolumeAttachmentSourcePatchStorageK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentSourcePatchStorageK8sIoV1alpha1(
-      inlineVolumeSpec: map['inlineVolumeSpec'] == null ? null : (PersistentVolumeSpecPatch.fromMap((map['inlineVolumeSpec'] as Map).cast<String, dynamic>())).input(),
-      persistentVolumeName: map['persistentVolumeName'] == null ? null : (map['persistentVolumeName'] as String).input(),
+      inlineVolumeSpec: map['inlineVolumeSpec'] == null ? null : (PersistentVolumeSpecPatch.fromMap((map['inlineVolumeSpec']! as Map).cast<String, dynamic>())).input(),
+      persistentVolumeName: map['persistentVolumeName'] == null ? null : (map['persistentVolumeName']! as String).input(),
     );
   }
 }

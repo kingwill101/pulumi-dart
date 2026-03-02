@@ -55,13 +55,13 @@ class SharedResourceState {
 
   factory SharedResourceState.fromMap(Map<String, dynamic> map) {
     return SharedResourceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      permissionName: map['permissionName'] == null ? null : (map['permissionName'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      permissionName: map['permissionName'] == null ? null : (map['permissionName']! as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

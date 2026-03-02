@@ -32,9 +32,9 @@ class A2ACrossClusterMigrationEnableProtectionInput {
 
   factory A2ACrossClusterMigrationEnableProtectionInput.fromMap(Map<String, dynamic> map) {
     return A2ACrossClusterMigrationEnableProtectionInput(
-      fabricObjectId: map['fabricObjectId'] == null ? null : (map['fabricObjectId'] as String).input(),
+      fabricObjectId: map['fabricObjectId'] == null ? null : (map['fabricObjectId']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      recoveryContainerId: map['recoveryContainerId'] == null ? null : (map['recoveryContainerId'] as String).input(),
+      recoveryContainerId: map['recoveryContainerId'] == null ? null : (map['recoveryContainerId']! as String).input(),
     );
   }
 }

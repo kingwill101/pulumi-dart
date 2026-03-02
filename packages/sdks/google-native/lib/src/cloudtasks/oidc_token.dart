@@ -26,8 +26,8 @@ class OidcToken {
 
   factory OidcToken.fromMap(Map<String, dynamic> map) {
     return OidcToken(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

@@ -73,8 +73,8 @@ class TargetPropertiesResponse {
       displayName: (map['displayName'] as String).input(),
       hierarchyLevel: (map['hierarchyLevel'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      solutionScope: map['solutionScope'] == null ? null : (map['solutionScope']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       status: (DeploymentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
       targetSpecification: (map['targetSpecification']).input(),
     );

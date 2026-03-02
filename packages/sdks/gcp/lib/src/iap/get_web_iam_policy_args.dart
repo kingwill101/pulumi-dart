@@ -25,7 +25,7 @@ class GetWebIamPolicyArgs {
 
   factory GetWebIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

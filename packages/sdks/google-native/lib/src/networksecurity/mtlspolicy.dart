@@ -33,9 +33,9 @@ class MTLSPolicy {
 
   factory MTLSPolicy.fromMap(Map<String, dynamic> map) {
     return MTLSPolicy(
-      clientValidationCa: map['clientValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCA>(map['clientValidationCa'], (value) => ValidationCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientValidationMode: map['clientValidationMode'] == null ? null : (MTLSPolicyClientValidationMode.fromValue(map['clientValidationMode'] as String)).input(),
-      clientValidationTrustConfig: map['clientValidationTrustConfig'] == null ? null : (map['clientValidationTrustConfig'] as String).input(),
+      clientValidationCa: map['clientValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCA>(map['clientValidationCa']!, (value) => ValidationCA.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientValidationMode: map['clientValidationMode'] == null ? null : (MTLSPolicyClientValidationMode.fromValue(map['clientValidationMode']! as String)).input(),
+      clientValidationTrustConfig: map['clientValidationTrustConfig'] == null ? null : (map['clientValidationTrustConfig']! as String).input(),
     );
   }
 }

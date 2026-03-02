@@ -91,7 +91,7 @@ class GetListenerResult {
     return GetListenerResult(
       arn: map['arn'] as String,
       createdAt: map['createdAt'] as String,
-      defaultActions: pulumi.Input.decodeList<GetListenerDefaultAction>(map['defaultActions'], (value) => GetListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>())),
+      defaultActions: pulumi.Input.decodeList<GetListenerDefaultAction>(map['defaultActions']!, (value) => GetListenerDefaultAction.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lastUpdatedAt: map['lastUpdatedAt'] as String,
       listenerId: map['listenerId'] as String,

@@ -41,11 +41,11 @@ class HorizontalPodAutoscalerStatusPatch {
 
   factory HorizontalPodAutoscalerStatusPatch.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalerStatusPatch(
-      currentCPUUtilizationPercentage: map['currentCPUUtilizationPercentage'] == null ? null : (map['currentCPUUtilizationPercentage'] as int).input(),
-      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas'] as int).input(),
-      desiredReplicas: map['desiredReplicas'] == null ? null : (map['desiredReplicas'] as int).input(),
-      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime'] as String).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      currentCPUUtilizationPercentage: map['currentCPUUtilizationPercentage'] == null ? null : (map['currentCPUUtilizationPercentage']! as int).input(),
+      currentReplicas: map['currentReplicas'] == null ? null : (map['currentReplicas']! as int).input(),
+      desiredReplicas: map['desiredReplicas'] == null ? null : (map['desiredReplicas']! as int).input(),
+      lastScaleTime: map['lastScaleTime'] == null ? null : (map['lastScaleTime']! as String).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecO
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings(
-      columnDepth: map['columnDepth'] == null ? null : (map['columnDepth'] as int).input(),
-      includeFec: map['includeFec'] == null ? null : (map['includeFec'] as String).input(),
-      rowLength: map['rowLength'] == null ? null : (map['rowLength'] as int).input(),
+      columnDepth: map['columnDepth'] == null ? null : ((map['columnDepth'] as int).input()).input(),
+      includeFec: map['includeFec'] == null ? null : ((map['includeFec'] as String).input()).input(),
+      rowLength: map['rowLength'] == null ? null : ((map['rowLength'] as int).input()).input(),
     );
   }
 }

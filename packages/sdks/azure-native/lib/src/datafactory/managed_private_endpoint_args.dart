@@ -46,7 +46,7 @@ class ManagedPrivateEndpointArgs {
   factory ManagedPrivateEndpointArgs.fromMap(Map<String, dynamic> map) {
     return ManagedPrivateEndpointArgs(
       factoryName: (map['factoryName'] as String).input(),
-      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName'] as String).input(),
+      managedPrivateEndpointName: map['managedPrivateEndpointName'] == null ? null : (map['managedPrivateEndpointName']! as String).input(),
       managedVirtualNetworkName: (map['managedVirtualNetworkName'] as String).input(),
       properties: (map['properties'] as ManagedPrivateEndpointDatafactory).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

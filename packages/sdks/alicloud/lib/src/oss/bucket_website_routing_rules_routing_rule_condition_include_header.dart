@@ -34,10 +34,10 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
 
   factory BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader(
-      endsWith: map['endsWith'] == null ? null : (map['endsWith'] as String).input(),
-      equals: map['equals'] == null ? null : (map['equals'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      startsWith: map['startsWith'] == null ? null : (map['startsWith'] as String).input(),
+      endsWith: map['endsWith'] == null ? null : (map['endsWith']! as String).input(),
+      equals: map['equals'] == null ? null : (map['equals']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      startsWith: map['startsWith'] == null ? null : (map['startsWith']! as String).input(),
     );
   }
 }

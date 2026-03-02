@@ -37,7 +37,7 @@ class KubernetesVersionReadinessResponse {
   factory KubernetesVersionReadinessResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesVersionReadinessResponse(
       errorMessage: (map['errorMessage'] as String).input(),
-      osSku: map['osSku'] == null ? null : (map['osSku'] as String).input(),
+      osSku: map['osSku'] == null ? null : (map['osSku']! as String).input(),
       osType: (map['osType'] as String).input(),
       ready: (map['ready'] as bool).input(),
     );

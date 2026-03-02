@@ -26,7 +26,7 @@ class WindowsWebAppSlotLogsApplicationLogs {
 
   factory WindowsWebAppSlotLogsApplicationLogs.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotLogsApplicationLogs(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (WindowsWebAppSlotLogsApplicationLogsAzureBlobStorage.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (WindowsWebAppSlotLogsApplicationLogsAzureBlobStorage.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
       fileSystemLevel: (map['fileSystemLevel'] as String).input(),
     );
   }

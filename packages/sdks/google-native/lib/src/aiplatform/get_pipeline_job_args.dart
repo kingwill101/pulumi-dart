@@ -33,7 +33,7 @@ class GetPipelineJobArgs {
     return GetPipelineJobArgs(
       location: (map['location'] as String).input(),
       pipelineJobId: (map['pipelineJobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

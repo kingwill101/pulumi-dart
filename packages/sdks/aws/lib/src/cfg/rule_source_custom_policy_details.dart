@@ -30,7 +30,7 @@ class RuleSourceCustomPolicyDetails {
 
   factory RuleSourceCustomPolicyDetails.fromMap(Map<String, dynamic> map) {
     return RuleSourceCustomPolicyDetails(
-      enableDebugLogDelivery: map['enableDebugLogDelivery'] == null ? null : (map['enableDebugLogDelivery'] as bool).input(),
+      enableDebugLogDelivery: map['enableDebugLogDelivery'] == null ? null : ((map['enableDebugLogDelivery'] as bool).input()).input(),
       policyRuntime: (map['policyRuntime'] as String).input(),
       policyText: (map['policyText'] as String).input(),
     );

@@ -41,11 +41,11 @@ class FCVolumeSource {
 
   factory FCVolumeSource.fromMap(Map<String, dynamic> map) {
     return FCVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      targetWWNs: map['targetWWNs'] == null ? null : ((map['targetWWNs'] as List).cast<String>()).input(),
-      wwids: map['wwids'] == null ? null : ((map['wwids'] as List).cast<String>()).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      targetWWNs: map['targetWWNs'] == null ? null : ((map['targetWWNs']! as List).cast<String>()).input(),
+      wwids: map['wwids'] == null ? null : ((map['wwids']! as List).cast<String>()).input(),
     );
   }
 }

@@ -23,7 +23,7 @@ class PreventionJobTriggerTriggerSchedule {
 
   factory PreventionJobTriggerTriggerSchedule.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerTriggerSchedule(
-      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null ? null : (map['recurrencePeriodDuration'] as String).input(),
+      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null ? null : (map['recurrencePeriodDuration']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class SharedDirectoryTarget {
   factory SharedDirectoryTarget.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryTarget(
       id: (map['id'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

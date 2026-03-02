@@ -61,14 +61,14 @@ class SigningProfileArgs {
 
   factory SigningProfileArgs.fromMap(Map<String, dynamic> map) {
     return SigningProfileArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
       platformId: (map['platformId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      signatureValidityPeriod: map['signatureValidityPeriod'] == null ? null : (SigningProfileSignatureValidityPeriod.fromMap((map['signatureValidityPeriod'] as Map).cast<String, dynamic>())).input(),
-      signingMaterial: map['signingMaterial'] == null ? null : (SigningProfileSigningMaterial.fromMap((map['signingMaterial'] as Map).cast<String, dynamic>())).input(),
-      signingParameters: map['signingParameters'] == null ? null : ((map['signingParameters'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      signatureValidityPeriod: map['signatureValidityPeriod'] == null ? null : ((SigningProfileSignatureValidityPeriod.fromMap((map['signatureValidityPeriod']! as Map).cast<String, dynamic>())).input()).input(),
+      signingMaterial: map['signingMaterial'] == null ? null : ((SigningProfileSigningMaterial.fromMap((map['signingMaterial']! as Map).cast<String, dynamic>())).input()).input(),
+      signingParameters: map['signingParameters'] == null ? null : (((map['signingParameters'] as Map).cast<String, String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class LinkedServiceAzureFunctionState {
 
   factory LinkedServiceAzureFunctionState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureFunctionState(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      keyVaultKey: map['keyVaultKey'] == null ? null : (LinkedServiceAzureFunctionKeyVaultKey.fromMap((map['keyVaultKey'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      keyVaultKey: map['keyVaultKey'] == null ? null : (LinkedServiceAzureFunctionKeyVaultKey.fromMap((map['keyVaultKey']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

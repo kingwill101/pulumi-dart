@@ -95,22 +95,22 @@ class FlowTaskConnectorOperator {
 
   factory FlowTaskConnectorOperator.fromMap(Map<String, dynamic> map) {
     return FlowTaskConnectorOperator(
-      amplitude: map['amplitude'] == null ? null : (map['amplitude'] as String).input(),
-      customConnector: map['customConnector'] == null ? null : (map['customConnector'] as String).input(),
-      datadog: map['datadog'] == null ? null : (map['datadog'] as String).input(),
-      dynatrace: map['dynatrace'] == null ? null : (map['dynatrace'] as String).input(),
-      googleAnalytics: map['googleAnalytics'] == null ? null : (map['googleAnalytics'] as String).input(),
-      inforNexus: map['inforNexus'] == null ? null : (map['inforNexus'] as String).input(),
-      marketo: map['marketo'] == null ? null : (map['marketo'] as String).input(),
-      s3: map['s3'] == null ? null : (map['s3'] as String).input(),
-      salesforce: map['salesforce'] == null ? null : (map['salesforce'] as String).input(),
-      sapoData: map['sapoData'] == null ? null : (map['sapoData'] as String).input(),
-      serviceNow: map['serviceNow'] == null ? null : (map['serviceNow'] as String).input(),
-      singular: map['singular'] == null ? null : (map['singular'] as String).input(),
-      slack: map['slack'] == null ? null : (map['slack'] as String).input(),
-      trendmicro: map['trendmicro'] == null ? null : (map['trendmicro'] as String).input(),
-      veeva: map['veeva'] == null ? null : (map['veeva'] as String).input(),
-      zendesk: map['zendesk'] == null ? null : (map['zendesk'] as String).input(),
+      amplitude: map['amplitude'] == null ? null : ((map['amplitude'] as String).input()).input(),
+      customConnector: map['customConnector'] == null ? null : ((map['customConnector'] as String).input()).input(),
+      datadog: map['datadog'] == null ? null : ((map['datadog'] as String).input()).input(),
+      dynatrace: map['dynatrace'] == null ? null : ((map['dynatrace'] as String).input()).input(),
+      googleAnalytics: map['googleAnalytics'] == null ? null : ((map['googleAnalytics'] as String).input()).input(),
+      inforNexus: map['inforNexus'] == null ? null : ((map['inforNexus'] as String).input()).input(),
+      marketo: map['marketo'] == null ? null : ((map['marketo'] as String).input()).input(),
+      s3: map['s3'] == null ? null : ((map['s3'] as String).input()).input(),
+      salesforce: map['salesforce'] == null ? null : ((map['salesforce'] as String).input()).input(),
+      sapoData: map['sapoData'] == null ? null : ((map['sapoData'] as String).input()).input(),
+      serviceNow: map['serviceNow'] == null ? null : ((map['serviceNow'] as String).input()).input(),
+      singular: map['singular'] == null ? null : ((map['singular'] as String).input()).input(),
+      slack: map['slack'] == null ? null : ((map['slack'] as String).input()).input(),
+      trendmicro: map['trendmicro'] == null ? null : ((map['trendmicro'] as String).input()).input(),
+      veeva: map['veeva'] == null ? null : ((map['veeva'] as String).input()).input(),
+      zendesk: map['zendesk'] == null ? null : ((map['zendesk'] as String).input()).input(),
     );
   }
 }

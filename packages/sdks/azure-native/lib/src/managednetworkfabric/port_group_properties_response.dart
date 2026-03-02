@@ -26,8 +26,8 @@ class PortGroupPropertiesResponse {
 
   factory PortGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return PortGroupPropertiesResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

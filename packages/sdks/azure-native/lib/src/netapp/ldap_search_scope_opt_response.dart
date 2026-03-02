@@ -31,9 +31,9 @@ class LdapSearchScopeOptResponse {
 
   factory LdapSearchScopeOptResponse.fromMap(Map<String, dynamic> map) {
     return LdapSearchScopeOptResponse(
-      groupDN: map['groupDN'] == null ? null : (map['groupDN'] as String).input(),
-      groupMembershipFilter: map['groupMembershipFilter'] == null ? null : (map['groupMembershipFilter'] as String).input(),
-      userDN: map['userDN'] == null ? null : (map['userDN'] as String).input(),
+      groupDN: map['groupDN'] == null ? null : (map['groupDN']! as String).input(),
+      groupMembershipFilter: map['groupMembershipFilter'] == null ? null : (map['groupMembershipFilter']! as String).input(),
+      userDN: map['userDN'] == null ? null : (map['userDN']! as String).input(),
     );
   }
 }

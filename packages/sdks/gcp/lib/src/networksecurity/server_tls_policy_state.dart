@@ -88,18 +88,18 @@ class ServerTlsPolicyState {
 
   factory ServerTlsPolicyState.fromMap(Map<String, dynamic> map) {
     return ServerTlsPolicyState(
-      allowOpen: map['allowOpen'] == null ? null : (map['allowOpen'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mtlsPolicy: map['mtlsPolicy'] == null ? null : (ServerTlsPolicyMtlsPolicy.fromMap((map['mtlsPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      serverCertificate: map['serverCertificate'] == null ? null : (ServerTlsPolicyServerCertificate.fromMap((map['serverCertificate'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      allowOpen: map['allowOpen'] == null ? null : (map['allowOpen']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mtlsPolicy: map['mtlsPolicy'] == null ? null : (ServerTlsPolicyMtlsPolicy.fromMap((map['mtlsPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      serverCertificate: map['serverCertificate'] == null ? null : (ServerTlsPolicyServerCertificate.fromMap((map['serverCertificate']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

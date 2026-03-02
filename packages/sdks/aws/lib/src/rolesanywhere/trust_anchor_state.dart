@@ -52,13 +52,13 @@ class TrustAnchorState {
 
   factory TrustAnchorState.fromMap(Map<String, dynamic> map) {
     return TrustAnchorState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationSettings: map['notificationSettings'] == null ? null : (pulumi.Input.decodeList<TrustAnchorNotificationSetting>(map['notificationSettings'], (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (TrustAnchorSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notificationSettings: map['notificationSettings'] == null ? null : ((pulumi.Input.decodeList<TrustAnchorNotificationSetting>(map['notificationSettings']!, (value) => TrustAnchorNotificationSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      source: map['source'] == null ? null : ((TrustAnchorSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

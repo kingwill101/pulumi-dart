@@ -20,7 +20,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetric
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelActivityMetrics(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

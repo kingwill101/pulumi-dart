@@ -21,7 +21,7 @@ class SignalRCorsSettings {
 
   factory SignalRCorsSettings.fromMap(Map<String, dynamic> map) {
     return SignalRCorsSettings(
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
     );
   }
 }

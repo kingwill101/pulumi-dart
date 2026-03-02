@@ -21,7 +21,7 @@ class PolicyBindingAdvancedOptions {
 
   factory PolicyBindingAdvancedOptions.fromMap(Map<String, dynamic> map) {
     return PolicyBindingAdvancedOptions(
-      udmDetail: map['udmDetail'] == null ? null : (PolicyBindingAdvancedOptionsUdmDetail.fromMap((map['udmDetail'] as Map).cast<String, dynamic>())).input(),
+      udmDetail: map['udmDetail'] == null ? null : (PolicyBindingAdvancedOptionsUdmDetail.fromMap((map['udmDetail']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

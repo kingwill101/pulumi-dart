@@ -51,13 +51,13 @@ class ApiCacheState {
 
   factory ApiCacheState.fromMap(Map<String, dynamic> map) {
     return ApiCacheState(
-      apiCachingBehavior: map['apiCachingBehavior'] == null ? null : (map['apiCachingBehavior'] as String).input(),
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : (map['atRestEncryptionEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : (map['transitEncryptionEnabled'] as bool).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      apiCachingBehavior: map['apiCachingBehavior'] == null ? null : ((map['apiCachingBehavior'] as String).input()).input(),
+      apiId: map['apiId'] == null ? null : ((map['apiId'] as String).input()).input(),
+      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : ((map['atRestEncryptionEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : ((map['transitEncryptionEnabled'] as bool).input()).input(),
+      ttl: map['ttl'] == null ? null : ((map['ttl'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

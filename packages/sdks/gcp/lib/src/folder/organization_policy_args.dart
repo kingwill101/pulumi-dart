@@ -60,12 +60,12 @@ class OrganizationPolicyArgs {
 
   factory OrganizationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyArgs(
-      booleanPolicy: map['booleanPolicy'] == null ? null : (OrganizationPolicyBooleanPolicy.fromMap((map['booleanPolicy'] as Map).cast<String, dynamic>())).input(),
+      booleanPolicy: map['booleanPolicy'] == null ? null : (OrganizationPolicyBooleanPolicy.fromMap((map['booleanPolicy']! as Map).cast<String, dynamic>())).input(),
       constraint: (map['constraint'] as String).input(),
       folder: (map['folder'] as String).input(),
-      listPolicy: map['listPolicy'] == null ? null : (OrganizationPolicyListPolicy.fromMap((map['listPolicy'] as Map).cast<String, dynamic>())).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (OrganizationPolicyRestorePolicy.fromMap((map['restorePolicy'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      listPolicy: map['listPolicy'] == null ? null : (OrganizationPolicyListPolicy.fromMap((map['listPolicy']! as Map).cast<String, dynamic>())).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (OrganizationPolicyRestorePolicy.fromMap((map['restorePolicy']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

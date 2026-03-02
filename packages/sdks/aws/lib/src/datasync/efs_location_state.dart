@@ -71,17 +71,17 @@ class EfsLocationState {
 
   factory EfsLocationState.fromMap(Map<String, dynamic> map) {
     return EfsLocationState(
-      accessPointArn: map['accessPointArn'] == null ? null : (map['accessPointArn'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      ec2Config: map['ec2Config'] == null ? null : (EfsLocationEc2Config.fromMap((map['ec2Config'] as Map).cast<String, dynamic>())).input(),
-      efsFileSystemArn: map['efsFileSystemArn'] == null ? null : (map['efsFileSystemArn'] as String).input(),
-      fileSystemAccessRoleArn: map['fileSystemAccessRoleArn'] == null ? null : (map['fileSystemAccessRoleArn'] as String).input(),
-      inTransitEncryption: map['inTransitEncryption'] == null ? null : (map['inTransitEncryption'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      accessPointArn: map['accessPointArn'] == null ? null : ((map['accessPointArn'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      ec2Config: map['ec2Config'] == null ? null : ((EfsLocationEc2Config.fromMap((map['ec2Config']! as Map).cast<String, dynamic>())).input()).input(),
+      efsFileSystemArn: map['efsFileSystemArn'] == null ? null : ((map['efsFileSystemArn'] as String).input()).input(),
+      fileSystemAccessRoleArn: map['fileSystemAccessRoleArn'] == null ? null : ((map['fileSystemAccessRoleArn'] as String).input()).input(),
+      inTransitEncryption: map['inTransitEncryption'] == null ? null : ((map['inTransitEncryption'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

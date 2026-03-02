@@ -35,8 +35,8 @@ class InsightArgs {
 
   factory InsightArgs.fromMap(Map<String, dynamic> map) {
     return InsightArgs(
-      insightName: map['insightName'] == null ? null : (map['insightName'] as String).input(),
-      properties: map['properties'] == null ? null : (InsightProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      insightName: map['insightName'] == null ? null : (map['insightName']! as String).input(),
+      properties: map['properties'] == null ? null : (InsightProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       workloadImpactName: (map['workloadImpactName'] as String).input(),
     );
   }

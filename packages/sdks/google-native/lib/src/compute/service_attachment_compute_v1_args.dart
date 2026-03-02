@@ -89,20 +89,20 @@ class ServiceAttachmentComputeV1Args {
 
   factory ServiceAttachmentComputeV1Args.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentComputeV1Args(
-      connectionPreference: map['connectionPreference'] == null ? null : (ServiceAttachmentConnectionPreferenceComputeV1.fromValue(map['connectionPreference'] as String)).input(),
-      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : (pulumi.Input.decodeList<ServiceAttachmentConsumerProjectLimitComputeV1>(map['consumerAcceptLists'], (value) => ServiceAttachmentConsumerProjectLimitComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consumerRejectLists: map['consumerRejectLists'] == null ? null : ((map['consumerRejectLists'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainNames: map['domainNames'] == null ? null : ((map['domainNames'] as List).cast<String>()).input(),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      natSubnets: map['natSubnets'] == null ? null : ((map['natSubnets'] as List).cast<String>()).input(),
-      producerForwardingRule: map['producerForwardingRule'] == null ? null : (map['producerForwardingRule'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reconcileConnections: map['reconcileConnections'] == null ? null : (map['reconcileConnections'] as bool).input(),
+      connectionPreference: map['connectionPreference'] == null ? null : (ServiceAttachmentConnectionPreferenceComputeV1.fromValue(map['connectionPreference']! as String)).input(),
+      consumerAcceptLists: map['consumerAcceptLists'] == null ? null : (pulumi.Input.decodeList<ServiceAttachmentConsumerProjectLimitComputeV1>(map['consumerAcceptLists']!, (value) => ServiceAttachmentConsumerProjectLimitComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerRejectLists: map['consumerRejectLists'] == null ? null : ((map['consumerRejectLists']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainNames: map['domainNames'] == null ? null : ((map['domainNames']! as List).cast<String>()).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      natSubnets: map['natSubnets'] == null ? null : ((map['natSubnets']! as List).cast<String>()).input(),
+      producerForwardingRule: map['producerForwardingRule'] == null ? null : (map['producerForwardingRule']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reconcileConnections: map['reconcileConnections'] == null ? null : (map['reconcileConnections']! as bool).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      targetService: map['targetService'] == null ? null : (map['targetService'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      targetService: map['targetService'] == null ? null : (map['targetService']! as String).input(),
     );
   }
 }

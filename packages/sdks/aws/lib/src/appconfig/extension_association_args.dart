@@ -40,8 +40,8 @@ class ExtensionAssociationArgs {
   factory ExtensionAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionAssociationArgs(
       extensionArn: (map['extensionArn'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

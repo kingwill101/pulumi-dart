@@ -26,8 +26,8 @@ class GoogleMonitoringV3Range {
 
   factory GoogleMonitoringV3Range.fromMap(Map<String, dynamic> map) {
     return GoogleMonitoringV3Range(
-      max: map['max'] == null ? null : (map['max'] as double).input(),
-      min: map['min'] == null ? null : (map['min'] as double).input(),
+      max: map['max'] == null ? null : (map['max']! as double).input(),
+      min: map['min'] == null ? null : (map['min']! as double).input(),
     );
   }
 }

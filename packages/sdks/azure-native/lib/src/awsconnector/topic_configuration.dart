@@ -32,9 +32,9 @@ class TopicConfiguration {
 
   factory TopicConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicConfiguration(
-      event: map['event'] == null ? null : (map['event'] as String).input(),
-      filter: map['filter'] == null ? null : (NotificationFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      event: map['event'] == null ? null : (map['event']! as String).input(),
+      filter: map['filter'] == null ? null : (NotificationFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

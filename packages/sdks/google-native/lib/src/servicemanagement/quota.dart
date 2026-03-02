@@ -28,8 +28,8 @@ class Quota {
 
   factory Quota.fromMap(Map<String, dynamic> map) {
     return Quota(
-      limits: map['limits'] == null ? null : (pulumi.Input.decodeList<QuotaLimit>(map['limits'], (value) => QuotaLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricRules: map['metricRules'] == null ? null : (pulumi.Input.decodeList<MetricRule>(map['metricRules'], (value) => MetricRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : (pulumi.Input.decodeList<QuotaLimit>(map['limits']!, (value) => QuotaLimit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricRules: map['metricRules'] == null ? null : (pulumi.Input.decodeList<MetricRule>(map['metricRules']!, (value) => MetricRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

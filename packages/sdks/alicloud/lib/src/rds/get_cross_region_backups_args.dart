@@ -66,15 +66,15 @@ class GetCrossRegionBackupsArgs {
 
   factory GetCrossRegionBackupsArgs.fromMap(Map<String, dynamic> map) {
     return GetCrossRegionBackupsArgs(
-      backupId: map['backupId'] == null ? null : (map['backupId'] as String).input(),
-      crossBackupId: map['crossBackupId'] == null ? null : (map['crossBackupId'] as String).input(),
-      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion'] as String).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as String).input(),
+      crossBackupId: map['crossBackupId'] == null ? null : (map['crossBackupId']! as String).input(),
+      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

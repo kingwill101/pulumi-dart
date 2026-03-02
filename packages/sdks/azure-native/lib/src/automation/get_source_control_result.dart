@@ -80,18 +80,18 @@ class GetSourceControlResult {
 
   factory GetSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetSourceControlResult(
-      autoSync: map['autoSync'] == null ? null : map['autoSync'] as bool,
+      autoSync: map['autoSync'] == null ? null : map['autoSync']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      branch: map['branch'] == null ? null : map['branch'] as String,
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      folderPath: map['folderPath'] == null ? null : map['folderPath'] as String,
+      branch: map['branch'] == null ? null : map['branch']! as String,
+      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      folderPath: map['folderPath'] == null ? null : map['folderPath']! as String,
       id: map['id'] as String,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
       name: map['name'] as String,
-      publishRunbook: map['publishRunbook'] == null ? null : map['publishRunbook'] as bool,
-      repoUrl: map['repoUrl'] == null ? null : map['repoUrl'] as String,
-      sourceType: map['sourceType'] == null ? null : map['sourceType'] as String,
+      publishRunbook: map['publishRunbook'] == null ? null : map['publishRunbook']! as bool,
+      repoUrl: map['repoUrl'] == null ? null : map['repoUrl']! as String,
+      sourceType: map['sourceType'] == null ? null : map['sourceType']! as String,
       type: map['type'] as String,
     );
   }

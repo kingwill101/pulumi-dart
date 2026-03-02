@@ -26,8 +26,8 @@ class Cardinality {
 
   factory Cardinality.fromMap(Map<String, dynamic> map) {
     return Cardinality(
-      number: map['number'] == null ? null : (map['number'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      number: map['number'] == null ? null : (map['number']! as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

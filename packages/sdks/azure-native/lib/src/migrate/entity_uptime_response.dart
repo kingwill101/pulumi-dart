@@ -26,8 +26,8 @@ class EntityUptimeResponse {
 
   factory EntityUptimeResponse.fromMap(Map<String, dynamic> map) {
     return EntityUptimeResponse(
-      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth'] as int).input(),
-      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay'] as int).input(),
+      daysPerMonth: map['daysPerMonth'] == null ? null : (map['daysPerMonth']! as int).input(),
+      hoursPerDay: map['hoursPerDay'] == null ? null : (map['hoursPerDay']! as int).input(),
     );
   }
 }

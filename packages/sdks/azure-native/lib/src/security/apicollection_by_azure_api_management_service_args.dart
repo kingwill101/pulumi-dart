@@ -34,7 +34,7 @@ class APICollectionByAzureApiManagementServiceArgs {
 
   factory APICollectionByAzureApiManagementServiceArgs.fromMap(Map<String, dynamic> map) {
     return APICollectionByAzureApiManagementServiceArgs(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

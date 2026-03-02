@@ -35,7 +35,7 @@ class DeploymentStacksWhatIfChangeResponse {
   factory DeploymentStacksWhatIfChangeResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfChangeResponse(
       denySettingsChange: (DeploymentStacksWhatIfChangeResponseDenySettingsChange.fromMap((map['denySettingsChange'] as Map).cast<String, dynamic>())).input(),
-      deploymentScopeChange: map['deploymentScopeChange'] == null ? null : (DeploymentStacksWhatIfChangeResponseDeploymentScopeChange.fromMap((map['deploymentScopeChange'] as Map).cast<String, dynamic>())).input(),
+      deploymentScopeChange: map['deploymentScopeChange'] == null ? null : (DeploymentStacksWhatIfChangeResponseDeploymentScopeChange.fromMap((map['deploymentScopeChange']! as Map).cast<String, dynamic>())).input(),
       resourceChanges: (pulumi.Input.decodeList<DeploymentStacksWhatIfResourceChangeResponse>(map['resourceChanges'], (value) => DeploymentStacksWhatIfResourceChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

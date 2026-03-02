@@ -39,10 +39,10 @@ class IngressSpecPatch {
 
   factory IngressSpecPatch.fromMap(Map<String, dynamic> map) {
     return IngressSpecPatch(
-      defaultBackend: map['defaultBackend'] == null ? null : (IngressBackendPatch.fromMap((map['defaultBackend'] as Map).cast<String, dynamic>())).input(),
-      ingressClassName: map['ingressClassName'] == null ? null : (map['ingressClassName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<IngressRulePatch>(map['rules'], (value) => IngressRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tls: map['tls'] == null ? null : (pulumi.Input.decodeList<IngressTLSPatch>(map['tls'], (value) => IngressTLSPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultBackend: map['defaultBackend'] == null ? null : (IngressBackendPatch.fromMap((map['defaultBackend']! as Map).cast<String, dynamic>())).input(),
+      ingressClassName: map['ingressClassName'] == null ? null : (map['ingressClassName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<IngressRulePatch>(map['rules']!, (value) => IngressRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tls: map['tls'] == null ? null : (pulumi.Input.decodeList<IngressTLSPatch>(map['tls']!, (value) => IngressTLSPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

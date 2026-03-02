@@ -36,10 +36,10 @@ class ClusterDefinition {
 
   factory ClusterDefinition.fromMap(Map<String, dynamic> map) {
     return ClusterDefinition(
-      blueprint: map['blueprint'] == null ? null : (map['blueprint'] as String).input(),
-      componentVersion: map['componentVersion'] == null ? null : ((map['componentVersion'] as Map).cast<String, String>()).input(),
-      configurations: map['configurations'] == null ? null : (map['configurations']).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      blueprint: map['blueprint'] == null ? null : (map['blueprint']! as String).input(),
+      componentVersion: map['componentVersion'] == null ? null : ((map['componentVersion']! as Map).cast<String, String>()).input(),
+      configurations: map['configurations'] == null ? null : (map['configurations']!).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

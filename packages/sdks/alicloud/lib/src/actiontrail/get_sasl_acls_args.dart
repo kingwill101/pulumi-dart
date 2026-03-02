@@ -47,7 +47,7 @@ class GetSaslAclsArgs {
       aclResourceName: (map['aclResourceName'] as String).input(),
       aclResourceType: (map['aclResourceType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

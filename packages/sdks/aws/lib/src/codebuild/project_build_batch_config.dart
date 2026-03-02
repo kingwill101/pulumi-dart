@@ -38,10 +38,10 @@ class ProjectBuildBatchConfig {
 
   factory ProjectBuildBatchConfig.fromMap(Map<String, dynamic> map) {
     return ProjectBuildBatchConfig(
-      combineArtifacts: map['combineArtifacts'] == null ? null : (map['combineArtifacts'] as bool).input(),
-      restrictions: map['restrictions'] == null ? null : (ProjectBuildBatchConfigRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
+      combineArtifacts: map['combineArtifacts'] == null ? null : ((map['combineArtifacts'] as bool).input()).input(),
+      restrictions: map['restrictions'] == null ? null : ((ProjectBuildBatchConfigRestrictions.fromMap((map['restrictions']! as Map).cast<String, dynamic>())).input()).input(),
       serviceRole: (map['serviceRole'] as String).input(),
-      timeoutInMins: map['timeoutInMins'] == null ? null : (map['timeoutInMins'] as int).input(),
+      timeoutInMins: map['timeoutInMins'] == null ? null : ((map['timeoutInMins'] as int).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(
-      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap((map['namespacedGkeDeploymentTarget'] as Map).cast<String, dynamic>())).input(),
+      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget.fromMap((map['namespacedGkeDeploymentTarget']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

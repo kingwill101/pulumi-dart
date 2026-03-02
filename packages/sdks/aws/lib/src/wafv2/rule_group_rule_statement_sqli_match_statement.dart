@@ -34,9 +34,9 @@ class RuleGroupRuleStatementSqliMatchStatement {
 
   factory RuleGroupRuleStatementSqliMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSqliMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (RuleGroupRuleStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      sensitivityLevel: map['sensitivityLevel'] == null ? null : (map['sensitivityLevel'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementSqliMatchStatementTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((RuleGroupRuleStatementSqliMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      sensitivityLevel: map['sensitivityLevel'] == null ? null : ((map['sensitivityLevel'] as String).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<RuleGroupRuleStatementSqliMatchStatementTextTransformation>(map['textTransformations']!, (value) => RuleGroupRuleStatementSqliMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

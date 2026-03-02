@@ -96,20 +96,20 @@ class GetPacketCaptureResult {
   factory GetPacketCaptureResult.fromMap(Map<String, dynamic> map) {
     return GetPacketCaptureResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      bytesToCapturePerPacket: map['bytesToCapturePerPacket'] == null ? null : map['bytesToCapturePerPacket'] as double,
-      captureSettings: map['captureSettings'] == null ? null : PacketCaptureSettingsResponse.fromMap((map['captureSettings'] as Map).cast<String, dynamic>()),
-      continuousCapture: map['continuousCapture'] == null ? null : map['continuousCapture'] as bool,
+      bytesToCapturePerPacket: map['bytesToCapturePerPacket'] == null ? null : map['bytesToCapturePerPacket']! as double,
+      captureSettings: map['captureSettings'] == null ? null : PacketCaptureSettingsResponse.fromMap((map['captureSettings']! as Map).cast<String, dynamic>()),
+      continuousCapture: map['continuousCapture'] == null ? null : map['continuousCapture']! as bool,
       etag: map['etag'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<PacketCaptureFilterResponse>(map['filters'], (value) => PacketCaptureFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<PacketCaptureFilterResponse>(map['filters']!, (value) => PacketCaptureFilterResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      scope: map['scope'] == null ? null : PacketCaptureMachineScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>()),
+      scope: map['scope'] == null ? null : PacketCaptureMachineScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>()),
       storageLocation: PacketCaptureStorageLocationResponse.fromMap((map['storageLocation'] as Map).cast<String, dynamic>()),
       target: map['target'] as String,
-      targetType: map['targetType'] == null ? null : map['targetType'] as String,
-      timeLimitInSeconds: map['timeLimitInSeconds'] == null ? null : map['timeLimitInSeconds'] as int,
-      totalBytesPerSession: map['totalBytesPerSession'] == null ? null : map['totalBytesPerSession'] as double,
+      targetType: map['targetType'] == null ? null : map['targetType']! as String,
+      timeLimitInSeconds: map['timeLimitInSeconds'] == null ? null : map['timeLimitInSeconds']! as int,
+      totalBytesPerSession: map['totalBytesPerSession'] == null ? null : map['totalBytesPerSession']! as double,
     );
   }
 }

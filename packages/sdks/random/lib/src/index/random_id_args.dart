@@ -35,8 +35,8 @@ class RandomIdArgs {
   factory RandomIdArgs.fromMap(Map<String, dynamic> map) {
     return RandomIdArgs(
       byteLength: (map['byteLength'] as int).input(),
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

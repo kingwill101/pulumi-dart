@@ -95,15 +95,15 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv'] as bool).input(),
+      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv']! as bool).input(),
       connection: (Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging'] as String)).input(),
-      stdin: map['stdin'] == null ? null : (map['stdin'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      create: map['create'] == null ? null : (map['create']! as String).input(),
+      delete: map['delete'] == null ? null : (map['delete']! as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging']! as String)).input(),
+      stdin: map['stdin'] == null ? null : (map['stdin']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as List).cast<dynamic>()).input(),
+      update: map['update'] == null ? null : (map['update']! as String).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ProtectionArgs {
 
   factory ProtectionArgs.fromMap(Map<String, dynamic> map) {
     return ProtectionArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

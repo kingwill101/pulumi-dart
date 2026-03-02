@@ -27,7 +27,7 @@ class InstanceProperties {
 
   factory InstanceProperties.fromMap(Map<String, dynamic> map) {
     return InstanceProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       schemaRegistryRef: (SchemaRegistryRef.fromMap((map['schemaRegistryRef'] as Map).cast<String, dynamic>())).input(),
     );
   }

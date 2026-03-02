@@ -35,11 +35,11 @@ class ClusterNode {
 
   factory ClusterNode.fromMap(Map<String, dynamic> map) {
     return ClusterNode(
-      eip: map['eip'] == null ? null : (map['eip'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      eip: map['eip'] == null ? null : (map['eip']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

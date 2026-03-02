@@ -36,7 +36,7 @@ class ApplicationLayerAutomaticResponseArgs {
     return ApplicationLayerAutomaticResponseArgs(
       action: (map['action'] as String).input(),
       resourceArn: (map['resourceArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ApplicationLayerAutomaticResponseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((ApplicationLayerAutomaticResponseTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

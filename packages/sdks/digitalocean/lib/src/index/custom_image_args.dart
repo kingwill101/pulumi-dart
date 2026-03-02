@@ -49,11 +49,11 @@ class CustomImageArgs {
 
   factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
     return CustomImageArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       regions: ((map['regions'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
       url: (map['url'] as String).input(),
     );
   }

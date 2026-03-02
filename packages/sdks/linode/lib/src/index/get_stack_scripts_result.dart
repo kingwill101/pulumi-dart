@@ -43,11 +43,11 @@ class GetStackScriptsResult {
 
   factory GetStackScriptsResult.fromMap(Map<String, dynamic> map) {
     return GetStackScriptsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetStackScriptsFilter>(map['filters'], (value) => GetStackScriptsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetStackScriptsFilter>(map['filters']!, (value) => GetStackScriptsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      latest: map['latest'] == null ? null : map['latest'] as bool,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      latest: map['latest'] == null ? null : map['latest']! as bool,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       stackscripts: pulumi.Input.decodeList<GetStackScriptsStackscript>(map['stackscripts'], (value) => GetStackScriptsStackscript.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

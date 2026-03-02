@@ -97,22 +97,22 @@ class GetClustersArgs {
 
   factory GetClustersArgs.fromMap(Map<String, dynamic> map) {
     return GetClustersArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterTypeLists: map['clusterTypeLists'] == null ? null : ((map['clusterTypeLists'] as List).cast<String>()).input(),
-      createType: map['createType'] == null ? null : (map['createType'] as String).input(),
-      defaultStatus: map['defaultStatus'] == null ? null : (map['defaultStatus'] as bool).input(),
-      depositType: map['depositType'] == null ? null : (map['depositType'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      isDesc: map['isDesc'] == null ? null : (map['isDesc'] as bool).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      statusLists: map['statusLists'] == null ? null : ((map['statusLists'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterTypeLists: map['clusterTypeLists'] == null ? null : ((map['clusterTypeLists']! as List).cast<String>()).input(),
+      createType: map['createType'] == null ? null : (map['createType']! as String).input(),
+      defaultStatus: map['defaultStatus'] == null ? null : (map['defaultStatus']! as bool).input(),
+      depositType: map['depositType'] == null ? null : (map['depositType']! as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      isDesc: map['isDesc'] == null ? null : (map['isDesc']! as bool).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      statusLists: map['statusLists'] == null ? null : ((map['statusLists']! as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class DefenseRuleConfigAccountIdentifier {
 
   factory DefenseRuleConfigAccountIdentifier.fromMap(Map<String, dynamic> map) {
     return DefenseRuleConfigAccountIdentifier(
-      decodeType: map['decodeType'] == null ? null : (map['decodeType'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      position: map['position'] == null ? null : (map['position'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
+      decodeType: map['decodeType'] == null ? null : (map['decodeType']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      position: map['position'] == null ? null : (map['position']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class AccountConnectorProviderOauthConfig {
   factory AccountConnectorProviderOauthConfig.fromMap(Map<String, dynamic> map) {
     return AccountConnectorProviderOauthConfig(
       scopes: ((map['scopes'] as List).cast<String>()).input(),
-      systemProviderId: map['systemProviderId'] == null ? null : (map['systemProviderId'] as String).input(),
+      systemProviderId: map['systemProviderId'] == null ? null : (map['systemProviderId']! as String).input(),
     );
   }
 }

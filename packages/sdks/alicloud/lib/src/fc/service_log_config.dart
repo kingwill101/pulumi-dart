@@ -35,8 +35,8 @@ class ServiceLogConfig {
 
   factory ServiceLogConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLogConfig(
-      enableInstanceMetrics: map['enableInstanceMetrics'] == null ? null : (map['enableInstanceMetrics'] as bool).input(),
-      enableRequestMetrics: map['enableRequestMetrics'] == null ? null : (map['enableRequestMetrics'] as bool).input(),
+      enableInstanceMetrics: map['enableInstanceMetrics'] == null ? null : (map['enableInstanceMetrics']! as bool).input(),
+      enableRequestMetrics: map['enableRequestMetrics'] == null ? null : (map['enableRequestMetrics']! as bool).input(),
       logstore: (map['logstore'] as String).input(),
       project: (map['project'] as String).input(),
     );

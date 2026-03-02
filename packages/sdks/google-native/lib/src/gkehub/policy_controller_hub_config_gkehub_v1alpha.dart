@@ -69,16 +69,16 @@ class PolicyControllerHubConfigGkehubV1alpha {
 
   factory PolicyControllerHubConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyControllerHubConfigGkehubV1alpha(
-      auditIntervalSeconds: map['auditIntervalSeconds'] == null ? null : (map['auditIntervalSeconds'] as String).input(),
-      constraintViolationLimit: map['constraintViolationLimit'] == null ? null : (map['constraintViolationLimit'] as String).input(),
-      deploymentConfigs: map['deploymentConfigs'] == null ? null : ((map['deploymentConfigs'] as Map).cast<String, String>()).input(),
-      exemptableNamespaces: map['exemptableNamespaces'] == null ? null : ((map['exemptableNamespaces'] as List).cast<String>()).input(),
-      installSpec: map['installSpec'] == null ? null : (PolicyControllerHubConfigInstallSpecGkehubV1alpha.fromValue(map['installSpec'] as String)).input(),
-      logDeniesEnabled: map['logDeniesEnabled'] == null ? null : (map['logDeniesEnabled'] as bool).input(),
-      monitoring: map['monitoring'] == null ? null : (PolicyControllerMonitoringConfigGkehubV1alpha.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      mutationEnabled: map['mutationEnabled'] == null ? null : (map['mutationEnabled'] as bool).input(),
-      policyContent: map['policyContent'] == null ? null : (PolicyControllerPolicyContentSpecGkehubV1alpha.fromMap((map['policyContent'] as Map).cast<String, dynamic>())).input(),
-      referentialRulesEnabled: map['referentialRulesEnabled'] == null ? null : (map['referentialRulesEnabled'] as bool).input(),
+      auditIntervalSeconds: map['auditIntervalSeconds'] == null ? null : (map['auditIntervalSeconds']! as String).input(),
+      constraintViolationLimit: map['constraintViolationLimit'] == null ? null : (map['constraintViolationLimit']! as String).input(),
+      deploymentConfigs: map['deploymentConfigs'] == null ? null : ((map['deploymentConfigs']! as Map).cast<String, String>()).input(),
+      exemptableNamespaces: map['exemptableNamespaces'] == null ? null : ((map['exemptableNamespaces']! as List).cast<String>()).input(),
+      installSpec: map['installSpec'] == null ? null : (PolicyControllerHubConfigInstallSpecGkehubV1alpha.fromValue(map['installSpec']! as String)).input(),
+      logDeniesEnabled: map['logDeniesEnabled'] == null ? null : (map['logDeniesEnabled']! as bool).input(),
+      monitoring: map['monitoring'] == null ? null : (PolicyControllerMonitoringConfigGkehubV1alpha.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      mutationEnabled: map['mutationEnabled'] == null ? null : (map['mutationEnabled']! as bool).input(),
+      policyContent: map['policyContent'] == null ? null : (PolicyControllerPolicyContentSpecGkehubV1alpha.fromMap((map['policyContent']! as Map).cast<String, dynamic>())).input(),
+      referentialRulesEnabled: map['referentialRulesEnabled'] == null ? null : (map['referentialRulesEnabled']! as bool).input(),
     );
   }
 }

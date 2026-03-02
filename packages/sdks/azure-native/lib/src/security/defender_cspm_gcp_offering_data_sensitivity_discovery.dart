@@ -31,9 +31,9 @@ class DefenderCspmGcpOfferingDataSensitivityDiscovery {
 
   factory DefenderCspmGcpOfferingDataSensitivityDiscovery.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingDataSensitivityDiscovery(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

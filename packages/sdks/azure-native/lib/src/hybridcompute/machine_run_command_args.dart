@@ -102,22 +102,22 @@ class MachineRunCommandArgs {
 
   factory MachineRunCommandArgs.fromMap(Map<String, dynamic> map) {
     return MachineRunCommandArgs(
-      asyncExecution: map['asyncExecution'] == null ? null : (map['asyncExecution'] as bool).input(),
-      errorBlobManagedIdentity: map['errorBlobManagedIdentity'] == null ? null : (RunCommandManagedIdentity.fromMap((map['errorBlobManagedIdentity'] as Map).cast<String, dynamic>())).input(),
-      errorBlobUri: map['errorBlobUri'] == null ? null : (map['errorBlobUri'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      asyncExecution: map['asyncExecution'] == null ? null : (map['asyncExecution']! as bool).input(),
+      errorBlobManagedIdentity: map['errorBlobManagedIdentity'] == null ? null : (RunCommandManagedIdentity.fromMap((map['errorBlobManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      errorBlobUri: map['errorBlobUri'] == null ? null : (map['errorBlobUri']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       machineName: (map['machineName'] as String).input(),
-      outputBlobManagedIdentity: map['outputBlobManagedIdentity'] == null ? null : (RunCommandManagedIdentity.fromMap((map['outputBlobManagedIdentity'] as Map).cast<String, dynamic>())).input(),
-      outputBlobUri: map['outputBlobUri'] == null ? null : (map['outputBlobUri'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RunCommandInputParameter>(map['parameters'], (value) => RunCommandInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protectedParameters: map['protectedParameters'] == null ? null : (pulumi.Input.decodeList<RunCommandInputParameter>(map['protectedParameters'], (value) => RunCommandInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputBlobManagedIdentity: map['outputBlobManagedIdentity'] == null ? null : (RunCommandManagedIdentity.fromMap((map['outputBlobManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      outputBlobUri: map['outputBlobUri'] == null ? null : (map['outputBlobUri']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RunCommandInputParameter>(map['parameters']!, (value) => RunCommandInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      protectedParameters: map['protectedParameters'] == null ? null : (pulumi.Input.decodeList<RunCommandInputParameter>(map['protectedParameters']!, (value) => RunCommandInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runAsPassword: map['runAsPassword'] == null ? null : (map['runAsPassword'] as String).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as String).input(),
-      runCommandName: map['runCommandName'] == null ? null : (map['runCommandName'] as String).input(),
-      source: map['source'] == null ? null : (MachineRunCommandScriptSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      runAsPassword: map['runAsPassword'] == null ? null : (map['runAsPassword']! as String).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as String).input(),
+      runCommandName: map['runCommandName'] == null ? null : (map['runCommandName']! as String).input(),
+      source: map['source'] == null ? null : (MachineRunCommandScriptSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
     );
   }
 }

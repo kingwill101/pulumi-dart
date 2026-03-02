@@ -58,11 +58,11 @@ class ManagedZoneArgs {
 
   factory ManagedZoneArgs.fromMap(Map<String, dynamic> map) {
     return ManagedZoneArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       dns: (map['dns'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       targetProject: (map['targetProject'] as String).input(),
       targetVpc: (map['targetVpc'] as String).input(),
     );

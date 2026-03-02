@@ -27,7 +27,7 @@ class PolicyInfo {
   factory PolicyInfo.fromMap(Map<String, dynamic> map) {
     return PolicyInfo(
       policyId: (map['policyId'] as String).input(),
-      policyParameters: map['policyParameters'] == null ? null : (PolicyParameters.fromMap((map['policyParameters'] as Map).cast<String, dynamic>())).input(),
+      policyParameters: map['policyParameters'] == null ? null : (PolicyParameters.fromMap((map['policyParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

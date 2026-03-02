@@ -56,13 +56,13 @@ class BucketPublicAccessBlockState {
 
   factory BucketPublicAccessBlockState.fromMap(Map<String, dynamic> map) {
     return BucketPublicAccessBlockState(
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : ((map['blockPublicAcls'] as bool).input()).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : ((map['blockPublicPolicy'] as bool).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : ((map['ignorePublicAcls'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : ((map['restrictPublicBuckets'] as bool).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
     );
   }
 }

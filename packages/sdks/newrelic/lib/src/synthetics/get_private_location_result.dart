@@ -33,7 +33,7 @@ class GetPrivateLocationResult {
 
   factory GetPrivateLocationResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateLocationResult(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
+      accountId: map['accountId'] == null ? null : map['accountId']! as String,
       id: map['id'] as String,
       keys: (map['keys'] as List).cast<String>(),
       name: map['name'] as String,

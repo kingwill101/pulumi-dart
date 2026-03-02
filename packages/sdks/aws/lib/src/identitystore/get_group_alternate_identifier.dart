@@ -29,8 +29,8 @@ class GetGroupAlternateIdentifier {
 
   factory GetGroupAlternateIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGroupAlternateIdentifier(
-      externalId: map['externalId'] == null ? null : (GetGroupAlternateIdentifierExternalId.fromMap((map['externalId'] as Map).cast<String, dynamic>())).input(),
-      uniqueAttribute: map['uniqueAttribute'] == null ? null : (GetGroupAlternateIdentifierUniqueAttribute.fromMap((map['uniqueAttribute'] as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : ((GetGroupAlternateIdentifierExternalId.fromMap((map['externalId']! as Map).cast<String, dynamic>())).input()).input(),
+      uniqueAttribute: map['uniqueAttribute'] == null ? null : ((GetGroupAlternateIdentifierUniqueAttribute.fromMap((map['uniqueAttribute']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

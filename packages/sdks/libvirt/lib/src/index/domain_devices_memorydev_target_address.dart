@@ -20,7 +20,7 @@ class DomainDevicesMemorydevTargetAddress {
 
   factory DomainDevicesMemorydevTargetAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydevTargetAddress(
-      base: map['base'] == null ? null : (map['base'] as double).input(),
+      base: map['base'] == null ? null : (map['base']! as double).input(),
     );
   }
 }

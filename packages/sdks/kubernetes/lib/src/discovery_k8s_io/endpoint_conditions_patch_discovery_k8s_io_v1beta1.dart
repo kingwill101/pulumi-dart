@@ -31,9 +31,9 @@ class EndpointConditionsPatchDiscoveryK8sIoV1beta1 {
 
   factory EndpointConditionsPatchDiscoveryK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointConditionsPatchDiscoveryK8sIoV1beta1(
-      ready: map['ready'] == null ? null : (map['ready'] as bool).input(),
-      serving: map['serving'] == null ? null : (map['serving'] as bool).input(),
-      terminating: map['terminating'] == null ? null : (map['terminating'] as bool).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as bool).input(),
+      serving: map['serving'] == null ? null : (map['serving']! as bool).input(),
+      terminating: map['terminating'] == null ? null : (map['terminating']! as bool).input(),
     );
   }
 }

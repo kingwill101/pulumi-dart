@@ -42,11 +42,11 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      serviceVersion: map['serviceVersion'] == null ? null : (map['serviceVersion'] as String).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      serviceVersion: map['serviceVersion'] == null ? null : (map['serviceVersion']! as String).input(),
     );
   }
 }

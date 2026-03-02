@@ -69,16 +69,16 @@ class EmailIdentityState {
 
   factory EmailIdentityState.fromMap(Map<String, dynamic> map) {
     return EmailIdentityState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configurationSetName: map['configurationSetName'] == null ? null : (map['configurationSetName'] as String).input(),
-      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : (EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes'] as Map).cast<String, dynamic>())).input(),
-      emailIdentity: map['emailIdentity'] == null ? null : (map['emailIdentity'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      verificationStatus: map['verificationStatus'] == null ? null : (map['verificationStatus'] as String).input(),
-      verifiedForSendingStatus: map['verifiedForSendingStatus'] == null ? null : (map['verifiedForSendingStatus'] as bool).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configurationSetName: map['configurationSetName'] == null ? null : ((map['configurationSetName'] as String).input()).input(),
+      dkimSigningAttributes: map['dkimSigningAttributes'] == null ? null : ((EmailIdentityDkimSigningAttributes.fromMap((map['dkimSigningAttributes']! as Map).cast<String, dynamic>())).input()).input(),
+      emailIdentity: map['emailIdentity'] == null ? null : ((map['emailIdentity'] as String).input()).input(),
+      identityType: map['identityType'] == null ? null : ((map['identityType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      verificationStatus: map['verificationStatus'] == null ? null : ((map['verificationStatus'] as String).input()).input(),
+      verifiedForSendingStatus: map['verifiedForSendingStatus'] == null ? null : ((map['verifiedForSendingStatus'] as bool).input()).input(),
     );
   }
 }

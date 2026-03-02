@@ -100,17 +100,17 @@ class OrganizationVpcFlowLogsConfigArgs {
 
   factory OrganizationVpcFlowLogsConfigArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationVpcFlowLogsConfigArgs(
-      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval'] as String).input(),
-      crossProjectMetadata: map['crossProjectMetadata'] == null ? null : (map['crossProjectMetadata'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr'] as String).input(),
-      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling'] as double).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval']! as String).input(),
+      crossProjectMetadata: map['crossProjectMetadata'] == null ? null : (map['crossProjectMetadata']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr']! as String).input(),
+      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling']! as double).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields'] as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields']! as List).cast<String>()).input(),
       organization: (map['organization'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       vpcFlowLogsConfigId: (map['vpcFlowLogsConfigId'] as String).input(),
     );
   }

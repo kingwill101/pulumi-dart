@@ -49,7 +49,7 @@ class SubnetArgs {
     return SubnetArgs(
       cidr: (map['cidr'] as String).input(),
       subnetName: (map['subnetName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       vpdId: (map['vpdId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

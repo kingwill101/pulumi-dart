@@ -53,10 +53,10 @@ class GetGroupsResult {
       displayNamePrefix: map['displayNamePrefix'] as String,
       displayNames: (map['displayNames'] as List).cast<String>(),
       id: map['id'] as String,
-      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing'] as bool,
+      ignoreMissing: map['ignoreMissing'] == null ? null : map['ignoreMissing']! as bool,
       mailEnabled: map['mailEnabled'] as bool,
       objectIds: (map['objectIds'] as List).cast<String>(),
-      returnAll: map['returnAll'] == null ? null : map['returnAll'] as bool,
+      returnAll: map['returnAll'] == null ? null : map['returnAll']! as bool,
       securityEnabled: map['securityEnabled'] as bool,
     );
   }

@@ -62,15 +62,15 @@ class NfsLocationState {
 
   factory NfsLocationState.fromMap(Map<String, dynamic> map) {
     return NfsLocationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      mountOptions: map['mountOptions'] == null ? null : (NfsLocationMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
-      onPremConfig: map['onPremConfig'] == null ? null : (NfsLocationOnPremConfig.fromMap((map['onPremConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serverHostname: map['serverHostname'] == null ? null : (map['serverHostname'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      mountOptions: map['mountOptions'] == null ? null : ((NfsLocationMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      onPremConfig: map['onPremConfig'] == null ? null : ((NfsLocationOnPremConfig.fromMap((map['onPremConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serverHostname: map['serverHostname'] == null ? null : ((map['serverHostname'] as String).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

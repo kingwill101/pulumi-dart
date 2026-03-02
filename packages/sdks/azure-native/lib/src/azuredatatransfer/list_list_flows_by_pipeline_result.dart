@@ -22,7 +22,7 @@ class ListListFlowsByPipelineResult {
 
   factory ListListFlowsByPipelineResult.fromMap(Map<String, dynamic> map) {
     return ListListFlowsByPipelineResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ListFlowsByPipelineConnectionResponse>(map['value'], (value) => ListFlowsByPipelineConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ListFlowsByPipelineConnectionResponse>(map['value']!, (value) => ListFlowsByPipelineConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

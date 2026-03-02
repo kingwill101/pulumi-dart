@@ -25,7 +25,7 @@ class AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
 
   factory AppVersionSnapshotAppDefaultChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppDefaultChannelProfilePersonaProperty(
-      persona: map['persona'] == null ? null : (map['persona'] as String).input(),
+      persona: map['persona'] == null ? null : (map['persona']! as String).input(),
     );
   }
 }

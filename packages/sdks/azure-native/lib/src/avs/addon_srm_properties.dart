@@ -28,7 +28,7 @@ class AddonSrmProperties {
   factory AddonSrmProperties.fromMap(Map<String, dynamic> map) {
     return AddonSrmProperties(
       addonType: (map['addonType'] as String).input(),
-      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey'] as String).input(),
+      licenseKey: map['licenseKey'] == null ? null : (map['licenseKey']! as String).input(),
     );
   }
 }

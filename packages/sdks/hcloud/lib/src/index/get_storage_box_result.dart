@@ -79,16 +79,16 @@ class GetStorageBoxResult {
     return GetStorageBoxResult(
       accessSettings: GetStorageBoxAccessSettings.fromMap((map['accessSettings'] as Map).cast<String, dynamic>()),
       deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] == null ? null : map['id'] as int,
+      id: map['id'] == null ? null : map['id']! as int,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       server: map['server'] as String,
       snapshotPlan: GetStorageBoxSnapshotPlan.fromMap((map['snapshotPlan'] as Map).cast<String, dynamic>()),
       storageBoxType: map['storageBoxType'] as String,
       system: map['system'] as String,
       username: map['username'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

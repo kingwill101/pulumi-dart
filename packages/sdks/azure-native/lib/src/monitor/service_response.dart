@@ -28,7 +28,7 @@ class ServiceResponse {
 
   factory ServiceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceResponse(
-      persistence: map['persistence'] == null ? null : (PersistenceConfigurationsResponse.fromMap((map['persistence'] as Map).cast<String, dynamic>())).input(),
+      persistence: map['persistence'] == null ? null : (PersistenceConfigurationsResponse.fromMap((map['persistence']! as Map).cast<String, dynamic>())).input(),
       pipelines: (pulumi.Input.decodeList<PipelineResponse>(map['pipelines'], (value) => PipelineResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

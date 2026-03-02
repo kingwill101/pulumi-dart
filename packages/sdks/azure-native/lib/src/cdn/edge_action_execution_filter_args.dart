@@ -60,12 +60,12 @@ class EdgeActionExecutionFilterArgs {
   factory EdgeActionExecutionFilterArgs.fromMap(Map<String, dynamic> map) {
     return EdgeActionExecutionFilterArgs(
       edgeActionName: (map['edgeActionName'] as String).input(),
-      executionFilter: map['executionFilter'] == null ? null : (map['executionFilter'] as String).input(),
+      executionFilter: map['executionFilter'] == null ? null : (map['executionFilter']! as String).input(),
       executionFilterIdentifierHeaderName: (map['executionFilterIdentifierHeaderName'] as String).input(),
       executionFilterIdentifierHeaderValue: (map['executionFilterIdentifierHeaderValue'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       versionId: (map['versionId'] as String).input(),
     );
   }

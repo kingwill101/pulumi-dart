@@ -29,7 +29,7 @@ class SyncGroupArgs {
 
   factory SyncGroupArgs.fromMap(Map<String, dynamic> map) {
     return SyncGroupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageSyncId: (map['storageSyncId'] as String).input(),
     );
   }

@@ -53,13 +53,13 @@ class InstanceNetworkInterfaceAttachment {
 
   factory InstanceNetworkInterfaceAttachment.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterfaceAttachment(
-      attachTime: map['attachTime'] == null ? null : (map['attachTime'] as String).input(),
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex'] as int).input(),
-      enaSrdSpecification: map['enaSrdSpecification'] == null ? null : (InstanceAttachmentEnaSrdSpecification.fromMap((map['enaSrdSpecification'] as Map).cast<String, dynamic>())).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
-      status: map['status'] == null ? null : (AttachmentStatusEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      attachTime: map['attachTime'] == null ? null : (map['attachTime']! as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId']! as String).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination']! as bool).input(),
+      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex']! as int).input(),
+      enaSrdSpecification: map['enaSrdSpecification'] == null ? null : (InstanceAttachmentEnaSrdSpecification.fromMap((map['enaSrdSpecification']! as Map).cast<String, dynamic>())).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex']! as int).input(),
+      status: map['status'] == null ? null : (AttachmentStatusEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

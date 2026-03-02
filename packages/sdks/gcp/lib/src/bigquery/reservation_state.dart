@@ -169,20 +169,20 @@ class ReservationState {
 
   factory ReservationState.fromMap(Map<String, dynamic> map) {
     return ReservationState(
-      autoscale: map['autoscale'] == null ? null : (ReservationAutoscale.fromMap((map['autoscale'] as Map).cast<String, dynamic>())).input(),
-      concurrency: map['concurrency'] == null ? null : (map['concurrency'] as int).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originalPrimaryLocation: map['originalPrimaryLocation'] == null ? null : (map['originalPrimaryLocation'] as String).input(),
-      primaryLocation: map['primaryLocation'] == null ? null : (map['primaryLocation'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      replicationStatuses: map['replicationStatuses'] == null ? null : (pulumi.Input.decodeList<ReservationReplicationStatus>(map['replicationStatuses'], (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
-      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation'] as String).input(),
-      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity'] as int).input(),
+      autoscale: map['autoscale'] == null ? null : (ReservationAutoscale.fromMap((map['autoscale']! as Map).cast<String, dynamic>())).input(),
+      concurrency: map['concurrency'] == null ? null : (map['concurrency']! as int).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      ignoreIdleSlots: map['ignoreIdleSlots'] == null ? null : (map['ignoreIdleSlots']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      originalPrimaryLocation: map['originalPrimaryLocation'] == null ? null : (map['originalPrimaryLocation']! as String).input(),
+      primaryLocation: map['primaryLocation'] == null ? null : (map['primaryLocation']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      replicationStatuses: map['replicationStatuses'] == null ? null : (pulumi.Input.decodeList<ReservationReplicationStatus>(map['replicationStatuses']!, (value) => ReservationReplicationStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode']! as String).input(),
+      secondaryLocation: map['secondaryLocation'] == null ? null : (map['secondaryLocation']! as String).input(),
+      slotCapacity: map['slotCapacity'] == null ? null : (map['slotCapacity']! as int).input(),
     );
   }
 }

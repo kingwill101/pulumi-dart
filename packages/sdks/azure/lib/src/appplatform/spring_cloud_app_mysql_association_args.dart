@@ -51,7 +51,7 @@ class SpringCloudAppMysqlAssociationArgs {
     return SpringCloudAppMysqlAssociationArgs(
       databaseName: (map['databaseName'] as String).input(),
       mysqlServerId: (map['mysqlServerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
       springCloudAppId: (map['springCloudAppId'] as String).input(),
       username: (map['username'] as String).input(),

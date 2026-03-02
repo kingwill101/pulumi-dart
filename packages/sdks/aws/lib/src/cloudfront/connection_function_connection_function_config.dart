@@ -32,7 +32,7 @@ class ConnectionFunctionConnectionFunctionConfig {
   factory ConnectionFunctionConnectionFunctionConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionFunctionConnectionFunctionConfig(
       comment: (map['comment'] as String).input(),
-      keyValueStoreAssociation: map['keyValueStoreAssociation'] == null ? null : (ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap((map['keyValueStoreAssociation'] as Map).cast<String, dynamic>())).input(),
+      keyValueStoreAssociation: map['keyValueStoreAssociation'] == null ? null : ((ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation.fromMap((map['keyValueStoreAssociation']! as Map).cast<String, dynamic>())).input()).input(),
       runtime: (map['runtime'] as String).input(),
     );
   }

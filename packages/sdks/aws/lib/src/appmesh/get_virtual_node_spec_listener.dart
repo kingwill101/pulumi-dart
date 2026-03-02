@@ -45,12 +45,12 @@ class GetVirtualNodeSpecListener {
 
   factory GetVirtualNodeSpecListener.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListener(
-      connectionPools: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerConnectionPool>(map['connectionPools'], (value) => GetVirtualNodeSpecListenerConnectionPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      healthChecks: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerHealthCheck>(map['healthChecks'], (value) => GetVirtualNodeSpecListenerHealthCheck.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outlierDetections: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerOutlierDetection>(map['outlierDetections'], (value) => GetVirtualNodeSpecListenerOutlierDetection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portMappings: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerPortMapping>(map['portMappings'], (value) => GetVirtualNodeSpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeout>(map['timeouts'], (value) => GetVirtualNodeSpecListenerTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tls: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTl>(map['tls'], (value) => GetVirtualNodeSpecListenerTl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionPools: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerConnectionPool>(map['connectionPools']!, (value) => GetVirtualNodeSpecListenerConnectionPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthChecks: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerHealthCheck>(map['healthChecks']!, (value) => GetVirtualNodeSpecListenerHealthCheck.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outlierDetections: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerOutlierDetection>(map['outlierDetections']!, (value) => GetVirtualNodeSpecListenerOutlierDetection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portMappings: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerPortMapping>(map['portMappings']!, (value) => GetVirtualNodeSpecListenerPortMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeout>(map['timeouts']!, (value) => GetVirtualNodeSpecListenerTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tls: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTl>(map['tls']!, (value) => GetVirtualNodeSpecListenerTl.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

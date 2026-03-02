@@ -62,15 +62,15 @@ class NetworkInterfacePropertiesResponse {
 
   factory NetworkInterfacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfacePropertiesResponse(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress'] as String).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
-      rdpAuthority: map['rdpAuthority'] == null ? null : (map['rdpAuthority'] as String).input(),
-      sharedPublicIpAddressConfiguration: map['sharedPublicIpAddressConfiguration'] == null ? null : (SharedPublicIpAddressConfigurationResponse.fromMap((map['sharedPublicIpAddressConfiguration'] as Map).cast<String, dynamic>())).input(),
-      sshAuthority: map['sshAuthority'] == null ? null : (map['sshAuthority'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress']! as String).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      rdpAuthority: map['rdpAuthority'] == null ? null : (map['rdpAuthority']! as String).input(),
+      sharedPublicIpAddressConfiguration: map['sharedPublicIpAddressConfiguration'] == null ? null : (SharedPublicIpAddressConfigurationResponse.fromMap((map['sharedPublicIpAddressConfiguration']! as Map).cast<String, dynamic>())).input(),
+      sshAuthority: map['sshAuthority'] == null ? null : (map['sshAuthority']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

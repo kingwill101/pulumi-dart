@@ -79,16 +79,16 @@ class FlowLogArgs {
   factory FlowLogArgs.fromMap(Map<String, dynamic> map) {
     return FlowLogArgs(
       cenId: (map['cenId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      logFormatString: map['logFormatString'] == null ? null : (map['logFormatString'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowLogName: map['flowLogName'] == null ? null : (map['flowLogName']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      logFormatString: map['logFormatString'] == null ? null : (map['logFormatString']! as String).input(),
       logStoreName: (map['logStoreName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : (map['transitRouterAttachmentId']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
     );
   }
 }

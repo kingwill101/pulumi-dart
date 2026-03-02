@@ -75,15 +75,15 @@ class PatchDeploymentPatchConfig {
 
   factory PatchDeploymentPatchConfig.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentPatchConfig(
-      apt: map['apt'] == null ? null : (PatchDeploymentPatchConfigApt.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (PatchDeploymentPatchConfigGoo.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
-      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed'] as bool).input(),
-      postStep: map['postStep'] == null ? null : (PatchDeploymentPatchConfigPostStep.fromMap((map['postStep'] as Map).cast<String, dynamic>())).input(),
-      preStep: map['preStep'] == null ? null : (PatchDeploymentPatchConfigPreStep.fromMap((map['preStep'] as Map).cast<String, dynamic>())).input(),
-      rebootConfig: map['rebootConfig'] == null ? null : (map['rebootConfig'] as String).input(),
-      windowsUpdate: map['windowsUpdate'] == null ? null : (PatchDeploymentPatchConfigWindowsUpdate.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (PatchDeploymentPatchConfigYum.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (PatchDeploymentPatchConfigZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (PatchDeploymentPatchConfigApt.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (PatchDeploymentPatchConfigGoo.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
+      migInstancesAllowed: map['migInstancesAllowed'] == null ? null : (map['migInstancesAllowed']! as bool).input(),
+      postStep: map['postStep'] == null ? null : (PatchDeploymentPatchConfigPostStep.fromMap((map['postStep']! as Map).cast<String, dynamic>())).input(),
+      preStep: map['preStep'] == null ? null : (PatchDeploymentPatchConfigPreStep.fromMap((map['preStep']! as Map).cast<String, dynamic>())).input(),
+      rebootConfig: map['rebootConfig'] == null ? null : (map['rebootConfig']! as String).input(),
+      windowsUpdate: map['windowsUpdate'] == null ? null : (PatchDeploymentPatchConfigWindowsUpdate.fromMap((map['windowsUpdate']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (PatchDeploymentPatchConfigYum.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (PatchDeploymentPatchConfigZypper.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

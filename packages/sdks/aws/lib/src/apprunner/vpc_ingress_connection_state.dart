@@ -62,15 +62,15 @@ class VpcIngressConnectionState {
 
   factory VpcIngressConnectionState.fromMap(Map<String, dynamic> map) {
     return VpcIngressConnectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      ingressVpcConfiguration: map['ingressVpcConfiguration'] == null ? null : (VpcIngressConnectionIngressVpcConfiguration.fromMap((map['ingressVpcConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceArn: map['serviceArn'] == null ? null : (map['serviceArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      ingressVpcConfiguration: map['ingressVpcConfiguration'] == null ? null : ((VpcIngressConnectionIngressVpcConfiguration.fromMap((map['ingressVpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceArn: map['serviceArn'] == null ? null : ((map['serviceArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

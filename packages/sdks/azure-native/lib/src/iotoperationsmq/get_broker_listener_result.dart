@@ -103,22 +103,22 @@ class GetBrokerListenerResult {
 
   factory GetBrokerListenerResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerListenerResult(
-      authenticationEnabled: map['authenticationEnabled'] == null ? null : map['authenticationEnabled'] as bool,
-      authorizationEnabled: map['authorizationEnabled'] == null ? null : map['authorizationEnabled'] as bool,
+      authenticationEnabled: map['authenticationEnabled'] == null ? null : map['authenticationEnabled']! as bool,
+      authorizationEnabled: map['authorizationEnabled'] == null ? null : map['authorizationEnabled']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       brokerRef: map['brokerRef'] as String,
       extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nodePort: map['nodePort'] == null ? null : map['nodePort'] as int,
+      nodePort: map['nodePort'] == null ? null : map['nodePort']! as int,
       port: map['port'] as int,
       provisioningState: map['provisioningState'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType'] as String,
+      serviceName: map['serviceName'] == null ? null : map['serviceName']! as String,
+      serviceType: map['serviceType'] == null ? null : map['serviceType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tls: map['tls'] == null ? null : TlsCertMethodResponse.fromMap((map['tls'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tls: map['tls'] == null ? null : TlsCertMethodResponse.fromMap((map['tls']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

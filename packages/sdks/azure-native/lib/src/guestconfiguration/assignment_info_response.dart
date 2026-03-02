@@ -27,7 +27,7 @@ class AssignmentInfoResponse {
 
   factory AssignmentInfoResponse.fromMap(Map<String, dynamic> map) {
     return AssignmentInfoResponse(
-      configuration: map['configuration'] == null ? null : (ConfigurationInfoResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      configuration: map['configuration'] == null ? null : (ConfigurationInfoResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

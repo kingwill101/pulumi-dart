@@ -28,8 +28,8 @@ class ComputeEnginePreferences {
 
   factory ComputeEnginePreferences.fromMap(Map<String, dynamic> map) {
     return ComputeEnginePreferences(
-      licenseType: map['licenseType'] == null ? null : (ComputeEnginePreferencesLicenseType.fromValue(map['licenseType'] as String)).input(),
-      machinePreferences: map['machinePreferences'] == null ? null : (MachinePreferences.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>())).input(),
+      licenseType: map['licenseType'] == null ? null : (ComputeEnginePreferencesLicenseType.fromValue(map['licenseType']! as String)).input(),
+      machinePreferences: map['machinePreferences'] == null ? null : (MachinePreferences.fromMap((map['machinePreferences']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

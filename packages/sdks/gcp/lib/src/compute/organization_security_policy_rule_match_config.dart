@@ -37,9 +37,9 @@ class OrganizationSecurityPolicyRuleMatchConfig {
 
   factory OrganizationSecurityPolicyRuleMatchConfig.fromMap(Map<String, dynamic> map) {
     return OrganizationSecurityPolicyRuleMatchConfig(
-      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges'] as List).cast<String>()).input(),
+      destIpRanges: map['destIpRanges'] == null ? null : ((map['destIpRanges']! as List).cast<String>()).input(),
       layer4Configs: (pulumi.Input.decodeList<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>(map['layer4Configs'], (value) => OrganizationSecurityPolicyRuleMatchConfigLayer4Config.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges'] as List).cast<String>()).input(),
+      srcIpRanges: map['srcIpRanges'] == null ? null : ((map['srcIpRanges']! as List).cast<String>()).input(),
     );
   }
 }

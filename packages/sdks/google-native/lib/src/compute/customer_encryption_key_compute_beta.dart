@@ -35,10 +35,10 @@ class CustomerEncryptionKeyComputeBeta {
 
   factory CustomerEncryptionKeyComputeBeta.fromMap(Map<String, dynamic> map) {
     return CustomerEncryptionKeyComputeBeta(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
-      rawKey: map['rawKey'] == null ? null : (map['rawKey'] as String).input(),
-      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
+      rawKey: map['rawKey'] == null ? null : (map['rawKey']! as String).input(),
+      rsaEncryptedKey: map['rsaEncryptedKey'] == null ? null : (map['rsaEncryptedKey']! as String).input(),
     );
   }
 }

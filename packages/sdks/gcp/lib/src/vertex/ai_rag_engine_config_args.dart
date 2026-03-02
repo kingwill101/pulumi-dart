@@ -37,9 +37,9 @@ class AiRagEngineConfigArgs {
 
   factory AiRagEngineConfigArgs.fromMap(Map<String, dynamic> map) {
     return AiRagEngineConfigArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       ragManagedDbConfig: (AiRagEngineConfigRagManagedDbConfig.fromMap((map['ragManagedDbConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

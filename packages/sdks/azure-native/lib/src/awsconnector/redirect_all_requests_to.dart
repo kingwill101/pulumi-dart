@@ -26,8 +26,8 @@ class RedirectAllRequestsTo {
 
   factory RedirectAllRequestsTo.fromMap(Map<String, dynamic> map) {
     return RedirectAllRequestsTo(
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

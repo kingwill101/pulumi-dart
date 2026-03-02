@@ -21,7 +21,7 @@ class ControlFolderIntelligenceConfigTrialConfig {
 
   factory ControlFolderIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigTrialConfig(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
     );
   }
 }

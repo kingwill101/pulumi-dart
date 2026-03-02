@@ -34,8 +34,8 @@ class VolumeSnapshotArgs {
 
   factory VolumeSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return VolumeSnapshotArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
       volumeId: (map['volumeId'] as String).input(),
     );
   }

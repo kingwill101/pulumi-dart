@@ -49,12 +49,12 @@ class RoleManagementPolicyExpirationRuleResponse {
 
   factory RoleManagementPolicyExpirationRuleResponse.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyExpirationRuleResponse(
-      exceptionMembers: map['exceptionMembers'] == null ? null : (pulumi.Input.decodeList<UserSetResponse>(map['exceptionMembers'], (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isExpirationRequired: map['isExpirationRequired'] == null ? null : (map['isExpirationRequired'] as bool).input(),
-      maximumDuration: map['maximumDuration'] == null ? null : (map['maximumDuration'] as String).input(),
+      exceptionMembers: map['exceptionMembers'] == null ? null : (pulumi.Input.decodeList<UserSetResponse>(map['exceptionMembers']!, (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isExpirationRequired: map['isExpirationRequired'] == null ? null : (map['isExpirationRequired']! as bool).input(),
+      maximumDuration: map['maximumDuration'] == null ? null : (map['maximumDuration']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      target: map['target'] == null ? null : (RoleManagementPolicyRuleTargetResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (RoleManagementPolicyRuleTargetResponse.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

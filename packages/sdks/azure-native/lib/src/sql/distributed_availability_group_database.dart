@@ -21,7 +21,7 @@ class DistributedAvailabilityGroupDatabase {
 
   factory DistributedAvailabilityGroupDatabase.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupDatabase(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
     );
   }
 }

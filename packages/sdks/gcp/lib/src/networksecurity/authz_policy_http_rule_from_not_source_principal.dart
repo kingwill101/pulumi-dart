@@ -78,13 +78,13 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipal {
 
   factory AuthzPolicyHttpRuleFromNotSourcePrincipal.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyHttpRuleFromNotSourcePrincipal(
-      contains: map['contains'] == null ? null : (map['contains'] as String).input(),
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      principal: map['principal'] == null ? null : (AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
-      principalSelector: map['principalSelector'] == null ? null : (map['principalSelector'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      contains: map['contains'] == null ? null : (map['contains']! as String).input(),
+      exact: map['exact'] == null ? null : (map['exact']! as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      principal: map['principal'] == null ? null : (AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipal.fromMap((map['principal']! as Map).cast<String, dynamic>())).input(),
+      principalSelector: map['principalSelector'] == null ? null : (map['principalSelector']! as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

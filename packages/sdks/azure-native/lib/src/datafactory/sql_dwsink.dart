@@ -100,22 +100,22 @@ class SqlDWSink {
 
   factory SqlDWSink.fromMap(Map<String, dynamic> map) {
     return SqlDWSink(
-      allowCopyCommand: map['allowCopyCommand'] == null ? null : (map['allowCopyCommand']).input(),
-      allowPolyBase: map['allowPolyBase'] == null ? null : (map['allowPolyBase']).input(),
-      copyCommandSettings: map['copyCommandSettings'] == null ? null : (DWCopyCommandSettings.fromMap((map['copyCommandSettings'] as Map).cast<String, dynamic>())).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      polyBaseSettings: map['polyBaseSettings'] == null ? null : (PolybaseSettings.fromMap((map['polyBaseSettings'] as Map).cast<String, dynamic>())).input(),
-      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
-      sqlWriterUseTableLock: map['sqlWriterUseTableLock'] == null ? null : (map['sqlWriterUseTableLock']).input(),
-      tableOption: map['tableOption'] == null ? null : (map['tableOption']).input(),
+      allowCopyCommand: map['allowCopyCommand'] == null ? null : (map['allowCopyCommand']!).input(),
+      allowPolyBase: map['allowPolyBase'] == null ? null : (map['allowPolyBase']!).input(),
+      copyCommandSettings: map['copyCommandSettings'] == null ? null : (DWCopyCommandSettings.fromMap((map['copyCommandSettings']! as Map).cast<String, dynamic>())).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      polyBaseSettings: map['polyBaseSettings'] == null ? null : (PolybaseSettings.fromMap((map['polyBaseSettings']! as Map).cast<String, dynamic>())).input(),
+      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']!).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
+      sqlWriterUseTableLock: map['sqlWriterUseTableLock'] == null ? null : (map['sqlWriterUseTableLock']!).input(),
+      tableOption: map['tableOption'] == null ? null : (map['tableOption']!).input(),
       type: (map['type'] as String).input(),
-      upsertSettings: map['upsertSettings'] == null ? null : (SqlDWUpsertSettings.fromMap((map['upsertSettings'] as Map).cast<String, dynamic>())).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
-      writeBehavior: map['writeBehavior'] == null ? null : (map['writeBehavior']).input(),
+      upsertSettings: map['upsertSettings'] == null ? null : (SqlDWUpsertSettings.fromMap((map['upsertSettings']! as Map).cast<String, dynamic>())).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
+      writeBehavior: map['writeBehavior'] == null ? null : (map['writeBehavior']!).input(),
     );
   }
 }

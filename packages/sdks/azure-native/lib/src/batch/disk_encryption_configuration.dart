@@ -22,7 +22,7 @@ class DiskEncryptionConfiguration {
 
   factory DiskEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionConfiguration(
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<DiskEncryptionTarget>(map['targets'], (value) => DiskEncryptionTarget.fromValue(value as String))).input(),
+      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<DiskEncryptionTarget>(map['targets']!, (value) => DiskEncryptionTarget.fromValue(value as String))).input(),
     );
   }
 }

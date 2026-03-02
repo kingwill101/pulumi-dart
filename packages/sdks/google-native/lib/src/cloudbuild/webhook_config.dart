@@ -28,7 +28,7 @@ class WebhookConfig {
   factory WebhookConfig.fromMap(Map<String, dynamic> map) {
     return WebhookConfig(
       secret: (map['secret'] as String).input(),
-      state: map['state'] == null ? null : (WebhookConfigState.fromValue(map['state'] as String)).input(),
+      state: map['state'] == null ? null : (WebhookConfigState.fromValue(map['state']! as String)).input(),
     );
   }
 }

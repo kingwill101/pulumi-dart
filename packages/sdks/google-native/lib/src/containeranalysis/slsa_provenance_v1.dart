@@ -26,8 +26,8 @@ class SlsaProvenanceV1 {
 
   factory SlsaProvenanceV1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1(
-      buildDefinition: map['buildDefinition'] == null ? null : (BuildDefinition.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>())).input(),
-      runDetails: map['runDetails'] == null ? null : (RunDetails.fromMap((map['runDetails'] as Map).cast<String, dynamic>())).input(),
+      buildDefinition: map['buildDefinition'] == null ? null : (BuildDefinition.fromMap((map['buildDefinition']! as Map).cast<String, dynamic>())).input(),
+      runDetails: map['runDetails'] == null ? null : (RunDetails.fromMap((map['runDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

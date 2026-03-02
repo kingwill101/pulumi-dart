@@ -47,12 +47,12 @@ class PlacementGroupState {
 
   factory PlacementGroupState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupState(
-      isCompliant: map['isCompliant'] == null ? null : (map['isCompliant'] as bool).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      members: map['members'] == null ? null : (pulumi.Input.decodeList<PlacementGroupMember>(map['members'], (value) => PlacementGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy'] as String).input(),
-      placementGroupType: map['placementGroupType'] == null ? null : (map['placementGroupType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      isCompliant: map['isCompliant'] == null ? null : (map['isCompliant']! as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      members: map['members'] == null ? null : (pulumi.Input.decodeList<PlacementGroupMember>(map['members']!, (value) => PlacementGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy']! as String).input(),
+      placementGroupType: map['placementGroupType'] == null ? null : (map['placementGroupType']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

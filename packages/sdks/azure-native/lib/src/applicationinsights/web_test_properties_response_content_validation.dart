@@ -31,9 +31,9 @@ class WebTestPropertiesResponseContentValidation {
 
   factory WebTestPropertiesResponseContentValidation.fromMap(Map<String, dynamic> map) {
     return WebTestPropertiesResponseContentValidation(
-      contentMatch: map['contentMatch'] == null ? null : (map['contentMatch'] as String).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      passIfTextFound: map['passIfTextFound'] == null ? null : (map['passIfTextFound'] as bool).input(),
+      contentMatch: map['contentMatch'] == null ? null : (map['contentMatch']! as String).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      passIfTextFound: map['passIfTextFound'] == null ? null : (map['passIfTextFound']! as bool).input(),
     );
   }
 }

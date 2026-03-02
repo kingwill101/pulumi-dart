@@ -31,9 +31,9 @@ class ContainerPolicyState {
 
   factory ContainerPolicyState.fromMap(Map<String, dynamic> map) {
     return ContainerPolicyState(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      containerName: map['containerName'] == null ? null : ((map['containerName'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

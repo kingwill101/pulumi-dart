@@ -22,7 +22,7 @@ class MigrationJobDumpFlags {
 
   factory MigrationJobDumpFlags.fromMap(Map<String, dynamic> map) {
     return MigrationJobDumpFlags(
-      dumpFlags: map['dumpFlags'] == null ? null : (pulumi.Input.decodeList<MigrationJobDumpFlagsDumpFlag>(map['dumpFlags'], (value) => MigrationJobDumpFlagsDumpFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dumpFlags: map['dumpFlags'] == null ? null : (pulumi.Input.decodeList<MigrationJobDumpFlagsDumpFlag>(map['dumpFlags']!, (value) => MigrationJobDumpFlagsDumpFlag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -23,7 +23,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair {
 
   factory RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair(
-      allowChangingZone: map['allowChangingZone'] == null ? null : (map['allowChangingZone'] as String).input(),
+      allowChangingZone: map['allowChangingZone'] == null ? null : (map['allowChangingZone']! as String).input(),
     );
   }
 }

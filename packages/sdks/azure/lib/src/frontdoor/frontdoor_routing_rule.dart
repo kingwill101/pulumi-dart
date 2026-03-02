@@ -58,13 +58,13 @@ class FrontdoorRoutingRule {
   factory FrontdoorRoutingRule.fromMap(Map<String, dynamic> map) {
     return FrontdoorRoutingRule(
       acceptedProtocols: ((map['acceptedProtocols'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      forwardingConfiguration: map['forwardingConfiguration'] == null ? null : (FrontdoorRoutingRuleForwardingConfiguration.fromMap((map['forwardingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      forwardingConfiguration: map['forwardingConfiguration'] == null ? null : (FrontdoorRoutingRuleForwardingConfiguration.fromMap((map['forwardingConfiguration']! as Map).cast<String, dynamic>())).input(),
       frontendEndpoints: ((map['frontendEndpoints'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       patternsToMatches: ((map['patternsToMatches'] as List).cast<String>()).input(),
-      redirectConfiguration: map['redirectConfiguration'] == null ? null : (FrontdoorRoutingRuleRedirectConfiguration.fromMap((map['redirectConfiguration'] as Map).cast<String, dynamic>())).input(),
+      redirectConfiguration: map['redirectConfiguration'] == null ? null : (FrontdoorRoutingRuleRedirectConfiguration.fromMap((map['redirectConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

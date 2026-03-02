@@ -26,8 +26,8 @@ class GoogleCloudMlV1AutomatedStoppingConfig {
 
   factory GoogleCloudMlV1AutomatedStoppingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutomatedStoppingConfig(
-      decayCurveStoppingConfig: map['decayCurveStoppingConfig'] == null ? null : (GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromMap((map['decayCurveStoppingConfig'] as Map).cast<String, dynamic>())).input(),
-      medianAutomatedStoppingConfig: map['medianAutomatedStoppingConfig'] == null ? null : (GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromMap((map['medianAutomatedStoppingConfig'] as Map).cast<String, dynamic>())).input(),
+      decayCurveStoppingConfig: map['decayCurveStoppingConfig'] == null ? null : (GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig.fromMap((map['decayCurveStoppingConfig']! as Map).cast<String, dynamic>())).input(),
+      medianAutomatedStoppingConfig: map['medianAutomatedStoppingConfig'] == null ? null : (GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromMap((map['medianAutomatedStoppingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -50,13 +50,13 @@ class GetDataSetLogicalTableMapDataTransform {
 
   factory GetDataSetLogicalTableMapDataTransform.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapDataTransform(
-      castColumnTypeOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation>(map['castColumnTypeOperations'], (value) => GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createColumnsOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCreateColumnsOperation>(map['createColumnsOperations'], (value) => GetDataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filterOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformFilterOperation>(map['filterOperations'], (value) => GetDataSetLogicalTableMapDataTransformFilterOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projectOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformProjectOperation>(map['projectOperations'], (value) => GetDataSetLogicalTableMapDataTransformProjectOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      renameColumnOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformRenameColumnOperation>(map['renameColumnOperations'], (value) => GetDataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tagColumnOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperation>(map['tagColumnOperations'], (value) => GetDataSetLogicalTableMapDataTransformTagColumnOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      untagColumnOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformUntagColumnOperation>(map['untagColumnOperations'], (value) => GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      castColumnTypeOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation>(map['castColumnTypeOperations']!, (value) => GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createColumnsOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformCreateColumnsOperation>(map['createColumnsOperations']!, (value) => GetDataSetLogicalTableMapDataTransformCreateColumnsOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformFilterOperation>(map['filterOperations']!, (value) => GetDataSetLogicalTableMapDataTransformFilterOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projectOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformProjectOperation>(map['projectOperations']!, (value) => GetDataSetLogicalTableMapDataTransformProjectOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      renameColumnOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformRenameColumnOperation>(map['renameColumnOperations']!, (value) => GetDataSetLogicalTableMapDataTransformRenameColumnOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tagColumnOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperation>(map['tagColumnOperations']!, (value) => GetDataSetLogicalTableMapDataTransformTagColumnOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      untagColumnOperations: (pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformUntagColumnOperation>(map['untagColumnOperations']!, (value) => GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

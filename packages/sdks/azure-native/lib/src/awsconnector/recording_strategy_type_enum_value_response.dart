@@ -21,7 +21,7 @@ class RecordingStrategyTypeEnumValueResponse {
 
   factory RecordingStrategyTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return RecordingStrategyTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

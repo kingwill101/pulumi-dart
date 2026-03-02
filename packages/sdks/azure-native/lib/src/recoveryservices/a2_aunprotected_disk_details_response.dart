@@ -26,8 +26,8 @@ class A2AUnprotectedDiskDetailsResponse {
 
   factory A2AUnprotectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2AUnprotectedDiskDetailsResponse(
-      diskAutoProtectionStatus: map['diskAutoProtectionStatus'] == null ? null : (map['diskAutoProtectionStatus'] as String).input(),
-      diskLunId: map['diskLunId'] == null ? null : (map['diskLunId'] as int).input(),
+      diskAutoProtectionStatus: map['diskAutoProtectionStatus'] == null ? null : (map['diskAutoProtectionStatus']! as String).input(),
+      diskLunId: map['diskLunId'] == null ? null : (map['diskLunId']! as int).input(),
     );
   }
 }

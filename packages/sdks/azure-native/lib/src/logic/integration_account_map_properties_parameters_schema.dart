@@ -21,7 +21,7 @@ class IntegrationAccountMapPropertiesParametersSchema {
 
   factory IntegrationAccountMapPropertiesParametersSchema.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountMapPropertiesParametersSchema(
-      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
+      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
     );
   }
 }

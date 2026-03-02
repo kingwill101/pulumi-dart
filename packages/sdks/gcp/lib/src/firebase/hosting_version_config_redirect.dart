@@ -37,9 +37,9 @@ class HostingVersionConfigRedirect {
 
   factory HostingVersionConfigRedirect.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfigRedirect(
-      glob: map['glob'] == null ? null : (map['glob'] as String).input(),
+      glob: map['glob'] == null ? null : (map['glob']! as String).input(),
       location: (map['location'] as String).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
+      regex: map['regex'] == null ? null : (map['regex']! as String).input(),
       statusCode: (map['statusCode'] as int).input(),
     );
   }

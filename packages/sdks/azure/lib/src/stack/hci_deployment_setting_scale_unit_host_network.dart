@@ -38,8 +38,8 @@ class HciDeploymentSettingScaleUnitHostNetwork {
   factory HciDeploymentSettingScaleUnitHostNetwork.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingScaleUnitHostNetwork(
       intents: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnitHostNetworkIntent>(map['intents'], (value) => HciDeploymentSettingScaleUnitHostNetworkIntent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageAutoIpEnabled: map['storageAutoIpEnabled'] == null ? null : (map['storageAutoIpEnabled'] as bool).input(),
-      storageConnectivitySwitchlessEnabled: map['storageConnectivitySwitchlessEnabled'] == null ? null : (map['storageConnectivitySwitchlessEnabled'] as bool).input(),
+      storageAutoIpEnabled: map['storageAutoIpEnabled'] == null ? null : (map['storageAutoIpEnabled']! as bool).input(),
+      storageConnectivitySwitchlessEnabled: map['storageConnectivitySwitchlessEnabled'] == null ? null : (map['storageConnectivitySwitchlessEnabled']! as bool).input(),
       storageNetworks: (pulumi.Input.decodeList<HciDeploymentSettingScaleUnitHostNetworkStorageNetwork>(map['storageNetworks'], (value) => HciDeploymentSettingScaleUnitHostNetworkStorageNetwork.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

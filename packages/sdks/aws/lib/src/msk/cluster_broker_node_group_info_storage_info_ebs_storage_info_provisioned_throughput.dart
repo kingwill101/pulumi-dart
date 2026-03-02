@@ -24,8 +24,8 @@ class ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput {
 
   factory ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      volumeThroughput: map['volumeThroughput'] == null ? null : (map['volumeThroughput'] as int).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      volumeThroughput: map['volumeThroughput'] == null ? null : ((map['volumeThroughput'] as int).input()).input(),
     );
   }
 }

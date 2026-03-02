@@ -38,10 +38,10 @@ class ManagedClusterIngressProfileWebAppRoutingResponse {
 
   factory ManagedClusterIngressProfileWebAppRoutingResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfileWebAppRoutingResponse(
-      dnsZoneResourceIds: map['dnsZoneResourceIds'] == null ? null : ((map['dnsZoneResourceIds'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      dnsZoneResourceIds: map['dnsZoneResourceIds'] == null ? null : ((map['dnsZoneResourceIds']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       identity: (UserAssignedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      nginx: map['nginx'] == null ? null : (ManagedClusterIngressProfileNginxResponse.fromMap((map['nginx'] as Map).cast<String, dynamic>())).input(),
+      nginx: map['nginx'] == null ? null : (ManagedClusterIngressProfileNginxResponse.fromMap((map['nginx']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -81,19 +81,19 @@ class AdditionalCustomerProperties {
 
   factory AdditionalCustomerProperties.fromMap(Map<String, dynamic> map) {
     return AdditionalCustomerProperties(
-      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn'] as String).input(),
-      customerEmail: map['customerEmail'] == null ? null : (map['customerEmail'] as String).input(),
-      customerEntitlementExpiration: map['customerEntitlementExpiration'] == null ? null : (map['customerEntitlementExpiration'] as String).input(),
-      customerEntitlementSkuGuid: map['customerEntitlementSkuGuid'] == null ? null : (map['customerEntitlementSkuGuid'] as String).input(),
-      customerEntitlementSkuId: map['customerEntitlementSkuId'] == null ? null : (map['customerEntitlementSkuId'] as String).input(),
-      customerEntitlementSkuName: map['customerEntitlementSkuName'] == null ? null : (map['customerEntitlementSkuName'] as String).input(),
-      customerTransitAsn: map['customerTransitAsn'] == null ? null : (map['customerTransitAsn'] as String).input(),
-      customerTransitState: map['customerTransitState'] == null ? null : (map['customerTransitState'] as String).input(),
-      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1'] as String).input(),
-      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2'] as String).input(),
-      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3'] as String).input(),
-      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4'] as String).input(),
-      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5'] as String).input(),
+      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn']! as String).input(),
+      customerEmail: map['customerEmail'] == null ? null : (map['customerEmail']! as String).input(),
+      customerEntitlementExpiration: map['customerEntitlementExpiration'] == null ? null : (map['customerEntitlementExpiration']! as String).input(),
+      customerEntitlementSkuGuid: map['customerEntitlementSkuGuid'] == null ? null : (map['customerEntitlementSkuGuid']! as String).input(),
+      customerEntitlementSkuId: map['customerEntitlementSkuId'] == null ? null : (map['customerEntitlementSkuId']! as String).input(),
+      customerEntitlementSkuName: map['customerEntitlementSkuName'] == null ? null : (map['customerEntitlementSkuName']! as String).input(),
+      customerTransitAsn: map['customerTransitAsn'] == null ? null : (map['customerTransitAsn']! as String).input(),
+      customerTransitState: map['customerTransitState'] == null ? null : (map['customerTransitState']! as String).input(),
+      optionalProperty1: map['optionalProperty1'] == null ? null : (map['optionalProperty1']! as String).input(),
+      optionalProperty2: map['optionalProperty2'] == null ? null : (map['optionalProperty2']! as String).input(),
+      optionalProperty3: map['optionalProperty3'] == null ? null : (map['optionalProperty3']! as String).input(),
+      optionalProperty4: map['optionalProperty4'] == null ? null : (map['optionalProperty4']! as String).input(),
+      optionalProperty5: map['optionalProperty5'] == null ? null : (map['optionalProperty5']! as String).input(),
     );
   }
 }

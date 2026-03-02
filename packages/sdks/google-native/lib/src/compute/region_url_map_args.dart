@@ -89,19 +89,19 @@ class RegionUrlMapArgs {
 
   factory RegionUrlMapArgs.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapArgs(
-      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicy.fromMap((map['defaultCustomErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteAction.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>())).input(),
-      defaultService: map['defaultService'] == null ? null : (map['defaultService'] as String).input(),
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectAction.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (HttpHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      hostRules: map['hostRules'] == null ? null : (pulumi.Input.decodeList<HostRule>(map['hostRules'], (value) => HostRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathMatchers: map['pathMatchers'] == null ? null : (pulumi.Input.decodeList<PathMatcher>(map['pathMatchers'], (value) => PathMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      defaultCustomErrorResponsePolicy: map['defaultCustomErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicy.fromMap((map['defaultCustomErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultRouteAction: map['defaultRouteAction'] == null ? null : (HttpRouteAction.fromMap((map['defaultRouteAction']! as Map).cast<String, dynamic>())).input(),
+      defaultService: map['defaultService'] == null ? null : (map['defaultService']! as String).input(),
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : (HttpRedirectAction.fromMap((map['defaultUrlRedirect']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      hostRules: map['hostRules'] == null ? null : (pulumi.Input.decodeList<HostRule>(map['hostRules']!, (value) => HostRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathMatchers: map['pathMatchers'] == null ? null : (pulumi.Input.decodeList<PathMatcher>(map['pathMatchers']!, (value) => PathMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      tests: map['tests'] == null ? null : (pulumi.Input.decodeList<UrlMapTest>(map['tests'], (value) => UrlMapTest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      tests: map['tests'] == null ? null : (pulumi.Input.decodeList<UrlMapTest>(map['tests']!, (value) => UrlMapTest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

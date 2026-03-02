@@ -57,13 +57,13 @@ class HttpReadSettings {
 
   factory HttpReadSettings.fromMap(Map<String, dynamic> map) {
     return HttpReadSettings(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody']).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
-      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']!).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']!).input(),
+      requestTimeout: map['requestTimeout'] == null ? null : (map['requestTimeout']!).input(),
       type: (map['type'] as String).input(),
     );
   }

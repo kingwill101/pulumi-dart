@@ -43,10 +43,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepository.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceRepository(
-      apt: map['apt'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

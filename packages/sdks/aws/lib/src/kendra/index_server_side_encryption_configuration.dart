@@ -20,7 +20,7 @@ class IndexServerSideEncryptionConfiguration {
 
   factory IndexServerSideEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return IndexServerSideEncryptionConfiguration(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
     );
   }
 }

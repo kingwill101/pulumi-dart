@@ -77,16 +77,16 @@ class GetWebAppPremierAddOnResult {
     return GetWebAppPremierAddOnResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       location: map['location'] as String,
-      marketplaceOffer: map['marketplaceOffer'] == null ? null : map['marketplaceOffer'] as String,
-      marketplacePublisher: map['marketplacePublisher'] == null ? null : map['marketplacePublisher'] as String,
+      marketplaceOffer: map['marketplaceOffer'] == null ? null : map['marketplaceOffer']! as String,
+      marketplacePublisher: map['marketplacePublisher'] == null ? null : map['marketplacePublisher']! as String,
       name: map['name'] as String,
-      product: map['product'] == null ? null : map['product'] as String,
-      sku: map['sku'] == null ? null : map['sku'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      product: map['product'] == null ? null : map['product']! as String,
+      sku: map['sku'] == null ? null : map['sku']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      vendor: map['vendor'] == null ? null : map['vendor'] as String,
+      vendor: map['vendor'] == null ? null : map['vendor']! as String,
     );
   }
 }

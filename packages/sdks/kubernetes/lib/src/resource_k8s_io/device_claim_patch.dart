@@ -34,9 +34,9 @@ class DeviceClaimPatch {
 
   factory DeviceClaimPatch.fromMap(Map<String, dynamic> map) {
     return DeviceClaimPatch(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfigurationPatch>(map['config'], (value) => DeviceClaimConfigurationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraintPatch>(map['constraints'], (value) => DeviceConstraintPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequestPatch>(map['requests'], (value) => DeviceRequestPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClaimConfigurationPatch>(map['config']!, (value) => DeviceClaimConfigurationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<DeviceConstraintPatch>(map['constraints']!, (value) => DeviceConstraintPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requests: map['requests'] == null ? null : (pulumi.Input.decodeList<DeviceRequestPatch>(map['requests']!, (value) => DeviceRequestPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

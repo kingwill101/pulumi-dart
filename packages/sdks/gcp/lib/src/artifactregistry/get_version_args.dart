@@ -51,10 +51,10 @@ class GetVersionArgs {
     return GetVersionArgs(
       location: (map['location'] as String).input(),
       packageName: (map['packageName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
       versionName: (map['versionName'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

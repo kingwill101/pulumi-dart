@@ -46,10 +46,10 @@ class CloneJobVmmigrationV1alpha1Args {
   factory CloneJobVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return CloneJobVmmigrationV1alpha1Args(
       cloneJobId: (map['cloneJobId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       migratingVmId: (map['migratingVmId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
     );
   }

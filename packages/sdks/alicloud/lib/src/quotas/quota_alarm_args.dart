@@ -65,11 +65,11 @@ class QuotaAlarmArgs {
       productCode: (map['productCode'] as String).input(),
       quotaActionCode: (map['quotaActionCode'] as String).input(),
       quotaAlarmName: (map['quotaAlarmName'] as String).input(),
-      quotaDimensions: map['quotaDimensions'] == null ? null : (pulumi.Input.decodeList<QuotaAlarmQuotaDimension>(map['quotaDimensions'], (value) => QuotaAlarmQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
-      thresholdPercent: map['thresholdPercent'] == null ? null : (map['thresholdPercent'] as double).input(),
-      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
-      webHook: map['webHook'] == null ? null : (map['webHook'] as String).input(),
+      quotaDimensions: map['quotaDimensions'] == null ? null : (pulumi.Input.decodeList<QuotaAlarmQuotaDimension>(map['quotaDimensions']!, (value) => QuotaAlarmQuotaDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
+      thresholdPercent: map['thresholdPercent'] == null ? null : (map['thresholdPercent']! as double).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType']! as String).input(),
+      webHook: map['webHook'] == null ? null : (map['webHook']! as String).input(),
     );
   }
 }

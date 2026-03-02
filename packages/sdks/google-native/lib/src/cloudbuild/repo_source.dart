@@ -56,14 +56,14 @@ class RepoSource {
 
   factory RepoSource.fromMap(Map<String, dynamic> map) {
     return RepoSource(
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      substitutions: map['substitutions'] == null ? null : ((map['substitutions'] as Map).cast<String, String>()).input(),
-      tagName: map['tagName'] == null ? null : (map['tagName'] as String).input(),
+      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
+      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      substitutions: map['substitutions'] == null ? null : ((map['substitutions']! as Map).cast<String, String>()).input(),
+      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
     );
   }
 }

@@ -117,18 +117,18 @@ class DeviceResourceK8sIoV1beta2 {
 
   factory DeviceResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceResourceK8sIoV1beta2(
-      allNodes: map['allNodes'] == null ? null : (map['allNodes'] as bool).input(),
-      allowMultipleAllocations: map['allowMultipleAllocations'] == null ? null : (map['allowMultipleAllocations'] as bool).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1beta2>(map['attributes'], (value) => DeviceAttributeResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions'] as List).cast<String>()).input(),
-      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions'] as List).cast<String>()).input(),
-      bindsToNode: map['bindsToNode'] == null ? null : (map['bindsToNode'] as bool).input(),
-      capacity: map['capacity'] == null ? null : (pulumi.Input.decodeMapValues<DeviceCapacityResourceK8sIoV1beta2>(map['capacity'], (value) => DeviceCapacityResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      consumesCounters: map['consumesCounters'] == null ? null : (pulumi.Input.decodeList<DeviceCounterConsumptionResourceK8sIoV1beta2>(map['consumesCounters'], (value) => DeviceCounterConsumptionResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allNodes: map['allNodes'] == null ? null : (map['allNodes']! as bool).input(),
+      allowMultipleAllocations: map['allowMultipleAllocations'] == null ? null : (map['allowMultipleAllocations']! as bool).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeMapValues<DeviceAttributeResourceK8sIoV1beta2>(map['attributes']!, (value) => DeviceAttributeResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindingConditions: map['bindingConditions'] == null ? null : ((map['bindingConditions']! as List).cast<String>()).input(),
+      bindingFailureConditions: map['bindingFailureConditions'] == null ? null : ((map['bindingFailureConditions']! as List).cast<String>()).input(),
+      bindsToNode: map['bindsToNode'] == null ? null : (map['bindsToNode']! as bool).input(),
+      capacity: map['capacity'] == null ? null : (pulumi.Input.decodeMapValues<DeviceCapacityResourceK8sIoV1beta2>(map['capacity']!, (value) => DeviceCapacityResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumesCounters: map['consumesCounters'] == null ? null : (pulumi.Input.decodeList<DeviceCounterConsumptionResourceK8sIoV1beta2>(map['consumesCounters']!, (value) => DeviceCounterConsumptionResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<DeviceTaintResourceK8sIoV1beta2>(map['taints'], (value) => DeviceTaintResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelector.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<DeviceTaintResourceK8sIoV1beta2>(map['taints']!, (value) => DeviceTaintResourceK8sIoV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

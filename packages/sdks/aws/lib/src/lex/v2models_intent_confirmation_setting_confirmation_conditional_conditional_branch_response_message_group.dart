@@ -27,8 +27,8 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchR
 
   factory V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroup(
-      message: map['message'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      variations: map['variations'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroupVariation>(map['variations'], (value) => V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroupMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input()).input(),
+      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroupVariation>(map['variations']!, (value) => V2modelsIntentConfirmationSettingConfirmationConditionalConditionalBranchResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

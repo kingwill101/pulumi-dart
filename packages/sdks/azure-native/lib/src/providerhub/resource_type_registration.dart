@@ -26,8 +26,8 @@ class ResourceTypeRegistration {
 
   factory ResourceTypeRegistration.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistration(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (ResourceTypeRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      properties: map['properties'] == null ? null : (ResourceTypeRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

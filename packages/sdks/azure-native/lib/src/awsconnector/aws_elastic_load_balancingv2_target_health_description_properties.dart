@@ -39,10 +39,10 @@ class AwsElasticLoadBalancingv2TargetHealthDescriptionProperties {
 
   factory AwsElasticLoadBalancingv2TargetHealthDescriptionProperties.fromMap(Map<String, dynamic> map) {
     return AwsElasticLoadBalancingv2TargetHealthDescriptionProperties(
-      anomalyDetection: map['anomalyDetection'] == null ? null : (AnomalyDetection.fromMap((map['anomalyDetection'] as Map).cast<String, dynamic>())).input(),
-      healthCheckPort: map['healthCheckPort'] == null ? null : (map['healthCheckPort'] as String).input(),
-      target: map['target'] == null ? null : (TargetDescription.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      targetHealth: map['targetHealth'] == null ? null : (TargetHealth.fromMap((map['targetHealth'] as Map).cast<String, dynamic>())).input(),
+      anomalyDetection: map['anomalyDetection'] == null ? null : (AnomalyDetection.fromMap((map['anomalyDetection']! as Map).cast<String, dynamic>())).input(),
+      healthCheckPort: map['healthCheckPort'] == null ? null : (map['healthCheckPort']! as String).input(),
+      target: map['target'] == null ? null : (TargetDescription.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      targetHealth: map['targetHealth'] == null ? null : (TargetHealth.fromMap((map['targetHealth']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

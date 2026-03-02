@@ -25,8 +25,8 @@ class ApplicationInteractiveConfiguration {
 
   factory ApplicationInteractiveConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationInteractiveConfiguration(
-      livyEndpointEnabled: map['livyEndpointEnabled'] == null ? null : (map['livyEndpointEnabled'] as bool).input(),
-      studioEnabled: map['studioEnabled'] == null ? null : (map['studioEnabled'] as bool).input(),
+      livyEndpointEnabled: map['livyEndpointEnabled'] == null ? null : ((map['livyEndpointEnabled'] as bool).input()).input(),
+      studioEnabled: map['studioEnabled'] == null ? null : ((map['studioEnabled'] as bool).input()).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class LinkedServiceAzureDatabricksNewClusterConfig {
   factory LinkedServiceAzureDatabricksNewClusterConfig.fromMap(Map<String, dynamic> map) {
     return LinkedServiceAzureDatabricksNewClusterConfig(
       clusterVersion: (map['clusterVersion'] as String).input(),
-      customTags: map['customTags'] == null ? null : ((map['customTags'] as Map).cast<String, String>()).input(),
-      driverNodeType: map['driverNodeType'] == null ? null : (map['driverNodeType'] as String).input(),
-      initScripts: map['initScripts'] == null ? null : ((map['initScripts'] as List).cast<String>()).input(),
-      logDestination: map['logDestination'] == null ? null : (map['logDestination'] as String).input(),
-      maxNumberOfWorkers: map['maxNumberOfWorkers'] == null ? null : (map['maxNumberOfWorkers'] as int).input(),
-      minNumberOfWorkers: map['minNumberOfWorkers'] == null ? null : (map['minNumberOfWorkers'] as int).input(),
+      customTags: map['customTags'] == null ? null : ((map['customTags']! as Map).cast<String, String>()).input(),
+      driverNodeType: map['driverNodeType'] == null ? null : (map['driverNodeType']! as String).input(),
+      initScripts: map['initScripts'] == null ? null : ((map['initScripts']! as List).cast<String>()).input(),
+      logDestination: map['logDestination'] == null ? null : (map['logDestination']! as String).input(),
+      maxNumberOfWorkers: map['maxNumberOfWorkers'] == null ? null : (map['maxNumberOfWorkers']! as int).input(),
+      minNumberOfWorkers: map['minNumberOfWorkers'] == null ? null : (map['minNumberOfWorkers']! as int).input(),
       nodeType: (map['nodeType'] as String).input(),
-      sparkConfig: map['sparkConfig'] == null ? null : ((map['sparkConfig'] as Map).cast<String, String>()).input(),
-      sparkEnvironmentVariables: map['sparkEnvironmentVariables'] == null ? null : ((map['sparkEnvironmentVariables'] as Map).cast<String, String>()).input(),
+      sparkConfig: map['sparkConfig'] == null ? null : ((map['sparkConfig']! as Map).cast<String, String>()).input(),
+      sparkEnvironmentVariables: map['sparkEnvironmentVariables'] == null ? null : ((map['sparkEnvironmentVariables']! as Map).cast<String, String>()).input(),
     );
   }
 }

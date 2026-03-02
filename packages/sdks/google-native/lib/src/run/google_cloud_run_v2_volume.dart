@@ -39,10 +39,10 @@ class GoogleCloudRunV2Volume {
 
   factory GoogleCloudRunV2Volume.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2Volume(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (GoogleCloudRunV2CloudSqlInstance.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (GoogleCloudRunV2EmptyDirVolumeSource.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (GoogleCloudRunV2CloudSqlInstance.fromMap((map['cloudSqlInstance']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (GoogleCloudRunV2EmptyDirVolumeSource.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : (GoogleCloudRunV2SecretVolumeSource.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (GoogleCloudRunV2SecretVolumeSource.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

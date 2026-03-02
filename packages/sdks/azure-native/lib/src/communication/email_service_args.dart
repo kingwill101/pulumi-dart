@@ -45,10 +45,10 @@ class EmailServiceArgs {
   factory EmailServiceArgs.fromMap(Map<String, dynamic> map) {
     return EmailServiceArgs(
       dataLocation: (map['dataLocation'] as String).input(),
-      emailServiceName: map['emailServiceName'] == null ? null : (map['emailServiceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      emailServiceName: map['emailServiceName'] == null ? null : (map['emailServiceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

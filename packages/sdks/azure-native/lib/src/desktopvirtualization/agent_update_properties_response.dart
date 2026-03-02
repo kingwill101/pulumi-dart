@@ -37,10 +37,10 @@ class AgentUpdatePropertiesResponse {
 
   factory AgentUpdatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AgentUpdatePropertiesResponse(
-      maintenanceWindowTimeZone: map['maintenanceWindowTimeZone'] == null ? null : (map['maintenanceWindowTimeZone'] as String).input(),
-      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<MaintenanceWindowPropertiesResponse>(map['maintenanceWindows'], (value) => MaintenanceWindowPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      useSessionHostLocalTime: map['useSessionHostLocalTime'] == null ? null : (map['useSessionHostLocalTime'] as bool).input(),
+      maintenanceWindowTimeZone: map['maintenanceWindowTimeZone'] == null ? null : (map['maintenanceWindowTimeZone']! as String).input(),
+      maintenanceWindows: map['maintenanceWindows'] == null ? null : (pulumi.Input.decodeList<MaintenanceWindowPropertiesResponse>(map['maintenanceWindows']!, (value) => MaintenanceWindowPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      useSessionHostLocalTime: map['useSessionHostLocalTime'] == null ? null : (map['useSessionHostLocalTime']! as bool).input(),
     );
   }
 }

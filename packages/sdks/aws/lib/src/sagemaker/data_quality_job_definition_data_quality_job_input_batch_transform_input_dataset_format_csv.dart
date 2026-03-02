@@ -20,7 +20,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   factory DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatCsv(
-      header: map['header'] == null ? null : (map['header'] as bool).input(),
+      header: map['header'] == null ? null : ((map['header'] as bool).input()).input(),
     );
   }
 }

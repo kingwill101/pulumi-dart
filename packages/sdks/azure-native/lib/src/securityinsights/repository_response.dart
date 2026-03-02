@@ -42,11 +42,11 @@ class RepositoryResponse {
 
   factory RepositoryResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryResponse(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl'] as String).input(),
-      displayUrl: map['displayUrl'] == null ? null : (map['displayUrl'] as String).input(),
-      pathMapping: map['pathMapping'] == null ? null : (pulumi.Input.decodeList<ContentPathMapResponse>(map['pathMapping'], (value) => ContentPathMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl']! as String).input(),
+      displayUrl: map['displayUrl'] == null ? null : (map['displayUrl']! as String).input(),
+      pathMapping: map['pathMapping'] == null ? null : (pulumi.Input.decodeList<ContentPathMapResponse>(map['pathMapping']!, (value) => ContentPathMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

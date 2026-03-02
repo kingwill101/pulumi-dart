@@ -28,7 +28,7 @@ class ListArtifactStorePrivateEndPointsResult {
   factory ListArtifactStorePrivateEndPointsResult.fromMap(Map<String, dynamic> map) {
     return ListArtifactStorePrivateEndPointsResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ArtifactStorePrivateEndPointsFormatResponse>(map['value'], (value) => ArtifactStorePrivateEndPointsFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ArtifactStorePrivateEndPointsFormatResponse>(map['value']!, (value) => ArtifactStorePrivateEndPointsFormatResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -21,7 +21,7 @@ class WikiDocumentationContractResponse {
 
   factory WikiDocumentationContractResponse.fromMap(Map<String, dynamic> map) {
     return WikiDocumentationContractResponse(
-      documentationId: map['documentationId'] == null ? null : (map['documentationId'] as String).input(),
+      documentationId: map['documentationId'] == null ? null : (map['documentationId']! as String).input(),
     );
   }
 }

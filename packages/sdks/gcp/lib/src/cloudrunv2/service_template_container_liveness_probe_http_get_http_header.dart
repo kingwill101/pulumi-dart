@@ -26,7 +26,7 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
   factory ServiceTemplateContainerLivenessProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

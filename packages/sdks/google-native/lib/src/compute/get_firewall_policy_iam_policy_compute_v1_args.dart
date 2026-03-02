@@ -27,7 +27,7 @@ class GetFirewallPolicyIamPolicyComputeV1Args {
 
   factory GetFirewallPolicyIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       resource: (map['resource'] as String).input(),
     );
   }

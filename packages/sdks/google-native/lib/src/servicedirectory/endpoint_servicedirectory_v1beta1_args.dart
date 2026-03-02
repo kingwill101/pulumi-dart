@@ -65,15 +65,15 @@ class EndpointServicedirectoryV1beta1Args {
 
   factory EndpointServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EndpointServicedirectoryV1beta1Args(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
       endpointId: (map['endpointId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

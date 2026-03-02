@@ -80,15 +80,15 @@ class GetManagedNetworkGroupResult {
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      managementGroups: map['managementGroups'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['managementGroups'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      managementGroups: map['managementGroups'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['managementGroups']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['subnets'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      subscriptions: map['subscriptions'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['subscriptions'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subnets: map['subnets'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['subnets']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subscriptions: map['subscriptions'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['subscriptions']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      virtualNetworks: map['virtualNetworks'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['virtualNetworks'], (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      virtualNetworks: map['virtualNetworks'] == null ? null : pulumi.Input.decodeList<ResourceIdResponse>(map['virtualNetworks']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

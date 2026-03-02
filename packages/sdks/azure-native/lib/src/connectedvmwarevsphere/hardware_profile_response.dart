@@ -49,9 +49,9 @@ class HardwareProfileResponse {
       cpuHotAddEnabled: (map['cpuHotAddEnabled'] as bool).input(),
       cpuHotRemoveEnabled: (map['cpuHotRemoveEnabled'] as bool).input(),
       memoryHotAddEnabled: (map['memoryHotAddEnabled'] as bool).input(),
-      memorySizeMB: map['memorySizeMB'] == null ? null : (map['memorySizeMB'] as int).input(),
-      numCPUs: map['numCPUs'] == null ? null : (map['numCPUs'] as int).input(),
-      numCoresPerSocket: map['numCoresPerSocket'] == null ? null : (map['numCoresPerSocket'] as int).input(),
+      memorySizeMB: map['memorySizeMB'] == null ? null : (map['memorySizeMB']! as int).input(),
+      numCPUs: map['numCPUs'] == null ? null : (map['numCPUs']! as int).input(),
+      numCoresPerSocket: map['numCoresPerSocket'] == null ? null : (map['numCoresPerSocket']! as int).input(),
     );
   }
 }

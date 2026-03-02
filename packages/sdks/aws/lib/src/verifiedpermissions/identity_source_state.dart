@@ -37,10 +37,10 @@ class IdentitySourceState {
 
   factory IdentitySourceState.fromMap(Map<String, dynamic> map) {
     return IdentitySourceState(
-      configuration: map['configuration'] == null ? null : (IdentitySourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      policyStoreId: map['policyStoreId'] == null ? null : (map['policyStoreId'] as String).input(),
-      principalEntityType: map['principalEntityType'] == null ? null : (map['principalEntityType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((IdentitySourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      policyStoreId: map['policyStoreId'] == null ? null : ((map['policyStoreId'] as String).input()).input(),
+      principalEntityType: map['principalEntityType'] == null ? null : ((map['principalEntityType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

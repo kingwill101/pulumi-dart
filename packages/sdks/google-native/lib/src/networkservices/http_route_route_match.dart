@@ -48,12 +48,12 @@ class HttpRouteRouteMatch {
 
   factory HttpRouteRouteMatch.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteMatch(
-      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteHeaderMatch>(map['headers'], (value) => HttpRouteHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<HttpRouteQueryParameterMatch>(map['queryParameters'], (value) => HttpRouteQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteHeaderMatch>(map['headers']!, (value) => HttpRouteHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<HttpRouteQueryParameterMatch>(map['queryParameters']!, (value) => HttpRouteQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class LogTransformerTransformerConfigAddKeys {
 
   factory LogTransformerTransformerConfigAddKeys.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigAddKeys(
-      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigAddKeysEntry>(map['entries'], (value) => LogTransformerTransformerConfigAddKeysEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      entries: (pulumi.Input.decodeList<LogTransformerTransformerConfigAddKeysEntry>(map['entries']!, (value) => LogTransformerTransformerConfigAddKeysEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

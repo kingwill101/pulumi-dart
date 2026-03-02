@@ -36,9 +36,9 @@ class GetObjectIamPolicyArgs {
   factory GetObjectIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectIamPolicyArgs(
       bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
       object: (map['object'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

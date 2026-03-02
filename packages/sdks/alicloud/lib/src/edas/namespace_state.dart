@@ -38,10 +38,10 @@ class NamespaceState {
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
     return NamespaceState(
-      debugEnable: map['debugEnable'] == null ? null : (map['debugEnable'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      namespaceLogicalId: map['namespaceLogicalId'] == null ? null : (map['namespaceLogicalId'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      debugEnable: map['debugEnable'] == null ? null : (map['debugEnable']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      namespaceLogicalId: map['namespaceLogicalId'] == null ? null : (map['namespaceLogicalId']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
     );
   }
 }

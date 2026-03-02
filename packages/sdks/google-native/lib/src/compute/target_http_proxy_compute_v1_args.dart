@@ -53,13 +53,13 @@ class TargetHttpProxyComputeV1Args {
 
   factory TargetHttpProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return TargetHttpProxyComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap']! as String).input(),
     );
   }
 }

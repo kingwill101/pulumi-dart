@@ -20,7 +20,7 @@ class RecorderRecordingGroupExclusionByResourceType {
 
   factory RecorderRecordingGroupExclusionByResourceType.fromMap(Map<String, dynamic> map) {
     return RecorderRecordingGroupExclusionByResourceType(
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

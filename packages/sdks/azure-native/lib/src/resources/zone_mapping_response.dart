@@ -24,8 +24,8 @@ class ZoneMappingResponse {
 
   factory ZoneMappingResponse.fromMap(Map<String, dynamic> map) {
     return ZoneMappingResponse(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

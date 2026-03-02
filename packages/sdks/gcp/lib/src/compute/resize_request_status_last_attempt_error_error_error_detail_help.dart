@@ -23,7 +23,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
 
   factory ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp.fromMap(Map<String, dynamic> map) {
     return ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp(
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>(map['links'], (value) => ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>(map['links']!, (value) => ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

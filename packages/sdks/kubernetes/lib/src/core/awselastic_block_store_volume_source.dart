@@ -38,9 +38,9 @@ class AWSElasticBlockStoreVolumeSource {
 
   factory AWSElasticBlockStoreVolumeSource.fromMap(Map<String, dynamic> map) {
     return AWSElasticBlockStoreVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as int).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as int).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       volumeID: (map['volumeID'] as String).input(),
     );
   }

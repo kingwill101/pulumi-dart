@@ -22,7 +22,7 @@ class QueryContent {
 
   factory QueryContent.fromMap(Map<String, dynamic> map) {
     return QueryContent(
-      iamPolicyAnalysisQuery: map['iamPolicyAnalysisQuery'] == null ? null : (IamPolicyAnalysisQuery.fromMap((map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>())).input(),
+      iamPolicyAnalysisQuery: map['iamPolicyAnalysisQuery'] == null ? null : (IamPolicyAnalysisQuery.fromMap((map['iamPolicyAnalysisQuery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

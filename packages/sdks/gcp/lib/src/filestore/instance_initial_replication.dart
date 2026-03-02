@@ -29,8 +29,8 @@ class InstanceInitialReplication {
 
   factory InstanceInitialReplication.fromMap(Map<String, dynamic> map) {
     return InstanceInitialReplication(
-      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceInitialReplicationReplica>(map['replicas'], (value) => InstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      replicas: map['replicas'] == null ? null : (pulumi.Input.decodeList<InstanceInitialReplicationReplica>(map['replicas']!, (value) => InstanceInitialReplicationReplica.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

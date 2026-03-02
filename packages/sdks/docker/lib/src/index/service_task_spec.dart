@@ -62,13 +62,13 @@ class ServiceTaskSpec {
   factory ServiceTaskSpec.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpec(
       containerSpec: (ServiceTaskSpecContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
-      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate'] as int).input(),
-      logDriver: map['logDriver'] == null ? null : (ServiceTaskSpecLogDriver.fromMap((map['logDriver'] as Map).cast<String, dynamic>())).input(),
-      networksAdvanceds: map['networksAdvanceds'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecNetworksAdvanced>(map['networksAdvanceds'], (value) => ServiceTaskSpecNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      placement: map['placement'] == null ? null : (ServiceTaskSpecPlacement.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
-      resources: map['resources'] == null ? null : (ServiceTaskSpecResources.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      restartPolicy: map['restartPolicy'] == null ? null : (ServiceTaskSpecRestartPolicy.fromMap((map['restartPolicy'] as Map).cast<String, dynamic>())).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate']! as int).input(),
+      logDriver: map['logDriver'] == null ? null : (ServiceTaskSpecLogDriver.fromMap((map['logDriver']! as Map).cast<String, dynamic>())).input(),
+      networksAdvanceds: map['networksAdvanceds'] == null ? null : (pulumi.Input.decodeList<ServiceTaskSpecNetworksAdvanced>(map['networksAdvanceds']!, (value) => ServiceTaskSpecNetworksAdvanced.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      placement: map['placement'] == null ? null : (ServiceTaskSpecPlacement.fromMap((map['placement']! as Map).cast<String, dynamic>())).input(),
+      resources: map['resources'] == null ? null : (ServiceTaskSpecResources.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      restartPolicy: map['restartPolicy'] == null ? null : (ServiceTaskSpecRestartPolicy.fromMap((map['restartPolicy']! as Map).cast<String, dynamic>())).input(),
+      runtime: map['runtime'] == null ? null : (map['runtime']! as String).input(),
     );
   }
 }

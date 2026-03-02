@@ -60,13 +60,13 @@ class CassandraTableArgs {
 
   factory CassandraTableArgs.fromMap(Map<String, dynamic> map) {
     return CassandraTableArgs(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (CassandraTableAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (CassandraTableAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
       cassandraKeyspaceId: (map['cassandraKeyspaceId'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       schema: (CassandraTableSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class VMwareClusterDataplaneV2 {
 
   factory VMwareClusterDataplaneV2.fromMap(Map<String, dynamic> map) {
     return VMwareClusterDataplaneV2(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking'] as bool).input(),
-      dataplaneV2Enabled: map['dataplaneV2Enabled'] == null ? null : (map['dataplaneV2Enabled'] as bool).input(),
-      windowsDataplaneV2Enabled: map['windowsDataplaneV2Enabled'] == null ? null : (map['windowsDataplaneV2Enabled'] as bool).input(),
+      advancedNetworking: map['advancedNetworking'] == null ? null : (map['advancedNetworking']! as bool).input(),
+      dataplaneV2Enabled: map['dataplaneV2Enabled'] == null ? null : (map['dataplaneV2Enabled']! as bool).input(),
+      windowsDataplaneV2Enabled: map['windowsDataplaneV2Enabled'] == null ? null : (map['windowsDataplaneV2Enabled']! as bool).input(),
     );
   }
 }

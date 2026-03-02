@@ -40,10 +40,10 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
       parent: (map['parent'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -51,11 +51,11 @@ class WorkloadInstanceArgs {
   factory WorkloadInstanceArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadInstanceArgs(
       modernizeProjectName: (map['modernizeProjectName'] as String).input(),
-      properties: map['properties'] == null ? null : (WorkloadInstanceModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (WorkloadInstanceModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workloadInstanceName: map['workloadInstanceName'] == null ? null : (map['workloadInstanceName'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workloadInstanceName: map['workloadInstanceName'] == null ? null : (map['workloadInstanceName']! as String).input(),
     );
   }
 }

@@ -77,11 +77,11 @@ class GetEntityResult {
       entityTags: map['entityTags'] as String,
       guid: map['guid'] as String,
       id: map['id'] as String,
-      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
-      ignoreNotFound: map['ignoreNotFound'] == null ? null : map['ignoreNotFound'] as bool,
+      ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase']! as bool,
+      ignoreNotFound: map['ignoreNotFound'] == null ? null : map['ignoreNotFound']! as bool,
       name: map['name'] as String,
       servingApmApplicationId: map['servingApmApplicationId'] as String,
-      tags: map['tags'] == null ? null : pulumi.Input.decodeList<GetEntityTag>(map['tags'], (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : pulumi.Input.decodeList<GetEntityTag>(map['tags']!, (value) => GetEntityTag.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

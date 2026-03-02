@@ -31,9 +31,9 @@ class StoreEncryptConf {
 
   factory StoreEncryptConf.fromMap(Map<String, dynamic> map) {
     return StoreEncryptConf(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
-      userCmkInfo: map['userCmkInfo'] == null ? null : (StoreEncryptConfUserCmkInfo.fromMap((map['userCmkInfo'] as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType']! as String).input(),
+      userCmkInfo: map['userCmkInfo'] == null ? null : (StoreEncryptConfUserCmkInfo.fromMap((map['userCmkInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

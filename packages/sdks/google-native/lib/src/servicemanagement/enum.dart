@@ -50,12 +50,12 @@ class Enum {
 
   factory Enum.fromMap(Map<String, dynamic> map) {
     return Enum(
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      enumvalue: map['enumvalue'] == null ? null : (pulumi.Input.decodeList<EnumValue>(map['enumvalue'], (value) => EnumValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options'], (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext'] as Map).cast<String, dynamic>())).input(),
-      syntax: map['syntax'] == null ? null : (EnumSyntax.fromValue(map['syntax'] as String)).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      enumvalue: map['enumvalue'] == null ? null : (pulumi.Input.decodeList<EnumValue>(map['enumvalue']!, (value) => EnumValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<Option>(map['options']!, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceContext: map['sourceContext'] == null ? null : (SourceContext.fromMap((map['sourceContext']! as Map).cast<String, dynamic>())).input(),
+      syntax: map['syntax'] == null ? null : (EnumSyntax.fromValue(map['syntax']! as String)).input(),
     );
   }
 }

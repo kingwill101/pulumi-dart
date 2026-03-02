@@ -58,12 +58,12 @@ class AccessConfigurationArgs {
   factory AccessConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationArgs(
       accessConfigurationName: (map['accessConfigurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       directoryId: (map['directoryId'] as String).input(),
-      forceRemovePermissionPolicies: map['forceRemovePermissionPolicies'] == null ? null : (map['forceRemovePermissionPolicies'] as bool).input(),
-      permissionPolicies: map['permissionPolicies'] == null ? null : (pulumi.Input.decodeList<AccessConfigurationPermissionPolicy>(map['permissionPolicies'], (value) => AccessConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
-      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration'] as int).input(),
+      forceRemovePermissionPolicies: map['forceRemovePermissionPolicies'] == null ? null : (map['forceRemovePermissionPolicies']! as bool).input(),
+      permissionPolicies: map['permissionPolicies'] == null ? null : (pulumi.Input.decodeList<AccessConfigurationPermissionPolicy>(map['permissionPolicies']!, (value) => AccessConfigurationPermissionPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      relayState: map['relayState'] == null ? null : (map['relayState']! as String).input(),
+      sessionDuration: map['sessionDuration'] == null ? null : (map['sessionDuration']! as int).input(),
     );
   }
 }

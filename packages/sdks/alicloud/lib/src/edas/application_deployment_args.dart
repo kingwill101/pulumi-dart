@@ -41,7 +41,7 @@ class ApplicationDeploymentArgs {
     return ApplicationDeploymentArgs(
       appId: (map['appId'] as String).input(),
       groupId: (map['groupId'] as String).input(),
-      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion'] as String).input(),
+      packageVersion: map['packageVersion'] == null ? null : (map['packageVersion']! as String).input(),
       warUrl: (map['warUrl'] as String).input(),
     );
   }

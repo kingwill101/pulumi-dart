@@ -29,8 +29,8 @@ class GetTransitRouterAvailableResourcesArgs {
 
   factory GetTransitRouterAvailableResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouterAvailableResourcesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast'] as bool).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      supportMulticast: map['supportMulticast'] == null ? null : (map['supportMulticast']! as bool).input(),
     );
   }
 }

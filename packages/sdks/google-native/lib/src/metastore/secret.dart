@@ -21,7 +21,7 @@ class Secret {
 
   factory Secret.fromMap(Map<String, dynamic> map) {
     return Secret(
-      cloudSecret: map['cloudSecret'] == null ? null : (map['cloudSecret'] as String).input(),
+      cloudSecret: map['cloudSecret'] == null ? null : (map['cloudSecret']! as String).input(),
     );
   }
 }

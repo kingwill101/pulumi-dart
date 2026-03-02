@@ -53,13 +53,13 @@ class EnvironmentBlueprintConfigurationState {
 
   factory EnvironmentBlueprintConfigurationState.fromMap(Map<String, dynamic> map) {
     return EnvironmentBlueprintConfigurationState(
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      enabledRegions: map['enabledRegions'] == null ? null : ((map['enabledRegions'] as List).cast<String>()).input(),
-      environmentBlueprintId: map['environmentBlueprintId'] == null ? null : (map['environmentBlueprintId'] as String).input(),
-      manageAccessRoleArn: map['manageAccessRoleArn'] == null ? null : (map['manageAccessRoleArn'] as String).input(),
-      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : (map['provisioningRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regionalParameters: map['regionalParameters'] == null ? null : ((map['regionalParameters'] as Map).cast<String, Map<String, String>>()).input(),
+      domainId: map['domainId'] == null ? null : ((map['domainId'] as String).input()).input(),
+      enabledRegions: map['enabledRegions'] == null ? null : (((map['enabledRegions'] as List).cast<String>()).input()).input(),
+      environmentBlueprintId: map['environmentBlueprintId'] == null ? null : ((map['environmentBlueprintId'] as String).input()).input(),
+      manageAccessRoleArn: map['manageAccessRoleArn'] == null ? null : ((map['manageAccessRoleArn'] as String).input()).input(),
+      provisioningRoleArn: map['provisioningRoleArn'] == null ? null : ((map['provisioningRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regionalParameters: map['regionalParameters'] == null ? null : (((map['regionalParameters'] as Map).cast<String, Map<String, String>>()).input()).input(),
     );
   }
 }

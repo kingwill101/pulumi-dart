@@ -63,15 +63,15 @@ class AwsS3AccessPointProperties {
 
   factory AwsS3AccessPointProperties.fromMap(Map<String, dynamic> map) {
     return AwsS3AccessPointProperties(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkOrigin: map['networkOrigin'] == null ? null : (map['networkOrigin'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy']).input(),
-      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (PublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (VpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkOrigin: map['networkOrigin'] == null ? null : (map['networkOrigin']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']!).input(),
+      publicAccessBlockConfiguration: map['publicAccessBlockConfiguration'] == null ? null : (PublicAccessBlockConfiguration.fromMap((map['publicAccessBlockConfiguration']! as Map).cast<String, dynamic>())).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : (VpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

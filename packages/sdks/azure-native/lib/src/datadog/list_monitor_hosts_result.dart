@@ -27,8 +27,8 @@ class ListMonitorHostsResult {
 
   factory ListMonitorHostsResult.fromMap(Map<String, dynamic> map) {
     return ListMonitorHostsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<DatadogHostResponse>(map['value'], (value) => DatadogHostResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<DatadogHostResponse>(map['value']!, (value) => DatadogHostResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

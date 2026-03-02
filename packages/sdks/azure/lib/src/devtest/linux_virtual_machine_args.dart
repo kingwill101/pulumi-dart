@@ -112,22 +112,22 @@ class LinuxVirtualMachineArgs {
 
   factory LinuxVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineArgs(
-      allowClaim: map['allowClaim'] == null ? null : (map['allowClaim'] as bool).input(),
-      disallowPublicIpAddress: map['disallowPublicIpAddress'] == null ? null : (map['disallowPublicIpAddress'] as bool).input(),
+      allowClaim: map['allowClaim'] == null ? null : (map['allowClaim']! as bool).input(),
+      disallowPublicIpAddress: map['disallowPublicIpAddress'] == null ? null : (map['disallowPublicIpAddress']! as bool).input(),
       galleryImageReference: (LinuxVirtualMachineGalleryImageReference.fromMap((map['galleryImageReference'] as Map).cast<String, dynamic>())).input(),
-      inboundNatRules: map['inboundNatRules'] == null ? null : (pulumi.Input.decodeList<LinuxVirtualMachineInboundNatRule>(map['inboundNatRules'], (value) => LinuxVirtualMachineInboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNatRules: map['inboundNatRules'] == null ? null : (pulumi.Input.decodeList<LinuxVirtualMachineInboundNatRule>(map['inboundNatRules']!, (value) => LinuxVirtualMachineInboundNatRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       labName: (map['labName'] as String).input(),
       labSubnetName: (map['labSubnetName'] as String).input(),
       labVirtualNetworkId: (map['labVirtualNetworkId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       size: (map['size'] as String).input(),
-      sshKey: map['sshKey'] == null ? null : (map['sshKey'] as String).input(),
+      sshKey: map['sshKey'] == null ? null : (map['sshKey']! as String).input(),
       storageType: (map['storageType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       username: (map['username'] as String).input(),
     );
   }

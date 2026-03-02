@@ -32,9 +32,9 @@ class IpMapping {
 
   factory IpMapping.fromMap(Map<String, dynamic> map) {
     return IpMapping(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire'] as String).input(),
-      type: map['type'] == null ? null : (IpMappingType.fromValue(map['type'] as String)).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      timeToRetire: map['timeToRetire'] == null ? null : (map['timeToRetire']! as String).input(),
+      type: map['type'] == null ? null : (IpMappingType.fromValue(map['type']! as String)).input(),
     );
   }
 }

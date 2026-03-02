@@ -27,7 +27,7 @@ class GetTenantArgs {
 
   factory GetTenantArgs.fromMap(Map<String, dynamic> map) {
     return GetTenantArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

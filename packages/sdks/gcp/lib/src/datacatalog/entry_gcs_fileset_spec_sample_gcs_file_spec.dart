@@ -25,8 +25,8 @@ class EntryGcsFilesetSpecSampleGcsFileSpec {
 
   factory EntryGcsFilesetSpecSampleGcsFileSpec.fromMap(Map<String, dynamic> map) {
     return EntryGcsFilesetSpecSampleGcsFileSpec(
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes']! as int).input(),
     );
   }
 }

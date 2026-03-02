@@ -31,9 +31,9 @@ class FaceConfigState {
 
   factory FaceConfigState.fromMap(Map<String, dynamic> map) {
     return FaceConfigState(
-      bizName: map['bizName'] == null ? null : (map['bizName'] as String).input(),
-      bizType: map['bizType'] == null ? null : (map['bizType'] as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
+      bizName: map['bizName'] == null ? null : (map['bizName']! as String).input(),
+      bizType: map['bizType'] == null ? null : (map['bizType']! as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class AzureCoreVhdImageArtifactProfileResponse {
 
   factory AzureCoreVhdImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureCoreVhdImageArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
-      vhdArtifactProfile: map['vhdArtifactProfile'] == null ? null : (VhdImageArtifactProfileResponse.fromMap((map['vhdArtifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
+      vhdArtifactProfile: map['vhdArtifactProfile'] == null ? null : (VhdImageArtifactProfileResponse.fromMap((map['vhdArtifactProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

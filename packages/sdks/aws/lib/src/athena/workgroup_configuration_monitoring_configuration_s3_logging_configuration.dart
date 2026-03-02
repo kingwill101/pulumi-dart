@@ -31,8 +31,8 @@ class WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration {
   factory WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration(
       enabled: (map['enabled'] as bool).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      logLocation: map['logLocation'] == null ? null : (map['logLocation'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      logLocation: map['logLocation'] == null ? null : ((map['logLocation'] as String).input()).input(),
     );
   }
 }

@@ -66,14 +66,14 @@ class NetworkAclIngressAclEntry {
 
   factory NetworkAclIngressAclEntry.fromMap(Map<String, dynamic> map) {
     return NetworkAclIngressAclEntry(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entryType: map['entryType'] == null ? null : (map['entryType'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      networkAclEntryName: map['networkAclEntryName'] == null ? null : (map['networkAclEntryName'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      entryType: map['entryType'] == null ? null : (map['entryType']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      networkAclEntryName: map['networkAclEntryName'] == null ? null : (map['networkAclEntryName']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      sourceCidrIp: map['sourceCidrIp'] == null ? null : (map['sourceCidrIp']! as String).input(),
     );
   }
 }

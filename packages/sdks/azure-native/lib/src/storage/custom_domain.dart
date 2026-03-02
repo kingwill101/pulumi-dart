@@ -27,7 +27,7 @@ class CustomDomain {
   factory CustomDomain.fromMap(Map<String, dynamic> map) {
     return CustomDomain(
       name: (map['name'] as String).input(),
-      useSubDomainName: map['useSubDomainName'] == null ? null : (map['useSubDomainName'] as bool).input(),
+      useSubDomainName: map['useSubDomainName'] == null ? null : (map['useSubDomainName']! as bool).input(),
     );
   }
 }

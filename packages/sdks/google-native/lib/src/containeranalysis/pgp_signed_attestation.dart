@@ -32,9 +32,9 @@ class PgpSignedAttestation {
 
   factory PgpSignedAttestation.fromMap(Map<String, dynamic> map) {
     return PgpSignedAttestation(
-      contentType: map['contentType'] == null ? null : (PgpSignedAttestationContentType.fromValue(map['contentType'] as String)).input(),
-      pgpKeyId: map['pgpKeyId'] == null ? null : (map['pgpKeyId'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
+      contentType: map['contentType'] == null ? null : (PgpSignedAttestationContentType.fromValue(map['contentType']! as String)).input(),
+      pgpKeyId: map['pgpKeyId'] == null ? null : (map['pgpKeyId']! as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
     );
   }
 }

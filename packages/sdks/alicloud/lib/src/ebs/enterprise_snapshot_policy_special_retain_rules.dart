@@ -28,8 +28,8 @@ class EnterpriseSnapshotPolicySpecialRetainRules {
 
   factory EnterpriseSnapshotPolicySpecialRetainRules.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicySpecialRetainRules(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<EnterpriseSnapshotPolicySpecialRetainRulesRule>(map['rules'], (value) => EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<EnterpriseSnapshotPolicySpecialRetainRulesRule>(map['rules']!, (value) => EnterpriseSnapshotPolicySpecialRetainRulesRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

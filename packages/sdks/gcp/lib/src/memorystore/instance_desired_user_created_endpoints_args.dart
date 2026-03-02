@@ -42,9 +42,9 @@ class InstanceDesiredUserCreatedEndpointsArgs {
 
   factory InstanceDesiredUserCreatedEndpointsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceDesiredUserCreatedEndpointsArgs(
-      desiredUserCreatedEndpoints: map['desiredUserCreatedEndpoints'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(map['desiredUserCreatedEndpoints'], (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      desiredUserCreatedEndpoints: map['desiredUserCreatedEndpoints'] == null ? null : (pulumi.Input.decodeList<InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint>(map['desiredUserCreatedEndpoints']!, (value) => InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

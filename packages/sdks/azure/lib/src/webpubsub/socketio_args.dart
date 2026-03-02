@@ -100,21 +100,21 @@ class SocketioArgs {
 
   factory SocketioArgs.fromMap(Map<String, dynamic> map) {
     return SocketioArgs(
-      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : (map['aadAuthEnabled'] as bool).input(),
-      identity: map['identity'] == null ? null : (SocketioIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      liveTraceConnectivityLogsEnabled: map['liveTraceConnectivityLogsEnabled'] == null ? null : (map['liveTraceConnectivityLogsEnabled'] as bool).input(),
-      liveTraceEnabled: map['liveTraceEnabled'] == null ? null : (map['liveTraceEnabled'] as bool).input(),
-      liveTraceHttpRequestLogsEnabled: map['liveTraceHttpRequestLogsEnabled'] == null ? null : (map['liveTraceHttpRequestLogsEnabled'] as bool).input(),
-      liveTraceMessagingLogsEnabled: map['liveTraceMessagingLogsEnabled'] == null ? null : (map['liveTraceMessagingLogsEnabled'] as bool).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : (map['aadAuthEnabled']! as bool).input(),
+      identity: map['identity'] == null ? null : (SocketioIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      liveTraceConnectivityLogsEnabled: map['liveTraceConnectivityLogsEnabled'] == null ? null : (map['liveTraceConnectivityLogsEnabled']! as bool).input(),
+      liveTraceEnabled: map['liveTraceEnabled'] == null ? null : (map['liveTraceEnabled']! as bool).input(),
+      liveTraceHttpRequestLogsEnabled: map['liveTraceHttpRequestLogsEnabled'] == null ? null : (map['liveTraceHttpRequestLogsEnabled']! as bool).input(),
+      liveTraceMessagingLogsEnabled: map['liveTraceMessagingLogsEnabled'] == null ? null : (map['liveTraceMessagingLogsEnabled']! as bool).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceMode: map['serviceMode'] == null ? null : (map['serviceMode'] as String).input(),
+      serviceMode: map['serviceMode'] == null ? null : (map['serviceMode']! as String).input(),
       sku: (SocketioSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : (map['tlsClientCertEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : (map['tlsClientCertEnabled']! as bool).input(),
     );
   }
 }

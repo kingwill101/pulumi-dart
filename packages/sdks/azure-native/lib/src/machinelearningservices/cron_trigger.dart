@@ -44,10 +44,10 @@ class CronTrigger {
 
   factory CronTrigger.fromMap(Map<String, dynamic> map) {
     return CronTrigger(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       expression: (map['expression'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
       triggerType: (map['triggerType'] as String).input(),
     );
   }

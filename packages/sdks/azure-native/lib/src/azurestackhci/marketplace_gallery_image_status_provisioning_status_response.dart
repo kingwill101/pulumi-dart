@@ -26,7 +26,7 @@ class MarketplaceGalleryImageStatusProvisioningStatusResponse {
 
   factory MarketplaceGalleryImageStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return MarketplaceGalleryImageStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

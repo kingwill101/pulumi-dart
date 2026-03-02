@@ -91,19 +91,19 @@ class DomainDevicesAudio {
 
   factory DomainDevicesAudio.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudio(
-      alsa: map['alsa'] == null ? null : (DomainDevicesAudioAlsa.fromMap((map['alsa'] as Map).cast<String, dynamic>())).input(),
-      coreAudio: map['coreAudio'] == null ? null : (DomainDevicesAudioCoreAudio.fromMap((map['coreAudio'] as Map).cast<String, dynamic>())).input(),
-      dbus: map['dbus'] == null ? null : (DomainDevicesAudioDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesAudioFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      jack: map['jack'] == null ? null : (DomainDevicesAudioJack.fromMap((map['jack'] as Map).cast<String, dynamic>())).input(),
-      none: map['none'] == null ? null : (DomainDevicesAudioNone.fromMap((map['none'] as Map).cast<String, dynamic>())).input(),
-      oss: map['oss'] == null ? null : (DomainDevicesAudioOss.fromMap((map['oss'] as Map).cast<String, dynamic>())).input(),
-      pipeWire: map['pipeWire'] == null ? null : (DomainDevicesAudioPipeWire.fromMap((map['pipeWire'] as Map).cast<String, dynamic>())).input(),
-      pulseAudio: map['pulseAudio'] == null ? null : (DomainDevicesAudioPulseAudio.fromMap((map['pulseAudio'] as Map).cast<String, dynamic>())).input(),
-      sdl: map['sdl'] == null ? null : (DomainDevicesAudioSdl.fromMap((map['sdl'] as Map).cast<String, dynamic>())).input(),
-      spice: map['spice'] == null ? null : (DomainDevicesAudioSpice.fromMap((map['spice'] as Map).cast<String, dynamic>())).input(),
-      timerPeriod: map['timerPeriod'] == null ? null : (map['timerPeriod'] as double).input(),
+      alsa: map['alsa'] == null ? null : (DomainDevicesAudioAlsa.fromMap((map['alsa']! as Map).cast<String, dynamic>())).input(),
+      coreAudio: map['coreAudio'] == null ? null : (DomainDevicesAudioCoreAudio.fromMap((map['coreAudio']! as Map).cast<String, dynamic>())).input(),
+      dbus: map['dbus'] == null ? null : (DomainDevicesAudioDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesAudioFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      jack: map['jack'] == null ? null : (DomainDevicesAudioJack.fromMap((map['jack']! as Map).cast<String, dynamic>())).input(),
+      none: map['none'] == null ? null : (DomainDevicesAudioNone.fromMap((map['none']! as Map).cast<String, dynamic>())).input(),
+      oss: map['oss'] == null ? null : (DomainDevicesAudioOss.fromMap((map['oss']! as Map).cast<String, dynamic>())).input(),
+      pipeWire: map['pipeWire'] == null ? null : (DomainDevicesAudioPipeWire.fromMap((map['pipeWire']! as Map).cast<String, dynamic>())).input(),
+      pulseAudio: map['pulseAudio'] == null ? null : (DomainDevicesAudioPulseAudio.fromMap((map['pulseAudio']! as Map).cast<String, dynamic>())).input(),
+      sdl: map['sdl'] == null ? null : (DomainDevicesAudioSdl.fromMap((map['sdl']! as Map).cast<String, dynamic>())).input(),
+      spice: map['spice'] == null ? null : (DomainDevicesAudioSpice.fromMap((map['spice']! as Map).cast<String, dynamic>())).input(),
+      timerPeriod: map['timerPeriod'] == null ? null : (map['timerPeriod']! as double).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class RecordsExclusiveState {
 
   factory RecordsExclusiveState.fromMap(Map<String, dynamic> map) {
     return RecordsExclusiveState(
-      resourceRecordSets: map['resourceRecordSets'] == null ? null : (pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(map['resourceRecordSets'], (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (RecordsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      resourceRecordSets: map['resourceRecordSets'] == null ? null : ((pulumi.Input.decodeList<RecordsExclusiveResourceRecordSet>(map['resourceRecordSets']!, (value) => RecordsExclusiveResourceRecordSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RecordsExclusiveTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      zoneId: map['zoneId'] == null ? null : ((map['zoneId'] as String).input()).input(),
     );
   }
 }

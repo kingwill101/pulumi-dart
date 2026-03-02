@@ -89,19 +89,19 @@ class CommunityArgs {
 
   factory CommunityArgs.fromMap(Map<String, dynamic> map) {
     return CommunityArgs(
-      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace'] as String).input(),
-      approvalSettings: map['approvalSettings'] == null ? null : (ApprovalSettings.fromMap((map['approvalSettings'] as Map).cast<String, dynamic>())).input(),
-      communityName: map['communityName'] == null ? null : (map['communityName'] as String).input(),
-      communityRoleAssignments: map['communityRoleAssignments'] == null ? null : (pulumi.Input.decodeList<RoleAssignmentItem>(map['communityRoleAssignments'], (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      firewallSku: map['firewallSku'] == null ? null : (map['firewallSku'] as String).input(),
-      governedServiceList: map['governedServiceList'] == null ? null : (pulumi.Input.decodeList<GovernedServiceItem>(map['governedServiceList'], (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceModeConfiguration: map['maintenanceModeConfiguration'] == null ? null : (MaintenanceModeConfigurationModel.fromMap((map['maintenanceModeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      policyOverride: map['policyOverride'] == null ? null : (map['policyOverride'] as String).input(),
+      addressSpace: map['addressSpace'] == null ? null : (map['addressSpace']! as String).input(),
+      approvalSettings: map['approvalSettings'] == null ? null : (ApprovalSettings.fromMap((map['approvalSettings']! as Map).cast<String, dynamic>())).input(),
+      communityName: map['communityName'] == null ? null : (map['communityName']! as String).input(),
+      communityRoleAssignments: map['communityRoleAssignments'] == null ? null : (pulumi.Input.decodeList<RoleAssignmentItem>(map['communityRoleAssignments']!, (value) => RoleAssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      firewallSku: map['firewallSku'] == null ? null : (map['firewallSku']! as String).input(),
+      governedServiceList: map['governedServiceList'] == null ? null : (pulumi.Input.decodeList<GovernedServiceItem>(map['governedServiceList']!, (value) => GovernedServiceItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceModeConfiguration: map['maintenanceModeConfiguration'] == null ? null : (MaintenanceModeConfigurationModel.fromMap((map['maintenanceModeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      policyOverride: map['policyOverride'] == null ? null : (map['policyOverride']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

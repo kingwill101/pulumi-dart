@@ -53,12 +53,12 @@ class UserPoolSchema {
   factory UserPoolSchema.fromMap(Map<String, dynamic> map) {
     return UserPoolSchema(
       attributeDataType: (map['attributeDataType'] as String).input(),
-      developerOnlyAttribute: map['developerOnlyAttribute'] == null ? null : (map['developerOnlyAttribute'] as bool).input(),
-      mutable: map['mutable'] == null ? null : (map['mutable'] as bool).input(),
+      developerOnlyAttribute: map['developerOnlyAttribute'] == null ? null : ((map['developerOnlyAttribute'] as bool).input()).input(),
+      mutable: map['mutable'] == null ? null : ((map['mutable'] as bool).input()).input(),
       name: (map['name'] as String).input(),
-      numberAttributeConstraints: map['numberAttributeConstraints'] == null ? null : (UserPoolSchemaNumberAttributeConstraints.fromMap((map['numberAttributeConstraints'] as Map).cast<String, dynamic>())).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
-      stringAttributeConstraints: map['stringAttributeConstraints'] == null ? null : (UserPoolSchemaStringAttributeConstraints.fromMap((map['stringAttributeConstraints'] as Map).cast<String, dynamic>())).input(),
+      numberAttributeConstraints: map['numberAttributeConstraints'] == null ? null : ((UserPoolSchemaNumberAttributeConstraints.fromMap((map['numberAttributeConstraints']! as Map).cast<String, dynamic>())).input()).input(),
+      required: map['required'] == null ? null : ((map['required'] as bool).input()).input(),
+      stringAttributeConstraints: map['stringAttributeConstraints'] == null ? null : ((UserPoolSchemaStringAttributeConstraints.fromMap((map['stringAttributeConstraints']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

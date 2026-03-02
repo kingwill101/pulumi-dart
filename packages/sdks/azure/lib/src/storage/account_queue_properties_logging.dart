@@ -42,7 +42,7 @@ class AccountQueuePropertiesLogging {
     return AccountQueuePropertiesLogging(
       delete: (map['delete'] as bool).input(),
       read: (map['read'] as bool).input(),
-      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays'] as int).input(),
+      retentionPolicyDays: map['retentionPolicyDays'] == null ? null : (map['retentionPolicyDays']! as int).input(),
       version: (map['version'] as String).input(),
       write: (map['write'] as bool).input(),
     );

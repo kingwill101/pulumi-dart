@@ -26,8 +26,8 @@ class EphemeralStorage {
 
   factory EphemeralStorage.fromMap(Map<String, dynamic> map) {
     return EphemeralStorage(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      sizeInGiB: map['sizeInGiB'] == null ? null : (map['sizeInGiB'] as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      sizeInGiB: map['sizeInGiB'] == null ? null : (map['sizeInGiB']! as int).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DatabaseAccessControlsState {
 
   factory DatabaseAccessControlsState.fromMap(Map<String, dynamic> map) {
     return DatabaseAccessControlsState(
-      allowLists: map['allowLists'] == null ? null : ((map['allowLists'] as List).cast<String>()).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as int).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
+      allowLists: map['allowLists'] == null ? null : ((map['allowLists']! as List).cast<String>()).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as int).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
     );
   }
 }

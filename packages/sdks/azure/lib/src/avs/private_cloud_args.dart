@@ -72,16 +72,16 @@ class PrivateCloudArgs {
 
   factory PrivateCloudArgs.fromMap(Map<String, dynamic> map) {
     return PrivateCloudArgs(
-      internetConnectionEnabled: map['internetConnectionEnabled'] == null ? null : (map['internetConnectionEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      internetConnectionEnabled: map['internetConnectionEnabled'] == null ? null : (map['internetConnectionEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managementCluster: (PrivateCloudManagementCluster.fromMap((map['managementCluster'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkSubnetCidr: (map['networkSubnetCidr'] as String).input(),
-      nsxtPassword: map['nsxtPassword'] == null ? null : (map['nsxtPassword'] as String).input(),
+      nsxtPassword: map['nsxtPassword'] == null ? null : (map['nsxtPassword']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vcenterPassword: map['vcenterPassword'] == null ? null : (map['vcenterPassword'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vcenterPassword: map['vcenterPassword'] == null ? null : (map['vcenterPassword']! as String).input(),
     );
   }
 }

@@ -59,14 +59,14 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
-      invokeArn: map['invokeArn'] == null ? null : (map['invokeArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      functionName: map['functionName'] == null ? null : ((map['functionName'] as String).input()).input(),
+      functionVersion: map['functionVersion'] == null ? null : ((map['functionVersion'] as String).input()).input(),
+      invokeArn: map['invokeArn'] == null ? null : ((map['invokeArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingConfig: map['routingConfig'] == null ? null : ((AliasRoutingConfig.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

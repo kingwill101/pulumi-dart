@@ -25,8 +25,8 @@ class NetworkInsightsAnalysisAlternatePathHint {
 
   factory NetworkInsightsAnalysisAlternatePathHint.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisAlternatePathHint(
-      componentArn: map['componentArn'] == null ? null : (map['componentArn'] as String).input(),
-      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
+      componentArn: map['componentArn'] == null ? null : ((map['componentArn'] as String).input()).input(),
+      componentId: map['componentId'] == null ? null : ((map['componentId'] as String).input()).input(),
     );
   }
 }

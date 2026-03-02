@@ -120,21 +120,21 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flavorId: map['flavorId'] == null ? null : (map['flavorId'] as String).input(),
-      loadbalancerProvider: map['loadbalancerProvider'] == null ? null : (map['loadbalancerProvider'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      vipAddress: map['vipAddress'] == null ? null : (map['vipAddress'] as String).input(),
-      vipNetworkId: map['vipNetworkId'] == null ? null : (map['vipNetworkId'] as String).input(),
-      vipPortId: map['vipPortId'] == null ? null : (map['vipPortId'] as String).input(),
-      vipQosPolicyId: map['vipQosPolicyId'] == null ? null : (map['vipQosPolicyId'] as String).input(),
-      vipSubnetId: map['vipSubnetId'] == null ? null : (map['vipSubnetId'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flavorId: map['flavorId'] == null ? null : (map['flavorId']! as String).input(),
+      loadbalancerProvider: map['loadbalancerProvider'] == null ? null : (map['loadbalancerProvider']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      vipAddress: map['vipAddress'] == null ? null : (map['vipAddress']! as String).input(),
+      vipNetworkId: map['vipNetworkId'] == null ? null : (map['vipNetworkId']! as String).input(),
+      vipPortId: map['vipPortId'] == null ? null : (map['vipPortId']! as String).input(),
+      vipQosPolicyId: map['vipQosPolicyId'] == null ? null : (map['vipQosPolicyId']! as String).input(),
+      vipSubnetId: map['vipSubnetId'] == null ? null : (map['vipSubnetId']! as String).input(),
     );
   }
 }

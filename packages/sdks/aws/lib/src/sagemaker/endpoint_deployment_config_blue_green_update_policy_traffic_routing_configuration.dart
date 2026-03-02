@@ -37,8 +37,8 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration {
 
   factory EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration(
-      canarySize: map['canarySize'] == null ? null : (EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize.fromMap((map['canarySize'] as Map).cast<String, dynamic>())).input(),
-      linearStepSize: map['linearStepSize'] == null ? null : (EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize.fromMap((map['linearStepSize'] as Map).cast<String, dynamic>())).input(),
+      canarySize: map['canarySize'] == null ? null : ((EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize.fromMap((map['canarySize']! as Map).cast<String, dynamic>())).input()).input(),
+      linearStepSize: map['linearStepSize'] == null ? null : ((EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize.fromMap((map['linearStepSize']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
       waitIntervalInSeconds: (map['waitIntervalInSeconds'] as int).input(),
     );

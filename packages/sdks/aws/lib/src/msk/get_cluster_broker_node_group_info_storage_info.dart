@@ -20,7 +20,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfo {
 
   factory GetClusterBrokerNodeGroupInfoStorageInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfo(
-      ebsStorageInfos: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo>(map['ebsStorageInfos'], (value) => GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ebsStorageInfos: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo>(map['ebsStorageInfos']!, (value) => GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

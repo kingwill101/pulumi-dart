@@ -26,8 +26,8 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings(
-      m2tsSettings: map['m2tsSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap((map['m2tsSettings'] as Map).cast<String, dynamic>())).input(),
-      rawSettings: map['rawSettings'] == null ? null : ((map['rawSettings'] as Map).cast<String, dynamic>()).input(),
+      m2tsSettings: map['m2tsSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettings.fromMap((map['m2tsSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      rawSettings: map['rawSettings'] == null ? null : (((map['rawSettings'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

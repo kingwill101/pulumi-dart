@@ -67,14 +67,14 @@ class PrimaryIpArgs {
 
   factory PrimaryIpArgs.fromMap(Map<String, dynamic> map) {
     return PrimaryIpArgs(
-      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId'] as int).input(),
+      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId']! as int).input(),
       assigneeType: (map['assigneeType'] as String).input(),
       autoDelete: (map['autoDelete'] as bool).input(),
-      datacenter: map['datacenter'] == null ? null : (map['datacenter'] as String).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      datacenter: map['datacenter'] == null ? null : (map['datacenter']! as String).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

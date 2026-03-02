@@ -25,8 +25,8 @@ class WorkloadSaaEnrollmentResponse {
 
   factory WorkloadSaaEnrollmentResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadSaaEnrollmentResponse(
-      setupErrors: map['setupErrors'] == null ? null : ((map['setupErrors'] as List).cast<String>()).input(),
-      setupStatus: map['setupStatus'] == null ? null : (map['setupStatus'] as String).input(),
+      setupErrors: map['setupErrors'] == null ? null : ((map['setupErrors']! as List).cast<String>()).input(),
+      setupStatus: map['setupStatus'] == null ? null : (map['setupStatus']! as String).input(),
     );
   }
 }

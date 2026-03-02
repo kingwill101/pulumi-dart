@@ -76,17 +76,17 @@ class Package {
 
   factory Package.fromMap(Map<String, dynamic> map) {
     return Package(
-      architecture: map['architecture'] == null ? null : (PackageArchitecture.fromValue(map['architecture'] as String)).input(),
-      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      digest: map['digest'] == null ? null : (pulumi.Input.decodeList<DigestContaineranalysisV1alpha1>(map['digest'], (value) => DigestContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      distribution: map['distribution'] == null ? null : (pulumi.Input.decodeList<DistributionContaineranalysisV1alpha1>(map['distribution'], (value) => DistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      license: map['license'] == null ? null : (LicenseContaineranalysisV1alpha1.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
-      maintainer: map['maintainer'] == null ? null : (map['maintainer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageType: map['packageType'] == null ? null : (map['packageType'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version'] as Map).cast<String, dynamic>())).input(),
+      architecture: map['architecture'] == null ? null : (PackageArchitecture.fromValue(map['architecture']! as String)).input(),
+      cpeUri: map['cpeUri'] == null ? null : (map['cpeUri']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      digest: map['digest'] == null ? null : (pulumi.Input.decodeList<DigestContaineranalysisV1alpha1>(map['digest']!, (value) => DigestContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distribution: map['distribution'] == null ? null : (pulumi.Input.decodeList<DistributionContaineranalysisV1alpha1>(map['distribution']!, (value) => DistributionContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      license: map['license'] == null ? null : (LicenseContaineranalysisV1alpha1.fromMap((map['license']! as Map).cast<String, dynamic>())).input(),
+      maintainer: map['maintainer'] == null ? null : (map['maintainer']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageType: map['packageType'] == null ? null : (map['packageType']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      version: map['version'] == null ? null : (VersionContaineranalysisV1alpha1.fromMap((map['version']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

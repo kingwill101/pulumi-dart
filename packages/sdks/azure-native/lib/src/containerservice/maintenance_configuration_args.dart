@@ -52,12 +52,12 @@ class MaintenanceConfigurationArgs {
 
   factory MaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceConfigurationArgs(
-      configName: map['configName'] == null ? null : (map['configName'] as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      notAllowedTime: map['notAllowedTime'] == null ? null : (pulumi.Input.decodeList<TimeSpan>(map['notAllowedTime'], (value) => TimeSpan.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configName: map['configName'] == null ? null : (map['configName']! as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      notAllowedTime: map['notAllowedTime'] == null ? null : (pulumi.Input.decodeList<TimeSpan>(map['notAllowedTime']!, (value) => TimeSpan.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      timeInWeek: map['timeInWeek'] == null ? null : (pulumi.Input.decodeList<TimeInWeek>(map['timeInWeek'], (value) => TimeInWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeInWeek: map['timeInWeek'] == null ? null : (pulumi.Input.decodeList<TimeInWeek>(map['timeInWeek']!, (value) => TimeInWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

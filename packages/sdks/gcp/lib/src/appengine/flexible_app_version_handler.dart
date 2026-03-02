@@ -61,13 +61,13 @@ class FlexibleAppVersionHandler {
 
   factory FlexibleAppVersionHandler.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionHandler(
-      authFailAction: map['authFailAction'] == null ? null : (map['authFailAction'] as String).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
-      redirectHttpResponseCode: map['redirectHttpResponseCode'] == null ? null : (map['redirectHttpResponseCode'] as String).input(),
-      script: map['script'] == null ? null : (FlexibleAppVersionHandlerScript.fromMap((map['script'] as Map).cast<String, dynamic>())).input(),
-      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel'] as String).input(),
-      staticFiles: map['staticFiles'] == null ? null : (FlexibleAppVersionHandlerStaticFiles.fromMap((map['staticFiles'] as Map).cast<String, dynamic>())).input(),
-      urlRegex: map['urlRegex'] == null ? null : (map['urlRegex'] as String).input(),
+      authFailAction: map['authFailAction'] == null ? null : (map['authFailAction']! as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
+      redirectHttpResponseCode: map['redirectHttpResponseCode'] == null ? null : (map['redirectHttpResponseCode']! as String).input(),
+      script: map['script'] == null ? null : (FlexibleAppVersionHandlerScript.fromMap((map['script']! as Map).cast<String, dynamic>())).input(),
+      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel']! as String).input(),
+      staticFiles: map['staticFiles'] == null ? null : (FlexibleAppVersionHandlerStaticFiles.fromMap((map['staticFiles']! as Map).cast<String, dynamic>())).input(),
+      urlRegex: map['urlRegex'] == null ? null : (map['urlRegex']! as String).input(),
     );
   }
 }

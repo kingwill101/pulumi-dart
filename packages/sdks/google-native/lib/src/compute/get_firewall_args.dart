@@ -28,7 +28,7 @@ class GetFirewallArgs {
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
       firewall: (map['firewall'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

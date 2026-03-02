@@ -63,15 +63,15 @@ class AccountCostManagementExportState {
 
   factory AccountCostManagementExportState.fromMap(Map<String, dynamic> map) {
     return AccountCostManagementExportState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId'] as String).input(),
-      exportDataOptions: map['exportDataOptions'] == null ? null : (AccountCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
-      exportDataStorageLocation: map['exportDataStorageLocation'] == null ? null : (AccountCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recurrencePeriodEndDate: map['recurrencePeriodEndDate'] == null ? null : (map['recurrencePeriodEndDate'] as String).input(),
-      recurrencePeriodStartDate: map['recurrencePeriodStartDate'] == null ? null : (map['recurrencePeriodStartDate'] as String).input(),
-      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      billingAccountId: map['billingAccountId'] == null ? null : (map['billingAccountId']! as String).input(),
+      exportDataOptions: map['exportDataOptions'] == null ? null : (AccountCostManagementExportExportDataOptions.fromMap((map['exportDataOptions']! as Map).cast<String, dynamic>())).input(),
+      exportDataStorageLocation: map['exportDataStorageLocation'] == null ? null : (AccountCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation']! as Map).cast<String, dynamic>())).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recurrencePeriodEndDate: map['recurrencePeriodEndDate'] == null ? null : (map['recurrencePeriodEndDate']! as String).input(),
+      recurrencePeriodStartDate: map['recurrencePeriodStartDate'] == null ? null : (map['recurrencePeriodStartDate']! as String).input(),
+      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType']! as String).input(),
     );
   }
 }

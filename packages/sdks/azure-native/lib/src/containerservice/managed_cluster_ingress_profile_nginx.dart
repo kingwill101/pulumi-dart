@@ -20,7 +20,7 @@ class ManagedClusterIngressProfileNginx {
 
   factory ManagedClusterIngressProfileNginx.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfileNginx(
-      defaultIngressControllerType: map['defaultIngressControllerType'] == null ? null : (map['defaultIngressControllerType'] as String).input(),
+      defaultIngressControllerType: map['defaultIngressControllerType'] == null ? null : (map['defaultIngressControllerType']! as String).input(),
     );
   }
 }

@@ -48,13 +48,13 @@ class ProviderAssumeRoleWithWebIdentity {
 
   factory ProviderAssumeRoleWithWebIdentity.fromMap(Map<String, dynamic> map) {
     return ProviderAssumeRoleWithWebIdentity(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      policyArns: map['policyArns'] == null ? null : ((map['policyArns'] as List).cast<String>()).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
-      webIdentityToken: map['webIdentityToken'] == null ? null : (map['webIdentityToken'] as String).input(),
-      webIdentityTokenFile: map['webIdentityTokenFile'] == null ? null : (map['webIdentityTokenFile'] as String).input(),
+      duration: map['duration'] == null ? null : ((map['duration'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      policyArns: map['policyArns'] == null ? null : (((map['policyArns'] as List).cast<String>()).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      sessionName: map['sessionName'] == null ? null : ((map['sessionName'] as String).input()).input(),
+      webIdentityToken: map['webIdentityToken'] == null ? null : ((map['webIdentityToken'] as String).input()).input(),
+      webIdentityTokenFile: map['webIdentityTokenFile'] == null ? null : ((map['webIdentityTokenFile'] as String).input()).input(),
     );
   }
 }

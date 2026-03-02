@@ -74,17 +74,17 @@ class RoleArgs {
 
   factory RoleArgs.fromMap(Map<String, dynamic> map) {
     return RoleArgs(
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      document: map['document'] == null ? null : (map['document'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ramUsers: map['ramUsers'] == null ? null : ((map['ramUsers'] as List).cast<String>()).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      document: map['document'] == null ? null : (map['document']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ramUsers: map['ramUsers'] == null ? null : ((map['ramUsers']! as List).cast<String>()).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

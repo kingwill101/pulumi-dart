@@ -46,12 +46,12 @@ class TrustStoreRevocationState {
 
   factory TrustStoreRevocationState.fromMap(Map<String, dynamic> map) {
     return TrustStoreRevocationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revocationId: map['revocationId'] == null ? null : (map['revocationId'] as int).input(),
-      revocationsS3Bucket: map['revocationsS3Bucket'] == null ? null : (map['revocationsS3Bucket'] as String).input(),
-      revocationsS3Key: map['revocationsS3Key'] == null ? null : (map['revocationsS3Key'] as String).input(),
-      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : (map['revocationsS3ObjectVersion'] as String).input(),
-      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revocationId: map['revocationId'] == null ? null : ((map['revocationId'] as int).input()).input(),
+      revocationsS3Bucket: map['revocationsS3Bucket'] == null ? null : ((map['revocationsS3Bucket'] as String).input()).input(),
+      revocationsS3Key: map['revocationsS3Key'] == null ? null : ((map['revocationsS3Key'] as String).input()).input(),
+      revocationsS3ObjectVersion: map['revocationsS3ObjectVersion'] == null ? null : ((map['revocationsS3ObjectVersion'] as String).input()).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : ((map['trustStoreArn'] as String).input()).input(),
     );
   }
 }

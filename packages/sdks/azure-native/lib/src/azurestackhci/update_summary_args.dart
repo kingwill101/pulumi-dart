@@ -80,17 +80,17 @@ class UpdateSummaryArgs {
   factory UpdateSummaryArgs.fromMap(Map<String, dynamic> map) {
     return UpdateSummaryArgs(
       clusterName: (map['clusterName'] as String).input(),
-      currentOemVersion: map['currentOemVersion'] == null ? null : (map['currentOemVersion'] as String).input(),
-      currentSbeVersion: map['currentSbeVersion'] == null ? null : (map['currentSbeVersion'] as String).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      hardwareModel: map['hardwareModel'] == null ? null : (map['hardwareModel'] as String).input(),
-      healthCheckDate: map['healthCheckDate'] == null ? null : (map['healthCheckDate'] as String).input(),
-      lastChecked: map['lastChecked'] == null ? null : (map['lastChecked'] as String).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      oemFamily: map['oemFamily'] == null ? null : (map['oemFamily'] as String).input(),
+      currentOemVersion: map['currentOemVersion'] == null ? null : (map['currentOemVersion']! as String).input(),
+      currentSbeVersion: map['currentSbeVersion'] == null ? null : (map['currentSbeVersion']! as String).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
+      hardwareModel: map['hardwareModel'] == null ? null : (map['hardwareModel']! as String).input(),
+      healthCheckDate: map['healthCheckDate'] == null ? null : (map['healthCheckDate']! as String).input(),
+      lastChecked: map['lastChecked'] == null ? null : (map['lastChecked']! as String).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      oemFamily: map['oemFamily'] == null ? null : (map['oemFamily']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

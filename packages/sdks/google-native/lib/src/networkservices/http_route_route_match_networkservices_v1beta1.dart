@@ -48,12 +48,12 @@ class HttpRouteRouteMatchNetworkservicesV1beta1 {
 
   factory HttpRouteRouteMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRouteMatchNetworkservicesV1beta1(
-      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteHeaderMatchNetworkservicesV1beta1>(map['headers'], (value) => HttpRouteHeaderMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<HttpRouteQueryParameterMatchNetworkservicesV1beta1>(map['queryParameters'], (value) => HttpRouteQueryParameterMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HttpRouteHeaderMatchNetworkservicesV1beta1>(map['headers']!, (value) => HttpRouteHeaderMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<HttpRouteQueryParameterMatchNetworkservicesV1beta1>(map['queryParameters']!, (value) => HttpRouteQueryParameterMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

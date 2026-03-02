@@ -90,20 +90,20 @@ class DomainCpu {
 
   factory DomainCpu.fromMap(Map<String, dynamic> map) {
     return DomainCpu(
-      cache: map['cache'] == null ? null : (DomainCpuCache.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
-      check: map['check'] == null ? null : (map['check'] as String).input(),
-      deprecatedFeatures: map['deprecatedFeatures'] == null ? null : (map['deprecatedFeatures'] as String).input(),
-      features: map['features'] == null ? null : (pulumi.Input.decodeList<DomainCpuFeature>(map['features'], (value) => DomainCpuFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      match: map['match'] == null ? null : (map['match'] as String).input(),
-      maxPhysAddr: map['maxPhysAddr'] == null ? null : (DomainCpuMaxPhysAddr.fromMap((map['maxPhysAddr'] as Map).cast<String, dynamic>())).input(),
-      migratable: map['migratable'] == null ? null : (map['migratable'] as bool).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      modelFallback: map['modelFallback'] == null ? null : (map['modelFallback'] as String).input(),
-      modelVendorId: map['modelVendorId'] == null ? null : (map['modelVendorId'] as String).input(),
-      numa: map['numa'] == null ? null : (DomainCpuNuma.fromMap((map['numa'] as Map).cast<String, dynamic>())).input(),
-      topology: map['topology'] == null ? null : (DomainCpuTopology.fromMap((map['topology'] as Map).cast<String, dynamic>())).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      cache: map['cache'] == null ? null : (DomainCpuCache.fromMap((map['cache']! as Map).cast<String, dynamic>())).input(),
+      check: map['check'] == null ? null : (map['check']! as String).input(),
+      deprecatedFeatures: map['deprecatedFeatures'] == null ? null : (map['deprecatedFeatures']! as String).input(),
+      features: map['features'] == null ? null : (pulumi.Input.decodeList<DomainCpuFeature>(map['features']!, (value) => DomainCpuFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      match: map['match'] == null ? null : (map['match']! as String).input(),
+      maxPhysAddr: map['maxPhysAddr'] == null ? null : (DomainCpuMaxPhysAddr.fromMap((map['maxPhysAddr']! as Map).cast<String, dynamic>())).input(),
+      migratable: map['migratable'] == null ? null : (map['migratable']! as bool).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      modelFallback: map['modelFallback'] == null ? null : (map['modelFallback']! as String).input(),
+      modelVendorId: map['modelVendorId'] == null ? null : (map['modelVendorId']! as String).input(),
+      numa: map['numa'] == null ? null : (DomainCpuNuma.fromMap((map['numa']! as Map).cast<String, dynamic>())).input(),
+      topology: map['topology'] == null ? null : (DomainCpuTopology.fromMap((map['topology']! as Map).cast<String, dynamic>())).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
     );
   }
 }

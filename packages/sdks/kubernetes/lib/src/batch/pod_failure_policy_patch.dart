@@ -22,7 +22,7 @@ class PodFailurePolicyPatch {
 
   factory PodFailurePolicyPatch.fromMap(Map<String, dynamic> map) {
     return PodFailurePolicyPatch(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PodFailurePolicyRulePatch>(map['rules'], (value) => PodFailurePolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PodFailurePolicyRulePatch>(map['rules']!, (value) => PodFailurePolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

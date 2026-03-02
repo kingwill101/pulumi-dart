@@ -39,10 +39,10 @@ class ImageArgs {
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : (map['deleteAfterImageUpload'] as String).input(),
+      deleteAfterImageUpload: map['deleteAfterImageUpload'] == null ? null : (map['deleteAfterImageUpload']! as String).input(),
       imageName: (map['imageName'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      targetOssRegionId: map['targetOssRegionId'] == null ? null : (map['targetOssRegionId'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      targetOssRegionId: map['targetOssRegionId'] == null ? null : (map['targetOssRegionId']! as String).input(),
     );
   }
 }

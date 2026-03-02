@@ -41,11 +41,11 @@ class StaticSiteTemplateOptions {
 
   factory StaticSiteTemplateOptions.fromMap(Map<String, dynamic> map) {
     return StaticSiteTemplateOptions(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isPrivate: map['isPrivate'] == null ? null : (map['isPrivate'] as bool).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      templateRepositoryUrl: map['templateRepositoryUrl'] == null ? null : (map['templateRepositoryUrl'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isPrivate: map['isPrivate'] == null ? null : (map['isPrivate']! as bool).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName']! as String).input(),
+      templateRepositoryUrl: map['templateRepositoryUrl'] == null ? null : (map['templateRepositoryUrl']! as String).input(),
     );
   }
 }

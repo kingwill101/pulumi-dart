@@ -41,11 +41,11 @@ class CanonicalProfileDefinitionResponseProperties {
 
   factory CanonicalProfileDefinitionResponseProperties.fromMap(Map<String, dynamic> map) {
     return CanonicalProfileDefinitionResponseProperties(
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      profilePropertyName: map['profilePropertyName'] == null ? null : (map['profilePropertyName'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      profilePropertyName: map['profilePropertyName'] == null ? null : (map['profilePropertyName']! as String).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

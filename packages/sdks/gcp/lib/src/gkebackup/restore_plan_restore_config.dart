@@ -119,18 +119,18 @@ class RestorePlanRestoreConfig {
 
   factory RestorePlanRestoreConfig.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfig(
-      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces'] as bool).input(),
-      clusterResourceConflictPolicy: map['clusterResourceConflictPolicy'] == null ? null : (map['clusterResourceConflictPolicy'] as String).input(),
-      clusterResourceRestoreScope: map['clusterResourceRestoreScope'] == null ? null : (RestorePlanRestoreConfigClusterResourceRestoreScope.fromMap((map['clusterResourceRestoreScope'] as Map).cast<String, dynamic>())).input(),
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : (RestorePlanRestoreConfigExcludedNamespaces.fromMap((map['excludedNamespaces'] as Map).cast<String, dynamic>())).input(),
-      namespacedResourceRestoreMode: map['namespacedResourceRestoreMode'] == null ? null : (map['namespacedResourceRestoreMode'] as String).input(),
-      noNamespaces: map['noNamespaces'] == null ? null : (map['noNamespaces'] as bool).input(),
-      restoreOrder: map['restoreOrder'] == null ? null : (RestorePlanRestoreConfigRestoreOrder.fromMap((map['restoreOrder'] as Map).cast<String, dynamic>())).input(),
-      selectedApplications: map['selectedApplications'] == null ? null : (RestorePlanRestoreConfigSelectedApplications.fromMap((map['selectedApplications'] as Map).cast<String, dynamic>())).input(),
-      selectedNamespaces: map['selectedNamespaces'] == null ? null : (RestorePlanRestoreConfigSelectedNamespaces.fromMap((map['selectedNamespaces'] as Map).cast<String, dynamic>())).input(),
-      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRule>(map['transformationRules'], (value) => RestorePlanRestoreConfigTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeDataRestorePolicy: map['volumeDataRestorePolicy'] == null ? null : (map['volumeDataRestorePolicy'] as String).input(),
-      volumeDataRestorePolicyBindings: map['volumeDataRestorePolicyBindings'] == null ? null : (pulumi.Input.decodeList<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>(map['volumeDataRestorePolicyBindings'], (value) => RestorePlanRestoreConfigVolumeDataRestorePolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces']! as bool).input(),
+      clusterResourceConflictPolicy: map['clusterResourceConflictPolicy'] == null ? null : (map['clusterResourceConflictPolicy']! as String).input(),
+      clusterResourceRestoreScope: map['clusterResourceRestoreScope'] == null ? null : (RestorePlanRestoreConfigClusterResourceRestoreScope.fromMap((map['clusterResourceRestoreScope']! as Map).cast<String, dynamic>())).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : (RestorePlanRestoreConfigExcludedNamespaces.fromMap((map['excludedNamespaces']! as Map).cast<String, dynamic>())).input(),
+      namespacedResourceRestoreMode: map['namespacedResourceRestoreMode'] == null ? null : (map['namespacedResourceRestoreMode']! as String).input(),
+      noNamespaces: map['noNamespaces'] == null ? null : (map['noNamespaces']! as bool).input(),
+      restoreOrder: map['restoreOrder'] == null ? null : (RestorePlanRestoreConfigRestoreOrder.fromMap((map['restoreOrder']! as Map).cast<String, dynamic>())).input(),
+      selectedApplications: map['selectedApplications'] == null ? null : (RestorePlanRestoreConfigSelectedApplications.fromMap((map['selectedApplications']! as Map).cast<String, dynamic>())).input(),
+      selectedNamespaces: map['selectedNamespaces'] == null ? null : (RestorePlanRestoreConfigSelectedNamespaces.fromMap((map['selectedNamespaces']! as Map).cast<String, dynamic>())).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<RestorePlanRestoreConfigTransformationRule>(map['transformationRules']!, (value) => RestorePlanRestoreConfigTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeDataRestorePolicy: map['volumeDataRestorePolicy'] == null ? null : (map['volumeDataRestorePolicy']! as String).input(),
+      volumeDataRestorePolicyBindings: map['volumeDataRestorePolicyBindings'] == null ? null : (pulumi.Input.decodeList<RestorePlanRestoreConfigVolumeDataRestorePolicyBinding>(map['volumeDataRestorePolicyBindings']!, (value) => RestorePlanRestoreConfigVolumeDataRestorePolicyBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ComputeRuntimeDtoResponse {
 
   factory ComputeRuntimeDtoResponse.fromMap(Map<String, dynamic> map) {
     return ComputeRuntimeDtoResponse(
-      sparkRuntimeVersion: map['sparkRuntimeVersion'] == null ? null : (map['sparkRuntimeVersion'] as String).input(),
+      sparkRuntimeVersion: map['sparkRuntimeVersion'] == null ? null : (map['sparkRuntimeVersion']! as String).input(),
     );
   }
 }

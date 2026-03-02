@@ -32,9 +32,9 @@ class BucketCorsState {
 
   factory BucketCorsState.fromMap(Map<String, dynamic> map) {
     return BucketCorsState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<BucketCorsCorsRule>(map['corsRules'], (value) => BucketCorsCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseVary: map['responseVary'] == null ? null : (map['responseVary'] as bool).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<BucketCorsCorsRule>(map['corsRules']!, (value) => BucketCorsCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseVary: map['responseVary'] == null ? null : (map['responseVary']! as bool).input(),
     );
   }
 }

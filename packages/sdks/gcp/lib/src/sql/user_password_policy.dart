@@ -40,11 +40,11 @@ class UserPasswordPolicy {
 
   factory UserPasswordPolicy.fromMap(Map<String, dynamic> map) {
     return UserPasswordPolicy(
-      allowedFailedAttempts: map['allowedFailedAttempts'] == null ? null : (map['allowedFailedAttempts'] as int).input(),
-      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null ? null : (map['enableFailedAttemptsCheck'] as bool).input(),
-      enablePasswordVerification: map['enablePasswordVerification'] == null ? null : (map['enablePasswordVerification'] as bool).input(),
-      passwordExpirationDuration: map['passwordExpirationDuration'] == null ? null : (map['passwordExpirationDuration'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<UserPasswordPolicyStatus>(map['statuses'], (value) => UserPasswordPolicyStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedFailedAttempts: map['allowedFailedAttempts'] == null ? null : (map['allowedFailedAttempts']! as int).input(),
+      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null ? null : (map['enableFailedAttemptsCheck']! as bool).input(),
+      enablePasswordVerification: map['enablePasswordVerification'] == null ? null : (map['enablePasswordVerification']! as bool).input(),
+      passwordExpirationDuration: map['passwordExpirationDuration'] == null ? null : (map['passwordExpirationDuration']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<UserPasswordPolicyStatus>(map['statuses']!, (value) => UserPasswordPolicyStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

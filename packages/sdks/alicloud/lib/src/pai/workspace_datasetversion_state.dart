@@ -98,19 +98,19 @@ class WorkspaceDatasetversionState {
 
   factory WorkspaceDatasetversionState.fromMap(Map<String, dynamic> map) {
     return WorkspaceDatasetversionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataCount: map['dataCount'] == null ? null : (map['dataCount'] as int).input(),
-      dataSize: map['dataSize'] == null ? null : (map['dataSize'] as int).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType'] as String).input(),
-      datasetId: map['datasetId'] == null ? null : (map['datasetId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetversionLabel>(map['labels'], (value) => WorkspaceDatasetversionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      property: map['property'] == null ? null : (map['property'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataCount: map['dataCount'] == null ? null : (map['dataCount']! as int).input(),
+      dataSize: map['dataSize'] == null ? null : (map['dataSize']! as int).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (map['dataSourceType']! as String).input(),
+      datasetId: map['datasetId'] == null ? null : (map['datasetId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<WorkspaceDatasetversionLabel>(map['labels']!, (value) => WorkspaceDatasetversionLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      property: map['property'] == null ? null : (map['property']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

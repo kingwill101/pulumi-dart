@@ -36,10 +36,10 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
 
   factory GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1BuiltInAlgorithmOutput(
-      framework: map['framework'] == null ? null : (map['framework'] as String).input(),
-      modelPath: map['modelPath'] == null ? null : (map['modelPath'] as String).input(),
-      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      framework: map['framework'] == null ? null : (map['framework']! as String).input(),
+      modelPath: map['modelPath'] == null ? null : (map['modelPath']! as String).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

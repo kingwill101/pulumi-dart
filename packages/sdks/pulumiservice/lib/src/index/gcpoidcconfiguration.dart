@@ -47,9 +47,9 @@ class GCPOIDCConfiguration {
     return GCPOIDCConfiguration(
       projectId: (map['projectId'] as String).input(),
       providerId: (map['providerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
-      tokenLifetime: map['tokenLifetime'] == null ? null : (map['tokenLifetime'] as String).input(),
+      tokenLifetime: map['tokenLifetime'] == null ? null : (map['tokenLifetime']! as String).input(),
       workloadPoolId: (map['workloadPoolId'] as String).input(),
     );
   }

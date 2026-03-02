@@ -77,17 +77,17 @@ class PolicySetDefinitionAtManagementGroupArgs {
 
   factory PolicySetDefinitionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return PolicySetDefinitionAtManagementGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(map['parameters'], (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyDefinitionGroups: map['policyDefinitionGroups'] == null ? null : (pulumi.Input.decodeList<PolicyDefinitionGroup>(map['policyDefinitionGroups'], (value) => PolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(map['parameters']!, (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyDefinitionGroups: map['policyDefinitionGroups'] == null ? null : (pulumi.Input.decodeList<PolicyDefinitionGroup>(map['policyDefinitionGroups']!, (value) => PolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       policyDefinitions: (pulumi.Input.decodeList<PolicyDefinitionReference>(map['policyDefinitions'], (value) => PolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policySetDefinitionName: map['policySetDefinitionName'] == null ? null : (map['policySetDefinitionName'] as String).input(),
-      policyType: map['policyType'] == null ? null : (map['policyType'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
+      policySetDefinitionName: map['policySetDefinitionName'] == null ? null : (map['policySetDefinitionName']! as String).input(),
+      policyType: map['policyType'] == null ? null : (map['policyType']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      versions: map['versions'] == null ? null : ((map['versions']! as List).cast<String>()).input(),
     );
   }
 }

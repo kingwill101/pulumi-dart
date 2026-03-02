@@ -20,7 +20,7 @@ class FeaturesDatabricksWorkspace {
 
   factory FeaturesDatabricksWorkspace.fromMap(Map<String, dynamic> map) {
     return FeaturesDatabricksWorkspace(
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
     );
   }
 }

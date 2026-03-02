@@ -20,7 +20,7 @@ class AzureNodePoolManagement {
 
   factory AzureNodePoolManagement.fromMap(Map<String, dynamic> map) {
     return AzureNodePoolManagement(
-      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair'] as bool).input(),
+      autoRepair: map['autoRepair'] == null ? null : (map['autoRepair']! as bool).input(),
     );
   }
 }

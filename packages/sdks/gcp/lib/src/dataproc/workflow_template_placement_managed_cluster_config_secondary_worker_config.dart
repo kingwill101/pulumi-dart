@@ -68,16 +68,16 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig {
 
   factory WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator>(map['accelerators'], (value) => WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskConfig: map['diskConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames'] as List).cast<String>()).input(),
-      isPreemptible: map['isPreemptible'] == null ? null : (map['isPreemptible'] as bool).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      managedGroupConfigs: map['managedGroupConfigs'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig>(map['managedGroupConfigs'], (value) => WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      numInstances: map['numInstances'] == null ? null : (map['numInstances'] as int).input(),
-      preemptibility: map['preemptibility'] == null ? null : (map['preemptibility'] as String).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator>(map['accelerators']!, (value) => WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfig: map['diskConfig'] == null ? null : (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames']! as List).cast<String>()).input(),
+      isPreemptible: map['isPreemptible'] == null ? null : (map['isPreemptible']! as bool).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      managedGroupConfigs: map['managedGroupConfigs'] == null ? null : (pulumi.Input.decodeList<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig>(map['managedGroupConfigs']!, (value) => WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      numInstances: map['numInstances'] == null ? null : (map['numInstances']! as int).input(),
+      preemptibility: map['preemptibility'] == null ? null : (map['preemptibility']! as String).input(),
     );
   }
 }

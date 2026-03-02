@@ -76,15 +76,15 @@ class VpnConnectionArgs {
   factory VpnConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpnConnectionArgs(
       cluster: (map['cluster'] as String).input(),
-      enableHighAvailability: map['enableHighAvailability'] == null ? null : (map['enableHighAvailability'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      enableHighAvailability: map['enableHighAvailability'] == null ? null : (map['enableHighAvailability']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      natGatewayIp: map['natGatewayIp'] == null ? null : (map['natGatewayIp'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      router: map['router'] == null ? null : (map['router'] as String).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
-      vpcProject: map['vpcProject'] == null ? null : (VpnConnectionVpcProject.fromMap((map['vpcProject'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      natGatewayIp: map['natGatewayIp'] == null ? null : (map['natGatewayIp']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      router: map['router'] == null ? null : (map['router']! as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
+      vpcProject: map['vpcProject'] == null ? null : (VpnConnectionVpcProject.fromMap((map['vpcProject']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

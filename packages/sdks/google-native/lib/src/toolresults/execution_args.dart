@@ -76,17 +76,17 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      completionTime: map['completionTime'] == null ? null : (Timestamp.fromMap((map['completionTime'] as Map).cast<String, dynamic>())).input(),
-      creationTime: map['creationTime'] == null ? null : (Timestamp.fromMap((map['creationTime'] as Map).cast<String, dynamic>())).input(),
-      dimensionDefinitions: map['dimensionDefinitions'] == null ? null : ((map['dimensionDefinitions'] as List).cast<Map<String, dynamic>>()).input(),
-      executionId: map['executionId'] == null ? null : (map['executionId'] as String).input(),
+      completionTime: map['completionTime'] == null ? null : (Timestamp.fromMap((map['completionTime']! as Map).cast<String, dynamic>())).input(),
+      creationTime: map['creationTime'] == null ? null : (Timestamp.fromMap((map['creationTime']! as Map).cast<String, dynamic>())).input(),
+      dimensionDefinitions: map['dimensionDefinitions'] == null ? null : ((map['dimensionDefinitions']! as List).cast<Map<String, dynamic>>()).input(),
+      executionId: map['executionId'] == null ? null : (map['executionId']! as String).input(),
       historyId: (map['historyId'] as String).input(),
-      outcome: map['outcome'] == null ? null : (Outcome.fromMap((map['outcome'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      specification: map['specification'] == null ? null : (Specification.fromMap((map['specification'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (ExecutionState.fromValue(map['state'] as String)).input(),
-      testExecutionMatrixId: map['testExecutionMatrixId'] == null ? null : (map['testExecutionMatrixId'] as String).input(),
+      outcome: map['outcome'] == null ? null : (Outcome.fromMap((map['outcome']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      specification: map['specification'] == null ? null : (Specification.fromMap((map['specification']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (ExecutionState.fromValue(map['state']! as String)).input(),
+      testExecutionMatrixId: map['testExecutionMatrixId'] == null ? null : (map['testExecutionMatrixId']! as String).input(),
     );
   }
 }

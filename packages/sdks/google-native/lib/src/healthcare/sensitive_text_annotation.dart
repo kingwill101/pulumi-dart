@@ -21,7 +21,7 @@ class SensitiveTextAnnotation {
 
   factory SensitiveTextAnnotation.fromMap(Map<String, dynamic> map) {
     return SensitiveTextAnnotation(
-      details: map['details'] == null ? null : ((map['details'] as Map).cast<String, String>()).input(),
+      details: map['details'] == null ? null : ((map['details']! as Map).cast<String, String>()).input(),
     );
   }
 }

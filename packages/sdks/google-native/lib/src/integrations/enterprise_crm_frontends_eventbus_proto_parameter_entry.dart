@@ -33,9 +33,9 @@ class EnterpriseCrmFrontendsEventbusProtoParameterEntry {
 
   factory EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmFrontendsEventbusProtoParameterEntry(
-      dataType: map['dataType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType.fromValue(map['dataType'] as String)).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      dataType: map['dataType'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType.fromValue(map['dataType']! as String)).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (EnterpriseCrmFrontendsEventbusProtoParameterValueType.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

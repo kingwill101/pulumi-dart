@@ -32,7 +32,7 @@ class OriginProtectionArgs {
 
   factory OriginProtectionArgs.fromMap(Map<String, dynamic> map) {
     return OriginProtectionArgs(
-      originConverge: map['originConverge'] == null ? null : (map['originConverge'] as String).input(),
+      originConverge: map['originConverge'] == null ? null : (map['originConverge']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

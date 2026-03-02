@@ -54,7 +54,7 @@ class GetRegexPatternSetResult {
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      regularExpressions: pulumi.Input.decodeList<GetRegexPatternSetRegularExpression>(map['regularExpressions'], (value) => GetRegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>())),
+      regularExpressions: pulumi.Input.decodeList<GetRegexPatternSetRegularExpression>(map['regularExpressions']!, (value) => GetRegexPatternSetRegularExpression.fromMap((value as Map).cast<String, dynamic>())),
       scope: map['scope'] as String,
     );
   }

@@ -57,13 +57,13 @@ class SyntheticTaskMonitorConf {
 
   factory SyntheticTaskMonitorConf.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConf(
-      apiHttp: map['apiHttp'] == null ? null : (SyntheticTaskMonitorConfApiHttp.fromMap((map['apiHttp'] as Map).cast<String, dynamic>())).input(),
-      fileDownload: map['fileDownload'] == null ? null : (SyntheticTaskMonitorConfFileDownload.fromMap((map['fileDownload'] as Map).cast<String, dynamic>())).input(),
-      netDns: map['netDns'] == null ? null : (SyntheticTaskMonitorConfNetDns.fromMap((map['netDns'] as Map).cast<String, dynamic>())).input(),
-      netIcmp: map['netIcmp'] == null ? null : (SyntheticTaskMonitorConfNetIcmp.fromMap((map['netIcmp'] as Map).cast<String, dynamic>())).input(),
-      netTcp: map['netTcp'] == null ? null : (SyntheticTaskMonitorConfNetTcp.fromMap((map['netTcp'] as Map).cast<String, dynamic>())).input(),
-      stream: map['stream'] == null ? null : (SyntheticTaskMonitorConfStream.fromMap((map['stream'] as Map).cast<String, dynamic>())).input(),
-      website: map['website'] == null ? null : (SyntheticTaskMonitorConfWebsite.fromMap((map['website'] as Map).cast<String, dynamic>())).input(),
+      apiHttp: map['apiHttp'] == null ? null : (SyntheticTaskMonitorConfApiHttp.fromMap((map['apiHttp']! as Map).cast<String, dynamic>())).input(),
+      fileDownload: map['fileDownload'] == null ? null : (SyntheticTaskMonitorConfFileDownload.fromMap((map['fileDownload']! as Map).cast<String, dynamic>())).input(),
+      netDns: map['netDns'] == null ? null : (SyntheticTaskMonitorConfNetDns.fromMap((map['netDns']! as Map).cast<String, dynamic>())).input(),
+      netIcmp: map['netIcmp'] == null ? null : (SyntheticTaskMonitorConfNetIcmp.fromMap((map['netIcmp']! as Map).cast<String, dynamic>())).input(),
+      netTcp: map['netTcp'] == null ? null : (SyntheticTaskMonitorConfNetTcp.fromMap((map['netTcp']! as Map).cast<String, dynamic>())).input(),
+      stream: map['stream'] == null ? null : (SyntheticTaskMonitorConfStream.fromMap((map['stream']! as Map).cast<String, dynamic>())).input(),
+      website: map['website'] == null ? null : (SyntheticTaskMonitorConfWebsite.fromMap((map['website']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

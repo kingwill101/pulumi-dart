@@ -30,9 +30,9 @@ class AppImageConfigCodeEditorAppImageConfigContainerConfig {
 
   factory AppImageConfigCodeEditorAppImageConfigContainerConfig.fromMap(Map<String, dynamic> map) {
     return AppImageConfigCodeEditorAppImageConfigContainerConfig(
-      containerArguments: map['containerArguments'] == null ? null : ((map['containerArguments'] as List).cast<String>()).input(),
-      containerEntrypoints: map['containerEntrypoints'] == null ? null : ((map['containerEntrypoints'] as List).cast<String>()).input(),
-      containerEnvironmentVariables: map['containerEnvironmentVariables'] == null ? null : ((map['containerEnvironmentVariables'] as Map).cast<String, String>()).input(),
+      containerArguments: map['containerArguments'] == null ? null : (((map['containerArguments'] as List).cast<String>()).input()).input(),
+      containerEntrypoints: map['containerEntrypoints'] == null ? null : (((map['containerEntrypoints'] as List).cast<String>()).input()).input(),
+      containerEnvironmentVariables: map['containerEnvironmentVariables'] == null ? null : (((map['containerEnvironmentVariables'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

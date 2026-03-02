@@ -25,8 +25,8 @@ class ScaleSetPacketCaptureMachineScope {
 
   factory ScaleSetPacketCaptureMachineScope.fromMap(Map<String, dynamic> map) {
     return ScaleSetPacketCaptureMachineScope(
-      excludeInstanceIds: map['excludeInstanceIds'] == null ? null : ((map['excludeInstanceIds'] as List).cast<String>()).input(),
-      includeInstanceIds: map['includeInstanceIds'] == null ? null : ((map['includeInstanceIds'] as List).cast<String>()).input(),
+      excludeInstanceIds: map['excludeInstanceIds'] == null ? null : ((map['excludeInstanceIds']! as List).cast<String>()).input(),
+      includeInstanceIds: map['includeInstanceIds'] == null ? null : ((map['includeInstanceIds']! as List).cast<String>()).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class HoneypotPresetState {
 
   factory HoneypotPresetState.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetState(
-      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName'] as String).input(),
-      honeypotPresetId: map['honeypotPresetId'] == null ? null : (map['honeypotPresetId'] as String).input(),
-      meta: map['meta'] == null ? null : (HoneypotPresetMeta.fromMap((map['meta'] as Map).cast<String, dynamic>())).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      presetName: map['presetName'] == null ? null : (map['presetName'] as String).input(),
+      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName']! as String).input(),
+      honeypotPresetId: map['honeypotPresetId'] == null ? null : (map['honeypotPresetId']! as String).input(),
+      meta: map['meta'] == null ? null : (HoneypotPresetMeta.fromMap((map['meta']! as Map).cast<String, dynamic>())).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      presetName: map['presetName'] == null ? null : (map['presetName']! as String).input(),
     );
   }
 }

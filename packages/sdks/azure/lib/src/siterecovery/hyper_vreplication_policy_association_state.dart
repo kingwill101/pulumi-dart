@@ -31,9 +31,9 @@ class HyperVReplicationPolicyAssociationState {
 
   factory HyperVReplicationPolicyAssociationState.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyAssociationState(
-      hypervSiteId: map['hypervSiteId'] == null ? null : (map['hypervSiteId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      hypervSiteId: map['hypervSiteId'] == null ? null : (map['hypervSiteId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
     );
   }
 }

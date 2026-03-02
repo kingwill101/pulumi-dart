@@ -34,9 +34,9 @@ class AffinityPatch {
 
   factory AffinityPatch.fromMap(Map<String, dynamic> map) {
     return AffinityPatch(
-      nodeAffinity: map['nodeAffinity'] == null ? null : (NodeAffinityPatch.fromMap((map['nodeAffinity'] as Map).cast<String, dynamic>())).input(),
-      podAffinity: map['podAffinity'] == null ? null : (PodAffinityPatch.fromMap((map['podAffinity'] as Map).cast<String, dynamic>())).input(),
-      podAntiAffinity: map['podAntiAffinity'] == null ? null : (PodAntiAffinityPatch.fromMap((map['podAntiAffinity'] as Map).cast<String, dynamic>())).input(),
+      nodeAffinity: map['nodeAffinity'] == null ? null : (NodeAffinityPatch.fromMap((map['nodeAffinity']! as Map).cast<String, dynamic>())).input(),
+      podAffinity: map['podAffinity'] == null ? null : (PodAffinityPatch.fromMap((map['podAffinity']! as Map).cast<String, dynamic>())).input(),
+      podAntiAffinity: map['podAntiAffinity'] == null ? null : (PodAntiAffinityPatch.fromMap((map['podAntiAffinity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

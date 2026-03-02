@@ -25,8 +25,8 @@ class TaskSparkInfrastructureSpecBatch {
 
   factory TaskSparkInfrastructureSpecBatch.fromMap(Map<String, dynamic> map) {
     return TaskSparkInfrastructureSpecBatch(
-      executorsCount: map['executorsCount'] == null ? null : (map['executorsCount'] as int).input(),
-      maxExecutorsCount: map['maxExecutorsCount'] == null ? null : (map['maxExecutorsCount'] as int).input(),
+      executorsCount: map['executorsCount'] == null ? null : (map['executorsCount']! as int).input(),
+      maxExecutorsCount: map['maxExecutorsCount'] == null ? null : (map['maxExecutorsCount']! as int).input(),
     );
   }
 }

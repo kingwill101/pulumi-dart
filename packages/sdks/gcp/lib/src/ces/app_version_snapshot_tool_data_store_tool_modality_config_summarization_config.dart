@@ -35,9 +35,9 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig {
 
   factory AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      modelSettings: map['modelSettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting>(map['modelSettings'], (value) => AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prompt: map['prompt'] == null ? null : (map['prompt'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      modelSettings: map['modelSettings'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting>(map['modelSettings']!, (value) => AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prompt: map['prompt'] == null ? null : (map['prompt']! as String).input(),
     );
   }
 }

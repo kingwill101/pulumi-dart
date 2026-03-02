@@ -62,15 +62,15 @@ class OnPremisesConfigurationSqladminV1beta4 {
 
   factory OnPremisesConfigurationSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return OnPremisesConfigurationSqladminV1beta4(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath'] as String).input(),
-      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      sourceInstance: map['sourceInstance'] == null ? null : (InstanceReferenceSqladminV1beta4.fromMap((map['sourceInstance'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      dumpFilePath: map['dumpFilePath'] == null ? null : (map['dumpFilePath']! as String).input(),
+      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      sourceInstance: map['sourceInstance'] == null ? null : (InstanceReferenceSqladminV1beta4.fromMap((map['sourceInstance']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

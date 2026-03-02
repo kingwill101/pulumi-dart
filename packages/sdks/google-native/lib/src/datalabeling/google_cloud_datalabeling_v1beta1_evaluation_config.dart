@@ -22,7 +22,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfig {
 
   factory GoogleCloudDatalabelingV1beta1EvaluationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1EvaluationConfig(
-      boundingBoxEvaluationOptions: map['boundingBoxEvaluationOptions'] == null ? null : (GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromMap((map['boundingBoxEvaluationOptions'] as Map).cast<String, dynamic>())).input(),
+      boundingBoxEvaluationOptions: map['boundingBoxEvaluationOptions'] == null ? null : (GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions.fromMap((map['boundingBoxEvaluationOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

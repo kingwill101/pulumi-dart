@@ -51,11 +51,11 @@ class InboundEndpointArgs {
   factory InboundEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InboundEndpointArgs(
       dnsResolverName: (map['dnsResolverName'] as String).input(),
-      inboundEndpointName: map['inboundEndpointName'] == null ? null : (map['inboundEndpointName'] as String).input(),
+      inboundEndpointName: map['inboundEndpointName'] == null ? null : (map['inboundEndpointName']! as String).input(),
       ipConfigurations: (pulumi.Input.decodeList<IpConfiguration>(map['ipConfigurations'], (value) => IpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

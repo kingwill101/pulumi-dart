@@ -36,10 +36,10 @@ class BucketWebsite {
 
   factory BucketWebsite.fromMap(Map<String, dynamic> map) {
     return BucketWebsite(
-      errorDocument: map['errorDocument'] == null ? null : (map['errorDocument'] as String).input(),
-      indexDocument: map['indexDocument'] == null ? null : (map['indexDocument'] as String).input(),
-      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : (map['redirectAllRequestsTo'] as String).input(),
-      routingRules: map['routingRules'] == null ? null : (map['routingRules'] as String).input(),
+      errorDocument: map['errorDocument'] == null ? null : ((map['errorDocument'] as String).input()).input(),
+      indexDocument: map['indexDocument'] == null ? null : ((map['indexDocument'] as String).input()).input(),
+      redirectAllRequestsTo: map['redirectAllRequestsTo'] == null ? null : ((map['redirectAllRequestsTo'] as String).input()).input(),
+      routingRules: map['routingRules'] == null ? null : ((map['routingRules'] as String).input()).input(),
     );
   }
 }

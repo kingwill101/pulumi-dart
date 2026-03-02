@@ -33,9 +33,9 @@ class MTLSPolicyNetworksecurityV1beta1 {
 
   factory MTLSPolicyNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return MTLSPolicyNetworksecurityV1beta1(
-      clientValidationCa: map['clientValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCANetworksecurityV1beta1>(map['clientValidationCa'], (value) => ValidationCANetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientValidationMode: map['clientValidationMode'] == null ? null : (MTLSPolicyClientValidationModeNetworksecurityV1beta1.fromValue(map['clientValidationMode'] as String)).input(),
-      clientValidationTrustConfig: map['clientValidationTrustConfig'] == null ? null : (map['clientValidationTrustConfig'] as String).input(),
+      clientValidationCa: map['clientValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCANetworksecurityV1beta1>(map['clientValidationCa']!, (value) => ValidationCANetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientValidationMode: map['clientValidationMode'] == null ? null : (MTLSPolicyClientValidationModeNetworksecurityV1beta1.fromValue(map['clientValidationMode']! as String)).input(),
+      clientValidationTrustConfig: map['clientValidationTrustConfig'] == null ? null : (map['clientValidationTrustConfig']! as String).input(),
     );
   }
 }

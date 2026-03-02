@@ -21,7 +21,7 @@ class AttachedClusterLoggingConfigComponentConfig {
 
   factory AttachedClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterLoggingConfigComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents'] as List).cast<String>()).input(),
+      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents']! as List).cast<String>()).input(),
     );
   }
 }

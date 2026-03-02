@@ -54,13 +54,13 @@ class GetRouteServicesArgs {
 
   factory GetRouteServicesArgs.fromMap(Map<String, dynamic> map) {
     return GetRouteServicesArgs(
-      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId'] as String).input(),
+      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId']! as String).input(),
       cenId: (map['cenId'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
-      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
+      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

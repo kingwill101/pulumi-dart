@@ -41,8 +41,8 @@ class ProjectPropertiesResponse {
 
   factory ProjectPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProjectPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       endpoints: ((map['endpoints'] as Map).cast<String, String>()).input(),
       isDefault: (map['isDefault'] as bool).input(),
       provisioningState: (map['provisioningState'] as String).input(),

@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1BlurBaselineConfig {
 
   factory GoogleCloudAiplatformV1BlurBaselineConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1BlurBaselineConfig(
-      maxBlurSigma: map['maxBlurSigma'] == null ? null : (map['maxBlurSigma'] as double).input(),
+      maxBlurSigma: map['maxBlurSigma'] == null ? null : (map['maxBlurSigma']! as double).input(),
     );
   }
 }

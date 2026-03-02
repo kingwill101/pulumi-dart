@@ -38,10 +38,10 @@ class GCEPersistentDiskVolumeSourcePatch {
 
   factory GCEPersistentDiskVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return GCEPersistentDiskVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as int).input(),
-      pdName: map['pdName'] == null ? null : (map['pdName'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as int).input(),
+      pdName: map['pdName'] == null ? null : (map['pdName']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

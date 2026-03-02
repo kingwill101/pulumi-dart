@@ -61,14 +61,14 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      applicationResourceName: map['applicationResourceName'] == null ? null : (map['applicationResourceName'] as String).input(),
-      debugParams: map['debugParams'] == null ? null : (map['debugParams'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsDescription.fromMap((map['diagnostics'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      applicationResourceName: map['applicationResourceName'] == null ? null : (map['applicationResourceName']! as String).input(),
+      debugParams: map['debugParams'] == null ? null : (map['debugParams']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diagnostics: map['diagnostics'] == null ? null : (DiagnosticsDescription.fromMap((map['diagnostics']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<ServiceResourceDescription>(map['services'], (value) => ServiceResourceDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<ServiceResourceDescription>(map['services']!, (value) => ServiceResourceDescription.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

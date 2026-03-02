@@ -21,7 +21,7 @@ class BillingProfileResponse {
 
   factory BillingProfileResponse.fromMap(Map<String, dynamic> map) {
     return BillingProfileResponse(
-      maxPrice: map['maxPrice'] == null ? null : (map['maxPrice'] as double).input(),
+      maxPrice: map['maxPrice'] == null ? null : (map['maxPrice']! as double).input(),
     );
   }
 }

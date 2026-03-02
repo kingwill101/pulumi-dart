@@ -37,10 +37,10 @@ class LoadBalancerIntranetState {
 
   factory LoadBalancerIntranetState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerIntranetState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      intranetIp: map['intranetIp'] == null ? null : (map['intranetIp'] as String).input(),
-      intranetSlbId: map['intranetSlbId'] == null ? null : (map['intranetSlbId'] as String).input(),
-      intranets: map['intranets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(map['intranets'], (value) => LoadBalancerIntranetIntranet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      intranetIp: map['intranetIp'] == null ? null : (map['intranetIp']! as String).input(),
+      intranetSlbId: map['intranetSlbId'] == null ? null : (map['intranetSlbId']! as String).input(),
+      intranets: map['intranets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerIntranetIntranet>(map['intranets']!, (value) => LoadBalancerIntranetIntranet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

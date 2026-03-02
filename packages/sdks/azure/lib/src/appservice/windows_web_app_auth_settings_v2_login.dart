@@ -72,17 +72,17 @@ class WindowsWebAppAuthSettingsV2Login {
 
   factory WindowsWebAppAuthSettingsV2Login.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppAuthSettingsV2Login(
-      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls'] as List).cast<String>()).input(),
-      cookieExpirationConvention: map['cookieExpirationConvention'] == null ? null : (map['cookieExpirationConvention'] as String).input(),
-      cookieExpirationTime: map['cookieExpirationTime'] == null ? null : (map['cookieExpirationTime'] as String).input(),
-      logoutEndpoint: map['logoutEndpoint'] == null ? null : (map['logoutEndpoint'] as String).input(),
-      nonceExpirationTime: map['nonceExpirationTime'] == null ? null : (map['nonceExpirationTime'] as String).input(),
-      preserveUrlFragmentsForLogins: map['preserveUrlFragmentsForLogins'] == null ? null : (map['preserveUrlFragmentsForLogins'] as bool).input(),
-      tokenRefreshExtensionTime: map['tokenRefreshExtensionTime'] == null ? null : (map['tokenRefreshExtensionTime'] as double).input(),
-      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled'] as bool).input(),
-      tokenStorePath: map['tokenStorePath'] == null ? null : (map['tokenStorePath'] as String).input(),
-      tokenStoreSasSettingName: map['tokenStoreSasSettingName'] == null ? null : (map['tokenStoreSasSettingName'] as String).input(),
-      validateNonce: map['validateNonce'] == null ? null : (map['validateNonce'] as bool).input(),
+      allowedExternalRedirectUrls: map['allowedExternalRedirectUrls'] == null ? null : ((map['allowedExternalRedirectUrls']! as List).cast<String>()).input(),
+      cookieExpirationConvention: map['cookieExpirationConvention'] == null ? null : (map['cookieExpirationConvention']! as String).input(),
+      cookieExpirationTime: map['cookieExpirationTime'] == null ? null : (map['cookieExpirationTime']! as String).input(),
+      logoutEndpoint: map['logoutEndpoint'] == null ? null : (map['logoutEndpoint']! as String).input(),
+      nonceExpirationTime: map['nonceExpirationTime'] == null ? null : (map['nonceExpirationTime']! as String).input(),
+      preserveUrlFragmentsForLogins: map['preserveUrlFragmentsForLogins'] == null ? null : (map['preserveUrlFragmentsForLogins']! as bool).input(),
+      tokenRefreshExtensionTime: map['tokenRefreshExtensionTime'] == null ? null : (map['tokenRefreshExtensionTime']! as double).input(),
+      tokenStoreEnabled: map['tokenStoreEnabled'] == null ? null : (map['tokenStoreEnabled']! as bool).input(),
+      tokenStorePath: map['tokenStorePath'] == null ? null : (map['tokenStorePath']! as String).input(),
+      tokenStoreSasSettingName: map['tokenStoreSasSettingName'] == null ? null : (map['tokenStoreSasSettingName']! as String).input(),
+      validateNonce: map['validateNonce'] == null ? null : (map['validateNonce']! as bool).input(),
     );
   }
 }

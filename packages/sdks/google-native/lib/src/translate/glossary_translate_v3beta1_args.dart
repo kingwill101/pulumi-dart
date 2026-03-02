@@ -51,11 +51,11 @@ class GlossaryTranslateV3beta1Args {
   factory GlossaryTranslateV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GlossaryTranslateV3beta1Args(
       inputConfig: (GlossaryInputConfigTranslateV3beta1.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCodesSet: map['languageCodesSet'] == null ? null : (LanguageCodesSetTranslateV3beta1.fromMap((map['languageCodesSet'] as Map).cast<String, dynamic>())).input(),
-      languagePair: map['languagePair'] == null ? null : (LanguageCodePairTranslateV3beta1.fromMap((map['languagePair'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      languageCodesSet: map['languageCodesSet'] == null ? null : (LanguageCodesSetTranslateV3beta1.fromMap((map['languageCodesSet']! as Map).cast<String, dynamic>())).input(),
+      languagePair: map['languagePair'] == null ? null : (LanguageCodePairTranslateV3beta1.fromMap((map['languagePair']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

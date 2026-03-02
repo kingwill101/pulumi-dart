@@ -97,20 +97,20 @@ class DockerBuildRequest {
 
   factory DockerBuildRequest.fromMap(Map<String, dynamic> map) {
     return DockerBuildRequest(
-      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
-      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<Argument>(map['arguments'], (value) => Argument.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      agentConfiguration: map['agentConfiguration'] == null ? null : (AgentProperties.fromMap((map['agentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
+      arguments: map['arguments'] == null ? null : (pulumi.Input.decodeList<Argument>(map['arguments']!, (value) => Argument.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      credentials: map['credentials'] == null ? null : (Credentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
       dockerFilePath: (map['dockerFilePath'] as String).input(),
-      imageNames: map['imageNames'] == null ? null : ((map['imageNames'] as List).cast<String>()).input(),
-      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled'] as bool).input(),
-      isPushEnabled: map['isPushEnabled'] == null ? null : (map['isPushEnabled'] as bool).input(),
-      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate'] as String).input(),
-      noCache: map['noCache'] == null ? null : (map['noCache'] as bool).input(),
+      imageNames: map['imageNames'] == null ? null : ((map['imageNames']! as List).cast<String>()).input(),
+      isArchiveEnabled: map['isArchiveEnabled'] == null ? null : (map['isArchiveEnabled']! as bool).input(),
+      isPushEnabled: map['isPushEnabled'] == null ? null : (map['isPushEnabled']! as bool).input(),
+      logTemplate: map['logTemplate'] == null ? null : (map['logTemplate']! as String).input(),
+      noCache: map['noCache'] == null ? null : (map['noCache']! as bool).input(),
       platform: (PlatformProperties.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
-      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

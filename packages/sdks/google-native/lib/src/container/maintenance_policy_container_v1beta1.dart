@@ -27,8 +27,8 @@ class MaintenancePolicyContainerV1beta1 {
 
   factory MaintenancePolicyContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MaintenancePolicyContainerV1beta1(
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
-      window: map['window'] == null ? null : (MaintenanceWindowContainerV1beta1.fromMap((map['window'] as Map).cast<String, dynamic>())).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
+      window: map['window'] == null ? null : (MaintenanceWindowContainerV1beta1.fromMap((map['window']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

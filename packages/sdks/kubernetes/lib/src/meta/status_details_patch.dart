@@ -47,12 +47,12 @@ class StatusDetailsPatch {
 
   factory StatusDetailsPatch.fromMap(Map<String, dynamic> map) {
     return StatusDetailsPatch(
-      causes: map['causes'] == null ? null : (pulumi.Input.decodeList<StatusCausePatch>(map['causes'], (value) => StatusCausePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retryAfterSeconds: map['retryAfterSeconds'] == null ? null : (map['retryAfterSeconds'] as int).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      causes: map['causes'] == null ? null : (pulumi.Input.decodeList<StatusCausePatch>(map['causes']!, (value) => StatusCausePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retryAfterSeconds: map['retryAfterSeconds'] == null ? null : (map['retryAfterSeconds']! as int).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

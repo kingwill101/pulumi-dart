@@ -32,9 +32,9 @@ class KeyVaultContractPropertiesResponse {
 
   factory KeyVaultContractPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultContractPropertiesResponse(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      lastStatus: map['lastStatus'] == null ? null : (KeyVaultLastAccessStatusContractPropertiesResponse.fromMap((map['lastStatus'] as Map).cast<String, dynamic>())).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      lastStatus: map['lastStatus'] == null ? null : (KeyVaultLastAccessStatusContractPropertiesResponse.fromMap((map['lastStatus']! as Map).cast<String, dynamic>())).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
     );
   }
 }

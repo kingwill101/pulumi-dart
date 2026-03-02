@@ -43,8 +43,8 @@ class RdsInstanceCrossBackupPolicyArgs {
     return RdsInstanceCrossBackupPolicyArgs(
       crossBackupRegion: (map['crossBackupRegion'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      logBackupEnabled: map['logBackupEnabled'] == null ? null : (map['logBackupEnabled'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
+      logBackupEnabled: map['logBackupEnabled'] == null ? null : (map['logBackupEnabled']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
     );
   }
 }

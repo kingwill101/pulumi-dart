@@ -51,8 +51,8 @@ class RegisteredLimitV3Args {
   factory RegisteredLimitV3Args.fromMap(Map<String, dynamic> map) {
     return RegisteredLimitV3Args(
       defaultLimit: (map['defaultLimit'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       resourceName: (map['resourceName'] as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );

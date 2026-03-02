@@ -51,12 +51,12 @@ class ResponseHeadersPolicySecurityHeadersConfig {
 
   factory ResponseHeadersPolicySecurityHeadersConfig.fromMap(Map<String, dynamic> map) {
     return ResponseHeadersPolicySecurityHeadersConfig(
-      contentSecurityPolicy: map['contentSecurityPolicy'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy.fromMap((map['contentSecurityPolicy'] as Map).cast<String, dynamic>())).input(),
-      contentTypeOptions: map['contentTypeOptions'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions.fromMap((map['contentTypeOptions'] as Map).cast<String, dynamic>())).input(),
-      frameOptions: map['frameOptions'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfigFrameOptions.fromMap((map['frameOptions'] as Map).cast<String, dynamic>())).input(),
-      referrerPolicy: map['referrerPolicy'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap((map['referrerPolicy'] as Map).cast<String, dynamic>())).input(),
-      strictTransportSecurity: map['strictTransportSecurity'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap((map['strictTransportSecurity'] as Map).cast<String, dynamic>())).input(),
-      xssProtection: map['xssProtection'] == null ? null : (ResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap((map['xssProtection'] as Map).cast<String, dynamic>())).input(),
+      contentSecurityPolicy: map['contentSecurityPolicy'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy.fromMap((map['contentSecurityPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      contentTypeOptions: map['contentTypeOptions'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions.fromMap((map['contentTypeOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      frameOptions: map['frameOptions'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfigFrameOptions.fromMap((map['frameOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      referrerPolicy: map['referrerPolicy'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap((map['referrerPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      strictTransportSecurity: map['strictTransportSecurity'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap((map['strictTransportSecurity']! as Map).cast<String, dynamic>())).input()).input(),
+      xssProtection: map['xssProtection'] == null ? null : ((ResponseHeadersPolicySecurityHeadersConfigXssProtection.fromMap((map['xssProtection']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

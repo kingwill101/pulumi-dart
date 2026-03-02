@@ -61,11 +61,11 @@ class AS2MdnSettings {
 
   factory AS2MdnSettings.fromMap(Map<String, dynamic> map) {
     return AS2MdnSettings(
-      dispositionNotificationTo: map['dispositionNotificationTo'] == null ? null : (map['dispositionNotificationTo'] as String).input(),
-      mdnText: map['mdnText'] == null ? null : (map['mdnText'] as String).input(),
+      dispositionNotificationTo: map['dispositionNotificationTo'] == null ? null : (map['dispositionNotificationTo']! as String).input(),
+      mdnText: map['mdnText'] == null ? null : (map['mdnText']! as String).input(),
       micHashingAlgorithm: (map['micHashingAlgorithm'] as String).input(),
       needMDN: (map['needMDN'] as bool).input(),
-      receiptDeliveryUrl: map['receiptDeliveryUrl'] == null ? null : (map['receiptDeliveryUrl'] as String).input(),
+      receiptDeliveryUrl: map['receiptDeliveryUrl'] == null ? null : (map['receiptDeliveryUrl']! as String).input(),
       sendInboundMDNToMessageBox: (map['sendInboundMDNToMessageBox'] as bool).input(),
       sendMDNAsynchronously: (map['sendMDNAsynchronously'] as bool).input(),
       signMDN: (map['signMDN'] as bool).input(),

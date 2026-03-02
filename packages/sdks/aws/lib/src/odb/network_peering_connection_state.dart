@@ -92,21 +92,21 @@ class NetworkPeeringConnectionState {
 
   factory NetworkPeeringConnectionState.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringConnectionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      odbNetworkArn: map['odbNetworkArn'] == null ? null : (map['odbNetworkArn'] as String).input(),
-      odbNetworkId: map['odbNetworkId'] == null ? null : (map['odbNetworkId'] as String).input(),
-      odbPeeringConnectionType: map['odbPeeringConnectionType'] == null ? null : (map['odbPeeringConnectionType'] as String).input(),
-      peerNetworkArn: map['peerNetworkArn'] == null ? null : (map['peerNetworkArn'] as String).input(),
-      peerNetworkId: map['peerNetworkId'] == null ? null : (map['peerNetworkId'] as String).input(),
-      percentProgress: map['percentProgress'] == null ? null : (map['percentProgress'] as double).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (NetworkPeeringConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      odbNetworkArn: map['odbNetworkArn'] == null ? null : ((map['odbNetworkArn'] as String).input()).input(),
+      odbNetworkId: map['odbNetworkId'] == null ? null : ((map['odbNetworkId'] as String).input()).input(),
+      odbPeeringConnectionType: map['odbPeeringConnectionType'] == null ? null : ((map['odbPeeringConnectionType'] as String).input()).input(),
+      peerNetworkArn: map['peerNetworkArn'] == null ? null : ((map['peerNetworkArn'] as String).input()).input(),
+      peerNetworkId: map['peerNetworkId'] == null ? null : ((map['peerNetworkId'] as String).input()).input(),
+      percentProgress: map['percentProgress'] == null ? null : ((map['percentProgress'] as double).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NetworkPeeringConnectionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

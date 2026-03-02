@@ -40,7 +40,7 @@ class ChannelAlexaArgs {
   factory ChannelAlexaArgs.fromMap(Map<String, dynamic> map) {
     return ChannelAlexaArgs(
       botName: (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skillId: (map['skillId'] as String).input(),
     );

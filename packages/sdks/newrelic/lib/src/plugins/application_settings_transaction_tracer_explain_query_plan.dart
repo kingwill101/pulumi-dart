@@ -25,8 +25,8 @@ class ApplicationSettingsTransactionTracerExplainQueryPlan {
 
   factory ApplicationSettingsTransactionTracerExplainQueryPlan.fromMap(Map<String, dynamic> map) {
     return ApplicationSettingsTransactionTracerExplainQueryPlan(
-      queryPlanThresholdType: map['queryPlanThresholdType'] == null ? null : (map['queryPlanThresholdType'] as String).input(),
-      queryPlanThresholdValue: map['queryPlanThresholdValue'] == null ? null : (map['queryPlanThresholdValue'] as double).input(),
+      queryPlanThresholdType: map['queryPlanThresholdType'] == null ? null : (map['queryPlanThresholdType']! as String).input(),
+      queryPlanThresholdValue: map['queryPlanThresholdValue'] == null ? null : (map['queryPlanThresholdValue']! as double).input(),
     );
   }
 }

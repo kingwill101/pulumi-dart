@@ -43,7 +43,7 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
 
   factory ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse(
-      databaseSchemaMap: map['databaseSchemaMap'] == null ? null : (pulumi.Input.decodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>(map['databaseSchemaMap'], (value) => ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseSchemaMap: map['databaseSchemaMap'] == null ? null : (pulumi.Input.decodeList<ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap>(map['databaseSchemaMap']!, (value) => ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
       databases: ((map['databases'] as List).cast<String>()).input(),
       targetServerBrandVersion: (map['targetServerBrandVersion'] as String).input(),
       targetServerVersion: (map['targetServerVersion'] as String).input(),

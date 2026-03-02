@@ -30,8 +30,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions(
-      allowedSignatureAlgorithms: map['allowedSignatureAlgorithms'] == null ? null : ((map['allowedSignatureAlgorithms'] as List).cast<String>()).input(),
-      tokenQueryParameter: map['tokenQueryParameter'] == null ? null : (map['tokenQueryParameter'] as String).input(),
+      allowedSignatureAlgorithms: map['allowedSignatureAlgorithms'] == null ? null : ((map['allowedSignatureAlgorithms']! as List).cast<String>()).input(),
+      tokenQueryParameter: map['tokenQueryParameter'] == null ? null : (map['tokenQueryParameter']! as String).input(),
     );
   }
 }

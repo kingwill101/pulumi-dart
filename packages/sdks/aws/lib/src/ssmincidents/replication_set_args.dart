@@ -47,9 +47,9 @@ class ReplicationSetArgs {
 
   factory ReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationSetArgs(
-      region: map['region'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['region'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regions: map['regions'] == null ? null : (pulumi.Input.decodeList<ReplicationSetRegion>(map['regions'], (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((pulumi.Input.decodeList<ReplicationSetRegion>(map['region']!, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      regions: map['regions'] == null ? null : ((pulumi.Input.decodeList<ReplicationSetRegion>(map['regions']!, (value) => ReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

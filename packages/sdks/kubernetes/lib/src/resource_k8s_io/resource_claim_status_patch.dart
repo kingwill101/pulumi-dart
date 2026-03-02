@@ -40,9 +40,9 @@ class ResourceClaimStatusPatch {
 
   factory ResourceClaimStatusPatch.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatusPatch(
-      allocation: map['allocation'] == null ? null : (AllocationResultPatch.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<AllocatedDeviceStatusPatch>(map['devices'], (value) => AllocatedDeviceStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferencePatch>(map['reservedFor'], (value) => ResourceClaimConsumerReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocation: map['allocation'] == null ? null : (AllocationResultPatch.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<AllocatedDeviceStatusPatch>(map['devices']!, (value) => AllocatedDeviceStatusPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferencePatch>(map['reservedFor']!, (value) => ResourceClaimConsumerReferencePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

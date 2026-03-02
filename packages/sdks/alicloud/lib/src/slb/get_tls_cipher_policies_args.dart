@@ -49,12 +49,12 @@ class GetTlsCipherPoliciesArgs {
 
   factory GetTlsCipherPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetTlsCipherPoliciesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      includeListener: map['includeListener'] == null ? null : (map['includeListener'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      includeListener: map['includeListener'] == null ? null : (map['includeListener']! as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tlsCipherPolicyName: map['tlsCipherPolicyName'] == null ? null : (map['tlsCipherPolicyName']! as String).input(),
     );
   }
 }

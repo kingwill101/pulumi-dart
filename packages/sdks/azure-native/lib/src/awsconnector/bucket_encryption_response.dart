@@ -22,7 +22,7 @@ class BucketEncryptionResponse {
 
   factory BucketEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return BucketEncryptionResponse(
-      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (pulumi.Input.decodeList<ServerSideEncryptionRuleResponse>(map['serverSideEncryptionConfiguration'], (value) => ServerSideEncryptionRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverSideEncryptionConfiguration: map['serverSideEncryptionConfiguration'] == null ? null : (pulumi.Input.decodeList<ServerSideEncryptionRuleResponse>(map['serverSideEncryptionConfiguration']!, (value) => ServerSideEncryptionRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

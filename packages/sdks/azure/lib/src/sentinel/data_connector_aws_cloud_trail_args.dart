@@ -36,7 +36,7 @@ class DataConnectorAwsCloudTrailArgs {
     return DataConnectorAwsCloudTrailArgs(
       awsRoleArn: (map['awsRoleArn'] as String).input(),
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

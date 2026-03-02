@@ -27,8 +27,8 @@ class UnitOperationUpgrade {
 
   factory UnitOperationUpgrade.fromMap(Map<String, dynamic> map) {
     return UnitOperationUpgrade(
-      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<UnitOperationUpgradeInputVariable>(map['inputVariables'], (value) => UnitOperationUpgradeInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      release: map['release'] == null ? null : (map['release'] as String).input(),
+      inputVariables: map['inputVariables'] == null ? null : (pulumi.Input.decodeList<UnitOperationUpgradeInputVariable>(map['inputVariables']!, (value) => UnitOperationUpgradeInputVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      release: map['release'] == null ? null : (map['release']! as String).input(),
     );
   }
 }

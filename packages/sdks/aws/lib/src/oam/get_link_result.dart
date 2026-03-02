@@ -73,7 +73,7 @@ class GetLinkResult {
       id: map['id'] as String,
       label: map['label'] as String,
       labelTemplate: map['labelTemplate'] as String,
-      linkConfigurations: pulumi.Input.decodeList<GetLinkLinkConfiguration>(map['linkConfigurations'], (value) => GetLinkLinkConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      linkConfigurations: pulumi.Input.decodeList<GetLinkLinkConfiguration>(map['linkConfigurations']!, (value) => GetLinkLinkConfiguration.fromMap((value as Map).cast<String, dynamic>())),
       linkId: map['linkId'] as String,
       linkIdentifier: map['linkIdentifier'] as String,
       region: map['region'] as String,

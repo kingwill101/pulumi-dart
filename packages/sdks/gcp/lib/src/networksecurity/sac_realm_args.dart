@@ -51,11 +51,11 @@ class SacRealmArgs {
 
   factory SacRealmArgs.fromMap(Map<String, dynamic> map) {
     return SacRealmArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       securityService: (map['securityService'] as String).input(),
-      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())).input(),
+      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

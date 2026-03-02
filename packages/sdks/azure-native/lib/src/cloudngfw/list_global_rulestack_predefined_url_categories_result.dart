@@ -27,7 +27,7 @@ class ListGlobalRulestackPredefinedUrlCategoriesResult {
 
   factory ListGlobalRulestackPredefinedUrlCategoriesResult.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackPredefinedUrlCategoriesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<PredefinedUrlCategoryResponse>(map['value'], (value) => PredefinedUrlCategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

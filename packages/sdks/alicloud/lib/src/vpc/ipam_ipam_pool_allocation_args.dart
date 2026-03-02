@@ -48,10 +48,10 @@ class IpamIpamPoolAllocationArgs {
 
   factory IpamIpamPoolAllocationArgs.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolAllocationArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
-      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : (map['ipamPoolAllocationDescription'] as String).input(),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
+      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : (map['ipamPoolAllocationDescription']! as String).input(),
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName']! as String).input(),
       ipamPoolId: (map['ipamPoolId'] as String).input(),
     );
   }

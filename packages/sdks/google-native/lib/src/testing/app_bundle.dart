@@ -22,7 +22,7 @@ class AppBundle {
 
   factory AppBundle.fromMap(Map<String, dynamic> map) {
     return AppBundle(
-      bundleLocation: map['bundleLocation'] == null ? null : (FileReference.fromMap((map['bundleLocation'] as Map).cast<String, dynamic>())).input(),
+      bundleLocation: map['bundleLocation'] == null ? null : (FileReference.fromMap((map['bundleLocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

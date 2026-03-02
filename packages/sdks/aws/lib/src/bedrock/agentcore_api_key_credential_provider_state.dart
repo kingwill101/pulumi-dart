@@ -59,13 +59,13 @@ class AgentcoreApiKeyCredentialProviderState {
 
   factory AgentcoreApiKeyCredentialProviderState.fromMap(Map<String, dynamic> map) {
     return AgentcoreApiKeyCredentialProviderState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      apiKeySecretArns: map['apiKeySecretArns'] == null ? null : (pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(map['apiKeySecretArns'], (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      apiKeyWo: map['apiKeyWo'] == null ? null : (map['apiKeyWo'] as String).input(),
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : (map['apiKeyWoVersion'] as int).input(),
-      credentialProviderArn: map['credentialProviderArn'] == null ? null : (map['credentialProviderArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : ((map['apiKey'] as String).input()).input(),
+      apiKeySecretArns: map['apiKeySecretArns'] == null ? null : ((pulumi.Input.decodeList<AgentcoreApiKeyCredentialProviderApiKeySecretArn>(map['apiKeySecretArns']!, (value) => AgentcoreApiKeyCredentialProviderApiKeySecretArn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      apiKeyWo: map['apiKeyWo'] == null ? null : ((map['apiKeyWo'] as String).input()).input(),
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : ((map['apiKeyWoVersion'] as int).input()).input(),
+      credentialProviderArn: map['credentialProviderArn'] == null ? null : ((map['credentialProviderArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class SpokeIamPolicyNetworkconnectivityV1alpha1Args {
 
   factory SpokeIamPolicyNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return SpokeIamPolicyNetworkconnectivityV1alpha1Args(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigNetworkconnectivityV1alpha1>(map['auditConfigs'], (value) => AuditConfigNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingNetworkconnectivityV1alpha1>(map['bindings'], (value) => BindingNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigNetworkconnectivityV1alpha1>(map['auditConfigs']!, (value) => AuditConfigNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingNetworkconnectivityV1alpha1>(map['bindings']!, (value) => BindingNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       spokeId: (map['spokeId'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

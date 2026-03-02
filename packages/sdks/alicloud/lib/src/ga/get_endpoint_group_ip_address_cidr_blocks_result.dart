@@ -40,11 +40,11 @@ class GetEndpointGroupIpAddressCidrBlocksResult {
 
   factory GetEndpointGroupIpAddressCidrBlocksResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupIpAddressCidrBlocksResult(
-      acceleratorId: map['acceleratorId'] == null ? null : map['acceleratorId'] as String,
+      acceleratorId: map['acceleratorId'] == null ? null : map['acceleratorId']! as String,
       endpointGroupIpAddressCidrBlocks: pulumi.Input.decodeList<GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock>(map['endpointGroupIpAddressCidrBlocks'], (value) => GetEndpointGroupIpAddressCidrBlocksEndpointGroupIpAddressCidrBlock.fromMap((value as Map).cast<String, dynamic>())),
       endpointGroupRegion: map['endpointGroupRegion'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

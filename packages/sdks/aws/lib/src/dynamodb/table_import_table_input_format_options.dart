@@ -21,7 +21,7 @@ class TableImportTableInputFormatOptions {
 
   factory TableImportTableInputFormatOptions.fromMap(Map<String, dynamic> map) {
     return TableImportTableInputFormatOptions(
-      csv: map['csv'] == null ? null : (TableImportTableInputFormatOptionsCsv.fromMap((map['csv'] as Map).cast<String, dynamic>())).input(),
+      csv: map['csv'] == null ? null : ((TableImportTableInputFormatOptionsCsv.fromMap((map['csv']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class PipelineJobReconciliationPipelineJobMergeConfig {
 
   factory PipelineJobReconciliationPipelineJobMergeConfig.fromMap(Map<String, dynamic> map) {
     return PipelineJobReconciliationPipelineJobMergeConfig(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       whistleConfigSource: (PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource.fromMap((map['whistleConfigSource'] as Map).cast<String, dynamic>())).input(),
     );
   }

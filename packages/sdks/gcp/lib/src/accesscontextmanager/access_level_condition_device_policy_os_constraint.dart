@@ -28,7 +28,7 @@ class AccessLevelConditionDevicePolicyOsConstraint {
 
   factory AccessLevelConditionDevicePolicyOsConstraint.fromMap(Map<String, dynamic> map) {
     return AccessLevelConditionDevicePolicyOsConstraint(
-      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion'] as String).input(),
+      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion']! as String).input(),
       osType: (map['osType'] as String).input(),
     );
   }

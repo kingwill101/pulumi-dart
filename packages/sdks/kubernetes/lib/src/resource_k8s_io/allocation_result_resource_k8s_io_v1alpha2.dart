@@ -37,9 +37,9 @@ class AllocationResultResourceK8sIoV1alpha2 {
 
   factory AllocationResultResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return AllocationResultResourceK8sIoV1alpha2(
-      availableOnNodes: map['availableOnNodes'] == null ? null : (NodeSelector.fromMap((map['availableOnNodes'] as Map).cast<String, dynamic>())).input(),
-      resourceHandles: map['resourceHandles'] == null ? null : (pulumi.Input.decodeList<ResourceHandle>(map['resourceHandles'], (value) => ResourceHandle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shareable: map['shareable'] == null ? null : (map['shareable'] as bool).input(),
+      availableOnNodes: map['availableOnNodes'] == null ? null : (NodeSelector.fromMap((map['availableOnNodes']! as Map).cast<String, dynamic>())).input(),
+      resourceHandles: map['resourceHandles'] == null ? null : (pulumi.Input.decodeList<ResourceHandle>(map['resourceHandles']!, (value) => ResourceHandle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareable: map['shareable'] == null ? null : (map['shareable']! as bool).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class EmailIdentityArgs {
   factory EmailIdentityArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityArgs(
       email: (map['email'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

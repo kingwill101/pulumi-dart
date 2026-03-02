@@ -22,7 +22,7 @@ class DeviceClassConfiguration {
 
   factory DeviceClassConfiguration.fromMap(Map<String, dynamic> map) {
     return DeviceClassConfiguration(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfiguration.fromMap((map['opaque'] as Map).cast<String, dynamic>())).input(),
+      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfiguration.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

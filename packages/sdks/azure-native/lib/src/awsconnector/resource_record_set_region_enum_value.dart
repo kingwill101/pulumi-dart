@@ -21,7 +21,7 @@ class ResourceRecordSetRegionEnumValue {
 
   factory ResourceRecordSetRegionEnumValue.fromMap(Map<String, dynamic> map) {
     return ResourceRecordSetRegionEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

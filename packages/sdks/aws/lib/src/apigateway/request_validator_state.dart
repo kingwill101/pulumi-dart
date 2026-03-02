@@ -41,11 +41,11 @@ class RequestValidatorState {
 
   factory RequestValidatorState.fromMap(Map<String, dynamic> map) {
     return RequestValidatorState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      validateRequestBody: map['validateRequestBody'] == null ? null : (map['validateRequestBody'] as bool).input(),
-      validateRequestParameters: map['validateRequestParameters'] == null ? null : (map['validateRequestParameters'] as bool).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      validateRequestBody: map['validateRequestBody'] == null ? null : ((map['validateRequestBody'] as bool).input()).input(),
+      validateRequestParameters: map['validateRequestParameters'] == null ? null : ((map['validateRequestParameters'] as bool).input()).input(),
     );
   }
 }

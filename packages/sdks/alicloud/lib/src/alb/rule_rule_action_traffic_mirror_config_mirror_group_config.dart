@@ -21,7 +21,7 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 
   factory RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficMirrorConfigMirrorGroupConfig(
-      serverGroupTuples: map['serverGroupTuples'] == null ? null : (pulumi.Input.decodeList<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>(map['serverGroupTuples'], (value) => RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serverGroupTuples: map['serverGroupTuples'] == null ? null : (pulumi.Input.decodeList<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple>(map['serverGroupTuples']!, (value) => RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsVariant {
 
   factory GoogleCloudDialogflowCxV3beta1VersionVariantsVariant.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1VersionVariantsVariant(
-      isControlGroup: map['isControlGroup'] == null ? null : (map['isControlGroup'] as bool).input(),
-      trafficAllocation: map['trafficAllocation'] == null ? null : (map['trafficAllocation'] as double).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      isControlGroup: map['isControlGroup'] == null ? null : (map['isControlGroup']! as bool).input(),
+      trafficAllocation: map['trafficAllocation'] == null ? null : (map['trafficAllocation']! as double).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

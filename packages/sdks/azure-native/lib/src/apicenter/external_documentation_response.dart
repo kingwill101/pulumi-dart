@@ -31,8 +31,8 @@ class ExternalDocumentationResponse {
 
   factory ExternalDocumentationResponse.fromMap(Map<String, dynamic> map) {
     return ExternalDocumentationResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

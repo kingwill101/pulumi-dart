@@ -103,22 +103,22 @@ class EntryTypeState {
 
   factory EntryTypeState.fromMap(Map<String, dynamic> map) {
     return EntryTypeState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      requiredAspects: map['requiredAspects'] == null ? null : (pulumi.Input.decodeList<EntryTypeRequiredAspect>(map['requiredAspects'], (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      system: map['system'] == null ? null : (map['system'] as String).input(),
-      typeAliases: map['typeAliases'] == null ? null : ((map['typeAliases'] as List).cast<String>()).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      requiredAspects: map['requiredAspects'] == null ? null : (pulumi.Input.decodeList<EntryTypeRequiredAspect>(map['requiredAspects']!, (value) => EntryTypeRequiredAspect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      system: map['system'] == null ? null : (map['system']! as String).input(),
+      typeAliases: map['typeAliases'] == null ? null : ((map['typeAliases']! as List).cast<String>()).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -51,11 +51,11 @@ class CustomPluginArgs {
   factory CustomPluginArgs.fromMap(Map<String, dynamic> map) {
     return CustomPluginArgs(
       contentType: (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: (CustomPluginLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      location: (CustomPluginLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

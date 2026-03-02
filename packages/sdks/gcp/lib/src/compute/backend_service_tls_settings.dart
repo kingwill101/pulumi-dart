@@ -41,9 +41,9 @@ class BackendServiceTlsSettings {
 
   factory BackendServiceTlsSettings.fromMap(Map<String, dynamic> map) {
     return BackendServiceTlsSettings(
-      authenticationConfig: map['authenticationConfig'] == null ? null : (map['authenticationConfig'] as String).input(),
-      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : (pulumi.Input.decodeList<BackendServiceTlsSettingsSubjectAltName>(map['subjectAltNames'], (value) => BackendServiceTlsSettingsSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authenticationConfig: map['authenticationConfig'] == null ? null : (map['authenticationConfig']! as String).input(),
+      sni: map['sni'] == null ? null : (map['sni']! as String).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : (pulumi.Input.decodeList<BackendServiceTlsSettingsSubjectAltName>(map['subjectAltNames']!, (value) => BackendServiceTlsSettingsSubjectAltName.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

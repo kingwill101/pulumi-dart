@@ -26,8 +26,8 @@ class Authority {
 
   factory Authority.fromMap(Map<String, dynamic> map) {
     return Authority(
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      oidcJwks: map['oidcJwks'] == null ? null : (map['oidcJwks'] as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      oidcJwks: map['oidcJwks'] == null ? null : (map['oidcJwks']! as String).input(),
     );
   }
 }

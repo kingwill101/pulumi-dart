@@ -36,10 +36,10 @@ class AccountResourceResponseSystemData {
 
   factory AccountResourceResponseSystemData.fromMap(Map<String, dynamic> map) {
     return AccountResourceResponseSystemData(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdByType: map['createdByType'] == null ? null : (map['createdByType'] as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
-      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      createdByType: map['createdByType'] == null ? null : (map['createdByType']! as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
+      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType']! as String).input(),
     );
   }
 }

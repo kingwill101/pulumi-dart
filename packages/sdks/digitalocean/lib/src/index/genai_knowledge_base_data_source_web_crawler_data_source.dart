@@ -35,9 +35,9 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
 
   factory GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.fromMap(Map<String, dynamic> map) {
     return GenaiKnowledgeBaseDataSourceWebCrawlerDataSource(
-      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
-      crawlingOption: map['crawlingOption'] == null ? null : (map['crawlingOption'] as String).input(),
-      embedMedia: map['embedMedia'] == null ? null : (map['embedMedia'] as bool).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl']! as String).input(),
+      crawlingOption: map['crawlingOption'] == null ? null : (map['crawlingOption']! as String).input(),
+      embedMedia: map['embedMedia'] == null ? null : (map['embedMedia']! as bool).input(),
     );
   }
 }

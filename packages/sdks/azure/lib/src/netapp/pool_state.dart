@@ -77,17 +77,17 @@ class PoolState {
 
   factory PoolState.fromMap(Map<String, dynamic> map) {
     return PoolState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : (map['coolAccessEnabled'] as bool).input(),
-      customThroughputMibps: map['customThroughputMibps'] == null ? null : (map['customThroughputMibps'] as int).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      qosType: map['qosType'] == null ? null : (map['qosType'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serviceLevel: map['serviceLevel'] == null ? null : (map['serviceLevel'] as String).input(),
-      sizeInTb: map['sizeInTb'] == null ? null : (map['sizeInTb'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      coolAccessEnabled: map['coolAccessEnabled'] == null ? null : (map['coolAccessEnabled']! as bool).input(),
+      customThroughputMibps: map['customThroughputMibps'] == null ? null : (map['customThroughputMibps']! as int).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      qosType: map['qosType'] == null ? null : (map['qosType']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serviceLevel: map['serviceLevel'] == null ? null : (map['serviceLevel']! as String).input(),
+      sizeInTb: map['sizeInTb'] == null ? null : (map['sizeInTb']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

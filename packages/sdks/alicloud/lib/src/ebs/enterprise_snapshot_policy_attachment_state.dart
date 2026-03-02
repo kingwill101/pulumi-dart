@@ -26,8 +26,8 @@ class EnterpriseSnapshotPolicyAttachmentState {
 
   factory EnterpriseSnapshotPolicyAttachmentState.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyAttachmentState(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
     );
   }
 }

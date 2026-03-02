@@ -92,19 +92,19 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      gitRemoteSettings: map['gitRemoteSettings'] == null ? null : (RepositoryGitRemoteSettings.fromMap((map['gitRemoteSettings'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      npmrcEnvironmentVariablesSecretVersion: map['npmrcEnvironmentVariablesSecretVersion'] == null ? null : (map['npmrcEnvironmentVariablesSecretVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      workspaceCompilationOverrides: map['workspaceCompilationOverrides'] == null ? null : (RepositoryWorkspaceCompilationOverrides.fromMap((map['workspaceCompilationOverrides'] as Map).cast<String, dynamic>())).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      gitRemoteSettings: map['gitRemoteSettings'] == null ? null : (RepositoryGitRemoteSettings.fromMap((map['gitRemoteSettings']! as Map).cast<String, dynamic>())).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      npmrcEnvironmentVariablesSecretVersion: map['npmrcEnvironmentVariablesSecretVersion'] == null ? null : (map['npmrcEnvironmentVariablesSecretVersion']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      workspaceCompilationOverrides: map['workspaceCompilationOverrides'] == null ? null : (RepositoryWorkspaceCompilationOverrides.fromMap((map['workspaceCompilationOverrides']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

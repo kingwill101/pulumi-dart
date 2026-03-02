@@ -36,10 +36,10 @@ class AccountPrivilegeState {
 
   factory AccountPrivilegeState.fromMap(Map<String, dynamic> map) {
     return AccountPrivilegeState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      dbNames: map['dbNames'] == null ? null : ((map['dbNames'] as List).cast<String>()).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPrivilege: map['accountPrivilege'] == null ? null : (map['accountPrivilege']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      dbNames: map['dbNames'] == null ? null : ((map['dbNames']! as List).cast<String>()).input(),
     );
   }
 }

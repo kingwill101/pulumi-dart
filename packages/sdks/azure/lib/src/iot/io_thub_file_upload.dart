@@ -64,15 +64,15 @@ class IoTHubFileUpload {
 
   factory IoTHubFileUpload.fromMap(Map<String, dynamic> map) {
     return IoTHubFileUpload(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
       connectionString: (map['connectionString'] as String).input(),
       containerName: (map['containerName'] as String).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as String).input(),
-      identityId: map['identityId'] == null ? null : (map['identityId'] as String).input(),
-      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration'] as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
-      notifications: map['notifications'] == null ? null : (map['notifications'] as bool).input(),
-      sasTtl: map['sasTtl'] == null ? null : (map['sasTtl'] as String).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as String).input(),
+      identityId: map['identityId'] == null ? null : (map['identityId']! as String).input(),
+      lockDuration: map['lockDuration'] == null ? null : (map['lockDuration']! as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
+      notifications: map['notifications'] == null ? null : (map['notifications']! as bool).input(),
+      sasTtl: map['sasTtl'] == null ? null : (map['sasTtl']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class HubS3StorageConfig {
 
   factory HubS3StorageConfig.fromMap(Map<String, dynamic> map) {
     return HubS3StorageConfig(
-      s3OutputPath: map['s3OutputPath'] == null ? null : (map['s3OutputPath'] as String).input(),
+      s3OutputPath: map['s3OutputPath'] == null ? null : ((map['s3OutputPath'] as String).input()).input(),
     );
   }
 }

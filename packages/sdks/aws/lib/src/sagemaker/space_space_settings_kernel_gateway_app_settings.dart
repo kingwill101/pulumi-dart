@@ -32,9 +32,9 @@ class SpaceSpaceSettingsKernelGatewayAppSettings {
 
   factory SpaceSpaceSettingsKernelGatewayAppSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsKernelGatewayAppSettings(
-      customImages: map['customImages'] == null ? null : (pulumi.Input.decodeList<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>(map['customImages'], (value) => SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: (SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : ((map['lifecycleConfigArns'] as List).cast<String>()).input(),
+      customImages: map['customImages'] == null ? null : ((pulumi.Input.decodeList<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>(map['customImages']!, (value) => SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: (SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input(),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

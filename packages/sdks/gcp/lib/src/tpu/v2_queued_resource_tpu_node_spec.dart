@@ -33,7 +33,7 @@ class V2QueuedResourceTpuNodeSpec {
   factory V2QueuedResourceTpuNodeSpec.fromMap(Map<String, dynamic> map) {
     return V2QueuedResourceTpuNodeSpec(
       node: (V2QueuedResourceTpuNodeSpecNode.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

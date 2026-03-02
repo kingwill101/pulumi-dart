@@ -33,8 +33,8 @@ class KeyVaultResourceSettings {
   factory KeyVaultResourceSettings.fromMap(Map<String, dynamic> map) {
     return KeyVaultResourceSettings(
       resourceType: (map['resourceType'] as String).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
     );
   }
 }

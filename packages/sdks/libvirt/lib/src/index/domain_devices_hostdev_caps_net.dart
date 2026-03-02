@@ -33,9 +33,9 @@ class DomainDevicesHostdevCapsNet {
 
   factory DomainDevicesHostdevCapsNet.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevCapsNet(
-      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevCapsNetIp>(map['ips'], (value) => DomainDevicesHostdevCapsNetIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevCapsNetRoute>(map['routes'], (value) => DomainDevicesHostdevCapsNetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      source: map['source'] == null ? null : (DomainDevicesHostdevCapsNetSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      ips: map['ips'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevCapsNetIp>(map['ips']!, (value) => DomainDevicesHostdevCapsNetIp.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<DomainDevicesHostdevCapsNetRoute>(map['routes']!, (value) => DomainDevicesHostdevCapsNetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      source: map['source'] == null ? null : (DomainDevicesHostdevCapsNetSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

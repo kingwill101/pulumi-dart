@@ -27,8 +27,8 @@ class ExecStepOsconfigV1beta {
 
   factory ExecStepOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return ExecStepOsconfigV1beta(
-      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (ExecStepConfigOsconfigV1beta.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>())).input(),
-      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (ExecStepConfigOsconfigV1beta.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>())).input(),
+      linuxExecStepConfig: map['linuxExecStepConfig'] == null ? null : (ExecStepConfigOsconfigV1beta.fromMap((map['linuxExecStepConfig']! as Map).cast<String, dynamic>())).input(),
+      windowsExecStepConfig: map['windowsExecStepConfig'] == null ? null : (ExecStepConfigOsconfigV1beta.fromMap((map['windowsExecStepConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

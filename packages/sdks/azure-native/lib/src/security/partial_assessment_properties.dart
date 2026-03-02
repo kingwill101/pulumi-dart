@@ -21,7 +21,7 @@ class PartialAssessmentProperties {
 
   factory PartialAssessmentProperties.fromMap(Map<String, dynamic> map) {
     return PartialAssessmentProperties(
-      assessmentKey: map['assessmentKey'] == null ? null : (map['assessmentKey'] as String).input(),
+      assessmentKey: map['assessmentKey'] == null ? null : (map['assessmentKey']! as String).input(),
     );
   }
 }

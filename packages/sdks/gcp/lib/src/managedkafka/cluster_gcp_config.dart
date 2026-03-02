@@ -28,7 +28,7 @@ class ClusterGcpConfig {
   factory ClusterGcpConfig.fromMap(Map<String, dynamic> map) {
     return ClusterGcpConfig(
       accessConfig: (ClusterGcpConfigAccessConfig.fromMap((map['accessConfig'] as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

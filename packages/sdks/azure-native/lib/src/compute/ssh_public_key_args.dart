@@ -44,11 +44,11 @@ class SshPublicKeyArgs {
 
   factory SshPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sshPublicKeyName: map['sshPublicKeyName'] == null ? null : (map['sshPublicKeyName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sshPublicKeyName: map['sshPublicKeyName'] == null ? null : (map['sshPublicKeyName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

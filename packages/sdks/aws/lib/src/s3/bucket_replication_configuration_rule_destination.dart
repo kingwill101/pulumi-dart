@@ -54,13 +54,13 @@ class BucketReplicationConfigurationRuleDestination {
 
   factory BucketReplicationConfigurationRuleDestination.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigurationRuleDestination(
-      accessControlTranslation: map['accessControlTranslation'] == null ? null : (BucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((map['accessControlTranslation'] as Map).cast<String, dynamic>())).input(),
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accessControlTranslation: map['accessControlTranslation'] == null ? null : ((BucketReplicationConfigurationRuleDestinationAccessControlTranslation.fromMap((map['accessControlTranslation']! as Map).cast<String, dynamic>())).input()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       bucket: (map['bucket'] as String).input(),
-      metrics: map['metrics'] == null ? null : (BucketReplicationConfigurationRuleDestinationMetrics.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
-      replicaKmsKeyId: map['replicaKmsKeyId'] == null ? null : (map['replicaKmsKeyId'] as String).input(),
-      replicationTime: map['replicationTime'] == null ? null : (BucketReplicationConfigurationRuleDestinationReplicationTime.fromMap((map['replicationTime'] as Map).cast<String, dynamic>())).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      metrics: map['metrics'] == null ? null : ((BucketReplicationConfigurationRuleDestinationMetrics.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input()).input(),
+      replicaKmsKeyId: map['replicaKmsKeyId'] == null ? null : ((map['replicaKmsKeyId'] as String).input()).input(),
+      replicationTime: map['replicationTime'] == null ? null : ((BucketReplicationConfigurationRuleDestinationReplicationTime.fromMap((map['replicationTime']! as Map).cast<String, dynamic>())).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
     );
   }
 }

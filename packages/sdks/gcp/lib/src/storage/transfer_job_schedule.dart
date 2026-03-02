@@ -38,10 +38,10 @@ class TransferJobSchedule {
 
   factory TransferJobSchedule.fromMap(Map<String, dynamic> map) {
     return TransferJobSchedule(
-      repeatInterval: map['repeatInterval'] == null ? null : (map['repeatInterval'] as String).input(),
-      scheduleEndDate: map['scheduleEndDate'] == null ? null : (TransferJobScheduleScheduleEndDate.fromMap((map['scheduleEndDate'] as Map).cast<String, dynamic>())).input(),
+      repeatInterval: map['repeatInterval'] == null ? null : (map['repeatInterval']! as String).input(),
+      scheduleEndDate: map['scheduleEndDate'] == null ? null : (TransferJobScheduleScheduleEndDate.fromMap((map['scheduleEndDate']! as Map).cast<String, dynamic>())).input(),
       scheduleStartDate: (TransferJobScheduleScheduleStartDate.fromMap((map['scheduleStartDate'] as Map).cast<String, dynamic>())).input(),
-      startTimeOfDay: map['startTimeOfDay'] == null ? null : (TransferJobScheduleStartTimeOfDay.fromMap((map['startTimeOfDay'] as Map).cast<String, dynamic>())).input(),
+      startTimeOfDay: map['startTimeOfDay'] == null ? null : (TransferJobScheduleStartTimeOfDay.fromMap((map['startTimeOfDay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class Source {
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      gitUri: map['gitUri'] == null ? null : (map['gitUri'] as String).input(),
-      repoSource: map['repoSource'] == null ? null : (RepoSource.fromMap((map['repoSource'] as Map).cast<String, dynamic>())).input(),
-      storageSource: map['storageSource'] == null ? null : (StorageSource.fromMap((map['storageSource'] as Map).cast<String, dynamic>())).input(),
+      gitUri: map['gitUri'] == null ? null : (map['gitUri']! as String).input(),
+      repoSource: map['repoSource'] == null ? null : (RepoSource.fromMap((map['repoSource']! as Map).cast<String, dynamic>())).input(),
+      storageSource: map['storageSource'] == null ? null : (StorageSource.fromMap((map['storageSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

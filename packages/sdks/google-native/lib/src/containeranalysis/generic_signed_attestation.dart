@@ -33,9 +33,9 @@ class GenericSignedAttestation {
 
   factory GenericSignedAttestation.fromMap(Map<String, dynamic> map) {
     return GenericSignedAttestation(
-      contentType: map['contentType'] == null ? null : (GenericSignedAttestationContentType.fromValue(map['contentType'] as String)).input(),
-      serializedPayload: map['serializedPayload'] == null ? null : (map['serializedPayload'] as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<SignatureContaineranalysisV1beta1>(map['signatures'], (value) => SignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentType: map['contentType'] == null ? null : (GenericSignedAttestationContentType.fromValue(map['contentType']! as String)).input(),
+      serializedPayload: map['serializedPayload'] == null ? null : (map['serializedPayload']! as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<SignatureContaineranalysisV1beta1>(map['signatures']!, (value) => SignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

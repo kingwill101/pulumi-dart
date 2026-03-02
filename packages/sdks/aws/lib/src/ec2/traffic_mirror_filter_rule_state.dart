@@ -80,18 +80,18 @@ class TrafficMirrorFilterRuleState {
 
   factory TrafficMirrorFilterRuleState.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorFilterRuleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : (map['destinationCidrBlock'] as String).input(),
-      destinationPortRange: map['destinationPortRange'] == null ? null : (TrafficMirrorFilterRuleDestinationPortRange.fromMap((map['destinationPortRange'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleAction: map['ruleAction'] == null ? null : (map['ruleAction'] as String).input(),
-      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as int).input(),
-      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : (map['sourceCidrBlock'] as String).input(),
-      sourcePortRange: map['sourcePortRange'] == null ? null : (TrafficMirrorFilterRuleSourcePortRange.fromMap((map['sourcePortRange'] as Map).cast<String, dynamic>())).input(),
-      trafficDirection: map['trafficDirection'] == null ? null : (map['trafficDirection'] as String).input(),
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : ((map['destinationCidrBlock'] as String).input()).input(),
+      destinationPortRange: map['destinationPortRange'] == null ? null : ((TrafficMirrorFilterRuleDestinationPortRange.fromMap((map['destinationPortRange']! as Map).cast<String, dynamic>())).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleAction: map['ruleAction'] == null ? null : ((map['ruleAction'] as String).input()).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : ((map['ruleNumber'] as int).input()).input(),
+      sourceCidrBlock: map['sourceCidrBlock'] == null ? null : ((map['sourceCidrBlock'] as String).input()).input(),
+      sourcePortRange: map['sourcePortRange'] == null ? null : ((TrafficMirrorFilterRuleSourcePortRange.fromMap((map['sourcePortRange']! as Map).cast<String, dynamic>())).input()).input(),
+      trafficDirection: map['trafficDirection'] == null ? null : ((map['trafficDirection'] as String).input()).input(),
+      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : ((map['trafficMirrorFilterId'] as String).input()).input(),
     );
   }
 }

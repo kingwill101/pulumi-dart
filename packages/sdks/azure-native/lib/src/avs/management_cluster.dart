@@ -31,9 +31,9 @@ class ManagementCluster {
 
   factory ManagementCluster.fromMap(Map<String, dynamic> map) {
     return ManagementCluster(
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
-      hosts: map['hosts'] == null ? null : ((map['hosts'] as List).cast<String>()).input(),
-      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName'] as String).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
+      hosts: map['hosts'] == null ? null : ((map['hosts']! as List).cast<String>()).input(),
+      vsanDatastoreName: map['vsanDatastoreName'] == null ? null : (map['vsanDatastoreName']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ScalingRuleAlarmDimension {
 
   factory ScalingRuleAlarmDimension.fromMap(Map<String, dynamic> map) {
     return ScalingRuleAlarmDimension(
-      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey'] as String).input(),
-      dimensionValue: map['dimensionValue'] == null ? null : (map['dimensionValue'] as String).input(),
+      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey']! as String).input(),
+      dimensionValue: map['dimensionValue'] == null ? null : (map['dimensionValue']! as String).input(),
     );
   }
 }

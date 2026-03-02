@@ -26,8 +26,8 @@ class InventoryDestinationBucketEncryption {
 
   factory InventoryDestinationBucketEncryption.fromMap(Map<String, dynamic> map) {
     return InventoryDestinationBucketEncryption(
-      sseKms: map['sseKms'] == null ? null : (InventoryDestinationBucketEncryptionSseKms.fromMap((map['sseKms'] as Map).cast<String, dynamic>())).input(),
-      sseS3: map['sseS3'] == null ? null : ((map['sseS3'] as Map).cast<String, dynamic>()).input(),
+      sseKms: map['sseKms'] == null ? null : ((InventoryDestinationBucketEncryptionSseKms.fromMap((map['sseKms']! as Map).cast<String, dynamic>())).input()).input(),
+      sseS3: map['sseS3'] == null ? null : (((map['sseS3'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

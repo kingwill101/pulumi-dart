@@ -84,16 +84,16 @@ class AppProfileArgs {
   factory AppProfileArgs.fromMap(Map<String, dynamic> map) {
     return AppProfileArgs(
       appProfileId: (map['appProfileId'] as String).input(),
-      dataBoostIsolationReadOnly: map['dataBoostIsolationReadOnly'] == null ? null : (AppProfileDataBoostIsolationReadOnly.fromMap((map['dataBoostIsolationReadOnly'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      multiClusterRoutingClusterIds: map['multiClusterRoutingClusterIds'] == null ? null : ((map['multiClusterRoutingClusterIds'] as List).cast<String>()).input(),
-      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : (map['multiClusterRoutingUseAny'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rowAffinity: map['rowAffinity'] == null ? null : (map['rowAffinity'] as bool).input(),
-      singleClusterRouting: map['singleClusterRouting'] == null ? null : (AppProfileSingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>())).input(),
-      standardIsolation: map['standardIsolation'] == null ? null : (AppProfileStandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>())).input(),
+      dataBoostIsolationReadOnly: map['dataBoostIsolationReadOnly'] == null ? null : (AppProfileDataBoostIsolationReadOnly.fromMap((map['dataBoostIsolationReadOnly']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings']! as bool).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      multiClusterRoutingClusterIds: map['multiClusterRoutingClusterIds'] == null ? null : ((map['multiClusterRoutingClusterIds']! as List).cast<String>()).input(),
+      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : (map['multiClusterRoutingUseAny']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rowAffinity: map['rowAffinity'] == null ? null : (map['rowAffinity']! as bool).input(),
+      singleClusterRouting: map['singleClusterRouting'] == null ? null : (AppProfileSingleClusterRouting.fromMap((map['singleClusterRouting']! as Map).cast<String, dynamic>())).input(),
+      standardIsolation: map['standardIsolation'] == null ? null : (AppProfileStandardIsolation.fromMap((map['standardIsolation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

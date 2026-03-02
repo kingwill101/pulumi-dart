@@ -51,13 +51,13 @@ class ScheduledPreloadExecutionState {
 
   factory ScheduledPreloadExecutionState.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadExecutionState(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      scheduledPreloadExecutionId: map['scheduledPreloadExecutionId'] == null ? null : (map['scheduledPreloadExecutionId'] as String).input(),
-      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId'] as String).input(),
-      sliceLen: map['sliceLen'] == null ? null : (map['sliceLen'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      scheduledPreloadExecutionId: map['scheduledPreloadExecutionId'] == null ? null : (map['scheduledPreloadExecutionId']! as String).input(),
+      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId']! as String).input(),
+      sliceLen: map['sliceLen'] == null ? null : (map['sliceLen']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

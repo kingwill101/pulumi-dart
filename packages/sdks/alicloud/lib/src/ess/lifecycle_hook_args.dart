@@ -54,12 +54,12 @@ class LifecycleHookArgs {
 
   factory LifecycleHookArgs.fromMap(Map<String, dynamic> map) {
     return LifecycleHookArgs(
-      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
+      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult']! as String).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout']! as int).input(),
       lifecycleTransition: (map['lifecycleTransition'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn'] as String).input(),
-      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn']! as String).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata']! as String).input(),
       scalingGroupId: (map['scalingGroupId'] as String).input(),
     );
   }

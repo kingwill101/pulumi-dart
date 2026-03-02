@@ -52,9 +52,9 @@ class AssessmentDelegationArgs {
   factory AssessmentDelegationArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentDelegationArgs(
       assessmentId: (map['assessmentId'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
       controlSetId: (map['controlSetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       roleType: (map['roleType'] as String).input(),
     );

@@ -26,8 +26,8 @@ class ScaleUnitConfigurationResponse {
 
   factory ScaleUnitConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ScaleUnitConfigurationResponse(
-      disablePublicEgress: map['disablePublicEgress'] == null ? null : (map['disablePublicEgress'] as bool).input(),
-      registries: map['registries'] == null ? null : ((map['registries'] as List).cast<String>()).input(),
+      disablePublicEgress: map['disablePublicEgress'] == null ? null : (map['disablePublicEgress']! as bool).input(),
+      registries: map['registries'] == null ? null : ((map['registries']! as List).cast<String>()).input(),
     );
   }
 }

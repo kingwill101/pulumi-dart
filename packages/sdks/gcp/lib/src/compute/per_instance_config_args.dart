@@ -81,14 +81,14 @@ class PerInstanceConfigArgs {
   factory PerInstanceConfigArgs.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigArgs(
       instanceGroupManager: (map['instanceGroupManager'] as String).input(),
-      minimalAction: map['minimalAction'] == null ? null : (map['minimalAction'] as String).input(),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preservedState: map['preservedState'] == null ? null : (PerInstanceConfigPreservedState.fromMap((map['preservedState'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : (map['removeInstanceOnDestroy'] as bool).input(),
-      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : (map['removeInstanceStateOnDestroy'] as bool).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      minimalAction: map['minimalAction'] == null ? null : (map['minimalAction']! as String).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preservedState: map['preservedState'] == null ? null : (PerInstanceConfigPreservedState.fromMap((map['preservedState']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      removeInstanceOnDestroy: map['removeInstanceOnDestroy'] == null ? null : (map['removeInstanceOnDestroy']! as bool).input(),
+      removeInstanceStateOnDestroy: map['removeInstanceStateOnDestroy'] == null ? null : (map['removeInstanceStateOnDestroy']! as bool).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

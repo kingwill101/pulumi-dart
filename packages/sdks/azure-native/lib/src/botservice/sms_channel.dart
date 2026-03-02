@@ -39,9 +39,9 @@ class SmsChannel {
   factory SmsChannel.fromMap(Map<String, dynamic> map) {
     return SmsChannel(
       channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (SmsChannelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (SmsChannelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

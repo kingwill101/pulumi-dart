@@ -38,8 +38,8 @@ class ContainerResourceMetricSourceAutoscalingV2beta1 {
     return ContainerResourceMetricSourceAutoscalingV2beta1(
       container: (map['container'] as String).input(),
       name: (map['name'] as String).input(),
-      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization'] as int).input(),
-      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue'] as String).input(),
+      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization']! as int).input(),
+      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue']! as String).input(),
     );
   }
 }

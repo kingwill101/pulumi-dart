@@ -83,16 +83,16 @@ class ConnectionProfileArgs {
 
   factory ConnectionProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileArgs(
-      alloydb: map['alloydb'] == null ? null : (ConnectionProfileAlloydb.fromMap((map['alloydb'] as Map).cast<String, dynamic>())).input(),
-      cloudsql: map['cloudsql'] == null ? null : (ConnectionProfileCloudsql.fromMap((map['cloudsql'] as Map).cast<String, dynamic>())).input(),
+      alloydb: map['alloydb'] == null ? null : (ConnectionProfileAlloydb.fromMap((map['alloydb']! as Map).cast<String, dynamic>())).input(),
+      cloudsql: map['cloudsql'] == null ? null : (ConnectionProfileCloudsql.fromMap((map['cloudsql']! as Map).cast<String, dynamic>())).input(),
       connectionProfileId: (map['connectionProfileId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mysql: map['mysql'] == null ? null : (ConnectionProfileMysql.fromMap((map['mysql'] as Map).cast<String, dynamic>())).input(),
-      oracle: map['oracle'] == null ? null : (ConnectionProfileOracle.fromMap((map['oracle'] as Map).cast<String, dynamic>())).input(),
-      postgresql: map['postgresql'] == null ? null : (ConnectionProfilePostgresql.fromMap((map['postgresql'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mysql: map['mysql'] == null ? null : (ConnectionProfileMysql.fromMap((map['mysql']! as Map).cast<String, dynamic>())).input(),
+      oracle: map['oracle'] == null ? null : (ConnectionProfileOracle.fromMap((map['oracle']! as Map).cast<String, dynamic>())).input(),
+      postgresql: map['postgresql'] == null ? null : (ConnectionProfilePostgresql.fromMap((map['postgresql']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class KeyVaultPrivateEndpointResponse {
 
   factory KeyVaultPrivateEndpointResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultPrivateEndpointResponse(
-      privateEndpointId: map['privateEndpointId'] == null ? null : (map['privateEndpointId'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as String).input(),
+      privateEndpointId: map['privateEndpointId'] == null ? null : (map['privateEndpointId']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as String).input(),
     );
   }
 }

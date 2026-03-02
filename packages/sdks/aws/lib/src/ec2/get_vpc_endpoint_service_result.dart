@@ -116,7 +116,7 @@ class GetVpcEndpointServiceResult {
       arn: map['arn'] as String,
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       baseEndpointDnsNames: (map['baseEndpointDnsNames'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(map['filters'], (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcEndpointServiceFilter>(map['filters']!, (value) => GetVpcEndpointServiceFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       managesVpcEndpoints: map['managesVpcEndpoints'] as bool,
       owner: map['owner'] as String,

@@ -69,9 +69,9 @@ class ProductSubscriptionState {
 
   factory ProductSubscriptionState.fromMap(Map<String, dynamic> map) {
     return ProductSubscriptionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      productArn: map['productArn'] == null ? null : (map['productArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      productArn: map['productArn'] == null ? null : ((map['productArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

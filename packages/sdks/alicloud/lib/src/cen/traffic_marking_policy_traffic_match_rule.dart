@@ -83,15 +83,15 @@ class TrafficMarkingPolicyTrafficMatchRule {
 
   factory TrafficMarkingPolicyTrafficMatchRule.fromMap(Map<String, dynamic> map) {
     return TrafficMarkingPolicyTrafficMatchRule(
-      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily'] as String).input(),
-      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr'] as String).input(),
-      dstPortRanges: map['dstPortRanges'] == null ? null : ((map['dstPortRanges'] as List).cast<int>()).input(),
-      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr'] as String).input(),
-      srcPortRanges: map['srcPortRanges'] == null ? null : ((map['srcPortRanges'] as List).cast<int>()).input(),
-      trafficMatchRuleDescription: map['trafficMatchRuleDescription'] == null ? null : (map['trafficMatchRuleDescription'] as String).input(),
-      trafficMatchRuleName: map['trafficMatchRuleName'] == null ? null : (map['trafficMatchRuleName'] as String).input(),
+      addressFamily: map['addressFamily'] == null ? null : (map['addressFamily']! as String).input(),
+      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr']! as String).input(),
+      dstPortRanges: map['dstPortRanges'] == null ? null : ((map['dstPortRanges']! as List).cast<int>()).input(),
+      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr']! as String).input(),
+      srcPortRanges: map['srcPortRanges'] == null ? null : ((map['srcPortRanges']! as List).cast<int>()).input(),
+      trafficMatchRuleDescription: map['trafficMatchRuleDescription'] == null ? null : (map['trafficMatchRuleDescription']! as String).input(),
+      trafficMatchRuleName: map['trafficMatchRuleName'] == null ? null : (map['trafficMatchRuleName']! as String).input(),
     );
   }
 }

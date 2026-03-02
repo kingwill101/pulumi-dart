@@ -31,7 +31,7 @@ class GetDatasetIamPolicyArgs {
   factory GetDatasetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetDatasetIamPolicyArgs(
       datasetId: (map['datasetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

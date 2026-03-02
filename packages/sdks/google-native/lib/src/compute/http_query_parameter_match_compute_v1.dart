@@ -36,10 +36,10 @@ class HttpQueryParameterMatchComputeV1 {
 
   factory HttpQueryParameterMatchComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpQueryParameterMatchComputeV1(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch']! as bool).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

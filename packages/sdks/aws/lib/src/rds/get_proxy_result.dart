@@ -101,7 +101,7 @@ class GetProxyResult {
   factory GetProxyResult.fromMap(Map<String, dynamic> map) {
     return GetProxyResult(
       arn: map['arn'] as String,
-      auths: pulumi.Input.decodeList<GetProxyAuth>(map['auths'], (value) => GetProxyAuth.fromMap((value as Map).cast<String, dynamic>())),
+      auths: pulumi.Input.decodeList<GetProxyAuth>(map['auths']!, (value) => GetProxyAuth.fromMap((value as Map).cast<String, dynamic>())),
       debugLogging: map['debugLogging'] as bool,
       defaultAuthScheme: map['defaultAuthScheme'] as String,
       endpoint: map['endpoint'] as String,

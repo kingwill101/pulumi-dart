@@ -69,14 +69,14 @@ class GetStartStopManagedInstanceScheduleResult {
   factory GetStartStopManagedInstanceScheduleResult.fromMap(Map<String, dynamic> map) {
     return GetStartStopManagedInstanceScheduleResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       nextExecutionTime: map['nextExecutionTime'] as String,
       nextRunAction: map['nextRunAction'] as String,
       scheduleList: pulumi.Input.decodeList<ScheduleItemResponse>(map['scheduleList'], (value) => ScheduleItemResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      timeZoneId: map['timeZoneId'] == null ? null : map['timeZoneId'] as String,
+      timeZoneId: map['timeZoneId'] == null ? null : map['timeZoneId']! as String,
       type: map['type'] as String,
     );
   }

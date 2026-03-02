@@ -28,8 +28,8 @@ class V3FunctionGpuConfig {
 
   factory V3FunctionGpuConfig.fromMap(Map<String, dynamic> map) {
     return V3FunctionGpuConfig(
-      gpuMemorySize: map['gpuMemorySize'] == null ? null : (map['gpuMemorySize'] as int).input(),
-      gpuType: map['gpuType'] == null ? null : (map['gpuType'] as String).input(),
+      gpuMemorySize: map['gpuMemorySize'] == null ? null : (map['gpuMemorySize']! as int).input(),
+      gpuType: map['gpuType'] == null ? null : (map['gpuType']! as String).input(),
     );
   }
 }

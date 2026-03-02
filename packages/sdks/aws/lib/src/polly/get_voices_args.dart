@@ -45,11 +45,11 @@ class GetVoicesArgs {
 
   factory GetVoicesArgs.fromMap(Map<String, dynamic> map) {
     return GetVoicesArgs(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : (map['includeAdditionalLanguageCodes'] as bool).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      voices: map['voices'] == null ? null : (pulumi.Input.decodeList<GetVoicesVoice>(map['voices'], (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engine: map['engine'] == null ? null : ((map['engine'] as String).input()).input(),
+      includeAdditionalLanguageCodes: map['includeAdditionalLanguageCodes'] == null ? null : ((map['includeAdditionalLanguageCodes'] as bool).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      voices: map['voices'] == null ? null : ((pulumi.Input.decodeList<GetVoicesVoice>(map['voices']!, (value) => GetVoicesVoice.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

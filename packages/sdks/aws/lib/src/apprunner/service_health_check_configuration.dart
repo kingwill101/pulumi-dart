@@ -45,12 +45,12 @@ class ServiceHealthCheckConfiguration {
 
   factory ServiceHealthCheckConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceHealthCheckConfiguration(
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : ((map['healthyThreshold'] as int).input()).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      timeout: map['timeout'] == null ? null : ((map['timeout'] as int).input()).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : ((map['unhealthyThreshold'] as int).input()).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class MembershipDefaultResultConfiguration {
 
   factory MembershipDefaultResultConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipDefaultResultConfiguration(
-      outputConfiguration: (MembershipDefaultResultConfigurationOutputConfiguration.fromMap((map['outputConfiguration'] as Map).cast<String, dynamic>())).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      outputConfiguration: (MembershipDefaultResultConfigurationOutputConfiguration.fromMap((map['outputConfiguration']! as Map).cast<String, dynamic>())).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

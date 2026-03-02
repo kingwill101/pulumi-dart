@@ -43,7 +43,7 @@ class ExperimentPlanTemplateArgs {
   factory ExperimentPlanTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ExperimentPlanTemplateArgs(
       privacyLevel: (map['privacyLevel'] as String).input(),
-      templateDescription: map['templateDescription'] == null ? null : (map['templateDescription'] as String).input(),
+      templateDescription: map['templateDescription'] == null ? null : (map['templateDescription']! as String).input(),
       templateName: (map['templateName'] as String).input(),
       templatePipelines: (pulumi.Input.decodeList<ExperimentPlanTemplateTemplatePipeline>(map['templatePipelines'], (value) => ExperimentPlanTemplateTemplatePipeline.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

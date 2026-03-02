@@ -36,10 +36,10 @@ class IncidentInfo {
 
   factory IncidentInfo.fromMap(Map<String, dynamic> map) {
     return IncidentInfo(
-      incidentId: map['incidentId'] == null ? null : (map['incidentId'] as String).input(),
-      relationName: map['relationName'] == null ? null : (map['relationName'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      incidentId: map['incidentId'] == null ? null : (map['incidentId']! as String).input(),
+      relationName: map['relationName'] == null ? null : (map['relationName']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

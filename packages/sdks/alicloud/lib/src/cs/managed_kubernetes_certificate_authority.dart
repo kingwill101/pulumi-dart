@@ -30,9 +30,9 @@ class ManagedKubernetesCertificateAuthority {
 
   factory ManagedKubernetesCertificateAuthority.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesCertificateAuthority(
-      clientCert: map['clientCert'] == null ? null : (map['clientCert'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clusterCert: map['clusterCert'] == null ? null : (map['clusterCert'] as String).input(),
+      clientCert: map['clientCert'] == null ? null : (map['clientCert']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clusterCert: map['clusterCert'] == null ? null : (map['clusterCert']! as String).input(),
     );
   }
 }

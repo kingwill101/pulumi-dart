@@ -20,7 +20,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewSyncConfig {
 
   factory GoogleCloudAiplatformV1beta1FeatureViewSyncConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewSyncConfig(
-      cron: map['cron'] == null ? null : (map['cron'] as String).input(),
+      cron: map['cron'] == null ? null : (map['cron']! as String).input(),
     );
   }
 }

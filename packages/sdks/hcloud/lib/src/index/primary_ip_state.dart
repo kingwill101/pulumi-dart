@@ -74,17 +74,17 @@ class PrimaryIpState {
 
   factory PrimaryIpState.fromMap(Map<String, dynamic> map) {
     return PrimaryIpState(
-      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId'] as int).input(),
-      assigneeType: map['assigneeType'] == null ? null : (map['assigneeType'] as String).input(),
-      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete'] as bool).input(),
-      datacenter: map['datacenter'] == null ? null : (map['datacenter'] as String).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipNetwork: map['ipNetwork'] == null ? null : (map['ipNetwork'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      assigneeId: map['assigneeId'] == null ? null : (map['assigneeId']! as int).input(),
+      assigneeType: map['assigneeType'] == null ? null : (map['assigneeType']! as String).input(),
+      autoDelete: map['autoDelete'] == null ? null : (map['autoDelete']! as bool).input(),
+      datacenter: map['datacenter'] == null ? null : (map['datacenter']! as String).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipNetwork: map['ipNetwork'] == null ? null : (map['ipNetwork']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

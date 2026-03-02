@@ -62,16 +62,16 @@ class GetRouterInterfacesResult {
 
   factory GetRouterInterfacesResult.fromMap(Map<String, dynamic> map) {
     return GetRouterInterfacesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouterInterfacesFilter>(map['filters'], (value) => GetRouterInterfacesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouterInterfacesFilter>(map['filters']!, (value) => GetRouterInterfacesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData'] as String,
+      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as String,
       interfaces: pulumi.Input.decodeList<GetRouterInterfacesInterface>(map['interfaces'], (value) => GetRouterInterfacesInterface.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

@@ -40,10 +40,10 @@ class ContainerNetworksAdvanced {
 
   factory ContainerNetworksAdvanced.fromMap(Map<String, dynamic> map) {
     return ContainerNetworksAdvanced(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

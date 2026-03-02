@@ -45,10 +45,10 @@ class EcsNetworkInterfaceAttachmentArgs {
   factory EcsNetworkInterfaceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return EcsNetworkInterfaceAttachmentArgs(
       instanceId: (map['instanceId'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex']! as int).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      trunkNetworkInstanceId: map['trunkNetworkInstanceId'] == null ? null : (map['trunkNetworkInstanceId'] as String).input(),
-      waitForNetworkConfigurationReady: map['waitForNetworkConfigurationReady'] == null ? null : (map['waitForNetworkConfigurationReady'] as bool).input(),
+      trunkNetworkInstanceId: map['trunkNetworkInstanceId'] == null ? null : (map['trunkNetworkInstanceId']! as String).input(),
+      waitForNetworkConfigurationReady: map['waitForNetworkConfigurationReady'] == null ? null : (map['waitForNetworkConfigurationReady']! as bool).input(),
     );
   }
 }

@@ -45,10 +45,10 @@ class IdentityNotificationTopicArgs {
   factory IdentityNotificationTopicArgs.fromMap(Map<String, dynamic> map) {
     return IdentityNotificationTopicArgs(
       identity: (map['identity'] as String).input(),
-      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : (map['includeOriginalHeaders'] as bool).input(),
+      includeOriginalHeaders: map['includeOriginalHeaders'] == null ? null : ((map['includeOriginalHeaders'] as bool).input()).input(),
       notificationType: (map['notificationType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      topicArn: map['topicArn'] == null ? null : ((map['topicArn'] as String).input()).input(),
     );
   }
 }

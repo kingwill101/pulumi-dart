@@ -21,7 +21,7 @@ class ScopeNamespace {
 
   factory ScopeNamespace.fromMap(Map<String, dynamic> map) {
     return ScopeNamespace(
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
     );
   }
 }

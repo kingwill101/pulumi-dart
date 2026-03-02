@@ -37,7 +37,7 @@ class ServiceResolver {
 
   factory ServiceResolver.fromMap(Map<String, dynamic> map) {
     return ServiceResolver(
-      endpointFilter: map['endpointFilter'] == null ? null : (map['endpointFilter'] as String).input(),
+      endpointFilter: map['endpointFilter'] == null ? null : (map['endpointFilter']! as String).input(),
       hostname: (map['hostname'] as String).input(),
       serverCertificates: (pulumi.Input.decodeList<Certificate>(map['serverCertificates'], (value) => Certificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceDirectoryService: (map['serviceDirectoryService'] as String).input(),

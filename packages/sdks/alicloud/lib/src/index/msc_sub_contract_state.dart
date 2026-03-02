@@ -38,10 +38,10 @@ class MscSubContractState {
 
   factory MscSubContractState.fromMap(Map<String, dynamic> map) {
     return MscSubContractState(
-      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      position: map['position'] == null ? null : (map['position'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      position: map['position'] == null ? null : (map['position']! as String).input(),
     );
   }
 }

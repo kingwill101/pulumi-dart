@@ -103,23 +103,23 @@ class TestCaseArgs {
 
   factory TestCaseArgs.fromMap(Map<String, dynamic> map) {
     return TestCaseArgs(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      creatorEmail: map['creatorEmail'] == null ? null : (map['creatorEmail'] as String).input(),
-      databasePersistencePolicy: map['databasePersistencePolicy'] == null ? null : (TestCaseDatabasePersistencePolicy.fromValue(map['databasePersistencePolicy'] as String)).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      creatorEmail: map['creatorEmail'] == null ? null : (map['creatorEmail']! as String).input(),
+      databasePersistencePolicy: map['databasePersistencePolicy'] == null ? null : (TestCaseDatabasePersistencePolicy.fromValue(map['databasePersistencePolicy']! as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       integrationId: (map['integrationId'] as String).input(),
-      lastModifierEmail: map['lastModifierEmail'] == null ? null : (map['lastModifierEmail'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      lockHolderEmail: map['lockHolderEmail'] == null ? null : (map['lockHolderEmail'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      lastModifierEmail: map['lastModifierEmail'] == null ? null : (map['lastModifierEmail']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      lockHolderEmail: map['lockHolderEmail'] == null ? null : (map['lockHolderEmail']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       testCaseId: (map['testCaseId'] as String).input(),
-      testInputParameters: map['testInputParameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationParameter>(map['testInputParameters'], (value) => GoogleCloudIntegrationsV1alphaIntegrationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testTaskConfigs: map['testTaskConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaTestTaskConfig>(map['testTaskConfigs'], (value) => GoogleCloudIntegrationsV1alphaTestTaskConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testInputParameters: map['testInputParameters'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationParameter>(map['testInputParameters']!, (value) => GoogleCloudIntegrationsV1alphaIntegrationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testTaskConfigs: map['testTaskConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaTestTaskConfig>(map['testTaskConfigs']!, (value) => GoogleCloudIntegrationsV1alphaTestTaskConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       triggerId: (map['triggerId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
       versionId: (map['versionId'] as String).input(),
-      workflowId: map['workflowId'] == null ? null : (map['workflowId'] as String).input(),
+      workflowId: map['workflowId'] == null ? null : (map['workflowId']! as String).input(),
     );
   }
 }

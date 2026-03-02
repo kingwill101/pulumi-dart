@@ -81,18 +81,18 @@ class JobCloudschedulerV1beta1Args {
 
   factory JobCloudschedulerV1beta1Args.fromMap(Map<String, dynamic> map) {
     return JobCloudschedulerV1beta1Args(
-      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (AppEngineHttpTargetCloudschedulerV1beta1.fromMap((map['appEngineHttpTarget'] as Map).cast<String, dynamic>())).input(),
-      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpTarget: map['httpTarget'] == null ? null : (HttpTargetCloudschedulerV1beta1.fromMap((map['httpTarget'] as Map).cast<String, dynamic>())).input(),
-      legacyAppEngineCron: map['legacyAppEngineCron'] == null ? null : (map['legacyAppEngineCron'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pubsubTarget: map['pubsubTarget'] == null ? null : (PubsubTargetCloudschedulerV1beta1.fromMap((map['pubsubTarget'] as Map).cast<String, dynamic>())).input(),
-      retryConfig: map['retryConfig'] == null ? null : (RetryConfigCloudschedulerV1beta1.fromMap((map['retryConfig'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      appEngineHttpTarget: map['appEngineHttpTarget'] == null ? null : (AppEngineHttpTargetCloudschedulerV1beta1.fromMap((map['appEngineHttpTarget']! as Map).cast<String, dynamic>())).input(),
+      attemptDeadline: map['attemptDeadline'] == null ? null : (map['attemptDeadline']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpTarget: map['httpTarget'] == null ? null : (HttpTargetCloudschedulerV1beta1.fromMap((map['httpTarget']! as Map).cast<String, dynamic>())).input(),
+      legacyAppEngineCron: map['legacyAppEngineCron'] == null ? null : (map['legacyAppEngineCron']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pubsubTarget: map['pubsubTarget'] == null ? null : (PubsubTargetCloudschedulerV1beta1.fromMap((map['pubsubTarget']! as Map).cast<String, dynamic>())).input(),
+      retryConfig: map['retryConfig'] == null ? null : (RetryConfigCloudschedulerV1beta1.fromMap((map['retryConfig']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

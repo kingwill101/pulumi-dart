@@ -43,11 +43,11 @@ class CapabilityConfigurationArgoCd {
 
   factory CapabilityConfigurationArgoCd.fromMap(Map<String, dynamic> map) {
     return CapabilityConfigurationArgoCd(
-      awsIdc: (CapabilityConfigurationArgoCdAwsIdc.fromMap((map['awsIdc'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      networkAccess: map['networkAccess'] == null ? null : (CapabilityConfigurationArgoCdNetworkAccess.fromMap((map['networkAccess'] as Map).cast<String, dynamic>())).input(),
-      rbacRoleMappings: map['rbacRoleMappings'] == null ? null : (pulumi.Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMapping>(map['rbacRoleMappings'], (value) => CapabilityConfigurationArgoCdRbacRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
+      awsIdc: (CapabilityConfigurationArgoCdAwsIdc.fromMap((map['awsIdc']! as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      networkAccess: map['networkAccess'] == null ? null : ((CapabilityConfigurationArgoCdNetworkAccess.fromMap((map['networkAccess']! as Map).cast<String, dynamic>())).input()).input(),
+      rbacRoleMappings: map['rbacRoleMappings'] == null ? null : ((pulumi.Input.decodeList<CapabilityConfigurationArgoCdRbacRoleMapping>(map['rbacRoleMappings']!, (value) => CapabilityConfigurationArgoCdRbacRoleMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      serverUrl: map['serverUrl'] == null ? null : ((map['serverUrl'] as String).input()).input(),
     );
   }
 }

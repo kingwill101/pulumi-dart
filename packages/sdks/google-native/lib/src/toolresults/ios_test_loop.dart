@@ -21,7 +21,7 @@ class IosTestLoop {
 
   factory IosTestLoop.fromMap(Map<String, dynamic> map) {
     return IosTestLoop(
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
     );
   }
 }

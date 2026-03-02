@@ -44,11 +44,11 @@ class InterfaceVpcIpv6 {
 
   factory InterfaceVpcIpv6.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv6(
-      assignedRanges: map['assignedRanges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6AssignedRange>(map['assignedRanges'], (value) => InterfaceVpcIpv6AssignedRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      assignedSlaacs: map['assignedSlaacs'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6AssignedSlaac>(map['assignedSlaacs'], (value) => InterfaceVpcIpv6AssignedSlaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6Range>(map['ranges'], (value) => InterfaceVpcIpv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slaacs: map['slaacs'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6Slaac>(map['slaacs'], (value) => InterfaceVpcIpv6Slaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedRanges: map['assignedRanges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6AssignedRange>(map['assignedRanges']!, (value) => InterfaceVpcIpv6AssignedRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedSlaacs: map['assignedSlaacs'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6AssignedSlaac>(map['assignedSlaacs']!, (value) => InterfaceVpcIpv6AssignedSlaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6Range>(map['ranges']!, (value) => InterfaceVpcIpv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slaacs: map['slaacs'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv6Slaac>(map['slaacs']!, (value) => InterfaceVpcIpv6Slaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

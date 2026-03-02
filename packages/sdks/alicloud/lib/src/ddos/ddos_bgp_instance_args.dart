@@ -77,16 +77,16 @@ class DdosBgpInstanceArgs {
   factory DdosBgpInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DdosBgpInstanceArgs(
       bandwidth: (map['bandwidth'] as int).input(),
-      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth'] as int).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
+      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth']! as int).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
       ipCount: (map['ipCount'] as int).input(),
       ipType: (map['ipType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       normalBandwidth: (map['normalBandwidth'] as int).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

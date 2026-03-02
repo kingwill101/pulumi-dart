@@ -65,14 +65,14 @@ class BuildPropertiesResponse {
 
   factory BuildPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return BuildPropertiesResponse(
-      agentPool: map['agentPool'] == null ? null : (map['agentPool'] as String).input(),
-      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReferenceResponse>(map['apms'], (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      builder: map['builder'] == null ? null : (map['builder'] as String).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<CertificateReferenceResponse>(map['certificates'], (value) => CertificateReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
+      agentPool: map['agentPool'] == null ? null : (map['agentPool']! as String).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReferenceResponse>(map['apms']!, (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builder: map['builder'] == null ? null : (map['builder']! as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<CertificateReferenceResponse>(map['certificates']!, (value) => CertificateReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (BuildResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (BuildResourceRequestsResponse.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
       triggeredBuildResult: (TriggeredBuildResultResponse.fromMap((map['triggeredBuildResult'] as Map).cast<String, dynamic>())).input(),
     );
   }

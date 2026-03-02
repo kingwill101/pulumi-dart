@@ -35,10 +35,10 @@ class BgpAdvertisement {
 
   factory BgpAdvertisement.fromMap(Map<String, dynamic> map) {
     return BgpAdvertisement(
-      advertiseToFabric: map['advertiseToFabric'] == null ? null : (map['advertiseToFabric'] as String).input(),
-      communities: map['communities'] == null ? null : ((map['communities'] as List).cast<String>()).input(),
+      advertiseToFabric: map['advertiseToFabric'] == null ? null : (map['advertiseToFabric']! as String).input(),
+      communities: map['communities'] == null ? null : ((map['communities']! as List).cast<String>()).input(),
       ipAddressPools: ((map['ipAddressPools'] as List).cast<String>()).input(),
-      peers: map['peers'] == null ? null : ((map['peers'] as List).cast<String>()).input(),
+      peers: map['peers'] == null ? null : ((map['peers']! as List).cast<String>()).input(),
     );
   }
 }

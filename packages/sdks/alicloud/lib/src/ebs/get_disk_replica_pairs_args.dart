@@ -39,10 +39,10 @@ class GetDiskReplicaPairsArgs {
 
   factory GetDiskReplicaPairsArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskReplicaPairsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      replicaGroupId: map['replicaGroupId'] == null ? null : (map['replicaGroupId'] as String).input(),
-      site: map['site'] == null ? null : (map['site'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      replicaGroupId: map['replicaGroupId'] == null ? null : (map['replicaGroupId']! as String).input(),
+      site: map['site'] == null ? null : (map['site']! as String).input(),
     );
   }
 }

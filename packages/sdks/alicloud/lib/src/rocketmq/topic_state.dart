@@ -55,13 +55,13 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      messageType: map['messageType'] == null ? null : (map['messageType'] as int).input(),
-      perm: map['perm'] == null ? null : (map['perm'] as int).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      messageType: map['messageType'] == null ? null : (map['messageType']! as int).input(),
+      perm: map['perm'] == null ? null : (map['perm']! as int).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

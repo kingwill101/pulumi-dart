@@ -20,7 +20,7 @@ class InstanceImageOptions {
 
   factory InstanceImageOptions.fromMap(Map<String, dynamic> map) {
     return InstanceImageOptions(
-      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot'] as bool).input(),
+      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot']! as bool).input(),
     );
   }
 }

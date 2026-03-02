@@ -31,9 +31,9 @@ class MysqlSslConfigDatastreamV1alpha1 {
 
   factory MysqlSslConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlSslConfigDatastreamV1alpha1(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
     );
   }
 }

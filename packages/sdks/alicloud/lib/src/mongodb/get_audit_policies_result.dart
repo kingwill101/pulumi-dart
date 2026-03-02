@@ -36,7 +36,7 @@ class GetAuditPoliciesResult {
     return GetAuditPoliciesResult(
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       policies: pulumi.Input.decodeList<GetAuditPoliciesPolicy>(map['policies'], (value) => GetAuditPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

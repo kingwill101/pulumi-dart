@@ -45,9 +45,9 @@ class GatewayCustomDomainArgs {
 
   factory GatewayCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return GatewayCustomDomainArgs(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
       gatewayName: (map['gatewayName'] as String).input(),
-      properties: map['properties'] == null ? null : (GatewayCustomDomainProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (GatewayCustomDomainProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

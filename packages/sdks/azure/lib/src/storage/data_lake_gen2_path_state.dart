@@ -52,13 +52,13 @@ class DataLakeGen2PathState {
 
   factory DataLakeGen2PathState.fromMap(Map<String, dynamic> map) {
     return DataLakeGen2PathState(
-      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2PathAce>(map['aces'], (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filesystemName: map['filesystemName'] == null ? null : (map['filesystemName'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2PathAce>(map['aces']!, (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filesystemName: map['filesystemName'] == null ? null : (map['filesystemName']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

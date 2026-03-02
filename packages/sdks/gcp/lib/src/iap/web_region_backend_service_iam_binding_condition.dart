@@ -29,7 +29,7 @@ class WebRegionBackendServiceIamBindingCondition {
 
   factory WebRegionBackendServiceIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return WebRegionBackendServiceIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

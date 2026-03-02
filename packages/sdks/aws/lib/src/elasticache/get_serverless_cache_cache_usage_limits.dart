@@ -27,8 +27,8 @@ class GetServerlessCacheCacheUsageLimits {
 
   factory GetServerlessCacheCacheUsageLimits.fromMap(Map<String, dynamic> map) {
     return GetServerlessCacheCacheUsageLimits(
-      dataStorage: (GetServerlessCacheCacheUsageLimitsDataStorage.fromMap((map['dataStorage'] as Map).cast<String, dynamic>())).input(),
-      ecpuPerSecond: (GetServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap((map['ecpuPerSecond'] as Map).cast<String, dynamic>())).input(),
+      dataStorage: (GetServerlessCacheCacheUsageLimitsDataStorage.fromMap((map['dataStorage']! as Map).cast<String, dynamic>())).input(),
+      ecpuPerSecond: (GetServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap((map['ecpuPerSecond']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

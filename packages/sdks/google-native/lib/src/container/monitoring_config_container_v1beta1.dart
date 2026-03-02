@@ -34,9 +34,9 @@ class MonitoringConfigContainerV1beta1 {
 
   factory MonitoringConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MonitoringConfigContainerV1beta1(
-      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : (AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>())).input(),
-      componentConfig: map['componentConfig'] == null ? null : (MonitoringComponentConfigContainerV1beta1.fromMap((map['componentConfig'] as Map).cast<String, dynamic>())).input(),
-      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : (ManagedPrometheusConfigContainerV1beta1.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedDatapathObservabilityConfig: map['advancedDatapathObservabilityConfig'] == null ? null : (AdvancedDatapathObservabilityConfigContainerV1beta1.fromMap((map['advancedDatapathObservabilityConfig']! as Map).cast<String, dynamic>())).input(),
+      componentConfig: map['componentConfig'] == null ? null : (MonitoringComponentConfigContainerV1beta1.fromMap((map['componentConfig']! as Map).cast<String, dynamic>())).input(),
+      managedPrometheusConfig: map['managedPrometheusConfig'] == null ? null : (ManagedPrometheusConfigContainerV1beta1.fromMap((map['managedPrometheusConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

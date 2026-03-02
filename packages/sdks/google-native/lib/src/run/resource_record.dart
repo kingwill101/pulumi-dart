@@ -32,9 +32,9 @@ class ResourceRecord {
 
   factory ResourceRecord.fromMap(Map<String, dynamic> map) {
     return ResourceRecord(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rrdata: map['rrdata'] == null ? null : (map['rrdata'] as String).input(),
-      type: map['type'] == null ? null : (ResourceRecordType.fromValue(map['type'] as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rrdata: map['rrdata'] == null ? null : (map['rrdata']! as String).input(),
+      type: map['type'] == null ? null : (ResourceRecordType.fromValue(map['type']! as String)).input(),
     );
   }
 }

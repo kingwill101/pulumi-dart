@@ -25,7 +25,7 @@ class DomainDevicesFilesystemSourceRam {
 
   factory DomainDevicesFilesystemSourceRam.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemSourceRam(
-      units: map['units'] == null ? null : (map['units'] as String).input(),
+      units: map['units'] == null ? null : (map['units']! as String).input(),
       usage: (map['usage'] as double).input(),
     );
   }

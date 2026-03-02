@@ -31,9 +31,9 @@ class LinuxUserConfigurationResponse {
 
   factory LinuxUserConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LinuxUserConfigurationResponse(
-      gid: map['gid'] == null ? null : (map['gid'] as int).input(),
-      sshPrivateKey: map['sshPrivateKey'] == null ? null : (map['sshPrivateKey'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as int).input(),
+      gid: map['gid'] == null ? null : (map['gid']! as int).input(),
+      sshPrivateKey: map['sshPrivateKey'] == null ? null : (map['sshPrivateKey']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as int).input(),
     );
   }
 }

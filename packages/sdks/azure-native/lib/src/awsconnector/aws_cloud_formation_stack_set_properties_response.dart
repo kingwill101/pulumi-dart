@@ -102,22 +102,22 @@ class AwsCloudFormationStackSetPropertiesResponse {
 
   factory AwsCloudFormationStackSetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsCloudFormationStackSetPropertiesResponse(
-      administrationRoleARN: map['administrationRoleARN'] == null ? null : (map['administrationRoleARN'] as String).input(),
-      autoDeployment: map['autoDeployment'] == null ? null : (AutoDeploymentResponse.fromMap((map['autoDeployment'] as Map).cast<String, dynamic>())).input(),
-      callAs: map['callAs'] == null ? null : (map['callAs'] as String).input(),
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRoleName: map['executionRoleName'] == null ? null : (map['executionRoleName'] as String).input(),
-      managedExecution: map['managedExecution'] == null ? null : (ActiveModelResponse.fromMap((map['managedExecution'] as Map).cast<String, dynamic>())).input(),
-      operationPreferences: map['operationPreferences'] == null ? null : (OperationPreferencesResponse.fromMap((map['operationPreferences'] as Map).cast<String, dynamic>())).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters'], (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permissionModel: map['permissionModel'] == null ? null : (map['permissionModel'] as String).input(),
-      stackInstancesGroup: map['stackInstancesGroup'] == null ? null : (pulumi.Input.decodeList<StackInstancesResponse>(map['stackInstancesGroup'], (value) => StackInstancesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stackSetId: map['stackSetId'] == null ? null : (map['stackSetId'] as String).input(),
-      stackSetName: map['stackSetName'] == null ? null : (map['stackSetName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
-      templateURL: map['templateURL'] == null ? null : (map['templateURL'] as String).input(),
+      administrationRoleARN: map['administrationRoleARN'] == null ? null : (map['administrationRoleARN']! as String).input(),
+      autoDeployment: map['autoDeployment'] == null ? null : (AutoDeploymentResponse.fromMap((map['autoDeployment']! as Map).cast<String, dynamic>())).input(),
+      callAs: map['callAs'] == null ? null : (map['callAs']! as String).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionRoleName: map['executionRoleName'] == null ? null : (map['executionRoleName']! as String).input(),
+      managedExecution: map['managedExecution'] == null ? null : (ActiveModelResponse.fromMap((map['managedExecution']! as Map).cast<String, dynamic>())).input(),
+      operationPreferences: map['operationPreferences'] == null ? null : (OperationPreferencesResponse.fromMap((map['operationPreferences']! as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ParameterResponse>(map['parameters']!, (value) => ParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permissionModel: map['permissionModel'] == null ? null : (map['permissionModel']! as String).input(),
+      stackInstancesGroup: map['stackInstancesGroup'] == null ? null : (pulumi.Input.decodeList<StackInstancesResponse>(map['stackInstancesGroup']!, (value) => StackInstancesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackSetId: map['stackSetId'] == null ? null : (map['stackSetId']! as String).input(),
+      stackSetName: map['stackSetName'] == null ? null : (map['stackSetName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody']! as String).input(),
+      templateURL: map['templateURL'] == null ? null : (map['templateURL']! as String).input(),
     );
   }
 }

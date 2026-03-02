@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2SmartReplyModelMetadata {
 
   factory GoogleCloudDialogflowV2SmartReplyModelMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyModelMetadata(
-      trainingModelType: map['trainingModelType'] == null ? null : (GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType.fromValue(map['trainingModelType'] as String)).input(),
+      trainingModelType: map['trainingModelType'] == null ? null : (GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType.fromValue(map['trainingModelType']! as String)).input(),
     );
   }
 }

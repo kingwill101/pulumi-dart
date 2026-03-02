@@ -29,8 +29,8 @@ class AuthzPolicyCustomProvider {
 
   factory AuthzPolicyCustomProvider.fromMap(Map<String, dynamic> map) {
     return AuthzPolicyCustomProvider(
-      authzExtension: map['authzExtension'] == null ? null : (AuthzPolicyCustomProviderAuthzExtension.fromMap((map['authzExtension'] as Map).cast<String, dynamic>())).input(),
-      cloudIap: map['cloudIap'] == null ? null : (AuthzPolicyCustomProviderCloudIap.fromMap((map['cloudIap'] as Map).cast<String, dynamic>())).input(),
+      authzExtension: map['authzExtension'] == null ? null : (AuthzPolicyCustomProviderAuthzExtension.fromMap((map['authzExtension']! as Map).cast<String, dynamic>())).input(),
+      cloudIap: map['cloudIap'] == null ? null : (AuthzPolicyCustomProviderCloudIap.fromMap((map['cloudIap']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

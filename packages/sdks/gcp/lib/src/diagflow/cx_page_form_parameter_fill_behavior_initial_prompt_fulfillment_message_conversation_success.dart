@@ -20,7 +20,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversation
 
   factory CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

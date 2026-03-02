@@ -33,9 +33,9 @@ class RegistryPrivateEndpointConnection {
 
   factory RegistryPrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return RegistryPrivateEndpointConnection(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (RegistryPrivateEndpointConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (RegistryPrivateEndpointConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

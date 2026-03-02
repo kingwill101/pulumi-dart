@@ -36,9 +36,9 @@ class ConfigurationGroupSchemaPropertiesFormatResponse {
 
   factory ConfigurationGroupSchemaPropertiesFormatResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupSchemaPropertiesFormatResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition']! as String).input(),
       versionState: (map['versionState'] as String).input(),
     );
   }

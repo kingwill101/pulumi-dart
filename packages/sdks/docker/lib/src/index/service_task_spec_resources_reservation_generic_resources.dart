@@ -25,8 +25,8 @@ class ServiceTaskSpecResourcesReservationGenericResources {
 
   factory ServiceTaskSpecResourcesReservationGenericResources.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResourcesReservationGenericResources(
-      discreteResourcesSpecs: map['discreteResourcesSpecs'] == null ? null : ((map['discreteResourcesSpecs'] as List).cast<String>()).input(),
-      namedResourcesSpecs: map['namedResourcesSpecs'] == null ? null : ((map['namedResourcesSpecs'] as List).cast<String>()).input(),
+      discreteResourcesSpecs: map['discreteResourcesSpecs'] == null ? null : ((map['discreteResourcesSpecs']! as List).cast<String>()).input(),
+      namedResourcesSpecs: map['namedResourcesSpecs'] == null ? null : ((map['namedResourcesSpecs']! as List).cast<String>()).input(),
     );
   }
 }

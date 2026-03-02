@@ -27,8 +27,8 @@ class MaintenanceWindowMetastoreV1beta {
 
   factory MaintenanceWindowMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowMetastoreV1beta(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (MaintenanceWindowDayOfWeekMetastoreV1beta.fromValue(map['dayOfWeek'] as String)).input(),
-      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (MaintenanceWindowDayOfWeekMetastoreV1beta.fromValue(map['dayOfWeek']! as String)).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay']! as int).input(),
     );
   }
 }

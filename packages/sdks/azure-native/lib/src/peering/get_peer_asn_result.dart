@@ -66,9 +66,9 @@ class GetPeerAsnResult {
       errorMessage: map['errorMessage'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      peerAsn: map['peerAsn'] == null ? null : map['peerAsn'] as int,
-      peerContactDetail: map['peerContactDetail'] == null ? null : pulumi.Input.decodeList<ContactDetailResponse>(map['peerContactDetail'], (value) => ContactDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
-      peerName: map['peerName'] == null ? null : map['peerName'] as String,
+      peerAsn: map['peerAsn'] == null ? null : map['peerAsn']! as int,
+      peerContactDetail: map['peerContactDetail'] == null ? null : pulumi.Input.decodeList<ContactDetailResponse>(map['peerContactDetail']!, (value) => ContactDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
+      peerName: map['peerName'] == null ? null : map['peerName']! as String,
       type: map['type'] as String,
       validationState: map['validationState'] as String,
     );

@@ -44,10 +44,10 @@ class AttestorIamPolicyBinaryauthorizationV1beta1Args {
   factory AttestorIamPolicyBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return AttestorIamPolicyBinaryauthorizationV1beta1Args(
       attestorId: (map['attestorId'] as String).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingBinaryauthorizationV1beta1>(map['bindings'], (value) => BindingBinaryauthorizationV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingBinaryauthorizationV1beta1>(map['bindings']!, (value) => BindingBinaryauthorizationV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

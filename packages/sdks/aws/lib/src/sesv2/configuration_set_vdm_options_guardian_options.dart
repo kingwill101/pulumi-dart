@@ -20,7 +20,7 @@ class ConfigurationSetVdmOptionsGuardianOptions {
 
   factory ConfigurationSetVdmOptionsGuardianOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetVdmOptionsGuardianOptions(
-      optimizedSharedDelivery: map['optimizedSharedDelivery'] == null ? null : (map['optimizedSharedDelivery'] as String).input(),
+      optimizedSharedDelivery: map['optimizedSharedDelivery'] == null ? null : ((map['optimizedSharedDelivery'] as String).input()).input(),
     );
   }
 }

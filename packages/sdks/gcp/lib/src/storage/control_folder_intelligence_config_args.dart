@@ -36,9 +36,9 @@ class ControlFolderIntelligenceConfigArgs {
 
   factory ControlFolderIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ControlFolderIntelligenceConfigArgs(
-      editionConfig: map['editionConfig'] == null ? null : (map['editionConfig'] as String).input(),
-      filter: map['filter'] == null ? null : (ControlFolderIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      editionConfig: map['editionConfig'] == null ? null : (map['editionConfig']! as String).input(),
+      filter: map['filter'] == null ? null : (ControlFolderIntelligenceConfigFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

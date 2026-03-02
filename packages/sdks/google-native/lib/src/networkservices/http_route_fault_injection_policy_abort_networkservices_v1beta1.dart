@@ -26,8 +26,8 @@ class HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1 {
 
   factory HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as int).input(),
     );
   }
 }

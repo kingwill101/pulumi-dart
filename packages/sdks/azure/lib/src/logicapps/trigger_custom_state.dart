@@ -38,10 +38,10 @@ class TriggerCustomState {
 
   factory TriggerCustomState.fromMap(Map<String, dynamic> map) {
     return TriggerCustomState(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl'] as String).input(),
-      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      callbackUrl: map['callbackUrl'] == null ? null : (map['callbackUrl']! as String).input(),
+      logicAppId: map['logicAppId'] == null ? null : (map['logicAppId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class A2ACrossClusterMigrationReplicationDetailsResponse {
 
   factory A2ACrossClusterMigrationReplicationDetailsResponse.fromMap(Map<String, dynamic> map) {
     return A2ACrossClusterMigrationReplicationDetailsResponse(
-      fabricObjectId: map['fabricObjectId'] == null ? null : (map['fabricObjectId'] as String).input(),
+      fabricObjectId: map['fabricObjectId'] == null ? null : (map['fabricObjectId']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      lifecycleId: map['lifecycleId'] == null ? null : (map['lifecycleId'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation'] as String).input(),
-      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState'] as String).input(),
-      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription'] as String).input(),
+      lifecycleId: map['lifecycleId'] == null ? null : (map['lifecycleId']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      primaryFabricLocation: map['primaryFabricLocation'] == null ? null : (map['primaryFabricLocation']! as String).input(),
+      vmProtectionState: map['vmProtectionState'] == null ? null : (map['vmProtectionState']! as String).input(),
+      vmProtectionStateDescription: map['vmProtectionStateDescription'] == null ? null : (map['vmProtectionStateDescription']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class IdentityServiceAzureADConfigGkehubV1alpha {
 
   factory IdentityServiceAzureADConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAzureADConfigGkehubV1alpha(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      kubectlRedirectUri: map['kubectlRedirectUri'] == null ? null : (map['kubectlRedirectUri'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      kubectlRedirectUri: map['kubectlRedirectUri'] == null ? null : (map['kubectlRedirectUri']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
     );
   }
 }

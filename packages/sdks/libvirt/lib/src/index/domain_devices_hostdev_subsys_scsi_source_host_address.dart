@@ -35,10 +35,10 @@ class DomainDevicesHostdevSubsysScsiSourceHostAddress {
 
   factory DomainDevicesHostdevSubsysScsiSourceHostAddress.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSourceHostAddress(
-      bus: map['bus'] == null ? null : (map['bus'] as double).input(),
-      controller: map['controller'] == null ? null : (map['controller'] as double).input(),
-      target: map['target'] == null ? null : (map['target'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as double).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as double).input(),
+      controller: map['controller'] == null ? null : (map['controller']! as double).input(),
+      target: map['target'] == null ? null : (map['target']! as double).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as double).input(),
     );
   }
 }

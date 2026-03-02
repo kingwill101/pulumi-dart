@@ -58,11 +58,11 @@ class GetServiceHybridDoubleWritesResult {
       hybridDoubleWrites: pulumi.Input.decodeList<GetServiceHybridDoubleWritesHybridDoubleWrite>(map['hybridDoubleWrites'], (value) => GetServiceHybridDoubleWritesHybridDoubleWrite.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      sourceNamespace: map['sourceNamespace'] == null ? null : map['sourceNamespace'] as String,
-      sourceUserId: map['sourceUserId'] == null ? null : map['sourceUserId'] as String,
-      userId: map['userId'] == null ? null : map['userId'] as String,
+      namespace: map['namespace'] == null ? null : map['namespace']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      sourceNamespace: map['sourceNamespace'] == null ? null : map['sourceNamespace']! as String,
+      sourceUserId: map['sourceUserId'] == null ? null : map['sourceUserId']! as String,
+      userId: map['userId'] == null ? null : map['userId']! as String,
     );
   }
 }

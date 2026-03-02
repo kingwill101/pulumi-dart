@@ -31,9 +31,9 @@ class Subnet {
 
   factory Subnet.fromMap(Map<String, dynamic> map) {
     return Subnet(
-      allowPublicIp: map['allowPublicIp'] == null ? null : (map['allowPublicIp'] as String).input(),
-      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      allowPublicIp: map['allowPublicIp'] == null ? null : (map['allowPublicIp']! as String).input(),
+      labSubnetName: map['labSubnetName'] == null ? null : (map['labSubnetName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

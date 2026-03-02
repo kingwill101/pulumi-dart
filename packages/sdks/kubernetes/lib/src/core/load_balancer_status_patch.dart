@@ -22,7 +22,7 @@ class LoadBalancerStatusPatch {
 
   factory LoadBalancerStatusPatch.fromMap(Map<String, dynamic> map) {
     return LoadBalancerStatusPatch(
-      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<LoadBalancerIngressPatch>(map['ingress'], (value) => LoadBalancerIngressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (pulumi.Input.decodeList<LoadBalancerIngressPatch>(map['ingress']!, (value) => LoadBalancerIngressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

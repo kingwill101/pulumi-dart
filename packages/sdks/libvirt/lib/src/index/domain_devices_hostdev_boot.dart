@@ -25,7 +25,7 @@ class DomainDevicesHostdevBoot {
 
   factory DomainDevicesHostdevBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevBoot(
-      loadParm: map['loadParm'] == null ? null : (map['loadParm'] as String).input(),
+      loadParm: map['loadParm'] == null ? null : (map['loadParm']! as String).input(),
       order: (map['order'] as double).input(),
     );
   }

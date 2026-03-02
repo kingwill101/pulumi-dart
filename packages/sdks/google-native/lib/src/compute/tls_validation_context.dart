@@ -33,9 +33,9 @@ class TlsValidationContext {
 
   factory TlsValidationContext.fromMap(Map<String, dynamic> map) {
     return TlsValidationContext(
-      certificatePath: map['certificatePath'] == null ? null : (map['certificatePath'] as String).input(),
-      sdsConfig: map['sdsConfig'] == null ? null : (SdsConfig.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>())).input(),
-      validationSource: map['validationSource'] == null ? null : (TlsValidationContextValidationSource.fromValue(map['validationSource'] as String)).input(),
+      certificatePath: map['certificatePath'] == null ? null : (map['certificatePath']! as String).input(),
+      sdsConfig: map['sdsConfig'] == null ? null : (SdsConfig.fromMap((map['sdsConfig']! as Map).cast<String, dynamic>())).input(),
+      validationSource: map['validationSource'] == null ? null : (TlsValidationContextValidationSource.fromValue(map['validationSource']! as String)).input(),
     );
   }
 }

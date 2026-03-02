@@ -27,8 +27,8 @@ class DefenderForServersGcpOfferingResponseArcAutoProvisioning {
 
   factory DefenderForServersGcpOfferingResponseArcAutoProvisioning.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseArcAutoProvisioning(
-      configuration: map['configuration'] == null ? null : (ArcAutoProvisioningResponseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      configuration: map['configuration'] == null ? null : (ArcAutoProvisioningResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

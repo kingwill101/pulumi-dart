@@ -20,7 +20,7 @@ class LogDeliveryConfigurationLogConfigurationFirehoseConfiguration {
 
   factory LogDeliveryConfigurationLogConfigurationFirehoseConfiguration.fromMap(Map<String, dynamic> map) {
     return LogDeliveryConfigurationLogConfigurationFirehoseConfiguration(
-      streamArn: map['streamArn'] == null ? null : (map['streamArn'] as String).input(),
+      streamArn: map['streamArn'] == null ? null : ((map['streamArn'] as String).input()).input(),
     );
   }
 }

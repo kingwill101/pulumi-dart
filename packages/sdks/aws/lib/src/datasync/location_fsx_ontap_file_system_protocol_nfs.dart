@@ -21,7 +21,7 @@ class LocationFsxOntapFileSystemProtocolNfs {
 
   factory LocationFsxOntapFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocolNfs(
-      mountOptions: (LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      mountOptions: (LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

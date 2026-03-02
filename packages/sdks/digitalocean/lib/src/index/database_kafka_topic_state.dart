@@ -48,12 +48,12 @@ class DatabaseKafkaTopicState {
 
   factory DatabaseKafkaTopicState.fromMap(Map<String, dynamic> map) {
     return DatabaseKafkaTopicState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs'], (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<DatabaseKafkaTopicConfig>(map['configs']!, (value) => DatabaseKafkaTopicConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

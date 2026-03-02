@@ -45,12 +45,12 @@ class FastHttpAppMonitor {
 
   factory FastHttpAppMonitor.fromMap(Map<String, dynamic> map) {
     return FastHttpAppMonitor(
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      monitorAuth: map['monitorAuth'] == null ? null : (map['monitorAuth'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      response: map['response'] == null ? null : (map['response'] as String).input(),
-      sendString: map['sendString'] == null ? null : (map['sendString'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      monitorAuth: map['monitorAuth'] == null ? null : (map['monitorAuth']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      response: map['response'] == null ? null : (map['response']! as String).input(),
+      sendString: map['sendString'] == null ? null : (map['sendString']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

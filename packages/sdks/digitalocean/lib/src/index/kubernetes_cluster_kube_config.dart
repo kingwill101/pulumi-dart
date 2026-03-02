@@ -50,13 +50,13 @@ class KubernetesClusterKubeConfig {
 
   factory KubernetesClusterKubeConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterKubeConfig(
-      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate'] as String).input(),
-      clientKey: map['clientKey'] == null ? null : (map['clientKey'] as String).input(),
-      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate'] as String).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      rawConfig: map['rawConfig'] == null ? null : (map['rawConfig'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (map['clientCertificate']! as String).input(),
+      clientKey: map['clientKey'] == null ? null : (map['clientKey']! as String).input(),
+      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate']! as String).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      rawConfig: map['rawConfig'] == null ? null : (map['rawConfig']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

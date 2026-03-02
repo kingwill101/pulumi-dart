@@ -59,14 +59,14 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableP
 
   factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      length: map['length'] == null ? null : (map['length'] as int).input(),
-      nullable: map['nullable'] == null ? null : (map['nullable'] as bool).input(),
-      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition'] as int).input(),
-      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as bool).input(),
-      scale: map['scale'] == null ? null : (map['scale'] as int).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      length: map['length'] == null ? null : (map['length']! as int).input(),
+      nullable: map['nullable'] == null ? null : (map['nullable']! as bool).input(),
+      ordinalPosition: map['ordinalPosition'] == null ? null : (map['ordinalPosition']! as int).input(),
+      precision: map['precision'] == null ? null : (map['precision']! as int).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as bool).input(),
+      scale: map['scale'] == null ? null : (map['scale']! as int).input(),
     );
   }
 }

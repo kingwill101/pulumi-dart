@@ -47,7 +47,7 @@ class ElasticSnapshotArgs {
       accountName: (map['accountName'] as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName']! as String).input(),
       volumeName: (map['volumeName'] as String).input(),
     );
   }

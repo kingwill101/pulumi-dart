@@ -50,13 +50,13 @@ class BatchOperationsJobPutMetadata {
 
   factory BatchOperationsJobPutMetadata.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobPutMetadata(
-      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl'] as String).input(),
-      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
-      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      customMetadata: map['customMetadata'] == null ? null : ((map['customMetadata'] as Map).cast<String, String>()).input(),
-      customTime: map['customTime'] == null ? null : (map['customTime'] as String).input(),
+      cacheControl: map['cacheControl'] == null ? null : (map['cacheControl']! as String).input(),
+      contentDisposition: map['contentDisposition'] == null ? null : (map['contentDisposition']! as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
+      contentLanguage: map['contentLanguage'] == null ? null : (map['contentLanguage']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      customMetadata: map['customMetadata'] == null ? null : ((map['customMetadata']! as Map).cast<String, String>()).input(),
+      customTime: map['customTime'] == null ? null : (map['customTime']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class NamedResourcesInstancePatch {
 
   factory NamedResourcesInstancePatch.fromMap(Map<String, dynamic> map) {
     return NamedResourcesInstancePatch(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<NamedResourcesAttributePatch>(map['attributes'], (value) => NamedResourcesAttributePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<NamedResourcesAttributePatch>(map['attributes']!, (value) => NamedResourcesAttributePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

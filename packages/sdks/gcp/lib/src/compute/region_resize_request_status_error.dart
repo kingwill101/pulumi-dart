@@ -23,7 +23,7 @@ class RegionResizeRequestStatusError {
 
   factory RegionResizeRequestStatusError.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatusError(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorError>(map['errors'], (value) => RegionResizeRequestStatusErrorError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusErrorError>(map['errors']!, (value) => RegionResizeRequestStatusErrorError.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

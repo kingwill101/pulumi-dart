@@ -46,7 +46,7 @@ class ListAppServicePlanHybridConnectionKeysResult {
   factory ListAppServicePlanHybridConnectionKeysResult.fromMap(Map<String, dynamic> map) {
     return ListAppServicePlanHybridConnectionKeysResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       sendKeyName: map['sendKeyName'] as String,
       sendKeyValue: map['sendKeyValue'] as String,

@@ -21,7 +21,7 @@ class CloudFunctionEndpointNetworkmanagementV1beta1 {
 
   factory CloudFunctionEndpointNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return CloudFunctionEndpointNetworkmanagementV1beta1(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

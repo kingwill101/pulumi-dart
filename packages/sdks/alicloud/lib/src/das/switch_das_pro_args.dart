@@ -35,8 +35,8 @@ class SwitchDasProArgs {
   factory SwitchDasProArgs.fromMap(Map<String, dynamic> map) {
     return SwitchDasProArgs(
       instanceId: (map['instanceId'] as String).input(),
-      sqlRetention: map['sqlRetention'] == null ? null : (map['sqlRetention'] as int).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      sqlRetention: map['sqlRetention'] == null ? null : (map['sqlRetention']! as int).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

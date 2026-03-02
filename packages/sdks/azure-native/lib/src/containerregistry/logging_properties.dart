@@ -26,8 +26,8 @@ class LoggingProperties {
 
   factory LoggingProperties.fromMap(Map<String, dynamic> map) {
     return LoggingProperties(
-      auditLogStatus: map['auditLogStatus'] == null ? null : (map['auditLogStatus'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      auditLogStatus: map['auditLogStatus'] == null ? null : (map['auditLogStatus']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
     );
   }
 }

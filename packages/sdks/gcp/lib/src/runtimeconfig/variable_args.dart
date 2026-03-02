@@ -51,11 +51,11 @@ class VariableArgs {
 
   factory VariableArgs.fromMap(Map<String, dynamic> map) {
     return VariableArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

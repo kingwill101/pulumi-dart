@@ -91,22 +91,22 @@ class GetRulesResult {
 
   factory GetRulesResult.fromMap(Map<String, dynamic> map) {
     return GetRulesResult(
-      category: map['category'] == null ? null : map['category'] as int,
-      contentCategory: map['contentCategory'] == null ? null : map['contentCategory'] as String,
-      customType: map['customType'] == null ? null : map['customType'] as int,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      category: map['category'] == null ? null : map['category']! as int,
+      contentCategory: map['contentCategory'] == null ? null : map['contentCategory']! as String,
+      customType: map['customType'] == null ? null : map['customType']! as int,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      productId: map['productId'] == null ? null : map['productId'] as String,
-      riskLevelId: map['riskLevelId'] == null ? null : map['riskLevelId'] as String,
-      ruleType: map['ruleType'] == null ? null : map['ruleType'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      productId: map['productId'] == null ? null : map['productId']! as String,
+      riskLevelId: map['riskLevelId'] == null ? null : map['riskLevelId']! as String,
+      ruleType: map['ruleType'] == null ? null : map['ruleType']! as int,
       rules: pulumi.Input.decodeList<GetRulesRule>(map['rules'], (value) => GetRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      warnLevel: map['warnLevel'] == null ? null : map['warnLevel'] as int,
+      status: map['status'] == null ? null : map['status']! as String,
+      warnLevel: map['warnLevel'] == null ? null : map['warnLevel']! as int,
     );
   }
 }

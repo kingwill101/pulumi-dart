@@ -45,11 +45,11 @@ class SyntheticTaskMonitorConfNetDns {
 
   factory SyntheticTaskMonitorConfNetDns.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfNetDns(
-      dnsServerIpType: map['dnsServerIpType'] == null ? null : (map['dnsServerIpType'] as int).input(),
-      nsServer: map['nsServer'] == null ? null : (map['nsServer'] as String).input(),
-      queryMethod: map['queryMethod'] == null ? null : (map['queryMethod'] as int).input(),
+      dnsServerIpType: map['dnsServerIpType'] == null ? null : (map['dnsServerIpType']! as int).input(),
+      nsServer: map['nsServer'] == null ? null : (map['nsServer']! as String).input(),
+      queryMethod: map['queryMethod'] == null ? null : (map['queryMethod']! as int).input(),
       targetUrl: (map['targetUrl'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

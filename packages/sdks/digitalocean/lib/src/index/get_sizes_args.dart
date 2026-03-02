@@ -33,8 +33,8 @@ class GetSizesArgs {
 
   factory GetSizesArgs.fromMap(Map<String, dynamic> map) {
     return GetSizesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSizesFilter>(map['filters'], (value) => GetSizesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSizesSort>(map['sorts'], (value) => GetSizesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSizesFilter>(map['filters']!, (value) => GetSizesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetSizesSort>(map['sorts']!, (value) => GetSizesSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

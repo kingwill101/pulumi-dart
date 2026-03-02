@@ -20,7 +20,7 @@ class ListOpenIdConnectProviderSecretsResult {
 
   factory ListOpenIdConnectProviderSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListOpenIdConnectProviderSecretsResult(
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
     );
   }
 }

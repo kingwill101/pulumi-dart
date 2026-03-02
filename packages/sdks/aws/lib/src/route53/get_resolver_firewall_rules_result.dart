@@ -48,7 +48,7 @@ class GetResolverFirewallRulesResult {
     return GetResolverFirewallRulesResult(
       action: map['action'] == null ? null : map['action'] as String,
       firewallRuleGroupId: map['firewallRuleGroupId'] as String,
-      firewallRules: pulumi.Input.decodeList<GetResolverFirewallRulesFirewallRule>(map['firewallRules'], (value) => GetResolverFirewallRulesFirewallRule.fromMap((value as Map).cast<String, dynamic>())),
+      firewallRules: pulumi.Input.decodeList<GetResolverFirewallRulesFirewallRule>(map['firewallRules']!, (value) => GetResolverFirewallRulesFirewallRule.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       priority: map['priority'] == null ? null : map['priority'] as int,
       region: map['region'] as String,

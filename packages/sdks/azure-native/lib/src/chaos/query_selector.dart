@@ -43,7 +43,7 @@ class QuerySelector {
 
   factory QuerySelector.fromMap(Map<String, dynamic> map) {
     return QuerySelector(
-      filter: map['filter'] == null ? null : (SimpleFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
+      filter: map['filter'] == null ? null : (SimpleFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
       queryString: (map['queryString'] as String).input(),
       subscriptionIds: ((map['subscriptionIds'] as List).cast<String>()).input(),

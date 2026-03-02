@@ -70,11 +70,11 @@ class GetSqlServerRegistrationResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      propertyBag: map['propertyBag'] == null ? null : map['propertyBag'] as String,
-      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup'] as String,
-      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId'] as String,
+      propertyBag: map['propertyBag'] == null ? null : map['propertyBag']! as String,
+      resourceGroup: map['resourceGroup'] == null ? null : map['resourceGroup']! as String,
+      subscriptionId: map['subscriptionId'] == null ? null : map['subscriptionId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

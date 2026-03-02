@@ -31,7 +31,7 @@ class SpokeLinkedInterconnectAttachments {
 
   factory SpokeLinkedInterconnectAttachments.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedInterconnectAttachments(
-      includeImportRanges: map['includeImportRanges'] == null ? null : ((map['includeImportRanges'] as List).cast<String>()).input(),
+      includeImportRanges: map['includeImportRanges'] == null ? null : ((map['includeImportRanges']! as List).cast<String>()).input(),
       siteToSiteDataTransfer: (map['siteToSiteDataTransfer'] as bool).input(),
       uris: ((map['uris'] as List).cast<String>()).input(),
     );

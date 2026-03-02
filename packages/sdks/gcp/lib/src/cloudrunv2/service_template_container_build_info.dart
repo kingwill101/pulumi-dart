@@ -25,8 +25,8 @@ class ServiceTemplateContainerBuildInfo {
 
   factory ServiceTemplateContainerBuildInfo.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerBuildInfo(
-      functionTarget: map['functionTarget'] == null ? null : (map['functionTarget'] as String).input(),
-      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
+      functionTarget: map['functionTarget'] == null ? null : (map['functionTarget']! as String).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation']! as String).input(),
     );
   }
 }

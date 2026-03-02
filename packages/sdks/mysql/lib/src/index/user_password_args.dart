@@ -34,7 +34,7 @@ class UserPasswordArgs {
 
   factory UserPasswordArgs.fromMap(Map<String, dynamic> map) {
     return UserPasswordArgs(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       pgpKey: (map['pgpKey'] as String).input(),
       user: (map['user'] as String).input(),
     );

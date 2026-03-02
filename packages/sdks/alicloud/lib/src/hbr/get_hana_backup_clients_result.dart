@@ -63,15 +63,15 @@ class GetHanaBackupClientsResult {
 
   factory GetHanaBackupClientsResult.fromMap(Map<String, dynamic> map) {
     return GetHanaBackupClientsResult(
-      clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clusterId: map['clusterId'] == null ? null : map['clusterId'] as String,
+      clientId: map['clientId'] == null ? null : map['clientId']! as String,
+      clusterId: map['clusterId'] == null ? null : map['clusterId']! as String,
       hanaBackupClients: pulumi.Input.decodeList<GetHanaBackupClientsHanaBackupClient>(map['hanaBackupClients'], (value) => GetHanaBackupClientsHanaBackupClient.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      status: map['status'] == null ? null : map['status']! as String,
       vaultId: map['vaultId'] as String,
     );
   }

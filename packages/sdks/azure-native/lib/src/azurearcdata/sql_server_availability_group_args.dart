@@ -50,12 +50,12 @@ class SqlServerAvailabilityGroupArgs {
 
   factory SqlServerAvailabilityGroupArgs.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupArgs(
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : (map['availabilityGroupName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (SqlServerAvailabilityGroupResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlServerInstanceName: (map['sqlServerInstanceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

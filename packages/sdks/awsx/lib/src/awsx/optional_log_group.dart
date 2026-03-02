@@ -33,9 +33,9 @@ class OptionalLogGroup {
 
   factory OptionalLogGroup.fromMap(Map<String, dynamic> map) {
     return OptionalLogGroup(
-      args: map['args'] == null ? null : (LogGroup.fromMap((map['args'] as Map).cast<String, dynamic>())).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : (LogGroup.fromMap((map['args']! as Map).cast<String, dynamic>())).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      existing: map['existing'] == null ? null : (ExistingLogGroup.fromMap((map['existing']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

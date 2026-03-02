@@ -20,7 +20,7 @@ class RecommendationEngineCommonConfig {
 
   factory RecommendationEngineCommonConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineCommonConfig(
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName']! as String).input(),
     );
   }
 }

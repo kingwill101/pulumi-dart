@@ -49,7 +49,7 @@ class SubnetConfigurationResponse {
       addressPrefix: (map['addressPrefix'] as String).input(),
       networkPrefixSize: (map['networkPrefixSize'] as int).input(),
       networkSecurityGroupResourceId: (map['networkSecurityGroupResourceId'] as String).input(),
-      subnetDelegation: map['subnetDelegation'] == null ? null : (map['subnetDelegation'] as String).input(),
+      subnetDelegation: map['subnetDelegation'] == null ? null : (map['subnetDelegation']! as String).input(),
       subnetName: (map['subnetName'] as String).input(),
       subnetResourceId: (map['subnetResourceId'] as String).input(),
     );

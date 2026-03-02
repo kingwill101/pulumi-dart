@@ -25,7 +25,7 @@ class GatewayRouteSpecGrpcRouteMatch {
 
   factory GatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteMatch(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

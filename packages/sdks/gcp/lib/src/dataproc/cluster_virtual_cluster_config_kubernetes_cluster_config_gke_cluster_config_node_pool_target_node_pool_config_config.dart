@@ -45,11 +45,11 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
   factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig(
-      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount'] as int).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      spot: map['spot'] == null ? null : (map['spot'] as bool).input(),
+      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount']! as int).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      spot: map['spot'] == null ? null : (map['spot']! as bool).input(),
     );
   }
 }

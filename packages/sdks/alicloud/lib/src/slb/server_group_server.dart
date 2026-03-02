@@ -37,8 +37,8 @@ class ServerGroupServer {
     return ServerGroupServer(
       port: (map['port'] as int).input(),
       serverIds: ((map['serverIds'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

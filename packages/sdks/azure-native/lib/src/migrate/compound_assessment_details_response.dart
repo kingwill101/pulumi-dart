@@ -31,9 +31,9 @@ class CompoundAssessmentDetailsResponse {
 
   factory CompoundAssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return CompoundAssessmentDetailsResponse(
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp']! as String).input(),
       status: (map['status'] as String).input(),
-      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp'] as String).input(),
+      updatedTimestamp: map['updatedTimestamp'] == null ? null : (map['updatedTimestamp']! as String).input(),
     );
   }
 }

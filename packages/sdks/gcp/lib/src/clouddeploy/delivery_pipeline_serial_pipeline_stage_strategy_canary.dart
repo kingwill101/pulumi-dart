@@ -33,9 +33,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanary {
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanary.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanary(
-      canaryDeployment: map['canaryDeployment'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment.fromMap((map['canaryDeployment'] as Map).cast<String, dynamic>())).input(),
-      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap((map['customCanaryDeployment'] as Map).cast<String, dynamic>())).input(),
-      runtimeConfig: map['runtimeConfig'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      canaryDeployment: map['canaryDeployment'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment.fromMap((map['canaryDeployment']! as Map).cast<String, dynamic>())).input(),
+      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap((map['customCanaryDeployment']! as Map).cast<String, dynamic>())).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap((map['runtimeConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

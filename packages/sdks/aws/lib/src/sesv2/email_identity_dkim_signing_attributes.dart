@@ -57,14 +57,14 @@ class EmailIdentityDkimSigningAttributes {
 
   factory EmailIdentityDkimSigningAttributes.fromMap(Map<String, dynamic> map) {
     return EmailIdentityDkimSigningAttributes(
-      currentSigningKeyLength: map['currentSigningKeyLength'] == null ? null : (map['currentSigningKeyLength'] as String).input(),
-      domainSigningPrivateKey: map['domainSigningPrivateKey'] == null ? null : (map['domainSigningPrivateKey'] as String).input(),
-      domainSigningSelector: map['domainSigningSelector'] == null ? null : (map['domainSigningSelector'] as String).input(),
-      lastKeyGenerationTimestamp: map['lastKeyGenerationTimestamp'] == null ? null : (map['lastKeyGenerationTimestamp'] as String).input(),
-      nextSigningKeyLength: map['nextSigningKeyLength'] == null ? null : (map['nextSigningKeyLength'] as String).input(),
-      signingAttributesOrigin: map['signingAttributesOrigin'] == null ? null : (map['signingAttributesOrigin'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tokens: map['tokens'] == null ? null : ((map['tokens'] as List).cast<String>()).input(),
+      currentSigningKeyLength: map['currentSigningKeyLength'] == null ? null : ((map['currentSigningKeyLength'] as String).input()).input(),
+      domainSigningPrivateKey: map['domainSigningPrivateKey'] == null ? null : ((map['domainSigningPrivateKey'] as String).input()).input(),
+      domainSigningSelector: map['domainSigningSelector'] == null ? null : ((map['domainSigningSelector'] as String).input()).input(),
+      lastKeyGenerationTimestamp: map['lastKeyGenerationTimestamp'] == null ? null : ((map['lastKeyGenerationTimestamp'] as String).input()).input(),
+      nextSigningKeyLength: map['nextSigningKeyLength'] == null ? null : ((map['nextSigningKeyLength'] as String).input()).input(),
+      signingAttributesOrigin: map['signingAttributesOrigin'] == null ? null : ((map['signingAttributesOrigin'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tokens: map['tokens'] == null ? null : (((map['tokens'] as List).cast<String>()).input()).input(),
     );
   }
 }

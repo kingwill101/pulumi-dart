@@ -46,9 +46,9 @@ class ByteMatchSetByteMatchTuple {
 
   factory ByteMatchSetByteMatchTuple.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetByteMatchTuple(
-      fieldToMatch: (ByteMatchSetByteMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: (ByteMatchSetByteMatchTupleFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
       positionalConstraint: (map['positionalConstraint'] as String).input(),
-      targetString: map['targetString'] == null ? null : (map['targetString'] as String).input(),
+      targetString: map['targetString'] == null ? null : ((map['targetString'] as String).input()).input(),
       textTransformation: (map['textTransformation'] as String).input(),
     );
   }

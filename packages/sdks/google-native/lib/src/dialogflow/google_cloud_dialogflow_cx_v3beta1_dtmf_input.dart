@@ -26,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1DtmfInput {
 
   factory GoogleCloudDialogflowCxV3beta1DtmfInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1DtmfInput(
-      digits: map['digits'] == null ? null : (map['digits'] as String).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
+      digits: map['digits'] == null ? null : (map['digits']! as String).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
     );
   }
 }

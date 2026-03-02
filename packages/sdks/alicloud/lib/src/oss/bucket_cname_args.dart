@@ -51,11 +51,11 @@ class BucketCnameArgs {
   factory BucketCnameArgs.fromMap(Map<String, dynamic> map) {
     return BucketCnameArgs(
       bucket: (map['bucket'] as String).input(),
-      certificate: map['certificate'] == null ? null : (BucketCnameCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      deleteCertificate: map['deleteCertificate'] == null ? null : (map['deleteCertificate'] as bool).input(),
+      certificate: map['certificate'] == null ? null : (BucketCnameCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      deleteCertificate: map['deleteCertificate'] == null ? null : (map['deleteCertificate']! as bool).input(),
       domain: (map['domain'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      previousCertId: map['previousCertId'] == null ? null : (map['previousCertId'] as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      previousCertId: map['previousCertId'] == null ? null : (map['previousCertId']! as String).input(),
     );
   }
 }

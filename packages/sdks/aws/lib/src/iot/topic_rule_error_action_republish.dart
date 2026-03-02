@@ -30,7 +30,7 @@ class TopicRuleErrorActionRepublish {
 
   factory TopicRuleErrorActionRepublish.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionRepublish(
-      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
+      qos: map['qos'] == null ? null : ((map['qos'] as int).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       topic: (map['topic'] as String).input(),
     );

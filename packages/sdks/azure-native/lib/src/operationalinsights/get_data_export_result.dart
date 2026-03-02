@@ -71,12 +71,12 @@ class GetDataExportResult {
   factory GetDataExportResult.fromMap(Map<String, dynamic> map) {
     return GetDataExportResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      createdDate: map['createdDate'] == null ? null : map['createdDate'] as String,
-      dataExportId: map['dataExportId'] == null ? null : map['dataExportId'] as String,
-      enable: map['enable'] == null ? null : map['enable'] as bool,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName'] as String,
+      createdDate: map['createdDate'] == null ? null : map['createdDate']! as String,
+      dataExportId: map['dataExportId'] == null ? null : map['dataExportId']! as String,
+      enable: map['enable'] == null ? null : map['enable']! as bool,
+      eventHubName: map['eventHubName'] == null ? null : map['eventHubName']! as String,
       id: map['id'] as String,
-      lastModifiedDate: map['lastModifiedDate'] == null ? null : map['lastModifiedDate'] as String,
+      lastModifiedDate: map['lastModifiedDate'] == null ? null : map['lastModifiedDate']! as String,
       name: map['name'] as String,
       resourceId: map['resourceId'] as String,
       tableNames: (map['tableNames'] as List).cast<String>(),

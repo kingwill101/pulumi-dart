@@ -55,11 +55,11 @@ class GetInstanceGuestAttributesArgs {
   factory GetInstanceGuestAttributesArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceGuestAttributesArgs(
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queryPath: map['queryPath'] == null ? null : (map['queryPath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      variableKey: map['variableKey'] == null ? null : (map['variableKey'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queryPath: map['queryPath'] == null ? null : (map['queryPath']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      variableKey: map['variableKey'] == null ? null : (map['variableKey']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

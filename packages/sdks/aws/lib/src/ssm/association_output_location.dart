@@ -33,8 +33,8 @@ class AssociationOutputLocation {
   factory AssociationOutputLocation.fromMap(Map<String, dynamic> map) {
     return AssociationOutputLocation(
       s3BucketName: (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
-      s3Region: map['s3Region'] == null ? null : (map['s3Region'] as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
+      s3Region: map['s3Region'] == null ? null : ((map['s3Region'] as String).input()).input(),
     );
   }
 }

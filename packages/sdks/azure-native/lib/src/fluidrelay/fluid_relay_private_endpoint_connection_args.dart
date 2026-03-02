@@ -41,7 +41,7 @@ class FluidRelayPrivateEndpointConnectionArgs {
   factory FluidRelayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
     return FluidRelayPrivateEndpointConnectionArgs(
       fluidRelayServerName: (map['fluidRelayServerName'] as String).input(),
-      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName'] as String).input(),
+      privateEndpointConnectionName: map['privateEndpointConnectionName'] == null ? null : (map['privateEndpointConnectionName']! as String).input(),
       privateLinkServiceConnectionState: (PrivateLinkServiceConnectionState.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
       resourceGroup: (map['resourceGroup'] as String).input(),
     );

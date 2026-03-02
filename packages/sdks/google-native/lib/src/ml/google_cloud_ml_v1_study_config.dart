@@ -40,9 +40,9 @@ class GoogleCloudMlV1StudyConfig {
 
   factory GoogleCloudMlV1StudyConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfig(
-      algorithm: map['algorithm'] == null ? null : (GoogleCloudMlV1StudyConfigAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      automatedStoppingConfig: map['automatedStoppingConfig'] == null ? null : (GoogleCloudMlV1AutomatedStoppingConfig.fromMap((map['automatedStoppingConfig'] as Map).cast<String, dynamic>())).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigMetricSpec>(map['metrics'], (value) => GoogleCloudMlV1StudyConfigMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      algorithm: map['algorithm'] == null ? null : (GoogleCloudMlV1StudyConfigAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      automatedStoppingConfig: map['automatedStoppingConfig'] == null ? null : (GoogleCloudMlV1AutomatedStoppingConfig.fromMap((map['automatedStoppingConfig']! as Map).cast<String, dynamic>())).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigMetricSpec>(map['metrics']!, (value) => GoogleCloudMlV1StudyConfigMetricSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parameters: (pulumi.Input.decodeList<GoogleCloudMlV1StudyConfigParameterSpec>(map['parameters'], (value) => GoogleCloudMlV1StudyConfigParameterSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

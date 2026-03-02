@@ -21,7 +21,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<double>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<double>()).input(),
     );
   }
 }

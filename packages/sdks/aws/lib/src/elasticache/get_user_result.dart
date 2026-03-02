@@ -58,7 +58,7 @@ class GetUserResult {
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
       accessString: map['accessString'] == null ? null : map['accessString'] as String,
-      authenticationModes: map['authenticationModes'] == null ? null : pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes'], (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())),
+      authenticationModes: map['authenticationModes'] == null ? null : pulumi.Input.decodeList<GetUserAuthenticationMode>(map['authenticationModes']!, (value) => GetUserAuthenticationMode.fromMap((value as Map).cast<String, dynamic>())),
       engine: map['engine'] == null ? null : map['engine'] as String,
       id: map['id'] as String,
       noPasswordRequired: map['noPasswordRequired'] == null ? null : map['noPasswordRequired'] as bool,

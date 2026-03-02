@@ -69,16 +69,16 @@ class GatewayHostnameConfigurationArgs {
 
   factory GatewayHostnameConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayHostnameConfigurationArgs(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      hcId: map['hcId'] == null ? null : (map['hcId'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled'] as bool).input(),
-      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate'] as bool).input(),
+      hcId: map['hcId'] == null ? null : (map['hcId']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      http2Enabled: map['http2Enabled'] == null ? null : (map['http2Enabled']! as bool).input(),
+      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : (map['negotiateClientCertificate']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tls10Enabled: map['tls10Enabled'] == null ? null : (map['tls10Enabled'] as bool).input(),
-      tls11Enabled: map['tls11Enabled'] == null ? null : (map['tls11Enabled'] as bool).input(),
+      tls10Enabled: map['tls10Enabled'] == null ? null : (map['tls10Enabled']! as bool).input(),
+      tls11Enabled: map['tls11Enabled'] == null ? null : (map['tls11Enabled']! as bool).input(),
     );
   }
 }

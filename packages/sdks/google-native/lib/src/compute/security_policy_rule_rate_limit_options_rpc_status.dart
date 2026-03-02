@@ -26,8 +26,8 @@ class SecurityPolicyRuleRateLimitOptionsRpcStatus {
 
   factory SecurityPolicyRuleRateLimitOptionsRpcStatus.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsRpcStatus(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

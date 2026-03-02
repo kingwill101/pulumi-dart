@@ -32,7 +32,7 @@ class TaskTaskReportConfigS3Destination {
     return TaskTaskReportConfigS3Destination(
       bucketAccessRoleArn: (map['bucketAccessRoleArn'] as String).input(),
       s3BucketArn: (map['s3BucketArn'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
     );
   }
 }

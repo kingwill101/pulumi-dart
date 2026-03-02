@@ -56,12 +56,12 @@ class VnetRouteResponse {
 
   factory VnetRouteResponse.fromMap(Map<String, dynamic> map) {
     return VnetRouteResponse(
-      endAddress: map['endAddress'] == null ? null : (map['endAddress'] as String).input(),
+      endAddress: map['endAddress'] == null ? null : (map['endAddress']! as String).input(),
       id: (map['id'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      routeType: map['routeType'] == null ? null : (map['routeType'] as String).input(),
-      startAddress: map['startAddress'] == null ? null : (map['startAddress'] as String).input(),
+      routeType: map['routeType'] == null ? null : (map['routeType']! as String).input(),
+      startAddress: map['startAddress'] == null ? null : (map['startAddress']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

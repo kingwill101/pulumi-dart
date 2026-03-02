@@ -37,10 +37,10 @@ class Source {
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      additionalContexts: map['additionalContexts'] == null ? null : (pulumi.Input.decodeList<SourceContext>(map['additionalContexts'], (value) => SourceContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      artifactStorageSourceUri: map['artifactStorageSourceUri'] == null ? null : (map['artifactStorageSourceUri'] as String).input(),
-      context: map['context'] == null ? null : (SourceContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      fileHashes: map['fileHashes'] == null ? null : ((map['fileHashes'] as Map).cast<String, String>()).input(),
+      additionalContexts: map['additionalContexts'] == null ? null : (pulumi.Input.decodeList<SourceContext>(map['additionalContexts']!, (value) => SourceContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifactStorageSourceUri: map['artifactStorageSourceUri'] == null ? null : (map['artifactStorageSourceUri']! as String).input(),
+      context: map['context'] == null ? null : (SourceContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      fileHashes: map['fileHashes'] == null ? null : ((map['fileHashes']! as Map).cast<String, String>()).input(),
     );
   }
 }

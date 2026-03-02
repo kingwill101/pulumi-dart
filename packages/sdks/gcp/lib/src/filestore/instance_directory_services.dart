@@ -22,7 +22,7 @@ class InstanceDirectoryServices {
 
   factory InstanceDirectoryServices.fromMap(Map<String, dynamic> map) {
     return InstanceDirectoryServices(
-      ldap: map['ldap'] == null ? null : (InstanceDirectoryServicesLdap.fromMap((map['ldap'] as Map).cast<String, dynamic>())).input(),
+      ldap: map['ldap'] == null ? null : (InstanceDirectoryServicesLdap.fromMap((map['ldap']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

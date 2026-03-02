@@ -28,8 +28,8 @@ class InlinePayloadInfo {
 
   factory InlinePayloadInfo.fromMap(Map<String, dynamic> map) {
     return InlinePayloadInfo(
-      format: map['format'] == null ? null : (InlinePayloadInfoFormat.fromValue(map['format'] as String)).input(),
-      payload: map['payload'] == null ? null : (pulumi.Input.decodeList<PayloadFile>(map['payload'], (value) => PayloadFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      format: map['format'] == null ? null : (InlinePayloadInfoFormat.fromValue(map['format']! as String)).input(),
+      payload: map['payload'] == null ? null : (pulumi.Input.decodeList<PayloadFile>(map['payload']!, (value) => PayloadFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

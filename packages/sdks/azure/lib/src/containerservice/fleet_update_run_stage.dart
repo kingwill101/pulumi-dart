@@ -31,7 +31,7 @@ class FleetUpdateRunStage {
 
   factory FleetUpdateRunStage.fromMap(Map<String, dynamic> map) {
     return FleetUpdateRunStage(
-      afterStageWaitInSeconds: map['afterStageWaitInSeconds'] == null ? null : (map['afterStageWaitInSeconds'] as int).input(),
+      afterStageWaitInSeconds: map['afterStageWaitInSeconds'] == null ? null : (map['afterStageWaitInSeconds']! as int).input(),
       groups: (pulumi.Input.decodeList<FleetUpdateRunStageGroup>(map['groups'], (value) => FleetUpdateRunStageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );

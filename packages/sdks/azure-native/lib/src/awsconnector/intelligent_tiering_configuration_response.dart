@@ -43,11 +43,11 @@ class IntelligentTieringConfigurationResponse {
 
   factory IntelligentTieringConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return IntelligentTieringConfigurationResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tierings: map['tierings'] == null ? null : (pulumi.Input.decodeList<TieringResponse>(map['tierings'], (value) => TieringResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters']!, (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tierings: map['tierings'] == null ? null : (pulumi.Input.decodeList<TieringResponse>(map['tierings']!, (value) => TieringResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

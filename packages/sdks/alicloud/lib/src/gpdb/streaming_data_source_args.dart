@@ -52,7 +52,7 @@ class StreamingDataSourceArgs {
   factory StreamingDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return StreamingDataSourceArgs(
       dataSourceConfig: (map['dataSourceConfig'] as String).input(),
-      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription'] as String).input(),
+      dataSourceDescription: map['dataSourceDescription'] == null ? null : (map['dataSourceDescription']! as String).input(),
       dataSourceName: (map['dataSourceName'] as String).input(),
       dataSourceType: (map['dataSourceType'] as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),

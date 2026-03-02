@@ -31,8 +31,8 @@ class CounterSetPatch {
 
   factory CounterSetPatch.fromMap(Map<String, dynamic> map) {
     return CounterSetPatch(
-      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<Counter>(map['counters'], (value) => Counter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      counters: map['counters'] == null ? null : (pulumi.Input.decodeMapValues<Counter>(map['counters']!, (value) => Counter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -45,10 +45,10 @@ class AutoscalingPolicyIamPolicyArgs {
 
   factory AutoscalingPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyIamPolicyArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       policyData: (map['policyData'] as String).input(),
       policyId: (map['policyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ClusterPscServiceAttachment {
 
   factory ClusterPscServiceAttachment.fromMap(Map<String, dynamic> map) {
     return ClusterPscServiceAttachment(
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ScimServerCredentialArgs {
 
   factory ScimServerCredentialArgs.fromMap(Map<String, dynamic> map) {
     return ScimServerCredentialArgs(
-      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile'] as String).input(),
+      credentialSecretFile: map['credentialSecretFile'] == null ? null : (map['credentialSecretFile']! as String).input(),
       directoryId: (map['directoryId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

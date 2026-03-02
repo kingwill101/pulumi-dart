@@ -27,7 +27,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
   factory GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1BoundingPolyConfig(
       annotationSpecSet: (map['annotationSpecSet'] as String).input(),
-      instructionMessage: map['instructionMessage'] == null ? null : (map['instructionMessage'] as String).input(),
+      instructionMessage: map['instructionMessage'] == null ? null : (map['instructionMessage']! as String).input(),
     );
   }
 }

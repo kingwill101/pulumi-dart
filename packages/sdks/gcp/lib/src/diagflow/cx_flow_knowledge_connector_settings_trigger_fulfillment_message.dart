@@ -107,17 +107,17 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage {
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessage(
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      conversationSuccess: map['conversationSuccess'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>())).input(),
-      endInteractions: map['endInteractions'] == null ? null : ((map['endInteractions'] as List).cast<Map<String, dynamic>>()).input(),
-      knowledgeInfoCard: map['knowledgeInfoCard'] == null ? null : ((map['knowledgeInfoCard'] as Map).cast<String, dynamic>()).input(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>())).input(),
-      mixedAudios: map['mixedAudios'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio>(map['mixedAudios'], (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outputAudioText: map['outputAudioText'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>())).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      playAudio: map['playAudio'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>())).input(),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      conversationSuccess: map['conversationSuccess'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess']! as Map).cast<String, dynamic>())).input(),
+      endInteractions: map['endInteractions'] == null ? null : ((map['endInteractions']! as List).cast<Map<String, dynamic>>()).input(),
+      knowledgeInfoCard: map['knowledgeInfoCard'] == null ? null : ((map['knowledgeInfoCard']! as Map).cast<String, dynamic>()).input(),
+      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff']! as Map).cast<String, dynamic>())).input(),
+      mixedAudios: map['mixedAudios'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio>(map['mixedAudios']!, (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputAudioText: map['outputAudioText'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText']! as Map).cast<String, dynamic>())).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      playAudio: map['playAudio'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio']! as Map).cast<String, dynamic>())).input(),
+      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageText.fromMap((map['text']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

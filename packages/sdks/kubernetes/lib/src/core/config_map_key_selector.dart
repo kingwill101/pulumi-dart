@@ -32,8 +32,8 @@ class ConfigMapKeySelector {
   factory ConfigMapKeySelector.fromMap(Map<String, dynamic> map) {
     return ConfigMapKeySelector(
       key: (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

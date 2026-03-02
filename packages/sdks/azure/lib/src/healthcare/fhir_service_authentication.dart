@@ -33,7 +33,7 @@ class FhirServiceAuthentication {
     return FhirServiceAuthentication(
       audience: (map['audience'] as String).input(),
       authority: (map['authority'] as String).input(),
-      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled'] as bool).input(),
+      smartProxyEnabled: map['smartProxyEnabled'] == null ? null : (map['smartProxyEnabled']! as bool).input(),
     );
   }
 }

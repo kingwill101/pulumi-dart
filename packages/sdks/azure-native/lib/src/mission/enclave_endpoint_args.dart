@@ -50,11 +50,11 @@ class EnclaveEndpointArgs {
 
   factory EnclaveEndpointArgs.fromMap(Map<String, dynamic> map) {
     return EnclaveEndpointArgs(
-      enclaveEndpointName: map['enclaveEndpointName'] == null ? null : (map['enclaveEndpointName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      enclaveEndpointName: map['enclaveEndpointName'] == null ? null : (map['enclaveEndpointName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       ruleCollection: (pulumi.Input.decodeList<EnclaveEndpointDestinationRule>(map['ruleCollection'], (value) => EnclaveEndpointDestinationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualEnclaveName: (map['virtualEnclaveName'] as String).input(),
     );
   }

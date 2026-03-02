@@ -46,12 +46,12 @@ class HoneypotNodeState {
 
   factory HoneypotNodeState.fromMap(Map<String, dynamic> map) {
     return HoneypotNodeState(
-      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet'] as bool).input(),
-      availableProbeNum: map['availableProbeNum'] == null ? null : (map['availableProbeNum'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      allowHoneypotAccessInternet: map['allowHoneypotAccessInternet'] == null ? null : (map['allowHoneypotAccessInternet']! as bool).input(),
+      availableProbeNum: map['availableProbeNum'] == null ? null : (map['availableProbeNum']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      securityGroupProbeIpLists: map['securityGroupProbeIpLists'] == null ? null : ((map['securityGroupProbeIpLists']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

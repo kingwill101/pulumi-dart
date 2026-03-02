@@ -86,20 +86,20 @@ class SnmpTrapsState {
 
   factory SnmpTrapsState.fromMap(Map<String, dynamic> map) {
     return SnmpTrapsState(
-      authPasswordencrypted: map['authPasswordencrypted'] == null ? null : (map['authPasswordencrypted'] as String).input(),
-      authProtocol: map['authProtocol'] == null ? null : (map['authProtocol'] as String).input(),
-      community: map['community'] == null ? null : (map['community'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      engineId: map['engineId'] == null ? null : (map['engineId'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      privacyPassword: map['privacyPassword'] == null ? null : (map['privacyPassword'] as String).input(),
-      privacyPasswordEncrypted: map['privacyPasswordEncrypted'] == null ? null : (map['privacyPasswordEncrypted'] as String).input(),
-      privacyProtocol: map['privacyProtocol'] == null ? null : (map['privacyProtocol'] as String).input(),
-      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel'] as String).input(),
-      securityName: map['securityName'] == null ? null : (map['securityName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      authPasswordencrypted: map['authPasswordencrypted'] == null ? null : (map['authPasswordencrypted']! as String).input(),
+      authProtocol: map['authProtocol'] == null ? null : (map['authProtocol']! as String).input(),
+      community: map['community'] == null ? null : (map['community']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      engineId: map['engineId'] == null ? null : (map['engineId']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      privacyPassword: map['privacyPassword'] == null ? null : (map['privacyPassword']! as String).input(),
+      privacyPasswordEncrypted: map['privacyPasswordEncrypted'] == null ? null : (map['privacyPasswordEncrypted']! as String).input(),
+      privacyProtocol: map['privacyProtocol'] == null ? null : (map['privacyProtocol']! as String).input(),
+      securityLevel: map['securityLevel'] == null ? null : (map['securityLevel']! as String).input(),
+      securityName: map['securityName'] == null ? null : (map['securityName']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

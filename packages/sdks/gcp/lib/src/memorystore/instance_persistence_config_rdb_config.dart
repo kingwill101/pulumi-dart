@@ -32,8 +32,8 @@ class InstancePersistenceConfigRdbConfig {
 
   factory InstancePersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfigRdbConfig(
-      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (map['rdbSnapshotPeriod'] as String).input(),
-      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime'] as String).input(),
+      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (map['rdbSnapshotPeriod']! as String).input(),
+      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime']! as String).input(),
     );
   }
 }

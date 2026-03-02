@@ -28,8 +28,8 @@ class PodSchedulingSpecPatch {
 
   factory PodSchedulingSpecPatch.fromMap(Map<String, dynamic> map) {
     return PodSchedulingSpecPatch(
-      potentialNodes: map['potentialNodes'] == null ? null : ((map['potentialNodes'] as List).cast<String>()).input(),
-      selectedNode: map['selectedNode'] == null ? null : (map['selectedNode'] as String).input(),
+      potentialNodes: map['potentialNodes'] == null ? null : ((map['potentialNodes']! as List).cast<String>()).input(),
+      selectedNode: map['selectedNode'] == null ? null : (map['selectedNode']! as String).input(),
     );
   }
 }

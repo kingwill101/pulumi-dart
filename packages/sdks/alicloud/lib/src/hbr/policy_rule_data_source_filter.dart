@@ -20,7 +20,7 @@ class PolicyRuleDataSourceFilter {
 
   factory PolicyRuleDataSourceFilter.fromMap(Map<String, dynamic> map) {
     return PolicyRuleDataSourceFilter(
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

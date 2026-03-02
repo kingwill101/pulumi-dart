@@ -31,9 +31,9 @@ class ServiceServiceConnectConfigurationServiceTls {
 
   factory ServiceServiceConnectConfigurationServiceTls.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceTls(
-      issuerCertAuthority: (ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap((map['issuerCertAuthority'] as Map).cast<String, dynamic>())).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      issuerCertAuthority: (ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority.fromMap((map['issuerCertAuthority']! as Map).cast<String, dynamic>())).input(),
+      kmsKey: map['kmsKey'] == null ? null : ((map['kmsKey'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

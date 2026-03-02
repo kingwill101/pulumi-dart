@@ -53,10 +53,10 @@ class GetJobCollectionResult {
     return GetJobCollectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: JobCollectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

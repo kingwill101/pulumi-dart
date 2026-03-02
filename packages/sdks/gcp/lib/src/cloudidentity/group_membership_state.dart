@@ -68,15 +68,15 @@ class GroupMembershipState {
 
   factory GroupMembershipState.fromMap(Map<String, dynamic> map) {
     return GroupMembershipState(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      memberKey: map['memberKey'] == null ? null : (GroupMembershipMemberKey.fromMap((map['memberKey'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preferredMemberKey: map['preferredMemberKey'] == null ? null : (GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey'] as Map).cast<String, dynamic>())).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<GroupMembershipRole>(map['roles'], (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      memberKey: map['memberKey'] == null ? null : (GroupMembershipMemberKey.fromMap((map['memberKey']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preferredMemberKey: map['preferredMemberKey'] == null ? null : (GroupMembershipPreferredMemberKey.fromMap((map['preferredMemberKey']! as Map).cast<String, dynamic>())).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<GroupMembershipRole>(map['roles']!, (value) => GroupMembershipRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

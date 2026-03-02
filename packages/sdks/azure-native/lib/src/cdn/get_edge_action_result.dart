@@ -77,7 +77,7 @@ class GetEdgeActionResult {
       provisioningState: map['provisioningState'] as String,
       sku: SkuTypeResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

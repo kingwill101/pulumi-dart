@@ -35,10 +35,10 @@ class DomainDevicesInterfaceBackend {
 
   factory DomainDevicesInterfaceBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceBackend(
-      logFile: map['logFile'] == null ? null : (map['logFile'] as String).input(),
-      tap: map['tap'] == null ? null : (map['tap'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vhost: map['vhost'] == null ? null : (map['vhost'] as String).input(),
+      logFile: map['logFile'] == null ? null : (map['logFile']! as String).input(),
+      tap: map['tap'] == null ? null : (map['tap']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vhost: map['vhost'] == null ? null : (map['vhost']! as String).input(),
     );
   }
 }

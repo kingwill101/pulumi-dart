@@ -21,7 +21,7 @@ class SecretMetastoreV1alpha {
 
   factory SecretMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return SecretMetastoreV1alpha(
-      cloudSecret: map['cloudSecret'] == null ? null : (map['cloudSecret'] as String).input(),
+      cloudSecret: map['cloudSecret'] == null ? null : (map['cloudSecret']! as String).input(),
     );
   }
 }

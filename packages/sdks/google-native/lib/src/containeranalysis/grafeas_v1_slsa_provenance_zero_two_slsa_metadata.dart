@@ -37,11 +37,11 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
 
   factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap(Map<String, dynamic> map) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata(
-      buildFinishedOn: map['buildFinishedOn'] == null ? null : (map['buildFinishedOn'] as String).input(),
-      buildInvocationId: map['buildInvocationId'] == null ? null : (map['buildInvocationId'] as String).input(),
-      buildStartedOn: map['buildStartedOn'] == null ? null : (map['buildStartedOn'] as String).input(),
-      completeness: map['completeness'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap((map['completeness'] as Map).cast<String, dynamic>())).input(),
-      reproducible: map['reproducible'] == null ? null : (map['reproducible'] as bool).input(),
+      buildFinishedOn: map['buildFinishedOn'] == null ? null : (map['buildFinishedOn']! as String).input(),
+      buildInvocationId: map['buildInvocationId'] == null ? null : (map['buildInvocationId']! as String).input(),
+      buildStartedOn: map['buildStartedOn'] == null ? null : (map['buildStartedOn']! as String).input(),
+      completeness: map['completeness'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap((map['completeness']! as Map).cast<String, dynamic>())).input(),
+      reproducible: map['reproducible'] == null ? null : (map['reproducible']! as bool).input(),
     );
   }
 }

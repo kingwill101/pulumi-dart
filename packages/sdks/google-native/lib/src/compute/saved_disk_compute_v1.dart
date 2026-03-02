@@ -21,7 +21,7 @@ class SavedDiskComputeV1 {
 
   factory SavedDiskComputeV1.fromMap(Map<String, dynamic> map) {
     return SavedDiskComputeV1(
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
     );
   }
 }

@@ -48,11 +48,11 @@ class RoutingRuleArgs {
 
   factory RoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return RoutingRuleArgs(
-      actions: (pulumi.Input.decodeList<RoutingRuleAction>(map['actions'], (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: (pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions'], (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<RoutingRuleAction>(map['actions']!, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: (pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions']!, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       domainName: (map['domainName'] as String).input(),
       priority: (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

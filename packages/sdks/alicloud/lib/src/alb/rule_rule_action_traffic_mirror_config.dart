@@ -26,8 +26,8 @@ class RuleRuleActionTrafficMirrorConfig {
 
   factory RuleRuleActionTrafficMirrorConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionTrafficMirrorConfig(
-      mirrorGroupConfig: map['mirrorGroupConfig'] == null ? null : (RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap((map['mirrorGroupConfig'] as Map).cast<String, dynamic>())).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      mirrorGroupConfig: map['mirrorGroupConfig'] == null ? null : (RuleRuleActionTrafficMirrorConfigMirrorGroupConfig.fromMap((map['mirrorGroupConfig']! as Map).cast<String, dynamic>())).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

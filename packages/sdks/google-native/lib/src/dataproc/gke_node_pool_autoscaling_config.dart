@@ -26,8 +26,8 @@ class GkeNodePoolAutoscalingConfig {
 
   factory GkeNodePoolAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return GkeNodePoolAutoscalingConfig(
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
     );
   }
 }

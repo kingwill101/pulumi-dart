@@ -34,9 +34,9 @@ class Settings {
 
   factory Settings.fromMap(Map<String, dynamic> map) {
     return Settings(
-      azureArcSettings: map['azureArcSettings'] == null ? null : (AzureArcSettings.fromMap((map['azureArcSettings'] as Map).cast<String, dynamic>())).input(),
+      azureArcSettings: map['azureArcSettings'] == null ? null : (AzureArcSettings.fromMap((map['azureArcSettings']! as Map).cast<String, dynamic>())).input(),
       azureSettings: (AzureSettings.fromMap((map['azureSettings'] as Map).cast<String, dynamic>())).input(),
-      onPremiseSettings: map['onPremiseSettings'] == null ? null : (OnPremiseSettings.fromMap((map['onPremiseSettings'] as Map).cast<String, dynamic>())).input(),
+      onPremiseSettings: map['onPremiseSettings'] == null ? null : (OnPremiseSettings.fromMap((map['onPremiseSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

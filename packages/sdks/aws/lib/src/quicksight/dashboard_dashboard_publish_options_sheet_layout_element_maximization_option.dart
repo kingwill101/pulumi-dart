@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption {
 
   factory DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsSheetLayoutElementMaximizationOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

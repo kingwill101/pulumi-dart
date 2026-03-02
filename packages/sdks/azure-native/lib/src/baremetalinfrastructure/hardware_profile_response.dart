@@ -26,8 +26,8 @@ class HardwareProfileResponse {
 
   factory HardwareProfileResponse.fromMap(Map<String, dynamic> map) {
     return HardwareProfileResponse(
-      azureBareMetalInstanceSize: map['azureBareMetalInstanceSize'] == null ? null : (map['azureBareMetalInstanceSize'] as String).input(),
-      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
+      azureBareMetalInstanceSize: map['azureBareMetalInstanceSize'] == null ? null : (map['azureBareMetalInstanceSize']! as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType']! as String).input(),
     );
   }
 }

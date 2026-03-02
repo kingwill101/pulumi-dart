@@ -36,10 +36,10 @@ class BackupPolicyResponse {
 
   factory BackupPolicyResponse.fromMap(Map<String, dynamic> map) {
     return BackupPolicyResponse(
-      differentialBackupHours: map['differentialBackupHours'] == null ? null : (map['differentialBackupHours'] as int).input(),
-      fullBackupDays: map['fullBackupDays'] == null ? null : (map['fullBackupDays'] as int).input(),
-      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays'] as int).input(),
-      transactionLogBackupMinutes: map['transactionLogBackupMinutes'] == null ? null : (map['transactionLogBackupMinutes'] as int).input(),
+      differentialBackupHours: map['differentialBackupHours'] == null ? null : (map['differentialBackupHours']! as int).input(),
+      fullBackupDays: map['fullBackupDays'] == null ? null : (map['fullBackupDays']! as int).input(),
+      retentionPeriodDays: map['retentionPeriodDays'] == null ? null : (map['retentionPeriodDays']! as int).input(),
+      transactionLogBackupMinutes: map['transactionLogBackupMinutes'] == null ? null : (map['transactionLogBackupMinutes']! as int).input(),
     );
   }
 }

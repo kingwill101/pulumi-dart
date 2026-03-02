@@ -50,8 +50,8 @@ class SnapshotArgs {
   factory SnapshotArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotArgs(
       accountName: (map['accountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       volumeName: (map['volumeName'] as String).input(),

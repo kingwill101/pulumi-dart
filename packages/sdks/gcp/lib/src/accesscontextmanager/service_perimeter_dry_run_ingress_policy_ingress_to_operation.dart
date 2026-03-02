@@ -32,8 +32,8 @@ class ServicePerimeterDryRunIngressPolicyIngressToOperation {
 
   factory ServicePerimeterDryRunIngressPolicyIngressToOperation.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterDryRunIngressPolicyIngressToOperation(
-      methodSelectors: map['methodSelectors'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector>(map['methodSelectors'], (value) => ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      methodSelectors: map['methodSelectors'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector>(map['methodSelectors']!, (value) => ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

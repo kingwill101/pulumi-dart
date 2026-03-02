@@ -36,10 +36,10 @@ class AwsLambdaFunctionCodeLocationProperties {
 
   factory AwsLambdaFunctionCodeLocationProperties.fromMap(Map<String, dynamic> map) {
     return AwsLambdaFunctionCodeLocationProperties(
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      repositoryType: map['repositoryType'] == null ? null : (map['repositoryType'] as String).input(),
-      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri'] as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      repositoryType: map['repositoryType'] == null ? null : (map['repositoryType']! as String).input(),
+      resolvedImageUri: map['resolvedImageUri'] == null ? null : (map['resolvedImageUri']! as String).input(),
     );
   }
 }

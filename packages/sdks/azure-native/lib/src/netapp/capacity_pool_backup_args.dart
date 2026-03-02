@@ -60,12 +60,12 @@ class CapacityPoolBackupArgs {
   factory CapacityPoolBackupArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolBackupArgs(
       accountName: (map['accountName'] as String).input(),
-      backupName: map['backupName'] == null ? null : (map['backupName'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      backupName: map['backupName'] == null ? null : (map['backupName']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : (map['useExistingSnapshot'] as bool).input(),
+      useExistingSnapshot: map['useExistingSnapshot'] == null ? null : (map['useExistingSnapshot']! as bool).input(),
       volumeName: (map['volumeName'] as String).input(),
     );
   }

@@ -47,7 +47,7 @@ class PolicyClusterAdmissionRule {
       cluster: (map['cluster'] as String).input(),
       enforcementMode: (map['enforcementMode'] as String).input(),
       evaluationMode: (map['evaluationMode'] as String).input(),
-      requireAttestationsBies: map['requireAttestationsBies'] == null ? null : ((map['requireAttestationsBies'] as List).cast<String>()).input(),
+      requireAttestationsBies: map['requireAttestationsBies'] == null ? null : ((map['requireAttestationsBies']! as List).cast<String>()).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetDatabasesArgs {
   factory GetDatabasesArgs.fromMap(Map<String, dynamic> map) {
     return GetDatabasesArgs(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

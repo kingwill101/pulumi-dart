@@ -41,11 +41,11 @@ class FieldHealthcareV1beta1 {
 
   factory FieldHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return FieldHealthcareV1beta1(
-      maxOccurs: map['maxOccurs'] == null ? null : (map['maxOccurs'] as int).input(),
-      minOccurs: map['minOccurs'] == null ? null : (map['minOccurs'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      maxOccurs: map['maxOccurs'] == null ? null : (map['maxOccurs']! as int).input(),
+      minOccurs: map['minOccurs'] == null ? null : (map['minOccurs']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

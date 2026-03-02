@@ -43,10 +43,10 @@ class ResourceInfo {
   factory ResourceInfo.fromMap(Map<String, dynamic> map) {
     return ResourceInfo(
       id: (map['id'] as String).input(),
-      resource: map['resource'] == null ? null : ((map['resource'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (ResourceInfoStatus.fromValue(map['status'] as String)).input(),
-      sub: map['sub'] == null ? null : (pulumi.Input.decodeList<ResourceInfo>(map['sub'], (value) => ResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      resource: map['resource'] == null ? null : ((map['resource']! as Map).cast<String, String>()).input(),
+      status: map['status'] == null ? null : (ResourceInfoStatus.fromValue(map['status']! as String)).input(),
+      sub: map['sub'] == null ? null : (pulumi.Input.decodeList<ResourceInfo>(map['sub']!, (value) => ResourceInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

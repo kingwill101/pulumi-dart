@@ -28,8 +28,8 @@ class SourceSelectionCriteriaResponse {
 
   factory SourceSelectionCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return SourceSelectionCriteriaResponse(
-      replicaModifications: map['replicaModifications'] == null ? null : (ReplicaModificationsResponse.fromMap((map['replicaModifications'] as Map).cast<String, dynamic>())).input(),
-      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (SseKmsEncryptedObjectsResponse.fromMap((map['sseKmsEncryptedObjects'] as Map).cast<String, dynamic>())).input(),
+      replicaModifications: map['replicaModifications'] == null ? null : (ReplicaModificationsResponse.fromMap((map['replicaModifications']! as Map).cast<String, dynamic>())).input(),
+      sseKmsEncryptedObjects: map['sseKmsEncryptedObjects'] == null ? null : (SseKmsEncryptedObjectsResponse.fromMap((map['sseKmsEncryptedObjects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

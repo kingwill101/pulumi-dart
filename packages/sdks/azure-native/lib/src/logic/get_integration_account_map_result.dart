@@ -89,17 +89,17 @@ class GetIntegrationAccountMapResult {
     return GetIntegrationAccountMapResult(
       azureApiVersion: map['azureApiVersion'] as String,
       changedTime: map['changedTime'] as String,
-      content: map['content'] == null ? null : map['content'] as String,
+      content: map['content'] == null ? null : map['content']! as String,
       contentLink: ContentLinkResponse.fromMap((map['contentLink'] as Map).cast<String, dynamic>()),
-      contentType: map['contentType'] == null ? null : map['contentType'] as String,
+      contentType: map['contentType'] == null ? null : map['contentType']! as String,
       createdTime: map['createdTime'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       mapType: map['mapType'] as String,
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      metadata: map['metadata'] == null ? null : map['metadata']!,
       name: map['name'] as String,
-      parametersSchema: map['parametersSchema'] == null ? null : IntegrationAccountMapPropertiesResponseParametersSchema.fromMap((map['parametersSchema'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      parametersSchema: map['parametersSchema'] == null ? null : IntegrationAccountMapPropertiesResponseParametersSchema.fromMap((map['parametersSchema']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

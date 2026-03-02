@@ -83,18 +83,18 @@ class ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse {
 
   factory ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse(
-      error: map['error'] == null ? null : (ErrorEntityResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (ArmPlanResponse.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (RemotePrivateEndpointConnectionResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (SkuDescriptionResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      error: map['error'] == null ? null : (ErrorEntityResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (ArmPlanResponse.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (RemotePrivateEndpointConnectionResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (SkuDescriptionResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

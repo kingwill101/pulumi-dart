@@ -60,13 +60,13 @@ class SecurityProfileArgs {
 
   factory SecurityProfileArgs.fromMap(Map<String, dynamic> map) {
     return SecurityProfileArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      environments: map['environments'] == null ? null : ((map['environments'] as List).cast<Map<String, dynamic>>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      environments: map['environments'] == null ? null : ((map['environments']! as List).cast<Map<String, dynamic>>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       profileConfig: (GoogleCloudApigeeV1ProfileConfig.fromMap((map['profileConfig'] as Map).cast<String, dynamic>())).input(),
-      scoringConfigs: map['scoringConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityProfileScoringConfig>(map['scoringConfigs'], (value) => GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scoringConfigs: map['scoringConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityProfileScoringConfig>(map['scoringConfigs']!, (value) => GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       securityProfileId: (map['securityProfileId'] as String).input(),
     );
   }

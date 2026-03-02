@@ -36,9 +36,9 @@ class DomainAssociationSubDomain {
   factory DomainAssociationSubDomain.fromMap(Map<String, dynamic> map) {
     return DomainAssociationSubDomain(
       branchName: (map['branchName'] as String).input(),
-      dnsRecord: map['dnsRecord'] == null ? null : (map['dnsRecord'] as String).input(),
+      dnsRecord: map['dnsRecord'] == null ? null : ((map['dnsRecord'] as String).input()).input(),
       prefix: (map['prefix'] as String).input(),
-      verified: map['verified'] == null ? null : (map['verified'] as bool).input(),
+      verified: map['verified'] == null ? null : ((map['verified'] as bool).input()).input(),
     );
   }
 }

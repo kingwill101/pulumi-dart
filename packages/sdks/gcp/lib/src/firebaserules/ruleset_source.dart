@@ -29,7 +29,7 @@ class RulesetSource {
   factory RulesetSource.fromMap(Map<String, dynamic> map) {
     return RulesetSource(
       files: (pulumi.Input.decodeList<RulesetSourceFile>(map['files'], (value) => RulesetSourceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
     );
   }
 }

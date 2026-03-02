@@ -73,17 +73,17 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey'] as int).input(),
+      deviceKey: map['deviceKey'] == null ? null : (map['deviceKey']! as int).input(),
       ipAddresses: ((map['ipAddresses'] as List).cast<String>()).input(),
-      ipSettings: map['ipSettings'] == null ? null : (NicIPSettingsResponse.fromMap((map['ipSettings'] as Map).cast<String, dynamic>())).input(),
+      ipSettings: map['ipSettings'] == null ? null : (NicIPSettingsResponse.fromMap((map['ipSettings']! as Map).cast<String, dynamic>())).input(),
       label: (map['label'] as String).input(),
       macAddress: (map['macAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
       networkMoName: (map['networkMoName'] as String).input(),
       networkMoRefId: (map['networkMoRefId'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot'] as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      powerOnBoot: map['powerOnBoot'] == null ? null : (map['powerOnBoot']! as String).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class DatabaseArgs {
     return DatabaseArgs(
       catalog: (map['catalog'] as String).input(),
       hiveOptions: (DatabaseHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

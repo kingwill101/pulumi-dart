@@ -41,11 +41,11 @@ class ConnectionError {
 
   factory ConnectionError.fromMap(Map<String, dynamic> map) {
     return ConnectionError(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

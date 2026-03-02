@@ -35,10 +35,10 @@ class NetworkForwardAddressPci {
 
   factory NetworkForwardAddressPci.fromMap(Map<String, dynamic> map) {
     return NetworkForwardAddressPci(
-      bus: map['bus'] == null ? null : (map['bus'] as double).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as double).input(),
-      function: map['function'] == null ? null : (map['function'] as double).input(),
-      slot: map['slot'] == null ? null : (map['slot'] as double).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as double).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as double).input(),
+      function: map['function'] == null ? null : (map['function']! as double).input(),
+      slot: map['slot'] == null ? null : (map['slot']! as double).input(),
     );
   }
 }

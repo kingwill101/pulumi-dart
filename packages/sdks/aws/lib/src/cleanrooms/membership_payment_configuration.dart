@@ -20,7 +20,7 @@ class MembershipPaymentConfiguration {
 
   factory MembershipPaymentConfiguration.fromMap(Map<String, dynamic> map) {
     return MembershipPaymentConfiguration(
-      queryCompute: (MembershipPaymentConfigurationQueryCompute.fromMap((map['queryCompute'] as Map).cast<String, dynamic>())).input(),
+      queryCompute: (MembershipPaymentConfigurationQueryCompute.fromMap((map['queryCompute']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

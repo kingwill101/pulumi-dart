@@ -75,17 +75,17 @@ class SharedAccessPolicyState {
 
   factory SharedAccessPolicyState.fromMap(Map<String, dynamic> map) {
     return SharedAccessPolicyState(
-      deviceConnect: map['deviceConnect'] == null ? null : (map['deviceConnect'] as bool).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
-      registryRead: map['registryRead'] == null ? null : (map['registryRead'] as bool).input(),
-      registryWrite: map['registryWrite'] == null ? null : (map['registryWrite'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString'] as String).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
-      serviceConnect: map['serviceConnect'] == null ? null : (map['serviceConnect'] as bool).input(),
+      deviceConnect: map['deviceConnect'] == null ? null : (map['deviceConnect']! as bool).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : (map['primaryConnectionString']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
+      registryRead: map['registryRead'] == null ? null : (map['registryRead']! as bool).input(),
+      registryWrite: map['registryWrite'] == null ? null : (map['registryWrite']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : (map['secondaryConnectionString']! as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
+      serviceConnect: map['serviceConnect'] == null ? null : (map['serviceConnect']! as bool).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetWorkstationClusterArgs {
   factory GetWorkstationClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkstationClusterArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workstationClusterId: (map['workstationClusterId'] as String).input(),
     );
   }

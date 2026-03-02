@@ -28,8 +28,8 @@ class FirewallPolicyLogAnalyticsResources {
 
   factory FirewallPolicyLogAnalyticsResources.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyLogAnalyticsResources(
-      defaultWorkspaceId: map['defaultWorkspaceId'] == null ? null : (SubResource.fromMap((map['defaultWorkspaceId'] as Map).cast<String, dynamic>())).input(),
-      workspaces: map['workspaces'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyLogAnalyticsWorkspace>(map['workspaces'], (value) => FirewallPolicyLogAnalyticsWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultWorkspaceId: map['defaultWorkspaceId'] == null ? null : (SubResource.fromMap((map['defaultWorkspaceId']! as Map).cast<String, dynamic>())).input(),
+      workspaces: map['workspaces'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyLogAnalyticsWorkspace>(map['workspaces']!, (value) => FirewallPolicyLogAnalyticsWorkspace.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -74,15 +74,15 @@ class AccessPackageAssignmentPolicyArgs {
   factory AccessPackageAssignmentPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyArgs(
       accessPackageId: (map['accessPackageId'] as String).input(),
-      approvalSettings: map['approvalSettings'] == null ? null : (AccessPackageAssignmentPolicyApprovalSettings.fromMap((map['approvalSettings'] as Map).cast<String, dynamic>())).input(),
-      assignmentReviewSettings: map['assignmentReviewSettings'] == null ? null : (AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap((map['assignmentReviewSettings'] as Map).cast<String, dynamic>())).input(),
+      approvalSettings: map['approvalSettings'] == null ? null : (AccessPackageAssignmentPolicyApprovalSettings.fromMap((map['approvalSettings']! as Map).cast<String, dynamic>())).input(),
+      assignmentReviewSettings: map['assignmentReviewSettings'] == null ? null : (AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap((map['assignmentReviewSettings']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      durationInDays: map['durationInDays'] == null ? null : (map['durationInDays'] as int).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      extensionEnabled: map['extensionEnabled'] == null ? null : (map['extensionEnabled'] as bool).input(),
-      questions: map['questions'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(map['questions'], (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestorSettings: map['requestorSettings'] == null ? null : (AccessPackageAssignmentPolicyRequestorSettings.fromMap((map['requestorSettings'] as Map).cast<String, dynamic>())).input(),
+      durationInDays: map['durationInDays'] == null ? null : (map['durationInDays']! as int).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      extensionEnabled: map['extensionEnabled'] == null ? null : (map['extensionEnabled']! as bool).input(),
+      questions: map['questions'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(map['questions']!, (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestorSettings: map['requestorSettings'] == null ? null : (AccessPackageAssignmentPolicyRequestorSettings.fromMap((map['requestorSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

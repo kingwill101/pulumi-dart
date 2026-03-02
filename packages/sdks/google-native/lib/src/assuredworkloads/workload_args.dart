@@ -102,22 +102,22 @@ class WorkloadArgs {
 
   factory WorkloadArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadArgs(
-      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount'] as String).input(),
+      billingAccount: map['billingAccount'] == null ? null : (map['billingAccount']! as String).input(),
       complianceRegime: (WorkloadComplianceRegime.fromValue(map['complianceRegime'] as String)).input(),
       displayName: (map['displayName'] as String).input(),
-      enableSovereignControls: map['enableSovereignControls'] == null ? null : (map['enableSovereignControls'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      kmsSettings: map['kmsSettings'] == null ? null : (GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enableSovereignControls: map['enableSovereignControls'] == null ? null : (map['enableSovereignControls']! as bool).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      kmsSettings: map['kmsSettings'] == null ? null : (GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromMap((map['kmsSettings']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      partner: map['partner'] == null ? null : (WorkloadPartner.fromValue(map['partner'] as String)).input(),
-      partnerPermissions: map['partnerPermissions'] == null ? null : (GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromMap((map['partnerPermissions'] as Map).cast<String, dynamic>())).input(),
-      provisionedResourcesParent: map['provisionedResourcesParent'] == null ? null : (map['provisionedResourcesParent'] as String).input(),
-      resourceSettings: map['resourceSettings'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>(map['resourceSettings'], (value) => GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      violationNotificationsEnabled: map['violationNotificationsEnabled'] == null ? null : (map['violationNotificationsEnabled'] as bool).input(),
+      partner: map['partner'] == null ? null : (WorkloadPartner.fromValue(map['partner']! as String)).input(),
+      partnerPermissions: map['partnerPermissions'] == null ? null : (GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromMap((map['partnerPermissions']! as Map).cast<String, dynamic>())).input(),
+      provisionedResourcesParent: map['provisionedResourcesParent'] == null ? null : (map['provisionedResourcesParent']! as String).input(),
+      resourceSettings: map['resourceSettings'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAssuredworkloadsV1WorkloadResourceSettings>(map['resourceSettings']!, (value) => GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      violationNotificationsEnabled: map['violationNotificationsEnabled'] == null ? null : (map['violationNotificationsEnabled']! as bool).input(),
     );
   }
 }

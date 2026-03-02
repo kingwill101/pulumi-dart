@@ -31,9 +31,9 @@ class GooglePrivacyDlpV2Color {
 
   factory GooglePrivacyDlpV2Color.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Color(
-      blue: map['blue'] == null ? null : (map['blue'] as double).input(),
-      green: map['green'] == null ? null : (map['green'] as double).input(),
-      red: map['red'] == null ? null : (map['red'] as double).input(),
+      blue: map['blue'] == null ? null : (map['blue']! as double).input(),
+      green: map['green'] == null ? null : (map['green']! as double).input(),
+      red: map['red'] == null ? null : (map['red']! as double).input(),
     );
   }
 }

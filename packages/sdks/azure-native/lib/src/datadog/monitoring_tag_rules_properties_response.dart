@@ -42,10 +42,10 @@ class MonitoringTagRulesPropertiesResponse {
 
   factory MonitoringTagRulesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringTagRulesPropertiesResponse(
-      automuting: map['automuting'] == null ? null : (map['automuting'] as bool).input(),
-      customMetrics: map['customMetrics'] == null ? null : (map['customMetrics'] as bool).input(),
-      logRules: map['logRules'] == null ? null : (LogRulesResponse.fromMap((map['logRules'] as Map).cast<String, dynamic>())).input(),
-      metricRules: map['metricRules'] == null ? null : (MetricRulesResponse.fromMap((map['metricRules'] as Map).cast<String, dynamic>())).input(),
+      automuting: map['automuting'] == null ? null : (map['automuting']! as bool).input(),
+      customMetrics: map['customMetrics'] == null ? null : (map['customMetrics']! as bool).input(),
+      logRules: map['logRules'] == null ? null : (LogRulesResponse.fromMap((map['logRules']! as Map).cast<String, dynamic>())).input(),
+      metricRules: map['metricRules'] == null ? null : (MetricRulesResponse.fromMap((map['metricRules']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

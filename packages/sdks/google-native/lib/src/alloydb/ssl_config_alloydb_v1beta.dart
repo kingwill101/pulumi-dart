@@ -28,8 +28,8 @@ class SslConfigAlloydbV1beta {
 
   factory SslConfigAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return SslConfigAlloydbV1beta(
-      caSource: map['caSource'] == null ? null : (SslConfigCaSourceAlloydbV1beta.fromValue(map['caSource'] as String)).input(),
-      sslMode: map['sslMode'] == null ? null : (SslConfigSslModeAlloydbV1beta.fromValue(map['sslMode'] as String)).input(),
+      caSource: map['caSource'] == null ? null : (SslConfigCaSourceAlloydbV1beta.fromValue(map['caSource']! as String)).input(),
+      sslMode: map['sslMode'] == null ? null : (SslConfigSslModeAlloydbV1beta.fromValue(map['sslMode']! as String)).input(),
     );
   }
 }

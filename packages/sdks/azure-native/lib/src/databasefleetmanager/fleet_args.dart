@@ -45,11 +45,11 @@ class FleetArgs {
 
   factory FleetArgs.fromMap(Map<String, dynamic> map) {
     return FleetArgs(
-      fleetName: map['fleetName'] == null ? null : (map['fleetName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (FleetProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      fleetName: map['fleetName'] == null ? null : (map['fleetName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (FleetProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class ListenerRuleMatchHttpMatch {
 
   factory ListenerRuleMatchHttpMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatchHttpMatch(
-      headerMatches: map['headerMatches'] == null ? null : (pulumi.Input.decodeList<ListenerRuleMatchHttpMatchHeaderMatch>(map['headerMatches'], (value) => ListenerRuleMatchHttpMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      pathMatch: map['pathMatch'] == null ? null : (ListenerRuleMatchHttpMatchPathMatch.fromMap((map['pathMatch'] as Map).cast<String, dynamic>())).input(),
+      headerMatches: map['headerMatches'] == null ? null : ((pulumi.Input.decodeList<ListenerRuleMatchHttpMatchHeaderMatch>(map['headerMatches']!, (value) => ListenerRuleMatchHttpMatchHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      pathMatch: map['pathMatch'] == null ? null : ((ListenerRuleMatchHttpMatchPathMatch.fromMap((map['pathMatch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

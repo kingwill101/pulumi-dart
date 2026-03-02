@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioni
 
   factory ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupport(
-      supportedOperations: map['supportedOperations'] == null ? null : (map['supportedOperations'] as String).input(),
+      supportedOperations: map['supportedOperations'] == null ? null : (map['supportedOperations']! as String).input(),
     );
   }
 }

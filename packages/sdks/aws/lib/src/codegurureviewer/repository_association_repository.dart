@@ -35,10 +35,10 @@ class RepositoryAssociationRepository {
 
   factory RepositoryAssociationRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationRepository(
-      bitbucket: map['bitbucket'] == null ? null : (RepositoryAssociationRepositoryBitbucket.fromMap((map['bitbucket'] as Map).cast<String, dynamic>())).input(),
-      codecommit: map['codecommit'] == null ? null : (RepositoryAssociationRepositoryCodecommit.fromMap((map['codecommit'] as Map).cast<String, dynamic>())).input(),
-      githubEnterpriseServer: map['githubEnterpriseServer'] == null ? null : (RepositoryAssociationRepositoryGithubEnterpriseServer.fromMap((map['githubEnterpriseServer'] as Map).cast<String, dynamic>())).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (RepositoryAssociationRepositoryS3Bucket.fromMap((map['s3Bucket'] as Map).cast<String, dynamic>())).input(),
+      bitbucket: map['bitbucket'] == null ? null : ((RepositoryAssociationRepositoryBitbucket.fromMap((map['bitbucket']! as Map).cast<String, dynamic>())).input()).input(),
+      codecommit: map['codecommit'] == null ? null : ((RepositoryAssociationRepositoryCodecommit.fromMap((map['codecommit']! as Map).cast<String, dynamic>())).input()).input(),
+      githubEnterpriseServer: map['githubEnterpriseServer'] == null ? null : ((RepositoryAssociationRepositoryGithubEnterpriseServer.fromMap((map['githubEnterpriseServer']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : ((RepositoryAssociationRepositoryS3Bucket.fromMap((map['s3Bucket']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

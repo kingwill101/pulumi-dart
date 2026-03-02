@@ -45,9 +45,9 @@ class BuildServiceAgentPoolArgs {
 
   factory BuildServiceAgentPoolArgs.fromMap(Map<String, dynamic> map) {
     return BuildServiceAgentPoolArgs(
-      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName'] as String).input(),
+      agentPoolName: map['agentPoolName'] == null ? null : (map['agentPoolName']! as String).input(),
       buildServiceName: (map['buildServiceName'] as String).input(),
-      properties: map['properties'] == null ? null : (BuildServiceAgentPoolProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (BuildServiceAgentPoolProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

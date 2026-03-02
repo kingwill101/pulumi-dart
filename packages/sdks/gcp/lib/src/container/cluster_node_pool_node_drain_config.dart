@@ -20,7 +20,7 @@ class ClusterNodePoolNodeDrainConfig {
 
   factory ClusterNodePoolNodeDrainConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeDrainConfig(
-      respectPdbDuringNodePoolDeletion: map['respectPdbDuringNodePoolDeletion'] == null ? null : (map['respectPdbDuringNodePoolDeletion'] as bool).input(),
+      respectPdbDuringNodePoolDeletion: map['respectPdbDuringNodePoolDeletion'] == null ? null : (map['respectPdbDuringNodePoolDeletion']! as bool).input(),
     );
   }
 }

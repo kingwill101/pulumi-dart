@@ -36,10 +36,10 @@ class AlertProcessingRuleActionGroupSchedule {
 
   factory AlertProcessingRuleActionGroupSchedule.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleActionGroupSchedule(
-      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom'] as String).input(),
-      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (AlertProcessingRuleActionGroupScheduleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom']! as String).input(),
+      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil']! as String).input(),
+      recurrence: map['recurrence'] == null ? null : (AlertProcessingRuleActionGroupScheduleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

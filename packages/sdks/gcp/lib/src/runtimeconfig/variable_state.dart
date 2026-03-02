@@ -55,12 +55,12 @@ class VariableState {
 
   factory VariableState.fromMap(Map<String, dynamic> map) {
     return VariableState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

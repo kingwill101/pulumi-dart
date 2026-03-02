@@ -37,10 +37,10 @@ class ConfigDiagnosticsValidatorResult {
 
   factory ConfigDiagnosticsValidatorResult.fromMap(Map<String, dynamic> map) {
     return ConfigDiagnosticsValidatorResult(
-      issues: map['issues'] == null ? null : (pulumi.Input.decodeList<ConfigDiagnosticsValidatorResultIssue>(map['issues'], (value) => ConfigDiagnosticsValidatorResultIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaSetSubnetDisplayName: map['replicaSetSubnetDisplayName'] == null ? null : (map['replicaSetSubnetDisplayName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      validatorId: map['validatorId'] == null ? null : (map['validatorId'] as String).input(),
+      issues: map['issues'] == null ? null : (pulumi.Input.decodeList<ConfigDiagnosticsValidatorResultIssue>(map['issues']!, (value) => ConfigDiagnosticsValidatorResultIssue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      replicaSetSubnetDisplayName: map['replicaSetSubnetDisplayName'] == null ? null : (map['replicaSetSubnetDisplayName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      validatorId: map['validatorId'] == null ? null : (map['validatorId']! as String).input(),
     );
   }
 }

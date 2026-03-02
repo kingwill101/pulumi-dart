@@ -56,13 +56,13 @@ class ShareAccessState {
 
   factory ShareAccessState.fromMap(Map<String, dynamic> map) {
     return ShareAccessState(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel'] as String).input(),
-      accessTo: map['accessTo'] == null ? null : (map['accessTo'] as String).input(),
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      accessLevel: map['accessLevel'] == null ? null : (map['accessLevel']! as String).input(),
+      accessTo: map['accessTo'] == null ? null : (map['accessTo']! as String).input(),
+      accessType: map['accessType'] == null ? null : (map['accessType']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

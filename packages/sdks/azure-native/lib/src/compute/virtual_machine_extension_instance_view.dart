@@ -42,11 +42,11 @@ class VirtualMachineExtensionInstanceView {
 
   factory VirtualMachineExtensionInstanceView.fromMap(Map<String, dynamic> map) {
     return VirtualMachineExtensionInstanceView(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatus>(map['statuses'], (value) => InstanceViewStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      substatuses: map['substatuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatus>(map['substatuses'], (value) => InstanceViewStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatus>(map['statuses']!, (value) => InstanceViewStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      substatuses: map['substatuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatus>(map['substatuses']!, (value) => InstanceViewStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

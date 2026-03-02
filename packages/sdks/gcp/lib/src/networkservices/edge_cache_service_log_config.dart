@@ -26,8 +26,8 @@ class EdgeCacheServiceLogConfig {
 
   factory EdgeCacheServiceLogConfig.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceLogConfig(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate']! as double).input(),
     );
   }
 }

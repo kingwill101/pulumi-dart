@@ -27,8 +27,8 @@ class CookieExpiration {
 
   factory CookieExpiration.fromMap(Map<String, dynamic> map) {
     return CookieExpiration(
-      convention: map['convention'] == null ? null : (CookieExpirationConvention.fromValue(map['convention'] as String)).input(),
-      timeToExpiration: map['timeToExpiration'] == null ? null : (map['timeToExpiration'] as String).input(),
+      convention: map['convention'] == null ? null : (CookieExpirationConvention.fromValue(map['convention']! as String)).input(),
+      timeToExpiration: map['timeToExpiration'] == null ? null : (map['timeToExpiration']! as String).input(),
     );
   }
 }

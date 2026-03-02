@@ -20,7 +20,7 @@ class AllowedImagesSettingsImageCriterionCreationDateCondition {
 
   factory AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsImageCriterionCreationDateCondition(
-      maximumDaysSinceCreated: map['maximumDaysSinceCreated'] == null ? null : (map['maximumDaysSinceCreated'] as int).input(),
+      maximumDaysSinceCreated: map['maximumDaysSinceCreated'] == null ? null : ((map['maximumDaysSinceCreated'] as int).input()).input(),
     );
   }
 }

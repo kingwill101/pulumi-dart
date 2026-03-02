@@ -64,13 +64,13 @@ class GetAmiIdsArgs {
 
   factory GetAmiIdsArgs.fromMap(Map<String, dynamic> map) {
     return GetAmiIdsArgs(
-      executableUsers: map['executableUsers'] == null ? null : ((map['executableUsers'] as List).cast<String>()).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters'], (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      executableUsers: map['executableUsers'] == null ? null : (((map['executableUsers'] as List).cast<String>()).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetAmiIdsFilter>(map['filters']!, (value) => GetAmiIdsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : ((map['includeDeprecated'] as bool).input()).input(),
+      nameRegex: map['nameRegex'] == null ? null : ((map['nameRegex'] as String).input()).input(),
       owners: ((map['owners'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sortAscending: map['sortAscending'] == null ? null : (map['sortAscending'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sortAscending: map['sortAscending'] == null ? null : ((map['sortAscending'] as bool).input()).input(),
     );
   }
 }

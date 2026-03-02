@@ -64,13 +64,13 @@ class ExampleArgs {
   factory ExampleArgs.fromMap(Map<String, dynamic> map) {
     return ExampleArgs(
       app: (map['app'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent'] as String).input(),
+      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent']! as String).input(),
       exampleId: (map['exampleId'] as String).input(),
       location: (map['location'] as String).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ExampleMessage>(map['messages'], (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<ExampleMessage>(map['messages']!, (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

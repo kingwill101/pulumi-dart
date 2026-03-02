@@ -92,18 +92,18 @@ class GetGalleryResult {
   factory GetGalleryResult.fromMap(Map<String, dynamic> map) {
     return GetGalleryResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      identifier: map['identifier'] == null ? null : GalleryIdentifierResponse.fromMap((map['identifier'] as Map).cast<String, dynamic>()),
-      identity: map['identity'] == null ? null : GalleryIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identifier: map['identifier'] == null ? null : GalleryIdentifierResponse.fromMap((map['identifier']! as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : GalleryIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sharingProfile: map['sharingProfile'] == null ? null : SharingProfileResponse.fromMap((map['sharingProfile'] as Map).cast<String, dynamic>()),
+      sharingProfile: map['sharingProfile'] == null ? null : SharingProfileResponse.fromMap((map['sharingProfile']! as Map).cast<String, dynamic>()),
       sharingStatus: SharingStatusResponse.fromMap((map['sharingStatus'] as Map).cast<String, dynamic>()),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : SoftDeletePolicyResponse.fromMap((map['softDeletePolicy'] as Map).cast<String, dynamic>()),
+      softDeletePolicy: map['softDeletePolicy'] == null ? null : SoftDeletePolicyResponse.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

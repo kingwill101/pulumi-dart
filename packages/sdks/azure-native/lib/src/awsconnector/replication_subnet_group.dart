@@ -47,12 +47,12 @@ class ReplicationSubnetGroup {
 
   factory ReplicationSubnetGroup.fromMap(Map<String, dynamic> map) {
     return ReplicationSubnetGroup(
-      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : (map['replicationSubnetGroupDescription'] as String).input(),
-      replicationSubnetGroupIdentifier: map['replicationSubnetGroupIdentifier'] == null ? null : (map['replicationSubnetGroupIdentifier'] as String).input(),
-      subnetGroupStatus: map['subnetGroupStatus'] == null ? null : (map['subnetGroupStatus'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      supportedNetworkTypes: map['supportedNetworkTypes'] == null ? null : ((map['supportedNetworkTypes'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      replicationSubnetGroupDescription: map['replicationSubnetGroupDescription'] == null ? null : (map['replicationSubnetGroupDescription']! as String).input(),
+      replicationSubnetGroupIdentifier: map['replicationSubnetGroupIdentifier'] == null ? null : (map['replicationSubnetGroupIdentifier']! as String).input(),
+      subnetGroupStatus: map['subnetGroupStatus'] == null ? null : (map['subnetGroupStatus']! as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets']!, (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      supportedNetworkTypes: map['supportedNetworkTypes'] == null ? null : ((map['supportedNetworkTypes']! as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

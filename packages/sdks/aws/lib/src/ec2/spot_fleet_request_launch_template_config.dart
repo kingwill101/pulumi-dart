@@ -27,8 +27,8 @@ class SpotFleetRequestLaunchTemplateConfig {
 
   factory SpotFleetRequestLaunchTemplateConfig.fromMap(Map<String, dynamic> map) {
     return SpotFleetRequestLaunchTemplateConfig(
-      launchTemplateSpecification: (SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification'] as Map).cast<String, dynamic>())).input(),
-      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfigOverride>(map['overrides'], (value) => SpotFleetRequestLaunchTemplateConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchTemplateSpecification: (SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification.fromMap((map['launchTemplateSpecification']! as Map).cast<String, dynamic>())).input(),
+      overrides: map['overrides'] == null ? null : ((pulumi.Input.decodeList<SpotFleetRequestLaunchTemplateConfigOverride>(map['overrides']!, (value) => SpotFleetRequestLaunchTemplateConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

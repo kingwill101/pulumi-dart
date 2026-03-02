@@ -41,11 +41,11 @@ class UserIdentity {
 
   factory UserIdentity.fromMap(Map<String, dynamic> map) {
     return UserIdentity(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalName: map['principalName'] == null ? null : (map['principalName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalName: map['principalName'] == null ? null : (map['principalName']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

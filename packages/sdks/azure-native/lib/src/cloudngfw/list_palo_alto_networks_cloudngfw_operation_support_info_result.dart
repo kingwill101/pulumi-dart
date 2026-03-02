@@ -90,21 +90,21 @@ class ListPaloAltoNetworksCloudngfwOperationSupportInfoResult {
 
   factory ListPaloAltoNetworksCloudngfwOperationSupportInfoResult.fromMap(Map<String, dynamic> map) {
     return ListPaloAltoNetworksCloudngfwOperationSupportInfoResult(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
-      accountRegistrationStatus: map['accountRegistrationStatus'] == null ? null : map['accountRegistrationStatus'] as String,
-      credits: map['credits'] == null ? null : map['credits'] as int,
-      endDateForCredits: map['endDateForCredits'] == null ? null : map['endDateForCredits'] as String,
-      freeTrial: map['freeTrial'] == null ? null : map['freeTrial'] as String,
-      freeTrialCreditLeft: map['freeTrialCreditLeft'] == null ? null : map['freeTrialCreditLeft'] as int,
-      freeTrialDaysLeft: map['freeTrialDaysLeft'] == null ? null : map['freeTrialDaysLeft'] as int,
-      helpURL: map['helpURL'] == null ? null : map['helpURL'] as String,
-      hubUrl: map['hubUrl'] == null ? null : map['hubUrl'] as String,
-      monthlyCreditLeft: map['monthlyCreditLeft'] == null ? null : map['monthlyCreditLeft'] as int,
-      productSerial: map['productSerial'] == null ? null : map['productSerial'] as String,
-      productSku: map['productSku'] == null ? null : map['productSku'] as String,
-      registerURL: map['registerURL'] == null ? null : map['registerURL'] as String,
-      startDateForCredits: map['startDateForCredits'] == null ? null : map['startDateForCredits'] as String,
-      supportURL: map['supportURL'] == null ? null : map['supportURL'] as String,
+      accountId: map['accountId'] == null ? null : map['accountId']! as String,
+      accountRegistrationStatus: map['accountRegistrationStatus'] == null ? null : map['accountRegistrationStatus']! as String,
+      credits: map['credits'] == null ? null : map['credits']! as int,
+      endDateForCredits: map['endDateForCredits'] == null ? null : map['endDateForCredits']! as String,
+      freeTrial: map['freeTrial'] == null ? null : map['freeTrial']! as String,
+      freeTrialCreditLeft: map['freeTrialCreditLeft'] == null ? null : map['freeTrialCreditLeft']! as int,
+      freeTrialDaysLeft: map['freeTrialDaysLeft'] == null ? null : map['freeTrialDaysLeft']! as int,
+      helpURL: map['helpURL'] == null ? null : map['helpURL']! as String,
+      hubUrl: map['hubUrl'] == null ? null : map['hubUrl']! as String,
+      monthlyCreditLeft: map['monthlyCreditLeft'] == null ? null : map['monthlyCreditLeft']! as int,
+      productSerial: map['productSerial'] == null ? null : map['productSerial']! as String,
+      productSku: map['productSku'] == null ? null : map['productSku']! as String,
+      registerURL: map['registerURL'] == null ? null : map['registerURL']! as String,
+      startDateForCredits: map['startDateForCredits'] == null ? null : map['startDateForCredits']! as String,
+      supportURL: map['supportURL'] == null ? null : map['supportURL']! as String,
     );
   }
 }

@@ -50,8 +50,8 @@ class HuntRelationArgs {
   factory HuntRelationArgs.fromMap(Map<String, dynamic> map) {
     return HuntRelationArgs(
       huntId: (map['huntId'] as String).input(),
-      huntRelationId: map['huntRelationId'] == null ? null : (map['huntRelationId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as List).cast<String>()).input(),
+      huntRelationId: map['huntRelationId'] == null ? null : (map['huntRelationId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as List).cast<String>()).input(),
       relatedResourceId: (map['relatedResourceId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

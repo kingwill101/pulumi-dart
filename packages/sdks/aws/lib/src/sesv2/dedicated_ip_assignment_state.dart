@@ -31,9 +31,9 @@ class DedicatedIpAssignmentState {
 
   factory DedicatedIpAssignmentState.fromMap(Map<String, dynamic> map) {
     return DedicatedIpAssignmentState(
-      destinationPoolName: map['destinationPoolName'] == null ? null : (map['destinationPoolName'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      destinationPoolName: map['destinationPoolName'] == null ? null : ((map['destinationPoolName'] as String).input()).input(),
+      ip: map['ip'] == null ? null : ((map['ip'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

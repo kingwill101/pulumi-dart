@@ -26,8 +26,8 @@ class Image {
 
   factory Image.fromMap(Map<String, dynamic> map) {
     return Image(
-      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri'] as String).input(),
-      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes'] as String).input(),
+      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri']! as String).input(),
+      rawBytes: map['rawBytes'] == null ? null : (map['rawBytes']! as String).input(),
     );
   }
 }

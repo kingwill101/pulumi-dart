@@ -21,7 +21,7 @@ class SubnetProperties {
 
   factory SubnetProperties.fromMap(Map<String, dynamic> map) {
     return SubnetProperties(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

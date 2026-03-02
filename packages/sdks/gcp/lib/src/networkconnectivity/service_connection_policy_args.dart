@@ -66,13 +66,13 @@ class ServiceConnectionPolicyArgs {
 
   factory ServiceConnectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pscConfig: map['pscConfig'] == null ? null : (ServiceConnectionPolicyPscConfig.fromMap((map['pscConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pscConfig: map['pscConfig'] == null ? null : (ServiceConnectionPolicyPscConfig.fromMap((map['pscConfig']! as Map).cast<String, dynamic>())).input(),
       serviceClass: (map['serviceClass'] as String).input(),
     );
   }

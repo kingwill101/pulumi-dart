@@ -38,10 +38,10 @@ class DomainLaunchSecurity {
 
   factory DomainLaunchSecurity.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecurity(
-      s390pv: map['s390pv'] == null ? null : (map['s390pv'] as bool).input(),
-      sev: map['sev'] == null ? null : (DomainLaunchSecuritySev.fromMap((map['sev'] as Map).cast<String, dynamic>())).input(),
-      sevsnp: map['sevsnp'] == null ? null : (DomainLaunchSecuritySevsnp.fromMap((map['sevsnp'] as Map).cast<String, dynamic>())).input(),
-      tdx: map['tdx'] == null ? null : (DomainLaunchSecurityTdx.fromMap((map['tdx'] as Map).cast<String, dynamic>())).input(),
+      s390pv: map['s390pv'] == null ? null : (map['s390pv']! as bool).input(),
+      sev: map['sev'] == null ? null : (DomainLaunchSecuritySev.fromMap((map['sev']! as Map).cast<String, dynamic>())).input(),
+      sevsnp: map['sevsnp'] == null ? null : (DomainLaunchSecuritySevsnp.fromMap((map['sevsnp']! as Map).cast<String, dynamic>())).input(),
+      tdx: map['tdx'] == null ? null : (DomainLaunchSecurityTdx.fromMap((map['tdx']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

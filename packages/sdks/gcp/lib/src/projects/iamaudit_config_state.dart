@@ -38,10 +38,10 @@ class IAMAuditConfigState {
 
   factory IAMAuditConfigState.fromMap(Map<String, dynamic> map) {
     return IAMAuditConfigState(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(map['auditLogConfigs']!, (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

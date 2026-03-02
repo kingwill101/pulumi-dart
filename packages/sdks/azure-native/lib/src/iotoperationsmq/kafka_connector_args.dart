@@ -89,19 +89,19 @@ class KafkaConnectorArgs {
 
   factory KafkaConnectorArgs.fromMap(Map<String, dynamic> map) {
     return KafkaConnectorArgs(
-      clientIdPrefix: map['clientIdPrefix'] == null ? null : (map['clientIdPrefix'] as String).input(),
+      clientIdPrefix: map['clientIdPrefix'] == null ? null : (map['clientIdPrefix']! as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (ContainerImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      instances: map['instances'] == null ? null : (map['instances'] as int).input(),
+      image: map['image'] == null ? null : (ContainerImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      instances: map['instances'] == null ? null : (map['instances']! as int).input(),
       kafkaConnection: (KafkaRemoteBrokerConnectionSpec.fromMap((map['kafkaConnection'] as Map).cast<String, dynamic>())).input(),
-      kafkaConnectorName: map['kafkaConnectorName'] == null ? null : (map['kafkaConnectorName'] as String).input(),
-      localBrokerConnection: map['localBrokerConnection'] == null ? null : (LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      kafkaConnectorName: map['kafkaConnectorName'] == null ? null : (map['kafkaConnectorName']! as String).input(),
+      localBrokerConnection: map['localBrokerConnection'] == null ? null : (LocalBrokerConnectionSpec.fromMap((map['localBrokerConnection']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (map['logLevel']! as String).input(),
       mqName: (map['mqName'] as String).input(),
-      nodeTolerations: map['nodeTolerations'] == null ? null : (NodeTolerations.fromMap((map['nodeTolerations'] as Map).cast<String, dynamic>())).input(),
+      nodeTolerations: map['nodeTolerations'] == null ? null : (NodeTolerations.fromMap((map['nodeTolerations']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

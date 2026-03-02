@@ -47,12 +47,12 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      deviceProperties: map['deviceProperties'] == null ? null : (pulumi.Input.decodeList<DeviceDeviceProperty>(map['deviceProperties'], (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      deviceProperties: map['deviceProperties'] == null ? null : (pulumi.Input.decodeList<DeviceDeviceProperty>(map['deviceProperties']!, (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

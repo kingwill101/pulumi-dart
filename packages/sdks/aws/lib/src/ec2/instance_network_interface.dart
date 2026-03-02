@@ -35,9 +35,9 @@ class InstanceNetworkInterface {
 
   factory InstanceNetworkInterface.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
       deviceIndex: (map['deviceIndex'] as int).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
     );
   }

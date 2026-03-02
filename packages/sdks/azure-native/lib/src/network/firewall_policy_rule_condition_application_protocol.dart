@@ -26,8 +26,8 @@ class FirewallPolicyRuleConditionApplicationProtocol {
 
   factory FirewallPolicyRuleConditionApplicationProtocol.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleConditionApplicationProtocol(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocolType: map['protocolType'] == null ? null : (map['protocolType'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocolType: map['protocolType'] == null ? null : (map['protocolType']! as String).input(),
     );
   }
 }

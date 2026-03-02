@@ -36,7 +36,7 @@ class NamespaceArgs {
     return NamespaceArgs(
       autoCreate: (map['autoCreate'] as bool).input(),
       defaultVisibility: (map['defaultVisibility'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

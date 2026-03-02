@@ -47,12 +47,12 @@ class ObfuscationRuleState {
 
   factory ObfuscationRuleState.fromMap(Map<String, dynamic> map) {
     return ObfuscationRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ObfuscationRuleAction>(map['actions'], (value) => ObfuscationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ObfuscationRuleAction>(map['actions']!, (value) => ObfuscationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -45,9 +45,9 @@ class GetBgpNetworksResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       networks: pulumi.Input.decodeList<GetBgpNetworksNetwork>(map['networks'], (value) => GetBgpNetworksNetwork.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      routerId: map['routerId'] == null ? null : map['routerId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      routerId: map['routerId'] == null ? null : map['routerId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

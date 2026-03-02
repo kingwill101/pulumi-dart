@@ -100,21 +100,21 @@ class VpnConnectionState {
 
   factory VpnConnectionState.fromMap(Map<String, dynamic> map) {
     return VpnConnectionState(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetail>(map['details'], (value) => VpnConnectionDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      enableHighAvailability: map['enableHighAvailability'] == null ? null : (map['enableHighAvailability'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      natGatewayIp: map['natGatewayIp'] == null ? null : (map['natGatewayIp'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      router: map['router'] == null ? null : (map['router'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
-      vpcProject: map['vpcProject'] == null ? null : (VpnConnectionVpcProject.fromMap((map['vpcProject'] as Map).cast<String, dynamic>())).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetail>(map['details']!, (value) => VpnConnectionDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      enableHighAvailability: map['enableHighAvailability'] == null ? null : (map['enableHighAvailability']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      natGatewayIp: map['natGatewayIp'] == null ? null : (map['natGatewayIp']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      router: map['router'] == null ? null : (map['router']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
+      vpcProject: map['vpcProject'] == null ? null : (VpnConnectionVpcProject.fromMap((map['vpcProject']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

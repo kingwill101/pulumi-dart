@@ -45,11 +45,11 @@ class PatchDeploymentInstanceFilter {
 
   factory PatchDeploymentInstanceFilter.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentInstanceFilter(
-      all: map['all'] == null ? null : (map['all'] as bool).input(),
-      groupLabels: map['groupLabels'] == null ? null : (pulumi.Input.decodeList<PatchDeploymentInstanceFilterGroupLabel>(map['groupLabels'], (value) => PatchDeploymentInstanceFilterGroupLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceNamePrefixes: map['instanceNamePrefixes'] == null ? null : ((map['instanceNamePrefixes'] as List).cast<String>()).input(),
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (map['all']! as bool).input(),
+      groupLabels: map['groupLabels'] == null ? null : (pulumi.Input.decodeList<PatchDeploymentInstanceFilterGroupLabel>(map['groupLabels']!, (value) => PatchDeploymentInstanceFilterGroupLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceNamePrefixes: map['instanceNamePrefixes'] == null ? null : ((map['instanceNamePrefixes']! as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class PolicyViolationResponse {
 
   factory PolicyViolationResponse.fromMap(Map<String, dynamic> map) {
     return PolicyViolationResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      details: map['details'] == null ? null : (map['details'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      details: map['details'] == null ? null : (map['details']! as String).input(),
     );
   }
 }

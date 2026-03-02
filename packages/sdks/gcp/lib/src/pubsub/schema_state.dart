@@ -45,10 +45,10 @@ class SchemaState {
 
   factory SchemaState.fromMap(Map<String, dynamic> map) {
     return SchemaState(
-      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      definition: map['definition'] == null ? null : (map['definition']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

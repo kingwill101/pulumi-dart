@@ -64,14 +64,14 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeResourceTags: map['excludeResourceTags'] == null ? null : (pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags'], (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lockConfiguration: map['lockConfiguration'] == null ? null : (RuleLockConfiguration.fromMap((map['lockConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceTags: map['resourceTags'] == null ? null : (pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags'], (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      excludeResourceTags: map['excludeResourceTags'] == null ? null : ((pulumi.Input.decodeList<RuleExcludeResourceTag>(map['excludeResourceTags']!, (value) => RuleExcludeResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      lockConfiguration: map['lockConfiguration'] == null ? null : ((RuleLockConfiguration.fromMap((map['lockConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((pulumi.Input.decodeList<RuleResourceTag>(map['resourceTags']!, (value) => RuleResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
-      retentionPeriod: (RuleRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      retentionPeriod: (RuleRetentionPeriod.fromMap((map['retentionPeriod']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

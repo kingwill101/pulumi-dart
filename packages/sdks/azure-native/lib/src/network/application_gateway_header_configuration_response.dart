@@ -32,9 +32,9 @@ class ApplicationGatewayHeaderConfigurationResponse {
 
   factory ApplicationGatewayHeaderConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHeaderConfigurationResponse(
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
-      headerValue: map['headerValue'] == null ? null : (map['headerValue'] as String).input(),
-      headerValueMatcher: map['headerValueMatcher'] == null ? null : (HeaderValueMatcherResponse.fromMap((map['headerValueMatcher'] as Map).cast<String, dynamic>())).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
+      headerValue: map['headerValue'] == null ? null : (map['headerValue']! as String).input(),
+      headerValueMatcher: map['headerValueMatcher'] == null ? null : (HeaderValueMatcherResponse.fromMap((map['headerValueMatcher']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

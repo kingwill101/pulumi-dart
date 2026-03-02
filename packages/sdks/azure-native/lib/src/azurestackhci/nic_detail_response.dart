@@ -61,15 +61,15 @@ class NicDetailResponse {
 
   factory NicDetailResponse.fromMap(Map<String, dynamic> map) {
     return NicDetailResponse(
-      adapterName: map['adapterName'] == null ? null : (map['adapterName'] as String).input(),
-      componentId: map['componentId'] == null ? null : (map['componentId'] as String).input(),
-      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway'] as String).input(),
-      defaultIsolationId: map['defaultIsolationId'] == null ? null : (map['defaultIsolationId'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion'] as String).input(),
-      interfaceDescription: map['interfaceDescription'] == null ? null : (map['interfaceDescription'] as String).input(),
-      ip4Address: map['ip4Address'] == null ? null : (map['ip4Address'] as String).input(),
-      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask'] as String).input(),
+      adapterName: map['adapterName'] == null ? null : (map['adapterName']! as String).input(),
+      componentId: map['componentId'] == null ? null : (map['componentId']! as String).input(),
+      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway']! as String).input(),
+      defaultIsolationId: map['defaultIsolationId'] == null ? null : (map['defaultIsolationId']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']! as String).input(),
+      interfaceDescription: map['interfaceDescription'] == null ? null : (map['interfaceDescription']! as String).input(),
+      ip4Address: map['ip4Address'] == null ? null : (map['ip4Address']! as String).input(),
+      subnetMask: map['subnetMask'] == null ? null : (map['subnetMask']! as String).input(),
     );
   }
 }

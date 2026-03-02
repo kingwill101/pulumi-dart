@@ -36,8 +36,8 @@ class WireGroupWireProperties {
   factory WireGroupWireProperties.fromMap(Map<String, dynamic> map) {
     return WireGroupWireProperties(
       bandwidthAllocation: (map['bandwidthAllocation'] as String).input(),
-      bandwidthUnmetered: map['bandwidthUnmetered'] == null ? null : (map['bandwidthUnmetered'] as int).input(),
-      faultResponse: map['faultResponse'] == null ? null : (map['faultResponse'] as String).input(),
+      bandwidthUnmetered: map['bandwidthUnmetered'] == null ? null : (map['bandwidthUnmetered']! as int).input(),
+      faultResponse: map['faultResponse'] == null ? null : (map['faultResponse']! as String).input(),
     );
   }
 }

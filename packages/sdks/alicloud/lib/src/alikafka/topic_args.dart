@@ -63,13 +63,13 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      compactTopic: map['compactTopic'] == null ? null : (map['compactTopic'] as bool).input(),
-      configs: map['configs'] == null ? null : (map['configs'] as String).input(),
+      compactTopic: map['compactTopic'] == null ? null : (map['compactTopic']! as bool).input(),
+      configs: map['configs'] == null ? null : (map['configs']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      localTopic: map['localTopic'] == null ? null : (map['localTopic'] as bool).input(),
-      partitionNum: map['partitionNum'] == null ? null : (map['partitionNum'] as int).input(),
+      localTopic: map['localTopic'] == null ? null : (map['localTopic']! as bool).input(),
+      partitionNum: map['partitionNum'] == null ? null : (map['partitionNum']! as int).input(),
       remark: (map['remark'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       topic: (map['topic'] as String).input(),
     );
   }

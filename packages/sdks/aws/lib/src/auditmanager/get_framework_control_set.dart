@@ -29,7 +29,7 @@ class GetFrameworkControlSet {
 
   factory GetFrameworkControlSet.fromMap(Map<String, dynamic> map) {
     return GetFrameworkControlSet(
-      controls: (pulumi.Input.decodeList<GetFrameworkControlSetControl>(map['controls'], (value) => GetFrameworkControlSetControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      controls: (pulumi.Input.decodeList<GetFrameworkControlSetControl>(map['controls']!, (value) => GetFrameworkControlSetControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
     );

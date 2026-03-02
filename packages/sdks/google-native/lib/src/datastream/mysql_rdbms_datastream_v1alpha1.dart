@@ -22,7 +22,7 @@ class MysqlRdbmsDatastreamV1alpha1 {
 
   factory MysqlRdbmsDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlRdbmsDatastreamV1alpha1(
-      mysqlDatabases: map['mysqlDatabases'] == null ? null : (pulumi.Input.decodeList<MysqlDatabaseDatastreamV1alpha1>(map['mysqlDatabases'], (value) => MysqlDatabaseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mysqlDatabases: map['mysqlDatabases'] == null ? null : (pulumi.Input.decodeList<MysqlDatabaseDatastreamV1alpha1>(map['mysqlDatabases']!, (value) => MysqlDatabaseDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

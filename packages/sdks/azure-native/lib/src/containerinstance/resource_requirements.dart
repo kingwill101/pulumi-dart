@@ -28,7 +28,7 @@ class ResourceRequirements {
 
   factory ResourceRequirements.fromMap(Map<String, dynamic> map) {
     return ResourceRequirements(
-      limits: map['limits'] == null ? null : (ResourceLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      limits: map['limits'] == null ? null : (ResourceLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
       requests: (ResourceRequests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
     );
   }

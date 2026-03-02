@@ -25,7 +25,7 @@ class JobDefinitionEksPropertiesPodPropertiesVolumeSecret {
 
   factory JobDefinitionEksPropertiesPodPropertiesVolumeSecret.fromMap(Map<String, dynamic> map) {
     return JobDefinitionEksPropertiesPodPropertiesVolumeSecret(
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      optional: map['optional'] == null ? null : ((map['optional'] as bool).input()).input(),
       secretName: (map['secretName'] as String).input(),
     );
   }

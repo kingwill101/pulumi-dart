@@ -30,8 +30,8 @@ class ServiceTaskSpecNetworksAdvanced {
 
   factory ServiceTaskSpecNetworksAdvanced.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecNetworksAdvanced(
-      aliases: map['aliases'] == null ? null : ((map['aliases'] as List).cast<String>()).input(),
-      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts'] as List).cast<String>()).input(),
+      aliases: map['aliases'] == null ? null : ((map['aliases']! as List).cast<String>()).input(),
+      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

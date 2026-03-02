@@ -51,11 +51,11 @@ class TrackerArgs {
 
   factory TrackerArgs.fromMap(Map<String, dynamic> map) {
     return TrackerArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      positionFiltering: map['positionFiltering'] == null ? null : (map['positionFiltering'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      positionFiltering: map['positionFiltering'] == null ? null : ((map['positionFiltering'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       trackerName: (map['trackerName'] as String).input(),
     );
   }

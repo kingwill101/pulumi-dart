@@ -46,12 +46,12 @@ class EnvServiceMonitorState {
 
   factory EnvServiceMonitorState.fromMap(Map<String, dynamic> map) {
     return EnvServiceMonitorState(
-      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang'] as String).input(),
-      configYaml: map['configYaml'] == null ? null : (map['configYaml'] as String).input(),
-      envServiceMonitorName: map['envServiceMonitorName'] == null ? null : (map['envServiceMonitorName'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aliyunLang: map['aliyunLang'] == null ? null : (map['aliyunLang']! as String).input(),
+      configYaml: map['configYaml'] == null ? null : (map['configYaml']! as String).input(),
+      envServiceMonitorName: map['envServiceMonitorName'] == null ? null : (map['envServiceMonitorName']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

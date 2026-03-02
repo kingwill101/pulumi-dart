@@ -28,7 +28,7 @@ class IngressServiceBackend {
   factory IngressServiceBackend.fromMap(Map<String, dynamic> map) {
     return IngressServiceBackend(
       name: (map['name'] as String).input(),
-      port: map['port'] == null ? null : (ServiceBackendPort.fromMap((map['port'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (ServiceBackendPort.fromMap((map['port']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

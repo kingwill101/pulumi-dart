@@ -27,7 +27,7 @@ class FieldLevelEncryptionConfigQueryArgProfileConfig {
   factory FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigQueryArgProfileConfig(
       forwardWhenQueryArgProfileIsUnknown: (map['forwardWhenQueryArgProfileIsUnknown'] as bool).input(),
-      queryArgProfiles: map['queryArgProfiles'] == null ? null : (FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles.fromMap((map['queryArgProfiles'] as Map).cast<String, dynamic>())).input(),
+      queryArgProfiles: map['queryArgProfiles'] == null ? null : ((FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfiles.fromMap((map['queryArgProfiles']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

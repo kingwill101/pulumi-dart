@@ -27,8 +27,8 @@ class InstanceGroupManagerInstanceLifecyclePolicyComputeBeta {
 
   factory InstanceGroupManagerInstanceLifecyclePolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyComputeBeta(
-      defaultActionOnFailure: map['defaultActionOnFailure'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta.fromValue(map['defaultActionOnFailure'] as String)).input(),
-      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeBeta.fromValue(map['forceUpdateOnRepair'] as String)).input(),
+      defaultActionOnFailure: map['defaultActionOnFailure'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailureComputeBeta.fromValue(map['defaultActionOnFailure']! as String)).input(),
+      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairComputeBeta.fromValue(map['forceUpdateOnRepair']! as String)).input(),
     );
   }
 }

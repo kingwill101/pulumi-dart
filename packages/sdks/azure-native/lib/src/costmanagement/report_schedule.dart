@@ -33,8 +33,8 @@ class ReportSchedule {
   factory ReportSchedule.fromMap(Map<String, dynamic> map) {
     return ReportSchedule(
       recurrence: (map['recurrence'] as String).input(),
-      recurrencePeriod: map['recurrencePeriod'] == null ? null : (ReportRecurrencePeriod.fromMap((map['recurrencePeriod'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      recurrencePeriod: map['recurrencePeriod'] == null ? null : (ReportRecurrencePeriod.fromMap((map['recurrencePeriod']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

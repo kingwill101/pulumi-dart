@@ -27,8 +27,8 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettings {
 
   factory DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap(Map<String, dynamic> map) {
     return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings(
-      connectionPasswordEncryption: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption.fromMap((map['connectionPasswordEncryption'] as Map).cast<String, dynamic>())).input(),
-      encryptionAtRest: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest.fromMap((map['encryptionAtRest'] as Map).cast<String, dynamic>())).input(),
+      connectionPasswordEncryption: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption.fromMap((map['connectionPasswordEncryption']! as Map).cast<String, dynamic>())).input(),
+      encryptionAtRest: (DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest.fromMap((map['encryptionAtRest']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

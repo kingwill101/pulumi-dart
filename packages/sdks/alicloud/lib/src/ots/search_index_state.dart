@@ -63,15 +63,15 @@ class SearchIndexState {
 
   factory SearchIndexState.fromMap(Map<String, dynamic> map) {
     return SearchIndexState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      currentSyncTimestamp: map['currentSyncTimestamp'] == null ? null : (map['currentSyncTimestamp'] as int).input(),
-      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchema>(map['schemas'], (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      syncPhase: map['syncPhase'] == null ? null : (map['syncPhase'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      currentSyncTimestamp: map['currentSyncTimestamp'] == null ? null : (map['currentSyncTimestamp']! as int).input(),
+      indexId: map['indexId'] == null ? null : (map['indexId']! as String).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<SearchIndexSchema>(map['schemas']!, (value) => SearchIndexSchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syncPhase: map['syncPhase'] == null ? null : (map['syncPhase']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

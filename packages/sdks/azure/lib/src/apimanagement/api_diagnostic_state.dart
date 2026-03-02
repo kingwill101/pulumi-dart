@@ -95,21 +95,21 @@ class ApiDiagnosticState {
 
   factory ApiDiagnosticState.fromMap(Map<String, dynamic> map) {
     return ApiDiagnosticState(
-      alwaysLogErrors: map['alwaysLogErrors'] == null ? null : (map['alwaysLogErrors'] as bool).input(),
-      apiManagementLoggerId: map['apiManagementLoggerId'] == null ? null : (map['apiManagementLoggerId'] as String).input(),
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
-      backendRequest: map['backendRequest'] == null ? null : (ApiDiagnosticBackendRequest.fromMap((map['backendRequest'] as Map).cast<String, dynamic>())).input(),
-      backendResponse: map['backendResponse'] == null ? null : (ApiDiagnosticBackendResponse.fromMap((map['backendResponse'] as Map).cast<String, dynamic>())).input(),
-      frontendRequest: map['frontendRequest'] == null ? null : (ApiDiagnosticFrontendRequest.fromMap((map['frontendRequest'] as Map).cast<String, dynamic>())).input(),
-      frontendResponse: map['frontendResponse'] == null ? null : (ApiDiagnosticFrontendResponse.fromMap((map['frontendResponse'] as Map).cast<String, dynamic>())).input(),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol'] as String).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp'] as bool).input(),
-      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as double).input(),
-      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as String).input(),
+      alwaysLogErrors: map['alwaysLogErrors'] == null ? null : (map['alwaysLogErrors']! as bool).input(),
+      apiManagementLoggerId: map['apiManagementLoggerId'] == null ? null : (map['apiManagementLoggerId']! as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
+      backendRequest: map['backendRequest'] == null ? null : (ApiDiagnosticBackendRequest.fromMap((map['backendRequest']! as Map).cast<String, dynamic>())).input(),
+      backendResponse: map['backendResponse'] == null ? null : (ApiDiagnosticBackendResponse.fromMap((map['backendResponse']! as Map).cast<String, dynamic>())).input(),
+      frontendRequest: map['frontendRequest'] == null ? null : (ApiDiagnosticFrontendRequest.fromMap((map['frontendRequest']! as Map).cast<String, dynamic>())).input(),
+      frontendResponse: map['frontendResponse'] == null ? null : (ApiDiagnosticFrontendResponse.fromMap((map['frontendResponse']! as Map).cast<String, dynamic>())).input(),
+      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol']! as String).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
+      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp']! as bool).input(),
+      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage']! as double).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity']! as String).input(),
     );
   }
 }

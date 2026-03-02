@@ -23,7 +23,7 @@ class GetAccountAliasesArgs {
 
   factory GetAccountAliasesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAliasesArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

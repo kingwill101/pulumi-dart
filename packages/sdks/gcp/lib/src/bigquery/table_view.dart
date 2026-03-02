@@ -32,7 +32,7 @@ class TableView {
   factory TableView.fromMap(Map<String, dynamic> map) {
     return TableView(
       query: (map['query'] as String).input(),
-      useLegacySql: map['useLegacySql'] == null ? null : (map['useLegacySql'] as bool).input(),
+      useLegacySql: map['useLegacySql'] == null ? null : (map['useLegacySql']! as bool).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class AnalyzerConfigurationInternalAccessAnalysisRuleInclusion {
 
   factory AnalyzerConfigurationInternalAccessAnalysisRuleInclusion.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationInternalAccessAnalysisRuleInclusion(
-      accountIds: map['accountIds'] == null ? null : ((map['accountIds'] as List).cast<String>()).input(),
-      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      accountIds: map['accountIds'] == null ? null : (((map['accountIds'] as List).cast<String>()).input()).input(),
+      resourceArns: map['resourceArns'] == null ? null : (((map['resourceArns'] as List).cast<String>()).input()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

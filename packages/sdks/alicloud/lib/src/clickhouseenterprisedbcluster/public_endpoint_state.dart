@@ -32,9 +32,9 @@ class PublicEndpointState {
 
   factory PublicEndpointState.fromMap(Map<String, dynamic> map) {
     return PublicEndpointState(
-      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
+      connectionStringPrefix: map['connectionStringPrefix'] == null ? null : (map['connectionStringPrefix']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
     );
   }
 }

@@ -66,9 +66,9 @@ class ApiConfigIamMemberArgs {
     return ApiConfigIamMemberArgs(
       api: (map['api'] as String).input(),
       apiConfig: (map['apiConfig'] as String).input(),
-      condition: map['condition'] == null ? null : (ApiConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ApiConfigIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

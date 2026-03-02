@@ -90,18 +90,18 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : (map['acceleratedNetworkingEnabled'] as bool).input(),
-      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode'] as String).input(),
-      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone'] as String).input(),
-      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : (map['internalDnsNameLabel'] as String).input(),
+      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : (map['acceleratedNetworkingEnabled']! as bool).input(),
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : (map['auxiliaryMode']! as String).input(),
+      auxiliarySku: map['auxiliarySku'] == null ? null : (map['auxiliarySku']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone']! as String).input(),
+      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : (map['internalDnsNameLabel']! as String).input(),
       ipConfigurations: (pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipForwardingEnabled: map['ipForwardingEnabled'] == null ? null : (map['ipForwardingEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ipForwardingEnabled: map['ipForwardingEnabled'] == null ? null : (map['ipForwardingEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

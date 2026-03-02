@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig {
 
   factory GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig(
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate'] as double).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudAiplatformV1BigQueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate']! as double).input(),
     );
   }
 }

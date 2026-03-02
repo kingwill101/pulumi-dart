@@ -21,7 +21,7 @@ class SseKmsEncryptedObjects {
 
   factory SseKmsEncryptedObjects.fromMap(Map<String, dynamic> map) {
     return SseKmsEncryptedObjects(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

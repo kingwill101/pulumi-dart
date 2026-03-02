@@ -46,7 +46,7 @@ class SecurityMonitoringConditionArgs {
   factory SecurityMonitoringConditionArgs.fromMap(Map<String, dynamic> map) {
     return SecurityMonitoringConditionArgs(
       conditionId: (map['conditionId'] as String).input(),
-      includeAllResources: map['includeAllResources'] == null ? null : ((map['includeAllResources'] as Map).cast<String, dynamic>()).input(),
+      includeAllResources: map['includeAllResources'] == null ? null : ((map['includeAllResources']! as Map).cast<String, dynamic>()).input(),
       orgId: (map['orgId'] as String).input(),
       profile: (map['profile'] as String).input(),
       scope: (map['scope'] as String).input(),

@@ -34,7 +34,7 @@ class VpcEndpointRouteTableAssociationArgs {
 
   factory VpcEndpointRouteTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointRouteTableAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routeTableId: (map['routeTableId'] as String).input(),
       vpcEndpointId: (map['vpcEndpointId'] as String).input(),
     );

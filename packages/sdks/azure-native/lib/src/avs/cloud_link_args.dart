@@ -39,8 +39,8 @@ class CloudLinkArgs {
 
   factory CloudLinkArgs.fromMap(Map<String, dynamic> map) {
     return CloudLinkArgs(
-      cloudLinkName: map['cloudLinkName'] == null ? null : (map['cloudLinkName'] as String).input(),
-      linkedCloud: map['linkedCloud'] == null ? null : (map['linkedCloud'] as String).input(),
+      cloudLinkName: map['cloudLinkName'] == null ? null : (map['cloudLinkName']! as String).input(),
+      linkedCloud: map['linkedCloud'] == null ? null : (map['linkedCloud']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

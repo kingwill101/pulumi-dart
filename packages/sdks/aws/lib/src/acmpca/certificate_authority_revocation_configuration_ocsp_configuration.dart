@@ -26,7 +26,7 @@ class CertificateAuthorityRevocationConfigurationOcspConfiguration {
   factory CertificateAuthorityRevocationConfigurationOcspConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityRevocationConfigurationOcspConfiguration(
       enabled: (map['enabled'] as bool).input(),
-      ocspCustomCname: map['ocspCustomCname'] == null ? null : (map['ocspCustomCname'] as String).input(),
+      ocspCustomCname: map['ocspCustomCname'] == null ? null : ((map['ocspCustomCname'] as String).input()).input(),
     );
   }
 }

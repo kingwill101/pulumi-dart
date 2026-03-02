@@ -29,7 +29,7 @@ class GetObfuscationExpressionArgs {
 
   factory GetObfuscationExpressionArgs.fromMap(Map<String, dynamic> map) {
     return GetObfuscationExpressionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -42,8 +42,8 @@ class InstanceGroupMembershipArgs {
     return InstanceGroupMembershipArgs(
       instance: (map['instance'] as String).input(),
       instanceGroup: (map['instanceGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

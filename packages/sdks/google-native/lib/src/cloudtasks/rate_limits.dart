@@ -26,8 +26,8 @@ class RateLimits {
 
   factory RateLimits.fromMap(Map<String, dynamic> map) {
     return RateLimits(
-      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : (map['maxConcurrentDispatches'] as int).input(),
-      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : (map['maxDispatchesPerSecond'] as double).input(),
+      maxConcurrentDispatches: map['maxConcurrentDispatches'] == null ? null : (map['maxConcurrentDispatches']! as int).input(),
+      maxDispatchesPerSecond: map['maxDispatchesPerSecond'] == null ? null : (map['maxDispatchesPerSecond']! as double).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class GcpOrganizationalDataMember {
 
   factory GcpOrganizationalDataMember.fromMap(Map<String, dynamic> map) {
     return GcpOrganizationalDataMember(
-      managementProjectNumber: map['managementProjectNumber'] == null ? null : (map['managementProjectNumber'] as String).input(),
+      managementProjectNumber: map['managementProjectNumber'] == null ? null : (map['managementProjectNumber']! as String).input(),
       organizationMembershipType: (map['organizationMembershipType'] as String).input(),
-      parentHierarchyId: map['parentHierarchyId'] == null ? null : (map['parentHierarchyId'] as String).input(),
+      parentHierarchyId: map['parentHierarchyId'] == null ? null : (map['parentHierarchyId']! as String).input(),
     );
   }
 }

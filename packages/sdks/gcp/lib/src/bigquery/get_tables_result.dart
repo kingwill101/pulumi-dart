@@ -37,7 +37,7 @@ class GetTablesResult {
     return GetTablesResult(
       datasetId: map['datasetId'] as String,
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       tables: pulumi.Input.decodeList<GetTablesTable>(map['tables'], (value) => GetTablesTable.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

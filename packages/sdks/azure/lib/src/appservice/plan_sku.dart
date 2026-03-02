@@ -30,7 +30,7 @@ class PlanSku {
 
   factory PlanSku.fromMap(Map<String, dynamic> map) {
     return PlanSku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       size: (map['size'] as String).input(),
       tier: (map['tier'] as String).input(),
     );

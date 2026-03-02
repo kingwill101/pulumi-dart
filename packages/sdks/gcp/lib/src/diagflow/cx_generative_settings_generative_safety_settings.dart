@@ -28,8 +28,8 @@ class CxGenerativeSettingsGenerativeSafetySettings {
 
   factory CxGenerativeSettingsGenerativeSafetySettings.fromMap(Map<String, dynamic> map) {
     return CxGenerativeSettingsGenerativeSafetySettings(
-      bannedPhrases: map['bannedPhrases'] == null ? null : (pulumi.Input.decodeList<CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase>(map['bannedPhrases'], (value) => CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultBannedPhraseMatchStrategy: map['defaultBannedPhraseMatchStrategy'] == null ? null : (map['defaultBannedPhraseMatchStrategy'] as String).input(),
+      bannedPhrases: map['bannedPhrases'] == null ? null : (pulumi.Input.decodeList<CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase>(map['bannedPhrases']!, (value) => CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultBannedPhraseMatchStrategy: map['defaultBannedPhraseMatchStrategy'] == null ? null : (map['defaultBannedPhraseMatchStrategy']! as String).input(),
     );
   }
 }

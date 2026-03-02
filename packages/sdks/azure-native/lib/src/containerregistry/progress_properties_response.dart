@@ -20,7 +20,7 @@ class ProgressPropertiesResponse {
 
   factory ProgressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProgressPropertiesResponse(
-      percentage: map['percentage'] == null ? null : (map['percentage'] as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as String).input(),
     );
   }
 }

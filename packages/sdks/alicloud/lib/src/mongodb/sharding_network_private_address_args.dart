@@ -49,8 +49,8 @@ class ShardingNetworkPrivateAddressArgs {
 
   factory ShardingNetworkPrivateAddressArgs.fromMap(Map<String, dynamic> map) {
     return ShardingNetworkPrivateAddressArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       nodeId: (map['nodeId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),

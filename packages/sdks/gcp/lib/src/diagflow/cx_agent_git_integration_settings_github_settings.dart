@@ -41,11 +41,11 @@ class CxAgentGitIntegrationSettingsGithubSettings {
 
   factory CxAgentGitIntegrationSettingsGithubSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentGitIntegrationSettingsGithubSettings(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      branches: map['branches'] == null ? null : ((map['branches'] as List).cast<String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      repositoryUri: map['repositoryUri'] == null ? null : (map['repositoryUri'] as String).input(),
-      trackingBranch: map['trackingBranch'] == null ? null : (map['trackingBranch'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
+      branches: map['branches'] == null ? null : ((map['branches']! as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      repositoryUri: map['repositoryUri'] == null ? null : (map['repositoryUri']! as String).input(),
+      trackingBranch: map['trackingBranch'] == null ? null : (map['trackingBranch']! as String).input(),
     );
   }
 }

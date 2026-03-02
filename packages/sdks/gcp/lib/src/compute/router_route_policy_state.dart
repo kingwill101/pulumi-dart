@@ -56,13 +56,13 @@ class RouterRoutePolicyState {
 
   factory RouterRoutePolicyState.fromMap(Map<String, dynamic> map) {
     return RouterRoutePolicyState(
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      router: map['router'] == null ? null : (map['router'] as String).input(),
-      terms: map['terms'] == null ? null : (pulumi.Input.decodeList<RouterRoutePolicyTerm>(map['terms'], (value) => RouterRoutePolicyTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      router: map['router'] == null ? null : (map['router']! as String).input(),
+      terms: map['terms'] == null ? null : (pulumi.Input.decodeList<RouterRoutePolicyTerm>(map['terms']!, (value) => RouterRoutePolicyTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

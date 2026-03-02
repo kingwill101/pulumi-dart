@@ -31,8 +31,8 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
 
   factory FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig(
-      folderCreationConfig: map['folderCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig.fromMap((map['folderCreationConfig'] as Map).cast<String, dynamic>())).input(),
-      projectCreationConfig: map['projectCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap((map['projectCreationConfig'] as Map).cast<String, dynamic>())).input(),
+      folderCreationConfig: map['folderCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig.fromMap((map['folderCreationConfig']! as Map).cast<String, dynamic>())).input(),
+      projectCreationConfig: map['projectCreationConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfig.fromMap((map['projectCreationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

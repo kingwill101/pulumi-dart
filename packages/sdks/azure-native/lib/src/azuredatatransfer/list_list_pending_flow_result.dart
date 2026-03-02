@@ -27,8 +27,8 @@ class ListListPendingFlowResult {
 
   factory ListListPendingFlowResult.fromMap(Map<String, dynamic> map) {
     return ListListPendingFlowResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<PendingFlowResponse>(map['value'], (value) => PendingFlowResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<PendingFlowResponse>(map['value']!, (value) => PendingFlowResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

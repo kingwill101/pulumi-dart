@@ -34,8 +34,8 @@ class GetVpcLinkArgs {
 
   factory GetVpcLinkArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcLinkArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcLinkId: (map['vpcLinkId'] as String).input(),
     );
   }

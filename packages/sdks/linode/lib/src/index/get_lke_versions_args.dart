@@ -24,7 +24,7 @@ class GetLkeVersionsArgs {
 
   factory GetLkeVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetLkeVersionsArgs(
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

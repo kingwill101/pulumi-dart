@@ -36,10 +36,10 @@ class SecurityGroupAssociationState {
 
   factory SecurityGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return SecurityGroupAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : (map['replaceDefaultAssociation'] as bool).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      vpcEndpointId: map['vpcEndpointId'] == null ? null : (map['vpcEndpointId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      replaceDefaultAssociation: map['replaceDefaultAssociation'] == null ? null : ((map['replaceDefaultAssociation'] as bool).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      vpcEndpointId: map['vpcEndpointId'] == null ? null : ((map['vpcEndpointId'] as String).input()).input(),
     );
   }
 }

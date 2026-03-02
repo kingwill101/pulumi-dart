@@ -51,13 +51,13 @@ class FcTriggerState {
 
   factory FcTriggerState.fromMap(Map<String, dynamic> map) {
     return FcTriggerState(
-      eventMetaName: map['eventMetaName'] == null ? null : (map['eventMetaName'] as String).input(),
-      eventMetaVersion: map['eventMetaVersion'] == null ? null : (map['eventMetaVersion'] as String).input(),
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      triggerArn: map['triggerArn'] == null ? null : (map['triggerArn'] as String).input(),
+      eventMetaName: map['eventMetaName'] == null ? null : (map['eventMetaName']! as String).input(),
+      eventMetaVersion: map['eventMetaVersion'] == null ? null : (map['eventMetaVersion']! as String).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
+      triggerArn: map['triggerArn'] == null ? null : (map['triggerArn']! as String).input(),
     );
   }
 }

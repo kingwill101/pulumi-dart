@@ -40,11 +40,11 @@ class DomainDevicesDiskBackingStoreSourceNetworkIdentity {
 
   factory DomainDevicesDiskBackingStoreSourceNetworkIdentity.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkIdentity(
-      agentSock: map['agentSock'] == null ? null : (map['agentSock'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      keyfile: map['keyfile'] == null ? null : (map['keyfile'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      agentSock: map['agentSock'] == null ? null : (map['agentSock']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      keyfile: map['keyfile'] == null ? null : (map['keyfile']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

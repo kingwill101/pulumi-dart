@@ -38,9 +38,9 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
 
   factory FirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatefulRuleGroupReference(
-      deepThreatInspection: map['deepThreatInspection'] == null ? null : (map['deepThreatInspection'] as String).input(),
-      override: map['override'] == null ? null : (FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((map['override'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      deepThreatInspection: map['deepThreatInspection'] == null ? null : ((map['deepThreatInspection'] as String).input()).input(),
+      override: map['override'] == null ? null : ((FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((map['override']! as Map).cast<String, dynamic>())).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );
   }

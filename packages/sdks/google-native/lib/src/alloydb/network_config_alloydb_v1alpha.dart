@@ -26,8 +26,8 @@ class NetworkConfigAlloydbV1alpha {
 
   factory NetworkConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return NetworkConfigAlloydbV1alpha(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
     );
   }
 }

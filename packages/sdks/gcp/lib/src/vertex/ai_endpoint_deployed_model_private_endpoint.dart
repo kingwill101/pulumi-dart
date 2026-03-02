@@ -39,10 +39,10 @@ class AiEndpointDeployedModelPrivateEndpoint {
 
   factory AiEndpointDeployedModelPrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return AiEndpointDeployedModelPrivateEndpoint(
-      explainHttpUri: map['explainHttpUri'] == null ? null : (map['explainHttpUri'] as String).input(),
-      healthHttpUri: map['healthHttpUri'] == null ? null : (map['healthHttpUri'] as String).input(),
-      predictHttpUri: map['predictHttpUri'] == null ? null : (map['predictHttpUri'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      explainHttpUri: map['explainHttpUri'] == null ? null : (map['explainHttpUri']! as String).input(),
+      healthHttpUri: map['healthHttpUri'] == null ? null : (map['healthHttpUri']! as String).input(),
+      predictHttpUri: map['predictHttpUri'] == null ? null : (map['predictHttpUri']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

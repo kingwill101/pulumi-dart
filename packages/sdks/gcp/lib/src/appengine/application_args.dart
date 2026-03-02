@@ -69,14 +69,14 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      authDomain: map['authDomain'] == null ? null : (map['authDomain'] as String).input(),
-      databaseType: map['databaseType'] == null ? null : (map['databaseType'] as String).input(),
-      featureSettings: map['featureSettings'] == null ? null : (ApplicationFeatureSettings.fromMap((map['featureSettings'] as Map).cast<String, dynamic>())).input(),
-      iap: map['iap'] == null ? null : (ApplicationIap.fromMap((map['iap'] as Map).cast<String, dynamic>())).input(),
+      authDomain: map['authDomain'] == null ? null : (map['authDomain']! as String).input(),
+      databaseType: map['databaseType'] == null ? null : (map['databaseType']! as String).input(),
+      featureSettings: map['featureSettings'] == null ? null : (ApplicationFeatureSettings.fromMap((map['featureSettings']! as Map).cast<String, dynamic>())).input(),
+      iap: map['iap'] == null ? null : (ApplicationIap.fromMap((map['iap']! as Map).cast<String, dynamic>())).input(),
       locationId: (map['locationId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      servingStatus: map['servingStatus'] == null ? null : (map['servingStatus'] as String).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      servingStatus: map['servingStatus'] == null ? null : (map['servingStatus']! as String).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
     );
   }
 }

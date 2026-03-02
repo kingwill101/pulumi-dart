@@ -64,12 +64,12 @@ class VpnServerConfigurationPolicyGroupResponse {
   factory VpnServerConfigurationPolicyGroupResponse.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationPolicyGroupResponse(
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       p2SConnectionConfigurations: (pulumi.Input.decodeList<SubResourceResponse>(map['p2SConnectionConfigurations'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(map['policyMembers'], (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(map['policyMembers']!, (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -20,7 +20,7 @@ class AllowedImagesSettingsImageCriterionDeprecationTimeCondition {
 
   factory AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap(Map<String, dynamic> map) {
     return AllowedImagesSettingsImageCriterionDeprecationTimeCondition(
-      maximumDaysSinceDeprecated: map['maximumDaysSinceDeprecated'] == null ? null : (map['maximumDaysSinceDeprecated'] as int).input(),
+      maximumDaysSinceDeprecated: map['maximumDaysSinceDeprecated'] == null ? null : ((map['maximumDaysSinceDeprecated'] as int).input()).input(),
     );
   }
 }

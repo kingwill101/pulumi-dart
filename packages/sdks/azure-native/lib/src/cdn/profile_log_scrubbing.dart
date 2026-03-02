@@ -27,8 +27,8 @@ class ProfileLogScrubbing {
 
   factory ProfileLogScrubbing.fromMap(Map<String, dynamic> map) {
     return ProfileLogScrubbing(
-      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<ProfileScrubbingRules>(map['scrubbingRules'], (value) => ProfileScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      scrubbingRules: map['scrubbingRules'] == null ? null : (pulumi.Input.decodeList<ProfileScrubbingRules>(map['scrubbingRules']!, (value) => ProfileScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

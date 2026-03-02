@@ -64,15 +64,15 @@ class EcsInstanceSetDataDisk {
 
   factory EcsInstanceSetDataDisk.fromMap(Map<String, dynamic> map) {
     return EcsInstanceSetDataDisk(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId'] as String).input(),
-      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory'] as String).input(),
-      diskDescription: map['diskDescription'] == null ? null : (map['diskDescription'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
+      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId']! as String).input(),
+      diskCategory: map['diskCategory'] == null ? null : (map['diskCategory']! as String).input(),
+      diskDescription: map['diskDescription'] == null ? null : (map['diskDescription']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
       diskSize: (map['diskSize'] as int).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
     );
   }
 }

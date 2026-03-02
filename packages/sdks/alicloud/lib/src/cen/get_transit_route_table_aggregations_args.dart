@@ -49,11 +49,11 @@ class GetTransitRouteTableAggregationsArgs {
 
   factory GetTransitRouteTableAggregationsArgs.fromMap(Map<String, dynamic> map) {
     return GetTransitRouteTableAggregationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : (map['transitRouteTableAggregationCidr']! as String).input(),
       transitRouteTableId: (map['transitRouteTableId'] as String).input(),
     );
   }

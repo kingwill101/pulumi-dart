@@ -46,12 +46,12 @@ class ServiceLinkedRoleState {
 
   factory ServiceLinkedRoleState.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

@@ -87,17 +87,17 @@ class DatabasePostgresqlArgs {
 
   factory DatabasePostgresqlArgs.fromMap(Map<String, dynamic> map) {
     return DatabasePostgresqlArgs(
-      allowLists: map['allowLists'] == null ? null : ((map['allowLists'] as List).cast<String>()).input(),
-      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize'] as int).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
+      allowLists: map['allowLists'] == null ? null : ((map['allowLists']! as List).cast<String>()).input(),
+      clusterSize: map['clusterSize'] == null ? null : (map['clusterSize']! as int).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
       engineId: (map['engineId'] as String).input(),
       label: (map['label'] as String).input(),
       region: (map['region'] as String).input(),
-      replicationCommitType: map['replicationCommitType'] == null ? null : (map['replicationCommitType'] as String).input(),
-      replicationType: map['replicationType'] == null ? null : (map['replicationType'] as String).input(),
-      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection'] as bool).input(),
+      replicationCommitType: map['replicationCommitType'] == null ? null : (map['replicationCommitType']! as String).input(),
+      replicationType: map['replicationType'] == null ? null : (map['replicationType']! as String).input(),
+      sslConnection: map['sslConnection'] == null ? null : (map['sslConnection']! as bool).input(),
       type: (map['type'] as String).input(),
-      updates: map['updates'] == null ? null : (DatabasePostgresqlUpdates.fromMap((map['updates'] as Map).cast<String, dynamic>())).input(),
+      updates: map['updates'] == null ? null : (DatabasePostgresqlUpdates.fromMap((map['updates']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class SBOMReferenceOccurrenceContaineranalysisV1beta1 {
 
   factory SBOMReferenceOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SBOMReferenceOccurrenceContaineranalysisV1beta1(
-      payload: map['payload'] == null ? null : (SbomReferenceIntotoPayloadContaineranalysisV1beta1.fromMap((map['payload'] as Map).cast<String, dynamic>())).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      payload: map['payload'] == null ? null : (SbomReferenceIntotoPayloadContaineranalysisV1beta1.fromMap((map['payload']! as Map).cast<String, dynamic>())).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType']! as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures']!, (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

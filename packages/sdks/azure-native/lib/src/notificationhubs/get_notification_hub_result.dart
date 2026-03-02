@@ -127,26 +127,26 @@ class GetNotificationHubResult {
 
   factory GetNotificationHubResult.fromMap(Map<String, dynamic> map) {
     return GetNotificationHubResult(
-      admCredential: map['admCredential'] == null ? null : AdmCredentialResponse.fromMap((map['admCredential'] as Map).cast<String, dynamic>()),
-      apnsCredential: map['apnsCredential'] == null ? null : ApnsCredentialResponse.fromMap((map['apnsCredential'] as Map).cast<String, dynamic>()),
+      admCredential: map['admCredential'] == null ? null : AdmCredentialResponse.fromMap((map['admCredential']! as Map).cast<String, dynamic>()),
+      apnsCredential: map['apnsCredential'] == null ? null : ApnsCredentialResponse.fromMap((map['apnsCredential']! as Map).cast<String, dynamic>()),
       authorizationRules: pulumi.Input.decodeList<SharedAccessAuthorizationRulePropertiesResponse>(map['authorizationRules'], (value) => SharedAccessAuthorizationRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
-      baiduCredential: map['baiduCredential'] == null ? null : BaiduCredentialResponse.fromMap((map['baiduCredential'] as Map).cast<String, dynamic>()),
-      browserCredential: map['browserCredential'] == null ? null : BrowserCredentialResponse.fromMap((map['browserCredential'] as Map).cast<String, dynamic>()),
+      baiduCredential: map['baiduCredential'] == null ? null : BaiduCredentialResponse.fromMap((map['baiduCredential']! as Map).cast<String, dynamic>()),
+      browserCredential: map['browserCredential'] == null ? null : BrowserCredentialResponse.fromMap((map['browserCredential']! as Map).cast<String, dynamic>()),
       dailyMaxActiveDevices: map['dailyMaxActiveDevices'] as double,
-      fcmV1Credential: map['fcmV1Credential'] == null ? null : FcmV1CredentialResponse.fromMap((map['fcmV1Credential'] as Map).cast<String, dynamic>()),
-      gcmCredential: map['gcmCredential'] == null ? null : GcmCredentialResponse.fromMap((map['gcmCredential'] as Map).cast<String, dynamic>()),
+      fcmV1Credential: map['fcmV1Credential'] == null ? null : FcmV1CredentialResponse.fromMap((map['fcmV1Credential']! as Map).cast<String, dynamic>()),
+      gcmCredential: map['gcmCredential'] == null ? null : GcmCredentialResponse.fromMap((map['gcmCredential']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
-      mpnsCredential: map['mpnsCredential'] == null ? null : MpnsCredentialResponse.fromMap((map['mpnsCredential'] as Map).cast<String, dynamic>()),
+      mpnsCredential: map['mpnsCredential'] == null ? null : MpnsCredentialResponse.fromMap((map['mpnsCredential']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      registrationTtl: map['registrationTtl'] == null ? null : map['registrationTtl'] as String,
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
+      registrationTtl: map['registrationTtl'] == null ? null : map['registrationTtl']! as String,
+      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      wnsCredential: map['wnsCredential'] == null ? null : WnsCredentialResponse.fromMap((map['wnsCredential'] as Map).cast<String, dynamic>()),
-      xiaomiCredential: map['xiaomiCredential'] == null ? null : XiaomiCredentialResponse.fromMap((map['xiaomiCredential'] as Map).cast<String, dynamic>()),
+      wnsCredential: map['wnsCredential'] == null ? null : WnsCredentialResponse.fromMap((map['wnsCredential']! as Map).cast<String, dynamic>()),
+      xiaomiCredential: map['xiaomiCredential'] == null ? null : XiaomiCredentialResponse.fromMap((map['xiaomiCredential']! as Map).cast<String, dynamic>()),
     );
   }
 }

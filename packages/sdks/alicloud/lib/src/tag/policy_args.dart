@@ -40,9 +40,9 @@ class PolicyArgs {
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
       policyContent: (map['policyContent'] as String).input(),
-      policyDesc: map['policyDesc'] == null ? null : (map['policyDesc'] as String).input(),
+      policyDesc: map['policyDesc'] == null ? null : (map['policyDesc']! as String).input(),
       policyName: (map['policyName'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      userType: map['userType'] == null ? null : (map['userType']! as String).input(),
     );
   }
 }

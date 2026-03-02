@@ -20,7 +20,7 @@ class AwsIntegrationsHealth {
 
   factory AwsIntegrationsHealth.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsHealth(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class GetNetworkInterfaceStatusResult {
   factory GetNetworkInterfaceStatusResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceStatusResult(
       administrativeState: map['administrativeState'] as String,
-      connectedTo: map['connectedTo'] == null ? null : map['connectedTo'] as String,
-      operationalStatus: map['operationalStatus'] == null ? null : map['operationalStatus'] as String,
-      phyStatus: map['phyStatus'] == null ? null : map['phyStatus'] as String,
-      transceiverStatus: map['transceiverStatus'] == null ? null : map['transceiverStatus'] as String,
+      connectedTo: map['connectedTo'] == null ? null : map['connectedTo']! as String,
+      operationalStatus: map['operationalStatus'] == null ? null : map['operationalStatus']! as String,
+      phyStatus: map['phyStatus'] == null ? null : map['phyStatus']! as String,
+      transceiverStatus: map['transceiverStatus'] == null ? null : map['transceiverStatus']! as String,
     );
   }
 }

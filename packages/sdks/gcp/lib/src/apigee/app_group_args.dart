@@ -58,13 +58,13 @@ class AppGroupArgs {
 
   factory AppGroupArgs.fromMap(Map<String, dynamic> map) {
     return AppGroupArgs(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<AppGroupAttribute>(map['attributes'], (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      channelUri: map['channelUri'] == null ? null : (map['channelUri'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<AppGroupAttribute>(map['attributes']!, (value) => AppGroupAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      channelUri: map['channelUri'] == null ? null : (map['channelUri']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

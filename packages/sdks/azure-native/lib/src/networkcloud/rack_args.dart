@@ -67,13 +67,13 @@ class RackArgs {
     return RackArgs(
       availabilityZone: (map['availabilityZone'] as String).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       rackLocation: (map['rackLocation'] as String).input(),
-      rackName: map['rackName'] == null ? null : (map['rackName'] as String).input(),
+      rackName: map['rackName'] == null ? null : (map['rackName']! as String).input(),
       rackSerialNumber: (map['rackSerialNumber'] as String).input(),
       rackSkuId: (map['rackSkuId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

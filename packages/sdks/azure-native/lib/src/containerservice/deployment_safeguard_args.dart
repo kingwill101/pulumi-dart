@@ -34,7 +34,7 @@ class DeploymentSafeguardArgs {
 
   factory DeploymentSafeguardArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentSafeguardArgs(
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces'] as List).cast<String>()).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces']! as List).cast<String>()).input(),
       level: (map['level'] as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );

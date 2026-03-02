@@ -74,16 +74,16 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      athenaProperties: map['athenaProperties'] == null ? null : ((map['athenaProperties'] as Map).cast<String, String>()).input(),
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      connectionProperties: map['connectionProperties'] == null ? null : ((map['connectionProperties'] as Map).cast<String, String>()).input(),
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      matchCriterias: map['matchCriterias'] == null ? null : ((map['matchCriterias'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      physicalConnectionRequirements: map['physicalConnectionRequirements'] == null ? null : (ConnectionPhysicalConnectionRequirements.fromMap((map['physicalConnectionRequirements'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      athenaProperties: map['athenaProperties'] == null ? null : (((map['athenaProperties'] as Map).cast<String, String>()).input()).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (((map['connectionProperties'] as Map).cast<String, String>()).input()).input(),
+      connectionType: map['connectionType'] == null ? null : ((map['connectionType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      matchCriterias: map['matchCriterias'] == null ? null : (((map['matchCriterias'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      physicalConnectionRequirements: map['physicalConnectionRequirements'] == null ? null : ((ConnectionPhysicalConnectionRequirements.fromMap((map['physicalConnectionRequirements']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

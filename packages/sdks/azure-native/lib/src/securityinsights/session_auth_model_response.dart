@@ -62,13 +62,13 @@ class SessionAuthModelResponse {
 
   factory SessionAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return SessionAuthModelResponse(
-      headers: map['headers'] == null ? null : ((map['headers'] as Map).cast<String, String>()).input(),
-      isPostPayloadJson: map['isPostPayloadJson'] == null ? null : (map['isPostPayloadJson'] as bool).input(),
+      headers: map['headers'] == null ? null : ((map['headers']! as Map).cast<String, String>()).input(),
+      isPostPayloadJson: map['isPostPayloadJson'] == null ? null : (map['isPostPayloadJson']! as bool).input(),
       password: ((map['password'] as Map).cast<String, String>()).input(),
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']).input(),
-      sessionIdName: map['sessionIdName'] == null ? null : (map['sessionIdName'] as String).input(),
-      sessionLoginRequestUri: map['sessionLoginRequestUri'] == null ? null : (map['sessionLoginRequestUri'] as String).input(),
-      sessionTimeoutInMinutes: map['sessionTimeoutInMinutes'] == null ? null : (map['sessionTimeoutInMinutes'] as int).input(),
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']!).input(),
+      sessionIdName: map['sessionIdName'] == null ? null : (map['sessionIdName']! as String).input(),
+      sessionLoginRequestUri: map['sessionLoginRequestUri'] == null ? null : (map['sessionLoginRequestUri']! as String).input(),
+      sessionTimeoutInMinutes: map['sessionTimeoutInMinutes'] == null ? null : (map['sessionTimeoutInMinutes']! as int).input(),
       type: (map['type'] as String).input(),
       userName: ((map['userName'] as Map).cast<String, String>()).input(),
     );

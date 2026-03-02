@@ -36,10 +36,10 @@ class ConfigMapState {
 
   factory ConfigMapState.fromMap(Map<String, dynamic> map) {
     return ConfigMapState(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
     );
   }
 }

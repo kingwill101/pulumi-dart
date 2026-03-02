@@ -35,8 +35,8 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<TableAcl>(map['acls'], (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<TableAcl>(map['acls']!, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageAccountName: (map['storageAccountName'] as String).input(),
     );
   }

@@ -42,11 +42,11 @@ class SubjectAltNames {
 
   factory SubjectAltNames.fromMap(Map<String, dynamic> map) {
     return SubjectAltNames(
-      customSans: map['customSans'] == null ? null : (pulumi.Input.decodeList<X509Extension>(map['customSans'], (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames'] as List).cast<String>()).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses'] as List).cast<String>()).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      uris: map['uris'] == null ? null : ((map['uris'] as List).cast<String>()).input(),
+      customSans: map['customSans'] == null ? null : (pulumi.Input.decodeList<X509Extension>(map['customSans']!, (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsNames: map['dnsNames'] == null ? null : ((map['dnsNames']! as List).cast<String>()).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : ((map['emailAddresses']! as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      uris: map['uris'] == null ? null : ((map['uris']! as List).cast<String>()).input(),
     );
   }
 }

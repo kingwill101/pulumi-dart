@@ -33,8 +33,8 @@ class Mutation {
 
   factory Mutation.fromMap(Map<String, dynamic> map) {
     return Mutation(
-      applyConfiguration: map['applyConfiguration'] == null ? null : (ApplyConfiguration.fromMap((map['applyConfiguration'] as Map).cast<String, dynamic>())).input(),
-      jsonPatch: map['jsonPatch'] == null ? null : (JSONPatch.fromMap((map['jsonPatch'] as Map).cast<String, dynamic>())).input(),
+      applyConfiguration: map['applyConfiguration'] == null ? null : (ApplyConfiguration.fromMap((map['applyConfiguration']! as Map).cast<String, dynamic>())).input(),
+      jsonPatch: map['jsonPatch'] == null ? null : (JSONPatch.fromMap((map['jsonPatch']! as Map).cast<String, dynamic>())).input(),
       patchType: (map['patchType'] as String).input(),
     );
   }

@@ -34,9 +34,9 @@ class CustomContainerTemplate {
 
   factory CustomContainerTemplate.fromMap(Map<String, dynamic> map) {
     return CustomContainerTemplate(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<SessionContainer>(map['containers'], (value) => SessionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingress: map['ingress'] == null ? null : (SessionIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>())).input(),
-      registryCredentials: map['registryCredentials'] == null ? null : (SessionRegistryCredentials.fromMap((map['registryCredentials'] as Map).cast<String, dynamic>())).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<SessionContainer>(map['containers']!, (value) => SessionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingress: map['ingress'] == null ? null : (SessionIngress.fromMap((map['ingress']! as Map).cast<String, dynamic>())).input(),
+      registryCredentials: map['registryCredentials'] == null ? null : (SessionRegistryCredentials.fromMap((map['registryCredentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

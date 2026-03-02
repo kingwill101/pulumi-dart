@@ -30,7 +30,7 @@ class LicenseGrantAccepterArgs {
   factory LicenseGrantAccepterArgs.fromMap(Map<String, dynamic> map) {
     return LicenseGrantAccepterArgs(
       grantArn: (map['grantArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

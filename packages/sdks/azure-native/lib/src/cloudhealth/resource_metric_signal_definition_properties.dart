@@ -79,15 +79,15 @@ class ResourceMetricSignalDefinitionProperties {
   factory ResourceMetricSignalDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSignalDefinitionProperties(
       aggregationType: (map['aggregationType'] as String).input(),
-      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit'] as String).input(),
-      dimension: map['dimension'] == null ? null : (map['dimension'] as String).input(),
-      dimensionFilter: map['dimensionFilter'] == null ? null : (map['dimensionFilter'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      dataUnit: map['dataUnit'] == null ? null : (map['dataUnit']! as String).input(),
+      dimension: map['dimension'] == null ? null : (map['dimension']! as String).input(),
+      dimensionFilter: map['dimensionFilter'] == null ? null : (map['dimensionFilter']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       evaluationRules: (EvaluationRule.fromMap((map['evaluationRules'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       metricName: (map['metricName'] as String).input(),
       metricNamespace: (map['metricNamespace'] as String).input(),
-      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval'] as String).input(),
+      refreshInterval: map['refreshInterval'] == null ? null : (map['refreshInterval']! as String).input(),
       signalKind: (map['signalKind'] as String).input(),
       timeGrain: (map['timeGrain'] as String).input(),
     );

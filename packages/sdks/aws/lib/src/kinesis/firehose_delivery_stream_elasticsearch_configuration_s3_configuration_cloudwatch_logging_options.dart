@@ -30,9 +30,9 @@ class FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationCloudwatchL
 
   factory FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamElasticsearchConfigurationS3ConfigurationCloudwatchLoggingOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      logStreamName: map['logStreamName'] == null ? null : (map['logStreamName'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
+      logStreamName: map['logStreamName'] == null ? null : ((map['logStreamName'] as String).input()).input(),
     );
   }
 }

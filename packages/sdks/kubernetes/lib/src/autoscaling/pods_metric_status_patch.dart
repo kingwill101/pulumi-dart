@@ -28,8 +28,8 @@ class PodsMetricStatusPatch {
 
   factory PodsMetricStatusPatch.fromMap(Map<String, dynamic> map) {
     return PodsMetricStatusPatch(
-      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current'] as Map).cast<String, dynamic>())).input(),
-      metric: map['metric'] == null ? null : (MetricIdentifierPatch.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
+      current: map['current'] == null ? null : (MetricValueStatusPatch.fromMap((map['current']! as Map).cast<String, dynamic>())).input(),
+      metric: map['metric'] == null ? null : (MetricIdentifierPatch.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

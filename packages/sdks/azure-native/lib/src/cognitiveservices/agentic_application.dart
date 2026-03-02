@@ -65,15 +65,15 @@ class AgenticApplication {
 
   factory AgenticApplication.fromMap(Map<String, dynamic> map) {
     return AgenticApplication(
-      agentIdentityBlueprint: map['agentIdentityBlueprint'] == null ? null : (AssignedIdentity.fromMap((map['agentIdentityBlueprint'] as Map).cast<String, dynamic>())).input(),
-      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<AgentReference>(map['agents'], (value) => AgentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : (ChannelsBuiltInAuthorizationPolicy.fromMap((map['authorizationPolicy'] as Map).cast<String, dynamic>())).input(),
-      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
-      defaultInstanceIdentity: map['defaultInstanceIdentity'] == null ? null : (AssignedIdentity.fromMap((map['defaultInstanceIdentity'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficRoutingPolicy: map['trafficRoutingPolicy'] == null ? null : (ApplicationTrafficRoutingPolicy.fromMap((map['trafficRoutingPolicy'] as Map).cast<String, dynamic>())).input(),
+      agentIdentityBlueprint: map['agentIdentityBlueprint'] == null ? null : (AssignedIdentity.fromMap((map['agentIdentityBlueprint']! as Map).cast<String, dynamic>())).input(),
+      agents: map['agents'] == null ? null : (pulumi.Input.decodeList<AgentReference>(map['agents']!, (value) => AgentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (ChannelsBuiltInAuthorizationPolicy.fromMap((map['authorizationPolicy']! as Map).cast<String, dynamic>())).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl']! as String).input(),
+      defaultInstanceIdentity: map['defaultInstanceIdentity'] == null ? null : (AssignedIdentity.fromMap((map['defaultInstanceIdentity']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficRoutingPolicy: map['trafficRoutingPolicy'] == null ? null : (ApplicationTrafficRoutingPolicy.fromMap((map['trafficRoutingPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

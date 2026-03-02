@@ -36,10 +36,10 @@ class IntegrationExporterState {
 
   factory IntegrationExporterState.fromMap(Map<String, dynamic> map) {
     return IntegrationExporterState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as int).input(),
-      integrationType: map['integrationType'] == null ? null : (map['integrationType'] as String).input(),
-      param: map['param'] == null ? null : (map['param'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as int).input(),
+      integrationType: map['integrationType'] == null ? null : (map['integrationType']! as String).input(),
+      param: map['param'] == null ? null : (map['param']! as String).input(),
     );
   }
 }

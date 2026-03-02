@@ -26,8 +26,8 @@ class DcAccessSecurityCodeResponse {
 
   factory DcAccessSecurityCodeResponse.fromMap(Map<String, dynamic> map) {
     return DcAccessSecurityCodeResponse(
-      forwardDCAccessCode: map['forwardDCAccessCode'] == null ? null : (map['forwardDCAccessCode'] as String).input(),
-      reverseDCAccessCode: map['reverseDCAccessCode'] == null ? null : (map['reverseDCAccessCode'] as String).input(),
+      forwardDCAccessCode: map['forwardDCAccessCode'] == null ? null : (map['forwardDCAccessCode']! as String).input(),
+      reverseDCAccessCode: map['reverseDCAccessCode'] == null ? null : (map['reverseDCAccessCode']! as String).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class S3LogsConfigResponse {
 
   factory S3LogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return S3LogsConfigResponse(
-      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : (BucketOwnerAccessEnumValueResponse.fromMap((map['bucketOwnerAccess'] as Map).cast<String, dynamic>())).input(),
-      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      status: map['status'] == null ? null : (LogsConfigStatusTypeEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : (BucketOwnerAccessEnumValueResponse.fromMap((map['bucketOwnerAccess']! as Map).cast<String, dynamic>())).input(),
+      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      status: map['status'] == null ? null : (LogsConfigStatusTypeEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

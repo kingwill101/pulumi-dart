@@ -35,10 +35,10 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth(
-      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId'] as String).input(),
-      accessKeySecret: map['accessKeySecret'] == null ? null : (map['accessKeySecret'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessKeyId: map['accessKeyId'] == null ? null : (map['accessKeyId']! as String).input(),
+      accessKeySecret: map['accessKeySecret'] == null ? null : (map['accessKeySecret']! as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

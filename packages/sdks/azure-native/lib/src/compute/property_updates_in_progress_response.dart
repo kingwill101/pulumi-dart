@@ -21,7 +21,7 @@ class PropertyUpdatesInProgressResponse {
 
   factory PropertyUpdatesInProgressResponse.fromMap(Map<String, dynamic> map) {
     return PropertyUpdatesInProgressResponse(
-      targetTier: map['targetTier'] == null ? null : (map['targetTier'] as String).input(),
+      targetTier: map['targetTier'] == null ? null : (map['targetTier']! as String).input(),
     );
   }
 }

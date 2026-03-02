@@ -39,10 +39,10 @@ class IamPolicyIapV1beta1Args {
 
   factory IamPolicyIapV1beta1Args.fromMap(Map<String, dynamic> map) {
     return IamPolicyIapV1beta1Args(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingIapV1beta1>(map['bindings'], (value) => BindingIapV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingIapV1beta1>(map['bindings']!, (value) => BindingIapV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       v1beta1Id: (map['v1beta1Id'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

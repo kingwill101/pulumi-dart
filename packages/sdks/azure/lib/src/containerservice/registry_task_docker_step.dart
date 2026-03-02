@@ -60,15 +60,15 @@ class RegistryTaskDockerStep {
 
   factory RegistryTaskDockerStep.fromMap(Map<String, dynamic> map) {
     return RegistryTaskDockerStep(
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as Map).cast<String, String>()).input(),
-      cacheEnabled: map['cacheEnabled'] == null ? null : (map['cacheEnabled'] as bool).input(),
+      arguments: map['arguments'] == null ? null : ((map['arguments']! as Map).cast<String, String>()).input(),
+      cacheEnabled: map['cacheEnabled'] == null ? null : (map['cacheEnabled']! as bool).input(),
       contextAccessToken: (map['contextAccessToken'] as String).input(),
       contextPath: (map['contextPath'] as String).input(),
       dockerfilePath: (map['dockerfilePath'] as String).input(),
-      imageNames: map['imageNames'] == null ? null : ((map['imageNames'] as List).cast<String>()).input(),
-      pushEnabled: map['pushEnabled'] == null ? null : (map['pushEnabled'] as bool).input(),
-      secretArguments: map['secretArguments'] == null ? null : ((map['secretArguments'] as Map).cast<String, String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      imageNames: map['imageNames'] == null ? null : ((map['imageNames']! as List).cast<String>()).input(),
+      pushEnabled: map['pushEnabled'] == null ? null : (map['pushEnabled']! as bool).input(),
+      secretArguments: map['secretArguments'] == null ? null : ((map['secretArguments']! as Map).cast<String, String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class Rule {
 
   factory Rule.fromMap(Map<String, dynamic> map) {
     return Rule(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Destination>(map['destinations'], (value) => Destination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<Source>(map['sources'], (value) => Source.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<Destination>(map['destinations']!, (value) => Destination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<Source>(map['sources']!, (value) => Source.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

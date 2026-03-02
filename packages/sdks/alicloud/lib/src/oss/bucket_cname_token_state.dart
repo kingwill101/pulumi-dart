@@ -31,9 +31,9 @@ class BucketCnameTokenState {
 
   factory BucketCnameTokenState.fromMap(Map<String, dynamic> map) {
     return BucketCnameTokenState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

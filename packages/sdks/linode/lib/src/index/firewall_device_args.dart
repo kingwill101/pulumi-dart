@@ -35,7 +35,7 @@ class FirewallDeviceArgs {
   factory FirewallDeviceArgs.fromMap(Map<String, dynamic> map) {
     return FirewallDeviceArgs(
       entityId: (map['entityId'] as int).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
       firewallId: (map['firewallId'] as int).input(),
     );
   }

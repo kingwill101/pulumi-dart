@@ -27,8 +27,8 @@ class CollectionOverrideDeploymentmanagerV2beta {
 
   factory CollectionOverrideDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CollectionOverrideDeploymentmanagerV2beta(
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      options: map['options'] == null ? null : (OptionsDeploymentmanagerV2beta.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      options: map['options'] == null ? null : (OptionsDeploymentmanagerV2beta.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

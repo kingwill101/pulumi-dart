@@ -40,11 +40,11 @@ class ManagementPolicyRuleActionsVersion {
 
   factory ManagementPolicyRuleActionsVersion.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleActionsVersion(
-      changeTierToArchiveAfterDaysSinceCreation: map['changeTierToArchiveAfterDaysSinceCreation'] == null ? null : (map['changeTierToArchiveAfterDaysSinceCreation'] as int).input(),
-      changeTierToCoolAfterDaysSinceCreation: map['changeTierToCoolAfterDaysSinceCreation'] == null ? null : (map['changeTierToCoolAfterDaysSinceCreation'] as int).input(),
-      deleteAfterDaysSinceCreation: map['deleteAfterDaysSinceCreation'] == null ? null : (map['deleteAfterDaysSinceCreation'] as int).input(),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int).input(),
-      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan'] as int).input(),
+      changeTierToArchiveAfterDaysSinceCreation: map['changeTierToArchiveAfterDaysSinceCreation'] == null ? null : (map['changeTierToArchiveAfterDaysSinceCreation']! as int).input(),
+      changeTierToCoolAfterDaysSinceCreation: map['changeTierToCoolAfterDaysSinceCreation'] == null ? null : (map['changeTierToCoolAfterDaysSinceCreation']! as int).input(),
+      deleteAfterDaysSinceCreation: map['deleteAfterDaysSinceCreation'] == null ? null : (map['deleteAfterDaysSinceCreation']! as int).input(),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] == null ? null : (map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan']! as int).input(),
+      tierToColdAfterDaysSinceCreationGreaterThan: map['tierToColdAfterDaysSinceCreationGreaterThan'] == null ? null : (map['tierToColdAfterDaysSinceCreationGreaterThan']! as int).input(),
     );
   }
 }

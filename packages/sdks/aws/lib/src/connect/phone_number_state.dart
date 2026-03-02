@@ -72,17 +72,17 @@ class PhoneNumberState {
 
   factory PhoneNumberState.fromMap(Map<String, dynamic> map) {
     return PhoneNumberState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<PhoneNumberStatus>(map['statuses'], (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      countryCode: map['countryCode'] == null ? null : ((map['countryCode'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : ((map['phoneNumber'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      statuses: map['statuses'] == null ? null : ((pulumi.Input.decodeList<PhoneNumberStatus>(map['statuses']!, (value) => PhoneNumberStatus.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetArn: map['targetArn'] == null ? null : ((map['targetArn'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class GetFirewallLogProfileResult {
 
   factory GetFirewallLogProfileResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallLogProfileResult(
-      applicationInsights: map['applicationInsights'] == null ? null : ApplicationInsightsResponse.fromMap((map['applicationInsights'] as Map).cast<String, dynamic>()),
-      commonDestination: map['commonDestination'] == null ? null : LogDestinationResponse.fromMap((map['commonDestination'] as Map).cast<String, dynamic>()),
-      decryptLogDestination: map['decryptLogDestination'] == null ? null : LogDestinationResponse.fromMap((map['decryptLogDestination'] as Map).cast<String, dynamic>()),
-      logOption: map['logOption'] == null ? null : map['logOption'] as String,
-      logType: map['logType'] == null ? null : map['logType'] as String,
-      threatLogDestination: map['threatLogDestination'] == null ? null : LogDestinationResponse.fromMap((map['threatLogDestination'] as Map).cast<String, dynamic>()),
-      trafficLogDestination: map['trafficLogDestination'] == null ? null : LogDestinationResponse.fromMap((map['trafficLogDestination'] as Map).cast<String, dynamic>()),
+      applicationInsights: map['applicationInsights'] == null ? null : ApplicationInsightsResponse.fromMap((map['applicationInsights']! as Map).cast<String, dynamic>()),
+      commonDestination: map['commonDestination'] == null ? null : LogDestinationResponse.fromMap((map['commonDestination']! as Map).cast<String, dynamic>()),
+      decryptLogDestination: map['decryptLogDestination'] == null ? null : LogDestinationResponse.fromMap((map['decryptLogDestination']! as Map).cast<String, dynamic>()),
+      logOption: map['logOption'] == null ? null : map['logOption']! as String,
+      logType: map['logType'] == null ? null : map['logType']! as String,
+      threatLogDestination: map['threatLogDestination'] == null ? null : LogDestinationResponse.fromMap((map['threatLogDestination']! as Map).cast<String, dynamic>()),
+      trafficLogDestination: map['trafficLogDestination'] == null ? null : LogDestinationResponse.fromMap((map['trafficLogDestination']! as Map).cast<String, dynamic>()),
     );
   }
 }

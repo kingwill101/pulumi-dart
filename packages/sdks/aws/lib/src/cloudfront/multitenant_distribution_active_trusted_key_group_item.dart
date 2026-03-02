@@ -25,8 +25,8 @@ class MultitenantDistributionActiveTrustedKeyGroupItem {
 
   factory MultitenantDistributionActiveTrustedKeyGroupItem.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionActiveTrustedKeyGroupItem(
-      keyGroupId: map['keyGroupId'] == null ? null : (map['keyGroupId'] as String).input(),
-      keyPairIds: map['keyPairIds'] == null ? null : ((map['keyPairIds'] as List).cast<String>()).input(),
+      keyGroupId: map['keyGroupId'] == null ? null : ((map['keyGroupId'] as String).input()).input(),
+      keyPairIds: map['keyPairIds'] == null ? null : (((map['keyPairIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

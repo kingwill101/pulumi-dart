@@ -27,7 +27,7 @@ class Policy {
   factory Policy.fromMap(Map<String, dynamic> map) {
     return Policy(
       level: (map['level'] as String).input(),
-      stages: map['stages'] == null ? null : ((map['stages'] as List).cast<String>()).input(),
+      stages: map['stages'] == null ? null : ((map['stages']! as List).cast<String>()).input(),
     );
   }
 }

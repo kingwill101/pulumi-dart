@@ -82,19 +82,19 @@ class HoneypotProbeState {
 
   factory HoneypotProbeState.fromMap(Map<String, dynamic> map) {
     return HoneypotProbeState(
-      arp: map['arp'] == null ? null : (map['arp'] as bool).input(),
-      controlNodeId: map['controlNodeId'] == null ? null : (map['controlNodeId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      honeypotBindLists: map['honeypotBindLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists'], (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      honeypotProbeId: map['honeypotProbeId'] == null ? null : (map['honeypotProbeId'] as String).input(),
-      ping: map['ping'] == null ? null : (map['ping'] as bool).input(),
-      probeType: map['probeType'] == null ? null : (map['probeType'] as String).input(),
-      probeVersion: map['probeVersion'] == null ? null : (map['probeVersion'] as String).input(),
-      proxyIp: map['proxyIp'] == null ? null : (map['proxyIp'] as String).input(),
-      serviceIpLists: map['serviceIpLists'] == null ? null : ((map['serviceIpLists'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arp: map['arp'] == null ? null : (map['arp']! as bool).input(),
+      controlNodeId: map['controlNodeId'] == null ? null : (map['controlNodeId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      honeypotBindLists: map['honeypotBindLists'] == null ? null : (pulumi.Input.decodeList<HoneypotProbeHoneypotBindList>(map['honeypotBindLists']!, (value) => HoneypotProbeHoneypotBindList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      honeypotProbeId: map['honeypotProbeId'] == null ? null : (map['honeypotProbeId']! as String).input(),
+      ping: map['ping'] == null ? null : (map['ping']! as bool).input(),
+      probeType: map['probeType'] == null ? null : (map['probeType']! as String).input(),
+      probeVersion: map['probeVersion'] == null ? null : (map['probeVersion']! as String).input(),
+      proxyIp: map['proxyIp'] == null ? null : (map['proxyIp']! as String).input(),
+      serviceIpLists: map['serviceIpLists'] == null ? null : ((map['serviceIpLists']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

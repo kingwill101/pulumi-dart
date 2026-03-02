@@ -91,19 +91,19 @@ class ScheduleTargetEcsParameters {
 
   factory ScheduleTargetEcsParameters.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetEcsParameters(
-      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetEcsParametersCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => ScheduleTargetEcsParametersCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : (map['enableEcsManagedTags'] as bool).input(),
-      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : (map['enableExecuteCommand'] as bool).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      launchType: map['launchType'] == null ? null : (map['launchType'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (ScheduleTargetEcsParametersNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      placementConstraints: map['placementConstraints'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementConstraint>(map['placementConstraints'], (value) => ScheduleTargetEcsParametersPlacementConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      placementStrategies: map['placementStrategies'] == null ? null : (pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementStrategy>(map['placementStrategies'], (value) => ScheduleTargetEcsParametersPlacementStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
-      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as String).input(),
-      referenceId: map['referenceId'] == null ? null : (map['referenceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      taskCount: map['taskCount'] == null ? null : (map['taskCount'] as int).input(),
+      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : ((pulumi.Input.decodeList<ScheduleTargetEcsParametersCapacityProviderStrategy>(map['capacityProviderStrategies']!, (value) => ScheduleTargetEcsParametersCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : ((map['enableEcsManagedTags'] as bool).input()).input(),
+      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : ((map['enableExecuteCommand'] as bool).input()).input(),
+      group: map['group'] == null ? null : ((map['group'] as String).input()).input(),
+      launchType: map['launchType'] == null ? null : ((map['launchType'] as String).input()).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : ((ScheduleTargetEcsParametersNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      placementConstraints: map['placementConstraints'] == null ? null : ((pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementConstraint>(map['placementConstraints']!, (value) => ScheduleTargetEcsParametersPlacementConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      placementStrategies: map['placementStrategies'] == null ? null : ((pulumi.Input.decodeList<ScheduleTargetEcsParametersPlacementStrategy>(map['placementStrategies']!, (value) => ScheduleTargetEcsParametersPlacementStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      platformVersion: map['platformVersion'] == null ? null : ((map['platformVersion'] as String).input()).input(),
+      propagateTags: map['propagateTags'] == null ? null : ((map['propagateTags'] as String).input()).input(),
+      referenceId: map['referenceId'] == null ? null : ((map['referenceId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      taskCount: map['taskCount'] == null ? null : ((map['taskCount'] as int).input()).input(),
       taskDefinitionArn: (map['taskDefinitionArn'] as String).input(),
     );
   }

@@ -48,12 +48,12 @@ class DeprecationStatusComputeBeta {
 
   factory DeprecationStatusComputeBeta.fromMap(Map<String, dynamic> map) {
     return DeprecationStatusComputeBeta(
-      deleted: map['deleted'] == null ? null : (map['deleted'] as String).input(),
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as String).input(),
-      obsolete: map['obsolete'] == null ? null : (map['obsolete'] as String).input(),
-      replacement: map['replacement'] == null ? null : (map['replacement'] as String).input(),
-      state: map['state'] == null ? null : (DeprecationStatusStateComputeBeta.fromValue(map['state'] as String)).input(),
-      stateOverride: map['stateOverride'] == null ? null : (RolloutPolicyComputeBeta.fromMap((map['stateOverride'] as Map).cast<String, dynamic>())).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as String).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated']! as String).input(),
+      obsolete: map['obsolete'] == null ? null : (map['obsolete']! as String).input(),
+      replacement: map['replacement'] == null ? null : (map['replacement']! as String).input(),
+      state: map['state'] == null ? null : (DeprecationStatusStateComputeBeta.fromValue(map['state']! as String)).input(),
+      stateOverride: map['stateOverride'] == null ? null : (RolloutPolicyComputeBeta.fromMap((map['stateOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class WebAclDataProtectionConfigDataProtectionField {
 
   factory WebAclDataProtectionConfigDataProtectionField.fromMap(Map<String, dynamic> map) {
     return WebAclDataProtectionConfigDataProtectionField(
-      fieldKeys: map['fieldKeys'] == null ? null : ((map['fieldKeys'] as List).cast<String>()).input(),
+      fieldKeys: map['fieldKeys'] == null ? null : (((map['fieldKeys'] as List).cast<String>()).input()).input(),
       fieldType: (map['fieldType'] as String).input(),
     );
   }

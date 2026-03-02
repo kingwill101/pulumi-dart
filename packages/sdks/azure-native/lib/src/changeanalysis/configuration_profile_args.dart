@@ -41,10 +41,10 @@ class ConfigurationProfileArgs {
 
   factory ConfigurationProfileArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileArgs(
-      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProfileResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

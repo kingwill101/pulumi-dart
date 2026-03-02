@@ -33,8 +33,8 @@ class GetProjectsArgs {
 
   factory GetProjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetProjectsFilter>(map['filters'], (value) => GetProjectsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetProjectsSort>(map['sorts'], (value) => GetProjectsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetProjectsFilter>(map['filters']!, (value) => GetProjectsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sorts: map['sorts'] == null ? null : (pulumi.Input.decodeList<GetProjectsSort>(map['sorts']!, (value) => GetProjectsSort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

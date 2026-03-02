@@ -39,9 +39,9 @@ class GetRemoteReferenceArgs {
 
   factory GetRemoteReferenceArgs.fromMap(Map<String, dynamic> map) {
     return GetRemoteReferenceArgs(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       organization: (map['organization'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
       workspaces: (Workspaces.fromMap((map['workspaces'] as Map).cast<String, dynamic>())).input(),
     );
   }

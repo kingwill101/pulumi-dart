@@ -26,7 +26,7 @@ class PlanStageTargetChannelTargetInfo {
   factory PlanStageTargetChannelTargetInfo.fromMap(Map<String, dynamic> map) {
     return PlanStageTargetChannelTargetInfo(
       contactChannelId: (map['contactChannelId'] as String).input(),
-      retryIntervalInMinutes: map['retryIntervalInMinutes'] == null ? null : (map['retryIntervalInMinutes'] as int).input(),
+      retryIntervalInMinutes: map['retryIntervalInMinutes'] == null ? null : ((map['retryIntervalInMinutes'] as int).input()).input(),
     );
   }
 }

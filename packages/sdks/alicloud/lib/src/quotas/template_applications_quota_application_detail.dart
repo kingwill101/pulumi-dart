@@ -95,20 +95,20 @@ class TemplateApplicationsQuotaApplicationDetail {
 
   factory TemplateApplicationsQuotaApplicationDetail.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsQuotaApplicationDetail(
-      aliyunUid: map['aliyunUid'] == null ? null : (map['aliyunUid'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      approveValue: map['approveValue'] == null ? null : (map['approveValue'] as double).input(),
-      auditReason: map['auditReason'] == null ? null : (map['auditReason'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
-      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage'] as String).input(),
-      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as int).input(),
-      period: map['period'] == null ? null : (TemplateApplicationsQuotaApplicationDetailPeriod.fromMap((map['period'] as Map).cast<String, dynamic>())).input(),
-      quotaArn: map['quotaArn'] == null ? null : (map['quotaArn'] as String).input(),
-      quotaDescription: map['quotaDescription'] == null ? null : (map['quotaDescription'] as String).input(),
-      quotaName: map['quotaName'] == null ? null : (map['quotaName'] as String).input(),
-      quotaUnit: map['quotaUnit'] == null ? null : (map['quotaUnit'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      aliyunUid: map['aliyunUid'] == null ? null : (map['aliyunUid']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      approveValue: map['approveValue'] == null ? null : (map['approveValue']! as double).input(),
+      auditReason: map['auditReason'] == null ? null : (map['auditReason']! as String).input(),
+      dimensions: map['dimensions'] == null ? null : ((map['dimensions']! as Map).cast<String, String>()).input(),
+      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage']! as String).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType']! as int).input(),
+      period: map['period'] == null ? null : (TemplateApplicationsQuotaApplicationDetailPeriod.fromMap((map['period']! as Map).cast<String, dynamic>())).input(),
+      quotaArn: map['quotaArn'] == null ? null : (map['quotaArn']! as String).input(),
+      quotaDescription: map['quotaDescription'] == null ? null : (map['quotaDescription']! as String).input(),
+      quotaName: map['quotaName'] == null ? null : (map['quotaName']! as String).input(),
+      quotaUnit: map['quotaUnit'] == null ? null : (map['quotaUnit']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

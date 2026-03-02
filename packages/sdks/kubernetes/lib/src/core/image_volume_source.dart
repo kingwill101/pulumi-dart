@@ -26,8 +26,8 @@ class ImageVolumeSource {
 
   factory ImageVolumeSource.fromMap(Map<String, dynamic> map) {
     return ImageVolumeSource(
-      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy'] as String).input(),
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
+      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy']! as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
     );
   }
 }

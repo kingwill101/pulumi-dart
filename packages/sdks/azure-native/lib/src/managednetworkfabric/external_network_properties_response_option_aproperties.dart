@@ -72,16 +72,16 @@ class ExternalNetworkPropertiesResponseOptionAProperties {
 
   factory ExternalNetworkPropertiesResponseOptionAProperties.fromMap(Map<String, dynamic> map) {
     return ExternalNetworkPropertiesResponseOptionAProperties(
-      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfigurationResponse.fromMap((map['bfdConfiguration'] as Map).cast<String, dynamic>())).input(),
-      egressAclId: map['egressAclId'] == null ? null : (map['egressAclId'] as String).input(),
+      bfdConfiguration: map['bfdConfiguration'] == null ? null : (BfdConfigurationResponse.fromMap((map['bfdConfiguration']! as Map).cast<String, dynamic>())).input(),
+      egressAclId: map['egressAclId'] == null ? null : (map['egressAclId']! as String).input(),
       fabricASN: (map['fabricASN'] as double).input(),
-      ingressAclId: map['ingressAclId'] == null ? null : (map['ingressAclId'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
+      ingressAclId: map['ingressAclId'] == null ? null : (map['ingressAclId']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
       peerASN: (map['peerASN'] as double).input(),
-      primaryIpv4Prefix: map['primaryIpv4Prefix'] == null ? null : (map['primaryIpv4Prefix'] as String).input(),
-      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix'] as String).input(),
-      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] == null ? null : (map['secondaryIpv4Prefix'] as String).input(),
-      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix'] as String).input(),
+      primaryIpv4Prefix: map['primaryIpv4Prefix'] == null ? null : (map['primaryIpv4Prefix']! as String).input(),
+      primaryIpv6Prefix: map['primaryIpv6Prefix'] == null ? null : (map['primaryIpv6Prefix']! as String).input(),
+      secondaryIpv4Prefix: map['secondaryIpv4Prefix'] == null ? null : (map['secondaryIpv4Prefix']! as String).input(),
+      secondaryIpv6Prefix: map['secondaryIpv6Prefix'] == null ? null : (map['secondaryIpv6Prefix']! as String).input(),
       vlanId: (map['vlanId'] as int).input(),
     );
   }

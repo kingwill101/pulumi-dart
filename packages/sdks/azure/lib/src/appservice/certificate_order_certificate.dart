@@ -35,10 +35,10 @@ class CertificateOrderCertificate {
 
   factory CertificateOrderCertificate.fromMap(Map<String, dynamic> map) {
     return CertificateOrderCertificate(
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
     );
   }
 }

@@ -70,11 +70,11 @@ class RestorePlanArgs {
     return RestorePlanArgs(
       backupPlan: (map['backupPlan'] as String).input(),
       cluster: (map['cluster'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       restoreConfig: (RestorePlanRestoreConfig.fromMap((map['restoreConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

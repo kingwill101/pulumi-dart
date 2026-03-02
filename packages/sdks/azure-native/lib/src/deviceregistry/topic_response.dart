@@ -27,7 +27,7 @@ class TopicResponse {
   factory TopicResponse.fromMap(Map<String, dynamic> map) {
     return TopicResponse(
       path: (map['path'] as String).input(),
-      retain: map['retain'] == null ? null : (map['retain'] as String).input(),
+      retain: map['retain'] == null ? null : (map['retain']! as String).input(),
     );
   }
 }

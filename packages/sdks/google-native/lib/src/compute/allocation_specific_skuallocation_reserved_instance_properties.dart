@@ -54,13 +54,13 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
 
   factory AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationReservedInstanceProperties(
-      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfig>(map['guestAccelerators'], (value) => AcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(map['localSsds'], (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : (map['maintenanceFreezeDurationHours'] as int).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval.fromValue(map['maintenanceInterval'] as String)).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
+      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfig>(map['guestAccelerators']!, (value) => AcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(map['localSsds']!, (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : (map['maintenanceFreezeDurationHours']! as int).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval.fromValue(map['maintenanceInterval']! as String)).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
     );
   }
 }

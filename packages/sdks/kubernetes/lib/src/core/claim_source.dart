@@ -34,8 +34,8 @@ class ClaimSource {
 
   factory ClaimSource.fromMap(Map<String, dynamic> map) {
     return ClaimSource(
-      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName'] as String).input(),
-      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName'] as String).input(),
+      resourceClaimName: map['resourceClaimName'] == null ? null : (map['resourceClaimName']! as String).input(),
+      resourceClaimTemplateName: map['resourceClaimTemplateName'] == null ? null : (map['resourceClaimTemplateName']! as String).input(),
     );
   }
 }

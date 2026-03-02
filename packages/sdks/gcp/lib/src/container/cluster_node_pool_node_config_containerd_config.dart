@@ -33,9 +33,9 @@ class ClusterNodePoolNodeConfigContainerdConfig {
 
   factory ClusterNodePoolNodeConfigContainerdConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigContainerdConfig(
-      privateRegistryAccessConfig: map['privateRegistryAccessConfig'] == null ? null : (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((map['privateRegistryAccessConfig'] as Map).cast<String, dynamic>())).input(),
-      registryHosts: map['registryHosts'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolNodeConfigContainerdConfigRegistryHost>(map['registryHosts'], (value) => ClusterNodePoolNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      writableCgroups: map['writableCgroups'] == null ? null : (ClusterNodePoolNodeConfigContainerdConfigWritableCgroups.fromMap((map['writableCgroups'] as Map).cast<String, dynamic>())).input(),
+      privateRegistryAccessConfig: map['privateRegistryAccessConfig'] == null ? null : (ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((map['privateRegistryAccessConfig']! as Map).cast<String, dynamic>())).input(),
+      registryHosts: map['registryHosts'] == null ? null : (pulumi.Input.decodeList<ClusterNodePoolNodeConfigContainerdConfigRegistryHost>(map['registryHosts']!, (value) => ClusterNodePoolNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      writableCgroups: map['writableCgroups'] == null ? null : (ClusterNodePoolNodeConfigContainerdConfigWritableCgroups.fromMap((map['writableCgroups']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

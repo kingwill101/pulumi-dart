@@ -52,12 +52,12 @@ class AccessEntry {
 
   factory AccessEntry.fromMap(Map<String, dynamic> map) {
     return AccessEntry(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeMapValues<AccessPolicyAssociation>(map['accessPolicies'], (value) => AccessPolicyAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kubernetesGroups: map['kubernetesGroups'] == null ? null : ((map['kubernetesGroups'] as List).cast<String>()).input(),
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeMapValues<AccessPolicyAssociation>(map['accessPolicies']!, (value) => AccessPolicyAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubernetesGroups: map['kubernetesGroups'] == null ? null : ((map['kubernetesGroups']! as List).cast<String>()).input(),
       principalArn: (map['principalArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (AccessEntryType.fromValue(map['type'] as String)).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (AccessEntryType.fromValue(map['type']! as String)).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

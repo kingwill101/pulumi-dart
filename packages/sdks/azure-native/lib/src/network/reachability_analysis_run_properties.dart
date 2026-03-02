@@ -25,7 +25,7 @@ class ReachabilityAnalysisRunProperties {
 
   factory ReachabilityAnalysisRunProperties.fromMap(Map<String, dynamic> map) {
     return ReachabilityAnalysisRunProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       intentId: (map['intentId'] as String).input(),
     );
   }

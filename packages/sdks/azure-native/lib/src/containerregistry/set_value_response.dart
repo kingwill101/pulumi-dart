@@ -31,7 +31,7 @@ class SetValueResponse {
 
   factory SetValueResponse.fromMap(Map<String, dynamic> map) {
     return SetValueResponse(
-      isSecret: map['isSecret'] == null ? null : (map['isSecret'] as bool).input(),
+      isSecret: map['isSecret'] == null ? null : (map['isSecret']! as bool).input(),
       name: (map['name'] as String).input(),
       value: (map['value'] as String).input(),
     );

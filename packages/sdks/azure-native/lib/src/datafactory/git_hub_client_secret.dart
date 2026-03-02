@@ -26,8 +26,8 @@ class GitHubClientSecret {
 
   factory GitHubClientSecret.fromMap(Map<String, dynamic> map) {
     return GitHubClientSecret(
-      byoaSecretAkvUrl: map['byoaSecretAkvUrl'] == null ? null : (map['byoaSecretAkvUrl'] as String).input(),
-      byoaSecretName: map['byoaSecretName'] == null ? null : (map['byoaSecretName'] as String).input(),
+      byoaSecretAkvUrl: map['byoaSecretAkvUrl'] == null ? null : (map['byoaSecretAkvUrl']! as String).input(),
+      byoaSecretName: map['byoaSecretName'] == null ? null : (map['byoaSecretName']! as String).input(),
     );
   }
 }

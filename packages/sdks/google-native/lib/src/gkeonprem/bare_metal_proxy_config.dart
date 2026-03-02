@@ -26,7 +26,7 @@ class BareMetalProxyConfig {
 
   factory BareMetalProxyConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalProxyConfig(
-      noProxy: map['noProxy'] == null ? null : ((map['noProxy'] as List).cast<String>()).input(),
+      noProxy: map['noProxy'] == null ? null : ((map['noProxy']! as List).cast<String>()).input(),
       uri: (map['uri'] as String).input(),
     );
   }

@@ -26,8 +26,8 @@ class DataDiskStorageTypeInfo {
 
   factory DataDiskStorageTypeInfo.fromMap(Map<String, dynamic> map) {
     return DataDiskStorageTypeInfo(
-      lun: map['lun'] == null ? null : (map['lun'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as String).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
     );
   }
 }

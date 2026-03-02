@@ -21,7 +21,7 @@ class DomainOsNvRamSourceCookies {
 
   factory DomainOsNvRamSourceCookies.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceCookies(
-      cookies: map['cookies'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceCookiesCookie>(map['cookies'], (value) => DomainOsNvRamSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cookies: map['cookies'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceCookiesCookie>(map['cookies']!, (value) => DomainOsNvRamSourceCookiesCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

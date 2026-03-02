@@ -99,22 +99,22 @@ class TargetHttpsProxyComputeBetaArgs {
 
   factory TargetHttpsProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return TargetHttpsProxyComputeBetaArgs(
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
-      authorization: map['authorization'] == null ? null : (map['authorization'] as String).input(),
-      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy'] as String).input(),
-      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      httpFilters: map['httpFilters'] == null ? null : ((map['httpFilters'] as List).cast<String>()).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
-      quicOverride: map['quicOverride'] == null ? null : (TargetHttpsProxyQuicOverrideComputeBeta.fromValue(map['quicOverride'] as String)).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy'] as String).input(),
-      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates'] as List).cast<String>()).input(),
-      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy'] as String).input(),
-      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
+      authorization: map['authorization'] == null ? null : (map['authorization']! as String).input(),
+      authorizationPolicy: map['authorizationPolicy'] == null ? null : (map['authorizationPolicy']! as String).input(),
+      certificateMap: map['certificateMap'] == null ? null : (map['certificateMap']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      httpFilters: map['httpFilters'] == null ? null : ((map['httpFilters']! as List).cast<String>()).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
+      quicOverride: map['quicOverride'] == null ? null : (TargetHttpsProxyQuicOverrideComputeBeta.fromValue(map['quicOverride']! as String)).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      serverTlsPolicy: map['serverTlsPolicy'] == null ? null : (map['serverTlsPolicy']! as String).input(),
+      sslCertificates: map['sslCertificates'] == null ? null : ((map['sslCertificates']! as List).cast<String>()).input(),
+      sslPolicy: map['sslPolicy'] == null ? null : (map['sslPolicy']! as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap']! as String).input(),
     );
   }
 }

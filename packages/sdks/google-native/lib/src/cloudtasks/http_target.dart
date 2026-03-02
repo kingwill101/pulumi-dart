@@ -46,11 +46,11 @@ class HttpTarget {
 
   factory HttpTarget.fromMap(Map<String, dynamic> map) {
     return HttpTarget(
-      headerOverrides: map['headerOverrides'] == null ? null : (pulumi.Input.decodeList<HeaderOverride>(map['headerOverrides'], (value) => HeaderOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpMethod: map['httpMethod'] == null ? null : (HttpTargetHttpMethod.fromValue(map['httpMethod'] as String)).input(),
-      oauthToken: map['oauthToken'] == null ? null : (OAuthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (OidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      uriOverride: map['uriOverride'] == null ? null : (UriOverride.fromMap((map['uriOverride'] as Map).cast<String, dynamic>())).input(),
+      headerOverrides: map['headerOverrides'] == null ? null : (pulumi.Input.decodeList<HeaderOverride>(map['headerOverrides']!, (value) => HeaderOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpMethod: map['httpMethod'] == null ? null : (HttpTargetHttpMethod.fromValue(map['httpMethod']! as String)).input(),
+      oauthToken: map['oauthToken'] == null ? null : (OAuthToken.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (OidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      uriOverride: map['uriOverride'] == null ? null : (UriOverride.fromMap((map['uriOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

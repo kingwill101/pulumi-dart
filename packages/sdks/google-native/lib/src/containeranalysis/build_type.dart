@@ -27,8 +27,8 @@ class BuildType {
 
   factory BuildType.fromMap(Map<String, dynamic> map) {
     return BuildType(
-      builderVersion: map['builderVersion'] == null ? null : (map['builderVersion'] as String).input(),
-      signature: map['signature'] == null ? null : (BuildSignature.fromMap((map['signature'] as Map).cast<String, dynamic>())).input(),
+      builderVersion: map['builderVersion'] == null ? null : (map['builderVersion']! as String).input(),
+      signature: map['signature'] == null ? null : (BuildSignature.fromMap((map['signature']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

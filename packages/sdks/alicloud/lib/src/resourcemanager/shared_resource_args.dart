@@ -48,11 +48,11 @@ class SharedResourceArgs {
 
   factory SharedResourceArgs.fromMap(Map<String, dynamic> map) {
     return SharedResourceArgs(
-      permissionName: map['permissionName'] == null ? null : (map['permissionName'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      permissionName: map['permissionName'] == null ? null : (map['permissionName']! as String).input(),
+      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       resourceShareId: (map['resourceShareId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

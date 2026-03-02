@@ -52,11 +52,11 @@ class GetHybridMonitorSlsTasksResult {
     return GetHybridMonitorSlsTasksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      namespace: map['namespace'] == null ? null : map['namespace'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      keyword: map['keyword'] == null ? null : map['keyword']! as String,
+      namespace: map['namespace'] == null ? null : map['namespace']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       tasks: pulumi.Input.decodeList<GetHybridMonitorSlsTasksTask>(map['tasks'], (value) => GetHybridMonitorSlsTasksTask.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -51,13 +51,13 @@ class SpringCloudCertificateState {
 
   factory SpringCloudCertificateState.fromMap(Map<String, dynamic> map) {
     return SpringCloudCertificateState(
-      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent'] as String).input(),
-      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey'] as bool).input(),
-      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      certificateContent: map['certificateContent'] == null ? null : (map['certificateContent']! as String).input(),
+      excludePrivateKey: map['excludePrivateKey'] == null ? null : (map['excludePrivateKey']! as bool).input(),
+      keyVaultCertificateId: map['keyVaultCertificateId'] == null ? null : (map['keyVaultCertificateId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

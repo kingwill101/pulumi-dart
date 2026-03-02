@@ -36,9 +36,9 @@ class ConnectionNetworkParameters {
   factory ConnectionNetworkParameters.fromMap(Map<String, dynamic> map) {
     return ConnectionNetworkParameters(
       networkType: (map['networkType'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitcheId: map['vswitcheId'] == null ? null : (map['vswitcheId'] as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitcheId: map['vswitcheId'] == null ? null : (map['vswitcheId']! as String).input(),
     );
   }
 }

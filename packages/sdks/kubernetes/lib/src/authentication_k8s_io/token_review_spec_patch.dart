@@ -26,8 +26,8 @@ class TokenReviewSpecPatch {
 
   factory TokenReviewSpecPatch.fromMap(Map<String, dynamic> map) {
     return TokenReviewSpecPatch(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

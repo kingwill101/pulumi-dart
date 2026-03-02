@@ -58,13 +58,13 @@ class EipAssociationState {
 
   factory EipAssociationState.fromMap(Map<String, dynamic> map) {
     return EipAssociationState(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      allowReassociation: map['allowReassociation'] == null ? null : (map['allowReassociation'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      publicIp: map['publicIp'] == null ? null : (map['publicIp'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : ((map['allocationId'] as String).input()).input(),
+      allowReassociation: map['allowReassociation'] == null ? null : ((map['allowReassociation'] as bool).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : ((map['privateIpAddress'] as String).input()).input(),
+      publicIp: map['publicIp'] == null ? null : ((map['publicIp'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

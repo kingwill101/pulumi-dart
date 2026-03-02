@@ -62,13 +62,13 @@ class SegmentV2Args {
 
   factory SegmentV2Args.fromMap(Map<String, dynamic> map) {
     return SegmentV2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkId: (map['networkId'] as String).input(),
       networkType: (map['networkType'] as String).input(),
-      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
+      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
     );
   }
 }

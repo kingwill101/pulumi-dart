@@ -32,9 +32,9 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
 
   factory EnterpriseCrmEventbusProtoFailurePolicy.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoFailurePolicy(
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as String).input(),
-      maxNumRetries: map['maxNumRetries'] == null ? null : (map['maxNumRetries'] as int).input(),
-      retryStrategy: map['retryStrategy'] == null ? null : (EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.fromValue(map['retryStrategy'] as String)).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as String).input(),
+      maxNumRetries: map['maxNumRetries'] == null ? null : (map['maxNumRetries']! as int).input(),
+      retryStrategy: map['retryStrategy'] == null ? null : (EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.fromValue(map['retryStrategy']! as String)).input(),
     );
   }
 }

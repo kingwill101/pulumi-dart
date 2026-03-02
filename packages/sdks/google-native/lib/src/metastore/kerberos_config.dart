@@ -32,9 +32,9 @@ class KerberosConfig {
 
   factory KerberosConfig.fromMap(Map<String, dynamic> map) {
     return KerberosConfig(
-      keytab: map['keytab'] == null ? null : (Secret.fromMap((map['keytab'] as Map).cast<String, dynamic>())).input(),
-      krb5ConfigGcsUri: map['krb5ConfigGcsUri'] == null ? null : (map['krb5ConfigGcsUri'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      keytab: map['keytab'] == null ? null : (Secret.fromMap((map['keytab']! as Map).cast<String, dynamic>())).input(),
+      krb5ConfigGcsUri: map['krb5ConfigGcsUri'] == null ? null : (map['krb5ConfigGcsUri']! as String).input(),
+      principal: map['principal'] == null ? null : (map['principal']! as String).input(),
     );
   }
 }

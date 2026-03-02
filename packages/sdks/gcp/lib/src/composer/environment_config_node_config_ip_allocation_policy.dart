@@ -40,11 +40,11 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy {
 
   factory EnvironmentConfigNodeConfigIpAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigNodeConfigIpAllocationPolicy(
-      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock'] as String).input(),
-      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName'] as String).input(),
-      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock'] as String).input(),
-      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName'] as String).input(),
-      useIpAliases: map['useIpAliases'] == null ? null : (map['useIpAliases'] as bool).input(),
+      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock']! as String).input(),
+      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName']! as String).input(),
+      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock']! as String).input(),
+      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName']! as String).input(),
+      useIpAliases: map['useIpAliases'] == null ? null : (map['useIpAliases']! as bool).input(),
     );
   }
 }

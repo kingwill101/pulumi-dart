@@ -27,7 +27,7 @@ class TargetIamMemberCondition {
 
   factory TargetIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return TargetIamMemberCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

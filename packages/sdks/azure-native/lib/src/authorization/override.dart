@@ -32,9 +32,9 @@ class Override {
 
   factory Override.fromMap(Map<String, dynamic> map) {
     return Override(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<Selector>(map['selectors'], (value) => Selector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<Selector>(map['selectors']!, (value) => Selector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

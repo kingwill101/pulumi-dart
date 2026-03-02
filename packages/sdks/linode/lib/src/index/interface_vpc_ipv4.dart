@@ -39,10 +39,10 @@ class InterfaceVpcIpv4 {
 
   factory InterfaceVpcIpv4.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv4(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4Address>(map['addresses'], (value) => InterfaceVpcIpv4Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      assignedAddresses: map['assignedAddresses'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4AssignedAddress>(map['assignedAddresses'], (value) => InterfaceVpcIpv4AssignedAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      assignedRanges: map['assignedRanges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4AssignedRange>(map['assignedRanges'], (value) => InterfaceVpcIpv4AssignedRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4Range>(map['ranges'], (value) => InterfaceVpcIpv4Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4Address>(map['addresses']!, (value) => InterfaceVpcIpv4Address.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedAddresses: map['assignedAddresses'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4AssignedAddress>(map['assignedAddresses']!, (value) => InterfaceVpcIpv4AssignedAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assignedRanges: map['assignedRanges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4AssignedRange>(map['assignedRanges']!, (value) => InterfaceVpcIpv4AssignedRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InterfaceVpcIpv4Range>(map['ranges']!, (value) => InterfaceVpcIpv4Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

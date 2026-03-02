@@ -49,12 +49,12 @@ class IntegrationServiceEnvironmentPropertiesResponse {
 
   factory IntegrationServiceEnvironmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentPropertiesResponse(
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (IntegrationServiceEnvironmenEncryptionConfigurationResponse.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfigurationResponse.fromMap((map['endpointsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfigurationResponse.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (IntegrationServiceEnvironmenEncryptionConfigurationResponse.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      endpointsConfiguration: map['endpointsConfiguration'] == null ? null : (FlowEndpointsConfigurationResponse.fromMap((map['endpointsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId']! as String).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : (NetworkConfigurationResponse.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

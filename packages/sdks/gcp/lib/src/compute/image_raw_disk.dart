@@ -38,8 +38,8 @@ class ImageRawDisk {
 
   factory ImageRawDisk.fromMap(Map<String, dynamic> map) {
     return ImageRawDisk(
-      containerType: map['containerType'] == null ? null : (map['containerType'] as String).input(),
-      sha1: map['sha1'] == null ? null : (map['sha1'] as String).input(),
+      containerType: map['containerType'] == null ? null : (map['containerType']! as String).input(),
+      sha1: map['sha1'] == null ? null : (map['sha1']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

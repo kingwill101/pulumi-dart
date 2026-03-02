@@ -63,15 +63,15 @@ class ServiceAdditionalLocation {
 
   factory ServiceAdditionalLocation.fromMap(Map<String, dynamic> map) {
     return ServiceAdditionalLocation(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      gatewayDisabled: map['gatewayDisabled'] == null ? null : (map['gatewayDisabled'] as bool).input(),
-      gatewayRegionalUrl: map['gatewayRegionalUrl'] == null ? null : (map['gatewayRegionalUrl'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      gatewayDisabled: map['gatewayDisabled'] == null ? null : (map['gatewayDisabled']! as bool).input(),
+      gatewayRegionalUrl: map['gatewayRegionalUrl'] == null ? null : (map['gatewayRegionalUrl']! as String).input(),
       location: (map['location'] as String).input(),
-      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses'] as List).cast<String>()).input(),
-      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId'] as String).input(),
-      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses'] as List).cast<String>()).input(),
-      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (ServiceAdditionalLocationVirtualNetworkConfiguration.fromMap((map['virtualNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      privateIpAddresses: map['privateIpAddresses'] == null ? null : ((map['privateIpAddresses']! as List).cast<String>()).input(),
+      publicIpAddressId: map['publicIpAddressId'] == null ? null : (map['publicIpAddressId']! as String).input(),
+      publicIpAddresses: map['publicIpAddresses'] == null ? null : ((map['publicIpAddresses']! as List).cast<String>()).input(),
+      virtualNetworkConfiguration: map['virtualNetworkConfiguration'] == null ? null : (ServiceAdditionalLocationVirtualNetworkConfiguration.fromMap((map['virtualNetworkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

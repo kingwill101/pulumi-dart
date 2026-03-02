@@ -58,10 +58,10 @@ class ConfigIamMemberArgs {
 
   factory ConfigIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ConfigIamMemberArgs(
-      condition: map['condition'] == null ? null : (ConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (ConfigIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       config: (map['config'] as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

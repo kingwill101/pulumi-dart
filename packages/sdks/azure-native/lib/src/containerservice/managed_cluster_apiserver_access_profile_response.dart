@@ -51,13 +51,13 @@ class ManagedClusterAPIServerAccessProfileResponse {
 
   factory ManagedClusterAPIServerAccessProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAPIServerAccessProfileResponse(
-      authorizedIPRanges: map['authorizedIPRanges'] == null ? null : ((map['authorizedIPRanges'] as List).cast<String>()).input(),
-      disableRunCommand: map['disableRunCommand'] == null ? null : (map['disableRunCommand'] as bool).input(),
-      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : (map['enablePrivateCluster'] as bool).input(),
-      enablePrivateClusterPublicFQDN: map['enablePrivateClusterPublicFQDN'] == null ? null : (map['enablePrivateClusterPublicFQDN'] as bool).input(),
-      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : (map['enableVnetIntegration'] as bool).input(),
-      privateDNSZone: map['privateDNSZone'] == null ? null : (map['privateDNSZone'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      authorizedIPRanges: map['authorizedIPRanges'] == null ? null : ((map['authorizedIPRanges']! as List).cast<String>()).input(),
+      disableRunCommand: map['disableRunCommand'] == null ? null : (map['disableRunCommand']! as bool).input(),
+      enablePrivateCluster: map['enablePrivateCluster'] == null ? null : (map['enablePrivateCluster']! as bool).input(),
+      enablePrivateClusterPublicFQDN: map['enablePrivateClusterPublicFQDN'] == null ? null : (map['enablePrivateClusterPublicFQDN']! as bool).input(),
+      enableVnetIntegration: map['enableVnetIntegration'] == null ? null : (map['enableVnetIntegration']! as bool).input(),
+      privateDNSZone: map['privateDNSZone'] == null ? null : (map['privateDNSZone']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

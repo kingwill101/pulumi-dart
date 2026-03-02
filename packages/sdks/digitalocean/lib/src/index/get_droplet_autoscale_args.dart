@@ -29,8 +29,8 @@ class GetDropletAutoscaleArgs {
 
   factory GetDropletAutoscaleArgs.fromMap(Map<String, dynamic> map) {
     return GetDropletAutoscaleArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

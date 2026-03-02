@@ -23,7 +23,7 @@ class ListingCommercialInfo {
 
   factory ListingCommercialInfo.fromMap(Map<String, dynamic> map) {
     return ListingCommercialInfo(
-      cloudMarketplaces: map['cloudMarketplaces'] == null ? null : (pulumi.Input.decodeList<ListingCommercialInfoCloudMarketplace>(map['cloudMarketplaces'], (value) => ListingCommercialInfoCloudMarketplace.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudMarketplaces: map['cloudMarketplaces'] == null ? null : (pulumi.Input.decodeList<ListingCommercialInfoCloudMarketplace>(map['cloudMarketplaces']!, (value) => ListingCommercialInfoCloudMarketplace.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

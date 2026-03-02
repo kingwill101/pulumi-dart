@@ -28,8 +28,8 @@ class PersistentVolumeClaimTemplatePatch {
 
   factory PersistentVolumeClaimTemplatePatch.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimTemplatePatch(
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (PersistentVolumeClaimSpecPatch.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (PersistentVolumeClaimSpecPatch.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class ManagedStorageAccountSasTokenDefinitionArgs {
   factory ManagedStorageAccountSasTokenDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ManagedStorageAccountSasTokenDefinitionArgs(
       managedStorageAccountId: (map['managedStorageAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       sasTemplateUri: (map['sasTemplateUri'] as String).input(),
       sasType: (map['sasType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       validityPeriod: (map['validityPeriod'] as String).input(),
     );
   }

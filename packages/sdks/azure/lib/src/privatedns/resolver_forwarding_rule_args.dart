@@ -52,9 +52,9 @@ class ResolverForwardingRuleArgs {
     return ResolverForwardingRuleArgs(
       dnsForwardingRulesetId: (map['dnsForwardingRulesetId'] as String).input(),
       domainName: (map['domainName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       targetDnsServers: (pulumi.Input.decodeList<ResolverForwardingRuleTargetDnsServer>(map['targetDnsServers'], (value) => ResolverForwardingRuleTargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

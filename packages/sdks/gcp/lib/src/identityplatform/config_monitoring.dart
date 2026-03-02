@@ -22,7 +22,7 @@ class ConfigMonitoring {
 
   factory ConfigMonitoring.fromMap(Map<String, dynamic> map) {
     return ConfigMonitoring(
-      requestLogging: map['requestLogging'] == null ? null : (ConfigMonitoringRequestLogging.fromMap((map['requestLogging'] as Map).cast<String, dynamic>())).input(),
+      requestLogging: map['requestLogging'] == null ? null : (ConfigMonitoringRequestLogging.fromMap((map['requestLogging']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

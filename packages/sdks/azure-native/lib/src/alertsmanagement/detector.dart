@@ -27,7 +27,7 @@ class Detector {
   factory Detector.fromMap(Map<String, dynamic> map) {
     return Detector(
       id: (map['id'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class VmSkuProfileResponseProperties {
   factory VmSkuProfileResponseProperties.fromMap(Map<String, dynamic> map) {
     return VmSkuProfileResponseProperties(
       provisioningState: (map['provisioningState'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<VmSkuPropertiesResponse>(map['values'], (value) => VmSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<VmSkuPropertiesResponse>(map['values']!, (value) => VmSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

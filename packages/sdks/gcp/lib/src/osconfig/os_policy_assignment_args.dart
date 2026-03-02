@@ -68,14 +68,14 @@ class OsPolicyAssignmentArgs {
 
   factory OsPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceFilter: (OsPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       osPolicies: (pulumi.Input.decodeList<OsPolicyAssignmentOsPolicy>(map['osPolicies'], (value) => OsPolicyAssignmentOsPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rollout: (OsPolicyAssignmentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
-      skipAwaitRollout: map['skipAwaitRollout'] == null ? null : (map['skipAwaitRollout'] as bool).input(),
+      skipAwaitRollout: map['skipAwaitRollout'] == null ? null : (map['skipAwaitRollout']! as bool).input(),
     );
   }
 }

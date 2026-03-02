@@ -26,7 +26,7 @@ class Module {
 
   factory Module.fromMap(Map<String, dynamic> map) {
     return Module(
-      args: map['args'] == null ? null : (map['args'] as String).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

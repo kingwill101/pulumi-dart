@@ -32,9 +32,9 @@ class WindowsUpdateSettings {
 
   factory WindowsUpdateSettings.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateSettings(
-      classifications: map['classifications'] == null ? null : (pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(map['classifications'], (value) => WindowsUpdateSettingsClassificationsItem.fromValue(value as String))).input(),
-      excludes: map['excludes'] == null ? null : ((map['excludes'] as List).cast<String>()).input(),
-      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches'] as List).cast<String>()).input(),
+      classifications: map['classifications'] == null ? null : (pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(map['classifications']!, (value) => WindowsUpdateSettingsClassificationsItem.fromValue(value as String))).input(),
+      excludes: map['excludes'] == null ? null : ((map['excludes']! as List).cast<String>()).input(),
+      exclusivePatches: map['exclusivePatches'] == null ? null : ((map['exclusivePatches']! as List).cast<String>()).input(),
     );
   }
 }

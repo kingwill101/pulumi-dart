@@ -26,8 +26,8 @@ class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId {
 
   factory GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoId(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
     );
   }
 }

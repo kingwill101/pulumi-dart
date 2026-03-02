@@ -26,8 +26,8 @@ class SyncGroupState {
 
   factory SyncGroupState.fromMap(Map<String, dynamic> map) {
     return SyncGroupState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageSyncId: map['storageSyncId'] == null ? null : (map['storageSyncId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageSyncId: map['storageSyncId'] == null ? null : (map['storageSyncId']! as String).input(),
     );
   }
 }

@@ -54,7 +54,7 @@ class GetSiteResult {
       description: map['description'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
-      locations: pulumi.Input.decodeList<GetSiteLocation>(map['locations'], (value) => GetSiteLocation.fromMap((value as Map).cast<String, dynamic>())),
+      locations: pulumi.Input.decodeList<GetSiteLocation>(map['locations']!, (value) => GetSiteLocation.fromMap((value as Map).cast<String, dynamic>())),
       siteId: map['siteId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

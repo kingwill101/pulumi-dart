@@ -25,8 +25,8 @@ class DiJobJobSettingsColumnDataTypeSetting {
 
   factory DiJobJobSettingsColumnDataTypeSetting.fromMap(Map<String, dynamic> map) {
     return DiJobJobSettingsColumnDataTypeSetting(
-      destinationDataType: map['destinationDataType'] == null ? null : (map['destinationDataType'] as String).input(),
-      sourceDataType: map['sourceDataType'] == null ? null : (map['sourceDataType'] as String).input(),
+      destinationDataType: map['destinationDataType'] == null ? null : (map['destinationDataType']! as String).input(),
+      sourceDataType: map['sourceDataType'] == null ? null : (map['sourceDataType']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class EnvironmentConfigRecoveryConfig {
 
   factory EnvironmentConfigRecoveryConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigRecoveryConfig(
-      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>())).input(),
+      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig.fromMap((map['scheduledSnapshotsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

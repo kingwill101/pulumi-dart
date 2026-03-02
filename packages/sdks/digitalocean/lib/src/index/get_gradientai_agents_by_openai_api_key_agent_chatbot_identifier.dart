@@ -20,7 +20,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
 
   factory GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
 
   factory GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff(
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
     );
   }
 }

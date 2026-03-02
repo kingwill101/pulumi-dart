@@ -20,7 +20,7 @@ class V2modelsIntentInitialResponseSettingNextStepIntentSlotValue {
 
   factory V2modelsIntentInitialResponseSettingNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ManagedRGConfigurationResponse {
 
   factory ManagedRGConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRGConfigurationResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

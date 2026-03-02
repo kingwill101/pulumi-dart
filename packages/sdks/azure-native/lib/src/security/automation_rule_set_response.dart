@@ -21,7 +21,7 @@ class AutomationRuleSetResponse {
 
   factory AutomationRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleSetResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutomationTriggeringRuleResponse>(map['rules'], (value) => AutomationTriggeringRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AutomationTriggeringRuleResponse>(map['rules']!, (value) => AutomationTriggeringRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

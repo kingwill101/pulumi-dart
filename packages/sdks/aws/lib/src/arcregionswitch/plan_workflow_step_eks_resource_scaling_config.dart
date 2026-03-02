@@ -55,12 +55,12 @@ class PlanWorkflowStepEksResourceScalingConfig {
   factory PlanWorkflowStepEksResourceScalingConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepEksResourceScalingConfig(
       capacityMonitoringApproach: (map['capacityMonitoringApproach'] as String).input(),
-      eksClusters: map['eksClusters'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigEksCluster>(map['eksClusters'], (value) => PlanWorkflowStepEksResourceScalingConfigEksCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kubernetesResourceTypes: map['kubernetesResourceTypes'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType>(map['kubernetesResourceTypes'], (value) => PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scalingResources: map['scalingResources'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigScalingResource>(map['scalingResources'], (value) => PlanWorkflowStepEksResourceScalingConfigScalingResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eksClusters: map['eksClusters'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigEksCluster>(map['eksClusters']!, (value) => PlanWorkflowStepEksResourceScalingConfigEksCluster.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      kubernetesResourceTypes: map['kubernetesResourceTypes'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType>(map['kubernetesResourceTypes']!, (value) => PlanWorkflowStepEksResourceScalingConfigKubernetesResourceType.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scalingResources: map['scalingResources'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigScalingResource>(map['scalingResources']!, (value) => PlanWorkflowStepEksResourceScalingConfigScalingResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       targetPercent: (map['targetPercent'] as int).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
-      ungracefuls: map['ungracefuls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepEksResourceScalingConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
+      ungracefuls: map['ungracefuls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepEksResourceScalingConfigUngraceful>(map['ungracefuls']!, (value) => PlanWorkflowStepEksResourceScalingConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

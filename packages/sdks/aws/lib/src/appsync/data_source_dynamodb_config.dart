@@ -41,11 +41,11 @@ class DataSourceDynamodbConfig {
 
   factory DataSourceDynamodbConfig.fromMap(Map<String, dynamic> map) {
     return DataSourceDynamodbConfig(
-      deltaSyncConfig: map['deltaSyncConfig'] == null ? null : (DataSourceDynamodbConfigDeltaSyncConfig.fromMap((map['deltaSyncConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      deltaSyncConfig: map['deltaSyncConfig'] == null ? null : ((DataSourceDynamodbConfigDeltaSyncConfig.fromMap((map['deltaSyncConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
-      useCallerCredentials: map['useCallerCredentials'] == null ? null : (map['useCallerCredentials'] as bool).input(),
-      versioned: map['versioned'] == null ? null : (map['versioned'] as bool).input(),
+      useCallerCredentials: map['useCallerCredentials'] == null ? null : ((map['useCallerCredentials'] as bool).input()).input(),
+      versioned: map['versioned'] == null ? null : ((map['versioned'] as bool).input()).input(),
     );
   }
 }

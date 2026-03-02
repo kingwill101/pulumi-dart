@@ -28,8 +28,8 @@ class HttpRouteFaultInjectionPolicy {
 
   factory HttpRouteFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : (HttpRouteFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (HttpRouteFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (HttpRouteFaultInjectionPolicyAbort.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (HttpRouteFaultInjectionPolicyDelay.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

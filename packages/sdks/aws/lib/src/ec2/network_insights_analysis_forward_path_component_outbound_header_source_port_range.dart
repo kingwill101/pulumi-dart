@@ -23,8 +23,8 @@ class NetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange {
 
   factory NetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange(
-      from: map['from'] == null ? null : (map['from'] as int).input(),
-      to: map['to'] == null ? null : (map['to'] as int).input(),
+      from: map['from'] == null ? null : ((map['from'] as int).input()).input(),
+      to: map['to'] == null ? null : ((map['to'] as int).input()).input(),
     );
   }
 }

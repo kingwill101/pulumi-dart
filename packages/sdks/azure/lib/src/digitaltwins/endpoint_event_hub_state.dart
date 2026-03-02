@@ -41,11 +41,11 @@ class EndpointEventHubState {
 
   factory EndpointEventHubState.fromMap(Map<String, dynamic> map) {
     return EndpointEventHubState(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
-      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId'] as String).input(),
-      eventhubPrimaryConnectionString: map['eventhubPrimaryConnectionString'] == null ? null : (map['eventhubPrimaryConnectionString'] as String).input(),
-      eventhubSecondaryConnectionString: map['eventhubSecondaryConnectionString'] == null ? null : (map['eventhubSecondaryConnectionString'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret']! as String).input(),
+      digitalTwinsId: map['digitalTwinsId'] == null ? null : (map['digitalTwinsId']! as String).input(),
+      eventhubPrimaryConnectionString: map['eventhubPrimaryConnectionString'] == null ? null : (map['eventhubPrimaryConnectionString']! as String).input(),
+      eventhubSecondaryConnectionString: map['eventhubSecondaryConnectionString'] == null ? null : (map['eventhubSecondaryConnectionString']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

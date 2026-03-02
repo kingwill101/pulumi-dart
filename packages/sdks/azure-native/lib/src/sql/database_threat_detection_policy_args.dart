@@ -85,18 +85,18 @@ class DatabaseThreatDetectionPolicyArgs {
   factory DatabaseThreatDetectionPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseThreatDetectionPolicyArgs(
       databaseName: (map['databaseName'] as String).input(),
-      disabledAlerts: map['disabledAlerts'] == null ? null : (map['disabledAlerts'] as String).input(),
-      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins'] as String).input(),
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      disabledAlerts: map['disabledAlerts'] == null ? null : (map['disabledAlerts']! as String).input(),
+      emailAccountAdmins: map['emailAccountAdmins'] == null ? null : (map['emailAccountAdmins']! as String).input(),
+      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      securityAlertPolicyName: map['securityAlertPolicyName'] == null ? null : (map['securityAlertPolicyName'] as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      securityAlertPolicyName: map['securityAlertPolicyName'] == null ? null : (map['securityAlertPolicyName']! as String).input(),
       serverName: (map['serverName'] as String).input(),
       state: (map['state'] as String).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
-      useServerDefault: map['useServerDefault'] == null ? null : (map['useServerDefault'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
+      useServerDefault: map['useServerDefault'] == null ? null : (map['useServerDefault']! as String).input(),
     );
   }
 }

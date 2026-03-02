@@ -30,9 +30,9 @@ class ApplicationUpdateStrategyV2BatchUpdate {
 
   factory ApplicationUpdateStrategyV2BatchUpdate.fromMap(Map<String, dynamic> map) {
     return ApplicationUpdateStrategyV2BatchUpdate(
-      batch: map['batch'] == null ? null : (map['batch'] as int).input(),
-      batchWaitTime: map['batchWaitTime'] == null ? null : (map['batchWaitTime'] as int).input(),
-      releaseType: map['releaseType'] == null ? null : (map['releaseType'] as String).input(),
+      batch: map['batch'] == null ? null : (map['batch']! as int).input(),
+      batchWaitTime: map['batchWaitTime'] == null ? null : (map['batchWaitTime']! as int).input(),
+      releaseType: map['releaseType'] == null ? null : (map['releaseType']! as String).input(),
     );
   }
 }

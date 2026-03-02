@@ -32,7 +32,7 @@ class GetVariableArgs {
   factory GetVariableArgs.fromMap(Map<String, dynamic> map) {
     return GetVariableArgs(
       configId: (map['configId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       variableId: (map['variableId'] as String).input(),
     );
   }

@@ -82,19 +82,19 @@ class GetGradientaiAgentModel {
 
   factory GetGradientaiAgentModel.fromMap(Map<String, dynamic> map) {
     return GetGradientaiAgentModel(
-      agreements: map['agreements'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentModelAgreement>(map['agreements'], (value) => GetGradientaiAgentModelAgreement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agreements: map['agreements'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentModelAgreement>(map['agreements']!, (value) => GetGradientaiAgentModelAgreement.fromMap((value as Map).cast<String, dynamic>()))).input(),
       createdAt: (map['createdAt'] as String).input(),
-      inferenceName: map['inferenceName'] == null ? null : (map['inferenceName'] as String).input(),
-      inferenceVersion: map['inferenceVersion'] == null ? null : (map['inferenceVersion'] as String).input(),
-      isFoundational: map['isFoundational'] == null ? null : (map['isFoundational'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid'] as String).input(),
-      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
+      inferenceName: map['inferenceName'] == null ? null : (map['inferenceName']! as String).input(),
+      inferenceVersion: map['inferenceVersion'] == null ? null : (map['inferenceVersion']! as String).input(),
+      isFoundational: map['isFoundational'] == null ? null : (map['isFoundational']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentUuid: map['parentUuid'] == null ? null : (map['parentUuid']! as String).input(),
+      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      uploadComplete: map['uploadComplete'] == null ? null : (map['uploadComplete'] as bool).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      usecases: map['usecases'] == null ? null : ((map['usecases'] as List).cast<String>()).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentModelVersion>(map['versions'], (value) => GetGradientaiAgentModelVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uploadComplete: map['uploadComplete'] == null ? null : (map['uploadComplete']! as bool).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      usecases: map['usecases'] == null ? null : ((map['usecases']! as List).cast<String>()).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<GetGradientaiAgentModelVersion>(map['versions']!, (value) => GetGradientaiAgentModelVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

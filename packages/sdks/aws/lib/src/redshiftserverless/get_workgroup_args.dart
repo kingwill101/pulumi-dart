@@ -29,7 +29,7 @@ class GetWorkgroupArgs {
 
   factory GetWorkgroupArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkgroupArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workgroupName: (map['workgroupName'] as String).input(),
     );
   }

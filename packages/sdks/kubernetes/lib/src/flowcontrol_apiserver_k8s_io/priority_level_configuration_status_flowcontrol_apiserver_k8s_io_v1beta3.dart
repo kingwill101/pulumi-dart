@@ -22,7 +22,7 @@ class PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta3 {
 
   factory PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return PriorityLevelConfigurationStatusFlowcontrolApiserverK8sIoV1beta3(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3>(map['conditions'], (value) => PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3>(map['conditions']!, (value) => PriorityLevelConfigurationConditionFlowcontrolApiserverK8sIoV1beta3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

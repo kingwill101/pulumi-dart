@@ -55,13 +55,13 @@ class VmwareNetworkConfig {
 
   factory VmwareNetworkConfig.fromMap(Map<String, dynamic> map) {
     return VmwareNetworkConfig(
-      controlPlaneV2Config: map['controlPlaneV2Config'] == null ? null : (VmwareControlPlaneV2Config.fromMap((map['controlPlaneV2Config'] as Map).cast<String, dynamic>())).input(),
-      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : (VmwareDhcpIpConfig.fromMap((map['dhcpIpConfig'] as Map).cast<String, dynamic>())).input(),
-      hostConfig: map['hostConfig'] == null ? null : (VmwareHostConfig.fromMap((map['hostConfig'] as Map).cast<String, dynamic>())).input(),
+      controlPlaneV2Config: map['controlPlaneV2Config'] == null ? null : (VmwareControlPlaneV2Config.fromMap((map['controlPlaneV2Config']! as Map).cast<String, dynamic>())).input(),
+      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : (VmwareDhcpIpConfig.fromMap((map['dhcpIpConfig']! as Map).cast<String, dynamic>())).input(),
+      hostConfig: map['hostConfig'] == null ? null : (VmwareHostConfig.fromMap((map['hostConfig']! as Map).cast<String, dynamic>())).input(),
       podAddressCidrBlocks: ((map['podAddressCidrBlocks'] as List).cast<String>()).input(),
       serviceAddressCidrBlocks: ((map['serviceAddressCidrBlocks'] as List).cast<String>()).input(),
-      staticIpConfig: map['staticIpConfig'] == null ? null : (VmwareStaticIpConfig.fromMap((map['staticIpConfig'] as Map).cast<String, dynamic>())).input(),
-      vcenterNetwork: map['vcenterNetwork'] == null ? null : (map['vcenterNetwork'] as String).input(),
+      staticIpConfig: map['staticIpConfig'] == null ? null : (VmwareStaticIpConfig.fromMap((map['staticIpConfig']! as Map).cast<String, dynamic>())).input(),
+      vcenterNetwork: map['vcenterNetwork'] == null ? null : (map['vcenterNetwork']! as String).input(),
     );
   }
 }

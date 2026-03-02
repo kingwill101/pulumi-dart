@@ -45,7 +45,7 @@ class GetImageRecipesResult {
   factory GetImageRecipesResult.fromMap(Map<String, dynamic> map) {
     return GetImageRecipesResult(
       arns: (map['arns'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetImageRecipesFilter>(map['filters'], (value) => GetImageRecipesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetImageRecipesFilter>(map['filters']!, (value) => GetImageRecipesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
       owner: map['owner'] == null ? null : map['owner'] as String,

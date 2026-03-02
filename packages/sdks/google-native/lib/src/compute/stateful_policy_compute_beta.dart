@@ -20,7 +20,7 @@ class StatefulPolicyComputeBeta {
 
   factory StatefulPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyComputeBeta(
-      preservedState: map['preservedState'] == null ? null : (StatefulPolicyPreservedStateComputeBeta.fromMap((map['preservedState'] as Map).cast<String, dynamic>())).input(),
+      preservedState: map['preservedState'] == null ? null : (StatefulPolicyPreservedStateComputeBeta.fromMap((map['preservedState']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

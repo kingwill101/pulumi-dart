@@ -58,11 +58,11 @@ class GetDdosBgpIpsResult {
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
       ips: pulumi.Input.decodeList<GetDdosBgpIpsIp>(map['ips'], (value) => GetDdosBgpIpsIp.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      productName: map['productName'] == null ? null : map['productName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      productName: map['productName'] == null ? null : map['productName']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

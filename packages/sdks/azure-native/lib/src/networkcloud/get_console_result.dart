@@ -108,7 +108,7 @@ class GetConsoleResult {
       detailedStatusMessage: map['detailedStatusMessage'] as String,
       enabled: map['enabled'] as String,
       etag: map['etag'] as String,
-      expiration: map['expiration'] == null ? null : map['expiration'] as String,
+      expiration: map['expiration'] == null ? null : map['expiration']! as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
@@ -117,7 +117,7 @@ class GetConsoleResult {
       provisioningState: map['provisioningState'] as String,
       sshPublicKey: SshPublicKeyResponse.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualMachineAccessId: map['virtualMachineAccessId'] as String,
     );

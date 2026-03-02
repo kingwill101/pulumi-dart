@@ -21,7 +21,7 @@ class NetworkConfigurationResponse {
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      isSecondaryIpEnabled: map['isSecondaryIpEnabled'] == null ? null : (map['isSecondaryIpEnabled'] as bool).input(),
+      isSecondaryIpEnabled: map['isSecondaryIpEnabled'] == null ? null : (map['isSecondaryIpEnabled']! as bool).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class RuleTarget {
 
   factory RuleTarget.fromMap(Map<String, dynamic> map) {
     return RuleTarget(
-      deadLetterQueue: map['deadLetterQueue'] == null ? null : (RuleTargetDeadLetterQueue.fromMap((map['deadLetterQueue'] as Map).cast<String, dynamic>())).input(),
+      deadLetterQueue: map['deadLetterQueue'] == null ? null : (RuleTargetDeadLetterQueue.fromMap((map['deadLetterQueue']! as Map).cast<String, dynamic>())).input(),
       endpoint: (map['endpoint'] as String).input(),
       paramLists: (pulumi.Input.decodeList<RuleTargetParamList>(map['paramLists'], (value) => RuleTargetParamList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pushRetryStrategy: map['pushRetryStrategy'] == null ? null : (map['pushRetryStrategy'] as String).input(),
+      pushRetryStrategy: map['pushRetryStrategy'] == null ? null : (map['pushRetryStrategy']! as String).input(),
       targetId: (map['targetId'] as String).input(),
       type: (map['type'] as String).input(),
     );

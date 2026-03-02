@@ -30,7 +30,7 @@ class GetGroupArgs {
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

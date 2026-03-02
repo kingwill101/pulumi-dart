@@ -20,7 +20,7 @@ class CertificateResponse {
 
   factory CertificateResponse.fromMap(Map<String, dynamic> map) {
     return CertificateResponse(
-      pem: map['pem'] == null ? null : (map['pem'] as String).input(),
+      pem: map['pem'] == null ? null : (map['pem']! as String).input(),
     );
   }
 }

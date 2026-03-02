@@ -34,9 +34,9 @@ class SbePartnerInfoResponse {
 
   factory SbePartnerInfoResponse.fromMap(Map<String, dynamic> map) {
     return SbePartnerInfoResponse(
-      credentialList: map['credentialList'] == null ? null : (pulumi.Input.decodeList<SbeCredentialsResponse>(map['credentialList'], (value) => SbeCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partnerProperties: map['partnerProperties'] == null ? null : (pulumi.Input.decodeList<SbePartnerPropertiesResponse>(map['partnerProperties'], (value) => SbePartnerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sbeDeploymentInfo: map['sbeDeploymentInfo'] == null ? null : (SbeDeploymentInfoResponse.fromMap((map['sbeDeploymentInfo'] as Map).cast<String, dynamic>())).input(),
+      credentialList: map['credentialList'] == null ? null : (pulumi.Input.decodeList<SbeCredentialsResponse>(map['credentialList']!, (value) => SbeCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partnerProperties: map['partnerProperties'] == null ? null : (pulumi.Input.decodeList<SbePartnerPropertiesResponse>(map['partnerProperties']!, (value) => SbePartnerPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sbeDeploymentInfo: map['sbeDeploymentInfo'] == null ? null : (SbeDeploymentInfoResponse.fromMap((map['sbeDeploymentInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class WorkflowOnExceptionStepCustomStepDetails {
 
   factory WorkflowOnExceptionStepCustomStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStepCustomStepDetails(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceFileLocation: map['sourceFileLocation'] == null ? null : (map['sourceFileLocation'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      sourceFileLocation: map['sourceFileLocation'] == null ? null : ((map['sourceFileLocation'] as String).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : ((map['timeoutSeconds'] as int).input()).input(),
     );
   }
 }

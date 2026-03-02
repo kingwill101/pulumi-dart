@@ -38,9 +38,9 @@ class FieldIndexConfigIndex {
 
   factory FieldIndexConfigIndex.fromMap(Map<String, dynamic> map) {
     return FieldIndexConfigIndex(
-      arrayConfig: map['arrayConfig'] == null ? null : (map['arrayConfig'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      queryScope: map['queryScope'] == null ? null : (map['queryScope'] as String).input(),
+      arrayConfig: map['arrayConfig'] == null ? null : (map['arrayConfig']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      queryScope: map['queryScope'] == null ? null : (map['queryScope']! as String).input(),
     );
   }
 }

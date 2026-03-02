@@ -250,7 +250,7 @@ class GetBackendServiceResult {
       outlierDetections: pulumi.Input.decodeList<GetBackendServiceOutlierDetection>(map['outlierDetections'], (value) => GetBackendServiceOutlierDetection.fromMap((value as Map).cast<String, dynamic>())),
       params: pulumi.Input.decodeList<GetBackendServiceParam>(map['params'], (value) => GetBackendServiceParam.fromMap((value as Map).cast<String, dynamic>())),
       portName: map['portName'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       protocol: map['protocol'] as String,
       securityPolicy: map['securityPolicy'] as String,
       securitySettings: pulumi.Input.decodeList<GetBackendServiceSecuritySetting>(map['securitySettings'], (value) => GetBackendServiceSecuritySetting.fromMap((value as Map).cast<String, dynamic>())),

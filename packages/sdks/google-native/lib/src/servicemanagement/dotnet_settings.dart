@@ -47,12 +47,12 @@ class DotnetSettings {
 
   factory DotnetSettings.fromMap(Map<String, dynamic> map) {
     return DotnetSettings(
-      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>())).input(),
-      forcedNamespaceAliases: map['forcedNamespaceAliases'] == null ? null : ((map['forcedNamespaceAliases'] as List).cast<String>()).input(),
-      handwrittenSignatures: map['handwrittenSignatures'] == null ? null : ((map['handwrittenSignatures'] as List).cast<String>()).input(),
-      ignoredResources: map['ignoredResources'] == null ? null : ((map['ignoredResources'] as List).cast<String>()).input(),
-      renamedResources: map['renamedResources'] == null ? null : ((map['renamedResources'] as Map).cast<String, String>()).input(),
-      renamedServices: map['renamedServices'] == null ? null : ((map['renamedServices'] as Map).cast<String, String>()).input(),
+      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common']! as Map).cast<String, dynamic>())).input(),
+      forcedNamespaceAliases: map['forcedNamespaceAliases'] == null ? null : ((map['forcedNamespaceAliases']! as List).cast<String>()).input(),
+      handwrittenSignatures: map['handwrittenSignatures'] == null ? null : ((map['handwrittenSignatures']! as List).cast<String>()).input(),
+      ignoredResources: map['ignoredResources'] == null ? null : ((map['ignoredResources']! as List).cast<String>()).input(),
+      renamedResources: map['renamedResources'] == null ? null : ((map['renamedResources']! as Map).cast<String, String>()).input(),
+      renamedServices: map['renamedServices'] == null ? null : ((map['renamedServices']! as Map).cast<String, String>()).input(),
     );
   }
 }

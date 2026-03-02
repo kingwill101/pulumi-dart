@@ -37,10 +37,10 @@ class TokenReviewStatus {
 
   factory TokenReviewStatus.fromMap(Map<String, dynamic> map) {
     return TokenReviewStatus(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      authenticated: map['authenticated'] == null ? null : (map['authenticated'] as bool).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      user: map['user'] == null ? null : (UserInfo.fromMap((map['user'] as Map).cast<String, dynamic>())).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      authenticated: map['authenticated'] == null ? null : (map['authenticated']! as bool).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      user: map['user'] == null ? null : (UserInfo.fromMap((map['user']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

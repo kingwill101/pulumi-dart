@@ -41,9 +41,9 @@ class TableServicePropertiesArgs {
   factory TableServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
     return TableServicePropertiesArgs(
       accountName: (map['accountName'] as String).input(),
-      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (CorsRules.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableServiceName: map['tableServiceName'] == null ? null : (map['tableServiceName'] as String).input(),
+      tableServiceName: map['tableServiceName'] == null ? null : (map['tableServiceName']! as String).input(),
     );
   }
 }

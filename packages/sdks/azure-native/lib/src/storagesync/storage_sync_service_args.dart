@@ -55,13 +55,13 @@ class StorageSyncServiceArgs {
 
   factory StorageSyncServiceArgs.fromMap(Map<String, dynamic> map) {
     return StorageSyncServiceArgs(
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : (map['incomingTrafficPolicy'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      incomingTrafficPolicy: map['incomingTrafficPolicy'] == null ? null : (map['incomingTrafficPolicy']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageSyncServiceName: map['storageSyncServiceName'] == null ? null : (map['storageSyncServiceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      useIdentity: map['useIdentity'] == null ? null : (map['useIdentity'] as bool).input(),
+      storageSyncServiceName: map['storageSyncServiceName'] == null ? null : (map['storageSyncServiceName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      useIdentity: map['useIdentity'] == null ? null : (map['useIdentity']! as bool).input(),
     );
   }
 }

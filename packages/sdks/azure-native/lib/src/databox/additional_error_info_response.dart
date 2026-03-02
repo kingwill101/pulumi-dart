@@ -26,8 +26,8 @@ class AdditionalErrorInfoResponse {
 
   factory AdditionalErrorInfoResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalErrorInfoResponse(
-      info: map['info'] == null ? null : (map['info']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      info: map['info'] == null ? null : (map['info']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

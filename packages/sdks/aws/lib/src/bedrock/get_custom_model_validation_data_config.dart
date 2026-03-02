@@ -21,7 +21,7 @@ class GetCustomModelValidationDataConfig {
 
   factory GetCustomModelValidationDataConfig.fromMap(Map<String, dynamic> map) {
     return GetCustomModelValidationDataConfig(
-      validators: (pulumi.Input.decodeList<GetCustomModelValidationDataConfigValidator>(map['validators'], (value) => GetCustomModelValidationDataConfigValidator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validators: (pulumi.Input.decodeList<GetCustomModelValidationDataConfigValidator>(map['validators']!, (value) => GetCustomModelValidationDataConfigValidator.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

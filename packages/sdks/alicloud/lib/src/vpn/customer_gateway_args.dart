@@ -51,12 +51,12 @@ class CustomerGatewayArgs {
 
   factory CustomerGatewayArgs.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayArgs(
-      asn: map['asn'] == null ? null : (map['asn'] as String).input(),
-      customerGatewayName: map['customerGatewayName'] == null ? null : (map['customerGatewayName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as String).input(),
+      customerGatewayName: map['customerGatewayName'] == null ? null : (map['customerGatewayName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ipAddress: (map['ipAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

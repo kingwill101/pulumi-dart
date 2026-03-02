@@ -31,7 +31,7 @@ class EventEventAttribute {
   factory EventEventAttribute.fromMap(Map<String, dynamic> map) {
     return EventEventAttribute(
       key: (map['key'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

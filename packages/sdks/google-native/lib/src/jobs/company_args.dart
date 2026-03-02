@@ -79,18 +79,18 @@ class CompanyArgs {
 
   factory CompanyArgs.fromMap(Map<String, dynamic> map) {
     return CompanyArgs(
-      careerSiteUri: map['careerSiteUri'] == null ? null : (map['careerSiteUri'] as String).input(),
+      careerSiteUri: map['careerSiteUri'] == null ? null : (map['careerSiteUri']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      eeoText: map['eeoText'] == null ? null : (map['eeoText'] as String).input(),
+      eeoText: map['eeoText'] == null ? null : (map['eeoText']! as String).input(),
       externalId: (map['externalId'] as String).input(),
-      headquartersAddress: map['headquartersAddress'] == null ? null : (map['headquartersAddress'] as String).input(),
-      hiringAgency: map['hiringAgency'] == null ? null : (map['hiringAgency'] as bool).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      keywordSearchableJobCustomAttributes: map['keywordSearchableJobCustomAttributes'] == null ? null : ((map['keywordSearchableJobCustomAttributes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      size: map['size'] == null ? null : (CompanySize.fromValue(map['size'] as String)).input(),
-      websiteUri: map['websiteUri'] == null ? null : (map['websiteUri'] as String).input(),
+      headquartersAddress: map['headquartersAddress'] == null ? null : (map['headquartersAddress']! as String).input(),
+      hiringAgency: map['hiringAgency'] == null ? null : (map['hiringAgency']! as bool).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      keywordSearchableJobCustomAttributes: map['keywordSearchableJobCustomAttributes'] == null ? null : ((map['keywordSearchableJobCustomAttributes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      size: map['size'] == null ? null : (CompanySize.fromValue(map['size']! as String)).input(),
+      websiteUri: map['websiteUri'] == null ? null : (map['websiteUri']! as String).input(),
     );
   }
 }

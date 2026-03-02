@@ -30,7 +30,7 @@ class GetAccountArgs {
   factory GetAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountArgs(
       accountId: (map['accountId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

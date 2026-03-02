@@ -33,8 +33,8 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword(
-      hotwordRegex: map['hotwordRegex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>())).input(),
-      proximity: map['proximity'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap((map['proximity'] as Map).cast<String, dynamic>())).input(),
+      hotwordRegex: map['hotwordRegex'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex.fromMap((map['hotwordRegex']! as Map).cast<String, dynamic>())).input(),
+      proximity: map['proximity'] == null ? null : (PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity.fromMap((map['proximity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

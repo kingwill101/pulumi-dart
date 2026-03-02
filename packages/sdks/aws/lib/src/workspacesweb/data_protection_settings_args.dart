@@ -57,13 +57,13 @@ class DataProtectionSettingsArgs {
 
   factory DataProtectionSettingsArgs.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       displayName: (map['displayName'] as String).input(),
-      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : (DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      inlineRedactionConfiguration: map['inlineRedactionConfiguration'] == null ? null : ((DataProtectionSettingsInlineRedactionConfiguration.fromMap((map['inlineRedactionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

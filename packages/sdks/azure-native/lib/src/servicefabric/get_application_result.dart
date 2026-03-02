@@ -88,17 +88,17 @@ class GetApplicationResult {
     return GetApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : ManagedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
-      managedIdentities: map['managedIdentities'] == null ? null : pulumi.Input.decodeList<ApplicationUserAssignedIdentityResponse>(map['managedIdentities'], (value) => ApplicationUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      identity: map['identity'] == null ? null : ManagedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
+      managedIdentities: map['managedIdentities'] == null ? null : pulumi.Input.decodeList<ApplicationUserAssignedIdentityResponse>(map['managedIdentities']!, (value) => ApplicationUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as Map).cast<String, String>(),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      upgradePolicy: map['upgradePolicy'] == null ? null : ApplicationUpgradePolicyResponse.fromMap((map['upgradePolicy'] as Map).cast<String, dynamic>()),
-      version: map['version'] == null ? null : map['version'] as String,
+      upgradePolicy: map['upgradePolicy'] == null ? null : ApplicationUpgradePolicyResponse.fromMap((map['upgradePolicy']! as Map).cast<String, dynamic>()),
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

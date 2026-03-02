@@ -41,8 +41,8 @@ class DashboardDefinitionArgs {
   factory DashboardDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionArgs(
       dashboardName: (map['dashboardName'] as String).input(),
-      definitionName: map['definitionName'] == null ? null : (map['definitionName'] as String).input(),
-      properties: map['properties'] == null ? null : (DashboardDefinitionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      definitionName: map['definitionName'] == null ? null : (map['definitionName']! as String).input(),
+      properties: map['properties'] == null ? null : (DashboardDefinitionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

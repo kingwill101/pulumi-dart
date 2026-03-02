@@ -54,13 +54,13 @@ class GetIpamIpamPoolAllocationsArgs {
 
   factory GetIpamIpamPoolAllocationsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolAllocationsArgs(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : (map['ipamPoolAllocationId'] as String).input(),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      ipamPoolAllocationId: map['ipamPoolAllocationId'] == null ? null : (map['ipamPoolAllocationId']! as String).input(),
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName']! as String).input(),
       ipamPoolId: (map['ipamPoolId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LifecyclePolicyResourceSelection {
 
   factory LifecyclePolicyResourceSelection.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyResourceSelection(
-      recipes: map['recipes'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyResourceSelectionRecipe>(map['recipes'], (value) => LifecyclePolicyResourceSelectionRecipe.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tagMap: map['tagMap'] == null ? null : ((map['tagMap'] as Map).cast<String, String>()).input(),
+      recipes: map['recipes'] == null ? null : ((pulumi.Input.decodeList<LifecyclePolicyResourceSelectionRecipe>(map['recipes']!, (value) => LifecyclePolicyResourceSelectionRecipe.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tagMap: map['tagMap'] == null ? null : (((map['tagMap'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

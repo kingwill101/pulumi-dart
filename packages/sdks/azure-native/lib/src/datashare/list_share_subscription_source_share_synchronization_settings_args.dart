@@ -42,7 +42,7 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
       accountName: (map['accountName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareSubscriptionName: (map['shareSubscriptionName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

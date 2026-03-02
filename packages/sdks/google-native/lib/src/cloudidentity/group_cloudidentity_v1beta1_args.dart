@@ -62,14 +62,14 @@ class GroupCloudidentityV1beta1Args {
 
   factory GroupCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GroupCloudidentityV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : (DynamicGroupMetadataCloudidentityV1beta1.fromMap((map['dynamicGroupMetadata'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      dynamicGroupMetadata: map['dynamicGroupMetadata'] == null ? null : (DynamicGroupMetadataCloudidentityV1beta1.fromMap((map['dynamicGroupMetadata']! as Map).cast<String, dynamic>())).input(),
       groupKey: (EntityKeyCloudidentityV1beta1.fromMap((map['groupKey'] as Map).cast<String, dynamic>())).input(),
       initialGroupConfig: (map['initialGroupConfig'] as String).input(),
       labels: ((map['labels'] as Map).cast<String, String>()).input(),
       parent: (map['parent'] as String).input(),
-      posixGroups: map['posixGroups'] == null ? null : (pulumi.Input.decodeList<PosixGroup>(map['posixGroups'], (value) => PosixGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      posixGroups: map['posixGroups'] == null ? null : (pulumi.Input.decodeList<PosixGroup>(map['posixGroups']!, (value) => PosixGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

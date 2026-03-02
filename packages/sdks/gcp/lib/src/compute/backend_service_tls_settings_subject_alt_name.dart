@@ -25,8 +25,8 @@ class BackendServiceTlsSettingsSubjectAltName {
 
   factory BackendServiceTlsSettingsSubjectAltName.fromMap(Map<String, dynamic> map) {
     return BackendServiceTlsSettingsSubjectAltName(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      uniformResourceIdentifier: map['uniformResourceIdentifier'] == null ? null : (map['uniformResourceIdentifier'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      uniformResourceIdentifier: map['uniformResourceIdentifier'] == null ? null : (map['uniformResourceIdentifier']! as String).input(),
     );
   }
 }

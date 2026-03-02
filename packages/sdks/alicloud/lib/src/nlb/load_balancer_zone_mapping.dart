@@ -66,14 +66,14 @@ class LoadBalancerZoneMapping {
 
   factory LoadBalancerZoneMapping.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneMapping(
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      eniId: map['eniId'] == null ? null : (map['eniId'] as String).input(),
-      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : ((map['ipv4LocalAddresses'] as List).cast<String>()).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : ((map['ipv6LocalAddresses'] as List).cast<String>()).input(),
-      privateIpv4Address: map['privateIpv4Address'] == null ? null : (map['privateIpv4Address'] as String).input(),
-      publicIpv4Address: map['publicIpv4Address'] == null ? null : (map['publicIpv4Address'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
+      eniId: map['eniId'] == null ? null : (map['eniId']! as String).input(),
+      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : ((map['ipv4LocalAddresses']! as List).cast<String>()).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : ((map['ipv6LocalAddresses']! as List).cast<String>()).input(),
+      privateIpv4Address: map['privateIpv4Address'] == null ? null : (map['privateIpv4Address']! as String).input(),
+      publicIpv4Address: map['publicIpv4Address'] == null ? null : (map['publicIpv4Address']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

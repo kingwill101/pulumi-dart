@@ -31,9 +31,9 @@ class AzureDevOpsPermissionProfileResponse {
 
   factory AzureDevOpsPermissionProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsPermissionProfileResponse(
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
+      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
       kind: (map['kind'] as String).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
     );
   }
 }

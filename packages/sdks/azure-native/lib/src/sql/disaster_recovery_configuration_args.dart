@@ -34,7 +34,7 @@ class DisasterRecoveryConfigurationArgs {
 
   factory DisasterRecoveryConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return DisasterRecoveryConfigurationArgs(
-      disasterRecoveryConfigurationName: map['disasterRecoveryConfigurationName'] == null ? null : (map['disasterRecoveryConfigurationName'] as String).input(),
+      disasterRecoveryConfigurationName: map['disasterRecoveryConfigurationName'] == null ? null : (map['disasterRecoveryConfigurationName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

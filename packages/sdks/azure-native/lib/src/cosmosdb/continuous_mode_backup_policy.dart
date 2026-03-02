@@ -34,8 +34,8 @@ class ContinuousModeBackupPolicy {
 
   factory ContinuousModeBackupPolicy.fromMap(Map<String, dynamic> map) {
     return ContinuousModeBackupPolicy(
-      continuousModeProperties: map['continuousModeProperties'] == null ? null : (ContinuousModeProperties.fromMap((map['continuousModeProperties'] as Map).cast<String, dynamic>())).input(),
-      migrationState: map['migrationState'] == null ? null : (BackupPolicyMigrationState.fromMap((map['migrationState'] as Map).cast<String, dynamic>())).input(),
+      continuousModeProperties: map['continuousModeProperties'] == null ? null : (ContinuousModeProperties.fromMap((map['continuousModeProperties']! as Map).cast<String, dynamic>())).input(),
+      migrationState: map['migrationState'] == null ? null : (BackupPolicyMigrationState.fromMap((map['migrationState']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

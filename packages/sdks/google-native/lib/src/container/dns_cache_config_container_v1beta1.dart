@@ -21,7 +21,7 @@ class DnsCacheConfigContainerV1beta1 {
 
   factory DnsCacheConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DnsCacheConfigContainerV1beta1(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

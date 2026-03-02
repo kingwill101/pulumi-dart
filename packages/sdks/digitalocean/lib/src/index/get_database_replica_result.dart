@@ -102,7 +102,7 @@ class GetDatabaseReplicaResult {
       privateUri: map['privateUri'] as String,
       region: map['region'] as String,
       storageSizeMib: map['storageSizeMib'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       uri: map['uri'] as String,
       user: map['user'] as String,
       uuid: map['uuid'] as String,

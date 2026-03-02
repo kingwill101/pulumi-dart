@@ -26,8 +26,8 @@ class EncryptionSettingsResponse {
 
   factory EncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsResponse(
-      containerAppAuthEncryptionSecretName: map['containerAppAuthEncryptionSecretName'] == null ? null : (map['containerAppAuthEncryptionSecretName'] as String).input(),
-      containerAppAuthSigningSecretName: map['containerAppAuthSigningSecretName'] == null ? null : (map['containerAppAuthSigningSecretName'] as String).input(),
+      containerAppAuthEncryptionSecretName: map['containerAppAuthEncryptionSecretName'] == null ? null : (map['containerAppAuthEncryptionSecretName']! as String).input(),
+      containerAppAuthSigningSecretName: map['containerAppAuthSigningSecretName'] == null ? null : (map['containerAppAuthSigningSecretName']! as String).input(),
     );
   }
 }

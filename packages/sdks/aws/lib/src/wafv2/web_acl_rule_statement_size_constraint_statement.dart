@@ -38,9 +38,9 @@ class WebAclRuleStatementSizeConstraintStatement {
   factory WebAclRuleStatementSizeConstraintStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSizeConstraintStatement(
       comparisonOperator: (map['comparisonOperator'] as String).input(),
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
       size: (map['size'] as int).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementSizeConstraintStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementSizeConstraintStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

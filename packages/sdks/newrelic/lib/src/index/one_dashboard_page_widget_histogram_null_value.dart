@@ -26,8 +26,8 @@ class OneDashboardPageWidgetHistogramNullValue {
 
   factory OneDashboardPageWidgetHistogramNullValue.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHistogramNullValue(
-      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetHistogramNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetHistogramNullValueSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetHistogramNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

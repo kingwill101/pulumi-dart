@@ -49,12 +49,12 @@ class GetBasicAccelerateIpEndpointRelationsArgs {
 
   factory GetBasicAccelerateIpEndpointRelationsArgs.fromMap(Map<String, dynamic> map) {
     return GetBasicAccelerateIpEndpointRelationsArgs(
-      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId'] as String).input(),
+      accelerateIpId: map['accelerateIpId'] == null ? null : (map['accelerateIpId']! as String).input(),
       acceleratorId: (map['acceleratorId'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

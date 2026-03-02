@@ -25,8 +25,8 @@ class OneDashboardPageWidgetBulletColorSeriesOverride {
 
   factory OneDashboardPageWidgetBulletColorSeriesOverride.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetBulletColorSeriesOverride(
-      color: map['color'] == null ? null : (map['color'] as String).input(),
-      seriesName: map['seriesName'] == null ? null : (map['seriesName'] as String).input(),
+      color: map['color'] == null ? null : (map['color']! as String).input(),
+      seriesName: map['seriesName'] == null ? null : (map['seriesName']! as String).input(),
     );
   }
 }

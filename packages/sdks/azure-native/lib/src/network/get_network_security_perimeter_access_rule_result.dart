@@ -93,20 +93,20 @@ class GetNetworkSecurityPerimeterAccessRuleResult {
 
   factory GetNetworkSecurityPerimeterAccessRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterAccessRuleResult(
-      addressPrefixes: map['addressPrefixes'] == null ? null : (map['addressPrefixes'] as List).cast<String>(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : (map['addressPrefixes']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      direction: map['direction'] == null ? null : map['direction'] as String,
-      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses'] as List).cast<String>(),
-      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : (map['fullyQualifiedDomainNames'] as List).cast<String>(),
+      direction: map['direction'] == null ? null : map['direction']! as String,
+      emailAddresses: map['emailAddresses'] == null ? null : (map['emailAddresses']! as List).cast<String>(),
+      fullyQualifiedDomainNames: map['fullyQualifiedDomainNames'] == null ? null : (map['fullyQualifiedDomainNames']! as List).cast<String>(),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       networkSecurityPerimeters: pulumi.Input.decodeList<PerimeterBasedAccessRuleResponse>(map['networkSecurityPerimeters'], (value) => PerimeterBasedAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      phoneNumbers: map['phoneNumbers'] == null ? null : (map['phoneNumbers'] as List).cast<String>(),
+      phoneNumbers: map['phoneNumbers'] == null ? null : (map['phoneNumbers']! as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      serviceTags: map['serviceTags'] == null ? null : (map['serviceTags'] as List).cast<String>(),
-      subscriptions: map['subscriptions'] == null ? null : pulumi.Input.decodeList<SubscriptionIdResponse>(map['subscriptions'], (value) => SubscriptionIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      serviceTags: map['serviceTags'] == null ? null : (map['serviceTags']! as List).cast<String>(),
+      subscriptions: map['subscriptions'] == null ? null : pulumi.Input.decodeList<SubscriptionIdResponse>(map['subscriptions']!, (value) => SubscriptionIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

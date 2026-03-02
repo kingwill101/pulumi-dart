@@ -52,10 +52,10 @@ class RegionHealthCheckGrpcHealthCheck {
 
   factory RegionHealthCheckGrpcHealthCheck.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckGrpcHealthCheck(
-      grpcServiceName: map['grpcServiceName'] == null ? null : (map['grpcServiceName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portName: map['portName'] == null ? null : (map['portName'] as String).input(),
-      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification'] as String).input(),
+      grpcServiceName: map['grpcServiceName'] == null ? null : (map['grpcServiceName']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      portName: map['portName'] == null ? null : (map['portName']! as String).input(),
+      portSpecification: map['portSpecification'] == null ? null : (map['portSpecification']! as String).input(),
     );
   }
 }

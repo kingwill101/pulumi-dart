@@ -40,9 +40,9 @@ class MemberArgs {
   factory MemberArgs.fromMap(Map<String, dynamic> map) {
     return MemberArgs(
       accountId: (map['accountId'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      invite: map['invite'] == null ? null : ((map['invite'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

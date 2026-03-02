@@ -35,7 +35,7 @@ class TrackerAssociationArgs {
   factory TrackerAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TrackerAssociationArgs(
       consumerArn: (map['consumerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       trackerName: (map['trackerName'] as String).input(),
     );
   }

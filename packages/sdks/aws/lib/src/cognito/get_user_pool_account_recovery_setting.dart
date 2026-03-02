@@ -20,7 +20,7 @@ class GetUserPoolAccountRecoverySetting {
 
   factory GetUserPoolAccountRecoverySetting.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAccountRecoverySetting(
-      recoveryMechanisms: (pulumi.Input.decodeList<GetUserPoolAccountRecoverySettingRecoveryMechanism>(map['recoveryMechanisms'], (value) => GetUserPoolAccountRecoverySettingRecoveryMechanism.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recoveryMechanisms: (pulumi.Input.decodeList<GetUserPoolAccountRecoverySettingRecoveryMechanism>(map['recoveryMechanisms']!, (value) => GetUserPoolAccountRecoverySettingRecoveryMechanism.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class SkuRecommendationResultsAzureSqlManagedInstanceResponse {
 
   factory SkuRecommendationResultsAzureSqlManagedInstanceResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlManagedInstanceResponse(
-      monthlyCost: map['monthlyCost'] == null ? null : (SkuRecommendationResultsMonthlyCostResponse.fromMap((map['monthlyCost'] as Map).cast<String, dynamic>())).input(),
-      numberOfServerBlockerIssues: map['numberOfServerBlockerIssues'] == null ? null : (map['numberOfServerBlockerIssues'] as int).input(),
-      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus'] as String).input(),
-      targetSku: map['targetSku'] == null ? null : (SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku.fromMap((map['targetSku'] as Map).cast<String, dynamic>())).input(),
+      monthlyCost: map['monthlyCost'] == null ? null : (SkuRecommendationResultsMonthlyCostResponse.fromMap((map['monthlyCost']! as Map).cast<String, dynamic>())).input(),
+      numberOfServerBlockerIssues: map['numberOfServerBlockerIssues'] == null ? null : (map['numberOfServerBlockerIssues']! as int).input(),
+      recommendationStatus: map['recommendationStatus'] == null ? null : (map['recommendationStatus']! as String).input(),
+      targetSku: map['targetSku'] == null ? null : (SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku.fromMap((map['targetSku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

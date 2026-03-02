@@ -28,8 +28,8 @@ class PoolStartTaskUserIdentity {
 
   factory PoolStartTaskUserIdentity.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskUserIdentity(
-      autoUser: map['autoUser'] == null ? null : (PoolStartTaskUserIdentityAutoUser.fromMap((map['autoUser'] as Map).cast<String, dynamic>())).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      autoUser: map['autoUser'] == null ? null : (PoolStartTaskUserIdentityAutoUser.fromMap((map['autoUser']! as Map).cast<String, dynamic>())).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

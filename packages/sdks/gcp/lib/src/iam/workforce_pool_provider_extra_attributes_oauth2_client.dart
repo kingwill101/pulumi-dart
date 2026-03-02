@@ -58,7 +58,7 @@ class WorkforcePoolProviderExtraAttributesOauth2Client {
       clientId: (map['clientId'] as String).input(),
       clientSecret: (WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
       issuerUri: (map['issuerUri'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap((map['queryParameters'] as Map).cast<String, dynamic>())).input(),
+      queryParameters: map['queryParameters'] == null ? null : (WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters.fromMap((map['queryParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

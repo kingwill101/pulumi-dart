@@ -61,13 +61,13 @@ class EncryptionSetArgs {
   factory EncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionSetArgs(
       devCenterName: (map['devCenterName'] as String).input(),
-      devboxDisksEncryptionEnableStatus: map['devboxDisksEncryptionEnableStatus'] == null ? null : (map['devboxDisksEncryptionEnableStatus'] as String).input(),
-      encryptionSetName: map['encryptionSetName'] == null ? null : (map['encryptionSetName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      devboxDisksEncryptionEnableStatus: map['devboxDisksEncryptionEnableStatus'] == null ? null : (map['devboxDisksEncryptionEnableStatus']! as String).input(),
+      encryptionSetName: map['encryptionSetName'] == null ? null : (map['encryptionSetName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

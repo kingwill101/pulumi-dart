@@ -57,13 +57,13 @@ class DatacenterConnectorArgs {
   factory DatacenterConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DatacenterConnectorArgs(
       datacenterConnectorId: (map['datacenterConnectorId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      registrationId: map['registrationId'] == null ? null : (map['registrationId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      registrationId: map['registrationId'] == null ? null : (map['registrationId']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class OptionGroupOption {
 
   factory OptionGroupOption.fromMap(Map<String, dynamic> map) {
     return OptionGroupOption(
-      dbSecurityGroupMemberships: map['dbSecurityGroupMemberships'] == null ? null : ((map['dbSecurityGroupMemberships'] as List).cast<String>()).input(),
+      dbSecurityGroupMemberships: map['dbSecurityGroupMemberships'] == null ? null : (((map['dbSecurityGroupMemberships'] as List).cast<String>()).input()).input(),
       optionName: (map['optionName'] as String).input(),
-      optionSettings: map['optionSettings'] == null ? null : (pulumi.Input.decodeList<OptionGroupOptionOptionSetting>(map['optionSettings'], (value) => OptionGroupOptionOptionSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      vpcSecurityGroupMemberships: map['vpcSecurityGroupMemberships'] == null ? null : ((map['vpcSecurityGroupMemberships'] as List).cast<String>()).input(),
+      optionSettings: map['optionSettings'] == null ? null : ((pulumi.Input.decodeList<OptionGroupOptionOptionSetting>(map['optionSettings']!, (value) => OptionGroupOptionOptionSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      vpcSecurityGroupMemberships: map['vpcSecurityGroupMemberships'] == null ? null : (((map['vpcSecurityGroupMemberships'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -46,11 +46,11 @@ class QosBandwidthLimitRuleState {
 
   factory QosBandwidthLimitRuleState.fromMap(Map<String, dynamic> map) {
     return QosBandwidthLimitRuleState(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      maxBurstKbps: map['maxBurstKbps'] == null ? null : (map['maxBurstKbps'] as int).input(),
-      maxKbps: map['maxKbps'] == null ? null : (map['maxKbps'] as int).input(),
-      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      maxBurstKbps: map['maxBurstKbps'] == null ? null : (map['maxBurstKbps']! as int).input(),
+      maxKbps: map['maxKbps'] == null ? null : (map['maxKbps']! as int).input(),
+      qosPolicyId: map['qosPolicyId'] == null ? null : (map['qosPolicyId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

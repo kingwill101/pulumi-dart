@@ -25,7 +25,7 @@ class FirewallPolicyEncryptionConfiguration {
 
   factory FirewallPolicyEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyEncryptionConfiguration(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -84,16 +84,16 @@ class VpcCenTrFirewallArgs {
   factory VpcCenTrFirewallArgs.fromMap(Map<String, dynamic> map) {
     return VpcCenTrFirewallArgs(
       cenId: (map['cenId'] as String).input(),
-      firewallDescription: map['firewallDescription'] == null ? null : (map['firewallDescription'] as String).input(),
+      firewallDescription: map['firewallDescription'] == null ? null : (map['firewallDescription']! as String).input(),
       firewallName: (map['firewallName'] as String).input(),
       firewallSubnetCidr: (map['firewallSubnetCidr'] as String).input(),
       firewallVpcCidr: (map['firewallVpcCidr'] as String).input(),
       regionNo: (map['regionNo'] as String).input(),
       routeMode: (map['routeMode'] as String).input(),
       trAttachmentMasterCidr: (map['trAttachmentMasterCidr'] as String).input(),
-      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : (map['trAttachmentMasterZone'] as String).input(),
+      trAttachmentMasterZone: map['trAttachmentMasterZone'] == null ? null : (map['trAttachmentMasterZone']! as String).input(),
       trAttachmentSlaveCidr: (map['trAttachmentSlaveCidr'] as String).input(),
-      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : (map['trAttachmentSlaveZone'] as String).input(),
+      trAttachmentSlaveZone: map['trAttachmentSlaveZone'] == null ? null : (map['trAttachmentSlaveZone']! as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
     );
   }

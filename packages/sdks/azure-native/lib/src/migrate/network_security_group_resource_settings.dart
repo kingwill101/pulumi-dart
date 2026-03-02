@@ -44,10 +44,10 @@ class NetworkSecurityGroupResourceSettings {
   factory NetworkSecurityGroupResourceSettings.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupResourceSettings(
       resourceType: (map['resourceType'] as String).input(),
-      securityRules: map['securityRules'] == null ? null : (pulumi.Input.decodeList<NsgSecurityRule>(map['securityRules'], (value) => NsgSecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
+      securityRules: map['securityRules'] == null ? null : (pulumi.Input.decodeList<NsgSecurityRule>(map['securityRules']!, (value) => NsgSecurityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
     );
   }
 }

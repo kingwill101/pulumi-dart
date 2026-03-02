@@ -40,9 +40,9 @@ class GetEndpointAclPoliciesArgs {
   factory GetEndpointAclPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetEndpointAclPoliciesArgs(
       endpointType: (map['endpointType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AwsIntegrationsAwsFsx {
 
   factory AwsIntegrationsAwsFsx.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsAwsFsx(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

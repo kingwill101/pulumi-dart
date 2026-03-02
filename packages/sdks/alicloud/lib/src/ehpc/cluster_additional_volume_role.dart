@@ -20,7 +20,7 @@ class ClusterAdditionalVolumeRole {
 
   factory ClusterAdditionalVolumeRole.fromMap(Map<String, dynamic> map) {
     return ClusterAdditionalVolumeRole(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

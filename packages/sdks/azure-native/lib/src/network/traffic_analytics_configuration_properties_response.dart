@@ -41,11 +41,11 @@ class TrafficAnalyticsConfigurationPropertiesResponse {
 
   factory TrafficAnalyticsConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TrafficAnalyticsConfigurationPropertiesResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      trafficAnalyticsInterval: map['trafficAnalyticsInterval'] == null ? null : (map['trafficAnalyticsInterval'] as int).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
-      workspaceRegion: map['workspaceRegion'] == null ? null : (map['workspaceRegion'] as String).input(),
-      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      trafficAnalyticsInterval: map['trafficAnalyticsInterval'] == null ? null : (map['trafficAnalyticsInterval']! as int).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
+      workspaceRegion: map['workspaceRegion'] == null ? null : (map['workspaceRegion']! as String).input(),
+      workspaceResourceId: map['workspaceResourceId'] == null ? null : (map['workspaceResourceId']! as String).input(),
     );
   }
 }

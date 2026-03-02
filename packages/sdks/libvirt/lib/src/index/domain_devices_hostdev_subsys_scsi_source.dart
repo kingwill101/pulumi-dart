@@ -27,8 +27,8 @@ class DomainDevicesHostdevSubsysScsiSource {
 
   factory DomainDevicesHostdevSubsysScsiSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesHostdevSubsysScsiSource(
-      host: map['host'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceHost.fromMap((map['host'] as Map).cast<String, dynamic>())).input(),
-      iscsi: map['iscsi'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsi.fromMap((map['iscsi'] as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceHost.fromMap((map['host']! as Map).cast<String, dynamic>())).input(),
+      iscsi: map['iscsi'] == null ? null : (DomainDevicesHostdevSubsysScsiSourceIscsi.fromMap((map['iscsi']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class DataflowBuiltInTransformationSettingsResponse {
 
   factory DataflowBuiltInTransformationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowBuiltInTransformationSettingsResponse(
-      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationDatasetResponse>(map['datasets'], (value) => DataflowBuiltInTransformationDatasetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationFilterResponse>(map['filter'], (value) => DataflowBuiltInTransformationFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      map: map['map'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationMapResponse>(map['map'], (value) => DataflowBuiltInTransformationMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef'] as String).input(),
-      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat'] as String).input(),
+      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationDatasetResponse>(map['datasets']!, (value) => DataflowBuiltInTransformationDatasetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationFilterResponse>(map['filter']!, (value) => DataflowBuiltInTransformationFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      map: map['map'] == null ? null : (pulumi.Input.decodeList<DataflowBuiltInTransformationMapResponse>(map['map']!, (value) => DataflowBuiltInTransformationMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schemaRef: map['schemaRef'] == null ? null : (map['schemaRef']! as String).input(),
+      serializationFormat: map['serializationFormat'] == null ? null : (map['serializationFormat']! as String).input(),
     );
   }
 }

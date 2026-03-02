@@ -25,7 +25,7 @@ class OneDashboardPageWidgetJsonNrqlQuery {
 
   factory OneDashboardPageWidgetJsonNrqlQuery.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetJsonNrqlQuery(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       query: (map['query'] as String).input(),
     );
   }

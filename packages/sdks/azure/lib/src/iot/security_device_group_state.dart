@@ -38,10 +38,10 @@ class SecurityDeviceGroupState {
 
   factory SecurityDeviceGroupState.fromMap(Map<String, dynamic> map) {
     return SecurityDeviceGroupState(
-      allowRule: map['allowRule'] == null ? null : (SecurityDeviceGroupAllowRule.fromMap((map['allowRule'] as Map).cast<String, dynamic>())).input(),
-      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rangeRules: map['rangeRules'] == null ? null : (pulumi.Input.decodeList<SecurityDeviceGroupRangeRule>(map['rangeRules'], (value) => SecurityDeviceGroupRangeRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowRule: map['allowRule'] == null ? null : (SecurityDeviceGroupAllowRule.fromMap((map['allowRule']! as Map).cast<String, dynamic>())).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rangeRules: map['rangeRules'] == null ? null : (pulumi.Input.decodeList<SecurityDeviceGroupRangeRule>(map['rangeRules']!, (value) => SecurityDeviceGroupRangeRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

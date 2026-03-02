@@ -37,10 +37,10 @@ class InstanceGroupMembershipState {
 
   factory InstanceGroupMembershipState.fromMap(Map<String, dynamic> map) {
     return InstanceGroupMembershipState(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      instanceGroup: map['instanceGroup'] == null ? null : (map['instanceGroup'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      instanceGroup: map['instanceGroup'] == null ? null : (map['instanceGroup']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

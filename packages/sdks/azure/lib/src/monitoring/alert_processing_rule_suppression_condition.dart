@@ -81,17 +81,17 @@ class AlertProcessingRuleSuppressionCondition {
 
   factory AlertProcessingRuleSuppressionCondition.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionCondition(
-      alertContext: map['alertContext'] == null ? null : (AlertProcessingRuleSuppressionConditionAlertContext.fromMap((map['alertContext'] as Map).cast<String, dynamic>())).input(),
-      alertRuleId: map['alertRuleId'] == null ? null : (AlertProcessingRuleSuppressionConditionAlertRuleId.fromMap((map['alertRuleId'] as Map).cast<String, dynamic>())).input(),
-      alertRuleName: map['alertRuleName'] == null ? null : (AlertProcessingRuleSuppressionConditionAlertRuleName.fromMap((map['alertRuleName'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (AlertProcessingRuleSuppressionConditionDescription.fromMap((map['description'] as Map).cast<String, dynamic>())).input(),
-      monitorCondition: map['monitorCondition'] == null ? null : (AlertProcessingRuleSuppressionConditionMonitorCondition.fromMap((map['monitorCondition'] as Map).cast<String, dynamic>())).input(),
-      monitorService: map['monitorService'] == null ? null : (AlertProcessingRuleSuppressionConditionMonitorService.fromMap((map['monitorService'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (AlertProcessingRuleSuppressionConditionSeverity.fromMap((map['severity'] as Map).cast<String, dynamic>())).input(),
-      signalType: map['signalType'] == null ? null : (AlertProcessingRuleSuppressionConditionSignalType.fromMap((map['signalType'] as Map).cast<String, dynamic>())).input(),
-      targetResource: map['targetResource'] == null ? null : (AlertProcessingRuleSuppressionConditionTargetResource.fromMap((map['targetResource'] as Map).cast<String, dynamic>())).input(),
-      targetResourceGroup: map['targetResourceGroup'] == null ? null : (AlertProcessingRuleSuppressionConditionTargetResourceGroup.fromMap((map['targetResourceGroup'] as Map).cast<String, dynamic>())).input(),
-      targetResourceType: map['targetResourceType'] == null ? null : (AlertProcessingRuleSuppressionConditionTargetResourceType.fromMap((map['targetResourceType'] as Map).cast<String, dynamic>())).input(),
+      alertContext: map['alertContext'] == null ? null : (AlertProcessingRuleSuppressionConditionAlertContext.fromMap((map['alertContext']! as Map).cast<String, dynamic>())).input(),
+      alertRuleId: map['alertRuleId'] == null ? null : (AlertProcessingRuleSuppressionConditionAlertRuleId.fromMap((map['alertRuleId']! as Map).cast<String, dynamic>())).input(),
+      alertRuleName: map['alertRuleName'] == null ? null : (AlertProcessingRuleSuppressionConditionAlertRuleName.fromMap((map['alertRuleName']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (AlertProcessingRuleSuppressionConditionDescription.fromMap((map['description']! as Map).cast<String, dynamic>())).input(),
+      monitorCondition: map['monitorCondition'] == null ? null : (AlertProcessingRuleSuppressionConditionMonitorCondition.fromMap((map['monitorCondition']! as Map).cast<String, dynamic>())).input(),
+      monitorService: map['monitorService'] == null ? null : (AlertProcessingRuleSuppressionConditionMonitorService.fromMap((map['monitorService']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (AlertProcessingRuleSuppressionConditionSeverity.fromMap((map['severity']! as Map).cast<String, dynamic>())).input(),
+      signalType: map['signalType'] == null ? null : (AlertProcessingRuleSuppressionConditionSignalType.fromMap((map['signalType']! as Map).cast<String, dynamic>())).input(),
+      targetResource: map['targetResource'] == null ? null : (AlertProcessingRuleSuppressionConditionTargetResource.fromMap((map['targetResource']! as Map).cast<String, dynamic>())).input(),
+      targetResourceGroup: map['targetResourceGroup'] == null ? null : (AlertProcessingRuleSuppressionConditionTargetResourceGroup.fromMap((map['targetResourceGroup']! as Map).cast<String, dynamic>())).input(),
+      targetResourceType: map['targetResourceType'] == null ? null : (AlertProcessingRuleSuppressionConditionTargetResourceType.fromMap((map['targetResourceType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

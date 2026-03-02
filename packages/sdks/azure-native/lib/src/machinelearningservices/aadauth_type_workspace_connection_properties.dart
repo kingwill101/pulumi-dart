@@ -59,14 +59,14 @@ class AADAuthTypeWorkspaceConnectionProperties {
   factory AADAuthTypeWorkspaceConnectionProperties.fromMap(Map<String, dynamic> map) {
     return AADAuthTypeWorkspaceConnectionProperties(
       authType: (map['authType'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueFormat: map['valueFormat'] == null ? null : (map['valueFormat'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList']! as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueFormat: map['valueFormat'] == null ? null : (map['valueFormat']! as String).input(),
     );
   }
 }

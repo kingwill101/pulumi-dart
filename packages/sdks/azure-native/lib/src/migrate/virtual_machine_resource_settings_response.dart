@@ -58,13 +58,13 @@ class VirtualMachineResourceSettingsResponse {
   factory VirtualMachineResourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineResourceSettingsResponse(
       resourceType: (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId'] as String).input(),
-      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone'] as String).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
-      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize'] as String).input(),
-      userManagedIdentities: map['userManagedIdentities'] == null ? null : ((map['userManagedIdentities'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetAvailabilitySetId: map['targetAvailabilitySetId'] == null ? null : (map['targetAvailabilitySetId']! as String).input(),
+      targetAvailabilityZone: map['targetAvailabilityZone'] == null ? null : (map['targetAvailabilityZone']! as String).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
+      targetVmSize: map['targetVmSize'] == null ? null : (map['targetVmSize']! as String).input(),
+      userManagedIdentities: map['userManagedIdentities'] == null ? null : ((map['userManagedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

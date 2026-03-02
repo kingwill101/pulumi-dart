@@ -37,7 +37,7 @@ class TransitGatewayPeeringArgs {
   factory TransitGatewayPeeringArgs.fromMap(Map<String, dynamic> map) {
     return TransitGatewayPeeringArgs(
       coreNetworkId: (map['coreNetworkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       transitGatewayArn: (map['transitGatewayArn'] as String).input(),
     );
   }

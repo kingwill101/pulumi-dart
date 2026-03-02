@@ -21,7 +21,7 @@ class UserAssignedPropertiesResponse {
 
   factory UserAssignedPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedPropertiesResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

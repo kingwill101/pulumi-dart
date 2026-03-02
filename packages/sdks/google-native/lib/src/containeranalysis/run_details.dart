@@ -30,9 +30,9 @@ class RunDetails {
 
   factory RunDetails.fromMap(Map<String, dynamic> map) {
     return RunDetails(
-      builder: map['builder'] == null ? null : (ProvenanceBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
-      byproducts: map['byproducts'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['byproducts'], (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (BuildMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      builder: map['builder'] == null ? null : (ProvenanceBuilder.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
+      byproducts: map['byproducts'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptor>(map['byproducts']!, (value) => ResourceDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (BuildMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

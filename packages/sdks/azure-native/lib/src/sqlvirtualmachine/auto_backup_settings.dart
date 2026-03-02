@@ -86,20 +86,20 @@ class AutoBackupSettings {
 
   factory AutoBackupSettings.fromMap(Map<String, dynamic> map) {
     return AutoBackupSettings(
-      backupScheduleType: map['backupScheduleType'] == null ? null : (map['backupScheduleType'] as String).input(),
-      backupSystemDbs: map['backupSystemDbs'] == null ? null : (map['backupSystemDbs'] as bool).input(),
-      daysOfWeek: map['daysOfWeek'] == null ? null : ((map['daysOfWeek'] as List).cast<String>()).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      enableEncryption: map['enableEncryption'] == null ? null : (map['enableEncryption'] as bool).input(),
-      fullBackupFrequency: map['fullBackupFrequency'] == null ? null : (map['fullBackupFrequency'] as String).input(),
-      fullBackupStartTime: map['fullBackupStartTime'] == null ? null : (map['fullBackupStartTime'] as int).input(),
-      fullBackupWindowHours: map['fullBackupWindowHours'] == null ? null : (map['fullBackupWindowHours'] as int).input(),
-      logBackupFrequency: map['logBackupFrequency'] == null ? null : (map['logBackupFrequency'] as int).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      storageAccessKey: map['storageAccessKey'] == null ? null : (map['storageAccessKey'] as String).input(),
-      storageAccountUrl: map['storageAccountUrl'] == null ? null : (map['storageAccountUrl'] as String).input(),
-      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
+      backupScheduleType: map['backupScheduleType'] == null ? null : (map['backupScheduleType']! as String).input(),
+      backupSystemDbs: map['backupSystemDbs'] == null ? null : (map['backupSystemDbs']! as bool).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : ((map['daysOfWeek']! as List).cast<String>()).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      enableEncryption: map['enableEncryption'] == null ? null : (map['enableEncryption']! as bool).input(),
+      fullBackupFrequency: map['fullBackupFrequency'] == null ? null : (map['fullBackupFrequency']! as String).input(),
+      fullBackupStartTime: map['fullBackupStartTime'] == null ? null : (map['fullBackupStartTime']! as int).input(),
+      fullBackupWindowHours: map['fullBackupWindowHours'] == null ? null : (map['fullBackupWindowHours']! as int).input(),
+      logBackupFrequency: map['logBackupFrequency'] == null ? null : (map['logBackupFrequency']! as int).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as int).input(),
+      storageAccessKey: map['storageAccessKey'] == null ? null : (map['storageAccessKey']! as String).input(),
+      storageAccountUrl: map['storageAccountUrl'] == null ? null : (map['storageAccountUrl']! as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName']! as String).input(),
     );
   }
 }

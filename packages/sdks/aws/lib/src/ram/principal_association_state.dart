@@ -31,9 +31,9 @@ class PrincipalAssociationState {
 
   factory PrincipalAssociationState.fromMap(Map<String, dynamic> map) {
     return PrincipalAssociationState(
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceShareArn: map['resourceShareArn'] == null ? null : (map['resourceShareArn'] as String).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceShareArn: map['resourceShareArn'] == null ? null : ((map['resourceShareArn'] as String).input()).input(),
     );
   }
 }

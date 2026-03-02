@@ -77,17 +77,17 @@ class PrefixState {
 
   factory PrefixState.fromMap(Map<String, dynamic> map) {
     return PrefixState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      commissioningEnabled: map['commissioningEnabled'] == null ? null : (map['commissioningEnabled'] as bool).input(),
-      internetAdvertisingDisabled: map['internetAdvertisingDisabled'] == null ? null : (map['internetAdvertisingDisabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentCustomIpPrefixId: map['parentCustomIpPrefixId'] == null ? null : (map['parentCustomIpPrefixId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      roaValidityEndDate: map['roaValidityEndDate'] == null ? null : (map['roaValidityEndDate'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      wanValidationSignedMessage: map['wanValidationSignedMessage'] == null ? null : (map['wanValidationSignedMessage'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      commissioningEnabled: map['commissioningEnabled'] == null ? null : (map['commissioningEnabled']! as bool).input(),
+      internetAdvertisingDisabled: map['internetAdvertisingDisabled'] == null ? null : (map['internetAdvertisingDisabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentCustomIpPrefixId: map['parentCustomIpPrefixId'] == null ? null : (map['parentCustomIpPrefixId']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      roaValidityEndDate: map['roaValidityEndDate'] == null ? null : (map['roaValidityEndDate']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      wanValidationSignedMessage: map['wanValidationSignedMessage'] == null ? null : (map['wanValidationSignedMessage']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

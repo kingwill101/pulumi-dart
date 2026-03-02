@@ -72,16 +72,16 @@ class HttpRouteRule {
 
   factory HttpRouteRule.fromMap(Map<String, dynamic> map) {
     return HttpRouteRule(
-      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicy.fromMap((map['customErrorResponsePolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (HttpHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
-      httpFilterConfigs: map['httpFilterConfigs'] == null ? null : (pulumi.Input.decodeList<HttpFilterConfig>(map['httpFilterConfigs'], (value) => HttpFilterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpFilterMetadata: map['httpFilterMetadata'] == null ? null : (pulumi.Input.decodeList<HttpFilterConfig>(map['httpFilterMetadata'], (value) => HttpFilterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleMatch>(map['matchRules'], (value) => HttpRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      routeAction: map['routeAction'] == null ? null : (HttpRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectAction.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : (CustomErrorResponsePolicy.fromMap((map['customErrorResponsePolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      headerAction: map['headerAction'] == null ? null : (HttpHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
+      httpFilterConfigs: map['httpFilterConfigs'] == null ? null : (pulumi.Input.decodeList<HttpFilterConfig>(map['httpFilterConfigs']!, (value) => HttpFilterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpFilterMetadata: map['httpFilterMetadata'] == null ? null : (pulumi.Input.decodeList<HttpFilterConfig>(map['httpFilterMetadata']!, (value) => HttpFilterConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matchRules: map['matchRules'] == null ? null : (pulumi.Input.decodeList<HttpRouteRuleMatch>(map['matchRules']!, (value) => HttpRouteRuleMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      routeAction: map['routeAction'] == null ? null : (HttpRouteAction.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectAction.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

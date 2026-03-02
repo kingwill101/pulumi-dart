@@ -36,9 +36,9 @@ class AccountGeoLocation {
   factory AccountGeoLocation.fromMap(Map<String, dynamic> map) {
     return AccountGeoLocation(
       failoverPriority: (map['failoverPriority'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       location: (map['location'] as String).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

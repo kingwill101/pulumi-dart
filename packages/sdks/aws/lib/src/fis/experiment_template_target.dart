@@ -54,11 +54,11 @@ class ExperimentTemplateTarget {
 
   factory ExperimentTemplateTarget.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateTarget(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateTargetFilter>(map['filters'], (value) => ExperimentTemplateTargetFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateTargetFilter>(map['filters']!, (value) => ExperimentTemplateTargetFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
-      resourceTags: map['resourceTags'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateTargetResourceTag>(map['resourceTags'], (value) => ExperimentTemplateTargetResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      resourceArns: map['resourceArns'] == null ? null : (((map['resourceArns'] as List).cast<String>()).input()).input(),
+      resourceTags: map['resourceTags'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateTargetResourceTag>(map['resourceTags']!, (value) => ExperimentTemplateTargetResourceTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       resourceType: (map['resourceType'] as String).input(),
       selectionMode: (map['selectionMode'] as String).input(),
     );

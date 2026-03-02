@@ -51,7 +51,7 @@ class BucketAccessControlArgs {
     return BucketAccessControlArgs(
       bucket: (map['bucket'] as String).input(),
       entity: (map['entity'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

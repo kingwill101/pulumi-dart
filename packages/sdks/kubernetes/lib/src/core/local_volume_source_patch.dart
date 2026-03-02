@@ -26,8 +26,8 @@ class LocalVolumeSourcePatch {
 
   factory LocalVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return LocalVolumeSourcePatch(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

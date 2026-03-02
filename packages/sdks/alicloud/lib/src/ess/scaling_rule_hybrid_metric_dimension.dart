@@ -23,8 +23,8 @@ class ScalingRuleHybridMetricDimension {
 
   factory ScalingRuleHybridMetricDimension.fromMap(Map<String, dynamic> map) {
     return ScalingRuleHybridMetricDimension(
-      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey'] as String).input(),
-      dimensionValue: map['dimensionValue'] == null ? null : (map['dimensionValue'] as String).input(),
+      dimensionKey: map['dimensionKey'] == null ? null : (map['dimensionKey']! as String).input(),
+      dimensionValue: map['dimensionValue'] == null ? null : (map['dimensionValue']! as String).input(),
     );
   }
 }

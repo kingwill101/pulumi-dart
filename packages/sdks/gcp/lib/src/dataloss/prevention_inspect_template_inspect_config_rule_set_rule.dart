@@ -29,8 +29,8 @@ class PreventionInspectTemplateInspectConfigRuleSetRule {
 
   factory PreventionInspectTemplateInspectConfigRuleSetRule.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigRuleSetRule(
-      exclusionRule: map['exclusionRule'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>())).input(),
-      hotwordRule: map['hotwordRule'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>())).input(),
+      exclusionRule: map['exclusionRule'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.fromMap((map['exclusionRule']! as Map).cast<String, dynamic>())).input(),
+      hotwordRule: map['hotwordRule'] == null ? null : (PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule.fromMap((map['hotwordRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

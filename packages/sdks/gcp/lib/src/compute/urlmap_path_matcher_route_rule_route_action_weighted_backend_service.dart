@@ -43,7 +43,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
   factory URLMapPathMatcherRouteRuleRouteActionWeightedBackendService.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleRouteActionWeightedBackendService(
       backendService: (map['backendService'] as String).input(),
-      headerAction: map['headerAction'] == null ? null : (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>())).input(),
+      headerAction: map['headerAction'] == null ? null : (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction']! as Map).cast<String, dynamic>())).input(),
       weight: (map['weight'] as int).input(),
     );
   }

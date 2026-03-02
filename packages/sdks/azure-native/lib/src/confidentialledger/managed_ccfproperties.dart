@@ -38,10 +38,10 @@ class ManagedCCFProperties {
 
   factory ManagedCCFProperties.fromMap(Map<String, dynamic> map) {
     return ManagedCCFProperties(
-      deploymentType: map['deploymentType'] == null ? null : (DeploymentType.fromMap((map['deploymentType'] as Map).cast<String, dynamic>())).input(),
-      memberIdentityCertificates: map['memberIdentityCertificates'] == null ? null : (pulumi.Input.decodeList<MemberIdentityCertificate>(map['memberIdentityCertificates'], (value) => MemberIdentityCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      runningState: map['runningState'] == null ? null : (map['runningState'] as String).input(),
+      deploymentType: map['deploymentType'] == null ? null : (DeploymentType.fromMap((map['deploymentType']! as Map).cast<String, dynamic>())).input(),
+      memberIdentityCertificates: map['memberIdentityCertificates'] == null ? null : (pulumi.Input.decodeList<MemberIdentityCertificate>(map['memberIdentityCertificates']!, (value) => MemberIdentityCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      runningState: map['runningState'] == null ? null : (map['runningState']! as String).input(),
     );
   }
 }

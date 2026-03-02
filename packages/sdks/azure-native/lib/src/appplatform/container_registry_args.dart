@@ -40,8 +40,8 @@ class ContainerRegistryArgs {
 
   factory ContainerRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryArgs(
-      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName'] as String).input(),
-      properties: map['properties'] == null ? null : (ContainerRegistryProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      containerRegistryName: map['containerRegistryName'] == null ? null : (map['containerRegistryName']! as String).input(),
+      properties: map['properties'] == null ? null : (ContainerRegistryProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

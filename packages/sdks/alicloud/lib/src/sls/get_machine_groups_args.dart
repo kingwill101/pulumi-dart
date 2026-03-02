@@ -39,9 +39,9 @@ class GetMachineGroupsArgs {
 
   factory GetMachineGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupsArgs(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       projectName: (map['projectName'] as String).input(),
     );
   }

@@ -46,8 +46,8 @@ class CustomDomainArgs {
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
       appName: (map['appName'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      properties: map['properties'] == null ? null : (CustomDomainProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      properties: map['properties'] == null ? null : (CustomDomainProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

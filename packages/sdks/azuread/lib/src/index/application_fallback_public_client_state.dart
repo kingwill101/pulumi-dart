@@ -28,8 +28,8 @@ class ApplicationFallbackPublicClientState {
 
   factory ApplicationFallbackPublicClientState.fromMap(Map<String, dynamic> map) {
     return ApplicationFallbackPublicClientState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

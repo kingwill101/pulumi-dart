@@ -50,12 +50,12 @@ class AzureFabricSpecificDetailsResponse {
 
   factory AzureFabricSpecificDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureFabricSpecificDetailsResponse(
-      containerIds: map['containerIds'] == null ? null : ((map['containerIds'] as List).cast<String>()).input(),
-      extendedLocations: map['extendedLocations'] == null ? null : (pulumi.Input.decodeList<A2AExtendedLocationDetailsResponse>(map['extendedLocations'], (value) => A2AExtendedLocationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerIds: map['containerIds'] == null ? null : ((map['containerIds']! as List).cast<String>()).input(),
+      extendedLocations: map['extendedLocations'] == null ? null : (pulumi.Input.decodeList<A2AExtendedLocationDetailsResponse>(map['extendedLocations']!, (value) => A2AExtendedLocationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceType: (map['instanceType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      locationDetails: map['locationDetails'] == null ? null : (pulumi.Input.decodeList<A2AFabricSpecificLocationDetailsResponse>(map['locationDetails'], (value) => A2AFabricSpecificLocationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<A2AZoneDetailsResponse>(map['zones'], (value) => A2AZoneDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      locationDetails: map['locationDetails'] == null ? null : (pulumi.Input.decodeList<A2AFabricSpecificLocationDetailsResponse>(map['locationDetails']!, (value) => A2AFabricSpecificLocationDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<A2AZoneDetailsResponse>(map['zones']!, (value) => A2AZoneDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

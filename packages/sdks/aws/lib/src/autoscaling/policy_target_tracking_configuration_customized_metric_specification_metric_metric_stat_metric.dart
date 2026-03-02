@@ -31,7 +31,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
 
   factory PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric(
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension>(map['dimensions'], (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : ((pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension>(map['dimensions']!, (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       metricName: (map['metricName'] as String).input(),
       namespace: (map['namespace'] as String).input(),
     );

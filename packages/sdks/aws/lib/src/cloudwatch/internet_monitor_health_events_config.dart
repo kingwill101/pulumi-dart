@@ -25,8 +25,8 @@ class InternetMonitorHealthEventsConfig {
 
   factory InternetMonitorHealthEventsConfig.fromMap(Map<String, dynamic> map) {
     return InternetMonitorHealthEventsConfig(
-      availabilityScoreThreshold: map['availabilityScoreThreshold'] == null ? null : (map['availabilityScoreThreshold'] as double).input(),
-      performanceScoreThreshold: map['performanceScoreThreshold'] == null ? null : (map['performanceScoreThreshold'] as double).input(),
+      availabilityScoreThreshold: map['availabilityScoreThreshold'] == null ? null : ((map['availabilityScoreThreshold'] as double).input()).input(),
+      performanceScoreThreshold: map['performanceScoreThreshold'] == null ? null : ((map['performanceScoreThreshold'] as double).input()).input(),
     );
   }
 }

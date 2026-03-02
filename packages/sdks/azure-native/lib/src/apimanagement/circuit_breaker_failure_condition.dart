@@ -42,11 +42,11 @@ class CircuitBreakerFailureCondition {
 
   factory CircuitBreakerFailureCondition.fromMap(Map<String, dynamic> map) {
     return CircuitBreakerFailureCondition(
-      count: map['count'] == null ? null : (map['count'] as double).input(),
-      errorReasons: map['errorReasons'] == null ? null : ((map['errorReasons'] as List).cast<String>()).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
-      statusCodeRanges: map['statusCodeRanges'] == null ? null : (pulumi.Input.decodeList<FailureStatusCodeRange>(map['statusCodeRanges'], (value) => FailureStatusCodeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      count: map['count'] == null ? null : (map['count']! as double).input(),
+      errorReasons: map['errorReasons'] == null ? null : ((map['errorReasons']! as List).cast<String>()).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
+      statusCodeRanges: map['statusCodeRanges'] == null ? null : (pulumi.Input.decodeList<FailureStatusCodeRange>(map['statusCodeRanges']!, (value) => FailureStatusCodeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

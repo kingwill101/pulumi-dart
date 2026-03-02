@@ -31,9 +31,9 @@ class NotificationSettings {
 
   factory NotificationSettings.fromMap(Map<String, dynamic> map) {
     return NotificationSettings(
-      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients'] as List).cast<String>()).input(),
-      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : (map['notifyDcAdmins'] as String).input(),
-      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : (map['notifyGlobalAdmins'] as String).input(),
+      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients']! as List).cast<String>()).input(),
+      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : (map['notifyDcAdmins']! as String).input(),
+      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : (map['notifyGlobalAdmins']! as String).input(),
     );
   }
 }

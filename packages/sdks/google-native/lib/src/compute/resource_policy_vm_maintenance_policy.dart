@@ -26,8 +26,8 @@ class ResourcePolicyVmMaintenancePolicy {
 
   factory ResourcePolicyVmMaintenancePolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicy(
-      concurrencyControlGroup: map['concurrencyControlGroup'] == null ? null : (ResourcePolicyVmMaintenancePolicyConcurrencyControl.fromMap((map['concurrencyControlGroup'] as Map).cast<String, dynamic>())).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
+      concurrencyControlGroup: map['concurrencyControlGroup'] == null ? null : (ResourcePolicyVmMaintenancePolicyConcurrencyControl.fromMap((map['concurrencyControlGroup']! as Map).cast<String, dynamic>())).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (ResourcePolicyVmMaintenancePolicyMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

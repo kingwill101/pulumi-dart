@@ -47,8 +47,8 @@ class SecretArgs {
     return SecretArgs(
       properties: (SecretProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

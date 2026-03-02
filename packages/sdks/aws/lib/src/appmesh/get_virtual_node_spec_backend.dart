@@ -20,7 +20,7 @@ class GetVirtualNodeSpecBackend {
 
   factory GetVirtualNodeSpecBackend.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecBackend(
-      virtualServices: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualService>(map['virtualServices'], (value) => GetVirtualNodeSpecBackendVirtualService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualServices: (pulumi.Input.decodeList<GetVirtualNodeSpecBackendVirtualService>(map['virtualServices']!, (value) => GetVirtualNodeSpecBackendVirtualService.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

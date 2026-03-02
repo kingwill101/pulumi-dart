@@ -45,12 +45,12 @@ class DirectorySamlServiceProvider {
 
   factory DirectorySamlServiceProvider.fromMap(Map<String, dynamic> map) {
     return DirectorySamlServiceProvider(
-      acsUrl: map['acsUrl'] == null ? null : (map['acsUrl'] as String).input(),
-      authnSignAlgo: map['authnSignAlgo'] == null ? null : (map['authnSignAlgo'] as String).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
-      encodedMetadataDocument: map['encodedMetadataDocument'] == null ? null : (map['encodedMetadataDocument'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      supportEncryptedAssertion: map['supportEncryptedAssertion'] == null ? null : (map['supportEncryptedAssertion'] as bool).input(),
+      acsUrl: map['acsUrl'] == null ? null : (map['acsUrl']! as String).input(),
+      authnSignAlgo: map['authnSignAlgo'] == null ? null : (map['authnSignAlgo']! as String).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
+      encodedMetadataDocument: map['encodedMetadataDocument'] == null ? null : (map['encodedMetadataDocument']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      supportEncryptedAssertion: map['supportEncryptedAssertion'] == null ? null : (map['supportEncryptedAssertion']! as bool).input(),
     );
   }
 }

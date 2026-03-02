@@ -31,9 +31,9 @@ class ErrorReportingPanel {
 
   factory ErrorReportingPanel.fromMap(Map<String, dynamic> map) {
     return ErrorReportingPanel(
-      projectNames: map['projectNames'] == null ? null : ((map['projectNames'] as List).cast<String>()).input(),
-      services: map['services'] == null ? null : ((map['services'] as List).cast<String>()).input(),
-      versions: map['versions'] == null ? null : ((map['versions'] as List).cast<String>()).input(),
+      projectNames: map['projectNames'] == null ? null : ((map['projectNames']! as List).cast<String>()).input(),
+      services: map['services'] == null ? null : ((map['services']! as List).cast<String>()).input(),
+      versions: map['versions'] == null ? null : ((map['versions']! as List).cast<String>()).input(),
     );
   }
 }

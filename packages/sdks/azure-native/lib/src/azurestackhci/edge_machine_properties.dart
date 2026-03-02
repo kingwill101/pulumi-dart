@@ -54,13 +54,13 @@ class EdgeMachineProperties {
 
   factory EdgeMachineProperties.fromMap(Map<String, dynamic> map) {
     return EdgeMachineProperties(
-      arcGatewayResourceId: map['arcGatewayResourceId'] == null ? null : (map['arcGatewayResourceId'] as String).input(),
-      arcMachineResourceGroupId: map['arcMachineResourceGroupId'] == null ? null : (map['arcMachineResourceGroupId'] as String).input(),
-      arcMachineResourceId: map['arcMachineResourceId'] == null ? null : (map['arcMachineResourceId'] as String).input(),
-      edgeMachineKind: map['edgeMachineKind'] == null ? null : (map['edgeMachineKind'] as String).input(),
-      ownershipVoucherDetails: map['ownershipVoucherDetails'] == null ? null : (OwnershipVoucherDetails.fromMap((map['ownershipVoucherDetails'] as Map).cast<String, dynamic>())).input(),
-      provisioningDetails: map['provisioningDetails'] == null ? null : (ProvisioningDetails.fromMap((map['provisioningDetails'] as Map).cast<String, dynamic>())).input(),
-      siteDetails: map['siteDetails'] == null ? null : (SiteDetails.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
+      arcGatewayResourceId: map['arcGatewayResourceId'] == null ? null : (map['arcGatewayResourceId']! as String).input(),
+      arcMachineResourceGroupId: map['arcMachineResourceGroupId'] == null ? null : (map['arcMachineResourceGroupId']! as String).input(),
+      arcMachineResourceId: map['arcMachineResourceId'] == null ? null : (map['arcMachineResourceId']! as String).input(),
+      edgeMachineKind: map['edgeMachineKind'] == null ? null : (map['edgeMachineKind']! as String).input(),
+      ownershipVoucherDetails: map['ownershipVoucherDetails'] == null ? null : (OwnershipVoucherDetails.fromMap((map['ownershipVoucherDetails']! as Map).cast<String, dynamic>())).input(),
+      provisioningDetails: map['provisioningDetails'] == null ? null : (ProvisioningDetails.fromMap((map['provisioningDetails']! as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetails.fromMap((map['siteDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

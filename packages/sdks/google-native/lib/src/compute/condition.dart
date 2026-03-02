@@ -44,11 +44,11 @@ class Condition {
 
   factory Condition.fromMap(Map<String, dynamic> map) {
     return Condition(
-      iam: map['iam'] == null ? null : (ConditionIam.fromValue(map['iam'] as String)).input(),
-      op: map['op'] == null ? null : (ConditionOp.fromValue(map['op'] as String)).input(),
-      svc: map['svc'] == null ? null : (map['svc'] as String).input(),
-      sys: map['sys'] == null ? null : (ConditionSys.fromValue(map['sys'] as String)).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      iam: map['iam'] == null ? null : (ConditionIam.fromValue(map['iam']! as String)).input(),
+      op: map['op'] == null ? null : (ConditionOp.fromValue(map['op']! as String)).input(),
+      svc: map['svc'] == null ? null : (map['svc']! as String).input(),
+      sys: map['sys'] == null ? null : (ConditionSys.fromValue(map['sys']! as String)).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

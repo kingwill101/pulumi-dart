@@ -65,15 +65,15 @@ class TaskCloudtasksV2beta2Args {
 
   factory TaskCloudtasksV2beta2Args.fromMap(Map<String, dynamic> map) {
     return TaskCloudtasksV2beta2Args(
-      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : (AppEngineHttpRequestCloudtasksV2beta2.fromMap((map['appEngineHttpRequest'] as Map).cast<String, dynamic>())).input(),
-      httpRequest: map['httpRequest'] == null ? null : (HttpRequestCloudtasksV2beta2.fromMap((map['httpRequest'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pullMessage: map['pullMessage'] == null ? null : (PullMessage.fromMap((map['pullMessage'] as Map).cast<String, dynamic>())).input(),
+      appEngineHttpRequest: map['appEngineHttpRequest'] == null ? null : (AppEngineHttpRequestCloudtasksV2beta2.fromMap((map['appEngineHttpRequest']! as Map).cast<String, dynamic>())).input(),
+      httpRequest: map['httpRequest'] == null ? null : (HttpRequestCloudtasksV2beta2.fromMap((map['httpRequest']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pullMessage: map['pullMessage'] == null ? null : (PullMessage.fromMap((map['pullMessage']! as Map).cast<String, dynamic>())).input(),
       queueId: (map['queueId'] as String).input(),
-      responseView: map['responseView'] == null ? null : (TaskResponseViewCloudtasksV2beta2.fromValue(map['responseView'] as String)).input(),
-      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime'] as String).input(),
+      responseView: map['responseView'] == null ? null : (TaskResponseViewCloudtasksV2beta2.fromValue(map['responseView']! as String)).input(),
+      scheduleTime: map['scheduleTime'] == null ? null : (map['scheduleTime']! as String).input(),
     );
   }
 }

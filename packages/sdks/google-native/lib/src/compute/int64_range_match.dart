@@ -26,8 +26,8 @@ class Int64RangeMatch {
 
   factory Int64RangeMatch.fromMap(Map<String, dynamic> map) {
     return Int64RangeMatch(
-      rangeEnd: map['rangeEnd'] == null ? null : (map['rangeEnd'] as String).input(),
-      rangeStart: map['rangeStart'] == null ? null : (map['rangeStart'] as String).input(),
+      rangeEnd: map['rangeEnd'] == null ? null : (map['rangeEnd']! as String).input(),
+      rangeStart: map['rangeStart'] == null ? null : (map['rangeStart']! as String).input(),
     );
   }
 }

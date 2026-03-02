@@ -30,7 +30,7 @@ class TopicRuleErrorActionStepFunctions {
 
   factory TopicRuleErrorActionStepFunctions.fromMap(Map<String, dynamic> map) {
     return TopicRuleErrorActionStepFunctions(
-      executionNamePrefix: map['executionNamePrefix'] == null ? null : (map['executionNamePrefix'] as String).input(),
+      executionNamePrefix: map['executionNamePrefix'] == null ? null : ((map['executionNamePrefix'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       stateMachineName: (map['stateMachineName'] as String).input(),
     );

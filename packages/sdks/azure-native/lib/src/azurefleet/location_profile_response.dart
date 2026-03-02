@@ -29,7 +29,7 @@ class LocationProfileResponse {
   factory LocationProfileResponse.fromMap(Map<String, dynamic> map) {
     return LocationProfileResponse(
       location: (map['location'] as String).input(),
-      virtualMachineProfileOverride: map['virtualMachineProfileOverride'] == null ? null : (BaseVirtualMachineProfileResponse.fromMap((map['virtualMachineProfileOverride'] as Map).cast<String, dynamic>())).input(),
+      virtualMachineProfileOverride: map['virtualMachineProfileOverride'] == null ? null : (BaseVirtualMachineProfileResponse.fromMap((map['virtualMachineProfileOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesMacAdmin {
 
   factory DomainFeaturesCapabilitiesMacAdmin.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesMacAdmin(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

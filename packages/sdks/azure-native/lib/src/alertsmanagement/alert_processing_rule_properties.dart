@@ -50,10 +50,10 @@ class AlertProcessingRuleProperties {
   factory AlertProcessingRuleProperties.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleProperties(
       actions: (pulumi.Input.decodeList<AddActionGroups>(map['actions'], (value) => AddActionGroups.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      schedule: map['schedule'] == null ? null : (Schedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
     );
   }

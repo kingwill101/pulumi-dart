@@ -24,8 +24,8 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdmin {
 
   factory EnterpriseCrmEventbusProtoTaskMetadataAdmin.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoTaskMetadataAdmin(
-      googleGroupEmail: map['googleGroupEmail'] == null ? null : (map['googleGroupEmail'] as String).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      googleGroupEmail: map['googleGroupEmail'] == null ? null : (map['googleGroupEmail']! as String).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

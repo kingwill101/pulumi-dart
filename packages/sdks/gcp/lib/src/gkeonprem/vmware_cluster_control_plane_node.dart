@@ -48,11 +48,11 @@ class VMwareClusterControlPlaneNode {
 
   factory VMwareClusterControlPlaneNode.fromMap(Map<String, dynamic> map) {
     return VMwareClusterControlPlaneNode(
-      autoResizeConfig: map['autoResizeConfig'] == null ? null : (VMwareClusterControlPlaneNodeAutoResizeConfig.fromMap((map['autoResizeConfig'] as Map).cast<String, dynamic>())).input(),
-      cpus: map['cpus'] == null ? null : (map['cpus'] as int).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      vsphereConfigs: map['vsphereConfigs'] == null ? null : (pulumi.Input.decodeList<VMwareClusterControlPlaneNodeVsphereConfig>(map['vsphereConfigs'], (value) => VMwareClusterControlPlaneNodeVsphereConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoResizeConfig: map['autoResizeConfig'] == null ? null : (VMwareClusterControlPlaneNodeAutoResizeConfig.fromMap((map['autoResizeConfig']! as Map).cast<String, dynamic>())).input(),
+      cpus: map['cpus'] == null ? null : (map['cpus']! as int).input(),
+      memory: map['memory'] == null ? null : (map['memory']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      vsphereConfigs: map['vsphereConfigs'] == null ? null : (pulumi.Input.decodeList<VMwareClusterControlPlaneNodeVsphereConfig>(map['vsphereConfigs']!, (value) => VMwareClusterControlPlaneNodeVsphereConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

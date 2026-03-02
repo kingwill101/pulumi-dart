@@ -41,11 +41,11 @@ class DeviceState {
 
   factory DeviceState.fromMap(Map<String, dynamic> map) {
     return DeviceState(
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      device: map['device'] == null ? null : (DeviceDevice.fromMap((map['device'] as Map).cast<String, dynamic>())).input(),
-      deviceFleetName: map['deviceFleetName'] == null ? null : (map['deviceFleetName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : ((map['agentVersion'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      device: map['device'] == null ? null : ((DeviceDevice.fromMap((map['device']! as Map).cast<String, dynamic>())).input()).input(),
+      deviceFleetName: map['deviceFleetName'] == null ? null : ((map['deviceFleetName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

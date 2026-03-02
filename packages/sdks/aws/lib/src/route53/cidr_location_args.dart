@@ -36,7 +36,7 @@ class CidrLocationArgs {
     return CidrLocationArgs(
       cidrBlocks: ((map['cidrBlocks'] as List).cast<String>()).input(),
       cidrCollectionId: (map['cidrCollectionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

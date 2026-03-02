@@ -47,11 +47,11 @@ class OriginRequestPolicyArgs {
 
   factory OriginRequestPolicyArgs.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      cookiesConfig: (OriginRequestPolicyCookiesConfig.fromMap((map['cookiesConfig'] as Map).cast<String, dynamic>())).input(),
-      headersConfig: (OriginRequestPolicyHeadersConfig.fromMap((map['headersConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryStringsConfig: (OriginRequestPolicyQueryStringsConfig.fromMap((map['queryStringsConfig'] as Map).cast<String, dynamic>())).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      cookiesConfig: (OriginRequestPolicyCookiesConfig.fromMap((map['cookiesConfig']! as Map).cast<String, dynamic>())).input(),
+      headersConfig: (OriginRequestPolicyHeadersConfig.fromMap((map['headersConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      queryStringsConfig: (OriginRequestPolicyQueryStringsConfig.fromMap((map['queryStringsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

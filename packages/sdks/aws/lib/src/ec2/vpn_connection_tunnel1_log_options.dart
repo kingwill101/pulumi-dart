@@ -21,7 +21,7 @@ class VpnConnectionTunnel1LogOptions {
 
   factory VpnConnectionTunnel1LogOptions.fromMap(Map<String, dynamic> map) {
     return VpnConnectionTunnel1LogOptions(
-      cloudwatchLogOptions: map['cloudwatchLogOptions'] == null ? null : (VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap((map['cloudwatchLogOptions'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogOptions: map['cloudwatchLogOptions'] == null ? null : ((VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap((map['cloudwatchLogOptions']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

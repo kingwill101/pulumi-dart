@@ -63,12 +63,12 @@ class CaPoolIssuancePolicy {
 
   factory CaPoolIssuancePolicy.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicy(
-      allowedIssuanceModes: map['allowedIssuanceModes'] == null ? null : (CaPoolIssuancePolicyAllowedIssuanceModes.fromMap((map['allowedIssuanceModes'] as Map).cast<String, dynamic>())).input(),
-      allowedKeyTypes: map['allowedKeyTypes'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyAllowedKeyType>(map['allowedKeyTypes'], (value) => CaPoolIssuancePolicyAllowedKeyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      backdateDuration: map['backdateDuration'] == null ? null : (map['backdateDuration'] as String).input(),
-      baselineValues: map['baselineValues'] == null ? null : (CaPoolIssuancePolicyBaselineValues.fromMap((map['baselineValues'] as Map).cast<String, dynamic>())).input(),
-      identityConstraints: map['identityConstraints'] == null ? null : (CaPoolIssuancePolicyIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
-      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
+      allowedIssuanceModes: map['allowedIssuanceModes'] == null ? null : (CaPoolIssuancePolicyAllowedIssuanceModes.fromMap((map['allowedIssuanceModes']! as Map).cast<String, dynamic>())).input(),
+      allowedKeyTypes: map['allowedKeyTypes'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyAllowedKeyType>(map['allowedKeyTypes']!, (value) => CaPoolIssuancePolicyAllowedKeyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backdateDuration: map['backdateDuration'] == null ? null : (map['backdateDuration']! as String).input(),
+      baselineValues: map['baselineValues'] == null ? null : (CaPoolIssuancePolicyBaselineValues.fromMap((map['baselineValues']! as Map).cast<String, dynamic>())).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CaPoolIssuancePolicyIdentityConstraints.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>())).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime']! as String).input(),
     );
   }
 }

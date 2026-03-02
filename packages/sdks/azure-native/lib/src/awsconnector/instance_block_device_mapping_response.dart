@@ -27,8 +27,8 @@ class InstanceBlockDeviceMappingResponse {
 
   factory InstanceBlockDeviceMappingResponse.fromMap(Map<String, dynamic> map) {
     return InstanceBlockDeviceMappingResponse(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      ebs: map['ebs'] == null ? null : (EbsInstanceBlockDeviceResponse.fromMap((map['ebs'] as Map).cast<String, dynamic>())).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      ebs: map['ebs'] == null ? null : (EbsInstanceBlockDeviceResponse.fromMap((map['ebs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

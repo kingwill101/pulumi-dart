@@ -41,11 +41,11 @@ class DomainLaunchSecurityTdx {
 
   factory DomainLaunchSecurityTdx.fromMap(Map<String, dynamic> map) {
     return DomainLaunchSecurityTdx(
-      mrConfigId: map['mrConfigId'] == null ? null : (map['mrConfigId'] as String).input(),
-      mrOwner: map['mrOwner'] == null ? null : (map['mrOwner'] as String).input(),
-      mrOwnerConfig: map['mrOwnerConfig'] == null ? null : (map['mrOwnerConfig'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as double).input(),
-      quoteGenerationService: map['quoteGenerationService'] == null ? null : (DomainLaunchSecurityTdxQuoteGenerationService.fromMap((map['quoteGenerationService'] as Map).cast<String, dynamic>())).input(),
+      mrConfigId: map['mrConfigId'] == null ? null : (map['mrConfigId']! as String).input(),
+      mrOwner: map['mrOwner'] == null ? null : (map['mrOwner']! as String).input(),
+      mrOwnerConfig: map['mrOwnerConfig'] == null ? null : (map['mrOwnerConfig']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as double).input(),
+      quoteGenerationService: map['quoteGenerationService'] == null ? null : (DomainLaunchSecurityTdxQuoteGenerationService.fromMap((map['quoteGenerationService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

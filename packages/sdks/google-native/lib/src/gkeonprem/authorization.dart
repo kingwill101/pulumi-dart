@@ -22,7 +22,7 @@ class Authorization {
 
   factory Authorization.fromMap(Map<String, dynamic> map) {
     return Authorization(
-      adminUsers: map['adminUsers'] == null ? null : (pulumi.Input.decodeList<ClusterUser>(map['adminUsers'], (value) => ClusterUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      adminUsers: map['adminUsers'] == null ? null : (pulumi.Input.decodeList<ClusterUser>(map['adminUsers']!, (value) => ClusterUser.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

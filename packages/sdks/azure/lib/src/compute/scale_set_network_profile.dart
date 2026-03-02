@@ -52,12 +52,12 @@ class ScaleSetNetworkProfile {
 
   factory ScaleSetNetworkProfile.fromMap(Map<String, dynamic> map) {
     return ScaleSetNetworkProfile(
-      acceleratedNetworking: map['acceleratedNetworking'] == null ? null : (map['acceleratedNetworking'] as bool).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (ScaleSetNetworkProfileDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      acceleratedNetworking: map['acceleratedNetworking'] == null ? null : (map['acceleratedNetworking']! as bool).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (ScaleSetNetworkProfileDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
       ipConfigurations: (pulumi.Input.decodeList<ScaleSetNetworkProfileIpConfiguration>(map['ipConfigurations'], (value) => ScaleSetNetworkProfileIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipForwarding: map['ipForwarding'] == null ? null : (map['ipForwarding'] as bool).input(),
+      ipForwarding: map['ipForwarding'] == null ? null : (map['ipForwarding']! as bool).input(),
       name: (map['name'] as String).input(),
-      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId'] as String).input(),
+      networkSecurityGroupId: map['networkSecurityGroupId'] == null ? null : (map['networkSecurityGroupId']! as String).input(),
       primary: (map['primary'] as bool).input(),
     );
   }

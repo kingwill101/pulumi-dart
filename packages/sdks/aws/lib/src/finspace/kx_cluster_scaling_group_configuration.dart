@@ -40,8 +40,8 @@ class KxClusterScalingGroupConfiguration {
 
   factory KxClusterScalingGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterScalingGroupConfiguration(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as int).input(),
+      cpu: map['cpu'] == null ? null : ((map['cpu'] as double).input()).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : ((map['memoryLimit'] as int).input()).input(),
       memoryReservation: (map['memoryReservation'] as int).input(),
       nodeCount: (map['nodeCount'] as int).input(),
       scalingGroupName: (map['scalingGroupName'] as String).input(),

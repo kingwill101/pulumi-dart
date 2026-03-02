@@ -66,15 +66,15 @@ class RegionInstanceGroupManagerUpdatePolicy {
 
   factory RegionInstanceGroupManagerUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerUpdatePolicy(
-      instanceRedistributionType: map['instanceRedistributionType'] == null ? null : (map['instanceRedistributionType'] as String).input(),
-      maxSurgeFixed: map['maxSurgeFixed'] == null ? null : (map['maxSurgeFixed'] as int).input(),
-      maxSurgePercent: map['maxSurgePercent'] == null ? null : (map['maxSurgePercent'] as int).input(),
-      maxUnavailableFixed: map['maxUnavailableFixed'] == null ? null : (map['maxUnavailableFixed'] as int).input(),
-      maxUnavailablePercent: map['maxUnavailablePercent'] == null ? null : (map['maxUnavailablePercent'] as int).input(),
-      minReadySec: map['minReadySec'] == null ? null : (map['minReadySec'] as int).input(),
+      instanceRedistributionType: map['instanceRedistributionType'] == null ? null : (map['instanceRedistributionType']! as String).input(),
+      maxSurgeFixed: map['maxSurgeFixed'] == null ? null : (map['maxSurgeFixed']! as int).input(),
+      maxSurgePercent: map['maxSurgePercent'] == null ? null : (map['maxSurgePercent']! as int).input(),
+      maxUnavailableFixed: map['maxUnavailableFixed'] == null ? null : (map['maxUnavailableFixed']! as int).input(),
+      maxUnavailablePercent: map['maxUnavailablePercent'] == null ? null : (map['maxUnavailablePercent']! as int).input(),
+      minReadySec: map['minReadySec'] == null ? null : (map['minReadySec']! as int).input(),
       minimalAction: (map['minimalAction'] as String).input(),
-      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction'] as String).input(),
-      replacementMethod: map['replacementMethod'] == null ? null : (map['replacementMethod'] as String).input(),
+      mostDisruptiveAllowedAction: map['mostDisruptiveAllowedAction'] == null ? null : (map['mostDisruptiveAllowedAction']! as String).input(),
+      replacementMethod: map['replacementMethod'] == null ? null : (map['replacementMethod']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

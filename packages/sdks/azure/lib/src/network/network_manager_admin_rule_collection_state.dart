@@ -36,10 +36,10 @@ class NetworkManagerAdminRuleCollectionState {
 
   factory NetworkManagerAdminRuleCollectionState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerAdminRuleCollectionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkGroupIds: map['networkGroupIds'] == null ? null : ((map['networkGroupIds'] as List).cast<String>()).input(),
-      securityAdminConfigurationId: map['securityAdminConfigurationId'] == null ? null : (map['securityAdminConfigurationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkGroupIds: map['networkGroupIds'] == null ? null : ((map['networkGroupIds']! as List).cast<String>()).input(),
+      securityAdminConfigurationId: map['securityAdminConfigurationId'] == null ? null : (map['securityAdminConfigurationId']! as String).input(),
     );
   }
 }

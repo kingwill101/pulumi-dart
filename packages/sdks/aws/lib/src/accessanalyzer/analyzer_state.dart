@@ -54,13 +54,13 @@ class AnalyzerState {
 
   factory AnalyzerState.fromMap(Map<String, dynamic> map) {
     return AnalyzerState(
-      analyzerName: map['analyzerName'] == null ? null : (map['analyzerName'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configuration: map['configuration'] == null ? null : (AnalyzerConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      analyzerName: map['analyzerName'] == null ? null : ((map['analyzerName'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configuration: map['configuration'] == null ? null : ((AnalyzerConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

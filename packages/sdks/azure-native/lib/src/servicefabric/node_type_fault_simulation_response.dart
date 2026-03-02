@@ -36,10 +36,10 @@ class NodeTypeFaultSimulationResponse {
 
   factory NodeTypeFaultSimulationResponse.fromMap(Map<String, dynamic> map) {
     return NodeTypeFaultSimulationResponse(
-      nodeTypeName: map['nodeTypeName'] == null ? null : (map['nodeTypeName'] as String).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      nodeTypeName: map['nodeTypeName'] == null ? null : (map['nodeTypeName']! as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       operationStatus: (map['operationStatus'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

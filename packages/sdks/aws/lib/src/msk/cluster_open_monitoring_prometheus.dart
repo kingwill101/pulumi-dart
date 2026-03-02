@@ -27,8 +27,8 @@ class ClusterOpenMonitoringPrometheus {
 
   factory ClusterOpenMonitoringPrometheus.fromMap(Map<String, dynamic> map) {
     return ClusterOpenMonitoringPrometheus(
-      jmxExporter: map['jmxExporter'] == null ? null : (ClusterOpenMonitoringPrometheusJmxExporter.fromMap((map['jmxExporter'] as Map).cast<String, dynamic>())).input(),
-      nodeExporter: map['nodeExporter'] == null ? null : (ClusterOpenMonitoringPrometheusNodeExporter.fromMap((map['nodeExporter'] as Map).cast<String, dynamic>())).input(),
+      jmxExporter: map['jmxExporter'] == null ? null : ((ClusterOpenMonitoringPrometheusJmxExporter.fromMap((map['jmxExporter']! as Map).cast<String, dynamic>())).input()).input(),
+      nodeExporter: map['nodeExporter'] == null ? null : ((ClusterOpenMonitoringPrometheusNodeExporter.fromMap((map['nodeExporter']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class AppVersionSnapshotExampleMessageChunkAgentTransfer {
 
   factory AppVersionSnapshotExampleMessageChunkAgentTransfer.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExampleMessageChunkAgentTransfer(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      targetAgent: map['targetAgent'] == null ? null : (map['targetAgent'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      targetAgent: map['targetAgent'] == null ? null : (map['targetAgent']! as String).input(),
     );
   }
 }

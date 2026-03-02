@@ -22,7 +22,7 @@ class FhirStoreConsentConfigConsentHeaderHandling {
 
   factory FhirStoreConsentConfigConsentHeaderHandling.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfigConsentHeaderHandling(
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
     );
   }
 }

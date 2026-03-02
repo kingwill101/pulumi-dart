@@ -40,9 +40,9 @@ class OpenAIArgs {
 
   factory OpenAIArgs.fromMap(Map<String, dynamic> map) {
     return OpenAIArgs(
-      integrationName: map['integrationName'] == null ? null : (map['integrationName'] as String).input(),
+      integrationName: map['integrationName'] == null ? null : (map['integrationName']! as String).input(),
       monitorName: (map['monitorName'] as String).input(),
-      properties: map['properties'] == null ? null : (OpenAIIntegrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (OpenAIIntegrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

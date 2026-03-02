@@ -32,8 +32,8 @@ class ReservedIpv6Args {
 
   factory ReservedIpv6Args.fromMap(Map<String, dynamic> map) {
     return ReservedIpv6Args(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
       regionSlug: (map['regionSlug'] as String).input(),
     );
   }

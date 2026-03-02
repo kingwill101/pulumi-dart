@@ -46,12 +46,12 @@ class CustomResourceDefinitionNames {
 
   factory CustomResourceDefinitionNames.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionNames(
-      categories: map['categories'] == null ? null : ((map['categories'] as List).cast<String>()).input(),
+      categories: map['categories'] == null ? null : ((map['categories']! as List).cast<String>()).input(),
       kind: (map['kind'] as String).input(),
-      listKind: map['listKind'] == null ? null : (map['listKind'] as String).input(),
+      listKind: map['listKind'] == null ? null : (map['listKind']! as String).input(),
       plural: (map['plural'] as String).input(),
-      shortNames: map['shortNames'] == null ? null : ((map['shortNames'] as List).cast<String>()).input(),
-      singular: map['singular'] == null ? null : (map['singular'] as String).input(),
+      shortNames: map['shortNames'] == null ? null : ((map['shortNames']! as List).cast<String>()).input(),
+      singular: map['singular'] == null ? null : (map['singular']! as String).input(),
     );
   }
 }

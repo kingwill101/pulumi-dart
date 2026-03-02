@@ -25,7 +25,7 @@ class ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternal
 
   factory ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserExternalTenant(
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
       membershipKind: (map['membershipKind'] as String).input(),
     );
   }

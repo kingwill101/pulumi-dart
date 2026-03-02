@@ -26,8 +26,8 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
 
   factory GoogleCloudDialogflowV2IntentMessageCardButton.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageCardButton(
-      postback: map['postback'] == null ? null : (map['postback'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      postback: map['postback'] == null ? null : (map['postback']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class SelfSubjectAccessReviewSpecPatch {
 
   factory SelfSubjectAccessReviewSpecPatch.fromMap(Map<String, dynamic> map) {
     return SelfSubjectAccessReviewSpecPatch(
-      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributesPatch.fromMap((map['nonResourceAttributes'] as Map).cast<String, dynamic>())).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributesPatch.fromMap((map['resourceAttributes'] as Map).cast<String, dynamic>())).input(),
+      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributesPatch.fromMap((map['nonResourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributesPatch.fromMap((map['resourceAttributes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

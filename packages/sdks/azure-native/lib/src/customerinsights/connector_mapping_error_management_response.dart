@@ -26,7 +26,7 @@ class ConnectorMappingErrorManagementResponse {
 
   factory ConnectorMappingErrorManagementResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingErrorManagementResponse(
-      errorLimit: map['errorLimit'] == null ? null : (map['errorLimit'] as int).input(),
+      errorLimit: map['errorLimit'] == null ? null : (map['errorLimit']! as int).input(),
       errorManagementType: (map['errorManagementType'] as String).input(),
     );
   }

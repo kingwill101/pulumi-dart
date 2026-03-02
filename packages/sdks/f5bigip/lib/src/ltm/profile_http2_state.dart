@@ -81,19 +81,19 @@ class ProfileHttp2State {
 
   factory ProfileHttp2State.fromMap(Map<String, dynamic> map) {
     return ProfileHttp2State(
-      activationModes: map['activationModes'] == null ? null : ((map['activationModes'] as List).cast<String>()).input(),
-      concurrentStreamsPerConnection: map['concurrentStreamsPerConnection'] == null ? null : (map['concurrentStreamsPerConnection'] as int).input(),
-      connectionIdleTimeout: map['connectionIdleTimeout'] == null ? null : (map['connectionIdleTimeout'] as int).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      enforceTlsRequirements: map['enforceTlsRequirements'] == null ? null : (map['enforceTlsRequirements'] as String).input(),
-      frameSize: map['frameSize'] == null ? null : (map['frameSize'] as int).input(),
-      headerTableSize: map['headerTableSize'] == null ? null : (map['headerTableSize'] as int).input(),
-      includeContentLength: map['includeContentLength'] == null ? null : (map['includeContentLength'] as String).input(),
-      insertHeader: map['insertHeader'] == null ? null : (map['insertHeader'] as String).input(),
-      insertHeaderName: map['insertHeaderName'] == null ? null : (map['insertHeaderName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      receiveWindow: map['receiveWindow'] == null ? null : (map['receiveWindow'] as int).input(),
-      writeSize: map['writeSize'] == null ? null : (map['writeSize'] as int).input(),
+      activationModes: map['activationModes'] == null ? null : ((map['activationModes']! as List).cast<String>()).input(),
+      concurrentStreamsPerConnection: map['concurrentStreamsPerConnection'] == null ? null : (map['concurrentStreamsPerConnection']! as int).input(),
+      connectionIdleTimeout: map['connectionIdleTimeout'] == null ? null : (map['connectionIdleTimeout']! as int).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      enforceTlsRequirements: map['enforceTlsRequirements'] == null ? null : (map['enforceTlsRequirements']! as String).input(),
+      frameSize: map['frameSize'] == null ? null : (map['frameSize']! as int).input(),
+      headerTableSize: map['headerTableSize'] == null ? null : (map['headerTableSize']! as int).input(),
+      includeContentLength: map['includeContentLength'] == null ? null : (map['includeContentLength']! as String).input(),
+      insertHeader: map['insertHeader'] == null ? null : (map['insertHeader']! as String).input(),
+      insertHeaderName: map['insertHeaderName'] == null ? null : (map['insertHeaderName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      receiveWindow: map['receiveWindow'] == null ? null : (map['receiveWindow']! as int).input(),
+      writeSize: map['writeSize'] == null ? null : (map['writeSize']! as int).input(),
     );
   }
 }

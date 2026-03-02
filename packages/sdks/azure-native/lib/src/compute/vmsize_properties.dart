@@ -26,8 +26,8 @@ class VMSizeProperties {
 
   factory VMSizeProperties.fromMap(Map<String, dynamic> map) {
     return VMSizeProperties(
-      vCPUsAvailable: map['vCPUsAvailable'] == null ? null : (map['vCPUsAvailable'] as int).input(),
-      vCPUsPerCore: map['vCPUsPerCore'] == null ? null : (map['vCPUsPerCore'] as int).input(),
+      vCPUsAvailable: map['vCPUsAvailable'] == null ? null : (map['vCPUsAvailable']! as int).input(),
+      vCPUsPerCore: map['vCPUsPerCore'] == null ? null : (map['vCPUsPerCore']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class InstanceAggregatedAssociationOverview {
 
   factory InstanceAggregatedAssociationOverview.fromMap(Map<String, dynamic> map) {
     return InstanceAggregatedAssociationOverview(
-      detailedStatus: map['detailedStatus'] == null ? null : (map['detailedStatus'] as String).input(),
-      instanceAssociationStatusAggregatedCount: map['instanceAssociationStatusAggregatedCount'] == null ? null : ((map['instanceAssociationStatusAggregatedCount'] as Map).cast<String, int>()).input(),
+      detailedStatus: map['detailedStatus'] == null ? null : (map['detailedStatus']! as String).input(),
+      instanceAssociationStatusAggregatedCount: map['instanceAssociationStatusAggregatedCount'] == null ? null : ((map['instanceAssociationStatusAggregatedCount']! as Map).cast<String, int>()).input(),
     );
   }
 }

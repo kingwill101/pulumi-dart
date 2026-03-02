@@ -40,9 +40,9 @@ class JWTAuthenticatorProperties {
   factory JWTAuthenticatorProperties.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorProperties(
       claimMappings: (JWTAuthenticatorClaimMappings.fromMap((map['claimMappings'] as Map).cast<String, dynamic>())).input(),
-      claimValidationRules: map['claimValidationRules'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(map['claimValidationRules'], (value) => JWTAuthenticatorValidationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      claimValidationRules: map['claimValidationRules'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(map['claimValidationRules']!, (value) => JWTAuthenticatorValidationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       issuer: (JWTAuthenticatorIssuer.fromMap((map['issuer'] as Map).cast<String, dynamic>())).input(),
-      userValidationRules: map['userValidationRules'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(map['userValidationRules'], (value) => JWTAuthenticatorValidationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userValidationRules: map['userValidationRules'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorValidationRule>(map['userValidationRules']!, (value) => JWTAuthenticatorValidationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

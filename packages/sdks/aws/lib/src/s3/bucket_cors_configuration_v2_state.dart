@@ -37,10 +37,10 @@ class BucketCorsConfigurationV2State {
 
   factory BucketCorsConfigurationV2State.fromMap(Map<String, dynamic> map) {
     return BucketCorsConfigurationV2State(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules'], (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      corsRules: map['corsRules'] == null ? null : ((pulumi.Input.decodeList<BucketCorsConfigurationV2CorsRule>(map['corsRules']!, (value) => BucketCorsConfigurationV2CorsRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

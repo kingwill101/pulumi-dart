@@ -36,8 +36,8 @@ class SecretsManagementSettings {
 
   factory SecretsManagementSettings.fromMap(Map<String, dynamic> map) {
     return SecretsManagementSettings(
-      certificateStoreLocation: map['certificateStoreLocation'] == null ? null : (map['certificateStoreLocation'] as String).input(),
-      certificateStoreName: map['certificateStoreName'] == null ? null : (map['certificateStoreName'] as String).input(),
+      certificateStoreLocation: map['certificateStoreLocation'] == null ? null : (map['certificateStoreLocation']! as String).input(),
+      certificateStoreName: map['certificateStoreName'] == null ? null : (map['certificateStoreName']! as String).input(),
       keyExportable: (map['keyExportable'] as bool).input(),
       observedCertificates: ((map['observedCertificates'] as List).cast<String>()).input(),
     );

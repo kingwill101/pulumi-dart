@@ -59,14 +59,14 @@ class ClusterModifyClusterServiceConfig {
 
   factory ClusterModifyClusterServiceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterModifyClusterServiceConfig(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       configParams: (map['configParams'] as String).input(),
-      configType: map['configType'] == null ? null : (map['configType'] as String).input(),
-      customConfigParams: map['customConfigParams'] == null ? null : (map['customConfigParams'] as String).input(),
-      gatewayClusterIdLists: map['gatewayClusterIdLists'] == null ? null : ((map['gatewayClusterIdLists'] as List).cast<String>()).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      hostInstanceId: map['hostInstanceId'] == null ? null : (map['hostInstanceId'] as String).input(),
-      refreshHostConfig: map['refreshHostConfig'] == null ? null : (map['refreshHostConfig'] as bool).input(),
+      configType: map['configType'] == null ? null : (map['configType']! as String).input(),
+      customConfigParams: map['customConfigParams'] == null ? null : (map['customConfigParams']! as String).input(),
+      gatewayClusterIdLists: map['gatewayClusterIdLists'] == null ? null : ((map['gatewayClusterIdLists']! as List).cast<String>()).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      hostInstanceId: map['hostInstanceId'] == null ? null : (map['hostInstanceId']! as String).input(),
+      refreshHostConfig: map['refreshHostConfig'] == null ? null : (map['refreshHostConfig']! as bool).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

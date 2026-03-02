@@ -22,7 +22,7 @@ class SyntheticMonitorTarget {
 
   factory SyntheticMonitorTarget.fromMap(Map<String, dynamic> map) {
     return SyntheticMonitorTarget(
-      cloudFunctionV2: map['cloudFunctionV2'] == null ? null : (CloudFunctionV2Target.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>())).input(),
+      cloudFunctionV2: map['cloudFunctionV2'] == null ? null : (CloudFunctionV2Target.fromMap((map['cloudFunctionV2']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

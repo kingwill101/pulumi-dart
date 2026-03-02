@@ -32,7 +32,7 @@ class AccessModeSettingsResponse {
 
   factory AccessModeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AccessModeSettingsResponse(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<AccessModeSettingsExclusionResponse>(map['exclusions'], (value) => AccessModeSettingsExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<AccessModeSettingsExclusionResponse>(map['exclusions']!, (value) => AccessModeSettingsExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ingestionAccessMode: (map['ingestionAccessMode'] as String).input(),
       queryAccessMode: (map['queryAccessMode'] as String).input(),
     );

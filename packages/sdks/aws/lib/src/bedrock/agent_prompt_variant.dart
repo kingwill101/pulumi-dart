@@ -59,13 +59,13 @@ class AgentPromptVariant {
 
   factory AgentPromptVariant.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariant(
-      additionalModelRequestFields: map['additionalModelRequestFields'] == null ? null : (map['additionalModelRequestFields'] as String).input(),
-      genAiResource: map['genAiResource'] == null ? null : (AgentPromptVariantGenAiResource.fromMap((map['genAiResource'] as Map).cast<String, dynamic>())).input(),
-      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : (AgentPromptVariantInferenceConfiguration.fromMap((map['inferenceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<AgentPromptVariantMetadata>(map['metadatas'], (value) => AgentPromptVariantMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
+      additionalModelRequestFields: map['additionalModelRequestFields'] == null ? null : ((map['additionalModelRequestFields'] as String).input()).input(),
+      genAiResource: map['genAiResource'] == null ? null : ((AgentPromptVariantGenAiResource.fromMap((map['genAiResource']! as Map).cast<String, dynamic>())).input()).input(),
+      inferenceConfiguration: map['inferenceConfiguration'] == null ? null : ((AgentPromptVariantInferenceConfiguration.fromMap((map['inferenceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      metadatas: map['metadatas'] == null ? null : ((pulumi.Input.decodeList<AgentPromptVariantMetadata>(map['metadatas']!, (value) => AgentPromptVariantMetadata.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      modelId: map['modelId'] == null ? null : ((map['modelId'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      templateConfiguration: map['templateConfiguration'] == null ? null : (AgentPromptVariantTemplateConfiguration.fromMap((map['templateConfiguration'] as Map).cast<String, dynamic>())).input(),
+      templateConfiguration: map['templateConfiguration'] == null ? null : ((AgentPromptVariantTemplateConfiguration.fromMap((map['templateConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       templateType: (map['templateType'] as String).input(),
     );
   }

@@ -74,15 +74,15 @@ class ServiceLbPoliciesArgs {
 
   factory ServiceLbPoliciesArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesArgs(
-      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPoliciesAutoCapacityDrain.fromMap((map['autoCapacityDrain'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPoliciesFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>())).input(),
-      isolationConfig: map['isolationConfig'] == null ? null : (ServiceLbPoliciesIsolationConfig.fromMap((map['isolationConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm'] as String).input(),
+      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPoliciesAutoCapacityDrain.fromMap((map['autoCapacityDrain']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPoliciesFailoverConfig.fromMap((map['failoverConfig']! as Map).cast<String, dynamic>())).input(),
+      isolationConfig: map['isolationConfig'] == null ? null : (ServiceLbPoliciesIsolationConfig.fromMap((map['isolationConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

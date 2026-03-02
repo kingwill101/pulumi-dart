@@ -50,7 +50,7 @@ class ExperimentPlanTemplateTemplatePipeline {
       envParams: (ExperimentPlanTemplateTemplatePipelineEnvParams.fromMap((map['envParams'] as Map).cast<String, dynamic>())).input(),
       pipelineOrder: (map['pipelineOrder'] as int).input(),
       scene: (map['scene'] as String).input(),
-      settingParams: map['settingParams'] == null ? null : ((map['settingParams'] as Map).cast<String, String>()).input(),
+      settingParams: map['settingParams'] == null ? null : ((map['settingParams']! as Map).cast<String, String>()).input(),
       workloadId: (map['workloadId'] as int).input(),
       workloadName: (map['workloadName'] as String).input(),
     );

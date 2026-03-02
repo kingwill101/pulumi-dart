@@ -59,14 +59,14 @@ class GlobalPublicDelegatedPrefixComputeV1Args {
 
   factory GlobalPublicDelegatedPrefixComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GlobalPublicDelegatedPrefixComputeV1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      isLiveMigration: map['isLiveMigration'] == null ? null : (map['isLiveMigration']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentPrefix: map['parentPrefix'] == null ? null : (map['parentPrefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicDelegatedSubPrefixs: map['publicDelegatedSubPrefixs'] == null ? null : (pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>(map['publicDelegatedSubPrefixs']!, (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

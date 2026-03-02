@@ -30,7 +30,7 @@ class GetADOOAuthInfoArgs {
   factory GetADOOAuthInfoArgs.fromMap(Map<String, dynamic> map) {
     return GetADOOAuthInfoArgs(
       location: (map['location'] as String).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
     );
   }
 }

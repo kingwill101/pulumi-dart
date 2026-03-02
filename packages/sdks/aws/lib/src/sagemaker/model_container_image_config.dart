@@ -27,7 +27,7 @@ class ModelContainerImageConfig {
   factory ModelContainerImageConfig.fromMap(Map<String, dynamic> map) {
     return ModelContainerImageConfig(
       repositoryAccessMode: (map['repositoryAccessMode'] as String).input(),
-      repositoryAuthConfig: map['repositoryAuthConfig'] == null ? null : (ModelContainerImageConfigRepositoryAuthConfig.fromMap((map['repositoryAuthConfig'] as Map).cast<String, dynamic>())).input(),
+      repositoryAuthConfig: map['repositoryAuthConfig'] == null ? null : ((ModelContainerImageConfigRepositoryAuthConfig.fromMap((map['repositoryAuthConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

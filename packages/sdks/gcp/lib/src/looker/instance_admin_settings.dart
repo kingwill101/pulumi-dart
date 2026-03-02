@@ -19,7 +19,7 @@ class InstanceAdminSettings {
 
   factory InstanceAdminSettings.fromMap(Map<String, dynamic> map) {
     return InstanceAdminSettings(
-      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : ((map['allowedEmailDomains'] as List).cast<String>()).input(),
+      allowedEmailDomains: map['allowedEmailDomains'] == null ? null : ((map['allowedEmailDomains']! as List).cast<String>()).input(),
     );
   }
 }

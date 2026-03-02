@@ -41,9 +41,9 @@ class AlertNotificationList {
   factory AlertNotificationList.fromMap(Map<String, dynamic> map) {
     return AlertNotificationList(
       content: (map['content'] as String).input(),
-      emailLists: map['emailLists'] == null ? null : ((map['emailLists'] as List).cast<String>()).input(),
-      mobileLists: map['mobileLists'] == null ? null : ((map['mobileLists'] as List).cast<String>()).input(),
-      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri'] as String).input(),
+      emailLists: map['emailLists'] == null ? null : ((map['emailLists']! as List).cast<String>()).input(),
+      mobileLists: map['mobileLists'] == null ? null : ((map['mobileLists']! as List).cast<String>()).input(),
+      serviceUri: map['serviceUri'] == null ? null : (map['serviceUri']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -70,16 +70,16 @@ class AttestationAtSubscriptionArgs {
 
   factory AttestationAtSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AttestationAtSubscriptionArgs(
-      assessmentDate: map['assessmentDate'] == null ? null : (map['assessmentDate'] as String).input(),
-      attestationName: map['attestationName'] == null ? null : (map['attestationName'] as String).input(),
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      complianceState: map['complianceState'] == null ? null : (map['complianceState'] as String).input(),
-      evidence: map['evidence'] == null ? null : (pulumi.Input.decodeList<AttestationEvidence>(map['evidence'], (value) => AttestationEvidence.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
+      assessmentDate: map['assessmentDate'] == null ? null : (map['assessmentDate']! as String).input(),
+      attestationName: map['attestationName'] == null ? null : (map['attestationName']! as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      complianceState: map['complianceState'] == null ? null : (map['complianceState']! as String).input(),
+      evidence: map['evidence'] == null ? null : (pulumi.Input.decodeList<AttestationEvidence>(map['evidence']!, (value) => AttestationEvidence.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
       policyAssignmentId: (map['policyAssignmentId'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
     );
   }
 }

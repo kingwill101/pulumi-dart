@@ -73,8 +73,8 @@ class GetReportPlanResult {
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      reportDeliveryChannels: pulumi.Input.decodeList<GetReportPlanReportDeliveryChannel>(map['reportDeliveryChannels'], (value) => GetReportPlanReportDeliveryChannel.fromMap((value as Map).cast<String, dynamic>())),
-      reportSettings: pulumi.Input.decodeList<GetReportPlanReportSetting>(map['reportSettings'], (value) => GetReportPlanReportSetting.fromMap((value as Map).cast<String, dynamic>())),
+      reportDeliveryChannels: pulumi.Input.decodeList<GetReportPlanReportDeliveryChannel>(map['reportDeliveryChannels']!, (value) => GetReportPlanReportDeliveryChannel.fromMap((value as Map).cast<String, dynamic>())),
+      reportSettings: pulumi.Input.decodeList<GetReportPlanReportSetting>(map['reportSettings']!, (value) => GetReportPlanReportSetting.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }

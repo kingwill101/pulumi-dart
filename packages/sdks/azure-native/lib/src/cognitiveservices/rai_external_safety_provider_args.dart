@@ -35,9 +35,9 @@ class RaiExternalSafetyProviderArgs {
 
   factory RaiExternalSafetyProviderArgs.fromMap(Map<String, dynamic> map) {
     return RaiExternalSafetyProviderArgs(
-      properties: map['properties'] == null ? null : (RaiExternalSafetyProviderSchemaProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      safetyProviderName: map['safetyProviderName'] == null ? null : (map['safetyProviderName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : (RaiExternalSafetyProviderSchemaProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      safetyProviderName: map['safetyProviderName'] == null ? null : (map['safetyProviderName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

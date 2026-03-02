@@ -27,7 +27,7 @@ class ListShareSubscriptionSynchronizationDetailsResult {
 
   factory ListShareSubscriptionSynchronizationDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListShareSubscriptionSynchronizationDetailsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<SynchronizationDetailsResponse>(map['value'], (value) => SynchronizationDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

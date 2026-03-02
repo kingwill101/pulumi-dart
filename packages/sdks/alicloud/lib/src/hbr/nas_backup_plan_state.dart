@@ -84,19 +84,19 @@ class NasBackupPlanState {
 
   factory NasBackupPlanState.fromMap(Map<String, dynamic> map) {
     return NasBackupPlanState(
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName'] as String).input(),
-      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType'] as String).input(),
-      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId'] as int).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      nasBackupPlanName: map['nasBackupPlanName'] == null ? null : (map['nasBackupPlanName'] as String).input(),
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      crossAccountRoleName: map['crossAccountRoleName'] == null ? null : (map['crossAccountRoleName']! as String).input(),
+      crossAccountType: map['crossAccountType'] == null ? null : (map['crossAccountType']! as String).input(),
+      crossAccountUserId: map['crossAccountUserId'] == null ? null : (map['crossAccountUserId']! as int).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      nasBackupPlanName: map['nasBackupPlanName'] == null ? null : (map['nasBackupPlanName']! as String).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

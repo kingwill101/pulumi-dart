@@ -46,7 +46,7 @@ class MigrateSqlServerSqlDbTaskOutputValidationResultResponse {
       migrationId: (map['migrationId'] as String).input(),
       resultType: (map['resultType'] as String).input(),
       status: (map['status'] as String).input(),
-      summaryResults: map['summaryResults'] == null ? null : (pulumi.Input.decodeMapValues<MigrationValidationDatabaseSummaryResultResponse>(map['summaryResults'], (value) => MigrationValidationDatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      summaryResults: map['summaryResults'] == null ? null : (pulumi.Input.decodeMapValues<MigrationValidationDatabaseSummaryResultResponse>(map['summaryResults']!, (value) => MigrationValidationDatabaseSummaryResultResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -61,13 +61,13 @@ class GetStaticSiteLinkedBackendForBuildResult {
   factory GetStaticSiteLinkedBackendForBuildResult.fromMap(Map<String, dynamic> map) {
     return GetStaticSiteLinkedBackendForBuildResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      backendResourceId: map['backendResourceId'] == null ? null : map['backendResourceId'] as String,
+      backendResourceId: map['backendResourceId'] == null ? null : map['backendResourceId']! as String,
       createdOn: map['createdOn'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       type: map['type'] as String,
     );
   }

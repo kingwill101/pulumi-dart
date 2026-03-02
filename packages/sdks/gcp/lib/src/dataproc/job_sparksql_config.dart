@@ -50,12 +50,12 @@ class JobSparksqlConfig {
 
   factory JobSparksqlConfig.fromMap(Map<String, dynamic> map) {
     return JobSparksqlConfig(
-      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris'] as List).cast<String>()).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (JobSparksqlConfigLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri'] as String).input(),
-      queryLists: map['queryLists'] == null ? null : ((map['queryLists'] as List).cast<String>()).input(),
-      scriptVariables: map['scriptVariables'] == null ? null : ((map['scriptVariables'] as Map).cast<String, String>()).input(),
+      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris']! as List).cast<String>()).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (JobSparksqlConfigLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      queryFileUri: map['queryFileUri'] == null ? null : (map['queryFileUri']! as String).input(),
+      queryLists: map['queryLists'] == null ? null : ((map['queryLists']! as List).cast<String>()).input(),
+      scriptVariables: map['scriptVariables'] == null ? null : ((map['scriptVariables']! as Map).cast<String, String>()).input(),
     );
   }
 }

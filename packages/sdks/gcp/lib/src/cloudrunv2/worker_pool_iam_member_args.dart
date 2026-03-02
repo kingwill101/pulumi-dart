@@ -65,11 +65,11 @@ class WorkerPoolIamMemberArgs {
 
   factory WorkerPoolIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return WorkerPoolIamMemberArgs(
-      condition: map['condition'] == null ? null : (WorkerPoolIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (WorkerPoolIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

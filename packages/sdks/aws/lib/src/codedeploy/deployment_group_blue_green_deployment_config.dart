@@ -35,9 +35,9 @@ class DeploymentGroupBlueGreenDeploymentConfig {
 
   factory DeploymentGroupBlueGreenDeploymentConfig.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfig(
-      deploymentReadyOption: map['deploymentReadyOption'] == null ? null : (DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption.fromMap((map['deploymentReadyOption'] as Map).cast<String, dynamic>())).input(),
-      greenFleetProvisioningOption: map['greenFleetProvisioningOption'] == null ? null : (DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap((map['greenFleetProvisioningOption'] as Map).cast<String, dynamic>())).input(),
-      terminateBlueInstancesOnDeploymentSuccess: map['terminateBlueInstancesOnDeploymentSuccess'] == null ? null : (DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess.fromMap((map['terminateBlueInstancesOnDeploymentSuccess'] as Map).cast<String, dynamic>())).input(),
+      deploymentReadyOption: map['deploymentReadyOption'] == null ? null : ((DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption.fromMap((map['deploymentReadyOption']! as Map).cast<String, dynamic>())).input()).input(),
+      greenFleetProvisioningOption: map['greenFleetProvisioningOption'] == null ? null : ((DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap((map['greenFleetProvisioningOption']! as Map).cast<String, dynamic>())).input()).input(),
+      terminateBlueInstancesOnDeploymentSuccess: map['terminateBlueInstancesOnDeploymentSuccess'] == null ? null : ((DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess.fromMap((map['terminateBlueInstancesOnDeploymentSuccess']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

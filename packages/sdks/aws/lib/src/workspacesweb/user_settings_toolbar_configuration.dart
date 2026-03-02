@@ -35,10 +35,10 @@ class UserSettingsToolbarConfiguration {
 
   factory UserSettingsToolbarConfiguration.fromMap(Map<String, dynamic> map) {
     return UserSettingsToolbarConfiguration(
-      hiddenToolbarItems: map['hiddenToolbarItems'] == null ? null : ((map['hiddenToolbarItems'] as List).cast<String>()).input(),
-      maxDisplayResolution: map['maxDisplayResolution'] == null ? null : (map['maxDisplayResolution'] as String).input(),
-      toolbarType: map['toolbarType'] == null ? null : (map['toolbarType'] as String).input(),
-      visualMode: map['visualMode'] == null ? null : (map['visualMode'] as String).input(),
+      hiddenToolbarItems: map['hiddenToolbarItems'] == null ? null : (((map['hiddenToolbarItems'] as List).cast<String>()).input()).input(),
+      maxDisplayResolution: map['maxDisplayResolution'] == null ? null : ((map['maxDisplayResolution'] as String).input()).input(),
+      toolbarType: map['toolbarType'] == null ? null : ((map['toolbarType'] as String).input()).input(),
+      visualMode: map['visualMode'] == null ? null : ((map['visualMode'] as String).input()).input(),
     );
   }
 }

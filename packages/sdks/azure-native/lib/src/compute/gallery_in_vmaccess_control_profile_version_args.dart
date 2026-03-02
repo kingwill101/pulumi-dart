@@ -77,16 +77,16 @@ class GalleryInVMAccessControlProfileVersionArgs {
   factory GalleryInVMAccessControlProfileVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryInVMAccessControlProfileVersionArgs(
       defaultAccess: (map['defaultAccess'] as String).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
       galleryName: (map['galleryName'] as String).input(),
       inVMAccessControlProfileName: (map['inVMAccessControlProfileName'] as String).input(),
-      inVMAccessControlProfileVersionName: map['inVMAccessControlProfileVersionName'] == null ? null : (map['inVMAccessControlProfileVersionName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      inVMAccessControlProfileVersionName: map['inVMAccessControlProfileVersionName'] == null ? null : (map['inVMAccessControlProfileVersionName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mode: (map['mode'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (AccessControlRules.fromMap((map['rules'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetLocations: map['targetLocations'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetLocations'], (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (AccessControlRules.fromMap((map['rules']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetLocations: map['targetLocations'] == null ? null : (pulumi.Input.decodeList<TargetRegion>(map['targetLocations']!, (value) => TargetRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

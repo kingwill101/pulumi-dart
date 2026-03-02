@@ -28,7 +28,7 @@ class GetAndroidAppConfigArgs {
   factory GetAndroidAppConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetAndroidAppConfigArgs(
       appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

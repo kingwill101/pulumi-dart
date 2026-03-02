@@ -148,7 +148,7 @@ class GetSubnetResult {
       enableLniAtDeviceIndex: map['enableLniAtDeviceIndex'] as int,
       enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] as bool,
       enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSubnetFilter>(map['filters'], (value) => GetSubnetFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetSubnetFilter>(map['filters']!, (value) => GetSubnetFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipv6CidrBlock: map['ipv6CidrBlock'] as String,
       ipv6CidrBlockAssociationId: map['ipv6CidrBlockAssociationId'] as String,

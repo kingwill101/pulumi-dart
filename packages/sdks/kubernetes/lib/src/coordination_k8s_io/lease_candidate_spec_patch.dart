@@ -50,12 +50,12 @@ class LeaseCandidateSpecPatch {
 
   factory LeaseCandidateSpecPatch.fromMap(Map<String, dynamic> map) {
     return LeaseCandidateSpecPatch(
-      binaryVersion: map['binaryVersion'] == null ? null : (map['binaryVersion'] as String).input(),
-      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion'] as String).input(),
-      leaseName: map['leaseName'] == null ? null : (map['leaseName'] as String).input(),
-      pingTime: map['pingTime'] == null ? null : (map['pingTime'] as String).input(),
-      preferredStrategies: map['preferredStrategies'] == null ? null : ((map['preferredStrategies'] as List).cast<String>()).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime'] as String).input(),
+      binaryVersion: map['binaryVersion'] == null ? null : (map['binaryVersion']! as String).input(),
+      emulationVersion: map['emulationVersion'] == null ? null : (map['emulationVersion']! as String).input(),
+      leaseName: map['leaseName'] == null ? null : (map['leaseName']! as String).input(),
+      pingTime: map['pingTime'] == null ? null : (map['pingTime']! as String).input(),
+      preferredStrategies: map['preferredStrategies'] == null ? null : ((map['preferredStrategies']! as List).cast<String>()).input(),
+      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
     );
   }
 }

@@ -105,23 +105,23 @@ class Event {
 
   factory Event.fromMap(Map<String, dynamic> map) {
     return Event(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      eventTime: map['eventTime'] == null ? null : (map['eventTime'] as String).input(),
-      firstTimestamp: map['firstTimestamp'] == null ? null : (map['firstTimestamp'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      eventTime: map['eventTime'] == null ? null : (map['eventTime']! as String).input(),
+      firstTimestamp: map['firstTimestamp'] == null ? null : (map['firstTimestamp']! as String).input(),
       involvedObject: (ObjectReference.fromMap((map['involvedObject'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      lastTimestamp: map['lastTimestamp'] == null ? null : (map['lastTimestamp'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      lastTimestamp: map['lastTimestamp'] == null ? null : (map['lastTimestamp']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       metadata: (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      related: map['related'] == null ? null : (ObjectReference.fromMap((map['related'] as Map).cast<String, dynamic>())).input(),
-      reportingComponent: map['reportingComponent'] == null ? null : (map['reportingComponent'] as String).input(),
-      reportingInstance: map['reportingInstance'] == null ? null : (map['reportingInstance'] as String).input(),
-      series: map['series'] == null ? null : (EventSeries.fromMap((map['series'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (EventSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      related: map['related'] == null ? null : (ObjectReference.fromMap((map['related']! as Map).cast<String, dynamic>())).input(),
+      reportingComponent: map['reportingComponent'] == null ? null : (map['reportingComponent']! as String).input(),
+      reportingInstance: map['reportingInstance'] == null ? null : (map['reportingInstance']! as String).input(),
+      series: map['series'] == null ? null : (EventSeries.fromMap((map['series']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (EventSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

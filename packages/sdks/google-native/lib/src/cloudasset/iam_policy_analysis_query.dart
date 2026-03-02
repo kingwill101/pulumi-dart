@@ -51,11 +51,11 @@ class IamPolicyAnalysisQuery {
 
   factory IamPolicyAnalysisQuery.fromMap(Map<String, dynamic> map) {
     return IamPolicyAnalysisQuery(
-      accessSelector: map['accessSelector'] == null ? null : (AccessSelector.fromMap((map['accessSelector'] as Map).cast<String, dynamic>())).input(),
-      conditionContext: map['conditionContext'] == null ? null : (ConditionContext.fromMap((map['conditionContext'] as Map).cast<String, dynamic>())).input(),
-      identitySelector: map['identitySelector'] == null ? null : (IdentitySelector.fromMap((map['identitySelector'] as Map).cast<String, dynamic>())).input(),
-      options: map['options'] == null ? null : (Options.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      resourceSelector: map['resourceSelector'] == null ? null : (ResourceSelector.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>())).input(),
+      accessSelector: map['accessSelector'] == null ? null : (AccessSelector.fromMap((map['accessSelector']! as Map).cast<String, dynamic>())).input(),
+      conditionContext: map['conditionContext'] == null ? null : (ConditionContext.fromMap((map['conditionContext']! as Map).cast<String, dynamic>())).input(),
+      identitySelector: map['identitySelector'] == null ? null : (IdentitySelector.fromMap((map['identitySelector']! as Map).cast<String, dynamic>())).input(),
+      options: map['options'] == null ? null : (Options.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      resourceSelector: map['resourceSelector'] == null ? null : (ResourceSelector.fromMap((map['resourceSelector']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
     );
   }

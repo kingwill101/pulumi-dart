@@ -23,7 +23,7 @@ class LaunchTemplateCreditSpecification {
 
   factory LaunchTemplateCreditSpecification.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateCreditSpecification(
-      cpuCredits: map['cpuCredits'] == null ? null : (map['cpuCredits'] as String).input(),
+      cpuCredits: map['cpuCredits'] == null ? null : ((map['cpuCredits'] as String).input()).input(),
     );
   }
 }

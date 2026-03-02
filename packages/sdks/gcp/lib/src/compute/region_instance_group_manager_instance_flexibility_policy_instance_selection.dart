@@ -44,11 +44,11 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
 
   factory RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>(map['disks'], (value) => RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk>(map['disks']!, (value) => RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
       machineTypes: ((map['machineTypes'] as List).cast<String>()).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
       name: (map['name'] as String).input(),
-      rank: map['rank'] == null ? null : (map['rank'] as int).input(),
+      rank: map['rank'] == null ? null : (map['rank']! as int).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class GetDetectorFeature {
 
   factory GetDetectorFeature.fromMap(Map<String, dynamic> map) {
     return GetDetectorFeature(
-      additionalConfigurations: (pulumi.Input.decodeList<GetDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => GetDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalConfigurations: (pulumi.Input.decodeList<GetDetectorFeatureAdditionalConfiguration>(map['additionalConfigurations']!, (value) => GetDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       status: (map['status'] as String).input(),
     );

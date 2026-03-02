@@ -28,7 +28,7 @@ class KeyVaultSecretUriSecretInfo {
   factory KeyVaultSecretUriSecretInfo.fromMap(Map<String, dynamic> map) {
     return KeyVaultSecretUriSecretInfo(
       secretType: (map['secretType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

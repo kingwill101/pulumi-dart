@@ -32,9 +32,9 @@ class PodDNSConfig {
 
   factory PodDNSConfig.fromMap(Map<String, dynamic> map) {
     return PodDNSConfig(
-      nameservers: map['nameservers'] == null ? null : ((map['nameservers'] as List).cast<String>()).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<PodDNSConfigOption>(map['options'], (value) => PodDNSConfigOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searches: map['searches'] == null ? null : ((map['searches'] as List).cast<String>()).input(),
+      nameservers: map['nameservers'] == null ? null : ((map['nameservers']! as List).cast<String>()).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<PodDNSConfigOption>(map['options']!, (value) => PodDNSConfigOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searches: map['searches'] == null ? null : ((map['searches']! as List).cast<String>()).input(),
     );
   }
 }

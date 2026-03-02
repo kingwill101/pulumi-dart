@@ -20,7 +20,7 @@ class FrontEndConfiguration {
 
   factory FrontEndConfiguration.fromMap(Map<String, dynamic> map) {
     return FrontEndConfiguration(
-      kind: map['kind'] == null ? null : (FrontEndServiceType.fromValue(map['kind'] as String)).input(),
+      kind: map['kind'] == null ? null : (FrontEndServiceType.fromValue(map['kind']! as String)).input(),
     );
   }
 }

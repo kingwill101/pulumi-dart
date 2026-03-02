@@ -20,7 +20,7 @@ class AlertConfigurationSinkCms {
 
   factory AlertConfigurationSinkCms.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSinkCms(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

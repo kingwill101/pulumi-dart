@@ -36,10 +36,10 @@ class AutomaticOSUpgradePolicy {
 
   factory AutomaticOSUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return AutomaticOSUpgradePolicy(
-      disableAutomaticRollback: map['disableAutomaticRollback'] == null ? null : (map['disableAutomaticRollback'] as bool).input(),
-      enableAutomaticOSUpgrade: map['enableAutomaticOSUpgrade'] == null ? null : (map['enableAutomaticOSUpgrade'] as bool).input(),
-      osRollingUpgradeDeferral: map['osRollingUpgradeDeferral'] == null ? null : (map['osRollingUpgradeDeferral'] as bool).input(),
-      useRollingUpgradePolicy: map['useRollingUpgradePolicy'] == null ? null : (map['useRollingUpgradePolicy'] as bool).input(),
+      disableAutomaticRollback: map['disableAutomaticRollback'] == null ? null : (map['disableAutomaticRollback']! as bool).input(),
+      enableAutomaticOSUpgrade: map['enableAutomaticOSUpgrade'] == null ? null : (map['enableAutomaticOSUpgrade']! as bool).input(),
+      osRollingUpgradeDeferral: map['osRollingUpgradeDeferral'] == null ? null : (map['osRollingUpgradeDeferral']! as bool).input(),
+      useRollingUpgradePolicy: map['useRollingUpgradePolicy'] == null ? null : (map['useRollingUpgradePolicy']! as bool).input(),
     );
   }
 }

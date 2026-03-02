@@ -21,7 +21,7 @@ class EncryptionConfigMetastoreV1alpha {
 
   factory EncryptionConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigMetastoreV1alpha(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

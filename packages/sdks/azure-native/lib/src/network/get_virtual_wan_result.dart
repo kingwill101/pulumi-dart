@@ -87,17 +87,17 @@ class GetVirtualWanResult {
 
   factory GetVirtualWanResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualWanResult(
-      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : map['allowBranchToBranchTraffic'] as bool,
-      allowVnetToVnetTraffic: map['allowVnetToVnetTraffic'] == null ? null : map['allowVnetToVnetTraffic'] as bool,
+      allowBranchToBranchTraffic: map['allowBranchToBranchTraffic'] == null ? null : map['allowBranchToBranchTraffic']! as bool,
+      allowVnetToVnetTraffic: map['allowVnetToVnetTraffic'] == null ? null : map['allowVnetToVnetTraffic']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : map['disableVpnEncryption'] as bool,
+      disableVpnEncryption: map['disableVpnEncryption'] == null ? null : map['disableVpnEncryption']! as bool,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       office365LocalBreakoutCategory: map['office365LocalBreakoutCategory'] as String,
       provisioningState: map['provisioningState'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualHubs: pulumi.Input.decodeList<SubResourceResponse>(map['virtualHubs'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
       vpnSites: pulumi.Input.decodeList<SubResourceResponse>(map['vpnSites'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),

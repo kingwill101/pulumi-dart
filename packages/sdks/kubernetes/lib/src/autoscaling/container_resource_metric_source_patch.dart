@@ -32,9 +32,9 @@ class ContainerResourceMetricSourcePatch {
 
   factory ContainerResourceMetricSourcePatch.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSourcePatch(
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      target: map['target'] == null ? null : (MetricTargetPatch.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      target: map['target'] == null ? null : (MetricTargetPatch.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ComputeEnginePreferencesMigrationcenterV1alpha1 {
 
   factory ComputeEnginePreferencesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ComputeEnginePreferencesMigrationcenterV1alpha1(
-      licenseType: map['licenseType'] == null ? null : (ComputeEnginePreferencesLicenseTypeMigrationcenterV1alpha1.fromValue(map['licenseType'] as String)).input(),
-      machinePreferences: map['machinePreferences'] == null ? null : (MachinePreferencesMigrationcenterV1alpha1.fromMap((map['machinePreferences'] as Map).cast<String, dynamic>())).input(),
-      persistentDiskType: map['persistentDiskType'] == null ? null : (ComputeEnginePreferencesPersistentDiskType.fromValue(map['persistentDiskType'] as String)).input(),
+      licenseType: map['licenseType'] == null ? null : (ComputeEnginePreferencesLicenseTypeMigrationcenterV1alpha1.fromValue(map['licenseType']! as String)).input(),
+      machinePreferences: map['machinePreferences'] == null ? null : (MachinePreferencesMigrationcenterV1alpha1.fromMap((map['machinePreferences']! as Map).cast<String, dynamic>())).input(),
+      persistentDiskType: map['persistentDiskType'] == null ? null : (ComputeEnginePreferencesPersistentDiskType.fromValue(map['persistentDiskType']! as String)).input(),
     );
   }
 }

@@ -68,14 +68,14 @@ class ApplicationGatewayWebApplicationFirewallConfigurationResponse {
 
   factory ApplicationGatewayWebApplicationFirewallConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayWebApplicationFirewallConfigurationResponse(
-      disabledRuleGroups: map['disabledRuleGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayFirewallDisabledRuleGroupResponse>(map['disabledRuleGroups'], (value) => ApplicationGatewayFirewallDisabledRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabledRuleGroups: map['disabledRuleGroups'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayFirewallDisabledRuleGroupResponse>(map['disabledRuleGroups']!, (value) => ApplicationGatewayFirewallDisabledRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enabled: (map['enabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayFirewallExclusionResponse>(map['exclusions'], (value) => ApplicationGatewayFirewallExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb'] as int).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayFirewallExclusionResponse>(map['exclusions']!, (value) => ApplicationGatewayFirewallExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb']! as int).input(),
       firewallMode: (map['firewallMode'] as String).input(),
-      maxRequestBodySize: map['maxRequestBodySize'] == null ? null : (map['maxRequestBodySize'] as int).input(),
-      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb'] as int).input(),
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck'] as bool).input(),
+      maxRequestBodySize: map['maxRequestBodySize'] == null ? null : (map['maxRequestBodySize']! as int).input(),
+      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb']! as int).input(),
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck']! as bool).input(),
       ruleSetType: (map['ruleSetType'] as String).input(),
       ruleSetVersion: (map['ruleSetVersion'] as String).input(),
     );

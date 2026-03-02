@@ -82,17 +82,17 @@ class MdsResourceProperties {
   factory MdsResourceProperties.fromMap(Map<String, dynamic> map) {
     return MdsResourceProperties(
       aadApplicationId: (map['aadApplicationId'] as String).input(),
-      aksAdminGroupId: map['aksAdminGroupId'] == null ? null : (map['aksAdminGroupId'] as String).input(),
-      cmkProfile: map['cmkProfile'] == null ? null : (CmkProfile.fromMap((map['cmkProfile'] as Map).cast<String, dynamic>())).input(),
-      denyAssignmentExclusions: map['denyAssignmentExclusions'] == null ? null : (pulumi.Input.decodeList<DenyAssignmentExclusion>(map['denyAssignmentExclusions'], (value) => DenyAssignmentExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableCopilot: map['enableCopilot'] == null ? null : (map['enableCopilot'] as bool).input(),
-      enableDiagnosticSettings: map['enableDiagnosticSettings'] == null ? null : (map['enableDiagnosticSettings'] as bool).input(),
-      fabricProfile: map['fabricProfile'] == null ? null : (FabricProfile.fromMap((map['fabricProfile'] as Map).cast<String, dynamic>())).input(),
-      openAIProfile: map['openAIProfile'] == null ? null : (OpenAIProfile.fromMap((map['openAIProfile'] as Map).cast<String, dynamic>())).input(),
-      redundancyState: map['redundancyState'] == null ? null : (map['redundancyState'] as String).input(),
-      resourceState: map['resourceState'] == null ? null : (map['resourceState'] as String).input(),
-      userManagedOpenAIProfile: map['userManagedOpenAIProfile'] == null ? null : (UserManagedOpenAIProfile.fromMap((map['userManagedOpenAIProfile'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      aksAdminGroupId: map['aksAdminGroupId'] == null ? null : (map['aksAdminGroupId']! as String).input(),
+      cmkProfile: map['cmkProfile'] == null ? null : (CmkProfile.fromMap((map['cmkProfile']! as Map).cast<String, dynamic>())).input(),
+      denyAssignmentExclusions: map['denyAssignmentExclusions'] == null ? null : (pulumi.Input.decodeList<DenyAssignmentExclusion>(map['denyAssignmentExclusions']!, (value) => DenyAssignmentExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableCopilot: map['enableCopilot'] == null ? null : (map['enableCopilot']! as bool).input(),
+      enableDiagnosticSettings: map['enableDiagnosticSettings'] == null ? null : (map['enableDiagnosticSettings']! as bool).input(),
+      fabricProfile: map['fabricProfile'] == null ? null : (FabricProfile.fromMap((map['fabricProfile']! as Map).cast<String, dynamic>())).input(),
+      openAIProfile: map['openAIProfile'] == null ? null : (OpenAIProfile.fromMap((map['openAIProfile']! as Map).cast<String, dynamic>())).input(),
+      redundancyState: map['redundancyState'] == null ? null : (map['redundancyState']! as String).input(),
+      resourceState: map['resourceState'] == null ? null : (map['resourceState']! as String).input(),
+      userManagedOpenAIProfile: map['userManagedOpenAIProfile'] == null ? null : (UserManagedOpenAIProfile.fromMap((map['userManagedOpenAIProfile']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

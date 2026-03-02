@@ -58,11 +58,11 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       pluginData: (map['pluginData'] as String).input(),
       pluginName: (map['pluginName'] as String).input(),
       pluginType: (map['pluginType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

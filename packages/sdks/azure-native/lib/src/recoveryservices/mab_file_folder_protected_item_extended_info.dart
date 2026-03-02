@@ -31,9 +31,9 @@ class MabFileFolderProtectedItemExtendedInfo {
 
   factory MabFileFolderProtectedItemExtendedInfo.fromMap(Map<String, dynamic> map) {
     return MabFileFolderProtectedItemExtendedInfo(
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
-      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint'] as String).input(),
-      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount'] as int).input(),
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
+      oldestRecoveryPoint: map['oldestRecoveryPoint'] == null ? null : (map['oldestRecoveryPoint']! as String).input(),
+      recoveryPointCount: map['recoveryPointCount'] == null ? null : (map['recoveryPointCount']! as int).input(),
     );
   }
 }

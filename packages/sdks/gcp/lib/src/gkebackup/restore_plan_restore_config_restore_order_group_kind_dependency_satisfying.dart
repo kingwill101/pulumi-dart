@@ -28,8 +28,8 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying {
 
   factory RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying(
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind']! as String).input(),
     );
   }
 }

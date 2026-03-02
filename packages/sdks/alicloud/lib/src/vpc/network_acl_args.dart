@@ -70,14 +70,14 @@ class NetworkAclArgs {
 
   factory NetworkAclArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      egressAclEntries: map['egressAclEntries'] == null ? null : (pulumi.Input.decodeList<NetworkAclEgressAclEntry>(map['egressAclEntries'], (value) => NetworkAclEgressAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingressAclEntries: map['ingressAclEntries'] == null ? null : (pulumi.Input.decodeList<NetworkAclIngressAclEntry>(map['ingressAclEntries'], (value) => NetworkAclIngressAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkAclName: map['networkAclName'] == null ? null : (map['networkAclName'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<NetworkAclResource>(map['resources'], (value) => NetworkAclResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceNetworkAclId: map['sourceNetworkAclId'] == null ? null : (map['sourceNetworkAclId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      egressAclEntries: map['egressAclEntries'] == null ? null : (pulumi.Input.decodeList<NetworkAclEgressAclEntry>(map['egressAclEntries']!, (value) => NetworkAclEgressAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingressAclEntries: map['ingressAclEntries'] == null ? null : (pulumi.Input.decodeList<NetworkAclIngressAclEntry>(map['ingressAclEntries']!, (value) => NetworkAclIngressAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkAclName: map['networkAclName'] == null ? null : (map['networkAclName']! as String).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<NetworkAclResource>(map['resources']!, (value) => NetworkAclResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceNetworkAclId: map['sourceNetworkAclId'] == null ? null : (map['sourceNetworkAclId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

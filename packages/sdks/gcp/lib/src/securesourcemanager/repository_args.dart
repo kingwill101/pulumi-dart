@@ -64,12 +64,12 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      initialConfig: map['initialConfig'] == null ? null : (RepositoryInitialConfig.fromMap((map['initialConfig'] as Map).cast<String, dynamic>())).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      initialConfig: map['initialConfig'] == null ? null : (RepositoryInitialConfig.fromMap((map['initialConfig']! as Map).cast<String, dynamic>())).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

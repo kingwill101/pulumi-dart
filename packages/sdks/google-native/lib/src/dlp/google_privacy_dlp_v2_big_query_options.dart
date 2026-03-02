@@ -53,13 +53,13 @@ class GooglePrivacyDlpV2BigQueryOptions {
 
   factory GooglePrivacyDlpV2BigQueryOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryOptions(
-      excludedFields: map['excludedFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['excludedFields'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['identifyingFields'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedFields: map['includedFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['includedFields'], (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rowsLimit: map['rowsLimit'] == null ? null : (map['rowsLimit'] as String).input(),
-      rowsLimitPercent: map['rowsLimitPercent'] == null ? null : (map['rowsLimitPercent'] as int).input(),
-      sampleMethod: map['sampleMethod'] == null ? null : (GooglePrivacyDlpV2BigQueryOptionsSampleMethod.fromValue(map['sampleMethod'] as String)).input(),
-      tableReference: map['tableReference'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['tableReference'] as Map).cast<String, dynamic>())).input(),
+      excludedFields: map['excludedFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['excludedFields']!, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identifyingFields: map['identifyingFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['identifyingFields']!, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedFields: map['includedFields'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2FieldId>(map['includedFields']!, (value) => GooglePrivacyDlpV2FieldId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rowsLimit: map['rowsLimit'] == null ? null : (map['rowsLimit']! as String).input(),
+      rowsLimitPercent: map['rowsLimitPercent'] == null ? null : (map['rowsLimitPercent']! as int).input(),
+      sampleMethod: map['sampleMethod'] == null ? null : (GooglePrivacyDlpV2BigQueryOptionsSampleMethod.fromValue(map['sampleMethod']! as String)).input(),
+      tableReference: map['tableReference'] == null ? null : (GooglePrivacyDlpV2BigQueryTable.fromMap((map['tableReference']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

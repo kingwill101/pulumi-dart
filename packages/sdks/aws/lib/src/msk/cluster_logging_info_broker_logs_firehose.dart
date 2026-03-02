@@ -24,7 +24,7 @@ class ClusterLoggingInfoBrokerLogsFirehose {
 
   factory ClusterLoggingInfoBrokerLogsFirehose.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfoBrokerLogsFirehose(
-      deliveryStream: map['deliveryStream'] == null ? null : (map['deliveryStream'] as String).input(),
+      deliveryStream: map['deliveryStream'] == null ? null : ((map['deliveryStream'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

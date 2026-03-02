@@ -86,16 +86,16 @@ class ExpressRouteCircuitPeeringArgs {
   factory ExpressRouteCircuitPeeringArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringArgs(
       expressRouteCircuitName: (map['expressRouteCircuitName'] as String).input(),
-      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled'] as bool).input(),
-      ipv6: map['ipv6'] == null ? null : (ExpressRouteCircuitPeeringIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as int).input(),
+      ipv4Enabled: map['ipv4Enabled'] == null ? null : (map['ipv4Enabled']! as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (ExpressRouteCircuitPeeringIpv6.fromMap((map['ipv6']! as Map).cast<String, dynamic>())).input(),
+      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringMicrosoftPeeringConfig.fromMap((map['microsoftPeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as int).input(),
       peeringType: (map['peeringType'] as String).input(),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix'] as String).input(),
+      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId'] as String).input(),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix'] as String).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
+      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId']! as String).input(),
+      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix']! as String).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
       vlanId: (map['vlanId'] as int).input(),
     );
   }

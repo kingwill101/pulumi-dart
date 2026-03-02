@@ -79,18 +79,18 @@ class DefinitionState {
 
   factory DefinitionState.fromMap(Map<String, dynamic> map) {
     return DefinitionState(
-      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations'], (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createUiDefinition: map['createUiDefinition'] == null ? null : (map['createUiDefinition'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      lockLevel: map['lockLevel'] == null ? null : (map['lockLevel'] as String).input(),
-      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageEnabled: map['packageEnabled'] == null ? null : (map['packageEnabled'] as bool).input(),
-      packageFileUri: map['packageFileUri'] == null ? null : (map['packageFileUri'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations']!, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createUiDefinition: map['createUiDefinition'] == null ? null : (map['createUiDefinition']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      lockLevel: map['lockLevel'] == null ? null : (map['lockLevel']! as String).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageEnabled: map['packageEnabled'] == null ? null : (map['packageEnabled']! as bool).input(),
+      packageFileUri: map['packageFileUri'] == null ? null : (map['packageFileUri']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

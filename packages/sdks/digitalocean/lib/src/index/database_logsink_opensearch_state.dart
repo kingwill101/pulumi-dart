@@ -56,14 +56,14 @@ class DatabaseLogsinkOpensearchState {
 
   factory DatabaseLogsinkOpensearchState.fromMap(Map<String, dynamic> map) {
     return DatabaseLogsinkOpensearchState(
-      caCert: map['caCert'] == null ? null : (map['caCert'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      indexDaysMax: map['indexDaysMax'] == null ? null : (map['indexDaysMax'] as int).input(),
-      indexPrefix: map['indexPrefix'] == null ? null : (map['indexPrefix'] as String).input(),
-      logsinkId: map['logsinkId'] == null ? null : (map['logsinkId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      caCert: map['caCert'] == null ? null : (map['caCert']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      indexDaysMax: map['indexDaysMax'] == null ? null : (map['indexDaysMax']! as int).input(),
+      indexPrefix: map['indexPrefix'] == null ? null : (map['indexPrefix']! as String).input(),
+      logsinkId: map['logsinkId'] == null ? null : (map['logsinkId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

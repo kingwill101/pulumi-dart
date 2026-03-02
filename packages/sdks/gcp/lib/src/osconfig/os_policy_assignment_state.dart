@@ -114,22 +114,22 @@ class OsPolicyAssignmentState {
 
   factory OsPolicyAssignmentState.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentState(
-      baseline: map['baseline'] == null ? null : (map['baseline'] as bool).input(),
-      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      instanceFilter: map['instanceFilter'] == null ? null : (OsPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osPolicies: map['osPolicies'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentOsPolicy>(map['osPolicies'], (value) => OsPolicyAssignmentOsPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      revisionCreateTime: map['revisionCreateTime'] == null ? null : (map['revisionCreateTime'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
-      rollout: map['rollout'] == null ? null : (OsPolicyAssignmentRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>())).input(),
-      rolloutState: map['rolloutState'] == null ? null : (map['rolloutState'] as String).input(),
-      skipAwaitRollout: map['skipAwaitRollout'] == null ? null : (map['skipAwaitRollout'] as bool).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      baseline: map['baseline'] == null ? null : (map['baseline']! as bool).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      instanceFilter: map['instanceFilter'] == null ? null : (OsPolicyAssignmentInstanceFilter.fromMap((map['instanceFilter']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osPolicies: map['osPolicies'] == null ? null : (pulumi.Input.decodeList<OsPolicyAssignmentOsPolicy>(map['osPolicies']!, (value) => OsPolicyAssignmentOsPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      revisionCreateTime: map['revisionCreateTime'] == null ? null : (map['revisionCreateTime']! as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
+      rollout: map['rollout'] == null ? null : (OsPolicyAssignmentRollout.fromMap((map['rollout']! as Map).cast<String, dynamic>())).input(),
+      rolloutState: map['rolloutState'] == null ? null : (map['rolloutState']! as String).input(),
+      skipAwaitRollout: map['skipAwaitRollout'] == null ? null : (map['skipAwaitRollout']! as bool).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class HorizontalPodAutoscalingContainerV1beta1 {
 
   factory HorizontalPodAutoscalingContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return HorizontalPodAutoscalingContainerV1beta1(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

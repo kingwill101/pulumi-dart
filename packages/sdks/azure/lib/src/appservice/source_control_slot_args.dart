@@ -62,14 +62,14 @@ class SourceControlSlotArgs {
 
   factory SourceControlSlotArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlSlotArgs(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (SourceControlSlotGithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
-      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled'] as bool).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (SourceControlSlotGithubActionConfiguration.fromMap((map['githubActionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
+      rollbackEnabled: map['rollbackEnabled'] == null ? null : (map['rollbackEnabled']! as bool).input(),
       slotId: (map['slotId'] as String).input(),
-      useLocalGit: map['useLocalGit'] == null ? null : (map['useLocalGit'] as bool).input(),
-      useManualIntegration: map['useManualIntegration'] == null ? null : (map['useManualIntegration'] as bool).input(),
-      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial'] as bool).input(),
+      useLocalGit: map['useLocalGit'] == null ? null : (map['useLocalGit']! as bool).input(),
+      useManualIntegration: map['useManualIntegration'] == null ? null : (map['useManualIntegration']! as bool).input(),
+      useMercurial: map['useMercurial'] == null ? null : (map['useMercurial']! as bool).input(),
     );
   }
 }

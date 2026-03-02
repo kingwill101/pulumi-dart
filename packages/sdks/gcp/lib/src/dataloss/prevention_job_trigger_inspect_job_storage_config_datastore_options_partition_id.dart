@@ -25,7 +25,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
 
   factory PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
       projectId: (map['projectId'] as String).input(),
     );
   }

@@ -41,10 +41,10 @@ class GetAddressesResult {
   factory GetAddressesResult.fromMap(Map<String, dynamic> map) {
     return GetAddressesResult(
       addresses: pulumi.Input.decodeList<GetAddressesAddress>(map['addresses'], (value) => GetAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       project: map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
     );
   }
 }

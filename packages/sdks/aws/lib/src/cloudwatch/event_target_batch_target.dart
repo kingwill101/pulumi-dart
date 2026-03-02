@@ -35,8 +35,8 @@ class EventTargetBatchTarget {
 
   factory EventTargetBatchTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetBatchTarget(
-      arraySize: map['arraySize'] == null ? null : (map['arraySize'] as int).input(),
-      jobAttempts: map['jobAttempts'] == null ? null : (map['jobAttempts'] as int).input(),
+      arraySize: map['arraySize'] == null ? null : ((map['arraySize'] as int).input()).input(),
+      jobAttempts: map['jobAttempts'] == null ? null : ((map['jobAttempts'] as int).input()).input(),
       jobDefinition: (map['jobDefinition'] as String).input(),
       jobName: (map['jobName'] as String).input(),
     );

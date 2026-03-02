@@ -31,10 +31,10 @@ class FeaturesVirtualMachineScaleSet {
 
   factory FeaturesVirtualMachineScaleSet.fromMap(Map<String, dynamic> map) {
     return FeaturesVirtualMachineScaleSet(
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      reimageOnManualUpgrade: map['reimageOnManualUpgrade'] == null ? null : (map['reimageOnManualUpgrade'] as bool).input(),
-      rollInstancesWhenRequired: map['rollInstancesWhenRequired'] == null ? null : (map['rollInstancesWhenRequired'] as bool).input(),
-      scaleToZeroBeforeDeletion: map['scaleToZeroBeforeDeletion'] == null ? null : (map['scaleToZeroBeforeDeletion'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      reimageOnManualUpgrade: map['reimageOnManualUpgrade'] == null ? null : (map['reimageOnManualUpgrade']! as bool).input(),
+      rollInstancesWhenRequired: map['rollInstancesWhenRequired'] == null ? null : (map['rollInstancesWhenRequired']! as bool).input(),
+      scaleToZeroBeforeDeletion: map['scaleToZeroBeforeDeletion'] == null ? null : (map['scaleToZeroBeforeDeletion']! as bool).input(),
     );
   }
 }

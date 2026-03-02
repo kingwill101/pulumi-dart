@@ -45,10 +45,10 @@ class NetworkManagerDeploymentArgs {
   factory NetworkManagerDeploymentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentArgs(
       configurationIds: ((map['configurationIds'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkManagerId: (map['networkManagerId'] as String).input(),
       scopeAccess: (map['scopeAccess'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

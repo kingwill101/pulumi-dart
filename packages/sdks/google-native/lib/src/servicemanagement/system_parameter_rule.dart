@@ -27,8 +27,8 @@ class SystemParameterRule {
 
   factory SystemParameterRule.fromMap(Map<String, dynamic> map) {
     return SystemParameterRule(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SystemParameter>(map['parameters'], (value) => SystemParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SystemParameter>(map['parameters']!, (value) => SystemParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

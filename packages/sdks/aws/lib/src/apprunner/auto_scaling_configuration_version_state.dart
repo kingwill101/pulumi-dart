@@ -79,19 +79,19 @@ class AutoScalingConfigurationVersionState {
 
   factory AutoScalingConfigurationVersionState.fromMap(Map<String, dynamic> map) {
     return AutoScalingConfigurationVersionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      autoScalingConfigurationName: map['autoScalingConfigurationName'] == null ? null : (map['autoScalingConfigurationName'] as String).input(),
-      autoScalingConfigurationRevision: map['autoScalingConfigurationRevision'] == null ? null : (map['autoScalingConfigurationRevision'] as int).input(),
-      hasAssociatedService: map['hasAssociatedService'] == null ? null : (map['hasAssociatedService'] as bool).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      autoScalingConfigurationName: map['autoScalingConfigurationName'] == null ? null : ((map['autoScalingConfigurationName'] as String).input()).input(),
+      autoScalingConfigurationRevision: map['autoScalingConfigurationRevision'] == null ? null : ((map['autoScalingConfigurationRevision'] as int).input()).input(),
+      hasAssociatedService: map['hasAssociatedService'] == null ? null : ((map['hasAssociatedService'] as bool).input()).input(),
+      isDefault: map['isDefault'] == null ? null : ((map['isDefault'] as bool).input()).input(),
+      latest: map['latest'] == null ? null : ((map['latest'] as bool).input()).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : ((map['maxConcurrency'] as int).input()).input(),
+      maxSize: map['maxSize'] == null ? null : ((map['maxSize'] as int).input()).input(),
+      minSize: map['minSize'] == null ? null : ((map['minSize'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

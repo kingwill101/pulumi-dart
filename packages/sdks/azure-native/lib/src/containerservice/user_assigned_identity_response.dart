@@ -37,9 +37,9 @@ class UserAssignedIdentityResponse {
   factory UserAssignedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return UserAssignedIdentityResponse(
       clientId: (map['clientId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
       principalId: (map['principalId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

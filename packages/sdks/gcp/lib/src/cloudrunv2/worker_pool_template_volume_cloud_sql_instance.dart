@@ -20,7 +20,7 @@ class WorkerPoolTemplateVolumeCloudSqlInstance {
 
   factory WorkerPoolTemplateVolumeCloudSqlInstance.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateVolumeCloudSqlInstance(
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
     );
   }
 }

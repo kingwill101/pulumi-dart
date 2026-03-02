@@ -70,13 +70,13 @@ class OrganizationAddressGroupNetworksecurityV1beta1Args {
     return OrganizationAddressGroupNetworksecurityV1beta1Args(
       addressGroupId: (map['addressGroupId'] as String).input(),
       capacity: (map['capacity'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      items: map['items'] == null ? null : ((map['items']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       type: (OrganizationAddressGroupTypeNetworksecurityV1beta1.fromValue(map['type'] as String)).input(),
     );
   }

@@ -186,7 +186,7 @@ class GetDatabaseInstanceResult {
       nodeCount: map['nodeCount'] as int,
       pointInTimeRestoreContexts: pulumi.Input.decodeList<GetDatabaseInstancePointInTimeRestoreContext>(map['pointInTimeRestoreContexts'], (value) => GetDatabaseInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>())),
       privateIpAddress: map['privateIpAddress'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pscServiceAttachmentLink: map['pscServiceAttachmentLink'] as String,
       publicIpAddress: map['publicIpAddress'] as String,
       region: map['region'] as String,

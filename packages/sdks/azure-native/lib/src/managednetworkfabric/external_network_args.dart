@@ -83,16 +83,16 @@ class ExternalNetworkArgs {
 
   factory ExternalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return ExternalNetworkArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (ExportRoutePolicy.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())).input(),
-      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : (map['exportRoutePolicyId'] as String).input(),
-      externalNetworkName: map['externalNetworkName'] == null ? null : (map['externalNetworkName'] as String).input(),
-      importRoutePolicy: map['importRoutePolicy'] == null ? null : (ImportRoutePolicy.fromMap((map['importRoutePolicy'] as Map).cast<String, dynamic>())).input(),
-      importRoutePolicyId: map['importRoutePolicyId'] == null ? null : (map['importRoutePolicyId'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (ExportRoutePolicy.fromMap((map['exportRoutePolicy']! as Map).cast<String, dynamic>())).input(),
+      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : (map['exportRoutePolicyId']! as String).input(),
+      externalNetworkName: map['externalNetworkName'] == null ? null : (map['externalNetworkName']! as String).input(),
+      importRoutePolicy: map['importRoutePolicy'] == null ? null : (ImportRoutePolicy.fromMap((map['importRoutePolicy']! as Map).cast<String, dynamic>())).input(),
+      importRoutePolicyId: map['importRoutePolicyId'] == null ? null : (map['importRoutePolicyId']! as String).input(),
       l3IsolationDomainName: (map['l3IsolationDomainName'] as String).input(),
-      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId'] as String).input(),
-      optionAProperties: map['optionAProperties'] == null ? null : (ExternalNetworkPropertiesOptionAProperties.fromMap((map['optionAProperties'] as Map).cast<String, dynamic>())).input(),
-      optionBProperties: map['optionBProperties'] == null ? null : (L3OptionBProperties.fromMap((map['optionBProperties'] as Map).cast<String, dynamic>())).input(),
+      networkToNetworkInterconnectId: map['networkToNetworkInterconnectId'] == null ? null : (map['networkToNetworkInterconnectId']! as String).input(),
+      optionAProperties: map['optionAProperties'] == null ? null : (ExternalNetworkPropertiesOptionAProperties.fromMap((map['optionAProperties']! as Map).cast<String, dynamic>())).input(),
+      optionBProperties: map['optionBProperties'] == null ? null : (L3OptionBProperties.fromMap((map['optionBProperties']! as Map).cast<String, dynamic>())).input(),
       peeringOption: (map['peeringOption'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

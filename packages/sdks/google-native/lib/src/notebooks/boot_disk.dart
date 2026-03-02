@@ -38,10 +38,10 @@ class BootDisk {
 
   factory BootDisk.fromMap(Map<String, dynamic> map) {
     return BootDisk(
-      diskEncryption: map['diskEncryption'] == null ? null : (BootDiskDiskEncryption.fromValue(map['diskEncryption'] as String)).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      diskType: map['diskType'] == null ? null : (BootDiskDiskType.fromValue(map['diskType'] as String)).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (BootDiskDiskEncryption.fromValue(map['diskEncryption']! as String)).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      diskType: map['diskType'] == null ? null : (BootDiskDiskType.fromValue(map['diskType']! as String)).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

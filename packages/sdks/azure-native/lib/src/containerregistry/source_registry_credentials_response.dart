@@ -23,7 +23,7 @@ class SourceRegistryCredentialsResponse {
 
   factory SourceRegistryCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return SourceRegistryCredentialsResponse(
-      loginMode: map['loginMode'] == null ? null : (map['loginMode'] as String).input(),
+      loginMode: map['loginMode'] == null ? null : (map['loginMode']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DynamicGroupMetadataCloudidentityV1beta1 {
 
   factory DynamicGroupMetadataCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return DynamicGroupMetadataCloudidentityV1beta1(
-      queries: map['queries'] == null ? null : (pulumi.Input.decodeList<DynamicGroupQueryCloudidentityV1beta1>(map['queries'], (value) => DynamicGroupQueryCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queries: map['queries'] == null ? null : (pulumi.Input.decodeList<DynamicGroupQueryCloudidentityV1beta1>(map['queries']!, (value) => DynamicGroupQueryCloudidentityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

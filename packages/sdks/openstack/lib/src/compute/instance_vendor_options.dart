@@ -30,8 +30,8 @@ class InstanceVendorOptions {
 
   factory InstanceVendorOptions.fromMap(Map<String, dynamic> map) {
     return InstanceVendorOptions(
-      detachPortsBeforeDestroy: map['detachPortsBeforeDestroy'] == null ? null : (map['detachPortsBeforeDestroy'] as bool).input(),
-      ignoreResizeConfirmation: map['ignoreResizeConfirmation'] == null ? null : (map['ignoreResizeConfirmation'] as bool).input(),
+      detachPortsBeforeDestroy: map['detachPortsBeforeDestroy'] == null ? null : (map['detachPortsBeforeDestroy']! as bool).input(),
+      ignoreResizeConfirmation: map['ignoreResizeConfirmation'] == null ? null : (map['ignoreResizeConfirmation']! as bool).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class JobCommand {
 
   factory JobCommand.fromMap(Map<String, dynamic> map) {
     return JobCommand(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pythonVersion: map['pythonVersion'] == null ? null : (map['pythonVersion'] as String).input(),
-      runtime: map['runtime'] == null ? null : (map['runtime'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      pythonVersion: map['pythonVersion'] == null ? null : ((map['pythonVersion'] as String).input()).input(),
+      runtime: map['runtime'] == null ? null : ((map['runtime'] as String).input()).input(),
       scriptLocation: (map['scriptLocation'] as String).input(),
     );
   }

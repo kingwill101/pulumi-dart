@@ -44,8 +44,8 @@ class GetConfigurationKeysResult {
       configurationStoreId: map['configurationStoreId'] as String,
       id: map['id'] as String,
       items: pulumi.Input.decodeList<GetConfigurationKeysItem>(map['items'], (value) => GetConfigurationKeysItem.fromMap((value as Map).cast<String, dynamic>())),
-      key: map['key'] == null ? null : map['key'] as String,
-      label: map['label'] == null ? null : map['label'] as String,
+      key: map['key'] == null ? null : map['key']! as String,
+      label: map['label'] == null ? null : map['label']! as String,
     );
   }
 }

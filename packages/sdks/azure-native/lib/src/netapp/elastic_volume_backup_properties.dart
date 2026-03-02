@@ -31,9 +31,9 @@ class ElasticVolumeBackupProperties {
 
   factory ElasticVolumeBackupProperties.fromMap(Map<String, dynamic> map) {
     return ElasticVolumeBackupProperties(
-      elasticBackupPolicyResourceId: map['elasticBackupPolicyResourceId'] == null ? null : (map['elasticBackupPolicyResourceId'] as String).input(),
-      elasticBackupVaultResourceId: map['elasticBackupVaultResourceId'] == null ? null : (map['elasticBackupVaultResourceId'] as String).input(),
-      policyEnforcement: map['policyEnforcement'] == null ? null : (map['policyEnforcement'] as String).input(),
+      elasticBackupPolicyResourceId: map['elasticBackupPolicyResourceId'] == null ? null : (map['elasticBackupPolicyResourceId']! as String).input(),
+      elasticBackupVaultResourceId: map['elasticBackupVaultResourceId'] == null ? null : (map['elasticBackupVaultResourceId']! as String).input(),
+      policyEnforcement: map['policyEnforcement'] == null ? null : (map['policyEnforcement']! as String).input(),
     );
   }
 }

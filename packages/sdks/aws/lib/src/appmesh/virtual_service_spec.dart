@@ -21,7 +21,7 @@ class VirtualServiceSpec {
 
   factory VirtualServiceSpec.fromMap(Map<String, dynamic> map) {
     return VirtualServiceSpec(
-      provider: map['provider'] == null ? null : (VirtualServiceSpecProvider.fromMap((map['provider'] as Map).cast<String, dynamic>())).input(),
+      provider: map['provider'] == null ? null : ((VirtualServiceSpecProvider.fromMap((map['provider']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

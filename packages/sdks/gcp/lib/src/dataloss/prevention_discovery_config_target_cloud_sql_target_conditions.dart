@@ -27,8 +27,8 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetConditions {
 
   factory PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetConditions(
-      databaseEngines: map['databaseEngines'] == null ? null : ((map['databaseEngines'] as List).cast<String>()).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      databaseEngines: map['databaseEngines'] == null ? null : ((map['databaseEngines']! as List).cast<String>()).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RequestLoggingResponse {
 
   factory RequestLoggingResponse.fromMap(Map<String, dynamic> map) {
     return RequestLoggingResponse(
-      captureHeaders: map['captureHeaders'] == null ? null : ((map['captureHeaders'] as List).cast<String>()).input(),
+      captureHeaders: map['captureHeaders'] == null ? null : ((map['captureHeaders']! as List).cast<String>()).input(),
     );
   }
 }

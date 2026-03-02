@@ -36,10 +36,10 @@ class RetentionVolumeResponse {
 
   factory RetentionVolumeResponse.fromMap(Map<String, dynamic> map) {
     return RetentionVolumeResponse(
-      capacityInBytes: map['capacityInBytes'] == null ? null : (map['capacityInBytes'] as double).input(),
-      freeSpaceInBytes: map['freeSpaceInBytes'] == null ? null : (map['freeSpaceInBytes'] as double).input(),
-      thresholdPercentage: map['thresholdPercentage'] == null ? null : (map['thresholdPercentage'] as int).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      capacityInBytes: map['capacityInBytes'] == null ? null : (map['capacityInBytes']! as double).input(),
+      freeSpaceInBytes: map['freeSpaceInBytes'] == null ? null : (map['freeSpaceInBytes']! as double).input(),
+      thresholdPercentage: map['thresholdPercentage'] == null ? null : (map['thresholdPercentage']! as int).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

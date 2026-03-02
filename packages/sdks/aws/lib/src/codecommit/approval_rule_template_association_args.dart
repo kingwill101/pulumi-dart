@@ -35,7 +35,7 @@ class ApprovalRuleTemplateAssociationArgs {
   factory ApprovalRuleTemplateAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateAssociationArgs(
       approvalRuleTemplateName: (map['approvalRuleTemplateName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       repositoryName: (map['repositoryName'] as String).input(),
     );
   }

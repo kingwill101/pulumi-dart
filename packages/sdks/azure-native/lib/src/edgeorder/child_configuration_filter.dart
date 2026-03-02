@@ -27,8 +27,8 @@ class ChildConfigurationFilter {
 
   factory ChildConfigurationFilter.fromMap(Map<String, dynamic> map) {
     return ChildConfigurationFilter(
-      childConfigurationTypes: map['childConfigurationTypes'] == null ? null : ((map['childConfigurationTypes'] as List).cast<String>()).input(),
-      hierarchyInformations: map['hierarchyInformations'] == null ? null : (pulumi.Input.decodeList<HierarchyInformation>(map['hierarchyInformations'], (value) => HierarchyInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      childConfigurationTypes: map['childConfigurationTypes'] == null ? null : ((map['childConfigurationTypes']! as List).cast<String>()).input(),
+      hierarchyInformations: map['hierarchyInformations'] == null ? null : (pulumi.Input.decodeList<HierarchyInformation>(map['hierarchyInformations']!, (value) => HierarchyInformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

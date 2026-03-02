@@ -58,10 +58,10 @@ class BackupPolicyKubernetesClusterArgs {
     return BackupPolicyKubernetesClusterArgs(
       backupRepeatingTimeIntervals: ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
       defaultRetentionRule: (BackupPolicyKubernetesClusterDefaultRetentionRule.fromMap((map['defaultRetentionRule'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyKubernetesClusterRetentionRule>(map['retentionRules'], (value) => BackupPolicyKubernetesClusterRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyKubernetesClusterRetentionRule>(map['retentionRules']!, (value) => BackupPolicyKubernetesClusterRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

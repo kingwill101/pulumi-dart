@@ -37,10 +37,10 @@ class SecretVolumeCloudfunctionsV2beta {
 
   factory SecretVolumeCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return SecretVolumeCloudfunctionsV2beta(
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<SecretVersionCloudfunctionsV2beta>(map['versions'], (value) => SecretVersionCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<SecretVersionCloudfunctionsV2beta>(map['versions']!, (value) => SecretVersionCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

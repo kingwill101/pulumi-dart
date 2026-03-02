@@ -48,10 +48,10 @@ class LiftrBaseOfferDetailsResponse {
     return LiftrBaseOfferDetailsResponse(
       offerId: (map['offerId'] as String).input(),
       planId: (map['planId'] as String).input(),
-      planName: map['planName'] == null ? null : (map['planName'] as String).input(),
+      planName: map['planName'] == null ? null : (map['planName']! as String).input(),
       publisherId: (map['publisherId'] as String).input(),
-      termId: map['termId'] == null ? null : (map['termId'] as String).input(),
-      termUnit: map['termUnit'] == null ? null : (map['termUnit'] as String).input(),
+      termId: map['termId'] == null ? null : (map['termId']! as String).input(),
+      termUnit: map['termUnit'] == null ? null : (map['termUnit']! as String).input(),
     );
   }
 }

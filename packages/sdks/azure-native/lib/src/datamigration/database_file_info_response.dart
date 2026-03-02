@@ -51,13 +51,13 @@ class DatabaseFileInfoResponse {
 
   factory DatabaseFileInfoResponse.fromMap(Map<String, dynamic> map) {
     return DatabaseFileInfoResponse(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      fileType: map['fileType'] == null ? null : (map['fileType'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      logicalName: map['logicalName'] == null ? null : (map['logicalName'] as String).input(),
-      physicalFullName: map['physicalFullName'] == null ? null : (map['physicalFullName'] as String).input(),
-      restoreFullName: map['restoreFullName'] == null ? null : (map['restoreFullName'] as String).input(),
-      sizeMB: map['sizeMB'] == null ? null : (map['sizeMB'] as double).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      fileType: map['fileType'] == null ? null : (map['fileType']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      logicalName: map['logicalName'] == null ? null : (map['logicalName']! as String).input(),
+      physicalFullName: map['physicalFullName'] == null ? null : (map['physicalFullName']! as String).input(),
+      restoreFullName: map['restoreFullName'] == null ? null : (map['restoreFullName']! as String).input(),
+      sizeMB: map['sizeMB'] == null ? null : (map['sizeMB']! as double).input(),
     );
   }
 }

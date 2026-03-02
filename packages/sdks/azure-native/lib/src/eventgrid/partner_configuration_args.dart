@@ -45,11 +45,11 @@ class PartnerConfigurationArgs {
 
   factory PartnerConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return PartnerConfigurationArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      partnerAuthorization: map['partnerAuthorization'] == null ? null : (PartnerAuthorization.fromMap((map['partnerAuthorization'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      partnerAuthorization: map['partnerAuthorization'] == null ? null : (PartnerAuthorization.fromMap((map['partnerAuthorization']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

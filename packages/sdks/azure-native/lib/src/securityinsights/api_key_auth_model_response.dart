@@ -43,9 +43,9 @@ class ApiKeyAuthModelResponse {
   factory ApiKeyAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return ApiKeyAuthModelResponse(
       apiKey: (map['apiKey'] as String).input(),
-      apiKeyIdentifier: map['apiKeyIdentifier'] == null ? null : (map['apiKeyIdentifier'] as String).input(),
+      apiKeyIdentifier: map['apiKeyIdentifier'] == null ? null : (map['apiKeyIdentifier']! as String).input(),
       apiKeyName: (map['apiKeyName'] as String).input(),
-      isApiKeyInPostPayload: map['isApiKeyInPostPayload'] == null ? null : (map['isApiKeyInPostPayload'] as bool).input(),
+      isApiKeyInPostPayload: map['isApiKeyInPostPayload'] == null ? null : (map['isApiKeyInPostPayload']! as bool).input(),
       type: (map['type'] as String).input(),
     );
   }

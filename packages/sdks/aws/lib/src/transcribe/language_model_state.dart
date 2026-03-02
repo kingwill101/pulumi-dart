@@ -55,14 +55,14 @@ class LanguageModelState {
 
   factory LanguageModelState.fromMap(Map<String, dynamic> map) {
     return LanguageModelState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      baseModelName: map['baseModelName'] == null ? null : (map['baseModelName'] as String).input(),
-      inputDataConfig: map['inputDataConfig'] == null ? null : (LanguageModelInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      modelName: map['modelName'] == null ? null : (map['modelName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      baseModelName: map['baseModelName'] == null ? null : ((map['baseModelName'] as String).input()).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : ((LanguageModelInputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      modelName: map['modelName'] == null ? null : ((map['modelName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

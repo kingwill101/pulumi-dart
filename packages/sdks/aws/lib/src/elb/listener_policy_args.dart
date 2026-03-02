@@ -46,9 +46,9 @@ class ListenerPolicyArgs {
     return ListenerPolicyArgs(
       loadBalancerName: (map['loadBalancerName'] as String).input(),
       loadBalancerPort: (map['loadBalancerPort'] as int).input(),
-      policyNames: map['policyNames'] == null ? null : ((map['policyNames'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      policyNames: map['policyNames'] == null ? null : (((map['policyNames'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

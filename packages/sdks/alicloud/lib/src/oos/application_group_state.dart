@@ -47,12 +47,12 @@ class ApplicationGroupState {
 
   factory ApplicationGroupState.fromMap(Map<String, dynamic> map) {
     return ApplicationGroupState(
-      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName'] as String).input(),
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      deployRegionId: map['deployRegionId'] == null ? null : (map['deployRegionId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      importTagKey: map['importTagKey'] == null ? null : (map['importTagKey'] as String).input(),
-      importTagValue: map['importTagValue'] == null ? null : (map['importTagValue'] as String).input(),
+      applicationGroupName: map['applicationGroupName'] == null ? null : (map['applicationGroupName']! as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      deployRegionId: map['deployRegionId'] == null ? null : (map['deployRegionId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      importTagKey: map['importTagKey'] == null ? null : (map['importTagKey']! as String).input(),
+      importTagValue: map['importTagValue'] == null ? null : (map['importTagValue']! as String).input(),
     );
   }
 }

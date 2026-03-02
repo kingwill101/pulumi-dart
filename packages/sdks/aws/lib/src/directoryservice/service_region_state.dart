@@ -52,13 +52,13 @@ class ServiceRegionState {
 
   factory ServiceRegionState.fromMap(Map<String, dynamic> map) {
     return ServiceRegionState(
-      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : (map['desiredNumberOfDomainControllers'] as int).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcSettings: map['vpcSettings'] == null ? null : (ServiceRegionVpcSettings.fromMap((map['vpcSettings'] as Map).cast<String, dynamic>())).input(),
+      desiredNumberOfDomainControllers: map['desiredNumberOfDomainControllers'] == null ? null : ((map['desiredNumberOfDomainControllers'] as int).input()).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      regionName: map['regionName'] == null ? null : ((map['regionName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcSettings: map['vpcSettings'] == null ? null : ((ServiceRegionVpcSettings.fromMap((map['vpcSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

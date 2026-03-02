@@ -58,14 +58,14 @@ class RemotePrivateEndpoint {
 
   factory RemotePrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpoint(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      immutableResourceId: map['immutableResourceId'] == null ? null : (map['immutableResourceId'] as String).input(),
-      immutableSubscriptionId: map['immutableSubscriptionId'] == null ? null : (map['immutableSubscriptionId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['privateLinkServiceConnections'], (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateLinkServiceProxies: map['privateLinkServiceProxies'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceProxy>(map['privateLinkServiceProxies'], (value) => PrivateLinkServiceProxy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vnetTrafficTag: map['vnetTrafficTag'] == null ? null : (map['vnetTrafficTag'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      immutableResourceId: map['immutableResourceId'] == null ? null : (map['immutableResourceId']! as String).input(),
+      immutableSubscriptionId: map['immutableSubscriptionId'] == null ? null : (map['immutableSubscriptionId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      manualPrivateLinkServiceConnections: map['manualPrivateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['manualPrivateLinkServiceConnections']!, (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkServiceConnections: map['privateLinkServiceConnections'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceConnection>(map['privateLinkServiceConnections']!, (value) => PrivateLinkServiceConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkServiceProxies: map['privateLinkServiceProxies'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceProxy>(map['privateLinkServiceProxies']!, (value) => PrivateLinkServiceProxy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vnetTrafficTag: map['vnetTrafficTag'] == null ? null : (map['vnetTrafficTag']! as String).input(),
     );
   }
 }

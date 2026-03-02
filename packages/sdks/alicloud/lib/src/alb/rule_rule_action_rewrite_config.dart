@@ -30,9 +30,9 @@ class RuleRuleActionRewriteConfig {
 
   factory RuleRuleActionRewriteConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionRewriteConfig(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
     );
   }
 }

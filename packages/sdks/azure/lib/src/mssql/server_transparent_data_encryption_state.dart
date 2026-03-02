@@ -39,10 +39,10 @@ class ServerTransparentDataEncryptionState {
 
   factory ServerTransparentDataEncryptionState.fromMap(Map<String, dynamic> map) {
     return ServerTransparentDataEncryptionState(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled'] as bool).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
-      serverId: map['serverId'] == null ? null : (map['serverId'] as String).input(),
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled']! as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
+      serverId: map['serverId'] == null ? null : (map['serverId']! as String).input(),
     );
   }
 }

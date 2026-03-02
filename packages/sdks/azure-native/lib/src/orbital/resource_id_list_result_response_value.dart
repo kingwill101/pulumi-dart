@@ -20,7 +20,7 @@ class ResourceIdListResultResponseValue {
 
   factory ResourceIdListResultResponseValue.fromMap(Map<String, dynamic> map) {
     return ResourceIdListResultResponseValue(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

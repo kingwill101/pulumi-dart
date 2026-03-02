@@ -77,18 +77,18 @@ class PolicySettingsResponse {
 
   factory PolicySettingsResponse.fromMap(Map<String, dynamic> map) {
     return PolicySettingsResponse(
-      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody'] as String).input(),
-      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode'] as int).input(),
-      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : (map['fileUploadEnforcement'] as bool).input(),
-      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb'] as int).input(),
-      jsChallengeCookieExpirationInMins: map['jsChallengeCookieExpirationInMins'] == null ? null : (map['jsChallengeCookieExpirationInMins'] as int).input(),
-      logScrubbing: map['logScrubbing'] == null ? null : (PolicySettingsResponseLogScrubbing.fromMap((map['logScrubbing'] as Map).cast<String, dynamic>())).input(),
-      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck'] as bool).input(),
-      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : (map['requestBodyEnforcement'] as bool).input(),
-      requestBodyInspectLimitInKB: map['requestBodyInspectLimitInKB'] == null ? null : (map['requestBodyInspectLimitInKB'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      customBlockResponseBody: map['customBlockResponseBody'] == null ? null : (map['customBlockResponseBody']! as String).input(),
+      customBlockResponseStatusCode: map['customBlockResponseStatusCode'] == null ? null : (map['customBlockResponseStatusCode']! as int).input(),
+      fileUploadEnforcement: map['fileUploadEnforcement'] == null ? null : (map['fileUploadEnforcement']! as bool).input(),
+      fileUploadLimitInMb: map['fileUploadLimitInMb'] == null ? null : (map['fileUploadLimitInMb']! as int).input(),
+      jsChallengeCookieExpirationInMins: map['jsChallengeCookieExpirationInMins'] == null ? null : (map['jsChallengeCookieExpirationInMins']! as int).input(),
+      logScrubbing: map['logScrubbing'] == null ? null : (PolicySettingsResponseLogScrubbing.fromMap((map['logScrubbing']! as Map).cast<String, dynamic>())).input(),
+      maxRequestBodySizeInKb: map['maxRequestBodySizeInKb'] == null ? null : (map['maxRequestBodySizeInKb']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      requestBodyCheck: map['requestBodyCheck'] == null ? null : (map['requestBodyCheck']! as bool).input(),
+      requestBodyEnforcement: map['requestBodyEnforcement'] == null ? null : (map['requestBodyEnforcement']! as bool).input(),
+      requestBodyInspectLimitInKB: map['requestBodyInspectLimitInKB'] == null ? null : (map['requestBodyInspectLimitInKB']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

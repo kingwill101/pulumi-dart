@@ -39,9 +39,9 @@ class RegionBackendServiceIap {
   factory RegionBackendServiceIap.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceIap(
       enabled: (map['enabled'] as bool).input(),
-      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId'] as String).input(),
-      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret'] as String).input(),
-      oauth2ClientSecretSha256: map['oauth2ClientSecretSha256'] == null ? null : (map['oauth2ClientSecretSha256'] as String).input(),
+      oauth2ClientId: map['oauth2ClientId'] == null ? null : (map['oauth2ClientId']! as String).input(),
+      oauth2ClientSecret: map['oauth2ClientSecret'] == null ? null : (map['oauth2ClientSecret']! as String).input(),
+      oauth2ClientSecretSha256: map['oauth2ClientSecretSha256'] == null ? null : (map['oauth2ClientSecretSha256']! as String).input(),
     );
   }
 }

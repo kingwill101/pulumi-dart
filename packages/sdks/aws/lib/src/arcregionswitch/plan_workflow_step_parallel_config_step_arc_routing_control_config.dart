@@ -36,10 +36,10 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfig {
 
   factory PlanWorkflowStepParallelConfigStepArcRoutingControlConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepArcRoutingControlConfig(
-      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      regionAndRoutingControls: map['regionAndRoutingControls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl>(map['regionAndRoutingControls'], (value) => PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      regionAndRoutingControls: map['regionAndRoutingControls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl>(map['regionAndRoutingControls']!, (value) => PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
     );
   }
 }

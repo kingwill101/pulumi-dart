@@ -52,13 +52,13 @@ class IncidentPropertiesAction {
 
   factory IncidentPropertiesAction.fromMap(Map<String, dynamic> map) {
     return IncidentPropertiesAction(
-      classification: map['classification'] == null ? null : (map['classification'] as String).input(),
-      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment'] as String).input(),
-      classificationReason: map['classificationReason'] == null ? null : (map['classificationReason'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<IncidentLabel>(map['labels'], (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      owner: map['owner'] == null ? null : (IncidentOwnerInfo.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      classification: map['classification'] == null ? null : (map['classification']! as String).input(),
+      classificationComment: map['classificationComment'] == null ? null : (map['classificationComment']! as String).input(),
+      classificationReason: map['classificationReason'] == null ? null : (map['classificationReason']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<IncidentLabel>(map['labels']!, (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      owner: map['owner'] == null ? null : (IncidentOwnerInfo.fromMap((map['owner']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

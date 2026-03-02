@@ -70,16 +70,16 @@ class FlowDefinitionState {
 
   factory FlowDefinitionState.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      flowDefinitionName: map['flowDefinitionName'] == null ? null : (map['flowDefinitionName'] as String).input(),
-      humanLoopActivationConfig: map['humanLoopActivationConfig'] == null ? null : (FlowDefinitionHumanLoopActivationConfig.fromMap((map['humanLoopActivationConfig'] as Map).cast<String, dynamic>())).input(),
-      humanLoopConfig: map['humanLoopConfig'] == null ? null : (FlowDefinitionHumanLoopConfig.fromMap((map['humanLoopConfig'] as Map).cast<String, dynamic>())).input(),
-      humanLoopRequestSource: map['humanLoopRequestSource'] == null ? null : (FlowDefinitionHumanLoopRequestSource.fromMap((map['humanLoopRequestSource'] as Map).cast<String, dynamic>())).input(),
-      outputConfig: map['outputConfig'] == null ? null : (FlowDefinitionOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      flowDefinitionName: map['flowDefinitionName'] == null ? null : ((map['flowDefinitionName'] as String).input()).input(),
+      humanLoopActivationConfig: map['humanLoopActivationConfig'] == null ? null : ((FlowDefinitionHumanLoopActivationConfig.fromMap((map['humanLoopActivationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      humanLoopConfig: map['humanLoopConfig'] == null ? null : ((FlowDefinitionHumanLoopConfig.fromMap((map['humanLoopConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      humanLoopRequestSource: map['humanLoopRequestSource'] == null ? null : ((FlowDefinitionHumanLoopRequestSource.fromMap((map['humanLoopRequestSource']! as Map).cast<String, dynamic>())).input()).input(),
+      outputConfig: map['outputConfig'] == null ? null : ((FlowDefinitionOutputConfig.fromMap((map['outputConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

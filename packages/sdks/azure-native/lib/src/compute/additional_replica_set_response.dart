@@ -26,8 +26,8 @@ class AdditionalReplicaSetResponse {
 
   factory AdditionalReplicaSetResponse.fromMap(Map<String, dynamic> map) {
     return AdditionalReplicaSetResponse(
-      regionalReplicaCount: map['regionalReplicaCount'] == null ? null : (map['regionalReplicaCount'] as int).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      regionalReplicaCount: map['regionalReplicaCount'] == null ? null : (map['regionalReplicaCount']! as int).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

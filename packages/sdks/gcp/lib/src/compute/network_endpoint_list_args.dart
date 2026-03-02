@@ -45,9 +45,9 @@ class NetworkEndpointListArgs {
   factory NetworkEndpointListArgs.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointListArgs(
       networkEndpointGroup: (map['networkEndpointGroup'] as String).input(),
-      networkEndpoints: map['networkEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints'], (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      networkEndpoints: map['networkEndpoints'] == null ? null : (pulumi.Input.decodeList<NetworkEndpointListNetworkEndpoint>(map['networkEndpoints']!, (value) => NetworkEndpointListNetworkEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

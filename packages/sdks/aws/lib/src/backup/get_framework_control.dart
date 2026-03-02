@@ -32,9 +32,9 @@ class GetFrameworkControl {
 
   factory GetFrameworkControl.fromMap(Map<String, dynamic> map) {
     return GetFrameworkControl(
-      inputParameters: (pulumi.Input.decodeList<GetFrameworkControlInputParameter>(map['inputParameters'], (value) => GetFrameworkControlInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputParameters: (pulumi.Input.decodeList<GetFrameworkControlInputParameter>(map['inputParameters']!, (value) => GetFrameworkControlInputParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      scopes: (pulumi.Input.decodeList<GetFrameworkControlScope>(map['scopes'], (value) => GetFrameworkControlScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: (pulumi.Input.decodeList<GetFrameworkControlScope>(map['scopes']!, (value) => GetFrameworkControlScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

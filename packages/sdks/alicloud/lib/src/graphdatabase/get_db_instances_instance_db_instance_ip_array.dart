@@ -30,9 +30,9 @@ class GetDbInstancesInstanceDbInstanceIpArray {
 
   factory GetDbInstancesInstanceDbInstanceIpArray.fromMap(Map<String, dynamic> map) {
     return GetDbInstancesInstanceDbInstanceIpArray(
-      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute'] as String).input(),
-      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : (map['dbInstanceIpArrayName'] as String).input(),
-      securityIps: map['securityIps'] == null ? null : (map['securityIps'] as String).input(),
+      dbInstanceIpArrayAttribute: map['dbInstanceIpArrayAttribute'] == null ? null : (map['dbInstanceIpArrayAttribute']! as String).input(),
+      dbInstanceIpArrayName: map['dbInstanceIpArrayName'] == null ? null : (map['dbInstanceIpArrayName']! as String).input(),
+      securityIps: map['securityIps'] == null ? null : (map['securityIps']! as String).input(),
     );
   }
 }

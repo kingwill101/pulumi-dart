@@ -22,7 +22,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
 
   factory GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

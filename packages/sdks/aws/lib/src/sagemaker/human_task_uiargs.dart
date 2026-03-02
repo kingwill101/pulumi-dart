@@ -41,9 +41,9 @@ class HumanTaskUIArgs {
   factory HumanTaskUIArgs.fromMap(Map<String, dynamic> map) {
     return HumanTaskUIArgs(
       humanTaskUiName: (map['humanTaskUiName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uiTemplate: (HumanTaskUIUiTemplate.fromMap((map['uiTemplate'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      uiTemplate: (HumanTaskUIUiTemplate.fromMap((map['uiTemplate']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

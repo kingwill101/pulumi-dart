@@ -26,8 +26,8 @@ class MonitorDowntimeFrequency {
 
   factory MonitorDowntimeFrequency.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeFrequency(
-      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths'] as List).cast<int>()).input(),
-      daysOfWeek: map['daysOfWeek'] == null ? null : (MonitorDowntimeFrequencyDaysOfWeek.fromMap((map['daysOfWeek'] as Map).cast<String, dynamic>())).input(),
+      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths']! as List).cast<int>()).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : (MonitorDowntimeFrequencyDaysOfWeek.fromMap((map['daysOfWeek']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

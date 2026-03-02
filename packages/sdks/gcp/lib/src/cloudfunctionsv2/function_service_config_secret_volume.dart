@@ -40,7 +40,7 @@ class FunctionServiceConfigSecretVolume {
       mountPath: (map['mountPath'] as String).input(),
       projectId: (map['projectId'] as String).input(),
       secret: (map['secret'] as String).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<FunctionServiceConfigSecretVolumeVersion>(map['versions'], (value) => FunctionServiceConfigSecretVolumeVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<FunctionServiceConfigSecretVolumeVersion>(map['versions']!, (value) => FunctionServiceConfigSecretVolumeVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

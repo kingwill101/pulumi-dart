@@ -42,10 +42,10 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      location: map['location'] == null ? null : (SiteLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : ((SiteLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

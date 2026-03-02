@@ -58,11 +58,11 @@ class ConnectionGitlabConfig {
   factory ConnectionGitlabConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGitlabConfig(
       authorizerCredential: (ConnectionGitlabConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
-      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri']! as String).input(),
       readAuthorizerCredential: (ConnectionGitlabConfigReadAuthorizerCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>())).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ConnectionGitlabConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : (ConnectionGitlabConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig']! as Map).cast<String, dynamic>())).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
       webhookSecretSecretVersion: (map['webhookSecretSecretVersion'] as String).input(),
     );
   }

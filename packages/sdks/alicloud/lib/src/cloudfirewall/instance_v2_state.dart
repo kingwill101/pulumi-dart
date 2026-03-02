@@ -101,22 +101,22 @@ class InstanceV2State {
 
   factory InstanceV2State.fromMap(Map<String, dynamic> map) {
     return InstanceV2State(
-      cfwLog: map['cfwLog'] == null ? null : (map['cfwLog'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      modifyType: map['modifyType'] == null ? null : (map['modifyType'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      productType: map['productType'] == null ? null : (map['productType'] as String).input(),
-      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime'] as String).input(),
-      renewalDuration: map['renewalDuration'] == null ? null : (map['renewalDuration'] as int).input(),
-      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : (map['renewalDurationUnit'] as String).input(),
-      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus'] as String).input(),
-      sdl: map['sdl'] == null ? null : (map['sdl'] as bool).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userStatus: map['userStatus'] == null ? null : (map['userStatus'] as String).input(),
+      cfwLog: map['cfwLog'] == null ? null : (map['cfwLog']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      modifyType: map['modifyType'] == null ? null : (map['modifyType']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      productType: map['productType'] == null ? null : (map['productType']! as String).input(),
+      releaseTime: map['releaseTime'] == null ? null : (map['releaseTime']! as String).input(),
+      renewalDuration: map['renewalDuration'] == null ? null : (map['renewalDuration']! as int).input(),
+      renewalDurationUnit: map['renewalDurationUnit'] == null ? null : (map['renewalDurationUnit']! as String).input(),
+      renewalStatus: map['renewalStatus'] == null ? null : (map['renewalStatus']! as String).input(),
+      sdl: map['sdl'] == null ? null : (map['sdl']! as bool).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userStatus: map['userStatus'] == null ? null : (map['userStatus']! as String).input(),
     );
   }
 }

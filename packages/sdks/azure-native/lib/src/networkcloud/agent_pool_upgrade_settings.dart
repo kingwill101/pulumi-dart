@@ -30,9 +30,9 @@ class AgentPoolUpgradeSettings {
 
   factory AgentPoolUpgradeSettings.fromMap(Map<String, dynamic> map) {
     return AgentPoolUpgradeSettings(
-      drainTimeout: map['drainTimeout'] == null ? null : (map['drainTimeout'] as double).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as String).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as String).input(),
+      drainTimeout: map['drainTimeout'] == null ? null : (map['drainTimeout']! as double).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as String).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as String).input(),
     );
   }
 }

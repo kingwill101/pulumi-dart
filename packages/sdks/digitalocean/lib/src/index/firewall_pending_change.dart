@@ -29,9 +29,9 @@ class FirewallPendingChange {
 
   factory FirewallPendingChange.fromMap(Map<String, dynamic> map) {
     return FirewallPendingChange(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      removing: map['removing'] == null ? null : (map['removing'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      removing: map['removing'] == null ? null : (map['removing']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

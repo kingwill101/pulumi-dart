@@ -33,8 +33,8 @@ class MigrateOracleAzureDbForPostgreSqlSyncTaskProperties {
 
   factory MigrateOracleAzureDbForPostgreSqlSyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return MigrateOracleAzureDbForPostgreSqlSyncTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      input: map['input'] == null ? null : (MigrateOracleAzureDbPostgreSqlSyncTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      input: map['input'] == null ? null : (MigrateOracleAzureDbPostgreSqlSyncTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

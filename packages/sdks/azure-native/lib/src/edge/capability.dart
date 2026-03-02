@@ -33,7 +33,7 @@ class Capability {
     return Capability(
       description: (map['description'] as String).input(),
       name: (map['name'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class TestSetup {
 
   factory TestSetup.fromMap(Map<String, dynamic> map) {
     return TestSetup(
-      account: map['account'] == null ? null : (Account.fromMap((map['account'] as Map).cast<String, dynamic>())).input(),
-      additionalApks: map['additionalApks'] == null ? null : (pulumi.Input.decodeList<Apk>(map['additionalApks'], (value) => Apk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      directoriesToPull: map['directoriesToPull'] == null ? null : ((map['directoriesToPull'] as List).cast<String>()).input(),
-      dontAutograntPermissions: map['dontAutograntPermissions'] == null ? null : (map['dontAutograntPermissions'] as bool).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables'], (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filesToPush: map['filesToPush'] == null ? null : (pulumi.Input.decodeList<DeviceFile>(map['filesToPush'], (value) => DeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initialSetupApks: map['initialSetupApks'] == null ? null : (pulumi.Input.decodeList<Apk>(map['initialSetupApks'], (value) => Apk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile'] as String).input(),
-      systrace: map['systrace'] == null ? null : (SystraceSetup.fromMap((map['systrace'] as Map).cast<String, dynamic>())).input(),
+      account: map['account'] == null ? null : (Account.fromMap((map['account']! as Map).cast<String, dynamic>())).input(),
+      additionalApks: map['additionalApks'] == null ? null : (pulumi.Input.decodeList<Apk>(map['additionalApks']!, (value) => Apk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directoriesToPull: map['directoriesToPull'] == null ? null : ((map['directoriesToPull']! as List).cast<String>()).input(),
+      dontAutograntPermissions: map['dontAutograntPermissions'] == null ? null : (map['dontAutograntPermissions']! as bool).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariable>(map['environmentVariables']!, (value) => EnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filesToPush: map['filesToPush'] == null ? null : (pulumi.Input.decodeList<DeviceFile>(map['filesToPush']!, (value) => DeviceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initialSetupApks: map['initialSetupApks'] == null ? null : (pulumi.Input.decodeList<Apk>(map['initialSetupApks']!, (value) => Apk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkProfile: map['networkProfile'] == null ? null : (map['networkProfile']! as String).input(),
+      systrace: map['systrace'] == null ? null : (SystraceSetup.fromMap((map['systrace']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

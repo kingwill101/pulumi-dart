@@ -41,9 +41,9 @@ class VMInstanceGuestAgentArgs {
 
   factory VMInstanceGuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return VMInstanceGuestAgentArgs(
-      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
-      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig']! as Map).cast<String, dynamic>())).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

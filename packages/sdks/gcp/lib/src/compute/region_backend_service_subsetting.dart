@@ -33,7 +33,7 @@ class RegionBackendServiceSubsetting {
   factory RegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceSubsetting(
       policy: (map['policy'] as String).input(),
-      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize'] as int).input(),
+      subsetSize: map['subsetSize'] == null ? null : (map['subsetSize']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class PreventionDiscoveryConfigError {
 
   factory PreventionDiscoveryConfigError.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigError(
-      details: map['details'] == null ? null : (PreventionDiscoveryConfigErrorDetails.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      details: map['details'] == null ? null : (PreventionDiscoveryConfigErrorDetails.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

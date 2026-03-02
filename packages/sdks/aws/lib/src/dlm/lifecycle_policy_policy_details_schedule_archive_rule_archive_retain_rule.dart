@@ -21,7 +21,7 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
 
   factory LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule(
-      retentionArchiveTier: (LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap((map['retentionArchiveTier'] as Map).cast<String, dynamic>())).input(),
+      retentionArchiveTier: (LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap((map['retentionArchiveTier']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

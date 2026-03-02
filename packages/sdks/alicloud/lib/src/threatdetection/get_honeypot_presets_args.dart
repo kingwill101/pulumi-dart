@@ -69,17 +69,17 @@ class GetHoneypotPresetsArgs {
 
   factory GetHoneypotPresetsArgs.fromMap(Map<String, dynamic> map) {
     return GetHoneypotPresetsArgs(
-      currentPage: map['currentPage'] == null ? null : (map['currentPage'] as int).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
-      presetName: map['presetName'] == null ? null : (map['presetName'] as String).input(),
+      currentPage: map['currentPage'] == null ? null : (map['currentPage']! as int).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      honeypotImageName: map['honeypotImageName'] == null ? null : (map['honeypotImageName']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      pageNumber: map['pageNumber'] == null ? null : (map['pageNumber']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
+      presetName: map['presetName'] == null ? null : (map['presetName']! as String).input(),
     );
   }
 }

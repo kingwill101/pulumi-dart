@@ -36,10 +36,10 @@ class CacheNetworkSettings {
 
   factory CacheNetworkSettings.fromMap(Map<String, dynamic> map) {
     return CacheNetworkSettings(
-      dnsSearchDomain: map['dnsSearchDomain'] == null ? null : (map['dnsSearchDomain'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      ntpServer: map['ntpServer'] == null ? null : (map['ntpServer'] as String).input(),
+      dnsSearchDomain: map['dnsSearchDomain'] == null ? null : (map['dnsSearchDomain']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      ntpServer: map['ntpServer'] == null ? null : (map['ntpServer']! as String).input(),
     );
   }
 }

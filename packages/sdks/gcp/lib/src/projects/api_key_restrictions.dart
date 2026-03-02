@@ -45,11 +45,11 @@ class ApiKeyRestrictions {
 
   factory ApiKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return ApiKeyRestrictions(
-      androidKeyRestrictions: map['androidKeyRestrictions'] == null ? null : (ApiKeyRestrictionsAndroidKeyRestrictions.fromMap((map['androidKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
-      apiTargets: map['apiTargets'] == null ? null : (pulumi.Input.decodeList<ApiKeyRestrictionsApiTarget>(map['apiTargets'], (value) => ApiKeyRestrictionsApiTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      browserKeyRestrictions: map['browserKeyRestrictions'] == null ? null : (ApiKeyRestrictionsBrowserKeyRestrictions.fromMap((map['browserKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
-      iosKeyRestrictions: map['iosKeyRestrictions'] == null ? null : (ApiKeyRestrictionsIosKeyRestrictions.fromMap((map['iosKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
-      serverKeyRestrictions: map['serverKeyRestrictions'] == null ? null : (ApiKeyRestrictionsServerKeyRestrictions.fromMap((map['serverKeyRestrictions'] as Map).cast<String, dynamic>())).input(),
+      androidKeyRestrictions: map['androidKeyRestrictions'] == null ? null : (ApiKeyRestrictionsAndroidKeyRestrictions.fromMap((map['androidKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
+      apiTargets: map['apiTargets'] == null ? null : (pulumi.Input.decodeList<ApiKeyRestrictionsApiTarget>(map['apiTargets']!, (value) => ApiKeyRestrictionsApiTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      browserKeyRestrictions: map['browserKeyRestrictions'] == null ? null : (ApiKeyRestrictionsBrowserKeyRestrictions.fromMap((map['browserKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
+      iosKeyRestrictions: map['iosKeyRestrictions'] == null ? null : (ApiKeyRestrictionsIosKeyRestrictions.fromMap((map['iosKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
+      serverKeyRestrictions: map['serverKeyRestrictions'] == null ? null : (ApiKeyRestrictionsServerKeyRestrictions.fromMap((map['serverKeyRestrictions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

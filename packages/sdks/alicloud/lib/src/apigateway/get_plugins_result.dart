@@ -64,15 +64,15 @@ class GetPluginsResult {
     return GetPluginsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      pluginName: map['pluginName'] == null ? null : map['pluginName'] as String,
-      pluginType: map['pluginType'] == null ? null : map['pluginType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      pluginName: map['pluginName'] == null ? null : map['pluginName']! as String,
+      pluginType: map['pluginType'] == null ? null : map['pluginType']! as String,
       plugins: pulumi.Input.decodeList<GetPluginsPlugin>(map['plugins'], (value) => GetPluginsPlugin.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

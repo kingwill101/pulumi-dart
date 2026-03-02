@@ -25,8 +25,8 @@ class BrokerLogs {
 
   factory BrokerLogs.fromMap(Map<String, dynamic> map) {
     return BrokerLogs(
-      audit: map['audit'] == null ? null : (map['audit'] as bool).input(),
-      general: map['general'] == null ? null : (map['general'] as bool).input(),
+      audit: map['audit'] == null ? null : ((map['audit'] as bool).input()).input(),
+      general: map['general'] == null ? null : ((map['general'] as bool).input()).input(),
     );
   }
 }

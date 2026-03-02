@@ -98,10 +98,10 @@ class GetDiskPoolResult {
 
   factory GetDiskPoolResult.fromMap(Map<String, dynamic> map) {
     return GetDiskPoolResult(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : (map['additionalCapabilities'] as List).cast<String>(),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : (map['additionalCapabilities']! as List).cast<String>(),
       availabilityZones: (map['availabilityZones'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      disks: map['disks'] == null ? null : pulumi.Input.decodeList<DiskResponse>(map['disks'], (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())),
+      disks: map['disks'] == null ? null : pulumi.Input.decodeList<DiskResponse>(map['disks']!, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
       managedBy: map['managedBy'] as String,
@@ -111,8 +111,8 @@ class GetDiskPoolResult {
       status: map['status'] as String,
       subnetId: map['subnetId'] as String,
       systemData: SystemMetadataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tier: map['tier'] == null ? null : map['tier'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tier: map['tier'] == null ? null : map['tier']! as String,
       type: map['type'] as String,
     );
   }

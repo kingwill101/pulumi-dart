@@ -61,14 +61,14 @@ class AddressBookArgs {
 
   factory AddressBookArgs.fromMap(Map<String, dynamic> map) {
     return AddressBookArgs(
-      addressLists: map['addressLists'] == null ? null : ((map['addressLists'] as List).cast<String>()).input(),
-      autoAddTagEcs: map['autoAddTagEcs'] == null ? null : (map['autoAddTagEcs'] as int).input(),
+      addressLists: map['addressLists'] == null ? null : ((map['addressLists']! as List).cast<String>()).input(),
+      autoAddTagEcs: map['autoAddTagEcs'] == null ? null : (map['autoAddTagEcs']! as int).input(),
       description: (map['description'] as String).input(),
-      ecsTags: map['ecsTags'] == null ? null : (pulumi.Input.decodeList<AddressBookEcsTag>(map['ecsTags'], (value) => AddressBookEcsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ecsTags: map['ecsTags'] == null ? null : (pulumi.Input.decodeList<AddressBookEcsTag>(map['ecsTags']!, (value) => AddressBookEcsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
       groupName: (map['groupName'] as String).input(),
       groupType: (map['groupType'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      tagRelation: map['tagRelation'] == null ? null : (map['tagRelation'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      tagRelation: map['tagRelation'] == null ? null : (map['tagRelation']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class FunctionBuildConfigSourceRepoSource {
 
   factory FunctionBuildConfigSourceRepoSource.fromMap(Map<String, dynamic> map) {
     return FunctionBuildConfigSourceRepoSource(
-      branchName: map['branchName'] == null ? null : (map['branchName'] as String).input(),
-      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      tagName: map['tagName'] == null ? null : (map['tagName'] as String).input(),
+      branchName: map['branchName'] == null ? null : (map['branchName']! as String).input(),
+      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex']! as bool).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      tagName: map['tagName'] == null ? null : (map['tagName']! as String).input(),
     );
   }
 }

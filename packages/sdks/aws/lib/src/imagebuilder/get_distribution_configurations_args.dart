@@ -30,8 +30,8 @@ class GetDistributionConfigurationsArgs {
 
   factory GetDistributionConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return GetDistributionConfigurationsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDistributionConfigurationsFilter>(map['filters'], (value) => GetDistributionConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetDistributionConfigurationsFilter>(map['filters']!, (value) => GetDistributionConfigurationsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

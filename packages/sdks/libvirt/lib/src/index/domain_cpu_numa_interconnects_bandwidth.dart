@@ -45,7 +45,7 @@ class DomainCpuNumaInterconnectsBandwidth {
 
   factory DomainCpuNumaInterconnectsBandwidth.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaInterconnectsBandwidth(
-      cache: map['cache'] == null ? null : (map['cache'] as double).input(),
+      cache: map['cache'] == null ? null : (map['cache']! as double).input(),
       initiator: (map['initiator'] as double).input(),
       target: (map['target'] as double).input(),
       type: (map['type'] as String).input(),

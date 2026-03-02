@@ -34,7 +34,7 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       imageName: (map['imageName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

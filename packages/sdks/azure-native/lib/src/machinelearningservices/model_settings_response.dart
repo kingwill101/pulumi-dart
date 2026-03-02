@@ -20,7 +20,7 @@ class ModelSettingsResponse {
 
   factory ModelSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ModelSettingsResponse(
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
     );
   }
 }

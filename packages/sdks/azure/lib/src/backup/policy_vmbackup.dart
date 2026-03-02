@@ -43,10 +43,10 @@ class PolicyVMBackup {
   factory PolicyVMBackup.fromMap(Map<String, dynamic> map) {
     return PolicyVMBackup(
       frequency: (map['frequency'] as String).input(),
-      hourDuration: map['hourDuration'] == null ? null : (map['hourDuration'] as int).input(),
-      hourInterval: map['hourInterval'] == null ? null : (map['hourInterval'] as int).input(),
+      hourDuration: map['hourDuration'] == null ? null : (map['hourDuration']! as int).input(),
+      hourInterval: map['hourInterval'] == null ? null : (map['hourInterval']! as int).input(),
       time: (map['time'] as String).input(),
-      weekdays: map['weekdays'] == null ? null : ((map['weekdays'] as List).cast<String>()).input(),
+      weekdays: map['weekdays'] == null ? null : ((map['weekdays']! as List).cast<String>()).input(),
     );
   }
 }

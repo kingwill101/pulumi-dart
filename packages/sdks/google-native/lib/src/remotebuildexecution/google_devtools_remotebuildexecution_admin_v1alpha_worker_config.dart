@@ -72,17 +72,17 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
 
   factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
-      accelerator: map['accelerator'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromMap((map['accelerator'] as Map).cast<String, dynamic>())).input(),
+      accelerator: map['accelerator'] == null ? null : (GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromMap((map['accelerator']! as Map).cast<String, dynamic>())).input(),
       diskSizeGb: (map['diskSizeGb'] as String).input(),
       diskType: (map['diskType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       machineType: (map['machineType'] as String).input(),
-      maxConcurrentActions: map['maxConcurrentActions'] == null ? null : (map['maxConcurrentActions'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      networkAccess: map['networkAccess'] == null ? null : (map['networkAccess'] as String).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
-      soleTenantNodeType: map['soleTenantNodeType'] == null ? null : (map['soleTenantNodeType'] as String).input(),
-      vmImage: map['vmImage'] == null ? null : (map['vmImage'] as String).input(),
+      maxConcurrentActions: map['maxConcurrentActions'] == null ? null : (map['maxConcurrentActions']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      networkAccess: map['networkAccess'] == null ? null : (map['networkAccess']! as String).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
+      soleTenantNodeType: map['soleTenantNodeType'] == null ? null : (map['soleTenantNodeType']! as String).input(),
+      vmImage: map['vmImage'] == null ? null : (map['vmImage']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class ListScheduleApplicableResult {
 
   factory ListScheduleApplicableResult.fromMap(Map<String, dynamic> map) {
     return ListScheduleApplicableResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
       value: pulumi.Input.decodeList<ScheduleResponse>(map['value'], (value) => ScheduleResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

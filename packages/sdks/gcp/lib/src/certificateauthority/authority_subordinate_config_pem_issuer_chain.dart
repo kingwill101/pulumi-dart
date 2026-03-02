@@ -20,7 +20,7 @@ class AuthoritySubordinateConfigPemIssuerChain {
 
   factory AuthoritySubordinateConfigPemIssuerChain.fromMap(Map<String, dynamic> map) {
     return AuthoritySubordinateConfigPemIssuerChain(
-      pemCertificates: map['pemCertificates'] == null ? null : ((map['pemCertificates'] as List).cast<String>()).input(),
+      pemCertificates: map['pemCertificates'] == null ? null : ((map['pemCertificates']! as List).cast<String>()).input(),
     );
   }
 }

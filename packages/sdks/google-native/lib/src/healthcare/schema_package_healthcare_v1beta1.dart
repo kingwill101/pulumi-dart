@@ -45,11 +45,11 @@ class SchemaPackageHealthcareV1beta1 {
 
   factory SchemaPackageHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return SchemaPackageHealthcareV1beta1(
-      ignoreMinOccurs: map['ignoreMinOccurs'] == null ? null : (map['ignoreMinOccurs'] as bool).input(),
-      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<Hl7SchemaConfigHealthcareV1beta1>(map['schemas'], (value) => Hl7SchemaConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schematizedParsingType: map['schematizedParsingType'] == null ? null : (SchemaPackageSchematizedParsingTypeHealthcareV1beta1.fromValue(map['schematizedParsingType'] as String)).input(),
-      types: map['types'] == null ? null : (pulumi.Input.decodeList<Hl7TypesConfigHealthcareV1beta1>(map['types'], (value) => Hl7TypesConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unexpectedSegmentHandling: map['unexpectedSegmentHandling'] == null ? null : (SchemaPackageUnexpectedSegmentHandlingHealthcareV1beta1.fromValue(map['unexpectedSegmentHandling'] as String)).input(),
+      ignoreMinOccurs: map['ignoreMinOccurs'] == null ? null : (map['ignoreMinOccurs']! as bool).input(),
+      schemas: map['schemas'] == null ? null : (pulumi.Input.decodeList<Hl7SchemaConfigHealthcareV1beta1>(map['schemas']!, (value) => Hl7SchemaConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schematizedParsingType: map['schematizedParsingType'] == null ? null : (SchemaPackageSchematizedParsingTypeHealthcareV1beta1.fromValue(map['schematizedParsingType']! as String)).input(),
+      types: map['types'] == null ? null : (pulumi.Input.decodeList<Hl7TypesConfigHealthcareV1beta1>(map['types']!, (value) => Hl7TypesConfigHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unexpectedSegmentHandling: map['unexpectedSegmentHandling'] == null ? null : (SchemaPackageUnexpectedSegmentHandlingHealthcareV1beta1.fromValue(map['unexpectedSegmentHandling']! as String)).input(),
     );
   }
 }

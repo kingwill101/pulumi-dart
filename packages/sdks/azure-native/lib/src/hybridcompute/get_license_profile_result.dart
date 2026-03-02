@@ -135,7 +135,7 @@ class GetLicenseProfileResult {
 
   factory GetLicenseProfileResult.fromMap(Map<String, dynamic> map) {
     return GetLicenseProfileResult(
-      assignedLicense: map['assignedLicense'] == null ? null : map['assignedLicense'] as String,
+      assignedLicense: map['assignedLicense'] == null ? null : map['assignedLicense']! as String,
       assignedLicenseImmutableId: map['assignedLicenseImmutableId'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       billingEndDate: map['billingEndDate'] as String,
@@ -149,14 +149,14 @@ class GetLicenseProfileResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      productFeatures: map['productFeatures'] == null ? null : pulumi.Input.decodeList<ProductFeatureResponse>(map['productFeatures'], (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>())),
-      productType: map['productType'] == null ? null : map['productType'] as String,
+      productFeatures: map['productFeatures'] == null ? null : pulumi.Input.decodeList<ProductFeatureResponse>(map['productFeatures']!, (value) => ProductFeatureResponse.fromMap((value as Map).cast<String, dynamic>())),
+      productType: map['productType'] == null ? null : map['productType']! as String,
       provisioningState: map['provisioningState'] as String,
       serverType: map['serverType'] as String,
-      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : map['softwareAssuranceCustomer'] as bool,
-      subscriptionStatus: map['subscriptionStatus'] == null ? null : map['subscriptionStatus'] as String,
+      softwareAssuranceCustomer: map['softwareAssuranceCustomer'] == null ? null : map['softwareAssuranceCustomer']! as bool,
+      subscriptionStatus: map['subscriptionStatus'] == null ? null : map['subscriptionStatus']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -56,14 +56,14 @@ class PublicationState {
 
   factory PublicationState.fromMap(Map<String, dynamic> map) {
     return PublicationState(
-      allTables: map['allTables'] == null ? null : (map['allTables'] as bool).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      publishParams: map['publishParams'] == null ? null : ((map['publishParams'] as List).cast<String>()).input(),
-      publishViaPartitionRootParam: map['publishViaPartitionRootParam'] == null ? null : (map['publishViaPartitionRootParam'] as bool).input(),
-      tables: map['tables'] == null ? null : ((map['tables'] as List).cast<String>()).input(),
+      allTables: map['allTables'] == null ? null : (map['allTables']! as bool).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      publishParams: map['publishParams'] == null ? null : ((map['publishParams']! as List).cast<String>()).input(),
+      publishViaPartitionRootParam: map['publishViaPartitionRootParam'] == null ? null : (map['publishViaPartitionRootParam']! as bool).input(),
+      tables: map['tables'] == null ? null : ((map['tables']! as List).cast<String>()).input(),
     );
   }
 }

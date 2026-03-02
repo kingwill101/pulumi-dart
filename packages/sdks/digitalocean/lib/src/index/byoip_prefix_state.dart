@@ -53,13 +53,13 @@ class ByoipPrefixState {
 
   factory ByoipPrefixState.fromMap(Map<String, dynamic> map) {
     return ByoipPrefixState(
-      advertised: map['advertised'] == null ? null : (map['advertised'] as bool).input(),
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      signature: map['signature'] == null ? null : (map['signature'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      advertised: map['advertised'] == null ? null : (map['advertised']! as bool).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      signature: map['signature'] == null ? null : (map['signature']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

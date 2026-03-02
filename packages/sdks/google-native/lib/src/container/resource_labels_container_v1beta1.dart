@@ -21,7 +21,7 @@ class ResourceLabelsContainerV1beta1 {
 
   factory ResourceLabelsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceLabelsContainerV1beta1(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

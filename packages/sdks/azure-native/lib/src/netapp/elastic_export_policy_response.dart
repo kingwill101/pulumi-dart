@@ -22,7 +22,7 @@ class ElasticExportPolicyResponse {
 
   factory ElasticExportPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ElasticExportPolicyResponse(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ElasticExportPolicyRuleResponse>(map['rules'], (value) => ElasticExportPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ElasticExportPolicyRuleResponse>(map['rules']!, (value) => ElasticExportPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

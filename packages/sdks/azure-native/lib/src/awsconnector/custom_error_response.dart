@@ -36,10 +36,10 @@ class CustomErrorResponse {
 
   factory CustomErrorResponse.fromMap(Map<String, dynamic> map) {
     return CustomErrorResponse(
-      errorCachingMinTTL: map['errorCachingMinTTL'] == null ? null : (map['errorCachingMinTTL'] as int).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as int).input(),
-      responseCode: map['responseCode'] == null ? null : (map['responseCode'] as int).input(),
-      responsePagePath: map['responsePagePath'] == null ? null : (map['responsePagePath'] as String).input(),
+      errorCachingMinTTL: map['errorCachingMinTTL'] == null ? null : (map['errorCachingMinTTL']! as int).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as int).input(),
+      responseCode: map['responseCode'] == null ? null : (map['responseCode']! as int).input(),
+      responsePagePath: map['responsePagePath'] == null ? null : (map['responsePagePath']! as String).input(),
     );
   }
 }

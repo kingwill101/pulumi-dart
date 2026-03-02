@@ -27,7 +27,7 @@ class SasDatastoreSecrets {
 
   factory SasDatastoreSecrets.fromMap(Map<String, dynamic> map) {
     return SasDatastoreSecrets(
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
       secretsType: (map['secretsType'] as String).input(),
     );
   }

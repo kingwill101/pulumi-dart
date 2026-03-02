@@ -45,9 +45,9 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings {
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
-      loggingSettings: map['loggingSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>())).input(),
-      speechSettings: map['speechSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
+      loggingSettings: map['loggingSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings']! as Map).cast<String, dynamic>())).input(),
+      speechSettings: map['speechSettings'] == null ? null : (CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class IpamIpamPoolCidrState {
 
   factory IpamIpamPoolCidrState.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolCidrState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

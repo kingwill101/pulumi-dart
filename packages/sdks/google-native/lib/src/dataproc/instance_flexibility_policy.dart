@@ -22,7 +22,7 @@ class InstanceFlexibilityPolicy {
 
   factory InstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
     return InstanceFlexibilityPolicy(
-      instanceSelectionList: map['instanceSelectionList'] == null ? null : (pulumi.Input.decodeList<InstanceSelection>(map['instanceSelectionList'], (value) => InstanceSelection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceSelectionList: map['instanceSelectionList'] == null ? null : (pulumi.Input.decodeList<InstanceSelection>(map['instanceSelectionList']!, (value) => InstanceSelection.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

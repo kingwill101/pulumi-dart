@@ -86,19 +86,19 @@ class DiagnosticArgs {
 
   factory DiagnosticArgs.fromMap(Map<String, dynamic> map) {
     return DiagnosticArgs(
-      alwaysLog: map['alwaysLog'] == null ? null : (map['alwaysLog'] as String).input(),
-      backend: map['backend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      diagnosticId: map['diagnosticId'] == null ? null : (map['diagnosticId'] as String).input(),
-      frontend: map['frontend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['frontend'] as Map).cast<String, dynamic>())).input(),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol'] as String).input(),
-      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp'] as bool).input(),
+      alwaysLog: map['alwaysLog'] == null ? null : (map['alwaysLog']! as String).input(),
+      backend: map['backend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      diagnosticId: map['diagnosticId'] == null ? null : (map['diagnosticId']! as String).input(),
+      frontend: map['frontend'] == null ? null : (PipelineDiagnosticSettings.fromMap((map['frontend']! as Map).cast<String, dynamic>())).input(),
+      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : (map['httpCorrelationProtocol']! as String).input(),
+      logClientIp: map['logClientIp'] == null ? null : (map['logClientIp']! as bool).input(),
       loggerId: (map['loggerId'] as String).input(),
-      metrics: map['metrics'] == null ? null : (map['metrics'] as bool).input(),
-      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat'] as String).input(),
+      metrics: map['metrics'] == null ? null : (map['metrics']! as bool).input(),
+      operationNameFormat: map['operationNameFormat'] == null ? null : (map['operationNameFormat']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sampling: map['sampling'] == null ? null : (SamplingSettings.fromMap((map['sampling'] as Map).cast<String, dynamic>())).input(),
+      sampling: map['sampling'] == null ? null : (SamplingSettings.fromMap((map['sampling']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
-      verbosity: map['verbosity'] == null ? null : (map['verbosity'] as String).input(),
+      verbosity: map['verbosity'] == null ? null : (map['verbosity']! as String).input(),
     );
   }
 }

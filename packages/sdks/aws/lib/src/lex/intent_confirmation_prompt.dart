@@ -30,8 +30,8 @@ class IntentConfirmationPrompt {
   factory IntentConfirmationPrompt.fromMap(Map<String, dynamic> map) {
     return IntentConfirmationPrompt(
       maxAttempts: (map['maxAttempts'] as int).input(),
-      messages: (pulumi.Input.decodeList<IntentConfirmationPromptMessage>(map['messages'], (value) => IntentConfirmationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCard: map['responseCard'] == null ? null : (map['responseCard'] as String).input(),
+      messages: (pulumi.Input.decodeList<IntentConfirmationPromptMessage>(map['messages']!, (value) => IntentConfirmationPromptMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responseCard: map['responseCard'] == null ? null : ((map['responseCard'] as String).input()).input(),
     );
   }
 }

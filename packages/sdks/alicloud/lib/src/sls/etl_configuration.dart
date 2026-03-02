@@ -59,7 +59,7 @@ class EtlConfiguration {
       fromTime: (map['fromTime'] as int).input(),
       lang: (map['lang'] as String).input(),
       logstore: (map['logstore'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       roleArn: (map['roleArn'] as String).input(),
       script: (map['script'] as String).input(),
       sinks: (pulumi.Input.decodeList<EtlConfigurationSink>(map['sinks'], (value) => EtlConfigurationSink.fromMap((value as Map).cast<String, dynamic>()))).input(),

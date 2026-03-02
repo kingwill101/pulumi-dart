@@ -29,9 +29,9 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings {
 
   factory NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubStrataCloudManagerDnsSettings(
-      azureDnsServers: map['azureDnsServers'] == null ? null : ((map['azureDnsServers'] as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      useAzureDns: map['useAzureDns'] == null ? null : (map['useAzureDns'] as bool).input(),
+      azureDnsServers: map['azureDnsServers'] == null ? null : ((map['azureDnsServers']! as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      useAzureDns: map['useAzureDns'] == null ? null : (map['useAzureDns']! as bool).input(),
     );
   }
 }

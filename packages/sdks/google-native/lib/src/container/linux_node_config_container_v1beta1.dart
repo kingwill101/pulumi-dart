@@ -27,8 +27,8 @@ class LinuxNodeConfigContainerV1beta1 {
 
   factory LinuxNodeConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return LinuxNodeConfigContainerV1beta1(
-      cgroupMode: map['cgroupMode'] == null ? null : (LinuxNodeConfigCgroupModeContainerV1beta1.fromValue(map['cgroupMode'] as String)).input(),
-      sysctls: map['sysctls'] == null ? null : ((map['sysctls'] as Map).cast<String, String>()).input(),
+      cgroupMode: map['cgroupMode'] == null ? null : (LinuxNodeConfigCgroupModeContainerV1beta1.fromValue(map['cgroupMode']! as String)).input(),
+      sysctls: map['sysctls'] == null ? null : ((map['sysctls']! as Map).cast<String, String>()).input(),
     );
   }
 }

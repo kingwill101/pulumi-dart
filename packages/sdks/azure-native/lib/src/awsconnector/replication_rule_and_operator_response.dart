@@ -27,8 +27,8 @@ class ReplicationRuleAndOperatorResponse {
 
   factory ReplicationRuleAndOperatorResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationRuleAndOperatorResponse(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters'], (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      tagFilters: map['tagFilters'] == null ? null : (pulumi.Input.decodeList<TagFilterResponse>(map['tagFilters']!, (value) => TagFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

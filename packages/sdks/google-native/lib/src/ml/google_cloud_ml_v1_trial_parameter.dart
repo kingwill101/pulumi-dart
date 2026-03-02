@@ -36,10 +36,10 @@ class GoogleCloudMlV1TrialParameter {
 
   factory GoogleCloudMlV1TrialParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1TrialParameter(
-      floatValue: map['floatValue'] == null ? null : (map['floatValue'] as double).input(),
-      intValue: map['intValue'] == null ? null : (map['intValue'] as String).input(),
-      parameter: map['parameter'] == null ? null : (map['parameter'] as String).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      floatValue: map['floatValue'] == null ? null : (map['floatValue']! as double).input(),
+      intValue: map['intValue'] == null ? null : (map['intValue']! as String).input(),
+      parameter: map['parameter'] == null ? null : (map['parameter']! as String).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

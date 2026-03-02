@@ -48,12 +48,12 @@ class BackupPolicyMysqlFlexibleServerState {
 
   factory BackupPolicyMysqlFlexibleServerState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMysqlFlexibleServerState(
-      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals'] as List).cast<String>()).input(),
-      defaultRetentionRule: map['defaultRetentionRule'] == null ? null : (BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap((map['defaultRetentionRule'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyMysqlFlexibleServerRetentionRule>(map['retentionRules'], (value) => BackupPolicyMysqlFlexibleServerRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupRepeatingTimeIntervals: map['backupRepeatingTimeIntervals'] == null ? null : ((map['backupRepeatingTimeIntervals']! as List).cast<String>()).input(),
+      defaultRetentionRule: map['defaultRetentionRule'] == null ? null : (BackupPolicyMysqlFlexibleServerDefaultRetentionRule.fromMap((map['defaultRetentionRule']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retentionRules: map['retentionRules'] == null ? null : (pulumi.Input.decodeList<BackupPolicyMysqlFlexibleServerRetentionRule>(map['retentionRules']!, (value) => BackupPolicyMysqlFlexibleServerRetentionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

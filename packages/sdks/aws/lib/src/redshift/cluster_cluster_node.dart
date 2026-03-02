@@ -30,9 +30,9 @@ class ClusterClusterNode {
 
   factory ClusterClusterNode.fromMap(Map<String, dynamic> map) {
     return ClusterClusterNode(
-      nodeRole: map['nodeRole'] == null ? null : (map['nodeRole'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress'] as String).input(),
+      nodeRole: map['nodeRole'] == null ? null : ((map['nodeRole'] as String).input()).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : ((map['privateIpAddress'] as String).input()).input(),
+      publicIpAddress: map['publicIpAddress'] == null ? null : ((map['publicIpAddress'] as String).input()).input(),
     );
   }
 }

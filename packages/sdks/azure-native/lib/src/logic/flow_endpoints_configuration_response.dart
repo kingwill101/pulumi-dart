@@ -27,8 +27,8 @@ class FlowEndpointsConfigurationResponse {
 
   factory FlowEndpointsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return FlowEndpointsConfigurationResponse(
-      connector: map['connector'] == null ? null : (FlowEndpointsResponse.fromMap((map['connector'] as Map).cast<String, dynamic>())).input(),
-      workflow: map['workflow'] == null ? null : (FlowEndpointsResponse.fromMap((map['workflow'] as Map).cast<String, dynamic>())).input(),
+      connector: map['connector'] == null ? null : (FlowEndpointsResponse.fromMap((map['connector']! as Map).cast<String, dynamic>())).input(),
+      workflow: map['workflow'] == null ? null : (FlowEndpointsResponse.fromMap((map['workflow']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable 
 
   factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
-      postgresqlColumns: map['postgresqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(map['postgresqlColumns'], (value) => StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      postgresqlColumns: map['postgresqlColumns'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(map['postgresqlColumns']!, (value) => StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       table: (map['table'] as String).input(),
     );
   }

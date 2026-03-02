@@ -63,9 +63,9 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig {
     return AutoscalingPolicyBasicAlgorithmYarnConfig(
       gracefulDecommissionTimeout: (map['gracefulDecommissionTimeout'] as String).input(),
       scaleDownFactor: (map['scaleDownFactor'] as double).input(),
-      scaleDownMinWorkerFraction: map['scaleDownMinWorkerFraction'] == null ? null : (map['scaleDownMinWorkerFraction'] as double).input(),
+      scaleDownMinWorkerFraction: map['scaleDownMinWorkerFraction'] == null ? null : (map['scaleDownMinWorkerFraction']! as double).input(),
       scaleUpFactor: (map['scaleUpFactor'] as double).input(),
-      scaleUpMinWorkerFraction: map['scaleUpMinWorkerFraction'] == null ? null : (map['scaleUpMinWorkerFraction'] as double).input(),
+      scaleUpMinWorkerFraction: map['scaleUpMinWorkerFraction'] == null ? null : (map['scaleUpMinWorkerFraction']! as double).input(),
     );
   }
 }

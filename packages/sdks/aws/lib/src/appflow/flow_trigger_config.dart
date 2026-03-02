@@ -26,7 +26,7 @@ class FlowTriggerConfig {
 
   factory FlowTriggerConfig.fromMap(Map<String, dynamic> map) {
     return FlowTriggerConfig(
-      triggerProperties: map['triggerProperties'] == null ? null : (FlowTriggerConfigTriggerProperties.fromMap((map['triggerProperties'] as Map).cast<String, dynamic>())).input(),
+      triggerProperties: map['triggerProperties'] == null ? null : ((FlowTriggerConfigTriggerProperties.fromMap((map['triggerProperties']! as Map).cast<String, dynamic>())).input()).input(),
       triggerType: (map['triggerType'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class AssetSelectionConfigState {
 
   factory AssetSelectionConfigState.fromMap(Map<String, dynamic> map) {
     return AssetSelectionConfigState(
-      businessType: map['businessType'] == null ? null : (map['businessType'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      businessType: map['businessType'] == null ? null : (map['businessType']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

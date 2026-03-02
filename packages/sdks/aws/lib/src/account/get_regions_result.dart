@@ -38,7 +38,7 @@ class GetRegionsResult {
       accountId: map['accountId'] as String,
       id: map['id'] as String,
       regionOptStatusContains: (map['regionOptStatusContains'] as List).cast<String>(),
-      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions'], (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
+      regions: pulumi.Input.decodeList<GetRegionsRegion>(map['regions']!, (value) => GetRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

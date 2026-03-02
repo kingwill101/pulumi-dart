@@ -38,10 +38,10 @@ class Stage {
 
   factory Stage.fromMap(Map<String, dynamic> map) {
     return Stage(
-      deployParameters: map['deployParameters'] == null ? null : (pulumi.Input.decodeList<DeployParameters>(map['deployParameters'], (value) => DeployParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      profiles: map['profiles'] == null ? null : ((map['profiles'] as List).cast<String>()).input(),
-      strategy: map['strategy'] == null ? null : (Strategy.fromMap((map['strategy'] as Map).cast<String, dynamic>())).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      deployParameters: map['deployParameters'] == null ? null : (pulumi.Input.decodeList<DeployParameters>(map['deployParameters']!, (value) => DeployParameters.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      profiles: map['profiles'] == null ? null : ((map['profiles']! as List).cast<String>()).input(),
+      strategy: map['strategy'] == null ? null : (Strategy.fromMap((map['strategy']! as Map).cast<String, dynamic>())).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

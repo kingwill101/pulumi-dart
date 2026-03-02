@@ -58,13 +58,13 @@ class GetUsersArgs {
 
   factory GetUsersArgs.fromMap(Map<String, dynamic> map) {
     return GetUsersArgs(
-      employeeIds: map['employeeIds'] == null ? null : ((map['employeeIds'] as List).cast<String>()).input(),
-      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing'] as bool).input(),
-      mailNicknames: map['mailNicknames'] == null ? null : ((map['mailNicknames'] as List).cast<String>()).input(),
-      mails: map['mails'] == null ? null : ((map['mails'] as List).cast<String>()).input(),
-      objectIds: map['objectIds'] == null ? null : ((map['objectIds'] as List).cast<String>()).input(),
-      returnAll: map['returnAll'] == null ? null : (map['returnAll'] as bool).input(),
-      userPrincipalNames: map['userPrincipalNames'] == null ? null : ((map['userPrincipalNames'] as List).cast<String>()).input(),
+      employeeIds: map['employeeIds'] == null ? null : ((map['employeeIds']! as List).cast<String>()).input(),
+      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing']! as bool).input(),
+      mailNicknames: map['mailNicknames'] == null ? null : ((map['mailNicknames']! as List).cast<String>()).input(),
+      mails: map['mails'] == null ? null : ((map['mails']! as List).cast<String>()).input(),
+      objectIds: map['objectIds'] == null ? null : ((map['objectIds']! as List).cast<String>()).input(),
+      returnAll: map['returnAll'] == null ? null : (map['returnAll']! as bool).input(),
+      userPrincipalNames: map['userPrincipalNames'] == null ? null : ((map['userPrincipalNames']! as List).cast<String>()).input(),
     );
   }
 }

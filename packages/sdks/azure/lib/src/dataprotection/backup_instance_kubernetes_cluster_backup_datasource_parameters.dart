@@ -50,13 +50,13 @@ class BackupInstanceKubernetesClusterBackupDatasourceParameters {
 
   factory BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap(Map<String, dynamic> map) {
     return BackupInstanceKubernetesClusterBackupDatasourceParameters(
-      clusterScopedResourcesEnabled: map['clusterScopedResourcesEnabled'] == null ? null : (map['clusterScopedResourcesEnabled'] as bool).input(),
-      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces'] as List).cast<String>()).input(),
-      excludedResourceTypes: map['excludedResourceTypes'] == null ? null : ((map['excludedResourceTypes'] as List).cast<String>()).input(),
-      includedNamespaces: map['includedNamespaces'] == null ? null : ((map['includedNamespaces'] as List).cast<String>()).input(),
-      includedResourceTypes: map['includedResourceTypes'] == null ? null : ((map['includedResourceTypes'] as List).cast<String>()).input(),
-      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors'] as List).cast<String>()).input(),
-      volumeSnapshotEnabled: map['volumeSnapshotEnabled'] == null ? null : (map['volumeSnapshotEnabled'] as bool).input(),
+      clusterScopedResourcesEnabled: map['clusterScopedResourcesEnabled'] == null ? null : (map['clusterScopedResourcesEnabled']! as bool).input(),
+      excludedNamespaces: map['excludedNamespaces'] == null ? null : ((map['excludedNamespaces']! as List).cast<String>()).input(),
+      excludedResourceTypes: map['excludedResourceTypes'] == null ? null : ((map['excludedResourceTypes']! as List).cast<String>()).input(),
+      includedNamespaces: map['includedNamespaces'] == null ? null : ((map['includedNamespaces']! as List).cast<String>()).input(),
+      includedResourceTypes: map['includedResourceTypes'] == null ? null : ((map['includedResourceTypes']! as List).cast<String>()).input(),
+      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors']! as List).cast<String>()).input(),
+      volumeSnapshotEnabled: map['volumeSnapshotEnabled'] == null ? null : (map['volumeSnapshotEnabled']! as bool).input(),
     );
   }
 }

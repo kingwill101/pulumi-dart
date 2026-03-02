@@ -27,7 +27,7 @@ class StandbyContainerGroupPoolElasticityProfileResponse {
   factory StandbyContainerGroupPoolElasticityProfileResponse.fromMap(Map<String, dynamic> map) {
     return StandbyContainerGroupPoolElasticityProfileResponse(
       maxReadyCapacity: (map['maxReadyCapacity'] as double).input(),
-      refillPolicy: map['refillPolicy'] == null ? null : (map['refillPolicy'] as String).input(),
+      refillPolicy: map['refillPolicy'] == null ? null : (map['refillPolicy']! as String).input(),
     );
   }
 }

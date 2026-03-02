@@ -25,8 +25,8 @@ class MilvusInstanceVswitchId {
 
   factory MilvusInstanceVswitchId.fromMap(Map<String, dynamic> map) {
     return MilvusInstanceVswitchId(
-      vswId: map['vswId'] == null ? null : (map['vswId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      vswId: map['vswId'] == null ? null : (map['vswId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class GetAdvancedThreatProtectionResult {
     return GetAdvancedThreatProtectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isEnabled: map['isEnabled'] == null ? null : map['isEnabled'] as bool,
+      isEnabled: map['isEnabled'] == null ? null : map['isEnabled']! as bool,
       name: map['name'] as String,
       type: map['type'] as String,
     );

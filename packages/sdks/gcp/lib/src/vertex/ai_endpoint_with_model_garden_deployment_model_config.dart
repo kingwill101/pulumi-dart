@@ -49,11 +49,11 @@ class AiEndpointWithModelGardenDeploymentModelConfig {
 
   factory AiEndpointWithModelGardenDeploymentModelConfig.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfig(
-      acceptEula: map['acceptEula'] == null ? null : (map['acceptEula'] as bool).input(),
-      containerSpec: map['containerSpec'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
-      huggingFaceAccessToken: map['huggingFaceAccessToken'] == null ? null : (map['huggingFaceAccessToken'] as String).input(),
-      huggingFaceCacheEnabled: map['huggingFaceCacheEnabled'] == null ? null : (map['huggingFaceCacheEnabled'] as bool).input(),
-      modelDisplayName: map['modelDisplayName'] == null ? null : (map['modelDisplayName'] as String).input(),
+      acceptEula: map['acceptEula'] == null ? null : (map['acceptEula']! as bool).input(),
+      containerSpec: map['containerSpec'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpec.fromMap((map['containerSpec']! as Map).cast<String, dynamic>())).input(),
+      huggingFaceAccessToken: map['huggingFaceAccessToken'] == null ? null : (map['huggingFaceAccessToken']! as String).input(),
+      huggingFaceCacheEnabled: map['huggingFaceCacheEnabled'] == null ? null : (map['huggingFaceCacheEnabled']! as bool).input(),
+      modelDisplayName: map['modelDisplayName'] == null ? null : (map['modelDisplayName']! as String).input(),
     );
   }
 }

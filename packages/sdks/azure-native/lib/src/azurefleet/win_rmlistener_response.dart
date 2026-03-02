@@ -39,8 +39,8 @@ class WinRMListenerResponse {
 
   factory WinRMListenerResponse.fromMap(Map<String, dynamic> map) {
     return WinRMListenerResponse(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

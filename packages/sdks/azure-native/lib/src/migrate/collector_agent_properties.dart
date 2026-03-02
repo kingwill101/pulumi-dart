@@ -20,7 +20,7 @@ class CollectorAgentProperties {
 
   factory CollectorAgentProperties.fromMap(Map<String, dynamic> map) {
     return CollectorAgentProperties(
-      spnDetails: map['spnDetails'] == null ? null : (CollectorBodyAgentSpnProperties.fromMap((map['spnDetails'] as Map).cast<String, dynamic>())).input(),
+      spnDetails: map['spnDetails'] == null ? null : (CollectorBodyAgentSpnProperties.fromMap((map['spnDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

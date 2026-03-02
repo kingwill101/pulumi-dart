@@ -75,14 +75,14 @@ class GetRouteFilterResult {
     return GetRouteFilterResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       ipv6Peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['ipv6Peerings'], (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
       peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['peerings'], (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RouteFilterRuleResponse>(map['rules'], (value) => RouteFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RouteFilterRuleResponse>(map['rules']!, (value) => RouteFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -47,8 +47,8 @@ class GetKeyResult {
     return GetKeyResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isActiveCMK: map['isActiveCMK'] == null ? null : map['isActiveCMK'] as bool,
-      keyVaultUrl: map['keyVaultUrl'] == null ? null : map['keyVaultUrl'] as String,
+      isActiveCMK: map['isActiveCMK'] == null ? null : map['isActiveCMK']! as bool,
+      keyVaultUrl: map['keyVaultUrl'] == null ? null : map['keyVaultUrl']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

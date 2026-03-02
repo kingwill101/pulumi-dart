@@ -26,7 +26,7 @@ class BudgetAutoAdjustDataHistoricalOptions {
   factory BudgetAutoAdjustDataHistoricalOptions.fromMap(Map<String, dynamic> map) {
     return BudgetAutoAdjustDataHistoricalOptions(
       budgetAdjustmentPeriod: (map['budgetAdjustmentPeriod'] as int).input(),
-      lookbackAvailablePeriods: map['lookbackAvailablePeriods'] == null ? null : (map['lookbackAvailablePeriods'] as int).input(),
+      lookbackAvailablePeriods: map['lookbackAvailablePeriods'] == null ? null : ((map['lookbackAvailablePeriods'] as int).input()).input(),
     );
   }
 }

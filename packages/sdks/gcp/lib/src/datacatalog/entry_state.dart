@@ -112,20 +112,20 @@ class EntryState {
 
   factory EntryState.fromMap(Map<String, dynamic> map) {
     return EntryState(
-      bigqueryDateShardedSpecs: map['bigqueryDateShardedSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(map['bigqueryDateShardedSpecs'], (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bigqueryTableSpecs: map['bigqueryTableSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryTableSpec>(map['bigqueryTableSpecs'], (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entryGroup: map['entryGroup'] == null ? null : (map['entryGroup'] as String).input(),
-      entryId: map['entryId'] == null ? null : (map['entryId'] as String).input(),
-      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (EntryGcsFilesetSpec.fromMap((map['gcsFilesetSpec'] as Map).cast<String, dynamic>())).input(),
-      integratedSystem: map['integratedSystem'] == null ? null : (map['integratedSystem'] as String).input(),
-      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem'] as String).input(),
-      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType'] as String).input(),
+      bigqueryDateShardedSpecs: map['bigqueryDateShardedSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(map['bigqueryDateShardedSpecs']!, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bigqueryTableSpecs: map['bigqueryTableSpecs'] == null ? null : (pulumi.Input.decodeList<EntryBigqueryTableSpec>(map['bigqueryTableSpecs']!, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entryGroup: map['entryGroup'] == null ? null : (map['entryGroup']! as String).input(),
+      entryId: map['entryId'] == null ? null : (map['entryId']! as String).input(),
+      gcsFilesetSpec: map['gcsFilesetSpec'] == null ? null : (EntryGcsFilesetSpec.fromMap((map['gcsFilesetSpec']! as Map).cast<String, dynamic>())).input(),
+      integratedSystem: map['integratedSystem'] == null ? null : (map['integratedSystem']! as String).input(),
+      linkedResource: map['linkedResource'] == null ? null : (map['linkedResource']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userSpecifiedSystem: map['userSpecifiedSystem'] == null ? null : (map['userSpecifiedSystem']! as String).input(),
+      userSpecifiedType: map['userSpecifiedType'] == null ? null : (map['userSpecifiedType']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ImageTemplateAutoRunResponse {
 
   factory ImageTemplateAutoRunResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateAutoRunResponse(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

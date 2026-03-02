@@ -31,9 +31,9 @@ class ParameterGroupStatus {
 
   factory ParameterGroupStatus.fromMap(Map<String, dynamic> map) {
     return ParameterGroupStatus(
-      nodeIdsToReboot: map['nodeIdsToReboot'] == null ? null : ((map['nodeIdsToReboot'] as List).cast<String>()).input(),
-      parameterApplyStatus: map['parameterApplyStatus'] == null ? null : (map['parameterApplyStatus'] as String).input(),
-      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName'] as String).input(),
+      nodeIdsToReboot: map['nodeIdsToReboot'] == null ? null : ((map['nodeIdsToReboot']! as List).cast<String>()).input(),
+      parameterApplyStatus: map['parameterApplyStatus'] == null ? null : (map['parameterApplyStatus']! as String).input(),
+      parameterGroupName: map['parameterGroupName'] == null ? null : (map['parameterGroupName']! as String).input(),
     );
   }
 }

@@ -55,12 +55,12 @@ class RouteMapArgs {
 
   factory RouteMapArgs.fromMap(Map<String, dynamic> map) {
     return RouteMapArgs(
-      associatedInboundConnections: map['associatedInboundConnections'] == null ? null : ((map['associatedInboundConnections'] as List).cast<String>()).input(),
-      associatedOutboundConnections: map['associatedOutboundConnections'] == null ? null : ((map['associatedOutboundConnections'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      associatedInboundConnections: map['associatedInboundConnections'] == null ? null : ((map['associatedInboundConnections']! as List).cast<String>()).input(),
+      associatedOutboundConnections: map['associatedOutboundConnections'] == null ? null : ((map['associatedOutboundConnections']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeMapName: map['routeMapName'] == null ? null : (map['routeMapName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules'], (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routeMapName: map['routeMapName'] == null ? null : (map['routeMapName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RouteMapRule>(map['rules']!, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }

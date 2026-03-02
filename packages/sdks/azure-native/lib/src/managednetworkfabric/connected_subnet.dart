@@ -26,7 +26,7 @@ class ConnectedSubnet {
 
   factory ConnectedSubnet.fromMap(Map<String, dynamic> map) {
     return ConnectedSubnet(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       prefix: (map['prefix'] as String).input(),
     );
   }

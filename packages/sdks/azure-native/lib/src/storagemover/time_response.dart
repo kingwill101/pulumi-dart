@@ -27,7 +27,7 @@ class TimeResponse {
   factory TimeResponse.fromMap(Map<String, dynamic> map) {
     return TimeResponse(
       hour: (map['hour'] as int).input(),
-      minute: map['minute'] == null ? null : (map['minute'] as double).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as double).input(),
     );
   }
 }

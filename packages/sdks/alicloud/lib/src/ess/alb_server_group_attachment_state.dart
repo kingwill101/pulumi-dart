@@ -42,11 +42,11 @@ class AlbServerGroupAttachmentState {
 
   factory AlbServerGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return AlbServerGroupAttachmentState(
-      albServerGroupId: map['albServerGroupId'] == null ? null : (map['albServerGroupId'] as String).input(),
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      albServerGroupId: map['albServerGroupId'] == null ? null : (map['albServerGroupId']! as String).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

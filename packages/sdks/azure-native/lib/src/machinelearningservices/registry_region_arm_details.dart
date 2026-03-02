@@ -33,9 +33,9 @@ class RegistryRegionArmDetails {
 
   factory RegistryRegionArmDetails.fromMap(Map<String, dynamic> map) {
     return RegistryRegionArmDetails(
-      acrDetails: map['acrDetails'] == null ? null : (pulumi.Input.decodeList<AcrDetails>(map['acrDetails'], (value) => AcrDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      storageAccountDetails: map['storageAccountDetails'] == null ? null : (pulumi.Input.decodeList<StorageAccountDetails>(map['storageAccountDetails'], (value) => StorageAccountDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      acrDetails: map['acrDetails'] == null ? null : (pulumi.Input.decodeList<AcrDetails>(map['acrDetails']!, (value) => AcrDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      storageAccountDetails: map['storageAccountDetails'] == null ? null : (pulumi.Input.decodeList<StorageAccountDetails>(map['storageAccountDetails']!, (value) => StorageAccountDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

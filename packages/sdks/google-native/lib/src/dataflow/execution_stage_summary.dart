@@ -60,14 +60,14 @@ class ExecutionStageSummary {
 
   factory ExecutionStageSummary.fromMap(Map<String, dynamic> map) {
     return ExecutionStageSummary(
-      componentSource: map['componentSource'] == null ? null : (pulumi.Input.decodeList<ComponentSource>(map['componentSource'], (value) => ComponentSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      componentTransform: map['componentTransform'] == null ? null : (pulumi.Input.decodeList<ComponentTransform>(map['componentTransform'], (value) => ComponentTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      inputSource: map['inputSource'] == null ? null : (pulumi.Input.decodeList<StageSource>(map['inputSource'], (value) => StageSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (ExecutionStageSummaryKind.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputSource: map['outputSource'] == null ? null : (pulumi.Input.decodeList<StageSource>(map['outputSource'], (value) => StageSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prerequisiteStage: map['prerequisiteStage'] == null ? null : ((map['prerequisiteStage'] as List).cast<String>()).input(),
+      componentSource: map['componentSource'] == null ? null : (pulumi.Input.decodeList<ComponentSource>(map['componentSource']!, (value) => ComponentSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      componentTransform: map['componentTransform'] == null ? null : (pulumi.Input.decodeList<ComponentTransform>(map['componentTransform']!, (value) => ComponentTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      inputSource: map['inputSource'] == null ? null : (pulumi.Input.decodeList<StageSource>(map['inputSource']!, (value) => StageSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (ExecutionStageSummaryKind.fromValue(map['kind']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputSource: map['outputSource'] == null ? null : (pulumi.Input.decodeList<StageSource>(map['outputSource']!, (value) => StageSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prerequisiteStage: map['prerequisiteStage'] == null ? null : ((map['prerequisiteStage']! as List).cast<String>()).input(),
     );
   }
 }

@@ -37,9 +37,9 @@ class ObjectStorageKeyArgs {
 
   factory ObjectStorageKeyArgs.fromMap(Map<String, dynamic> map) {
     return ObjectStorageKeyArgs(
-      bucketAccesses: map['bucketAccesses'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyBucketAccess>(map['bucketAccesses'], (value) => ObjectStorageKeyBucketAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucketAccesses: map['bucketAccesses'] == null ? null : (pulumi.Input.decodeList<ObjectStorageKeyBucketAccess>(map['bucketAccesses']!, (value) => ObjectStorageKeyBucketAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
       label: (map['label'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
     );
   }
 }

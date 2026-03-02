@@ -93,19 +93,19 @@ class UserSettingsArgs {
 
   factory UserSettingsArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
-      cookieSynchronizationConfiguration: map['cookieSynchronizationConfiguration'] == null ? null : (UserSettingsCookieSynchronizationConfiguration.fromMap((map['cookieSynchronizationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
+      cookieSynchronizationConfiguration: map['cookieSynchronizationConfiguration'] == null ? null : ((UserSettingsCookieSynchronizationConfiguration.fromMap((map['cookieSynchronizationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       copyAllowed: (map['copyAllowed'] as String).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
-      deepLinkAllowed: map['deepLinkAllowed'] == null ? null : (map['deepLinkAllowed'] as String).input(),
-      disconnectTimeoutInMinutes: map['disconnectTimeoutInMinutes'] == null ? null : (map['disconnectTimeoutInMinutes'] as int).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
+      deepLinkAllowed: map['deepLinkAllowed'] == null ? null : ((map['deepLinkAllowed'] as String).input()).input(),
+      disconnectTimeoutInMinutes: map['disconnectTimeoutInMinutes'] == null ? null : ((map['disconnectTimeoutInMinutes'] as int).input()).input(),
       downloadAllowed: (map['downloadAllowed'] as String).input(),
-      idleDisconnectTimeoutInMinutes: map['idleDisconnectTimeoutInMinutes'] == null ? null : (map['idleDisconnectTimeoutInMinutes'] as int).input(),
+      idleDisconnectTimeoutInMinutes: map['idleDisconnectTimeoutInMinutes'] == null ? null : ((map['idleDisconnectTimeoutInMinutes'] as int).input()).input(),
       pasteAllowed: (map['pasteAllowed'] as String).input(),
       printAllowed: (map['printAllowed'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      toolbarConfiguration: map['toolbarConfiguration'] == null ? null : (UserSettingsToolbarConfiguration.fromMap((map['toolbarConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      toolbarConfiguration: map['toolbarConfiguration'] == null ? null : ((UserSettingsToolbarConfiguration.fromMap((map['toolbarConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       uploadAllowed: (map['uploadAllowed'] as String).input(),
     );
   }

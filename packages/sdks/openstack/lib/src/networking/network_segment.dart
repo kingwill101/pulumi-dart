@@ -30,9 +30,9 @@ class NetworkSegment {
 
   factory NetworkSegment.fromMap(Map<String, dynamic> map) {
     return NetworkSegment(
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork'] as String).input(),
-      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId'] as int).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      physicalNetwork: map['physicalNetwork'] == null ? null : (map['physicalNetwork']! as String).input(),
+      segmentationId: map['segmentationId'] == null ? null : (map['segmentationId']! as int).input(),
     );
   }
 }

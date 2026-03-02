@@ -27,8 +27,8 @@ class AwsLogSourceState {
 
   factory AwsLogSourceState.fromMap(Map<String, dynamic> map) {
     return AwsLogSourceState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      source: map['source'] == null ? null : (AwsLogSourceSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      source: map['source'] == null ? null : ((AwsLogSourceSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -80,18 +80,18 @@ class LinkedServiceSqlManagedInstanceState {
 
   factory LinkedServiceSqlManagedInstanceState.fromMap(Map<String, dynamic> map) {
     return LinkedServiceSqlManagedInstanceState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName'] as String).input(),
-      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : (LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((map['keyVaultConnectionString'] as Map).cast<String, dynamic>())).input(),
-      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((map['keyVaultPassword'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      integrationRuntimeName: map['integrationRuntimeName'] == null ? null : (map['integrationRuntimeName']! as String).input(),
+      keyVaultConnectionString: map['keyVaultConnectionString'] == null ? null : (LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((map['keyVaultConnectionString']! as Map).cast<String, dynamic>())).input(),
+      keyVaultPassword: map['keyVaultPassword'] == null ? null : (LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((map['keyVaultPassword']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (map['servicePrincipalKey']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class ChatEngineChatEngineConfig {
 
   factory ChatEngineChatEngineConfig.fromMap(Map<String, dynamic> map) {
     return ChatEngineChatEngineConfig(
-      agentCreationConfig: map['agentCreationConfig'] == null ? null : (ChatEngineChatEngineConfigAgentCreationConfig.fromMap((map['agentCreationConfig'] as Map).cast<String, dynamic>())).input(),
-      allowCrossRegion: map['allowCrossRegion'] == null ? null : (map['allowCrossRegion'] as bool).input(),
-      dialogflowAgentToLink: map['dialogflowAgentToLink'] == null ? null : (map['dialogflowAgentToLink'] as String).input(),
+      agentCreationConfig: map['agentCreationConfig'] == null ? null : (ChatEngineChatEngineConfigAgentCreationConfig.fromMap((map['agentCreationConfig']! as Map).cast<String, dynamic>())).input(),
+      allowCrossRegion: map['allowCrossRegion'] == null ? null : (map['allowCrossRegion']! as bool).input(),
+      dialogflowAgentToLink: map['dialogflowAgentToLink'] == null ? null : (map['dialogflowAgentToLink']! as String).input(),
     );
   }
 }

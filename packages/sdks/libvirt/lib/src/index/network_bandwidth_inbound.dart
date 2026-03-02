@@ -35,10 +35,10 @@ class NetworkBandwidthInbound {
 
   factory NetworkBandwidthInbound.fromMap(Map<String, dynamic> map) {
     return NetworkBandwidthInbound(
-      average: map['average'] == null ? null : (map['average'] as double).input(),
-      burst: map['burst'] == null ? null : (map['burst'] as double).input(),
-      floor: map['floor'] == null ? null : (map['floor'] as double).input(),
-      peak: map['peak'] == null ? null : (map['peak'] as double).input(),
+      average: map['average'] == null ? null : (map['average']! as double).input(),
+      burst: map['burst'] == null ? null : (map['burst']! as double).input(),
+      floor: map['floor'] == null ? null : (map['floor']! as double).input(),
+      peak: map['peak'] == null ? null : (map['peak']! as double).input(),
     );
   }
 }

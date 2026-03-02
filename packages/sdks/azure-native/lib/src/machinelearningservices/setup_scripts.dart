@@ -22,7 +22,7 @@ class SetupScripts {
 
   factory SetupScripts.fromMap(Map<String, dynamic> map) {
     return SetupScripts(
-      scripts: map['scripts'] == null ? null : (ScriptsToExecute.fromMap((map['scripts'] as Map).cast<String, dynamic>())).input(),
+      scripts: map['scripts'] == null ? null : (ScriptsToExecute.fromMap((map['scripts']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

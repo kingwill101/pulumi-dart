@@ -20,7 +20,7 @@ class GetManagedRuleGroupRuleActionCount {
 
   factory GetManagedRuleGroupRuleActionCount.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupRuleActionCount(
-      customRequestHandlings: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCountCustomRequestHandling>(map['customRequestHandlings'], (value) => GetManagedRuleGroupRuleActionCountCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRequestHandlings: (pulumi.Input.decodeList<GetManagedRuleGroupRuleActionCountCustomRequestHandling>(map['customRequestHandlings']!, (value) => GetManagedRuleGroupRuleActionCountCustomRequestHandling.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

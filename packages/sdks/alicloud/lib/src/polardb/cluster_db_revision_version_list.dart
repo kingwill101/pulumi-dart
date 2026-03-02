@@ -35,10 +35,10 @@ class ClusterDbRevisionVersionList {
 
   factory ClusterDbRevisionVersionList.fromMap(Map<String, dynamic> map) {
     return ClusterDbRevisionVersionList(
-      releaseNote: map['releaseNote'] == null ? null : (map['releaseNote'] as String).input(),
-      releaseType: map['releaseType'] == null ? null : (map['releaseType'] as String).input(),
-      revisionVersionCode: map['revisionVersionCode'] == null ? null : (map['revisionVersionCode'] as String).input(),
-      revisionVersionName: map['revisionVersionName'] == null ? null : (map['revisionVersionName'] as String).input(),
+      releaseNote: map['releaseNote'] == null ? null : (map['releaseNote']! as String).input(),
+      releaseType: map['releaseType'] == null ? null : (map['releaseType']! as String).input(),
+      revisionVersionCode: map['revisionVersionCode'] == null ? null : (map['revisionVersionCode']! as String).input(),
+      revisionVersionName: map['revisionVersionName'] == null ? null : (map['revisionVersionName']! as String).input(),
     );
   }
 }

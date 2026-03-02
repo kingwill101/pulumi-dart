@@ -37,10 +37,10 @@ class RuntimeConfig {
 
   factory RuntimeConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeConfig(
-      containerImage: map['containerImage'] == null ? null : (map['containerImage'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      repositoryConfig: map['repositoryConfig'] == null ? null : (RepositoryConfig.fromMap((map['repositoryConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      containerImage: map['containerImage'] == null ? null : (map['containerImage']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      repositoryConfig: map['repositoryConfig'] == null ? null : (RepositoryConfig.fromMap((map['repositoryConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

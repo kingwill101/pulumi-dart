@@ -79,17 +79,17 @@ class PublicIpPrefixState {
 
   factory PublicIpPrefixState.fromMap(Map<String, dynamic> map) {
     return PublicIpPrefixState(
-      customIpPrefixId: map['customIpPrefixId'] == null ? null : (map['customIpPrefixId'] as String).input(),
-      ipPrefix: map['ipPrefix'] == null ? null : (map['ipPrefix'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      skuTier: map['skuTier'] == null ? null : (map['skuTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      customIpPrefixId: map['customIpPrefixId'] == null ? null : (map['customIpPrefixId']! as String).input(),
+      ipPrefix: map['ipPrefix'] == null ? null : (map['ipPrefix']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      skuTier: map['skuTier'] == null ? null : (map['skuTier']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

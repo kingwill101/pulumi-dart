@@ -32,8 +32,8 @@ class AssetResourceSpec {
 
   factory AssetResourceSpec.fromMap(Map<String, dynamic> map) {
     return AssetResourceSpec(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readAccessMode: map['readAccessMode'] == null ? null : (map['readAccessMode'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readAccessMode: map['readAccessMode'] == null ? null : (map['readAccessMode']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

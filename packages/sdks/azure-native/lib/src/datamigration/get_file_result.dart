@@ -53,7 +53,7 @@ class GetFileResult {
   factory GetFileResult.fromMap(Map<String, dynamic> map) {
     return GetFileResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       properties: ProjectFilePropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),

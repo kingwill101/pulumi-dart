@@ -31,9 +31,9 @@ class NfsAzureFilePropertiesResponse {
 
   factory NfsAzureFilePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NfsAzureFilePropertiesResponse(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
-      shareName: map['shareName'] == null ? null : (map['shareName'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
+      shareName: map['shareName'] == null ? null : (map['shareName']! as String).input(),
     );
   }
 }

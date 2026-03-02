@@ -31,9 +31,9 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
 
   factory IntegrationRuntimeDataFlowPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeDataFlowPropertiesResponse(
-      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType']! as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

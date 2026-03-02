@@ -20,7 +20,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess {
 
   factory CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
     return CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess(
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
     );
   }
 }

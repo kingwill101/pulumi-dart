@@ -68,7 +68,7 @@ class StreamInputIotHubArgs {
       endpoint: (map['endpoint'] as String).input(),
       eventhubConsumerGroupName: (map['eventhubConsumerGroupName'] as String).input(),
       iothubNamespace: (map['iothubNamespace'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialization: (StreamInputIotHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
       sharedAccessPolicyKey: (map['sharedAccessPolicyKey'] as String).input(),

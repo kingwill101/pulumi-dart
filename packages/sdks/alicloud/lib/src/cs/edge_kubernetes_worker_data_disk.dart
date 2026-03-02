@@ -60,15 +60,15 @@ class EdgeKubernetesWorkerDataDisk {
 
   factory EdgeKubernetesWorkerDataDisk.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesWorkerDataDisk(
-      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      autoSnapshotPolicyId: map['autoSnapshotPolicyId'] == null ? null : (map['autoSnapshotPolicyId']! as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
     );
   }
 }

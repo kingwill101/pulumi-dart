@@ -31,10 +31,10 @@ class ServiceQuotaUsageMetricMetricDimension {
 
   factory ServiceQuotaUsageMetricMetricDimension.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaUsageMetricMetricDimension(
-      class_: map['class'] == null ? null : (map['class'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      class_: map['class'] == null ? null : ((map['class'] as String).input()).input(),
+      resource: map['resource'] == null ? null : ((map['resource'] as String).input()).input(),
+      service: map['service'] == null ? null : ((map['service'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

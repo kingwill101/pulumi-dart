@@ -45,12 +45,12 @@ class ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfiguration
 
   factory ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues.fromMap(Map<String, dynamic> map) {
     return ServiceSourceConfigurationCodeRepositoryCodeConfigurationCodeConfigurationValues(
-      buildCommand: map['buildCommand'] == null ? null : (map['buildCommand'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      buildCommand: map['buildCommand'] == null ? null : ((map['buildCommand'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as String).input()).input(),
       runtime: (map['runtime'] as String).input(),
-      runtimeEnvironmentSecrets: map['runtimeEnvironmentSecrets'] == null ? null : ((map['runtimeEnvironmentSecrets'] as Map).cast<String, String>()).input(),
-      runtimeEnvironmentVariables: map['runtimeEnvironmentVariables'] == null ? null : ((map['runtimeEnvironmentVariables'] as Map).cast<String, String>()).input(),
-      startCommand: map['startCommand'] == null ? null : (map['startCommand'] as String).input(),
+      runtimeEnvironmentSecrets: map['runtimeEnvironmentSecrets'] == null ? null : (((map['runtimeEnvironmentSecrets'] as Map).cast<String, String>()).input()).input(),
+      runtimeEnvironmentVariables: map['runtimeEnvironmentVariables'] == null ? null : (((map['runtimeEnvironmentVariables'] as Map).cast<String, String>()).input()).input(),
+      startCommand: map['startCommand'] == null ? null : ((map['startCommand'] as String).input()).input(),
     );
   }
 }

@@ -91,18 +91,18 @@ class GetTopicResult {
   factory GetTopicResult.fromMap(Map<String, dynamic> map) {
     return GetTopicResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      configs: map['configs'] == null ? null : TopicsRelatedLinkResponse.fromMap((map['configs'] as Map).cast<String, dynamic>()),
+      configs: map['configs'] == null ? null : TopicsRelatedLinkResponse.fromMap((map['configs']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      inputConfigs: map['inputConfigs'] == null ? null : pulumi.Input.decodeList<TopicsInputConfigResponse>(map['inputConfigs'], (value) => TopicsInputConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : TopicMetadataEntityResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      inputConfigs: map['inputConfigs'] == null ? null : pulumi.Input.decodeList<TopicsInputConfigResponse>(map['inputConfigs']!, (value) => TopicsInputConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      metadata: map['metadata'] == null ? null : TopicMetadataEntityResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      partitions: map['partitions'] == null ? null : TopicsRelatedLinkResponse.fromMap((map['partitions'] as Map).cast<String, dynamic>()),
-      partitionsCount: map['partitionsCount'] == null ? null : map['partitionsCount'] as String,
-      partitionsReassignments: map['partitionsReassignments'] == null ? null : TopicsRelatedLinkResponse.fromMap((map['partitionsReassignments'] as Map).cast<String, dynamic>()),
-      replicationFactor: map['replicationFactor'] == null ? null : map['replicationFactor'] as String,
+      partitions: map['partitions'] == null ? null : TopicsRelatedLinkResponse.fromMap((map['partitions']! as Map).cast<String, dynamic>()),
+      partitionsCount: map['partitionsCount'] == null ? null : map['partitionsCount']! as String,
+      partitionsReassignments: map['partitionsReassignments'] == null ? null : TopicsRelatedLinkResponse.fromMap((map['partitionsReassignments']! as Map).cast<String, dynamic>()),
+      replicationFactor: map['replicationFactor'] == null ? null : map['replicationFactor']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      topicId: map['topicId'] == null ? null : map['topicId'] as String,
+      topicId: map['topicId'] == null ? null : map['topicId']! as String,
       type: map['type'] as String,
     );
   }

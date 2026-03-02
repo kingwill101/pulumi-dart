@@ -50,13 +50,13 @@ class AlertRuleScheduledIncidentGrouping {
 
   factory AlertRuleScheduledIncidentGrouping.fromMap(Map<String, dynamic> map) {
     return AlertRuleScheduledIncidentGrouping(
-      byAlertDetails: map['byAlertDetails'] == null ? null : ((map['byAlertDetails'] as List).cast<String>()).input(),
-      byCustomDetails: map['byCustomDetails'] == null ? null : ((map['byCustomDetails'] as List).cast<String>()).input(),
-      byEntities: map['byEntities'] == null ? null : ((map['byEntities'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      entityMatchingMethod: map['entityMatchingMethod'] == null ? null : (map['entityMatchingMethod'] as String).input(),
-      lookbackDuration: map['lookbackDuration'] == null ? null : (map['lookbackDuration'] as String).input(),
-      reopenClosedIncidents: map['reopenClosedIncidents'] == null ? null : (map['reopenClosedIncidents'] as bool).input(),
+      byAlertDetails: map['byAlertDetails'] == null ? null : ((map['byAlertDetails']! as List).cast<String>()).input(),
+      byCustomDetails: map['byCustomDetails'] == null ? null : ((map['byCustomDetails']! as List).cast<String>()).input(),
+      byEntities: map['byEntities'] == null ? null : ((map['byEntities']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      entityMatchingMethod: map['entityMatchingMethod'] == null ? null : (map['entityMatchingMethod']! as String).input(),
+      lookbackDuration: map['lookbackDuration'] == null ? null : (map['lookbackDuration']! as String).input(),
+      reopenClosedIncidents: map['reopenClosedIncidents'] == null ? null : (map['reopenClosedIncidents']! as bool).input(),
     );
   }
 }

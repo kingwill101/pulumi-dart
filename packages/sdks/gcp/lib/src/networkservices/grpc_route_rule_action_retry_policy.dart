@@ -26,8 +26,8 @@ class GrpcRouteRuleActionRetryPolicy {
 
   factory GrpcRouteRuleActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleActionRetryPolicy(
-      numRetries: map['numRetries'] == null ? null : (map['numRetries'] as int).input(),
-      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions'] as List).cast<String>()).input(),
+      numRetries: map['numRetries'] == null ? null : (map['numRetries']! as int).input(),
+      retryConditions: map['retryConditions'] == null ? null : ((map['retryConditions']! as List).cast<String>()).input(),
     );
   }
 }

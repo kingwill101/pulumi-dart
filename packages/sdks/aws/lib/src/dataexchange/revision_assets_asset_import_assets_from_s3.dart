@@ -21,7 +21,7 @@ class RevisionAssetsAssetImportAssetsFromS3 {
 
   factory RevisionAssetsAssetImportAssetsFromS3.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsAssetImportAssetsFromS3(
-      assetSource: map['assetSource'] == null ? null : (RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap((map['assetSource'] as Map).cast<String, dynamic>())).input(),
+      assetSource: map['assetSource'] == null ? null : ((RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap((map['assetSource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

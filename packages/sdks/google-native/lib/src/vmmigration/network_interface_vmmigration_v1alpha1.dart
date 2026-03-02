@@ -36,10 +36,10 @@ class NetworkInterfaceVmmigrationV1alpha1 {
 
   factory NetworkInterfaceVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceVmmigrationV1alpha1(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

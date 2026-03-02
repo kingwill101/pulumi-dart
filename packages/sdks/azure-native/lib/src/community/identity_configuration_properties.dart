@@ -61,14 +61,14 @@ class IdentityConfigurationProperties {
 
   factory IdentityConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return IdentityConfigurationProperties(
-      b2cAuthenticationPolicy: map['b2cAuthenticationPolicy'] == null ? null : (map['b2cAuthenticationPolicy'] as String).input(),
-      b2cPasswordResetPolicy: map['b2cPasswordResetPolicy'] == null ? null : (map['b2cPasswordResetPolicy'] as String).input(),
+      b2cAuthenticationPolicy: map['b2cAuthenticationPolicy'] == null ? null : (map['b2cAuthenticationPolicy']! as String).input(),
+      b2cPasswordResetPolicy: map['b2cPasswordResetPolicy'] == null ? null : (map['b2cPasswordResetPolicy']! as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      customLoginParameters: map['customLoginParameters'] == null ? null : (map['customLoginParameters'] as String).input(),
+      customLoginParameters: map['customLoginParameters'] == null ? null : (map['customLoginParameters']! as String).input(),
       domainName: (map['domainName'] as String).input(),
       identityType: (map['identityType'] as String).input(),
-      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled'] as bool).input(),
+      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled']! as bool).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

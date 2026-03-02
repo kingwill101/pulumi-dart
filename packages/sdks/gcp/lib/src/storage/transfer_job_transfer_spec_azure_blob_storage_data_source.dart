@@ -47,11 +47,11 @@ class TransferJobTransferSpecAzureBlobStorageDataSource {
 
   factory TransferJobTransferSpecAzureBlobStorageDataSource.fromMap(Map<String, dynamic> map) {
     return TransferJobTransferSpecAzureBlobStorageDataSource(
-      azureCredentials: map['azureCredentials'] == null ? null : (TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.fromMap((map['azureCredentials'] as Map).cast<String, dynamic>())).input(),
+      azureCredentials: map['azureCredentials'] == null ? null : (TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials.fromMap((map['azureCredentials']! as Map).cast<String, dynamic>())).input(),
       container: (map['container'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
-      federatedIdentityConfig: map['federatedIdentityConfig'] == null ? null : (TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig.fromMap((map['federatedIdentityConfig'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
+      federatedIdentityConfig: map['federatedIdentityConfig'] == null ? null : (TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig.fromMap((map['federatedIdentityConfig']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       storageAccount: (map['storageAccount'] as String).input(),
     );
   }

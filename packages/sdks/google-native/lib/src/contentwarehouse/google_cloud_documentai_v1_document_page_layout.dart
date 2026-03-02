@@ -39,10 +39,10 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
 
   factory GoogleCloudDocumentaiV1DocumentPageLayout.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageLayout(
-      boundingPoly: map['boundingPoly'] == null ? null : (GoogleCloudDocumentaiV1BoundingPoly.fromMap((map['boundingPoly'] as Map).cast<String, dynamic>())).input(),
-      confidence: map['confidence'] == null ? null : (map['confidence'] as double).input(),
-      orientation: map['orientation'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayoutOrientation.fromValue(map['orientation'] as String)).input(),
-      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>())).input(),
+      boundingPoly: map['boundingPoly'] == null ? null : (GoogleCloudDocumentaiV1BoundingPoly.fromMap((map['boundingPoly']! as Map).cast<String, dynamic>())).input(),
+      confidence: map['confidence'] == null ? null : (map['confidence']! as double).input(),
+      orientation: map['orientation'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayoutOrientation.fromValue(map['orientation']! as String)).input(),
+      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

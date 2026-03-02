@@ -21,7 +21,7 @@ class TriggerRetryPolicy {
 
   factory TriggerRetryPolicy.fromMap(Map<String, dynamic> map) {
     return TriggerRetryPolicy(
-      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts']! as int).input(),
     );
   }
 }

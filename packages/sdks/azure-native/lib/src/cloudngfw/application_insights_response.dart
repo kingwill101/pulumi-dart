@@ -26,8 +26,8 @@ class ApplicationInsightsResponse {
 
   factory ApplicationInsightsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

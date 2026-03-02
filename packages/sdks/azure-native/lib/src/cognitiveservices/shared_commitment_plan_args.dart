@@ -56,13 +56,13 @@ class SharedCommitmentPlanArgs {
 
   factory SharedCommitmentPlanArgs.fromMap(Map<String, dynamic> map) {
     return SharedCommitmentPlanArgs(
-      commitmentPlanName: map['commitmentPlanName'] == null ? null : (map['commitmentPlanName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (CommitmentPlanProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      commitmentPlanName: map['commitmentPlanName'] == null ? null : (map['commitmentPlanName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (CommitmentPlanProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

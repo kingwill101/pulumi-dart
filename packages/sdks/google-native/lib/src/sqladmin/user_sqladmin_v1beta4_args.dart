@@ -77,17 +77,17 @@ class UserSqladminV1beta4Args {
 
   factory UserSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return UserSqladminV1beta4Args(
-      dualPasswordType: map['dualPasswordType'] == null ? null : (UserDualPasswordTypeSqladminV1beta4.fromValue(map['dualPasswordType'] as String)).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      dualPasswordType: map['dualPasswordType'] == null ? null : (UserDualPasswordTypeSqladminV1beta4.fromValue(map['dualPasswordType']! as String)).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       instance: (map['instance'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordValidationPolicySqladminV1beta4.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sqlserverUserDetails: map['sqlserverUserDetails'] == null ? null : (SqlServerUserDetailsSqladminV1beta4.fromMap((map['sqlserverUserDetails'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (UserTypeSqladminV1beta4.fromValue(map['type'] as String)).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordValidationPolicySqladminV1beta4.fromMap((map['passwordPolicy']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sqlserverUserDetails: map['sqlserverUserDetails'] == null ? null : (SqlServerUserDetailsSqladminV1beta4.fromMap((map['sqlserverUserDetails']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (UserTypeSqladminV1beta4.fromValue(map['type']! as String)).input(),
     );
   }
 }

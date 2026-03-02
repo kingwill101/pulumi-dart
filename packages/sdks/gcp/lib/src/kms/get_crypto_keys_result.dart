@@ -35,7 +35,7 @@ class GetCryptoKeysResult {
 
   factory GetCryptoKeysResult.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       keyRing: map['keyRing'] as String,
       keys: pulumi.Input.decodeList<GetCryptoKeysKey>(map['keys'], (value) => GetCryptoKeysKey.fromMap((value as Map).cast<String, dynamic>())),

@@ -42,11 +42,11 @@ class SAMLOptionsOutputResponse {
 
   factory SAMLOptionsOutputResponse.fromMap(Map<String, dynamic> map) {
     return SAMLOptionsOutputResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      idp: map['idp'] == null ? null : (SAMLIdpResponse.fromMap((map['idp'] as Map).cast<String, dynamic>())).input(),
-      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey'] as String).input(),
-      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : (map['sessionTimeoutMinutes'] as int).input(),
-      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      idp: map['idp'] == null ? null : (SAMLIdpResponse.fromMap((map['idp']! as Map).cast<String, dynamic>())).input(),
+      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey']! as String).input(),
+      sessionTimeoutMinutes: map['sessionTimeoutMinutes'] == null ? null : (map['sessionTimeoutMinutes']! as int).input(),
+      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey']! as String).input(),
     );
   }
 }

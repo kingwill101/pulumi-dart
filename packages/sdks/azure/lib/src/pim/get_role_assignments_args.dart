@@ -39,10 +39,10 @@ class GetRoleAssignmentsArgs {
 
   factory GetRoleAssignmentsArgs.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentsArgs(
-      limitAtScope: map['limitAtScope'] == null ? null : (map['limitAtScope'] as bool).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
+      limitAtScope: map['limitAtScope'] == null ? null : (map['limitAtScope']! as bool).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
       scope: (map['scope'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

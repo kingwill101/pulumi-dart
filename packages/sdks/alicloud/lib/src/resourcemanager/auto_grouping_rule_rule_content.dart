@@ -25,7 +25,7 @@ class AutoGroupingRuleRuleContent {
 
   factory AutoGroupingRuleRuleContent.fromMap(Map<String, dynamic> map) {
     return AutoGroupingRuleRuleContent(
-      autoGroupingScopeCondition: map['autoGroupingScopeCondition'] == null ? null : (map['autoGroupingScopeCondition'] as String).input(),
+      autoGroupingScopeCondition: map['autoGroupingScopeCondition'] == null ? null : (map['autoGroupingScopeCondition']! as String).input(),
       targetResourceGroupCondition: (map['targetResourceGroupCondition'] as String).input(),
     );
   }

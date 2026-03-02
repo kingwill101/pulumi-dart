@@ -21,7 +21,7 @@ class AccountPublicAccessBlockState {
 
   factory AccountPublicAccessBlockState.fromMap(Map<String, dynamic> map) {
     return AccountPublicAccessBlockState(
-      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess'] as bool).input(),
+      blockPublicAccess: map['blockPublicAccess'] == null ? null : (map['blockPublicAccess']! as bool).input(),
     );
   }
 }

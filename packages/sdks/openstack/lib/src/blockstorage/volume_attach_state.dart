@@ -101,21 +101,21 @@ class VolumeAttachState {
 
   factory VolumeAttachState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachState(
-      attachMode: map['attachMode'] == null ? null : (map['attachMode'] as String).input(),
-      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      driverVolumeType: map['driverVolumeType'] == null ? null : (map['driverVolumeType'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      initiator: map['initiator'] == null ? null : (map['initiator'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      mountPointBase: map['mountPointBase'] == null ? null : (map['mountPointBase'] as String).input(),
-      multipath: map['multipath'] == null ? null : (map['multipath'] as bool).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
-      wwnn: map['wwnn'] == null ? null : (map['wwnn'] as String).input(),
-      wwpns: map['wwpns'] == null ? null : ((map['wwpns'] as List).cast<String>()).input(),
+      attachMode: map['attachMode'] == null ? null : (map['attachMode']! as String).input(),
+      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      driverVolumeType: map['driverVolumeType'] == null ? null : (map['driverVolumeType']! as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      initiator: map['initiator'] == null ? null : (map['initiator']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      mountPointBase: map['mountPointBase'] == null ? null : (map['mountPointBase']! as String).input(),
+      multipath: map['multipath'] == null ? null : (map['multipath']! as bool).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      volumeId: map['volumeId'] == null ? null : (map['volumeId']! as String).input(),
+      wwnn: map['wwnn'] == null ? null : (map['wwnn']! as String).input(),
+      wwpns: map['wwpns'] == null ? null : ((map['wwpns']! as List).cast<String>()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class MaintenanceWindow {
 
   factory MaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (MaintenanceWindowDayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
-      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (MaintenanceWindowDayOfWeek.fromValue(map['dayOfWeek']! as String)).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay']! as int).input(),
     );
   }
 }

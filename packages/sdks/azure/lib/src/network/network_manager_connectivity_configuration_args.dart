@@ -63,11 +63,11 @@ class NetworkManagerConnectivityConfigurationArgs {
     return NetworkManagerConnectivityConfigurationArgs(
       appliesToGroups: (pulumi.Input.decodeList<NetworkManagerConnectivityConfigurationAppliesToGroup>(map['appliesToGroups'], (value) => NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
       connectivityTopology: (map['connectivityTopology'] as String).input(),
-      deleteExistingPeeringEnabled: map['deleteExistingPeeringEnabled'] == null ? null : (map['deleteExistingPeeringEnabled'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalMeshEnabled: map['globalMeshEnabled'] == null ? null : (map['globalMeshEnabled'] as bool).input(),
-      hub: map['hub'] == null ? null : (NetworkManagerConnectivityConfigurationHub.fromMap((map['hub'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      deleteExistingPeeringEnabled: map['deleteExistingPeeringEnabled'] == null ? null : (map['deleteExistingPeeringEnabled']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      globalMeshEnabled: map['globalMeshEnabled'] == null ? null : (map['globalMeshEnabled']! as bool).input(),
+      hub: map['hub'] == null ? null : (NetworkManagerConnectivityConfigurationHub.fromMap((map['hub']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkManagerId: (map['networkManagerId'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class ImagePurchasePlan {
 
   factory ImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return ImagePurchasePlan(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
     );
   }
 }

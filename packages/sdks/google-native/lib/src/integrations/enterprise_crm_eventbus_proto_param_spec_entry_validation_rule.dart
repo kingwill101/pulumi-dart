@@ -30,9 +30,9 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRule {
 
   factory EnterpriseCrmEventbusProtoParamSpecEntryValidationRule.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParamSpecEntryValidationRule(
-      doubleRange: map['doubleRange'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromMap((map['doubleRange'] as Map).cast<String, dynamic>())).input(),
-      intRange: map['intRange'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange.fromMap((map['intRange'] as Map).cast<String, dynamic>())).input(),
-      stringRegex: map['stringRegex'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromMap((map['stringRegex'] as Map).cast<String, dynamic>())).input(),
+      doubleRange: map['doubleRange'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange.fromMap((map['doubleRange']! as Map).cast<String, dynamic>())).input(),
+      intRange: map['intRange'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleIntRange.fromMap((map['intRange']! as Map).cast<String, dynamic>())).input(),
+      stringRegex: map['stringRegex'] == null ? null : (EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegex.fromMap((map['stringRegex']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

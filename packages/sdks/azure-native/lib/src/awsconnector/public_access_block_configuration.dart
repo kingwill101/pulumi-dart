@@ -36,10 +36,10 @@ class PublicAccessBlockConfiguration {
 
   factory PublicAccessBlockConfiguration.fromMap(Map<String, dynamic> map) {
     return PublicAccessBlockConfiguration(
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls']! as bool).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy']! as bool).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls']! as bool).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets']! as bool).input(),
     );
   }
 }

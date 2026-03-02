@@ -21,7 +21,7 @@ class InstanceGroupManagerAllInstancesConfigComputeBeta {
 
   factory InstanceGroupManagerAllInstancesConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerAllInstancesConfigComputeBeta(
-      properties: map['properties'] == null ? null : (InstancePropertiesPatchComputeBeta.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (InstancePropertiesPatchComputeBeta.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -50,13 +50,13 @@ class EndpointRedisSettings {
 
   factory EndpointRedisSettings.fromMap(Map<String, dynamic> map) {
     return EndpointRedisSettings(
-      authPassword: map['authPassword'] == null ? null : (map['authPassword'] as String).input(),
+      authPassword: map['authPassword'] == null ? null : ((map['authPassword'] as String).input()).input(),
       authType: (map['authType'] as String).input(),
-      authUserName: map['authUserName'] == null ? null : (map['authUserName'] as String).input(),
+      authUserName: map['authUserName'] == null ? null : ((map['authUserName'] as String).input()).input(),
       port: (map['port'] as int).input(),
       serverName: (map['serverName'] as String).input(),
-      sslCaCertificateArn: map['sslCaCertificateArn'] == null ? null : (map['sslCaCertificateArn'] as String).input(),
-      sslSecurityProtocol: map['sslSecurityProtocol'] == null ? null : (map['sslSecurityProtocol'] as String).input(),
+      sslCaCertificateArn: map['sslCaCertificateArn'] == null ? null : ((map['sslCaCertificateArn'] as String).input()).input(),
+      sslSecurityProtocol: map['sslSecurityProtocol'] == null ? null : ((map['sslSecurityProtocol'] as String).input()).input(),
     );
   }
 }

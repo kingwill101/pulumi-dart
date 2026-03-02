@@ -57,14 +57,14 @@ class DataCellsFilterTableData {
 
   factory DataCellsFilterTableData.fromMap(Map<String, dynamic> map) {
     return DataCellsFilterTableData(
-      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
-      columnWildcard: map['columnWildcard'] == null ? null : (DataCellsFilterTableDataColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>())).input(),
+      columnNames: map['columnNames'] == null ? null : (((map['columnNames'] as List).cast<String>()).input()).input(),
+      columnWildcard: map['columnWildcard'] == null ? null : ((DataCellsFilterTableDataColumnWildcard.fromMap((map['columnWildcard']! as Map).cast<String, dynamic>())).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
       name: (map['name'] as String).input(),
-      rowFilter: (DataCellsFilterTableDataRowFilter.fromMap((map['rowFilter'] as Map).cast<String, dynamic>())).input(),
+      rowFilter: (DataCellsFilterTableDataRowFilter.fromMap((map['rowFilter']! as Map).cast<String, dynamic>())).input(),
       tableCatalogId: (map['tableCatalogId'] as String).input(),
       tableName: (map['tableName'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      versionId: map['versionId'] == null ? null : ((map['versionId'] as String).input()).input(),
     );
   }
 }

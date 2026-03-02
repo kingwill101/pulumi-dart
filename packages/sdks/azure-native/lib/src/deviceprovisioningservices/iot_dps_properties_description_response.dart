@@ -86,19 +86,19 @@ class IotDpsPropertiesDescriptionResponse {
 
   factory IotDpsPropertiesDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return IotDpsPropertiesDescriptionResponse(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy'] as String).input(),
-      authorizationPolicies: map['authorizationPolicies'] == null ? null : (pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse>(map['authorizationPolicies'], (value) => SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy']! as String).input(),
+      authorizationPolicies: map['authorizationPolicies'] == null ? null : (pulumi.Input.decodeList<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse>(map['authorizationPolicies']!, (value) => SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       deviceProvisioningHostName: (map['deviceProvisioningHostName'] as String).input(),
-      enableDataResidency: map['enableDataResidency'] == null ? null : (map['enableDataResidency'] as bool).input(),
+      enableDataResidency: map['enableDataResidency'] == null ? null : (map['enableDataResidency']! as bool).input(),
       idScope: (map['idScope'] as String).input(),
-      iotHubs: map['iotHubs'] == null ? null : (pulumi.Input.decodeList<IotHubDefinitionDescriptionResponse>(map['iotHubs'], (value) => IotHubDefinitionDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipFilterRules: map['ipFilterRules'] == null ? null : (pulumi.Input.decodeList<IpFilterRuleResponse>(map['ipFilterRules'], (value) => IpFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      portalOperationsHostName: map['portalOperationsHostName'] == null ? null : (map['portalOperationsHostName'] as String).input(),
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      iotHubs: map['iotHubs'] == null ? null : (pulumi.Input.decodeList<IotHubDefinitionDescriptionResponse>(map['iotHubs']!, (value) => IotHubDefinitionDescriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipFilterRules: map['ipFilterRules'] == null ? null : (pulumi.Input.decodeList<IpFilterRuleResponse>(map['ipFilterRules']!, (value) => IpFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      portalOperationsHostName: map['portalOperationsHostName'] == null ? null : (map['portalOperationsHostName']! as String).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       serviceOperationsHostName: (map['serviceOperationsHostName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

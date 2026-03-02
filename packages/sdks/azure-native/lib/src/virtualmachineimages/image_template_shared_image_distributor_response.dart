@@ -64,15 +64,15 @@ class ImageTemplateSharedImageDistributorResponse {
 
   factory ImageTemplateSharedImageDistributorResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateSharedImageDistributorResponse(
-      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags'] as Map).cast<String, String>()).input(),
-      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest'] as bool).input(),
+      artifactTags: map['artifactTags'] == null ? null : ((map['artifactTags']! as Map).cast<String, String>()).input(),
+      excludeFromLatest: map['excludeFromLatest'] == null ? null : (map['excludeFromLatest']! as bool).input(),
       galleryImageId: (map['galleryImageId'] as String).input(),
-      replicationRegions: map['replicationRegions'] == null ? null : ((map['replicationRegions'] as List).cast<String>()).input(),
+      replicationRegions: map['replicationRegions'] == null ? null : ((map['replicationRegions']! as List).cast<String>()).input(),
       runOutputName: (map['runOutputName'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions'], (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      targetRegions: map['targetRegions'] == null ? null : (pulumi.Input.decodeList<TargetRegionResponse>(map['targetRegions']!, (value) => TargetRegionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      versioning: map['versioning'] == null ? null : (DistributeVersionerLatestResponse.fromMap((map['versioning'] as Map).cast<String, dynamic>())).input(),
+      versioning: map['versioning'] == null ? null : (DistributeVersionerLatestResponse.fromMap((map['versioning']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

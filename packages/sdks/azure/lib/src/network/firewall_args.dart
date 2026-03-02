@@ -99,21 +99,21 @@ class FirewallArgs {
 
   factory FirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallArgs(
-      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : (map['dnsProxyEnabled'] as bool).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<FirewallIpConfiguration>(map['ipConfigurations'], (value) => FirewallIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementIpConfiguration: map['managementIpConfiguration'] == null ? null : (FirewallManagementIpConfiguration.fromMap((map['managementIpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIpRanges: map['privateIpRanges'] == null ? null : ((map['privateIpRanges'] as List).cast<String>()).input(),
+      dnsProxyEnabled: map['dnsProxyEnabled'] == null ? null : (map['dnsProxyEnabled']! as bool).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<FirewallIpConfiguration>(map['ipConfigurations']!, (value) => FirewallIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementIpConfiguration: map['managementIpConfiguration'] == null ? null : (FirewallManagementIpConfiguration.fromMap((map['managementIpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIpRanges: map['privateIpRanges'] == null ? null : ((map['privateIpRanges']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
       skuTier: (map['skuTier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      threatIntelMode: map['threatIntelMode'] == null ? null : (map['threatIntelMode'] as String).input(),
-      virtualHub: map['virtualHub'] == null ? null : (FirewallVirtualHub.fromMap((map['virtualHub'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      threatIntelMode: map['threatIntelMode'] == null ? null : (map['threatIntelMode']! as String).input(),
+      virtualHub: map['virtualHub'] == null ? null : (FirewallVirtualHub.fromMap((map['virtualHub']! as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class UniqueKeyPolicy {
 
   factory UniqueKeyPolicy.fromMap(Map<String, dynamic> map) {
     return UniqueKeyPolicy(
-      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<UniqueKey>(map['uniqueKeys'], (value) => UniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uniqueKeys: map['uniqueKeys'] == null ? null : (pulumi.Input.decodeList<UniqueKey>(map['uniqueKeys']!, (value) => UniqueKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

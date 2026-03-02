@@ -40,8 +40,8 @@ class ResolverVirtualNetworkLinkArgs {
   factory ResolverVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return ResolverVirtualNetworkLinkArgs(
       dnsForwardingRulesetId: (map['dnsForwardingRulesetId'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       virtualNetworkId: (map['virtualNetworkId'] as String).input(),
     );
   }

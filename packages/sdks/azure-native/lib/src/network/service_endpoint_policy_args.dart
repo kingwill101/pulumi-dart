@@ -61,14 +61,14 @@ class ServiceEndpointPolicyArgs {
 
   factory ServiceEndpointPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicyArgs(
-      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias'] as String).input(),
-      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : ((map['serviceEndpointPolicyDefinitions'] as List).cast<ServiceEndpointPolicyDefinitionNetwork>()).input(),
-      serviceEndpointPolicyName: map['serviceEndpointPolicyName'] == null ? null : (map['serviceEndpointPolicyName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias']! as String).input(),
+      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : ((map['serviceEndpointPolicyDefinitions']! as List).cast<ServiceEndpointPolicyDefinitionNetwork>()).input(),
+      serviceEndpointPolicyName: map['serviceEndpointPolicyName'] == null ? null : (map['serviceEndpointPolicyName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

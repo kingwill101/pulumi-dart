@@ -35,10 +35,10 @@ class AccountSettingDefaultState {
 
   factory AccountSettingDefaultState.fromMap(Map<String, dynamic> map) {
     return AccountSettingDefaultState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalArn: map['principalArn'] == null ? null : (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      principalArn: map['principalArn'] == null ? null : ((map['principalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

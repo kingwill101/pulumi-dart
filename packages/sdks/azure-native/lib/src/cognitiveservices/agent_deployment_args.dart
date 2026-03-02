@@ -52,7 +52,7 @@ class AgentDeploymentArgs {
     return AgentDeploymentArgs(
       accountName: (map['accountName'] as String).input(),
       appName: (map['appName'] as String).input(),
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       properties: (HostedAgentDeployment.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -35,10 +35,10 @@ class ProfileHttpEnforcement {
 
   factory ProfileHttpEnforcement.fromMap(Map<String, dynamic> map) {
     return ProfileHttpEnforcement(
-      knownMethods: map['knownMethods'] == null ? null : ((map['knownMethods'] as List).cast<String>()).input(),
-      maxHeaderCount: map['maxHeaderCount'] == null ? null : (map['maxHeaderCount'] as int).input(),
-      maxHeaderSize: map['maxHeaderSize'] == null ? null : (map['maxHeaderSize'] as int).input(),
-      unknownMethod: map['unknownMethod'] == null ? null : (map['unknownMethod'] as String).input(),
+      knownMethods: map['knownMethods'] == null ? null : ((map['knownMethods']! as List).cast<String>()).input(),
+      maxHeaderCount: map['maxHeaderCount'] == null ? null : (map['maxHeaderCount']! as int).input(),
+      maxHeaderSize: map['maxHeaderSize'] == null ? null : (map['maxHeaderSize']! as int).input(),
+      unknownMethod: map['unknownMethod'] == null ? null : (map['unknownMethod']! as String).input(),
     );
   }
 }

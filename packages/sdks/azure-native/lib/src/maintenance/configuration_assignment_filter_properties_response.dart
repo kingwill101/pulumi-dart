@@ -42,11 +42,11 @@ class ConfigurationAssignmentFilterPropertiesResponse {
 
   factory ConfigurationAssignmentFilterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationAssignmentFilterPropertiesResponse(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      osTypes: map['osTypes'] == null ? null : ((map['osTypes'] as List).cast<String>()).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      tagSettings: map['tagSettings'] == null ? null : (TagSettingsPropertiesResponse.fromMap((map['tagSettings'] as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      osTypes: map['osTypes'] == null ? null : ((map['osTypes']! as List).cast<String>()).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups']! as List).cast<String>()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
+      tagSettings: map['tagSettings'] == null ? null : (TagSettingsPropertiesResponse.fromMap((map['tagSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

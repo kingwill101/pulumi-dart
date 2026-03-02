@@ -20,7 +20,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
 
   factory FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
     );
   }
 }

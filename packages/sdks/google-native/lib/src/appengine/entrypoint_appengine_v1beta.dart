@@ -21,7 +21,7 @@ class EntrypointAppengineV1beta {
 
   factory EntrypointAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return EntrypointAppengineV1beta(
-      shell: map['shell'] == null ? null : (map['shell'] as String).input(),
+      shell: map['shell'] == null ? null : (map['shell']! as String).input(),
     );
   }
 }

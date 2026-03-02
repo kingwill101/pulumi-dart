@@ -20,7 +20,7 @@ class GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName {
 
   factory GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeName(
-      matches: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch>(map['matches'], (value) => GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch>(map['matches']!, (value) => GetVirtualGatewaySpecListenerTlValidationSubjectAlternativeNameMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,9 +42,9 @@ class GetGradientaiAgentVersionsResult {
     return GetGradientaiAgentVersionsResult(
       agentId: map['agentId'] as String,
       agentVersions: pulumi.Input.decodeList<GetGradientaiAgentVersionsAgentVersion>(map['agentVersions'], (value) => GetGradientaiAgentVersionsAgentVersion.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentVersionsFilter>(map['filters'], (value) => GetGradientaiAgentVersionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentVersionsFilter>(map['filters']!, (value) => GetGradientaiAgentVersionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentVersionsSort>(map['sorts'], (value) => GetGradientaiAgentVersionsSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGradientaiAgentVersionsSort>(map['sorts']!, (value) => GetGradientaiAgentVersionsSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

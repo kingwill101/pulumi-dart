@@ -32,9 +32,9 @@ class BindingCloudresourcemanagerV2 {
 
   factory BindingCloudresourcemanagerV2.fromMap(Map<String, dynamic> map) {
     return BindingCloudresourcemanagerV2(
-      condition: map['condition'] == null ? null : (ExprCloudresourcemanagerV2.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ExprCloudresourcemanagerV2.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

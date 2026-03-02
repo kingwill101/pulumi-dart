@@ -64,15 +64,15 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      devEnvironmentEnabled: map['devEnvironmentEnabled'] == null ? null : (map['devEnvironmentEnabled'] as bool).input(),
-      devRoleDisabled: map['devRoleDisabled'] == null ? null : (map['devRoleDisabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      devEnvironmentEnabled: map['devEnvironmentEnabled'] == null ? null : (map['devEnvironmentEnabled']! as bool).input(),
+      devRoleDisabled: map['devRoleDisabled'] == null ? null : (map['devRoleDisabled']! as bool).input(),
       displayName: (map['displayName'] as String).input(),
       paiTaskEnabled: (map['paiTaskEnabled'] as bool).input(),
       projectName: (map['projectName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

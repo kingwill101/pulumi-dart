@@ -30,7 +30,7 @@ class BucketRequestPaymentArgs {
   factory BucketRequestPaymentArgs.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentArgs(
       bucket: (map['bucket'] as String).input(),
-      payer: map['payer'] == null ? null : (map['payer'] as String).input(),
+      payer: map['payer'] == null ? null : (map['payer']! as String).input(),
     );
   }
 }

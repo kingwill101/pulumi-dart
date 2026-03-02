@@ -27,8 +27,8 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroup {
 
   factory V2modelsIntentConfirmationSettingConfirmationResponseMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationResponseMessageGroup(
-      message: map['message'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      variations: map['variations'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation>(map['variations'], (value) => V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input()).input(),
+      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation>(map['variations']!, (value) => V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

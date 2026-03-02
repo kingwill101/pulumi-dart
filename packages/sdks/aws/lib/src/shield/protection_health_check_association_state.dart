@@ -26,8 +26,8 @@ class ProtectionHealthCheckAssociationState {
 
   factory ProtectionHealthCheckAssociationState.fromMap(Map<String, dynamic> map) {
     return ProtectionHealthCheckAssociationState(
-      healthCheckArn: map['healthCheckArn'] == null ? null : (map['healthCheckArn'] as String).input(),
-      shieldProtectionId: map['shieldProtectionId'] == null ? null : (map['shieldProtectionId'] as String).input(),
+      healthCheckArn: map['healthCheckArn'] == null ? null : ((map['healthCheckArn'] as String).input()).input(),
+      shieldProtectionId: map['shieldProtectionId'] == null ? null : ((map['shieldProtectionId'] as String).input()).input(),
     );
   }
 }

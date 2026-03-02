@@ -53,9 +53,9 @@ class V2FolderNotificationConfigArgs {
   factory V2FolderNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2FolderNotificationConfigArgs(
       configId: (map['configId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       folder: (map['folder'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
       streamingConfig: (V2FolderNotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),
     );

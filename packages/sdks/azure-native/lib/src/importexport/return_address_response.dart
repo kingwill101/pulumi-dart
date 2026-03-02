@@ -67,9 +67,9 @@ class ReturnAddressResponse {
       phone: (map['phone'] as String).input(),
       postalCode: (map['postalCode'] as String).input(),
       recipientName: (map['recipientName'] as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
       streetAddress1: (map['streetAddress1'] as String).input(),
-      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2'] as String).input(),
+      streetAddress2: map['streetAddress2'] == null ? null : (map['streetAddress2']! as String).input(),
     );
   }
 }

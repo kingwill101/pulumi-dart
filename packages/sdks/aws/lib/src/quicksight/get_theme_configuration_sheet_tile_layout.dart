@@ -27,8 +27,8 @@ class GetThemeConfigurationSheetTileLayout {
 
   factory GetThemeConfigurationSheetTileLayout.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheetTileLayout(
-      gutters: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutGutter>(map['gutters'], (value) => GetThemeConfigurationSheetTileLayoutGutter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      margins: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutMargin>(map['margins'], (value) => GetThemeConfigurationSheetTileLayoutMargin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gutters: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutGutter>(map['gutters']!, (value) => GetThemeConfigurationSheetTileLayoutGutter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      margins: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayoutMargin>(map['margins']!, (value) => GetThemeConfigurationSheetTileLayoutMargin.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

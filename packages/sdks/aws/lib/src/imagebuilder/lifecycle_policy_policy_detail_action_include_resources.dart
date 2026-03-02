@@ -30,9 +30,9 @@ class LifecyclePolicyPolicyDetailActionIncludeResources {
 
   factory LifecyclePolicyPolicyDetailActionIncludeResources.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailActionIncludeResources(
-      amis: map['amis'] == null ? null : (map['amis'] as bool).input(),
-      containers: map['containers'] == null ? null : (map['containers'] as bool).input(),
-      snapshots: map['snapshots'] == null ? null : (map['snapshots'] as bool).input(),
+      amis: map['amis'] == null ? null : ((map['amis'] as bool).input()).input(),
+      containers: map['containers'] == null ? null : ((map['containers'] as bool).input()).input(),
+      snapshots: map['snapshots'] == null ? null : ((map['snapshots'] as bool).input()).input(),
     );
   }
 }

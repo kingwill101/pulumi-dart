@@ -37,10 +37,10 @@ class Connectivity {
 
   factory Connectivity.fromMap(Map<String, dynamic> map) {
     return Connectivity(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      source: map['source'] == null ? null : (SourceOrTarget.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (SourceOrTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      source: map['source'] == null ? null : (SourceOrTarget.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (SourceOrTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -61,13 +61,13 @@ class GetNatIpCidrsResult {
       cidrs: pulumi.Input.decodeList<GetNatIpCidrsCidr>(map['cidrs'], (value) => GetNatIpCidrsCidr.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
       natGatewayId: map['natGatewayId'] as String,
-      natIpCidrNames: map['natIpCidrNames'] == null ? null : (map['natIpCidrNames'] as List).cast<String>(),
-      natIpCidrs: map['natIpCidrs'] == null ? null : (map['natIpCidrs'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      natIpCidrNames: map['natIpCidrNames'] == null ? null : (map['natIpCidrNames']! as List).cast<String>(),
+      natIpCidrs: map['natIpCidrs'] == null ? null : (map['natIpCidrs']! as List).cast<String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

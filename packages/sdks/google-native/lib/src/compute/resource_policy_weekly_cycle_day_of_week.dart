@@ -26,8 +26,8 @@ class ResourcePolicyWeeklyCycleDayOfWeek {
 
   factory ResourcePolicyWeeklyCycleDayOfWeek.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWeeklyCycleDayOfWeek(
-      day: map['day'] == null ? null : (ResourcePolicyWeeklyCycleDayOfWeekDay.fromValue(map['day'] as String)).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      day: map['day'] == null ? null : (ResourcePolicyWeeklyCycleDayOfWeekDay.fromValue(map['day']! as String)).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

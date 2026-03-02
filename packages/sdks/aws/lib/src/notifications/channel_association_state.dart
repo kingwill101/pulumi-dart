@@ -26,8 +26,8 @@ class ChannelAssociationState {
 
   factory ChannelAssociationState.fromMap(Map<String, dynamic> map) {
     return ChannelAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : (map['notificationConfigurationArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      notificationConfigurationArn: map['notificationConfigurationArn'] == null ? null : ((map['notificationConfigurationArn'] as String).input()).input(),
     );
   }
 }

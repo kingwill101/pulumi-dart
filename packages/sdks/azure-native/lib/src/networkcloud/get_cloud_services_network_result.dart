@@ -119,13 +119,13 @@ class GetCloudServicesNetworkResult {
 
   factory GetCloudServicesNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetCloudServicesNetworkResult(
-      additionalEgressEndpoints: map['additionalEgressEndpoints'] == null ? null : pulumi.Input.decodeList<EgressEndpointResponse>(map['additionalEgressEndpoints'], (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
+      additionalEgressEndpoints: map['additionalEgressEndpoints'] == null ? null : pulumi.Input.decodeList<EgressEndpointResponse>(map['additionalEgressEndpoints']!, (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
       associatedResourceIds: (map['associatedResourceIds'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       clusterId: map['clusterId'] as String,
       detailedStatus: map['detailedStatus'] as String,
       detailedStatusMessage: map['detailedStatusMessage'] as String,
-      enableDefaultEgressEndpoints: map['enableDefaultEgressEndpoints'] == null ? null : map['enableDefaultEgressEndpoints'] as String,
+      enableDefaultEgressEndpoints: map['enableDefaultEgressEndpoints'] == null ? null : map['enableDefaultEgressEndpoints']! as String,
       enabledEgressEndpoints: pulumi.Input.decodeList<EgressEndpointResponse>(map['enabledEgressEndpoints'], (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
       etag: map['etag'] as String,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
@@ -136,7 +136,7 @@ class GetCloudServicesNetworkResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       virtualMachinesAssociatedIds: (map['virtualMachinesAssociatedIds'] as List).cast<String>(),
     );

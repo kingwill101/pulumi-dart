@@ -70,14 +70,14 @@ class GetZoneResult {
     return GetZoneResult(
       authoritativeNameservers: GetZoneAuthoritativeNameservers.fromMap((map['authoritativeNameservers'] as Map).cast<String, dynamic>()),
       deleteProtection: map['deleteProtection'] as bool,
-      id: map['id'] == null ? null : map['id'] as int,
+      id: map['id'] == null ? null : map['id']! as int,
       labels: (map['labels'] as Map).cast<String, String>(),
       mode: map['mode'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       primaryNameservers: pulumi.Input.decodeList<GetZonePrimaryNameserver>(map['primaryNameservers'], (value) => GetZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>())),
       registrar: map['registrar'] as String,
       ttl: map['ttl'] as int,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

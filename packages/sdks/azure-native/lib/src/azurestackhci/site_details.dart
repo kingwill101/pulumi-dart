@@ -27,7 +27,7 @@ class SiteDetails {
 
   factory SiteDetails.fromMap(Map<String, dynamic> map) {
     return SiteDetails(
-      deviceConfiguration: map['deviceConfiguration'] == null ? null : (TargetDeviceConfiguration.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>())).input(),
+      deviceConfiguration: map['deviceConfiguration'] == null ? null : (TargetDeviceConfiguration.fromMap((map['deviceConfiguration']! as Map).cast<String, dynamic>())).input(),
       siteResourceId: (map['siteResourceId'] as String).input(),
     );
   }

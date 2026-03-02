@@ -89,17 +89,17 @@ class X12ProtocolSettings {
   factory X12ProtocolSettings.fromMap(Map<String, dynamic> map) {
     return X12ProtocolSettings(
       acknowledgementSettings: (X12AcknowledgementSettings.fromMap((map['acknowledgementSettings'] as Map).cast<String, dynamic>())).input(),
-      envelopeOverrides: map['envelopeOverrides'] == null ? null : (pulumi.Input.decodeList<X12EnvelopeOverride>(map['envelopeOverrides'], (value) => X12EnvelopeOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envelopeOverrides: map['envelopeOverrides'] == null ? null : (pulumi.Input.decodeList<X12EnvelopeOverride>(map['envelopeOverrides']!, (value) => X12EnvelopeOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       envelopeSettings: (X12EnvelopeSettings.fromMap((map['envelopeSettings'] as Map).cast<String, dynamic>())).input(),
       framingSettings: (X12FramingSettings.fromMap((map['framingSettings'] as Map).cast<String, dynamic>())).input(),
       messageFilter: (X12MessageFilter.fromMap((map['messageFilter'] as Map).cast<String, dynamic>())).input(),
-      messageFilterList: map['messageFilterList'] == null ? null : (pulumi.Input.decodeList<X12MessageIdentifier>(map['messageFilterList'], (value) => X12MessageIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messageFilterList: map['messageFilterList'] == null ? null : (pulumi.Input.decodeList<X12MessageIdentifier>(map['messageFilterList']!, (value) => X12MessageIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
       processingSettings: (X12ProcessingSettings.fromMap((map['processingSettings'] as Map).cast<String, dynamic>())).input(),
       schemaReferences: (pulumi.Input.decodeList<X12SchemaReference>(map['schemaReferences'], (value) => X12SchemaReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       securitySettings: (X12SecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
-      validationOverrides: map['validationOverrides'] == null ? null : (pulumi.Input.decodeList<X12ValidationOverride>(map['validationOverrides'], (value) => X12ValidationOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationOverrides: map['validationOverrides'] == null ? null : (pulumi.Input.decodeList<X12ValidationOverride>(map['validationOverrides']!, (value) => X12ValidationOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       validationSettings: (X12ValidationSettings.fromMap((map['validationSettings'] as Map).cast<String, dynamic>())).input(),
-      x12DelimiterOverrides: map['x12DelimiterOverrides'] == null ? null : (pulumi.Input.decodeList<X12DelimiterOverrides>(map['x12DelimiterOverrides'], (value) => X12DelimiterOverrides.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      x12DelimiterOverrides: map['x12DelimiterOverrides'] == null ? null : (pulumi.Input.decodeList<X12DelimiterOverrides>(map['x12DelimiterOverrides']!, (value) => X12DelimiterOverrides.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

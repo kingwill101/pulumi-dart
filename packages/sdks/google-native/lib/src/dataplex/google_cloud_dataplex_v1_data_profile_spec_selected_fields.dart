@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1DataProfileSpecSelectedFields {
 
   factory GoogleCloudDataplexV1DataProfileSpecSelectedFields.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileSpecSelectedFields(
-      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames'] as List).cast<String>()).input(),
+      fieldNames: map['fieldNames'] == null ? null : ((map['fieldNames']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class VirtualClusterContainerProviderInfoEksInfo {
 
   factory VirtualClusterContainerProviderInfoEksInfo.fromMap(Map<String, dynamic> map) {
     return VirtualClusterContainerProviderInfoEksInfo(
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
     );
   }
 }

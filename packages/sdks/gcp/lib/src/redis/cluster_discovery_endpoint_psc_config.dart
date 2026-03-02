@@ -20,7 +20,7 @@ class ClusterDiscoveryEndpointPscConfig {
 
   factory ClusterDiscoveryEndpointPscConfig.fromMap(Map<String, dynamic> map) {
     return ClusterDiscoveryEndpointPscConfig(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
     );
   }
 }

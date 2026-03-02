@@ -54,10 +54,10 @@ class RestorePointSourceVMDataDiskResponse {
   factory RestorePointSourceVMDataDiskResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMDataDiskResponse(
       caching: (map['caching'] as String).input(),
-      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint']! as Map).cast<String, dynamic>())).input(),
       diskSizeGB: (map['diskSizeGB'] as int).input(),
       lun: (map['lun'] as int).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParametersResponse.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       writeAcceleratorEnabled: (map['writeAcceleratorEnabled'] as bool).input(),
     );

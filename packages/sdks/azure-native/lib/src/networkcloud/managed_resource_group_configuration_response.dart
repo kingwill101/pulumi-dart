@@ -25,8 +25,8 @@ class ManagedResourceGroupConfigurationResponse {
 
   factory ManagedResourceGroupConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ManagedResourceGroupConfigurationResponse(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

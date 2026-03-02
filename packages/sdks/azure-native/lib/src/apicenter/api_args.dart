@@ -88,17 +88,17 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
-      contacts: map['contacts'] == null ? null : (pulumi.Input.decodeList<Contact>(map['contacts'], (value) => Contact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customProperties: map['customProperties'] == null ? null : (map['customProperties']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalDocumentation: map['externalDocumentation'] == null ? null : (pulumi.Input.decodeList<ExternalDocumentation>(map['externalDocumentation'], (value) => ExternalDocumentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
+      contacts: map['contacts'] == null ? null : (pulumi.Input.decodeList<Contact>(map['contacts']!, (value) => Contact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customProperties: map['customProperties'] == null ? null : (map['customProperties']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalDocumentation: map['externalDocumentation'] == null ? null : (pulumi.Input.decodeList<ExternalDocumentation>(map['externalDocumentation']!, (value) => ExternalDocumentation.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (map['kind'] as String).input(),
-      license: map['license'] == null ? null : (License.fromMap((map['license'] as Map).cast<String, dynamic>())).input(),
+      license: map['license'] == null ? null : (License.fromMap((map['license']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
-      termsOfService: map['termsOfService'] == null ? null : (TermsOfService.fromMap((map['termsOfService'] as Map).cast<String, dynamic>())).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
+      termsOfService: map['termsOfService'] == null ? null : (TermsOfService.fromMap((map['termsOfService']! as Map).cast<String, dynamic>())).input(),
       title: (map['title'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

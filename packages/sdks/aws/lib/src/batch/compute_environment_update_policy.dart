@@ -25,8 +25,8 @@ class ComputeEnvironmentUpdatePolicy {
 
   factory ComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: map['jobExecutionTimeoutMinutes'] == null ? null : (map['jobExecutionTimeoutMinutes'] as int).input(),
-      terminateJobsOnUpdate: map['terminateJobsOnUpdate'] == null ? null : (map['terminateJobsOnUpdate'] as bool).input(),
+      jobExecutionTimeoutMinutes: map['jobExecutionTimeoutMinutes'] == null ? null : ((map['jobExecutionTimeoutMinutes'] as int).input()).input(),
+      terminateJobsOnUpdate: map['terminateJobsOnUpdate'] == null ? null : ((map['terminateJobsOnUpdate'] as bool).input()).input(),
     );
   }
 }

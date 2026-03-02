@@ -31,8 +31,8 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
 
   factory BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity.fromMap(Map<String, dynamic> map) {
     return BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity(
-      spillover: map['spillover'] == null ? null : (map['spillover'] as String).input(),
-      spilloverRatio: map['spilloverRatio'] == null ? null : (map['spilloverRatio'] as double).input(),
+      spillover: map['spillover'] == null ? null : (map['spillover']! as String).input(),
+      spilloverRatio: map['spilloverRatio'] == null ? null : (map['spilloverRatio']! as double).input(),
     );
   }
 }

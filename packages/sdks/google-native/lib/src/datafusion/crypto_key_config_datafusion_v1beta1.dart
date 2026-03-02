@@ -21,7 +21,7 @@ class CryptoKeyConfigDatafusionV1beta1 {
 
   factory CryptoKeyConfigDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
     return CryptoKeyConfigDatafusionV1beta1(
-      keyReference: map['keyReference'] == null ? null : (map['keyReference'] as String).input(),
+      keyReference: map['keyReference'] == null ? null : (map['keyReference']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class TransitRouterPrefixListAssociationState {
 
   factory TransitRouterPrefixListAssociationState.fromMap(Map<String, dynamic> map) {
     return TransitRouterPrefixListAssociationState(
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
-      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid'] as int).input(),
-      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId'] as String).input(),
-      transitRouterTableId: map['transitRouterTableId'] == null ? null : (map['transitRouterTableId'] as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
+      ownerUid: map['ownerUid'] == null ? null : (map['ownerUid']! as int).input(),
+      prefixListId: map['prefixListId'] == null ? null : (map['prefixListId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      transitRouterId: map['transitRouterId'] == null ? null : (map['transitRouterId']! as String).input(),
+      transitRouterTableId: map['transitRouterTableId'] == null ? null : (map['transitRouterTableId']! as String).input(),
     );
   }
 }

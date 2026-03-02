@@ -30,9 +30,9 @@ class DbInstancePlanPlanConfigPause {
 
   factory DbInstancePlanPlanConfigPause.fromMap(Map<String, dynamic> map) {
     return DbInstancePlanPlanConfigPause(
-      executeTime: map['executeTime'] == null ? null : (map['executeTime'] as String).input(),
-      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime'] as String).input(),
-      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus'] as String).input(),
+      executeTime: map['executeTime'] == null ? null : (map['executeTime']! as String).input(),
+      planCronTime: map['planCronTime'] == null ? null : (map['planCronTime']! as String).input(),
+      planTaskStatus: map['planTaskStatus'] == null ? null : (map['planTaskStatus']! as String).input(),
     );
   }
 }

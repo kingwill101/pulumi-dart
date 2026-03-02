@@ -35,9 +35,9 @@ class NetworkDeviceDataPatch {
 
   factory NetworkDeviceDataPatch.fromMap(Map<String, dynamic> map) {
     return NetworkDeviceDataPatch(
-      hardwareAddress: map['hardwareAddress'] == null ? null : (map['hardwareAddress'] as String).input(),
-      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName'] as String).input(),
-      ips: map['ips'] == null ? null : ((map['ips'] as List).cast<String>()).input(),
+      hardwareAddress: map['hardwareAddress'] == null ? null : (map['hardwareAddress']! as String).input(),
+      interfaceName: map['interfaceName'] == null ? null : (map['interfaceName']! as String).input(),
+      ips: map['ips'] == null ? null : ((map['ips']! as List).cast<String>()).input(),
     );
   }
 }

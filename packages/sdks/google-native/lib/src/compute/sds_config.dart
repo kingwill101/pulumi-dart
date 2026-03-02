@@ -22,7 +22,7 @@ class SdsConfig {
 
   factory SdsConfig.fromMap(Map<String, dynamic> map) {
     return SdsConfig(
-      grpcServiceConfig: map['grpcServiceConfig'] == null ? null : (GrpcServiceConfig.fromMap((map['grpcServiceConfig'] as Map).cast<String, dynamic>())).input(),
+      grpcServiceConfig: map['grpcServiceConfig'] == null ? null : (GrpcServiceConfig.fromMap((map['grpcServiceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

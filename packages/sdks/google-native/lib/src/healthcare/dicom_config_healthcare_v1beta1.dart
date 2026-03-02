@@ -38,10 +38,10 @@ class DicomConfigHealthcareV1beta1 {
 
   factory DicomConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return DicomConfigHealthcareV1beta1(
-      filterProfile: map['filterProfile'] == null ? null : (DicomConfigFilterProfileHealthcareV1beta1.fromValue(map['filterProfile'] as String)).input(),
-      keepList: map['keepList'] == null ? null : (TagFilterListHealthcareV1beta1.fromMap((map['keepList'] as Map).cast<String, dynamic>())).input(),
-      removeList: map['removeList'] == null ? null : (TagFilterListHealthcareV1beta1.fromMap((map['removeList'] as Map).cast<String, dynamic>())).input(),
-      skipIdRedaction: map['skipIdRedaction'] == null ? null : (map['skipIdRedaction'] as bool).input(),
+      filterProfile: map['filterProfile'] == null ? null : (DicomConfigFilterProfileHealthcareV1beta1.fromValue(map['filterProfile']! as String)).input(),
+      keepList: map['keepList'] == null ? null : (TagFilterListHealthcareV1beta1.fromMap((map['keepList']! as Map).cast<String, dynamic>())).input(),
+      removeList: map['removeList'] == null ? null : (TagFilterListHealthcareV1beta1.fromMap((map['removeList']! as Map).cast<String, dynamic>())).input(),
+      skipIdRedaction: map['skipIdRedaction'] == null ? null : (map['skipIdRedaction']! as bool).input(),
     );
   }
 }

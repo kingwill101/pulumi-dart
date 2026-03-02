@@ -36,9 +36,9 @@ class GetBandwidthLimitsResult {
   factory GetBandwidthLimitsResult.fromMap(Map<String, dynamic> map) {
     return GetBandwidthLimitsResult(
       id: map['id'] as String,
-      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds'] as List).cast<String>(),
+      instanceIds: map['instanceIds'] == null ? null : (map['instanceIds']! as List).cast<String>(),
       limits: pulumi.Input.decodeList<GetBandwidthLimitsLimit>(map['limits'], (value) => GetBandwidthLimitsLimit.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

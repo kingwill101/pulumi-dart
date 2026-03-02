@@ -109,7 +109,7 @@ class ListWebAppBackupStatusSecretsSlotResult {
       databases: pulumi.Input.decodeList<DatabaseBackupSettingResponse>(map['databases'], (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
       finishedTimeStamp: map['finishedTimeStamp'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       lastRestoreTimeStamp: map['lastRestoreTimeStamp'] as String,
       log: map['log'] as String,
       name: map['name'] as String,

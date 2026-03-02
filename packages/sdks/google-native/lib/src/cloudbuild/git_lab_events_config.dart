@@ -38,10 +38,10 @@ class GitLabEventsConfig {
 
   factory GitLabEventsConfig.fromMap(Map<String, dynamic> map) {
     return GitLabEventsConfig(
-      gitlabConfigResource: map['gitlabConfigResource'] == null ? null : (map['gitlabConfigResource'] as String).input(),
-      projectNamespace: map['projectNamespace'] == null ? null : (map['projectNamespace'] as String).input(),
-      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      gitlabConfigResource: map['gitlabConfigResource'] == null ? null : (map['gitlabConfigResource']! as String).input(),
+      projectNamespace: map['projectNamespace'] == null ? null : (map['projectNamespace']! as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (PushFilter.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

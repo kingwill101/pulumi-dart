@@ -78,18 +78,18 @@ class DdosBgpInstanceState {
 
   factory DdosBgpInstanceState.fromMap(Map<String, dynamic> map) {
     return DdosBgpInstanceState(
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth'] as int).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      ipCount: map['ipCount'] == null ? null : (map['ipCount'] as int).input(),
-      ipType: map['ipType'] == null ? null : (map['ipType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      normalBandwidth: map['normalBandwidth'] == null ? null : (map['normalBandwidth'] as int).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      baseBandwidth: map['baseBandwidth'] == null ? null : (map['baseBandwidth']! as int).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      ipCount: map['ipCount'] == null ? null : (map['ipCount']! as int).input(),
+      ipType: map['ipType'] == null ? null : (map['ipType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      normalBandwidth: map['normalBandwidth'] == null ? null : (map['normalBandwidth']! as int).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AppEngineVersionEndpoint {
 
   factory AppEngineVersionEndpoint.fromMap(Map<String, dynamic> map) {
     return AppEngineVersionEndpoint(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

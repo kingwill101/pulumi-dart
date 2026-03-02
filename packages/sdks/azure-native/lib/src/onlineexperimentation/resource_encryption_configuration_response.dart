@@ -22,7 +22,7 @@ class ResourceEncryptionConfigurationResponse {
 
   factory ResourceEncryptionConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ResourceEncryptionConfigurationResponse(
-      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryptionResponse.fromMap((map['customerManagedKeyEncryption'] as Map).cast<String, dynamic>())).input(),
+      customerManagedKeyEncryption: map['customerManagedKeyEncryption'] == null ? null : (CustomerManagedKeyEncryptionResponse.fromMap((map['customerManagedKeyEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

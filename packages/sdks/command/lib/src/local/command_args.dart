@@ -182,18 +182,18 @@ class CommandArgs {
 
   factory CommandArgs.fromMap(Map<String, dynamic> map) {
     return CommandArgs(
-      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv'] as bool).input(),
-      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths'] as List).cast<String>()).input(),
-      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths'] as List).cast<String>()).input(),
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      interpreter: map['interpreter'] == null ? null : ((map['interpreter'] as List).cast<String>()).input(),
-      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging'] as String)).input(),
-      stdin: map['stdin'] == null ? null : (map['stdin'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      addPreviousOutputInEnv: map['addPreviousOutputInEnv'] == null ? null : (map['addPreviousOutputInEnv']! as bool).input(),
+      archivePaths: map['archivePaths'] == null ? null : ((map['archivePaths']! as List).cast<String>()).input(),
+      assetPaths: map['assetPaths'] == null ? null : ((map['assetPaths']! as List).cast<String>()).input(),
+      create: map['create'] == null ? null : (map['create']! as String).input(),
+      delete: map['delete'] == null ? null : (map['delete']! as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      interpreter: map['interpreter'] == null ? null : ((map['interpreter']! as List).cast<String>()).input(),
+      logging: map['logging'] == null ? null : (Logging.fromValue(map['logging']! as String)).input(),
+      stdin: map['stdin'] == null ? null : (map['stdin']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as List).cast<dynamic>()).input(),
+      update: map['update'] == null ? null : (map['update']! as String).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class GetDefaultKmsKeyArgs {
 
   factory GetDefaultKmsKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetDefaultKmsKeyArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

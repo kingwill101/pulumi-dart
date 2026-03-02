@@ -79,14 +79,14 @@ class ProjectSecondaryArtifact {
   factory ProjectSecondaryArtifact.fromMap(Map<String, dynamic> map) {
     return ProjectSecondaryArtifact(
       artifactIdentifier: (map['artifactIdentifier'] as String).input(),
-      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : (map['bucketOwnerAccess'] as String).input(),
-      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceType: map['namespaceType'] == null ? null : (map['namespaceType'] as String).input(),
-      overrideArtifactName: map['overrideArtifactName'] == null ? null : (map['overrideArtifactName'] as bool).input(),
-      packaging: map['packaging'] == null ? null : (map['packaging'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : ((map['bucketOwnerAccess'] as String).input()).input(),
+      encryptionDisabled: map['encryptionDisabled'] == null ? null : ((map['encryptionDisabled'] as bool).input()).input(),
+      location: map['location'] == null ? null : ((map['location'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namespaceType: map['namespaceType'] == null ? null : ((map['namespaceType'] as String).input()).input(),
+      overrideArtifactName: map['overrideArtifactName'] == null ? null : ((map['overrideArtifactName'] as bool).input()).input(),
+      packaging: map['packaging'] == null ? null : ((map['packaging'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

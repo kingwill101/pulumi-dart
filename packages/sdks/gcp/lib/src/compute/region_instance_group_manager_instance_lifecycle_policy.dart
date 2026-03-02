@@ -37,10 +37,10 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicy {
 
   factory RegionInstanceGroupManagerInstanceLifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerInstanceLifecyclePolicy(
-      defaultActionOnFailure: map['defaultActionOnFailure'] == null ? null : (map['defaultActionOnFailure'] as String).input(),
-      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (map['forceUpdateOnRepair'] as String).input(),
-      onFailedHealthCheck: map['onFailedHealthCheck'] == null ? null : (map['onFailedHealthCheck'] as String).input(),
-      onRepair: map['onRepair'] == null ? null : (RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap((map['onRepair'] as Map).cast<String, dynamic>())).input(),
+      defaultActionOnFailure: map['defaultActionOnFailure'] == null ? null : (map['defaultActionOnFailure']! as String).input(),
+      forceUpdateOnRepair: map['forceUpdateOnRepair'] == null ? null : (map['forceUpdateOnRepair']! as String).input(),
+      onFailedHealthCheck: map['onFailedHealthCheck'] == null ? null : (map['onFailedHealthCheck']! as String).input(),
+      onRepair: map['onRepair'] == null ? null : (RegionInstanceGroupManagerInstanceLifecyclePolicyOnRepair.fromMap((map['onRepair']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

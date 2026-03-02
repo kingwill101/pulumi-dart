@@ -33,9 +33,9 @@ class DeploymentStacksWhatIfChangeResponseDenySettingsChange {
 
   factory DeploymentStacksWhatIfChangeResponseDenySettingsChange.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfChangeResponseDenySettingsChange(
-      after: map['after'] == null ? null : (DenySettingsResponse.fromMap((map['after'] as Map).cast<String, dynamic>())).input(),
-      before: map['before'] == null ? null : (DenySettingsResponse.fromMap((map['before'] as Map).cast<String, dynamic>())).input(),
-      delta: map['delta'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['delta'], (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      after: map['after'] == null ? null : (DenySettingsResponse.fromMap((map['after']! as Map).cast<String, dynamic>())).input(),
+      before: map['before'] == null ? null : (DenySettingsResponse.fromMap((map['before']! as Map).cast<String, dynamic>())).input(),
+      delta: map['delta'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['delta']!, (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

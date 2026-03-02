@@ -89,6 +89,78 @@ func TestRunFallsBackToLegacyProgramAndPwd(t *testing.T) {
 	assert.Contains(t, trace, "ARGS=run bin/legacy.dart")
 }
 
+func TestRunResolvesSimpleEntrypointToBinDart(t *testing.T) {
+	runDir := t.TempDir()
+	tracePath := filepath.Join(runDir, "run.trace")
+	scriptPath := writeExecutableScript(t, fmt.Sprintf(
+		"#!/usr/bin/env bash\n"+
+			"echo \"PWD=$(pwd)\" > %q\n"+
+			"echo \"ARGS=$*\" >> %q\n",
+		tracePath, tracePath,
+	))
+
+	binDir := filepath.Join(runDir, "bin")
+	require.NoError(t, os.MkdirAll(binDir, 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(binDir, "infra.dart"), []byte(""), 0o600))
+
+	host := &dartLanguageHost{
+		exec:          scriptPath,
+		engineAddress: "127.0.0.1:0",
+	}
+
+	resp, err := host.Run(context.Background(), &pulumirpc.RunRequest{
+		Pwd:     t.TempDir(),
+		Program: "",
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: runDir,
+			EntryPoint:       "infra",
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+
+	trace := readFileString(t, tracePath)
+	assert.Contains(t, trace, "PWD="+runDir)
+	assert.Contains(t, trace, "ARGS=run bin/infra.dart")
+}
+
+func TestRunFallsBackToMainDartWhenDot(t *testing.T) {
+	runDir := t.TempDir()
+	tracePath := filepath.Join(runDir, "run.trace")
+	scriptPath := writeExecutableScript(t, fmt.Sprintf(
+		"#!/usr/bin/env bash\n"+
+			"echo \"PWD=$(pwd)\" > %q\n"+
+			"echo \"ARGS=$*\" >> %q\n",
+		tracePath, tracePath,
+	))
+
+	binDir := filepath.Join(runDir, "bin")
+	require.NoError(t, os.MkdirAll(binDir, 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(binDir, "main.dart"), []byte(""), 0o600))
+
+	host := &dartLanguageHost{
+		exec:          scriptPath,
+		engineAddress: "127.0.0.1:0",
+	}
+
+	resp, err := host.Run(context.Background(), &pulumirpc.RunRequest{
+		Pwd:     t.TempDir(),
+		Program: ".",
+		Info: &pulumirpc.ProgramInfo{
+			ProgramDirectory: runDir,
+			EntryPoint:       ".",
+		},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, resp)
+	assert.Empty(t, resp.GetError())
+
+	trace := readFileString(t, tracePath)
+	assert.Contains(t, trace, "PWD="+runDir)
+	assert.Contains(t, trace, "ARGS=run bin/main.dart")
+}
+
 func TestRunBinaryHonorsArgsAndProgramDirectory(t *testing.T) {
 	runDir := t.TempDir()
 	tracePath := filepath.Join(runDir, "run.trace")

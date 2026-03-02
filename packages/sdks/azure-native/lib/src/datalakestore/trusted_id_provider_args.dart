@@ -42,7 +42,7 @@ class TrustedIdProviderArgs {
       accountName: (map['accountName'] as String).input(),
       idProvider: (map['idProvider'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      trustedIdProviderName: map['trustedIdProviderName'] == null ? null : (map['trustedIdProviderName'] as String).input(),
+      trustedIdProviderName: map['trustedIdProviderName'] == null ? null : (map['trustedIdProviderName']! as String).input(),
     );
   }
 }

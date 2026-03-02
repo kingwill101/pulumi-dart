@@ -21,7 +21,7 @@ class ServiceArtifactReferenceResponse {
 
   factory ServiceArtifactReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ServiceArtifactReferenceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

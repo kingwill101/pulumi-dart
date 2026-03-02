@@ -67,16 +67,16 @@ class KustomizationDefinitionResponse {
 
   factory KustomizationDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return KustomizationDefinitionResponse(
-      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn'] as List).cast<String>()).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      dependsOn: map['dependsOn'] == null ? null : ((map['dependsOn']! as List).cast<String>()).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       name: (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      postBuild: map['postBuild'] == null ? null : (PostBuildDefinitionResponse.fromMap((map['postBuild'] as Map).cast<String, dynamic>())).input(),
-      prune: map['prune'] == null ? null : (map['prune'] as bool).input(),
-      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds'] as double).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as double).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      postBuild: map['postBuild'] == null ? null : (PostBuildDefinitionResponse.fromMap((map['postBuild']! as Map).cast<String, dynamic>())).input(),
+      prune: map['prune'] == null ? null : (map['prune']! as bool).input(),
+      retryIntervalInSeconds: map['retryIntervalInSeconds'] == null ? null : (map['retryIntervalInSeconds']! as double).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as double).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as double).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as bool).input(),
     );
   }
 }

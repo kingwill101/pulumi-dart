@@ -21,7 +21,7 @@ class EndpointRefResponse {
 
   factory EndpointRefResponse.fromMap(Map<String, dynamic> map) {
     return EndpointRefResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

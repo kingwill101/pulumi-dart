@@ -31,9 +31,9 @@ class CacheNodeOldResponse {
 
   factory CacheNodeOldResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeOldResponse(
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
-      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails'] as String).input(),
-      statusText: map['statusText'] == null ? null : (map['statusText'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as String).input(),
+      statusDetails: map['statusDetails'] == null ? null : (map['statusDetails']! as String).input(),
+      statusText: map['statusText'] == null ? null : (map['statusText']! as String).input(),
     );
   }
 }

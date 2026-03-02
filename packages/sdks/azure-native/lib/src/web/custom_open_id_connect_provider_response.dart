@@ -33,9 +33,9 @@ class CustomOpenIdConnectProviderResponse {
 
   factory CustomOpenIdConnectProviderResponse.fromMap(Map<String, dynamic> map) {
     return CustomOpenIdConnectProviderResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      login: map['login'] == null ? null : (OpenIdConnectLoginResponse.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      registration: map['registration'] == null ? null : (OpenIdConnectRegistrationResponse.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      login: map['login'] == null ? null : (OpenIdConnectLoginResponse.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (OpenIdConnectRegistrationResponse.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -72,16 +72,16 @@ class IotHubDpsArgs {
 
   factory IotHubDpsArgs.fromMap(Map<String, dynamic> map) {
     return IotHubDpsArgs(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy'] as String).input(),
-      dataResidencyEnabled: map['dataResidencyEnabled'] == null ? null : (map['dataResidencyEnabled'] as bool).input(),
-      ipFilterRules: map['ipFilterRules'] == null ? null : (pulumi.Input.decodeList<IotHubDpsIpFilterRule>(map['ipFilterRules'], (value) => IotHubDpsIpFilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linkedHubs: map['linkedHubs'] == null ? null : (pulumi.Input.decodeList<IotHubDpsLinkedHub>(map['linkedHubs'], (value) => IotHubDpsLinkedHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy']! as String).input(),
+      dataResidencyEnabled: map['dataResidencyEnabled'] == null ? null : (map['dataResidencyEnabled']! as bool).input(),
+      ipFilterRules: map['ipFilterRules'] == null ? null : (pulumi.Input.decodeList<IotHubDpsIpFilterRule>(map['ipFilterRules']!, (value) => IotHubDpsIpFilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedHubs: map['linkedHubs'] == null ? null : (pulumi.Input.decodeList<IotHubDpsLinkedHub>(map['linkedHubs']!, (value) => IotHubDpsLinkedHub.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (IotHubDpsSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

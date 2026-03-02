@@ -45,11 +45,11 @@ class ServiceTrafficStatus {
 
   factory ServiceTrafficStatus.fromMap(Map<String, dynamic> map) {
     return ServiceTrafficStatus(
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

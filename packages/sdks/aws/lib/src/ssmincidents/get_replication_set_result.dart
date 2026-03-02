@@ -68,8 +68,8 @@ class GetReplicationSetResult {
       deletionProtected: map['deletionProtected'] as bool,
       id: map['id'] as String,
       lastModifiedBy: map['lastModifiedBy'] as String,
-      region: pulumi.Input.decodeList<GetReplicationSetRegion>(map['region'], (value) => GetReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())),
-      regions: pulumi.Input.decodeList<GetReplicationSetRegion>(map['regions'], (value) => GetReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())),
+      region: pulumi.Input.decodeList<GetReplicationSetRegion>(map['region']!, (value) => GetReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())),
+      regions: pulumi.Input.decodeList<GetReplicationSetRegion>(map['regions']!, (value) => GetReplicationSetRegion.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

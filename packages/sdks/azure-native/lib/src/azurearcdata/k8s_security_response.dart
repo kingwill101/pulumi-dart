@@ -38,10 +38,10 @@ class K8sSecurityResponse {
 
   factory K8sSecurityResponse.fromMap(Map<String, dynamic> map) {
     return K8sSecurityResponse(
-      activeDirectory: map['activeDirectory'] == null ? null : (K8sActiveDirectoryResponse.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      adminLoginSecret: map['adminLoginSecret'] == null ? null : (map['adminLoginSecret'] as String).input(),
-      serviceCertificateSecret: map['serviceCertificateSecret'] == null ? null : (map['serviceCertificateSecret'] as String).input(),
-      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (K8stransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption'] as Map).cast<String, dynamic>())).input(),
+      activeDirectory: map['activeDirectory'] == null ? null : (K8sActiveDirectoryResponse.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())).input(),
+      adminLoginSecret: map['adminLoginSecret'] == null ? null : (map['adminLoginSecret']! as String).input(),
+      serviceCertificateSecret: map['serviceCertificateSecret'] == null ? null : (map['serviceCertificateSecret']! as String).input(),
+      transparentDataEncryption: map['transparentDataEncryption'] == null ? null : (K8stransparentDataEncryptionResponse.fromMap((map['transparentDataEncryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

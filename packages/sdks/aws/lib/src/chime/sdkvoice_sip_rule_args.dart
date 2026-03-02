@@ -52,10 +52,10 @@ class SdkvoiceSipRuleArgs {
 
   factory SdkvoiceSipRuleArgs.fromMap(Map<String, dynamic> map) {
     return SdkvoiceSipRuleArgs(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetApplications: (pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(map['targetApplications'], (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetApplications: (pulumi.Input.decodeList<SdkvoiceSipRuleTargetApplication>(map['targetApplications']!, (value) => SdkvoiceSipRuleTargetApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
       triggerType: (map['triggerType'] as String).input(),
       triggerValue: (map['triggerValue'] as String).input(),
     );

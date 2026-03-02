@@ -21,7 +21,7 @@ class V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting {
 
   factory V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeValueSelectionSettingAdvancedRecognitionSetting(
-      audioRecognitionStrategy: map['audioRecognitionStrategy'] == null ? null : (map['audioRecognitionStrategy'] as String).input(),
+      audioRecognitionStrategy: map['audioRecognitionStrategy'] == null ? null : ((map['audioRecognitionStrategy'] as String).input()).input(),
     );
   }
 }

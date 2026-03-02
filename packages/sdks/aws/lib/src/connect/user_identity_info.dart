@@ -35,10 +35,10 @@ class UserIdentityInfo {
 
   factory UserIdentityInfo.fromMap(Map<String, dynamic> map) {
     return UserIdentityInfo(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      secondaryEmail: map['secondaryEmail'] == null ? null : (map['secondaryEmail'] as String).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      firstName: map['firstName'] == null ? null : ((map['firstName'] as String).input()).input(),
+      lastName: map['lastName'] == null ? null : ((map['lastName'] as String).input()).input(),
+      secondaryEmail: map['secondaryEmail'] == null ? null : ((map['secondaryEmail'] as String).input()).input(),
     );
   }
 }

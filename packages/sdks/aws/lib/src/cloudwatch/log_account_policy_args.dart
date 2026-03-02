@@ -52,9 +52,9 @@ class LogAccountPolicyArgs {
       policyDocument: (map['policyDocument'] as String).input(),
       policyName: (map['policyName'] as String).input(),
       policyType: (map['policyType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      selectionCriteria: map['selectionCriteria'] == null ? null : (map['selectionCriteria'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      selectionCriteria: map['selectionCriteria'] == null ? null : ((map['selectionCriteria'] as String).input()).input(),
     );
   }
 }

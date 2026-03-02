@@ -38,9 +38,9 @@ class AclConfigArgs {
 
   factory AclConfigArgs.fromMap(Map<String, dynamic> map) {
     return AclConfigArgs(
-      idpConfig: map['idpConfig'] == null ? null : (AclConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
+      idpConfig: map['idpConfig'] == null ? null : (AclConfigIdpConfig.fromMap((map['idpConfig']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

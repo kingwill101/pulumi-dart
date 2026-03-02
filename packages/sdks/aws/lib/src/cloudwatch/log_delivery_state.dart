@@ -62,15 +62,15 @@ class LogDeliveryState {
 
   factory LogDeliveryState.fromMap(Map<String, dynamic> map) {
     return LogDeliveryState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deliveryDestinationArn: map['deliveryDestinationArn'] == null ? null : (map['deliveryDestinationArn'] as String).input(),
-      deliverySourceName: map['deliverySourceName'] == null ? null : (map['deliverySourceName'] as String).input(),
-      fieldDelimiter: map['fieldDelimiter'] == null ? null : (map['fieldDelimiter'] as String).input(),
-      recordFields: map['recordFields'] == null ? null : ((map['recordFields'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3DeliveryConfigurations: map['s3DeliveryConfigurations'] == null ? null : (pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(map['s3DeliveryConfigurations'], (value) => LogDeliveryS3DeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deliveryDestinationArn: map['deliveryDestinationArn'] == null ? null : ((map['deliveryDestinationArn'] as String).input()).input(),
+      deliverySourceName: map['deliverySourceName'] == null ? null : ((map['deliverySourceName'] as String).input()).input(),
+      fieldDelimiter: map['fieldDelimiter'] == null ? null : ((map['fieldDelimiter'] as String).input()).input(),
+      recordFields: map['recordFields'] == null ? null : (((map['recordFields'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3DeliveryConfigurations: map['s3DeliveryConfigurations'] == null ? null : ((pulumi.Input.decodeList<LogDeliveryS3DeliveryConfiguration>(map['s3DeliveryConfigurations']!, (value) => LogDeliveryS3DeliveryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

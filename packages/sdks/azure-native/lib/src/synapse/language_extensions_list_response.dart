@@ -22,7 +22,7 @@ class LanguageExtensionsListResponse {
 
   factory LanguageExtensionsListResponse.fromMap(Map<String, dynamic> map) {
     return LanguageExtensionsListResponse(
-      value: map['value'] == null ? null : (pulumi.Input.decodeList<LanguageExtensionResponse>(map['value'], (value) => LanguageExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      value: map['value'] == null ? null : (pulumi.Input.decodeList<LanguageExtensionResponse>(map['value']!, (value) => LanguageExtensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

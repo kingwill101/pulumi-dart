@@ -57,12 +57,12 @@ class GetScalingRulesResult {
     return GetScalingRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       rules: pulumi.Input.decodeList<GetScalingRulesRule>(map['rules'], (value) => GetScalingRulesRule.fromMap((value as Map).cast<String, dynamic>())),
-      scalingGroupId: map['scalingGroupId'] == null ? null : map['scalingGroupId'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      scalingGroupId: map['scalingGroupId'] == null ? null : map['scalingGroupId']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
     );
   }
 }

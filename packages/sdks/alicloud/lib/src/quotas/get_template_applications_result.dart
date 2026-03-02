@@ -57,13 +57,13 @@ class GetTemplateApplicationsResult {
   factory GetTemplateApplicationsResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateApplicationsResult(
       applications: pulumi.Input.decodeList<GetTemplateApplicationsApplication>(map['applications'], (value) => GetTemplateApplicationsApplication.fromMap((value as Map).cast<String, dynamic>())),
-      batchQuotaApplicationId: map['batchQuotaApplicationId'] == null ? null : map['batchQuotaApplicationId'] as String,
+      batchQuotaApplicationId: map['batchQuotaApplicationId'] == null ? null : map['batchQuotaApplicationId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      productCode: map['productCode'] == null ? null : map['productCode'] as String,
-      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode'] as String,
-      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      productCode: map['productCode'] == null ? null : map['productCode']! as String,
+      quotaActionCode: map['quotaActionCode'] == null ? null : map['quotaActionCode']! as String,
+      quotaCategory: map['quotaCategory'] == null ? null : map['quotaCategory']! as String,
     );
   }
 }

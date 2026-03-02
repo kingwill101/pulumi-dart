@@ -60,12 +60,12 @@ class GetBlobContainerImmutabilityPolicyResult {
 
   factory GetBlobContainerImmutabilityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetBlobContainerImmutabilityPolicyResult(
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : map['allowProtectedAppendWrites'] as bool,
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : map['allowProtectedAppendWritesAll'] as bool,
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : map['allowProtectedAppendWrites']! as bool,
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : map['allowProtectedAppendWritesAll']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : map['immutabilityPeriodSinceCreationInDays'] as int,
+      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : map['immutabilityPeriodSinceCreationInDays']! as int,
       name: map['name'] as String,
       state: map['state'] as String,
       type: map['type'] as String,

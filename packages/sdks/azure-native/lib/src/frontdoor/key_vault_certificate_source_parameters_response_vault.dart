@@ -21,7 +21,7 @@ class KeyVaultCertificateSourceParametersResponseVault {
 
   factory KeyVaultCertificateSourceParametersResponseVault.fromMap(Map<String, dynamic> map) {
     return KeyVaultCertificateSourceParametersResponseVault(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

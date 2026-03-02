@@ -43,9 +43,9 @@ class ClusterNodePoolNodeConfigGuestAccelerator {
   factory ClusterNodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigGuestAccelerator(
       count: (map['count'] as int).input(),
-      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : (ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig'] as Map).cast<String, dynamic>())).input(),
-      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize'] as String).input(),
-      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : (ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((map['gpuSharingConfig'] as Map).cast<String, dynamic>())).input(),
+      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : (ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig']! as Map).cast<String, dynamic>())).input(),
+      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : (map['gpuPartitionSize']! as String).input(),
+      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : (ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((map['gpuSharingConfig']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

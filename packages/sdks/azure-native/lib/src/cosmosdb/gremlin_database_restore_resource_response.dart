@@ -26,8 +26,8 @@ class GremlinDatabaseRestoreResourceResponse {
 
   factory GremlinDatabaseRestoreResourceResponse.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseRestoreResourceResponse(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      graphNames: map['graphNames'] == null ? null : ((map['graphNames'] as List).cast<String>()).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      graphNames: map['graphNames'] == null ? null : ((map['graphNames']! as List).cast<String>()).input(),
     );
   }
 }

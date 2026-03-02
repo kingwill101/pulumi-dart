@@ -109,7 +109,7 @@ class GetThesaurusResult {
       name: map['name'] as String,
       region: map['region'] as String,
       roleArn: map['roleArn'] as String,
-      sourceS3Paths: pulumi.Input.decodeList<GetThesaurusSourceS3Path>(map['sourceS3Paths'], (value) => GetThesaurusSourceS3Path.fromMap((value as Map).cast<String, dynamic>())),
+      sourceS3Paths: pulumi.Input.decodeList<GetThesaurusSourceS3Path>(map['sourceS3Paths']!, (value) => GetThesaurusSourceS3Path.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       synonymRuleCount: map['synonymRuleCount'] as int,
       tags: (map['tags'] as Map).cast<String, String>(),

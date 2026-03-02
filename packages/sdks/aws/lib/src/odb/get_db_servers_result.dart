@@ -36,7 +36,7 @@ class GetDbServersResult {
   factory GetDbServersResult.fromMap(Map<String, dynamic> map) {
     return GetDbServersResult(
       cloudExadataInfrastructureId: map['cloudExadataInfrastructureId'] as String,
-      dbServers: pulumi.Input.decodeList<GetDbServersDbServer>(map['dbServers'], (value) => GetDbServersDbServer.fromMap((value as Map).cast<String, dynamic>())),
+      dbServers: pulumi.Input.decodeList<GetDbServersDbServer>(map['dbServers']!, (value) => GetDbServersDbServer.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

@@ -62,14 +62,14 @@ class IndexingPolicyResponse {
 
   factory IndexingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return IndexingPolicyResponse(
-      automatic: map['automatic'] == null ? null : (map['automatic'] as bool).input(),
-      compositeIndexes: map['compositeIndexes'] == null ? null : (pulumi.Input.decodeList<List<CompositePathResponse>>(map['compositeIndexes'], (value) => pulumi.Input.decodeList<CompositePathResponse>(value, (value) => CompositePathResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
-      excludedPaths: map['excludedPaths'] == null ? null : (pulumi.Input.decodeList<ExcludedPathResponse>(map['excludedPaths'], (value) => ExcludedPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullTextIndexes: map['fullTextIndexes'] == null ? null : (pulumi.Input.decodeList<FullTextIndexPathResponse>(map['fullTextIndexes'], (value) => FullTextIndexPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      includedPaths: map['includedPaths'] == null ? null : (pulumi.Input.decodeList<IncludedPathResponse>(map['includedPaths'], (value) => IncludedPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      indexingMode: map['indexingMode'] == null ? null : (map['indexingMode'] as String).input(),
-      spatialIndexes: map['spatialIndexes'] == null ? null : (pulumi.Input.decodeList<SpatialSpecResponse>(map['spatialIndexes'], (value) => SpatialSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vectorIndexes: map['vectorIndexes'] == null ? null : (pulumi.Input.decodeList<VectorIndexResponse>(map['vectorIndexes'], (value) => VectorIndexResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      automatic: map['automatic'] == null ? null : (map['automatic']! as bool).input(),
+      compositeIndexes: map['compositeIndexes'] == null ? null : (pulumi.Input.decodeList<List<CompositePathResponse>>(map['compositeIndexes']!, (value) => pulumi.Input.decodeList<CompositePathResponse>(value, (value) => CompositePathResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      excludedPaths: map['excludedPaths'] == null ? null : (pulumi.Input.decodeList<ExcludedPathResponse>(map['excludedPaths']!, (value) => ExcludedPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullTextIndexes: map['fullTextIndexes'] == null ? null : (pulumi.Input.decodeList<FullTextIndexPathResponse>(map['fullTextIndexes']!, (value) => FullTextIndexPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      includedPaths: map['includedPaths'] == null ? null : (pulumi.Input.decodeList<IncludedPathResponse>(map['includedPaths']!, (value) => IncludedPathResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      indexingMode: map['indexingMode'] == null ? null : (map['indexingMode']! as String).input(),
+      spatialIndexes: map['spatialIndexes'] == null ? null : (pulumi.Input.decodeList<SpatialSpecResponse>(map['spatialIndexes']!, (value) => SpatialSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vectorIndexes: map['vectorIndexes'] == null ? null : (pulumi.Input.decodeList<VectorIndexResponse>(map['vectorIndexes']!, (value) => VectorIndexResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

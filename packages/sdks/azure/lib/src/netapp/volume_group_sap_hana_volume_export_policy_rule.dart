@@ -53,10 +53,10 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
       allowedClients: (map['allowedClients'] as String).input(),
       nfsv3Enabled: (map['nfsv3Enabled'] as bool).input(),
       nfsv41Enabled: (map['nfsv41Enabled'] as bool).input(),
-      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled'] as bool).input(),
+      rootAccessEnabled: map['rootAccessEnabled'] == null ? null : (map['rootAccessEnabled']! as bool).input(),
       ruleIndex: (map['ruleIndex'] as int).input(),
-      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly'] as bool).input(),
-      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite'] as bool).input(),
+      unixReadOnly: map['unixReadOnly'] == null ? null : (map['unixReadOnly']! as bool).input(),
+      unixReadWrite: map['unixReadWrite'] == null ? null : (map['unixReadWrite']! as bool).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AkriConnectorsDiagnosticsLogsResponse {
 
   factory AkriConnectorsDiagnosticsLogsResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorsDiagnosticsLogsResponse(
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
     );
   }
 }

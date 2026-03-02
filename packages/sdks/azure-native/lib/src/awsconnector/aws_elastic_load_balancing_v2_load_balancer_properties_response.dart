@@ -94,21 +94,21 @@ class AwsElasticLoadBalancingV2LoadBalancerPropertiesResponse {
 
   factory AwsElasticLoadBalancingV2LoadBalancerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsElasticLoadBalancingV2LoadBalancerPropertiesResponse(
-      canonicalHostedZoneID: map['canonicalHostedZoneID'] == null ? null : (map['canonicalHostedZoneID'] as String).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      enforceSecurityGroupInboundRulesOnPrivateLinkTraffic: map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] == null ? null : (map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn'] as String).input(),
-      loadBalancerAttributes: map['loadBalancerAttributes'] == null ? null : (pulumi.Input.decodeList<LoadBalancerAttributeResponse>(map['loadBalancerAttributes'], (value) => LoadBalancerAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerFullName: map['loadBalancerFullName'] == null ? null : (map['loadBalancerFullName'] as String).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      subnetMappings: map['subnetMappings'] == null ? null : (pulumi.Input.decodeList<SubnetMappingResponse>(map['subnetMappings'], (value) => SubnetMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      canonicalHostedZoneID: map['canonicalHostedZoneID'] == null ? null : (map['canonicalHostedZoneID']! as String).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      enforceSecurityGroupInboundRulesOnPrivateLinkTraffic: map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic'] == null ? null : (map['enforceSecurityGroupInboundRulesOnPrivateLinkTraffic']! as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType']! as String).input(),
+      loadBalancerArn: map['loadBalancerArn'] == null ? null : (map['loadBalancerArn']! as String).input(),
+      loadBalancerAttributes: map['loadBalancerAttributes'] == null ? null : (pulumi.Input.decodeList<LoadBalancerAttributeResponse>(map['loadBalancerAttributes']!, (value) => LoadBalancerAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerFullName: map['loadBalancerFullName'] == null ? null : (map['loadBalancerFullName']! as String).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
+      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups']! as List).cast<String>()).input(),
+      subnetMappings: map['subnetMappings'] == null ? null : (pulumi.Input.decodeList<SubnetMappingResponse>(map['subnetMappings']!, (value) => SubnetMappingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

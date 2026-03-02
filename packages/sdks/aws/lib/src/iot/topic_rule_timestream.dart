@@ -43,10 +43,10 @@ class TopicRuleTimestream {
   factory TopicRuleTimestream.fromMap(Map<String, dynamic> map) {
     return TopicRuleTimestream(
       databaseName: (map['databaseName'] as String).input(),
-      dimensions: (pulumi.Input.decodeList<TopicRuleTimestreamDimension>(map['dimensions'], (value) => TopicRuleTimestreamDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: (pulumi.Input.decodeList<TopicRuleTimestreamDimension>(map['dimensions']!, (value) => TopicRuleTimestreamDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
       roleArn: (map['roleArn'] as String).input(),
       tableName: (map['tableName'] as String).input(),
-      timestamp: map['timestamp'] == null ? null : (TopicRuleTimestreamTimestamp.fromMap((map['timestamp'] as Map).cast<String, dynamic>())).input(),
+      timestamp: map['timestamp'] == null ? null : ((TopicRuleTimestreamTimestamp.fromMap((map['timestamp']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

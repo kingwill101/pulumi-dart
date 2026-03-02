@@ -26,8 +26,8 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
 
   factory GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata(
-      internalTenantId: map['internalTenantId'] == null ? null : (map['internalTenantId'] as String).input(),
-      partnerTenantId: map['partnerTenantId'] == null ? null : (map['partnerTenantId'] as String).input(),
+      internalTenantId: map['internalTenantId'] == null ? null : (map['internalTenantId']! as String).input(),
+      partnerTenantId: map['partnerTenantId'] == null ? null : (map['partnerTenantId']! as String).input(),
     );
   }
 }

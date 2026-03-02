@@ -27,7 +27,7 @@ class ZipDeflateReadSettings {
 
   factory ZipDeflateReadSettings.fromMap(Map<String, dynamic> map) {
     return ZipDeflateReadSettings(
-      preserveZipFileNameAsFolder: map['preserveZipFileNameAsFolder'] == null ? null : (map['preserveZipFileNameAsFolder']).input(),
+      preserveZipFileNameAsFolder: map['preserveZipFileNameAsFolder'] == null ? null : (map['preserveZipFileNameAsFolder']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -33,8 +33,8 @@ class M365Extensions {
   factory M365Extensions.fromMap(Map<String, dynamic> map) {
     return M365Extensions(
       channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

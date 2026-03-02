@@ -55,13 +55,13 @@ class GetCertificatesResult {
   factory GetCertificatesResult.fromMap(Map<String, dynamic> map) {
     return GetCertificatesResult(
       certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      domain: map['domain'] == null ? null : map['domain'] as String,
+      domain: map['domain'] == null ? null : map['domain']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

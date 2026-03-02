@@ -56,13 +56,13 @@ class ClusterApplicationConfig {
   factory ClusterApplicationConfig.fromMap(Map<String, dynamic> map) {
     return ClusterApplicationConfig(
       applicationName: (map['applicationName'] as String).input(),
-      configDescription: map['configDescription'] == null ? null : (map['configDescription'] as String).input(),
+      configDescription: map['configDescription'] == null ? null : (map['configDescription']! as String).input(),
       configFileName: (map['configFileName'] as String).input(),
       configItemKey: (map['configItemKey'] as String).input(),
       configItemValue: (map['configItemValue'] as String).input(),
-      configScope: map['configScope'] == null ? null : (map['configScope'] as String).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
-      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName'] as String).input(),
+      configScope: map['configScope'] == null ? null : (map['configScope']! as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
+      nodeGroupName: map['nodeGroupName'] == null ? null : (map['nodeGroupName']! as String).input(),
     );
   }
 }

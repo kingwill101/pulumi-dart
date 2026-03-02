@@ -43,9 +43,9 @@ class AgentcoreOauth2CredentialProviderArgs {
   factory AgentcoreOauth2CredentialProviderArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderArgs(
       credentialProviderVendor: (map['credentialProviderVendor'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oauth2ProviderConfig: map['oauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((map['oauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      oauth2ProviderConfig: map['oauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((map['oauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

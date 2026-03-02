@@ -50,8 +50,8 @@ class MultiAccountDeliveryChannelArgs {
       deliveryChannelDescription: (map['deliveryChannelDescription'] as String).input(),
       deliveryChannelFilter: (MultiAccountDeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())).input(),
       multiAccountDeliveryChannelName: (map['multiAccountDeliveryChannelName'] as String).input(),
-      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())).input(),
-      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())).input(),
+      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery']! as Map).cast<String, dynamic>())).input(),
+      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (MultiAccountDeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

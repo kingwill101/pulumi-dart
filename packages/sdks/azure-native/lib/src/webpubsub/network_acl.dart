@@ -26,8 +26,8 @@ class NetworkACL {
 
   factory NetworkACL.fromMap(Map<String, dynamic> map) {
     return NetworkACL(
-      allow: map['allow'] == null ? null : ((map['allow'] as List).cast<String>()).input(),
-      deny: map['deny'] == null ? null : ((map['deny'] as List).cast<String>()).input(),
+      allow: map['allow'] == null ? null : ((map['allow']! as List).cast<String>()).input(),
+      deny: map['deny'] == null ? null : ((map['deny']! as List).cast<String>()).input(),
     );
   }
 }

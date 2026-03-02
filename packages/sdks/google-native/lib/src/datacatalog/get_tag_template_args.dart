@@ -32,7 +32,7 @@ class GetTagTemplateArgs {
   factory GetTagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetTagTemplateArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
 
   factory GoogleCloudDatacatalogV1SqlDatabaseSystemSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1SqlDatabaseSystemSpec(
-      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion'] as String).input(),
-      instanceHost: map['instanceHost'] == null ? null : (map['instanceHost'] as String).input(),
-      sqlEngine: map['sqlEngine'] == null ? null : (map['sqlEngine'] as String).input(),
+      databaseVersion: map['databaseVersion'] == null ? null : (map['databaseVersion']! as String).input(),
+      instanceHost: map['instanceHost'] == null ? null : (map['instanceHost']! as String).input(),
+      sqlEngine: map['sqlEngine'] == null ? null : (map['sqlEngine']! as String).input(),
     );
   }
 }

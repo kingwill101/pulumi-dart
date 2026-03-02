@@ -42,11 +42,11 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct'] as String).input(),
+      apiproduct: map['apiproduct'] == null ? null : (map['apiproduct']! as String).input(),
       developerId: (map['developerId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

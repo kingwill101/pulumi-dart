@@ -36,10 +36,10 @@ class ThingPrincipalAttachmentState {
 
   factory ThingPrincipalAttachmentState.fromMap(Map<String, dynamic> map) {
     return ThingPrincipalAttachmentState(
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      thing: map['thing'] == null ? null : (map['thing'] as String).input(),
-      thingPrincipalType: map['thingPrincipalType'] == null ? null : (map['thingPrincipalType'] as String).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      thing: map['thing'] == null ? null : ((map['thing'] as String).input()).input(),
+      thingPrincipalType: map['thingPrincipalType'] == null ? null : ((map['thingPrincipalType'] as String).input()).input(),
     );
   }
 }

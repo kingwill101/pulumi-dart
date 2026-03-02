@@ -68,14 +68,14 @@ class GetSnapshotArgs {
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotArgs(
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
-      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : (map['dbSnapshotIdentifier'] as String).input(),
-      includePublic: map['includePublic'] == null ? null : (map['includePublic'] as bool).input(),
-      includeShared: map['includeShared'] == null ? null : (map['includeShared'] as bool).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      snapshotType: map['snapshotType'] == null ? null : (map['snapshotType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : ((map['dbInstanceIdentifier'] as String).input()).input(),
+      dbSnapshotIdentifier: map['dbSnapshotIdentifier'] == null ? null : ((map['dbSnapshotIdentifier'] as String).input()).input(),
+      includePublic: map['includePublic'] == null ? null : ((map['includePublic'] as bool).input()).input(),
+      includeShared: map['includeShared'] == null ? null : ((map['includeShared'] as bool).input()).input(),
+      mostRecent: map['mostRecent'] == null ? null : ((map['mostRecent'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      snapshotType: map['snapshotType'] == null ? null : ((map['snapshotType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class TagsResponse {
 
   factory TagsResponse.fromMap(Map<String, dynamic> map) {
     return TagsResponse(
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

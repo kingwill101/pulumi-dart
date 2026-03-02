@@ -26,8 +26,8 @@ class OAuthTokenCloudtasksV2beta3 {
 
   factory OAuthTokenCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return OAuthTokenCloudtasksV2beta3(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

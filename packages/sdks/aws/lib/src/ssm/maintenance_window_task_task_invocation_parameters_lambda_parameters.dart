@@ -30,9 +30,9 @@ class MaintenanceWindowTaskTaskInvocationParametersLambdaParameters {
 
   factory MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParametersLambdaParameters(
-      clientContext: map['clientContext'] == null ? null : (map['clientContext'] as String).input(),
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      clientContext: map['clientContext'] == null ? null : ((map['clientContext'] as String).input()).input(),
+      payload: map['payload'] == null ? null : ((map['payload'] as String).input()).input(),
+      qualifier: map['qualifier'] == null ? null : ((map['qualifier'] as String).input()).input(),
     );
   }
 }

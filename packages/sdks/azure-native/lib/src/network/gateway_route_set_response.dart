@@ -31,9 +31,9 @@ class GatewayRouteSetResponse {
 
   factory GatewayRouteSetResponse.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSetResponse(
-      details: map['details'] == null ? null : (pulumi.Input.decodeMapValues<List<RouteSourceDetailsResponse>>(map['details'], (value) => pulumi.Input.decodeList<RouteSourceDetailsResponse>(value, (value) => RouteSourceDetailsResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeMapValues<List<RouteSourceDetailsResponse>>(map['details']!, (value) => pulumi.Input.decodeList<RouteSourceDetailsResponse>(value, (value) => RouteSourceDetailsResponse.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

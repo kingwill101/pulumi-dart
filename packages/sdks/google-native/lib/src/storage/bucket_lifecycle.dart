@@ -22,7 +22,7 @@ class BucketLifecycle {
 
   factory BucketLifecycle.fromMap(Map<String, dynamic> map) {
     return BucketLifecycle(
-      rule: map['rule'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleRuleItem>(map['rule'], (value) => BucketLifecycleRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: map['rule'] == null ? null : (pulumi.Input.decodeList<BucketLifecycleRuleItem>(map['rule']!, (value) => BucketLifecycleRuleItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

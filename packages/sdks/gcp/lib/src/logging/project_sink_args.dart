@@ -87,16 +87,16 @@ class ProjectSinkArgs {
 
   factory ProjectSinkArgs.fromMap(Map<String, dynamic> map) {
     return ProjectSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (ProjectSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
-      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (ProjectSinkBigqueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
+      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ProjectSinkExclusion>(map['exclusions'], (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ProjectSinkExclusion>(map['exclusions']!, (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity']! as bool).input(),
     );
   }
 }

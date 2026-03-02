@@ -34,8 +34,8 @@ class ManagementPolicyRuleFilters {
   factory ManagementPolicyRuleFilters.fromMap(Map<String, dynamic> map) {
     return ManagementPolicyRuleFilters(
       blobTypes: ((map['blobTypes'] as List).cast<String>()).input(),
-      matchBlobIndexTags: map['matchBlobIndexTags'] == null ? null : (pulumi.Input.decodeList<ManagementPolicyRuleFiltersMatchBlobIndexTag>(map['matchBlobIndexTags'], (value) => ManagementPolicyRuleFiltersMatchBlobIndexTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefixMatches: map['prefixMatches'] == null ? null : ((map['prefixMatches'] as List).cast<String>()).input(),
+      matchBlobIndexTags: map['matchBlobIndexTags'] == null ? null : (pulumi.Input.decodeList<ManagementPolicyRuleFiltersMatchBlobIndexTag>(map['matchBlobIndexTags']!, (value) => ManagementPolicyRuleFiltersMatchBlobIndexTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefixMatches: map['prefixMatches'] == null ? null : ((map['prefixMatches']! as List).cast<String>()).input(),
     );
   }
 }

@@ -43,8 +43,8 @@ class KeySigningKeyArgs {
     return KeySigningKeyArgs(
       hostedZoneId: (map['hostedZoneId'] as String).input(),
       keyManagementServiceArn: (map['keyManagementServiceArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

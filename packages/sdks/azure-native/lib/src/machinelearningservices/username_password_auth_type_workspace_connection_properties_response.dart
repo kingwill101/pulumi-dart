@@ -72,17 +72,17 @@ class UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse {
   factory UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse(
       authType: (map['authType'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
       createdByWorkspaceArmId: (map['createdByWorkspaceArmId'] as String).input(),
-      credentials: map['credentials'] == null ? null : (WorkspaceConnectionUsernamePasswordResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
+      credentials: map['credentials'] == null ? null : (WorkspaceConnectionUsernamePasswordResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
       group: (map['group'] as String).input(),
-      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList'] as List).cast<String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueFormat: map['valueFormat'] == null ? null : (map['valueFormat'] as String).input(),
+      isSharedToAll: map['isSharedToAll'] == null ? null : (map['isSharedToAll']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      sharedUserList: map['sharedUserList'] == null ? null : ((map['sharedUserList']! as List).cast<String>()).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueFormat: map['valueFormat'] == null ? null : (map['valueFormat']! as String).input(),
     );
   }
 }

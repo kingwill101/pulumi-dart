@@ -54,13 +54,13 @@ class GetFactoryDataPlaneAccessArgs {
 
   factory GetFactoryDataPlaneAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetFactoryDataPlaneAccessArgs(
-      accessResourcePath: map['accessResourcePath'] == null ? null : (map['accessResourcePath'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      accessResourcePath: map['accessResourcePath'] == null ? null : (map['accessResourcePath']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
       factoryName: (map['factoryName'] as String).input(),
-      permissions: map['permissions'] == null ? null : (map['permissions'] as String).input(),
-      profileName: map['profileName'] == null ? null : (map['profileName'] as String).input(),
+      permissions: map['permissions'] == null ? null : (map['permissions']! as String).input(),
+      profileName: map['profileName'] == null ? null : (map['profileName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

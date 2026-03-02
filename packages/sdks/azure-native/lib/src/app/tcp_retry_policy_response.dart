@@ -21,7 +21,7 @@ class TcpRetryPolicyResponse {
 
   factory TcpRetryPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TcpRetryPolicyResponse(
-      maxConnectAttempts: map['maxConnectAttempts'] == null ? null : (map['maxConnectAttempts'] as int).input(),
+      maxConnectAttempts: map['maxConnectAttempts'] == null ? null : (map['maxConnectAttempts']! as int).input(),
     );
   }
 }

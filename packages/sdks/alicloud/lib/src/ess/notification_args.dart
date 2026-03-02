@@ -45,7 +45,7 @@ class NotificationArgs {
       notificationArn: (map['notificationArn'] as String).input(),
       notificationTypes: ((map['notificationTypes'] as List).cast<String>()).input(),
       scalingGroupId: (map['scalingGroupId'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

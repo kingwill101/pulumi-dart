@@ -41,7 +41,7 @@ class AclAttachmentArgs {
     return AclAttachmentArgs(
       aclId: (map['aclId'] as String).input(),
       aclType: (map['aclType'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       listenerId: (map['listenerId'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2Schedule {
 
   factory GooglePrivacyDlpV2Schedule.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Schedule(
-      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null ? null : (map['recurrencePeriodDuration'] as String).input(),
+      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null ? null : (map['recurrencePeriodDuration']! as String).input(),
     );
   }
 }

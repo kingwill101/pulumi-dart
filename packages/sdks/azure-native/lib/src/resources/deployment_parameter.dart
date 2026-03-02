@@ -37,10 +37,10 @@ class DeploymentParameter {
 
   factory DeploymentParameter.fromMap(Map<String, dynamic> map) {
     return DeploymentParameter(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      reference: map['reference'] == null ? null : (KeyVaultParameterReference.fromMap((map['reference'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      reference: map['reference'] == null ? null : (KeyVaultParameterReference.fromMap((map['reference']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetDebugTokenFirebaseappcheckV1betaArgs {
     return GetDebugTokenFirebaseappcheckV1betaArgs(
       appId: (map['appId'] as String).input(),
       debugTokenId: (map['debugTokenId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

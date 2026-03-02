@@ -25,8 +25,8 @@ class KeyspaceReplicationSpecification {
 
   factory KeyspaceReplicationSpecification.fromMap(Map<String, dynamic> map) {
     return KeyspaceReplicationSpecification(
-      regionLists: map['regionLists'] == null ? null : ((map['regionLists'] as List).cast<String>()).input(),
-      replicationStrategy: map['replicationStrategy'] == null ? null : (map['replicationStrategy'] as String).input(),
+      regionLists: map['regionLists'] == null ? null : (((map['regionLists'] as List).cast<String>()).input()).input(),
+      replicationStrategy: map['replicationStrategy'] == null ? null : ((map['replicationStrategy'] as String).input()).input(),
     );
   }
 }

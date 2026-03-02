@@ -31,7 +31,7 @@ class UnitKindInputVariableMappingTo {
   factory UnitKindInputVariableMappingTo.fromMap(Map<String, dynamic> map) {
     return UnitKindInputVariableMappingTo(
       dependency: (map['dependency'] as String).input(),
-      ignoreForLookup: map['ignoreForLookup'] == null ? null : (map['ignoreForLookup'] as bool).input(),
+      ignoreForLookup: map['ignoreForLookup'] == null ? null : (map['ignoreForLookup']! as bool).input(),
       inputVariable: (map['inputVariable'] as String).input(),
     );
   }

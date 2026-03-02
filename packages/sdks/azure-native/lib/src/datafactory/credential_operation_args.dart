@@ -40,7 +40,7 @@ class CredentialOperationArgs {
 
   factory CredentialOperationArgs.fromMap(Map<String, dynamic> map) {
     return CredentialOperationArgs(
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
       factoryName: (map['factoryName'] as String).input(),
       properties: (ManagedIdentityCredential.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

@@ -38,10 +38,10 @@ class BackendServiceConnectionTrackingPolicy {
 
   factory BackendServiceConnectionTrackingPolicy.fromMap(Map<String, dynamic> map) {
     return BackendServiceConnectionTrackingPolicy(
-      connectionPersistenceOnUnhealthyBackends: map['connectionPersistenceOnUnhealthyBackends'] == null ? null : (BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends.fromValue(map['connectionPersistenceOnUnhealthyBackends'] as String)).input(),
-      enableStrongAffinity: map['enableStrongAffinity'] == null ? null : (map['enableStrongAffinity'] as bool).input(),
-      idleTimeoutSec: map['idleTimeoutSec'] == null ? null : (map['idleTimeoutSec'] as int).input(),
-      trackingMode: map['trackingMode'] == null ? null : (BackendServiceConnectionTrackingPolicyTrackingMode.fromValue(map['trackingMode'] as String)).input(),
+      connectionPersistenceOnUnhealthyBackends: map['connectionPersistenceOnUnhealthyBackends'] == null ? null : (BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends.fromValue(map['connectionPersistenceOnUnhealthyBackends']! as String)).input(),
+      enableStrongAffinity: map['enableStrongAffinity'] == null ? null : (map['enableStrongAffinity']! as bool).input(),
+      idleTimeoutSec: map['idleTimeoutSec'] == null ? null : (map['idleTimeoutSec']! as int).input(),
+      trackingMode: map['trackingMode'] == null ? null : (BackendServiceConnectionTrackingPolicyTrackingMode.fromValue(map['trackingMode']! as String)).input(),
     );
   }
 }

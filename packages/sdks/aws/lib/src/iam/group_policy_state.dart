@@ -38,10 +38,10 @@ class GroupPolicyState {
 
   factory GroupPolicyState.fromMap(Map<String, dynamic> map) {
     return GroupPolicyState(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      group: map['group'] == null ? null : ((map['group'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
     );
   }
 }

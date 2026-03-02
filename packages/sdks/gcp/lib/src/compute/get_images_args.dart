@@ -33,8 +33,8 @@ class GetImagesArgs {
 
   factory GetImagesArgs.fromMap(Map<String, dynamic> map) {
     return GetImagesArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

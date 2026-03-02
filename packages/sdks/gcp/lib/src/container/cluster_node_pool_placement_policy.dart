@@ -31,8 +31,8 @@ class ClusterNodePoolPlacementPolicy {
 
   factory ClusterNodePoolPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolPlacementPolicy(
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology'] as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      tpuTopology: map['tpuTopology'] == null ? null : (map['tpuTopology']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

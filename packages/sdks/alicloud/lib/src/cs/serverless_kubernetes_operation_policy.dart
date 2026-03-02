@@ -21,7 +21,7 @@ class ServerlessKubernetesOperationPolicy {
 
   factory ServerlessKubernetesOperationPolicy.fromMap(Map<String, dynamic> map) {
     return ServerlessKubernetesOperationPolicy(
-      clusterAutoUpgrade: map['clusterAutoUpgrade'] == null ? null : (ServerlessKubernetesOperationPolicyClusterAutoUpgrade.fromMap((map['clusterAutoUpgrade'] as Map).cast<String, dynamic>())).input(),
+      clusterAutoUpgrade: map['clusterAutoUpgrade'] == null ? null : (ServerlessKubernetesOperationPolicyClusterAutoUpgrade.fromMap((map['clusterAutoUpgrade']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

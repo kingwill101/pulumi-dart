@@ -42,7 +42,7 @@ class GetRegionRouteEntriesResult {
       entries: pulumi.Input.decodeList<GetRegionRouteEntriesEntry>(map['entries'], (value) => GetRegionRouteEntriesEntry.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       regionId: map['regionId'] as String,
     );
   }

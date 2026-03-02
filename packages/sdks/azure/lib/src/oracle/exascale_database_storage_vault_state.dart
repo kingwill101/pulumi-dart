@@ -67,16 +67,16 @@ class ExascaleDatabaseStorageVaultState {
 
   factory ExascaleDatabaseStorageVaultState.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultState(
-      additionalFlashCachePercentage: map['additionalFlashCachePercentage'] == null ? null : (map['additionalFlashCachePercentage'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      highCapacityDatabaseStorage: map['highCapacityDatabaseStorage'] == null ? null : (ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      additionalFlashCachePercentage: map['additionalFlashCachePercentage'] == null ? null : (map['additionalFlashCachePercentage']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      highCapacityDatabaseStorage: map['highCapacityDatabaseStorage'] == null ? null : (ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((map['highCapacityDatabaseStorage']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

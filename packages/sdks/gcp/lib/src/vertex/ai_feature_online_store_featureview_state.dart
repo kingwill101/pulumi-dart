@@ -94,19 +94,19 @@ class AiFeatureOnlineStoreFeatureviewState {
 
   factory AiFeatureOnlineStoreFeatureviewState.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewState(
-      bigQuerySource: map['bigQuerySource'] == null ? null : (AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      featureOnlineStore: map['featureOnlineStore'] == null ? null : (map['featureOnlineStore'] as String).input(),
-      featureRegistrySource: map['featureRegistrySource'] == null ? null : (AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((map['featureRegistrySource'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      syncConfig: map['syncConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vectorSearchConfig: map['vectorSearchConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap((map['vectorSearchConfig'] as Map).cast<String, dynamic>())).input(),
+      bigQuerySource: map['bigQuerySource'] == null ? null : (AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((map['bigQuerySource']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      featureOnlineStore: map['featureOnlineStore'] == null ? null : (map['featureOnlineStore']! as String).input(),
+      featureRegistrySource: map['featureRegistrySource'] == null ? null : (AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.fromMap((map['featureRegistrySource']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      syncConfig: map['syncConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap((map['syncConfig']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vectorSearchConfig: map['vectorSearchConfig'] == null ? null : (AiFeatureOnlineStoreFeatureviewVectorSearchConfig.fromMap((map['vectorSearchConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -44,8 +44,8 @@ class DomainArgs {
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
       domainName: (map['domainName'] as String).input(),
-      domainRedirect: map['domainRedirect'] == null ? null : (DomainRedirect.fromMap((map['domainRedirect'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      domainRedirect: map['domainRedirect'] == null ? null : (DomainRedirect.fromMap((map['domainRedirect']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       site: (map['site'] as String).input(),
       siteId: (map['siteId'] as String).input(),
     );

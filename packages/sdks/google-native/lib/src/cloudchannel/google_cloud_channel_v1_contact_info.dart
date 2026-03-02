@@ -41,11 +41,11 @@ class GoogleCloudChannelV1ContactInfo {
 
   factory GoogleCloudChannelV1ContactInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1ContactInfo(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

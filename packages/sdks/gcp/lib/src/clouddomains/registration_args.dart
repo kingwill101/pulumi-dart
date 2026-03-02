@@ -81,15 +81,15 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      contactNotices: map['contactNotices'] == null ? null : ((map['contactNotices'] as List).cast<String>()).input(),
+      contactNotices: map['contactNotices'] == null ? null : ((map['contactNotices']! as List).cast<String>()).input(),
       contactSettings: (RegistrationContactSettings.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (RegistrationDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (RegistrationDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
-      domainNotices: map['domainNotices'] == null ? null : ((map['domainNotices'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      domainNotices: map['domainNotices'] == null ? null : ((map['domainNotices']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      managementSettings: map['managementSettings'] == null ? null : (RegistrationManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      managementSettings: map['managementSettings'] == null ? null : (RegistrationManagementSettings.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       yearlyPrice: (RegistrationYearlyPrice.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())).input(),
     );
   }

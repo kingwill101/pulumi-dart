@@ -21,7 +21,7 @@ class IdentityServiceGoogleConfigGkehubV1beta {
 
   factory IdentityServiceGoogleConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return IdentityServiceGoogleConfigGkehubV1beta(
-      disable: map['disable'] == null ? null : (map['disable'] as bool).input(),
+      disable: map['disable'] == null ? null : (map['disable']! as bool).input(),
     );
   }
 }

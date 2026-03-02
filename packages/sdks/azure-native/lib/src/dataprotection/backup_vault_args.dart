@@ -56,13 +56,13 @@ class BackupVaultArgs {
 
   factory BackupVaultArgs.fromMap(Map<String, dynamic> map) {
     return BackupVaultArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      identity: map['identity'] == null ? null : (DppIdentityDetails.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      identity: map['identity'] == null ? null : (DppIdentityDetails.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (map['properties'] as BackupVaultDataprotection).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vaultName: map['vaultName'] == null ? null : (map['vaultName']! as String).input(),
     );
   }
 }

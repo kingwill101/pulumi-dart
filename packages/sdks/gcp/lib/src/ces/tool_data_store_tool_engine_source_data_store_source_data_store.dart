@@ -67,12 +67,12 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
 
   factory ToolDataStoreToolEngineSourceDataStoreSourceDataStore.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSourceDataStoreSourceDataStore(
-      connectorConfigs: map['connectorConfigs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>(map['connectorConfigs'], (value) => ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode'] as String).input(),
+      connectorConfigs: map['connectorConfigs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig>(map['connectorConfigs']!, (value) => ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentProcessingMode: map['documentProcessingMode'] == null ? null : (map['documentProcessingMode']! as String).input(),
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

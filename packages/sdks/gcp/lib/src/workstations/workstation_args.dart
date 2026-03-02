@@ -75,13 +75,13 @@ class WorkstationArgs {
 
   factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sourceWorkstation: map['sourceWorkstation'] == null ? null : (map['sourceWorkstation'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sourceWorkstation: map['sourceWorkstation'] == null ? null : (map['sourceWorkstation']! as String).input(),
       workstationClusterId: (map['workstationClusterId'] as String).input(),
       workstationConfigId: (map['workstationConfigId'] as String).input(),
       workstationId: (map['workstationId'] as String).input(),

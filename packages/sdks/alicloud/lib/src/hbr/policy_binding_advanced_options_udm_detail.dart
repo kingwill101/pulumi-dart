@@ -30,9 +30,9 @@ class PolicyBindingAdvancedOptionsUdmDetail {
 
   factory PolicyBindingAdvancedOptionsUdmDetail.fromMap(Map<String, dynamic> map) {
     return PolicyBindingAdvancedOptionsUdmDetail(
-      destinationKmsKeyId: map['destinationKmsKeyId'] == null ? null : (map['destinationKmsKeyId'] as String).input(),
-      diskIdLists: map['diskIdLists'] == null ? null : ((map['diskIdLists'] as List).cast<String>()).input(),
-      excludeDiskIdLists: map['excludeDiskIdLists'] == null ? null : ((map['excludeDiskIdLists'] as List).cast<String>()).input(),
+      destinationKmsKeyId: map['destinationKmsKeyId'] == null ? null : (map['destinationKmsKeyId']! as String).input(),
+      diskIdLists: map['diskIdLists'] == null ? null : ((map['diskIdLists']! as List).cast<String>()).input(),
+      excludeDiskIdLists: map['excludeDiskIdLists'] == null ? null : ((map['excludeDiskIdLists']! as List).cast<String>()).input(),
     );
   }
 }

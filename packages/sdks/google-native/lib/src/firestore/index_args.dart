@@ -49,12 +49,12 @@ class IndexArgs {
 
   factory IndexArgs.fromMap(Map<String, dynamic> map) {
     return IndexArgs(
-      apiScope: map['apiScope'] == null ? null : (IndexApiScope.fromValue(map['apiScope'] as String)).input(),
+      apiScope: map['apiScope'] == null ? null : (IndexApiScope.fromValue(map['apiScope']! as String)).input(),
       collectionGroupId: (map['collectionGroupId'] as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1IndexField>(map['fields'], (value) => GoogleFirestoreAdminV1IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queryScope: map['queryScope'] == null ? null : (IndexQueryScope.fromValue(map['queryScope'] as String)).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleFirestoreAdminV1IndexField>(map['fields']!, (value) => GoogleFirestoreAdminV1IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queryScope: map['queryScope'] == null ? null : (IndexQueryScope.fromValue(map['queryScope']! as String)).input(),
     );
   }
 }

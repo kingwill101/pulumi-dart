@@ -30,9 +30,9 @@ class ConsumerGroupConsumeRetryPolicy {
 
   factory ConsumerGroupConsumeRetryPolicy.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupConsumeRetryPolicy(
-      deadLetterTargetTopic: map['deadLetterTargetTopic'] == null ? null : (map['deadLetterTargetTopic'] as String).input(),
-      maxRetryTimes: map['maxRetryTimes'] == null ? null : (map['maxRetryTimes'] as int).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (map['retryPolicy'] as String).input(),
+      deadLetterTargetTopic: map['deadLetterTargetTopic'] == null ? null : (map['deadLetterTargetTopic']! as String).input(),
+      maxRetryTimes: map['maxRetryTimes'] == null ? null : (map['maxRetryTimes']! as int).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (map['retryPolicy']! as String).input(),
     );
   }
 }

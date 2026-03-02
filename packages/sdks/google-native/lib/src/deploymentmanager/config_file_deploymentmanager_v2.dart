@@ -20,7 +20,7 @@ class ConfigFileDeploymentmanagerV2 {
 
   factory ConfigFileDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
     return ConfigFileDeploymentmanagerV2(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
     );
   }
 }

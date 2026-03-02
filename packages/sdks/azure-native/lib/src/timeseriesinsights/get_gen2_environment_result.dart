@@ -114,10 +114,10 @@ class GetGen2EnvironmentResult {
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       status: EnvironmentStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       storageConfiguration: Gen2StorageConfigurationOutputResponse.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       timeSeriesIdProperties: pulumi.Input.decodeList<TimeSeriesIdPropertyResponse>(map['timeSeriesIdProperties'], (value) => TimeSeriesIdPropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
-      warmStoreConfiguration: map['warmStoreConfiguration'] == null ? null : WarmStoreConfigurationPropertiesResponse.fromMap((map['warmStoreConfiguration'] as Map).cast<String, dynamic>()),
+      warmStoreConfiguration: map['warmStoreConfiguration'] == null ? null : WarmStoreConfigurationPropertiesResponse.fromMap((map['warmStoreConfiguration']! as Map).cast<String, dynamic>()),
     );
   }
 }

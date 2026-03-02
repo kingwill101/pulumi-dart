@@ -21,7 +21,7 @@ class OAuthRequirements {
 
   factory OAuthRequirements.fromMap(Map<String, dynamic> map) {
     return OAuthRequirements(
-      canonicalScopes: map['canonicalScopes'] == null ? null : (map['canonicalScopes'] as String).input(),
+      canonicalScopes: map['canonicalScopes'] == null ? null : (map['canonicalScopes']! as String).input(),
     );
   }
 }

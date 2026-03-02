@@ -20,7 +20,7 @@ class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
 
   factory AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination.fromMap(Map<String, dynamic> map) {
     return AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination(
-      outputUri: map['outputUri'] == null ? null : (map['outputUri'] as String).input(),
+      outputUri: map['outputUri'] == null ? null : (map['outputUri']! as String).input(),
     );
   }
 }

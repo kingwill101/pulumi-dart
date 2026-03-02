@@ -61,15 +61,15 @@ class RecordState {
 
   factory RecordState.fromMap(Map<String, dynamic> map) {
     return RecordState(
-      hostRecord: map['hostRecord'] == null ? null : (map['hostRecord'] as String).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      routing: map['routing'] == null ? null : (map['routing'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      hostRecord: map['hostRecord'] == null ? null : (map['hostRecord']! as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      routing: map['routing'] == null ? null : (map['routing']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

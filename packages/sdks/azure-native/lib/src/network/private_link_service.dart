@@ -76,17 +76,17 @@ class PrivateLinkService {
 
   factory PrivateLinkService.fromMap(Map<String, dynamic> map) {
     return PrivateLinkService(
-      autoApproval: map['autoApproval'] == null ? null : (PrivateLinkServicePropertiesAutoApproval.fromMap((map['autoApproval'] as Map).cast<String, dynamic>())).input(),
-      destinationIPAddress: map['destinationIPAddress'] == null ? null : (map['destinationIPAddress'] as String).input(),
-      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol'] as bool).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceIpConfiguration>(map['ipConfigurations'], (value) => PrivateLinkServiceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['loadBalancerFrontendIpConfigurations'], (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      visibility: map['visibility'] == null ? null : (PrivateLinkServicePropertiesVisibility.fromMap((map['visibility'] as Map).cast<String, dynamic>())).input(),
+      autoApproval: map['autoApproval'] == null ? null : (PrivateLinkServicePropertiesAutoApproval.fromMap((map['autoApproval']! as Map).cast<String, dynamic>())).input(),
+      destinationIPAddress: map['destinationIPAddress'] == null ? null : (map['destinationIPAddress']! as String).input(),
+      enableProxyProtocol: map['enableProxyProtocol'] == null ? null : (map['enableProxyProtocol']! as bool).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkServiceIpConfiguration>(map['ipConfigurations']!, (value) => PrivateLinkServiceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerFrontendIpConfigurations: map['loadBalancerFrontendIpConfigurations'] == null ? null : (pulumi.Input.decodeList<FrontendIPConfiguration>(map['loadBalancerFrontendIpConfigurations']!, (value) => FrontendIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      visibility: map['visibility'] == null ? null : (PrivateLinkServicePropertiesVisibility.fromMap((map['visibility']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

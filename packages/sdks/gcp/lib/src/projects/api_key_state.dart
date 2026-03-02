@@ -56,13 +56,13 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      keyString: map['keyString'] == null ? null : (map['keyString'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      restrictions: map['restrictions'] == null ? null : (ApiKeyRestrictions.fromMap((map['restrictions'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      keyString: map['keyString'] == null ? null : (map['keyString']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      restrictions: map['restrictions'] == null ? null : (ApiKeyRestrictions.fromMap((map['restrictions']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

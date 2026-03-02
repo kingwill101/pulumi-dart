@@ -51,13 +51,13 @@ class GetHostGroupsResult {
   factory GetHostGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetHostGroupsResult(
       groups: pulumi.Input.decodeList<GetHostGroupsGroup>(map['groups'], (value) => GetHostGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
-      hostGroupName: map['hostGroupName'] == null ? null : map['hostGroupName'] as String,
+      hostGroupName: map['hostGroupName'] == null ? null : map['hostGroupName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

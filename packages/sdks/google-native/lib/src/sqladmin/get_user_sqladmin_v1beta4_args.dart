@@ -35,10 +35,10 @@ class GetUserSqladminV1beta4Args {
 
   factory GetUserSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return GetUserSqladminV1beta4Args(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       instance: (map['instance'] as String).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -101,21 +101,21 @@ class DomainDevicesParallelSource {
 
   factory DomainDevicesParallelSource.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallelSource(
-      dbus: map['dbus'] == null ? null : (DomainDevicesParallelSourceDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
-      dev: map['dev'] == null ? null : (DomainDevicesParallelSourceDev.fromMap((map['dev'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesParallelSourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      nmdm: map['nmdm'] == null ? null : (DomainDevicesParallelSourceNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>())).input(),
-      null_: map['null'] == null ? null : (map['null'] as bool).input(),
-      pipe: map['pipe'] == null ? null : (DomainDevicesParallelSourcePipe.fromMap((map['pipe'] as Map).cast<String, dynamic>())).input(),
-      pty: map['pty'] == null ? null : (DomainDevicesParallelSourcePty.fromMap((map['pty'] as Map).cast<String, dynamic>())).input(),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesParallelSourceQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>())).input(),
-      spicePort: map['spicePort'] == null ? null : (DomainDevicesParallelSourceSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>())).input(),
-      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc'] as bool).input(),
-      stdIo: map['stdIo'] == null ? null : (map['stdIo'] as bool).input(),
-      tcp: map['tcp'] == null ? null : (DomainDevicesParallelSourceTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
-      udp: map['udp'] == null ? null : (DomainDevicesParallelSourceUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
-      unix: map['unix'] == null ? null : (DomainDevicesParallelSourceUnix.fromMap((map['unix'] as Map).cast<String, dynamic>())).input(),
-      vc: map['vc'] == null ? null : (map['vc'] as bool).input(),
+      dbus: map['dbus'] == null ? null : (DomainDevicesParallelSourceDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
+      dev: map['dev'] == null ? null : (DomainDevicesParallelSourceDev.fromMap((map['dev']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesParallelSourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
+      nmdm: map['nmdm'] == null ? null : (DomainDevicesParallelSourceNmdm.fromMap((map['nmdm']! as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null']! as bool).input(),
+      pipe: map['pipe'] == null ? null : (DomainDevicesParallelSourcePipe.fromMap((map['pipe']! as Map).cast<String, dynamic>())).input(),
+      pty: map['pty'] == null ? null : (DomainDevicesParallelSourcePty.fromMap((map['pty']! as Map).cast<String, dynamic>())).input(),
+      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesParallelSourceQemuvdAgent.fromMap((map['qemuvdAgent']! as Map).cast<String, dynamic>())).input(),
+      spicePort: map['spicePort'] == null ? null : (DomainDevicesParallelSourceSpicePort.fromMap((map['spicePort']! as Map).cast<String, dynamic>())).input(),
+      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc']! as bool).input(),
+      stdIo: map['stdIo'] == null ? null : (map['stdIo']! as bool).input(),
+      tcp: map['tcp'] == null ? null : (DomainDevicesParallelSourceTcp.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainDevicesParallelSourceUdp.fromMap((map['udp']! as Map).cast<String, dynamic>())).input(),
+      unix: map['unix'] == null ? null : (DomainDevicesParallelSourceUnix.fromMap((map['unix']! as Map).cast<String, dynamic>())).input(),
+      vc: map['vc'] == null ? null : (map['vc']! as bool).input(),
     );
   }
 }

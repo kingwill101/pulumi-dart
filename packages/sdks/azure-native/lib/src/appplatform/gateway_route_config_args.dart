@@ -46,9 +46,9 @@ class GatewayRouteConfigArgs {
   factory GatewayRouteConfigArgs.fromMap(Map<String, dynamic> map) {
     return GatewayRouteConfigArgs(
       gatewayName: (map['gatewayName'] as String).input(),
-      properties: map['properties'] == null ? null : (GatewayRouteConfigProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (GatewayRouteConfigProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeConfigName: map['routeConfigName'] == null ? null : (map['routeConfigName'] as String).input(),
+      routeConfigName: map['routeConfigName'] == null ? null : (map['routeConfigName']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

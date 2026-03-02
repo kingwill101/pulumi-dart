@@ -61,13 +61,13 @@ class TopicArgs {
 
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      lifeCycle: map['lifeCycle'] == null ? null : (map['lifeCycle'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      lifeCycle: map['lifeCycle'] == null ? null : (map['lifeCycle']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      recordSchema: map['recordSchema'] == null ? null : ((map['recordSchema'] as Map).cast<String, String>()).input(),
-      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
-      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
+      recordSchema: map['recordSchema'] == null ? null : ((map['recordSchema']! as Map).cast<String, String>()).input(),
+      recordType: map['recordType'] == null ? null : (map['recordType']! as String).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as int).input(),
     );
   }
 }

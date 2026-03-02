@@ -21,7 +21,7 @@ class GetInfrastructureConfigurationLogging {
 
   factory GetInfrastructureConfigurationLogging.fromMap(Map<String, dynamic> map) {
     return GetInfrastructureConfigurationLogging(
-      s3Logs: (pulumi.Input.decodeList<GetInfrastructureConfigurationLoggingS3Log>(map['s3Logs'], (value) => GetInfrastructureConfigurationLoggingS3Log.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Logs: (pulumi.Input.decodeList<GetInfrastructureConfigurationLoggingS3Log>(map['s3Logs']!, (value) => GetInfrastructureConfigurationLoggingS3Log.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

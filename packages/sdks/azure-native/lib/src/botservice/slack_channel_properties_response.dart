@@ -71,17 +71,17 @@ class SlackChannelPropertiesResponse {
 
   factory SlackChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SlackChannelPropertiesResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
       isValidated: (map['isValidated'] as bool).input(),
-      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl'] as String).input(),
+      landingPageUrl: map['landingPageUrl'] == null ? null : (map['landingPageUrl']! as String).input(),
       lastSubmissionId: (map['lastSubmissionId'] as String).input(),
       redirectAction: (map['redirectAction'] as String).input(),
-      registerBeforeOAuthFlow: map['registerBeforeOAuthFlow'] == null ? null : (map['registerBeforeOAuthFlow'] as bool).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
-      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret'] as String).input(),
-      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken'] as String).input(),
+      registerBeforeOAuthFlow: map['registerBeforeOAuthFlow'] == null ? null : (map['registerBeforeOAuthFlow']! as bool).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
+      signingSecret: map['signingSecret'] == null ? null : (map['signingSecret']! as String).input(),
+      verificationToken: map['verificationToken'] == null ? null : (map['verificationToken']! as String).input(),
     );
   }
 }

@@ -157,8 +157,8 @@ class GetKubernetesClusterResult {
 
   factory GetKubernetesClusterResult.fromMap(Map<String, dynamic> map) {
     return GetKubernetesClusterResult(
-      aadConfiguration: map['aadConfiguration'] == null ? null : AadConfigurationResponse.fromMap((map['aadConfiguration'] as Map).cast<String, dynamic>()),
-      administratorConfiguration: map['administratorConfiguration'] == null ? null : AdministratorConfigurationResponse.fromMap((map['administratorConfiguration'] as Map).cast<String, dynamic>()),
+      aadConfiguration: map['aadConfiguration'] == null ? null : AadConfigurationResponse.fromMap((map['aadConfiguration']! as Map).cast<String, dynamic>()),
+      administratorConfiguration: map['administratorConfiguration'] == null ? null : AdministratorConfigurationResponse.fromMap((map['administratorConfiguration']! as Map).cast<String, dynamic>()),
       attachedNetworkIds: (map['attachedNetworkIds'] as List).cast<String>(),
       availableUpgrades: pulumi.Input.decodeList<AvailableUpgradeResponse>(map['availableUpgrades'], (value) => AvailableUpgradeResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
@@ -175,13 +175,13 @@ class GetKubernetesClusterResult {
       initialAgentPoolConfigurations: pulumi.Input.decodeList<InitialAgentPoolConfigurationResponse>(map['initialAgentPoolConfigurations'], (value) => InitialAgentPoolConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       kubernetesVersion: map['kubernetesVersion'] as String,
       location: map['location'] as String,
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>()),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : ManagedResourceGroupConfigurationResponse.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
       networkConfiguration: NetworkConfigurationResponse.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
       nodes: pulumi.Input.decodeList<KubernetesClusterNodeResponse>(map['nodes'], (value) => KubernetesClusterNodeResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

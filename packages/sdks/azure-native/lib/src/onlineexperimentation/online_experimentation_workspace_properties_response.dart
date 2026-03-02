@@ -53,7 +53,7 @@ class OnlineExperimentationWorkspacePropertiesResponse {
   factory OnlineExperimentationWorkspacePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return OnlineExperimentationWorkspacePropertiesResponse(
       appConfigurationResourceId: (map['appConfigurationResourceId'] as String).input(),
-      encryption: map['encryption'] == null ? null : (ResourceEncryptionConfigurationResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (ResourceEncryptionConfigurationResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       endpoint: (map['endpoint'] as String).input(),
       logAnalyticsWorkspaceResourceId: (map['logAnalyticsWorkspaceResourceId'] as String).input(),
       logsExporterStorageAccountResourceId: (map['logsExporterStorageAccountResourceId'] as String).input(),

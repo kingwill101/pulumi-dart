@@ -21,7 +21,7 @@ class FleetState {
 
   factory FleetState.fromMap(Map<String, dynamic> map) {
     return FleetState(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

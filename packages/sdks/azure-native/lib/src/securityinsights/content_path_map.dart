@@ -26,8 +26,8 @@ class ContentPathMap {
 
   factory ContentPathMap.fromMap(Map<String, dynamic> map) {
     return ContentPathMap(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class GitSourceContextContaineranalysisV1beta1 {
 
   factory GitSourceContextContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return GitSourceContextContaineranalysisV1beta1(
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

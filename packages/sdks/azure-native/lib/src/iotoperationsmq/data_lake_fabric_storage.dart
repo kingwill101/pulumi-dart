@@ -47,8 +47,8 @@ class DataLakeFabricStorage {
       authentication: (DataLakeFabricStorageAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
       endpoint: (map['endpoint'] as String).input(),
       fabricPath: (map['fabricPath'] as String).input(),
-      guids: map['guids'] == null ? null : (FabricGuids.fromMap((map['guids'] as Map).cast<String, dynamic>())).input(),
-      names: map['names'] == null ? null : (FabricNames.fromMap((map['names'] as Map).cast<String, dynamic>())).input(),
+      guids: map['guids'] == null ? null : (FabricGuids.fromMap((map['guids']! as Map).cast<String, dynamic>())).input(),
+      names: map['names'] == null ? null : (FabricNames.fromMap((map['names']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

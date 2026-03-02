@@ -37,10 +37,10 @@ class ClusterResourceRestoreScope {
 
   factory ClusterResourceRestoreScope.fromMap(Map<String, dynamic> map) {
     return ClusterResourceRestoreScope(
-      allGroupKinds: map['allGroupKinds'] == null ? null : (map['allGroupKinds'] as bool).input(),
-      excludedGroupKinds: map['excludedGroupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['excludedGroupKinds'], (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      noGroupKinds: map['noGroupKinds'] == null ? null : (map['noGroupKinds'] as bool).input(),
-      selectedGroupKinds: map['selectedGroupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['selectedGroupKinds'], (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allGroupKinds: map['allGroupKinds'] == null ? null : (map['allGroupKinds']! as bool).input(),
+      excludedGroupKinds: map['excludedGroupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['excludedGroupKinds']!, (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      noGroupKinds: map['noGroupKinds'] == null ? null : (map['noGroupKinds']! as bool).input(),
+      selectedGroupKinds: map['selectedGroupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['selectedGroupKinds']!, (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

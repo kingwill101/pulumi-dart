@@ -56,13 +56,13 @@ class AnomalySubscriptionArgs {
 
   factory AnomalySubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AnomalySubscriptionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
       frequency: (map['frequency'] as String).input(),
       monitorArnLists: ((map['monitorArnLists'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subscribers: (pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers'], (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      thresholdExpression: map['thresholdExpression'] == null ? null : (AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      subscribers: (pulumi.Input.decodeList<AnomalySubscriptionSubscriber>(map['subscribers']!, (value) => AnomalySubscriptionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      thresholdExpression: map['thresholdExpression'] == null ? null : ((AnomalySubscriptionThresholdExpression.fromMap((map['thresholdExpression']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

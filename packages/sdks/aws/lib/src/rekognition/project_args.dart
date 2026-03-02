@@ -51,12 +51,12 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      autoUpdate: map['autoUpdate'] == null ? null : (map['autoUpdate'] as String).input(),
-      feature: map['feature'] == null ? null : (map['feature'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ProjectTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      autoUpdate: map['autoUpdate'] == null ? null : ((map['autoUpdate'] as String).input()).input(),
+      feature: map['feature'] == null ? null : ((map['feature'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ProjectTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

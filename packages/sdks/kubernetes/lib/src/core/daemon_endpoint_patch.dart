@@ -21,7 +21,7 @@ class DaemonEndpointPatch {
 
   factory DaemonEndpointPatch.fromMap(Map<String, dynamic> map) {
     return DaemonEndpointPatch(
-      port: map['Port'] == null ? null : (map['Port'] as int).input(),
+      port: map['Port'] == null ? null : (map['Port']! as int).input(),
     );
   }
 }

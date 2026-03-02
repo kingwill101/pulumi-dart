@@ -69,16 +69,16 @@ class GetIpamIpamPoolsArgs {
 
   factory GetIpamIpamPoolsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpamIpamPoolsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName'] as String).input(),
-      ipamScopeId: map['ipamScopeId'] == null ? null : (map['ipamScopeId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId']! as String).input(),
+      ipamPoolName: map['ipamPoolName'] == null ? null : (map['ipamPoolName']! as String).input(),
+      ipamScopeId: map['ipamScopeId'] == null ? null : (map['ipamScopeId']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      poolRegionId: map['poolRegionId'] == null ? null : (map['poolRegionId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      sourceIpamPoolId: map['sourceIpamPoolId'] == null ? null : (map['sourceIpamPoolId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

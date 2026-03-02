@@ -95,20 +95,20 @@ class ListShareSynchronizationDetailsArgs {
   factory ListShareSynchronizationDetailsArgs.fromMap(Map<String, dynamic> map) {
     return ListShareSynchronizationDetailsArgs(
       accountName: (map['accountName'] as String).input(),
-      consumerEmail: map['consumerEmail'] == null ? null : (map['consumerEmail'] as String).input(),
-      consumerName: map['consumerName'] == null ? null : (map['consumerName'] as String).input(),
-      consumerTenantName: map['consumerTenantName'] == null ? null : (map['consumerTenantName'] as String).input(),
-      durationMs: map['durationMs'] == null ? null : (map['durationMs'] as int).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      orderby: map['orderby'] == null ? null : (map['orderby'] as String).input(),
+      consumerEmail: map['consumerEmail'] == null ? null : (map['consumerEmail']! as String).input(),
+      consumerName: map['consumerName'] == null ? null : (map['consumerName']! as String).input(),
+      consumerTenantName: map['consumerTenantName'] == null ? null : (map['consumerTenantName']! as String).input(),
+      durationMs: map['durationMs'] == null ? null : (map['durationMs']! as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      orderby: map['orderby'] == null ? null : (map['orderby']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      synchronizationId: map['synchronizationId'] == null ? null : (map['synchronizationId'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      synchronizationId: map['synchronizationId'] == null ? null : (map['synchronizationId']! as String).input(),
     );
   }
 }

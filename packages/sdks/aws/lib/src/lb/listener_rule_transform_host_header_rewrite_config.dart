@@ -21,7 +21,7 @@ class ListenerRuleTransformHostHeaderRewriteConfig {
 
   factory ListenerRuleTransformHostHeaderRewriteConfig.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransformHostHeaderRewriteConfig(
-      rewrite: map['rewrite'] == null ? null : (ListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>())).input(),
+      rewrite: map['rewrite'] == null ? null : ((ListenerRuleTransformHostHeaderRewriteConfigRewrite.fromMap((map['rewrite']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ActiveSlotState {
 
   factory ActiveSlotState.fromMap(Map<String, dynamic> map) {
     return ActiveSlotState(
-      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName'] as String).input(),
-      appServiceSlotName: map['appServiceSlotName'] == null ? null : (map['appServiceSlotName'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      appServiceName: map['appServiceName'] == null ? null : (map['appServiceName']! as String).input(),
+      appServiceSlotName: map['appServiceSlotName'] == null ? null : (map['appServiceSlotName']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

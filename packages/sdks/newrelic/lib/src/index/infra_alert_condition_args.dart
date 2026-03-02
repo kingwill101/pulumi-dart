@@ -100,21 +100,21 @@ class InfraAlertConditionArgs {
 
   factory InfraAlertConditionArgs.fromMap(Map<String, dynamic> map) {
     return InfraAlertConditionArgs(
-      comparison: map['comparison'] == null ? null : (map['comparison'] as String).input(),
-      critical: map['critical'] == null ? null : (InfraAlertConditionCritical.fromMap((map['critical'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      event: map['event'] == null ? null : (map['event'] as String).input(),
-      integrationProvider: map['integrationProvider'] == null ? null : (map['integrationProvider'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      comparison: map['comparison'] == null ? null : (map['comparison']! as String).input(),
+      critical: map['critical'] == null ? null : (InfraAlertConditionCritical.fromMap((map['critical']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      event: map['event'] == null ? null : (map['event']! as String).input(),
+      integrationProvider: map['integrationProvider'] == null ? null : (map['integrationProvider']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyId: (map['policyId'] as String).input(),
-      processWhere: map['processWhere'] == null ? null : (map['processWhere'] as String).input(),
-      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl'] as String).input(),
-      select: map['select'] == null ? null : (map['select'] as String).input(),
+      processWhere: map['processWhere'] == null ? null : (map['processWhere']! as String).input(),
+      runbookUrl: map['runbookUrl'] == null ? null : (map['runbookUrl']! as String).input(),
+      select: map['select'] == null ? null : (map['select']! as String).input(),
       type: (map['type'] as String).input(),
-      violationCloseTimer: map['violationCloseTimer'] == null ? null : (map['violationCloseTimer'] as int).input(),
-      warning: map['warning'] == null ? null : (InfraAlertConditionWarning.fromMap((map['warning'] as Map).cast<String, dynamic>())).input(),
-      where: map['where'] == null ? null : (map['where'] as String).input(),
+      violationCloseTimer: map['violationCloseTimer'] == null ? null : (map['violationCloseTimer']! as int).input(),
+      warning: map['warning'] == null ? null : (InfraAlertConditionWarning.fromMap((map['warning']! as Map).cast<String, dynamic>())).input(),
+      where: map['where'] == null ? null : (map['where']! as String).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch {
 
   factory RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
       name: (map['name'] as String).input(),
-      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch']! as bool).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

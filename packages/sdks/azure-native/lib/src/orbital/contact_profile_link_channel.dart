@@ -59,11 +59,11 @@ class ContactProfileLinkChannel {
     return ContactProfileLinkChannel(
       bandwidthMHz: (map['bandwidthMHz'] as double).input(),
       centerFrequencyMHz: (map['centerFrequencyMHz'] as double).input(),
-      decodingConfiguration: map['decodingConfiguration'] == null ? null : (map['decodingConfiguration'] as String).input(),
-      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : (map['demodulationConfiguration'] as String).input(),
-      encodingConfiguration: map['encodingConfiguration'] == null ? null : (map['encodingConfiguration'] as String).input(),
+      decodingConfiguration: map['decodingConfiguration'] == null ? null : (map['decodingConfiguration']! as String).input(),
+      demodulationConfiguration: map['demodulationConfiguration'] == null ? null : (map['demodulationConfiguration']! as String).input(),
+      encodingConfiguration: map['encodingConfiguration'] == null ? null : (map['encodingConfiguration']! as String).input(),
       endPoint: (EndPoint.fromMap((map['endPoint'] as Map).cast<String, dynamic>())).input(),
-      modulationConfiguration: map['modulationConfiguration'] == null ? null : (map['modulationConfiguration'] as String).input(),
+      modulationConfiguration: map['modulationConfiguration'] == null ? null : (map['modulationConfiguration']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

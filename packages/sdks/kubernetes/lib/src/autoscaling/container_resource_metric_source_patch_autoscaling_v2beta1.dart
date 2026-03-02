@@ -36,10 +36,10 @@ class ContainerResourceMetricSourcePatchAutoscalingV2beta1 {
 
   factory ContainerResourceMetricSourcePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ContainerResourceMetricSourcePatchAutoscalingV2beta1(
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization'] as int).input(),
-      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue'] as String).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      targetAverageUtilization: map['targetAverageUtilization'] == null ? null : (map['targetAverageUtilization']! as int).input(),
+      targetAverageValue: map['targetAverageValue'] == null ? null : (map['targetAverageValue']! as String).input(),
     );
   }
 }

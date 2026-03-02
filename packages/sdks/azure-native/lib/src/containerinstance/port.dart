@@ -27,7 +27,7 @@ class Port {
   factory Port.fromMap(Map<String, dynamic> map) {
     return Port(
       port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

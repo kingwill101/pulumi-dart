@@ -31,9 +31,9 @@ class WebProxyConfigurationResponse {
 
   factory WebProxyConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WebProxyConfigurationResponse(
-      bypassList: map['bypassList'] == null ? null : ((map['bypassList'] as List).cast<String>()).input(),
-      connectionUri: map['connectionUri'] == null ? null : (map['connectionUri'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      bypassList: map['bypassList'] == null ? null : ((map['bypassList']! as List).cast<String>()).input(),
+      connectionUri: map['connectionUri'] == null ? null : (map['connectionUri']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

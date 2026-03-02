@@ -24,8 +24,8 @@ class ServerGroupClusterAuthConfig {
 
   factory ServerGroupClusterAuthConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterAuthConfig(
-      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth'] as String).input(),
-      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth'] as String).input(),
+      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth']! as String).input(),
+      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth']! as String).input(),
     );
   }
 }

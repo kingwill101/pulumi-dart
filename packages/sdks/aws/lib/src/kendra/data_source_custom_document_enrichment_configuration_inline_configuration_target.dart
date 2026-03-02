@@ -31,9 +31,9 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget {
 
   factory DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTarget(
-      targetDocumentAttributeKey: map['targetDocumentAttributeKey'] == null ? null : (map['targetDocumentAttributeKey'] as String).input(),
-      targetDocumentAttributeValue: map['targetDocumentAttributeValue'] == null ? null : (DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTargetTargetDocumentAttributeValue.fromMap((map['targetDocumentAttributeValue'] as Map).cast<String, dynamic>())).input(),
-      targetDocumentAttributeValueDeletion: map['targetDocumentAttributeValueDeletion'] == null ? null : (map['targetDocumentAttributeValueDeletion'] as bool).input(),
+      targetDocumentAttributeKey: map['targetDocumentAttributeKey'] == null ? null : ((map['targetDocumentAttributeKey'] as String).input()).input(),
+      targetDocumentAttributeValue: map['targetDocumentAttributeValue'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTargetTargetDocumentAttributeValue.fromMap((map['targetDocumentAttributeValue']! as Map).cast<String, dynamic>())).input()).input(),
+      targetDocumentAttributeValueDeletion: map['targetDocumentAttributeValueDeletion'] == null ? null : ((map['targetDocumentAttributeValueDeletion'] as bool).input()).input(),
     );
   }
 }

@@ -77,8 +77,8 @@ class CertificateResponseProperties {
 
   factory CertificateResponseProperties.fromMap(Map<String, dynamic> map) {
     return CertificateResponseProperties(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      certificateType: map['certificateType'] == null ? null : (map['certificateType'] as String).input(),
+      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      certificateType: map['certificateType'] == null ? null : (map['certificateType']! as String).input(),
       deploymentErrors: (map['deploymentErrors'] as String).input(),
       expirationDate: (map['expirationDate'] as String).input(),
       issueDate: (map['issueDate'] as String).input(),

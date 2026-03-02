@@ -27,8 +27,8 @@ class Apk {
 
   factory Apk.fromMap(Map<String, dynamic> map) {
     return Apk(
-      location: map['location'] == null ? null : (FileReference.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      location: map['location'] == null ? null : (FileReference.fromMap((map['location']! as Map).cast<String, dynamic>())).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
     );
   }
 }

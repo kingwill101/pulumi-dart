@@ -47,8 +47,8 @@ class ApplicationPackageArgs {
       accountName: (map['accountName'] as String).input(),
       applicationName: (map['applicationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

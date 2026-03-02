@@ -21,7 +21,7 @@ class PortSetResponse {
 
   factory PortSetResponse.fromMap(Map<String, dynamic> map) {
     return PortSetResponse(
-      definition: map['definition'] == null ? null : ((map['definition'] as List).cast<String>()).input(),
+      definition: map['definition'] == null ? null : ((map['definition']! as List).cast<String>()).input(),
     );
   }
 }

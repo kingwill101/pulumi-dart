@@ -36,7 +36,7 @@ class EndpointIpConfig {
   factory EndpointIpConfig.fromMap(Map<String, dynamic> map) {
     return EndpointIpConfig(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

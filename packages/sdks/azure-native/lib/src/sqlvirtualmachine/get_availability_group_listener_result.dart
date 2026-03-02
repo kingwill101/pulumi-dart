@@ -80,15 +80,15 @@ class GetAvailabilityGroupListenerResult {
 
   factory GetAvailabilityGroupListenerResult.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityGroupListenerResult(
-      availabilityGroupConfiguration: map['availabilityGroupConfiguration'] == null ? null : AgConfigurationResponse.fromMap((map['availabilityGroupConfiguration'] as Map).cast<String, dynamic>()),
-      availabilityGroupName: map['availabilityGroupName'] == null ? null : map['availabilityGroupName'] as String,
+      availabilityGroupConfiguration: map['availabilityGroupConfiguration'] == null ? null : AgConfigurationResponse.fromMap((map['availabilityGroupConfiguration']! as Map).cast<String, dynamic>()),
+      availabilityGroupName: map['availabilityGroupName'] == null ? null : map['availabilityGroupName']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      createDefaultAvailabilityGroupIfNotExist: map['createDefaultAvailabilityGroupIfNotExist'] == null ? null : map['createDefaultAvailabilityGroupIfNotExist'] as bool,
+      createDefaultAvailabilityGroupIfNotExist: map['createDefaultAvailabilityGroupIfNotExist'] == null ? null : map['createDefaultAvailabilityGroupIfNotExist']! as bool,
       id: map['id'] as String,
-      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : pulumi.Input.decodeList<LoadBalancerConfigurationResponse>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : pulumi.Input.decodeList<MultiSubnetIpConfigurationResponse>(map['multiSubnetIpConfigurations'], (value) => MultiSubnetIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : pulumi.Input.decodeList<LoadBalancerConfigurationResponse>(map['loadBalancerConfigurations']!, (value) => LoadBalancerConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      multiSubnetIpConfigurations: map['multiSubnetIpConfigurations'] == null ? null : pulumi.Input.decodeList<MultiSubnetIpConfigurationResponse>(map['multiSubnetIpConfigurations']!, (value) => MultiSubnetIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
+      port: map['port'] == null ? null : map['port']! as int,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,

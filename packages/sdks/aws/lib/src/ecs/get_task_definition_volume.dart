@@ -50,9 +50,9 @@ class GetTaskDefinitionVolume {
   factory GetTaskDefinitionVolume.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionVolume(
       configureAtLaunch: (map['configureAtLaunch'] as bool).input(),
-      dockerVolumeConfigurations: (pulumi.Input.decodeList<GetTaskDefinitionVolumeDockerVolumeConfiguration>(map['dockerVolumeConfigurations'], (value) => GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      efsVolumeConfigurations: (pulumi.Input.decodeList<GetTaskDefinitionVolumeEfsVolumeConfiguration>(map['efsVolumeConfigurations'], (value) => GetTaskDefinitionVolumeEfsVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fsxWindowsFileServerVolumeConfigurations: (pulumi.Input.decodeList<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration>(map['fsxWindowsFileServerVolumeConfigurations'], (value) => GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dockerVolumeConfigurations: (pulumi.Input.decodeList<GetTaskDefinitionVolumeDockerVolumeConfiguration>(map['dockerVolumeConfigurations']!, (value) => GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      efsVolumeConfigurations: (pulumi.Input.decodeList<GetTaskDefinitionVolumeEfsVolumeConfiguration>(map['efsVolumeConfigurations']!, (value) => GetTaskDefinitionVolumeEfsVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fsxWindowsFileServerVolumeConfigurations: (pulumi.Input.decodeList<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration>(map['fsxWindowsFileServerVolumeConfigurations']!, (value) => GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       hostPath: (map['hostPath'] as String).input(),
       name: (map['name'] as String).input(),
     );

@@ -27,7 +27,7 @@ class WorkbookResourceIdentity {
   factory WorkbookResourceIdentity.fromMap(Map<String, dynamic> map) {
     return WorkbookResourceIdentity(
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

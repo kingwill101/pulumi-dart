@@ -30,9 +30,9 @@ class ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioNormalizationSettings(
-      algorithm: map['algorithm'] == null ? null : (map['algorithm'] as String).input(),
-      algorithmControl: map['algorithmControl'] == null ? null : (map['algorithmControl'] as String).input(),
-      targetLkfs: map['targetLkfs'] == null ? null : (map['targetLkfs'] as double).input(),
+      algorithm: map['algorithm'] == null ? null : ((map['algorithm'] as String).input()).input(),
+      algorithmControl: map['algorithmControl'] == null ? null : ((map['algorithmControl'] as String).input()).input(),
+      targetLkfs: map['targetLkfs'] == null ? null : ((map['targetLkfs'] as double).input()).input(),
     );
   }
 }

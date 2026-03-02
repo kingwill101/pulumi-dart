@@ -21,7 +21,7 @@ class OutboundWebIdentityFederationState {
 
   factory OutboundWebIdentityFederationState.fromMap(Map<String, dynamic> map) {
     return OutboundWebIdentityFederationState(
-      issuerIdentifier: map['issuerIdentifier'] == null ? null : (map['issuerIdentifier'] as String).input(),
+      issuerIdentifier: map['issuerIdentifier'] == null ? null : ((map['issuerIdentifier'] as String).input()).input(),
     );
   }
 }

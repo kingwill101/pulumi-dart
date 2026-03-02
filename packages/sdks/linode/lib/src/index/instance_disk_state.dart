@@ -93,21 +93,21 @@ class InstanceDiskState {
 
   factory InstanceDiskState.fromMap(Map<String, dynamic> map) {
     return InstanceDiskState(
-      authorizedKeys: map['authorizedKeys'] == null ? null : ((map['authorizedKeys'] as List).cast<String>()).input(),
-      authorizedUsers: map['authorizedUsers'] == null ? null : ((map['authorizedUsers'] as List).cast<String>()).input(),
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as String).input(),
-      filesystem: map['filesystem'] == null ? null : (map['filesystem'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      rootPass: map['rootPass'] == null ? null : (map['rootPass'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      stackscriptData: map['stackscriptData'] == null ? null : ((map['stackscriptData'] as Map).cast<String, String>()).input(),
-      stackscriptId: map['stackscriptId'] == null ? null : (map['stackscriptId'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (InstanceDiskTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      authorizedKeys: map['authorizedKeys'] == null ? null : ((map['authorizedKeys']! as List).cast<String>()).input(),
+      authorizedUsers: map['authorizedUsers'] == null ? null : ((map['authorizedUsers']! as List).cast<String>()).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as String).input(),
+      filesystem: map['filesystem'] == null ? null : (map['filesystem']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      rootPass: map['rootPass'] == null ? null : (map['rootPass']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      stackscriptData: map['stackscriptData'] == null ? null : ((map['stackscriptData']! as Map).cast<String, String>()).input(),
+      stackscriptId: map['stackscriptId'] == null ? null : (map['stackscriptId']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      timeouts: map['timeouts'] == null ? null : (InstanceDiskTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

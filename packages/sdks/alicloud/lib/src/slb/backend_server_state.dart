@@ -32,9 +32,9 @@ class BackendServerState {
 
   factory BackendServerState.fromMap(Map<String, dynamic> map) {
     return BackendServerState(
-      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<BackendServerBackendServer>(map['backendServers'], (value) => BackendServerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
+      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<BackendServerBackendServer>(map['backendServers']!, (value) => BackendServerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
     );
   }
 }

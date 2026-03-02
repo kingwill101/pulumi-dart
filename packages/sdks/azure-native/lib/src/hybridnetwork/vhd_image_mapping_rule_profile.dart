@@ -21,7 +21,7 @@ class VhdImageMappingRuleProfile {
 
   factory VhdImageMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return VhdImageMappingRuleProfile(
-      userConfiguration: map['userConfiguration'] == null ? null : (map['userConfiguration'] as String).input(),
+      userConfiguration: map['userConfiguration'] == null ? null : (map['userConfiguration']! as String).input(),
     );
   }
 }

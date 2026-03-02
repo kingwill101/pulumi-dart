@@ -74,14 +74,14 @@ class CloudControlParameterSpec {
 
   factory CloudControlParameterSpec.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpec(
-      defaultValue: map['defaultValue'] == null ? null : (CloudControlParameterSpecDefaultValue.fromMap((map['defaultValue'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (CloudControlParameterSpecDefaultValue.fromMap((map['defaultValue']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       isRequired: (map['isRequired'] as bool).input(),
       name: (map['name'] as String).input(),
-      subParameters: map['subParameters'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpecSubParameter>(map['subParameters'], (value) => CloudControlParameterSpecSubParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      substitutionRules: map['substitutionRules'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpecSubstitutionRule>(map['substitutionRules'], (value) => CloudControlParameterSpecSubstitutionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validation: map['validation'] == null ? null : (CloudControlParameterSpecValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      subParameters: map['subParameters'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpecSubParameter>(map['subParameters']!, (value) => CloudControlParameterSpecSubParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      substitutionRules: map['substitutionRules'] == null ? null : (pulumi.Input.decodeList<CloudControlParameterSpecSubstitutionRule>(map['substitutionRules']!, (value) => CloudControlParameterSpecSubstitutionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validation: map['validation'] == null ? null : (CloudControlParameterSpecValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
       valueType: (map['valueType'] as String).input(),
     );
   }

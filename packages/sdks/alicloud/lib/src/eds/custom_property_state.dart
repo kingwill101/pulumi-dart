@@ -27,8 +27,8 @@ class CustomPropertyState {
 
   factory CustomPropertyState.fromMap(Map<String, dynamic> map) {
     return CustomPropertyState(
-      propertyKey: map['propertyKey'] == null ? null : (map['propertyKey'] as String).input(),
-      propertyValues: map['propertyValues'] == null ? null : (pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues'], (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      propertyKey: map['propertyKey'] == null ? null : (map['propertyKey']! as String).input(),
+      propertyValues: map['propertyValues'] == null ? null : (pulumi.Input.decodeList<CustomPropertyPropertyValue>(map['propertyValues']!, (value) => CustomPropertyPropertyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

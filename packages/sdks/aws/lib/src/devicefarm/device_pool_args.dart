@@ -55,13 +55,13 @@ class DevicePoolArgs {
 
   factory DevicePoolArgs.fromMap(Map<String, dynamic> map) {
     return DevicePoolArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      maxDevices: map['maxDevices'] == null ? null : (map['maxDevices'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      maxDevices: map['maxDevices'] == null ? null : ((map['maxDevices'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       projectArn: (map['projectArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: (pulumi.Input.decodeList<DevicePoolRule>(map['rules'], (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: (pulumi.Input.decodeList<DevicePoolRule>(map['rules']!, (value) => DevicePoolRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

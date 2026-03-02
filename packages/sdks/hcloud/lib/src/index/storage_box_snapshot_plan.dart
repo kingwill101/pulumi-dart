@@ -40,8 +40,8 @@ class StorageBoxSnapshotPlan {
 
   factory StorageBoxSnapshotPlan.fromMap(Map<String, dynamic> map) {
     return StorageBoxSnapshotPlan(
-      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as int).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as int).input(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth']! as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as int).input(),
       hour: (map['hour'] as int).input(),
       maxSnapshots: (map['maxSnapshots'] as int).input(),
       minute: (map['minute'] as int).input(),

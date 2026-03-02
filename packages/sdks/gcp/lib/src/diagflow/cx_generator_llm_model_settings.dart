@@ -25,8 +25,8 @@ class CxGeneratorLlmModelSettings {
 
   factory CxGeneratorLlmModelSettings.fromMap(Map<String, dynamic> map) {
     return CxGeneratorLlmModelSettings(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      promptText: map['promptText'] == null ? null : (map['promptText'] as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      promptText: map['promptText'] == null ? null : (map['promptText']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class PipeTargetParametersEcsTaskParametersNetworkConfiguration {
 
   factory PipeTargetParametersEcsTaskParametersNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return PipeTargetParametersEcsTaskParametersNetworkConfiguration(
-      awsVpcConfiguration: map['awsVpcConfiguration'] == null ? null : (PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration.fromMap((map['awsVpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      awsVpcConfiguration: map['awsVpcConfiguration'] == null ? null : ((PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration.fromMap((map['awsVpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

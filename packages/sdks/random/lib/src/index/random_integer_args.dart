@@ -39,10 +39,10 @@ class RandomIntegerArgs {
 
   factory RandomIntegerArgs.fromMap(Map<String, dynamic> map) {
     return RandomIntegerArgs(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
       max: (map['max'] as int).input(),
       min: (map['min'] as int).input(),
-      seed: map['seed'] == null ? null : (map['seed'] as String).input(),
+      seed: map['seed'] == null ? null : (map['seed']! as String).input(),
     );
   }
 }

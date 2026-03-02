@@ -25,16 +25,11 @@ class ClusterArgs {
   /// [network] Cluster network information. See `network` below.
   /// [profile] Cluster attributes. Valid values: 'Default', 'XFlow'.
   ClusterArgs({
-    bool? argocdEnabled,
-    String? clusterName,
-    required ClusterNetwork network,
-    String? profile,
-  }) :
-
-      argocdEnabled = argocdEnabled == null ? null : argocdEnabled.input(),
-      clusterName = clusterName == null ? null : clusterName.input(),
-      network = network.input(),
-      profile = profile == null ? null : profile.input();
+    this.argocdEnabled,
+    this.clusterName,
+    required this.network,
+    this.profile,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +42,10 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      argocdEnabled: map['argocdEnabled'] == null ? null : map['argocdEnabled'] as bool,
-      clusterName: map['clusterName'] == null ? null : map['clusterName'] as String,
-      network: ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>()),
-      profile: map['profile'] == null ? null : map['profile'] as String,
+      argocdEnabled: map['argocdEnabled'] == null ? null : (map['argocdEnabled']! as bool).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      network: (ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
     );
   }
 }

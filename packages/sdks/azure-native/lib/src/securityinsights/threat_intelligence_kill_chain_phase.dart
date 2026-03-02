@@ -26,8 +26,8 @@ class ThreatIntelligenceKillChainPhase {
 
   factory ThreatIntelligenceKillChainPhase.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceKillChainPhase(
-      killChainName: map['killChainName'] == null ? null : (map['killChainName'] as String).input(),
-      phaseName: map['phaseName'] == null ? null : (map['phaseName'] as String).input(),
+      killChainName: map['killChainName'] == null ? null : (map['killChainName']! as String).input(),
+      phaseName: map['phaseName'] == null ? null : (map['phaseName']! as String).input(),
     );
   }
 }

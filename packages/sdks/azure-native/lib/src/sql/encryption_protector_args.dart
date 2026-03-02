@@ -49,10 +49,10 @@ class EncryptionProtectorArgs {
 
   factory EncryptionProtectorArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionProtectorArgs(
-      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled'] as bool).input(),
-      encryptionProtectorName: map['encryptionProtectorName'] == null ? null : (map['encryptionProtectorName'] as String).input(),
+      autoRotationEnabled: map['autoRotationEnabled'] == null ? null : (map['autoRotationEnabled']! as bool).input(),
+      encryptionProtectorName: map['encryptionProtectorName'] == null ? null : (map['encryptionProtectorName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverKeyName: map['serverKeyName'] == null ? null : (map['serverKeyName'] as String).input(),
+      serverKeyName: map['serverKeyName'] == null ? null : (map['serverKeyName']! as String).input(),
       serverKeyType: (map['serverKeyType'] as String).input(),
       serverName: (map['serverName'] as String).input(),
     );

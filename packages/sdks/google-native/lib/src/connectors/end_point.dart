@@ -27,8 +27,8 @@ class EndPoint {
 
   factory EndPoint.fromMap(Map<String, dynamic> map) {
     return EndPoint(
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers'], (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<Header>(map['headers']!, (value) => Header.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

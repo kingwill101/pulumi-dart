@@ -57,14 +57,14 @@ class TransportLayerApplicationState {
 
   factory TransportLayerApplicationState.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as int).input(),
-      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : (map['crossBorderOptimization'] as String).input(),
-      ipAccessRule: map['ipAccessRule'] == null ? null : (map['ipAccessRule'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TransportLayerApplicationRule>(map['rules'], (value) => TransportLayerApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as int).input(),
+      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : (map['crossBorderOptimization']! as String).input(),
+      ipAccessRule: map['ipAccessRule'] == null ? null : (map['ipAccessRule']! as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<TransportLayerApplicationRule>(map['rules']!, (value) => TransportLayerApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

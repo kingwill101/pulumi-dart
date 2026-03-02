@@ -29,7 +29,7 @@ class VirtualNetworkDnsServersArgs {
 
   factory VirtualNetworkDnsServersArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDnsServersArgs(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
       virtualNetworkId: (map['virtualNetworkId'] as String).input(),
     );
   }

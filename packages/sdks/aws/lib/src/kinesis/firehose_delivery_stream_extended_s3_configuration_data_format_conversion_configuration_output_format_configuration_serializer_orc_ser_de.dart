@@ -65,16 +65,16 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDe(
-      blockSizeBytes: map['blockSizeBytes'] == null ? null : (map['blockSizeBytes'] as int).input(),
-      bloomFilterColumns: map['bloomFilterColumns'] == null ? null : ((map['bloomFilterColumns'] as List).cast<String>()).input(),
-      bloomFilterFalsePositiveProbability: map['bloomFilterFalsePositiveProbability'] == null ? null : (map['bloomFilterFalsePositiveProbability'] as double).input(),
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      dictionaryKeyThreshold: map['dictionaryKeyThreshold'] == null ? null : (map['dictionaryKeyThreshold'] as double).input(),
-      enablePadding: map['enablePadding'] == null ? null : (map['enablePadding'] as bool).input(),
-      formatVersion: map['formatVersion'] == null ? null : (map['formatVersion'] as String).input(),
-      paddingTolerance: map['paddingTolerance'] == null ? null : (map['paddingTolerance'] as double).input(),
-      rowIndexStride: map['rowIndexStride'] == null ? null : (map['rowIndexStride'] as int).input(),
-      stripeSizeBytes: map['stripeSizeBytes'] == null ? null : (map['stripeSizeBytes'] as int).input(),
+      blockSizeBytes: map['blockSizeBytes'] == null ? null : ((map['blockSizeBytes'] as int).input()).input(),
+      bloomFilterColumns: map['bloomFilterColumns'] == null ? null : (((map['bloomFilterColumns'] as List).cast<String>()).input()).input(),
+      bloomFilterFalsePositiveProbability: map['bloomFilterFalsePositiveProbability'] == null ? null : ((map['bloomFilterFalsePositiveProbability'] as double).input()).input(),
+      compression: map['compression'] == null ? null : ((map['compression'] as String).input()).input(),
+      dictionaryKeyThreshold: map['dictionaryKeyThreshold'] == null ? null : ((map['dictionaryKeyThreshold'] as double).input()).input(),
+      enablePadding: map['enablePadding'] == null ? null : ((map['enablePadding'] as bool).input()).input(),
+      formatVersion: map['formatVersion'] == null ? null : ((map['formatVersion'] as String).input()).input(),
+      paddingTolerance: map['paddingTolerance'] == null ? null : ((map['paddingTolerance'] as double).input()).input(),
+      rowIndexStride: map['rowIndexStride'] == null ? null : ((map['rowIndexStride'] as int).input()).input(),
+      stripeSizeBytes: map['stripeSizeBytes'] == null ? null : ((map['stripeSizeBytes'] as int).input()).input(),
     );
   }
 }

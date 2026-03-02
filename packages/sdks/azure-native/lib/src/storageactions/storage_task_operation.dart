@@ -37,9 +37,9 @@ class StorageTaskOperation {
   factory StorageTaskOperation.fromMap(Map<String, dynamic> map) {
     return StorageTaskOperation(
       name: (map['name'] as String).input(),
-      onFailure: map['onFailure'] == null ? null : (map['onFailure'] as String).input(),
-      onSuccess: map['onSuccess'] == null ? null : (map['onSuccess'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      onFailure: map['onFailure'] == null ? null : (map['onFailure']! as String).input(),
+      onSuccess: map['onSuccess'] == null ? null : (map['onSuccess']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

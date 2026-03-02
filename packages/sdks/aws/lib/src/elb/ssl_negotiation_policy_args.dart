@@ -57,12 +57,12 @@ class SslNegotiationPolicyArgs {
 
   factory SslNegotiationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SslNegotiationPolicyArgs(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(map['attributes'], (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attributes: map['attributes'] == null ? null : ((pulumi.Input.decodeList<SslNegotiationPolicyAttribute>(map['attributes']!, (value) => SslNegotiationPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       lbPort: (map['lbPort'] as int).input(),
       loadBalancer: (map['loadBalancer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

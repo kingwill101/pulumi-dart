@@ -74,14 +74,14 @@ class WorkstationConfigIamMemberState {
 
   factory WorkstationConfigIamMemberState.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigIamMemberState(
-      condition: map['condition'] == null ? null : (WorkstationConfigIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      workstationClusterId: map['workstationClusterId'] == null ? null : (map['workstationClusterId'] as String).input(),
-      workstationConfigId: map['workstationConfigId'] == null ? null : (map['workstationConfigId'] as String).input(),
+      condition: map['condition'] == null ? null : (WorkstationConfigIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      workstationClusterId: map['workstationClusterId'] == null ? null : (map['workstationClusterId']! as String).input(),
+      workstationConfigId: map['workstationConfigId'] == null ? null : (map['workstationConfigId']! as String).input(),
     );
   }
 }

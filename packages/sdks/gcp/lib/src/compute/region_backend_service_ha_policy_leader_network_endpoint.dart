@@ -21,7 +21,7 @@ class RegionBackendServiceHaPolicyLeaderNetworkEndpoint {
 
   factory RegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicyLeaderNetworkEndpoint(
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
     );
   }
 }

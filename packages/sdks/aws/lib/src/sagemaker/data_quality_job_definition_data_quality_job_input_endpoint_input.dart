@@ -36,9 +36,9 @@ class DataQualityJobDefinitionDataQualityJobInputEndpointInput {
   factory DataQualityJobDefinitionDataQualityJobInputEndpointInput.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInputEndpointInput(
       endpointName: (map['endpointName'] as String).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      s3DataDistributionType: map['s3DataDistributionType'] == null ? null : (map['s3DataDistributionType'] as String).input(),
-      s3InputMode: map['s3InputMode'] == null ? null : (map['s3InputMode'] as String).input(),
+      localPath: map['localPath'] == null ? null : ((map['localPath'] as String).input()).input(),
+      s3DataDistributionType: map['s3DataDistributionType'] == null ? null : ((map['s3DataDistributionType'] as String).input()).input(),
+      s3InputMode: map['s3InputMode'] == null ? null : ((map['s3InputMode'] as String).input()).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class UpdateStageResponse {
 
   factory UpdateStageResponse.fromMap(Map<String, dynamic> map) {
     return UpdateStageResponse(
-      afterStageWaitInSeconds: map['afterStageWaitInSeconds'] == null ? null : (map['afterStageWaitInSeconds'] as int).input(),
-      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<UpdateGroupResponse>(map['groups'], (value) => UpdateGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      afterStageWaitInSeconds: map['afterStageWaitInSeconds'] == null ? null : (map['afterStageWaitInSeconds']! as int).input(),
+      groups: map['groups'] == null ? null : (pulumi.Input.decodeList<UpdateGroupResponse>(map['groups']!, (value) => UpdateGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

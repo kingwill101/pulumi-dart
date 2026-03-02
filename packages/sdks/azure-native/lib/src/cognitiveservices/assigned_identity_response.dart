@@ -55,7 +55,7 @@ class AssignedIdentityResponse {
       kind: (map['kind'] as String).input(),
       principalId: (map['principalId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       type: (map['type'] as String).input(),
     );

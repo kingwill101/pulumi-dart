@@ -35,7 +35,7 @@ class GetServiceTagsArgs {
   factory GetServiceTagsArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceTagsArgs(
       location: (map['location'] as String).input(),
-      locationFilter: map['locationFilter'] == null ? null : (map['locationFilter'] as String).input(),
+      locationFilter: map['locationFilter'] == null ? null : (map['locationFilter']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

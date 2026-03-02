@@ -51,13 +51,13 @@ class SiteOriginClientCertificateState {
 
   factory SiteOriginClientCertificateState.fromMap(Map<String, dynamic> map) {
     return SiteOriginClientCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteOriginClientCertificateId: map['siteOriginClientCertificateId'] == null ? null : (map['siteOriginClientCertificateId'] as String).input(),
-      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteOriginClientCertificateId: map['siteOriginClientCertificateId'] == null ? null : (map['siteOriginClientCertificateId']! as String).input(),
+      siteOriginClientCertificateName: map['siteOriginClientCertificateName'] == null ? null : (map['siteOriginClientCertificateName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

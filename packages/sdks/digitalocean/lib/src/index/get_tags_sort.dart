@@ -25,7 +25,7 @@ class GetTagsSort {
 
   factory GetTagsSort.fromMap(Map<String, dynamic> map) {
     return GetTagsSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

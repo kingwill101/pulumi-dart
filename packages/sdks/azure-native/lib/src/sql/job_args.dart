@@ -50,11 +50,11 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       jobAgentName: (map['jobAgentName'] as String).input(),
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schedule: map['schedule'] == null ? null : (JobSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (JobSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       serverName: (map['serverName'] as String).input(),
     );
   }

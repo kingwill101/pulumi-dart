@@ -41,11 +41,11 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions {
 
   factory LaunchTemplateInstanceMarketOptionsSpotOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateInstanceMarketOptionsSpotOptions(
-      blockDurationMinutes: map['blockDurationMinutes'] == null ? null : (map['blockDurationMinutes'] as int).input(),
-      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : (map['instanceInterruptionBehavior'] as String).input(),
-      maxPrice: map['maxPrice'] == null ? null : (map['maxPrice'] as String).input(),
-      spotInstanceType: map['spotInstanceType'] == null ? null : (map['spotInstanceType'] as String).input(),
-      validUntil: map['validUntil'] == null ? null : (map['validUntil'] as String).input(),
+      blockDurationMinutes: map['blockDurationMinutes'] == null ? null : ((map['blockDurationMinutes'] as int).input()).input(),
+      instanceInterruptionBehavior: map['instanceInterruptionBehavior'] == null ? null : ((map['instanceInterruptionBehavior'] as String).input()).input(),
+      maxPrice: map['maxPrice'] == null ? null : ((map['maxPrice'] as String).input()).input(),
+      spotInstanceType: map['spotInstanceType'] == null ? null : ((map['spotInstanceType'] as String).input()).input(),
+      validUntil: map['validUntil'] == null ? null : ((map['validUntil'] as String).input()).input(),
     );
   }
 }

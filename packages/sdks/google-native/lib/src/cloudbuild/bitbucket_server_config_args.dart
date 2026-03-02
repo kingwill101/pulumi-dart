@@ -79,17 +79,17 @@ class BitbucketServerConfigArgs {
   factory BitbucketServerConfigArgs.fromMap(Map<String, dynamic> map) {
     return BitbucketServerConfigArgs(
       apiKey: (map['apiKey'] as String).input(),
-      bitbucketServerConfigId: map['bitbucketServerConfigId'] == null ? null : (map['bitbucketServerConfigId'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      bitbucketServerConfigId: map['bitbucketServerConfigId'] == null ? null : (map['bitbucketServerConfigId']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
       hostUri: (map['hostUri'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
-      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork']! as String).input(),
+      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secrets: (BitbucketServerSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class EventHubPropertiesResponse {
   factory EventHubPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EventHubPropertiesResponse(
       endpoint: (map['endpoint'] as String).input(),
-      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount'] as int).input(),
+      partitionCount: map['partitionCount'] == null ? null : (map['partitionCount']! as int).input(),
       partitionIds: ((map['partitionIds'] as List).cast<String>()).input(),
       path: (map['path'] as String).input(),
-      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays'] as double).input(),
+      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays']! as double).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class Option {
 
   factory Option.fromMap(Map<String, dynamic> map) {
     return Option(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : ((map['value'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : ((map['value']! as Map).cast<String, String>()).input(),
     );
   }
 }

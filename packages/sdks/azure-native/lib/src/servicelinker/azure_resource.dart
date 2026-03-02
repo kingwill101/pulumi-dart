@@ -33,8 +33,8 @@ class AzureResource {
 
   factory AzureResource.fromMap(Map<String, dynamic> map) {
     return AzureResource(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      resourceProperties: map['resourceProperties'] == null ? null : (AzureKeyVaultProperties.fromMap((map['resourceProperties'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      resourceProperties: map['resourceProperties'] == null ? null : (AzureKeyVaultProperties.fromMap((map['resourceProperties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

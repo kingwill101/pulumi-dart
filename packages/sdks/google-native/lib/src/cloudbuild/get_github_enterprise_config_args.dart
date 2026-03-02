@@ -39,11 +39,11 @@ class GetGithubEnterpriseConfigArgs {
 
   factory GetGithubEnterpriseConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetGithubEnterpriseConfigArgs(
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as String).input(),
       githubEnterpriseConfigId: (map['githubEnterpriseConfigId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

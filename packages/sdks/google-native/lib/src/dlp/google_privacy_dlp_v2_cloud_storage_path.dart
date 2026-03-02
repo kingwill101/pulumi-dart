@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2CloudStoragePath {
 
   factory GooglePrivacyDlpV2CloudStoragePath.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStoragePath(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

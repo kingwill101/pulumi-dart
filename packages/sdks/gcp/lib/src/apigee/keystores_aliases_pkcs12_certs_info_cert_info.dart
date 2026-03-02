@@ -82,17 +82,17 @@ class KeystoresAliasesPkcs12CertsInfoCertInfo {
 
   factory KeystoresAliasesPkcs12CertsInfoCertInfo.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12CertsInfoCertInfo(
-      basicConstraints: map['basicConstraints'] == null ? null : (map['basicConstraints'] as String).input(),
-      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate'] as String).input(),
-      isValid: map['isValid'] == null ? null : (map['isValid'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      sigAlgName: map['sigAlgName'] == null ? null : (map['sigAlgName'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames'] as List).cast<String>()).input(),
-      validFrom: map['validFrom'] == null ? null : (map['validFrom'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      basicConstraints: map['basicConstraints'] == null ? null : (map['basicConstraints']! as String).input(),
+      expiryDate: map['expiryDate'] == null ? null : (map['expiryDate']! as String).input(),
+      isValid: map['isValid'] == null ? null : (map['isValid']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      sigAlgName: map['sigAlgName'] == null ? null : (map['sigAlgName']! as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((map['subjectAlternativeNames']! as List).cast<String>()).input(),
+      validFrom: map['validFrom'] == null ? null : (map['validFrom']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

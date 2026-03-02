@@ -31,9 +31,9 @@ class MigrationValidationOptions {
 
   factory MigrationValidationOptions.fromMap(Map<String, dynamic> map) {
     return MigrationValidationOptions(
-      enableDataIntegrityValidation: map['enableDataIntegrityValidation'] == null ? null : (map['enableDataIntegrityValidation'] as bool).input(),
-      enableQueryAnalysisValidation: map['enableQueryAnalysisValidation'] == null ? null : (map['enableQueryAnalysisValidation'] as bool).input(),
-      enableSchemaValidation: map['enableSchemaValidation'] == null ? null : (map['enableSchemaValidation'] as bool).input(),
+      enableDataIntegrityValidation: map['enableDataIntegrityValidation'] == null ? null : (map['enableDataIntegrityValidation']! as bool).input(),
+      enableQueryAnalysisValidation: map['enableQueryAnalysisValidation'] == null ? null : (map['enableQueryAnalysisValidation']! as bool).input(),
+      enableSchemaValidation: map['enableSchemaValidation'] == null ? null : (map['enableSchemaValidation']! as bool).input(),
     );
   }
 }

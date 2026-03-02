@@ -36,9 +36,9 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetCadence(
-      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence'] as Map).cast<String, dynamic>())).input(),
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap((map['schemaModifiedCadence'] as Map).cast<String, dynamic>())).input(),
-      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence.fromMap((map['tableModifiedCadence'] as Map).cast<String, dynamic>())).input(),
+      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap((map['schemaModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence.fromMap((map['tableModifiedCadence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -49,10 +49,10 @@ class GetWafRulesResult {
     return GetWafRulesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      queryArgs: map['queryArgs'] == null ? null : map['queryArgs'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      queryArgs: map['queryArgs'] == null ? null : map['queryArgs']! as String,
       wafRules: pulumi.Input.decodeList<GetWafRulesWafRule>(map['wafRules'], (value) => GetWafRulesWafRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

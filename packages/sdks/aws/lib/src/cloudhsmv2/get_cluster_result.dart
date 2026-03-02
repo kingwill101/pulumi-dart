@@ -54,7 +54,7 @@ class GetClusterResult {
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      clusterCertificates: pulumi.Input.decodeList<GetClusterClusterCertificate>(map['clusterCertificates'], (value) => GetClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      clusterCertificates: pulumi.Input.decodeList<GetClusterClusterCertificate>(map['clusterCertificates']!, (value) => GetClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())),
       clusterId: map['clusterId'] as String,
       clusterState: map['clusterState'] as String,
       id: map['id'] as String,

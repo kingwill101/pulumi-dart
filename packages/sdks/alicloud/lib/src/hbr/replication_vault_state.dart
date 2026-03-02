@@ -61,15 +61,15 @@ class ReplicationVaultState {
 
   factory ReplicationVaultState.fromMap(Map<String, dynamic> map) {
     return ReplicationVaultState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptType: map['encryptType'] == null ? null : (map['encryptType'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      replicationSourceRegionId: map['replicationSourceRegionId'] == null ? null : (map['replicationSourceRegionId'] as String).input(),
-      replicationSourceVaultId: map['replicationSourceVaultId'] == null ? null : (map['replicationSourceVaultId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
-      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptType: map['encryptType'] == null ? null : (map['encryptType']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      replicationSourceRegionId: map['replicationSourceRegionId'] == null ? null : (map['replicationSourceRegionId']! as String).input(),
+      replicationSourceVaultId: map['replicationSourceVaultId'] == null ? null : (map['replicationSourceVaultId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vaultName: map['vaultName'] == null ? null : (map['vaultName']! as String).input(),
+      vaultStorageClass: map['vaultStorageClass'] == null ? null : (map['vaultStorageClass']! as String).input(),
     );
   }
 }

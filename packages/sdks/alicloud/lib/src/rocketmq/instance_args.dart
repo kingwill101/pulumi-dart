@@ -41,10 +41,10 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

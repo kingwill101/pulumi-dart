@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection(
-      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
+      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

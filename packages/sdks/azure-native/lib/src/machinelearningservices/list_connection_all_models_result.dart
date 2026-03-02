@@ -27,8 +27,8 @@ class ListConnectionAllModelsResult {
 
   factory ListConnectionAllModelsResult.fromMap(Map<String, dynamic> map) {
     return ListConnectionAllModelsResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<EndpointModelPropertiesResponse>(map['value'], (value) => EndpointModelPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<EndpointModelPropertiesResponse>(map['value']!, (value) => EndpointModelPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

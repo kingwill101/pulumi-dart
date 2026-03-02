@@ -44,11 +44,11 @@ class ManagedInstanceKeyArgs {
 
   factory ManagedInstanceKeyArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceKeyArgs(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverKeyType: (map['serverKeyType'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

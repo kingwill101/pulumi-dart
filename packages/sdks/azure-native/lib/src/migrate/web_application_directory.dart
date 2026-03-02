@@ -39,10 +39,10 @@ class WebApplicationDirectory {
 
   factory WebApplicationDirectory.fromMap(Map<String, dynamic> map) {
     return WebApplicationDirectory(
-      isEditable: map['isEditable'] == null ? null : (map['isEditable'] as bool).input(),
-      sourcePaths: map['sourcePaths'] == null ? null : ((map['sourcePaths'] as List).cast<String>()).input(),
-      sourceSize: map['sourceSize'] == null ? null : (map['sourceSize'] as String).input(),
-      storageProfile: map['storageProfile'] == null ? null : (TargetStorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      isEditable: map['isEditable'] == null ? null : (map['isEditable']! as bool).input(),
+      sourcePaths: map['sourcePaths'] == null ? null : ((map['sourcePaths']! as List).cast<String>()).input(),
+      sourceSize: map['sourceSize'] == null ? null : (map['sourceSize']! as String).input(),
+      storageProfile: map['storageProfile'] == null ? null : (TargetStorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

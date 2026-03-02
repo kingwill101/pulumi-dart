@@ -33,7 +33,7 @@ class GetPrimaryIpsResult {
     return GetPrimaryIpsResult(
       id: map['id'] as String,
       primaryIps: pulumi.Input.decodeList<GetPrimaryIpsPrimaryIp>(map['primaryIps'], (value) => GetPrimaryIpsPrimaryIp.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

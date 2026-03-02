@@ -34,9 +34,9 @@ class VolumeTieringPolicy {
 
   factory VolumeTieringPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeTieringPolicy(
-      coolingThresholdDays: map['coolingThresholdDays'] == null ? null : (map['coolingThresholdDays'] as int).input(),
-      hotTierBypassModeEnabled: map['hotTierBypassModeEnabled'] == null ? null : (map['hotTierBypassModeEnabled'] as bool).input(),
-      tierAction: map['tierAction'] == null ? null : (map['tierAction'] as String).input(),
+      coolingThresholdDays: map['coolingThresholdDays'] == null ? null : (map['coolingThresholdDays']! as int).input(),
+      hotTierBypassModeEnabled: map['hotTierBypassModeEnabled'] == null ? null : (map['hotTierBypassModeEnabled']! as bool).input(),
+      tierAction: map['tierAction'] == null ? null : (map['tierAction']! as String).input(),
     );
   }
 }

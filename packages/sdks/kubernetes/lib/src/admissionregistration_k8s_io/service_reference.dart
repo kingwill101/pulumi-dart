@@ -38,8 +38,8 @@ class ServiceReference {
     return ServiceReference(
       name: (map['name'] as String).input(),
       namespace: (map['namespace'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

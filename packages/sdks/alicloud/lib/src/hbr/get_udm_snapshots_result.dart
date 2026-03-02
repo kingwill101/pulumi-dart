@@ -65,13 +65,13 @@ class GetUdmSnapshotsResult {
 
   factory GetUdmSnapshotsResult.fromMap(Map<String, dynamic> map) {
     return GetUdmSnapshotsResult(
-      diskId: map['diskId'] == null ? null : map['diskId'] as String,
+      diskId: map['diskId'] == null ? null : map['diskId']! as String,
       endTime: map['endTime'] as int,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      jobId: map['jobId'] == null ? null : map['jobId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      jobId: map['jobId'] == null ? null : map['jobId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       snapshots: pulumi.Input.decodeList<GetUdmSnapshotsSnapshot>(map['snapshots'], (value) => GetUdmSnapshotsSnapshot.fromMap((value as Map).cast<String, dynamic>())),
       sourceType: map['sourceType'] as String,
       startTime: map['startTime'] as int,

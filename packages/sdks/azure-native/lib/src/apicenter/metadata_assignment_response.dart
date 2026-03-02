@@ -31,9 +31,9 @@ class MetadataAssignmentResponse {
 
   factory MetadataAssignmentResponse.fromMap(Map<String, dynamic> map) {
     return MetadataAssignmentResponse(
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated']! as bool).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
     );
   }
 }

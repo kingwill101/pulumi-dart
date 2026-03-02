@@ -26,7 +26,7 @@ class GetAccessPointRootDirectory {
 
   factory GetAccessPointRootDirectory.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectory(
-      creationInfos: (pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(map['creationInfos'], (value) => GetAccessPointRootDirectoryCreationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationInfos: (pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(map['creationInfos']!, (value) => GetAccessPointRootDirectoryCreationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       path: (map['path'] as String).input(),
     );
   }

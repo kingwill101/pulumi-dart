@@ -34,9 +34,9 @@ class KeyUsage {
 
   factory KeyUsage.fromMap(Map<String, dynamic> map) {
     return KeyUsage(
-      baseKeyUsage: map['baseKeyUsage'] == null ? null : (KeyUsageOptions.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>())).input(),
-      extendedKeyUsage: map['extendedKeyUsage'] == null ? null : (ExtendedKeyUsageOptions.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>())).input(),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<ObjectId>(map['unknownExtendedKeyUsages'], (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      baseKeyUsage: map['baseKeyUsage'] == null ? null : (KeyUsageOptions.fromMap((map['baseKeyUsage']! as Map).cast<String, dynamic>())).input(),
+      extendedKeyUsage: map['extendedKeyUsage'] == null ? null : (ExtendedKeyUsageOptions.fromMap((map['extendedKeyUsage']! as Map).cast<String, dynamic>())).input(),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<ObjectId>(map['unknownExtendedKeyUsages']!, (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

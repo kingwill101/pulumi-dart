@@ -24,7 +24,7 @@ class PipelineDestinationNetworkConfig {
 
   factory PipelineDestinationNetworkConfig.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationNetworkConfig(
-      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment'] as String).input(),
+      networkAttachment: map['networkAttachment'] == null ? null : (map['networkAttachment']! as String).input(),
     );
   }
 }

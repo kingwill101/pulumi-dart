@@ -31,9 +31,9 @@ class ApplicationLayerAutomaticResponseState {
 
   factory ApplicationLayerAutomaticResponseState.fromMap(Map<String, dynamic> map) {
     return ApplicationLayerAutomaticResponseState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ApplicationLayerAutomaticResponseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ApplicationLayerAutomaticResponseTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

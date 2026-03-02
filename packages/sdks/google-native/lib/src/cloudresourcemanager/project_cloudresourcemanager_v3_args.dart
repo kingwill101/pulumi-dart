@@ -39,10 +39,10 @@ class ProjectCloudresourcemanagerV3Args {
 
   factory ProjectCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return ProjectCloudresourcemanagerV3Args(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
     );
   }
 }

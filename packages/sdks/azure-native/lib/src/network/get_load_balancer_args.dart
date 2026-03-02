@@ -34,7 +34,7 @@ class GetLoadBalancerArgs {
 
   factory GetLoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       loadBalancerName: (map['loadBalancerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -41,10 +41,10 @@ class ClusterContinuousBackupInfo {
 
   factory ClusterContinuousBackupInfo.fromMap(Map<String, dynamic> map) {
     return ClusterContinuousBackupInfo(
-      earliestRestorableTime: map['earliestRestorableTime'] == null ? null : (map['earliestRestorableTime'] as String).input(),
-      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime'] as String).input(),
-      encryptionInfos: map['encryptionInfos'] == null ? null : (pulumi.Input.decodeList<ClusterContinuousBackupInfoEncryptionInfo>(map['encryptionInfos'], (value) => ClusterContinuousBackupInfoEncryptionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      schedules: map['schedules'] == null ? null : ((map['schedules'] as List).cast<String>()).input(),
+      earliestRestorableTime: map['earliestRestorableTime'] == null ? null : (map['earliestRestorableTime']! as String).input(),
+      enabledTime: map['enabledTime'] == null ? null : (map['enabledTime']! as String).input(),
+      encryptionInfos: map['encryptionInfos'] == null ? null : (pulumi.Input.decodeList<ClusterContinuousBackupInfoEncryptionInfo>(map['encryptionInfos']!, (value) => ClusterContinuousBackupInfoEncryptionInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schedules: map['schedules'] == null ? null : ((map['schedules']! as List).cast<String>()).input(),
     );
   }
 }

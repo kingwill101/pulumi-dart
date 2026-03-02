@@ -29,7 +29,7 @@ class FlexibleServerBackupArgs {
 
   factory FlexibleServerBackupArgs.fromMap(Map<String, dynamic> map) {
     return FlexibleServerBackupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       serverId: (map['serverId'] as String).input(),
     );
   }

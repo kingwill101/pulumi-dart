@@ -22,7 +22,7 @@ class GkeClusterConfigDataprocV1beta2 {
 
   factory GkeClusterConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return GkeClusterConfigDataprocV1beta2(
-      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (NamespacedGkeDeploymentTargetDataprocV1beta2.fromMap((map['namespacedGkeDeploymentTarget'] as Map).cast<String, dynamic>())).input(),
+      namespacedGkeDeploymentTarget: map['namespacedGkeDeploymentTarget'] == null ? null : (NamespacedGkeDeploymentTargetDataprocV1beta2.fromMap((map['namespacedGkeDeploymentTarget']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

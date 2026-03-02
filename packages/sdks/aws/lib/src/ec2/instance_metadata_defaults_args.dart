@@ -44,11 +44,11 @@ class InstanceMetadataDefaultsArgs {
 
   factory InstanceMetadataDefaultsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceMetadataDefaultsArgs(
-      httpEndpoint: map['httpEndpoint'] == null ? null : (map['httpEndpoint'] as String).input(),
-      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : (map['httpPutResponseHopLimit'] as int).input(),
-      httpTokens: map['httpTokens'] == null ? null : (map['httpTokens'] as String).input(),
-      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : (map['instanceMetadataTags'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : ((map['httpEndpoint'] as String).input()).input(),
+      httpPutResponseHopLimit: map['httpPutResponseHopLimit'] == null ? null : ((map['httpPutResponseHopLimit'] as int).input()).input(),
+      httpTokens: map['httpTokens'] == null ? null : ((map['httpTokens'] as String).input()).input(),
+      instanceMetadataTags: map['instanceMetadataTags'] == null ? null : ((map['instanceMetadataTags'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

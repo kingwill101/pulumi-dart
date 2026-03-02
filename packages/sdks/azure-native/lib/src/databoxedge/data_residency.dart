@@ -21,7 +21,7 @@ class DataResidency {
 
   factory DataResidency.fromMap(Map<String, dynamic> map) {
     return DataResidency(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

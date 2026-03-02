@@ -43,12 +43,12 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2Provi
 
   factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfig(
-      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : (map['clientCredentialsWoVersion'] as int).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientIdWo: map['clientIdWo'] == null ? null : (map['clientIdWo'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      clientSecretWo: map['clientSecretWo'] == null ? null : (map['clientSecretWo'] as String).input(),
-      oauthDiscoveries: map['oauthDiscoveries'] == null ? null : (pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>(map['oauthDiscoveries'], (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientCredentialsWoVersion: map['clientCredentialsWoVersion'] == null ? null : ((map['clientCredentialsWoVersion'] as int).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      clientIdWo: map['clientIdWo'] == null ? null : ((map['clientIdWo'] as String).input()).input(),
+      clientSecret: map['clientSecret'] == null ? null : ((map['clientSecret'] as String).input()).input(),
+      clientSecretWo: map['clientSecretWo'] == null ? null : ((map['clientSecretWo'] as String).input()).input(),
+      oauthDiscoveries: map['oauthDiscoveries'] == null ? null : ((pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery>(map['oauthDiscoveries']!, (value) => AgentcoreOauth2CredentialProviderOauth2ProviderConfigSalesforceOauth2ProviderConfigOauthDiscovery.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

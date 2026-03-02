@@ -27,8 +27,8 @@ class NotificationSettings {
 
   factory NotificationSettings.fromMap(Map<String, dynamic> map) {
     return NotificationSettings(
-      activationState: map['activationState'] == null ? null : (map['activationState'] as String).input(),
-      azureMonitorWorkspaceProperties: map['azureMonitorWorkspaceProperties'] == null ? null : (AzureMonitorWorkspaceProperties.fromMap((map['azureMonitorWorkspaceProperties'] as Map).cast<String, dynamic>())).input(),
+      activationState: map['activationState'] == null ? null : (map['activationState']! as String).input(),
+      azureMonitorWorkspaceProperties: map['azureMonitorWorkspaceProperties'] == null ? null : (AzureMonitorWorkspaceProperties.fromMap((map['azureMonitorWorkspaceProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

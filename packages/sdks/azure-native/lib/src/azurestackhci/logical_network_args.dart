@@ -62,14 +62,14 @@ class LogicalNetworkArgs {
 
   factory LogicalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return LogicalNetworkArgs(
-      dhcpOptions: map['dhcpOptions'] == null ? null : (LogicalNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions'] as Map).cast<String, dynamic>())).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logicalNetworkName: map['logicalNetworkName'] == null ? null : (map['logicalNetworkName'] as String).input(),
+      dhcpOptions: map['dhcpOptions'] == null ? null : (LogicalNetworkPropertiesDhcpOptions.fromMap((map['dhcpOptions']! as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logicalNetworkName: map['logicalNetworkName'] == null ? null : (map['logicalNetworkName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vmSwitchName: map['vmSwitchName'] == null ? null : (map['vmSwitchName'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['subnets']!, (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vmSwitchName: map['vmSwitchName'] == null ? null : (map['vmSwitchName']! as String).input(),
     );
   }
 }

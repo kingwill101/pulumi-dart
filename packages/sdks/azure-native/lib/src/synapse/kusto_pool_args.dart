@@ -71,16 +71,16 @@ class KustoPoolArgs {
 
   factory KustoPoolArgs.fromMap(Map<String, dynamic> map) {
     return KustoPoolArgs(
-      enablePurge: map['enablePurge'] == null ? null : (map['enablePurge'] as bool).input(),
-      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : (map['enableStreamingIngest'] as bool).input(),
-      kustoPoolName: map['kustoPoolName'] == null ? null : (map['kustoPoolName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : (OptimizedAutoscale.fromMap((map['optimizedAutoscale'] as Map).cast<String, dynamic>())).input(),
+      enablePurge: map['enablePurge'] == null ? null : (map['enablePurge']! as bool).input(),
+      enableStreamingIngest: map['enableStreamingIngest'] == null ? null : (map['enableStreamingIngest']! as bool).input(),
+      kustoPoolName: map['kustoPoolName'] == null ? null : (map['kustoPoolName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      optimizedAutoscale: map['optimizedAutoscale'] == null ? null : (OptimizedAutoscale.fromMap((map['optimizedAutoscale']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (AzureSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
-      workspaceUID: map['workspaceUID'] == null ? null : (map['workspaceUID'] as String).input(),
+      workspaceUID: map['workspaceUID'] == null ? null : (map['workspaceUID']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   factory DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : (DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>())).input(),
+      idleSettings: map['idleSettings'] == null ? null : ((DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

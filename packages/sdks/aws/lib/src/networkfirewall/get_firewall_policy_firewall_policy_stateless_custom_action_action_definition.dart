@@ -20,7 +20,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition {
 
   factory GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinition(
-      publishMetricActions: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction>(map['publishMetricActions'], (value) => GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publishMetricActions: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction>(map['publishMetricActions']!, (value) => GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

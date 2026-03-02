@@ -31,7 +31,7 @@ class CapacityRequirements {
 
   factory CapacityRequirements.fromMap(Map<String, dynamic> map) {
     return CapacityRequirements(
-      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
     );
   }
 }

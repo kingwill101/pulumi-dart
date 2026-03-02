@@ -25,8 +25,8 @@ class ResourceTypeOnBehalfOfToken {
 
   factory ResourceTypeOnBehalfOfToken.fromMap(Map<String, dynamic> map) {
     return ResourceTypeOnBehalfOfToken(
-      actionName: map['actionName'] == null ? null : (map['actionName'] as String).input(),
-      lifeTime: map['lifeTime'] == null ? null : (map['lifeTime'] as String).input(),
+      actionName: map['actionName'] == null ? null : (map['actionName']! as String).input(),
+      lifeTime: map['lifeTime'] == null ? null : (map['lifeTime']! as String).input(),
     );
   }
 }

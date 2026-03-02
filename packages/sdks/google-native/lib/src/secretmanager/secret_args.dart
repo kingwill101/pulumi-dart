@@ -76,17 +76,17 @@ class SecretArgs {
 
   factory SecretArgs.fromMap(Map<String, dynamic> map) {
     return SecretArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       replication: (Replication.fromMap((map['replication'] as Map).cast<String, dynamic>())).input(),
-      rotation: map['rotation'] == null ? null : (Rotation.fromMap((map['rotation'] as Map).cast<String, dynamic>())).input(),
+      rotation: map['rotation'] == null ? null : (Rotation.fromMap((map['rotation']! as Map).cast<String, dynamic>())).input(),
       secretId: (map['secretId'] as String).input(),
-      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<Topic>(map['topics'], (value) => Topic.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
-      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases'] as Map).cast<String, String>()).input(),
+      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<Topic>(map['topics']!, (value) => Topic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
+      versionAliases: map['versionAliases'] == null ? null : ((map['versionAliases']! as Map).cast<String, String>()).input(),
     );
   }
 }

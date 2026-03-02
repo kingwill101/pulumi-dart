@@ -47,12 +47,12 @@ class BackupPolicyBlobStorageRetentionRuleCriteria {
 
   factory BackupPolicyBlobStorageRetentionRuleCriteria.fromMap(Map<String, dynamic> map) {
     return BackupPolicyBlobStorageRetentionRuleCriteria(
-      absoluteCriteria: map['absoluteCriteria'] == null ? null : (map['absoluteCriteria'] as String).input(),
-      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths'] as List).cast<int>()).input(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      monthsOfYears: map['monthsOfYears'] == null ? null : ((map['monthsOfYears'] as List).cast<String>()).input(),
-      scheduledBackupTimes: map['scheduledBackupTimes'] == null ? null : ((map['scheduledBackupTimes'] as List).cast<String>()).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<String>()).input(),
+      absoluteCriteria: map['absoluteCriteria'] == null ? null : (map['absoluteCriteria']! as String).input(),
+      daysOfMonths: map['daysOfMonths'] == null ? null : ((map['daysOfMonths']! as List).cast<int>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
+      monthsOfYears: map['monthsOfYears'] == null ? null : ((map['monthsOfYears']! as List).cast<String>()).input(),
+      scheduledBackupTimes: map['scheduledBackupTimes'] == null ? null : ((map['scheduledBackupTimes']! as List).cast<String>()).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths']! as List).cast<String>()).input(),
     );
   }
 }

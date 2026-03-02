@@ -34,8 +34,8 @@ class TrafficQosAssociationArgs {
 
   factory TrafficQosAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosAssociationArgs(
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
       qosId: (map['qosId'] as String).input(),
     );
   }

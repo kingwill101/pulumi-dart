@@ -54,8 +54,8 @@ class SerialPortArgs {
       parentResourceType: (map['parentResourceType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceProviderNamespace: (map['resourceProviderNamespace'] as String).input(),
-      serialPort: map['serialPort'] == null ? null : (map['serialPort'] as String).input(),
-      state: map['state'] == null ? null : (SerialPortState.fromValue(map['state'] as String)).input(),
+      serialPort: map['serialPort'] == null ? null : (map['serialPort']! as String).input(),
+      state: map['state'] == null ? null : (SerialPortState.fromValue(map['state']! as String)).input(),
     );
   }
 }

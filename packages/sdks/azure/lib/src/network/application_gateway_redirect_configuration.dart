@@ -54,14 +54,14 @@ class ApplicationGatewayRedirectConfiguration {
 
   factory ApplicationGatewayRedirectConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRedirectConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      includePath: map['includePath'] == null ? null : (map['includePath'] as bool).input(),
-      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString'] as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      includePath: map['includePath'] == null ? null : (map['includePath']! as bool).input(),
+      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString']! as bool).input(),
       name: (map['name'] as String).input(),
       redirectType: (map['redirectType'] as String).input(),
-      targetListenerId: map['targetListenerId'] == null ? null : (map['targetListenerId'] as String).input(),
-      targetListenerName: map['targetListenerName'] == null ? null : (map['targetListenerName'] as String).input(),
-      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl'] as String).input(),
+      targetListenerId: map['targetListenerId'] == null ? null : (map['targetListenerId']! as String).input(),
+      targetListenerName: map['targetListenerName'] == null ? null : (map['targetListenerName']! as String).input(),
+      targetUrl: map['targetUrl'] == null ? null : (map['targetUrl']! as String).input(),
     );
   }
 }

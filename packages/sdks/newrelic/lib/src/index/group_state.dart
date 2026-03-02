@@ -35,9 +35,9 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      authenticationDomainId: map['authenticationDomainId'] == null ? null : (map['authenticationDomainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      authenticationDomainId: map['authenticationDomainId'] == null ? null : (map['authenticationDomainId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds']! as List).cast<String>()).input(),
     );
   }
 }

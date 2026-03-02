@@ -38,7 +38,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
     return CaPoolIssuancePolicyBaselineValuesKeyUsage(
       baseKeyUsage: (CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>())).input(),
       extendedKeyUsage: (CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>())).input(),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages']!, (value) => CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

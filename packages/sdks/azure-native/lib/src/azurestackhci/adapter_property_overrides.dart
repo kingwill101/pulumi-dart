@@ -31,9 +31,9 @@ class AdapterPropertyOverrides {
 
   factory AdapterPropertyOverrides.fromMap(Map<String, dynamic> map) {
     return AdapterPropertyOverrides(
-      jumboPacket: map['jumboPacket'] == null ? null : (map['jumboPacket'] as String).input(),
-      networkDirect: map['networkDirect'] == null ? null : (map['networkDirect'] as String).input(),
-      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : (map['networkDirectTechnology'] as String).input(),
+      jumboPacket: map['jumboPacket'] == null ? null : (map['jumboPacket']! as String).input(),
+      networkDirect: map['networkDirect'] == null ? null : (map['networkDirect']! as String).input(),
+      networkDirectTechnology: map['networkDirectTechnology'] == null ? null : (map['networkDirectTechnology']! as String).input(),
     );
   }
 }

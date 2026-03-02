@@ -34,7 +34,7 @@ class ListFirewallPolicyIdpsSignaturesFilterValueArgs {
 
   factory ListFirewallPolicyIdpsSignaturesFilterValueArgs.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignaturesFilterValueArgs(
-      filterName: map['filterName'] == null ? null : (map['filterName'] as String).input(),
+      filterName: map['filterName'] == null ? null : (map['filterName']! as String).input(),
       firewallPolicyName: (map['firewallPolicyName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

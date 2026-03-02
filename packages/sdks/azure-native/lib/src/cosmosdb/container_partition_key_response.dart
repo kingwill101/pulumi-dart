@@ -36,10 +36,10 @@ class ContainerPartitionKeyResponse {
 
   factory ContainerPartitionKeyResponse.fromMap(Map<String, dynamic> map) {
     return ContainerPartitionKeyResponse(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
       systemKey: (map['systemKey'] as bool).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

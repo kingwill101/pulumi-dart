@@ -36,10 +36,10 @@ class SbomReferenceIntotoPredicateContaineranalysisV1beta1 {
 
   factory SbomReferenceIntotoPredicateContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return SbomReferenceIntotoPredicateContaineranalysisV1beta1(
-      digest: map['digest'] == null ? null : ((map['digest'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mimeType: map['mimeType'] == null ? null : (map['mimeType'] as String).input(),
-      referrerId: map['referrerId'] == null ? null : (map['referrerId'] as String).input(),
+      digest: map['digest'] == null ? null : ((map['digest']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mimeType: map['mimeType'] == null ? null : (map['mimeType']! as String).input(),
+      referrerId: map['referrerId'] == null ? null : (map['referrerId']! as String).input(),
     );
   }
 }

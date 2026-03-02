@@ -33,7 +33,7 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Args {
     return GetCapacityCommitmentBigqueryreservationV1beta1Args(
       capacityCommitmentId: (map['capacityCommitmentId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

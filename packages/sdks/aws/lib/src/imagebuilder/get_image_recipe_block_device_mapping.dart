@@ -37,7 +37,7 @@ class GetImageRecipeBlockDeviceMapping {
   factory GetImageRecipeBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return GetImageRecipeBlockDeviceMapping(
       deviceName: (map['deviceName'] as String).input(),
-      ebs: (pulumi.Input.decodeList<GetImageRecipeBlockDeviceMappingEb>(map['ebs'], (value) => GetImageRecipeBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ebs: (pulumi.Input.decodeList<GetImageRecipeBlockDeviceMappingEb>(map['ebs']!, (value) => GetImageRecipeBlockDeviceMappingEb.fromMap((value as Map).cast<String, dynamic>()))).input(),
       noDevice: (map['noDevice'] as String).input(),
       virtualName: (map['virtualName'] as String).input(),
     );

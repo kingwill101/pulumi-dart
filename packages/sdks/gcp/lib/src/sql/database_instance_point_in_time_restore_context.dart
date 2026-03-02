@@ -42,11 +42,11 @@ class DatabaseInstancePointInTimeRestoreContext {
 
   factory DatabaseInstancePointInTimeRestoreContext.fromMap(Map<String, dynamic> map) {
     return DatabaseInstancePointInTimeRestoreContext(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
       datasource: (map['datasource'] as String).input(),
-      pointInTime: map['pointInTime'] == null ? null : (map['pointInTime'] as String).input(),
-      preferredZone: map['preferredZone'] == null ? null : (map['preferredZone'] as String).input(),
-      targetInstance: map['targetInstance'] == null ? null : (map['targetInstance'] as String).input(),
+      pointInTime: map['pointInTime'] == null ? null : (map['pointInTime']! as String).input(),
+      preferredZone: map['preferredZone'] == null ? null : (map['preferredZone']! as String).input(),
+      targetInstance: map['targetInstance'] == null ? null : (map['targetInstance']! as String).input(),
     );
   }
 }

@@ -72,12 +72,12 @@ class NetworkAttachmentResponse {
   factory NetworkAttachmentResponse.fromMap(Map<String, dynamic> map) {
     return NetworkAttachmentResponse(
       attachedNetworkId: (map['attachedNetworkId'] as String).input(),
-      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway'] as String).input(),
+      defaultGateway: map['defaultGateway'] == null ? null : (map['defaultGateway']! as String).input(),
       ipAllocationMethod: (map['ipAllocationMethod'] as String).input(),
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
       macAddress: (map['macAddress'] as String).input(),
-      networkAttachmentName: map['networkAttachmentName'] == null ? null : (map['networkAttachmentName'] as String).input(),
+      networkAttachmentName: map['networkAttachmentName'] == null ? null : (map['networkAttachmentName']! as String).input(),
     );
   }
 }

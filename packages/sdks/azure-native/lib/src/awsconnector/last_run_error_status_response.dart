@@ -22,7 +22,7 @@ class LastRunErrorStatusResponse {
 
   factory LastRunErrorStatusResponse.fromMap(Map<String, dynamic> map) {
     return LastRunErrorStatusResponse(
-      code: map['code'] == null ? null : (LastRunErrorStatusCodeEnumValueResponse.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
+      code: map['code'] == null ? null : (LastRunErrorStatusCodeEnumValueResponse.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

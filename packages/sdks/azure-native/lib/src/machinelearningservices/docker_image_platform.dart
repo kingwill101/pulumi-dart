@@ -20,7 +20,7 @@ class DockerImagePlatform {
 
   factory DockerImagePlatform.fromMap(Map<String, dynamic> map) {
     return DockerImagePlatform(
-      operatingSystemType: map['operatingSystemType'] == null ? null : (map['operatingSystemType'] as String).input(),
+      operatingSystemType: map['operatingSystemType'] == null ? null : (map['operatingSystemType']! as String).input(),
     );
   }
 }

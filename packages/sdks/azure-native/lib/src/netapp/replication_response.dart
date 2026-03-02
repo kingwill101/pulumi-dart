@@ -41,11 +41,11 @@ class ReplicationResponse {
 
   factory ReplicationResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationResponse(
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : (map['remoteVolumeRegion'] as String).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      remoteVolumeRegion: map['remoteVolumeRegion'] == null ? null : (map['remoteVolumeRegion']! as String).input(),
       remoteVolumeResourceId: (map['remoteVolumeResourceId'] as String).input(),
       replicationId: (map['replicationId'] as String).input(),
-      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule'] as String).input(),
+      replicationSchedule: map['replicationSchedule'] == null ? null : (map['replicationSchedule']! as String).input(),
     );
   }
 }

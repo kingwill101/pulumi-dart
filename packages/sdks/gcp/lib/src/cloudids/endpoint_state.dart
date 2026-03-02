@@ -73,17 +73,17 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointForwardingRule: map['endpointForwardingRule'] == null ? null : (map['endpointForwardingRule'] as String).input(),
-      endpointIp: map['endpointIp'] == null ? null : (map['endpointIp'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions'] as List).cast<String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpointForwardingRule: map['endpointForwardingRule'] == null ? null : (map['endpointForwardingRule']! as String).input(),
+      endpointIp: map['endpointIp'] == null ? null : (map['endpointIp']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      threatExceptions: map['threatExceptions'] == null ? null : ((map['threatExceptions']! as List).cast<String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DiJobTableMapping {
 
   factory DiJobTableMapping.fromMap(Map<String, dynamic> map) {
     return DiJobTableMapping(
-      sourceObjectSelectionRules: map['sourceObjectSelectionRules'] == null ? null : (pulumi.Input.decodeList<DiJobTableMappingSourceObjectSelectionRule>(map['sourceObjectSelectionRules'], (value) => DiJobTableMappingSourceObjectSelectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTableMappingTransformationRule>(map['transformationRules'], (value) => DiJobTableMappingTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceObjectSelectionRules: map['sourceObjectSelectionRules'] == null ? null : (pulumi.Input.decodeList<DiJobTableMappingSourceObjectSelectionRule>(map['sourceObjectSelectionRules']!, (value) => DiJobTableMappingSourceObjectSelectionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transformationRules: map['transformationRules'] == null ? null : (pulumi.Input.decodeList<DiJobTableMappingTransformationRule>(map['transformationRules']!, (value) => DiJobTableMappingTransformationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

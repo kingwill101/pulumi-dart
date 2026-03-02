@@ -64,16 +64,16 @@ class NfsState {
 
   factory NfsState.fromMap(Map<String, dynamic> map) {
     return NfsState(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      performanceTier: map['performanceTier'] == null ? null : (map['performanceTier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      performanceTier: map['performanceTier'] == null ? null : (map['performanceTier']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
     );
   }
 }

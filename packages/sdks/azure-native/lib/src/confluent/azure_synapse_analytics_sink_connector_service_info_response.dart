@@ -43,10 +43,10 @@ class AzureSynapseAnalyticsSinkConnectorServiceInfoResponse {
   factory AzureSynapseAnalyticsSinkConnectorServiceInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureSynapseAnalyticsSinkConnectorServiceInfoResponse(
       connectorServiceType: (map['connectorServiceType'] as String).input(),
-      synapseSqlDatabaseName: map['synapseSqlDatabaseName'] == null ? null : (map['synapseSqlDatabaseName'] as String).input(),
-      synapseSqlPassword: map['synapseSqlPassword'] == null ? null : (map['synapseSqlPassword'] as String).input(),
-      synapseSqlServerName: map['synapseSqlServerName'] == null ? null : (map['synapseSqlServerName'] as String).input(),
-      synapseSqlUser: map['synapseSqlUser'] == null ? null : (map['synapseSqlUser'] as String).input(),
+      synapseSqlDatabaseName: map['synapseSqlDatabaseName'] == null ? null : (map['synapseSqlDatabaseName']! as String).input(),
+      synapseSqlPassword: map['synapseSqlPassword'] == null ? null : (map['synapseSqlPassword']! as String).input(),
+      synapseSqlServerName: map['synapseSqlServerName'] == null ? null : (map['synapseSqlServerName']! as String).input(),
+      synapseSqlUser: map['synapseSqlUser'] == null ? null : (map['synapseSqlUser']! as String).input(),
     );
   }
 }

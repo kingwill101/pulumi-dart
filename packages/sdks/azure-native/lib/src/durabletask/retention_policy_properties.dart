@@ -22,7 +22,7 @@ class RetentionPolicyProperties {
 
   factory RetentionPolicyProperties.fromMap(Map<String, dynamic> map) {
     return RetentionPolicyProperties(
-      retentionPolicies: map['retentionPolicies'] == null ? null : (pulumi.Input.decodeList<RetentionPolicyDetails>(map['retentionPolicies'], (value) => RetentionPolicyDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retentionPolicies: map['retentionPolicies'] == null ? null : (pulumi.Input.decodeList<RetentionPolicyDetails>(map['retentionPolicies']!, (value) => RetentionPolicyDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

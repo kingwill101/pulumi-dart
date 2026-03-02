@@ -27,7 +27,7 @@ class GetTableMagneticStoreWriteProperty {
   factory GetTableMagneticStoreWriteProperty.fromMap(Map<String, dynamic> map) {
     return GetTableMagneticStoreWriteProperty(
       enableMagneticStoreWrites: (map['enableMagneticStoreWrites'] as bool).input(),
-      magneticStoreRejectedDataLocations: (pulumi.Input.decodeList<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation>(map['magneticStoreRejectedDataLocations'], (value) => GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      magneticStoreRejectedDataLocations: (pulumi.Input.decodeList<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation>(map['magneticStoreRejectedDataLocations']!, (value) => GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

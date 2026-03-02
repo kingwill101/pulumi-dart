@@ -42,11 +42,11 @@ class ZoneAttachmentState {
 
   factory ZoneAttachmentState.fromMap(Map<String, dynamic> map) {
     return ZoneAttachmentState(
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
-      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneAttachmentVpc>(map['vpcs'], (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
+      vpcs: map['vpcs'] == null ? null : (pulumi.Input.decodeList<ZoneAttachmentVpc>(map['vpcs']!, (value) => ZoneAttachmentVpc.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

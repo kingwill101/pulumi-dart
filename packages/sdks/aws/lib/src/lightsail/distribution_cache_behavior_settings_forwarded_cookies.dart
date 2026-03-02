@@ -25,8 +25,8 @@ class DistributionCacheBehaviorSettingsForwardedCookies {
 
   factory DistributionCacheBehaviorSettingsForwardedCookies.fromMap(Map<String, dynamic> map) {
     return DistributionCacheBehaviorSettingsForwardedCookies(
-      cookiesAllowLists: map['cookiesAllowLists'] == null ? null : ((map['cookiesAllowLists'] as List).cast<String>()).input(),
-      option: map['option'] == null ? null : (map['option'] as String).input(),
+      cookiesAllowLists: map['cookiesAllowLists'] == null ? null : (((map['cookiesAllowLists'] as List).cast<String>()).input()).input(),
+      option: map['option'] == null ? null : ((map['option'] as String).input()).input(),
     );
   }
 }

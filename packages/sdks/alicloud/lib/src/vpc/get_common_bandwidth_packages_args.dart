@@ -59,14 +59,14 @@ class GetCommonBandwidthPackagesArgs {
 
   factory GetCommonBandwidthPackagesArgs.fromMap(Map<String, dynamic> map) {
     return GetCommonBandwidthPackagesArgs(
-      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : (map['bandwidthPackageName'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidthPackageName: map['bandwidthPackageName'] == null ? null : (map['bandwidthPackageName']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      includeReservationData: map['includeReservationData'] == null ? null : (map['includeReservationData']! as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

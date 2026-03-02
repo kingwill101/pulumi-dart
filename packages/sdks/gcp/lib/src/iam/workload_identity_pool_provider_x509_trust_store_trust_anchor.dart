@@ -21,7 +21,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
 
   factory WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
     );
   }
 }

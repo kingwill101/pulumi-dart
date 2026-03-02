@@ -26,8 +26,8 @@ class ConditionResponseFailingPeriods {
 
   factory ConditionResponseFailingPeriods.fromMap(Map<String, dynamic> map) {
     return ConditionResponseFailingPeriods(
-      minFailingPeriodsToAlert: map['minFailingPeriodsToAlert'] == null ? null : (map['minFailingPeriodsToAlert'] as double).input(),
-      numberOfEvaluationPeriods: map['numberOfEvaluationPeriods'] == null ? null : (map['numberOfEvaluationPeriods'] as double).input(),
+      minFailingPeriodsToAlert: map['minFailingPeriodsToAlert'] == null ? null : (map['minFailingPeriodsToAlert']! as double).input(),
+      numberOfEvaluationPeriods: map['numberOfEvaluationPeriods'] == null ? null : (map['numberOfEvaluationPeriods']! as double).input(),
     );
   }
 }

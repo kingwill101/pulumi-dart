@@ -31,9 +31,9 @@ class AttachmentState {
 
   factory AttachmentState.fromMap(Map<String, dynamic> map) {
     return AttachmentState(
-      elb: map['elb'] == null ? null : (map['elb'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      elb: map['elb'] == null ? null : ((map['elb'] as String).input()).input(),
+      instance: map['instance'] == null ? null : ((map['instance'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

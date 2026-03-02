@@ -19,7 +19,7 @@ class LocationFsxOntapFileSystemProtocolSmbMountOptions {
 
   factory LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocolSmbMountOptions(
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

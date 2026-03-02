@@ -59,14 +59,14 @@ class VcenterControllerArgs {
 
   factory VcenterControllerArgs.fromMap(Map<String, dynamic> map) {
     return VcenterControllerArgs(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
       siteName: (map['siteName'] as String).input(),
-      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName'] as String).input(),
+      vcenterName: map['vcenterName'] == null ? null : (map['vcenterName']! as String).input(),
     );
   }
 }

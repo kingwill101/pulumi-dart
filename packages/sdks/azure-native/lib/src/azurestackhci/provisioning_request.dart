@@ -50,12 +50,12 @@ class ProvisioningRequest {
 
   factory ProvisioningRequest.fromMap(Map<String, dynamic> map) {
     return ProvisioningRequest(
-      customConfiguration: map['customConfiguration'] == null ? null : (map['customConfiguration'] as String).input(),
-      deviceConfiguration: map['deviceConfiguration'] == null ? null : (TargetDeviceConfiguration.fromMap((map['deviceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      onboardingConfiguration: map['onboardingConfiguration'] == null ? null : (OnboardingConfiguration.fromMap((map['onboardingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      customConfiguration: map['customConfiguration'] == null ? null : (map['customConfiguration']! as String).input(),
+      deviceConfiguration: map['deviceConfiguration'] == null ? null : (TargetDeviceConfiguration.fromMap((map['deviceConfiguration']! as Map).cast<String, dynamic>())).input(),
+      onboardingConfiguration: map['onboardingConfiguration'] == null ? null : (OnboardingConfiguration.fromMap((map['onboardingConfiguration']! as Map).cast<String, dynamic>())).input(),
       osProfile: (OsProvisionProfile.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
       target: (map['target'] as String).input(),
-      userDetails: map['userDetails'] == null ? null : (pulumi.Input.decodeList<UserDetails>(map['userDetails'], (value) => UserDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userDetails: map['userDetails'] == null ? null : (pulumi.Input.decodeList<UserDetails>(map['userDetails']!, (value) => UserDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

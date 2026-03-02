@@ -48,9 +48,9 @@ class GetRoleDefinitionPermission {
       actions: ((map['actions'] as List).cast<String>()).input(),
       condition: (map['condition'] as String).input(),
       conditionVersion: (map['conditionVersion'] as String).input(),
-      dataActions: map['dataActions'] == null ? null : ((map['dataActions'] as List).cast<String>()).input(),
+      dataActions: map['dataActions'] == null ? null : ((map['dataActions']! as List).cast<String>()).input(),
       notActions: ((map['notActions'] as List).cast<String>()).input(),
-      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions'] as List).cast<String>()).input(),
+      notDataActions: map['notDataActions'] == null ? null : ((map['notDataActions']! as List).cast<String>()).input(),
     );
   }
 }

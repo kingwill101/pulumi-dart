@@ -32,9 +32,9 @@ class LoggingConfigurationResponse {
 
   factory LoggingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return LoggingConfigurationResponse(
-      destinationBucketName: map['destinationBucketName'] == null ? null : (map['destinationBucketName'] as String).input(),
-      logFilePrefix: map['logFilePrefix'] == null ? null : (map['logFilePrefix'] as String).input(),
-      targetObjectKeyFormat: map['targetObjectKeyFormat'] == null ? null : (TargetObjectKeyFormatResponse.fromMap((map['targetObjectKeyFormat'] as Map).cast<String, dynamic>())).input(),
+      destinationBucketName: map['destinationBucketName'] == null ? null : (map['destinationBucketName']! as String).input(),
+      logFilePrefix: map['logFilePrefix'] == null ? null : (map['logFilePrefix']! as String).input(),
+      targetObjectKeyFormat: map['targetObjectKeyFormat'] == null ? null : (TargetObjectKeyFormatResponse.fromMap((map['targetObjectKeyFormat']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

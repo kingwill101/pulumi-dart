@@ -77,17 +77,17 @@ class RoleResponse {
 
   factory RoleResponse.fromMap(Map<String, dynamic> map) {
     return RoleResponse(
-      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : (AutoscaleResponse.fromMap((map['autoscaleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      dataDisksGroups: map['dataDisksGroups'] == null ? null : (pulumi.Input.decodeList<DataDisksGroupsResponse>(map['dataDisksGroups'], (value) => DataDisksGroupsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encryptDataDisks: map['encryptDataDisks'] == null ? null : (map['encryptDataDisks'] as bool).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfileResponse.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<ScriptActionResponse>(map['scriptActions'], (value) => ScriptActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetInstanceCount: map['targetInstanceCount'] == null ? null : (map['targetInstanceCount'] as int).input(),
-      vMGroupName: map['vMGroupName'] == null ? null : (map['vMGroupName'] as String).input(),
-      virtualNetworkProfile: map['virtualNetworkProfile'] == null ? null : (VirtualNetworkProfileResponse.fromMap((map['virtualNetworkProfile'] as Map).cast<String, dynamic>())).input(),
+      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : (AutoscaleResponse.fromMap((map['autoscaleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      dataDisksGroups: map['dataDisksGroups'] == null ? null : (pulumi.Input.decodeList<DataDisksGroupsResponse>(map['dataDisksGroups']!, (value) => DataDisksGroupsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encryptDataDisks: map['encryptDataDisks'] == null ? null : (map['encryptDataDisks']! as bool).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfileResponse.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfileResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      scriptActions: map['scriptActions'] == null ? null : (pulumi.Input.decodeList<ScriptActionResponse>(map['scriptActions']!, (value) => ScriptActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetInstanceCount: map['targetInstanceCount'] == null ? null : (map['targetInstanceCount']! as int).input(),
+      vMGroupName: map['vMGroupName'] == null ? null : (map['vMGroupName']! as String).input(),
+      virtualNetworkProfile: map['virtualNetworkProfile'] == null ? null : (VirtualNetworkProfileResponse.fromMap((map['virtualNetworkProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

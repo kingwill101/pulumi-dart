@@ -26,7 +26,7 @@ class WorkgroupPricePerformanceTarget {
   factory WorkgroupPricePerformanceTarget.fromMap(Map<String, dynamic> map) {
     return WorkgroupPricePerformanceTarget(
       enabled: (map['enabled'] as bool).input(),
-      level: map['level'] == null ? null : (map['level'] as int).input(),
+      level: map['level'] == null ? null : ((map['level'] as int).input()).input(),
     );
   }
 }

@@ -54,12 +54,12 @@ class ZoneVirtualNetworkLinkArgs {
 
   factory ZoneVirtualNetworkLinkArgs.fromMap(Map<String, dynamic> map) {
     return ZoneVirtualNetworkLinkArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       privateDnsZoneName: (map['privateDnsZoneName'] as String).input(),
-      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled'] as bool).input(),
-      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy'] as String).input(),
+      registrationEnabled: map['registrationEnabled'] == null ? null : (map['registrationEnabled']! as bool).input(),
+      resolutionPolicy: map['resolutionPolicy'] == null ? null : (map['resolutionPolicy']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       virtualNetworkId: (map['virtualNetworkId'] as String).input(),
     );
   }

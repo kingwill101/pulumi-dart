@@ -26,8 +26,8 @@ class UserPoolAdminCreateUserConfig {
 
   factory UserPoolAdminCreateUserConfig.fromMap(Map<String, dynamic> map) {
     return UserPoolAdminCreateUserConfig(
-      allowAdminCreateUserOnly: map['allowAdminCreateUserOnly'] == null ? null : (map['allowAdminCreateUserOnly'] as bool).input(),
-      inviteMessageTemplate: map['inviteMessageTemplate'] == null ? null : (UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap((map['inviteMessageTemplate'] as Map).cast<String, dynamic>())).input(),
+      allowAdminCreateUserOnly: map['allowAdminCreateUserOnly'] == null ? null : ((map['allowAdminCreateUserOnly'] as bool).input()).input(),
+      inviteMessageTemplate: map['inviteMessageTemplate'] == null ? null : ((UserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap((map['inviteMessageTemplate']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

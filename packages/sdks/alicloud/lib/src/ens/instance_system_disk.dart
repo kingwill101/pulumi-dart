@@ -29,8 +29,8 @@ class InstanceSystemDisk {
 
   factory InstanceSystemDisk.fromMap(Map<String, dynamic> map) {
     return InstanceSystemDisk(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

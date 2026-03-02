@@ -72,19 +72,19 @@ class GetLogsResult {
 
   factory GetLogsResult.fromMap(Map<String, dynamic> map) {
     return GetLogsResult(
-      details: map['details'] == null ? null : map['details'] as bool,
-      discardHeaders: map['discardHeaders'] == null ? null : map['discardHeaders'] as bool,
-      follow: map['follow'] == null ? null : map['follow'] as bool,
+      details: map['details'] == null ? null : map['details']! as bool,
+      discardHeaders: map['discardHeaders'] == null ? null : map['discardHeaders']! as bool,
+      follow: map['follow'] == null ? null : map['follow']! as bool,
       id: map['id'] as String,
-      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : map['logsListStringEnabled'] as bool,
+      logsListStringEnabled: map['logsListStringEnabled'] == null ? null : map['logsListStringEnabled']! as bool,
       logsListStrings: (map['logsListStrings'] as List).cast<String>(),
       name: map['name'] as String,
-      showStderr: map['showStderr'] == null ? null : map['showStderr'] as bool,
-      showStdout: map['showStdout'] == null ? null : map['showStdout'] as bool,
-      since: map['since'] == null ? null : map['since'] as String,
-      tail: map['tail'] == null ? null : map['tail'] as String,
-      timestamps: map['timestamps'] == null ? null : map['timestamps'] as bool,
-      until: map['until'] == null ? null : map['until'] as String,
+      showStderr: map['showStderr'] == null ? null : map['showStderr']! as bool,
+      showStdout: map['showStdout'] == null ? null : map['showStdout']! as bool,
+      since: map['since'] == null ? null : map['since']! as String,
+      tail: map['tail'] == null ? null : map['tail']! as String,
+      timestamps: map['timestamps'] == null ? null : map['timestamps']! as bool,
+      until: map['until'] == null ? null : map['until']! as String,
     );
   }
 }

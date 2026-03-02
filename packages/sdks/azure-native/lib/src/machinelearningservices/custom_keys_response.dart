@@ -20,7 +20,7 @@ class CustomKeysResponse {
 
   factory CustomKeysResponse.fromMap(Map<String, dynamic> map) {
     return CustomKeysResponse(
-      keys: map['keys'] == null ? null : ((map['keys'] as Map).cast<String, String>()).input(),
+      keys: map['keys'] == null ? null : ((map['keys']! as Map).cast<String, String>()).input(),
     );
   }
 }

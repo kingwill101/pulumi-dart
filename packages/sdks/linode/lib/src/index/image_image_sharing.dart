@@ -27,8 +27,8 @@ class ImageImageSharing {
 
   factory ImageImageSharing.fromMap(Map<String, dynamic> map) {
     return ImageImageSharing(
-      sharedBy: map['sharedBy'] == null ? null : (ImageImageSharingSharedBy.fromMap((map['sharedBy'] as Map).cast<String, dynamic>())).input(),
-      sharedWith: map['sharedWith'] == null ? null : (ImageImageSharingSharedWith.fromMap((map['sharedWith'] as Map).cast<String, dynamic>())).input(),
+      sharedBy: map['sharedBy'] == null ? null : (ImageImageSharingSharedBy.fromMap((map['sharedBy']! as Map).cast<String, dynamic>())).input(),
+      sharedWith: map['sharedWith'] == null ? null : (ImageImageSharingSharedWith.fromMap((map['sharedWith']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

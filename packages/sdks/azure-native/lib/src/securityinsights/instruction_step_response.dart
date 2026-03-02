@@ -38,10 +38,10 @@ class InstructionStepResponse {
 
   factory InstructionStepResponse.fromMap(Map<String, dynamic> map) {
     return InstructionStepResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      innerSteps: map['innerSteps'] == null ? null : (pulumi.Input.decodeList<InstructionStepResponse>(map['innerSteps'], (value) => InstructionStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instructions: map['instructions'] == null ? null : (pulumi.Input.decodeList<InstructionStepDetailsResponse>(map['instructions'], (value) => InstructionStepDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      innerSteps: map['innerSteps'] == null ? null : (pulumi.Input.decodeList<InstructionStepResponse>(map['innerSteps']!, (value) => InstructionStepResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instructions: map['instructions'] == null ? null : (pulumi.Input.decodeList<InstructionStepDetailsResponse>(map['instructions']!, (value) => InstructionStepDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

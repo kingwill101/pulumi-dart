@@ -37,8 +37,8 @@ class GetProducerDataSharesArgs {
   factory GetProducerDataSharesArgs.fromMap(Map<String, dynamic> map) {
     return GetProducerDataSharesArgs(
       producerArn: (map['producerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

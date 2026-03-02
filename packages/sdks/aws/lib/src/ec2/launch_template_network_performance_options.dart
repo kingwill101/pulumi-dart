@@ -20,7 +20,7 @@ class LaunchTemplateNetworkPerformanceOptions {
 
   factory LaunchTemplateNetworkPerformanceOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateNetworkPerformanceOptions(
-      bandwidthWeighting: map['bandwidthWeighting'] == null ? null : (map['bandwidthWeighting'] as String).input(),
+      bandwidthWeighting: map['bandwidthWeighting'] == null ? null : ((map['bandwidthWeighting'] as String).input()).input(),
     );
   }
 }

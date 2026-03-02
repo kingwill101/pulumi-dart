@@ -26,7 +26,7 @@ class LinkedCustomServiceIntegrationRuntime {
   factory LinkedCustomServiceIntegrationRuntime.fromMap(Map<String, dynamic> map) {
     return LinkedCustomServiceIntegrationRuntime(
       name: (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
     );
   }
 }

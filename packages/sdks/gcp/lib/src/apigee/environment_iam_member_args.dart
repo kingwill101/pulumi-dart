@@ -59,7 +59,7 @@ class EnvironmentIamMemberArgs {
 
   factory EnvironmentIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentIamMemberArgs(
-      condition: map['condition'] == null ? null : (EnvironmentIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (EnvironmentIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       envId: (map['envId'] as String).input(),
       member: (map['member'] as String).input(),
       orgId: (map['orgId'] as String).input(),

@@ -61,14 +61,14 @@ class OpenAIProfileResponse {
 
   factory OpenAIProfileResponse.fromMap(Map<String, dynamic> map) {
     return OpenAIProfileResponse(
-      embeddingModelCapacity: map['embeddingModelCapacity'] == null ? null : (map['embeddingModelCapacity'] as int).input(),
-      embeddingModelName: map['embeddingModelName'] == null ? null : (map['embeddingModelName'] as String).input(),
-      embeddingModelSkuName: map['embeddingModelSkuName'] == null ? null : (map['embeddingModelSkuName'] as String).input(),
-      embeddingModelVersion: map['embeddingModelVersion'] == null ? null : (map['embeddingModelVersion'] as String).input(),
-      gptModelCapacity: map['gptModelCapacity'] == null ? null : (map['gptModelCapacity'] as int).input(),
-      gptModelName: map['gptModelName'] == null ? null : (map['gptModelName'] as String).input(),
-      gptModelSkuName: map['gptModelSkuName'] == null ? null : (map['gptModelSkuName'] as String).input(),
-      gptModelVersion: map['gptModelVersion'] == null ? null : (map['gptModelVersion'] as String).input(),
+      embeddingModelCapacity: map['embeddingModelCapacity'] == null ? null : (map['embeddingModelCapacity']! as int).input(),
+      embeddingModelName: map['embeddingModelName'] == null ? null : (map['embeddingModelName']! as String).input(),
+      embeddingModelSkuName: map['embeddingModelSkuName'] == null ? null : (map['embeddingModelSkuName']! as String).input(),
+      embeddingModelVersion: map['embeddingModelVersion'] == null ? null : (map['embeddingModelVersion']! as String).input(),
+      gptModelCapacity: map['gptModelCapacity'] == null ? null : (map['gptModelCapacity']! as int).input(),
+      gptModelName: map['gptModelName'] == null ? null : (map['gptModelName']! as String).input(),
+      gptModelSkuName: map['gptModelSkuName'] == null ? null : (map['gptModelSkuName']! as String).input(),
+      gptModelVersion: map['gptModelVersion'] == null ? null : (map['gptModelVersion']! as String).input(),
       id: (map['id'] as String).input(),
     );
   }

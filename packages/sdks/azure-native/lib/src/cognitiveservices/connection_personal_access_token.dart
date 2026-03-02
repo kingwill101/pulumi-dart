@@ -19,7 +19,7 @@ class ConnectionPersonalAccessToken {
 
   factory ConnectionPersonalAccessToken.fromMap(Map<String, dynamic> map) {
     return ConnectionPersonalAccessToken(
-      pat: map['pat'] == null ? null : (map['pat'] as String).input(),
+      pat: map['pat'] == null ? null : (map['pat']! as String).input(),
     );
   }
 }

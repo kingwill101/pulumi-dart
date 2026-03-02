@@ -32,7 +32,7 @@ class CertificateTemplatePredefinedValuesAdditionalExtension {
 
   factory CertificateTemplatePredefinedValuesAdditionalExtension.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesAdditionalExtension(
-      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
+      critical: map['critical'] == null ? null : (map['critical']! as bool).input(),
       objectId: (CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>())).input(),
       value: (map['value'] as String).input(),
     );

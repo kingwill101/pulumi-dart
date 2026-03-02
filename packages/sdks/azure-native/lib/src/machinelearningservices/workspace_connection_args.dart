@@ -39,7 +39,7 @@ class WorkspaceConnectionArgs {
 
   factory WorkspaceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionArgs(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
       properties: (AADAuthTypeWorkspaceConnectionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

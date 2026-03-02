@@ -59,13 +59,13 @@ class ApiIamPolicyArgs {
   factory ApiIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ApiIamPolicyArgs(
       apiId: (map['apiId'] as String).input(),
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayAuditConfig>(map['auditConfigs'], (value) => ApigatewayAuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ApigatewayBinding>(map['bindings'], (value) => ApigatewayBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<ApigatewayAuditConfig>(map['auditConfigs']!, (value) => ApigatewayAuditConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<ApigatewayBinding>(map['bindings']!, (value) => ApigatewayBinding.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

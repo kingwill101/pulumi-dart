@@ -42,8 +42,8 @@ class ActionRequestArgs {
 
   factory ActionRequestArgs.fromMap(Map<String, dynamic> map) {
     return ActionRequestArgs(
-      actionRequestName: map['actionRequestName'] == null ? null : (map['actionRequestName'] as String).input(),
-      preReleaseAccessRequestSpec: map['preReleaseAccessRequestSpec'] == null ? null : (PreReleaseAccessRequestSpec.fromMap((map['preReleaseAccessRequestSpec'] as Map).cast<String, dynamic>())).input(),
+      actionRequestName: map['actionRequestName'] == null ? null : (map['actionRequestName']! as String).input(),
+      preReleaseAccessRequestSpec: map['preReleaseAccessRequestSpec'] == null ? null : (PreReleaseAccessRequestSpec.fromMap((map['preReleaseAccessRequestSpec']! as Map).cast<String, dynamic>())).input(),
       requestType: (map['requestType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       testBaseAccountName: (map['testBaseAccountName'] as String).input(),

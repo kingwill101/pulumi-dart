@@ -27,7 +27,7 @@ class ConnectionAuthConfigOauth2ClientCredentials {
   factory ConnectionAuthConfigOauth2ClientCredentials.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigOauth2ClientCredentials(
       clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (ConnectionAuthConfigOauth2ClientCredentialsClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      clientSecret: map['clientSecret'] == null ? null : (ConnectionAuthConfigOauth2ClientCredentialsClientSecret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class PeeringConnectionOptionsAccepter {
 
   factory PeeringConnectionOptionsAccepter.fromMap(Map<String, dynamic> map) {
     return PeeringConnectionOptionsAccepter(
-      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : (map['allowRemoteVpcDnsResolution'] as bool).input(),
+      allowRemoteVpcDnsResolution: map['allowRemoteVpcDnsResolution'] == null ? null : ((map['allowRemoteVpcDnsResolution'] as bool).input()).input(),
     );
   }
 }

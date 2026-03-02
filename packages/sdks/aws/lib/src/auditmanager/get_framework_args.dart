@@ -35,7 +35,7 @@ class GetFrameworkArgs {
     return GetFrameworkArgs(
       frameworkType: (map['frameworkType'] as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

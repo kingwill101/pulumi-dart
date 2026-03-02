@@ -50,11 +50,11 @@ class MetricRuleTemplateAlertTemplate {
   factory MetricRuleTemplateAlertTemplate.fromMap(Map<String, dynamic> map) {
     return MetricRuleTemplateAlertTemplate(
       category: (map['category'] as String).input(),
-      escalations: map['escalations'] == null ? null : (MetricRuleTemplateAlertTemplateEscalations.fromMap((map['escalations'] as Map).cast<String, dynamic>())).input(),
+      escalations: map['escalations'] == null ? null : (MetricRuleTemplateAlertTemplateEscalations.fromMap((map['escalations']! as Map).cast<String, dynamic>())).input(),
       metricName: (map['metricName'] as String).input(),
       namespace: (map['namespace'] as String).input(),
       ruleName: (map['ruleName'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

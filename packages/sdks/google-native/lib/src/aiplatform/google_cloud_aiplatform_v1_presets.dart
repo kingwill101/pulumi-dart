@@ -28,8 +28,8 @@ class GoogleCloudAiplatformV1Presets {
 
   factory GoogleCloudAiplatformV1Presets.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1Presets(
-      modality: map['modality'] == null ? null : (GoogleCloudAiplatformV1PresetsModality.fromValue(map['modality'] as String)).input(),
-      query: map['query'] == null ? null : (GoogleCloudAiplatformV1PresetsQuery.fromValue(map['query'] as String)).input(),
+      modality: map['modality'] == null ? null : (GoogleCloudAiplatformV1PresetsModality.fromValue(map['modality']! as String)).input(),
+      query: map['query'] == null ? null : (GoogleCloudAiplatformV1PresetsQuery.fromValue(map['query']! as String)).input(),
     );
   }
 }

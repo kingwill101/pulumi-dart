@@ -30,7 +30,7 @@ class GetWebAclArgs {
   factory GetWebAclArgs.fromMap(Map<String, dynamic> map) {
     return GetWebAclArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

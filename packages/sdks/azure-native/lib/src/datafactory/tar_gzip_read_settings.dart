@@ -27,7 +27,7 @@ class TarGZipReadSettings {
 
   factory TarGZipReadSettings.fromMap(Map<String, dynamic> map) {
     return TarGZipReadSettings(
-      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : (map['preserveCompressionFileNameAsFolder']).input(),
+      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : (map['preserveCompressionFileNameAsFolder']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -51,13 +51,13 @@ class ManagedIdentityTokenResponse {
 
   factory ManagedIdentityTokenResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityTokenResponse(
-      accessToken: map['accessToken'] == null ? null : (map['accessToken'] as String).input(),
-      authorizationAudience: map['authorizationAudience'] == null ? null : (map['authorizationAudience'] as String).input(),
-      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn'] as String).input(),
-      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      tokenType: map['tokenType'] == null ? null : (map['tokenType'] as String).input(),
+      accessToken: map['accessToken'] == null ? null : (map['accessToken']! as String).input(),
+      authorizationAudience: map['authorizationAudience'] == null ? null : (map['authorizationAudience']! as String).input(),
+      expiresIn: map['expiresIn'] == null ? null : (map['expiresIn']! as String).input(),
+      expiresOn: map['expiresOn'] == null ? null : (map['expiresOn']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      tokenType: map['tokenType'] == null ? null : (map['tokenType']! as String).input(),
     );
   }
 }

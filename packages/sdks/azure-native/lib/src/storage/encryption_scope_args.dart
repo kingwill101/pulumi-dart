@@ -56,12 +56,12 @@ class EncryptionScopeArgs {
   factory EncryptionScopeArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionScopeArgs(
       accountName: (map['accountName'] as String).input(),
-      encryptionScopeName: map['encryptionScopeName'] == null ? null : (map['encryptionScopeName'] as String).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionScopeKeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption'] as bool).input(),
+      encryptionScopeName: map['encryptionScopeName'] == null ? null : (map['encryptionScopeName']! as String).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (EncryptionScopeKeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      requireInfrastructureEncryption: map['requireInfrastructureEncryption'] == null ? null : (map['requireInfrastructureEncryption']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

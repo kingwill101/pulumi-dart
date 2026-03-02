@@ -31,9 +31,9 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2CodeFlowConfig(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      teamId: map['teamId'] == null ? null : (map['teamId'] as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      teamId: map['teamId'] == null ? null : (map['teamId']! as String).input(),
     );
   }
 }

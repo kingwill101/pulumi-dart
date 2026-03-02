@@ -42,11 +42,11 @@ class UserInfo {
 
   factory UserInfo.fromMap(Map<String, dynamic> map) {
     return UserInfo(
-      companyInfo: map['companyInfo'] == null ? null : (CompanyInfo.fromMap((map['companyInfo'] as Map).cast<String, dynamic>())).input(),
-      companyName: map['companyName'] == null ? null : (map['companyName'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
+      companyInfo: map['companyInfo'] == null ? null : (CompanyInfo.fromMap((map['companyInfo']! as Map).cast<String, dynamic>())).input(),
+      companyName: map['companyName'] == null ? null : (map['companyName']! as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      firstName: map['firstName'] == null ? null : (map['firstName']! as String).input(),
+      lastName: map['lastName'] == null ? null : (map['lastName']! as String).input(),
     );
   }
 }

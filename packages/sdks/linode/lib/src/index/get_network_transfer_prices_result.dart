@@ -39,10 +39,10 @@ class GetNetworkTransferPricesResult {
 
   factory GetNetworkTransferPricesResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkTransferPricesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkTransferPricesFilter>(map['filters'], (value) => GetNetworkTransferPricesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNetworkTransferPricesFilter>(map['filters']!, (value) => GetNetworkTransferPricesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       types: pulumi.Input.decodeList<GetNetworkTransferPricesType>(map['types'], (value) => GetNetworkTransferPricesType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

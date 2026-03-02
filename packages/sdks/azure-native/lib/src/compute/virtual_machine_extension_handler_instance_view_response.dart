@@ -32,9 +32,9 @@ class VirtualMachineExtensionHandlerInstanceViewResponse {
 
   factory VirtualMachineExtensionHandlerInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineExtensionHandlerInstanceViewResponse(
-      status: map['status'] == null ? null : (InstanceViewStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      status: map['status'] == null ? null : (InstanceViewStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

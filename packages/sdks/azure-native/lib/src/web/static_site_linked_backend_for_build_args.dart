@@ -54,12 +54,12 @@ class StaticSiteLinkedBackendForBuildArgs {
 
   factory StaticSiteLinkedBackendForBuildArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteLinkedBackendForBuildArgs(
-      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId'] as String).input(),
+      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId']! as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName']! as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

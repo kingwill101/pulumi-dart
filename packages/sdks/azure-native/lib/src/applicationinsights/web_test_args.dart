@@ -104,22 +104,22 @@ class WebTestArgs {
 
   factory WebTestArgs.fromMap(Map<String, dynamic> map) {
     return WebTestArgs(
-      configuration: map['configuration'] == null ? null : (WebTestPropertiesConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as int).input(),
-      kind: map['kind'] == null ? null : (WebTestKind.fromValue(map['kind'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      configuration: map['configuration'] == null ? null : (WebTestPropertiesConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as int).input(),
+      kind: map['kind'] == null ? null : (WebTestKind.fromValue(map['kind']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       locations: (pulumi.Input.decodeList<WebTestGeolocation>(map['locations'], (value) => WebTestGeolocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      request: map['request'] == null ? null : (WebTestPropertiesRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (WebTestPropertiesRequest.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled'] as bool).input(),
+      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled']! as bool).input(),
       syntheticMonitorId: (map['syntheticMonitorId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      validationRules: map['validationRules'] == null ? null : (WebTestPropertiesValidationRules.fromMap((map['validationRules'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      validationRules: map['validationRules'] == null ? null : (WebTestPropertiesValidationRules.fromMap((map['validationRules']! as Map).cast<String, dynamic>())).input(),
       webTestKind: (WebTestKind.fromValue(map['webTestKind'] as String)).input(),
-      webTestName: map['webTestName'] == null ? null : (map['webTestName'] as String).input(),
+      webTestName: map['webTestName'] == null ? null : (map['webTestName']! as String).input(),
     );
   }
 }

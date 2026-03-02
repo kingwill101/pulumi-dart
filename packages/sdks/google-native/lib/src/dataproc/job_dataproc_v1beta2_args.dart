@@ -103,21 +103,21 @@ class JobDataprocV1beta2Args {
 
   factory JobDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return JobDataprocV1beta2Args(
-      hadoopJob: map['hadoopJob'] == null ? null : (HadoopJobDataprocV1beta2.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>())).input(),
-      hiveJob: map['hiveJob'] == null ? null : (HiveJobDataprocV1beta2.fromMap((map['hiveJob'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      pigJob: map['pigJob'] == null ? null : (PigJobDataprocV1beta2.fromMap((map['pigJob'] as Map).cast<String, dynamic>())).input(),
+      hadoopJob: map['hadoopJob'] == null ? null : (HadoopJobDataprocV1beta2.fromMap((map['hadoopJob']! as Map).cast<String, dynamic>())).input(),
+      hiveJob: map['hiveJob'] == null ? null : (HiveJobDataprocV1beta2.fromMap((map['hiveJob']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      pigJob: map['pigJob'] == null ? null : (PigJobDataprocV1beta2.fromMap((map['pigJob']! as Map).cast<String, dynamic>())).input(),
       placement: (JobPlacementDataprocV1beta2.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
-      prestoJob: map['prestoJob'] == null ? null : (PrestoJobDataprocV1beta2.fromMap((map['prestoJob'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pysparkJob: map['pysparkJob'] == null ? null : (PySparkJobDataprocV1beta2.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>())).input(),
-      reference: map['reference'] == null ? null : (JobReferenceDataprocV1beta2.fromMap((map['reference'] as Map).cast<String, dynamic>())).input(),
+      prestoJob: map['prestoJob'] == null ? null : (PrestoJobDataprocV1beta2.fromMap((map['prestoJob']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pysparkJob: map['pysparkJob'] == null ? null : (PySparkJobDataprocV1beta2.fromMap((map['pysparkJob']! as Map).cast<String, dynamic>())).input(),
+      reference: map['reference'] == null ? null : (JobReferenceDataprocV1beta2.fromMap((map['reference']! as Map).cast<String, dynamic>())).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      scheduling: map['scheduling'] == null ? null : (JobSchedulingDataprocV1beta2.fromMap((map['scheduling'] as Map).cast<String, dynamic>())).input(),
-      sparkJob: map['sparkJob'] == null ? null : (SparkJobDataprocV1beta2.fromMap((map['sparkJob'] as Map).cast<String, dynamic>())).input(),
-      sparkRJob: map['sparkRJob'] == null ? null : (SparkRJobDataprocV1beta2.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>())).input(),
-      sparkSqlJob: map['sparkSqlJob'] == null ? null : (SparkSqlJobDataprocV1beta2.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      scheduling: map['scheduling'] == null ? null : (JobSchedulingDataprocV1beta2.fromMap((map['scheduling']! as Map).cast<String, dynamic>())).input(),
+      sparkJob: map['sparkJob'] == null ? null : (SparkJobDataprocV1beta2.fromMap((map['sparkJob']! as Map).cast<String, dynamic>())).input(),
+      sparkRJob: map['sparkRJob'] == null ? null : (SparkRJobDataprocV1beta2.fromMap((map['sparkRJob']! as Map).cast<String, dynamic>())).input(),
+      sparkSqlJob: map['sparkSqlJob'] == null ? null : (SparkSqlJobDataprocV1beta2.fromMap((map['sparkSqlJob']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

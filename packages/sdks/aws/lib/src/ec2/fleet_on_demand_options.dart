@@ -47,12 +47,12 @@ class FleetOnDemandOptions {
 
   factory FleetOnDemandOptions.fromMap(Map<String, dynamic> map) {
     return FleetOnDemandOptions(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
-      capacityReservationOptions: map['capacityReservationOptions'] == null ? null : (FleetOnDemandOptionsCapacityReservationOptions.fromMap((map['capacityReservationOptions'] as Map).cast<String, dynamic>())).input(),
-      maxTotalPrice: map['maxTotalPrice'] == null ? null : (map['maxTotalPrice'] as String).input(),
-      minTargetCapacity: map['minTargetCapacity'] == null ? null : (map['minTargetCapacity'] as int).input(),
-      singleAvailabilityZone: map['singleAvailabilityZone'] == null ? null : (map['singleAvailabilityZone'] as bool).input(),
-      singleInstanceType: map['singleInstanceType'] == null ? null : (map['singleInstanceType'] as bool).input(),
+      allocationStrategy: map['allocationStrategy'] == null ? null : ((map['allocationStrategy'] as String).input()).input(),
+      capacityReservationOptions: map['capacityReservationOptions'] == null ? null : ((FleetOnDemandOptionsCapacityReservationOptions.fromMap((map['capacityReservationOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      maxTotalPrice: map['maxTotalPrice'] == null ? null : ((map['maxTotalPrice'] as String).input()).input(),
+      minTargetCapacity: map['minTargetCapacity'] == null ? null : ((map['minTargetCapacity'] as int).input()).input(),
+      singleAvailabilityZone: map['singleAvailabilityZone'] == null ? null : ((map['singleAvailabilityZone'] as bool).input()).input(),
+      singleInstanceType: map['singleInstanceType'] == null ? null : ((map['singleInstanceType'] as bool).input()).input(),
     );
   }
 }

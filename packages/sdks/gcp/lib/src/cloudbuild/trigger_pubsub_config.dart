@@ -38,9 +38,9 @@ class TriggerPubsubConfig {
 
   factory TriggerPubsubConfig.fromMap(Map<String, dynamic> map) {
     return TriggerPubsubConfig(
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subscription: map['subscription'] == null ? null : (map['subscription'] as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      subscription: map['subscription'] == null ? null : (map['subscription']! as String).input(),
       topic: (map['topic'] as String).input(),
     );
   }

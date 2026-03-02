@@ -42,11 +42,11 @@ class IngressConfiguration {
 
   factory IngressConfiguration.fromMap(Map<String, dynamic> map) {
     return IngressConfiguration(
-      headerCountLimit: map['headerCountLimit'] == null ? null : (map['headerCountLimit'] as int).input(),
-      requestIdleTimeout: map['requestIdleTimeout'] == null ? null : (map['requestIdleTimeout'] as int).input(),
-      scale: map['scale'] == null ? null : (IngressConfigurationScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
-      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds'] as int).input(),
-      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
+      headerCountLimit: map['headerCountLimit'] == null ? null : (map['headerCountLimit']! as int).input(),
+      requestIdleTimeout: map['requestIdleTimeout'] == null ? null : (map['requestIdleTimeout']! as int).input(),
+      scale: map['scale'] == null ? null : (IngressConfigurationScale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input(),
+      terminationGracePeriodSeconds: map['terminationGracePeriodSeconds'] == null ? null : (map['terminationGracePeriodSeconds']! as int).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName']! as String).input(),
     );
   }
 }

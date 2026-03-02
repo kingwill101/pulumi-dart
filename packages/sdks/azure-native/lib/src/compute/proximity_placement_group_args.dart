@@ -61,14 +61,14 @@ class ProximityPlacementGroupArgs {
 
   factory ProximityPlacementGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProximityPlacementGroupArgs(
-      colocationStatus: map['colocationStatus'] == null ? null : (InstanceViewStatus.fromMap((map['colocationStatus'] as Map).cast<String, dynamic>())).input(),
-      intent: map['intent'] == null ? null : (ProximityPlacementGroupPropertiesIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      proximityPlacementGroupName: map['proximityPlacementGroupName'] == null ? null : (map['proximityPlacementGroupName'] as String).input(),
-      proximityPlacementGroupType: map['proximityPlacementGroupType'] == null ? null : (map['proximityPlacementGroupType'] as String).input(),
+      colocationStatus: map['colocationStatus'] == null ? null : (InstanceViewStatus.fromMap((map['colocationStatus']! as Map).cast<String, dynamic>())).input(),
+      intent: map['intent'] == null ? null : (ProximityPlacementGroupPropertiesIntent.fromMap((map['intent']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      proximityPlacementGroupName: map['proximityPlacementGroupName'] == null ? null : (map['proximityPlacementGroupName']! as String).input(),
+      proximityPlacementGroupType: map['proximityPlacementGroupType'] == null ? null : (map['proximityPlacementGroupType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

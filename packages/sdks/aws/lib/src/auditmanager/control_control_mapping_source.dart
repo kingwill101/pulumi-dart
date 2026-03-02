@@ -57,14 +57,14 @@ class ControlControlMappingSource {
 
   factory ControlControlMappingSource.fromMap(Map<String, dynamic> map) {
     return ControlControlMappingSource(
-      sourceDescription: map['sourceDescription'] == null ? null : (map['sourceDescription'] as String).input(),
-      sourceFrequency: map['sourceFrequency'] == null ? null : (map['sourceFrequency'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceKeyword: map['sourceKeyword'] == null ? null : (ControlControlMappingSourceSourceKeyword.fromMap((map['sourceKeyword'] as Map).cast<String, dynamic>())).input(),
+      sourceDescription: map['sourceDescription'] == null ? null : ((map['sourceDescription'] as String).input()).input(),
+      sourceFrequency: map['sourceFrequency'] == null ? null : ((map['sourceFrequency'] as String).input()).input(),
+      sourceId: map['sourceId'] == null ? null : ((map['sourceId'] as String).input()).input(),
+      sourceKeyword: map['sourceKeyword'] == null ? null : ((ControlControlMappingSourceSourceKeyword.fromMap((map['sourceKeyword']! as Map).cast<String, dynamic>())).input()).input(),
       sourceName: (map['sourceName'] as String).input(),
       sourceSetUpOption: (map['sourceSetUpOption'] as String).input(),
       sourceType: (map['sourceType'] as String).input(),
-      troubleshootingText: map['troubleshootingText'] == null ? null : (map['troubleshootingText'] as String).input(),
+      troubleshootingText: map['troubleshootingText'] == null ? null : ((map['troubleshootingText'] as String).input()).input(),
     );
   }
 }

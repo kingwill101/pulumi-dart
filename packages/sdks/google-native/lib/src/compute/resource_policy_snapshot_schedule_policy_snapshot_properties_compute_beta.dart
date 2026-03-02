@@ -36,10 +36,10 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta {
 
   factory ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta(
-      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
-      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations'] as List).cast<String>()).input(),
+      chainName: map['chainName'] == null ? null : (map['chainName']! as String).input(),
+      guestFlush: map['guestFlush'] == null ? null : (map['guestFlush']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      storageLocations: map['storageLocations'] == null ? null : ((map['storageLocations']! as List).cast<String>()).input(),
     );
   }
 }

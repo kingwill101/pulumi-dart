@@ -55,11 +55,11 @@ class GetScopeAssignmentResult {
 
   factory GetScopeAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetScopeAssignmentResult(
-      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : map['assignedManagedNetwork'] as String,
+      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : map['assignedManagedNetwork']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,

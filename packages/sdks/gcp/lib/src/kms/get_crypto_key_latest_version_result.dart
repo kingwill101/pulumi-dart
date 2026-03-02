@@ -60,7 +60,7 @@ class GetCryptoKeyLatestVersionResult {
     return GetCryptoKeyLatestVersionResult(
       algorithm: map['algorithm'] as String,
       cryptoKey: map['cryptoKey'] as String,
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       protectionLevel: map['protectionLevel'] as String,

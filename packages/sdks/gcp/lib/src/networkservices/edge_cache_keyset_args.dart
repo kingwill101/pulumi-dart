@@ -66,12 +66,12 @@ class EdgeCacheKeysetArgs {
 
   factory EdgeCacheKeysetArgs.fromMap(Map<String, dynamic> map) {
     return EdgeCacheKeysetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(map['publicKeys'], (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validationSharedKeys: map['validationSharedKeys'] == null ? null : (pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(map['validationSharedKeys'], (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(map['publicKeys']!, (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationSharedKeys: map['validationSharedKeys'] == null ? null : (pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(map['validationSharedKeys']!, (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

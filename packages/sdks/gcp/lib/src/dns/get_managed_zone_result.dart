@@ -60,7 +60,7 @@ class GetManagedZoneResult {
       managedZoneId: map['managedZoneId'] as String,
       name: map['name'] as String,
       nameServers: (map['nameServers'] as List).cast<String>(),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       visibility: map['visibility'] as String,
     );
   }

@@ -77,14 +77,14 @@ class EcsImageComponentArgs {
 
   factory EcsImageComponentArgs.fromMap(Map<String, dynamic> map) {
     return EcsImageComponentArgs(
-      componentType: map['componentType'] == null ? null : (map['componentType'] as String).input(),
-      componentVersion: map['componentVersion'] == null ? null : (map['componentVersion'] as String).input(),
+      componentType: map['componentType'] == null ? null : (map['componentType']! as String).input(),
+      componentVersion: map['componentVersion'] == null ? null : (map['componentVersion']! as String).input(),
       content: (map['content'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      imageComponentName: map['imageComponentName'] == null ? null : (map['imageComponentName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      systemType: map['systemType'] == null ? null : (map['systemType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      imageComponentName: map['imageComponentName'] == null ? null : (map['imageComponentName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      systemType: map['systemType'] == null ? null : (map['systemType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

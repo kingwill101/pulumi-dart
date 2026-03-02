@@ -54,9 +54,9 @@ class TunnelPolicyArgs {
       domains: (pulumi.Input.decodeList<ActivatedResourceReference>(map['domains'], (value) => ActivatedResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profileName: (map['profileName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['targetGroups'], (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tunnelPolicyName: map['tunnelPolicyName'] == null ? null : (map['tunnelPolicyName'] as String).input(),
-      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType'] as String).input(),
+      targetGroups: map['targetGroups'] == null ? null : (pulumi.Input.decodeList<ResourceReference>(map['targetGroups']!, (value) => ResourceReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tunnelPolicyName: map['tunnelPolicyName'] == null ? null : (map['tunnelPolicyName']! as String).input(),
+      tunnelType: map['tunnelType'] == null ? null : (map['tunnelType']! as String).input(),
     );
   }
 }

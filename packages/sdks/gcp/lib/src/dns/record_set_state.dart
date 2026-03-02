@@ -57,13 +57,13 @@ class RecordSetState {
 
   factory RecordSetState.fromMap(Map<String, dynamic> map) {
     return RecordSetState(
-      managedZone: map['managedZone'] == null ? null : (map['managedZone'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      routingPolicy: map['routingPolicy'] == null ? null : (RecordSetRoutingPolicy.fromMap((map['routingPolicy'] as Map).cast<String, dynamic>())).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      managedZone: map['managedZone'] == null ? null : (map['managedZone']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      routingPolicy: map['routingPolicy'] == null ? null : (RecordSetRoutingPolicy.fromMap((map['routingPolicy']! as Map).cast<String, dynamic>())).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

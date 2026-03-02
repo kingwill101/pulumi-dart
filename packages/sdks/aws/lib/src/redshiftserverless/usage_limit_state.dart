@@ -51,13 +51,13 @@ class UsageLimitState {
 
   factory UsageLimitState.fromMap(Map<String, dynamic> map) {
     return UsageLimitState(
-      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      breachAction: map['breachAction'] == null ? null : (map['breachAction'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      usageType: map['usageType'] == null ? null : (map['usageType'] as String).input(),
+      amount: map['amount'] == null ? null : ((map['amount'] as int).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      breachAction: map['breachAction'] == null ? null : ((map['breachAction'] as String).input()).input(),
+      period: map['period'] == null ? null : ((map['period'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      usageType: map['usageType'] == null ? null : ((map['usageType'] as String).input()).input(),
     );
   }
 }

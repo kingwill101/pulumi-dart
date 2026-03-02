@@ -71,17 +71,17 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cloneUrlHttp: map['cloneUrlHttp'] == null ? null : (map['cloneUrlHttp'] as String).input(),
-      cloneUrlSsh: map['cloneUrlSsh'] == null ? null : (map['cloneUrlSsh'] as String).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : (map['defaultBranch'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId'] as String).input(),
-      repositoryName: map['repositoryName'] == null ? null : (map['repositoryName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cloneUrlHttp: map['cloneUrlHttp'] == null ? null : ((map['cloneUrlHttp'] as String).input()).input(),
+      cloneUrlSsh: map['cloneUrlSsh'] == null ? null : ((map['cloneUrlSsh'] as String).input()).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : ((map['defaultBranch'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repositoryId: map['repositoryId'] == null ? null : ((map['repositoryId'] as String).input()).input(),
+      repositoryName: map['repositoryName'] == null ? null : ((map['repositoryName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

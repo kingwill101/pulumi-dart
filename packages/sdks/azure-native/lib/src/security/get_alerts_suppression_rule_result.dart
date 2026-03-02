@@ -73,14 +73,14 @@ class GetAlertsSuppressionRuleResult {
     return GetAlertsSuppressionRuleResult(
       alertType: map['alertType'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      comment: map['comment'] == null ? null : map['comment'] as String,
-      expirationDateUtc: map['expirationDateUtc'] == null ? null : map['expirationDateUtc'] as String,
+      comment: map['comment'] == null ? null : map['comment']! as String,
+      expirationDateUtc: map['expirationDateUtc'] == null ? null : map['expirationDateUtc']! as String,
       id: map['id'] as String,
       lastModifiedUtc: map['lastModifiedUtc'] as String,
       name: map['name'] as String,
       reason: map['reason'] as String,
       state: map['state'] as String,
-      suppressionAlertsScope: map['suppressionAlertsScope'] == null ? null : SuppressionAlertsScopeResponse.fromMap((map['suppressionAlertsScope'] as Map).cast<String, dynamic>()),
+      suppressionAlertsScope: map['suppressionAlertsScope'] == null ? null : SuppressionAlertsScopeResponse.fromMap((map['suppressionAlertsScope']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

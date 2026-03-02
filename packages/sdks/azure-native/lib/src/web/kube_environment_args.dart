@@ -91,19 +91,19 @@ class KubeEnvironmentArgs {
 
   factory KubeEnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return KubeEnvironmentArgs(
-      aksResourceID: map['aksResourceID'] == null ? null : (map['aksResourceID'] as String).input(),
-      appLogsConfiguration: map['appLogsConfiguration'] == null ? null : (AppLogsConfiguration.fromMap((map['appLogsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      arcConfiguration: map['arcConfiguration'] == null ? null : (ArcConfiguration.fromMap((map['arcConfiguration'] as Map).cast<String, dynamic>())).input(),
-      containerAppsConfiguration: map['containerAppsConfiguration'] == null ? null : (ContainerAppsConfiguration.fromMap((map['containerAppsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      environmentType: map['environmentType'] == null ? null : (map['environmentType'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : (map['internalLoadBalancerEnabled'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      aksResourceID: map['aksResourceID'] == null ? null : (map['aksResourceID']! as String).input(),
+      appLogsConfiguration: map['appLogsConfiguration'] == null ? null : (AppLogsConfiguration.fromMap((map['appLogsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      arcConfiguration: map['arcConfiguration'] == null ? null : (ArcConfiguration.fromMap((map['arcConfiguration']! as Map).cast<String, dynamic>())).input(),
+      containerAppsConfiguration: map['containerAppsConfiguration'] == null ? null : (ContainerAppsConfiguration.fromMap((map['containerAppsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      environmentType: map['environmentType'] == null ? null : (map['environmentType']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      internalLoadBalancerEnabled: map['internalLoadBalancerEnabled'] == null ? null : (map['internalLoadBalancerEnabled']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      staticIp: map['staticIp'] == null ? null : (map['staticIp'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      staticIp: map['staticIp'] == null ? null : (map['staticIp']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

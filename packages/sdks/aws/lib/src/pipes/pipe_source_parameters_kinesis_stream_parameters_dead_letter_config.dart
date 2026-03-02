@@ -20,7 +20,7 @@ class PipeSourceParametersKinesisStreamParametersDeadLetterConfig {
 
   factory PipeSourceParametersKinesisStreamParametersDeadLetterConfig.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersKinesisStreamParametersDeadLetterConfig(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
     );
   }
 }

@@ -82,16 +82,16 @@ class RuleRuleAction {
 
   factory RuleRuleAction.fromMap(Map<String, dynamic> map) {
     return RuleRuleAction(
-      corsConfig: map['corsConfig'] == null ? null : (RuleRuleActionCorsConfig.fromMap((map['corsConfig'] as Map).cast<String, dynamic>())).input(),
-      fixedResponseConfig: map['fixedResponseConfig'] == null ? null : (RuleRuleActionFixedResponseConfig.fromMap((map['fixedResponseConfig'] as Map).cast<String, dynamic>())).input(),
-      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (RuleRuleActionForwardGroupConfig.fromMap((map['forwardGroupConfig'] as Map).cast<String, dynamic>())).input(),
-      insertHeaderConfig: map['insertHeaderConfig'] == null ? null : (RuleRuleActionInsertHeaderConfig.fromMap((map['insertHeaderConfig'] as Map).cast<String, dynamic>())).input(),
+      corsConfig: map['corsConfig'] == null ? null : (RuleRuleActionCorsConfig.fromMap((map['corsConfig']! as Map).cast<String, dynamic>())).input(),
+      fixedResponseConfig: map['fixedResponseConfig'] == null ? null : (RuleRuleActionFixedResponseConfig.fromMap((map['fixedResponseConfig']! as Map).cast<String, dynamic>())).input(),
+      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (RuleRuleActionForwardGroupConfig.fromMap((map['forwardGroupConfig']! as Map).cast<String, dynamic>())).input(),
+      insertHeaderConfig: map['insertHeaderConfig'] == null ? null : (RuleRuleActionInsertHeaderConfig.fromMap((map['insertHeaderConfig']! as Map).cast<String, dynamic>())).input(),
       order: (map['order'] as int).input(),
-      redirectConfig: map['redirectConfig'] == null ? null : (RuleRuleActionRedirectConfig.fromMap((map['redirectConfig'] as Map).cast<String, dynamic>())).input(),
-      removeHeaderConfig: map['removeHeaderConfig'] == null ? null : (RuleRuleActionRemoveHeaderConfig.fromMap((map['removeHeaderConfig'] as Map).cast<String, dynamic>())).input(),
-      rewriteConfig: map['rewriteConfig'] == null ? null : (RuleRuleActionRewriteConfig.fromMap((map['rewriteConfig'] as Map).cast<String, dynamic>())).input(),
-      trafficLimitConfig: map['trafficLimitConfig'] == null ? null : (RuleRuleActionTrafficLimitConfig.fromMap((map['trafficLimitConfig'] as Map).cast<String, dynamic>())).input(),
-      trafficMirrorConfig: map['trafficMirrorConfig'] == null ? null : (RuleRuleActionTrafficMirrorConfig.fromMap((map['trafficMirrorConfig'] as Map).cast<String, dynamic>())).input(),
+      redirectConfig: map['redirectConfig'] == null ? null : (RuleRuleActionRedirectConfig.fromMap((map['redirectConfig']! as Map).cast<String, dynamic>())).input(),
+      removeHeaderConfig: map['removeHeaderConfig'] == null ? null : (RuleRuleActionRemoveHeaderConfig.fromMap((map['removeHeaderConfig']! as Map).cast<String, dynamic>())).input(),
+      rewriteConfig: map['rewriteConfig'] == null ? null : (RuleRuleActionRewriteConfig.fromMap((map['rewriteConfig']! as Map).cast<String, dynamic>())).input(),
+      trafficLimitConfig: map['trafficLimitConfig'] == null ? null : (RuleRuleActionTrafficLimitConfig.fromMap((map['trafficLimitConfig']! as Map).cast<String, dynamic>())).input(),
+      trafficMirrorConfig: map['trafficMirrorConfig'] == null ? null : (RuleRuleActionTrafficMirrorConfig.fromMap((map['trafficMirrorConfig']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

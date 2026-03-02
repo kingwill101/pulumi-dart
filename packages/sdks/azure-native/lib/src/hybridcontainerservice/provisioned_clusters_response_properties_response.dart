@@ -100,21 +100,21 @@ class ProvisionedClustersResponsePropertiesResponse {
 
   factory ProvisionedClustersResponsePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProvisionedClustersResponsePropertiesResponse(
-      aadProfile: map['aadProfile'] == null ? null : (AADProfileResponseResponse.fromMap((map['aadProfile'] as Map).cast<String, dynamic>())).input(),
-      addonProfiles: map['addonProfiles'] == null ? null : (pulumi.Input.decodeMapValues<AddonProfilesResponse>(map['addonProfiles'], (value) => AddonProfilesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      agentPoolProfiles: map['agentPoolProfiles'] == null ? null : (pulumi.Input.decodeList<NamedAgentPoolProfileResponse>(map['agentPoolProfiles'], (value) => NamedAgentPoolProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : (CloudProviderProfileResponse.fromMap((map['cloudProviderProfile'] as Map).cast<String, dynamic>())).input(),
-      controlPlane: map['controlPlane'] == null ? null : (ControlPlaneProfileResponse.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
-      enableRbac: map['enableRbac'] == null ? null : (map['enableRbac'] as bool).input(),
-      features: map['features'] == null ? null : (ProvisionedClustersCommonPropertiesResponseFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfigResponseResponse.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
-      linuxProfile: map['linuxProfile'] == null ? null : (LinuxProfilePropertiesResponse.fromMap((map['linuxProfile'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      nodeResourceGroup: map['nodeResourceGroup'] == null ? null : (map['nodeResourceGroup'] as String).input(),
+      aadProfile: map['aadProfile'] == null ? null : (AADProfileResponseResponse.fromMap((map['aadProfile']! as Map).cast<String, dynamic>())).input(),
+      addonProfiles: map['addonProfiles'] == null ? null : (pulumi.Input.decodeMapValues<AddonProfilesResponse>(map['addonProfiles']!, (value) => AddonProfilesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      agentPoolProfiles: map['agentPoolProfiles'] == null ? null : (pulumi.Input.decodeList<NamedAgentPoolProfileResponse>(map['agentPoolProfiles']!, (value) => NamedAgentPoolProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudProviderProfile: map['cloudProviderProfile'] == null ? null : (CloudProviderProfileResponse.fromMap((map['cloudProviderProfile']! as Map).cast<String, dynamic>())).input(),
+      controlPlane: map['controlPlane'] == null ? null : (ControlPlaneProfileResponse.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())).input(),
+      enableRbac: map['enableRbac'] == null ? null : (map['enableRbac']! as bool).input(),
+      features: map['features'] == null ? null : (ProvisionedClustersCommonPropertiesResponseFeatures.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfigResponseResponse.fromMap((map['httpProxyConfig']! as Map).cast<String, dynamic>())).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
+      linuxProfile: map['linuxProfile'] == null ? null : (LinuxProfilePropertiesResponse.fromMap((map['linuxProfile']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      nodeResourceGroup: map['nodeResourceGroup'] == null ? null : (map['nodeResourceGroup']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (ProvisionedClustersCommonPropertiesResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      windowsProfile: map['windowsProfile'] == null ? null : (WindowsProfileResponseResponse.fromMap((map['windowsProfile'] as Map).cast<String, dynamic>())).input(),
+      windowsProfile: map['windowsProfile'] == null ? null : (WindowsProfileResponseResponse.fromMap((map['windowsProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

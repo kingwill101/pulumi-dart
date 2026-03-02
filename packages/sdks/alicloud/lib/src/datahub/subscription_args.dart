@@ -34,7 +34,7 @@ class SubscriptionArgs {
 
   factory SubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       topicName: (map['topicName'] as String).input(),
     );

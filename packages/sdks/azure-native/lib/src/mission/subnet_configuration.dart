@@ -32,7 +32,7 @@ class SubnetConfiguration {
   factory SubnetConfiguration.fromMap(Map<String, dynamic> map) {
     return SubnetConfiguration(
       networkPrefixSize: (map['networkPrefixSize'] as int).input(),
-      subnetDelegation: map['subnetDelegation'] == null ? null : (map['subnetDelegation'] as String).input(),
+      subnetDelegation: map['subnetDelegation'] == null ? null : (map['subnetDelegation']! as String).input(),
       subnetName: (map['subnetName'] as String).input(),
     );
   }

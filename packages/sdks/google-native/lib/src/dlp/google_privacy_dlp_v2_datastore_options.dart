@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2DatastoreOptions {
 
   factory GooglePrivacyDlpV2DatastoreOptions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DatastoreOptions(
-      kind: map['kind'] == null ? null : (GooglePrivacyDlpV2KindExpression.fromMap((map['kind'] as Map).cast<String, dynamic>())).input(),
-      partitionId: map['partitionId'] == null ? null : (GooglePrivacyDlpV2PartitionId.fromMap((map['partitionId'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (GooglePrivacyDlpV2KindExpression.fromMap((map['kind']! as Map).cast<String, dynamic>())).input(),
+      partitionId: map['partitionId'] == null ? null : (GooglePrivacyDlpV2PartitionId.fromMap((map['partitionId']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

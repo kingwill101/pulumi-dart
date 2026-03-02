@@ -43,10 +43,10 @@ class TemplateFilterConfig {
 
   factory TemplateFilterConfig.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfig(
-      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (TemplateFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      raiSettings: map['raiSettings'] == null ? null : (TemplateFilterConfigRaiSettings.fromMap((map['raiSettings'] as Map).cast<String, dynamic>())).input(),
-      sdpSettings: map['sdpSettings'] == null ? null : (TemplateFilterConfigSdpSettings.fromMap((map['sdpSettings'] as Map).cast<String, dynamic>())).input(),
+      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (TemplateFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (TemplateFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      raiSettings: map['raiSettings'] == null ? null : (TemplateFilterConfigRaiSettings.fromMap((map['raiSettings']! as Map).cast<String, dynamic>())).input(),
+      sdpSettings: map['sdpSettings'] == null ? null : (TemplateFilterConfigSdpSettings.fromMap((map['sdpSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

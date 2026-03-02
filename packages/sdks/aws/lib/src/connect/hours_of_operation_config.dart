@@ -33,8 +33,8 @@ class HoursOfOperationConfig {
   factory HoursOfOperationConfig.fromMap(Map<String, dynamic> map) {
     return HoursOfOperationConfig(
       day: (map['day'] as String).input(),
-      endTime: (HoursOfOperationConfigEndTime.fromMap((map['endTime'] as Map).cast<String, dynamic>())).input(),
-      startTime: (HoursOfOperationConfigStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
+      endTime: (HoursOfOperationConfigEndTime.fromMap((map['endTime']! as Map).cast<String, dynamic>())).input(),
+      startTime: (HoursOfOperationConfigStartTime.fromMap((map['startTime']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

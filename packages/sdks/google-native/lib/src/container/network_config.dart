@@ -78,17 +78,17 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      datapathProvider: map['datapathProvider'] == null ? null : (NetworkConfigDatapathProvider.fromValue(map['datapathProvider'] as String)).input(),
-      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : (DefaultSnatStatus.fromMap((map['defaultSnatStatus'] as Map).cast<String, dynamic>())).input(),
-      dnsConfig: map['dnsConfig'] == null ? null : (DNSConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
-      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : (map['enableFqdnNetworkPolicy'] as bool).input(),
-      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : (map['enableIntraNodeVisibility'] as bool).input(),
-      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : (map['enableL4ilbSubsetting'] as bool).input(),
-      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : (map['enableMultiNetworking'] as bool).input(),
-      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : (GatewayAPIConfig.fromMap((map['gatewayApiConfig'] as Map).cast<String, dynamic>())).input(),
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (ClusterNetworkPerformanceConfig.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>())).input(),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (NetworkConfigPrivateIpv6GoogleAccess.fromValue(map['privateIpv6GoogleAccess'] as String)).input(),
-      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : (ServiceExternalIPsConfig.fromMap((map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>())).input(),
+      datapathProvider: map['datapathProvider'] == null ? null : (NetworkConfigDatapathProvider.fromValue(map['datapathProvider']! as String)).input(),
+      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : (DefaultSnatStatus.fromMap((map['defaultSnatStatus']! as Map).cast<String, dynamic>())).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (DNSConfig.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())).input(),
+      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : (map['enableFqdnNetworkPolicy']! as bool).input(),
+      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : (map['enableIntraNodeVisibility']! as bool).input(),
+      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : (map['enableL4ilbSubsetting']! as bool).input(),
+      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : (map['enableMultiNetworking']! as bool).input(),
+      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : (GatewayAPIConfig.fromMap((map['gatewayApiConfig']! as Map).cast<String, dynamic>())).input(),
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (ClusterNetworkPerformanceConfig.fromMap((map['networkPerformanceConfig']! as Map).cast<String, dynamic>())).input(),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (NetworkConfigPrivateIpv6GoogleAccess.fromValue(map['privateIpv6GoogleAccess']! as String)).input(),
+      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : (ServiceExternalIPsConfig.fromMap((map['serviceExternalIpsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

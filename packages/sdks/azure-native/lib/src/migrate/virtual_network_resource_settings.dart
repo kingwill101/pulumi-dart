@@ -60,14 +60,14 @@ class VirtualNetworkResourceSettings {
 
   factory VirtualNetworkResourceSettings.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkResourceSettings(
-      addressSpace: map['addressSpace'] == null ? null : ((map['addressSpace'] as List).cast<String>()).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      enableDdosProtection: map['enableDdosProtection'] == null ? null : (map['enableDdosProtection'] as bool).input(),
+      addressSpace: map['addressSpace'] == null ? null : ((map['addressSpace']! as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      enableDdosProtection: map['enableDdosProtection'] == null ? null : (map['enableDdosProtection']! as bool).input(),
       resourceType: (map['resourceType'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<SubnetResourceSettings>(map['subnets'], (value) => SubnetResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName'] as String).input(),
-      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName'] as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<SubnetResourceSettings>(map['subnets']!, (value) => SubnetResourceSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceGroupName: map['targetResourceGroupName'] == null ? null : (map['targetResourceGroupName']! as String).input(),
+      targetResourceName: map['targetResourceName'] == null ? null : (map['targetResourceName']! as String).input(),
     );
   }
 }

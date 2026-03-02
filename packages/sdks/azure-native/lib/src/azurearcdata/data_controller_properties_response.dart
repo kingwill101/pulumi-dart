@@ -86,19 +86,19 @@ class DataControllerPropertiesResponse {
 
   factory DataControllerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataControllerPropertiesResponse(
-      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformationResponse.fromMap((map['basicLoginInformation'] as Map).cast<String, dynamic>())).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      extensionId: map['extensionId'] == null ? null : (map['extensionId'] as String).input(),
-      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure'] as String).input(),
-      k8sRaw: map['k8sRaw'] == null ? null : (map['k8sRaw']).input(),
-      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate'] as String).input(),
-      logAnalyticsWorkspaceConfig: map['logAnalyticsWorkspaceConfig'] == null ? null : (LogAnalyticsWorkspaceConfigResponse.fromMap((map['logAnalyticsWorkspaceConfig'] as Map).cast<String, dynamic>())).input(),
-      logsDashboardCredential: map['logsDashboardCredential'] == null ? null : (BasicLoginInformationResponse.fromMap((map['logsDashboardCredential'] as Map).cast<String, dynamic>())).input(),
-      metricsDashboardCredential: map['metricsDashboardCredential'] == null ? null : (BasicLoginInformationResponse.fromMap((map['metricsDashboardCredential'] as Map).cast<String, dynamic>())).input(),
-      onPremiseProperty: map['onPremiseProperty'] == null ? null : (OnPremisePropertyResponse.fromMap((map['onPremiseProperty'] as Map).cast<String, dynamic>())).input(),
+      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformationResponse.fromMap((map['basicLoginInformation']! as Map).cast<String, dynamic>())).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      extensionId: map['extensionId'] == null ? null : (map['extensionId']! as String).input(),
+      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure']! as String).input(),
+      k8sRaw: map['k8sRaw'] == null ? null : (map['k8sRaw']!).input(),
+      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate']! as String).input(),
+      logAnalyticsWorkspaceConfig: map['logAnalyticsWorkspaceConfig'] == null ? null : (LogAnalyticsWorkspaceConfigResponse.fromMap((map['logAnalyticsWorkspaceConfig']! as Map).cast<String, dynamic>())).input(),
+      logsDashboardCredential: map['logsDashboardCredential'] == null ? null : (BasicLoginInformationResponse.fromMap((map['logsDashboardCredential']! as Map).cast<String, dynamic>())).input(),
+      metricsDashboardCredential: map['metricsDashboardCredential'] == null ? null : (BasicLoginInformationResponse.fromMap((map['metricsDashboardCredential']! as Map).cast<String, dynamic>())).input(),
+      onPremiseProperty: map['onPremiseProperty'] == null ? null : (OnPremisePropertyResponse.fromMap((map['onPremiseProperty']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      uploadServicePrincipal: map['uploadServicePrincipal'] == null ? null : (UploadServicePrincipalResponse.fromMap((map['uploadServicePrincipal'] as Map).cast<String, dynamic>())).input(),
-      uploadWatermark: map['uploadWatermark'] == null ? null : (UploadWatermarkResponse.fromMap((map['uploadWatermark'] as Map).cast<String, dynamic>())).input(),
+      uploadServicePrincipal: map['uploadServicePrincipal'] == null ? null : (UploadServicePrincipalResponse.fromMap((map['uploadServicePrincipal']! as Map).cast<String, dynamic>())).input(),
+      uploadWatermark: map['uploadWatermark'] == null ? null : (UploadWatermarkResponse.fromMap((map['uploadWatermark']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class GetNotificationChannelArgs {
 
   factory GetNotificationChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetNotificationChannelArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNotificationChannelFilter>(map['filters'], (value) => GetNotificationChannelFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetNotificationChannelFilter>(map['filters']!, (value) => GetNotificationChannelFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sns: map['sns'] == null ? null : (pulumi.Input.decodeList<GetNotificationChannelSn>(map['sns'], (value) => GetNotificationChannelSn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sns: map['sns'] == null ? null : ((pulumi.Input.decodeList<GetNotificationChannelSn>(map['sns']!, (value) => GetNotificationChannelSn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

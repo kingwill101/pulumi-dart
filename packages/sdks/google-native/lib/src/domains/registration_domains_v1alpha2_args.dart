@@ -78,16 +78,16 @@ class RegistrationDomainsV1alpha2Args {
 
   factory RegistrationDomainsV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return RegistrationDomainsV1alpha2Args(
-      contactNotices: map['contactNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationContactNoticesItemDomainsV1alpha2>(map['contactNotices'], (value) => RegistrationContactNoticesItemDomainsV1alpha2.fromValue(value as String))).input(),
+      contactNotices: map['contactNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationContactNoticesItemDomainsV1alpha2>(map['contactNotices']!, (value) => RegistrationContactNoticesItemDomainsV1alpha2.fromValue(value as String))).input(),
       contactSettings: (ContactSettingsDomainsV1alpha2.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettingsDomainsV1alpha2.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettingsDomainsV1alpha2.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
-      domainNotices: map['domainNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationDomainNoticesItemDomainsV1alpha2>(map['domainNotices'], (value) => RegistrationDomainNoticesItemDomainsV1alpha2.fromValue(value as String))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementSettings: map['managementSettings'] == null ? null : (ManagementSettingsDomainsV1alpha2.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      domainNotices: map['domainNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationDomainNoticesItemDomainsV1alpha2>(map['domainNotices']!, (value) => RegistrationDomainNoticesItemDomainsV1alpha2.fromValue(value as String))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementSettings: map['managementSettings'] == null ? null : (ManagementSettingsDomainsV1alpha2.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly']! as bool).input(),
       yearlyPrice: (MoneyDomainsV1alpha2.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())).input(),
     );
   }

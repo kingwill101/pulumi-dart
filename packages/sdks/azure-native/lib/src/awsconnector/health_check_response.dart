@@ -41,11 +41,11 @@ class HealthCheckResponse {
 
   factory HealthCheckResponse.fromMap(Map<String, dynamic> map) {
     return HealthCheckResponse(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      retries: map['retries'] == null ? null : (map['retries'] as int).input(),
-      startPeriod: map['startPeriod'] == null ? null : (map['startPeriod'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      retries: map['retries'] == null ? null : (map['retries']! as int).input(),
+      startPeriod: map['startPeriod'] == null ? null : (map['startPeriod']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

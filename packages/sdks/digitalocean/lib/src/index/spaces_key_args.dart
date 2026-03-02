@@ -30,8 +30,8 @@ class SpacesKeyArgs {
 
   factory SpacesKeyArgs.fromMap(Map<String, dynamic> map) {
     return SpacesKeyArgs(
-      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<SpacesKeyGrant>(map['grants'], (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<SpacesKeyGrant>(map['grants']!, (value) => SpacesKeyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

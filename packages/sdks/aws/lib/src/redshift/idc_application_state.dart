@@ -81,19 +81,19 @@ class IdcApplicationState {
 
   factory IdcApplicationState.fromMap(Map<String, dynamic> map) {
     return IdcApplicationState(
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      authorizedTokenIssuer: map['authorizedTokenIssuer'] == null ? null : (IdcApplicationAuthorizedTokenIssuer.fromMap((map['authorizedTokenIssuer'] as Map).cast<String, dynamic>())).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      idcDisplayName: map['idcDisplayName'] == null ? null : (map['idcDisplayName'] as String).input(),
-      idcInstanceArn: map['idcInstanceArn'] == null ? null : (map['idcInstanceArn'] as String).input(),
-      idcManagedApplicationArn: map['idcManagedApplicationArn'] == null ? null : (map['idcManagedApplicationArn'] as String).input(),
-      identityNamespace: map['identityNamespace'] == null ? null : (map['identityNamespace'] as String).input(),
-      redshiftIdcApplicationArn: map['redshiftIdcApplicationArn'] == null ? null : (map['redshiftIdcApplicationArn'] as String).input(),
-      redshiftIdcApplicationName: map['redshiftIdcApplicationName'] == null ? null : (map['redshiftIdcApplicationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceIntegration: map['serviceIntegration'] == null ? null : (IdcApplicationServiceIntegration.fromMap((map['serviceIntegration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      applicationType: map['applicationType'] == null ? null : ((map['applicationType'] as String).input()).input(),
+      authorizedTokenIssuer: map['authorizedTokenIssuer'] == null ? null : ((IdcApplicationAuthorizedTokenIssuer.fromMap((map['authorizedTokenIssuer']! as Map).cast<String, dynamic>())).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      idcDisplayName: map['idcDisplayName'] == null ? null : ((map['idcDisplayName'] as String).input()).input(),
+      idcInstanceArn: map['idcInstanceArn'] == null ? null : ((map['idcInstanceArn'] as String).input()).input(),
+      idcManagedApplicationArn: map['idcManagedApplicationArn'] == null ? null : ((map['idcManagedApplicationArn'] as String).input()).input(),
+      identityNamespace: map['identityNamespace'] == null ? null : ((map['identityNamespace'] as String).input()).input(),
+      redshiftIdcApplicationArn: map['redshiftIdcApplicationArn'] == null ? null : ((map['redshiftIdcApplicationArn'] as String).input()).input(),
+      redshiftIdcApplicationName: map['redshiftIdcApplicationName'] == null ? null : ((map['redshiftIdcApplicationName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceIntegration: map['serviceIntegration'] == null ? null : ((IdcApplicationServiceIntegration.fromMap((map['serviceIntegration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

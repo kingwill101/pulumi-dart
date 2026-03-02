@@ -30,7 +30,7 @@ class ClusterNetwork {
 
   factory ClusterNetwork.fromMap(Map<String, dynamic> map) {
     return ClusterNetwork(
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitches: ((map['vswitches'] as List).cast<String>()).input(),
     );

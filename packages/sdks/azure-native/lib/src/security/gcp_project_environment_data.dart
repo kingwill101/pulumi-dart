@@ -40,9 +40,9 @@ class GcpProjectEnvironmentData {
   factory GcpProjectEnvironmentData.fromMap(Map<String, dynamic> map) {
     return GcpProjectEnvironmentData(
       environmentType: (map['environmentType'] as String).input(),
-      organizationalData: map['organizationalData'] == null ? null : (GcpOrganizationalDataMember.fromMap((map['organizationalData'] as Map).cast<String, dynamic>())).input(),
-      projectDetails: map['projectDetails'] == null ? null : (GcpProjectDetails.fromMap((map['projectDetails'] as Map).cast<String, dynamic>())).input(),
-      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval'] as double).input(),
+      organizationalData: map['organizationalData'] == null ? null : (GcpOrganizationalDataMember.fromMap((map['organizationalData']! as Map).cast<String, dynamic>())).input(),
+      projectDetails: map['projectDetails'] == null ? null : (GcpProjectDetails.fromMap((map['projectDetails']! as Map).cast<String, dynamic>())).input(),
+      scanInterval: map['scanInterval'] == null ? null : (map['scanInterval']! as double).input(),
     );
   }
 }

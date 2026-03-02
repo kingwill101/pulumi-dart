@@ -39,9 +39,9 @@ class GetKeyPairsArgs {
 
   factory GetKeyPairsArgs.fromMap(Map<String, dynamic> map) {
     return GetKeyPairsArgs(
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       version: (map['version'] as String).input(),
     );
   }

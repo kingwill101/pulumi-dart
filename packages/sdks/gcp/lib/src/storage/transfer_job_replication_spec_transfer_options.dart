@@ -42,11 +42,11 @@ class TransferJobReplicationSpecTransferOptions {
 
   factory TransferJobReplicationSpecTransferOptions.fromMap(Map<String, dynamic> map) {
     return TransferJobReplicationSpecTransferOptions(
-      deleteObjectsFromSourceAfterTransfer: map['deleteObjectsFromSourceAfterTransfer'] == null ? null : (map['deleteObjectsFromSourceAfterTransfer'] as bool).input(),
-      deleteObjectsUniqueInSink: map['deleteObjectsUniqueInSink'] == null ? null : (map['deleteObjectsUniqueInSink'] as bool).input(),
-      metadataOptions: map['metadataOptions'] == null ? null : (TransferJobReplicationSpecTransferOptionsMetadataOptions.fromMap((map['metadataOptions'] as Map).cast<String, dynamic>())).input(),
-      overwriteObjectsAlreadyExistingInSink: map['overwriteObjectsAlreadyExistingInSink'] == null ? null : (map['overwriteObjectsAlreadyExistingInSink'] as bool).input(),
-      overwriteWhen: map['overwriteWhen'] == null ? null : (map['overwriteWhen'] as String).input(),
+      deleteObjectsFromSourceAfterTransfer: map['deleteObjectsFromSourceAfterTransfer'] == null ? null : (map['deleteObjectsFromSourceAfterTransfer']! as bool).input(),
+      deleteObjectsUniqueInSink: map['deleteObjectsUniqueInSink'] == null ? null : (map['deleteObjectsUniqueInSink']! as bool).input(),
+      metadataOptions: map['metadataOptions'] == null ? null : (TransferJobReplicationSpecTransferOptionsMetadataOptions.fromMap((map['metadataOptions']! as Map).cast<String, dynamic>())).input(),
+      overwriteObjectsAlreadyExistingInSink: map['overwriteObjectsAlreadyExistingInSink'] == null ? null : (map['overwriteObjectsAlreadyExistingInSink']! as bool).input(),
+      overwriteWhen: map['overwriteWhen'] == null ? null : (map['overwriteWhen']! as String).input(),
     );
   }
 }

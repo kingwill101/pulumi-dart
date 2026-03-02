@@ -53,7 +53,7 @@ class FactoryVstsConfiguration {
       accountName: (map['accountName'] as String).input(),
       branchName: (map['branchName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
-      publishingEnabled: map['publishingEnabled'] == null ? null : (map['publishingEnabled'] as bool).input(),
+      publishingEnabled: map['publishingEnabled'] == null ? null : (map['publishingEnabled']! as bool).input(),
       repositoryName: (map['repositoryName'] as String).input(),
       rootFolder: (map['rootFolder'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),

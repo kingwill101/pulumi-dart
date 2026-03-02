@@ -91,20 +91,20 @@ class GetPipelineResult {
 
   factory GetPipelineResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineResult(
-      activities: map['activities'] == null ? null : pulumi.Input.decodeList<AppendVariableActivityResponse>(map['activities'], (value) => AppendVariableActivityResponse.fromMap((value as Map).cast<String, dynamic>())),
-      annotations: map['annotations'] == null ? null : (map['annotations'] as List).cast<dynamic>(),
+      activities: map['activities'] == null ? null : pulumi.Input.decodeList<AppendVariableActivityResponse>(map['activities']!, (value) => AppendVariableActivityResponse.fromMap((value as Map).cast<String, dynamic>())),
+      annotations: map['annotations'] == null ? null : (map['annotations']! as List).cast<dynamic>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      concurrency: map['concurrency'] == null ? null : map['concurrency'] as int,
-      description: map['description'] == null ? null : map['description'] as String,
+      concurrency: map['concurrency'] == null ? null : map['concurrency']! as int,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
-      folder: map['folder'] == null ? null : PipelineResponseFolder.fromMap((map['folder'] as Map).cast<String, dynamic>()),
+      folder: map['folder'] == null ? null : PipelineResponseFolder.fromMap((map['folder']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      policy: map['policy'] == null ? null : PipelinePolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
-      runDimensions: map['runDimensions'] == null ? null : (map['runDimensions'] as Map).cast<String, dynamic>(),
+      parameters: map['parameters'] == null ? null : pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      policy: map['policy'] == null ? null : PipelinePolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>()),
+      runDimensions: map['runDimensions'] == null ? null : (map['runDimensions']! as Map).cast<String, dynamic>(),
       type: map['type'] as String,
-      variables: map['variables'] == null ? null : pulumi.Input.decodeMapValues<VariableSpecificationResponse>(map['variables'], (value) => VariableSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      variables: map['variables'] == null ? null : pulumi.Input.decodeMapValues<VariableSpecificationResponse>(map['variables']!, (value) => VariableSpecificationResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -64,15 +64,15 @@ class ClientTlsPolicyNetworksecurityV1beta1Args {
 
   factory ClientTlsPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ClientTlsPolicyNetworksecurityV1beta1Args(
-      clientCertificate: map['clientCertificate'] == null ? null : (GoogleCloudNetworksecurityV1beta1CertificateProvider.fromMap((map['clientCertificate'] as Map).cast<String, dynamic>())).input(),
+      clientCertificate: map['clientCertificate'] == null ? null : (GoogleCloudNetworksecurityV1beta1CertificateProvider.fromMap((map['clientCertificate']! as Map).cast<String, dynamic>())).input(),
       clientTlsPolicyId: (map['clientTlsPolicyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serverValidationCa: map['serverValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCANetworksecurityV1beta1>(map['serverValidationCa'], (value) => ValidationCANetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serverValidationCa: map['serverValidationCa'] == null ? null : (pulumi.Input.decodeList<ValidationCANetworksecurityV1beta1>(map['serverValidationCa']!, (value) => ValidationCANetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sni: map['sni'] == null ? null : (map['sni']! as String).input(),
     );
   }
 }

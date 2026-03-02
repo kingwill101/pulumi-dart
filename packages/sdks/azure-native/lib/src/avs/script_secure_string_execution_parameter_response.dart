@@ -33,7 +33,7 @@ class ScriptSecureStringExecutionParameterResponse {
   factory ScriptSecureStringExecutionParameterResponse.fromMap(Map<String, dynamic> map) {
     return ScriptSecureStringExecutionParameterResponse(
       name: (map['name'] as String).input(),
-      secureValue: map['secureValue'] == null ? null : (map['secureValue'] as String).input(),
+      secureValue: map['secureValue'] == null ? null : (map['secureValue']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

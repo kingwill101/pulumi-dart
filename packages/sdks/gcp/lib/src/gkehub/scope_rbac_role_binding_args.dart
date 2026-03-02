@@ -65,13 +65,13 @@ class ScopeRbacRoleBindingArgs {
 
   factory ScopeRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return ScopeRbacRoleBindingArgs(
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (ScopeRbacRoleBindingRole.fromMap((map['role'] as Map).cast<String, dynamic>())).input(),
       scopeId: (map['scopeId'] as String).input(),
       scopeRbacRoleBindingId: (map['scopeRbacRoleBindingId'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

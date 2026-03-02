@@ -51,13 +51,13 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      base64: map['base64'] == null ? null : (map['base64'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exportable: map['exportable'] == null ? null : (map['exportable'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      base64: map['base64'] == null ? null : (map['base64']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exportable: map['exportable'] == null ? null : (map['exportable']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

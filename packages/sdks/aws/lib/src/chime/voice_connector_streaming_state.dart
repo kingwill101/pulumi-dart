@@ -47,12 +47,12 @@ class VoiceConnectorStreamingState {
 
   factory VoiceConnectorStreamingState.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingState(
-      dataRetention: map['dataRetention'] == null ? null : (map['dataRetention'] as int).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      mediaInsightsConfiguration: map['mediaInsightsConfiguration'] == null ? null : (VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((map['mediaInsightsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      streamingNotificationTargets: map['streamingNotificationTargets'] == null ? null : ((map['streamingNotificationTargets'] as List).cast<String>()).input(),
-      voiceConnectorId: map['voiceConnectorId'] == null ? null : (map['voiceConnectorId'] as String).input(),
+      dataRetention: map['dataRetention'] == null ? null : ((map['dataRetention'] as int).input()).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled'] as bool).input()).input(),
+      mediaInsightsConfiguration: map['mediaInsightsConfiguration'] == null ? null : ((VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((map['mediaInsightsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      streamingNotificationTargets: map['streamingNotificationTargets'] == null ? null : (((map['streamingNotificationTargets'] as List).cast<String>()).input()).input(),
+      voiceConnectorId: map['voiceConnectorId'] == null ? null : ((map['voiceConnectorId'] as String).input()).input(),
     );
   }
 }

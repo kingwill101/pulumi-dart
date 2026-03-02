@@ -31,8 +31,8 @@ class InstancePscAttachmentDetail {
 
   factory InstancePscAttachmentDetail.fromMap(Map<String, dynamic> map) {
     return InstancePscAttachmentDetail(
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

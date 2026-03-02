@@ -52,11 +52,11 @@ class ClusterCustomerManagedKeyArgs {
   factory ClusterCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return ClusterCustomerManagedKeyArgs(
       clusterId: (map['clusterId'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
-      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVersion: map['keyVersion'] == null ? null : (map['keyVersion']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
+      userIdentity: map['userIdentity'] == null ? null : (map['userIdentity']! as String).input(),
     );
   }
 }

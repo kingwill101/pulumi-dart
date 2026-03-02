@@ -69,14 +69,14 @@ class GetPermissionBindingResult {
   factory GetPermissionBindingResult.fromMap(Map<String, dynamic> map) {
     return GetPermissionBindingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clientGroupName: map['clientGroupName'] == null ? null : map['clientGroupName'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      clientGroupName: map['clientGroupName'] == null ? null : map['clientGroupName']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      permission: map['permission'] == null ? null : map['permission'] as String,
+      permission: map['permission'] == null ? null : map['permission']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      topicSpaceName: map['topicSpaceName'] == null ? null : map['topicSpaceName'] as String,
+      topicSpaceName: map['topicSpaceName'] == null ? null : map['topicSpaceName']! as String,
       type: map['type'] as String,
     );
   }

@@ -41,11 +41,11 @@ class HelmReleaseSettings {
 
   factory HelmReleaseSettings.fromMap(Map<String, dynamic> map) {
     return HelmReleaseSettings(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      pluginsPath: map['pluginsPath'] == null ? null : (map['pluginsPath'] as String).input(),
-      registryConfigPath: map['registryConfigPath'] == null ? null : (map['registryConfigPath'] as String).input(),
-      repositoryCache: map['repositoryCache'] == null ? null : (map['repositoryCache'] as String).input(),
-      repositoryConfigPath: map['repositoryConfigPath'] == null ? null : (map['repositoryConfigPath'] as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      pluginsPath: map['pluginsPath'] == null ? null : (map['pluginsPath']! as String).input(),
+      registryConfigPath: map['registryConfigPath'] == null ? null : (map['registryConfigPath']! as String).input(),
+      repositoryCache: map['repositoryCache'] == null ? null : (map['repositoryCache']! as String).input(),
+      repositoryConfigPath: map['repositoryConfigPath'] == null ? null : (map['repositoryConfigPath']! as String).input(),
     );
   }
 }

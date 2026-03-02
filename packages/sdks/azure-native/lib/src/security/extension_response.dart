@@ -37,7 +37,7 @@ class ExtensionResponse {
 
   factory ExtensionResponse.fromMap(Map<String, dynamic> map) {
     return ExtensionResponse(
-      additionalExtensionProperties: map['additionalExtensionProperties'] == null ? null : (map['additionalExtensionProperties']).input(),
+      additionalExtensionProperties: map['additionalExtensionProperties'] == null ? null : (map['additionalExtensionProperties']!).input(),
       isEnabled: (map['isEnabled'] as String).input(),
       name: (map['name'] as String).input(),
       operationStatus: (OperationStatusResponse.fromMap((map['operationStatus'] as Map).cast<String, dynamic>())).input(),

@@ -49,11 +49,11 @@ class GetInferenceGroupDeltaModelsStatusAsyncArgs {
 
   factory GetInferenceGroupDeltaModelsStatusAsyncArgs.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupDeltaModelsStatusAsyncArgs(
-      deltaModels: map['deltaModels'] == null ? null : ((map['deltaModels'] as List).cast<String>()).input(),
+      deltaModels: map['deltaModels'] == null ? null : ((map['deltaModels']! as List).cast<String>()).input(),
       groupName: (map['groupName'] as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel'] as String).input(),
+      targetBaseModel: map['targetBaseModel'] == null ? null : (map['targetBaseModel']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

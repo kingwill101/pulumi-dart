@@ -46,12 +46,12 @@ class ClusterMasterInstanceGroup {
 
   factory ClusterMasterInstanceGroup.fromMap(Map<String, dynamic> map) {
     return ClusterMasterInstanceGroup(
-      bidPrice: map['bidPrice'] == null ? null : (map['bidPrice'] as String).input(),
-      ebsConfigs: map['ebsConfigs'] == null ? null : (pulumi.Input.decodeList<ClusterMasterInstanceGroupEbsConfig>(map['ebsConfigs'], (value) => ClusterMasterInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      bidPrice: map['bidPrice'] == null ? null : ((map['bidPrice'] as String).input()).input(),
+      ebsConfigs: map['ebsConfigs'] == null ? null : ((pulumi.Input.decodeList<ClusterMasterInstanceGroupEbsConfig>(map['ebsConfigs']!, (value) => ClusterMasterInstanceGroupEbsConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      instanceCount: map['instanceCount'] == null ? null : ((map['instanceCount'] as int).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

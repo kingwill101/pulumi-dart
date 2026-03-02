@@ -35,10 +35,10 @@ class PolicyVMWorkloadProtectionPolicyBackup {
 
   factory PolicyVMWorkloadProtectionPolicyBackup.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicyBackup(
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      frequencyInMinutes: map['frequencyInMinutes'] == null ? null : (map['frequencyInMinutes'] as int).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
-      weekdays: map['weekdays'] == null ? null : ((map['weekdays'] as List).cast<String>()).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      frequencyInMinutes: map['frequencyInMinutes'] == null ? null : (map['frequencyInMinutes']! as int).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
+      weekdays: map['weekdays'] == null ? null : ((map['weekdays']! as List).cast<String>()).input(),
     );
   }
 }

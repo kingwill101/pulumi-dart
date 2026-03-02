@@ -28,8 +28,8 @@ class MongoIndex {
 
   factory MongoIndex.fromMap(Map<String, dynamic> map) {
     return MongoIndex(
-      key: map['key'] == null ? null : (MongoIndexKeys.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
-      options: map['options'] == null ? null : (MongoIndexOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (MongoIndexKeys.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
+      options: map['options'] == null ? null : (MongoIndexOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

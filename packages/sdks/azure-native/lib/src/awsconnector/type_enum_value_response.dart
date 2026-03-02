@@ -21,7 +21,7 @@ class TypeEnumValueResponse {
 
   factory TypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return TypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

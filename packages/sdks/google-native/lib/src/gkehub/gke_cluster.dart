@@ -21,7 +21,7 @@ class GkeCluster {
 
   factory GkeCluster.fromMap(Map<String, dynamic> map) {
     return GkeCluster(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

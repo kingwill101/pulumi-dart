@@ -33,7 +33,7 @@ class HeaderAction {
     return HeaderAction(
       headerActionType: (map['headerActionType'] as String).input(),
       headerName: (map['headerName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class ProjectPolicyArgs {
   factory ProjectPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ProjectPolicyArgs(
       devCenterName: (map['devCenterName'] as String).input(),
-      projectPolicyName: map['projectPolicyName'] == null ? null : (map['projectPolicyName'] as String).input(),
+      projectPolicyName: map['projectPolicyName'] == null ? null : (map['projectPolicyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourcePolicies: map['resourcePolicies'] == null ? null : (pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies'], (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : (pulumi.Input.decodeList<ResourcePolicy>(map['resourcePolicies']!, (value) => ResourcePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

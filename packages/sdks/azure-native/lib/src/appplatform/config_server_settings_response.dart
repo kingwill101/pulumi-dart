@@ -22,7 +22,7 @@ class ConfigServerSettingsResponse {
 
   factory ConfigServerSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ConfigServerSettingsResponse(
-      gitProperty: map['gitProperty'] == null ? null : (ConfigServerGitPropertyResponse.fromMap((map['gitProperty'] as Map).cast<String, dynamic>())).input(),
+      gitProperty: map['gitProperty'] == null ? null : (ConfigServerGitPropertyResponse.fromMap((map['gitProperty']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

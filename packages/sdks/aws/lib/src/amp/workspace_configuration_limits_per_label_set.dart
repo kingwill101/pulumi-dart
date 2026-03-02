@@ -27,7 +27,7 @@ class WorkspaceConfigurationLimitsPerLabelSet {
   factory WorkspaceConfigurationLimitsPerLabelSet.fromMap(Map<String, dynamic> map) {
     return WorkspaceConfigurationLimitsPerLabelSet(
       labelSet: ((map['labelSet'] as Map).cast<String, String>()).input(),
-      limits: (WorkspaceConfigurationLimitsPerLabelSetLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
+      limits: (WorkspaceConfigurationLimitsPerLabelSetLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

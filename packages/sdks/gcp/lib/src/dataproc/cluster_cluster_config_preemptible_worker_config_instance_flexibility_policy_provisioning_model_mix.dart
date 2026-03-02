@@ -26,8 +26,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
 
   factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix(
-      standardCapacityBase: map['standardCapacityBase'] == null ? null : (map['standardCapacityBase'] as int).input(),
-      standardCapacityPercentAboveBase: map['standardCapacityPercentAboveBase'] == null ? null : (map['standardCapacityPercentAboveBase'] as int).input(),
+      standardCapacityBase: map['standardCapacityBase'] == null ? null : (map['standardCapacityBase']! as int).input(),
+      standardCapacityPercentAboveBase: map['standardCapacityPercentAboveBase'] == null ? null : (map['standardCapacityPercentAboveBase']! as int).input(),
     );
   }
 }

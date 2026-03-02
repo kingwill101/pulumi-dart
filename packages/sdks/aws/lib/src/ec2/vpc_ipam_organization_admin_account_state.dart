@@ -40,11 +40,11 @@ class VpcIpamOrganizationAdminAccountState {
 
   factory VpcIpamOrganizationAdminAccountState.fromMap(Map<String, dynamic> map) {
     return VpcIpamOrganizationAdminAccountState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : (map['delegatedAdminAccountId'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servicePrincipal: map['servicePrincipal'] == null ? null : (map['servicePrincipal'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      delegatedAdminAccountId: map['delegatedAdminAccountId'] == null ? null : ((map['delegatedAdminAccountId'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      servicePrincipal: map['servicePrincipal'] == null ? null : ((map['servicePrincipal'] as String).input()).input(),
     );
   }
 }

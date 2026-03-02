@@ -35,7 +35,7 @@ class EnterpriseAuthorityTemplateArgs {
   factory EnterpriseAuthorityTemplateArgs.fromMap(Map<String, dynamic> map) {
     return EnterpriseAuthorityTemplateArgs(
       authorityTemplateName: (map['authorityTemplateName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       tid: (map['tid'] as int).input(),
     );
   }

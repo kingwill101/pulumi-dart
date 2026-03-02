@@ -20,7 +20,7 @@ class QueueSettingsResponse {
 
   factory QueueSettingsResponse.fromMap(Map<String, dynamic> map) {
     return QueueSettingsResponse(
-      jobTier: map['jobTier'] == null ? null : (map['jobTier'] as String).input(),
+      jobTier: map['jobTier'] == null ? null : (map['jobTier']! as String).input(),
     );
   }
 }

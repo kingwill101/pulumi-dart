@@ -31,7 +31,7 @@ class GetNoteIamPolicyArgs {
   factory GetNoteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetNoteIamPolicyArgs(
       note: (map['note'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

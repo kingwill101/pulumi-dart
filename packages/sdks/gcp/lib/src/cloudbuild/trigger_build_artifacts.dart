@@ -61,11 +61,11 @@ class TriggerBuildArtifacts {
 
   factory TriggerBuildArtifacts.fromMap(Map<String, dynamic> map) {
     return TriggerBuildArtifacts(
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
-      mavenArtifacts: map['mavenArtifacts'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsMavenArtifact>(map['mavenArtifacts'], (value) => TriggerBuildArtifactsMavenArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      npmPackages: map['npmPackages'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsNpmPackage>(map['npmPackages'], (value) => TriggerBuildArtifactsNpmPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objects: map['objects'] == null ? null : (TriggerBuildArtifactsObjects.fromMap((map['objects'] as Map).cast<String, dynamic>())).input(),
-      pythonPackages: map['pythonPackages'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsPythonPackage>(map['pythonPackages'], (value) => TriggerBuildArtifactsPythonPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
+      mavenArtifacts: map['mavenArtifacts'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsMavenArtifact>(map['mavenArtifacts']!, (value) => TriggerBuildArtifactsMavenArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      npmPackages: map['npmPackages'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsNpmPackage>(map['npmPackages']!, (value) => TriggerBuildArtifactsNpmPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objects: map['objects'] == null ? null : (TriggerBuildArtifactsObjects.fromMap((map['objects']! as Map).cast<String, dynamic>())).input(),
+      pythonPackages: map['pythonPackages'] == null ? null : (pulumi.Input.decodeList<TriggerBuildArtifactsPythonPackage>(map['pythonPackages']!, (value) => TriggerBuildArtifactsPythonPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class IISVirtualApplicationDetails {
 
   factory IISVirtualApplicationDetails.fromMap(Map<String, dynamic> map) {
     return IISVirtualApplicationDetails(
-      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<DirectoryPath>(map['directories'], (value) => DirectoryPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      path: map['path'] == null ? null : (DirectoryPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
+      directories: map['directories'] == null ? null : (pulumi.Input.decodeList<DirectoryPath>(map['directories']!, (value) => DirectoryPath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      path: map['path'] == null ? null : (DirectoryPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

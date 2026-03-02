@@ -21,7 +21,7 @@ class EnclaveDefaultSettingsModel {
 
   factory EnclaveDefaultSettingsModel.fromMap(Map<String, dynamic> map) {
     return EnclaveDefaultSettingsModel(
-      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination'] as String).input(),
+      diagnosticDestination: map['diagnosticDestination'] == null ? null : (map['diagnosticDestination']! as String).input(),
     );
   }
 }

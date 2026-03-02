@@ -30,7 +30,7 @@ class GetAccountsArgs {
   factory GetAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountsArgs(
       dbClusterId: (map['dbClusterId'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
     );
   }
 }

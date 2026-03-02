@@ -49,7 +49,7 @@ class GetAlertPolicyResult {
       accountId: map['accountId'] as String,
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
-      incidentPreference: map['incidentPreference'] == null ? null : map['incidentPreference'] as String,
+      incidentPreference: map['incidentPreference'] == null ? null : map['incidentPreference']! as String,
       name: map['name'] as String,
       updatedAt: map['updatedAt'] as String,
     );

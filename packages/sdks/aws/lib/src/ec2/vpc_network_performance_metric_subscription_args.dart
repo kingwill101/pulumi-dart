@@ -45,10 +45,10 @@ class VpcNetworkPerformanceMetricSubscriptionArgs {
   factory VpcNetworkPerformanceMetricSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return VpcNetworkPerformanceMetricSubscriptionArgs(
       destination: (map['destination'] as String).input(),
-      metric: map['metric'] == null ? null : (map['metric'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      metric: map['metric'] == null ? null : ((map['metric'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       source: (map['source'] as String).input(),
-      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
+      statistic: map['statistic'] == null ? null : ((map['statistic'] as String).input()).input(),
     );
   }
 }

@@ -58,12 +58,12 @@ class ConsentStoreHealthcareV1beta1Args {
     return ConsentStoreHealthcareV1beta1Args(
       consentStoreId: (map['consentStoreId'] as String).input(),
       datasetId: (map['datasetId'] as String).input(),
-      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl'] as String).input(),
-      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : (map['defaultConsentTtl']! as String).input(),
+      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : (map['enableConsentCreateOnUpdate']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PodGroupPolicy {
 
   factory PodGroupPolicy.fromMap(Map<String, dynamic> map) {
     return PodGroupPolicy(
-      basic: map['basic'] == null ? null : ((map['basic'] as Map).cast<String, dynamic>()).input(),
-      gang: map['gang'] == null ? null : (GangSchedulingPolicy.fromMap((map['gang'] as Map).cast<String, dynamic>())).input(),
+      basic: map['basic'] == null ? null : ((map['basic']! as Map).cast<String, dynamic>()).input(),
+      gang: map['gang'] == null ? null : (GangSchedulingPolicy.fromMap((map['gang']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

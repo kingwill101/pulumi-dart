@@ -29,7 +29,7 @@ class ScaleUnitsResponse {
   factory ScaleUnitsResponse.fromMap(Map<String, dynamic> map) {
     return ScaleUnitsResponse(
       deploymentData: (DeploymentDataResponse.fromMap((map['deploymentData'] as Map).cast<String, dynamic>())).input(),
-      sbePartnerInfo: map['sbePartnerInfo'] == null ? null : (SbePartnerInfoResponse.fromMap((map['sbePartnerInfo'] as Map).cast<String, dynamic>())).input(),
+      sbePartnerInfo: map['sbePartnerInfo'] == null ? null : (SbePartnerInfoResponse.fromMap((map['sbePartnerInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

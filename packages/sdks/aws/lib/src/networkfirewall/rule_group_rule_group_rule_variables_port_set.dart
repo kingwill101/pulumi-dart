@@ -27,7 +27,7 @@ class RuleGroupRuleGroupRuleVariablesPortSet {
   factory RuleGroupRuleGroupRuleVariablesPortSet.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRuleVariablesPortSet(
       key: (map['key'] as String).input(),
-      portSet: (RuleGroupRuleGroupRuleVariablesPortSetPortSet.fromMap((map['portSet'] as Map).cast<String, dynamic>())).input(),
+      portSet: (RuleGroupRuleGroupRuleVariablesPortSetPortSet.fromMap((map['portSet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

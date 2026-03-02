@@ -35,10 +35,10 @@ class ServerlessSecurityConfigSamlOptions {
 
   factory ServerlessSecurityConfigSamlOptions.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigSamlOptions(
-      groupAttribute: map['groupAttribute'] == null ? null : (map['groupAttribute'] as String).input(),
+      groupAttribute: map['groupAttribute'] == null ? null : ((map['groupAttribute'] as String).input()).input(),
       metadata: (map['metadata'] as String).input(),
-      sessionTimeout: map['sessionTimeout'] == null ? null : (map['sessionTimeout'] as int).input(),
-      userAttribute: map['userAttribute'] == null ? null : (map['userAttribute'] as String).input(),
+      sessionTimeout: map['sessionTimeout'] == null ? null : ((map['sessionTimeout'] as int).input()).input(),
+      userAttribute: map['userAttribute'] == null ? null : ((map['userAttribute'] as String).input()).input(),
     );
   }
 }

@@ -23,7 +23,7 @@ class MonitorTagRuleMetric {
 
   factory MonitorTagRuleMetric.fromMap(Map<String, dynamic> map) {
     return MonitorTagRuleMetric(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleMetricFilter>(map['filters'], (value) => MonitorTagRuleMetricFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleMetricFilter>(map['filters']!, (value) => MonitorTagRuleMetricFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class ClusterUpgradePolicy {
 
   factory ClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ClusterUpgradePolicy(
-      deltaHealthPolicy: map['deltaHealthPolicy'] == null ? null : (ClusterUpgradePolicyDeltaHealthPolicy.fromMap((map['deltaHealthPolicy'] as Map).cast<String, dynamic>())).input(),
-      forceRestartEnabled: map['forceRestartEnabled'] == null ? null : (map['forceRestartEnabled'] as bool).input(),
-      healthCheckRetryTimeout: map['healthCheckRetryTimeout'] == null ? null : (map['healthCheckRetryTimeout'] as String).input(),
-      healthCheckStableDuration: map['healthCheckStableDuration'] == null ? null : (map['healthCheckStableDuration'] as String).input(),
-      healthCheckWaitDuration: map['healthCheckWaitDuration'] == null ? null : (map['healthCheckWaitDuration'] as String).input(),
-      healthPolicy: map['healthPolicy'] == null ? null : (ClusterUpgradePolicyHealthPolicy.fromMap((map['healthPolicy'] as Map).cast<String, dynamic>())).input(),
-      upgradeDomainTimeout: map['upgradeDomainTimeout'] == null ? null : (map['upgradeDomainTimeout'] as String).input(),
-      upgradeReplicaSetCheckTimeout: map['upgradeReplicaSetCheckTimeout'] == null ? null : (map['upgradeReplicaSetCheckTimeout'] as String).input(),
-      upgradeTimeout: map['upgradeTimeout'] == null ? null : (map['upgradeTimeout'] as String).input(),
+      deltaHealthPolicy: map['deltaHealthPolicy'] == null ? null : (ClusterUpgradePolicyDeltaHealthPolicy.fromMap((map['deltaHealthPolicy']! as Map).cast<String, dynamic>())).input(),
+      forceRestartEnabled: map['forceRestartEnabled'] == null ? null : (map['forceRestartEnabled']! as bool).input(),
+      healthCheckRetryTimeout: map['healthCheckRetryTimeout'] == null ? null : (map['healthCheckRetryTimeout']! as String).input(),
+      healthCheckStableDuration: map['healthCheckStableDuration'] == null ? null : (map['healthCheckStableDuration']! as String).input(),
+      healthCheckWaitDuration: map['healthCheckWaitDuration'] == null ? null : (map['healthCheckWaitDuration']! as String).input(),
+      healthPolicy: map['healthPolicy'] == null ? null : (ClusterUpgradePolicyHealthPolicy.fromMap((map['healthPolicy']! as Map).cast<String, dynamic>())).input(),
+      upgradeDomainTimeout: map['upgradeDomainTimeout'] == null ? null : (map['upgradeDomainTimeout']! as String).input(),
+      upgradeReplicaSetCheckTimeout: map['upgradeReplicaSetCheckTimeout'] == null ? null : (map['upgradeReplicaSetCheckTimeout']! as String).input(),
+      upgradeTimeout: map['upgradeTimeout'] == null ? null : (map['upgradeTimeout']! as String).input(),
     );
   }
 }

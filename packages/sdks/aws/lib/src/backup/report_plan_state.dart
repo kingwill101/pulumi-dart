@@ -68,16 +68,16 @@ class ReportPlanState {
 
   factory ReportPlanState.fromMap(Map<String, dynamic> map) {
     return ReportPlanState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      reportDeliveryChannel: map['reportDeliveryChannel'] == null ? null : (ReportPlanReportDeliveryChannel.fromMap((map['reportDeliveryChannel'] as Map).cast<String, dynamic>())).input(),
-      reportSetting: map['reportSetting'] == null ? null : (ReportPlanReportSetting.fromMap((map['reportSetting'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      deploymentStatus: map['deploymentStatus'] == null ? null : ((map['deploymentStatus'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      reportDeliveryChannel: map['reportDeliveryChannel'] == null ? null : ((ReportPlanReportDeliveryChannel.fromMap((map['reportDeliveryChannel']! as Map).cast<String, dynamic>())).input()).input(),
+      reportSetting: map['reportSetting'] == null ? null : ((ReportPlanReportSetting.fromMap((map['reportSetting']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

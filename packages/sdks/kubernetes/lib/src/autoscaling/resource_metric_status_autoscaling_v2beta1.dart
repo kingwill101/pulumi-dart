@@ -31,7 +31,7 @@ class ResourceMetricStatusAutoscalingV2beta1 {
 
   factory ResourceMetricStatusAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ResourceMetricStatusAutoscalingV2beta1(
-      currentAverageUtilization: map['currentAverageUtilization'] == null ? null : (map['currentAverageUtilization'] as int).input(),
+      currentAverageUtilization: map['currentAverageUtilization'] == null ? null : (map['currentAverageUtilization']! as int).input(),
       currentAverageValue: (map['currentAverageValue'] as String).input(),
       name: (map['name'] as String).input(),
     );

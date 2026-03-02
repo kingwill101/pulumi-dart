@@ -35,10 +35,10 @@ class DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPer
 
   factory DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission(
-      organizationArns: map['organizationArns'] == null ? null : ((map['organizationArns'] as List).cast<String>()).input(),
-      organizationalUnitArns: map['organizationalUnitArns'] == null ? null : ((map['organizationalUnitArns'] as List).cast<String>()).input(),
-      userGroups: map['userGroups'] == null ? null : ((map['userGroups'] as List).cast<String>()).input(),
-      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      organizationArns: map['organizationArns'] == null ? null : (((map['organizationArns'] as List).cast<String>()).input()).input(),
+      organizationalUnitArns: map['organizationalUnitArns'] == null ? null : (((map['organizationalUnitArns'] as List).cast<String>()).input()).input(),
+      userGroups: map['userGroups'] == null ? null : (((map['userGroups'] as List).cast<String>()).input()).input(),
+      userIds: map['userIds'] == null ? null : (((map['userIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

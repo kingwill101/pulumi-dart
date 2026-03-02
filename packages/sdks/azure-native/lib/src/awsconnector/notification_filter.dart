@@ -22,7 +22,7 @@ class NotificationFilter {
 
   factory NotificationFilter.fromMap(Map<String, dynamic> map) {
     return NotificationFilter(
-      s3Key: map['s3Key'] == null ? null : (S3KeyFilter.fromMap((map['s3Key'] as Map).cast<String, dynamic>())).input(),
+      s3Key: map['s3Key'] == null ? null : (S3KeyFilter.fromMap((map['s3Key']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

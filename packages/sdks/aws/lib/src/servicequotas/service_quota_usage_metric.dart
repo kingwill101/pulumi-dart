@@ -36,10 +36,10 @@ class ServiceQuotaUsageMetric {
 
   factory ServiceQuotaUsageMetric.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaUsageMetric(
-      metricDimensions: map['metricDimensions'] == null ? null : (pulumi.Input.decodeList<ServiceQuotaUsageMetricMetricDimension>(map['metricDimensions'], (value) => ServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
-      metricStatisticRecommendation: map['metricStatisticRecommendation'] == null ? null : (map['metricStatisticRecommendation'] as String).input(),
+      metricDimensions: map['metricDimensions'] == null ? null : ((pulumi.Input.decodeList<ServiceQuotaUsageMetricMetricDimension>(map['metricDimensions']!, (value) => ServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : ((map['metricNamespace'] as String).input()).input(),
+      metricStatisticRecommendation: map['metricStatisticRecommendation'] == null ? null : ((map['metricStatisticRecommendation'] as String).input()).input(),
     );
   }
 }

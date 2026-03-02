@@ -26,8 +26,8 @@ class SnatPoolState {
 
   factory SnatPoolState.fromMap(Map<String, dynamic> map) {
     return SnatPoolState(
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

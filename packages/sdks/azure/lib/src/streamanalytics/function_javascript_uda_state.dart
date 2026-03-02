@@ -43,11 +43,11 @@ class FunctionJavascriptUdaState {
 
   factory FunctionJavascriptUdaState.fromMap(Map<String, dynamic> map) {
     return FunctionJavascriptUdaState(
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionJavascriptUdaInput>(map['inputs'], (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      output: map['output'] == null ? null : (FunctionJavascriptUdaOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId'] as String).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionJavascriptUdaInput>(map['inputs']!, (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      output: map['output'] == null ? null : (FunctionJavascriptUdaOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      streamAnalyticsJobId: map['streamAnalyticsJobId'] == null ? null : (map['streamAnalyticsJobId']! as String).input(),
     );
   }
 }

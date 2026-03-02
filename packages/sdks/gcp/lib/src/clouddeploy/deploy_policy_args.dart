@@ -73,15 +73,15 @@ class DeployPolicyArgs {
 
   factory DeployPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DeployPolicyArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rules: (pulumi.Input.decodeList<DeployPolicyRule>(map['rules'], (value) => DeployPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       selectors: (pulumi.Input.decodeList<DeployPolicySelector>(map['selectors'], (value) => DeployPolicySelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      suspended: map['suspended'] == null ? null : (map['suspended'] as bool).input(),
+      suspended: map['suspended'] == null ? null : (map['suspended']! as bool).input(),
     );
   }
 }

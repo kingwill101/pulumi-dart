@@ -60,16 +60,16 @@ class GetDomainsResult {
 
   factory GetDomainsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainsResult(
-      backend: map['backend'] == null ? null : map['backend'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
+      backend: map['backend'] == null ? null : map['backend']! as String,
+      domain: map['domain'] == null ? null : map['domain']! as String,
       domains: pulumi.Input.decodeList<GetDomainsDomain>(map['domains'], (value) => GetDomainsDomain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
     );
   }
 }

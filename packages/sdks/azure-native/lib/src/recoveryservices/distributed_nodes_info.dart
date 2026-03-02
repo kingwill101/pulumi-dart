@@ -32,9 +32,9 @@ class DistributedNodesInfo {
 
   factory DistributedNodesInfo.fromMap(Map<String, dynamic> map) {
     return DistributedNodesInfo(
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

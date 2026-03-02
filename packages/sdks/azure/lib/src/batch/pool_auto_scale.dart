@@ -25,7 +25,7 @@ class PoolAutoScale {
 
   factory PoolAutoScale.fromMap(Map<String, dynamic> map) {
     return PoolAutoScale(
-      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval'] as String).input(),
+      evaluationInterval: map['evaluationInterval'] == null ? null : (map['evaluationInterval']! as String).input(),
       formula: (map['formula'] as String).input(),
     );
   }

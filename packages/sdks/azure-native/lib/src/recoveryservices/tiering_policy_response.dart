@@ -37,9 +37,9 @@ class TieringPolicyResponse {
 
   factory TieringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TieringPolicyResponse(
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      durationType: map['durationType'] == null ? null : (map['durationType'] as String).input(),
-      tieringMode: map['tieringMode'] == null ? null : (map['tieringMode'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      durationType: map['durationType'] == null ? null : (map['durationType']! as String).input(),
+      tieringMode: map['tieringMode'] == null ? null : (map['tieringMode']! as String).input(),
     );
   }
 }

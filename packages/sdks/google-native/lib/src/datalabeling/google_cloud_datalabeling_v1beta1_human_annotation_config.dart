@@ -61,15 +61,15 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
 
   factory GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
-      annotatedDatasetDescription: map['annotatedDatasetDescription'] == null ? null : (map['annotatedDatasetDescription'] as String).input(),
+      annotatedDatasetDescription: map['annotatedDatasetDescription'] == null ? null : (map['annotatedDatasetDescription']! as String).input(),
       annotatedDatasetDisplayName: (map['annotatedDatasetDisplayName'] as String).input(),
-      contributorEmails: map['contributorEmails'] == null ? null : ((map['contributorEmails'] as List).cast<String>()).input(),
+      contributorEmails: map['contributorEmails'] == null ? null : ((map['contributorEmails']! as List).cast<String>()).input(),
       instruction: (map['instruction'] as String).input(),
-      labelGroup: map['labelGroup'] == null ? null : (map['labelGroup'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      questionDuration: map['questionDuration'] == null ? null : (map['questionDuration'] as String).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress'] as String).input(),
+      labelGroup: map['labelGroup'] == null ? null : (map['labelGroup']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      questionDuration: map['questionDuration'] == null ? null : (map['questionDuration']! as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      userEmailAddress: map['userEmailAddress'] == null ? null : (map['userEmailAddress']! as String).input(),
     );
   }
 }

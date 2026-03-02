@@ -25,8 +25,8 @@ class ScheduledQueryRulesAlertV2Action {
 
   factory ScheduledQueryRulesAlertV2Action.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertV2Action(
-      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups'] as List).cast<String>()).input(),
-      customProperties: map['customProperties'] == null ? null : ((map['customProperties'] as Map).cast<String, String>()).input(),
+      actionGroups: map['actionGroups'] == null ? null : ((map['actionGroups']! as List).cast<String>()).input(),
+      customProperties: map['customProperties'] == null ? null : ((map['customProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class VirtualNodeSpecServiceDiscoveryDns {
   factory VirtualNodeSpecServiceDiscoveryDns.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecServiceDiscoveryDns(
       hostname: (map['hostname'] as String).input(),
-      ipPreference: map['ipPreference'] == null ? null : (map['ipPreference'] as String).input(),
-      responseType: map['responseType'] == null ? null : (map['responseType'] as String).input(),
+      ipPreference: map['ipPreference'] == null ? null : ((map['ipPreference'] as String).input()).input(),
+      responseType: map['responseType'] == null ? null : ((map['responseType'] as String).input()).input(),
     );
   }
 }

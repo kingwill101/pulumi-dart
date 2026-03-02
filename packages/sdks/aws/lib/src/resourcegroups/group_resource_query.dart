@@ -26,7 +26,7 @@ class GroupResourceQuery {
   factory GroupResourceQuery.fromMap(Map<String, dynamic> map) {
     return GroupResourceQuery(
       query: (map['query'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

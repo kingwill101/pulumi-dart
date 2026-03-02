@@ -65,11 +65,11 @@ class RecommendationEngineMediaRecommendationEngineConfig {
 
   factory RecommendationEngineMediaRecommendationEngineConfig.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineMediaRecommendationEngineConfig(
-      engineFeaturesConfig: map['engineFeaturesConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig.fromMap((map['engineFeaturesConfig'] as Map).cast<String, dynamic>())).input(),
-      optimizationObjective: map['optimizationObjective'] == null ? null : (map['optimizationObjective'] as String).input(),
-      optimizationObjectiveConfig: map['optimizationObjectiveConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.fromMap((map['optimizationObjectiveConfig'] as Map).cast<String, dynamic>())).input(),
-      trainingState: map['trainingState'] == null ? null : (map['trainingState'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      engineFeaturesConfig: map['engineFeaturesConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig.fromMap((map['engineFeaturesConfig']! as Map).cast<String, dynamic>())).input(),
+      optimizationObjective: map['optimizationObjective'] == null ? null : (map['optimizationObjective']! as String).input(),
+      optimizationObjectiveConfig: map['optimizationObjectiveConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig.fromMap((map['optimizationObjectiveConfig']! as Map).cast<String, dynamic>())).input(),
+      trainingState: map['trainingState'] == null ? null : (map['trainingState']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

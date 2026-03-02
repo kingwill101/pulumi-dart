@@ -82,12 +82,12 @@ class GetNodeResult {
 
   factory GetNodeResult.fromMap(Map<String, dynamic> map) {
     return GetNodeResult(
-      address: map['address'] == null ? null : map['address'] as String,
+      address: map['address'] == null ? null : map['address']! as String,
       connectionLimit: map['connectionLimit'] as int,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       dynamicRatio: map['dynamicRatio'] as int,
       fqdn: GetNodeFqdn.fromMap((map['fqdn'] as Map).cast<String, dynamic>()),
-      fullPath: map['fullPath'] == null ? null : map['fullPath'] as String,
+      fullPath: map['fullPath'] == null ? null : map['fullPath']! as String,
       id: map['id'] as String,
       monitor: map['monitor'] as String,
       name: map['name'] as String,

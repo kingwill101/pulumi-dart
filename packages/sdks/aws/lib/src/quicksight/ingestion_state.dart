@@ -53,13 +53,13 @@ class IngestionState {
 
   factory IngestionState.fromMap(Map<String, dynamic> map) {
     return IngestionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      dataSetId: map['dataSetId'] == null ? null : (map['dataSetId'] as String).input(),
-      ingestionId: map['ingestionId'] == null ? null : (map['ingestionId'] as String).input(),
-      ingestionStatus: map['ingestionStatus'] == null ? null : (map['ingestionStatus'] as String).input(),
-      ingestionType: map['ingestionType'] == null ? null : (map['ingestionType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      dataSetId: map['dataSetId'] == null ? null : ((map['dataSetId'] as String).input()).input(),
+      ingestionId: map['ingestionId'] == null ? null : ((map['ingestionId'] as String).input()).input(),
+      ingestionStatus: map['ingestionStatus'] == null ? null : ((map['ingestionStatus'] as String).input()).input(),
+      ingestionType: map['ingestionType'] == null ? null : ((map['ingestionType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

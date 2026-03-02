@@ -45,11 +45,11 @@ class GetMachineGroupsResult {
 
   factory GetMachineGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetMachineGroupsResult(
-      groupName: map['groupName'] == null ? null : map['groupName'] as String,
+      groupName: map['groupName'] == null ? null : map['groupName']! as String,
       groups: pulumi.Input.decodeList<GetMachineGroupsGroup>(map['groups'], (value) => GetMachineGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       projectName: map['projectName'] as String,
     );
   }

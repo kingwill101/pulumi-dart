@@ -34,9 +34,9 @@ class GetLinodeObjectStorageBucketArgs {
 
   factory GetLinodeObjectStorageBucketArgs.fromMap(Map<String, dynamic> map) {
     return GetLinodeObjectStorageBucketArgs(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
       label: (map['label'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

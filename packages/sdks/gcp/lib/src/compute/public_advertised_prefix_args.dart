@@ -73,13 +73,13 @@ class PublicAdvertisedPrefixArgs {
 
   factory PublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicAdvertisedPrefixArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : (map['dnsVerificationIp'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : (map['dnsVerificationIp']! as String).input(),
       ipCidrRange: (map['ipCidrRange'] as String).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pdpScope: map['pdpScope'] == null ? null : (map['pdpScope'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pdpScope: map['pdpScope'] == null ? null : (map['pdpScope']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

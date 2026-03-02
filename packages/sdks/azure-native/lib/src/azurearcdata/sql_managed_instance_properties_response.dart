@@ -73,17 +73,17 @@ class SqlManagedInstancePropertiesResponse {
 
   factory SqlManagedInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstancePropertiesResponse(
-      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
-      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformationResponse.fromMap((map['basicLoginInformation'] as Map).cast<String, dynamic>())).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      dataControllerId: map['dataControllerId'] == null ? null : (map['dataControllerId'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      extensionId: map['extensionId'] == null ? null : (map['extensionId'] as String).input(),
-      k8sRaw: map['k8sRaw'] == null ? null : (SqlManagedInstanceK8sRawResponse.fromMap((map['k8sRaw'] as Map).cast<String, dynamic>())).input(),
-      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
+      admin: map['admin'] == null ? null : (map['admin']! as String).input(),
+      basicLoginInformation: map['basicLoginInformation'] == null ? null : (BasicLoginInformationResponse.fromMap((map['basicLoginInformation']! as Map).cast<String, dynamic>())).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      dataControllerId: map['dataControllerId'] == null ? null : (map['dataControllerId']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      extensionId: map['extensionId'] == null ? null : (map['extensionId']! as String).input(),
+      k8sRaw: map['k8sRaw'] == null ? null : (SqlManagedInstanceK8sRawResponse.fromMap((map['k8sRaw']! as Map).cast<String, dynamic>())).input(),
+      lastUploadedDate: map['lastUploadedDate'] == null ? null : (map['lastUploadedDate']! as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

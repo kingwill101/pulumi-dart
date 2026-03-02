@@ -40,10 +40,10 @@ class VirtualClusterArgs {
 
   factory VirtualClusterArgs.fromMap(Map<String, dynamic> map) {
     return VirtualClusterArgs(
-      containerProvider: (VirtualClusterContainerProvider.fromMap((map['containerProvider'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      containerProvider: (VirtualClusterContainerProvider.fromMap((map['containerProvider']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

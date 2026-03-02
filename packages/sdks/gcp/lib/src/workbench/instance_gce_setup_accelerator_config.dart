@@ -26,8 +26,8 @@ class InstanceGceSetupAcceleratorConfig {
 
   factory InstanceGceSetupAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return InstanceGceSetupAcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

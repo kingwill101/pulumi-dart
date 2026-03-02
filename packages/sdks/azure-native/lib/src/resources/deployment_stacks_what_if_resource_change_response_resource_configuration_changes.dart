@@ -32,9 +32,9 @@ class DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
 
   factory DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges(
-      after: map['after'] == null ? null : (map['after']).input(),
-      before: map['before'] == null ? null : (map['before']).input(),
-      delta: map['delta'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['delta'], (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      after: map['after'] == null ? null : (map['after']!).input(),
+      before: map['before'] == null ? null : (map['before']!).input(),
+      delta: map['delta'] == null ? null : (pulumi.Input.decodeList<DeploymentStacksWhatIfPropertyChangeResponse>(map['delta']!, (value) => DeploymentStacksWhatIfPropertyChangeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

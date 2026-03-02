@@ -28,7 +28,7 @@ class StorageTaskAction {
 
   factory StorageTaskAction.fromMap(Map<String, dynamic> map) {
     return StorageTaskAction(
-      else_: map['else'] == null ? null : (ElseCondition.fromMap((map['else'] as Map).cast<String, dynamic>())).input(),
+      else_: map['else'] == null ? null : (ElseCondition.fromMap((map['else']! as Map).cast<String, dynamic>())).input(),
       if_: (IfCondition.fromMap((map['if'] as Map).cast<String, dynamic>())).input(),
     );
   }

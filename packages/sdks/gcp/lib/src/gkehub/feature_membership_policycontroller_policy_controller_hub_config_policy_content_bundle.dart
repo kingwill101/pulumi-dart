@@ -26,7 +26,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
   factory FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(
       bundleName: (map['bundleName'] as String).input(),
-      exemptedNamespaces: map['exemptedNamespaces'] == null ? null : ((map['exemptedNamespaces'] as List).cast<String>()).input(),
+      exemptedNamespaces: map['exemptedNamespaces'] == null ? null : ((map['exemptedNamespaces']! as List).cast<String>()).input(),
     );
   }
 }

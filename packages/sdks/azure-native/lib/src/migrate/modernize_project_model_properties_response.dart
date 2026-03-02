@@ -37,7 +37,7 @@ class ModernizeProjectModelPropertiesResponse {
 
   factory ModernizeProjectModelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ModernizeProjectModelPropertiesResponse(
-      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfigurationResponse.fromMap((map['migrationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      migrationConfiguration: map['migrationConfiguration'] == null ? null : (MigrationConfigurationResponse.fromMap((map['migrationConfiguration']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       serviceEndpoint: (map['serviceEndpoint'] as String).input(),
       serviceResourceId: (map['serviceResourceId'] as String).input(),

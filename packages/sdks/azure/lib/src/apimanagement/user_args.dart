@@ -72,14 +72,14 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
-      confirmation: map['confirmation'] == null ? null : (map['confirmation'] as String).input(),
+      confirmation: map['confirmation'] == null ? null : (map['confirmation']! as String).input(),
       email: (map['email'] as String).input(),
       firstName: (map['firstName'] as String).input(),
       lastName: (map['lastName'] as String).input(),
-      note: map['note'] == null ? null : (map['note'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       userId: (map['userId'] as String).input(),
     );
   }

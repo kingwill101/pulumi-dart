@@ -55,12 +55,12 @@ class CertificateTemplatePredefinedValues {
 
   factory CertificateTemplatePredefinedValues.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValues(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePredefinedValuesAdditionalExtension>(map['additionalExtensions'], (value) => CertificateTemplatePredefinedValuesAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
-      caOptions: map['caOptions'] == null ? null : (CertificateTemplatePredefinedValuesCaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>())).input(),
-      keyUsage: map['keyUsage'] == null ? null : (CertificateTemplatePredefinedValuesKeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>())).input(),
-      nameConstraints: map['nameConstraints'] == null ? null : (CertificateTemplatePredefinedValuesNameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>())).input(),
-      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePredefinedValuesPolicyId>(map['policyIds'], (value) => CertificateTemplatePredefinedValuesPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePredefinedValuesAdditionalExtension>(map['additionalExtensions']!, (value) => CertificateTemplatePredefinedValuesAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers']! as List).cast<String>()).input(),
+      caOptions: map['caOptions'] == null ? null : (CertificateTemplatePredefinedValuesCaOptions.fromMap((map['caOptions']! as Map).cast<String, dynamic>())).input(),
+      keyUsage: map['keyUsage'] == null ? null : (CertificateTemplatePredefinedValuesKeyUsage.fromMap((map['keyUsage']! as Map).cast<String, dynamic>())).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (CertificateTemplatePredefinedValuesNameConstraints.fromMap((map['nameConstraints']! as Map).cast<String, dynamic>())).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateTemplatePredefinedValuesPolicyId>(map['policyIds']!, (value) => CertificateTemplatePredefinedValuesPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

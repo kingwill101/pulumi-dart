@@ -65,17 +65,17 @@ class GetBackupPoliciesResult {
 
   factory GetBackupPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPoliciesResult(
-      currentPage: map['currentPage'] == null ? null : map['currentPage'] as int,
+      currentPage: map['currentPage'] == null ? null : map['currentPage']! as int,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      machineRemark: map['machineRemark'] == null ? null : map['machineRemark'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      machineRemark: map['machineRemark'] == null ? null : map['machineRemark']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       policies: pulumi.Input.decodeList<GetBackupPoliciesPolicy>(map['policies'], (value) => GetBackupPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

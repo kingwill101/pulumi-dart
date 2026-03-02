@@ -28,7 +28,7 @@ class StorageTaskAssignmentExecutionContext {
 
   factory StorageTaskAssignmentExecutionContext.fromMap(Map<String, dynamic> map) {
     return StorageTaskAssignmentExecutionContext(
-      target: map['target'] == null ? null : (ExecutionTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (ExecutionTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
       trigger: (ExecutionTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }

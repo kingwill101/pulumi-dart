@@ -43,11 +43,11 @@ class GetPackagesResult {
 
   factory GetPackagesResult.fromMap(Map<String, dynamic> map) {
     return GetPackagesResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       packages: pulumi.Input.decodeList<GetPackagesPackage>(map['packages'], (value) => GetPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
     );
   }

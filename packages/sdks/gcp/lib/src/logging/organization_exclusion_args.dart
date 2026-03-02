@@ -47,10 +47,10 @@ class OrganizationExclusionArgs {
 
   factory OrganizationExclusionArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationExclusionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       filter: (map['filter'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
     );
   }

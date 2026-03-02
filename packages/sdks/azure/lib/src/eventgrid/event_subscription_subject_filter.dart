@@ -30,9 +30,9 @@ class EventSubscriptionSubjectFilter {
 
   factory EventSubscriptionSubjectFilter.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionSubjectFilter(
-      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive'] as bool).input(),
-      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith'] as String).input(),
-      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith'] as String).input(),
+      caseSensitive: map['caseSensitive'] == null ? null : (map['caseSensitive']! as bool).input(),
+      subjectBeginsWith: map['subjectBeginsWith'] == null ? null : (map['subjectBeginsWith']! as String).input(),
+      subjectEndsWith: map['subjectEndsWith'] == null ? null : (map['subjectEndsWith']! as String).input(),
     );
   }
 }

@@ -23,7 +23,7 @@ class RepositoryVirtualRepositoryConfig {
 
   factory RepositoryVirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryVirtualRepositoryConfig(
-      upstreamPolicies: map['upstreamPolicies'] == null ? null : (pulumi.Input.decodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy>(map['upstreamPolicies'], (value) => RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      upstreamPolicies: map['upstreamPolicies'] == null ? null : (pulumi.Input.decodeList<RepositoryVirtualRepositoryConfigUpstreamPolicy>(map['upstreamPolicies']!, (value) => RepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

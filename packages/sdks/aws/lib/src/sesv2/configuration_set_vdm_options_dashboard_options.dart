@@ -20,7 +20,7 @@ class ConfigurationSetVdmOptionsDashboardOptions {
 
   factory ConfigurationSetVdmOptionsDashboardOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetVdmOptionsDashboardOptions(
-      engagementMetrics: map['engagementMetrics'] == null ? null : (map['engagementMetrics'] as String).input(),
+      engagementMetrics: map['engagementMetrics'] == null ? null : ((map['engagementMetrics'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes {
 
   factory ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes(
-      publicIPPrefixes: map['publicIPPrefixes'] == null ? null : (pulumi.Input.decodeList<ResourceReferenceResponse>(map['publicIPPrefixes'], (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicIPPrefixes: map['publicIPPrefixes'] == null ? null : (pulumi.Input.decodeList<ResourceReferenceResponse>(map['publicIPPrefixes']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

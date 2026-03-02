@@ -77,18 +77,18 @@ class RevisionAssetsState {
 
   factory RevisionAssetsState.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assets: map['assets'] == null ? null : (pulumi.Input.decodeList<RevisionAssetsAsset>(map['assets'], (value) => RevisionAssetsAsset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dataSetId: map['dataSetId'] == null ? null : (map['dataSetId'] as String).input(),
-      finalized: map['finalized'] == null ? null : (map['finalized'] as bool).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (RevisionAssetsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      assets: map['assets'] == null ? null : ((pulumi.Input.decodeList<RevisionAssetsAsset>(map['assets']!, (value) => RevisionAssetsAsset.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      dataSetId: map['dataSetId'] == null ? null : ((map['dataSetId'] as String).input()).input(),
+      finalized: map['finalized'] == null ? null : ((map['finalized'] as bool).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RevisionAssetsTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

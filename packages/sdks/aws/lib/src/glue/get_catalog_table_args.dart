@@ -49,12 +49,12 @@ class GetCatalogTableArgs {
 
   factory GetCatalogTableArgs.fromMap(Map<String, dynamic> map) {
     return GetCatalogTableArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
       name: (map['name'] as String).input(),
-      queryAsOfTime: map['queryAsOfTime'] == null ? null : (map['queryAsOfTime'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transactionId: map['transactionId'] == null ? null : (map['transactionId'] as int).input(),
+      queryAsOfTime: map['queryAsOfTime'] == null ? null : ((map['queryAsOfTime'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transactionId: map['transactionId'] == null ? null : ((map['transactionId'] as int).input()).input(),
     );
   }
 }

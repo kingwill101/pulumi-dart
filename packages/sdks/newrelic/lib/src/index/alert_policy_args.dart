@@ -42,10 +42,10 @@ class AlertPolicyArgs {
 
   factory AlertPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AlertPolicyArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      channelIds: map['channelIds'] == null ? null : ((map['channelIds'] as List).cast<String>()).input(),
-      incidentPreference: map['incidentPreference'] == null ? null : (map['incidentPreference'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      channelIds: map['channelIds'] == null ? null : ((map['channelIds']! as List).cast<String>()).input(),
+      incidentPreference: map['incidentPreference'] == null ? null : (map['incidentPreference']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

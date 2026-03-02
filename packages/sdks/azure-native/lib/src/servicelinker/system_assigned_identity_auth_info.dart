@@ -42,11 +42,11 @@ class SystemAssignedIdentityAuthInfo {
 
   factory SystemAssignedIdentityAuthInfo.fromMap(Map<String, dynamic> map) {
     return SystemAssignedIdentityAuthInfo(
-      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authMode: map['authMode'] == null ? null : (map['authMode']! as String).input(),
       authType: (map['authType'] as String).input(),
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

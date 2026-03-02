@@ -21,7 +21,7 @@ class StreamSourceAddressesResponse {
 
   factory StreamSourceAddressesResponse.fromMap(Map<String, dynamic> map) {
     return StreamSourceAddressesResponse(
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
     );
   }
 }

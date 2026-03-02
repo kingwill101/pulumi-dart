@@ -20,7 +20,7 @@ class ListOpenShiftClusterAdminCredentialsResult {
 
   factory ListOpenShiftClusterAdminCredentialsResult.fromMap(Map<String, dynamic> map) {
     return ListOpenShiftClusterAdminCredentialsResult(
-      kubeconfig: map['kubeconfig'] == null ? null : map['kubeconfig'] as String,
+      kubeconfig: map['kubeconfig'] == null ? null : map['kubeconfig']! as String,
     );
   }
 }

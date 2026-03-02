@@ -72,16 +72,16 @@ class BudgetActionArgs {
 
   factory BudgetActionArgs.fromMap(Map<String, dynamic> map) {
     return BudgetActionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      actionThreshold: (BudgetActionActionThreshold.fromMap((map['actionThreshold'] as Map).cast<String, dynamic>())).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      actionThreshold: (BudgetActionActionThreshold.fromMap((map['actionThreshold']! as Map).cast<String, dynamic>())).input(),
       actionType: (map['actionType'] as String).input(),
       approvalModel: (map['approvalModel'] as String).input(),
       budgetName: (map['budgetName'] as String).input(),
-      definition: (BudgetActionDefinition.fromMap((map['definition'] as Map).cast<String, dynamic>())).input(),
+      definition: (BudgetActionDefinition.fromMap((map['definition']! as Map).cast<String, dynamic>())).input(),
       executionRoleArn: (map['executionRoleArn'] as String).input(),
       notificationType: (map['notificationType'] as String).input(),
-      subscribers: (pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers'], (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subscribers: (pulumi.Input.decodeList<BudgetActionSubscriber>(map['subscribers']!, (value) => BudgetActionSubscriber.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

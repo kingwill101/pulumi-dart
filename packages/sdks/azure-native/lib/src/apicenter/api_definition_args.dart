@@ -60,8 +60,8 @@ class ApiDefinitionArgs {
   factory ApiDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ApiDefinitionArgs(
       apiName: (map['apiName'] as String).input(),
-      definitionName: map['definitionName'] == null ? null : (map['definitionName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      definitionName: map['definitionName'] == null ? null : (map['definitionName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
       title: (map['title'] as String).input(),

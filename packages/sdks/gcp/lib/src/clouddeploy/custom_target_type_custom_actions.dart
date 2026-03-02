@@ -33,8 +33,8 @@ class CustomTargetTypeCustomActions {
   factory CustomTargetTypeCustomActions.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeCustomActions(
       deployAction: (map['deployAction'] as String).input(),
-      includeSkaffoldModules: map['includeSkaffoldModules'] == null ? null : (pulumi.Input.decodeList<CustomTargetTypeCustomActionsIncludeSkaffoldModule>(map['includeSkaffoldModules'], (value) => CustomTargetTypeCustomActionsIncludeSkaffoldModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      renderAction: map['renderAction'] == null ? null : (map['renderAction'] as String).input(),
+      includeSkaffoldModules: map['includeSkaffoldModules'] == null ? null : (pulumi.Input.decodeList<CustomTargetTypeCustomActionsIncludeSkaffoldModule>(map['includeSkaffoldModules']!, (value) => CustomTargetTypeCustomActionsIncludeSkaffoldModule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      renderAction: map['renderAction'] == null ? null : (map['renderAction']! as String).input(),
     );
   }
 }

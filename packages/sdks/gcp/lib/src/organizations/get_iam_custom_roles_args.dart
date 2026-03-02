@@ -34,9 +34,9 @@ class GetIamCustomRolesArgs {
 
   factory GetIamCustomRolesArgs.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRolesArgs(
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      showDeleted: map['showDeleted'] == null ? null : (map['showDeleted'] as bool).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      showDeleted: map['showDeleted'] == null ? null : (map['showDeleted']! as bool).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

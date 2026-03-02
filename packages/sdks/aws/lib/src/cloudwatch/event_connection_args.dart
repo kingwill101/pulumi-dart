@@ -56,13 +56,13 @@ class EventConnectionArgs {
 
   factory EventConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EventConnectionArgs(
-      authParameters: (EventConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
+      authParameters: (EventConnectionAuthParameters.fromMap((map['authParameters']! as Map).cast<String, dynamic>())).input(),
       authorizationType: (map['authorizationType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : (EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters'] as Map).cast<String, dynamic>())).input(),
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : (map['kmsKeyIdentifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      invocationConnectivityParameters: map['invocationConnectivityParameters'] == null ? null : ((EventConnectionInvocationConnectivityParameters.fromMap((map['invocationConnectivityParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : ((map['kmsKeyIdentifier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

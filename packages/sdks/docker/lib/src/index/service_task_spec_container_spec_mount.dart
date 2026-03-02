@@ -53,13 +53,13 @@ class ServiceTaskSpecContainerSpecMount {
 
   factory ServiceTaskSpecContainerSpecMount.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMount(
-      bindOptions: map['bindOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountBindOptions.fromMap((map['bindOptions'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      bindOptions: map['bindOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountBindOptions.fromMap((map['bindOptions']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
       target: (map['target'] as String).input(),
-      tmpfsOptions: map['tmpfsOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap((map['tmpfsOptions'] as Map).cast<String, dynamic>())).input(),
+      tmpfsOptions: map['tmpfsOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap((map['tmpfsOptions']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      volumeOptions: map['volumeOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountVolumeOptions.fromMap((map['volumeOptions'] as Map).cast<String, dynamic>())).input(),
+      volumeOptions: map['volumeOptions'] == null ? null : (ServiceTaskSpecContainerSpecMountVolumeOptions.fromMap((map['volumeOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

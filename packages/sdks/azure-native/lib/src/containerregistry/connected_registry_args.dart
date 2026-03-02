@@ -67,12 +67,12 @@ class ConnectedRegistryArgs {
 
   factory ConnectedRegistryArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedRegistryArgs(
-      clientTokenIds: map['clientTokenIds'] == null ? null : ((map['clientTokenIds'] as List).cast<String>()).input(),
-      connectedRegistryName: map['connectedRegistryName'] == null ? null : (map['connectedRegistryName'] as String).input(),
-      garbageCollection: map['garbageCollection'] == null ? null : (GarbageCollectionProperties.fromMap((map['garbageCollection'] as Map).cast<String, dynamic>())).input(),
-      logging: map['logging'] == null ? null : (LoggingProperties.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      clientTokenIds: map['clientTokenIds'] == null ? null : ((map['clientTokenIds']! as List).cast<String>()).input(),
+      connectedRegistryName: map['connectedRegistryName'] == null ? null : (map['connectedRegistryName']! as String).input(),
+      garbageCollection: map['garbageCollection'] == null ? null : (GarbageCollectionProperties.fromMap((map['garbageCollection']! as Map).cast<String, dynamic>())).input(),
+      logging: map['logging'] == null ? null : (LoggingProperties.fromMap((map['logging']! as Map).cast<String, dynamic>())).input(),
       mode: (map['mode'] as String).input(),
-      notificationsList: map['notificationsList'] == null ? null : ((map['notificationsList'] as List).cast<String>()).input(),
+      notificationsList: map['notificationsList'] == null ? null : ((map['notificationsList']! as List).cast<String>()).input(),
       parent: (ParentProperties.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
       registryName: (map['registryName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

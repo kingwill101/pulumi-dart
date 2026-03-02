@@ -36,11 +36,11 @@ class RepositoryIamPolicyState {
 
   factory RepositoryIamPolicyState.fromMap(Map<String, dynamic> map) {
     return RepositoryIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetSchedulingPolicyFairSharePolicy {
     return GetSchedulingPolicyFairSharePolicy(
       computeReservation: (map['computeReservation'] as int).input(),
       shareDecaySeconds: (map['shareDecaySeconds'] as int).input(),
-      shareDistributions: (pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicyShareDistribution>(map['shareDistributions'], (value) => GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareDistributions: (pulumi.Input.decodeList<GetSchedulingPolicyFairSharePolicyShareDistribution>(map['shareDistributions']!, (value) => GetSchedulingPolicyFairSharePolicyShareDistribution.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

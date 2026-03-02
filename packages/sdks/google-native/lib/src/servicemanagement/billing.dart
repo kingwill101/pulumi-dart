@@ -22,7 +22,7 @@ class Billing {
 
   factory Billing.fromMap(Map<String, dynamic> map) {
     return Billing(
-      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<BillingDestination>(map['consumerDestinations'], (value) => BillingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<BillingDestination>(map['consumerDestinations']!, (value) => BillingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

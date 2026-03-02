@@ -26,8 +26,8 @@ class GlossaryTerm {
 
   factory GlossaryTerm.fromMap(Map<String, dynamic> map) {
     return GlossaryTerm(
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

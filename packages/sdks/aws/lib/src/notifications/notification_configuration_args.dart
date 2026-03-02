@@ -47,10 +47,10 @@ class NotificationConfigurationArgs {
 
   factory NotificationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationConfigurationArgs(
-      aggregationDuration: map['aggregationDuration'] == null ? null : (map['aggregationDuration'] as String).input(),
+      aggregationDuration: map['aggregationDuration'] == null ? null : ((map['aggregationDuration'] as String).input()).input(),
       description: (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

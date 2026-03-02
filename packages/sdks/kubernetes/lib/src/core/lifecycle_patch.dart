@@ -32,9 +32,9 @@ class LifecyclePatch {
 
   factory LifecyclePatch.fromMap(Map<String, dynamic> map) {
     return LifecyclePatch(
-      postStart: map['postStart'] == null ? null : (LifecycleHandlerPatch.fromMap((map['postStart'] as Map).cast<String, dynamic>())).input(),
-      preStop: map['preStop'] == null ? null : (LifecycleHandlerPatch.fromMap((map['preStop'] as Map).cast<String, dynamic>())).input(),
-      stopSignal: map['stopSignal'] == null ? null : (map['stopSignal'] as String).input(),
+      postStart: map['postStart'] == null ? null : (LifecycleHandlerPatch.fromMap((map['postStart']! as Map).cast<String, dynamic>())).input(),
+      preStop: map['preStop'] == null ? null : (LifecycleHandlerPatch.fromMap((map['preStop']! as Map).cast<String, dynamic>())).input(),
+      stopSignal: map['stopSignal'] == null ? null : (map['stopSignal']! as String).input(),
     );
   }
 }

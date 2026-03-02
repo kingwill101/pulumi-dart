@@ -44,7 +44,7 @@ class BgpPeerArgs {
 
   factory BgpPeerArgs.fromMap(Map<String, dynamic> map) {
     return BgpPeerArgs(
-      bgpPeerName: map['bgpPeerName'] == null ? null : (map['bgpPeerName'] as String).input(),
+      bgpPeerName: map['bgpPeerName'] == null ? null : (map['bgpPeerName']! as String).input(),
       myAsn: (map['myAsn'] as int).input(),
       peerAddress: (map['peerAddress'] as String).input(),
       peerAsn: (map['peerAsn'] as int).input(),

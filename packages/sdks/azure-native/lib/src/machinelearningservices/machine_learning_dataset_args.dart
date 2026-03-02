@@ -59,13 +59,13 @@ class MachineLearningDatasetArgs {
 
   factory MachineLearningDatasetArgs.fromMap(Map<String, dynamic> map) {
     return MachineLearningDatasetArgs(
-      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
       datasetType: (map['datasetType'] as String).input(),
       parameters: (DatasetCreateRequestParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
       registration: (DatasetCreateRequestRegistration.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation'] as bool).input(),
-      timeSeries: map['timeSeries'] == null ? null : (DatasetCreateRequestTimeSeries.fromMap((map['timeSeries'] as Map).cast<String, dynamic>())).input(),
+      skipValidation: map['skipValidation'] == null ? null : (map['skipValidation']! as bool).input(),
+      timeSeries: map['timeSeries'] == null ? null : (DatasetCreateRequestTimeSeries.fromMap((map['timeSeries']! as Map).cast<String, dynamic>())).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

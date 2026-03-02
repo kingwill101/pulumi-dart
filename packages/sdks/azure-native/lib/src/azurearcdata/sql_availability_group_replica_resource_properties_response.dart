@@ -43,11 +43,11 @@ class SqlAvailabilityGroupReplicaResourcePropertiesResponse {
 
   factory SqlAvailabilityGroupReplicaResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupReplicaResourcePropertiesResponse(
-      configure: map['configure'] == null ? null : (AvailabilityGroupConfigureResponse.fromMap((map['configure'] as Map).cast<String, dynamic>())).input(),
+      configure: map['configure'] == null ? null : (AvailabilityGroupConfigureResponse.fromMap((map['configure']! as Map).cast<String, dynamic>())).input(),
       replicaId: (map['replicaId'] as String).input(),
-      replicaName: map['replicaName'] == null ? null : (map['replicaName'] as String).input(),
-      replicaResourceId: map['replicaResourceId'] == null ? null : (map['replicaResourceId'] as String).input(),
-      state: map['state'] == null ? null : (AvailabilityGroupStateResponse.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      replicaName: map['replicaName'] == null ? null : (map['replicaName']! as String).input(),
+      replicaResourceId: map['replicaResourceId'] == null ? null : (map['replicaResourceId']! as String).input(),
+      state: map['state'] == null ? null : (AvailabilityGroupStateResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

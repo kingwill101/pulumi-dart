@@ -25,8 +25,8 @@ class DataSetColumnLevelPermissionRule {
 
   factory DataSetColumnLevelPermissionRule.fromMap(Map<String, dynamic> map) {
     return DataSetColumnLevelPermissionRule(
-      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
+      columnNames: map['columnNames'] == null ? null : (((map['columnNames'] as List).cast<String>()).input()).input(),
+      principals: map['principals'] == null ? null : (((map['principals'] as List).cast<String>()).input()).input(),
     );
   }
 }

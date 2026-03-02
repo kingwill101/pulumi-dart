@@ -22,7 +22,7 @@ class IdentityResponse {
 
   factory IdentityResponse.fromMap(Map<String, dynamic> map) {
     return IdentityResponse(
-      oidc: map['oidc'] == null ? null : (OIDCResponse.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
+      oidc: map['oidc'] == null ? null : (OIDCResponse.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

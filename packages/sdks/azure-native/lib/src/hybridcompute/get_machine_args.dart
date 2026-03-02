@@ -34,7 +34,7 @@ class GetMachineArgs {
 
   factory GetMachineArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       machineName: (map['machineName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

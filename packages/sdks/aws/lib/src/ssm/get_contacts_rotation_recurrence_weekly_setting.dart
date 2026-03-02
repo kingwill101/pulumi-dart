@@ -25,7 +25,7 @@ class GetContactsRotationRecurrenceWeeklySetting {
   factory GetContactsRotationRecurrenceWeeklySetting.fromMap(Map<String, dynamic> map) {
     return GetContactsRotationRecurrenceWeeklySetting(
       dayOfWeek: (map['dayOfWeek'] as String).input(),
-      handOffTimes: (pulumi.Input.decodeList<GetContactsRotationRecurrenceWeeklySettingHandOffTime>(map['handOffTimes'], (value) => GetContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      handOffTimes: (pulumi.Input.decodeList<GetContactsRotationRecurrenceWeeklySettingHandOffTime>(map['handOffTimes']!, (value) => GetContactsRotationRecurrenceWeeklySettingHandOffTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class PlaceIndexState {
 
   factory PlaceIndexState.fromMap(Map<String, dynamic> map) {
     return PlaceIndexState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
-      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : (PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexArn: map['indexArn'] == null ? null : (map['indexArn'] as String).input(),
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      dataSource: map['dataSource'] == null ? null : ((map['dataSource'] as String).input()).input(),
+      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : ((PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      indexArn: map['indexArn'] == null ? null : ((map['indexArn'] as String).input()).input(),
+      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

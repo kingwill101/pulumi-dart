@@ -28,8 +28,8 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
 
   factory RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind.fromMap(Map<String, dynamic> map) {
     return RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind(
-      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup'] as String).input(),
-      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind'] as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (map['resourceGroup']! as String).input(),
+      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind']! as String).input(),
     );
   }
 }

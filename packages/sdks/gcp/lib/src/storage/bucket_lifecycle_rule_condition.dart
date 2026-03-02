@@ -91,21 +91,21 @@ class BucketLifecycleRuleCondition {
 
   factory BucketLifecycleRuleCondition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleCondition(
-      age: map['age'] == null ? null : (map['age'] as int).input(),
-      createdBefore: map['createdBefore'] == null ? null : (map['createdBefore'] as String).input(),
-      customTimeBefore: map['customTimeBefore'] == null ? null : (map['customTimeBefore'] as String).input(),
-      daysSinceCustomTime: map['daysSinceCustomTime'] == null ? null : (map['daysSinceCustomTime'] as int).input(),
-      daysSinceNoncurrentTime: map['daysSinceNoncurrentTime'] == null ? null : (map['daysSinceNoncurrentTime'] as int).input(),
-      matchesPrefixes: map['matchesPrefixes'] == null ? null : ((map['matchesPrefixes'] as List).cast<String>()).input(),
-      matchesStorageClasses: map['matchesStorageClasses'] == null ? null : ((map['matchesStorageClasses'] as List).cast<String>()).input(),
-      matchesSuffixes: map['matchesSuffixes'] == null ? null : ((map['matchesSuffixes'] as List).cast<String>()).input(),
-      noncurrentTimeBefore: map['noncurrentTimeBefore'] == null ? null : (map['noncurrentTimeBefore'] as String).input(),
-      numNewerVersions: map['numNewerVersions'] == null ? null : (map['numNewerVersions'] as int).input(),
-      sendAgeIfZero: map['sendAgeIfZero'] == null ? null : (map['sendAgeIfZero'] as bool).input(),
-      sendDaysSinceCustomTimeIfZero: map['sendDaysSinceCustomTimeIfZero'] == null ? null : (map['sendDaysSinceCustomTimeIfZero'] as bool).input(),
-      sendDaysSinceNoncurrentTimeIfZero: map['sendDaysSinceNoncurrentTimeIfZero'] == null ? null : (map['sendDaysSinceNoncurrentTimeIfZero'] as bool).input(),
-      sendNumNewerVersionsIfZero: map['sendNumNewerVersionsIfZero'] == null ? null : (map['sendNumNewerVersionsIfZero'] as bool).input(),
-      withState: map['withState'] == null ? null : (map['withState'] as String).input(),
+      age: map['age'] == null ? null : (map['age']! as int).input(),
+      createdBefore: map['createdBefore'] == null ? null : (map['createdBefore']! as String).input(),
+      customTimeBefore: map['customTimeBefore'] == null ? null : (map['customTimeBefore']! as String).input(),
+      daysSinceCustomTime: map['daysSinceCustomTime'] == null ? null : (map['daysSinceCustomTime']! as int).input(),
+      daysSinceNoncurrentTime: map['daysSinceNoncurrentTime'] == null ? null : (map['daysSinceNoncurrentTime']! as int).input(),
+      matchesPrefixes: map['matchesPrefixes'] == null ? null : ((map['matchesPrefixes']! as List).cast<String>()).input(),
+      matchesStorageClasses: map['matchesStorageClasses'] == null ? null : ((map['matchesStorageClasses']! as List).cast<String>()).input(),
+      matchesSuffixes: map['matchesSuffixes'] == null ? null : ((map['matchesSuffixes']! as List).cast<String>()).input(),
+      noncurrentTimeBefore: map['noncurrentTimeBefore'] == null ? null : (map['noncurrentTimeBefore']! as String).input(),
+      numNewerVersions: map['numNewerVersions'] == null ? null : (map['numNewerVersions']! as int).input(),
+      sendAgeIfZero: map['sendAgeIfZero'] == null ? null : (map['sendAgeIfZero']! as bool).input(),
+      sendDaysSinceCustomTimeIfZero: map['sendDaysSinceCustomTimeIfZero'] == null ? null : (map['sendDaysSinceCustomTimeIfZero']! as bool).input(),
+      sendDaysSinceNoncurrentTimeIfZero: map['sendDaysSinceNoncurrentTimeIfZero'] == null ? null : (map['sendDaysSinceNoncurrentTimeIfZero']! as bool).input(),
+      sendNumNewerVersionsIfZero: map['sendNumNewerVersionsIfZero'] == null ? null : (map['sendNumNewerVersionsIfZero']! as bool).input(),
+      withState: map['withState'] == null ? null : (map['withState']! as String).input(),
     );
   }
 }

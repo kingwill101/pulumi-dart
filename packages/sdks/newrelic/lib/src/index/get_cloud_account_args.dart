@@ -34,7 +34,7 @@ class GetCloudAccountArgs {
 
   factory GetCloudAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       cloudProvider: (map['cloudProvider'] as String).input(),
       name: (map['name'] as String).input(),
     );

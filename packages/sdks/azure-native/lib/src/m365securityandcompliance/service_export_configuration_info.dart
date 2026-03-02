@@ -21,7 +21,7 @@ class ServiceExportConfigurationInfo {
 
   factory ServiceExportConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceExportConfigurationInfo(
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class DbResourceGroupState {
 
   factory DbResourceGroupState.fromMap(Map<String, dynamic> map) {
     return DbResourceGroupState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      resourceGroupConfig: map['resourceGroupConfig'] == null ? null : (map['resourceGroupConfig'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      roleLists: map['roleLists'] == null ? null : ((map['roleLists'] as List).cast<String>()).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      resourceGroupConfig: map['resourceGroupConfig'] == null ? null : (map['resourceGroupConfig']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      roleLists: map['roleLists'] == null ? null : ((map['roleLists']! as List).cast<String>()).input(),
     );
   }
 }

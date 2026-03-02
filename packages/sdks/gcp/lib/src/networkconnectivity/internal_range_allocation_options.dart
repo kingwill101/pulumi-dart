@@ -27,8 +27,8 @@ class InternalRangeAllocationOptions {
 
   factory InternalRangeAllocationOptions.fromMap(Map<String, dynamic> map) {
     return InternalRangeAllocationOptions(
-      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy'] as String).input(),
-      firstAvailableRangesLookupSize: map['firstAvailableRangesLookupSize'] == null ? null : (map['firstAvailableRangesLookupSize'] as int).input(),
+      allocationStrategy: map['allocationStrategy'] == null ? null : (map['allocationStrategy']! as String).input(),
+      firstAvailableRangesLookupSize: map['firstAvailableRangesLookupSize'] == null ? null : (map['firstAvailableRangesLookupSize']! as int).input(),
     );
   }
 }

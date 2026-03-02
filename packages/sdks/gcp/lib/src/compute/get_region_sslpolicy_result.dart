@@ -73,8 +73,8 @@ class GetRegionSSLPolicyResult {
       minTlsVersion: map['minTlsVersion'] as String,
       name: map['name'] as String,
       profile: map['profile'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

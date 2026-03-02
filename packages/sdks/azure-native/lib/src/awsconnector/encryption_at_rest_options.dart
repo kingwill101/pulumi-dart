@@ -26,8 +26,8 @@ class EncryptionAtRestOptions {
 
   factory EncryptionAtRestOptions.fromMap(Map<String, dynamic> map) {
     return EncryptionAtRestOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
     );
   }
 }

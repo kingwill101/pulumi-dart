@@ -66,11 +66,11 @@ class GatewayIamBindingArgs {
 
   factory GatewayIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return GatewayIamBindingArgs(
-      condition: map['condition'] == null ? null : (GatewayIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (GatewayIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       gateway: (map['gateway'] as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

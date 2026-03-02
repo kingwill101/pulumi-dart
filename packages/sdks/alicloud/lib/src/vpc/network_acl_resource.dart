@@ -32,7 +32,7 @@ class NetworkAclResource {
     return NetworkAclResource(
       resourceId: (map['resourceId'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

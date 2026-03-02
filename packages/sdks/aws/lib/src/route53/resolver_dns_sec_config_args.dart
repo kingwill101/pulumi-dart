@@ -29,7 +29,7 @@ class ResolverDnsSecConfigArgs {
 
   factory ResolverDnsSecConfigArgs.fromMap(Map<String, dynamic> map) {
     return ResolverDnsSecConfigArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceId: (map['resourceId'] as String).input(),
     );
   }

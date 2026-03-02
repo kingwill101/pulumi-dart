@@ -71,20 +71,20 @@ class BillingHubExecutionUsageDetailResponse {
 
   factory BillingHubExecutionUsageDetailResponse.fromMap(Map<String, dynamic> map) {
     return BillingHubExecutionUsageDetailResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion'] as String).input(),
-      billedCharges: map['billedCharges'] == null ? null : (map['billedCharges'] as double).input(),
-      endTimeStamp: map['endTimeStamp'] == null ? null : (map['endTimeStamp'] as String).input(),
-      executionRequestId: map['executionRequestId'] == null ? null : (map['executionRequestId'] as String).input(),
-      meterId: map['meterId'] == null ? null : (map['meterId'] as String).input(),
-      osBuild: map['osBuild'] == null ? null : (map['osBuild'] as String).input(),
-      release: map['release'] == null ? null : (map['release'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      startTimeStamp: map['startTimeStamp'] == null ? null : (map['startTimeStamp'] as String).input(),
-      testType: map['testType'] == null ? null : (map['testType'] as String).input(),
-      updateType: map['updateType'] == null ? null : (map['updateType'] as String).input(),
-      usedBillableHours: map['usedBillableHours'] == null ? null : (map['usedBillableHours'] as double).input(),
-      usedFreeHours: map['usedFreeHours'] == null ? null : (map['usedFreeHours'] as double).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion']! as String).input(),
+      billedCharges: map['billedCharges'] == null ? null : (map['billedCharges']! as double).input(),
+      endTimeStamp: map['endTimeStamp'] == null ? null : (map['endTimeStamp']! as String).input(),
+      executionRequestId: map['executionRequestId'] == null ? null : (map['executionRequestId']! as String).input(),
+      meterId: map['meterId'] == null ? null : (map['meterId']! as String).input(),
+      osBuild: map['osBuild'] == null ? null : (map['osBuild']! as String).input(),
+      release: map['release'] == null ? null : (map['release']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      startTimeStamp: map['startTimeStamp'] == null ? null : (map['startTimeStamp']! as String).input(),
+      testType: map['testType'] == null ? null : (map['testType']! as String).input(),
+      updateType: map['updateType'] == null ? null : (map['updateType']! as String).input(),
+      usedBillableHours: map['usedBillableHours'] == null ? null : (map['usedBillableHours']! as double).input(),
+      usedFreeHours: map['usedFreeHours'] == null ? null : (map['usedFreeHours']! as double).input(),
     );
   }
 }

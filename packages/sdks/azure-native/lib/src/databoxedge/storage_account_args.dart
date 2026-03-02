@@ -55,12 +55,12 @@ class StorageAccountArgs {
   factory StorageAccountArgs.fromMap(Map<String, dynamic> map) {
     return StorageAccountArgs(
       dataPolicy: (map['dataPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountCredentialId: map['storageAccountCredentialId'] == null ? null : (map['storageAccountCredentialId'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      storageAccountStatus: map['storageAccountStatus'] == null ? null : (map['storageAccountStatus'] as String).input(),
+      storageAccountCredentialId: map['storageAccountCredentialId'] == null ? null : (map['storageAccountCredentialId']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageAccountStatus: map['storageAccountStatus'] == null ? null : (map['storageAccountStatus']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class DelegatedAdminAccountState {
 
   factory DelegatedAdminAccountState.fromMap(Map<String, dynamic> map) {
     return DelegatedAdminAccountState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relationshipStatus: map['relationshipStatus'] == null ? null : (map['relationshipStatus'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relationshipStatus: map['relationshipStatus'] == null ? null : ((map['relationshipStatus'] as String).input()).input(),
     );
   }
 }

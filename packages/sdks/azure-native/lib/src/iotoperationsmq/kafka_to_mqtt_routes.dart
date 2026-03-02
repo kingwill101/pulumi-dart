@@ -41,11 +41,11 @@ class KafkaToMqttRoutes {
 
   factory KafkaToMqttRoutes.fromMap(Map<String, dynamic> map) {
     return KafkaToMqttRoutes(
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId']! as String).input(),
       kafkaTopic: (map['kafkaTopic'] as String).input(),
       mqttTopic: (map['mqttTopic'] as String).input(),
       name: (map['name'] as String).input(),
-      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
+      qos: map['qos'] == null ? null : (map['qos']! as int).input(),
     );
   }
 }

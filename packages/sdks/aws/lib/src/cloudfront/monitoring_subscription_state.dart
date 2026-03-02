@@ -27,8 +27,8 @@ class MonitoringSubscriptionState {
 
   factory MonitoringSubscriptionState.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionState(
-      distributionId: map['distributionId'] == null ? null : (map['distributionId'] as String).input(),
-      monitoringSubscription: map['monitoringSubscription'] == null ? null : (MonitoringSubscriptionMonitoringSubscription.fromMap((map['monitoringSubscription'] as Map).cast<String, dynamic>())).input(),
+      distributionId: map['distributionId'] == null ? null : ((map['distributionId'] as String).input()).input(),
+      monitoringSubscription: map['monitoringSubscription'] == null ? null : ((MonitoringSubscriptionMonitoringSubscription.fromMap((map['monitoringSubscription']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

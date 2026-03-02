@@ -32,10 +32,10 @@ class ClusterNode {
 
   factory ClusterNode.fromMap(Map<String, dynamic> map) {
     return ClusterNode(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
     );
   }
 }

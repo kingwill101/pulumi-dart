@@ -52,13 +52,13 @@ class DomainDevicesPstore {
 
   factory DomainDevicesPstore.fromMap(Map<String, dynamic> map) {
     return DomainDevicesPstore(
-      acpi: map['acpi'] == null ? null : (DomainDevicesPstoreAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesPstoreAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesPstoreAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesPstoreAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
       backend: (map['backend'] as String).input(),
       path: (map['path'] as String).input(),
       size: (map['size'] as double).input(),
-      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit'] as String).input(),
+      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit']! as String).input(),
     );
   }
 }

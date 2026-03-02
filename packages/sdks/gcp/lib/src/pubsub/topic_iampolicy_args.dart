@@ -37,7 +37,7 @@ class TopicIAMPolicyArgs {
   factory TopicIAMPolicyArgs.fromMap(Map<String, dynamic> map) {
     return TopicIAMPolicyArgs(
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       topic: (map['topic'] as String).input(),
     );
   }

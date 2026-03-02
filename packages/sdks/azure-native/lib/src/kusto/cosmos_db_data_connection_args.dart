@@ -89,14 +89,14 @@ class CosmosDbDataConnectionArgs {
       cosmosDbAccountResourceId: (map['cosmosDbAccountResourceId'] as String).input(),
       cosmosDbContainer: (map['cosmosDbContainer'] as String).input(),
       cosmosDbDatabase: (map['cosmosDbDatabase'] as String).input(),
-      dataConnectionName: map['dataConnectionName'] == null ? null : (map['dataConnectionName'] as String).input(),
+      dataConnectionName: map['dataConnectionName'] == null ? null : (map['dataConnectionName']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       managedIdentityResourceId: (map['managedIdentityResourceId'] as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate'] as String).input(),
+      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate']! as String).input(),
       tableName: (map['tableName'] as String).input(),
     );
   }

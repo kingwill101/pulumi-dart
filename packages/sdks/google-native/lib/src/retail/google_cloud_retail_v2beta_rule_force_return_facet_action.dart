@@ -22,7 +22,7 @@ class GoogleCloudRetailV2betaRuleForceReturnFacetAction {
 
   factory GoogleCloudRetailV2betaRuleForceReturnFacetAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRuleForceReturnFacetAction(
-      facetPositionAdjustments: map['facetPositionAdjustments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>(map['facetPositionAdjustments'], (value) => GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facetPositionAdjustments: map['facetPositionAdjustments'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment>(map['facetPositionAdjustments']!, (value) => GoogleCloudRetailV2betaRuleForceReturnFacetActionFacetPositionAdjustment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

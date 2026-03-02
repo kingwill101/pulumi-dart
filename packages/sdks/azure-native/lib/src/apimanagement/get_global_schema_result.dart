@@ -51,12 +51,12 @@ class GetGlobalSchemaResult {
   factory GetGlobalSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalSchemaResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       schemaType: map['schemaType'] as String,
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'],
+      value: map['value'] == null ? null : map['value']!,
     );
   }
 }

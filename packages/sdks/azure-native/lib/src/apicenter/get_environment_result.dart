@@ -74,13 +74,13 @@ class GetEnvironmentResult {
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customProperties: map['customProperties'] == null ? null : map['customProperties'],
-      description: map['description'] == null ? null : map['description'] as String,
+      customProperties: map['customProperties'] == null ? null : map['customProperties']!,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      onboarding: map['onboarding'] == null ? null : OnboardingResponse.fromMap((map['onboarding'] as Map).cast<String, dynamic>()),
-      server: map['server'] == null ? null : EnvironmentServerResponse.fromMap((map['server'] as Map).cast<String, dynamic>()),
+      onboarding: map['onboarding'] == null ? null : OnboardingResponse.fromMap((map['onboarding']! as Map).cast<String, dynamic>()),
+      server: map['server'] == null ? null : EnvironmentServerResponse.fromMap((map['server']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       title: map['title'] as String,
       type: map['type'] as String,

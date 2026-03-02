@@ -21,7 +21,7 @@ class SecurityPolicyRuleHttpHeaderActionComputeBeta {
 
   factory SecurityPolicyRuleHttpHeaderActionComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleHttpHeaderActionComputeBeta(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeBeta>(map['requestHeadersToAdds'], (value) => SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeBeta>(map['requestHeadersToAdds']!, (value) => SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

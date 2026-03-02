@@ -30,9 +30,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue(
-      day: map['day'] == null ? null : (map['day'] as int).input(),
-      month: map['month'] == null ? null : (map['month'] as int).input(),
-      year: map['year'] == null ? null : (map['year'] as int).input(),
+      day: map['day'] == null ? null : (map['day']! as int).input(),
+      month: map['month'] == null ? null : (map['month']! as int).input(),
+      year: map['year'] == null ? null : (map['year']! as int).input(),
     );
   }
 }

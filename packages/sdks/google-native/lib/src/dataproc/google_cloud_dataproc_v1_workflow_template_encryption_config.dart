@@ -21,7 +21,7 @@ class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
 
   factory GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

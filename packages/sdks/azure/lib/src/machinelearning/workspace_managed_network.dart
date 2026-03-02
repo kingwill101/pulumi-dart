@@ -25,8 +25,8 @@ class WorkspaceManagedNetwork {
 
   factory WorkspaceManagedNetwork.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagedNetwork(
-      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
-      provisionOnCreationEnabled: map['provisionOnCreationEnabled'] == null ? null : (map['provisionOnCreationEnabled'] as bool).input(),
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode']! as String).input(),
+      provisionOnCreationEnabled: map['provisionOnCreationEnabled'] == null ? null : (map['provisionOnCreationEnabled']! as bool).input(),
     );
   }
 }

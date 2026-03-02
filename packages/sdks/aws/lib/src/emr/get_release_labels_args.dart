@@ -30,8 +30,8 @@ class GetReleaseLabelsArgs {
 
   factory GetReleaseLabelsArgs.fromMap(Map<String, dynamic> map) {
     return GetReleaseLabelsArgs(
-      filters: map['filters'] == null ? null : (GetReleaseLabelsFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((GetReleaseLabelsFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

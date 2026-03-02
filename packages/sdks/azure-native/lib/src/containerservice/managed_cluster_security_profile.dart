@@ -45,11 +45,11 @@ class ManagedClusterSecurityProfile {
 
   factory ManagedClusterSecurityProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterSecurityProfile(
-      azureKeyVaultKms: map['azureKeyVaultKms'] == null ? null : (AzureKeyVaultKms.fromMap((map['azureKeyVaultKms'] as Map).cast<String, dynamic>())).input(),
-      customCATrustCertificates: map['customCATrustCertificates'] == null ? null : ((map['customCATrustCertificates'] as List).cast<String>()).input(),
-      defender: map['defender'] == null ? null : (ManagedClusterSecurityProfileDefender.fromMap((map['defender'] as Map).cast<String, dynamic>())).input(),
-      imageCleaner: map['imageCleaner'] == null ? null : (ManagedClusterSecurityProfileImageCleaner.fromMap((map['imageCleaner'] as Map).cast<String, dynamic>())).input(),
-      workloadIdentity: map['workloadIdentity'] == null ? null : (ManagedClusterSecurityProfileWorkloadIdentity.fromMap((map['workloadIdentity'] as Map).cast<String, dynamic>())).input(),
+      azureKeyVaultKms: map['azureKeyVaultKms'] == null ? null : (AzureKeyVaultKms.fromMap((map['azureKeyVaultKms']! as Map).cast<String, dynamic>())).input(),
+      customCATrustCertificates: map['customCATrustCertificates'] == null ? null : ((map['customCATrustCertificates']! as List).cast<String>()).input(),
+      defender: map['defender'] == null ? null : (ManagedClusterSecurityProfileDefender.fromMap((map['defender']! as Map).cast<String, dynamic>())).input(),
+      imageCleaner: map['imageCleaner'] == null ? null : (ManagedClusterSecurityProfileImageCleaner.fromMap((map['imageCleaner']! as Map).cast<String, dynamic>())).input(),
+      workloadIdentity: map['workloadIdentity'] == null ? null : (ManagedClusterSecurityProfileWorkloadIdentity.fromMap((map['workloadIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

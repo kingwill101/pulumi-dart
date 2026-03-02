@@ -54,13 +54,13 @@ class BuildProperties {
 
   factory BuildProperties.fromMap(Map<String, dynamic> map) {
     return BuildProperties(
-      agentPool: map['agentPool'] == null ? null : (map['agentPool'] as String).input(),
-      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReference>(map['apms'], (value) => ApmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      builder: map['builder'] == null ? null : (map['builder'] as String).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<CertificateReference>(map['certificates'], (value) => CertificateReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      env: map['env'] == null ? null : ((map['env'] as Map).cast<String, String>()).input(),
-      relativePath: map['relativePath'] == null ? null : (map['relativePath'] as String).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (BuildResourceRequests.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      agentPool: map['agentPool'] == null ? null : (map['agentPool']! as String).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReference>(map['apms']!, (value) => ApmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      builder: map['builder'] == null ? null : (map['builder']! as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<CertificateReference>(map['certificates']!, (value) => CertificateReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      env: map['env'] == null ? null : ((map['env']! as Map).cast<String, String>()).input(),
+      relativePath: map['relativePath'] == null ? null : (map['relativePath']! as String).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (BuildResourceRequests.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

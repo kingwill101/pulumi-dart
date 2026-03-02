@@ -24,8 +24,8 @@ class MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups {
 
   factory MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionDefaultCacheBehaviorTrustedKeyGroups(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      items: map['items'] == null ? null : ((map['items'] as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      items: map['items'] == null ? null : (((map['items'] as List).cast<String>()).input()).input(),
     );
   }
 }

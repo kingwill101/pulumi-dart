@@ -25,8 +25,8 @@ class EndpointModelSkuCapacityPropertiesResponse {
 
   factory EndpointModelSkuCapacityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuCapacityPropertiesResponse(
-      default_: map['default'] == null ? null : (map['default'] as int).input(),
-      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
+      default_: map['default'] == null ? null : (map['default']! as int).input(),
+      maximum: map['maximum'] == null ? null : (map['maximum']! as int).input(),
     );
   }
 }

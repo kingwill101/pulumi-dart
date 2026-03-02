@@ -37,7 +37,7 @@ class GetKMSSecretAsymmetricArgs {
   factory GetKMSSecretAsymmetricArgs.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretAsymmetricArgs(
       ciphertext: (map['ciphertext'] as String).input(),
-      crc32: map['crc32'] == null ? null : (map['crc32'] as String).input(),
+      crc32: map['crc32'] == null ? null : (map['crc32']! as String).input(),
       cryptoKeyVersion: (map['cryptoKeyVersion'] as String).input(),
     );
   }

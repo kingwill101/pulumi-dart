@@ -41,11 +41,11 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl'] as String).input(),
-      deploymentResult: map['deploymentResult'] == null ? null : (map['deploymentResult'] as String).input(),
-      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState'] as String).input(),
-      deploymentTime: map['deploymentTime'] == null ? null : (map['deploymentTime'] as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
+      deploymentLogsUrl: map['deploymentLogsUrl'] == null ? null : (map['deploymentLogsUrl']! as String).input(),
+      deploymentResult: map['deploymentResult'] == null ? null : (map['deploymentResult']! as String).input(),
+      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState']! as String).input(),
+      deploymentTime: map['deploymentTime'] == null ? null : (map['deploymentTime']! as String).input(),
     );
   }
 }

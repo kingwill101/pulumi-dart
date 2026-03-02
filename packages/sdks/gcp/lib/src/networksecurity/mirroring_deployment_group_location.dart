@@ -30,8 +30,8 @@ class MirroringDeploymentGroupLocation {
 
   factory MirroringDeploymentGroupLocation.fromMap(Map<String, dynamic> map) {
     return MirroringDeploymentGroupLocation(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

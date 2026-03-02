@@ -34,8 +34,8 @@ class NotificationRegistrationArgs {
 
   factory NotificationRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationRegistrationArgs(
-      notificationRegistrationName: map['notificationRegistrationName'] == null ? null : (map['notificationRegistrationName'] as String).input(),
-      properties: map['properties'] == null ? null : (NotificationRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      notificationRegistrationName: map['notificationRegistrationName'] == null ? null : (map['notificationRegistrationName']! as String).input(),
+      properties: map['properties'] == null ? null : (NotificationRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
     );
   }

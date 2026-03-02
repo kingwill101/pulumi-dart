@@ -25,8 +25,8 @@ class FirewallPolicyIntrusionDetectionSignatureOverride {
 
   factory FirewallPolicyIntrusionDetectionSignatureOverride.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionSignatureOverride(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

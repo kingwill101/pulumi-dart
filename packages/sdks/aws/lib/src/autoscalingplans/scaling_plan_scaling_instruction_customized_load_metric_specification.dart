@@ -40,11 +40,11 @@ class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
 
   factory ScalingPlanScalingInstructionCustomizedLoadMetricSpecification.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstructionCustomizedLoadMetricSpecification(
-      dimensions: map['dimensions'] == null ? null : ((map['dimensions'] as Map).cast<String, String>()).input(),
+      dimensions: map['dimensions'] == null ? null : (((map['dimensions'] as Map).cast<String, String>()).input()).input(),
       metricName: (map['metricName'] as String).input(),
       namespace: (map['namespace'] as String).input(),
       statistic: (map['statistic'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

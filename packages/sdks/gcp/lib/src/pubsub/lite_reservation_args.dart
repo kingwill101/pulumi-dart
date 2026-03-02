@@ -42,9 +42,9 @@ class LiteReservationArgs {
 
   factory LiteReservationArgs.fromMap(Map<String, dynamic> map) {
     return LiteReservationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       throughputCapacity: (map['throughputCapacity'] as int).input(),
     );
   }

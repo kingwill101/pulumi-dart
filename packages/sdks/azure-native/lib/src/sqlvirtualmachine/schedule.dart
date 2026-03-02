@@ -42,11 +42,11 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (AssessmentDayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (map['monthlyOccurrence'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      weeklyInterval: map['weeklyInterval'] == null ? null : (map['weeklyInterval'] as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (AssessmentDayOfWeek.fromValue(map['dayOfWeek']! as String)).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      monthlyOccurrence: map['monthlyOccurrence'] == null ? null : (map['monthlyOccurrence']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      weeklyInterval: map['weeklyInterval'] == null ? null : (map['weeklyInterval']! as int).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class PeeringPropertiesExchangeResponse {
 
   factory PeeringPropertiesExchangeResponse.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesExchangeResponse(
-      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<ExchangeConnectionResponse>(map['connections'], (value) => ExchangeConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      peerAsn: map['peerAsn'] == null ? null : (SubResourceResponse.fromMap((map['peerAsn'] as Map).cast<String, dynamic>())).input(),
+      connections: map['connections'] == null ? null : (pulumi.Input.decodeList<ExchangeConnectionResponse>(map['connections']!, (value) => ExchangeConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerAsn: map['peerAsn'] == null ? null : (SubResourceResponse.fromMap((map['peerAsn']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

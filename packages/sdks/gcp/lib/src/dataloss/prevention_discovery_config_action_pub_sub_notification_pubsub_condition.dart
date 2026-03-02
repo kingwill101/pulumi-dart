@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition {
 
   factory PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition(
-      expressions: map['expressions'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>())).input(),
+      expressions: map['expressions'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressions.fromMap((map['expressions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

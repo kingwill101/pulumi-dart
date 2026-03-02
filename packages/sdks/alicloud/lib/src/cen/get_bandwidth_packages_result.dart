@@ -61,13 +61,13 @@ class GetBandwidthPackagesResult {
     return GetBandwidthPackagesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData'] as bool,
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      includeReservationData: map['includeReservationData'] == null ? null : map['includeReservationData']! as bool,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       packages: pulumi.Input.decodeList<GetBandwidthPackagesPackage>(map['packages'], (value) => GetBandwidthPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

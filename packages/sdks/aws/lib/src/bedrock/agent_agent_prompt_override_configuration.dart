@@ -27,7 +27,7 @@ class AgentAgentPromptOverrideConfiguration {
   factory AgentAgentPromptOverrideConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfiguration(
       overrideLambda: (map['overrideLambda'] as String).input(),
-      promptConfigurations: (pulumi.Input.decodeList<AgentAgentPromptOverrideConfigurationPromptConfiguration>(map['promptConfigurations'], (value) => AgentAgentPromptOverrideConfigurationPromptConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      promptConfigurations: (pulumi.Input.decodeList<AgentAgentPromptOverrideConfigurationPromptConfiguration>(map['promptConfigurations']!, (value) => AgentAgentPromptOverrideConfigurationPromptConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

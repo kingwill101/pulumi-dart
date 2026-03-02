@@ -28,8 +28,8 @@ class ManagedClusterWorkloadAutoScalerProfileResponse {
 
   factory ManagedClusterWorkloadAutoScalerProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterWorkloadAutoScalerProfileResponse(
-      keda: map['keda'] == null ? null : (ManagedClusterWorkloadAutoScalerProfileKedaResponse.fromMap((map['keda'] as Map).cast<String, dynamic>())).input(),
-      verticalPodAutoscaler: map['verticalPodAutoscaler'] == null ? null : (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse.fromMap((map['verticalPodAutoscaler'] as Map).cast<String, dynamic>())).input(),
+      keda: map['keda'] == null ? null : (ManagedClusterWorkloadAutoScalerProfileKedaResponse.fromMap((map['keda']! as Map).cast<String, dynamic>())).input(),
+      verticalPodAutoscaler: map['verticalPodAutoscaler'] == null ? null : (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse.fromMap((map['verticalPodAutoscaler']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

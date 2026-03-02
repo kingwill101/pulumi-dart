@@ -31,7 +31,7 @@ class CloudRun {
 
   factory CloudRun.fromMap(Map<String, dynamic> map) {
     return CloudRun(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       region: (map['region'] as String).input(),
       service: (map['service'] as String).input(),
     );

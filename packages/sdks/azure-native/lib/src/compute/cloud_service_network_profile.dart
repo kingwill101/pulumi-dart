@@ -35,9 +35,9 @@ class CloudServiceNetworkProfile {
 
   factory CloudServiceNetworkProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceNetworkProfile(
-      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations'], (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slotType: map['slotType'] == null ? null : (map['slotType'] as String).input(),
-      swappableCloudService: map['swappableCloudService'] == null ? null : (SubResource.fromMap((map['swappableCloudService'] as Map).cast<String, dynamic>())).input(),
+      loadBalancerConfigurations: map['loadBalancerConfigurations'] == null ? null : (pulumi.Input.decodeList<LoadBalancerConfiguration>(map['loadBalancerConfigurations']!, (value) => LoadBalancerConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slotType: map['slotType'] == null ? null : (map['slotType']! as String).input(),
+      swappableCloudService: map['swappableCloudService'] == null ? null : (SubResource.fromMap((map['swappableCloudService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

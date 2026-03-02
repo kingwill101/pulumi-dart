@@ -36,7 +36,7 @@ class AppregistryAttributeGroupAssociationArgs {
     return AppregistryAttributeGroupAssociationArgs(
       applicationId: (map['applicationId'] as String).input(),
       attributeGroupId: (map['attributeGroupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

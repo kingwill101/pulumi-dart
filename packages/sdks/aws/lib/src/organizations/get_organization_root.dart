@@ -39,7 +39,7 @@ class GetOrganizationRoot {
       arn: (map['arn'] as String).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      policyTypes: (pulumi.Input.decodeList<GetOrganizationRootPolicyType>(map['policyTypes'], (value) => GetOrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyTypes: (pulumi.Input.decodeList<GetOrganizationRootPolicyType>(map['policyTypes']!, (value) => GetOrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

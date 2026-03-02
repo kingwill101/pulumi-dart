@@ -37,10 +37,10 @@ class MonitoringSettingProperties {
 
   factory MonitoringSettingProperties.fromMap(Map<String, dynamic> map) {
     return MonitoringSettingProperties(
-      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : (map['appInsightsInstrumentationKey'] as String).input(),
-      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : (map['appInsightsSamplingRate'] as double).input(),
-      error: map['error'] == null ? null : (Error.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      traceEnabled: map['traceEnabled'] == null ? null : (map['traceEnabled'] as bool).input(),
+      appInsightsInstrumentationKey: map['appInsightsInstrumentationKey'] == null ? null : (map['appInsightsInstrumentationKey']! as String).input(),
+      appInsightsSamplingRate: map['appInsightsSamplingRate'] == null ? null : (map['appInsightsSamplingRate']! as double).input(),
+      error: map['error'] == null ? null : (Error.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      traceEnabled: map['traceEnabled'] == null ? null : (map['traceEnabled']! as bool).input(),
     );
   }
 }

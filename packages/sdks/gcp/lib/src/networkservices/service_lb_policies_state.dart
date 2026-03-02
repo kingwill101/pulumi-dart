@@ -92,19 +92,19 @@ class ServiceLbPoliciesState {
 
   factory ServiceLbPoliciesState.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesState(
-      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPoliciesAutoCapacityDrain.fromMap((map['autoCapacityDrain'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPoliciesFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>())).input(),
-      isolationConfig: map['isolationConfig'] == null ? null : (ServiceLbPoliciesIsolationConfig.fromMap((map['isolationConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPoliciesAutoCapacityDrain.fromMap((map['autoCapacityDrain']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPoliciesFailoverConfig.fromMap((map['failoverConfig']! as Map).cast<String, dynamic>())).input(),
+      isolationConfig: map['isolationConfig'] == null ? null : (ServiceLbPoliciesIsolationConfig.fromMap((map['isolationConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (map['loadBalancingAlgorithm']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

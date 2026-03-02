@@ -20,7 +20,7 @@ class ConnectionSparkMetastoreServiceConfig {
 
   factory ConnectionSparkMetastoreServiceConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionSparkMetastoreServiceConfig(
-      metastoreService: map['metastoreService'] == null ? null : (map['metastoreService'] as String).input(),
+      metastoreService: map['metastoreService'] == null ? null : (map['metastoreService']! as String).input(),
     );
   }
 }

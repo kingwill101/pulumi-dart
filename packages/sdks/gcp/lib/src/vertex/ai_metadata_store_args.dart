@@ -47,11 +47,11 @@ class AiMetadataStoreArgs {
 
   factory AiMetadataStoreArgs.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiMetadataStoreEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

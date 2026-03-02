@@ -59,10 +59,10 @@ class UserDataMappingArgs {
       consentStoreId: (map['consentStoreId'] as String).input(),
       dataId: (map['dataId'] as String).input(),
       datasetId: (map['datasetId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (pulumi.Input.decodeList<Attribute>(map['resourceAttributes'], (value) => Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (pulumi.Input.decodeList<Attribute>(map['resourceAttributes']!, (value) => Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
       userId: (map['userId'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class ManagedIdentityDefinition {
 
   factory ManagedIdentityDefinition.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityDefinition(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
     );
   }
 }

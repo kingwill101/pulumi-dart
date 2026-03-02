@@ -21,7 +21,7 @@ class PipelineStageOnSuccess {
 
   factory PipelineStageOnSuccess.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnSuccess(
-      condition: (PipelineStageOnSuccessCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: (PipelineStageOnSuccessCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

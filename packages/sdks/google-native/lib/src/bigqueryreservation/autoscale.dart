@@ -21,7 +21,7 @@ class Autoscale {
 
   factory Autoscale.fromMap(Map<String, dynamic> map) {
     return Autoscale(
-      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots'] as String).input(),
+      maxSlots: map['maxSlots'] == null ? null : (map['maxSlots']! as String).input(),
     );
   }
 }

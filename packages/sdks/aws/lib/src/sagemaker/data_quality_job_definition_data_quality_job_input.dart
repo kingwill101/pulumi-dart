@@ -27,8 +27,8 @@ class DataQualityJobDefinitionDataQualityJobInput {
 
   factory DataQualityJobDefinitionDataQualityJobInput.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobInput(
-      batchTransformInput: map['batchTransformInput'] == null ? null : (DataQualityJobDefinitionDataQualityJobInputBatchTransformInput.fromMap((map['batchTransformInput'] as Map).cast<String, dynamic>())).input(),
-      endpointInput: map['endpointInput'] == null ? null : (DataQualityJobDefinitionDataQualityJobInputEndpointInput.fromMap((map['endpointInput'] as Map).cast<String, dynamic>())).input(),
+      batchTransformInput: map['batchTransformInput'] == null ? null : ((DataQualityJobDefinitionDataQualityJobInputBatchTransformInput.fromMap((map['batchTransformInput']! as Map).cast<String, dynamic>())).input()).input(),
+      endpointInput: map['endpointInput'] == null ? null : ((DataQualityJobDefinitionDataQualityJobInputEndpointInput.fromMap((map['endpointInput']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

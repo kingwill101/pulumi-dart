@@ -116,16 +116,16 @@ class OrderItemDetailsResponse {
       error: (ErrorDetailResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
       forwardShippingDetails: (ForwardShippingDetailsResponse.fromMap((map['forwardShippingDetails'] as Map).cast<String, dynamic>())).input(),
       managementRpDetailsList: (pulumi.Input.decodeList<ResourceProviderDetailsResponse>(map['managementRpDetailsList'], (value) => ResourceProviderDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationEmailList: map['notificationEmailList'] == null ? null : ((map['notificationEmailList'] as List).cast<String>()).input(),
-      orderItemMode: map['orderItemMode'] == null ? null : (map['orderItemMode'] as String).input(),
+      notificationEmailList: map['notificationEmailList'] == null ? null : ((map['notificationEmailList']! as List).cast<String>()).input(),
+      orderItemMode: map['orderItemMode'] == null ? null : (map['orderItemMode']! as String).input(),
       orderItemStageHistory: (pulumi.Input.decodeList<StageDetailsResponse>(map['orderItemStageHistory'], (value) => StageDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       orderItemType: (map['orderItemType'] as String).input(),
-      preferences: map['preferences'] == null ? null : (PreferencesResponse.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
+      preferences: map['preferences'] == null ? null : (PreferencesResponse.fromMap((map['preferences']! as Map).cast<String, dynamic>())).input(),
       productDetails: (ProductDetailsResponse.fromMap((map['productDetails'] as Map).cast<String, dynamic>())).input(),
       returnReason: (map['returnReason'] as String).input(),
       returnStatus: (map['returnStatus'] as String).input(),
       reverseShippingDetails: (ReverseShippingDetailsResponse.fromMap((map['reverseShippingDetails'] as Map).cast<String, dynamic>())).input(),
-      siteDetails: map['siteDetails'] == null ? null : (SiteDetailsResponse.fromMap((map['siteDetails'] as Map).cast<String, dynamic>())).input(),
+      siteDetails: map['siteDetails'] == null ? null : (SiteDetailsResponse.fromMap((map['siteDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

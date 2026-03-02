@@ -57,12 +57,12 @@ class DataLakeGen2FilesystemArgs {
 
   factory DataLakeGen2FilesystemArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeGen2FilesystemArgs(
-      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(map['aces'], (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      aces: map['aces'] == null ? null : (pulumi.Input.decodeList<DataLakeGen2FilesystemAce>(map['aces']!, (value) => DataLakeGen2FilesystemAce.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope']! as String).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

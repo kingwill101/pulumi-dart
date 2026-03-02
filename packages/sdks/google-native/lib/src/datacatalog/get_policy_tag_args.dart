@@ -37,7 +37,7 @@ class GetPolicyTagArgs {
     return GetPolicyTagArgs(
       location: (map['location'] as String).input(),
       policyTagId: (map['policyTagId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       taxonomyId: (map['taxonomyId'] as String).input(),
     );
   }

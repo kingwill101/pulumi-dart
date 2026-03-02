@@ -53,13 +53,13 @@ class RestApiPutState {
 
   factory RestApiPutState.fromMap(Map<String, dynamic> map) {
     return RestApiPutState(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      failOnWarnings: map['failOnWarnings'] == null ? null : (map['failOnWarnings'] as bool).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApiId: map['restApiId'] == null ? null : (map['restApiId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (RestApiPutTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      body: map['body'] == null ? null : ((map['body'] as String).input()).input(),
+      failOnWarnings: map['failOnWarnings'] == null ? null : ((map['failOnWarnings'] as bool).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApiId: map['restApiId'] == null ? null : ((map['restApiId'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RestApiPutTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      triggers: map['triggers'] == null ? null : (((map['triggers'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

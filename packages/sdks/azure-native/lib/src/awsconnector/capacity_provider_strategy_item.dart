@@ -31,9 +31,9 @@ class CapacityProviderStrategyItem {
 
   factory CapacityProviderStrategyItem.fromMap(Map<String, dynamic> map) {
     return CapacityProviderStrategyItem(
-      base: map['base'] == null ? null : (map['base'] as int).input(),
-      capacityProvider: map['capacityProvider'] == null ? null : (map['capacityProvider'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      base: map['base'] == null ? null : (map['base']! as int).input(),
+      capacityProvider: map['capacityProvider'] == null ? null : (map['capacityProvider']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

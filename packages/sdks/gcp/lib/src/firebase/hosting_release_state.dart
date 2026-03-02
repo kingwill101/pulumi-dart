@@ -62,13 +62,13 @@ class HostingReleaseState {
 
   factory HostingReleaseState.fromMap(Map<String, dynamic> map) {
     return HostingReleaseState(
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      releaseId: map['releaseId'] == null ? null : (map['releaseId'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      releaseId: map['releaseId'] == null ? null : (map['releaseId']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

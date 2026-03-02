@@ -37,7 +37,7 @@ class UserSettingsWithLocationArgs {
     return UserSettingsWithLocationArgs(
       location: (map['location'] as String).input(),
       properties: (UserProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      userSettingsName: map['userSettingsName'] == null ? null : (map['userSettingsName'] as String).input(),
+      userSettingsName: map['userSettingsName'] == null ? null : (map['userSettingsName']! as String).input(),
     );
   }
 }

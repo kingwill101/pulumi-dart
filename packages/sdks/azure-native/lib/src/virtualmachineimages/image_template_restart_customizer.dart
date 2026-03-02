@@ -42,10 +42,10 @@ class ImageTemplateRestartCustomizer {
 
   factory ImageTemplateRestartCustomizer.fromMap(Map<String, dynamic> map) {
     return ImageTemplateRestartCustomizer(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      restartCheckCommand: map['restartCheckCommand'] == null ? null : (map['restartCheckCommand'] as String).input(),
-      restartCommand: map['restartCommand'] == null ? null : (map['restartCommand'] as String).input(),
-      restartTimeout: map['restartTimeout'] == null ? null : (map['restartTimeout'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      restartCheckCommand: map['restartCheckCommand'] == null ? null : (map['restartCheckCommand']! as String).input(),
+      restartCommand: map['restartCommand'] == null ? null : (map['restartCommand']! as String).input(),
+      restartTimeout: map['restartTimeout'] == null ? null : (map['restartTimeout']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

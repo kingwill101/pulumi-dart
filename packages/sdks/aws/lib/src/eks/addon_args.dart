@@ -90,16 +90,16 @@ class AddonArgs {
   factory AddonArgs.fromMap(Map<String, dynamic> map) {
     return AddonArgs(
       addonName: (map['addonName'] as String).input(),
-      addonVersion: map['addonVersion'] == null ? null : (map['addonVersion'] as String).input(),
+      addonVersion: map['addonVersion'] == null ? null : ((map['addonVersion'] as String).input()).input(),
       clusterName: (map['clusterName'] as String).input(),
-      configurationValues: map['configurationValues'] == null ? null : (map['configurationValues'] as String).input(),
-      podIdentityAssociations: map['podIdentityAssociations'] == null ? null : (pulumi.Input.decodeList<AddonPodIdentityAssociation>(map['podIdentityAssociations'], (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      preserve: map['preserve'] == null ? null : (map['preserve'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : (map['resolveConflictsOnCreate'] as String).input(),
-      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : (map['resolveConflictsOnUpdate'] as String).input(),
-      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : (map['serviceAccountRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      configurationValues: map['configurationValues'] == null ? null : ((map['configurationValues'] as String).input()).input(),
+      podIdentityAssociations: map['podIdentityAssociations'] == null ? null : ((pulumi.Input.decodeList<AddonPodIdentityAssociation>(map['podIdentityAssociations']!, (value) => AddonPodIdentityAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      preserve: map['preserve'] == null ? null : ((map['preserve'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resolveConflictsOnCreate: map['resolveConflictsOnCreate'] == null ? null : ((map['resolveConflictsOnCreate'] as String).input()).input(),
+      resolveConflictsOnUpdate: map['resolveConflictsOnUpdate'] == null ? null : ((map['resolveConflictsOnUpdate'] as String).input()).input(),
+      serviceAccountRoleArn: map['serviceAccountRoleArn'] == null ? null : ((map['serviceAccountRoleArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

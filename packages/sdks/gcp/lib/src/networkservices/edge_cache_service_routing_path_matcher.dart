@@ -32,7 +32,7 @@ class EdgeCacheServiceRoutingPathMatcher {
 
   factory EdgeCacheServiceRoutingPathMatcher.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcher(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
       routeRules: (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRule>(map['routeRules'], (value) => EdgeCacheServiceRoutingPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

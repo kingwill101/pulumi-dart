@@ -43,11 +43,11 @@ class OSPolicyResourceExecResourceExec {
 
   factory OSPolicyResourceExecResourceExec.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceExecResourceExec(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      file: map['file'] == null ? null : (OSPolicyResourceFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      file: map['file'] == null ? null : (OSPolicyResourceFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       interpreter: (OSPolicyResourceExecResourceExecInterpreter.fromValue(map['interpreter'] as String)).input(),
-      outputFilePath: map['outputFilePath'] == null ? null : (map['outputFilePath'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
+      outputFilePath: map['outputFilePath'] == null ? null : (map['outputFilePath']! as String).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
     );
   }
 }

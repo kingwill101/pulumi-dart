@@ -38,8 +38,8 @@ class VngClientConnectionConfiguration {
 
   factory VngClientConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return VngClientConnectionConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       virtualNetworkGatewayPolicyGroups: (pulumi.Input.decodeList<SubResource>(map['virtualNetworkGatewayPolicyGroups'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vpnClientAddressPool: (AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
     );

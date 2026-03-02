@@ -25,8 +25,8 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
 
   factory ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption.fromMap(Map<String, dynamic> map) {
     return ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption(
-      autoUpgradeStartTime: map['autoUpgradeStartTime'] == null ? null : (map['autoUpgradeStartTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      autoUpgradeStartTime: map['autoUpgradeStartTime'] == null ? null : (map['autoUpgradeStartTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

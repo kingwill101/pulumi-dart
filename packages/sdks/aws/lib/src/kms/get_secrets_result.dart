@@ -38,7 +38,7 @@ class GetSecretsResult {
       id: map['id'] as String,
       plaintext: (map['plaintext'] as Map).cast<String, String>(),
       region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets']!, (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

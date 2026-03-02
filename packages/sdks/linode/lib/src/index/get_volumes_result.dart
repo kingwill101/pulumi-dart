@@ -39,10 +39,10 @@ class GetVolumesResult {
 
   factory GetVolumesResult.fromMap(Map<String, dynamic> map) {
     return GetVolumesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVolumesFilter>(map['filters'], (value) => GetVolumesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVolumesFilter>(map['filters']!, (value) => GetVolumesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
       volumes: pulumi.Input.decodeList<GetVolumesVolume>(map['volumes'], (value) => GetVolumesVolume.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

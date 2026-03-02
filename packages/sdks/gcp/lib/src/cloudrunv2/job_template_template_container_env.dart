@@ -33,8 +33,8 @@ class JobTemplateTemplateContainerEnv {
   factory JobTemplateTemplateContainerEnv.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerEnv(
       name: (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueSource: map['valueSource'] == null ? null : (JobTemplateTemplateContainerEnvValueSource.fromMap((map['valueSource'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueSource: map['valueSource'] == null ? null : (JobTemplateTemplateContainerEnvValueSource.fromMap((map['valueSource']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

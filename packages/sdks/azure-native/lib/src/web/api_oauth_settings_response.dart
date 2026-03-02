@@ -52,13 +52,13 @@ class ApiOAuthSettingsResponse {
 
   factory ApiOAuthSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ApiOAuthSettingsResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      customParameters: map['customParameters'] == null ? null : (pulumi.Input.decodeMapValues<ApiOAuthSettingsParameterResponse>(map['customParameters'], (value) => ApiOAuthSettingsParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']).input(),
-      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl'] as String).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      customParameters: map['customParameters'] == null ? null : (pulumi.Input.decodeMapValues<ApiOAuthSettingsParameterResponse>(map['customParameters']!, (value) => ApiOAuthSettingsParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider']! as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']!).input(),
+      redirectUrl: map['redirectUrl'] == null ? null : (map['redirectUrl']! as String).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -81,13 +81,13 @@ class BitbucketServerConfigArgs {
     return BitbucketServerConfigArgs(
       apiKey: (map['apiKey'] as String).input(),
       configId: (map['configId'] as String).input(),
-      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories'], (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectedRepositories: map['connectedRepositories'] == null ? null : (pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(map['connectedRepositories']!, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
       hostUri: (map['hostUri'] as String).input(),
       location: (map['location'] as String).input(),
-      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      peeredNetwork: map['peeredNetwork'] == null ? null : (map['peeredNetwork']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secrets: (BitbucketServerConfigSecrets.fromMap((map['secrets'] as Map).cast<String, dynamic>())).input(),
-      sslCa: map['sslCa'] == null ? null : (map['sslCa'] as String).input(),
+      sslCa: map['sslCa'] == null ? null : (map['sslCa']! as String).input(),
       username: (map['username'] as String).input(),
     );
   }

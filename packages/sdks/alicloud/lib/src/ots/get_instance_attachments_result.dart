@@ -53,9 +53,9 @@ class GetInstanceAttachmentsResult {
       attachments: pulumi.Input.decodeList<GetInstanceAttachmentsAttachment>(map['attachments'], (value) => GetInstanceAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceName: map['instanceName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       vpcIds: (map['vpcIds'] as List).cast<String>(),
     );
   }

@@ -25,8 +25,8 @@ class MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
 
   factory MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceScalingConfigAutoscalingConfigLimitConfig(
-      maxScalingFactor: map['maxScalingFactor'] == null ? null : (map['maxScalingFactor'] as double).input(),
-      minScalingFactor: map['minScalingFactor'] == null ? null : (map['minScalingFactor'] as double).input(),
+      maxScalingFactor: map['maxScalingFactor'] == null ? null : (map['maxScalingFactor']! as double).input(),
+      minScalingFactor: map['minScalingFactor'] == null ? null : (map['minScalingFactor']! as double).input(),
     );
   }
 }

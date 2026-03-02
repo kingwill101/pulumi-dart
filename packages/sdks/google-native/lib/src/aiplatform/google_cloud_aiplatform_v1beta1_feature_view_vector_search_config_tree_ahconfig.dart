@@ -20,7 +20,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig {
 
   factory GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig(
-      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount'] as String).input(),
+      leafNodeEmbeddingCount: map['leafNodeEmbeddingCount'] == null ? null : (map['leafNodeEmbeddingCount']! as String).input(),
     );
   }
 }

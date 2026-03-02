@@ -57,9 +57,9 @@ class ExecutionArgs {
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
       contextName: (map['contextName'] as String).input(),
-      executionName: map['executionName'] == null ? null : (map['executionName'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : (ExecutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      executionName: map['executionName'] == null ? null : (map['executionName']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ExecutionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       versionName: (map['versionName'] as String).input(),
       workflowName: (map['workflowName'] as String).input(),

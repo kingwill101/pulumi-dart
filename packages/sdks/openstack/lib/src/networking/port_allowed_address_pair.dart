@@ -26,7 +26,7 @@ class PortAllowedAddressPair {
   factory PortAllowedAddressPair.fromMap(Map<String, dynamic> map) {
     return PortAllowedAddressPair(
       ipAddress: (map['ipAddress'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
     );
   }
 }

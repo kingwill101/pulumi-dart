@@ -99,20 +99,20 @@ class EnvironmentConfigComposerV1beta1 {
 
   factory EnvironmentConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigComposerV1beta1(
-      databaseConfig: map['databaseConfig'] == null ? null : (DatabaseConfigComposerV1beta1.fromMap((map['databaseConfig'] as Map).cast<String, dynamic>())).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigComposerV1beta1.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      environmentSize: map['environmentSize'] == null ? null : (EnvironmentConfigEnvironmentSizeComposerV1beta1.fromValue(map['environmentSize'] as String)).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindowComposerV1beta1.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      masterAuthorizedNetworksConfig: map['masterAuthorizedNetworksConfig'] == null ? null : (MasterAuthorizedNetworksConfigComposerV1beta1.fromMap((map['masterAuthorizedNetworksConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (NodeConfigComposerV1beta1.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      privateEnvironmentConfig: map['privateEnvironmentConfig'] == null ? null : (PrivateEnvironmentConfigComposerV1beta1.fromMap((map['privateEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
-      recoveryConfig: map['recoveryConfig'] == null ? null : (RecoveryConfigComposerV1beta1.fromMap((map['recoveryConfig'] as Map).cast<String, dynamic>())).input(),
-      resilienceMode: map['resilienceMode'] == null ? null : (EnvironmentConfigResilienceModeComposerV1beta1.fromValue(map['resilienceMode'] as String)).input(),
-      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfigComposerV1beta1.fromMap((map['softwareConfig'] as Map).cast<String, dynamic>())).input(),
-      webServerConfig: map['webServerConfig'] == null ? null : (WebServerConfigComposerV1beta1.fromMap((map['webServerConfig'] as Map).cast<String, dynamic>())).input(),
-      webServerNetworkAccessControl: map['webServerNetworkAccessControl'] == null ? null : (WebServerNetworkAccessControlComposerV1beta1.fromMap((map['webServerNetworkAccessControl'] as Map).cast<String, dynamic>())).input(),
-      workloadsConfig: map['workloadsConfig'] == null ? null : (WorkloadsConfigComposerV1beta1.fromMap((map['workloadsConfig'] as Map).cast<String, dynamic>())).input(),
+      databaseConfig: map['databaseConfig'] == null ? null : (DatabaseConfigComposerV1beta1.fromMap((map['databaseConfig']! as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfigComposerV1beta1.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      environmentSize: map['environmentSize'] == null ? null : (EnvironmentConfigEnvironmentSizeComposerV1beta1.fromValue(map['environmentSize']! as String)).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (MaintenanceWindowComposerV1beta1.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      masterAuthorizedNetworksConfig: map['masterAuthorizedNetworksConfig'] == null ? null : (MasterAuthorizedNetworksConfigComposerV1beta1.fromMap((map['masterAuthorizedNetworksConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (NodeConfigComposerV1beta1.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      privateEnvironmentConfig: map['privateEnvironmentConfig'] == null ? null : (PrivateEnvironmentConfigComposerV1beta1.fromMap((map['privateEnvironmentConfig']! as Map).cast<String, dynamic>())).input(),
+      recoveryConfig: map['recoveryConfig'] == null ? null : (RecoveryConfigComposerV1beta1.fromMap((map['recoveryConfig']! as Map).cast<String, dynamic>())).input(),
+      resilienceMode: map['resilienceMode'] == null ? null : (EnvironmentConfigResilienceModeComposerV1beta1.fromValue(map['resilienceMode']! as String)).input(),
+      softwareConfig: map['softwareConfig'] == null ? null : (SoftwareConfigComposerV1beta1.fromMap((map['softwareConfig']! as Map).cast<String, dynamic>())).input(),
+      webServerConfig: map['webServerConfig'] == null ? null : (WebServerConfigComposerV1beta1.fromMap((map['webServerConfig']! as Map).cast<String, dynamic>())).input(),
+      webServerNetworkAccessControl: map['webServerNetworkAccessControl'] == null ? null : (WebServerNetworkAccessControlComposerV1beta1.fromMap((map['webServerNetworkAccessControl']! as Map).cast<String, dynamic>())).input(),
+      workloadsConfig: map['workloadsConfig'] == null ? null : (WorkloadsConfigComposerV1beta1.fromMap((map['workloadsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

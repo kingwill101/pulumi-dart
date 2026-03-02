@@ -34,9 +34,9 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
 
   factory GoogleCloudDialogflowCxV3AdvancedSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3AdvancedSettings(
-      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (GoogleCloudDialogflowCxV3GcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>())).input(),
-      dtmfSettings: map['dtmfSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>())).input(),
-      loggingSettings: map['loggingSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>())).input(),
+      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : (GoogleCloudDialogflowCxV3GcsDestination.fromMap((map['audioExportGcsDestination']! as Map).cast<String, dynamic>())).input(),
+      dtmfSettings: map['dtmfSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings']! as Map).cast<String, dynamic>())).input(),
+      loggingSettings: map['loggingSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromMap((map['loggingSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

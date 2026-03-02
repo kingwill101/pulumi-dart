@@ -52,7 +52,7 @@ class ApplicationInsightsTopologyDiscoveryRuleProperties {
       authenticationSetting: (map['authenticationSetting'] as String).input(),
       discoverRelationships: (map['discoverRelationships'] as String).input(),
       discoveryRuleKind: (map['discoveryRuleKind'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

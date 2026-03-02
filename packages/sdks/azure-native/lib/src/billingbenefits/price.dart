@@ -24,8 +24,8 @@ class Price {
 
   factory Price.fromMap(Map<String, dynamic> map) {
     return Price(
-      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
-      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as double).input(),
+      currencyCode: map['currencyCode'] == null ? null : (map['currencyCode']! as String).input(),
     );
   }
 }

@@ -73,15 +73,15 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      automatedBackupPolicy: map['automatedBackupPolicy'] == null ? null : (TableAutomatedBackupPolicy.fromMap((map['automatedBackupPolicy'] as Map).cast<String, dynamic>())).input(),
-      changeStreamRetention: map['changeStreamRetention'] == null ? null : (map['changeStreamRetention'] as String).input(),
-      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<TableColumnFamily>(map['columnFamilies'], (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rowKeySchema: map['rowKeySchema'] == null ? null : (map['rowKeySchema'] as String).input(),
-      splitKeys: map['splitKeys'] == null ? null : ((map['splitKeys'] as List).cast<String>()).input(),
+      automatedBackupPolicy: map['automatedBackupPolicy'] == null ? null : (TableAutomatedBackupPolicy.fromMap((map['automatedBackupPolicy']! as Map).cast<String, dynamic>())).input(),
+      changeStreamRetention: map['changeStreamRetention'] == null ? null : (map['changeStreamRetention']! as String).input(),
+      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<TableColumnFamily>(map['columnFamilies']!, (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rowKeySchema: map['rowKeySchema'] == null ? null : (map['rowKeySchema']! as String).input(),
+      splitKeys: map['splitKeys'] == null ? null : ((map['splitKeys']! as List).cast<String>()).input(),
     );
   }
 }

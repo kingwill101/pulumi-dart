@@ -29,7 +29,7 @@ class GetResourceCollectionArgs {
 
   factory GetResourceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceCollectionArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

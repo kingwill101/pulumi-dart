@@ -20,7 +20,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse {
 
   factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse(
-      texts: map['texts'] == null ? null : ((map['texts'] as List).cast<String>()).input(),
+      texts: map['texts'] == null ? null : ((map['texts']! as List).cast<String>()).input(),
     );
   }
 }

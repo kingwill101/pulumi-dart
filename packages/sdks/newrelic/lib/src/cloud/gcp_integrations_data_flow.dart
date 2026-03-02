@@ -20,7 +20,7 @@ class GcpIntegrationsDataFlow {
 
   factory GcpIntegrationsDataFlow.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsDataFlow(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

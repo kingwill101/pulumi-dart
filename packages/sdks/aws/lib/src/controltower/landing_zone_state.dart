@@ -57,14 +57,14 @@ class LandingZoneState {
 
   factory LandingZoneState.fromMap(Map<String, dynamic> map) {
     return LandingZoneState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      driftStatuses: map['driftStatuses'] == null ? null : (pulumi.Input.decodeList<LandingZoneDriftStatus>(map['driftStatuses'], (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latestAvailableVersion: map['latestAvailableVersion'] == null ? null : (map['latestAvailableVersion'] as String).input(),
-      manifestJson: map['manifestJson'] == null ? null : (map['manifestJson'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      driftStatuses: map['driftStatuses'] == null ? null : ((pulumi.Input.decodeList<LandingZoneDriftStatus>(map['driftStatuses']!, (value) => LandingZoneDriftStatus.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      latestAvailableVersion: map['latestAvailableVersion'] == null ? null : ((map['latestAvailableVersion'] as String).input()).input(),
+      manifestJson: map['manifestJson'] == null ? null : ((map['manifestJson'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

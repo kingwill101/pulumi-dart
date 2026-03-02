@@ -31,9 +31,9 @@ class Linear {
 
   factory Linear.fromMap(Map<String, dynamic> map) {
     return Linear(
-      numFiniteBuckets: map['numFiniteBuckets'] == null ? null : (map['numFiniteBuckets'] as int).input(),
-      offset: map['offset'] == null ? null : (map['offset'] as double).input(),
-      width: map['width'] == null ? null : (map['width'] as double).input(),
+      numFiniteBuckets: map['numFiniteBuckets'] == null ? null : (map['numFiniteBuckets']! as int).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as double).input(),
+      width: map['width'] == null ? null : (map['width']! as double).input(),
     );
   }
 }

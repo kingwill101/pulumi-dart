@@ -77,7 +77,7 @@ class GetVirtualGatewayResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetVirtualGatewaySpec>(map['specs'], (value) => GetVirtualGatewaySpec.fromMap((value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetVirtualGatewaySpec>(map['specs']!, (value) => GetVirtualGatewaySpec.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }

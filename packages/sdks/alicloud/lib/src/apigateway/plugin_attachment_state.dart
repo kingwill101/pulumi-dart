@@ -36,10 +36,10 @@ class PluginAttachmentState {
 
   factory PluginAttachmentState.fromMap(Map<String, dynamic> map) {
     return PluginAttachmentState(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      pluginId: map['pluginId'] == null ? null : (map['pluginId'] as String).input(),
-      stageName: map['stageName'] == null ? null : (map['stageName'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      pluginId: map['pluginId'] == null ? null : (map['pluginId']! as String).input(),
+      stageName: map['stageName'] == null ? null : (map['stageName']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ScheduledQueryErrorReportConfiguration {
 
   factory ScheduledQueryErrorReportConfiguration.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryErrorReportConfiguration(
-      s3Configuration: (ScheduledQueryErrorReportConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      s3Configuration: (ScheduledQueryErrorReportConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

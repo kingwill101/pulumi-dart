@@ -21,7 +21,7 @@ class ContainerProbeSettingsResponse {
 
   factory ContainerProbeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ContainerProbeSettingsResponse(
-      disableProbe: map['disableProbe'] == null ? null : (map['disableProbe'] as bool).input(),
+      disableProbe: map['disableProbe'] == null ? null : (map['disableProbe']! as bool).input(),
     );
   }
 }

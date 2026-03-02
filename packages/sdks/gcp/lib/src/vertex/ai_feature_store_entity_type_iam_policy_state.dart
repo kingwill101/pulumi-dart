@@ -37,10 +37,10 @@ class AiFeatureStoreEntityTypeIamPolicyState {
 
   factory AiFeatureStoreEntityTypeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreEntityTypeIamPolicyState(
-      entitytype: map['entitytype'] == null ? null : (map['entitytype'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      featurestore: map['featurestore'] == null ? null : (map['featurestore'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      entitytype: map['entitytype'] == null ? null : (map['entitytype']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      featurestore: map['featurestore'] == null ? null : (map['featurestore']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

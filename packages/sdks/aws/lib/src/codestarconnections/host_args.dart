@@ -45,11 +45,11 @@ class HostArgs {
 
   factory HostArgs.fromMap(Map<String, dynamic> map) {
     return HostArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       providerEndpoint: (map['providerEndpoint'] as String).input(),
       providerType: (map['providerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcConfiguration: map['vpcConfiguration'] == null ? null : (HostVpcConfiguration.fromMap((map['vpcConfiguration'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcConfiguration: map['vpcConfiguration'] == null ? null : ((HostVpcConfiguration.fromMap((map['vpcConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

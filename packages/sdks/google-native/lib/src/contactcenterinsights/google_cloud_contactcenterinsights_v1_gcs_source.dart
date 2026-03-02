@@ -26,8 +26,8 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
 
   factory GoogleCloudContactcenterinsightsV1GcsSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1GcsSource(
-      audioUri: map['audioUri'] == null ? null : (map['audioUri'] as String).input(),
-      transcriptUri: map['transcriptUri'] == null ? null : (map['transcriptUri'] as String).input(),
+      audioUri: map['audioUri'] == null ? null : (map['audioUri']! as String).input(),
+      transcriptUri: map['transcriptUri'] == null ? null : (map['transcriptUri']! as String).input(),
     );
   }
 }

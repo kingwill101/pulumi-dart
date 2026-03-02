@@ -32,7 +32,7 @@ class GetRegionAutoscalerComputeBetaArgs {
   factory GetRegionAutoscalerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionAutoscalerComputeBetaArgs(
       autoscaler: (map['autoscaler'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

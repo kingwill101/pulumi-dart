@@ -45,10 +45,10 @@ class ManagedKubernetesMaintenanceWindow {
 
   factory ManagedKubernetesMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ManagedKubernetesMaintenanceWindow(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      maintenanceTime: map['maintenanceTime'] == null ? null : (map['maintenanceTime'] as String).input(),
-      weeklyPeriod: map['weeklyPeriod'] == null ? null : (map['weeklyPeriod'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      maintenanceTime: map['maintenanceTime'] == null ? null : (map['maintenanceTime']! as String).input(),
+      weeklyPeriod: map['weeklyPeriod'] == null ? null : (map['weeklyPeriod']! as String).input(),
     );
   }
 }

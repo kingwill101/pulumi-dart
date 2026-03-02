@@ -29,8 +29,8 @@ class GetUserAlternateIdentifier {
 
   factory GetUserAlternateIdentifier.fromMap(Map<String, dynamic> map) {
     return GetUserAlternateIdentifier(
-      externalId: map['externalId'] == null ? null : (GetUserAlternateIdentifierExternalId.fromMap((map['externalId'] as Map).cast<String, dynamic>())).input(),
-      uniqueAttribute: map['uniqueAttribute'] == null ? null : (GetUserAlternateIdentifierUniqueAttribute.fromMap((map['uniqueAttribute'] as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : ((GetUserAlternateIdentifierExternalId.fromMap((map['externalId']! as Map).cast<String, dynamic>())).input()).input(),
+      uniqueAttribute: map['uniqueAttribute'] == null ? null : ((GetUserAlternateIdentifierUniqueAttribute.fromMap((map['uniqueAttribute']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

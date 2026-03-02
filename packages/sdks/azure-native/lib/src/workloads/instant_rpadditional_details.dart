@@ -26,8 +26,8 @@ class InstantRPAdditionalDetails {
 
   factory InstantRPAdditionalDetails.fromMap(Map<String, dynamic> map) {
     return InstantRPAdditionalDetails(
-      azureBackupRGNamePrefix: map['azureBackupRGNamePrefix'] == null ? null : (map['azureBackupRGNamePrefix'] as String).input(),
-      azureBackupRGNameSuffix: map['azureBackupRGNameSuffix'] == null ? null : (map['azureBackupRGNameSuffix'] as String).input(),
+      azureBackupRGNamePrefix: map['azureBackupRGNamePrefix'] == null ? null : (map['azureBackupRGNamePrefix']! as String).input(),
+      azureBackupRGNameSuffix: map['azureBackupRGNameSuffix'] == null ? null : (map['azureBackupRGNameSuffix']! as String).input(),
     );
   }
 }

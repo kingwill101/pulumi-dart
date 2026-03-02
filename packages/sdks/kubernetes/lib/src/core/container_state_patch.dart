@@ -34,9 +34,9 @@ class ContainerStatePatch {
 
   factory ContainerStatePatch.fromMap(Map<String, dynamic> map) {
     return ContainerStatePatch(
-      running: map['running'] == null ? null : (ContainerStateRunningPatch.fromMap((map['running'] as Map).cast<String, dynamic>())).input(),
-      terminated: map['terminated'] == null ? null : (ContainerStateTerminatedPatch.fromMap((map['terminated'] as Map).cast<String, dynamic>())).input(),
-      waiting: map['waiting'] == null ? null : (ContainerStateWaitingPatch.fromMap((map['waiting'] as Map).cast<String, dynamic>())).input(),
+      running: map['running'] == null ? null : (ContainerStateRunningPatch.fromMap((map['running']! as Map).cast<String, dynamic>())).input(),
+      terminated: map['terminated'] == null ? null : (ContainerStateTerminatedPatch.fromMap((map['terminated']! as Map).cast<String, dynamic>())).input(),
+      waiting: map['waiting'] == null ? null : (ContainerStateWaitingPatch.fromMap((map['waiting']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -93,21 +93,21 @@ class VpcIpamState {
 
   factory VpcIpamState.fromMap(Map<String, dynamic> map) {
     return VpcIpamState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cascade: map['cascade'] == null ? null : (map['cascade'] as bool).input(),
-      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] == null ? null : (map['defaultResourceDiscoveryAssociationId'] as String).input(),
-      defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] == null ? null : (map['defaultResourceDiscoveryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enablePrivateGua: map['enablePrivateGua'] == null ? null : (map['enablePrivateGua'] as bool).input(),
-      meteredAccount: map['meteredAccount'] == null ? null : (map['meteredAccount'] as String).input(),
-      operatingRegions: map['operatingRegions'] == null ? null : (pulumi.Input.decodeList<VpcIpamOperatingRegion>(map['operatingRegions'], (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : (map['privateDefaultScopeId'] as String).input(),
-      publicDefaultScopeId: map['publicDefaultScopeId'] == null ? null : (map['publicDefaultScopeId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scopeCount: map['scopeCount'] == null ? null : (map['scopeCount'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cascade: map['cascade'] == null ? null : ((map['cascade'] as bool).input()).input(),
+      defaultResourceDiscoveryAssociationId: map['defaultResourceDiscoveryAssociationId'] == null ? null : ((map['defaultResourceDiscoveryAssociationId'] as String).input()).input(),
+      defaultResourceDiscoveryId: map['defaultResourceDiscoveryId'] == null ? null : ((map['defaultResourceDiscoveryId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enablePrivateGua: map['enablePrivateGua'] == null ? null : ((map['enablePrivateGua'] as bool).input()).input(),
+      meteredAccount: map['meteredAccount'] == null ? null : ((map['meteredAccount'] as String).input()).input(),
+      operatingRegions: map['operatingRegions'] == null ? null : ((pulumi.Input.decodeList<VpcIpamOperatingRegion>(map['operatingRegions']!, (value) => VpcIpamOperatingRegion.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      privateDefaultScopeId: map['privateDefaultScopeId'] == null ? null : ((map['privateDefaultScopeId'] as String).input()).input(),
+      publicDefaultScopeId: map['publicDefaultScopeId'] == null ? null : ((map['publicDefaultScopeId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scopeCount: map['scopeCount'] == null ? null : ((map['scopeCount'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      tier: map['tier'] == null ? null : ((map['tier'] as String).input()).input(),
     );
   }
 }

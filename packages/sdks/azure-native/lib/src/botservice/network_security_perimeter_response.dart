@@ -32,8 +32,8 @@ class NetworkSecurityPerimeterResponse {
   factory NetworkSecurityPerimeterResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityPerimeterResponse(
       id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      perimeterGuid: map['perimeterGuid'] == null ? null : (map['perimeterGuid'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      perimeterGuid: map['perimeterGuid'] == null ? null : (map['perimeterGuid']! as String).input(),
     );
   }
 }

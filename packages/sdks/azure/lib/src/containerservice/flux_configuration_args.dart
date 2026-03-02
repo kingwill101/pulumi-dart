@@ -68,15 +68,15 @@ class FluxConfigurationArgs {
 
   factory FluxConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationArgs(
-      blobStorage: map['blobStorage'] == null ? null : (FluxConfigurationBlobStorage.fromMap((map['blobStorage'] as Map).cast<String, dynamic>())).input(),
-      bucket: map['bucket'] == null ? null : (FluxConfigurationBucket.fromMap((map['bucket'] as Map).cast<String, dynamic>())).input(),
+      blobStorage: map['blobStorage'] == null ? null : (FluxConfigurationBlobStorage.fromMap((map['blobStorage']! as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : (FluxConfigurationBucket.fromMap((map['bucket']! as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
-      continuousReconciliationEnabled: map['continuousReconciliationEnabled'] == null ? null : (map['continuousReconciliationEnabled'] as bool).input(),
-      gitRepository: map['gitRepository'] == null ? null : (FluxConfigurationGitRepository.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
+      continuousReconciliationEnabled: map['continuousReconciliationEnabled'] == null ? null : (map['continuousReconciliationEnabled']! as bool).input(),
+      gitRepository: map['gitRepository'] == null ? null : (FluxConfigurationGitRepository.fromMap((map['gitRepository']! as Map).cast<String, dynamic>())).input(),
       kustomizations: (pulumi.Input.decodeList<FluxConfigurationKustomization>(map['kustomizations'], (value) => FluxConfigurationKustomization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespace: (map['namespace'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

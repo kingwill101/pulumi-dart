@@ -50,9 +50,9 @@ class TransportLayerApplicationArgs {
 
   factory TransportLayerApplicationArgs.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationArgs(
-      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : (map['crossBorderOptimization'] as String).input(),
-      ipAccessRule: map['ipAccessRule'] == null ? null : (map['ipAccessRule'] as String).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
+      crossBorderOptimization: map['crossBorderOptimization'] == null ? null : (map['crossBorderOptimization']! as String).input(),
+      ipAccessRule: map['ipAccessRule'] == null ? null : (map['ipAccessRule']! as String).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
       recordName: (map['recordName'] as String).input(),
       rules: (pulumi.Input.decodeList<TransportLayerApplicationRule>(map['rules'], (value) => TransportLayerApplicationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       siteId: (map['siteId'] as String).input(),

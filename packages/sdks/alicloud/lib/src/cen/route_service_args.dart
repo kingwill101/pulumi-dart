@@ -53,7 +53,7 @@ class RouteServiceArgs {
     return RouteServiceArgs(
       accessRegionId: (map['accessRegionId'] as String).input(),
       cenId: (map['cenId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       host: (map['host'] as String).input(),
       hostRegionId: (map['hostRegionId'] as String).input(),
       hostVpcId: (map['hostVpcId'] as String).input(),

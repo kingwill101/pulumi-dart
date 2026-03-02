@@ -73,16 +73,16 @@ class PartnerNamespaceArgs {
 
   factory PartnerNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return PartnerNamespaceArgs(
-      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth'] as bool).input(),
-      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules'], (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed'] as String).input(),
-      partnerNamespaceName: map['partnerNamespaceName'] == null ? null : (map['partnerNamespaceName'] as String).input(),
-      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : (map['partnerRegistrationFullyQualifiedId'] as String).input(),
-      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : (map['partnerTopicRoutingMode'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      disableLocalAuth: map['disableLocalAuth'] == null ? null : (map['disableLocalAuth']! as bool).input(),
+      inboundIpRules: map['inboundIpRules'] == null ? null : (pulumi.Input.decodeList<InboundIpRule>(map['inboundIpRules']!, (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumTlsVersionAllowed: map['minimumTlsVersionAllowed'] == null ? null : (map['minimumTlsVersionAllowed']! as String).input(),
+      partnerNamespaceName: map['partnerNamespaceName'] == null ? null : (map['partnerNamespaceName']! as String).input(),
+      partnerRegistrationFullyQualifiedId: map['partnerRegistrationFullyQualifiedId'] == null ? null : (map['partnerRegistrationFullyQualifiedId']! as String).input(),
+      partnerTopicRoutingMode: map['partnerTopicRoutingMode'] == null ? null : (map['partnerTopicRoutingMode']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

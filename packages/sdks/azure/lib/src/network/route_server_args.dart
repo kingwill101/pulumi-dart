@@ -66,15 +66,15 @@ class RouteServerArgs {
 
   factory RouteServerArgs.fromMap(Map<String, dynamic> map) {
     return RouteServerArgs(
-      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled'] as bool).input(),
-      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      branchToBranchTrafficEnabled: map['branchToBranchTrafficEnabled'] == null ? null : (map['branchToBranchTrafficEnabled']! as bool).input(),
+      hubRoutingPreference: map['hubRoutingPreference'] == null ? null : (map['hubRoutingPreference']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       publicIpAddressId: (map['publicIpAddressId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (map['sku'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

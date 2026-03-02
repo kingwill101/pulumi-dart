@@ -59,14 +59,14 @@ class HttpResponseHeaderModificationRuleState {
 
   factory HttpResponseHeaderModificationRuleState.fromMap(Map<String, dynamic> map) {
     return HttpResponseHeaderModificationRuleState(
-      configId: map['configId'] == null ? null : (map['configId'] as int).input(),
-      responseHeaderModifications: map['responseHeaderModifications'] == null ? null : (pulumi.Input.decodeList<HttpResponseHeaderModificationRuleResponseHeaderModification>(map['responseHeaderModifications'], (value) => HttpResponseHeaderModificationRuleResponseHeaderModification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
+      configId: map['configId'] == null ? null : (map['configId']! as int).input(),
+      responseHeaderModifications: map['responseHeaderModifications'] == null ? null : (pulumi.Input.decodeList<HttpResponseHeaderModificationRuleResponseHeaderModification>(map['responseHeaderModifications']!, (value) => HttpResponseHeaderModificationRuleResponseHeaderModification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
     );
   }
 }

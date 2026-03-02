@@ -26,8 +26,8 @@ class CloudPhoneInstanceState {
 
   factory CloudPhoneInstanceState.fromMap(Map<String, dynamic> map) {
     return CloudPhoneInstanceState(
-      androidInstanceGroupId: map['androidInstanceGroupId'] == null ? null : (map['androidInstanceGroupId'] as String).input(),
-      androidInstanceName: map['androidInstanceName'] == null ? null : (map['androidInstanceName'] as String).input(),
+      androidInstanceGroupId: map['androidInstanceGroupId'] == null ? null : (map['androidInstanceGroupId']! as String).input(),
+      androidInstanceName: map['androidInstanceName'] == null ? null : (map['androidInstanceName']! as String).input(),
     );
   }
 }

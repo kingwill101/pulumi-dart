@@ -27,7 +27,7 @@ class PrivateEndpointResourceResponse {
   factory PrivateEndpointResourceResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointResourceResponse(
       id: (map['id'] as String).input(),
-      subnetArmId: map['subnetArmId'] == null ? null : (map['subnetArmId'] as String).input(),
+      subnetArmId: map['subnetArmId'] == null ? null : (map['subnetArmId']! as String).input(),
     );
   }
 }

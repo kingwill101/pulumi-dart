@@ -25,8 +25,8 @@ class ServiceTaskSpecContainerSpecPrivilegesCredentialSpec {
 
   factory ServiceTaskSpecContainerSpecPrivilegesCredentialSpec.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecPrivilegesCredentialSpec(
-      file: map['file'] == null ? null : (map['file'] as String).input(),
-      registry: map['registry'] == null ? null : (map['registry'] as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
+      registry: map['registry'] == null ? null : (map['registry']! as String).input(),
     );
   }
 }

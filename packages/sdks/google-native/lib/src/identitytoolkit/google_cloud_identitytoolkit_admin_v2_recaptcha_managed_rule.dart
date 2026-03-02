@@ -27,8 +27,8 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule {
 
   factory GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule(
-      action: map['action'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction.fromValue(map['action'] as String)).input(),
-      endScore: map['endScore'] == null ? null : (map['endScore'] as double).input(),
+      action: map['action'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction.fromValue(map['action']! as String)).input(),
+      endScore: map['endScore'] == null ? null : (map['endScore']! as double).input(),
     );
   }
 }

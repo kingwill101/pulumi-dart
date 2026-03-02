@@ -109,21 +109,21 @@ class GetPolicyResult {
   factory GetPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      customRules: map['customRules'] == null ? null : CustomRuleListResponse.fromMap((map['customRules'] as Map).cast<String, dynamic>()),
+      customRules: map['customRules'] == null ? null : CustomRuleListResponse.fromMap((map['customRules']! as Map).cast<String, dynamic>()),
       endpointLinks: pulumi.Input.decodeList<CdnEndpointResponse>(map['endpointLinks'], (value) => CdnEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      etag: map['etag'] == null ? null : map['etag'] as String,
-      extendedProperties: map['extendedProperties'] == null ? null : (map['extendedProperties'] as Map).cast<String, String>(),
+      etag: map['etag'] == null ? null : map['etag']! as String,
+      extendedProperties: map['extendedProperties'] == null ? null : (map['extendedProperties']! as Map).cast<String, String>(),
       id: map['id'] as String,
       location: map['location'] as String,
-      managedRules: map['managedRules'] == null ? null : ManagedRuleSetListResponse.fromMap((map['managedRules'] as Map).cast<String, dynamic>()),
+      managedRules: map['managedRules'] == null ? null : ManagedRuleSetListResponse.fromMap((map['managedRules']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      policySettings: map['policySettings'] == null ? null : PolicySettingsResponse.fromMap((map['policySettings'] as Map).cast<String, dynamic>()),
+      policySettings: map['policySettings'] == null ? null : PolicySettingsResponse.fromMap((map['policySettings']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
-      rateLimitRules: map['rateLimitRules'] == null ? null : RateLimitRuleListResponse.fromMap((map['rateLimitRules'] as Map).cast<String, dynamic>()),
+      rateLimitRules: map['rateLimitRules'] == null ? null : RateLimitRuleListResponse.fromMap((map['rateLimitRules']! as Map).cast<String, dynamic>()),
       resourceState: map['resourceState'] as String,
       sku: SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

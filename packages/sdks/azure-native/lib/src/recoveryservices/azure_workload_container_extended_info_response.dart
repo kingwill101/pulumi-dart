@@ -33,9 +33,9 @@ class AzureWorkloadContainerExtendedInfoResponse {
 
   factory AzureWorkloadContainerExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return AzureWorkloadContainerExtendedInfoResponse(
-      hostServerName: map['hostServerName'] == null ? null : (map['hostServerName'] as String).input(),
-      inquiryInfo: map['inquiryInfo'] == null ? null : (InquiryInfoResponse.fromMap((map['inquiryInfo'] as Map).cast<String, dynamic>())).input(),
-      nodesList: map['nodesList'] == null ? null : (pulumi.Input.decodeList<DistributedNodesInfoResponse>(map['nodesList'], (value) => DistributedNodesInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostServerName: map['hostServerName'] == null ? null : (map['hostServerName']! as String).input(),
+      inquiryInfo: map['inquiryInfo'] == null ? null : (InquiryInfoResponse.fromMap((map['inquiryInfo']! as Map).cast<String, dynamic>())).input(),
+      nodesList: map['nodesList'] == null ? null : (pulumi.Input.decodeList<DistributedNodesInfoResponse>(map['nodesList']!, (value) => DistributedNodesInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class PullMessageCloudtasksV2beta3 {
 
   factory PullMessageCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return PullMessageCloudtasksV2beta3(
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

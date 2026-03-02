@@ -37,7 +37,7 @@ class OwaspCrsExclusionEntryResponse {
 
   factory OwaspCrsExclusionEntryResponse.fromMap(Map<String, dynamic> map) {
     return OwaspCrsExclusionEntryResponse(
-      exclusionManagedRuleSets: map['exclusionManagedRuleSets'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleSetResponse>(map['exclusionManagedRuleSets'], (value) => ExclusionManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusionManagedRuleSets: map['exclusionManagedRuleSets'] == null ? null : (pulumi.Input.decodeList<ExclusionManagedRuleSetResponse>(map['exclusionManagedRuleSets']!, (value) => ExclusionManagedRuleSetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       matchVariable: (map['matchVariable'] as String).input(),
       selector: (map['selector'] as String).input(),
       selectorMatchOperator: (map['selectorMatchOperator'] as String).input(),

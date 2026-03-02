@@ -50,10 +50,10 @@ class OidcProviderArgs {
 
   factory OidcProviderArgs.fromMap(Map<String, dynamic> map) {
     return OidcProviderArgs(
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprints: map['fingerprints'] == null ? null : ((map['fingerprints'] as List).cast<String>()).input(),
-      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : (map['issuanceLimitTime'] as int).input(),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprints: map['fingerprints'] == null ? null : ((map['fingerprints']! as List).cast<String>()).input(),
+      issuanceLimitTime: map['issuanceLimitTime'] == null ? null : (map['issuanceLimitTime']! as int).input(),
       issuerUrl: (map['issuerUrl'] as String).input(),
       oidcProviderName: (map['oidcProviderName'] as String).input(),
     );

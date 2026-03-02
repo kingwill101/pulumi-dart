@@ -56,14 +56,14 @@ class HanaBackupClientState {
 
   factory HanaBackupClientState.fromMap(Map<String, dynamic> map) {
     return HanaBackupClientState(
-      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      useHttps: map['useHttps'] == null ? null : (map['useHttps'] as bool).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      alertSetting: map['alertSetting'] == null ? null : (map['alertSetting']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientInfo: map['clientInfo'] == null ? null : (map['clientInfo']! as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      useHttps: map['useHttps'] == null ? null : (map['useHttps']! as bool).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

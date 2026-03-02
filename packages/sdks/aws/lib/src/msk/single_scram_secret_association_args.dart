@@ -35,7 +35,7 @@ class SingleScramSecretAssociationArgs {
   factory SingleScramSecretAssociationArgs.fromMap(Map<String, dynamic> map) {
     return SingleScramSecretAssociationArgs(
       clusterArn: (map['clusterArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretArn: (map['secretArn'] as String).input(),
     );
   }

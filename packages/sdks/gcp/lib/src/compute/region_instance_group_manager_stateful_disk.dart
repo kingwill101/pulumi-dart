@@ -25,7 +25,7 @@ class RegionInstanceGroupManagerStatefulDisk {
 
   factory RegionInstanceGroupManagerStatefulDisk.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStatefulDisk(
-      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule'] as String).input(),
+      deleteRule: map['deleteRule'] == null ? null : (map['deleteRule']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
     );
   }

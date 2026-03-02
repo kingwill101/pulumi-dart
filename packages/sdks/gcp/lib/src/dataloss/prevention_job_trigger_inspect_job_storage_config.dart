@@ -50,11 +50,11 @@ class PreventionJobTriggerInspectJobStorageConfig {
 
   factory PreventionJobTriggerInspectJobStorageConfig.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfig(
-      bigQueryOptions: map['bigQueryOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.fromMap((map['bigQueryOptions'] as Map).cast<String, dynamic>())).input(),
-      cloudStorageOptions: map['cloudStorageOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap((map['cloudStorageOptions'] as Map).cast<String, dynamic>())).input(),
-      datastoreOptions: map['datastoreOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.fromMap((map['datastoreOptions'] as Map).cast<String, dynamic>())).input(),
-      hybridOptions: map['hybridOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap((map['hybridOptions'] as Map).cast<String, dynamic>())).input(),
-      timespanConfig: map['timespanConfig'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigTimespanConfig.fromMap((map['timespanConfig'] as Map).cast<String, dynamic>())).input(),
+      bigQueryOptions: map['bigQueryOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigBigQueryOptions.fromMap((map['bigQueryOptions']! as Map).cast<String, dynamic>())).input(),
+      cloudStorageOptions: map['cloudStorageOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap((map['cloudStorageOptions']! as Map).cast<String, dynamic>())).input(),
+      datastoreOptions: map['datastoreOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigDatastoreOptions.fromMap((map['datastoreOptions']! as Map).cast<String, dynamic>())).input(),
+      hybridOptions: map['hybridOptions'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigHybridOptions.fromMap((map['hybridOptions']! as Map).cast<String, dynamic>())).input(),
+      timespanConfig: map['timespanConfig'] == null ? null : (PreventionJobTriggerInspectJobStorageConfigTimespanConfig.fromMap((map['timespanConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

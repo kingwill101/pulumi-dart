@@ -33,9 +33,9 @@ class SecurityProfile {
 
   factory SecurityProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfile(
-      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost'] as bool).input(),
-      securityType: map['securityType'] == null ? null : (SecurityTypes.fromValue(map['securityType'] as String)).input(),
-      uefiSettings: map['uefiSettings'] == null ? null : (UefiSettings.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>())).input(),
+      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost']! as bool).input(),
+      securityType: map['securityType'] == null ? null : (SecurityTypes.fromValue(map['securityType']! as String)).input(),
+      uefiSettings: map['uefiSettings'] == null ? null : (UefiSettings.fromMap((map['uefiSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

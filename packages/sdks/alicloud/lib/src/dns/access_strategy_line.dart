@@ -20,7 +20,7 @@ class AccessStrategyLine {
 
   factory AccessStrategyLine.fromMap(Map<String, dynamic> map) {
     return AccessStrategyLine(
-      lineCode: map['lineCode'] == null ? null : (map['lineCode'] as String).input(),
+      lineCode: map['lineCode'] == null ? null : (map['lineCode']! as String).input(),
     );
   }
 }

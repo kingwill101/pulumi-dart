@@ -45,11 +45,11 @@ class GetVirtualBorderRoutersArgs {
 
   factory GetVirtualBorderRoutersArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualBorderRoutersArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVirtualBorderRoutersFilter>(map['filters'], (value) => GetVirtualBorderRoutersFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVirtualBorderRoutersFilter>(map['filters']!, (value) => GetVirtualBorderRoutersFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

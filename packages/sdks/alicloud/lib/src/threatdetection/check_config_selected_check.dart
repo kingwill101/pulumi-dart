@@ -25,8 +25,8 @@ class CheckConfigSelectedCheck {
 
   factory CheckConfigSelectedCheck.fromMap(Map<String, dynamic> map) {
     return CheckConfigSelectedCheck(
-      checkId: map['checkId'] == null ? null : (map['checkId'] as int).input(),
-      sectionId: map['sectionId'] == null ? null : (map['sectionId'] as int).input(),
+      checkId: map['checkId'] == null ? null : (map['checkId']! as int).input(),
+      sectionId: map['sectionId'] == null ? null : (map['sectionId']! as int).input(),
     );
   }
 }

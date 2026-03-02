@@ -25,8 +25,8 @@ class UserProvisioningUserProvisioningStatistic {
 
   factory UserProvisioningUserProvisioningStatistic.fromMap(Map<String, dynamic> map) {
     return UserProvisioningUserProvisioningStatistic(
-      failedEventCount: map['failedEventCount'] == null ? null : (map['failedEventCount'] as int).input(),
-      gmtLatestSync: map['gmtLatestSync'] == null ? null : (map['gmtLatestSync'] as String).input(),
+      failedEventCount: map['failedEventCount'] == null ? null : (map['failedEventCount']! as int).input(),
+      gmtLatestSync: map['gmtLatestSync'] == null ? null : (map['gmtLatestSync']! as String).input(),
     );
   }
 }

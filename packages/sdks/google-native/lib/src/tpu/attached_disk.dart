@@ -27,8 +27,8 @@ class AttachedDisk {
 
   factory AttachedDisk.fromMap(Map<String, dynamic> map) {
     return AttachedDisk(
-      mode: map['mode'] == null ? null : (AttachedDiskMode.fromValue(map['mode'] as String)).input(),
-      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk'] as String).input(),
+      mode: map['mode'] == null ? null : (AttachedDiskMode.fromValue(map['mode']! as String)).input(),
+      sourceDisk: map['sourceDisk'] == null ? null : (map['sourceDisk']! as String).input(),
     );
   }
 }

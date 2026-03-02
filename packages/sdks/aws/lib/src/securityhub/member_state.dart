@@ -46,12 +46,12 @@ class MemberState {
 
   factory MemberState.fromMap(Map<String, dynamic> map) {
     return MemberState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
-      masterId: map['masterId'] == null ? null : (map['masterId'] as String).input(),
-      memberStatus: map['memberStatus'] == null ? null : (map['memberStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      invite: map['invite'] == null ? null : ((map['invite'] as bool).input()).input(),
+      masterId: map['masterId'] == null ? null : ((map['masterId'] as String).input()).input(),
+      memberStatus: map['memberStatus'] == null ? null : ((map['memberStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

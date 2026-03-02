@@ -44,10 +44,10 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      blackhole: map['blackhole'] == null ? null : (map['blackhole'] as bool).input(),
+      blackhole: map['blackhole'] == null ? null : ((map['blackhole'] as bool).input()).input(),
       destinationCidrBlock: (map['destinationCidrBlock'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : (map['transitGatewayAttachmentId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transitGatewayAttachmentId: map['transitGatewayAttachmentId'] == null ? null : ((map['transitGatewayAttachmentId'] as String).input()).input(),
       transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );
   }

@@ -37,10 +37,10 @@ class CircuitBreakerRuleResponse {
 
   factory CircuitBreakerRuleResponse.fromMap(Map<String, dynamic> map) {
     return CircuitBreakerRuleResponse(
-      acceptRetryAfter: map['acceptRetryAfter'] == null ? null : (map['acceptRetryAfter'] as bool).input(),
-      failureCondition: map['failureCondition'] == null ? null : (CircuitBreakerFailureConditionResponse.fromMap((map['failureCondition'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tripDuration: map['tripDuration'] == null ? null : (map['tripDuration'] as String).input(),
+      acceptRetryAfter: map['acceptRetryAfter'] == null ? null : (map['acceptRetryAfter']! as bool).input(),
+      failureCondition: map['failureCondition'] == null ? null : (CircuitBreakerFailureConditionResponse.fromMap((map['failureCondition']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tripDuration: map['tripDuration'] == null ? null : (map['tripDuration']! as String).input(),
     );
   }
 }

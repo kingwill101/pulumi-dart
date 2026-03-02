@@ -39,7 +39,7 @@ class FileKeySelector {
   factory FileKeySelector.fromMap(Map<String, dynamic> map) {
     return FileKeySelector(
       key: (map['key'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
       path: (map['path'] as String).input(),
       volumeName: (map['volumeName'] as String).input(),
     );

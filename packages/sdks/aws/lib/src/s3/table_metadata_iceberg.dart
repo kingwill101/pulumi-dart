@@ -22,7 +22,7 @@ class TableMetadataIceberg {
 
   factory TableMetadataIceberg.fromMap(Map<String, dynamic> map) {
     return TableMetadataIceberg(
-      schema: (TableMetadataIcebergSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: (TableMetadataIcebergSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

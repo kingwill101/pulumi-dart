@@ -27,8 +27,8 @@ class WatchlistEntityCount {
 
   factory WatchlistEntityCount.fromMap(Map<String, dynamic> map) {
     return WatchlistEntityCount(
-      asset: map['asset'] == null ? null : (map['asset'] as int).input(),
-      user: map['user'] == null ? null : (map['user'] as int).input(),
+      asset: map['asset'] == null ? null : (map['asset']! as int).input(),
+      user: map['user'] == null ? null : (map['user']! as int).input(),
     );
   }
 }

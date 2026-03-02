@@ -26,8 +26,8 @@ class PackageCarrierInfoResponse {
 
   factory PackageCarrierInfoResponse.fromMap(Map<String, dynamic> map) {
     return PackageCarrierInfoResponse(
-      carrierName: map['carrierName'] == null ? null : (map['carrierName'] as String).input(),
-      trackingId: map['trackingId'] == null ? null : (map['trackingId'] as String).input(),
+      carrierName: map['carrierName'] == null ? null : (map['carrierName']! as String).input(),
+      trackingId: map['trackingId'] == null ? null : (map['trackingId']! as String).input(),
     );
   }
 }

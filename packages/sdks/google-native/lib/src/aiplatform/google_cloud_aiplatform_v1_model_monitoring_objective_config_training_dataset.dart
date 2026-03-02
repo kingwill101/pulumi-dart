@@ -49,12 +49,12 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset {
 
   factory GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset(
-      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudAiplatformV1BigQuerySource.fromMap((map['bigquerySource'] as Map).cast<String, dynamic>())).input(),
-      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat'] as String).input(),
-      dataset: map['dataset'] == null ? null : (map['dataset'] as String).input(),
-      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>())).input(),
-      loggingSamplingStrategy: map['loggingSamplingStrategy'] == null ? null : (GoogleCloudAiplatformV1SamplingStrategy.fromMap((map['loggingSamplingStrategy'] as Map).cast<String, dynamic>())).input(),
-      targetField: map['targetField'] == null ? null : (map['targetField'] as String).input(),
+      bigquerySource: map['bigquerySource'] == null ? null : (GoogleCloudAiplatformV1BigQuerySource.fromMap((map['bigquerySource']! as Map).cast<String, dynamic>())).input(),
+      dataFormat: map['dataFormat'] == null ? null : (map['dataFormat']! as String).input(),
+      dataset: map['dataset'] == null ? null : (map['dataset']! as String).input(),
+      gcsSource: map['gcsSource'] == null ? null : (GoogleCloudAiplatformV1GcsSource.fromMap((map['gcsSource']! as Map).cast<String, dynamic>())).input(),
+      loggingSamplingStrategy: map['loggingSamplingStrategy'] == null ? null : (GoogleCloudAiplatformV1SamplingStrategy.fromMap((map['loggingSamplingStrategy']! as Map).cast<String, dynamic>())).input(),
+      targetField: map['targetField'] == null ? null : (map['targetField']! as String).input(),
     );
   }
 }

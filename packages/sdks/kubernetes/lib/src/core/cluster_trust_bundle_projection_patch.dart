@@ -42,11 +42,11 @@ class ClusterTrustBundleProjectionPatch {
 
   factory ClusterTrustBundleProjectionPatch.fromMap(Map<String, dynamic> map) {
     return ClusterTrustBundleProjectionPatch(
-      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['labelSelector'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      signerName: map['signerName'] == null ? null : (map['signerName'] as String).input(),
+      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['labelSelector']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      signerName: map['signerName'] == null ? null : (map['signerName']! as String).input(),
     );
   }
 }

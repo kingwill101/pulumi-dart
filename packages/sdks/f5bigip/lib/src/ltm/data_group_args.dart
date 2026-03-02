@@ -46,10 +46,10 @@ class DataGroupArgs {
 
   factory DataGroupArgs.fromMap(Map<String, dynamic> map) {
     return DataGroupArgs(
-      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
+      internal: map['internal'] == null ? null : (map['internal']! as bool).input(),
       name: (map['name'] as String).input(),
-      records: map['records'] == null ? null : (pulumi.Input.decodeList<DataGroupRecord>(map['records'], (value) => DataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      recordsSrc: map['recordsSrc'] == null ? null : (map['recordsSrc'] as String).input(),
+      records: map['records'] == null ? null : (pulumi.Input.decodeList<DataGroupRecord>(map['records']!, (value) => DataGroupRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recordsSrc: map['recordsSrc'] == null ? null : (map['recordsSrc']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

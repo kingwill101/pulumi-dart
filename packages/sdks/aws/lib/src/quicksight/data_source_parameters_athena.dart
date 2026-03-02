@@ -20,7 +20,7 @@ class DataSourceParametersAthena {
 
   factory DataSourceParametersAthena.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersAthena(
-      workGroup: map['workGroup'] == null ? null : (map['workGroup'] as String).input(),
+      workGroup: map['workGroup'] == null ? null : ((map['workGroup'] as String).input()).input(),
     );
   }
 }

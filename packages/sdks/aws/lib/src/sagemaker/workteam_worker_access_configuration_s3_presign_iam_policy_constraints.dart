@@ -25,8 +25,8 @@ class WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints {
 
   factory WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints.fromMap(Map<String, dynamic> map) {
     return WorkteamWorkerAccessConfigurationS3PresignIamPolicyConstraints(
-      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp'] as String).input(),
-      vpcSourceIp: map['vpcSourceIp'] == null ? null : (map['vpcSourceIp'] as String).input(),
+      sourceIp: map['sourceIp'] == null ? null : ((map['sourceIp'] as String).input()).input(),
+      vpcSourceIp: map['vpcSourceIp'] == null ? null : ((map['vpcSourceIp'] as String).input()).input(),
     );
   }
 }

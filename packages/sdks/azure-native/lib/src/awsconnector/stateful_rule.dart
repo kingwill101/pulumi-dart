@@ -33,9 +33,9 @@ class StatefulRule {
 
   factory StatefulRule.fromMap(Map<String, dynamic> map) {
     return StatefulRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      header: map['header'] == null ? null : (Header.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
-      ruleOptions: map['ruleOptions'] == null ? null : (pulumi.Input.decodeList<RuleOption>(map['ruleOptions'], (value) => RuleOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      header: map['header'] == null ? null : (Header.fromMap((map['header']! as Map).cast<String, dynamic>())).input(),
+      ruleOptions: map['ruleOptions'] == null ? null : (pulumi.Input.decodeList<RuleOption>(map['ruleOptions']!, (value) => RuleOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

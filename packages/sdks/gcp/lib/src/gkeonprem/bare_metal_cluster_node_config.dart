@@ -27,8 +27,8 @@ class BareMetalClusterNodeConfig {
 
   factory BareMetalClusterNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterNodeConfig(
-      containerRuntime: map['containerRuntime'] == null ? null : (map['containerRuntime'] as String).input(),
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as int).input(),
+      containerRuntime: map['containerRuntime'] == null ? null : (map['containerRuntime']! as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as int).input(),
     );
   }
 }

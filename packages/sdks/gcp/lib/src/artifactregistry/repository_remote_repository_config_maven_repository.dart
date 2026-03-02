@@ -28,8 +28,8 @@ class RepositoryRemoteRepositoryConfigMavenRepository {
 
   factory RepositoryRemoteRepositoryConfigMavenRepository.fromMap(Map<String, dynamic> map) {
     return RepositoryRemoteRepositoryConfigMavenRepository(
-      customRepository: map['customRepository'] == null ? null : (RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository.fromMap((map['customRepository'] as Map).cast<String, dynamic>())).input(),
-      publicRepository: map['publicRepository'] == null ? null : (map['publicRepository'] as String).input(),
+      customRepository: map['customRepository'] == null ? null : (RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository.fromMap((map['customRepository']! as Map).cast<String, dynamic>())).input(),
+      publicRepository: map['publicRepository'] == null ? null : (map['publicRepository']! as String).input(),
     );
   }
 }

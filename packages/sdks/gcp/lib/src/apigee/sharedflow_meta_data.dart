@@ -30,9 +30,9 @@ class SharedflowMetaData {
 
   factory SharedflowMetaData.fromMap(Map<String, dynamic> map) {
     return SharedflowMetaData(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
-      subType: map['subType'] == null ? null : (map['subType'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
+      subType: map['subType'] == null ? null : (map['subType']! as String).input(),
     );
   }
 }

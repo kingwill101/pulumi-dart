@@ -41,11 +41,11 @@ class VnetConfiguration {
 
   factory VnetConfiguration.fromMap(Map<String, dynamic> map) {
     return VnetConfiguration(
-      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr'] as String).input(),
-      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : (map['infrastructureSubnetId'] as String).input(),
-      internal: map['internal'] == null ? null : (map['internal'] as bool).input(),
-      platformReservedCidr: map['platformReservedCidr'] == null ? null : (map['platformReservedCidr'] as String).input(),
-      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : (map['platformReservedDnsIP'] as String).input(),
+      dockerBridgeCidr: map['dockerBridgeCidr'] == null ? null : (map['dockerBridgeCidr']! as String).input(),
+      infrastructureSubnetId: map['infrastructureSubnetId'] == null ? null : (map['infrastructureSubnetId']! as String).input(),
+      internal: map['internal'] == null ? null : (map['internal']! as bool).input(),
+      platformReservedCidr: map['platformReservedCidr'] == null ? null : (map['platformReservedCidr']! as String).input(),
+      platformReservedDnsIP: map['platformReservedDnsIP'] == null ? null : (map['platformReservedDnsIP']! as String).input(),
     );
   }
 }

@@ -74,14 +74,14 @@ class GetInstancesInstanceConfigInterface {
     return GetInstancesInstanceConfigInterface(
       active: (map['active'] as bool).input(),
       id: (map['id'] as int).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
-      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress'] as String).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
+      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress']! as String).input(),
       ipv4: (GetInstancesInstanceConfigInterfaceIpv4.fromMap((map['ipv4'] as Map).cast<String, dynamic>())).input(),
       ipv6: (GetInstancesInstanceConfigInterfaceIpv6.fromMap((map['ipv6'] as Map).cast<String, dynamic>())).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
       purpose: (map['purpose'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as int).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as int).input(),
       vpcId: (map['vpcId'] as int).input(),
     );
   }

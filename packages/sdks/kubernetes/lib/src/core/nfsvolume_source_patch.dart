@@ -31,9 +31,9 @@ class NFSVolumeSourcePatch {
 
   factory NFSVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return NFSVolumeSourcePatch(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
     );
   }
 }

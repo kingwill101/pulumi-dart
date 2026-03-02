@@ -46,11 +46,11 @@ class InterfaceAttachState {
 
   factory InterfaceAttachState.fromMap(Map<String, dynamic> map) {
     return InterfaceAttachState(
-      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      portId: map['portId'] == null ? null : (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      fixedIp: map['fixedIp'] == null ? null : (map['fixedIp']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      portId: map['portId'] == null ? null : (map['portId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

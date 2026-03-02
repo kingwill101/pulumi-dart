@@ -27,7 +27,7 @@ class DomainOsNvRamSourceReservationsSourceDev {
   factory DomainOsNvRamSourceReservationsSourceDev.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceReservationsSourceDev(
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceReservationsSourceDevSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceReservationsSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceReservationsSourceDevSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceReservationsSourceDevSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

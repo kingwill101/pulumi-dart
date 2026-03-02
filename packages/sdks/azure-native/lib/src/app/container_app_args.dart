@@ -94,20 +94,20 @@ class ContainerAppArgs {
 
   factory ContainerAppArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppArgs(
-      configuration: map['configuration'] == null ? null : (Configuration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      containerAppName: map['containerAppName'] == null ? null : (map['containerAppName'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId'] as String).input(),
-      patchingConfiguration: map['patchingConfiguration'] == null ? null : (ContainerAppPatchingConfiguration.fromMap((map['patchingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      configuration: map['configuration'] == null ? null : (Configuration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      containerAppName: map['containerAppName'] == null ? null : (map['containerAppName']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId']! as String).input(),
+      patchingConfiguration: map['patchingConfiguration'] == null ? null : (ContainerAppPatchingConfiguration.fromMap((map['patchingConfiguration']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (Template.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
-      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (Template.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName']! as String).input(),
     );
   }
 }

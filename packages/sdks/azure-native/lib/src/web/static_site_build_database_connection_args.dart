@@ -64,11 +64,11 @@ class StaticSiteBuildDatabaseConnectionArgs {
 
   factory StaticSiteBuildDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteBuildDatabaseConnectionArgs(
-      connectionIdentity: map['connectionIdentity'] == null ? null : (map['connectionIdentity'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      databaseConnectionName: map['databaseConnectionName'] == null ? null : (map['databaseConnectionName'] as String).input(),
+      connectionIdentity: map['connectionIdentity'] == null ? null : (map['connectionIdentity']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      databaseConnectionName: map['databaseConnectionName'] == null ? null : (map['databaseConnectionName']! as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       region: (map['region'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

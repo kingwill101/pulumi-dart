@@ -43,11 +43,11 @@ class ComputeEngineDisksTargetDefaults {
 
   factory ComputeEngineDisksTargetDefaults.fromMap(Map<String, dynamic> map) {
     return ComputeEngineDisksTargetDefaults(
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<PersistentDiskDefaults>(map['disks'], (value) => PersistentDiskDefaults.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disksTargetDefaults: map['disksTargetDefaults'] == null ? null : ((map['disksTargetDefaults'] as Map).cast<String, dynamic>()).input(),
-      targetProject: map['targetProject'] == null ? null : (map['targetProject'] as String).input(),
-      vmTargetDefaults: map['vmTargetDefaults'] == null ? null : (DisksMigrationVmTargetDefaults.fromMap((map['vmTargetDefaults'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<PersistentDiskDefaults>(map['disks']!, (value) => PersistentDiskDefaults.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disksTargetDefaults: map['disksTargetDefaults'] == null ? null : ((map['disksTargetDefaults']! as Map).cast<String, dynamic>()).input(),
+      targetProject: map['targetProject'] == null ? null : (map['targetProject']! as String).input(),
+      vmTargetDefaults: map['vmTargetDefaults'] == null ? null : (DisksMigrationVmTargetDefaults.fromMap((map['vmTargetDefaults']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

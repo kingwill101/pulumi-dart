@@ -40,7 +40,7 @@ class ServiceQuotaArgs {
   factory ServiceQuotaArgs.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaArgs(
       quotaCode: (map['quotaCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceCode: (map['serviceCode'] as String).input(),
       value: (map['value'] as double).input(),
     );

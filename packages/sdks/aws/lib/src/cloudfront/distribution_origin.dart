@@ -79,18 +79,18 @@ class DistributionOrigin {
 
   factory DistributionOrigin.fromMap(Map<String, dynamic> map) {
     return DistributionOrigin(
-      connectionAttempts: map['connectionAttempts'] == null ? null : (map['connectionAttempts'] as int).input(),
-      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout'] as int).input(),
-      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<DistributionOriginCustomHeader>(map['customHeaders'], (value) => DistributionOriginCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customOriginConfig: map['customOriginConfig'] == null ? null : (DistributionOriginCustomOriginConfig.fromMap((map['customOriginConfig'] as Map).cast<String, dynamic>())).input(),
+      connectionAttempts: map['connectionAttempts'] == null ? null : ((map['connectionAttempts'] as int).input()).input(),
+      connectionTimeout: map['connectionTimeout'] == null ? null : ((map['connectionTimeout'] as int).input()).input(),
+      customHeaders: map['customHeaders'] == null ? null : ((pulumi.Input.decodeList<DistributionOriginCustomHeader>(map['customHeaders']!, (value) => DistributionOriginCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      customOriginConfig: map['customOriginConfig'] == null ? null : ((DistributionOriginCustomOriginConfig.fromMap((map['customOriginConfig']! as Map).cast<String, dynamic>())).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      originAccessControlId: map['originAccessControlId'] == null ? null : (map['originAccessControlId'] as String).input(),
+      originAccessControlId: map['originAccessControlId'] == null ? null : ((map['originAccessControlId'] as String).input()).input(),
       originId: (map['originId'] as String).input(),
-      originPath: map['originPath'] == null ? null : (map['originPath'] as String).input(),
-      originShield: map['originShield'] == null ? null : (DistributionOriginOriginShield.fromMap((map['originShield'] as Map).cast<String, dynamic>())).input(),
-      responseCompletionTimeout: map['responseCompletionTimeout'] == null ? null : (map['responseCompletionTimeout'] as int).input(),
-      s3OriginConfig: map['s3OriginConfig'] == null ? null : (DistributionOriginS3OriginConfig.fromMap((map['s3OriginConfig'] as Map).cast<String, dynamic>())).input(),
-      vpcOriginConfig: map['vpcOriginConfig'] == null ? null : (DistributionOriginVpcOriginConfig.fromMap((map['vpcOriginConfig'] as Map).cast<String, dynamic>())).input(),
+      originPath: map['originPath'] == null ? null : ((map['originPath'] as String).input()).input(),
+      originShield: map['originShield'] == null ? null : ((DistributionOriginOriginShield.fromMap((map['originShield']! as Map).cast<String, dynamic>())).input()).input(),
+      responseCompletionTimeout: map['responseCompletionTimeout'] == null ? null : ((map['responseCompletionTimeout'] as int).input()).input(),
+      s3OriginConfig: map['s3OriginConfig'] == null ? null : ((DistributionOriginS3OriginConfig.fromMap((map['s3OriginConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcOriginConfig: map['vpcOriginConfig'] == null ? null : ((DistributionOriginVpcOriginConfig.fromMap((map['vpcOriginConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

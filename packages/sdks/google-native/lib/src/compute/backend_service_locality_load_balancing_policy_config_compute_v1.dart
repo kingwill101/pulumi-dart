@@ -26,8 +26,8 @@ class BackendServiceLocalityLoadBalancingPolicyConfigComputeV1 {
 
   factory BackendServiceLocalityLoadBalancingPolicyConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return BackendServiceLocalityLoadBalancingPolicyConfigComputeV1(
-      customPolicy: map['customPolicy'] == null ? null : (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1.fromMap((map['customPolicy'] as Map).cast<String, dynamic>())).input(),
-      policy: map['policy'] == null ? null : (BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
+      customPolicy: map['customPolicy'] == null ? null : (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1.fromMap((map['customPolicy']! as Map).cast<String, dynamic>())).input(),
+      policy: map['policy'] == null ? null : (BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

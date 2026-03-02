@@ -38,9 +38,9 @@ class FacebookChannelProperties {
   factory FacebookChannelProperties.fromMap(Map<String, dynamic> map) {
     return FacebookChannelProperties(
       appId: (map['appId'] as String).input(),
-      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<FacebookPage>(map['pages'], (value) => FacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<FacebookPage>(map['pages']!, (value) => FacebookPage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

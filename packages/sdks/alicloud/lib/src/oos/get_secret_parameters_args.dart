@@ -69,16 +69,16 @@ class GetSecretParametersArgs {
 
   factory GetSecretParametersArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretParametersArgs(
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      secretParameterName: map['secretParameterName'] == null ? null : (map['secretParameterName'] as String).input(),
-      sortField: map['sortField'] == null ? null : (map['sortField'] as String).input(),
-      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      withDecryption: map['withDecryption'] == null ? null : (map['withDecryption'] as bool).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      secretParameterName: map['secretParameterName'] == null ? null : (map['secretParameterName']! as String).input(),
+      sortField: map['sortField'] == null ? null : (map['sortField']! as String).input(),
+      sortOrder: map['sortOrder'] == null ? null : (map['sortOrder']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      withDecryption: map['withDecryption'] == null ? null : (map['withDecryption']! as bool).input(),
     );
   }
 }

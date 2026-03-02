@@ -35,7 +35,7 @@ class GetServerlessLifecyclePolicyArgs {
   factory GetServerlessLifecyclePolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerlessLifecyclePolicyArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

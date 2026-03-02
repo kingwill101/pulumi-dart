@@ -39,9 +39,9 @@ class GetTestBaseAccountFileUploadUrlArgs {
 
   factory GetTestBaseAccountFileUploadUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetTestBaseAccountFileUploadUrlArgs(
-      blobName: map['blobName'] == null ? null : (map['blobName'] as String).input(),
+      blobName: map['blobName'] == null ? null : (map['blobName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
       testBaseAccountName: (map['testBaseAccountName'] as String).input(),
     );
   }

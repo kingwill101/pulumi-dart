@@ -36,10 +36,10 @@ class GoogleTypeTimeOfDayAlloydbV1beta {
 
   factory GoogleTypeTimeOfDayAlloydbV1beta.fromMap(Map<String, dynamic> map) {
     return GoogleTypeTimeOfDayAlloydbV1beta(
-      hours: map['hours'] == null ? null : (map['hours'] as int).input(),
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
-      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
+      hours: map['hours'] == null ? null : (map['hours']! as int).input(),
+      minutes: map['minutes'] == null ? null : (map['minutes']! as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds']! as int).input(),
     );
   }
 }

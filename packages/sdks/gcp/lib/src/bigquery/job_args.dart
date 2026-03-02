@@ -82,16 +82,16 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      copy: map['copy'] == null ? null : (JobCopy.fromMap((map['copy'] as Map).cast<String, dynamic>())).input(),
-      extract: map['extract'] == null ? null : (JobExtract.fromMap((map['extract'] as Map).cast<String, dynamic>())).input(),
+      copy: map['copy'] == null ? null : (JobCopy.fromMap((map['copy']! as Map).cast<String, dynamic>())).input(),
+      extract: map['extract'] == null ? null : (JobExtract.fromMap((map['extract']! as Map).cast<String, dynamic>())).input(),
       jobId: (map['jobId'] as String).input(),
-      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      load: map['load'] == null ? null : (JobLoad.fromMap((map['load'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      query: map['query'] == null ? null : (JobQuery.fromMap((map['query'] as Map).cast<String, dynamic>())).input(),
-      reservation: map['reservation'] == null ? null : (map['reservation'] as String).input(),
+      jobTimeoutMs: map['jobTimeoutMs'] == null ? null : (map['jobTimeoutMs']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      load: map['load'] == null ? null : (JobLoad.fromMap((map['load']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      query: map['query'] == null ? null : (JobQuery.fromMap((map['query']! as Map).cast<String, dynamic>())).input(),
+      reservation: map['reservation'] == null ? null : (map['reservation']! as String).input(),
     );
   }
 }

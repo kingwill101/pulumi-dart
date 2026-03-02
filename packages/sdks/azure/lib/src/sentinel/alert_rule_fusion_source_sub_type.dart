@@ -30,7 +30,7 @@ class AlertRuleFusionSourceSubType {
 
   factory AlertRuleFusionSourceSubType.fromMap(Map<String, dynamic> map) {
     return AlertRuleFusionSourceSubType(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       severitiesAlloweds: ((map['severitiesAlloweds'] as List).cast<String>()).input(),
     );

@@ -38,10 +38,10 @@ class VolumeTargetEncryption {
 
   factory VolumeTargetEncryption.fromMap(Map<String, dynamic> map) {
     return VolumeTargetEncryption(
-      cipher: map['cipher'] == null ? null : (VolumeTargetEncryptionCipher.fromMap((map['cipher'] as Map).cast<String, dynamic>())).input(),
+      cipher: map['cipher'] == null ? null : (VolumeTargetEncryptionCipher.fromMap((map['cipher']! as Map).cast<String, dynamic>())).input(),
       format: (map['format'] as String).input(),
-      ivgen: map['ivgen'] == null ? null : (VolumeTargetEncryptionIvgen.fromMap((map['ivgen'] as Map).cast<String, dynamic>())).input(),
-      secret: map['secret'] == null ? null : (VolumeTargetEncryptionSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      ivgen: map['ivgen'] == null ? null : (VolumeTargetEncryptionIvgen.fromMap((map['ivgen']! as Map).cast<String, dynamic>())).input(),
+      secret: map['secret'] == null ? null : (VolumeTargetEncryptionSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

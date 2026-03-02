@@ -56,11 +56,11 @@ class GetZoneShareV2Args {
 
   factory GetZoneShareV2Args.fromMap(Map<String, dynamic> map) {
     return GetZoneShareV2Args(
-      allProjects: map['allProjects'] == null ? null : (map['allProjects'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareId: map['shareId'] == null ? null : (map['shareId'] as String).input(),
-      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId'] as String).input(),
+      allProjects: map['allProjects'] == null ? null : (map['allProjects']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareId: map['shareId'] == null ? null : (map['shareId']! as String).input(),
+      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId']! as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

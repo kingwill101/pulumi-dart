@@ -58,14 +58,14 @@ class CNameRecordState {
 
   factory CNameRecordState.fromMap(Map<String, dynamic> map) {
     return CNameRecordState(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      record: map['record'] == null ? null : (map['record'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      record: map['record'] == null ? null : (map['record']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
     );
   }
 }

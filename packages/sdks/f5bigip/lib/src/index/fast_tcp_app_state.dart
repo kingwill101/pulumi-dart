@@ -97,21 +97,21 @@ class FastTcpAppState {
 
   factory FastTcpAppState.fromMap(Map<String, dynamic> map) {
     return FastTcpAppState(
-      application: map['application'] == null ? null : (map['application'] as String).input(),
-      existingMonitor: map['existingMonitor'] == null ? null : (map['existingMonitor'] as String).input(),
-      existingPool: map['existingPool'] == null ? null : (map['existingPool'] as String).input(),
-      existingSnatPool: map['existingSnatPool'] == null ? null : (map['existingSnatPool'] as String).input(),
-      fallbackPersistence: map['fallbackPersistence'] == null ? null : (map['fallbackPersistence'] as String).input(),
-      fastTcpJson: map['fastTcpJson'] == null ? null : (map['fastTcpJson'] as String).input(),
-      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode'] as String).input(),
-      monitor: map['monitor'] == null ? null : (FastTcpAppMonitor.fromMap((map['monitor'] as Map).cast<String, dynamic>())).input(),
-      persistenceProfile: map['persistenceProfile'] == null ? null : (map['persistenceProfile'] as String).input(),
-      persistenceType: map['persistenceType'] == null ? null : (map['persistenceType'] as String).input(),
-      poolMembers: map['poolMembers'] == null ? null : (pulumi.Input.decodeList<FastTcpAppPoolMember>(map['poolMembers'], (value) => FastTcpAppPoolMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slowRampTime: map['slowRampTime'] == null ? null : (map['slowRampTime'] as int).input(),
-      snatPoolAddresses: map['snatPoolAddresses'] == null ? null : ((map['snatPoolAddresses'] as List).cast<String>()).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
-      virtualServer: map['virtualServer'] == null ? null : (FastTcpAppVirtualServer.fromMap((map['virtualServer'] as Map).cast<String, dynamic>())).input(),
+      application: map['application'] == null ? null : (map['application']! as String).input(),
+      existingMonitor: map['existingMonitor'] == null ? null : (map['existingMonitor']! as String).input(),
+      existingPool: map['existingPool'] == null ? null : (map['existingPool']! as String).input(),
+      existingSnatPool: map['existingSnatPool'] == null ? null : (map['existingSnatPool']! as String).input(),
+      fallbackPersistence: map['fallbackPersistence'] == null ? null : (map['fallbackPersistence']! as String).input(),
+      fastTcpJson: map['fastTcpJson'] == null ? null : (map['fastTcpJson']! as String).input(),
+      loadBalancingMode: map['loadBalancingMode'] == null ? null : (map['loadBalancingMode']! as String).input(),
+      monitor: map['monitor'] == null ? null : (FastTcpAppMonitor.fromMap((map['monitor']! as Map).cast<String, dynamic>())).input(),
+      persistenceProfile: map['persistenceProfile'] == null ? null : (map['persistenceProfile']! as String).input(),
+      persistenceType: map['persistenceType'] == null ? null : (map['persistenceType']! as String).input(),
+      poolMembers: map['poolMembers'] == null ? null : (pulumi.Input.decodeList<FastTcpAppPoolMember>(map['poolMembers']!, (value) => FastTcpAppPoolMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slowRampTime: map['slowRampTime'] == null ? null : (map['slowRampTime']! as int).input(),
+      snatPoolAddresses: map['snatPoolAddresses'] == null ? null : ((map['snatPoolAddresses']! as List).cast<String>()).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      virtualServer: map['virtualServer'] == null ? null : (FastTcpAppVirtualServer.fromMap((map['virtualServer']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

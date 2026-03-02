@@ -25,8 +25,8 @@ class ImageImageTestsConfiguration {
 
   factory ImageImageTestsConfiguration.fromMap(Map<String, dynamic> map) {
     return ImageImageTestsConfiguration(
-      imageTestsEnabled: map['imageTestsEnabled'] == null ? null : (map['imageTestsEnabled'] as bool).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
+      imageTestsEnabled: map['imageTestsEnabled'] == null ? null : ((map['imageTestsEnabled'] as bool).input()).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
     );
   }
 }

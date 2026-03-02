@@ -35,10 +35,10 @@ class StreamProcessorRegionsOfInterestBoundingBox {
 
   factory StreamProcessorRegionsOfInterestBoundingBox.fromMap(Map<String, dynamic> map) {
     return StreamProcessorRegionsOfInterestBoundingBox(
-      height: map['height'] == null ? null : (map['height'] as double).input(),
-      left: map['left'] == null ? null : (map['left'] as double).input(),
-      top: map['top'] == null ? null : (map['top'] as double).input(),
-      width: map['width'] == null ? null : (map['width'] as double).input(),
+      height: map['height'] == null ? null : ((map['height'] as double).input()).input(),
+      left: map['left'] == null ? null : ((map['left'] as double).input()).input(),
+      top: map['top'] == null ? null : ((map['top'] as double).input()).input(),
+      width: map['width'] == null ? null : ((map['width'] as double).input()).input(),
     );
   }
 }

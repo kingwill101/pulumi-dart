@@ -66,15 +66,15 @@ class ConnectionProfilePostgresql {
 
   factory ConnectionProfilePostgresql.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePostgresql(
-      alloydbClusterId: map['alloydbClusterId'] == null ? null : (map['alloydbClusterId'] as String).input(),
-      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      networkArchitecture: map['networkArchitecture'] == null ? null : (map['networkArchitecture'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet'] as bool).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      ssl: map['ssl'] == null ? null : (ConnectionProfilePostgresqlSsl.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      alloydbClusterId: map['alloydbClusterId'] == null ? null : (map['alloydbClusterId']! as String).input(),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      networkArchitecture: map['networkArchitecture'] == null ? null : (map['networkArchitecture']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet']! as bool).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      ssl: map['ssl'] == null ? null : (ConnectionProfilePostgresqlSsl.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

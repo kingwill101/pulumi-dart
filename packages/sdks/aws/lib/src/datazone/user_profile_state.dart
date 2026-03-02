@@ -59,14 +59,14 @@ class UserProfileState {
 
   factory UserProfileState.fromMap(Map<String, dynamic> map) {
     return UserProfileState(
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<UserProfileDetail>(map['details'], (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (UserProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userIdentifier: map['userIdentifier'] == null ? null : (map['userIdentifier'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      details: map['details'] == null ? null : ((pulumi.Input.decodeList<UserProfileDetail>(map['details']!, (value) => UserProfileDetail.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : ((map['domainIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((UserProfileTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      userIdentifier: map['userIdentifier'] == null ? null : ((map['userIdentifier'] as String).input()).input(),
+      userType: map['userType'] == null ? null : ((map['userType'] as String).input()).input(),
     );
   }
 }

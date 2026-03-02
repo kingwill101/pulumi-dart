@@ -21,7 +21,7 @@ class GoogleCloudChannelV1SkuGroupCondition {
 
   factory GoogleCloudChannelV1SkuGroupCondition.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1SkuGroupCondition(
-      skuGroup: map['skuGroup'] == null ? null : (map['skuGroup'] as String).input(),
+      skuGroup: map['skuGroup'] == null ? null : (map['skuGroup']! as String).input(),
     );
   }
 }

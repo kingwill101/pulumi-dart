@@ -21,7 +21,7 @@ class NotificationRateLimit {
 
   factory NotificationRateLimit.fromMap(Map<String, dynamic> map) {
     return NotificationRateLimit(
-      period: map['period'] == null ? null : (map['period'] as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
     );
   }
 }

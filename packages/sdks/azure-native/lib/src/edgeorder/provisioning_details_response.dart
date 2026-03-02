@@ -67,16 +67,16 @@ class ProvisioningDetailsResponse {
 
   factory ProvisioningDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningDetailsResponse(
-      autoProvisioningStatus: map['autoProvisioningStatus'] == null ? null : (map['autoProvisioningStatus'] as String).input(),
-      devicePresenceVerification: map['devicePresenceVerification'] == null ? null : (DevicePresenceVerificationDetailsResponse.fromMap((map['devicePresenceVerification'] as Map).cast<String, dynamic>())).input(),
-      managementResourceArmId: map['managementResourceArmId'] == null ? null : (map['managementResourceArmId'] as String).input(),
-      provisioningArmId: map['provisioningArmId'] == null ? null : (map['provisioningArmId'] as String).input(),
-      provisioningEndPoint: map['provisioningEndPoint'] == null ? null : (map['provisioningEndPoint'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as int).input(),
-      readyToConnectArmId: map['readyToConnectArmId'] == null ? null : (map['readyToConnectArmId'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
+      autoProvisioningStatus: map['autoProvisioningStatus'] == null ? null : (map['autoProvisioningStatus']! as String).input(),
+      devicePresenceVerification: map['devicePresenceVerification'] == null ? null : (DevicePresenceVerificationDetailsResponse.fromMap((map['devicePresenceVerification']! as Map).cast<String, dynamic>())).input(),
+      managementResourceArmId: map['managementResourceArmId'] == null ? null : (map['managementResourceArmId']! as String).input(),
+      provisioningArmId: map['provisioningArmId'] == null ? null : (map['provisioningArmId']! as String).input(),
+      provisioningEndPoint: map['provisioningEndPoint'] == null ? null : (map['provisioningEndPoint']! as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as int).input(),
+      readyToConnectArmId: map['readyToConnectArmId'] == null ? null : (map['readyToConnectArmId']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
       uniqueDeviceIdentifier: (map['uniqueDeviceIdentifier'] as String).input(),
-      vendorName: map['vendorName'] == null ? null : (map['vendorName'] as String).input(),
+      vendorName: map['vendorName'] == null ? null : (map['vendorName']! as String).input(),
     );
   }
 }

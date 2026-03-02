@@ -20,7 +20,7 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
 
   factory SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(
-      contentTypes: map['contentTypes'] == null ? null : ((map['contentTypes'] as List).cast<String>()).input(),
+      contentTypes: map['contentTypes'] == null ? null : ((map['contentTypes']! as List).cast<String>()).input(),
     );
   }
 }

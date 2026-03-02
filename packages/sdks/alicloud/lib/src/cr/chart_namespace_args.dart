@@ -39,8 +39,8 @@ class ChartNamespaceArgs {
 
   factory ChartNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ChartNamespaceArgs(
-      autoCreateRepo: map['autoCreateRepo'] == null ? null : (map['autoCreateRepo'] as bool).input(),
-      defaultRepoType: map['defaultRepoType'] == null ? null : (map['defaultRepoType'] as String).input(),
+      autoCreateRepo: map['autoCreateRepo'] == null ? null : (map['autoCreateRepo']! as bool).input(),
+      defaultRepoType: map['defaultRepoType'] == null ? null : (map['defaultRepoType']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
     );

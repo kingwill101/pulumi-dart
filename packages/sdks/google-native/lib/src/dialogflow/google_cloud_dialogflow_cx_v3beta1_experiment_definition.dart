@@ -27,8 +27,8 @@ class GoogleCloudDialogflowCxV3beta1ExperimentDefinition {
 
   factory GoogleCloudDialogflowCxV3beta1ExperimentDefinition.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentDefinition(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      versionVariants: map['versionVariants'] == null ? null : (GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap((map['versionVariants'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      versionVariants: map['versionVariants'] == null ? null : (GoogleCloudDialogflowCxV3beta1VersionVariants.fromMap((map['versionVariants']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

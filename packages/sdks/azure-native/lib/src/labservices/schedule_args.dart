@@ -61,11 +61,11 @@ class ScheduleArgs {
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
       labName: (map['labName'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      recurrencePattern: map['recurrencePattern'] == null ? null : (RecurrencePattern.fromMap((map['recurrencePattern'] as Map).cast<String, dynamic>())).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      recurrencePattern: map['recurrencePattern'] == null ? null : (RecurrencePattern.fromMap((map['recurrencePattern']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName'] as String).input(),
-      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
+      scheduleName: map['scheduleName'] == null ? null : (map['scheduleName']! as String).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt']! as String).input(),
       stopAt: (map['stopAt'] as String).input(),
       timeZoneId: (map['timeZoneId'] as String).input(),
     );

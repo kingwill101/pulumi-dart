@@ -31,9 +31,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions {
 
   factory GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions(
-      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : (map['assuredWorkloadsMonitoring'] as bool).input(),
-      dataLogsViewer: map['dataLogsViewer'] == null ? null : (map['dataLogsViewer'] as bool).input(),
-      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : (map['serviceAccessApprover'] as bool).input(),
+      assuredWorkloadsMonitoring: map['assuredWorkloadsMonitoring'] == null ? null : (map['assuredWorkloadsMonitoring']! as bool).input(),
+      dataLogsViewer: map['dataLogsViewer'] == null ? null : (map['dataLogsViewer']! as bool).input(),
+      serviceAccessApprover: map['serviceAccessApprover'] == null ? null : (map['serviceAccessApprover']! as bool).input(),
     );
   }
 }

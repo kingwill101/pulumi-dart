@@ -41,11 +41,11 @@ class ConfigMapNodeConfigSourcePatch {
 
   factory ConfigMapNodeConfigSourcePatch.fromMap(Map<String, dynamic> map) {
     return ConfigMapNodeConfigSourcePatch(
-      kubeletConfigKey: map['kubeletConfigKey'] == null ? null : (map['kubeletConfigKey'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      kubeletConfigKey: map['kubeletConfigKey'] == null ? null : (map['kubeletConfigKey']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resourceVersion: map['resourceVersion'] == null ? null : (map['resourceVersion']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

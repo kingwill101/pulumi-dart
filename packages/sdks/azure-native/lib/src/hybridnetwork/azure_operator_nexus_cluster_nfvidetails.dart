@@ -33,8 +33,8 @@ class AzureOperatorNexusClusterNFVIDetails {
 
   factory AzureOperatorNexusClusterNFVIDetails.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusClusterNFVIDetails(
-      customLocationReference: map['customLocationReference'] == null ? null : (ReferencedResource.fromMap((map['customLocationReference'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      customLocationReference: map['customLocationReference'] == null ? null : (ReferencedResource.fromMap((map['customLocationReference']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nfviType: (map['nfviType'] as String).input(),
     );
   }

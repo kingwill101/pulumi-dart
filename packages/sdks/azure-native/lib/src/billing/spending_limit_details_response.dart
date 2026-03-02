@@ -46,12 +46,12 @@ class SpendingLimitDetailsResponse {
 
   factory SpendingLimitDetailsResponse.fromMap(Map<String, dynamic> map) {
     return SpendingLimitDetailsResponse(
-      amount: map['amount'] == null ? null : (map['amount'] as double).input(),
-      currency: map['currency'] == null ? null : (map['currency'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as double).input(),
+      currency: map['currency'] == null ? null : (map['currency']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

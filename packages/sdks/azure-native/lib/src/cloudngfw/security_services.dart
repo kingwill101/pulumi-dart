@@ -56,14 +56,14 @@ class SecurityServices {
 
   factory SecurityServices.fromMap(Map<String, dynamic> map) {
     return SecurityServices(
-      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile'] as String).input(),
-      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile'] as String).input(),
-      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription'] as String).input(),
-      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile'] as String).input(),
-      outboundTrustCertificate: map['outboundTrustCertificate'] == null ? null : (map['outboundTrustCertificate'] as String).input(),
-      outboundUnTrustCertificate: map['outboundUnTrustCertificate'] == null ? null : (map['outboundUnTrustCertificate'] as String).input(),
-      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile'] as String).input(),
-      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile'] as String).input(),
+      antiSpywareProfile: map['antiSpywareProfile'] == null ? null : (map['antiSpywareProfile']! as String).input(),
+      antiVirusProfile: map['antiVirusProfile'] == null ? null : (map['antiVirusProfile']! as String).input(),
+      dnsSubscription: map['dnsSubscription'] == null ? null : (map['dnsSubscription']! as String).input(),
+      fileBlockingProfile: map['fileBlockingProfile'] == null ? null : (map['fileBlockingProfile']! as String).input(),
+      outboundTrustCertificate: map['outboundTrustCertificate'] == null ? null : (map['outboundTrustCertificate']! as String).input(),
+      outboundUnTrustCertificate: map['outboundUnTrustCertificate'] == null ? null : (map['outboundUnTrustCertificate']! as String).input(),
+      urlFilteringProfile: map['urlFilteringProfile'] == null ? null : (map['urlFilteringProfile']! as String).input(),
+      vulnerabilityProfile: map['vulnerabilityProfile'] == null ? null : (map['vulnerabilityProfile']! as String).input(),
     );
   }
 }

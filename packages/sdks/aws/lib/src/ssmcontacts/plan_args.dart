@@ -36,8 +36,8 @@ class PlanArgs {
   factory PlanArgs.fromMap(Map<String, dynamic> map) {
     return PlanArgs(
       contactId: (map['contactId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stages: (pulumi.Input.decodeList<PlanStage>(map['stages'], (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      stages: (pulumi.Input.decodeList<PlanStage>(map['stages']!, (value) => PlanStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

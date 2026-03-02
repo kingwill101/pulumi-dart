@@ -76,18 +76,18 @@ class IdentityProviderAadb2cState {
 
   factory IdentityProviderAadb2cState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderAadb2cState(
-      allowedTenant: map['allowedTenant'] == null ? null : (map['allowedTenant'] as String).input(),
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      passwordResetPolicy: map['passwordResetPolicy'] == null ? null : (map['passwordResetPolicy'] as String).input(),
-      profileEditingPolicy: map['profileEditingPolicy'] == null ? null : (map['profileEditingPolicy'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      signinPolicy: map['signinPolicy'] == null ? null : (map['signinPolicy'] as String).input(),
-      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant'] as String).input(),
-      signupPolicy: map['signupPolicy'] == null ? null : (map['signupPolicy'] as String).input(),
+      allowedTenant: map['allowedTenant'] == null ? null : (map['allowedTenant']! as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientLibrary: map['clientLibrary'] == null ? null : (map['clientLibrary']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      passwordResetPolicy: map['passwordResetPolicy'] == null ? null : (map['passwordResetPolicy']! as String).input(),
+      profileEditingPolicy: map['profileEditingPolicy'] == null ? null : (map['profileEditingPolicy']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      signinPolicy: map['signinPolicy'] == null ? null : (map['signinPolicy']! as String).input(),
+      signinTenant: map['signinTenant'] == null ? null : (map['signinTenant']! as String).input(),
+      signupPolicy: map['signupPolicy'] == null ? null : (map['signupPolicy']! as String).input(),
     );
   }
 }

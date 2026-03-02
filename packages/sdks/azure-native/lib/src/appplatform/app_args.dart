@@ -51,10 +51,10 @@ class AppArgs {
 
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (AppResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (AppResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

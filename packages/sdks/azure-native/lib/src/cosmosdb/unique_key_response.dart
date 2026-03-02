@@ -21,7 +21,7 @@ class UniqueKeyResponse {
 
   factory UniqueKeyResponse.fromMap(Map<String, dynamic> map) {
     return UniqueKeyResponse(
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
     );
   }
 }

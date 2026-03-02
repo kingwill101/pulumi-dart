@@ -44,10 +44,10 @@ class ConsentConfig {
 
   factory ConsentConfig.fromMap(Map<String, dynamic> map) {
     return ConsentConfig(
-      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null ? null : (AccessDeterminationLogConfig.fromMap((map['accessDeterminationLogConfig'] as Map).cast<String, dynamic>())).input(),
-      accessEnforced: map['accessEnforced'] == null ? null : (map['accessEnforced'] as bool).input(),
-      consentHeaderHandling: map['consentHeaderHandling'] == null ? null : (ConsentHeaderHandling.fromMap((map['consentHeaderHandling'] as Map).cast<String, dynamic>())).input(),
-      enforcedAdminConsents: map['enforcedAdminConsents'] == null ? null : ((map['enforcedAdminConsents'] as List).cast<String>()).input(),
+      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null ? null : (AccessDeterminationLogConfig.fromMap((map['accessDeterminationLogConfig']! as Map).cast<String, dynamic>())).input(),
+      accessEnforced: map['accessEnforced'] == null ? null : (map['accessEnforced']! as bool).input(),
+      consentHeaderHandling: map['consentHeaderHandling'] == null ? null : (ConsentHeaderHandling.fromMap((map['consentHeaderHandling']! as Map).cast<String, dynamic>())).input(),
+      enforcedAdminConsents: map['enforcedAdminConsents'] == null ? null : ((map['enforcedAdminConsents']! as List).cast<String>()).input(),
       version: (ConsentConfigVersion.fromValue(map['version'] as String)).input(),
     );
   }

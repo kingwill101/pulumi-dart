@@ -20,7 +20,7 @@ class GroupQuotasEntityProperties {
 
   factory GroupQuotasEntityProperties.fromMap(Map<String, dynamic> map) {
     return GroupQuotasEntityProperties(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

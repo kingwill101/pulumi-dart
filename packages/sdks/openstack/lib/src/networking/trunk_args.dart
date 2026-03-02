@@ -71,14 +71,14 @@ class TrunkArgs {
 
   factory TrunkArgs.fromMap(Map<String, dynamic> map) {
     return TrunkArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       portId: (map['portId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subPorts: map['subPorts'] == null ? null : (pulumi.Input.decodeList<TrunkSubPort>(map['subPorts'], (value) => TrunkSubPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      subPorts: map['subPorts'] == null ? null : (pulumi.Input.decodeList<TrunkSubPort>(map['subPorts']!, (value) => TrunkSubPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class DomainMatchingAutoMergingConflictResolution {
   factory DomainMatchingAutoMergingConflictResolution.fromMap(Map<String, dynamic> map) {
     return DomainMatchingAutoMergingConflictResolution(
       conflictResolvingModel: (map['conflictResolvingModel'] as String).input(),
-      sourceName: map['sourceName'] == null ? null : (map['sourceName'] as String).input(),
+      sourceName: map['sourceName'] == null ? null : ((map['sourceName'] as String).input()).input(),
     );
   }
 }

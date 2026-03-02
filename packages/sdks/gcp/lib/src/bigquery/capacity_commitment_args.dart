@@ -64,13 +64,13 @@ class CapacityCommitmentArgs {
 
   factory CapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentArgs(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId'] as String).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : (map['capacityCommitmentId']! as String).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : (map['enforceSingleAdminProjectPerOrg']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       plan: (map['plan'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      renewalPlan: map['renewalPlan'] == null ? null : (map['renewalPlan'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      renewalPlan: map['renewalPlan'] == null ? null : (map['renewalPlan']! as String).input(),
       slotCount: (map['slotCount'] as int).input(),
     );
   }

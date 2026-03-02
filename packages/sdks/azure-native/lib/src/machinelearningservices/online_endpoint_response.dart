@@ -68,15 +68,15 @@ class OnlineEndpointResponse {
   factory OnlineEndpointResponse.fromMap(Map<String, dynamic> map) {
     return OnlineEndpointResponse(
       authMode: (map['authMode'] as String).input(),
-      compute: map['compute'] == null ? null : (map['compute'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      mirrorTraffic: map['mirrorTraffic'] == null ? null : ((map['mirrorTraffic'] as Map).cast<String, int>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      compute: map['compute'] == null ? null : (map['compute']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      mirrorTraffic: map['mirrorTraffic'] == null ? null : ((map['mirrorTraffic']! as Map).cast<String, int>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       scoringUri: (map['scoringUri'] as String).input(),
       swaggerUri: (map['swaggerUri'] as String).input(),
-      traffic: map['traffic'] == null ? null : ((map['traffic'] as Map).cast<String, int>()).input(),
+      traffic: map['traffic'] == null ? null : ((map['traffic']! as Map).cast<String, int>()).input(),
     );
   }
 }

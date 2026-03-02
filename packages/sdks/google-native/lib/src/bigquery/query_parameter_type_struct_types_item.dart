@@ -31,9 +31,9 @@ class QueryParameterTypeStructTypesItem {
 
   factory QueryParameterTypeStructTypesItem.fromMap(Map<String, dynamic> map) {
     return QueryParameterTypeStructTypesItem(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (QueryParameterType.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (QueryParameterType.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

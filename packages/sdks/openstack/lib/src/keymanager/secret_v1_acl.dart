@@ -20,7 +20,7 @@ class SecretV1Acl {
 
   factory SecretV1Acl.fromMap(Map<String, dynamic> map) {
     return SecretV1Acl(
-      read: map['read'] == null ? null : (SecretV1AclRead.fromMap((map['read'] as Map).cast<String, dynamic>())).input(),
+      read: map['read'] == null ? null : (SecretV1AclRead.fromMap((map['read']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

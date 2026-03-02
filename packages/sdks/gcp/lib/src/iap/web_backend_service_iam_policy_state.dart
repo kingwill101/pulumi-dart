@@ -38,10 +38,10 @@ class WebBackendServiceIamPolicyState {
 
   factory WebBackendServiceIamPolicyState.fromMap(Map<String, dynamic> map) {
     return WebBackendServiceIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      webBackendService: map['webBackendService'] == null ? null : (map['webBackendService'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      webBackendService: map['webBackendService'] == null ? null : (map['webBackendService']! as String).input(),
     );
   }
 }

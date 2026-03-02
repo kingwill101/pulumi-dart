@@ -42,11 +42,11 @@ class Jwt {
 
   factory Jwt.fromMap(Map<String, dynamic> map) {
     return Jwt(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      jwksPublicKeys: map['jwksPublicKeys'] == null ? null : (map['jwksPublicKeys'] as String).input(),
-      jwtHeaders: map['jwtHeaders'] == null ? null : (pulumi.Input.decodeList<JwtHeader>(map['jwtHeaders'], (value) => JwtHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      jwtParams: map['jwtParams'] == null ? null : ((map['jwtParams'] as List).cast<String>()).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      jwksPublicKeys: map['jwksPublicKeys'] == null ? null : (map['jwksPublicKeys']! as String).input(),
+      jwtHeaders: map['jwtHeaders'] == null ? null : (pulumi.Input.decodeList<JwtHeader>(map['jwtHeaders']!, (value) => JwtHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      jwtParams: map['jwtParams'] == null ? null : ((map['jwtParams']! as List).cast<String>()).input(),
     );
   }
 }

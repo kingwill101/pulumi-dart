@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigActionExportData {
 
   factory PreventionDiscoveryConfigActionExportData.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigActionExportData(
-      profileTable: map['profileTable'] == null ? null : (PreventionDiscoveryConfigActionExportDataProfileTable.fromMap((map['profileTable'] as Map).cast<String, dynamic>())).input(),
+      profileTable: map['profileTable'] == null ? null : (PreventionDiscoveryConfigActionExportDataProfileTable.fromMap((map['profileTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

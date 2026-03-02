@@ -41,9 +41,9 @@ class IdentityProviderConfigArgs {
   factory IdentityProviderConfigArgs.fromMap(Map<String, dynamic> map) {
     return IdentityProviderConfigArgs(
       clusterName: (map['clusterName'] as String).input(),
-      oidc: (IdentityProviderConfigOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      oidc: (IdentityProviderConfigOidc.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

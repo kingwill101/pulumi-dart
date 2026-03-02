@@ -33,9 +33,9 @@ class KafkaClusterMetastores {
 
   factory KafkaClusterMetastores.fromMap(Map<String, dynamic> map) {
     return KafkaClusterMetastores(
-      ambari: map['ambari'] == null ? null : (KafkaClusterMetastoresAmbari.fromMap((map['ambari'] as Map).cast<String, dynamic>())).input(),
-      hive: map['hive'] == null ? null : (KafkaClusterMetastoresHive.fromMap((map['hive'] as Map).cast<String, dynamic>())).input(),
-      oozie: map['oozie'] == null ? null : (KafkaClusterMetastoresOozie.fromMap((map['oozie'] as Map).cast<String, dynamic>())).input(),
+      ambari: map['ambari'] == null ? null : (KafkaClusterMetastoresAmbari.fromMap((map['ambari']! as Map).cast<String, dynamic>())).input(),
+      hive: map['hive'] == null ? null : (KafkaClusterMetastoresHive.fromMap((map['hive']! as Map).cast<String, dynamic>())).input(),
+      oozie: map['oozie'] == null ? null : (KafkaClusterMetastoresOozie.fromMap((map['oozie']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

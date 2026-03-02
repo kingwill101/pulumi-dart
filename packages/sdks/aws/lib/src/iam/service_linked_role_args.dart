@@ -40,9 +40,9 @@ class ServiceLinkedRoleArgs {
   factory ServiceLinkedRoleArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLinkedRoleArgs(
       awsServiceName: (map['awsServiceName'] as String).input(),
-      customSuffix: map['customSuffix'] == null ? null : (map['customSuffix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      customSuffix: map['customSuffix'] == null ? null : ((map['customSuffix'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

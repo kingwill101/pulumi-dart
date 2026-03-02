@@ -57,8 +57,8 @@ class ApplicationResourceArgs {
       applicationName: (map['applicationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
       resourceType: (map['resourceType'] as String).input(),
       spaceName: (map['spaceName'] as String).input(),
     );

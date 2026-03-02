@@ -62,13 +62,13 @@ class ProtectedVMArgs {
 
   factory ProtectedVMArgs.fromMap(Map<String, dynamic> map) {
     return ProtectedVMArgs(
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      excludeDiskLuns: map['excludeDiskLuns'] == null ? null : ((map['excludeDiskLuns'] as List).cast<int>()).input(),
-      includeDiskLuns: map['includeDiskLuns'] == null ? null : ((map['includeDiskLuns'] as List).cast<int>()).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      excludeDiskLuns: map['excludeDiskLuns'] == null ? null : ((map['excludeDiskLuns']! as List).cast<int>()).input(),
+      includeDiskLuns: map['includeDiskLuns'] == null ? null : ((map['includeDiskLuns']! as List).cast<int>()).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
       recoveryVaultName: (map['recoveryVaultName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId'] as String).input(),
+      sourceVmId: map['sourceVmId'] == null ? null : (map['sourceVmId']! as String).input(),
     );
   }
 }

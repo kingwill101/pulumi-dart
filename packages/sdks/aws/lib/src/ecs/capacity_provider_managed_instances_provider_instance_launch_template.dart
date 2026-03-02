@@ -48,12 +48,12 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplate {
 
   factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplate(
-      capacityOptionType: map['capacityOptionType'] == null ? null : (map['capacityOptionType'] as String).input(),
+      capacityOptionType: map['capacityOptionType'] == null ? null : ((map['capacityOptionType'] as String).input()).input(),
       ec2InstanceProfileArn: (map['ec2InstanceProfileArn'] as String).input(),
-      instanceRequirements: map['instanceRequirements'] == null ? null : (CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirements.fromMap((map['instanceRequirements'] as Map).cast<String, dynamic>())).input(),
-      monitoring: map['monitoring'] == null ? null : (map['monitoring'] as String).input(),
-      networkConfiguration: (CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      instanceRequirements: map['instanceRequirements'] == null ? null : ((CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirements.fromMap((map['instanceRequirements']! as Map).cast<String, dynamic>())).input()).input(),
+      monitoring: map['monitoring'] == null ? null : ((map['monitoring'] as String).input()).input(),
+      networkConfiguration: (CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : ((CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

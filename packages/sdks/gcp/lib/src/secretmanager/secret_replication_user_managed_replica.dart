@@ -27,7 +27,7 @@ class SecretReplicationUserManagedReplica {
 
   factory SecretReplicationUserManagedReplica.fromMap(Map<String, dynamic> map) {
     return SecretReplicationUserManagedReplica(
-      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (SecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>())).input(),
+      customerManagedEncryption: map['customerManagedEncryption'] == null ? null : (SecretReplicationUserManagedReplicaCustomerManagedEncryption.fromMap((map['customerManagedEncryption']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
     );
   }

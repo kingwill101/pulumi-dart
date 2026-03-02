@@ -62,13 +62,13 @@ class OpenApiExplorerApiMcpServerAdditionalApiDescription {
 
   factory OpenApiExplorerApiMcpServerAdditionalApiDescription.fromMap(Map<String, dynamic> map) {
     return OpenApiExplorerApiMcpServerAdditionalApiDescription(
-      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
-      apiOverrideJson: map['apiOverrideJson'] == null ? null : (map['apiOverrideJson'] as String).input(),
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      constParameters: map['constParameters'] == null ? null : (pulumi.Input.decodeList<OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter>(map['constParameters'], (value) => OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableOutputSchema: map['enableOutputSchema'] == null ? null : (map['enableOutputSchema'] as bool).input(),
-      executeCliCommand: map['executeCliCommand'] == null ? null : (map['executeCliCommand'] as bool).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
+      apiOverrideJson: map['apiOverrideJson'] == null ? null : (map['apiOverrideJson']! as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      constParameters: map['constParameters'] == null ? null : (pulumi.Input.decodeList<OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter>(map['constParameters']!, (value) => OpenApiExplorerApiMcpServerAdditionalApiDescriptionConstParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableOutputSchema: map['enableOutputSchema'] == null ? null : (map['enableOutputSchema']! as bool).input(),
+      executeCliCommand: map['executeCliCommand'] == null ? null : (map['executeCliCommand']! as bool).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
     );
   }
 }

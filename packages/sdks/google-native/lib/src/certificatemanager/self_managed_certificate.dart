@@ -26,8 +26,8 @@ class SelfManagedCertificate {
 
   factory SelfManagedCertificate.fromMap(Map<String, dynamic> map) {
     return SelfManagedCertificate(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
-      pemPrivateKey: map['pemPrivateKey'] == null ? null : (map['pemPrivateKey'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
+      pemPrivateKey: map['pemPrivateKey'] == null ? null : (map['pemPrivateKey']! as String).input(),
     );
   }
 }

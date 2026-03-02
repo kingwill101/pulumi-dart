@@ -25,8 +25,8 @@ class SecurityPolicyRuleRateLimitOptionsThresholdComputeBeta {
 
   factory SecurityPolicyRuleRateLimitOptionsThresholdComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsThresholdComputeBeta(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      intervalSec: map['intervalSec'] == null ? null : (map['intervalSec'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      intervalSec: map['intervalSec'] == null ? null : (map['intervalSec']! as int).input(),
     );
   }
 }

@@ -56,12 +56,12 @@ class TaxonomyState {
 
   factory TaxonomyState.fromMap(Map<String, dynamic> map) {
     return TaxonomyState(
-      activatedPolicyTypes: map['activatedPolicyTypes'] == null ? null : ((map['activatedPolicyTypes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      activatedPolicyTypes: map['activatedPolicyTypes'] == null ? null : ((map['activatedPolicyTypes']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class GuestPoliciesRecipeUpdateStepScriptRun {
 
   factory GuestPoliciesRecipeUpdateStepScriptRun.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeUpdateStepScriptRun(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes'] as List).cast<int>()).input(),
-      interpreter: map['interpreter'] == null ? null : (map['interpreter'] as String).input(),
+      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes']! as List).cast<int>()).input(),
+      interpreter: map['interpreter'] == null ? null : (map['interpreter']! as String).input(),
       script: (map['script'] as String).input(),
     );
   }

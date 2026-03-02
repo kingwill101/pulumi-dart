@@ -32,7 +32,7 @@ class ClusterParameterGroupParameter {
 
   factory ClusterParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ClusterParameterGroupParameter(
-      applyMethod: map['applyMethod'] == null ? null : (map['applyMethod'] as String).input(),
+      applyMethod: map['applyMethod'] == null ? null : ((map['applyMethod'] as String).input()).input(),
       name: (map['name'] as String).input(),
       value: (map['value'] as String).input(),
     );

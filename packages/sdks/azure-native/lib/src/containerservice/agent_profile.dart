@@ -26,8 +26,8 @@ class AgentProfile {
 
   factory AgentProfile.fromMap(Map<String, dynamic> map) {
     return AgentProfile(
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText {
 
   factory CxPageTransitionRouteTriggerFulfillmentMessageText.fromMap(Map<String, dynamic> map) {
     return CxPageTransitionRouteTriggerFulfillmentMessageText(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
-      texts: map['texts'] == null ? null : ((map['texts'] as List).cast<String>()).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
+      texts: map['texts'] == null ? null : ((map['texts']! as List).cast<String>()).input(),
     );
   }
 }

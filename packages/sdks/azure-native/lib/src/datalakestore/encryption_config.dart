@@ -28,7 +28,7 @@ class EncryptionConfig {
 
   factory EncryptionConfig.fromMap(Map<String, dynamic> map) {
     return EncryptionConfig(
-      keyVaultMetaInfo: map['keyVaultMetaInfo'] == null ? null : (KeyVaultMetaInfo.fromMap((map['keyVaultMetaInfo'] as Map).cast<String, dynamic>())).input(),
+      keyVaultMetaInfo: map['keyVaultMetaInfo'] == null ? null : (KeyVaultMetaInfo.fromMap((map['keyVaultMetaInfo']! as Map).cast<String, dynamic>())).input(),
       type: (EncryptionConfigType.fromValue(map['type'] as String)).input(),
     );
   }

@@ -69,16 +69,16 @@ class Publishing {
 
   factory Publishing.fromMap(Map<String, dynamic> map) {
     return Publishing(
-      apiShortName: map['apiShortName'] == null ? null : (map['apiShortName'] as String).input(),
-      codeownerGithubTeams: map['codeownerGithubTeams'] == null ? null : ((map['codeownerGithubTeams'] as List).cast<String>()).input(),
-      docTagPrefix: map['docTagPrefix'] == null ? null : (map['docTagPrefix'] as String).input(),
-      documentationUri: map['documentationUri'] == null ? null : (map['documentationUri'] as String).input(),
-      githubLabel: map['githubLabel'] == null ? null : (map['githubLabel'] as String).input(),
-      librarySettings: map['librarySettings'] == null ? null : (pulumi.Input.decodeList<ClientLibrarySettings>(map['librarySettings'], (value) => ClientLibrarySettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methodSettings: map['methodSettings'] == null ? null : (pulumi.Input.decodeList<MethodSettings>(map['methodSettings'], (value) => MethodSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      newIssueUri: map['newIssueUri'] == null ? null : (map['newIssueUri'] as String).input(),
-      organization: map['organization'] == null ? null : (PublishingOrganization.fromValue(map['organization'] as String)).input(),
-      protoReferenceDocumentationUri: map['protoReferenceDocumentationUri'] == null ? null : (map['protoReferenceDocumentationUri'] as String).input(),
+      apiShortName: map['apiShortName'] == null ? null : (map['apiShortName']! as String).input(),
+      codeownerGithubTeams: map['codeownerGithubTeams'] == null ? null : ((map['codeownerGithubTeams']! as List).cast<String>()).input(),
+      docTagPrefix: map['docTagPrefix'] == null ? null : (map['docTagPrefix']! as String).input(),
+      documentationUri: map['documentationUri'] == null ? null : (map['documentationUri']! as String).input(),
+      githubLabel: map['githubLabel'] == null ? null : (map['githubLabel']! as String).input(),
+      librarySettings: map['librarySettings'] == null ? null : (pulumi.Input.decodeList<ClientLibrarySettings>(map['librarySettings']!, (value) => ClientLibrarySettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methodSettings: map['methodSettings'] == null ? null : (pulumi.Input.decodeList<MethodSettings>(map['methodSettings']!, (value) => MethodSettings.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      newIssueUri: map['newIssueUri'] == null ? null : (map['newIssueUri']! as String).input(),
+      organization: map['organization'] == null ? null : (PublishingOrganization.fromValue(map['organization']! as String)).input(),
+      protoReferenceDocumentationUri: map['protoReferenceDocumentationUri'] == null ? null : (map['protoReferenceDocumentationUri']! as String).input(),
     );
   }
 }

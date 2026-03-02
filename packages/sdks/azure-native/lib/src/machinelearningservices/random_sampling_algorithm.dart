@@ -31,9 +31,9 @@ class RandomSamplingAlgorithm {
 
   factory RandomSamplingAlgorithm.fromMap(Map<String, dynamic> map) {
     return RandomSamplingAlgorithm(
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
       samplingAlgorithmType: (map['samplingAlgorithmType'] as String).input(),
-      seed: map['seed'] == null ? null : (map['seed'] as int).input(),
+      seed: map['seed'] == null ? null : (map['seed']! as int).input(),
     );
   }
 }

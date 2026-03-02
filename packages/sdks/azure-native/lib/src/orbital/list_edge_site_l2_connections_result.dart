@@ -28,7 +28,7 @@ class ListEdgeSiteL2ConnectionsResult {
   factory ListEdgeSiteL2ConnectionsResult.fromMap(Map<String, dynamic> map) {
     return ListEdgeSiteL2ConnectionsResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<ResourceIdListResultResponseValue>(map['value'], (value) => ResourceIdListResultResponseValue.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<ResourceIdListResultResponseValue>(map['value']!, (value) => ResourceIdListResultResponseValue.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -32,7 +32,7 @@ class MccCacheNodeAutoUpdateHistoryPropertiesResponse {
 
   factory MccCacheNodeAutoUpdateHistoryPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MccCacheNodeAutoUpdateHistoryPropertiesResponse(
-      autoUpdateHistory: map['autoUpdateHistory'] == null ? null : (pulumi.Input.decodeList<MccCacheNodeAutoUpdateInfoResponse>(map['autoUpdateHistory'], (value) => MccCacheNodeAutoUpdateInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoUpdateHistory: map['autoUpdateHistory'] == null ? null : (pulumi.Input.decodeList<MccCacheNodeAutoUpdateInfoResponse>(map['autoUpdateHistory']!, (value) => MccCacheNodeAutoUpdateInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       cacheNodeId: (map['cacheNodeId'] as String).input(),
       customerId: (map['customerId'] as String).input(),
     );

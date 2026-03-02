@@ -75,13 +75,13 @@ class VolumeQuotaRuleArgs {
 
   factory VolumeQuotaRuleArgs.fromMap(Map<String, dynamic> map) {
     return VolumeQuotaRuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       diskLimitMib: (map['diskLimitMib'] as int).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
       type: (map['type'] as String).input(),
       volumeName: (map['volumeName'] as String).input(),
     );

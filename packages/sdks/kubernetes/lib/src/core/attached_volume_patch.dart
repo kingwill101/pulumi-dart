@@ -26,8 +26,8 @@ class AttachedVolumePatch {
 
   factory AttachedVolumePatch.fromMap(Map<String, dynamic> map) {
     return AttachedVolumePatch(
-      devicePath: map['devicePath'] == null ? null : (map['devicePath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      devicePath: map['devicePath'] == null ? null : (map['devicePath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

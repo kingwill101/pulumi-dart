@@ -62,12 +62,12 @@ class VbrHealthCheckArgs {
   factory VbrHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return VbrHealthCheckArgs(
       cenId: (map['cenId'] as String).input(),
-      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval'] as int).input(),
-      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp'] as String).input(),
+      healthCheckInterval: map['healthCheckInterval'] == null ? null : (map['healthCheckInterval']! as int).input(),
+      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp']! as String).input(),
       healthCheckTargetIp: (map['healthCheckTargetIp'] as String).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
       vbrInstanceId: (map['vbrInstanceId'] as String).input(),
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId'] as int).input(),
+      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId']! as int).input(),
       vbrInstanceRegionId: (map['vbrInstanceRegionId'] as String).input(),
     );
   }

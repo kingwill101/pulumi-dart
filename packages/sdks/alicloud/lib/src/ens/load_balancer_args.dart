@@ -55,9 +55,9 @@ class LoadBalancerArgs {
 
   factory LoadBalancerArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerArgs(
-      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendServer>(map['backendServers'], (value) => LoadBalancerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendServers: map['backendServers'] == null ? null : (pulumi.Input.decodeList<LoadBalancerBackendServer>(map['backendServers']!, (value) => LoadBalancerBackendServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ensRegionId: (map['ensRegionId'] as String).input(),
-      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName'] as String).input(),
+      loadBalancerName: map['loadBalancerName'] == null ? null : (map['loadBalancerName']! as String).input(),
       loadBalancerSpec: (map['loadBalancerSpec'] as String).input(),
       networkId: (map['networkId'] as String).input(),
       paymentType: (map['paymentType'] as String).input(),

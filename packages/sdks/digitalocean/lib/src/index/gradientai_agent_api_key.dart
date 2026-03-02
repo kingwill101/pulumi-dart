@@ -20,7 +20,7 @@ class GradientaiAgentApiKey {
 
   factory GradientaiAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentApiKey(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
     );
   }
 }

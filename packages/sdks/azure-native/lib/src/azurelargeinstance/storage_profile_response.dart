@@ -28,8 +28,8 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      nfsIpAddress: map['nfsIpAddress'] == null ? null : (map['nfsIpAddress'] as String).input(),
-      osDisks: map['osDisks'] == null ? null : (pulumi.Input.decodeList<DiskResponse>(map['osDisks'], (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nfsIpAddress: map['nfsIpAddress'] == null ? null : (map['nfsIpAddress']! as String).input(),
+      osDisks: map['osDisks'] == null ? null : (pulumi.Input.decodeList<DiskResponse>(map['osDisks']!, (value) => DiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

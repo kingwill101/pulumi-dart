@@ -26,8 +26,8 @@ class AutoPauseProperties {
 
   factory AutoPauseProperties.fromMap(Map<String, dynamic> map) {
     return AutoPauseProperties(
-      delayInMinutes: map['delayInMinutes'] == null ? null : (map['delayInMinutes'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      delayInMinutes: map['delayInMinutes'] == null ? null : (map['delayInMinutes']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

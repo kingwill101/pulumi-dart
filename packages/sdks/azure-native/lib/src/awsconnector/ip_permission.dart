@@ -55,13 +55,13 @@ class IpPermission {
 
   factory IpPermission.fromMap(Map<String, dynamic> map) {
     return IpPermission(
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      ipRanges: map['ipRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['ipRanges'], (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6Ranges: map['ipv6Ranges'] == null ? null : (pulumi.Input.decodeList<Ipv6Range>(map['ipv6Ranges'], (value) => Ipv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefixListIds: map['prefixListIds'] == null ? null : (pulumi.Input.decodeList<PrefixListId>(map['prefixListIds'], (value) => PrefixListId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
-      userIdGroupPairs: map['userIdGroupPairs'] == null ? null : (pulumi.Input.decodeList<UserIdGroupPair>(map['userIdGroupPairs'], (value) => UserIdGroupPair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fromPort: map['fromPort'] == null ? null : (map['fromPort']! as int).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      ipRanges: map['ipRanges'] == null ? null : (pulumi.Input.decodeList<IpRange>(map['ipRanges']!, (value) => IpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6Ranges: map['ipv6Ranges'] == null ? null : (pulumi.Input.decodeList<Ipv6Range>(map['ipv6Ranges']!, (value) => Ipv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefixListIds: map['prefixListIds'] == null ? null : (pulumi.Input.decodeList<PrefixListId>(map['prefixListIds']!, (value) => PrefixListId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toPort: map['toPort'] == null ? null : (map['toPort']! as int).input(),
+      userIdGroupPairs: map['userIdGroupPairs'] == null ? null : (pulumi.Input.decodeList<UserIdGroupPair>(map['userIdGroupPairs']!, (value) => UserIdGroupPair.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

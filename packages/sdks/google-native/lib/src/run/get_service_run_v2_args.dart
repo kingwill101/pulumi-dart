@@ -32,7 +32,7 @@ class GetServiceRunV2Args {
   factory GetServiceRunV2Args.fromMap(Map<String, dynamic> map) {
     return GetServiceRunV2Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

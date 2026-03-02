@@ -30,9 +30,9 @@ class ConnectorLogDeliveryWorkerLogDeliveryS3 {
 
   factory ConnectorLogDeliveryWorkerLogDeliveryS3.fromMap(Map<String, dynamic> map) {
     return ConnectorLogDeliveryWorkerLogDeliveryS3(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

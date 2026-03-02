@@ -21,7 +21,7 @@ class VirtualHardDisk {
 
   factory VirtualHardDisk.fromMap(Map<String, dynamic> map) {
     return VirtualHardDisk(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class OSProfile {
 
   factory OSProfile.fromMap(Map<String, dynamic> map) {
     return OSProfile(
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OSProfileLinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OSProfileWindowsConfiguration.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (OSProfileLinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (OSProfileWindowsConfiguration.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

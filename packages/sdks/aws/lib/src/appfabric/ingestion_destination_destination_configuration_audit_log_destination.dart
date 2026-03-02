@@ -27,8 +27,8 @@ class IngestionDestinationDestinationConfigurationAuditLogDestination {
 
   factory IngestionDestinationDestinationConfigurationAuditLogDestination.fromMap(Map<String, dynamic> map) {
     return IngestionDestinationDestinationConfigurationAuditLogDestination(
-      firehoseStream: map['firehoseStream'] == null ? null : (IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap((map['firehoseStream'] as Map).cast<String, dynamic>())).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket.fromMap((map['s3Bucket'] as Map).cast<String, dynamic>())).input(),
+      firehoseStream: map['firehoseStream'] == null ? null : ((IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap((map['firehoseStream']! as Map).cast<String, dynamic>())).input()).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : ((IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket.fromMap((map['s3Bucket']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

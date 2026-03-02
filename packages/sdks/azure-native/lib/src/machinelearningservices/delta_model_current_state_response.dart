@@ -31,9 +31,9 @@ class DeltaModelCurrentStateResponse {
 
   factory DeltaModelCurrentStateResponse.fromMap(Map<String, dynamic> map) {
     return DeltaModelCurrentStateResponse(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      sampleInstanceID: map['sampleInstanceID'] == null ? null : (map['sampleInstanceID'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      sampleInstanceID: map['sampleInstanceID'] == null ? null : (map['sampleInstanceID']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

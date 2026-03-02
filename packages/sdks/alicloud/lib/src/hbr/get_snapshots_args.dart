@@ -82,18 +82,18 @@ class GetSnapshotsArgs {
 
   factory GetSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetSnapshotsArgs(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      completeTime: map['completeTime'] == null ? null : (map['completeTime'] as String).input(),
-      completeTimeChecker: map['completeTimeChecker'] == null ? null : (map['completeTimeChecker'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      completeTime: map['completeTime'] == null ? null : (map['completeTime']! as String).input(),
+      completeTimeChecker: map['completeTimeChecker'] == null ? null : (map['completeTimeChecker']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
       sourceType: (map['sourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );
   }

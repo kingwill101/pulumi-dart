@@ -53,12 +53,12 @@ class DataPolicyArgs {
 
   factory DataPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DataPolicyArgs(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>())).input(),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : (DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy']! as Map).cast<String, dynamic>())).input(),
       dataPolicyId: (map['dataPolicyId'] as String).input(),
       dataPolicyType: (map['dataPolicyType'] as String).input(),
       location: (map['location'] as String).input(),
       policyTag: (map['policyTag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

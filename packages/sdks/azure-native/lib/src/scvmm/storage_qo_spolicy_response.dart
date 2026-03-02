@@ -46,12 +46,12 @@ class StorageQoSPolicyResponse {
 
   factory StorageQoSPolicyResponse.fromMap(Map<String, dynamic> map) {
     return StorageQoSPolicyResponse(
-      bandwidthLimit: map['bandwidthLimit'] == null ? null : (map['bandwidthLimit'] as double).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      iopsMaximum: map['iopsMaximum'] == null ? null : (map['iopsMaximum'] as double).input(),
-      iopsMinimum: map['iopsMinimum'] == null ? null : (map['iopsMinimum'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
+      bandwidthLimit: map['bandwidthLimit'] == null ? null : (map['bandwidthLimit']! as double).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      iopsMaximum: map['iopsMaximum'] == null ? null : (map['iopsMaximum']! as double).input(),
+      iopsMinimum: map['iopsMinimum'] == null ? null : (map['iopsMinimum']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
     );
   }
 }

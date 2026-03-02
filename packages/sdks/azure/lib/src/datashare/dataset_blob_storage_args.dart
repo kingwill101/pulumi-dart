@@ -52,9 +52,9 @@ class DatasetBlobStorageArgs {
     return DatasetBlobStorageArgs(
       containerName: (map['containerName'] as String).input(),
       dataShareId: (map['dataShareId'] as String).input(),
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageAccount: (DatasetBlobStorageStorageAccount.fromMap((map['storageAccount'] as Map).cast<String, dynamic>())).input(),
     );
   }

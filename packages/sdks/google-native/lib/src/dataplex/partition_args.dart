@@ -51,12 +51,12 @@ class PartitionArgs {
   factory PartitionArgs.fromMap(Map<String, dynamic> map) {
     return PartitionArgs(
       entityId: (map['entityId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

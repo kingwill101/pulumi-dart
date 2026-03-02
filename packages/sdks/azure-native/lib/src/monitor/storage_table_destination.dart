@@ -31,9 +31,9 @@ class StorageTableDestination {
 
   factory StorageTableDestination.fromMap(Map<String, dynamic> map) {
     return StorageTableDestination(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

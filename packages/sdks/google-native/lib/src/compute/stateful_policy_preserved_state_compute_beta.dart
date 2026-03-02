@@ -31,9 +31,9 @@ class StatefulPolicyPreservedStateComputeBeta {
 
   factory StatefulPolicyPreservedStateComputeBeta.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyPreservedStateComputeBeta(
-      disks: map['disks'] == null ? null : ((map['disks'] as Map).cast<String, String>()).input(),
-      externalIPs: map['externalIPs'] == null ? null : ((map['externalIPs'] as Map).cast<String, String>()).input(),
-      internalIPs: map['internalIPs'] == null ? null : ((map['internalIPs'] as Map).cast<String, String>()).input(),
+      disks: map['disks'] == null ? null : ((map['disks']! as Map).cast<String, String>()).input(),
+      externalIPs: map['externalIPs'] == null ? null : ((map['externalIPs']! as Map).cast<String, String>()).input(),
+      internalIPs: map['internalIPs'] == null ? null : ((map['internalIPs']! as Map).cast<String, String>()).input(),
     );
   }
 }

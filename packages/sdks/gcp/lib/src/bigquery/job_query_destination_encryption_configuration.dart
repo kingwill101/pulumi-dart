@@ -28,7 +28,7 @@ class JobQueryDestinationEncryptionConfiguration {
   factory JobQueryDestinationEncryptionConfiguration.fromMap(Map<String, dynamic> map) {
     return JobQueryDestinationEncryptionConfiguration(
       kmsKeyName: (map['kmsKeyName'] as String).input(),
-      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion'] as String).input(),
+      kmsKeyVersion: map['kmsKeyVersion'] == null ? null : (map['kmsKeyVersion']! as String).input(),
     );
   }
 }

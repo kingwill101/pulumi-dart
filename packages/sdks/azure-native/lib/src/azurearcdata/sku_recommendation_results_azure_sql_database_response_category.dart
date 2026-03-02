@@ -40,11 +40,11 @@ class SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
 
   factory SkuRecommendationResultsAzureSqlDatabaseResponseCategory.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlDatabaseResponseCategory(
-      computeTier: map['computeTier'] == null ? null : (map['computeTier'] as String).input(),
-      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType'] as String).input(),
-      sqlPurchasingModel: map['sqlPurchasingModel'] == null ? null : (map['sqlPurchasingModel'] as String).input(),
-      sqlServiceTier: map['sqlServiceTier'] == null ? null : (map['sqlServiceTier'] as String).input(),
-      zoneRedundancyAvailable: map['zoneRedundancyAvailable'] == null ? null : (map['zoneRedundancyAvailable'] as bool).input(),
+      computeTier: map['computeTier'] == null ? null : (map['computeTier']! as String).input(),
+      hardwareType: map['hardwareType'] == null ? null : (map['hardwareType']! as String).input(),
+      sqlPurchasingModel: map['sqlPurchasingModel'] == null ? null : (map['sqlPurchasingModel']! as String).input(),
+      sqlServiceTier: map['sqlServiceTier'] == null ? null : (map['sqlServiceTier']! as String).input(),
+      zoneRedundancyAvailable: map['zoneRedundancyAvailable'] == null ? null : (map['zoneRedundancyAvailable']! as bool).input(),
     );
   }
 }

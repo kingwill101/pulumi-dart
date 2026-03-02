@@ -26,7 +26,7 @@ class AgentOptions {
   factory AgentOptions.fromMap(Map<String, dynamic> map) {
     return AgentOptions(
       hugepagesCount: (map['hugepagesCount'] as double).input(),
-      hugepagesSize: map['hugepagesSize'] == null ? null : (map['hugepagesSize'] as String).input(),
+      hugepagesSize: map['hugepagesSize'] == null ? null : (map['hugepagesSize']! as String).input(),
     );
   }
 }

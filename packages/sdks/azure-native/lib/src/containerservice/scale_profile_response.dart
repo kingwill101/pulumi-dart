@@ -22,7 +22,7 @@ class ScaleProfileResponse {
 
   factory ScaleProfileResponse.fromMap(Map<String, dynamic> map) {
     return ScaleProfileResponse(
-      manual: map['manual'] == null ? null : (pulumi.Input.decodeList<ManualScaleProfileResponse>(map['manual'], (value) => ManualScaleProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manual: map['manual'] == null ? null : (pulumi.Input.decodeList<ManualScaleProfileResponse>(map['manual']!, (value) => ManualScaleProfileResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

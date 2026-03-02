@@ -25,7 +25,7 @@ class TriggerScheduleScheduleMonthly {
 
   factory TriggerScheduleScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return TriggerScheduleScheduleMonthly(
-      week: map['week'] == null ? null : (map['week'] as int).input(),
+      week: map['week'] == null ? null : (map['week']! as int).input(),
       weekday: (map['weekday'] as String).input(),
     );
   }

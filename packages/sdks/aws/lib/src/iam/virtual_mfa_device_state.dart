@@ -66,16 +66,16 @@ class VirtualMfaDeviceState {
 
   factory VirtualMfaDeviceState.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      base32StringSeed: map['base32StringSeed'] == null ? null : (map['base32StringSeed'] as String).input(),
-      enableDate: map['enableDate'] == null ? null : (map['enableDate'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      qrCodePng: map['qrCodePng'] == null ? null : (map['qrCodePng'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : (map['virtualMfaDeviceName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      base32StringSeed: map['base32StringSeed'] == null ? null : ((map['base32StringSeed'] as String).input()).input(),
+      enableDate: map['enableDate'] == null ? null : ((map['enableDate'] as String).input()).input(),
+      path: map['path'] == null ? null : ((map['path'] as String).input()).input(),
+      qrCodePng: map['qrCodePng'] == null ? null : ((map['qrCodePng'] as String).input()).input(),
+      serialNumber: map['serialNumber'] == null ? null : ((map['serialNumber'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
+      virtualMfaDeviceName: map['virtualMfaDeviceName'] == null ? null : ((map['virtualMfaDeviceName'] as String).input()).input(),
     );
   }
 }

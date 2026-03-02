@@ -52,13 +52,13 @@ class NfsExport {
 
   factory NfsExport.fromMap(Map<String, dynamic> map) {
     return NfsExport(
-      allowDev: map['allowDev'] == null ? null : (map['allowDev'] as bool).input(),
-      allowSuid: map['allowSuid'] == null ? null : (map['allowSuid'] as bool).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      noRootSquash: map['noRootSquash'] == null ? null : (map['noRootSquash'] as bool).input(),
-      permissions: map['permissions'] == null ? null : (NfsExportPermissions.fromValue(map['permissions'] as String)).input(),
+      allowDev: map['allowDev'] == null ? null : (map['allowDev']! as bool).input(),
+      allowSuid: map['allowSuid'] == null ? null : (map['allowSuid']! as bool).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      noRootSquash: map['noRootSquash'] == null ? null : (map['noRootSquash']! as bool).input(),
+      permissions: map['permissions'] == null ? null : (NfsExportPermissions.fromValue(map['permissions']! as String)).input(),
     );
   }
 }

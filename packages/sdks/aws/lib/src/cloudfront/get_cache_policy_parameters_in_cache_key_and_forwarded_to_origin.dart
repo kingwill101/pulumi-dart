@@ -43,11 +43,11 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
 
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOrigin(
-      cookiesConfigs: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>(map['cookiesConfigs'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cookiesConfigs: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig>(map['cookiesConfigs']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       enableAcceptEncodingBrotli: (map['enableAcceptEncodingBrotli'] as bool).input(),
       enableAcceptEncodingGzip: (map['enableAcceptEncodingGzip'] as bool).input(),
-      headersConfigs: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>(map['headersConfigs'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryStringsConfigs: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig>(map['queryStringsConfigs'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headersConfigs: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig>(map['headersConfigs']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginHeadersConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queryStringsConfigs: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig>(map['queryStringsConfigs']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginQueryStringsConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

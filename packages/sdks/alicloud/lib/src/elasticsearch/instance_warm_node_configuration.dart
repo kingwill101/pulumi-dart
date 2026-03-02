@@ -40,11 +40,11 @@ class InstanceWarmNodeConfiguration {
 
   factory InstanceWarmNodeConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceWarmNodeConfiguration(
-      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as bool).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as bool).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
     );
   }
 }

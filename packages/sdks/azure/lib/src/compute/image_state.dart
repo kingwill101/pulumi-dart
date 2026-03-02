@@ -71,15 +71,15 @@ class ImageState {
 
   factory ImageState.fromMap(Map<String, dynamic> map) {
     return ImageState(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ImageDataDisk>(map['dataDisks'], (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osDisk: map['osDisk'] == null ? null : (ImageOsDisk.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneResilient: map['zoneResilient'] == null ? null : (map['zoneResilient'] as bool).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ImageDataDisk>(map['dataDisks']!, (value) => ImageDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : (map['hyperVGeneration']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osDisk: map['osDisk'] == null ? null : (ImageOsDisk.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : (map['sourceVirtualMachineId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneResilient: map['zoneResilient'] == null ? null : (map['zoneResilient']! as bool).input(),
     );
   }
 }

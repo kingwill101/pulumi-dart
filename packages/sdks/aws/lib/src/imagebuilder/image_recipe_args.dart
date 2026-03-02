@@ -84,18 +84,18 @@ class ImageRecipeArgs {
 
   factory ImageRecipeArgs.fromMap(Map<String, dynamic> map) {
     return ImageRecipeArgs(
-      amiTags: map['amiTags'] == null ? null : ((map['amiTags'] as Map).cast<String, String>()).input(),
-      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : (pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(map['blockDeviceMappings'], (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      components: (pulumi.Input.decodeList<ImageRecipeComponent>(map['components'], (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      amiTags: map['amiTags'] == null ? null : (((map['amiTags'] as Map).cast<String, String>()).input()).input(),
+      blockDeviceMappings: map['blockDeviceMappings'] == null ? null : ((pulumi.Input.decodeList<ImageRecipeBlockDeviceMapping>(map['blockDeviceMappings']!, (value) => ImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      components: (pulumi.Input.decodeList<ImageRecipeComponent>(map['components']!, (value) => ImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       parentImage: (map['parentImage'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      systemsManagerAgent: map['systemsManagerAgent'] == null ? null : (ImageRecipeSystemsManagerAgent.fromMap((map['systemsManagerAgent'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userDataBase64: map['userDataBase64'] == null ? null : (map['userDataBase64'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      systemsManagerAgent: map['systemsManagerAgent'] == null ? null : ((ImageRecipeSystemsManagerAgent.fromMap((map['systemsManagerAgent']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      userDataBase64: map['userDataBase64'] == null ? null : ((map['userDataBase64'] as String).input()).input(),
       version: (map['version'] as String).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : ((map['workingDirectory'] as String).input()).input(),
     );
   }
 }

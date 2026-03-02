@@ -31,9 +31,9 @@ class ServiceImportConfigurationInfoResponse {
 
   factory ServiceImportConfigurationInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServiceImportConfigurationInfoResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      initialImportMode: map['initialImportMode'] == null ? null : (map['initialImportMode'] as bool).input(),
-      integrationDataStore: map['integrationDataStore'] == null ? null : (map['integrationDataStore'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      initialImportMode: map['initialImportMode'] == null ? null : (map['initialImportMode']! as bool).input(),
+      integrationDataStore: map['integrationDataStore'] == null ? null : (map['integrationDataStore']! as String).input(),
     );
   }
 }

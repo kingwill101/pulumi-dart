@@ -39,10 +39,10 @@ class GetDocumentArgs {
 
   factory GetDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetDocumentArgs(
-      documentFormat: map['documentFormat'] == null ? null : (map['documentFormat'] as String).input(),
-      documentVersion: map['documentVersion'] == null ? null : (map['documentVersion'] as String).input(),
+      documentFormat: map['documentFormat'] == null ? null : ((map['documentFormat'] as String).input()).input(),
+      documentVersion: map['documentVersion'] == null ? null : ((map['documentVersion'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

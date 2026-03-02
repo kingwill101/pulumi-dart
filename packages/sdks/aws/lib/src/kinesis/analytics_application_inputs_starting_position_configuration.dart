@@ -20,7 +20,7 @@ class AnalyticsApplicationInputsStartingPositionConfiguration {
 
   factory AnalyticsApplicationInputsStartingPositionConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationInputsStartingPositionConfiguration(
-      startingPosition: map['startingPosition'] == null ? null : (map['startingPosition'] as String).input(),
+      startingPosition: map['startingPosition'] == null ? null : ((map['startingPosition'] as String).input()).input(),
     );
   }
 }

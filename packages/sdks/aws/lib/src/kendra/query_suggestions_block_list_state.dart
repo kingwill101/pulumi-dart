@@ -69,17 +69,17 @@ class QuerySuggestionsBlockListState {
 
   factory QuerySuggestionsBlockListState.fromMap(Map<String, dynamic> map) {
     return QuerySuggestionsBlockListState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexId: map['indexId'] == null ? null : (map['indexId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      querySuggestionsBlockListId: map['querySuggestionsBlockListId'] == null ? null : (map['querySuggestionsBlockListId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      sourceS3Path: map['sourceS3Path'] == null ? null : (QuerySuggestionsBlockListSourceS3Path.fromMap((map['sourceS3Path'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      indexId: map['indexId'] == null ? null : ((map['indexId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      querySuggestionsBlockListId: map['querySuggestionsBlockListId'] == null ? null : ((map['querySuggestionsBlockListId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      sourceS3Path: map['sourceS3Path'] == null ? null : ((QuerySuggestionsBlockListSourceS3Path.fromMap((map['sourceS3Path']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

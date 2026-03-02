@@ -31,8 +31,8 @@ class EndpointDeliveryRuleHttpVersionCondition {
   factory EndpointDeliveryRuleHttpVersionCondition.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleHttpVersionCondition(
       matchValues: ((map['matchValues'] as List).cast<String>()).input(),
-      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition'] as bool).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
+      negateCondition: map['negateCondition'] == null ? null : (map['negateCondition']! as bool).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class AutomationRuleArgs {
 
   factory AutomationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AutomationRuleArgs(
-      actions: (pulumi.Input.decodeList<AutomationRuleAction>(map['actions'], (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      criteria: (AutomationRuleCriteria.fromMap((map['criteria'] as Map).cast<String, dynamic>())).input(),
+      actions: (pulumi.Input.decodeList<AutomationRuleAction>(map['actions']!, (value) => AutomationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      criteria: (AutomationRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())).input(),
       description: (map['description'] as String).input(),
-      isTerminal: map['isTerminal'] == null ? null : (map['isTerminal'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      isTerminal: map['isTerminal'] == null ? null : ((map['isTerminal'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       ruleName: (map['ruleName'] as String).input(),
       ruleOrder: (map['ruleOrder'] as int).input(),
-      ruleStatus: map['ruleStatus'] == null ? null : (map['ruleStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ruleStatus: map['ruleStatus'] == null ? null : ((map['ruleStatus'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

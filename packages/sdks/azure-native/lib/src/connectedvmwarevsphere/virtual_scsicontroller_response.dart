@@ -41,11 +41,11 @@ class VirtualSCSIControllerResponse {
 
   factory VirtualSCSIControllerResponse.fromMap(Map<String, dynamic> map) {
     return VirtualSCSIControllerResponse(
-      busNumber: map['busNumber'] == null ? null : (map['busNumber'] as int).input(),
-      controllerKey: map['controllerKey'] == null ? null : (map['controllerKey'] as int).input(),
-      scsiCtlrUnitNumber: map['scsiCtlrUnitNumber'] == null ? null : (map['scsiCtlrUnitNumber'] as int).input(),
-      sharing: map['sharing'] == null ? null : (map['sharing'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      busNumber: map['busNumber'] == null ? null : (map['busNumber']! as int).input(),
+      controllerKey: map['controllerKey'] == null ? null : (map['controllerKey']! as int).input(),
+      scsiCtlrUnitNumber: map['scsiCtlrUnitNumber'] == null ? null : (map['scsiCtlrUnitNumber']! as int).input(),
+      sharing: map['sharing'] == null ? null : (map['sharing']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

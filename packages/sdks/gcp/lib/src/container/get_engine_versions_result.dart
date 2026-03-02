@@ -76,14 +76,14 @@ class GetEngineVersionsResult {
       id: map['id'] as String,
       latestMasterVersion: map['latestMasterVersion'] as String,
       latestNodeVersion: map['latestNodeVersion'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
       releaseChannelDefaultVersion: (map['releaseChannelDefaultVersion'] as Map).cast<String, String>(),
       releaseChannelLatestVersion: (map['releaseChannelLatestVersion'] as Map).cast<String, String>(),
       releaseChannelUpgradeTargetVersion: (map['releaseChannelUpgradeTargetVersion'] as Map).cast<String, String>(),
       validMasterVersions: (map['validMasterVersions'] as List).cast<String>(),
       validNodeVersions: (map['validNodeVersions'] as List).cast<String>(),
-      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
+      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix']! as String,
     );
   }
 }

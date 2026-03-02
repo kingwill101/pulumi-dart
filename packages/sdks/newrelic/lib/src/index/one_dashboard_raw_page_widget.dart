@@ -62,13 +62,13 @@ class OneDashboardRawPageWidget {
     return OneDashboardRawPageWidget(
       column: (map['column'] as int).input(),
       configuration: (map['configuration'] as String).input(),
-      height: map['height'] == null ? null : (map['height'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      linkedEntityGuids: map['linkedEntityGuids'] == null ? null : ((map['linkedEntityGuids'] as List).cast<String>()).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      linkedEntityGuids: map['linkedEntityGuids'] == null ? null : ((map['linkedEntityGuids']! as List).cast<String>()).input(),
       row: (map['row'] as int).input(),
       title: (map['title'] as String).input(),
       visualizationId: (map['visualizationId'] as String).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
     );
   }
 }

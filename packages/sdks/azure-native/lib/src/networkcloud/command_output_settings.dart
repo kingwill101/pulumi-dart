@@ -26,8 +26,8 @@ class CommandOutputSettings {
 
   factory CommandOutputSettings.fromMap(Map<String, dynamic> map) {
     return CommandOutputSettings(
-      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelector.fromMap((map['associatedIdentity'] as Map).cast<String, dynamic>())).input(),
-      containerUrl: map['containerUrl'] == null ? null : (map['containerUrl'] as String).input(),
+      associatedIdentity: map['associatedIdentity'] == null ? null : (IdentitySelector.fromMap((map['associatedIdentity']! as Map).cast<String, dynamic>())).input(),
+      containerUrl: map['containerUrl'] == null ? null : (map['containerUrl']! as String).input(),
     );
   }
 }

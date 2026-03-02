@@ -30,7 +30,7 @@ class GetNodeGroupsArgs {
   factory GetNodeGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeGroupsArgs(
       clusterName: (map['clusterName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

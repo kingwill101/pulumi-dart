@@ -20,7 +20,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
 
   factory DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
     );
   }
 }

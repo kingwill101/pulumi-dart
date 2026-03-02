@@ -33,9 +33,9 @@ class CloudRepoSourceContext {
 
   factory CloudRepoSourceContext.fromMap(Map<String, dynamic> map) {
     return CloudRepoSourceContext(
-      aliasContext: map['aliasContext'] == null ? null : (AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
-      repoId: map['repoId'] == null ? null : (RepoId.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      aliasContext: map['aliasContext'] == null ? null : (AliasContext.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())).input(),
+      repoId: map['repoId'] == null ? null : (RepoId.fromMap((map['repoId']! as Map).cast<String, dynamic>())).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
     );
   }
 }

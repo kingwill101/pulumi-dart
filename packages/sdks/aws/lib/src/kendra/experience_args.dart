@@ -54,11 +54,11 @@ class ExperienceArgs {
 
   factory ExperienceArgs.fromMap(Map<String, dynamic> map) {
     return ExperienceArgs(
-      configuration: map['configuration'] == null ? null : (ExperienceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((ExperienceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       indexId: (map['indexId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

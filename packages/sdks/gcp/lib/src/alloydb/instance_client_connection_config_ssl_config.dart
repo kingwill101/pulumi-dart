@@ -21,7 +21,7 @@ class InstanceClientConnectionConfigSslConfig {
 
   factory InstanceClientConnectionConfigSslConfig.fromMap(Map<String, dynamic> map) {
     return InstanceClientConnectionConfigSslConfig(
-      sslMode: map['sslMode'] == null ? null : (map['sslMode'] as String).input(),
+      sslMode: map['sslMode'] == null ? null : (map['sslMode']! as String).input(),
     );
   }
 }

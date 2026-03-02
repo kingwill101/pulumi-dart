@@ -26,8 +26,8 @@ class S3BucketDefinitionForJobResponse {
 
   factory S3BucketDefinitionForJobResponse.fromMap(Map<String, dynamic> map) {
     return S3BucketDefinitionForJobResponse(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      buckets: map['buckets'] == null ? null : ((map['buckets'] as List).cast<String>()).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      buckets: map['buckets'] == null ? null : ((map['buckets']! as List).cast<String>()).input(),
     );
   }
 }

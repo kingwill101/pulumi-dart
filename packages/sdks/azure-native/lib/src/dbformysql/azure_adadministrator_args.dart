@@ -59,14 +59,14 @@ class AzureADAdministratorArgs {
 
   factory AzureADAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return AzureADAdministratorArgs(
-      administratorName: map['administratorName'] == null ? null : (map['administratorName'] as String).input(),
-      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
-      identityResourceId: map['identityResourceId'] == null ? null : (map['identityResourceId'] as String).input(),
-      login: map['login'] == null ? null : (map['login'] as String).input(),
+      administratorName: map['administratorName'] == null ? null : (map['administratorName']! as String).input(),
+      administratorType: map['administratorType'] == null ? null : (map['administratorType']! as String).input(),
+      identityResourceId: map['identityResourceId'] == null ? null : (map['identityResourceId']! as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      sid: map['sid'] == null ? null : (map['sid'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      sid: map['sid'] == null ? null : (map['sid']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

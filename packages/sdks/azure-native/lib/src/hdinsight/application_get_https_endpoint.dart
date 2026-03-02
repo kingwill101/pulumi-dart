@@ -41,11 +41,11 @@ class ApplicationGetHttpsEndpoint {
 
   factory ApplicationGetHttpsEndpoint.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpoint(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth'] as bool).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      subDomainSuffix: map['subDomainSuffix'] == null ? null : (map['subDomainSuffix'] as String).input(),
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth']! as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      subDomainSuffix: map['subDomainSuffix'] == null ? null : (map['subDomainSuffix']! as String).input(),
     );
   }
 }

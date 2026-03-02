@@ -27,7 +27,7 @@ class IsNullOrUndefinedFilter {
 
   factory IsNullOrUndefinedFilter.fromMap(Map<String, dynamic> map) {
     return IsNullOrUndefinedFilter(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       operatorType: (map['operatorType'] as String).input(),
     );
   }

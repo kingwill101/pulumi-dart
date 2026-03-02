@@ -271,9 +271,9 @@ void main() {
           ),
         );
         when(mockResource.id).thenReturn(
-          Output<String?>(
+          Output<String>(
             Future.value(
-              const OutputData<String?>(
+              const OutputData<String>(
                 value: null,
                 isKnown: false,
                 isSecret: false,
@@ -609,9 +609,9 @@ void main() {
           ),
         );
         when(mockResource.id).thenReturn(
-          Output<String?>(
+          Output<String>(
             Future.value(
-              const OutputData<String?>(
+              const OutputData<String>(
                 value: null,
                 isKnown: false,
                 isSecret: false,

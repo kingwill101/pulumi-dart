@@ -32,7 +32,7 @@ class GetClientConfigResult {
     return GetClientConfigResult(
       project: map['project'] as String,
       region: map['region'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

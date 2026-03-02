@@ -36,7 +36,7 @@ class ServiceRegistryArgs {
     return ServiceRegistryArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      serviceRegistryName: map['serviceRegistryName'] == null ? null : (map['serviceRegistryName'] as String).input(),
+      serviceRegistryName: map['serviceRegistryName'] == null ? null : (map['serviceRegistryName']! as String).input(),
     );
   }
 }

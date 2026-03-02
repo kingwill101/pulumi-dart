@@ -60,15 +60,15 @@ class LaunchTemplatePlacement {
 
   factory LaunchTemplatePlacement.fromMap(Map<String, dynamic> map) {
     return LaunchTemplatePlacement(
-      affinity: map['affinity'] == null ? null : (map['affinity'] as String).input(),
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : (map['hostResourceGroupArn'] as String).input(),
-      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber'] as int).input(),
-      spreadDomain: map['spreadDomain'] == null ? null : (map['spreadDomain'] as String).input(),
-      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
+      affinity: map['affinity'] == null ? null : ((map['affinity'] as String).input()).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      hostId: map['hostId'] == null ? null : ((map['hostId'] as String).input()).input(),
+      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : ((map['hostResourceGroupArn'] as String).input()).input(),
+      partitionNumber: map['partitionNumber'] == null ? null : ((map['partitionNumber'] as int).input()).input(),
+      spreadDomain: map['spreadDomain'] == null ? null : ((map['spreadDomain'] as String).input()).input(),
+      tenancy: map['tenancy'] == null ? null : ((map['tenancy'] as String).input()).input(),
     );
   }
 }

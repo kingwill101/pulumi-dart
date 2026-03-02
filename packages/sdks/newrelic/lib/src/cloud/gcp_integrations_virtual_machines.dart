@@ -20,7 +20,7 @@ class GcpIntegrationsVirtualMachines {
 
   factory GcpIntegrationsVirtualMachines.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsVirtualMachines(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

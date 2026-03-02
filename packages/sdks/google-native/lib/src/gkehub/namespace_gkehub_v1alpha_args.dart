@@ -56,11 +56,11 @@ class NamespaceGkehubV1alphaArgs {
 
   factory NamespaceGkehubV1alphaArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceGkehubV1alphaArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scope: (map['scope'] as String).input(),
       scopeId: (map['scopeId'] as String).input(),
       scopeNamespaceId: (map['scopeNamespaceId'] as String).input(),

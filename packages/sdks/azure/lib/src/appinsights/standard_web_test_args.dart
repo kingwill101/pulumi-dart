@@ -89,18 +89,18 @@ class StandardWebTestArgs {
   factory StandardWebTestArgs.fromMap(Map<String, dynamic> map) {
     return StandardWebTestArgs(
       applicationInsightsId: (map['applicationInsightsId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as int).input(),
       geoLocations: ((map['geoLocations'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       request: (StandardWebTestRequest.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      validationRules: map['validationRules'] == null ? null : (StandardWebTestValidationRules.fromMap((map['validationRules'] as Map).cast<String, dynamic>())).input(),
+      retryEnabled: map['retryEnabled'] == null ? null : (map['retryEnabled']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      validationRules: map['validationRules'] == null ? null : (StandardWebTestValidationRules.fromMap((map['validationRules']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

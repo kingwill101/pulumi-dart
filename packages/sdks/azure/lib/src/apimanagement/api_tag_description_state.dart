@@ -36,10 +36,10 @@ class ApiTagDescriptionState {
 
   factory ApiTagDescriptionState.fromMap(Map<String, dynamic> map) {
     return ApiTagDescriptionState(
-      apiTagId: map['apiTagId'] == null ? null : (map['apiTagId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : (map['externalDocumentationDescription'] as String).input(),
-      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : (map['externalDocumentationUrl'] as String).input(),
+      apiTagId: map['apiTagId'] == null ? null : (map['apiTagId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalDocumentationDescription: map['externalDocumentationDescription'] == null ? null : (map['externalDocumentationDescription']! as String).input(),
+      externalDocumentationUrl: map['externalDocumentationUrl'] == null ? null : (map['externalDocumentationUrl']! as String).input(),
     );
   }
 }

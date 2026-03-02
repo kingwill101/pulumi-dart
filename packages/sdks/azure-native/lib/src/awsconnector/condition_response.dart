@@ -28,8 +28,8 @@ class ConditionResponse {
 
   factory ConditionResponse.fromMap(Map<String, dynamic> map) {
     return ConditionResponse(
-      actionCondition: map['actionCondition'] == null ? null : (ActionConditionModelPropertiesResponse.fromMap((map['actionCondition'] as Map).cast<String, dynamic>())).input(),
-      labelNameCondition: map['labelNameCondition'] == null ? null : (LabelNameConditionModelPropertiesResponse.fromMap((map['labelNameCondition'] as Map).cast<String, dynamic>())).input(),
+      actionCondition: map['actionCondition'] == null ? null : (ActionConditionModelPropertiesResponse.fromMap((map['actionCondition']! as Map).cast<String, dynamic>())).input(),
+      labelNameCondition: map['labelNameCondition'] == null ? null : (LabelNameConditionModelPropertiesResponse.fromMap((map['labelNameCondition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

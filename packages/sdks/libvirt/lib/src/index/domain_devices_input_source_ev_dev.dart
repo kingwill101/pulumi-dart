@@ -36,9 +36,9 @@ class DomainDevicesInputSourceEvDev {
   factory DomainDevicesInputSourceEvDev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInputSourceEvDev(
       dev: (map['dev'] as String).input(),
-      grab: map['grab'] == null ? null : (map['grab'] as String).input(),
-      grabToggle: map['grabToggle'] == null ? null : (map['grabToggle'] as String).input(),
-      repeat: map['repeat'] == null ? null : (map['repeat'] as String).input(),
+      grab: map['grab'] == null ? null : (map['grab']! as String).input(),
+      grabToggle: map['grabToggle'] == null ? null : (map['grabToggle']! as String).input(),
+      repeat: map['repeat'] == null ? null : (map['repeat']! as String).input(),
     );
   }
 }

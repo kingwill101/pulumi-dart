@@ -57,11 +57,11 @@ class VolumeBlockDevice {
 
   factory VolumeBlockDevice.fromMap(Map<String, dynamic> map) {
     return VolumeBlockDevice(
-      hostGroups: map['hostGroups'] == null ? null : ((map['hostGroups'] as List).cast<String>()).input(),
-      identifier: map['identifier'] == null ? null : (map['identifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      hostGroups: map['hostGroups'] == null ? null : ((map['hostGroups']! as List).cast<String>()).input(),
+      identifier: map['identifier'] == null ? null : (map['identifier']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       osType: (map['osType'] as String).input(),
-      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib'] as int).input(),
+      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib']! as int).input(),
     );
   }
 }

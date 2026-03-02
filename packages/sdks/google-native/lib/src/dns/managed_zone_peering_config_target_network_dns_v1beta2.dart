@@ -29,9 +29,9 @@ class ManagedZonePeeringConfigTargetNetworkDnsV1beta2 {
 
   factory ManagedZonePeeringConfigTargetNetworkDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigTargetNetworkDnsV1beta2(
-      deactivateTime: map['deactivateTime'] == null ? null : (map['deactivateTime'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
+      deactivateTime: map['deactivateTime'] == null ? null : (map['deactivateTime']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl']! as String).input(),
     );
   }
 }

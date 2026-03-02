@@ -27,7 +27,7 @@ class CustomRPValidations {
   factory CustomRPValidations.fromMap(Map<String, dynamic> map) {
     return CustomRPValidations(
       specification: (map['specification'] as String).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
     );
   }
 }

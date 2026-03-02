@@ -31,8 +31,8 @@ class PrivateEndpointACL {
 
   factory PrivateEndpointACL.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointACL(
-      allow: map['allow'] == null ? null : ((map['allow'] as List).cast<String>()).input(),
-      deny: map['deny'] == null ? null : ((map['deny'] as List).cast<String>()).input(),
+      allow: map['allow'] == null ? null : ((map['allow']! as List).cast<String>()).input(),
+      deny: map['deny'] == null ? null : ((map['deny']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

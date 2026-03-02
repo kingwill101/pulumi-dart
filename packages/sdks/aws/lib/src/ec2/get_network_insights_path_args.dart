@@ -44,10 +44,10 @@ class GetNetworkInsightsPathArgs {
 
   factory GetNetworkInsightsPathArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(map['filters'], (value) => GetNetworkInsightsPathFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : (map['networkInsightsPathId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetNetworkInsightsPathFilter>(map['filters']!, (value) => GetNetworkInsightsPathFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      networkInsightsPathId: map['networkInsightsPathId'] == null ? null : ((map['networkInsightsPathId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

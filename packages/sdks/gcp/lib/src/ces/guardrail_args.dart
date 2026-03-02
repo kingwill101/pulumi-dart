@@ -104,19 +104,19 @@ class GuardrailArgs {
 
   factory GuardrailArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailArgs(
-      action: map['action'] == null ? null : (GuardrailAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (GuardrailAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
       app: (map['app'] as String).input(),
-      codeCallback: map['codeCallback'] == null ? null : (GuardrailCodeCallback.fromMap((map['codeCallback'] as Map).cast<String, dynamic>())).input(),
-      contentFilter: map['contentFilter'] == null ? null : (GuardrailContentFilter.fromMap((map['contentFilter'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      codeCallback: map['codeCallback'] == null ? null : (GuardrailCodeCallback.fromMap((map['codeCallback']! as Map).cast<String, dynamic>())).input(),
+      contentFilter: map['contentFilter'] == null ? null : (GuardrailContentFilter.fromMap((map['contentFilter']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       guardrailId: (map['guardrailId'] as String).input(),
-      llmPolicy: map['llmPolicy'] == null ? null : (GuardrailLlmPolicy.fromMap((map['llmPolicy'] as Map).cast<String, dynamic>())).input(),
-      llmPromptSecurity: map['llmPromptSecurity'] == null ? null : (GuardrailLlmPromptSecurity.fromMap((map['llmPromptSecurity'] as Map).cast<String, dynamic>())).input(),
+      llmPolicy: map['llmPolicy'] == null ? null : (GuardrailLlmPolicy.fromMap((map['llmPolicy']! as Map).cast<String, dynamic>())).input(),
+      llmPromptSecurity: map['llmPromptSecurity'] == null ? null : (GuardrailLlmPromptSecurity.fromMap((map['llmPromptSecurity']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      modelSafety: map['modelSafety'] == null ? null : (GuardrailModelSafety.fromMap((map['modelSafety'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      modelSafety: map['modelSafety'] == null ? null : (GuardrailModelSafety.fromMap((map['modelSafety']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

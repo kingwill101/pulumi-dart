@@ -27,8 +27,8 @@ class ClusterPropertiesResponseCustomerManagedKeyEncryption {
 
   factory ClusterPropertiesResponseCustomerManagedKeyEncryption.fromMap(Map<String, dynamic> map) {
     return ClusterPropertiesResponseCustomerManagedKeyEncryption(
-      keyEncryptionKeyIdentity: map['keyEncryptionKeyIdentity'] == null ? null : (ClusterPropertiesResponseKeyEncryptionKeyIdentity.fromMap((map['keyEncryptionKeyIdentity'] as Map).cast<String, dynamic>())).input(),
-      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl'] as String).input(),
+      keyEncryptionKeyIdentity: map['keyEncryptionKeyIdentity'] == null ? null : (ClusterPropertiesResponseKeyEncryptionKeyIdentity.fromMap((map['keyEncryptionKeyIdentity']! as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKeyUrl: map['keyEncryptionKeyUrl'] == null ? null : (map['keyEncryptionKeyUrl']! as String).input(),
     );
   }
 }

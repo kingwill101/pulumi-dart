@@ -21,7 +21,7 @@ class PartnerRegionInfo {
 
   factory PartnerRegionInfo.fromMap(Map<String, dynamic> map) {
     return PartnerRegionInfo(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

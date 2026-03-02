@@ -72,17 +72,17 @@ class FirehoseDeliveryStreamIcebergConfiguration {
 
   factory FirehoseDeliveryStreamIcebergConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamIcebergConfiguration(
-      appendOnly: map['appendOnly'] == null ? null : (map['appendOnly'] as bool).input(),
-      bufferingInterval: map['bufferingInterval'] == null ? null : (map['bufferingInterval'] as int).input(),
-      bufferingSize: map['bufferingSize'] == null ? null : (map['bufferingSize'] as int).input(),
+      appendOnly: map['appendOnly'] == null ? null : ((map['appendOnly'] as bool).input()).input(),
+      bufferingInterval: map['bufferingInterval'] == null ? null : ((map['bufferingInterval'] as int).input()).input(),
+      bufferingSize: map['bufferingSize'] == null ? null : ((map['bufferingSize'] as int).input()).input(),
       catalogArn: (map['catalogArn'] as String).input(),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      destinationTableConfigurations: map['destinationTableConfigurations'] == null ? null : (pulumi.Input.decodeList<FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>(map['destinationTableConfigurations'], (value) => FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      processingConfiguration: map['processingConfiguration'] == null ? null : (FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((FirehoseDeliveryStreamIcebergConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      destinationTableConfigurations: map['destinationTableConfigurations'] == null ? null : ((pulumi.Input.decodeList<FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration>(map['destinationTableConfigurations']!, (value) => FirehoseDeliveryStreamIcebergConfigurationDestinationTableConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      processingConfiguration: map['processingConfiguration'] == null ? null : ((FirehoseDeliveryStreamIcebergConfigurationProcessingConfiguration.fromMap((map['processingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      retryDuration: map['retryDuration'] == null ? null : ((map['retryDuration'] as int).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      s3BackupMode: map['s3BackupMode'] == null ? null : (map['s3BackupMode'] as String).input(),
-      s3Configuration: (FirehoseDeliveryStreamIcebergConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      s3BackupMode: map['s3BackupMode'] == null ? null : ((map['s3BackupMode'] as String).input()).input(),
+      s3Configuration: (FirehoseDeliveryStreamIcebergConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

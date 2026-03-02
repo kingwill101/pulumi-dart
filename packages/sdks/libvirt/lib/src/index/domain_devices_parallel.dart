@@ -56,13 +56,13 @@ class DomainDevicesParallel {
 
   factory DomainDevicesParallel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesParallel(
-      acpi: map['acpi'] == null ? null : (DomainDevicesParallelAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesParallelAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      log: map['log'] == null ? null : (DomainDevicesParallelLog.fromMap((map['log'] as Map).cast<String, dynamic>())).input(),
-      protocol: map['protocol'] == null ? null : (DomainDevicesParallelProtocol.fromMap((map['protocol'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (DomainDevicesParallelSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (DomainDevicesParallelTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesParallelAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesParallelAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      log: map['log'] == null ? null : (DomainDevicesParallelLog.fromMap((map['log']! as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (DomainDevicesParallelProtocol.fromMap((map['protocol']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (DomainDevicesParallelSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (DomainDevicesParallelTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

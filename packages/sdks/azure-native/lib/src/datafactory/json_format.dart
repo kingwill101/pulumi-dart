@@ -57,13 +57,13 @@ class JsonFormat {
 
   factory JsonFormat.fromMap(Map<String, dynamic> map) {
     return JsonFormat(
-      deserializer: map['deserializer'] == null ? null : (map['deserializer']).input(),
-      encodingName: map['encodingName'] == null ? null : (map['encodingName']).input(),
-      filePattern: map['filePattern'] == null ? null : (map['filePattern']).input(),
-      jsonNodeReference: map['jsonNodeReference'] == null ? null : (map['jsonNodeReference']).input(),
-      jsonPathDefinition: map['jsonPathDefinition'] == null ? null : (map['jsonPathDefinition']).input(),
-      nestingSeparator: map['nestingSeparator'] == null ? null : (map['nestingSeparator']).input(),
-      serializer: map['serializer'] == null ? null : (map['serializer']).input(),
+      deserializer: map['deserializer'] == null ? null : (map['deserializer']!).input(),
+      encodingName: map['encodingName'] == null ? null : (map['encodingName']!).input(),
+      filePattern: map['filePattern'] == null ? null : (map['filePattern']!).input(),
+      jsonNodeReference: map['jsonNodeReference'] == null ? null : (map['jsonNodeReference']!).input(),
+      jsonPathDefinition: map['jsonPathDefinition'] == null ? null : (map['jsonPathDefinition']!).input(),
+      nestingSeparator: map['nestingSeparator'] == null ? null : (map['nestingSeparator']!).input(),
+      serializer: map['serializer'] == null ? null : (map['serializer']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -23,7 +23,7 @@ class GetNodeDevicesArgs {
 
   factory GetNodeDevicesArgs.fromMap(Map<String, dynamic> map) {
     return GetNodeDevicesArgs(
-      capability: map['capability'] == null ? null : (map['capability'] as String).input(),
+      capability: map['capability'] == null ? null : (map['capability']! as String).input(),
     );
   }
 }

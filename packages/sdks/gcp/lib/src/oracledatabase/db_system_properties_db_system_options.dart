@@ -23,7 +23,7 @@ class DbSystemPropertiesDbSystemOptions {
 
   factory DbSystemPropertiesDbSystemOptions.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbSystemOptions(
-      storageManagement: map['storageManagement'] == null ? null : (map['storageManagement'] as String).input(),
+      storageManagement: map['storageManagement'] == null ? null : (map['storageManagement']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule {
 
   factory ClusterAutomatedBackupPolicyWeeklySchedule.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyWeeklySchedule(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks'] as List).cast<String>()).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((map['daysOfWeeks']! as List).cast<String>()).input(),
       startTimes: (pulumi.Input.decodeList<ClusterAutomatedBackupPolicyWeeklyScheduleStartTime>(map['startTimes'], (value) => ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

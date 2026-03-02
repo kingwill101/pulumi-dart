@@ -31,8 +31,8 @@ class GetProtectionArgs {
 
   factory GetProtectionArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionArgs(
-      protectionId: map['protectionId'] == null ? null : (map['protectionId'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      protectionId: map['protectionId'] == null ? null : ((map['protectionId'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
     );
   }
 }

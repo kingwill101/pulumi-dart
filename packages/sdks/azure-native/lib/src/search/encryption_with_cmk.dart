@@ -22,7 +22,7 @@ class EncryptionWithCmk {
 
   factory EncryptionWithCmk.fromMap(Map<String, dynamic> map) {
     return EncryptionWithCmk(
-      enforcement: map['enforcement'] == null ? null : (SearchEncryptionWithCmk.fromValue(map['enforcement'] as String)).input(),
+      enforcement: map['enforcement'] == null ? null : (SearchEncryptionWithCmk.fromValue(map['enforcement']! as String)).input(),
     );
   }
 }

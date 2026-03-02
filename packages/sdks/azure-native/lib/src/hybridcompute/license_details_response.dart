@@ -58,13 +58,13 @@ class LicenseDetailsResponse {
   factory LicenseDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LicenseDetailsResponse(
       assignedLicenses: (map['assignedLicenses'] as int).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
       immutableId: (map['immutableId'] as String).input(),
-      processors: map['processors'] == null ? null : (map['processors'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      volumeLicenseDetails: map['volumeLicenseDetails'] == null ? null : (pulumi.Input.decodeList<VolumeLicenseDetailsResponse>(map['volumeLicenseDetails'], (value) => VolumeLicenseDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      processors: map['processors'] == null ? null : (map['processors']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      volumeLicenseDetails: map['volumeLicenseDetails'] == null ? null : (pulumi.Input.decodeList<VolumeLicenseDetailsResponse>(map['volumeLicenseDetails']!, (value) => VolumeLicenseDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

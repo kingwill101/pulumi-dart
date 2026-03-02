@@ -35,8 +35,8 @@ class CrawlerDeltaTarget {
 
   factory CrawlerDeltaTarget.fromMap(Map<String, dynamic> map) {
     return CrawlerDeltaTarget(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      createNativeDeltaTable: map['createNativeDeltaTable'] == null ? null : (map['createNativeDeltaTable'] as bool).input(),
+      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
+      createNativeDeltaTable: map['createNativeDeltaTable'] == null ? null : ((map['createNativeDeltaTable'] as bool).input()).input(),
       deltaTables: ((map['deltaTables'] as List).cast<String>()).input(),
       writeManifest: (map['writeManifest'] as bool).input(),
     );

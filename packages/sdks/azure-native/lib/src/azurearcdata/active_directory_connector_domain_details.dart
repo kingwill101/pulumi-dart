@@ -42,11 +42,11 @@ class ActiveDirectoryConnectorDomainDetails {
 
   factory ActiveDirectoryConnectorDomainDetails.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorDomainDetails(
-      domainControllers: map['domainControllers'] == null ? null : (ActiveDirectoryDomainControllers.fromMap((map['domainControllers'] as Map).cast<String, dynamic>())).input(),
-      netbiosDomainName: map['netbiosDomainName'] == null ? null : (map['netbiosDomainName'] as String).input(),
-      ouDistinguishedName: map['ouDistinguishedName'] == null ? null : (map['ouDistinguishedName'] as String).input(),
+      domainControllers: map['domainControllers'] == null ? null : (ActiveDirectoryDomainControllers.fromMap((map['domainControllers']! as Map).cast<String, dynamic>())).input(),
+      netbiosDomainName: map['netbiosDomainName'] == null ? null : (map['netbiosDomainName']! as String).input(),
+      ouDistinguishedName: map['ouDistinguishedName'] == null ? null : (map['ouDistinguishedName']! as String).input(),
       realm: (map['realm'] as String).input(),
-      serviceAccountProvisioning: map['serviceAccountProvisioning'] == null ? null : (map['serviceAccountProvisioning'] as String).input(),
+      serviceAccountProvisioning: map['serviceAccountProvisioning'] == null ? null : (map['serviceAccountProvisioning']! as String).input(),
     );
   }
 }

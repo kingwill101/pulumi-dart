@@ -31,9 +31,9 @@ class DomainDevicesLease {
 
   factory DomainDevicesLease.fromMap(Map<String, dynamic> map) {
     return DomainDevicesLease(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
       lockspace: (map['lockspace'] as String).input(),
-      target: map['target'] == null ? null : (DomainDevicesLeaseTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (DomainDevicesLeaseTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

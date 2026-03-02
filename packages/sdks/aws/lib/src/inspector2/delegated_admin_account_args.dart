@@ -30,7 +30,7 @@ class DelegatedAdminAccountArgs {
   factory DelegatedAdminAccountArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedAdminAccountArgs(
       accountId: (map['accountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

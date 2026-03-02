@@ -123,7 +123,7 @@ class DistributedAvailabilityGroupDatabaseResponse {
   factory DistributedAvailabilityGroupDatabaseResponse.fromMap(Map<String, dynamic> map) {
     return DistributedAvailabilityGroupDatabaseResponse(
       connectedState: (map['connectedState'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
       instanceRedoReplicationLagSeconds: (map['instanceRedoReplicationLagSeconds'] as int).input(),
       instanceReplicaId: (map['instanceReplicaId'] as String).input(),
       instanceSendReplicationLagSeconds: (map['instanceSendReplicationLagSeconds'] as int).input(),

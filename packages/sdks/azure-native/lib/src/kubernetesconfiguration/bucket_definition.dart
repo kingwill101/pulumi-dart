@@ -51,13 +51,13 @@ class BucketDefinition {
 
   factory BucketDefinition.fromMap(Map<String, dynamic> map) {
     return BucketDefinition(
-      accessKey: map['accessKey'] == null ? null : (map['accessKey'] as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      insecure: map['insecure'] == null ? null : (map['insecure'] as bool).input(),
-      localAuthRef: map['localAuthRef'] == null ? null : (map['localAuthRef'] as String).input(),
-      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds'] as double).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as double).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      accessKey: map['accessKey'] == null ? null : (map['accessKey']! as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      insecure: map['insecure'] == null ? null : (map['insecure']! as bool).input(),
+      localAuthRef: map['localAuthRef'] == null ? null : (map['localAuthRef']! as String).input(),
+      syncIntervalInSeconds: map['syncIntervalInSeconds'] == null ? null : (map['syncIntervalInSeconds']! as double).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as double).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

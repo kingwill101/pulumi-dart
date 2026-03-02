@@ -32,9 +32,9 @@ class LLMDiagnosticSettings {
 
   factory LLMDiagnosticSettings.fromMap(Map<String, dynamic> map) {
     return LLMDiagnosticSettings(
-      logs: map['logs'] == null ? null : (map['logs'] as String).input(),
-      requests: map['requests'] == null ? null : (LLMMessageDiagnosticSettings.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      responses: map['responses'] == null ? null : (LLMMessageDiagnosticSettings.fromMap((map['responses'] as Map).cast<String, dynamic>())).input(),
+      logs: map['logs'] == null ? null : (map['logs']! as String).input(),
+      requests: map['requests'] == null ? null : (LLMMessageDiagnosticSettings.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      responses: map['responses'] == null ? null : (LLMMessageDiagnosticSettings.fromMap((map['responses']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -89,19 +89,19 @@ class WidgetConfigUiSettings {
 
   factory WidgetConfigUiSettings.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettings(
-      dataStoreUiConfigs: map['dataStoreUiConfigs'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfig>(map['dataStoreUiConfigs'], (value) => WidgetConfigUiSettingsDataStoreUiConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSearchRequestOrderBy: map['defaultSearchRequestOrderBy'] == null ? null : (map['defaultSearchRequestOrderBy'] as String).input(),
-      disableUserEventsCollection: map['disableUserEventsCollection'] == null ? null : (map['disableUserEventsCollection'] as bool).input(),
-      enableAutocomplete: map['enableAutocomplete'] == null ? null : (map['enableAutocomplete'] as bool).input(),
-      enableCreateAgentButton: map['enableCreateAgentButton'] == null ? null : (map['enableCreateAgentButton'] as bool).input(),
-      enablePeopleSearch: map['enablePeopleSearch'] == null ? null : (map['enablePeopleSearch'] as bool).input(),
-      enableQualityFeedback: map['enableQualityFeedback'] == null ? null : (map['enableQualityFeedback'] as bool).input(),
-      enableSafeSearch: map['enableSafeSearch'] == null ? null : (map['enableSafeSearch'] as bool).input(),
-      enableSearchAsYouType: map['enableSearchAsYouType'] == null ? null : (map['enableSearchAsYouType'] as bool).input(),
-      enableVisualContentSummary: map['enableVisualContentSummary'] == null ? null : (map['enableVisualContentSummary'] as bool).input(),
-      generativeAnswerConfig: map['generativeAnswerConfig'] == null ? null : (WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap((map['generativeAnswerConfig'] as Map).cast<String, dynamic>())).input(),
-      interactionType: map['interactionType'] == null ? null : (map['interactionType'] as String).input(),
-      resultDescriptionType: map['resultDescriptionType'] == null ? null : (map['resultDescriptionType'] as String).input(),
+      dataStoreUiConfigs: map['dataStoreUiConfigs'] == null ? null : (pulumi.Input.decodeList<WidgetConfigUiSettingsDataStoreUiConfig>(map['dataStoreUiConfigs']!, (value) => WidgetConfigUiSettingsDataStoreUiConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSearchRequestOrderBy: map['defaultSearchRequestOrderBy'] == null ? null : (map['defaultSearchRequestOrderBy']! as String).input(),
+      disableUserEventsCollection: map['disableUserEventsCollection'] == null ? null : (map['disableUserEventsCollection']! as bool).input(),
+      enableAutocomplete: map['enableAutocomplete'] == null ? null : (map['enableAutocomplete']! as bool).input(),
+      enableCreateAgentButton: map['enableCreateAgentButton'] == null ? null : (map['enableCreateAgentButton']! as bool).input(),
+      enablePeopleSearch: map['enablePeopleSearch'] == null ? null : (map['enablePeopleSearch']! as bool).input(),
+      enableQualityFeedback: map['enableQualityFeedback'] == null ? null : (map['enableQualityFeedback']! as bool).input(),
+      enableSafeSearch: map['enableSafeSearch'] == null ? null : (map['enableSafeSearch']! as bool).input(),
+      enableSearchAsYouType: map['enableSearchAsYouType'] == null ? null : (map['enableSearchAsYouType']! as bool).input(),
+      enableVisualContentSummary: map['enableVisualContentSummary'] == null ? null : (map['enableVisualContentSummary']! as bool).input(),
+      generativeAnswerConfig: map['generativeAnswerConfig'] == null ? null : (WidgetConfigUiSettingsGenerativeAnswerConfig.fromMap((map['generativeAnswerConfig']! as Map).cast<String, dynamic>())).input(),
+      interactionType: map['interactionType'] == null ? null : (map['interactionType']! as String).input(),
+      resultDescriptionType: map['resultDescriptionType'] == null ? null : (map['resultDescriptionType']! as String).input(),
     );
   }
 }

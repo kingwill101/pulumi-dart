@@ -26,8 +26,8 @@ class ArcAutoProvisioningResponseConfiguration {
 
   factory ArcAutoProvisioningResponseConfiguration.fromMap(Map<String, dynamic> map) {
     return ArcAutoProvisioningResponseConfiguration(
-      privateLinkScope: map['privateLinkScope'] == null ? null : (map['privateLinkScope'] as String).input(),
-      proxy: map['proxy'] == null ? null : (map['proxy'] as String).input(),
+      privateLinkScope: map['privateLinkScope'] == null ? null : (map['privateLinkScope']! as String).input(),
+      proxy: map['proxy'] == null ? null : (map['proxy']! as String).input(),
     );
   }
 }

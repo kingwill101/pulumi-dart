@@ -39,8 +39,8 @@ class IdentityResponse {
     return IdentityResponse(
       principalId: (map['principalId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedResourceIdentityResponse>(map['userAssignedIdentities'], (value) => UserAssignedResourceIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserAssignedResourceIdentityResponse>(map['userAssignedIdentities']!, (value) => UserAssignedResourceIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class FullTextPathResponse {
 
   factory FullTextPathResponse.fromMap(Map<String, dynamic> map) {
     return FullTextPathResponse(
-      language: map['language'] == null ? null : (map['language'] as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
       path: (map['path'] as String).input(),
     );
   }

@@ -37,8 +37,8 @@ class FirewallPolicyManagedRule {
 
   factory FirewallPolicyManagedRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyManagedRule(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRuleExclusion>(map['exclusions'], (value) => FirewallPolicyManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRuleOverride>(map['overrides'], (value) => FirewallPolicyManagedRuleOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRuleExclusion>(map['exclusions']!, (value) => FirewallPolicyManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyManagedRuleOverride>(map['overrides']!, (value) => FirewallPolicyManagedRuleOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
       version: (map['version'] as String).input(),
     );

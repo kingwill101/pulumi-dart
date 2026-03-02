@@ -21,7 +21,7 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeader {
 
   factory BackendServiceCdnPolicyBypassCacheOnRequestHeader.fromMap(Map<String, dynamic> map) {
     return BackendServiceCdnPolicyBypassCacheOnRequestHeader(
-      headerName: map['headerName'] == null ? null : (map['headerName'] as String).input(),
+      headerName: map['headerName'] == null ? null : (map['headerName']! as String).input(),
     );
   }
 }

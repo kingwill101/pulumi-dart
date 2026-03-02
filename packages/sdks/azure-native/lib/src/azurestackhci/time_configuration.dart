@@ -31,9 +31,9 @@ class TimeConfiguration {
 
   factory TimeConfiguration.fromMap(Map<String, dynamic> map) {
     return TimeConfiguration(
-      primaryTimeServer: map['primaryTimeServer'] == null ? null : (map['primaryTimeServer'] as String).input(),
-      secondaryTimeServer: map['secondaryTimeServer'] == null ? null : (map['secondaryTimeServer'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      primaryTimeServer: map['primaryTimeServer'] == null ? null : (map['primaryTimeServer']! as String).input(),
+      secondaryTimeServer: map['secondaryTimeServer'] == null ? null : (map['secondaryTimeServer']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

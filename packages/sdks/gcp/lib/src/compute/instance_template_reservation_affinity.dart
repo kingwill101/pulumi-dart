@@ -27,7 +27,7 @@ class InstanceTemplateReservationAffinity {
 
   factory InstanceTemplateReservationAffinity.fromMap(Map<String, dynamic> map) {
     return InstanceTemplateReservationAffinity(
-      specificReservation: map['specificReservation'] == null ? null : (InstanceTemplateReservationAffinitySpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
+      specificReservation: map['specificReservation'] == null ? null : (InstanceTemplateReservationAffinitySpecificReservation.fromMap((map['specificReservation']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

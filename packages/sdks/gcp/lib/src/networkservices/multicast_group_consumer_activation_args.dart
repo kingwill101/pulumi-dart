@@ -73,14 +73,14 @@ class MulticastGroupConsumerActivationArgs {
 
   factory MulticastGroupConsumerActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupConsumerActivationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (MulticastGroupConsumerActivationLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      logConfig: map['logConfig'] == null ? null : (MulticastGroupConsumerActivationLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
       multicastConsumerAssociation: (map['multicastConsumerAssociation'] as String).input(),
       multicastGroupConsumerActivationId: (map['multicastGroupConsumerActivationId'] as String).input(),
       multicastGroupRangeActivation: (map['multicastGroupRangeActivation'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

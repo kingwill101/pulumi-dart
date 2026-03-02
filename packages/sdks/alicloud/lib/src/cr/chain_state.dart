@@ -52,13 +52,13 @@ class ChainState {
 
   factory ChainState.fromMap(Map<String, dynamic> map) {
     return ChainState(
-      chainConfigs: map['chainConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs'], (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      chainId: map['chainId'] == null ? null : (map['chainId'] as String).input(),
-      chainName: map['chainName'] == null ? null : (map['chainName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName'] as String).input(),
+      chainConfigs: map['chainConfigs'] == null ? null : (pulumi.Input.decodeList<ChainChainConfig>(map['chainConfigs']!, (value) => ChainChainConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      chainId: map['chainId'] == null ? null : (map['chainId']! as String).input(),
+      chainName: map['chainName'] == null ? null : (map['chainName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : (map['repoNamespaceName']! as String).input(),
     );
   }
 }

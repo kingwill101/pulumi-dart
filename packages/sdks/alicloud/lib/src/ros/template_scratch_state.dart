@@ -65,15 +65,15 @@ class TemplateScratchState {
 
   factory TemplateScratchState.fromMap(Map<String, dynamic> map) {
     return TemplateScratchState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionMode: map['executionMode'] == null ? null : (map['executionMode'] as String).input(),
-      logicalIdStrategy: map['logicalIdStrategy'] == null ? null : (map['logicalIdStrategy'] as String).input(),
-      preferenceParameters: map['preferenceParameters'] == null ? null : (pulumi.Input.decodeList<TemplateScratchPreferenceParameter>(map['preferenceParameters'], (value) => TemplateScratchPreferenceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceResourceGroup: map['sourceResourceGroup'] == null ? null : (TemplateScratchSourceResourceGroup.fromMap((map['sourceResourceGroup'] as Map).cast<String, dynamic>())).input(),
-      sourceResources: map['sourceResources'] == null ? null : (pulumi.Input.decodeList<TemplateScratchSourceResource>(map['sourceResources'], (value) => TemplateScratchSourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceTag: map['sourceTag'] == null ? null : (TemplateScratchSourceTag.fromMap((map['sourceTag'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      templateScratchType: map['templateScratchType'] == null ? null : (map['templateScratchType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionMode: map['executionMode'] == null ? null : (map['executionMode']! as String).input(),
+      logicalIdStrategy: map['logicalIdStrategy'] == null ? null : (map['logicalIdStrategy']! as String).input(),
+      preferenceParameters: map['preferenceParameters'] == null ? null : (pulumi.Input.decodeList<TemplateScratchPreferenceParameter>(map['preferenceParameters']!, (value) => TemplateScratchPreferenceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceResourceGroup: map['sourceResourceGroup'] == null ? null : (TemplateScratchSourceResourceGroup.fromMap((map['sourceResourceGroup']! as Map).cast<String, dynamic>())).input(),
+      sourceResources: map['sourceResources'] == null ? null : (pulumi.Input.decodeList<TemplateScratchSourceResource>(map['sourceResources']!, (value) => TemplateScratchSourceResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceTag: map['sourceTag'] == null ? null : (TemplateScratchSourceTag.fromMap((map['sourceTag']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      templateScratchType: map['templateScratchType'] == null ? null : (map['templateScratchType']! as String).input(),
     );
   }
 }

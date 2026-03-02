@@ -25,7 +25,7 @@ class FunctionJavascriptUdaInput {
 
   factory FunctionJavascriptUdaInput.fromMap(Map<String, dynamic> map) {
     return FunctionJavascriptUdaInput(
-      configurationParameter: map['configurationParameter'] == null ? null : (map['configurationParameter'] as bool).input(),
+      configurationParameter: map['configurationParameter'] == null ? null : (map['configurationParameter']! as bool).input(),
       type: (map['type'] as String).input(),
     );
   }

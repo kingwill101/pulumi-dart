@@ -25,8 +25,8 @@ class InterfaceDefaultRoute {
 
   factory InterfaceDefaultRoute.fromMap(Map<String, dynamic> map) {
     return InterfaceDefaultRoute(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as bool).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as bool).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as bool).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as bool).input(),
     );
   }
 }

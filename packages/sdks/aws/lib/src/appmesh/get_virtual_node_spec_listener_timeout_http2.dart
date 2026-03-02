@@ -25,8 +25,8 @@ class GetVirtualNodeSpecListenerTimeoutHttp2 {
 
   factory GetVirtualNodeSpecListenerTimeoutHttp2.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeoutHttp2(
-      idles: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle>(map['idles'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      perRequests: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2PerRequest>(map['perRequests'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idles: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle>(map['idles']!, (value) => GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      perRequests: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2PerRequest>(map['perRequests']!, (value) => GetVirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

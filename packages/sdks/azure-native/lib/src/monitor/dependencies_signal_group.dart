@@ -32,8 +32,8 @@ class DependenciesSignalGroup {
   factory DependenciesSignalGroup.fromMap(Map<String, dynamic> map) {
     return DependenciesSignalGroup(
       aggregationType: (map['aggregationType'] as String).input(),
-      degradedThreshold: map['degradedThreshold'] == null ? null : (map['degradedThreshold'] as String).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as String).input(),
+      degradedThreshold: map['degradedThreshold'] == null ? null : (map['degradedThreshold']! as String).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as String).input(),
     );
   }
 }

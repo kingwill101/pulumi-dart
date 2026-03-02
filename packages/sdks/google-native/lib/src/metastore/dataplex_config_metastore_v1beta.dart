@@ -21,7 +21,7 @@ class DataplexConfigMetastoreV1beta {
 
   factory DataplexConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return DataplexConfigMetastoreV1beta(
-      lakeResources: map['lakeResources'] == null ? null : ((map['lakeResources'] as Map).cast<String, String>()).input(),
+      lakeResources: map['lakeResources'] == null ? null : ((map['lakeResources']! as Map).cast<String, String>()).input(),
     );
   }
 }

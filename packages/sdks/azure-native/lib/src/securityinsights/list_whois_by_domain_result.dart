@@ -46,12 +46,12 @@ class ListWhoisByDomainResult {
 
   factory ListWhoisByDomainResult.fromMap(Map<String, dynamic> map) {
     return ListWhoisByDomainResult(
-      created: map['created'] == null ? null : map['created'] as String,
-      domain: map['domain'] == null ? null : map['domain'] as String,
-      expires: map['expires'] == null ? null : map['expires'] as String,
-      parsedWhois: map['parsedWhois'] == null ? null : EnrichmentDomainWhoisDetailsResponse.fromMap((map['parsedWhois'] as Map).cast<String, dynamic>()),
-      server: map['server'] == null ? null : map['server'] as String,
-      updated: map['updated'] == null ? null : map['updated'] as String,
+      created: map['created'] == null ? null : map['created']! as String,
+      domain: map['domain'] == null ? null : map['domain']! as String,
+      expires: map['expires'] == null ? null : map['expires']! as String,
+      parsedWhois: map['parsedWhois'] == null ? null : EnrichmentDomainWhoisDetailsResponse.fromMap((map['parsedWhois']! as Map).cast<String, dynamic>()),
+      server: map['server'] == null ? null : map['server']! as String,
+      updated: map['updated'] == null ? null : map['updated']! as String,
     );
   }
 }

@@ -67,16 +67,16 @@ class EndpointState {
 
   factory EndpointState.fromMap(Map<String, dynamic> map) {
     return EndpointState(
-      accessType: map['accessType'] == null ? null : (map['accessType'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<EndpointNetworkInterface>(map['networkInterfaces'], (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outpostId: map['outpostId'] == null ? null : (map['outpostId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      accessType: map['accessType'] == null ? null : ((map['accessType'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : ((map['customerOwnedIpv4Pool'] as String).input()).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : ((pulumi.Input.decodeList<EndpointNetworkInterface>(map['networkInterfaces']!, (value) => EndpointNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      outpostId: map['outpostId'] == null ? null : ((map['outpostId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
     );
   }
 }

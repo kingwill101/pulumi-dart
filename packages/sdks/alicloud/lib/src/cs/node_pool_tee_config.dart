@@ -20,7 +20,7 @@ class NodePoolTeeConfig {
 
   factory NodePoolTeeConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolTeeConfig(
-      teeEnable: map['teeEnable'] == null ? null : (map['teeEnable'] as bool).input(),
+      teeEnable: map['teeEnable'] == null ? null : (map['teeEnable']! as bool).input(),
     );
   }
 }

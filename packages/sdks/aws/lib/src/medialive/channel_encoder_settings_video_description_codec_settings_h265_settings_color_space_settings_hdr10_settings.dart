@@ -25,8 +25,8 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceS
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings(
-      maxCll: map['maxCll'] == null ? null : (map['maxCll'] as int).input(),
-      maxFall: map['maxFall'] == null ? null : (map['maxFall'] as int).input(),
+      maxCll: map['maxCll'] == null ? null : ((map['maxCll'] as int).input()).input(),
+      maxFall: map['maxFall'] == null ? null : ((map['maxFall'] as int).input()).input(),
     );
   }
 }

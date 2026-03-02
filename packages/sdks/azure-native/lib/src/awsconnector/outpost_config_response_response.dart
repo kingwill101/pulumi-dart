@@ -32,9 +32,9 @@ class OutpostConfigResponseResponse {
 
   factory OutpostConfigResponseResponse.fromMap(Map<String, dynamic> map) {
     return OutpostConfigResponseResponse(
-      controlPlaneInstanceType: map['controlPlaneInstanceType'] == null ? null : (map['controlPlaneInstanceType'] as String).input(),
-      controlPlanePlacement: map['controlPlanePlacement'] == null ? null : (ControlPlanePlacementResponseResponse.fromMap((map['controlPlanePlacement'] as Map).cast<String, dynamic>())).input(),
-      outpostArns: map['outpostArns'] == null ? null : ((map['outpostArns'] as List).cast<String>()).input(),
+      controlPlaneInstanceType: map['controlPlaneInstanceType'] == null ? null : (map['controlPlaneInstanceType']! as String).input(),
+      controlPlanePlacement: map['controlPlanePlacement'] == null ? null : (ControlPlanePlacementResponseResponse.fromMap((map['controlPlanePlacement']! as Map).cast<String, dynamic>())).input(),
+      outpostArns: map['outpostArns'] == null ? null : ((map['outpostArns']! as List).cast<String>()).input(),
     );
   }
 }

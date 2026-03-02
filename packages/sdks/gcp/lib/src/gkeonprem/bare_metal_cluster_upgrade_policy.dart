@@ -21,7 +21,7 @@ class BareMetalClusterUpgradePolicy {
 
   factory BareMetalClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterUpgradePolicy(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

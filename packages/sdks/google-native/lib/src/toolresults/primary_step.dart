@@ -28,8 +28,8 @@ class PrimaryStep {
 
   factory PrimaryStep.fromMap(Map<String, dynamic> map) {
     return PrimaryStep(
-      individualOutcome: map['individualOutcome'] == null ? null : (pulumi.Input.decodeList<IndividualOutcome>(map['individualOutcome'], (value) => IndividualOutcome.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rollUp: map['rollUp'] == null ? null : (PrimaryStepRollUp.fromValue(map['rollUp'] as String)).input(),
+      individualOutcome: map['individualOutcome'] == null ? null : (pulumi.Input.decodeList<IndividualOutcome>(map['individualOutcome']!, (value) => IndividualOutcome.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rollUp: map['rollUp'] == null ? null : (PrimaryStepRollUp.fromValue(map['rollUp']! as String)).input(),
     );
   }
 }

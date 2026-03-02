@@ -27,8 +27,8 @@ class EntityTagsState {
 
   factory EntityTagsState.fromMap(Map<String, dynamic> map) {
     return EntityTagsState(
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<EntityTagsTag>(map['tags'], (value) => EntityTagsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<EntityTagsTag>(map['tags']!, (value) => EntityTagsTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

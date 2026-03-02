@@ -34,9 +34,9 @@ class WindowsEventLogDataSourceResponse {
 
   factory WindowsEventLogDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return WindowsEventLogDataSourceResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      streams: map['streams'] == null ? null : ((map['streams'] as List).cast<String>()).input(),
-      xPathQueries: map['xPathQueries'] == null ? null : ((map['xPathQueries'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      streams: map['streams'] == null ? null : ((map['streams']! as List).cast<String>()).input(),
+      xPathQueries: map['xPathQueries'] == null ? null : ((map['xPathQueries']! as List).cast<String>()).input(),
     );
   }
 }

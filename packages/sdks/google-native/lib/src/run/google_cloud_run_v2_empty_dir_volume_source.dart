@@ -27,8 +27,8 @@ class GoogleCloudRunV2EmptyDirVolumeSource {
 
   factory GoogleCloudRunV2EmptyDirVolumeSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2EmptyDirVolumeSource(
-      medium: map['medium'] == null ? null : (GoogleCloudRunV2EmptyDirVolumeSourceMedium.fromValue(map['medium'] as String)).input(),
-      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit'] as String).input(),
+      medium: map['medium'] == null ? null : (GoogleCloudRunV2EmptyDirVolumeSourceMedium.fromValue(map['medium']! as String)).input(),
+      sizeLimit: map['sizeLimit'] == null ? null : (map['sizeLimit']! as String).input(),
     );
   }
 }

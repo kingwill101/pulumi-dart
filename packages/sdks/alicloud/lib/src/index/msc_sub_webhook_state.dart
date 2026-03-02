@@ -26,8 +26,8 @@ class MscSubWebhookState {
 
   factory MscSubWebhookState.fromMap(Map<String, dynamic> map) {
     return MscSubWebhookState(
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
-      webhookName: map['webhookName'] == null ? null : (map['webhookName'] as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
+      webhookName: map['webhookName'] == null ? null : (map['webhookName']! as String).input(),
     );
   }
 }

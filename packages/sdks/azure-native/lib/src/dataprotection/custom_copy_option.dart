@@ -27,7 +27,7 @@ class CustomCopyOption {
 
   factory CustomCopyOption.fromMap(Map<String, dynamic> map) {
     return CustomCopyOption(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       objectType: (map['objectType'] as String).input(),
     );
   }

@@ -31,8 +31,8 @@ class CurationPluginInstanceAction {
 
   factory CurationPluginInstanceAction.fromMap(Map<String, dynamic> map) {
     return CurationPluginInstanceAction(
-      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
-      pluginInstance: map['pluginInstance'] == null ? null : (map['pluginInstance'] as String).input(),
+      actionId: map['actionId'] == null ? null : (map['actionId']! as String).input(),
+      pluginInstance: map['pluginInstance'] == null ? null : (map['pluginInstance']! as String).input(),
     );
   }
 }

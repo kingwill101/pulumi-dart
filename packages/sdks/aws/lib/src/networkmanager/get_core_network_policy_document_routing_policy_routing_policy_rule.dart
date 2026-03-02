@@ -26,7 +26,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule {
 
   factory GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule(
-      ruleDefinition: (GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap((map['ruleDefinition'] as Map).cast<String, dynamic>())).input(),
+      ruleDefinition: (GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition.fromMap((map['ruleDefinition']! as Map).cast<String, dynamic>())).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),
     );
   }

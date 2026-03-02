@@ -89,9 +89,9 @@ class GetPrimaryIpResult {
       ipNetwork: map['ipNetwork'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       type: map['type'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

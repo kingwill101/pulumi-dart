@@ -54,13 +54,13 @@ class DeploymentProperties {
 
   factory DeploymentProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentProperties(
-      capacitySettings: map['capacitySettings'] == null ? null : (DeploymentCapacitySettings.fromMap((map['capacitySettings'] as Map).cast<String, dynamic>())).input(),
-      currentCapacity: map['currentCapacity'] == null ? null : (map['currentCapacity'] as int).input(),
-      model: map['model'] == null ? null : (DeploymentModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      parentDeploymentName: map['parentDeploymentName'] == null ? null : (map['parentDeploymentName'] as String).input(),
-      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName'] as String).input(),
-      scaleSettings: map['scaleSettings'] == null ? null : (DeploymentScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
-      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption'] as String).input(),
+      capacitySettings: map['capacitySettings'] == null ? null : (DeploymentCapacitySettings.fromMap((map['capacitySettings']! as Map).cast<String, dynamic>())).input(),
+      currentCapacity: map['currentCapacity'] == null ? null : (map['currentCapacity']! as int).input(),
+      model: map['model'] == null ? null : (DeploymentModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      parentDeploymentName: map['parentDeploymentName'] == null ? null : (map['parentDeploymentName']! as String).input(),
+      raiPolicyName: map['raiPolicyName'] == null ? null : (map['raiPolicyName']! as String).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (DeploymentScaleSettings.fromMap((map['scaleSettings']! as Map).cast<String, dynamic>())).input(),
+      versionUpgradeOption: map['versionUpgradeOption'] == null ? null : (map['versionUpgradeOption']! as String).input(),
     );
   }
 }

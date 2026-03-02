@@ -43,10 +43,10 @@ class PosturePolicySetPolicyConstraint {
 
   factory PosturePolicySetPolicyConstraint.fromMap(Map<String, dynamic> map) {
     return PosturePolicySetPolicyConstraint(
-      orgPolicyConstraint: map['orgPolicyConstraint'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraint.fromMap((map['orgPolicyConstraint'] as Map).cast<String, dynamic>())).input(),
-      orgPolicyConstraintCustom: map['orgPolicyConstraintCustom'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap((map['orgPolicyConstraintCustom'] as Map).cast<String, dynamic>())).input(),
-      securityHealthAnalyticsCustomModule: map['securityHealthAnalyticsCustomModule'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule.fromMap((map['securityHealthAnalyticsCustomModule'] as Map).cast<String, dynamic>())).input(),
-      securityHealthAnalyticsModule: map['securityHealthAnalyticsModule'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap((map['securityHealthAnalyticsModule'] as Map).cast<String, dynamic>())).input(),
+      orgPolicyConstraint: map['orgPolicyConstraint'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraint.fromMap((map['orgPolicyConstraint']! as Map).cast<String, dynamic>())).input(),
+      orgPolicyConstraintCustom: map['orgPolicyConstraintCustom'] == null ? null : (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap((map['orgPolicyConstraintCustom']! as Map).cast<String, dynamic>())).input(),
+      securityHealthAnalyticsCustomModule: map['securityHealthAnalyticsCustomModule'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule.fromMap((map['securityHealthAnalyticsCustomModule']! as Map).cast<String, dynamic>())).input(),
+      securityHealthAnalyticsModule: map['securityHealthAnalyticsModule'] == null ? null : (PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule.fromMap((map['securityHealthAnalyticsModule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

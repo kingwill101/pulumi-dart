@@ -40,11 +40,11 @@ class AwsIntegrationsApiGateway {
 
   factory AwsIntegrationsApiGateway.fromMap(Map<String, dynamic> map) {
     return AwsIntegrationsApiGateway(
-      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions'] as List).cast<String>()).input(),
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
-      stagePrefixes: map['stagePrefixes'] == null ? null : ((map['stagePrefixes'] as List).cast<String>()).input(),
-      tagKey: map['tagKey'] == null ? null : (map['tagKey'] as String).input(),
-      tagValue: map['tagValue'] == null ? null : (map['tagValue'] as String).input(),
+      awsRegions: map['awsRegions'] == null ? null : ((map['awsRegions']! as List).cast<String>()).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
+      stagePrefixes: map['stagePrefixes'] == null ? null : ((map['stagePrefixes']! as List).cast<String>()).input(),
+      tagKey: map['tagKey'] == null ? null : (map['tagKey']! as String).input(),
+      tagValue: map['tagValue'] == null ? null : (map['tagValue']! as String).input(),
     );
   }
 }

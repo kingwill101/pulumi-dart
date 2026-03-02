@@ -44,9 +44,9 @@ class InterRegionTrafficQosPolicyArgs {
 
   factory InterRegionTrafficQosPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InterRegionTrafficQosPolicyArgs(
-      bandwidthGuaranteeMode: map['bandwidthGuaranteeMode'] == null ? null : (map['bandwidthGuaranteeMode'] as String).input(),
-      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] == null ? null : (map['interRegionTrafficQosPolicyDescription'] as String).input(),
-      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] == null ? null : (map['interRegionTrafficQosPolicyName'] as String).input(),
+      bandwidthGuaranteeMode: map['bandwidthGuaranteeMode'] == null ? null : (map['bandwidthGuaranteeMode']! as String).input(),
+      interRegionTrafficQosPolicyDescription: map['interRegionTrafficQosPolicyDescription'] == null ? null : (map['interRegionTrafficQosPolicyDescription']! as String).input(),
+      interRegionTrafficQosPolicyName: map['interRegionTrafficQosPolicyName'] == null ? null : (map['interRegionTrafficQosPolicyName']! as String).input(),
       transitRouterAttachmentId: (map['transitRouterAttachmentId'] as String).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
     );

@@ -65,13 +65,13 @@ class ChannelNamespaceArgs {
   factory ChannelNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return ChannelNamespaceArgs(
       apiId: (map['apiId'] as String).input(),
-      codeHandlers: map['codeHandlers'] == null ? null : (map['codeHandlers'] as String).input(),
-      handlerConfigs: map['handlerConfigs'] == null ? null : (ChannelNamespaceHandlerConfigs.fromMap((map['handlerConfigs'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publishAuthModes: map['publishAuthModes'] == null ? null : (pulumi.Input.decodeList<ChannelNamespacePublishAuthMode>(map['publishAuthModes'], (value) => ChannelNamespacePublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subscribeAuthModes: map['subscribeAuthModes'] == null ? null : (pulumi.Input.decodeList<ChannelNamespaceSubscribeAuthMode>(map['subscribeAuthModes'], (value) => ChannelNamespaceSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      codeHandlers: map['codeHandlers'] == null ? null : ((map['codeHandlers'] as String).input()).input(),
+      handlerConfigs: map['handlerConfigs'] == null ? null : ((ChannelNamespaceHandlerConfigs.fromMap((map['handlerConfigs']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      publishAuthModes: map['publishAuthModes'] == null ? null : ((pulumi.Input.decodeList<ChannelNamespacePublishAuthMode>(map['publishAuthModes']!, (value) => ChannelNamespacePublishAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subscribeAuthModes: map['subscribeAuthModes'] == null ? null : ((pulumi.Input.decodeList<ChannelNamespaceSubscribeAuthMode>(map['subscribeAuthModes']!, (value) => ChannelNamespaceSubscribeAuthMode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

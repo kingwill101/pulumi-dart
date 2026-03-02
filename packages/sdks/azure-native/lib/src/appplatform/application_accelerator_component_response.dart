@@ -31,7 +31,7 @@ class ApplicationAcceleratorComponentResponse {
     return ApplicationAcceleratorComponentResponse(
       instances: (pulumi.Input.decodeList<ApplicationAcceleratorInstanceResponse>(map['instances'], (value) => ApplicationAcceleratorInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (ApplicationAcceleratorResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (ApplicationAcceleratorResourceRequestsResponse.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

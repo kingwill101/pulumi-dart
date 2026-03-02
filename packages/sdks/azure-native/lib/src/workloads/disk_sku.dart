@@ -21,7 +21,7 @@ class DiskSku {
 
   factory DiskSku.fromMap(Map<String, dynamic> map) {
     return DiskSku(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

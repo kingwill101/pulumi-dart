@@ -38,7 +38,7 @@ class GetMetastoreServiceArgs {
   factory GetMetastoreServiceArgs.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
     );
   }

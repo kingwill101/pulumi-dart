@@ -38,10 +38,10 @@ class PathRuleComputeV1 {
 
   factory PathRuleComputeV1.fromMap(Map<String, dynamic> map) {
     return PathRuleComputeV1(
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      routeAction: map['routeAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['routeAction'] as Map).cast<String, dynamic>())).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>())).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      routeAction: map['routeAction'] == null ? null : (HttpRouteActionComputeV1.fromMap((map['routeAction']! as Map).cast<String, dynamic>())).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      urlRedirect: map['urlRedirect'] == null ? null : (HttpRedirectActionComputeV1.fromMap((map['urlRedirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

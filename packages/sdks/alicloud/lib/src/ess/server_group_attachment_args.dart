@@ -50,7 +50,7 @@ class ServerGroupAttachmentArgs {
 
   factory ServerGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupAttachmentArgs(
-      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach'] as bool).input(),
+      forceAttach: map['forceAttach'] == null ? null : (map['forceAttach']! as bool).input(),
       port: (map['port'] as int).input(),
       scalingGroupId: (map['scalingGroupId'] as String).input(),
       serverGroupId: (map['serverGroupId'] as String).input(),

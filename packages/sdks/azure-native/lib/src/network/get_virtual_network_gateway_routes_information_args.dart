@@ -34,7 +34,7 @@ class GetVirtualNetworkGatewayRoutesInformationArgs {
 
   factory GetVirtualNetworkGatewayRoutesInformationArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkGatewayRoutesInformationArgs(
-      attemptRefresh: map['attemptRefresh'] == null ? null : (map['attemptRefresh'] as bool).input(),
+      attemptRefresh: map['attemptRefresh'] == null ? null : (map['attemptRefresh']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualNetworkGatewayName: (map['virtualNetworkGatewayName'] as String).input(),
     );

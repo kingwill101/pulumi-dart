@@ -21,7 +21,7 @@ class ExperimentTemplateExperimentReportConfigurationOutputs {
 
   factory ExperimentTemplateExperimentReportConfigurationOutputs.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentReportConfigurationOutputs(
-      s3Configuration: map['s3Configuration'] == null ? null : (ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>())).input(),
+      s3Configuration: map['s3Configuration'] == null ? null : ((ExperimentTemplateExperimentReportConfigurationOutputsS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

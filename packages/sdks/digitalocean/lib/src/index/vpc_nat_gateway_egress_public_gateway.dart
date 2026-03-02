@@ -20,7 +20,7 @@ class VpcNatGatewayEgressPublicGateway {
 
   factory VpcNatGatewayEgressPublicGateway.fromMap(Map<String, dynamic> map) {
     return VpcNatGatewayEgressPublicGateway(
-      ipv4: map['ipv4'] == null ? null : (map['ipv4'] as String).input(),
+      ipv4: map['ipv4'] == null ? null : (map['ipv4']! as String).input(),
     );
   }
 }

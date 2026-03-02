@@ -22,7 +22,7 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
 
   factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1RequestMetadata(
-      userInfo: map['userInfo'] == null ? null : (GoogleCloudContentwarehouseV1UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>())).input(),
+      userInfo: map['userInfo'] == null ? null : (GoogleCloudContentwarehouseV1UserInfo.fromMap((map['userInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

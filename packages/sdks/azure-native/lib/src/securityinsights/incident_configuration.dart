@@ -28,7 +28,7 @@ class IncidentConfiguration {
   factory IncidentConfiguration.fromMap(Map<String, dynamic> map) {
     return IncidentConfiguration(
       createIncident: (map['createIncident'] as bool).input(),
-      groupingConfiguration: map['groupingConfiguration'] == null ? null : (GroupingConfiguration.fromMap((map['groupingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      groupingConfiguration: map['groupingConfiguration'] == null ? null : (GroupingConfiguration.fromMap((map['groupingConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

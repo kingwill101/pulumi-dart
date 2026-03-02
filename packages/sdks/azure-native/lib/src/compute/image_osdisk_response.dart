@@ -63,15 +63,15 @@ class ImageOSDiskResponse {
 
   factory ImageOSDiskResponse.fromMap(Map<String, dynamic> map) {
     return ImageOSDiskResponse(
-      blobUri: map['blobUri'] == null ? null : (map['blobUri'] as String).input(),
-      caching: map['caching'] == null ? null : (map['caching'] as String).input(),
-      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParametersResponse.fromMap((map['diskEncryptionSet'] as Map).cast<String, dynamic>())).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      managedDisk: map['managedDisk'] == null ? null : (SubResourceResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      blobUri: map['blobUri'] == null ? null : (map['blobUri']! as String).input(),
+      caching: map['caching'] == null ? null : (map['caching']! as String).input(),
+      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParametersResponse.fromMap((map['diskEncryptionSet']! as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      managedDisk: map['managedDisk'] == null ? null : (SubResourceResponse.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
       osState: (map['osState'] as String).input(),
       osType: (map['osType'] as String).input(),
-      snapshot: map['snapshot'] == null ? null : (SubResourceResponse.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      snapshot: map['snapshot'] == null ? null : (SubResourceResponse.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

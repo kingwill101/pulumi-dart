@@ -51,11 +51,11 @@ class MetricStatus {
 
   factory MetricStatus.fromMap(Map<String, dynamic> map) {
     return MetricStatus(
-      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricStatus.fromMap((map['containerResource'] as Map).cast<String, dynamic>())).input(),
-      external: map['external'] == null ? null : (ExternalMetricStatus.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
-      object: map['object'] == null ? null : (ObjectMetricStatus.fromMap((map['object'] as Map).cast<String, dynamic>())).input(),
-      pods: map['pods'] == null ? null : (PodsMetricStatus.fromMap((map['pods'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (ResourceMetricStatus.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricStatus.fromMap((map['containerResource']! as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (ExternalMetricStatus.fromMap((map['external']! as Map).cast<String, dynamic>())).input(),
+      object: map['object'] == null ? null : (ObjectMetricStatus.fromMap((map['object']! as Map).cast<String, dynamic>())).input(),
+      pods: map['pods'] == null ? null : (PodsMetricStatus.fromMap((map['pods']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (ResourceMetricStatus.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

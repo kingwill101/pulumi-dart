@@ -65,14 +65,14 @@ class GetRecordsArgs {
   factory GetRecordsArgs.fromMap(Map<String, dynamic> map) {
     return GetRecordsArgs(
       domainName: (map['domainName'] as String).input(),
-      hostRecordRegex: map['hostRecordRegex'] == null ? null : (map['hostRecordRegex'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      isLocked: map['isLocked'] == null ? null : (map['isLocked'] as bool).input(),
-      line: map['line'] == null ? null : (map['line'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      valueRegex: map['valueRegex'] == null ? null : (map['valueRegex'] as String).input(),
+      hostRecordRegex: map['hostRecordRegex'] == null ? null : (map['hostRecordRegex']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      isLocked: map['isLocked'] == null ? null : (map['isLocked']! as bool).input(),
+      line: map['line'] == null ? null : (map['line']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      valueRegex: map['valueRegex'] == null ? null : (map['valueRegex']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class BucketLifecycleRuleTransition {
 
   factory BucketLifecycleRuleTransition.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleTransition(
-      date: map['date'] == null ? null : (map['date'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      date: map['date'] == null ? null : ((map['date'] as String).input()).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
       storageClass: (map['storageClass'] as String).input(),
     );
   }

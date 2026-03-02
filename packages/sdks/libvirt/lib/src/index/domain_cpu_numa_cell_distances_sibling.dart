@@ -25,7 +25,7 @@ class DomainCpuNumaCellDistancesSibling {
 
   factory DomainCpuNumaCellDistancesSibling.fromMap(Map<String, dynamic> map) {
     return DomainCpuNumaCellDistancesSibling(
-      id: map['id'] == null ? null : (map['id'] as double).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
       value: (map['value'] as double).input(),
     );
   }

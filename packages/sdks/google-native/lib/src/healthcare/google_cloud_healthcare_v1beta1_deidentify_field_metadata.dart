@@ -51,13 +51,13 @@ class GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata {
 
   factory GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata(
-      characterMaskField: map['characterMaskField'] == null ? null : ((map['characterMaskField'] as Map).cast<String, dynamic>()).input(),
-      cleanTextField: map['cleanTextField'] == null ? null : ((map['cleanTextField'] as Map).cast<String, dynamic>()).input(),
-      cryptoHashField: map['cryptoHashField'] == null ? null : ((map['cryptoHashField'] as Map).cast<String, dynamic>()).input(),
-      dateShiftField: map['dateShiftField'] == null ? null : ((map['dateShiftField'] as Map).cast<String, dynamic>()).input(),
-      keepField: map['keepField'] == null ? null : ((map['keepField'] as Map).cast<String, dynamic>()).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      removeField: map['removeField'] == null ? null : ((map['removeField'] as Map).cast<String, dynamic>()).input(),
+      characterMaskField: map['characterMaskField'] == null ? null : ((map['characterMaskField']! as Map).cast<String, dynamic>()).input(),
+      cleanTextField: map['cleanTextField'] == null ? null : ((map['cleanTextField']! as Map).cast<String, dynamic>()).input(),
+      cryptoHashField: map['cryptoHashField'] == null ? null : ((map['cryptoHashField']! as Map).cast<String, dynamic>()).input(),
+      dateShiftField: map['dateShiftField'] == null ? null : ((map['dateShiftField']! as Map).cast<String, dynamic>()).input(),
+      keepField: map['keepField'] == null ? null : ((map['keepField']! as Map).cast<String, dynamic>()).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      removeField: map['removeField'] == null ? null : ((map['removeField']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

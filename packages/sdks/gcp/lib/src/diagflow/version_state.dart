@@ -42,11 +42,11 @@ class VersionState {
 
   factory VersionState.fromMap(Map<String, dynamic> map) {
     return VersionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      versionNumber: map['versionNumber'] == null ? null : (map['versionNumber']! as int).input(),
     );
   }
 }

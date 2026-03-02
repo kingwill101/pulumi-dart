@@ -199,7 +199,7 @@ class GetClusterResult {
       iamRoles: (map['iamRoles'] as List).cast<String>(),
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
-      masterUserSecrets: pulumi.Input.decodeList<GetClusterMasterUserSecret>(map['masterUserSecrets'], (value) => GetClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())),
+      masterUserSecrets: pulumi.Input.decodeList<GetClusterMasterUserSecret>(map['masterUserSecrets']!, (value) => GetClusterMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())),
       masterUsername: map['masterUsername'] as String,
       monitoringInterval: map['monitoringInterval'] as int,
       monitoringRoleArn: map['monitoringRoleArn'] as String,

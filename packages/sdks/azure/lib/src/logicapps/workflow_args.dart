@@ -88,19 +88,19 @@ class WorkflowArgs {
 
   factory WorkflowArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowArgs(
-      accessControl: map['accessControl'] == null ? null : (WorkflowAccessControl.fromMap((map['accessControl'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      identity: map['identity'] == null ? null : (WorkflowIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logicAppIntegrationAccountId: map['logicAppIntegrationAccountId'] == null ? null : (map['logicAppIntegrationAccountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      accessControl: map['accessControl'] == null ? null : (WorkflowAccessControl.fromMap((map['accessControl']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      identity: map['identity'] == null ? null : (WorkflowIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      integrationServiceEnvironmentId: map['integrationServiceEnvironmentId'] == null ? null : (map['integrationServiceEnvironmentId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logicAppIntegrationAccountId: map['logicAppIntegrationAccountId'] == null ? null : (map['logicAppIntegrationAccountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workflowParameters: map['workflowParameters'] == null ? null : ((map['workflowParameters'] as Map).cast<String, String>()).input(),
-      workflowSchema: map['workflowSchema'] == null ? null : (map['workflowSchema'] as String).input(),
-      workflowVersion: map['workflowVersion'] == null ? null : (map['workflowVersion'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workflowParameters: map['workflowParameters'] == null ? null : ((map['workflowParameters']! as Map).cast<String, String>()).input(),
+      workflowSchema: map['workflowSchema'] == null ? null : (map['workflowSchema']! as String).input(),
+      workflowVersion: map['workflowVersion'] == null ? null : (map['workflowVersion']! as String).input(),
     );
   }
 }

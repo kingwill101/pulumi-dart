@@ -52,11 +52,11 @@ class PredictionDriftMonitoringSignalResponse {
 
   factory PredictionDriftMonitoringSignalResponse.fromMap(Map<String, dynamic> map) {
     return PredictionDriftMonitoringSignalResponse(
-      featureDataTypeOverride: map['featureDataTypeOverride'] == null ? null : ((map['featureDataTypeOverride'] as Map).cast<String, String>()).input(),
+      featureDataTypeOverride: map['featureDataTypeOverride'] == null ? null : ((map['featureDataTypeOverride']! as Map).cast<String, String>()).input(),
       metricThresholds: (pulumi.Input.decodeList<CategoricalPredictionDriftMetricThresholdResponse>(map['metricThresholds'], (value) => CategoricalPredictionDriftMetricThresholdResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes'] as List).cast<String>()).input(),
+      notificationTypes: map['notificationTypes'] == null ? null : ((map['notificationTypes']! as List).cast<String>()).input(),
       productionData: (FixedInputDataResponse.fromMap((map['productionData'] as Map).cast<String, dynamic>())).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       referenceData: (FixedInputDataResponse.fromMap((map['referenceData'] as Map).cast<String, dynamic>())).input(),
       signalType: (map['signalType'] as String).input(),
     );

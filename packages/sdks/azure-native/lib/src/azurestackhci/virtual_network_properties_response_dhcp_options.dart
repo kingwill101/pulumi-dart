@@ -21,7 +21,7 @@ class VirtualNetworkPropertiesResponseDhcpOptions {
 
   factory VirtualNetworkPropertiesResponseDhcpOptions.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesResponseDhcpOptions(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

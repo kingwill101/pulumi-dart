@@ -49,11 +49,11 @@ class DatabaseInstanceClone {
 
   factory DatabaseInstanceClone.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceClone(
-      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange'] as String).input(),
-      databaseNames: map['databaseNames'] == null ? null : ((map['databaseNames'] as List).cast<String>()).input(),
-      pointInTime: map['pointInTime'] == null ? null : (map['pointInTime'] as String).input(),
-      preferredZone: map['preferredZone'] == null ? null : (map['preferredZone'] as String).input(),
-      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : (map['sourceInstanceDeletionTime'] as String).input(),
+      allocatedIpRange: map['allocatedIpRange'] == null ? null : (map['allocatedIpRange']! as String).input(),
+      databaseNames: map['databaseNames'] == null ? null : ((map['databaseNames']! as List).cast<String>()).input(),
+      pointInTime: map['pointInTime'] == null ? null : (map['pointInTime']! as String).input(),
+      preferredZone: map['preferredZone'] == null ? null : (map['preferredZone']! as String).input(),
+      sourceInstanceDeletionTime: map['sourceInstanceDeletionTime'] == null ? null : (map['sourceInstanceDeletionTime']! as String).input(),
       sourceInstanceName: (map['sourceInstanceName'] as String).input(),
     );
   }

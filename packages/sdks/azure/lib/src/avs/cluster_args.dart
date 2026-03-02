@@ -40,7 +40,7 @@ class ClusterArgs {
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
       clusterNodeCount: (map['clusterNodeCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       skuName: (map['skuName'] as String).input(),
       vmwareCloudId: (map['vmwareCloudId'] as String).input(),
     );

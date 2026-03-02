@@ -19,7 +19,7 @@ class GenaiAgentChatbotIdentifier {
 
   factory GenaiAgentChatbotIdentifier.fromMap(Map<String, dynamic> map) {
     return GenaiAgentChatbotIdentifier(
-      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId'] as String).input(),
+      chatbotId: map['chatbotId'] == null ? null : (map['chatbotId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DomainDevicesRedirFilter {
 
   factory DomainDevicesRedirFilter.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirFilter(
-      usbs: map['usbs'] == null ? null : (pulumi.Input.decodeList<DomainDevicesRedirFilterUsb>(map['usbs'], (value) => DomainDevicesRedirFilterUsb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      usbs: map['usbs'] == null ? null : (pulumi.Input.decodeList<DomainDevicesRedirFilterUsb>(map['usbs']!, (value) => DomainDevicesRedirFilterUsb.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

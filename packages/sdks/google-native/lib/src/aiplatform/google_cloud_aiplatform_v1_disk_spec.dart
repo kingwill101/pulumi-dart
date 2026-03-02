@@ -26,8 +26,8 @@ class GoogleCloudAiplatformV1DiskSpec {
 
   factory GoogleCloudAiplatformV1DiskSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1DiskSpec(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType'] as String).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
     );
   }
 }

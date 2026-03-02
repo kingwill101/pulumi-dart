@@ -27,8 +27,8 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
 
   factory GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig(
-      conversationProfile: map['conversationProfile'] == null ? null : (map['conversationProfile'] as String).input(),
-      summarizationModel: map['summarizationModel'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel.fromValue(map['summarizationModel'] as String)).input(),
+      conversationProfile: map['conversationProfile'] == null ? null : (map['conversationProfile']! as String).input(),
+      summarizationModel: map['summarizationModel'] == null ? null : (GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel.fromValue(map['summarizationModel']! as String)).input(),
     );
   }
 }

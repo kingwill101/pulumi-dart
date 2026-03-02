@@ -36,9 +36,9 @@ class ProtectionContainerMappingAutomaticUpdate {
 
   factory ProtectionContainerMappingAutomaticUpdate.fromMap(Map<String, dynamic> map) {
     return ProtectionContainerMappingAutomaticUpdate(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

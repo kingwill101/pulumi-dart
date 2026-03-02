@@ -39,10 +39,10 @@ class GetInstanceTypeOfferingsArgs {
 
   factory GetInstanceTypeOfferingsArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingsArgs(
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      hostInstanceType: map['hostInstanceType'] == null ? null : (map['hostInstanceType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
+      engineType: map['engineType'] == null ? null : ((map['engineType'] as String).input()).input(),
+      hostInstanceType: map['hostInstanceType'] == null ? null : ((map['hostInstanceType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageType: map['storageType'] == null ? null : ((map['storageType'] as String).input()).input(),
     );
   }
 }

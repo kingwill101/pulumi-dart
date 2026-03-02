@@ -44,11 +44,11 @@ class AnomalyMonitorArgs {
 
   factory AnomalyMonitorArgs.fromMap(Map<String, dynamic> map) {
     return AnomalyMonitorArgs(
-      monitorDimension: map['monitorDimension'] == null ? null : (map['monitorDimension'] as String).input(),
-      monitorSpecification: map['monitorSpecification'] == null ? null : (map['monitorSpecification'] as String).input(),
+      monitorDimension: map['monitorDimension'] == null ? null : ((map['monitorDimension'] as String).input()).input(),
+      monitorSpecification: map['monitorSpecification'] == null ? null : ((map['monitorSpecification'] as String).input()).input(),
       monitorType: (map['monitorType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class AwsIamMFADeviceProperties {
 
   factory AwsIamMFADeviceProperties.fromMap(Map<String, dynamic> map) {
     return AwsIamMFADeviceProperties(
-      enableDate: map['enableDate'] == null ? null : (map['enableDate'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      enableDate: map['enableDate'] == null ? null : (map['enableDate']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

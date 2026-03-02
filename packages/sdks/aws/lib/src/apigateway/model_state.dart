@@ -46,12 +46,12 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      restApi: map['restApi'] == null ? null : (map['restApi'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      contentType: map['contentType'] == null ? null : ((map['contentType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      restApi: map['restApi'] == null ? null : ((map['restApi'] as String).input()).input(),
+      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
     );
   }
 }

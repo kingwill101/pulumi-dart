@@ -26,8 +26,8 @@ class ChannelEncoderSettingsMotionGraphicsConfiguration {
 
   factory ChannelEncoderSettingsMotionGraphicsConfiguration.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsMotionGraphicsConfiguration(
-      motionGraphicsInsertion: map['motionGraphicsInsertion'] == null ? null : (map['motionGraphicsInsertion'] as String).input(),
-      motionGraphicsSettings: (ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap((map['motionGraphicsSettings'] as Map).cast<String, dynamic>())).input(),
+      motionGraphicsInsertion: map['motionGraphicsInsertion'] == null ? null : ((map['motionGraphicsInsertion'] as String).input()).input(),
+      motionGraphicsSettings: (ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap((map['motionGraphicsSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

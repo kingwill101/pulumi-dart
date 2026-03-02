@@ -52,13 +52,13 @@ class BlobInventoryPolicyFilterResponse {
 
   factory BlobInventoryPolicyFilterResponse.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyFilterResponse(
-      blobTypes: map['blobTypes'] == null ? null : ((map['blobTypes'] as List).cast<String>()).input(),
-      creationTime: map['creationTime'] == null ? null : (BlobInventoryCreationTimeResponse.fromMap((map['creationTime'] as Map).cast<String, dynamic>())).input(),
-      excludePrefix: map['excludePrefix'] == null ? null : ((map['excludePrefix'] as List).cast<String>()).input(),
-      includeBlobVersions: map['includeBlobVersions'] == null ? null : (map['includeBlobVersions'] as bool).input(),
-      includeDeleted: map['includeDeleted'] == null ? null : (map['includeDeleted'] as bool).input(),
-      includeSnapshots: map['includeSnapshots'] == null ? null : (map['includeSnapshots'] as bool).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch'] as List).cast<String>()).input(),
+      blobTypes: map['blobTypes'] == null ? null : ((map['blobTypes']! as List).cast<String>()).input(),
+      creationTime: map['creationTime'] == null ? null : (BlobInventoryCreationTimeResponse.fromMap((map['creationTime']! as Map).cast<String, dynamic>())).input(),
+      excludePrefix: map['excludePrefix'] == null ? null : ((map['excludePrefix']! as List).cast<String>()).input(),
+      includeBlobVersions: map['includeBlobVersions'] == null ? null : (map['includeBlobVersions']! as bool).input(),
+      includeDeleted: map['includeDeleted'] == null ? null : (map['includeDeleted']! as bool).input(),
+      includeSnapshots: map['includeSnapshots'] == null ? null : (map['includeSnapshots']! as bool).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : ((map['prefixMatch']! as List).cast<String>()).input(),
     );
   }
 }

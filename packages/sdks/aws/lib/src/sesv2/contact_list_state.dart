@@ -62,15 +62,15 @@ class ContactListState {
 
   factory ContactListState.fromMap(Map<String, dynamic> map) {
     return ContactListState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      contactListName: map['contactListName'] == null ? null : (map['contactListName'] as String).input(),
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : (map['lastUpdatedTimestamp'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      topics: map['topics'] == null ? null : (pulumi.Input.decodeList<ContactListTopic>(map['topics'], (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      contactListName: map['contactListName'] == null ? null : ((map['contactListName'] as String).input()).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : ((map['createdTimestamp'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : ((map['lastUpdatedTimestamp'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      topics: map['topics'] == null ? null : ((pulumi.Input.decodeList<ContactListTopic>(map['topics']!, (value) => ContactListTopic.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

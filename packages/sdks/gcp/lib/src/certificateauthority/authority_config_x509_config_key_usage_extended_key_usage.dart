@@ -45,12 +45,12 @@ class AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
 
   factory AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigX509ConfigKeyUsageExtendedKeyUsage(
-      clientAuth: map['clientAuth'] == null ? null : (map['clientAuth'] as bool).input(),
-      codeSigning: map['codeSigning'] == null ? null : (map['codeSigning'] as bool).input(),
-      emailProtection: map['emailProtection'] == null ? null : (map['emailProtection'] as bool).input(),
-      ocspSigning: map['ocspSigning'] == null ? null : (map['ocspSigning'] as bool).input(),
-      serverAuth: map['serverAuth'] == null ? null : (map['serverAuth'] as bool).input(),
-      timeStamping: map['timeStamping'] == null ? null : (map['timeStamping'] as bool).input(),
+      clientAuth: map['clientAuth'] == null ? null : (map['clientAuth']! as bool).input(),
+      codeSigning: map['codeSigning'] == null ? null : (map['codeSigning']! as bool).input(),
+      emailProtection: map['emailProtection'] == null ? null : (map['emailProtection']! as bool).input(),
+      ocspSigning: map['ocspSigning'] == null ? null : (map['ocspSigning']! as bool).input(),
+      serverAuth: map['serverAuth'] == null ? null : (map['serverAuth']! as bool).input(),
+      timeStamping: map['timeStamping'] == null ? null : (map['timeStamping']! as bool).input(),
     );
   }
 }

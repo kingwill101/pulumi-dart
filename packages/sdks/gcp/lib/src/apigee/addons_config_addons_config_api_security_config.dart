@@ -26,8 +26,8 @@ class AddonsConfigAddonsConfigApiSecurityConfig {
 
   factory AddonsConfigAddonsConfigApiSecurityConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfigApiSecurityConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expiresAt: map['expiresAt'] == null ? null : (map['expiresAt']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class GroupAvailabilityZoneDistribution {
 
   factory GroupAvailabilityZoneDistribution.fromMap(Map<String, dynamic> map) {
     return GroupAvailabilityZoneDistribution(
-      capacityDistributionStrategy: map['capacityDistributionStrategy'] == null ? null : (map['capacityDistributionStrategy'] as String).input(),
+      capacityDistributionStrategy: map['capacityDistributionStrategy'] == null ? null : ((map['capacityDistributionStrategy'] as String).input()).input(),
     );
   }
 }

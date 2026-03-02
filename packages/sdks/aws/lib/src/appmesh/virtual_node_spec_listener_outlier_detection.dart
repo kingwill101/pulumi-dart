@@ -38,8 +38,8 @@ class VirtualNodeSpecListenerOutlierDetection {
 
   factory VirtualNodeSpecListenerOutlierDetection.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerOutlierDetection(
-      baseEjectionDuration: (VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration.fromMap((map['baseEjectionDuration'] as Map).cast<String, dynamic>())).input(),
-      interval: (VirtualNodeSpecListenerOutlierDetectionInterval.fromMap((map['interval'] as Map).cast<String, dynamic>())).input(),
+      baseEjectionDuration: (VirtualNodeSpecListenerOutlierDetectionBaseEjectionDuration.fromMap((map['baseEjectionDuration']! as Map).cast<String, dynamic>())).input(),
+      interval: (VirtualNodeSpecListenerOutlierDetectionInterval.fromMap((map['interval']! as Map).cast<String, dynamic>())).input(),
       maxEjectionPercent: (map['maxEjectionPercent'] as int).input(),
       maxServerErrors: (map['maxServerErrors'] as int).input(),
     );

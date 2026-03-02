@@ -21,7 +21,7 @@ class DashboardDefinitionProperties {
 
   factory DashboardDefinitionProperties.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionProperties(
-      serializedData: map['serializedData'] == null ? null : (map['serializedData'] as String).input(),
+      serializedData: map['serializedData'] == null ? null : (map['serializedData']! as String).input(),
     );
   }
 }

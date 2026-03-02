@@ -19,7 +19,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings(
-      repInterval: map['repInterval'] == null ? null : (map['repInterval'] as int).input(),
+      repInterval: map['repInterval'] == null ? null : ((map['repInterval'] as int).input()).input(),
     );
   }
 }

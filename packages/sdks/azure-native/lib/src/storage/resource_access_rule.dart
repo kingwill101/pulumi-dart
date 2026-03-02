@@ -26,8 +26,8 @@ class ResourceAccessRule {
 
   factory ResourceAccessRule.fromMap(Map<String, dynamic> map) {
     return ResourceAccessRule(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

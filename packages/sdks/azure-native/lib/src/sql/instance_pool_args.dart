@@ -65,14 +65,14 @@ class InstancePoolArgs {
 
   factory InstancePoolArgs.fromMap(Map<String, dynamic> map) {
     return InstancePoolArgs(
-      instancePoolName: map['instancePoolName'] == null ? null : (map['instancePoolName'] as String).input(),
+      instancePoolName: map['instancePoolName'] == null ? null : (map['instancePoolName']! as String).input(),
       licenseType: (map['licenseType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : (map['maintenanceConfigurationId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vCores: (map['vCores'] as int).input(),
     );
   }

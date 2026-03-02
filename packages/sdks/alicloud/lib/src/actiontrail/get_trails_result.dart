@@ -67,12 +67,12 @@ class GetTrailsResult {
       actiontrails: pulumi.Input.decodeList<GetTrailsActiontrail>(map['actiontrails'], (value) => GetTrailsActiontrail.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeOrganizationTrail: map['includeOrganizationTrail'] == null ? null : map['includeOrganizationTrail'] as bool,
-      includeShadowTrails: map['includeShadowTrails'] == null ? null : map['includeShadowTrails'] as bool,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      includeOrganizationTrail: map['includeOrganizationTrail'] == null ? null : map['includeOrganizationTrail']! as bool,
+      includeShadowTrails: map['includeShadowTrails'] == null ? null : map['includeShadowTrails']! as bool,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       trails: pulumi.Input.decodeList<GetTrailsTrail>(map['trails'], (value) => GetTrailsTrail.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

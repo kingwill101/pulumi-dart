@@ -91,20 +91,20 @@ class GetPoolResult {
 
   factory GetPoolResult.fromMap(Map<String, dynamic> map) {
     return GetPoolResult(
-      assignments: map['assignments'] == null ? null : pulumi.Input.decodeList<AssignmentResponse>(map['assignments'], (value) => AssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      assignments: map['assignments'] == null ? null : pulumi.Input.decodeList<AssignmentResponse>(map['assignments']!, (value) => AssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       poolType: PoolTypeResponse.fromMap((map['poolType'] as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
-      reclaimPolicy: map['reclaimPolicy'] == null ? null : map['reclaimPolicy'] as String,
-      resources: map['resources'] == null ? null : ResourcesResponse.fromMap((map['resources'] as Map).cast<String, dynamic>()),
+      reclaimPolicy: map['reclaimPolicy'] == null ? null : map['reclaimPolicy']! as String,
+      resources: map['resources'] == null ? null : ResourcesResponse.fromMap((map['resources']! as Map).cast<String, dynamic>()),
       status: ResourceOperationalStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      zones: map['zones'] == null ? null : (map['zones'] as List).cast<String>(),
+      zones: map['zones'] == null ? null : (map['zones']! as List).cast<String>(),
     );
   }
 }

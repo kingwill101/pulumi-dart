@@ -27,7 +27,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   factory GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig.fromMap(Map<String, dynamic> map) {
     return GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig(
       cookieBehavior: (map['cookieBehavior'] as String).input(),
-      cookies: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>(map['cookies'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cookies: (pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie>(map['cookies']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookie.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

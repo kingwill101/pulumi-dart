@@ -99,22 +99,22 @@ class ApplicationGatewayRequestRoutingRule {
 
   factory ApplicationGatewayRequestRoutingRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayRequestRoutingRule(
-      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId'] as String).input(),
-      backendAddressPoolName: map['backendAddressPoolName'] == null ? null : (map['backendAddressPoolName'] as String).input(),
-      backendHttpSettingsId: map['backendHttpSettingsId'] == null ? null : (map['backendHttpSettingsId'] as String).input(),
-      backendHttpSettingsName: map['backendHttpSettingsName'] == null ? null : (map['backendHttpSettingsName'] as String).input(),
-      httpListenerId: map['httpListenerId'] == null ? null : (map['httpListenerId'] as String).input(),
+      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId']! as String).input(),
+      backendAddressPoolName: map['backendAddressPoolName'] == null ? null : (map['backendAddressPoolName']! as String).input(),
+      backendHttpSettingsId: map['backendHttpSettingsId'] == null ? null : (map['backendHttpSettingsId']! as String).input(),
+      backendHttpSettingsName: map['backendHttpSettingsName'] == null ? null : (map['backendHttpSettingsName']! as String).input(),
+      httpListenerId: map['httpListenerId'] == null ? null : (map['httpListenerId']! as String).input(),
       httpListenerName: (map['httpListenerName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      redirectConfigurationId: map['redirectConfigurationId'] == null ? null : (map['redirectConfigurationId'] as String).input(),
-      redirectConfigurationName: map['redirectConfigurationName'] == null ? null : (map['redirectConfigurationName'] as String).input(),
-      rewriteRuleSetId: map['rewriteRuleSetId'] == null ? null : (map['rewriteRuleSetId'] as String).input(),
-      rewriteRuleSetName: map['rewriteRuleSetName'] == null ? null : (map['rewriteRuleSetName'] as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      redirectConfigurationId: map['redirectConfigurationId'] == null ? null : (map['redirectConfigurationId']! as String).input(),
+      redirectConfigurationName: map['redirectConfigurationName'] == null ? null : (map['redirectConfigurationName']! as String).input(),
+      rewriteRuleSetId: map['rewriteRuleSetId'] == null ? null : (map['rewriteRuleSetId']! as String).input(),
+      rewriteRuleSetName: map['rewriteRuleSetName'] == null ? null : (map['rewriteRuleSetName']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      urlPathMapId: map['urlPathMapId'] == null ? null : (map['urlPathMapId'] as String).input(),
-      urlPathMapName: map['urlPathMapName'] == null ? null : (map['urlPathMapName'] as String).input(),
+      urlPathMapId: map['urlPathMapId'] == null ? null : (map['urlPathMapId']! as String).input(),
+      urlPathMapName: map['urlPathMapName'] == null ? null : (map['urlPathMapName']! as String).input(),
     );
   }
 }

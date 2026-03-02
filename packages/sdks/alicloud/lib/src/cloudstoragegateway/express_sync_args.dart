@@ -45,9 +45,9 @@ class ExpressSyncArgs {
   factory ExpressSyncArgs.fromMap(Map<String, dynamic> map) {
     return ExpressSyncArgs(
       bucketName: (map['bucketName'] as String).input(),
-      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix'] as String).input(),
+      bucketPrefix: map['bucketPrefix'] == null ? null : (map['bucketPrefix']! as String).input(),
       bucketRegion: (map['bucketRegion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expressSyncName: (map['expressSyncName'] as String).input(),
     );
   }

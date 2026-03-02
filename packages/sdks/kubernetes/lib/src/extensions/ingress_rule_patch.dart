@@ -31,8 +31,8 @@ class IngressRulePatch {
 
   factory IngressRulePatch.fromMap(Map<String, dynamic> map) {
     return IngressRulePatch(
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      http: map['http'] == null ? null : (HTTPIngressRuleValuePatch.fromMap((map['http'] as Map).cast<String, dynamic>())).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      http: map['http'] == null ? null : (HTTPIngressRuleValuePatch.fromMap((map['http']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

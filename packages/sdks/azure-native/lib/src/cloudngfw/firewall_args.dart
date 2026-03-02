@@ -108,22 +108,22 @@ class FirewallArgs {
 
   factory FirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallArgs(
-      associatedRulestack: map['associatedRulestack'] == null ? null : (RulestackDetails.fromMap((map['associatedRulestack'] as Map).cast<String, dynamic>())).input(),
+      associatedRulestack: map['associatedRulestack'] == null ? null : (RulestackDetails.fromMap((map['associatedRulestack']! as Map).cast<String, dynamic>())).input(),
       dnsSettings: (DNSSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      firewallName: map['firewallName'] == null ? null : (map['firewallName'] as String).input(),
-      frontEndSettings: map['frontEndSettings'] == null ? null : (pulumi.Input.decodeList<FrontendSetting>(map['frontEndSettings'], (value) => FrontendSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      isPanoramaManaged: map['isPanoramaManaged'] == null ? null : (map['isPanoramaManaged'] as String).input(),
-      isStrataCloudManaged: map['isStrataCloudManaged'] == null ? null : (map['isStrataCloudManaged'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      firewallName: map['firewallName'] == null ? null : (map['firewallName']! as String).input(),
+      frontEndSettings: map['frontEndSettings'] == null ? null : (pulumi.Input.decodeList<FrontendSetting>(map['frontEndSettings']!, (value) => FrontendSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (AzureResourceManagerManagedIdentityProperties.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      isPanoramaManaged: map['isPanoramaManaged'] == null ? null : (map['isPanoramaManaged']! as String).input(),
+      isStrataCloudManaged: map['isStrataCloudManaged'] == null ? null : (map['isStrataCloudManaged']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       marketplaceDetails: (MarketplaceDetails.fromMap((map['marketplaceDetails'] as Map).cast<String, dynamic>())).input(),
       networkProfile: (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      panEtag: map['panEtag'] == null ? null : (map['panEtag'] as String).input(),
-      panoramaConfig: map['panoramaConfig'] == null ? null : (PanoramaConfig.fromMap((map['panoramaConfig'] as Map).cast<String, dynamic>())).input(),
+      panEtag: map['panEtag'] == null ? null : (map['panEtag']! as String).input(),
+      panoramaConfig: map['panoramaConfig'] == null ? null : (PanoramaConfig.fromMap((map['panoramaConfig']! as Map).cast<String, dynamic>())).input(),
       planData: (PlanData.fromMap((map['planData'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      strataCloudManagerConfig: map['strataCloudManagerConfig'] == null ? null : (StrataCloudManagerConfig.fromMap((map['strataCloudManagerConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      strataCloudManagerConfig: map['strataCloudManagerConfig'] == null ? null : (StrataCloudManagerConfig.fromMap((map['strataCloudManagerConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -51,15 +51,15 @@ class PreReleaseAccessRequestSpecResponse {
 
   factory PreReleaseAccessRequestSpecResponse.fromMap(Map<String, dynamic> map) {
     return PreReleaseAccessRequestSpecResponse(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      companyWebsite: map['companyWebsite'] == null ? null : (map['companyWebsite'] as String).input(),
-      countryAndRegion: map['countryAndRegion'] == null ? null : (map['countryAndRegion'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      engagements: map['engagements'] == null ? null : ((map['engagements'] as List).cast<String>()).input(),
-      organizationName: map['organizationName'] == null ? null : (map['organizationName'] as String).input(),
-      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince'] as String).input(),
-      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress'] as String).input(),
-      zipCode: map['zipCode'] == null ? null : (map['zipCode'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      companyWebsite: map['companyWebsite'] == null ? null : (map['companyWebsite']! as String).input(),
+      countryAndRegion: map['countryAndRegion'] == null ? null : (map['countryAndRegion']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      engagements: map['engagements'] == null ? null : ((map['engagements']! as List).cast<String>()).input(),
+      organizationName: map['organizationName'] == null ? null : (map['organizationName']! as String).input(),
+      stateOrProvince: map['stateOrProvince'] == null ? null : (map['stateOrProvince']! as String).input(),
+      streetAddress: map['streetAddress'] == null ? null : (map['streetAddress']! as String).input(),
+      zipCode: map['zipCode'] == null ? null : (map['zipCode']! as String).input(),
     );
   }
 }

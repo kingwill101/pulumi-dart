@@ -45,12 +45,12 @@ class MasterSlaveServerGroupServer {
 
   factory MasterSlaveServerGroupServer.fromMap(Map<String, dynamic> map) {
     return MasterSlaveServerGroupServer(
-      isBackup: map['isBackup'] == null ? null : (map['isBackup'] as int).input(),
+      isBackup: map['isBackup'] == null ? null : (map['isBackup']! as int).input(),
       port: (map['port'] as int).input(),
       serverId: (map['serverId'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

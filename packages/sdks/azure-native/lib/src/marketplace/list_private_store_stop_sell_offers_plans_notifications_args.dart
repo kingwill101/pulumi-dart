@@ -29,7 +29,7 @@ class ListPrivateStoreStopSellOffersPlansNotificationsArgs {
   factory ListPrivateStoreStopSellOffersPlansNotificationsArgs.fromMap(Map<String, dynamic> map) {
     return ListPrivateStoreStopSellOffersPlansNotificationsArgs(
       privateStoreId: (map['privateStoreId'] as String).input(),
-      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions'] as List).cast<String>()).input(),
+      subscriptions: map['subscriptions'] == null ? null : ((map['subscriptions']! as List).cast<String>()).input(),
     );
   }
 }

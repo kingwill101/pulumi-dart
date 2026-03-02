@@ -50,10 +50,10 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation(
-      condition: map['condition'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       fields: (pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField>(map['fields'], (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations.fromMap((map['infoTypeTransformations'] as Map).cast<String, dynamic>())).input(),
-      primitiveTransformation: map['primitiveTransformation'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>())).input(),
+      infoTypeTransformations: map['infoTypeTransformations'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations.fromMap((map['infoTypeTransformations']! as Map).cast<String, dynamic>())).input(),
+      primitiveTransformation: map['primitiveTransformation'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation.fromMap((map['primitiveTransformation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

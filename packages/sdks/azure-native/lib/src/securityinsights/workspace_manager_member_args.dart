@@ -47,7 +47,7 @@ class WorkspaceManagerMemberArgs {
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       targetWorkspaceResourceId: (map['targetWorkspaceResourceId'] as String).input(),
       targetWorkspaceTenantId: (map['targetWorkspaceTenantId'] as String).input(),
-      workspaceManagerMemberName: map['workspaceManagerMemberName'] == null ? null : (map['workspaceManagerMemberName'] as String).input(),
+      workspaceManagerMemberName: map['workspaceManagerMemberName'] == null ? null : (map['workspaceManagerMemberName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

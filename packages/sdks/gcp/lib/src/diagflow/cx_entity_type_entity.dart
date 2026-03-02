@@ -28,8 +28,8 @@ class CxEntityTypeEntity {
 
   factory CxEntityTypeEntity.fromMap(Map<String, dynamic> map) {
     return CxEntityTypeEntity(
-      synonyms: map['synonyms'] == null ? null : ((map['synonyms'] as List).cast<String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      synonyms: map['synonyms'] == null ? null : ((map['synonyms']! as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

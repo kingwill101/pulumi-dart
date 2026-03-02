@@ -21,7 +21,7 @@ class V2VmNetworkEndpointAccessConfig {
 
   factory V2VmNetworkEndpointAccessConfig.fromMap(Map<String, dynamic> map) {
     return V2VmNetworkEndpointAccessConfig(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
     );
   }
 }

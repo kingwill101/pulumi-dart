@@ -27,7 +27,7 @@ class DatascanExecutionSpec {
 
   factory DatascanExecutionSpec.fromMap(Map<String, dynamic> map) {
     return DatascanExecutionSpec(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
       trigger: (DatascanExecutionSpecTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
     );
   }

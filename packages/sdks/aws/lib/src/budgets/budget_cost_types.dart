@@ -70,17 +70,17 @@ class BudgetCostTypes {
 
   factory BudgetCostTypes.fromMap(Map<String, dynamic> map) {
     return BudgetCostTypes(
-      includeCredit: map['includeCredit'] == null ? null : (map['includeCredit'] as bool).input(),
-      includeDiscount: map['includeDiscount'] == null ? null : (map['includeDiscount'] as bool).input(),
-      includeOtherSubscription: map['includeOtherSubscription'] == null ? null : (map['includeOtherSubscription'] as bool).input(),
-      includeRecurring: map['includeRecurring'] == null ? null : (map['includeRecurring'] as bool).input(),
-      includeRefund: map['includeRefund'] == null ? null : (map['includeRefund'] as bool).input(),
-      includeSubscription: map['includeSubscription'] == null ? null : (map['includeSubscription'] as bool).input(),
-      includeSupport: map['includeSupport'] == null ? null : (map['includeSupport'] as bool).input(),
-      includeTax: map['includeTax'] == null ? null : (map['includeTax'] as bool).input(),
-      includeUpfront: map['includeUpfront'] == null ? null : (map['includeUpfront'] as bool).input(),
-      useAmortized: map['useAmortized'] == null ? null : (map['useAmortized'] as bool).input(),
-      useBlended: map['useBlended'] == null ? null : (map['useBlended'] as bool).input(),
+      includeCredit: map['includeCredit'] == null ? null : ((map['includeCredit'] as bool).input()).input(),
+      includeDiscount: map['includeDiscount'] == null ? null : ((map['includeDiscount'] as bool).input()).input(),
+      includeOtherSubscription: map['includeOtherSubscription'] == null ? null : ((map['includeOtherSubscription'] as bool).input()).input(),
+      includeRecurring: map['includeRecurring'] == null ? null : ((map['includeRecurring'] as bool).input()).input(),
+      includeRefund: map['includeRefund'] == null ? null : ((map['includeRefund'] as bool).input()).input(),
+      includeSubscription: map['includeSubscription'] == null ? null : ((map['includeSubscription'] as bool).input()).input(),
+      includeSupport: map['includeSupport'] == null ? null : ((map['includeSupport'] as bool).input()).input(),
+      includeTax: map['includeTax'] == null ? null : ((map['includeTax'] as bool).input()).input(),
+      includeUpfront: map['includeUpfront'] == null ? null : ((map['includeUpfront'] as bool).input()).input(),
+      useAmortized: map['useAmortized'] == null ? null : ((map['useAmortized'] as bool).input()).input(),
+      useBlended: map['useBlended'] == null ? null : ((map['useBlended'] as bool).input()).input(),
     );
   }
 }

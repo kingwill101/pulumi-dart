@@ -75,15 +75,15 @@ class ZoneRecordArgs {
 
   factory ZoneRecordArgs.fromMap(Map<String, dynamic> map) {
     return ZoneRecordArgs(
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      resourceRecord: map['resourceRecord'] == null ? null : (map['resourceRecord'] as String).input(),
-      rr: map['rr'] == null ? null : (map['rr'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      resourceRecord: map['resourceRecord'] == null ? null : (map['resourceRecord']! as String).input(),
+      rr: map['rr'] == null ? null : (map['rr']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
       type: (map['type'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
       value: (map['value'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

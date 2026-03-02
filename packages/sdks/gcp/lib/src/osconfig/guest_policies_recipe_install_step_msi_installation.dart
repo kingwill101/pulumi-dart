@@ -30,9 +30,9 @@ class GuestPoliciesRecipeInstallStepMsiInstallation {
 
   factory GuestPoliciesRecipeInstallStepMsiInstallation.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeInstallStepMsiInstallation(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes'] as List).cast<int>()).input(),
+      allowedExitCodes: map['allowedExitCodes'] == null ? null : ((map['allowedExitCodes']! as List).cast<int>()).input(),
       artifactId: (map['artifactId'] as String).input(),
-      flags: map['flags'] == null ? null : ((map['flags'] as List).cast<String>()).input(),
+      flags: map['flags'] == null ? null : ((map['flags']! as List).cast<String>()).input(),
     );
   }
 }

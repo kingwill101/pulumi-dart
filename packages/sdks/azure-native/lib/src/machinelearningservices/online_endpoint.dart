@@ -60,13 +60,13 @@ class OnlineEndpoint {
   factory OnlineEndpoint.fromMap(Map<String, dynamic> map) {
     return OnlineEndpoint(
       authMode: (map['authMode'] as String).input(),
-      compute: map['compute'] == null ? null : (map['compute'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      keys: map['keys'] == null ? null : (EndpointAuthKeys.fromMap((map['keys'] as Map).cast<String, dynamic>())).input(),
-      mirrorTraffic: map['mirrorTraffic'] == null ? null : ((map['mirrorTraffic'] as Map).cast<String, int>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      traffic: map['traffic'] == null ? null : ((map['traffic'] as Map).cast<String, int>()).input(),
+      compute: map['compute'] == null ? null : (map['compute']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      keys: map['keys'] == null ? null : (EndpointAuthKeys.fromMap((map['keys']! as Map).cast<String, dynamic>())).input(),
+      mirrorTraffic: map['mirrorTraffic'] == null ? null : ((map['mirrorTraffic']! as Map).cast<String, int>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      traffic: map['traffic'] == null ? null : ((map['traffic']! as Map).cast<String, int>()).input(),
     );
   }
 }

@@ -82,19 +82,19 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      agentPublicKeyCertificate: map['agentPublicKeyCertificate'] == null ? null : (map['agentPublicKeyCertificate'] as String).input(),
-      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion'] as String).input(),
-      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
-      identity: map['identity'] == null ? null : (ClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure'] as String).input(),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offering: map['offering'] == null ? null : (map['offering'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      totalCoreCount: map['totalCoreCount'] == null ? null : (map['totalCoreCount'] as int).input(),
-      totalNodeCount: map['totalNodeCount'] == null ? null : (map['totalNodeCount'] as int).input(),
+      agentPublicKeyCertificate: map['agentPublicKeyCertificate'] == null ? null : (map['agentPublicKeyCertificate']! as String).input(),
+      agentVersion: map['agentVersion'] == null ? null : (map['agentVersion']! as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution']! as String).input(),
+      identity: map['identity'] == null ? null : (ClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      infrastructure: map['infrastructure'] == null ? null : (map['infrastructure']! as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offering: map['offering'] == null ? null : (map['offering']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      totalCoreCount: map['totalCoreCount'] == null ? null : (map['totalCoreCount']! as int).input(),
+      totalNodeCount: map['totalNodeCount'] == null ? null : (map['totalNodeCount']! as int).input(),
     );
   }
 }

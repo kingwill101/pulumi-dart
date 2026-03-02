@@ -27,7 +27,7 @@ class VirtualMachineOsProfileLinuxConfig {
   factory VirtualMachineOsProfileLinuxConfig.fromMap(Map<String, dynamic> map) {
     return VirtualMachineOsProfileLinuxConfig(
       disablePasswordAuthentication: (map['disablePasswordAuthentication'] as bool).input(),
-      sshKeys: map['sshKeys'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileLinuxConfigSshKey>(map['sshKeys'], (value) => VirtualMachineOsProfileLinuxConfigSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshKeys: map['sshKeys'] == null ? null : (pulumi.Input.decodeList<VirtualMachineOsProfileLinuxConfigSshKey>(map['sshKeys']!, (value) => VirtualMachineOsProfileLinuxConfigSshKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

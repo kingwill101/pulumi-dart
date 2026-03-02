@@ -31,9 +31,9 @@ class HostAttachmentState {
 
   factory HostAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostAttachmentState(
-      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId']! as String).input(),
+      hostId: map['hostId'] == null ? null : (map['hostId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
     );
   }
 }

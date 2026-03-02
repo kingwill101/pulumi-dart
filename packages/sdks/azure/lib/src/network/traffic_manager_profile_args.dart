@@ -75,14 +75,14 @@ class TrafficManagerProfileArgs {
   factory TrafficManagerProfileArgs.fromMap(Map<String, dynamic> map) {
     return TrafficManagerProfileArgs(
       dnsConfig: (TrafficManagerProfileDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
-      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn'] as int).input(),
+      maxReturn: map['maxReturn'] == null ? null : (map['maxReturn']! as int).input(),
       monitorConfig: (TrafficManagerProfileMonitorConfig.fromMap((map['monitorConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      profileStatus: map['profileStatus'] == null ? null : (map['profileStatus']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       trafficRoutingMethod: (map['trafficRoutingMethod'] as String).input(),
-      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled'] as bool).input(),
+      trafficViewEnabled: map['trafficViewEnabled'] == null ? null : (map['trafficViewEnabled']! as bool).input(),
     );
   }
 }

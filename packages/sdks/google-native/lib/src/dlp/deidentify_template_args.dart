@@ -49,12 +49,12 @@ class DeidentifyTemplateArgs {
 
   factory DeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return DeidentifyTemplateArgs(
-      deidentifyConfig: map['deidentifyConfig'] == null ? null : (GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
+      deidentifyConfig: map['deidentifyConfig'] == null ? null : (GooglePrivacyDlpV2DeidentifyConfig.fromMap((map['deidentifyConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
     );
   }
 }

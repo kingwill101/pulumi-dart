@@ -26,8 +26,8 @@ class V2modelsIntentConfirmationSettingDeclinationNextStepIntent {
 
   factory V2modelsIntentConfirmationSettingDeclinationNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationNextStepIntent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlot>(map['slots']!, (value) => V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

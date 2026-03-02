@@ -36,10 +36,10 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      preferredBackupPeriod: map['preferredBackupPeriod'] == null ? null : (map['preferredBackupPeriod'] as String).input(),
-      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime'] as String).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      preferredBackupPeriod: map['preferredBackupPeriod'] == null ? null : (map['preferredBackupPeriod']! as String).input(),
+      preferredBackupTime: map['preferredBackupTime'] == null ? null : (map['preferredBackupTime']! as String).input(),
     );
   }
 }

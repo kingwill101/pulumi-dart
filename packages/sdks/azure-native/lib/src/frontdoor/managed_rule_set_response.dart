@@ -43,9 +43,9 @@ class ManagedRuleSetResponse {
 
   factory ManagedRuleSetResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSetResponse(
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ManagedRuleExclusionResponse>(map['exclusions'], (value) => ManagedRuleExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleGroupOverrides: map['ruleGroupOverrides'] == null ? null : (pulumi.Input.decodeList<ManagedRuleGroupOverrideResponse>(map['ruleGroupOverrides'], (value) => ManagedRuleGroupOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleSetAction: map['ruleSetAction'] == null ? null : (map['ruleSetAction'] as String).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ManagedRuleExclusionResponse>(map['exclusions']!, (value) => ManagedRuleExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleGroupOverrides: map['ruleGroupOverrides'] == null ? null : (pulumi.Input.decodeList<ManagedRuleGroupOverrideResponse>(map['ruleGroupOverrides']!, (value) => ManagedRuleGroupOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleSetAction: map['ruleSetAction'] == null ? null : (map['ruleSetAction']! as String).input(),
       ruleSetType: (map['ruleSetType'] as String).input(),
       ruleSetVersion: (map['ruleSetVersion'] as String).input(),
     );

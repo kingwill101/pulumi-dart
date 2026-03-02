@@ -29,8 +29,8 @@ class GetBucketsArgs {
 
   factory GetBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketsArgs(
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

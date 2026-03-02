@@ -65,7 +65,7 @@ class GetDpsResult {
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       serviceOperationsHostName: map['serviceOperationsHostName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

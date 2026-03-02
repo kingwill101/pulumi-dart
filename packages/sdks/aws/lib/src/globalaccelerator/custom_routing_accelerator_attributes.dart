@@ -30,9 +30,9 @@ class CustomRoutingAcceleratorAttributes {
 
   factory CustomRoutingAcceleratorAttributes.fromMap(Map<String, dynamic> map) {
     return CustomRoutingAcceleratorAttributes(
-      flowLogsEnabled: map['flowLogsEnabled'] == null ? null : (map['flowLogsEnabled'] as bool).input(),
-      flowLogsS3Bucket: map['flowLogsS3Bucket'] == null ? null : (map['flowLogsS3Bucket'] as String).input(),
-      flowLogsS3Prefix: map['flowLogsS3Prefix'] == null ? null : (map['flowLogsS3Prefix'] as String).input(),
+      flowLogsEnabled: map['flowLogsEnabled'] == null ? null : ((map['flowLogsEnabled'] as bool).input()).input(),
+      flowLogsS3Bucket: map['flowLogsS3Bucket'] == null ? null : ((map['flowLogsS3Bucket'] as String).input()).input(),
+      flowLogsS3Prefix: map['flowLogsS3Prefix'] == null ? null : ((map['flowLogsS3Prefix'] as String).input()).input(),
     );
   }
 }

@@ -56,7 +56,7 @@ class GetBackupRunResult {
       id: map['id'] as String,
       instance: map['instance'] as String,
       location: map['location'] as String,
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
       project: map['project'] as String,
       startTime: map['startTime'] as String,
       status: map['status'] as String,

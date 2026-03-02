@@ -30,9 +30,9 @@ class KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort {
 
   factory KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePoolNodeNetworkProfileAllowedHostPort(
-      portEnd: map['portEnd'] == null ? null : (map['portEnd'] as int).input(),
-      portStart: map['portStart'] == null ? null : (map['portStart'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      portEnd: map['portEnd'] == null ? null : (map['portEnd']! as int).input(),
+      portStart: map['portStart'] == null ? null : (map['portStart']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

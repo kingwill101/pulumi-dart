@@ -25,8 +25,8 @@ class UserPasswordPolicyStatus {
 
   factory UserPasswordPolicyStatus.fromMap(Map<String, dynamic> map) {
     return UserPasswordPolicyStatus(
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
-      passwordExpirationTime: map['passwordExpirationTime'] == null ? null : (map['passwordExpirationTime'] as String).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
+      passwordExpirationTime: map['passwordExpirationTime'] == null ? null : (map['passwordExpirationTime']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket(
-      awsAccount: map['awsAccount'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount.fromMap((map['awsAccount'] as Map).cast<String, dynamic>())).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
+      awsAccount: map['awsAccount'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount.fromMap((map['awsAccount']! as Map).cast<String, dynamic>())).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
     );
   }
 }

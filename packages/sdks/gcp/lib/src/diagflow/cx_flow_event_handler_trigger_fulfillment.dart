@@ -56,13 +56,13 @@ class CxFlowEventHandlerTriggerFulfillment {
 
   factory CxFlowEventHandlerTriggerFulfillment.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillment(
-      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandlerTriggerFulfillmentConditionalCase>(map['conditionalCases'], (value) => CxFlowEventHandlerTriggerFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableGenerativeFallback: map['enableGenerativeFallback'] == null ? null : (map['enableGenerativeFallback'] as bool).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandlerTriggerFulfillmentMessage>(map['messages'], (value) => CxFlowEventHandlerTriggerFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses'] as bool).input(),
-      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandlerTriggerFulfillmentSetParameterAction>(map['setParameterActions'], (value) => CxFlowEventHandlerTriggerFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandlerTriggerFulfillmentConditionalCase>(map['conditionalCases']!, (value) => CxFlowEventHandlerTriggerFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableGenerativeFallback: map['enableGenerativeFallback'] == null ? null : (map['enableGenerativeFallback']! as bool).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandlerTriggerFulfillmentMessage>(map['messages']!, (value) => CxFlowEventHandlerTriggerFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses']! as bool).input(),
+      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxFlowEventHandlerTriggerFulfillmentSetParameterAction>(map['setParameterActions']!, (value) => CxFlowEventHandlerTriggerFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

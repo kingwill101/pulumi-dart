@@ -28,7 +28,7 @@ class ConnectionConfigVariableEncryptionKeyValue {
 
   factory ConnectionConfigVariableEncryptionKeyValue.fromMap(Map<String, dynamic> map) {
     return ConnectionConfigVariableEncryptionKeyValue(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

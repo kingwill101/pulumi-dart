@@ -33,7 +33,7 @@ class GetDlpJobArgs {
     return GetDlpJobArgs(
       dlpJobId: (map['dlpJobId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

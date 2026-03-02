@@ -66,16 +66,16 @@ class S3LocationState {
 
   factory S3LocationState.fromMap(Map<String, dynamic> map) {
     return S3LocationState(
-      agentArns: map['agentArns'] == null ? null : ((map['agentArns'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3BucketArn: map['s3BucketArn'] == null ? null : (map['s3BucketArn'] as String).input(),
-      s3Config: map['s3Config'] == null ? null : (S3LocationS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
-      s3StorageClass: map['s3StorageClass'] == null ? null : (map['s3StorageClass'] as String).input(),
-      subdirectory: map['subdirectory'] == null ? null : (map['subdirectory'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      agentArns: map['agentArns'] == null ? null : (((map['agentArns'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3BucketArn: map['s3BucketArn'] == null ? null : ((map['s3BucketArn'] as String).input()).input(),
+      s3Config: map['s3Config'] == null ? null : ((S3LocationS3Config.fromMap((map['s3Config']! as Map).cast<String, dynamic>())).input()).input(),
+      s3StorageClass: map['s3StorageClass'] == null ? null : ((map['s3StorageClass'] as String).input()).input(),
+      subdirectory: map['subdirectory'] == null ? null : ((map['subdirectory'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      uri: map['uri'] == null ? null : ((map['uri'] as String).input()).input(),
     );
   }
 }

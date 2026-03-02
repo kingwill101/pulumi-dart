@@ -29,7 +29,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(
-      properties: map['properties'] == null ? null : ((map['properties'] as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as List).cast<String>()).input(),
       source: (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

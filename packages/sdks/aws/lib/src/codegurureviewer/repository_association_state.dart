@@ -88,20 +88,20 @@ class RepositoryAssociationState {
 
   factory RepositoryAssociationState.fromMap(Map<String, dynamic> map) {
     return RepositoryAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      connectionArn: map['connectionArn'] == null ? null : (map['connectionArn'] as String).input(),
-      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : (RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      providerType: map['providerType'] == null ? null : (map['providerType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repository: map['repository'] == null ? null : (RepositoryAssociationRepository.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
-      s3RepositoryDetails: map['s3RepositoryDetails'] == null ? null : (pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(map['s3RepositoryDetails'], (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stateReason: map['stateReason'] == null ? null : (map['stateReason'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      connectionArn: map['connectionArn'] == null ? null : ((map['connectionArn'] as String).input()).input(),
+      kmsKeyDetails: map['kmsKeyDetails'] == null ? null : ((RepositoryAssociationKmsKeyDetails.fromMap((map['kmsKeyDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      providerType: map['providerType'] == null ? null : ((map['providerType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repository: map['repository'] == null ? null : ((RepositoryAssociationRepository.fromMap((map['repository']! as Map).cast<String, dynamic>())).input()).input(),
+      s3RepositoryDetails: map['s3RepositoryDetails'] == null ? null : ((pulumi.Input.decodeList<RepositoryAssociationS3RepositoryDetail>(map['s3RepositoryDetails']!, (value) => RepositoryAssociationS3RepositoryDetail.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      stateReason: map['stateReason'] == null ? null : ((map['stateReason'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class AzureClusterControlPlaneRootVolume {
 
   factory AzureClusterControlPlaneRootVolume.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlaneRootVolume(
-      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib'] as int).input(),
+      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib']! as int).input(),
     );
   }
 }

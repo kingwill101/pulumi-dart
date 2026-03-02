@@ -25,8 +25,8 @@ class AppQuietTime {
 
   factory AppQuietTime.fromMap(Map<String, dynamic> map) {
     return AppQuietTime(
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      end: map['end'] == null ? null : ((map['end'] as String).input()).input(),
+      start: map['start'] == null ? null : ((map['start'] as String).input()).input(),
     );
   }
 }

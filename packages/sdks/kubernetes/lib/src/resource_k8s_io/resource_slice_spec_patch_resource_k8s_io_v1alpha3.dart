@@ -63,12 +63,12 @@ class ResourceSliceSpecPatchResourceK8sIoV1alpha3 {
 
   factory ResourceSliceSpecPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourceSliceSpecPatchResourceK8sIoV1alpha3(
-      allNodes: map['allNodes'] == null ? null : (map['allNodes'] as bool).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DevicePatchResourceK8sIoV1alpha3>(map['devices'], (value) => DevicePatchResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector'] as Map).cast<String, dynamic>())).input(),
-      pool: map['pool'] == null ? null : (ResourcePoolPatchResourceK8sIoV1alpha3.fromMap((map['pool'] as Map).cast<String, dynamic>())).input(),
+      allNodes: map['allNodes'] == null ? null : (map['allNodes']! as bool).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DevicePatchResourceK8sIoV1alpha3>(map['devices']!, (value) => DevicePatchResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      nodeSelector: map['nodeSelector'] == null ? null : (NodeSelectorPatch.fromMap((map['nodeSelector']! as Map).cast<String, dynamic>())).input(),
+      pool: map['pool'] == null ? null : (ResourcePoolPatchResourceK8sIoV1alpha3.fromMap((map['pool']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

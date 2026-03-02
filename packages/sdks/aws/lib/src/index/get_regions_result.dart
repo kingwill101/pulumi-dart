@@ -36,7 +36,7 @@ class GetRegionsResult {
   factory GetRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionsResult(
       allRegions: map['allRegions'] == null ? null : map['allRegions'] as bool,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRegionsFilter>(map['filters'], (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRegionsFilter>(map['filters']!, (value) => GetRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),
     );

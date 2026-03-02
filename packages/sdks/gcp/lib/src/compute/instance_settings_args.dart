@@ -37,8 +37,8 @@ class InstanceSettingsArgs {
 
   factory InstanceSettingsArgs.fromMap(Map<String, dynamic> map) {
     return InstanceSettingsArgs(
-      metadata: map['metadata'] == null ? null : (InstanceSettingsMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      metadata: map['metadata'] == null ? null : (InstanceSettingsMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       zone: (map['zone'] as String).input(),
     );
   }

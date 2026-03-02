@@ -28,8 +28,8 @@ class RuntimeResponse {
 
   factory RuntimeResponse.fromMap(Map<String, dynamic> map) {
     return RuntimeResponse(
-      dotnet: map['dotnet'] == null ? null : (RuntimeResponseDotnet.fromMap((map['dotnet'] as Map).cast<String, dynamic>())).input(),
-      java: map['java'] == null ? null : (RuntimeResponseJava.fromMap((map['java'] as Map).cast<String, dynamic>())).input(),
+      dotnet: map['dotnet'] == null ? null : (RuntimeResponseDotnet.fromMap((map['dotnet']! as Map).cast<String, dynamic>())).input(),
+      java: map['java'] == null ? null : (RuntimeResponseJava.fromMap((map['java']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

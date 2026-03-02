@@ -20,7 +20,7 @@ class WebAclChallengeConfigImmunityTimeProperty {
 
   factory WebAclChallengeConfigImmunityTimeProperty.fromMap(Map<String, dynamic> map) {
     return WebAclChallengeConfigImmunityTimeProperty(
-      immunityTime: map['immunityTime'] == null ? null : (map['immunityTime'] as int).input(),
+      immunityTime: map['immunityTime'] == null ? null : ((map['immunityTime'] as int).input()).input(),
     );
   }
 }

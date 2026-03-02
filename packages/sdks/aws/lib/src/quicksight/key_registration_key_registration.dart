@@ -25,7 +25,7 @@ class KeyRegistrationKeyRegistration {
 
   factory KeyRegistrationKeyRegistration.fromMap(Map<String, dynamic> map) {
     return KeyRegistrationKeyRegistration(
-      defaultKey: map['defaultKey'] == null ? null : (map['defaultKey'] as bool).input(),
+      defaultKey: map['defaultKey'] == null ? null : ((map['defaultKey'] as bool).input()).input(),
       keyArn: (map['keyArn'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class ManagedClusterPodIdentityResponseProvisioningInfo {
 
   factory ManagedClusterPodIdentityResponseProvisioningInfo.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPodIdentityResponseProvisioningInfo(
-      error: map['error'] == null ? null : (ManagedClusterPodIdentityProvisioningErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ManagedClusterPodIdentityProvisioningErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

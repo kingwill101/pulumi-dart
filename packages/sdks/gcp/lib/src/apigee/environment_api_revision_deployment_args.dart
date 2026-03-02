@@ -57,10 +57,10 @@ class EnvironmentApiRevisionDeploymentArgs {
       api: (map['api'] as String).input(),
       environment: (map['environment'] as String).input(),
       orgId: (map['orgId'] as String).input(),
-      override: map['override'] == null ? null : (map['override'] as bool).input(),
+      override: map['override'] == null ? null : (map['override']! as bool).input(),
       revision: (map['revision'] as int).input(),
-      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout'] as bool).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      sequencedRollout: map['sequencedRollout'] == null ? null : (map['sequencedRollout']! as bool).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

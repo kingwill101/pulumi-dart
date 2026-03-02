@@ -67,14 +67,14 @@ class RuntimeArgs {
 
   factory RuntimeArgs.fromMap(Map<String, dynamic> map) {
     return RuntimeArgs(
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : (RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : (RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       runtimeUser: (map['runtimeUser'] as String).input(),
     );
   }

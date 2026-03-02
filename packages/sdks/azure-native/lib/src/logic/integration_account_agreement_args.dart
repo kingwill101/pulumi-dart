@@ -82,7 +82,7 @@ class IntegrationAccountAgreementArgs {
 
   factory IntegrationAccountAgreementArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountAgreementArgs(
-      agreementName: map['agreementName'] == null ? null : (map['agreementName'] as String).input(),
+      agreementName: map['agreementName'] == null ? null : (map['agreementName']! as String).input(),
       agreementType: (AgreementType.fromValue(map['agreementType'] as String)).input(),
       content: (AgreementContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
       guestIdentity: (BusinessIdentity.fromMap((map['guestIdentity'] as Map).cast<String, dynamic>())).input(),
@@ -90,10 +90,10 @@ class IntegrationAccountAgreementArgs {
       hostIdentity: (BusinessIdentity.fromMap((map['hostIdentity'] as Map).cast<String, dynamic>())).input(),
       hostPartner: (map['hostPartner'] as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

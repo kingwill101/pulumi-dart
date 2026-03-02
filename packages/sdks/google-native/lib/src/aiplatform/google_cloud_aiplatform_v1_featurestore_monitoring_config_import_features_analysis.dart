@@ -28,8 +28,8 @@ class GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysis 
 
   factory GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysis.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysis(
-      anomalyDetectionBaseline: map['anomalyDetectionBaseline'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline.fromValue(map['anomalyDetectionBaseline'] as String)).input(),
-      state: map['state'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisState.fromValue(map['state'] as String)).input(),
+      anomalyDetectionBaseline: map['anomalyDetectionBaseline'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisAnomalyDetectionBaseline.fromValue(map['anomalyDetectionBaseline']! as String)).input(),
+      state: map['state'] == null ? null : (GoogleCloudAiplatformV1FeaturestoreMonitoringConfigImportFeaturesAnalysisState.fromValue(map['state']! as String)).input(),
     );
   }
 }

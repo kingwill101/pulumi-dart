@@ -41,11 +41,11 @@ class WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUs
 
   factory WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUse(
-      allow: map['allow'] == null ? null : (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow.fromMap((map['allow'] as Map).cast<String, dynamic>())).input(),
-      block: map['block'] == null ? null : (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock.fromMap((map['block'] as Map).cast<String, dynamic>())).input(),
-      captcha: map['captcha'] == null ? null : (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha.fromMap((map['captcha'] as Map).cast<String, dynamic>())).input(),
-      challenge: map['challenge'] == null ? null : (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge.fromMap((map['challenge'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap((map['count'] as Map).cast<String, dynamic>())).input(),
+      allow: map['allow'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseAllow.fromMap((map['allow']! as Map).cast<String, dynamic>())).input()).input(),
+      block: map['block'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseBlock.fromMap((map['block']! as Map).cast<String, dynamic>())).input()).input(),
+      captcha: map['captcha'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCaptcha.fromMap((map['captcha']! as Map).cast<String, dynamic>())).input()).input(),
+      challenge: map['challenge'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseChallenge.fromMap((map['challenge']! as Map).cast<String, dynamic>())).input()).input(),
+      count: map['count'] == null ? null : ((WebAclRuleStatementRuleGroupReferenceStatementRuleActionOverrideActionToUseCount.fromMap((map['count']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class CSINodeDriverPatchStorageK8sIoV1beta1 {
 
   factory CSINodeDriverPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return CSINodeDriverPatchStorageK8sIoV1beta1(
-      allocatable: map['allocatable'] == null ? null : (VolumeNodeResourcesPatchStorageK8sIoV1beta1.fromMap((map['allocatable'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeID: map['nodeID'] == null ? null : (map['nodeID'] as String).input(),
-      topologyKeys: map['topologyKeys'] == null ? null : ((map['topologyKeys'] as List).cast<String>()).input(),
+      allocatable: map['allocatable'] == null ? null : (VolumeNodeResourcesPatchStorageK8sIoV1beta1.fromMap((map['allocatable']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeID: map['nodeID'] == null ? null : (map['nodeID']! as String).input(),
+      topologyKeys: map['topologyKeys'] == null ? null : ((map['topologyKeys']! as List).cast<String>()).input(),
     );
   }
 }

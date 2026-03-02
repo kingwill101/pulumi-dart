@@ -95,21 +95,21 @@ class Db2LinkedServiceResponse {
 
   factory Db2LinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return Db2LinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
-      certificateCommonName: map['certificateCommonName'] == null ? null : (map['certificateCommonName']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString']).input(),
-      database: map['database'] == null ? null : (map['database']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
-      packageCollection: map['packageCollection'] == null ? null : (map['packageCollection']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
-      server: map['server'] == null ? null : (map['server']).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
+      certificateCommonName: map['certificateCommonName'] == null ? null : (map['certificateCommonName']!).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']!).input(),
+      database: map['database'] == null ? null : (map['database']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
+      packageCollection: map['packageCollection'] == null ? null : (map['packageCollection']!).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
+      server: map['server'] == null ? null : (map['server']!).input(),
       type: (map['type'] as String).input(),
-      username: map['username'] == null ? null : (map['username']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      username: map['username'] == null ? null : (map['username']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

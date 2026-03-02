@@ -66,7 +66,7 @@ class GetQueryLogConfigResult {
     return GetQueryLogConfigResult(
       arn: map['arn'] as String,
       destinationArn: map['destinationArn'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetQueryLogConfigFilter>(map['filters'], (value) => GetQueryLogConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetQueryLogConfigFilter>(map['filters']!, (value) => GetQueryLogConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       ownerId: map['ownerId'] as String,

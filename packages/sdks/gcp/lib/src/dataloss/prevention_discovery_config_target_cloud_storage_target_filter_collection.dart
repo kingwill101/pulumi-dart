@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection {
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection(
-      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
+      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexes.fromMap((map['includeRegexes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

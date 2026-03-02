@@ -41,11 +41,11 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServ
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk>(map['dataDisks'], (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      networkInterfaceNames: map['networkInterfaceNames'] == null ? null : ((map['networkInterfaceNames'] as List).cast<String>()).input(),
-      osDiskName: map['osDiskName'] == null ? null : (map['osDiskName'] as String).input(),
-      virtualMachineName: map['virtualMachineName'] == null ? null : (map['virtualMachineName'] as String).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk>(map['dataDisks']!, (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachineDataDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      networkInterfaceNames: map['networkInterfaceNames'] == null ? null : ((map['networkInterfaceNames']! as List).cast<String>()).input(),
+      osDiskName: map['osDiskName'] == null ? null : (map['osDiskName']! as String).input(),
+      virtualMachineName: map['virtualMachineName'] == null ? null : (map['virtualMachineName']! as String).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class GetMxRecordArgs {
 
   factory GetMxRecordArgs.fromMap(Map<String, dynamic> map) {
     return GetMxRecordArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       zoneName: (map['zoneName'] as String).input(),
     );

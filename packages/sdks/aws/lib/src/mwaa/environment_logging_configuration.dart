@@ -45,11 +45,11 @@ class EnvironmentLoggingConfiguration {
 
   factory EnvironmentLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return EnvironmentLoggingConfiguration(
-      dagProcessingLogs: map['dagProcessingLogs'] == null ? null : (EnvironmentLoggingConfigurationDagProcessingLogs.fromMap((map['dagProcessingLogs'] as Map).cast<String, dynamic>())).input(),
-      schedulerLogs: map['schedulerLogs'] == null ? null : (EnvironmentLoggingConfigurationSchedulerLogs.fromMap((map['schedulerLogs'] as Map).cast<String, dynamic>())).input(),
-      taskLogs: map['taskLogs'] == null ? null : (EnvironmentLoggingConfigurationTaskLogs.fromMap((map['taskLogs'] as Map).cast<String, dynamic>())).input(),
-      webserverLogs: map['webserverLogs'] == null ? null : (EnvironmentLoggingConfigurationWebserverLogs.fromMap((map['webserverLogs'] as Map).cast<String, dynamic>())).input(),
-      workerLogs: map['workerLogs'] == null ? null : (EnvironmentLoggingConfigurationWorkerLogs.fromMap((map['workerLogs'] as Map).cast<String, dynamic>())).input(),
+      dagProcessingLogs: map['dagProcessingLogs'] == null ? null : ((EnvironmentLoggingConfigurationDagProcessingLogs.fromMap((map['dagProcessingLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      schedulerLogs: map['schedulerLogs'] == null ? null : ((EnvironmentLoggingConfigurationSchedulerLogs.fromMap((map['schedulerLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      taskLogs: map['taskLogs'] == null ? null : ((EnvironmentLoggingConfigurationTaskLogs.fromMap((map['taskLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      webserverLogs: map['webserverLogs'] == null ? null : ((EnvironmentLoggingConfigurationWebserverLogs.fromMap((map['webserverLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      workerLogs: map['workerLogs'] == null ? null : ((EnvironmentLoggingConfigurationWorkerLogs.fromMap((map['workerLogs']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

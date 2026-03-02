@@ -48,12 +48,12 @@ class TemplateAliasState {
 
   factory TemplateAliasState.fromMap(Map<String, dynamic> map) {
     return TemplateAliasState(
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      templateVersionNumber: map['templateVersionNumber'] == null ? null : (map['templateVersionNumber'] as int).input(),
+      aliasName: map['aliasName'] == null ? null : ((map['aliasName'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      templateId: map['templateId'] == null ? null : ((map['templateId'] as String).input()).input(),
+      templateVersionNumber: map['templateVersionNumber'] == null ? null : ((map['templateVersionNumber'] as int).input()).input(),
     );
   }
 }

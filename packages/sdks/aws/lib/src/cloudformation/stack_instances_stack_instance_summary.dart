@@ -60,15 +60,15 @@ class StackInstancesStackInstanceSummary {
 
   factory StackInstancesStackInstanceSummary.fromMap(Map<String, dynamic> map) {
     return StackInstancesStackInstanceSummary(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      detailedStatus: map['detailedStatus'] == null ? null : (map['detailedStatus'] as String).input(),
-      driftStatus: map['driftStatus'] == null ? null : (map['driftStatus'] as String).input(),
-      organizationalUnitId: map['organizationalUnitId'] == null ? null : (map['organizationalUnitId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stackId: map['stackId'] == null ? null : (map['stackId'] as String).input(),
-      stackSetId: map['stackSetId'] == null ? null : (map['stackSetId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      detailedStatus: map['detailedStatus'] == null ? null : ((map['detailedStatus'] as String).input()).input(),
+      driftStatus: map['driftStatus'] == null ? null : ((map['driftStatus'] as String).input()).input(),
+      organizationalUnitId: map['organizationalUnitId'] == null ? null : ((map['organizationalUnitId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      stackId: map['stackId'] == null ? null : ((map['stackId'] as String).input()).input(),
+      stackSetId: map['stackSetId'] == null ? null : ((map['stackSetId'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
     );
   }
 }

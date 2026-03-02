@@ -21,7 +21,7 @@ class AzureADAuthenticationAsArmPolicyResponse {
 
   factory AzureADAuthenticationAsArmPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AzureADAuthenticationAsArmPolicyResponse(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

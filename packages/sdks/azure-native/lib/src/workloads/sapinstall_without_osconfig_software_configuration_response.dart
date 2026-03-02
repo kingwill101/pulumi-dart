@@ -44,7 +44,7 @@ class SAPInstallWithoutOSConfigSoftwareConfigurationResponse {
   factory SAPInstallWithoutOSConfigSoftwareConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SAPInstallWithoutOSConfigSoftwareConfigurationResponse(
       bomUrl: (map['bomUrl'] as String).input(),
-      highAvailabilitySoftwareConfiguration: map['highAvailabilitySoftwareConfiguration'] == null ? null : (HighAvailabilitySoftwareConfigurationResponse.fromMap((map['highAvailabilitySoftwareConfiguration'] as Map).cast<String, dynamic>())).input(),
+      highAvailabilitySoftwareConfiguration: map['highAvailabilitySoftwareConfiguration'] == null ? null : (HighAvailabilitySoftwareConfigurationResponse.fromMap((map['highAvailabilitySoftwareConfiguration']! as Map).cast<String, dynamic>())).input(),
       sapBitsStorageAccountId: (map['sapBitsStorageAccountId'] as String).input(),
       softwareInstallationType: (map['softwareInstallationType'] as String).input(),
       softwareVersion: (map['softwareVersion'] as String).input(),

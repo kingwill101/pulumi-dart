@@ -59,8 +59,8 @@ class ServerlessKubernetesDeleteOption {
 
   factory ServerlessKubernetesDeleteOption.fromMap(Map<String, dynamic> map) {
     return ServerlessKubernetesDeleteOption(
-      deleteMode: map['deleteMode'] == null ? null : (map['deleteMode'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      deleteMode: map['deleteMode'] == null ? null : (map['deleteMode']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

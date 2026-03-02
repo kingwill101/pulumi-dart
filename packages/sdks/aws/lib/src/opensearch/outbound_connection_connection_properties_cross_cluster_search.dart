@@ -20,7 +20,7 @@ class OutboundConnectionConnectionPropertiesCrossClusterSearch {
 
   factory OutboundConnectionConnectionPropertiesCrossClusterSearch.fromMap(Map<String, dynamic> map) {
     return OutboundConnectionConnectionPropertiesCrossClusterSearch(
-      skipUnavailable: map['skipUnavailable'] == null ? null : (map['skipUnavailable'] as String).input(),
+      skipUnavailable: map['skipUnavailable'] == null ? null : ((map['skipUnavailable'] as String).input()).input(),
     );
   }
 }

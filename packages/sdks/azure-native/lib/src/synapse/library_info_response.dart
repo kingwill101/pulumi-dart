@@ -51,12 +51,12 @@ class LibraryInfoResponse {
 
   factory LibraryInfoResponse.fromMap(Map<String, dynamic> map) {
     return LibraryInfoResponse(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
       creatorId: (map['creatorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       provisioningStatus: (map['provisioningStatus'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
       uploadedTimestamp: (map['uploadedTimestamp'] as String).input(),
     );
   }

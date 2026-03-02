@@ -43,9 +43,9 @@ class DelimitedTextWriteSettingsResponse {
   factory DelimitedTextWriteSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DelimitedTextWriteSettingsResponse(
       fileExtension: (map['fileExtension']).input(),
-      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']).input(),
-      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']).input(),
-      quoteAllText: map['quoteAllText'] == null ? null : (map['quoteAllText']).input(),
+      fileNamePrefix: map['fileNamePrefix'] == null ? null : (map['fileNamePrefix']!).input(),
+      maxRowsPerFile: map['maxRowsPerFile'] == null ? null : (map['maxRowsPerFile']!).input(),
+      quoteAllText: map['quoteAllText'] == null ? null : (map['quoteAllText']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -45,12 +45,12 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts {
 
   factory LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts(
-      executeOperationOnScriptFailure: map['executeOperationOnScriptFailure'] == null ? null : (map['executeOperationOnScriptFailure'] as bool).input(),
+      executeOperationOnScriptFailure: map['executeOperationOnScriptFailure'] == null ? null : ((map['executeOperationOnScriptFailure'] as bool).input()).input(),
       executionHandler: (map['executionHandler'] as String).input(),
-      executionHandlerService: map['executionHandlerService'] == null ? null : (map['executionHandlerService'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as int).input(),
-      maximumRetryCount: map['maximumRetryCount'] == null ? null : (map['maximumRetryCount'] as int).input(),
-      stages: map['stages'] == null ? null : ((map['stages'] as List).cast<String>()).input(),
+      executionHandlerService: map['executionHandlerService'] == null ? null : ((map['executionHandlerService'] as String).input()).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : ((map['executionTimeout'] as int).input()).input(),
+      maximumRetryCount: map['maximumRetryCount'] == null ? null : ((map['maximumRetryCount'] as int).input()).input(),
+      stages: map['stages'] == null ? null : (((map['stages'] as List).cast<String>()).input()).input(),
     );
   }
 }

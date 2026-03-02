@@ -46,8 +46,8 @@ class ReplicaSetRoleArgs {
 
   factory ReplicaSetRoleArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaSetRoleArgs(
-      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort'] as int).input(),
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      connectionPort: map['connectionPort'] == null ? null : (map['connectionPort']! as int).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       networkType: (map['networkType'] as String).input(),
       roleId: (map['roleId'] as String).input(),

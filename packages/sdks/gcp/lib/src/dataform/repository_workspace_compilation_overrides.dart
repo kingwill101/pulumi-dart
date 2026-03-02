@@ -30,9 +30,9 @@ class RepositoryWorkspaceCompilationOverrides {
 
   factory RepositoryWorkspaceCompilationOverrides.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkspaceCompilationOverrides(
-      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase'] as String).input(),
-      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix'] as String).input(),
-      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix'] as String).input(),
+      defaultDatabase: map['defaultDatabase'] == null ? null : (map['defaultDatabase']! as String).input(),
+      schemaSuffix: map['schemaSuffix'] == null ? null : (map['schemaSuffix']! as String).input(),
+      tablePrefix: map['tablePrefix'] == null ? null : (map['tablePrefix']! as String).input(),
     );
   }
 }

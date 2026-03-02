@@ -29,7 +29,7 @@ class DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration {
   factory DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfigurationUrlsSeedUrlConfiguration(
       seedUrls: ((map['seedUrls'] as List).cast<String>()).input(),
-      webCrawlerMode: map['webCrawlerMode'] == null ? null : (map['webCrawlerMode'] as String).input(),
+      webCrawlerMode: map['webCrawlerMode'] == null ? null : ((map['webCrawlerMode'] as String).input()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class BrowserSettingsAssociationState {
 
   factory BrowserSettingsAssociationState.fromMap(Map<String, dynamic> map) {
     return BrowserSettingsAssociationState(
-      browserSettingsArn: map['browserSettingsArn'] == null ? null : (map['browserSettingsArn'] as String).input(),
-      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      browserSettingsArn: map['browserSettingsArn'] == null ? null : ((map['browserSettingsArn'] as String).input()).input(),
+      portalArn: map['portalArn'] == null ? null : ((map['portalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

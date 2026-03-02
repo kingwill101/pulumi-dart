@@ -22,7 +22,7 @@ class MigrateMISyncCompleteCommandOutputResponse {
 
   factory MigrateMISyncCompleteCommandOutputResponse.fromMap(Map<String, dynamic> map) {
     return MigrateMISyncCompleteCommandOutputResponse(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ReportableExceptionResponse>(map['errors'], (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ReportableExceptionResponse>(map['errors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

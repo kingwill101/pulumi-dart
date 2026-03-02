@@ -89,18 +89,18 @@ class GetServiceEndpointPolicyResult {
   factory GetServiceEndpointPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetServiceEndpointPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : (map['contextualServiceEndpointPolicies'] as List).cast<String>(),
+      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : (map['contextualServiceEndpointPolicies']! as List).cast<String>(),
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       kind: map['kind'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      serviceAlias: map['serviceAlias'] == null ? null : map['serviceAlias'] as String,
-      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(map['serviceEndpointPolicyDefinitions'], (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      serviceAlias: map['serviceAlias'] == null ? null : map['serviceAlias']! as String,
+      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(map['serviceEndpointPolicyDefinitions']!, (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
       subnets: pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

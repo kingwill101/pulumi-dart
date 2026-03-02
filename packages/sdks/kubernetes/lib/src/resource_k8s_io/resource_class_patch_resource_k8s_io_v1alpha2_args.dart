@@ -61,13 +61,13 @@ class ResourceClassPatchResourceK8sIoV1alpha2Args {
 
   factory ResourceClassPatchResourceK8sIoV1alpha2Args.fromMap(Map<String, dynamic> map) {
     return ResourceClassPatchResourceK8sIoV1alpha2Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      driverName: map['driverName'] == null ? null : (map['driverName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
-      structuredParameters: map['structuredParameters'] == null ? null : (map['structuredParameters'] as bool).input(),
-      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      driverName: map['driverName'] == null ? null : (map['driverName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferencePatchResourceK8sIoV1alpha2.fromMap((map['parametersRef']! as Map).cast<String, dynamic>())).input(),
+      structuredParameters: map['structuredParameters'] == null ? null : (map['structuredParameters']! as bool).input(),
+      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelectorPatch.fromMap((map['suitableNodes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

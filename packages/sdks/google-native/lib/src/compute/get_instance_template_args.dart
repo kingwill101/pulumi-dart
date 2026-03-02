@@ -32,8 +32,8 @@ class GetInstanceTemplateArgs {
   factory GetInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTemplateArgs(
       instanceTemplate: (map['instanceTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

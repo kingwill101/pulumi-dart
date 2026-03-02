@@ -35,8 +35,8 @@ class GetClusterCredentialArgs {
   factory GetClusterCredentialArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterCredentialArgs(
       clusterId: (map['clusterId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : (map['temporaryDurationMinutes'] as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      temporaryDurationMinutes: map['temporaryDurationMinutes'] == null ? null : (map['temporaryDurationMinutes']! as int).input(),
     );
   }
 }

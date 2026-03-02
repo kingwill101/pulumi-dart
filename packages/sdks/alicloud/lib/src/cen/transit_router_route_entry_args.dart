@@ -57,11 +57,11 @@ class TransitRouterRouteEntryArgs {
 
   factory TransitRouterRouteEntryArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterRouteEntryArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      transitRouterRouteEntryDescription: map['transitRouterRouteEntryDescription'] == null ? null : (map['transitRouterRouteEntryDescription'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      transitRouterRouteEntryDescription: map['transitRouterRouteEntryDescription'] == null ? null : (map['transitRouterRouteEntryDescription']! as String).input(),
       transitRouterRouteEntryDestinationCidrBlock: (map['transitRouterRouteEntryDestinationCidrBlock'] as String).input(),
-      transitRouterRouteEntryName: map['transitRouterRouteEntryName'] == null ? null : (map['transitRouterRouteEntryName'] as String).input(),
-      transitRouterRouteEntryNextHopId: map['transitRouterRouteEntryNextHopId'] == null ? null : (map['transitRouterRouteEntryNextHopId'] as String).input(),
+      transitRouterRouteEntryName: map['transitRouterRouteEntryName'] == null ? null : (map['transitRouterRouteEntryName']! as String).input(),
+      transitRouterRouteEntryNextHopId: map['transitRouterRouteEntryNextHopId'] == null ? null : (map['transitRouterRouteEntryNextHopId']! as String).input(),
       transitRouterRouteEntryNextHopType: (map['transitRouterRouteEntryNextHopType'] as String).input(),
       transitRouterRouteTableId: (map['transitRouterRouteTableId'] as String).input(),
     );

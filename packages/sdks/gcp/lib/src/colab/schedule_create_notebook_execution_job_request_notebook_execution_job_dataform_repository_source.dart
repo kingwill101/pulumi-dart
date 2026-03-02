@@ -25,7 +25,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepos
 
   factory ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource.fromMap(Map<String, dynamic> map) {
     return ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource(
-      commitSha: map['commitSha'] == null ? null : (map['commitSha'] as String).input(),
+      commitSha: map['commitSha'] == null ? null : (map['commitSha']! as String).input(),
       dataformRepositoryResourceName: (map['dataformRepositoryResourceName'] as String).input(),
     );
   }

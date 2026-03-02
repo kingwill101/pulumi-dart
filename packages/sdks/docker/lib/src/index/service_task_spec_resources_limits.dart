@@ -25,8 +25,8 @@ class ServiceTaskSpecResourcesLimits {
 
   factory ServiceTaskSpecResourcesLimits.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResourcesLimits(
-      memoryBytes: map['memoryBytes'] == null ? null : (map['memoryBytes'] as int).input(),
-      nanoCpus: map['nanoCpus'] == null ? null : (map['nanoCpus'] as int).input(),
+      memoryBytes: map['memoryBytes'] == null ? null : (map['memoryBytes']! as int).input(),
+      nanoCpus: map['nanoCpus'] == null ? null : (map['nanoCpus']! as int).input(),
     );
   }
 }

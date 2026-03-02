@@ -27,8 +27,8 @@ class Logging {
 
   factory Logging.fromMap(Map<String, dynamic> map) {
     return Logging(
-      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<LoggingDestination>(map['consumerDestinations'], (value) => LoggingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      producerDestinations: map['producerDestinations'] == null ? null : (pulumi.Input.decodeList<LoggingDestination>(map['producerDestinations'], (value) => LoggingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      consumerDestinations: map['consumerDestinations'] == null ? null : (pulumi.Input.decodeList<LoggingDestination>(map['consumerDestinations']!, (value) => LoggingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      producerDestinations: map['producerDestinations'] == null ? null : (pulumi.Input.decodeList<LoggingDestination>(map['producerDestinations']!, (value) => LoggingDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class GetKubernetesVersionArgs {
   factory GetKubernetesVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesVersionArgs(
       clusterType: (map['clusterType'] as String).input(),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
     );
   }
 }

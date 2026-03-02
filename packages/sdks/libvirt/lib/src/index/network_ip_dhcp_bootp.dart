@@ -25,8 +25,8 @@ class NetworkIpDhcpBootp {
 
   factory NetworkIpDhcpBootp.fromMap(Map<String, dynamic> map) {
     return NetworkIpDhcpBootp(
-      file: map['file'] == null ? null : (map['file'] as String).input(),
-      server: map['server'] == null ? null : (map['server'] as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
+      server: map['server'] == null ? null : (map['server']! as String).input(),
     );
   }
 }

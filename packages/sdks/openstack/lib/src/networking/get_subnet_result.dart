@@ -122,9 +122,9 @@ class GetSubnetResult {
       allocationPools: pulumi.Input.decodeList<GetSubnetAllocationPool>(map['allocationPools'], (value) => GetSubnetAllocationPool.fromMap((value as Map).cast<String, dynamic>())),
       cidr: map['cidr'] as String,
       description: map['description'] as String,
-      dhcpEnabled: map['dhcpEnabled'] == null ? null : map['dhcpEnabled'] as bool,
+      dhcpEnabled: map['dhcpEnabled'] == null ? null : map['dhcpEnabled']! as bool,
       dnsNameservers: (map['dnsNameservers'] as List).cast<String>(),
-      dnsPublishFixedIp: map['dnsPublishFixedIp'] == null ? null : map['dnsPublishFixedIp'] as bool,
+      dnsPublishFixedIp: map['dnsPublishFixedIp'] == null ? null : map['dnsPublishFixedIp']! as bool,
       enableDhcp: map['enableDhcp'] as bool,
       gatewayIp: map['gatewayIp'] as String,
       hostRoutes: pulumi.Input.decodeList<GetSubnetHostRoute>(map['hostRoutes'], (value) => GetSubnetHostRoute.fromMap((value as Map).cast<String, dynamic>())),
@@ -139,7 +139,7 @@ class GetSubnetResult {
       serviceTypes: (map['serviceTypes'] as List).cast<String>(),
       subnetId: map['subnetId'] as String,
       subnetpoolId: map['subnetpoolId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>(),
       tenantId: map['tenantId'] as String,
     );
   }

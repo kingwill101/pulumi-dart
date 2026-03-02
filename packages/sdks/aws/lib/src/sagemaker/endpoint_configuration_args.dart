@@ -73,16 +73,16 @@ class EndpointConfigurationArgs {
 
   factory EndpointConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationArgs(
-      asyncInferenceConfig: map['asyncInferenceConfig'] == null ? null : (EndpointConfigurationAsyncInferenceConfig.fromMap((map['asyncInferenceConfig'] as Map).cast<String, dynamic>())).input(),
-      dataCaptureConfig: map['dataCaptureConfig'] == null ? null : (EndpointConfigurationDataCaptureConfig.fromMap((map['dataCaptureConfig'] as Map).cast<String, dynamic>())).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      productionVariants: (pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(map['productionVariants'], (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shadowProductionVariants: map['shadowProductionVariants'] == null ? null : (pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(map['shadowProductionVariants'], (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      asyncInferenceConfig: map['asyncInferenceConfig'] == null ? null : ((EndpointConfigurationAsyncInferenceConfig.fromMap((map['asyncInferenceConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      dataCaptureConfig: map['dataCaptureConfig'] == null ? null : ((EndpointConfigurationDataCaptureConfig.fromMap((map['dataCaptureConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      productionVariants: (pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(map['productionVariants']!, (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      shadowProductionVariants: map['shadowProductionVariants'] == null ? null : ((pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(map['shadowProductionVariants']!, (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

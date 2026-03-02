@@ -25,8 +25,8 @@ class Workspaces {
 
   factory Workspaces.fromMap(Map<String, dynamic> map) {
     return Workspaces(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class DeviceAllocationResultResourceK8sIoV1alpha3 {
 
   factory DeviceAllocationResultResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceAllocationResultResourceK8sIoV1alpha3(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceAllocationConfigurationResourceK8sIoV1alpha3>(map['config'], (value) => DeviceAllocationConfigurationResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      results: map['results'] == null ? null : (pulumi.Input.decodeList<DeviceRequestAllocationResultResourceK8sIoV1alpha3>(map['results'], (value) => DeviceRequestAllocationResultResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceAllocationConfigurationResourceK8sIoV1alpha3>(map['config']!, (value) => DeviceAllocationConfigurationResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<DeviceRequestAllocationResultResourceK8sIoV1alpha3>(map['results']!, (value) => DeviceRequestAllocationResultResourceK8sIoV1alpha3.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

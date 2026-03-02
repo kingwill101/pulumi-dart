@@ -33,9 +33,9 @@ class UserPropertiesResponse {
 
   factory UserPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return UserPropertiesResponse(
-      identityProvider: map['identityProvider'] == null ? null : (EntraIdentityProviderResponse.fromMap((map['identityProvider'] as Map).cast<String, dynamic>())).input(),
+      identityProvider: map['identityProvider'] == null ? null : (EntraIdentityProviderResponse.fromMap((map['identityProvider']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<DatabaseRoleResponse>(map['roles'], (value) => DatabaseRoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<DatabaseRoleResponse>(map['roles']!, (value) => DatabaseRoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class GeoMatchSetArgs {
 
   factory GeoMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return GeoMatchSetArgs(
-      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : (pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints'], (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : ((pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints']!, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

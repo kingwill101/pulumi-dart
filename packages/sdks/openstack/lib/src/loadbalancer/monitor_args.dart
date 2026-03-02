@@ -118,21 +118,21 @@ class MonitorArgs {
 
   factory MonitorArgs.fromMap(Map<String, dynamic> map) {
     return MonitorArgs(
-      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp'] as bool).input(),
+      adminStateUp: map['adminStateUp'] == null ? null : (map['adminStateUp']! as bool).input(),
       delay: (map['delay'] as int).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      expectedCodes: map['expectedCodes'] == null ? null : (map['expectedCodes'] as String).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      expectedCodes: map['expectedCodes'] == null ? null : (map['expectedCodes']! as String).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      httpVersion: map['httpVersion'] == null ? null : (map['httpVersion']! as String).input(),
       maxRetries: (map['maxRetries'] as int).input(),
-      maxRetriesDown: map['maxRetriesDown'] == null ? null : (map['maxRetriesDown'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      maxRetriesDown: map['maxRetriesDown'] == null ? null : (map['maxRetriesDown']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       poolId: (map['poolId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       timeout: (map['timeout'] as int).input(),
       type: (map['type'] as String).input(),
-      urlPath: map['urlPath'] == null ? null : (map['urlPath'] as String).input(),
+      urlPath: map['urlPath'] == null ? null : (map['urlPath']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class BlobFilterDetails {
 
   factory BlobFilterDetails.fromMap(Map<String, dynamic> map) {
     return BlobFilterDetails(
-      blobPathList: map['blobPathList'] == null ? null : ((map['blobPathList'] as List).cast<String>()).input(),
-      blobPrefixList: map['blobPrefixList'] == null ? null : ((map['blobPrefixList'] as List).cast<String>()).input(),
-      containerList: map['containerList'] == null ? null : ((map['containerList'] as List).cast<String>()).input(),
+      blobPathList: map['blobPathList'] == null ? null : ((map['blobPathList']! as List).cast<String>()).input(),
+      blobPrefixList: map['blobPrefixList'] == null ? null : ((map['blobPrefixList']! as List).cast<String>()).input(),
+      containerList: map['containerList'] == null ? null : ((map['containerList']! as List).cast<String>()).input(),
     );
   }
 }

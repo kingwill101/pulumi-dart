@@ -85,19 +85,19 @@ class DicomServiceState {
 
   factory DicomServiceState.fromMap(Map<String, dynamic> map) {
     return DicomServiceState(
-      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<DicomServiceAuthentication>(map['authentications'], (value) => DicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cors: map['cors'] == null ? null : (DicomServiceCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      dataPartitionsEnabled: map['dataPartitionsEnabled'] == null ? null : (map['dataPartitionsEnabled'] as bool).input(),
-      encryptionKeyUrl: map['encryptionKeyUrl'] == null ? null : (map['encryptionKeyUrl'] as String).input(),
-      identity: map['identity'] == null ? null : (DicomServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<DicomServicePrivateEndpoint>(map['privateEndpoints'], (value) => DicomServicePrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl'] as String).input(),
-      storage: map['storage'] == null ? null : (DicomServiceStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      authentications: map['authentications'] == null ? null : (pulumi.Input.decodeList<DicomServiceAuthentication>(map['authentications']!, (value) => DicomServiceAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cors: map['cors'] == null ? null : (DicomServiceCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      dataPartitionsEnabled: map['dataPartitionsEnabled'] == null ? null : (map['dataPartitionsEnabled']! as bool).input(),
+      encryptionKeyUrl: map['encryptionKeyUrl'] == null ? null : (map['encryptionKeyUrl']! as String).input(),
+      identity: map['identity'] == null ? null : (DicomServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateEndpoints: map['privateEndpoints'] == null ? null : (pulumi.Input.decodeList<DicomServicePrivateEndpoint>(map['privateEndpoints']!, (value) => DicomServicePrivateEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      serviceUrl: map['serviceUrl'] == null ? null : (map['serviceUrl']! as String).input(),
+      storage: map['storage'] == null ? null : (DicomServiceStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

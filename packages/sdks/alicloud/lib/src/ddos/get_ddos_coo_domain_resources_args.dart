@@ -39,10 +39,10 @@ class GetDdosCooDomainResourcesArgs {
 
   factory GetDdosCooDomainResourcesArgs.fromMap(Map<String, dynamic> map) {
     return GetDdosCooDomainResourcesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      queryDomainPattern: map['queryDomainPattern'] == null ? null : (map['queryDomainPattern'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      queryDomainPattern: map['queryDomainPattern'] == null ? null : (map['queryDomainPattern']! as String).input(),
     );
   }
 }

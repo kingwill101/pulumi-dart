@@ -66,13 +66,13 @@ class MessageContactState {
 
   factory MessageContactState.fromMap(Map<String, dynamic> map) {
     return MessageContactState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      messageContactName: map['messageContactName'] == null ? null : (map['messageContactName'] as String).input(),
-      messageTypes: map['messageTypes'] == null ? null : ((map['messageTypes'] as List).cast<String>()).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      messageContactName: map['messageContactName'] == null ? null : (map['messageContactName']! as String).input(),
+      messageTypes: map['messageTypes'] == null ? null : ((map['messageTypes']! as List).cast<String>()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

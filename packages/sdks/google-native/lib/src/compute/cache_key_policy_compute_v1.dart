@@ -51,13 +51,13 @@ class CacheKeyPolicyComputeV1 {
 
   factory CacheKeyPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return CacheKeyPolicyComputeV1(
-      includeHost: map['includeHost'] == null ? null : (map['includeHost'] as bool).input(),
-      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders'] as List).cast<String>()).input(),
-      includeNamedCookies: map['includeNamedCookies'] == null ? null : ((map['includeNamedCookies'] as List).cast<String>()).input(),
-      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol'] as bool).input(),
-      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString'] as bool).input(),
-      queryStringBlacklist: map['queryStringBlacklist'] == null ? null : ((map['queryStringBlacklist'] as List).cast<String>()).input(),
-      queryStringWhitelist: map['queryStringWhitelist'] == null ? null : ((map['queryStringWhitelist'] as List).cast<String>()).input(),
+      includeHost: map['includeHost'] == null ? null : (map['includeHost']! as bool).input(),
+      includeHttpHeaders: map['includeHttpHeaders'] == null ? null : ((map['includeHttpHeaders']! as List).cast<String>()).input(),
+      includeNamedCookies: map['includeNamedCookies'] == null ? null : ((map['includeNamedCookies']! as List).cast<String>()).input(),
+      includeProtocol: map['includeProtocol'] == null ? null : (map['includeProtocol']! as bool).input(),
+      includeQueryString: map['includeQueryString'] == null ? null : (map['includeQueryString']! as bool).input(),
+      queryStringBlacklist: map['queryStringBlacklist'] == null ? null : ((map['queryStringBlacklist']! as List).cast<String>()).input(),
+      queryStringWhitelist: map['queryStringWhitelist'] == null ? null : ((map['queryStringWhitelist']! as List).cast<String>()).input(),
     );
   }
 }

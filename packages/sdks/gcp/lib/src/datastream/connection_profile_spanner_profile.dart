@@ -28,7 +28,7 @@ class ConnectionProfileSpannerProfile {
   factory ConnectionProfileSpannerProfile.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileSpannerProfile(
       database: (map['database'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ImageVolumeSourcePatch {
 
   factory ImageVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return ImageVolumeSourcePatch(
-      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy'] as String).input(),
-      reference: map['reference'] == null ? null : (map['reference'] as String).input(),
+      pullPolicy: map['pullPolicy'] == null ? null : (map['pullPolicy']! as String).input(),
+      reference: map['reference'] == null ? null : (map['reference']! as String).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class PrivateEnvironmentConfig {
 
   factory PrivateEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return PrivateEnvironmentConfig(
-      cloudComposerConnectionSubnetwork: map['cloudComposerConnectionSubnetwork'] == null ? null : (map['cloudComposerConnectionSubnetwork'] as String).input(),
-      cloudComposerNetworkIpv4CidrBlock: map['cloudComposerNetworkIpv4CidrBlock'] == null ? null : (map['cloudComposerNetworkIpv4CidrBlock'] as String).input(),
-      cloudSqlIpv4CidrBlock: map['cloudSqlIpv4CidrBlock'] == null ? null : (map['cloudSqlIpv4CidrBlock'] as String).input(),
-      enablePrivateEnvironment: map['enablePrivateEnvironment'] == null ? null : (map['enablePrivateEnvironment'] as bool).input(),
-      enablePrivatelyUsedPublicIps: map['enablePrivatelyUsedPublicIps'] == null ? null : (map['enablePrivatelyUsedPublicIps'] as bool).input(),
-      networkingConfig: map['networkingConfig'] == null ? null : (NetworkingConfig.fromMap((map['networkingConfig'] as Map).cast<String, dynamic>())).input(),
-      privateClusterConfig: map['privateClusterConfig'] == null ? null : (PrivateClusterConfig.fromMap((map['privateClusterConfig'] as Map).cast<String, dynamic>())).input(),
-      webServerIpv4CidrBlock: map['webServerIpv4CidrBlock'] == null ? null : (map['webServerIpv4CidrBlock'] as String).input(),
+      cloudComposerConnectionSubnetwork: map['cloudComposerConnectionSubnetwork'] == null ? null : (map['cloudComposerConnectionSubnetwork']! as String).input(),
+      cloudComposerNetworkIpv4CidrBlock: map['cloudComposerNetworkIpv4CidrBlock'] == null ? null : (map['cloudComposerNetworkIpv4CidrBlock']! as String).input(),
+      cloudSqlIpv4CidrBlock: map['cloudSqlIpv4CidrBlock'] == null ? null : (map['cloudSqlIpv4CidrBlock']! as String).input(),
+      enablePrivateEnvironment: map['enablePrivateEnvironment'] == null ? null : (map['enablePrivateEnvironment']! as bool).input(),
+      enablePrivatelyUsedPublicIps: map['enablePrivatelyUsedPublicIps'] == null ? null : (map['enablePrivatelyUsedPublicIps']! as bool).input(),
+      networkingConfig: map['networkingConfig'] == null ? null : (NetworkingConfig.fromMap((map['networkingConfig']! as Map).cast<String, dynamic>())).input(),
+      privateClusterConfig: map['privateClusterConfig'] == null ? null : (PrivateClusterConfig.fromMap((map['privateClusterConfig']! as Map).cast<String, dynamic>())).input(),
+      webServerIpv4CidrBlock: map['webServerIpv4CidrBlock'] == null ? null : (map['webServerIpv4CidrBlock']! as String).input(),
     );
   }
 }

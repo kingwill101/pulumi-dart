@@ -88,19 +88,19 @@ class PlanState {
 
   factory PlanState.fromMap(Map<String, dynamic> map) {
     return PlanState(
-      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : (map['appServiceEnvironmentId'] as String).input(),
-      isXenon: map['isXenon'] == null ? null : (map['isXenon'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : (map['maximumElasticWorkerCount'] as int).input(),
-      maximumNumberOfWorkers: map['maximumNumberOfWorkers'] == null ? null : (map['maximumNumberOfWorkers'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      perSiteScaling: map['perSiteScaling'] == null ? null : (map['perSiteScaling'] as bool).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (PlanSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : (map['appServiceEnvironmentId']! as String).input(),
+      isXenon: map['isXenon'] == null ? null : (map['isXenon']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : (map['maximumElasticWorkerCount']! as int).input(),
+      maximumNumberOfWorkers: map['maximumNumberOfWorkers'] == null ? null : (map['maximumNumberOfWorkers']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      perSiteScaling: map['perSiteScaling'] == null ? null : (map['perSiteScaling']! as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sku: map['sku'] == null ? null : (PlanSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

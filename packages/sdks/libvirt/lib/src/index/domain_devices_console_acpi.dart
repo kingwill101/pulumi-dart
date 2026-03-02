@@ -20,7 +20,7 @@ class DomainDevicesConsoleAcpi {
 
   factory DomainDevicesConsoleAcpi.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleAcpi(
-      index: map['index'] == null ? null : (map['index'] as double).input(),
+      index: map['index'] == null ? null : (map['index']! as double).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetSourceVmmigrationV1alpha1Args {
   factory GetSourceVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetSourceVmmigrationV1alpha1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sourceId: (map['sourceId'] as String).input(),
     );
   }

@@ -30,9 +30,9 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTarget {
 
   factory RepositoryWorkflowConfigInvocationConfigIncludedTarget.fromMap(Map<String, dynamic> map) {
     return RepositoryWorkflowConfigInvocationConfigIncludedTarget(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
     );
   }
 }

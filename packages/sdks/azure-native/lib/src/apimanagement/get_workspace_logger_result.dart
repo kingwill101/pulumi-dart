@@ -62,13 +62,13 @@ class GetWorkspaceLoggerResult {
   factory GetWorkspaceLoggerResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceLoggerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      credentials: map['credentials'] == null ? null : (map['credentials'] as Map).cast<String, String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      credentials: map['credentials'] == null ? null : (map['credentials']! as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      isBuffered: map['isBuffered'] == null ? null : map['isBuffered'] as bool,
+      isBuffered: map['isBuffered'] == null ? null : map['isBuffered']! as bool,
       loggerType: map['loggerType'] as String,
       name: map['name'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
       type: map['type'] as String,
     );
   }

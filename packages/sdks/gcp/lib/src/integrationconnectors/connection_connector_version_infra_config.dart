@@ -21,7 +21,7 @@ class ConnectionConnectorVersionInfraConfig {
 
   factory ConnectionConnectorVersionInfraConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionConnectorVersionInfraConfig(
-      ratelimitThreshold: map['ratelimitThreshold'] == null ? null : (map['ratelimitThreshold'] as String).input(),
+      ratelimitThreshold: map['ratelimitThreshold'] == null ? null : (map['ratelimitThreshold']! as String).input(),
     );
   }
 }

@@ -74,12 +74,12 @@ class GetViewResult {
       changed: map['changed'] as String,
       created: map['created'] as String,
       definition: map['definition'] as String,
-      displayName: map['displayName'] == null ? null : (map['displayName'] as Map).cast<String, String>(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as Map).cast<String, String>(),
       id: map['id'] as String,
       name: map['name'] as String,
       tenantId: map['tenantId'] as String,
       type: map['type'] as String,
-      userId: map['userId'] == null ? null : map['userId'] as String,
+      userId: map['userId'] == null ? null : map['userId']! as String,
       viewName: map['viewName'] as String,
     );
   }

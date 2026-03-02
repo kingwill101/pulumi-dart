@@ -74,17 +74,17 @@ class RoutingProfileState {
 
   factory RoutingProfileState.fromMap(Map<String, dynamic> map) {
     return RoutingProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultOutboundQueueId: map['defaultOutboundQueueId'] == null ? null : (map['defaultOutboundQueueId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      mediaConcurrencies: map['mediaConcurrencies'] == null ? null : (pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(map['mediaConcurrencies'], (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queueConfigs: map['queueConfigs'] == null ? null : (pulumi.Input.decodeList<RoutingProfileQueueConfig>(map['queueConfigs'], (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingProfileId: map['routingProfileId'] == null ? null : (map['routingProfileId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultOutboundQueueId: map['defaultOutboundQueueId'] == null ? null : ((map['defaultOutboundQueueId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      mediaConcurrencies: map['mediaConcurrencies'] == null ? null : ((pulumi.Input.decodeList<RoutingProfileMediaConcurrency>(map['mediaConcurrencies']!, (value) => RoutingProfileMediaConcurrency.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      queueConfigs: map['queueConfigs'] == null ? null : ((pulumi.Input.decodeList<RoutingProfileQueueConfig>(map['queueConfigs']!, (value) => RoutingProfileQueueConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingProfileId: map['routingProfileId'] == null ? null : ((map['routingProfileId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

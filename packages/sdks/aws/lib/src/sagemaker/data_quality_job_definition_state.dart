@@ -88,19 +88,19 @@ class DataQualityJobDefinitionState {
 
   factory DataQualityJobDefinitionState.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataQualityAppSpecification: map['dataQualityAppSpecification'] == null ? null : (DataQualityJobDefinitionDataQualityAppSpecification.fromMap((map['dataQualityAppSpecification'] as Map).cast<String, dynamic>())).input(),
-      dataQualityBaselineConfig: map['dataQualityBaselineConfig'] == null ? null : (DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((map['dataQualityBaselineConfig'] as Map).cast<String, dynamic>())).input(),
-      dataQualityJobInput: map['dataQualityJobInput'] == null ? null : (DataQualityJobDefinitionDataQualityJobInput.fromMap((map['dataQualityJobInput'] as Map).cast<String, dynamic>())).input(),
-      dataQualityJobOutputConfig: map['dataQualityJobOutputConfig'] == null ? null : (DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((map['dataQualityJobOutputConfig'] as Map).cast<String, dynamic>())).input(),
-      jobResources: map['jobResources'] == null ? null : (DataQualityJobDefinitionJobResources.fromMap((map['jobResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (DataQualityJobDefinitionNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      stoppingCondition: map['stoppingCondition'] == null ? null : (DataQualityJobDefinitionStoppingCondition.fromMap((map['stoppingCondition'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dataQualityAppSpecification: map['dataQualityAppSpecification'] == null ? null : ((DataQualityJobDefinitionDataQualityAppSpecification.fromMap((map['dataQualityAppSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      dataQualityBaselineConfig: map['dataQualityBaselineConfig'] == null ? null : ((DataQualityJobDefinitionDataQualityBaselineConfig.fromMap((map['dataQualityBaselineConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      dataQualityJobInput: map['dataQualityJobInput'] == null ? null : ((DataQualityJobDefinitionDataQualityJobInput.fromMap((map['dataQualityJobInput']! as Map).cast<String, dynamic>())).input()).input(),
+      dataQualityJobOutputConfig: map['dataQualityJobOutputConfig'] == null ? null : ((DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap((map['dataQualityJobOutputConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      jobResources: map['jobResources'] == null ? null : ((DataQualityJobDefinitionJobResources.fromMap((map['jobResources']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkConfig: map['networkConfig'] == null ? null : ((DataQualityJobDefinitionNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      stoppingCondition: map['stoppingCondition'] == null ? null : ((DataQualityJobDefinitionStoppingCondition.fromMap((map['stoppingCondition']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

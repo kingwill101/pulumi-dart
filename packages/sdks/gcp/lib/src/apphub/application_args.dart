@@ -60,11 +60,11 @@ class ApplicationArgs {
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       applicationId: (map['applicationId'] as String).input(),
-      attributes: map['attributes'] == null ? null : (ApplicationAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      attributes: map['attributes'] == null ? null : (ApplicationAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       scope: (ApplicationScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
     );
   }

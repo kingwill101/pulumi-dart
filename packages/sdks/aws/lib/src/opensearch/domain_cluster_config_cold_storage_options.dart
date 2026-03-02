@@ -20,7 +20,7 @@ class DomainClusterConfigColdStorageOptions {
 
   factory DomainClusterConfigColdStorageOptions.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigColdStorageOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

@@ -84,19 +84,19 @@ class GuestArgs {
 
   factory GuestArgs.fromMap(Map<String, dynamic> map) {
     return GuestArgs(
-      allowedSlots: map['allowedSlots'] == null ? null : ((map['allowedSlots'] as List).cast<int>()).input(),
-      coresPerSlot: map['coresPerSlot'] == null ? null : (map['coresPerSlot'] as int).input(),
-      deleteVirtualDisk: map['deleteVirtualDisk'] == null ? null : (map['deleteVirtualDisk'] as bool).input(),
-      initialHotfix: map['initialHotfix'] == null ? null : (map['initialHotfix'] as String).input(),
-      initialImage: map['initialImage'] == null ? null : (map['initialImage'] as String).input(),
-      mgmtAddress: map['mgmtAddress'] == null ? null : (map['mgmtAddress'] as String).input(),
-      mgmtNetwork: map['mgmtNetwork'] == null ? null : (map['mgmtNetwork'] as String).input(),
-      mgmtRoute: map['mgmtRoute'] == null ? null : (map['mgmtRoute'] as String).input(),
-      minNumberOfSlots: map['minNumberOfSlots'] == null ? null : (map['minNumberOfSlots'] as int).input(),
+      allowedSlots: map['allowedSlots'] == null ? null : ((map['allowedSlots']! as List).cast<int>()).input(),
+      coresPerSlot: map['coresPerSlot'] == null ? null : (map['coresPerSlot']! as int).input(),
+      deleteVirtualDisk: map['deleteVirtualDisk'] == null ? null : (map['deleteVirtualDisk']! as bool).input(),
+      initialHotfix: map['initialHotfix'] == null ? null : (map['initialHotfix']! as String).input(),
+      initialImage: map['initialImage'] == null ? null : (map['initialImage']! as String).input(),
+      mgmtAddress: map['mgmtAddress'] == null ? null : (map['mgmtAddress']! as String).input(),
+      mgmtNetwork: map['mgmtNetwork'] == null ? null : (map['mgmtNetwork']! as String).input(),
+      mgmtRoute: map['mgmtRoute'] == null ? null : (map['mgmtRoute']! as String).input(),
+      minNumberOfSlots: map['minNumberOfSlots'] == null ? null : (map['minNumberOfSlots']! as int).input(),
       name: (map['name'] as String).input(),
-      numberOfSlots: map['numberOfSlots'] == null ? null : (map['numberOfSlots'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      vlans: map['vlans'] == null ? null : ((map['vlans'] as List).cast<String>()).input(),
+      numberOfSlots: map['numberOfSlots'] == null ? null : (map['numberOfSlots']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      vlans: map['vlans'] == null ? null : ((map['vlans']! as List).cast<String>()).input(),
     );
   }
 }

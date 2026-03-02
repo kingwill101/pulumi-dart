@@ -38,10 +38,10 @@ class TextConfigHealthcareV1beta1 {
 
   factory TextConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return TextConfigHealthcareV1beta1(
-      additionalTransformations: map['additionalTransformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformationHealthcareV1beta1>(map['additionalTransformations'], (value) => InfoTypeTransformationHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : ((map['excludeInfoTypes'] as List).cast<String>()).input(),
-      profileType: map['profileType'] == null ? null : (TextConfigProfileType.fromValue(map['profileType'] as String)).input(),
-      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformationHealthcareV1beta1>(map['transformations'], (value) => InfoTypeTransformationHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalTransformations: map['additionalTransformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformationHealthcareV1beta1>(map['additionalTransformations']!, (value) => InfoTypeTransformationHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : ((map['excludeInfoTypes']! as List).cast<String>()).input(),
+      profileType: map['profileType'] == null ? null : (TextConfigProfileType.fromValue(map['profileType']! as String)).input(),
+      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformationHealthcareV1beta1>(map['transformations']!, (value) => InfoTypeTransformationHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

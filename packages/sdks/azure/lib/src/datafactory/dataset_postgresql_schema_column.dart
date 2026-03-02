@@ -30,9 +30,9 @@ class DatasetPostgresqlSchemaColumn {
 
   factory DatasetPostgresqlSchemaColumn.fromMap(Map<String, dynamic> map) {
     return DatasetPostgresqlSchemaColumn(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

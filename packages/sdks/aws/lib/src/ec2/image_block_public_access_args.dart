@@ -29,7 +29,7 @@ class ImageBlockPublicAccessArgs {
 
   factory ImageBlockPublicAccessArgs.fromMap(Map<String, dynamic> map) {
     return ImageBlockPublicAccessArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       state: (map['state'] as String).input(),
     );
   }

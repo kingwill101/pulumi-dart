@@ -41,10 +41,10 @@ class EndpointServicePrivateDnsVerificationArgs {
 
   factory EndpointServicePrivateDnsVerificationArgs.fromMap(Map<String, dynamic> map) {
     return EndpointServicePrivateDnsVerificationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceId: (map['serviceId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EndpointServicePrivateDnsVerificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForVerification: map['waitForVerification'] == null ? null : (map['waitForVerification'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : ((EndpointServicePrivateDnsVerificationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      waitForVerification: map['waitForVerification'] == null ? null : ((map['waitForVerification'] as bool).input()).input(),
     );
   }
 }

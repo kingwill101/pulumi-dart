@@ -36,10 +36,10 @@ class PlanWorkflow {
 
   factory PlanWorkflow.fromMap(Map<String, dynamic> map) {
     return PlanWorkflow(
-      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStep>(map['steps'], (value) => PlanWorkflowStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      workflowDescription: map['workflowDescription'] == null ? null : (map['workflowDescription'] as String).input(),
+      steps: map['steps'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStep>(map['steps']!, (value) => PlanWorkflowStep.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      workflowDescription: map['workflowDescription'] == null ? null : ((map['workflowDescription'] as String).input()).input(),
       workflowTargetAction: (map['workflowTargetAction'] as String).input(),
-      workflowTargetRegion: map['workflowTargetRegion'] == null ? null : (map['workflowTargetRegion'] as String).input(),
+      workflowTargetRegion: map['workflowTargetRegion'] == null ? null : ((map['workflowTargetRegion'] as String).input()).input(),
     );
   }
 }

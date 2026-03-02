@@ -26,7 +26,7 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig {
 
   factory ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig(
-      sessionStickinessConfig: map['sessionStickinessConfig'] == null ? null : (ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap((map['sessionStickinessConfig'] as Map).cast<String, dynamic>())).input(),
+      sessionStickinessConfig: map['sessionStickinessConfig'] == null ? null : ((ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig.fromMap((map['sessionStickinessConfig']! as Map).cast<String, dynamic>())).input()).input(),
       weight: (map['weight'] as double).input(),
     );
   }

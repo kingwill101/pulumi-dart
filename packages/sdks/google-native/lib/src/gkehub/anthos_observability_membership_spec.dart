@@ -31,9 +31,9 @@ class AnthosObservabilityMembershipSpec {
 
   factory AnthosObservabilityMembershipSpec.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityMembershipSpec(
-      doNotOptimizeMetrics: map['doNotOptimizeMetrics'] == null ? null : (map['doNotOptimizeMetrics'] as bool).input(),
-      enableStackdriverOnApplications: map['enableStackdriverOnApplications'] == null ? null : (map['enableStackdriverOnApplications'] as bool).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      doNotOptimizeMetrics: map['doNotOptimizeMetrics'] == null ? null : (map['doNotOptimizeMetrics']! as bool).input(),
+      enableStackdriverOnApplications: map['enableStackdriverOnApplications'] == null ? null : (map['enableStackdriverOnApplications']! as bool).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

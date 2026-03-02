@@ -33,8 +33,8 @@ class LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1alpha1 {
 
   factory LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1alpha1(
-      assuredConcurrencyShares: map['assuredConcurrencyShares'] == null ? null : (map['assuredConcurrencyShares'] as int).input(),
-      limitResponse: map['limitResponse'] == null ? null : (LimitResponseFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['limitResponse'] as Map).cast<String, dynamic>())).input(),
+      assuredConcurrencyShares: map['assuredConcurrencyShares'] == null ? null : (map['assuredConcurrencyShares']! as int).input(),
+      limitResponse: map['limitResponse'] == null ? null : (LimitResponseFlowcontrolApiserverK8sIoV1alpha1.fromMap((map['limitResponse']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

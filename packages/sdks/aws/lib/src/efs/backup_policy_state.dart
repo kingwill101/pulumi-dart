@@ -32,9 +32,9 @@ class BackupPolicyState {
 
   factory BackupPolicyState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyState(
-      backupPolicy: map['backupPolicy'] == null ? null : (BackupPolicyBackupPolicy.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      backupPolicy: map['backupPolicy'] == null ? null : ((BackupPolicyBackupPolicy.fromMap((map['backupPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

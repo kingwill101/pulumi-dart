@@ -27,8 +27,8 @@ class IngressTo {
 
   factory IngressTo.fromMap(Map<String, dynamic> map) {
     return IngressTo(
-      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<ApiOperation>(map['operations'], (value) => ApiOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
+      operations: map['operations'] == null ? null : (pulumi.Input.decodeList<ApiOperation>(map['operations']!, (value) => ApiOperation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
     );
   }
 }

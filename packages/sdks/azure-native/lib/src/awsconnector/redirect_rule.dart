@@ -41,11 +41,11 @@ class RedirectRule {
 
   factory RedirectRule.fromMap(Map<String, dynamic> map) {
     return RedirectRule(
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      httpRedirectCode: map['httpRedirectCode'] == null ? null : (map['httpRedirectCode'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      replaceKeyPrefixWith: map['replaceKeyPrefixWith'] == null ? null : (map['replaceKeyPrefixWith'] as String).input(),
-      replaceKeyWith: map['replaceKeyWith'] == null ? null : (map['replaceKeyWith'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      httpRedirectCode: map['httpRedirectCode'] == null ? null : (map['httpRedirectCode']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      replaceKeyPrefixWith: map['replaceKeyPrefixWith'] == null ? null : (map['replaceKeyPrefixWith']! as String).input(),
+      replaceKeyWith: map['replaceKeyWith'] == null ? null : (map['replaceKeyWith']! as String).input(),
     );
   }
 }

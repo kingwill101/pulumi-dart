@@ -21,7 +21,7 @@ class AwsS3BucketPolicyProperties {
 
   factory AwsS3BucketPolicyProperties.fromMap(Map<String, dynamic> map) {
     return AwsS3BucketPolicyProperties(
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

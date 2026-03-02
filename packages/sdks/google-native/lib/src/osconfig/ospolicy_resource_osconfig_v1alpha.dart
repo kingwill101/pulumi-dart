@@ -45,11 +45,11 @@ class OSPolicyResourceOsconfigV1alpha {
 
   factory OSPolicyResourceOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceOsconfigV1alpha(
-      exec: map['exec'] == null ? null : (OSPolicyResourceExecResourceOsconfigV1alpha.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (OSPolicyResourceFileResourceOsconfigV1alpha.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (OSPolicyResourceExecResourceOsconfigV1alpha.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (OSPolicyResourceFileResourceOsconfigV1alpha.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
       id: (map['id'] as String).input(),
-      pkg: map['pkg'] == null ? null : (OSPolicyResourcePackageResourceOsconfigV1alpha.fromMap((map['pkg'] as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (OSPolicyResourceRepositoryResourceOsconfigV1alpha.fromMap((map['repository'] as Map).cast<String, dynamic>())).input(),
+      pkg: map['pkg'] == null ? null : (OSPolicyResourcePackageResourceOsconfigV1alpha.fromMap((map['pkg']! as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (OSPolicyResourceRepositoryResourceOsconfigV1alpha.fromMap((map['repository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

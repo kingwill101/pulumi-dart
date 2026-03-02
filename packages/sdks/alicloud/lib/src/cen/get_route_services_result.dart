@@ -66,16 +66,16 @@ class GetRouteServicesResult {
 
   factory GetRouteServicesResult.fromMap(Map<String, dynamic> map) {
     return GetRouteServicesResult(
-      accessRegionId: map['accessRegionId'] == null ? null : map['accessRegionId'] as String,
+      accessRegionId: map['accessRegionId'] == null ? null : map['accessRegionId']! as String,
       cenId: map['cenId'] as String,
-      host: map['host'] == null ? null : map['host'] as String,
-      hostRegionId: map['hostRegionId'] == null ? null : map['hostRegionId'] as String,
-      hostVpcId: map['hostVpcId'] == null ? null : map['hostVpcId'] as String,
+      host: map['host'] == null ? null : map['host']! as String,
+      hostRegionId: map['hostRegionId'] == null ? null : map['hostRegionId']! as String,
+      hostVpcId: map['hostVpcId'] == null ? null : map['hostVpcId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       services: pulumi.Input.decodeList<GetRouteServicesService>(map['services'], (value) => GetRouteServicesService.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

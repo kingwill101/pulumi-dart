@@ -24,7 +24,7 @@ class GetFloatingIpsArgs {
 
   factory GetFloatingIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetFloatingIpsArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

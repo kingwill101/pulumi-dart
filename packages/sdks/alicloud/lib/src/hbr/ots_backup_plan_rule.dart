@@ -41,11 +41,11 @@ class OtsBackupPlanRule {
 
   factory OtsBackupPlanRule.fromMap(Map<String, dynamic> map) {
     return OtsBackupPlanRule(
-      backupType: map['backupType'] == null ? null : (map['backupType'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      backupType: map['backupType'] == null ? null : (map['backupType']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
     );
   }
 }

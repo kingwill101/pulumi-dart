@@ -25,7 +25,7 @@ class OriginRequestPolicyQueryStringsConfig {
   factory OriginRequestPolicyQueryStringsConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyQueryStringsConfig(
       queryStringBehavior: (map['queryStringBehavior'] as String).input(),
-      queryStrings: map['queryStrings'] == null ? null : (OriginRequestPolicyQueryStringsConfigQueryStrings.fromMap((map['queryStrings'] as Map).cast<String, dynamic>())).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((OriginRequestPolicyQueryStringsConfigQueryStrings.fromMap((map['queryStrings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

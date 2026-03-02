@@ -31,9 +31,9 @@ class NoncurrentVersionTransition {
 
   factory NoncurrentVersionTransition.fromMap(Map<String, dynamic> map) {
     return NoncurrentVersionTransition(
-      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : (map['newerNoncurrentVersions'] as int).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
-      transitionInDays: map['transitionInDays'] == null ? null : (map['transitionInDays'] as int).input(),
+      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : (map['newerNoncurrentVersions']! as int).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
+      transitionInDays: map['transitionInDays'] == null ? null : (map['transitionInDays']! as int).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class FeedbackMessageArgs {
   factory FeedbackMessageArgs.fromMap(Map<String, dynamic> map) {
     return FeedbackMessageArgs(
       annotatedDatasetId: (map['annotatedDatasetId'] as String).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
       datasetId: (map['datasetId'] as String).input(),
       feedbackThreadId: (map['feedbackThreadId'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operatorFeedbackMetadata: map['operatorFeedbackMetadata'] == null ? null : ((map['operatorFeedbackMetadata'] as Map).cast<String, dynamic>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requesterFeedbackMetadata: map['requesterFeedbackMetadata'] == null ? null : ((map['requesterFeedbackMetadata'] as Map).cast<String, dynamic>()).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      operatorFeedbackMetadata: map['operatorFeedbackMetadata'] == null ? null : ((map['operatorFeedbackMetadata']! as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requesterFeedbackMetadata: map['requesterFeedbackMetadata'] == null ? null : ((map['requesterFeedbackMetadata']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

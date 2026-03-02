@@ -82,14 +82,14 @@ class GlobalSecondaryIndexArgs {
   factory GlobalSecondaryIndexArgs.fromMap(Map<String, dynamic> map) {
     return GlobalSecondaryIndexArgs(
       indexName: (map['indexName'] as String).input(),
-      keySchemas: map['keySchemas'] == null ? null : (pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(map['keySchemas'], (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onDemandThroughput: map['onDemandThroughput'] == null ? null : (GlobalSecondaryIndexOnDemandThroughput.fromMap((map['onDemandThroughput'] as Map).cast<String, dynamic>())).input(),
-      projection: map['projection'] == null ? null : (GlobalSecondaryIndexProjection.fromMap((map['projection'] as Map).cast<String, dynamic>())).input(),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : (GlobalSecondaryIndexProvisionedThroughput.fromMap((map['provisionedThroughput'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      keySchemas: map['keySchemas'] == null ? null : ((pulumi.Input.decodeList<GlobalSecondaryIndexKeySchema>(map['keySchemas']!, (value) => GlobalSecondaryIndexKeySchema.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      onDemandThroughput: map['onDemandThroughput'] == null ? null : ((GlobalSecondaryIndexOnDemandThroughput.fromMap((map['onDemandThroughput']! as Map).cast<String, dynamic>())).input()).input(),
+      projection: map['projection'] == null ? null : ((GlobalSecondaryIndexProjection.fromMap((map['projection']! as Map).cast<String, dynamic>())).input()).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : ((GlobalSecondaryIndexProvisionedThroughput.fromMap((map['provisionedThroughput']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableName: (map['tableName'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (GlobalSecondaryIndexTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      warmThroughput: map['warmThroughput'] == null ? null : (GlobalSecondaryIndexWarmThroughput.fromMap((map['warmThroughput'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((GlobalSecondaryIndexTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      warmThroughput: map['warmThroughput'] == null ? null : ((GlobalSecondaryIndexWarmThroughput.fromMap((map['warmThroughput']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

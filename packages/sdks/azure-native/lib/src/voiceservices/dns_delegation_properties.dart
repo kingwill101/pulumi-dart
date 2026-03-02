@@ -21,7 +21,7 @@ class DnsDelegationProperties {
 
   factory DnsDelegationProperties.fromMap(Map<String, dynamic> map) {
     return DnsDelegationProperties(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
     );
   }
 }

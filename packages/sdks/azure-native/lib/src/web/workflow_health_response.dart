@@ -27,7 +27,7 @@ class WorkflowHealthResponse {
 
   factory WorkflowHealthResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowHealthResponse(
-      error: map['error'] == null ? null : (ErrorEntityResponse.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
+      error: map['error'] == null ? null : (ErrorEntityResponse.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
       state: (map['state'] as String).input(),
     );
   }

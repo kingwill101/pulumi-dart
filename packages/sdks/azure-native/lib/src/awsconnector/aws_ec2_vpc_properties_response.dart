@@ -77,18 +77,18 @@ class AwsEc2VpcPropertiesResponse {
 
   factory AwsEc2VpcPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2VpcPropertiesResponse(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      cidrBlockAssociations: map['cidrBlockAssociations'] == null ? null : ((map['cidrBlockAssociations'] as List).cast<String>()).input(),
-      defaultNetworkAcl: map['defaultNetworkAcl'] == null ? null : (map['defaultNetworkAcl'] as String).input(),
-      defaultSecurityGroup: map['defaultSecurityGroup'] == null ? null : (map['defaultSecurityGroup'] as String).input(),
-      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : (map['enableDnsHostnames'] as bool).input(),
-      enableDnsSupport: map['enableDnsSupport'] == null ? null : (map['enableDnsSupport'] as bool).input(),
-      instanceTenancy: map['instanceTenancy'] == null ? null : (map['instanceTenancy'] as String).input(),
-      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId'] as String).input(),
-      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength'] as int).input(),
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      cidrBlockAssociations: map['cidrBlockAssociations'] == null ? null : ((map['cidrBlockAssociations']! as List).cast<String>()).input(),
+      defaultNetworkAcl: map['defaultNetworkAcl'] == null ? null : (map['defaultNetworkAcl']! as String).input(),
+      defaultSecurityGroup: map['defaultSecurityGroup'] == null ? null : (map['defaultSecurityGroup']! as String).input(),
+      enableDnsHostnames: map['enableDnsHostnames'] == null ? null : (map['enableDnsHostnames']! as bool).input(),
+      enableDnsSupport: map['enableDnsSupport'] == null ? null : (map['enableDnsSupport']! as bool).input(),
+      instanceTenancy: map['instanceTenancy'] == null ? null : (map['instanceTenancy']! as String).input(),
+      ipv4IpamPoolId: map['ipv4IpamPoolId'] == null ? null : (map['ipv4IpamPoolId']! as String).input(),
+      ipv4NetmaskLength: map['ipv4NetmaskLength'] == null ? null : (map['ipv4NetmaskLength']! as int).input(),
+      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks']! as List).cast<String>()).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

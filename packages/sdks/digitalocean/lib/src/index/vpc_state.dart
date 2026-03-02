@@ -51,13 +51,13 @@ class VpcState {
 
   factory VpcState.fromMap(Map<String, dynamic> map) {
     return VpcState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      default_: map['default'] == null ? null : (map['default'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcUrn: map['vpcUrn'] == null ? null : (map['vpcUrn'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      default_: map['default'] == null ? null : (map['default']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      vpcUrn: map['vpcUrn'] == null ? null : (map['vpcUrn']! as String).input(),
     );
   }
 }

@@ -61,14 +61,14 @@ class IpamIpamPoolAllocationState {
 
   factory IpamIpamPoolAllocationState.fromMap(Map<String, dynamic> map) {
     return IpamIpamPoolAllocationState(
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : (map['ipamPoolAllocationDescription'] as String).input(),
-      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName'] as String).input(),
-      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      ipamPoolAllocationDescription: map['ipamPoolAllocationDescription'] == null ? null : (map['ipamPoolAllocationDescription']! as String).input(),
+      ipamPoolAllocationName: map['ipamPoolAllocationName'] == null ? null : (map['ipamPoolAllocationName']! as String).input(),
+      ipamPoolId: map['ipamPoolId'] == null ? null : (map['ipamPoolId']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

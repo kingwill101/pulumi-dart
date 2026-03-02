@@ -60,10 +60,10 @@ class RestorePointSourceVMOSDiskResponse {
   factory RestorePointSourceVMOSDiskResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointSourceVMOSDiskResponse(
       caching: (map['caching'] as String).input(),
-      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      diskRestorePoint: map['diskRestorePoint'] == null ? null : (DiskRestorePointAttributesResponse.fromMap((map['diskRestorePoint']! as Map).cast<String, dynamic>())).input(),
       diskSizeGB: (map['diskSizeGB'] as int).input(),
       encryptionSettings: (DiskEncryptionSettingsResponse.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParametersResponse.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
+      managedDisk: map['managedDisk'] == null ? null : (ManagedDiskParametersResponse.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       osType: (map['osType'] as String).input(),
       writeAcceleratorEnabled: (map['writeAcceleratorEnabled'] as bool).input(),

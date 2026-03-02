@@ -37,8 +37,8 @@ class DeliveryPackageInformation {
   factory DeliveryPackageInformation.fromMap(Map<String, dynamic> map) {
     return DeliveryPackageInformation(
       carrierName: (map['carrierName'] as String).input(),
-      driveCount: map['driveCount'] == null ? null : (map['driveCount'] as double).input(),
-      shipDate: map['shipDate'] == null ? null : (map['shipDate'] as String).input(),
+      driveCount: map['driveCount'] == null ? null : (map['driveCount']! as double).input(),
+      shipDate: map['shipDate'] == null ? null : (map['shipDate']! as String).input(),
       trackingNumber: (map['trackingNumber'] as String).input(),
     );
   }

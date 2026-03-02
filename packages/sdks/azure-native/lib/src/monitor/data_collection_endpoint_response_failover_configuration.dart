@@ -27,8 +27,8 @@ class DataCollectionEndpointResponseFailoverConfiguration {
 
   factory DataCollectionEndpointResponseFailoverConfiguration.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointResponseFailoverConfiguration(
-      activeLocation: map['activeLocation'] == null ? null : (map['activeLocation'] as String).input(),
-      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<LocationSpecResponse>(map['locations'], (value) => LocationSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activeLocation: map['activeLocation'] == null ? null : (map['activeLocation']! as String).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<LocationSpecResponse>(map['locations']!, (value) => LocationSpecResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

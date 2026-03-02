@@ -63,12 +63,12 @@ class GetConfigurationAssignmentsForResourceGroupResult {
   factory GetConfigurationAssignmentsForResourceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationAssignmentsForResourceGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      filter: map['filter'] == null ? null : ConfigurationAssignmentFilterPropertiesResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      filter: map['filter'] == null ? null : ConfigurationAssignmentFilterPropertiesResponse.fromMap((map['filter']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : map['maintenanceConfigurationId'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      maintenanceConfigurationId: map['maintenanceConfigurationId'] == null ? null : map['maintenanceConfigurationId']! as String,
       name: map['name'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

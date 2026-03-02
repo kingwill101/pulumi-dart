@@ -30,9 +30,9 @@ class ServiceBinaryAuthorization {
 
   factory ServiceBinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return ServiceBinaryAuthorization(
-      breakglassJustification: map['breakglassJustification'] == null ? null : (map['breakglassJustification'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      useDefault: map['useDefault'] == null ? null : (map['useDefault'] as bool).input(),
+      breakglassJustification: map['breakglassJustification'] == null ? null : (map['breakglassJustification']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      useDefault: map['useDefault'] == null ? null : (map['useDefault']! as bool).input(),
     );
   }
 }

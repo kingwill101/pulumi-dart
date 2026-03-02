@@ -36,10 +36,10 @@ class ReverseSshConnectivity {
 
   factory ReverseSshConnectivity.fromMap(Map<String, dynamic> map) {
     return ReverseSshConnectivity(
-      vm: map['vm'] == null ? null : (map['vm'] as String).input(),
+      vm: map['vm'] == null ? null : (map['vm']! as String).input(),
       vmIp: (map['vmIp'] as String).input(),
       vmPort: (map['vmPort'] as int).input(),
-      vpc: map['vpc'] == null ? null : (map['vpc'] as String).input(),
+      vpc: map['vpc'] == null ? null : (map['vpc']! as String).input(),
     );
   }
 }

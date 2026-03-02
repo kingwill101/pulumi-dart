@@ -35,8 +35,8 @@ class URLMapPathMatcherRouteRuleCustomErrorResponsePolicy {
 
   factory URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRuleCustomErrorResponsePolicy(
-      errorResponseRules: map['errorResponseRules'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>(map['errorResponseRules'], (value) => URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorService: map['errorService'] == null ? null : (map['errorService'] as String).input(),
+      errorResponseRules: map['errorResponseRules'] == null ? null : (pulumi.Input.decodeList<URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule>(map['errorResponseRules']!, (value) => URLMapPathMatcherRouteRuleCustomErrorResponsePolicyErrorResponseRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorService: map['errorService'] == null ? null : (map['errorService']! as String).input(),
     );
   }
 }

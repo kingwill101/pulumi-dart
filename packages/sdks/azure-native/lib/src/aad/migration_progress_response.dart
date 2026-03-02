@@ -26,8 +26,8 @@ class MigrationProgressResponse {
 
   factory MigrationProgressResponse.fromMap(Map<String, dynamic> map) {
     return MigrationProgressResponse(
-      completionPercentage: map['completionPercentage'] == null ? null : (map['completionPercentage'] as double).input(),
-      progressMessage: map['progressMessage'] == null ? null : (map['progressMessage'] as String).input(),
+      completionPercentage: map['completionPercentage'] == null ? null : (map['completionPercentage']! as double).input(),
+      progressMessage: map['progressMessage'] == null ? null : (map['progressMessage']! as String).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class ManagedOnlineEndpointDeploymentResourceProperties {
 
   factory ManagedOnlineEndpointDeploymentResourceProperties.fromMap(Map<String, dynamic> map) {
     return ManagedOnlineEndpointDeploymentResourceProperties(
-      endpointComputeType: map['endpointComputeType'] == null ? null : (map['endpointComputeType'] as String).input(),
-      failureReason: map['failureReason'] == null ? null : (map['failureReason'] as String).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
+      endpointComputeType: map['endpointComputeType'] == null ? null : (map['endpointComputeType']! as String).input(),
+      failureReason: map['failureReason'] == null ? null : (map['failureReason']! as String).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

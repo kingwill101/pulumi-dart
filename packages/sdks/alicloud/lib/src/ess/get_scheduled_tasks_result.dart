@@ -56,11 +56,11 @@ class GetScheduledTasksResult {
     return GetScheduledTasksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      scheduledAction: map['scheduledAction'] == null ? null : map['scheduledAction'] as String,
-      scheduledTaskId: map['scheduledTaskId'] == null ? null : map['scheduledTaskId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      scheduledAction: map['scheduledAction'] == null ? null : map['scheduledAction']! as String,
+      scheduledTaskId: map['scheduledTaskId'] == null ? null : map['scheduledTaskId']! as String,
       tasks: pulumi.Input.decodeList<GetScheduledTasksTask>(map['tasks'], (value) => GetScheduledTasksTask.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

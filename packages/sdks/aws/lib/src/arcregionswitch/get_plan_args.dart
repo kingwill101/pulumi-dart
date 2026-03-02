@@ -30,7 +30,7 @@ class GetPlanArgs {
   factory GetPlanArgs.fromMap(Map<String, dynamic> map) {
     return GetPlanArgs(
       arn: (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

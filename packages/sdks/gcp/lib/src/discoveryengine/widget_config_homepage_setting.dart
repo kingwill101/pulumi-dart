@@ -22,7 +22,7 @@ class WidgetConfigHomepageSetting {
 
   factory WidgetConfigHomepageSetting.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSetting(
-      shortcuts: map['shortcuts'] == null ? null : (pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(map['shortcuts'], (value) => WidgetConfigHomepageSettingShortcut.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortcuts: map['shortcuts'] == null ? null : (pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(map['shortcuts']!, (value) => WidgetConfigHomepageSettingShortcut.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

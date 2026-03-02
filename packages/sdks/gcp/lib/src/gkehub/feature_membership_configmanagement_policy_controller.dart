@@ -56,14 +56,14 @@ class FeatureMembershipConfigmanagementPolicyController {
 
   factory FeatureMembershipConfigmanagementPolicyController.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementPolicyController(
-      auditIntervalSeconds: map['auditIntervalSeconds'] == null ? null : (map['auditIntervalSeconds'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      exemptableNamespaces: map['exemptableNamespaces'] == null ? null : ((map['exemptableNamespaces'] as List).cast<String>()).input(),
-      logDeniesEnabled: map['logDeniesEnabled'] == null ? null : (map['logDeniesEnabled'] as bool).input(),
-      monitoring: map['monitoring'] == null ? null : (FeatureMembershipConfigmanagementPolicyControllerMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())).input(),
-      mutationEnabled: map['mutationEnabled'] == null ? null : (map['mutationEnabled'] as bool).input(),
-      referentialRulesEnabled: map['referentialRulesEnabled'] == null ? null : (map['referentialRulesEnabled'] as bool).input(),
-      templateLibraryInstalled: map['templateLibraryInstalled'] == null ? null : (map['templateLibraryInstalled'] as bool).input(),
+      auditIntervalSeconds: map['auditIntervalSeconds'] == null ? null : (map['auditIntervalSeconds']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      exemptableNamespaces: map['exemptableNamespaces'] == null ? null : ((map['exemptableNamespaces']! as List).cast<String>()).input(),
+      logDeniesEnabled: map['logDeniesEnabled'] == null ? null : (map['logDeniesEnabled']! as bool).input(),
+      monitoring: map['monitoring'] == null ? null : (FeatureMembershipConfigmanagementPolicyControllerMonitoring.fromMap((map['monitoring']! as Map).cast<String, dynamic>())).input(),
+      mutationEnabled: map['mutationEnabled'] == null ? null : (map['mutationEnabled']! as bool).input(),
+      referentialRulesEnabled: map['referentialRulesEnabled'] == null ? null : (map['referentialRulesEnabled']! as bool).input(),
+      templateLibraryInstalled: map['templateLibraryInstalled'] == null ? null : (map['templateLibraryInstalled']! as bool).input(),
     );
   }
 }

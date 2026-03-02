@@ -32,8 +32,8 @@ class GenericBlobSbsAuthModelResponse {
 
   factory GenericBlobSbsAuthModelResponse.fromMap(Map<String, dynamic> map) {
     return GenericBlobSbsAuthModelResponse(
-      credentialsConfig: map['credentialsConfig'] == null ? null : ((map['credentialsConfig'] as Map).cast<String, String>()).input(),
-      storageAccountCredentialsConfig: map['storageAccountCredentialsConfig'] == null ? null : ((map['storageAccountCredentialsConfig'] as Map).cast<String, String>()).input(),
+      credentialsConfig: map['credentialsConfig'] == null ? null : ((map['credentialsConfig']! as Map).cast<String, String>()).input(),
+      storageAccountCredentialsConfig: map['storageAccountCredentialsConfig'] == null ? null : ((map['storageAccountCredentialsConfig']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

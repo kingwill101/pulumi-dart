@@ -92,19 +92,19 @@ class ProjectPropertiesResponse {
 
   factory ProjectPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProjectPropertiesResponse(
-      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId'] as String).input(),
+      assessmentSolutionId: map['assessmentSolutionId'] == null ? null : (map['assessmentSolutionId']! as String).input(),
       createdTimestamp: (map['createdTimestamp'] as String).input(),
-      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId'] as String).input(),
-      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId'] as String).input(),
-      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation'] as String).input(),
+      customerStorageAccountArmId: map['customerStorageAccountArmId'] == null ? null : (map['customerStorageAccountArmId']! as String).input(),
+      customerWorkspaceId: map['customerWorkspaceId'] == null ? null : (map['customerWorkspaceId']! as String).input(),
+      customerWorkspaceLocation: map['customerWorkspaceLocation'] == null ? null : (map['customerWorkspaceLocation']! as String).input(),
       lastAssessmentTimestamp: (map['lastAssessmentTimestamp'] as String).input(),
       numberOfAssessments: (map['numberOfAssessments'] as int).input(),
       numberOfGroups: (map['numberOfGroups'] as int).input(),
       numberOfMachines: (map['numberOfMachines'] as int).input(),
       privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus'] as String).input(),
+      projectStatus: map['projectStatus'] == null ? null : (map['projectStatus']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       serviceEndpoint: (map['serviceEndpoint'] as String).input(),
       updatedTimestamp: (map['updatedTimestamp'] as String).input(),
     );

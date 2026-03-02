@@ -67,11 +67,11 @@ class MembershipIamBindingArgs {
 
   factory MembershipIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return MembershipIamBindingArgs(
-      condition: map['condition'] == null ? null : (MembershipIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (MembershipIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
       membershipId: (map['membershipId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class DataDiskPropertiesResponse {
 
   factory DataDiskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataDiskPropertiesResponse(
-      attachNewDataDiskOptions: map['attachNewDataDiskOptions'] == null ? null : (AttachNewDataDiskOptionsResponse.fromMap((map['attachNewDataDiskOptions'] as Map).cast<String, dynamic>())).input(),
-      existingLabDiskId: map['existingLabDiskId'] == null ? null : (map['existingLabDiskId'] as String).input(),
-      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching'] as String).input(),
+      attachNewDataDiskOptions: map['attachNewDataDiskOptions'] == null ? null : (AttachNewDataDiskOptionsResponse.fromMap((map['attachNewDataDiskOptions']! as Map).cast<String, dynamic>())).input(),
+      existingLabDiskId: map['existingLabDiskId'] == null ? null : (map['existingLabDiskId']! as String).input(),
+      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching']! as String).input(),
     );
   }
 }

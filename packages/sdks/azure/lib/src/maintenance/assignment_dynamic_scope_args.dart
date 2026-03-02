@@ -39,7 +39,7 @@ class AssignmentDynamicScopeArgs {
     return AssignmentDynamicScopeArgs(
       filter: (AssignmentDynamicScopeFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
       maintenanceConfigurationId: (map['maintenanceConfigurationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

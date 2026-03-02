@@ -57,14 +57,14 @@ class ManagedNetworkSettings {
 
   factory ManagedNetworkSettings.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkSettings(
-      enableFirewallLog: map['enableFirewallLog'] == null ? null : (map['enableFirewallLog'] as bool).input(),
-      enableNetworkMonitor: map['enableNetworkMonitor'] == null ? null : (map['enableNetworkMonitor'] as bool).input(),
-      firewallPublicIpAddress: map['firewallPublicIpAddress'] == null ? null : (map['firewallPublicIpAddress'] as String).input(),
-      firewallSku: map['firewallSku'] == null ? null : (map['firewallSku'] as String).input(),
-      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
-      managedNetworkKind: map['managedNetworkKind'] == null ? null : (map['managedNetworkKind'] as String).input(),
-      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeMapValues<FqdnOutboundRule>(map['outboundRules'], (value) => FqdnOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (ManagedNetworkProvisionStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      enableFirewallLog: map['enableFirewallLog'] == null ? null : (map['enableFirewallLog']! as bool).input(),
+      enableNetworkMonitor: map['enableNetworkMonitor'] == null ? null : (map['enableNetworkMonitor']! as bool).input(),
+      firewallPublicIpAddress: map['firewallPublicIpAddress'] == null ? null : (map['firewallPublicIpAddress']! as String).input(),
+      firewallSku: map['firewallSku'] == null ? null : (map['firewallSku']! as String).input(),
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode']! as String).input(),
+      managedNetworkKind: map['managedNetworkKind'] == null ? null : (map['managedNetworkKind']! as String).input(),
+      outboundRules: map['outboundRules'] == null ? null : (pulumi.Input.decodeMapValues<FqdnOutboundRule>(map['outboundRules']!, (value) => FqdnOutboundRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (ManagedNetworkProvisionStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

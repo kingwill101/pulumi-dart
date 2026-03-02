@@ -45,7 +45,7 @@ class DatabaseAdvisorArgs {
 
   factory DatabaseAdvisorArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseAdvisorArgs(
-      advisorName: map['advisorName'] == null ? null : (map['advisorName'] as String).input(),
+      advisorName: map['advisorName'] == null ? null : (map['advisorName']! as String).input(),
       autoExecuteStatus: (AutoExecuteStatus.fromValue(map['autoExecuteStatus'] as String)).input(),
       databaseName: (map['databaseName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

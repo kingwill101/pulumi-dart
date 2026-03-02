@@ -79,17 +79,17 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName'] as String).input(),
-      creationToken: map['creationToken'] == null ? null : (map['creationToken'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : (pulumi.Input.decodeList<FileSystemLifecyclePolicy>(map['lifecyclePolicies'], (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      performanceMode: map['performanceMode'] == null ? null : (map['performanceMode'] as String).input(),
-      protection: map['protection'] == null ? null : (FileSystemProtection.fromMap((map['protection'] as Map).cast<String, dynamic>())).input(),
-      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] == null ? null : (map['provisionedThroughputInMibps'] as double).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
+      availabilityZoneName: map['availabilityZoneName'] == null ? null : ((map['availabilityZoneName'] as String).input()).input(),
+      creationToken: map['creationToken'] == null ? null : ((map['creationToken'] as String).input()).input(),
+      encrypted: map['encrypted'] == null ? null : ((map['encrypted'] as bool).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : ((pulumi.Input.decodeList<FileSystemLifecyclePolicy>(map['lifecyclePolicies']!, (value) => FileSystemLifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      performanceMode: map['performanceMode'] == null ? null : ((map['performanceMode'] as String).input()).input(),
+      protection: map['protection'] == null ? null : ((FileSystemProtection.fromMap((map['protection']! as Map).cast<String, dynamic>())).input()).input(),
+      provisionedThroughputInMibps: map['provisionedThroughputInMibps'] == null ? null : ((map['provisionedThroughputInMibps'] as double).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      throughputMode: map['throughputMode'] == null ? null : ((map['throughputMode'] as String).input()).input(),
     );
   }
 }

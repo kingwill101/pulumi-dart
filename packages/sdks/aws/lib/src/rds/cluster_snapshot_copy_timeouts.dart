@@ -20,7 +20,7 @@ class ClusterSnapshotCopyTimeouts {
 
   factory ClusterSnapshotCopyTimeouts.fromMap(Map<String, dynamic> map) {
     return ClusterSnapshotCopyTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

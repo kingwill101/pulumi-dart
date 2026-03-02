@@ -30,9 +30,9 @@ class BucketMetricFilter {
 
   factory BucketMetricFilter.fromMap(Map<String, dynamic> map) {
     return BucketMetricFilter(
-      accessPoint: map['accessPoint'] == null ? null : (map['accessPoint'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      accessPoint: map['accessPoint'] == null ? null : ((map['accessPoint'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class TableExternalDataConfigurationBigtableOptions {
 
   factory TableExternalDataConfigurationBigtableOptions.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationBigtableOptions(
-      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<TableExternalDataConfigurationBigtableOptionsColumnFamily>(map['columnFamilies'], (value) => TableExternalDataConfigurationBigtableOptionsColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreUnspecifiedColumnFamilies: map['ignoreUnspecifiedColumnFamilies'] == null ? null : (map['ignoreUnspecifiedColumnFamilies'] as bool).input(),
-      outputColumnFamiliesAsJson: map['outputColumnFamiliesAsJson'] == null ? null : (map['outputColumnFamiliesAsJson'] as bool).input(),
-      readRowkeyAsString: map['readRowkeyAsString'] == null ? null : (map['readRowkeyAsString'] as bool).input(),
+      columnFamilies: map['columnFamilies'] == null ? null : (pulumi.Input.decodeList<TableExternalDataConfigurationBigtableOptionsColumnFamily>(map['columnFamilies']!, (value) => TableExternalDataConfigurationBigtableOptionsColumnFamily.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreUnspecifiedColumnFamilies: map['ignoreUnspecifiedColumnFamilies'] == null ? null : (map['ignoreUnspecifiedColumnFamilies']! as bool).input(),
+      outputColumnFamiliesAsJson: map['outputColumnFamiliesAsJson'] == null ? null : (map['outputColumnFamiliesAsJson']! as bool).input(),
+      readRowkeyAsString: map['readRowkeyAsString'] == null ? null : (map['readRowkeyAsString']! as bool).input(),
     );
   }
 }

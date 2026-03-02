@@ -48,12 +48,12 @@ class VolumeResponse {
 
   factory VolumeResponse.fromMap(Map<String, dynamic> map) {
     return VolumeResponse(
-      azureFile: map['azureFile'] == null ? null : (AzureFileVolumeResponse.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (map['emptyDir']).input(),
-      gitRepo: map['gitRepo'] == null ? null : (GitRepoVolumeResponse.fromMap((map['gitRepo'] as Map).cast<String, dynamic>())).input(),
+      azureFile: map['azureFile'] == null ? null : (AzureFileVolumeResponse.fromMap((map['azureFile']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (map['emptyDir']!).input(),
+      gitRepo: map['gitRepo'] == null ? null : (GitRepoVolumeResponse.fromMap((map['gitRepo']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : ((map['secret'] as Map).cast<String, String>()).input(),
-      secretReference: map['secretReference'] == null ? null : ((map['secretReference'] as Map).cast<String, String>()).input(),
+      secret: map['secret'] == null ? null : ((map['secret']! as Map).cast<String, String>()).input(),
+      secretReference: map['secretReference'] == null ? null : ((map['secretReference']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -58,16 +58,16 @@ class GetGatewaysResult {
 
   factory GetGatewaysResult.fromMap(Map<String, dynamic> map) {
     return GetGatewaysResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
-      gatewayName: map['gatewayName'] == null ? null : map['gatewayName'] as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
+      gatewayName: map['gatewayName'] == null ? null : map['gatewayName']! as String,
       gateways: pulumi.Input.decodeList<GetGatewaysGateway>(map['gateways'], (value) => GetGatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
     );
   }
 }

@@ -21,7 +21,7 @@ class EncryptionKey {
 
   factory EncryptionKey.fromMap(Map<String, dynamic> map) {
     return EncryptionKey(
-      gcpKmsEncryptionKey: map['gcpKmsEncryptionKey'] == null ? null : (map['gcpKmsEncryptionKey'] as String).input(),
+      gcpKmsEncryptionKey: map['gcpKmsEncryptionKey'] == null ? null : (map['gcpKmsEncryptionKey']! as String).input(),
     );
   }
 }

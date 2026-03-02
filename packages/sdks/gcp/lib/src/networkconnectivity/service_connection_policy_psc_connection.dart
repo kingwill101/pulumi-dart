@@ -67,15 +67,15 @@ class ServiceConnectionPolicyPscConnection {
 
   factory ServiceConnectionPolicyPscConnection.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConnection(
-      consumerAddress: map['consumerAddress'] == null ? null : (map['consumerAddress'] as String).input(),
-      consumerForwardingRule: map['consumerForwardingRule'] == null ? null : (map['consumerForwardingRule'] as String).input(),
-      consumerTargetProject: map['consumerTargetProject'] == null ? null : (map['consumerTargetProject'] as String).input(),
-      error: map['error'] == null ? null : (ServiceConnectionPolicyPscConnectionError.fromMap((map['error'] as Map).cast<String, dynamic>())).input(),
-      errorInfo: map['errorInfo'] == null ? null : (ServiceConnectionPolicyPscConnectionErrorInfo.fromMap((map['errorInfo'] as Map).cast<String, dynamic>())).input(),
-      errorType: map['errorType'] == null ? null : (map['errorType'] as String).input(),
-      gceOperation: map['gceOperation'] == null ? null : (map['gceOperation'] as String).input(),
-      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      consumerAddress: map['consumerAddress'] == null ? null : (map['consumerAddress']! as String).input(),
+      consumerForwardingRule: map['consumerForwardingRule'] == null ? null : (map['consumerForwardingRule']! as String).input(),
+      consumerTargetProject: map['consumerTargetProject'] == null ? null : (map['consumerTargetProject']! as String).input(),
+      error: map['error'] == null ? null : (ServiceConnectionPolicyPscConnectionError.fromMap((map['error']! as Map).cast<String, dynamic>())).input(),
+      errorInfo: map['errorInfo'] == null ? null : (ServiceConnectionPolicyPscConnectionErrorInfo.fromMap((map['errorInfo']! as Map).cast<String, dynamic>())).input(),
+      errorType: map['errorType'] == null ? null : (map['errorType']! as String).input(),
+      gceOperation: map['gceOperation'] == null ? null : (map['gceOperation']! as String).input(),
+      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

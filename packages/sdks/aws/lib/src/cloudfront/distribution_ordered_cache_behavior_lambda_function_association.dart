@@ -31,7 +31,7 @@ class DistributionOrderedCacheBehaviorLambdaFunctionAssociation {
   factory DistributionOrderedCacheBehaviorLambdaFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return DistributionOrderedCacheBehaviorLambdaFunctionAssociation(
       eventType: (map['eventType'] as String).input(),
-      includeBody: map['includeBody'] == null ? null : (map['includeBody'] as bool).input(),
+      includeBody: map['includeBody'] == null ? null : ((map['includeBody'] as bool).input()).input(),
       lambdaArn: (map['lambdaArn'] as String).input(),
     );
   }

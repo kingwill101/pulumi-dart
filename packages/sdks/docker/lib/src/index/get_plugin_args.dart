@@ -29,8 +29,8 @@ class GetPluginArgs {
 
   factory GetPluginArgs.fromMap(Map<String, dynamic> map) {
     return GetPluginArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

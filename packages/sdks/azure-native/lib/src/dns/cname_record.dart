@@ -21,7 +21,7 @@ class CnameRecord {
 
   factory CnameRecord.fromMap(Map<String, dynamic> map) {
     return CnameRecord(
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
     );
   }
 }

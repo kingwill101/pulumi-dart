@@ -27,8 +27,8 @@ class DomainDevicesAudioAlsa {
 
   factory DomainDevicesAudioAlsa.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioAlsa(
-      input: map['input'] == null ? null : (DomainDevicesAudioAlsaInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      output: map['output'] == null ? null : (DomainDevicesAudioAlsaOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      input: map['input'] == null ? null : (DomainDevicesAudioAlsaInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      output: map['output'] == null ? null : (DomainDevicesAudioAlsaOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

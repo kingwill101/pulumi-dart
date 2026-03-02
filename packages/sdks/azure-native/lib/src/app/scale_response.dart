@@ -42,11 +42,11 @@ class ScaleResponse {
 
   factory ScaleResponse.fromMap(Map<String, dynamic> map) {
     return ScaleResponse(
-      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod'] as int).input(),
-      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas'] as int).input(),
-      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas'] as int).input(),
-      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval'] as int).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ScaleRuleResponse>(map['rules'], (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cooldownPeriod: map['cooldownPeriod'] == null ? null : (map['cooldownPeriod']! as int).input(),
+      maxReplicas: map['maxReplicas'] == null ? null : (map['maxReplicas']! as int).input(),
+      minReplicas: map['minReplicas'] == null ? null : (map['minReplicas']! as int).input(),
+      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval']! as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ScaleRuleResponse>(map['rules']!, (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

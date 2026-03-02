@@ -79,18 +79,18 @@ class IntegrationAccountSchemaArgs {
 
   factory IntegrationAccountSchemaArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSchemaArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      documentName: map['documentName'] == null ? null : (map['documentName'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      documentName: map['documentName'] == null ? null : (map['documentName']! as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
       schemaType: (map['schemaType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
     );
   }
 }

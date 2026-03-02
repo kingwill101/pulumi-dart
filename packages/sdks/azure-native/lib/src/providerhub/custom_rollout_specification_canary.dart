@@ -20,7 +20,7 @@ class CustomRolloutSpecificationCanary {
 
   factory CustomRolloutSpecificationCanary.fromMap(Map<String, dynamic> map) {
     return CustomRolloutSpecificationCanary(
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
     );
   }
 }

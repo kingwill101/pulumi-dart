@@ -38,10 +38,10 @@ class PerformanceData {
 
   factory PerformanceData.fromMap(Map<String, dynamic> map) {
     return PerformanceData(
-      percentile: map['percentile'] == null ? null : (map['percentile'] as String).input(),
-      perfDataEndTime: map['perfDataEndTime'] == null ? null : (map['perfDataEndTime'] as String).input(),
-      perfDataStartTime: map['perfDataStartTime'] == null ? null : (map['perfDataStartTime'] as String).input(),
-      timeRange: map['timeRange'] == null ? null : (map['timeRange'] as String).input(),
+      percentile: map['percentile'] == null ? null : (map['percentile']! as String).input(),
+      perfDataEndTime: map['perfDataEndTime'] == null ? null : (map['perfDataEndTime']! as String).input(),
+      perfDataStartTime: map['perfDataStartTime'] == null ? null : (map['perfDataStartTime']! as String).input(),
+      timeRange: map['timeRange'] == null ? null : (map['timeRange']! as String).input(),
     );
   }
 }

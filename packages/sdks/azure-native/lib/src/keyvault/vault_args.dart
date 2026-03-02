@@ -45,11 +45,11 @@ class VaultArgs {
 
   factory VaultArgs.fromMap(Map<String, dynamic> map) {
     return VaultArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       properties: (VaultProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vaultName: map['vaultName'] == null ? null : (map['vaultName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vaultName: map['vaultName'] == null ? null : (map['vaultName']! as String).input(),
     );
   }
 }

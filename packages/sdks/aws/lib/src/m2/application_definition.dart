@@ -25,8 +25,8 @@ class ApplicationDefinition {
 
   factory ApplicationDefinition.fromMap(Map<String, dynamic> map) {
     return ApplicationDefinition(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      s3Location: map['s3Location'] == null ? null : (map['s3Location'] as String).input(),
+      content: map['content'] == null ? null : ((map['content'] as String).input()).input(),
+      s3Location: map['s3Location'] == null ? null : ((map['s3Location'] as String).input()).input(),
     );
   }
 }

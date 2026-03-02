@@ -49,12 +49,12 @@ class HistoryArgs {
 
   factory HistoryArgs.fromMap(Map<String, dynamic> map) {
     return HistoryArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      historyId: map['historyId'] == null ? null : (map['historyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      testPlatform: map['testPlatform'] == null ? null : (HistoryTestPlatform.fromValue(map['testPlatform'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      historyId: map['historyId'] == null ? null : (map['historyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      testPlatform: map['testPlatform'] == null ? null : (HistoryTestPlatform.fromValue(map['testPlatform']! as String)).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class CloudAutonomousVmClusterMaintenanceWindow {
 
   factory CloudAutonomousVmClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return CloudAutonomousVmClusterMaintenanceWindow(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : (pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(map['daysOfWeeks'], (value) => CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hoursOfDays: map['hoursOfDays'] == null ? null : ((map['hoursOfDays'] as List).cast<int>()).input(),
-      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : (map['leadTimeInWeeks'] as int).input(),
-      months: map['months'] == null ? null : (pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(map['months'], (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      daysOfWeeks: map['daysOfWeeks'] == null ? null : ((pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek>(map['daysOfWeeks']!, (value) => CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      hoursOfDays: map['hoursOfDays'] == null ? null : (((map['hoursOfDays'] as List).cast<int>()).input()).input(),
+      leadTimeInWeeks: map['leadTimeInWeeks'] == null ? null : ((map['leadTimeInWeeks'] as int).input()).input(),
+      months: map['months'] == null ? null : ((pulumi.Input.decodeList<CloudAutonomousVmClusterMaintenanceWindowMonth>(map['months']!, (value) => CloudAutonomousVmClusterMaintenanceWindowMonth.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       preference: (map['preference'] as String).input(),
-      weeksOfMonths: map['weeksOfMonths'] == null ? null : ((map['weeksOfMonths'] as List).cast<int>()).input(),
+      weeksOfMonths: map['weeksOfMonths'] == null ? null : (((map['weeksOfMonths'] as List).cast<int>()).input()).input(),
     );
   }
 }

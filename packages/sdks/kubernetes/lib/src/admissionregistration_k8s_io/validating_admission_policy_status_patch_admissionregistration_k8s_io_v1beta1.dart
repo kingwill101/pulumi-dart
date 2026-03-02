@@ -33,9 +33,9 @@ class ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1 {
 
   factory ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatusPatchAdmissionregistrationK8sIoV1beta1(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      typeChecking: map['typeChecking'] == null ? null : (TypeCheckingPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['typeChecking'] as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      typeChecking: map['typeChecking'] == null ? null : (TypeCheckingPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['typeChecking']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

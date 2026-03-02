@@ -74,17 +74,17 @@ class WebAppPremierAddOnArgs {
 
   factory WebAppPremierAddOnArgs.fromMap(Map<String, dynamic> map) {
     return WebAppPremierAddOnArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      marketplaceOffer: map['marketplaceOffer'] == null ? null : (map['marketplaceOffer'] as String).input(),
-      marketplacePublisher: map['marketplacePublisher'] == null ? null : (map['marketplacePublisher'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      marketplaceOffer: map['marketplaceOffer'] == null ? null : (map['marketplaceOffer']! as String).input(),
+      marketplacePublisher: map['marketplacePublisher'] == null ? null : (map['marketplacePublisher']! as String).input(),
       name: (map['name'] as String).input(),
-      premierAddOnName: map['premierAddOnName'] == null ? null : (map['premierAddOnName'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
+      premierAddOnName: map['premierAddOnName'] == null ? null : (map['premierAddOnName']! as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vendor: map['vendor'] == null ? null : (map['vendor']! as String).input(),
     );
   }
 }

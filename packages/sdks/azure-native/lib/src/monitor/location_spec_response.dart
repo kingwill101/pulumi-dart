@@ -25,8 +25,8 @@ class LocationSpecResponse {
 
   factory LocationSpecResponse.fromMap(Map<String, dynamic> map) {
     return LocationSpecResponse(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      provisioningStatus: map['provisioningStatus'] == null ? null : (map['provisioningStatus'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (map['provisioningStatus']! as String).input(),
     );
   }
 }

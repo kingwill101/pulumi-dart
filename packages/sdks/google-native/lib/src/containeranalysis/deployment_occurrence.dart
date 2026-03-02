@@ -47,12 +47,12 @@ class DeploymentOccurrence {
 
   factory DeploymentOccurrence.fromMap(Map<String, dynamic> map) {
     return DeploymentOccurrence(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      config: map['config'] == null ? null : (map['config'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
       deployTime: (map['deployTime'] as String).input(),
-      platform: map['platform'] == null ? null : (DeploymentOccurrencePlatform.fromValue(map['platform'] as String)).input(),
-      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime'] as String).input(),
-      userEmail: map['userEmail'] == null ? null : (map['userEmail'] as String).input(),
+      platform: map['platform'] == null ? null : (DeploymentOccurrencePlatform.fromValue(map['platform']! as String)).input(),
+      undeployTime: map['undeployTime'] == null ? null : (map['undeployTime']! as String).input(),
+      userEmail: map['userEmail'] == null ? null : (map['userEmail']! as String).input(),
     );
   }
 }

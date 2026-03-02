@@ -71,15 +71,15 @@ class HubVirtualNetworkConnectionArgs {
 
   factory HubVirtualNetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return HubVirtualNetworkConnectionArgs(
-      allowHubToRemoteVnetTransit: map['allowHubToRemoteVnetTransit'] == null ? null : (map['allowHubToRemoteVnetTransit'] as bool).input(),
-      allowRemoteVnetToUseHubVnetGateways: map['allowRemoteVnetToUseHubVnetGateways'] == null ? null : (map['allowRemoteVnetToUseHubVnetGateways'] as bool).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : (SubResource.fromMap((map['remoteVirtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      allowHubToRemoteVnetTransit: map['allowHubToRemoteVnetTransit'] == null ? null : (map['allowHubToRemoteVnetTransit']! as bool).input(),
+      allowRemoteVnetToUseHubVnetGateways: map['allowRemoteVnetToUseHubVnetGateways'] == null ? null : (map['allowRemoteVnetToUseHubVnetGateways']! as bool).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      remoteVirtualNetwork: map['remoteVirtualNetwork'] == null ? null : (SubResource.fromMap((map['remoteVirtualNetwork']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
       virtualHubName: (map['virtualHubName'] as String).input(),
     );
   }

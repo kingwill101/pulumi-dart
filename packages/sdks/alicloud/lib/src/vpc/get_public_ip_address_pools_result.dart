@@ -60,14 +60,14 @@ class GetPublicIpAddressPoolsResult {
     return GetPublicIpAddressPoolsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isp: map['isp'] == null ? null : map['isp'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      isp: map['isp'] == null ? null : map['isp']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       pools: pulumi.Input.decodeList<GetPublicIpAddressPoolsPool>(map['pools'], (value) => GetPublicIpAddressPoolsPool.fromMap((value as Map).cast<String, dynamic>())),
-      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : (map['publicIpAddressPoolIds'] as List).cast<String>(),
-      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : map['publicIpAddressPoolName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      publicIpAddressPoolIds: map['publicIpAddressPoolIds'] == null ? null : (map['publicIpAddressPoolIds']! as List).cast<String>(),
+      publicIpAddressPoolName: map['publicIpAddressPoolName'] == null ? null : map['publicIpAddressPoolName']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

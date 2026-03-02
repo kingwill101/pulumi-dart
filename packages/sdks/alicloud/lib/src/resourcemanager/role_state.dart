@@ -51,13 +51,13 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration'] as int).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      updateDate: map['updateDate'] == null ? null : (map['updateDate'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      assumeRolePolicyDocument: map['assumeRolePolicyDocument'] == null ? null : (map['assumeRolePolicyDocument']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      maxSessionDuration: map['maxSessionDuration'] == null ? null : (map['maxSessionDuration']! as int).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      updateDate: map['updateDate'] == null ? null : (map['updateDate']! as String).input(),
     );
   }
 }

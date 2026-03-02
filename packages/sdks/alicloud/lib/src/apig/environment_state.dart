@@ -36,10 +36,10 @@ class EnvironmentState {
 
   factory EnvironmentState.fromMap(Map<String, dynamic> map) {
     return EnvironmentState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
+      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

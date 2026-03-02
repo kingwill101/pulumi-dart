@@ -30,7 +30,7 @@ class GetLaunchConfigurationArgs {
   factory GetLaunchConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return GetLaunchConfigurationArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

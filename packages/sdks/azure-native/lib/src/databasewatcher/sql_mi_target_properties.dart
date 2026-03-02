@@ -54,12 +54,12 @@ class SqlMiTargetProperties {
   factory SqlMiTargetProperties.fromMap(Map<String, dynamic> map) {
     return SqlMiTargetProperties(
       connectionServerName: (map['connectionServerName'] as String).input(),
-      connectionTcpPort: map['connectionTcpPort'] == null ? null : (map['connectionTcpPort'] as int).input(),
-      readIntent: map['readIntent'] == null ? null : (map['readIntent'] as bool).input(),
+      connectionTcpPort: map['connectionTcpPort'] == null ? null : (map['connectionTcpPort']! as int).input(),
+      readIntent: map['readIntent'] == null ? null : (map['readIntent']! as bool).input(),
       sqlMiResourceId: (map['sqlMiResourceId'] as String).input(),
       targetAuthenticationType: (map['targetAuthenticationType'] as String).input(),
       targetType: (map['targetType'] as String).input(),
-      targetVault: map['targetVault'] == null ? null : (VaultSecret.fromMap((map['targetVault'] as Map).cast<String, dynamic>())).input(),
+      targetVault: map['targetVault'] == null ? null : (VaultSecret.fromMap((map['targetVault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

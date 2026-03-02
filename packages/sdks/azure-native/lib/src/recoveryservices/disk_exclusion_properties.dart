@@ -25,8 +25,8 @@ class DiskExclusionProperties {
 
   factory DiskExclusionProperties.fromMap(Map<String, dynamic> map) {
     return DiskExclusionProperties(
-      diskLunList: map['diskLunList'] == null ? null : ((map['diskLunList'] as List).cast<int>()).input(),
-      isInclusionList: map['isInclusionList'] == null ? null : (map['isInclusionList'] as bool).input(),
+      diskLunList: map['diskLunList'] == null ? null : ((map['diskLunList']! as List).cast<int>()).input(),
+      isInclusionList: map['isInclusionList'] == null ? null : (map['isInclusionList']! as bool).input(),
     );
   }
 }

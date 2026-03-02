@@ -25,7 +25,7 @@ class ConnectorCapacityProvisionedCapacity {
 
   factory ConnectorCapacityProvisionedCapacity.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityProvisionedCapacity(
-      mcuCount: map['mcuCount'] == null ? null : (map['mcuCount'] as int).input(),
+      mcuCount: map['mcuCount'] == null ? null : ((map['mcuCount'] as int).input()).input(),
       workerCount: (map['workerCount'] as int).input(),
     );
   }

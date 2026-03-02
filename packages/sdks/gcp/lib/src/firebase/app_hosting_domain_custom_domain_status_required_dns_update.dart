@@ -44,10 +44,10 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
 
   factory AppHostingDomainCustomDomainStatusRequiredDnsUpdate.fromMap(Map<String, dynamic> map) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdate(
-      checkTime: map['checkTime'] == null ? null : (map['checkTime'] as String).input(),
-      desireds: map['desireds'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>(map['desireds'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      discovereds: map['discovereds'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>(map['discovereds'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      checkTime: map['checkTime'] == null ? null : (map['checkTime']! as String).input(),
+      desireds: map['desireds'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>(map['desireds']!, (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      discovereds: map['discovereds'] == null ? null : (pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>(map['discovereds']!, (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
     );
   }
 }

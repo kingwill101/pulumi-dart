@@ -97,20 +97,20 @@ class FirewallPolicyDraftArgs {
 
   factory FirewallPolicyDraftArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyDraftArgs(
-      basePolicy: map['basePolicy'] == null ? null : (SubResource.fromMap((map['basePolicy'] as Map).cast<String, dynamic>())).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      explicitProxy: map['explicitProxy'] == null ? null : (ExplicitProxy.fromMap((map['explicitProxy'] as Map).cast<String, dynamic>())).input(),
+      basePolicy: map['basePolicy'] == null ? null : (SubResource.fromMap((map['basePolicy']! as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      explicitProxy: map['explicitProxy'] == null ? null : (ExplicitProxy.fromMap((map['explicitProxy']! as Map).cast<String, dynamic>())).input(),
       firewallPolicyName: (map['firewallPolicyName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      insights: map['insights'] == null ? null : (FirewallPolicyInsights.fromMap((map['insights'] as Map).cast<String, dynamic>())).input(),
-      intrusionDetection: map['intrusionDetection'] == null ? null : (FirewallPolicyIntrusionDetection.fromMap((map['intrusionDetection'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      insights: map['insights'] == null ? null : (FirewallPolicyInsights.fromMap((map['insights']! as Map).cast<String, dynamic>())).input(),
+      intrusionDetection: map['intrusionDetection'] == null ? null : (FirewallPolicyIntrusionDetection.fromMap((map['intrusionDetection']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      snat: map['snat'] == null ? null : (FirewallPolicySNAT.fromMap((map['snat'] as Map).cast<String, dynamic>())).input(),
-      sql: map['sql'] == null ? null : (FirewallPolicySQL.fromMap((map['sql'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      threatIntelMode: map['threatIntelMode'] == null ? null : (map['threatIntelMode'] as String).input(),
-      threatIntelWhitelist: map['threatIntelWhitelist'] == null ? null : (FirewallPolicyThreatIntelWhitelist.fromMap((map['threatIntelWhitelist'] as Map).cast<String, dynamic>())).input(),
+      snat: map['snat'] == null ? null : (FirewallPolicySNAT.fromMap((map['snat']! as Map).cast<String, dynamic>())).input(),
+      sql: map['sql'] == null ? null : (FirewallPolicySQL.fromMap((map['sql']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      threatIntelMode: map['threatIntelMode'] == null ? null : (map['threatIntelMode']! as String).input(),
+      threatIntelWhitelist: map['threatIntelWhitelist'] == null ? null : (FirewallPolicyThreatIntelWhitelist.fromMap((map['threatIntelWhitelist']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

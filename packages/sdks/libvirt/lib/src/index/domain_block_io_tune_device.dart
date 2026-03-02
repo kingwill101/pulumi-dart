@@ -46,11 +46,11 @@ class DomainBlockIoTuneDevice {
   factory DomainBlockIoTuneDevice.fromMap(Map<String, dynamic> map) {
     return DomainBlockIoTuneDevice(
       path: (map['path'] as String).input(),
-      readBytesSec: map['readBytesSec'] == null ? null : (map['readBytesSec'] as double).input(),
-      readIopsSec: map['readIopsSec'] == null ? null : (map['readIopsSec'] as double).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as double).input(),
-      writeBytesSec: map['writeBytesSec'] == null ? null : (map['writeBytesSec'] as double).input(),
-      writeIopsSec: map['writeIopsSec'] == null ? null : (map['writeIopsSec'] as double).input(),
+      readBytesSec: map['readBytesSec'] == null ? null : (map['readBytesSec']! as double).input(),
+      readIopsSec: map['readIopsSec'] == null ? null : (map['readIopsSec']! as double).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as double).input(),
+      writeBytesSec: map['writeBytesSec'] == null ? null : (map['writeBytesSec']! as double).input(),
+      writeIopsSec: map['writeIopsSec'] == null ? null : (map['writeIopsSec']! as double).input(),
     );
   }
 }

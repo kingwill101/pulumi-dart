@@ -28,7 +28,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
 
   factory CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio.fromMap(Map<String, dynamic> map) {
     return CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption'] as bool).input(),
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : (map['allowPlaybackInterruption']! as bool).input(),
       audioUri: (map['audioUri'] as String).input(),
     );
   }

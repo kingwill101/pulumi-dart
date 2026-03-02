@@ -21,7 +21,7 @@ class StartupConfig {
 
   factory StartupConfig.fromMap(Map<String, dynamic> map) {
     return StartupConfig(
-      requiredRegistrationFraction: map['requiredRegistrationFraction'] == null ? null : (map['requiredRegistrationFraction'] as double).input(),
+      requiredRegistrationFraction: map['requiredRegistrationFraction'] == null ? null : (map['requiredRegistrationFraction']! as double).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class CostCategoryRuleRuleOrNot {
 
   factory CostCategoryRuleRuleOrNot.fromMap(Map<String, dynamic> map) {
     return CostCategoryRuleRuleOrNot(
-      costCategory: map['costCategory'] == null ? null : (CostCategoryRuleRuleOrNotCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>())).input(),
-      dimension: map['dimension'] == null ? null : (CostCategoryRuleRuleOrNotDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : (CostCategoryRuleRuleOrNotTags.fromMap((map['tags'] as Map).cast<String, dynamic>())).input(),
+      costCategory: map['costCategory'] == null ? null : ((CostCategoryRuleRuleOrNotCostCategory.fromMap((map['costCategory']! as Map).cast<String, dynamic>())).input()).input(),
+      dimension: map['dimension'] == null ? null : ((CostCategoryRuleRuleOrNotDimension.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : ((CostCategoryRuleRuleOrNotTags.fromMap((map['tags']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

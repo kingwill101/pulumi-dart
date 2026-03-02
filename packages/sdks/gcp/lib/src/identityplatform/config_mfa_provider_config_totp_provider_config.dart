@@ -20,7 +20,7 @@ class ConfigMfaProviderConfigTotpProviderConfig {
 
   factory ConfigMfaProviderConfigTotpProviderConfig.fromMap(Map<String, dynamic> map) {
     return ConfigMfaProviderConfigTotpProviderConfig(
-      adjacentIntervals: map['adjacentIntervals'] == null ? null : (map['adjacentIntervals'] as int).input(),
+      adjacentIntervals: map['adjacentIntervals'] == null ? null : (map['adjacentIntervals']! as int).input(),
     );
   }
 }

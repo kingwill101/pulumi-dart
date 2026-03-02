@@ -48,12 +48,12 @@ class LoggingState {
 
   factory LoggingState.fromMap(Map<String, dynamic> map) {
     return LoggingState(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      logDestinationType: map['logDestinationType'] == null ? null : (map['logDestinationType'] as String).input(),
-      logExports: map['logExports'] == null ? null : ((map['logExports'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : ((map['bucketName'] as String).input()).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      logDestinationType: map['logDestinationType'] == null ? null : ((map['logDestinationType'] as String).input()).input(),
+      logExports: map['logExports'] == null ? null : (((map['logExports'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
     );
   }
 }

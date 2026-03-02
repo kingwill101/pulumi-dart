@@ -21,7 +21,7 @@ class ComputeProperties {
 
   factory ComputeProperties.fromMap(Map<String, dynamic> map) {
     return ComputeProperties(
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

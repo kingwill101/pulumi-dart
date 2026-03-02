@@ -52,13 +52,13 @@ class StorageLensConfigurationState {
 
   factory StorageLensConfigurationState.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configId: map['configId'] == null ? null : (map['configId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageLensConfiguration: map['storageLensConfiguration'] == null ? null : (StorageLensConfigurationStorageLensConfiguration.fromMap((map['storageLensConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configId: map['configId'] == null ? null : ((map['configId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageLensConfiguration: map['storageLensConfiguration'] == null ? null : ((StorageLensConfigurationStorageLensConfiguration.fromMap((map['storageLensConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -98,22 +98,22 @@ class FeatureState {
 
   factory FeatureState.fromMap(Map<String, dynamic> map) {
     return FeatureState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      defaultVariation: map['defaultVariation'] == null ? null : (map['defaultVariation'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entityOverrides: map['entityOverrides'] == null ? null : ((map['entityOverrides'] as Map).cast<String, String>()).input(),
-      evaluationRules: map['evaluationRules'] == null ? null : (pulumi.Input.decodeList<FeatureEvaluationRule>(map['evaluationRules'], (value) => FeatureEvaluationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      evaluationStrategy: map['evaluationStrategy'] == null ? null : (map['evaluationStrategy'] as String).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
-      variations: map['variations'] == null ? null : (pulumi.Input.decodeList<FeatureVariation>(map['variations'], (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      defaultVariation: map['defaultVariation'] == null ? null : ((map['defaultVariation'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      entityOverrides: map['entityOverrides'] == null ? null : (((map['entityOverrides'] as Map).cast<String, String>()).input()).input(),
+      evaluationRules: map['evaluationRules'] == null ? null : ((pulumi.Input.decodeList<FeatureEvaluationRule>(map['evaluationRules']!, (value) => FeatureEvaluationRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      evaluationStrategy: map['evaluationStrategy'] == null ? null : ((map['evaluationStrategy'] as String).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      project: map['project'] == null ? null : ((map['project'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      valueType: map['valueType'] == null ? null : ((map['valueType'] as String).input()).input(),
+      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<FeatureVariation>(map['variations']!, (value) => FeatureVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class ClusterClusterConfigMasterConfigDiskConfig {
 
   factory ClusterClusterConfigMasterConfigDiskConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigMasterConfigDiskConfig(
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType'] as String).input(),
-      localSsdInterface: map['localSsdInterface'] == null ? null : (map['localSsdInterface'] as String).input(),
-      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds'] as int).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      bootDiskType: map['bootDiskType'] == null ? null : (map['bootDiskType']! as String).input(),
+      localSsdInterface: map['localSsdInterface'] == null ? null : (map['localSsdInterface']! as String).input(),
+      numLocalSsds: map['numLocalSsds'] == null ? null : (map['numLocalSsds']! as int).input(),
     );
   }
 }

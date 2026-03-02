@@ -63,14 +63,14 @@ class CxPageFormParameter {
 
   factory CxPageFormParameter.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameter(
-      advancedSettings: map['advancedSettings'] == null ? null : (CxPageFormParameterAdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entityType: map['entityType'] == null ? null : (map['entityType'] as String).input(),
-      fillBehavior: map['fillBehavior'] == null ? null : (CxPageFormParameterFillBehavior.fromMap((map['fillBehavior'] as Map).cast<String, dynamic>())).input(),
-      isList: map['isList'] == null ? null : (map['isList'] as bool).input(),
-      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (CxPageFormParameterAdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entityType: map['entityType'] == null ? null : (map['entityType']! as String).input(),
+      fillBehavior: map['fillBehavior'] == null ? null : (CxPageFormParameterFillBehavior.fromMap((map['fillBehavior']! as Map).cast<String, dynamic>())).input(),
+      isList: map['isList'] == null ? null : (map['isList']! as bool).input(),
+      redact: map['redact'] == null ? null : (map['redact']! as bool).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
     );
   }
 }

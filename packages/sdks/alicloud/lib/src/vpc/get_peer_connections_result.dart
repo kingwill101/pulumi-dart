@@ -62,12 +62,12 @@ class GetPeerConnectionsResult {
       connections: pulumi.Input.decodeList<GetPeerConnectionsConnection>(map['connections'], (value) => GetPeerConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      peerConnectionName: map['peerConnectionName'] == null ? null : map['peerConnectionName'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      peerConnectionName: map['peerConnectionName'] == null ? null : map['peerConnectionName']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
     );
   }
 }

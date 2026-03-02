@@ -44,11 +44,11 @@ class GetModelsArgs {
 
   factory GetModelsArgs.fromMap(Map<String, dynamic> map) {
     return GetModelsArgs(
-      byCustomizationType: map['byCustomizationType'] == null ? null : (map['byCustomizationType'] as String).input(),
-      byInferenceType: map['byInferenceType'] == null ? null : (map['byInferenceType'] as String).input(),
-      byOutputModality: map['byOutputModality'] == null ? null : (map['byOutputModality'] as String).input(),
-      byProvider: map['byProvider'] == null ? null : (map['byProvider'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      byCustomizationType: map['byCustomizationType'] == null ? null : ((map['byCustomizationType'] as String).input()).input(),
+      byInferenceType: map['byInferenceType'] == null ? null : ((map['byInferenceType'] as String).input()).input(),
+      byOutputModality: map['byOutputModality'] == null ? null : ((map['byOutputModality'] as String).input()).input(),
+      byProvider: map['byProvider'] == null ? null : ((map['byProvider'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

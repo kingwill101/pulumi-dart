@@ -57,14 +57,14 @@ class EmailServiceDomainState {
 
   factory EmailServiceDomainState.fromMap(Map<String, dynamic> map) {
     return EmailServiceDomainState(
-      domainManagement: map['domainManagement'] == null ? null : (map['domainManagement'] as String).input(),
-      emailServiceId: map['emailServiceId'] == null ? null : (map['emailServiceId'] as String).input(),
-      fromSenderDomain: map['fromSenderDomain'] == null ? null : (map['fromSenderDomain'] as String).input(),
-      mailFromSenderDomain: map['mailFromSenderDomain'] == null ? null : (map['mailFromSenderDomain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled'] as bool).input(),
-      verificationRecords: map['verificationRecords'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(map['verificationRecords'], (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      domainManagement: map['domainManagement'] == null ? null : (map['domainManagement']! as String).input(),
+      emailServiceId: map['emailServiceId'] == null ? null : (map['emailServiceId']! as String).input(),
+      fromSenderDomain: map['fromSenderDomain'] == null ? null : (map['fromSenderDomain']! as String).input(),
+      mailFromSenderDomain: map['mailFromSenderDomain'] == null ? null : (map['mailFromSenderDomain']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userEngagementTrackingEnabled: map['userEngagementTrackingEnabled'] == null ? null : (map['userEngagementTrackingEnabled']! as bool).input(),
+      verificationRecords: map['verificationRecords'] == null ? null : (pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(map['verificationRecords']!, (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

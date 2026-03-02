@@ -32,9 +32,9 @@ class GoogleIamV1BindingBeyondcorpV1alpha {
 
   factory GoogleIamV1BindingBeyondcorpV1alpha.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1BindingBeyondcorpV1alpha(
-      condition: map['condition'] == null ? null : (GoogleTypeExprBeyondcorpV1alpha.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (GoogleTypeExprBeyondcorpV1alpha.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

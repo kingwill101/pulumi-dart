@@ -31,9 +31,9 @@ class ThreatIntelligenceGranularMarkingModel {
 
   factory ThreatIntelligenceGranularMarkingModel.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceGranularMarkingModel(
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      markingRef: map['markingRef'] == null ? null : (map['markingRef'] as int).input(),
-      selectors: map['selectors'] == null ? null : ((map['selectors'] as List).cast<String>()).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      markingRef: map['markingRef'] == null ? null : (map['markingRef']! as int).input(),
+      selectors: map['selectors'] == null ? null : ((map['selectors']! as List).cast<String>()).input(),
     );
   }
 }

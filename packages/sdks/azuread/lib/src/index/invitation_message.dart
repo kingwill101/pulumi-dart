@@ -30,9 +30,9 @@ class InvitationMessage {
 
   factory InvitationMessage.fromMap(Map<String, dynamic> map) {
     return InvitationMessage(
-      additionalRecipients: map['additionalRecipients'] == null ? null : (map['additionalRecipients'] as String).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
+      additionalRecipients: map['additionalRecipients'] == null ? null : (map['additionalRecipients']! as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
     );
   }
 }

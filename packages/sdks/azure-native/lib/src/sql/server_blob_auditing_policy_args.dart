@@ -175,20 +175,20 @@ class ServerBlobAuditingPolicyArgs {
 
   factory ServerBlobAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerBlobAuditingPolicyArgs(
-      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : ((map['auditActionsAndGroups'] as List).cast<String>()).input(),
-      blobAuditingPolicyName: map['blobAuditingPolicyName'] == null ? null : (map['blobAuditingPolicyName'] as String).input(),
-      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : (map['isAzureMonitorTargetEnabled'] as bool).input(),
-      isDevopsAuditEnabled: map['isDevopsAuditEnabled'] == null ? null : (map['isDevopsAuditEnabled'] as bool).input(),
-      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : (map['isManagedIdentityInUse'] as bool).input(),
-      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : (map['isStorageSecondaryKeyInUse'] as bool).input(),
-      queueDelayMs: map['queueDelayMs'] == null ? null : (map['queueDelayMs'] as int).input(),
+      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : ((map['auditActionsAndGroups']! as List).cast<String>()).input(),
+      blobAuditingPolicyName: map['blobAuditingPolicyName'] == null ? null : (map['blobAuditingPolicyName']! as String).input(),
+      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : (map['isAzureMonitorTargetEnabled']! as bool).input(),
+      isDevopsAuditEnabled: map['isDevopsAuditEnabled'] == null ? null : (map['isDevopsAuditEnabled']! as bool).input(),
+      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : (map['isManagedIdentityInUse']! as bool).input(),
+      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : (map['isStorageSecondaryKeyInUse']! as bool).input(),
+      queueDelayMs: map['queueDelayMs'] == null ? null : (map['queueDelayMs']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
       serverName: (map['serverName'] as String).input(),
       state: (BlobAuditingPolicyState.fromValue(map['state'] as String)).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId'] as String).input(),
-      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId']! as String).input(),
+      storageEndpoint: map['storageEndpoint'] == null ? null : (map['storageEndpoint']! as String).input(),
     );
   }
 }

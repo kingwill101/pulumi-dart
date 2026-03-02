@@ -40,9 +40,9 @@ class SolutionArgs {
 
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      solutionName: map['solutionName'] == null ? null : (map['solutionName'] as String).input(),
+      solutionName: map['solutionName'] == null ? null : (map['solutionName']! as String).input(),
       targetName: (map['targetName'] as String).input(),
     );
   }

@@ -46,11 +46,11 @@ class TableIamPolicyState {
 
   factory TableIamPolicyState.fromMap(Map<String, dynamic> map) {
     return TableIamPolicyState(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

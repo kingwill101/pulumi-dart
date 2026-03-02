@@ -42,9 +42,9 @@ class TagInheritanceSettingArgs {
   factory TagInheritanceSettingArgs.fromMap(Map<String, dynamic> map) {
     return TagInheritanceSettingArgs(
       kind: (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (TagInheritanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (TagInheritanceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

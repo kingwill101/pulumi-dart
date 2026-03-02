@@ -39,10 +39,10 @@ class GetStorageBoxSnapshotArgs {
 
   factory GetStorageBoxSnapshotArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxSnapshotArgs(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       storageBoxId: (map['storageBoxId'] as int).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

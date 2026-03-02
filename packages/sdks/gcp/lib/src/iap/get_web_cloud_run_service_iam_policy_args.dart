@@ -38,8 +38,8 @@ class GetWebCloudRunServiceIamPolicyArgs {
   factory GetWebCloudRunServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWebCloudRunServiceIamPolicyArgs(
       cloudRunServiceName: (map['cloudRunServiceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

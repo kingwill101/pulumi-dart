@@ -48,12 +48,12 @@ class ContinuousDeploymentPolicyState {
 
   factory ContinuousDeploymentPolicyState.fromMap(Map<String, dynamic> map) {
     return ContinuousDeploymentPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      stagingDistributionDnsNames: map['stagingDistributionDnsNames'] == null ? null : (ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames'] as Map).cast<String, dynamic>())).input(),
-      trafficConfig: map['trafficConfig'] == null ? null : (ContinuousDeploymentPolicyTrafficConfig.fromMap((map['trafficConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : ((map['lastModifiedTime'] as String).input()).input(),
+      stagingDistributionDnsNames: map['stagingDistributionDnsNames'] == null ? null : ((ContinuousDeploymentPolicyStagingDistributionDnsNames.fromMap((map['stagingDistributionDnsNames']! as Map).cast<String, dynamic>())).input()).input(),
+      trafficConfig: map['trafficConfig'] == null ? null : ((ContinuousDeploymentPolicyTrafficConfig.fromMap((map['trafficConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

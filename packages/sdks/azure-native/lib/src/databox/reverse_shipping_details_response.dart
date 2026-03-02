@@ -34,9 +34,9 @@ class ReverseShippingDetailsResponse {
 
   factory ReverseShippingDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ReverseShippingDetailsResponse(
-      contactDetails: map['contactDetails'] == null ? null : (ContactInfoResponse.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactInfoResponse.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())).input(),
       isUpdated: (map['isUpdated'] as bool).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddressResponse.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddressResponse.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

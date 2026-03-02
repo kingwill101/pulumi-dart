@@ -33,9 +33,9 @@ class ApplicationApplicationConfigurationFlinkApplicationConfiguration {
 
   factory ApplicationApplicationConfigurationFlinkApplicationConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfiguration(
-      checkpointConfiguration: map['checkpointConfiguration'] == null ? null : (ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap((map['checkpointConfiguration'] as Map).cast<String, dynamic>())).input(),
-      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : (ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
-      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : (ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration.fromMap((map['parallelismConfiguration'] as Map).cast<String, dynamic>())).input(),
+      checkpointConfiguration: map['checkpointConfiguration'] == null ? null : ((ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap((map['checkpointConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : ((ApplicationApplicationConfigurationFlinkApplicationConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      parallelismConfiguration: map['parallelismConfiguration'] == null ? null : ((ApplicationApplicationConfigurationFlinkApplicationConfigurationParallelismConfiguration.fromMap((map['parallelismConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

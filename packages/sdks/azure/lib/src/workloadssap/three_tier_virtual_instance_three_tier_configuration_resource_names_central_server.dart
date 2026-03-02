@@ -32,9 +32,9 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer(
-      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName'] as String).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
-      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine>(map['virtualMachines'], (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      availabilitySetName: map['availabilitySetName'] == null ? null : (map['availabilitySetName']! as String).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerLoadBalancer.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
+      virtualMachines: map['virtualMachines'] == null ? null : (pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine>(map['virtualMachines']!, (value) => ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServerVirtualMachine.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

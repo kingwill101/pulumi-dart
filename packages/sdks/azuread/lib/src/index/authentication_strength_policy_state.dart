@@ -31,9 +31,9 @@ class AuthenticationStrengthPolicyState {
 
   factory AuthenticationStrengthPolicyState.fromMap(Map<String, dynamic> map) {
     return AuthenticationStrengthPolicyState(
-      allowedCombinations: map['allowedCombinations'] == null ? null : ((map['allowedCombinations'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      allowedCombinations: map['allowedCombinations'] == null ? null : ((map['allowedCombinations']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

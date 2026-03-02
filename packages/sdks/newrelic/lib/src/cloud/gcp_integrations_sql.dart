@@ -20,7 +20,7 @@ class GcpIntegrationsSql {
 
   factory GcpIntegrationsSql.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsSql(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

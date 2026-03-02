@@ -59,11 +59,11 @@ class GetTransitRouterMulticastDomainPeerMembersResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       members: pulumi.Input.decodeList<GetTransitRouterMulticastDomainPeerMembersMember>(map['members'], (value) => GetTransitRouterMulticastDomainPeerMembersMember.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : (map['peerTransitRouterMulticastDomains'] as List).cast<String>(),
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      peerTransitRouterMulticastDomains: map['peerTransitRouterMulticastDomains'] == null ? null : (map['peerTransitRouterMulticastDomains']! as List).cast<String>(),
+      resourceId: map['resourceId'] == null ? null : map['resourceId']! as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
       transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
     );
   }

@@ -40,10 +40,10 @@ class GetBrokerArgs {
 
   factory GetBrokerArgs.fromMap(Map<String, dynamic> map) {
     return GetBrokerArgs(
-      brokerId: map['brokerId'] == null ? null : (map['brokerId'] as String).input(),
-      brokerName: map['brokerName'] == null ? null : (map['brokerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      brokerId: map['brokerId'] == null ? null : ((map['brokerId'] as String).input()).input(),
+      brokerName: map['brokerName'] == null ? null : ((map['brokerName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -70,15 +70,15 @@ class WebAppSourceControlArgs {
 
   factory WebAppSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return WebAppSourceControlArgs(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : (map['deploymentRollbackEnabled'] as bool).input(),
-      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : (GitHubActionConfiguration.fromMap((map['gitHubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      isGitHubAction: map['isGitHubAction'] == null ? null : (map['isGitHubAction'] as bool).input(),
-      isManualIntegration: map['isManualIntegration'] == null ? null : (map['isManualIntegration'] as bool).input(),
-      isMercurial: map['isMercurial'] == null ? null : (map['isMercurial'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      deploymentRollbackEnabled: map['deploymentRollbackEnabled'] == null ? null : (map['deploymentRollbackEnabled']! as bool).input(),
+      gitHubActionConfiguration: map['gitHubActionConfiguration'] == null ? null : (GitHubActionConfiguration.fromMap((map['gitHubActionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      isGitHubAction: map['isGitHubAction'] == null ? null : (map['isGitHubAction']! as bool).input(),
+      isManualIntegration: map['isManualIntegration'] == null ? null : (map['isManualIntegration']! as bool).input(),
+      isMercurial: map['isMercurial'] == null ? null : (map['isMercurial']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

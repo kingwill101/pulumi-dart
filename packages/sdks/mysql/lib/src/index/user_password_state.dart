@@ -41,11 +41,11 @@ class UserPasswordState {
 
   factory UserPasswordState.fromMap(Map<String, dynamic> map) {
     return UserPasswordState(
-      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint']! as String).input(),
+      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class DiagnosticsLogsResponse {
 
   factory DiagnosticsLogsResponse.fromMap(Map<String, dynamic> map) {
     return DiagnosticsLogsResponse(
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
     );
   }
 }

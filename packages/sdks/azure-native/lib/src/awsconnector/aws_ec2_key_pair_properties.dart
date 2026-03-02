@@ -52,13 +52,13 @@ class AwsEc2KeyPairProperties {
 
   factory AwsEc2KeyPairProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2KeyPairProperties(
-      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
-      keyFormat: map['keyFormat'] == null ? null : (map['keyFormat'] as String).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      publicKeyMaterial: map['publicKeyMaterial'] == null ? null : (map['publicKeyMaterial'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint']! as String).input(),
+      keyFormat: map['keyFormat'] == null ? null : (map['keyFormat']! as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyPairId: map['keyPairId'] == null ? null : (map['keyPairId']! as String).input(),
+      keyType: map['keyType'] == null ? null : (map['keyType']! as String).input(),
+      publicKeyMaterial: map['publicKeyMaterial'] == null ? null : (map['publicKeyMaterial']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

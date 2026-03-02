@@ -27,8 +27,8 @@ class WeightedPodAffinityTermPatch {
 
   factory WeightedPodAffinityTermPatch.fromMap(Map<String, dynamic> map) {
     return WeightedPodAffinityTermPatch(
-      podAffinityTerm: map['podAffinityTerm'] == null ? null : (PodAffinityTermPatch.fromMap((map['podAffinityTerm'] as Map).cast<String, dynamic>())).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      podAffinityTerm: map['podAffinityTerm'] == null ? null : (PodAffinityTermPatch.fromMap((map['podAffinityTerm']! as Map).cast<String, dynamic>())).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

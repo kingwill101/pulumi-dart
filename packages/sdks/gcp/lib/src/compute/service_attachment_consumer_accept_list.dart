@@ -34,8 +34,8 @@ class ServiceAttachmentConsumerAcceptList {
   factory ServiceAttachmentConsumerAcceptList.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConsumerAcceptList(
       connectionLimit: (map['connectionLimit'] as int).input(),
-      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
-      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum'] as String).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl']! as String).input(),
+      projectIdOrNum: map['projectIdOrNum'] == null ? null : (map['projectIdOrNum']! as String).input(),
     );
   }
 }

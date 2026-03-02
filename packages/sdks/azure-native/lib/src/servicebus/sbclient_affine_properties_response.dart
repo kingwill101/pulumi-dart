@@ -31,9 +31,9 @@ class SBClientAffinePropertiesResponse {
 
   factory SBClientAffinePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SBClientAffinePropertiesResponse(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      isDurable: map['isDurable'] == null ? null : (map['isDurable'] as bool).input(),
-      isShared: map['isShared'] == null ? null : (map['isShared'] as bool).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      isDurable: map['isDurable'] == null ? null : (map['isDurable']! as bool).input(),
+      isShared: map['isShared'] == null ? null : (map['isShared']! as bool).input(),
     );
   }
 }

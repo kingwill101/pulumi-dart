@@ -63,15 +63,15 @@ class DomainAssociationState {
 
   factory DomainAssociationState.fromMap(Map<String, dynamic> map) {
     return DomainAssociationState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      certificateSettings: map['certificateSettings'] == null ? null : (DomainAssociationCertificateSettings.fromMap((map['certificateSettings'] as Map).cast<String, dynamic>())).input(),
-      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : (map['certificateVerificationDnsRecord'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      enableAutoSubDomain: map['enableAutoSubDomain'] == null ? null : (map['enableAutoSubDomain'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subDomains: map['subDomains'] == null ? null : (pulumi.Input.decodeList<DomainAssociationSubDomain>(map['subDomains'], (value) => DomainAssociationSubDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      waitForVerification: map['waitForVerification'] == null ? null : (map['waitForVerification'] as bool).input(),
+      appId: map['appId'] == null ? null : ((map['appId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      certificateSettings: map['certificateSettings'] == null ? null : ((DomainAssociationCertificateSettings.fromMap((map['certificateSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : ((map['certificateVerificationDnsRecord'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      enableAutoSubDomain: map['enableAutoSubDomain'] == null ? null : ((map['enableAutoSubDomain'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subDomains: map['subDomains'] == null ? null : ((pulumi.Input.decodeList<DomainAssociationSubDomain>(map['subDomains']!, (value) => DomainAssociationSubDomain.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      waitForVerification: map['waitForVerification'] == null ? null : ((map['waitForVerification'] as bool).input()).input(),
     );
   }
 }

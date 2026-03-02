@@ -22,7 +22,7 @@ class OsPolicyAssignmentInstanceFilterExclusionLabel {
 
   factory OsPolicyAssignmentInstanceFilterExclusionLabel.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentInstanceFilterExclusionLabel(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class DatabaseMigrationsSqlVmArgs {
 
   factory DatabaseMigrationsSqlVmArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseMigrationsSqlVmArgs(
-      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlVm.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DatabaseMigrationPropertiesSqlVm.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sqlVirtualMachineName: (map['sqlVirtualMachineName'] as String).input(),
-      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName'] as String).input(),
+      targetDbName: map['targetDbName'] == null ? null : (map['targetDbName']! as String).input(),
     );
   }
 }

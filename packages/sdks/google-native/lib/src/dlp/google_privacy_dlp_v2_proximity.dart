@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2Proximity {
 
   factory GooglePrivacyDlpV2Proximity.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Proximity(
-      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter'] as int).input(),
-      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore'] as int).input(),
+      windowAfter: map['windowAfter'] == null ? null : (map['windowAfter']! as int).input(),
+      windowBefore: map['windowBefore'] == null ? null : (map['windowBefore']! as int).input(),
     );
   }
 }

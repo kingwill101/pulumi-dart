@@ -22,7 +22,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
 
   factory GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings(
-      kmsSettings: map['kmsSettings'] == null ? null : (GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>())).input(),
+      kmsSettings: map['kmsSettings'] == null ? null : (GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromMap((map['kmsSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

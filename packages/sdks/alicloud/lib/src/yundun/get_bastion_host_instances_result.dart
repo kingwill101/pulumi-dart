@@ -46,13 +46,13 @@ class GetBastionHostInstancesResult {
 
   factory GetBastionHostInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetBastionHostInstancesResult(
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetBastionHostInstancesInstance>(map['instances'], (value) => GetBastionHostInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

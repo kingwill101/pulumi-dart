@@ -25,8 +25,8 @@ class InterfacePublicIpv6Slaac {
 
   factory InterfacePublicIpv6Slaac.fromMap(Map<String, dynamic> map) {
     return InterfacePublicIpv6Slaac(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as int).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as int).input(),
     );
   }
 }

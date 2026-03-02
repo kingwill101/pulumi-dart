@@ -33,9 +33,9 @@ class SiteApplianceProperties {
 
   factory SiteApplianceProperties.fromMap(Map<String, dynamic> map) {
     return SiteApplianceProperties(
-      agentDetails: map['agentDetails'] == null ? null : (SiteAgentProperties.fromMap((map['agentDetails'] as Map).cast<String, dynamic>())).input(),
-      applianceName: map['applianceName'] == null ? null : (map['applianceName'] as String).input(),
-      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>())).input(),
+      agentDetails: map['agentDetails'] == null ? null : (SiteAgentProperties.fromMap((map['agentDetails']! as Map).cast<String, dynamic>())).input(),
+      applianceName: map['applianceName'] == null ? null : (map['applianceName']! as String).input(),
+      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

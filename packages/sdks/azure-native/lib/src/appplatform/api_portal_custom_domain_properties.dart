@@ -21,7 +21,7 @@ class ApiPortalCustomDomainProperties {
 
   factory ApiPortalCustomDomainProperties.fromMap(Map<String, dynamic> map) {
     return ApiPortalCustomDomainProperties(
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

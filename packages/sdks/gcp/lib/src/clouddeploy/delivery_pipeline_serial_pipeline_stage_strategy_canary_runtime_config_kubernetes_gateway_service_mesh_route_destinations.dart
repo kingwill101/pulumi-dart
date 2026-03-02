@@ -26,7 +26,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations(
       destinationIds: ((map['destinationIds'] as List).cast<String>()).input(),
-      propagateService: map['propagateService'] == null ? null : (map['propagateService'] as bool).input(),
+      propagateService: map['propagateService'] == null ? null : (map['propagateService']! as bool).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class VirtualGatewaySpecLoggingAccessLogFile {
 
   factory VirtualGatewaySpecLoggingAccessLogFile.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLoggingAccessLogFile(
-      format: map['format'] == null ? null : (VirtualGatewaySpecLoggingAccessLogFileFormat.fromMap((map['format'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : ((VirtualGatewaySpecLoggingAccessLogFileFormat.fromMap((map['format']! as Map).cast<String, dynamic>())).input()).input(),
       path: (map['path'] as String).input(),
     );
   }

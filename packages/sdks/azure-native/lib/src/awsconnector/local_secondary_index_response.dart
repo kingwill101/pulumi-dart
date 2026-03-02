@@ -33,9 +33,9 @@ class LocalSecondaryIndexResponse {
 
   factory LocalSecondaryIndexResponse.fromMap(Map<String, dynamic> map) {
     return LocalSecondaryIndexResponse(
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      keySchema: map['keySchema'] == null ? null : (pulumi.Input.decodeList<KeySchemaResponse>(map['keySchema'], (value) => KeySchemaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      projection: map['projection'] == null ? null : (ProjectionResponse.fromMap((map['projection'] as Map).cast<String, dynamic>())).input(),
+      indexName: map['indexName'] == null ? null : (map['indexName']! as String).input(),
+      keySchema: map['keySchema'] == null ? null : (pulumi.Input.decodeList<KeySchemaResponse>(map['keySchema']!, (value) => KeySchemaResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      projection: map['projection'] == null ? null : (ProjectionResponse.fromMap((map['projection']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

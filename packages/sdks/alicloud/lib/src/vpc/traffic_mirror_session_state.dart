@@ -88,20 +88,20 @@ class TrafficMirrorSessionState {
 
   factory TrafficMirrorSessionState.fromMap(Map<String, dynamic> map) {
     return TrafficMirrorSessionState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      packetLength: map['packetLength'] == null ? null : (map['packetLength'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId'] as String).input(),
-      trafficMirrorSessionDescription: map['trafficMirrorSessionDescription'] == null ? null : (map['trafficMirrorSessionDescription'] as String).input(),
-      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : (map['trafficMirrorSessionName'] as String).input(),
-      trafficMirrorSourceIds: map['trafficMirrorSourceIds'] == null ? null : ((map['trafficMirrorSourceIds'] as List).cast<String>()).input(),
-      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : (map['trafficMirrorTargetId'] as String).input(),
-      trafficMirrorTargetType: map['trafficMirrorTargetType'] == null ? null : (map['trafficMirrorTargetType'] as String).input(),
-      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId'] as int).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      packetLength: map['packetLength'] == null ? null : (map['packetLength']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      trafficMirrorFilterId: map['trafficMirrorFilterId'] == null ? null : (map['trafficMirrorFilterId']! as String).input(),
+      trafficMirrorSessionDescription: map['trafficMirrorSessionDescription'] == null ? null : (map['trafficMirrorSessionDescription']! as String).input(),
+      trafficMirrorSessionName: map['trafficMirrorSessionName'] == null ? null : (map['trafficMirrorSessionName']! as String).input(),
+      trafficMirrorSourceIds: map['trafficMirrorSourceIds'] == null ? null : ((map['trafficMirrorSourceIds']! as List).cast<String>()).input(),
+      trafficMirrorTargetId: map['trafficMirrorTargetId'] == null ? null : (map['trafficMirrorTargetId']! as String).input(),
+      trafficMirrorTargetType: map['trafficMirrorTargetType'] == null ? null : (map['trafficMirrorTargetType']! as String).input(),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : (map['virtualNetworkId']! as int).input(),
     );
   }
 }

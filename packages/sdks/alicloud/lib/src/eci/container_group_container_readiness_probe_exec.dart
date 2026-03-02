@@ -19,7 +19,7 @@ class ContainerGroupContainerReadinessProbeExec {
 
   factory ContainerGroupContainerReadinessProbeExec.fromMap(Map<String, dynamic> map) {
     return ContainerGroupContainerReadinessProbeExec(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
     );
   }
 }

@@ -47,11 +47,11 @@ class TriggerGithub {
 
   factory TriggerGithub.fromMap(Map<String, dynamic> map) {
     return TriggerGithub(
-      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] == null ? null : (map['enterpriseConfigResourceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      pullRequest: map['pullRequest'] == null ? null : (TriggerGithubPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (TriggerGithubPush.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
+      enterpriseConfigResourceName: map['enterpriseConfigResourceName'] == null ? null : (map['enterpriseConfigResourceName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (TriggerGithubPullRequest.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (TriggerGithubPush.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

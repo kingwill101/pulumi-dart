@@ -256,19 +256,19 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
 
   factory AiEndpointWithModelGardenDeploymentModelConfigContainerSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentModelConfigContainerSpec(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
-      deploymentTimeout: map['deploymentTimeout'] == null ? null : (map['deploymentTimeout'] as String).input(),
-      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>(map['envs'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      grpcPorts: map['grpcPorts'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>(map['grpcPorts'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      healthProbe: map['healthProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
-      healthRoute: map['healthRoute'] == null ? null : (map['healthRoute'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : ((map['commands']! as List).cast<String>()).input(),
+      deploymentTimeout: map['deploymentTimeout'] == null ? null : (map['deploymentTimeout']! as String).input(),
+      envs: map['envs'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>(map['envs']!, (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      grpcPorts: map['grpcPorts'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>(map['grpcPorts']!, (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbe: map['healthProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe.fromMap((map['healthProbe']! as Map).cast<String, dynamic>())).input(),
+      healthRoute: map['healthRoute'] == null ? null : (map['healthRoute']! as String).input(),
       imageUri: (map['imageUri'] as String).input(),
-      livenessProbe: map['livenessProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe.fromMap((map['livenessProbe'] as Map).cast<String, dynamic>())).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>(map['ports'], (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      predictRoute: map['predictRoute'] == null ? null : (map['predictRoute'] as String).input(),
-      sharedMemorySizeMb: map['sharedMemorySizeMb'] == null ? null : (map['sharedMemorySizeMb'] as String).input(),
-      startupProbe: map['startupProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
+      livenessProbe: map['livenessProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe.fromMap((map['livenessProbe']! as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>(map['ports']!, (value) => AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predictRoute: map['predictRoute'] == null ? null : (map['predictRoute']! as String).input(),
+      sharedMemorySizeMb: map['sharedMemorySizeMb'] == null ? null : (map['sharedMemorySizeMb']! as String).input(),
+      startupProbe: map['startupProbe'] == null ? null : (AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class VariablePatchAdmissionregistrationK8sIoV1alpha1 {
 
   factory VariablePatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return VariablePatchAdmissionregistrationK8sIoV1alpha1(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class OAuth2AuthenticationSettingsContract {
 
   factory OAuth2AuthenticationSettingsContract.fromMap(Map<String, dynamic> map) {
     return OAuth2AuthenticationSettingsContract(
-      authorizationServerId: map['authorizationServerId'] == null ? null : (map['authorizationServerId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      authorizationServerId: map['authorizationServerId'] == null ? null : (map['authorizationServerId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

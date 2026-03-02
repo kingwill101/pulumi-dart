@@ -31,7 +31,7 @@ class CrossVersionObjectReference {
 
   factory CrossVersionObjectReference.fromMap(Map<String, dynamic> map) {
     return CrossVersionObjectReference(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       kind: (map['kind'] as String).input(),
       name: (map['name'] as String).input(),
     );

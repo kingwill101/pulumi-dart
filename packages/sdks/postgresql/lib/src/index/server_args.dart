@@ -60,13 +60,13 @@ class ServerArgs {
 
   factory ServerArgs.fromMap(Map<String, dynamic> map) {
     return ServerArgs(
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
       fdwName: (map['fdwName'] as String).input(),
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
       serverName: (map['serverName'] as String).input(),
-      serverOwner: map['serverOwner'] == null ? null : (map['serverOwner'] as String).input(),
-      serverType: map['serverType'] == null ? null : (map['serverType'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      serverOwner: map['serverOwner'] == null ? null : (map['serverOwner']! as String).input(),
+      serverType: map['serverType'] == null ? null : (map['serverType']! as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCu
 
   factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap(Map<String, dynamic> map) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern(
-      keywordRegex: map['keywordRegex'] == null ? null : (map['keywordRegex'] as String).input(),
-      patternDescription: map['patternDescription'] == null ? null : (map['patternDescription'] as String).input(),
+      keywordRegex: map['keywordRegex'] == null ? null : ((map['keywordRegex'] as String).input()).input(),
+      patternDescription: map['patternDescription'] == null ? null : ((map['patternDescription'] as String).input()).input(),
       patternName: (map['patternName'] as String).input(),
       patternRegex: (map['patternRegex'] as String).input(),
     );

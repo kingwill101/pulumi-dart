@@ -137,27 +137,27 @@ class ComputeInstancePropertiesResponse {
 
   factory ComputeInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ComputeInstancePropertiesResponse(
-      applicationSharingPolicy: map['applicationSharingPolicy'] == null ? null : (map['applicationSharingPolicy'] as String).input(),
+      applicationSharingPolicy: map['applicationSharingPolicy'] == null ? null : (map['applicationSharingPolicy']! as String).input(),
       applications: (pulumi.Input.decodeList<ComputeInstanceApplicationResponse>(map['applications'], (value) => ComputeInstanceApplicationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      computeInstanceAuthorizationType: map['computeInstanceAuthorizationType'] == null ? null : (map['computeInstanceAuthorizationType'] as String).input(),
+      computeInstanceAuthorizationType: map['computeInstanceAuthorizationType'] == null ? null : (map['computeInstanceAuthorizationType']! as String).input(),
       connectivityEndpoints: (ComputeInstanceConnectivityEndpointsResponse.fromMap((map['connectivityEndpoints'] as Map).cast<String, dynamic>())).input(),
       containers: (pulumi.Input.decodeList<ComputeInstanceContainerResponse>(map['containers'], (value) => ComputeInstanceContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       createdBy: (ComputeInstanceCreatedByResponse.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
-      customServices: map['customServices'] == null ? null : (pulumi.Input.decodeList<CustomServiceResponse>(map['customServices'], (value) => CustomServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customServices: map['customServices'] == null ? null : (pulumi.Input.decodeList<CustomServiceResponse>(map['customServices']!, (value) => CustomServiceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataDisks: (pulumi.Input.decodeList<ComputeInstanceDataDiskResponse>(map['dataDisks'], (value) => ComputeInstanceDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dataMounts: (pulumi.Input.decodeList<ComputeInstanceDataMountResponse>(map['dataMounts'], (value) => ComputeInstanceDataMountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp'] as bool).input(),
+      enableNodePublicIp: map['enableNodePublicIp'] == null ? null : (map['enableNodePublicIp']! as bool).input(),
       errors: (pulumi.Input.decodeList<ErrorResponseResponse>(map['errors'], (value) => ErrorResponseResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       lastOperation: (ComputeInstanceLastOperationResponse.fromMap((map['lastOperation'] as Map).cast<String, dynamic>())).input(),
       osImageMetadata: (ImageMetadataResponse.fromMap((map['osImageMetadata'] as Map).cast<String, dynamic>())).input(),
-      personalComputeInstanceSettings: map['personalComputeInstanceSettings'] == null ? null : (PersonalComputeInstanceSettingsResponse.fromMap((map['personalComputeInstanceSettings'] as Map).cast<String, dynamic>())).input(),
-      schedules: map['schedules'] == null ? null : (ComputeSchedulesResponse.fromMap((map['schedules'] as Map).cast<String, dynamic>())).input(),
-      setupScripts: map['setupScripts'] == null ? null : (SetupScriptsResponse.fromMap((map['setupScripts'] as Map).cast<String, dynamic>())).input(),
-      sshSettings: map['sshSettings'] == null ? null : (ComputeInstanceSshSettingsResponse.fromMap((map['sshSettings'] as Map).cast<String, dynamic>())).input(),
+      personalComputeInstanceSettings: map['personalComputeInstanceSettings'] == null ? null : (PersonalComputeInstanceSettingsResponse.fromMap((map['personalComputeInstanceSettings']! as Map).cast<String, dynamic>())).input(),
+      schedules: map['schedules'] == null ? null : (ComputeSchedulesResponse.fromMap((map['schedules']! as Map).cast<String, dynamic>())).input(),
+      setupScripts: map['setupScripts'] == null ? null : (SetupScriptsResponse.fromMap((map['setupScripts']! as Map).cast<String, dynamic>())).input(),
+      sshSettings: map['sshSettings'] == null ? null : (ComputeInstanceSshSettingsResponse.fromMap((map['sshSettings']! as Map).cast<String, dynamic>())).input(),
       state: (map['state'] as String).input(),
-      subnet: map['subnet'] == null ? null : (ResourceIdResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (ResourceIdResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
       versions: (ComputeInstanceVersionResponse.fromMap((map['versions'] as Map).cast<String, dynamic>())).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

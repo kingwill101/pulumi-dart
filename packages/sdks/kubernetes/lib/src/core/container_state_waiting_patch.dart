@@ -26,8 +26,8 @@ class ContainerStateWaitingPatch {
 
   factory ContainerStateWaitingPatch.fromMap(Map<String, dynamic> map) {
     return ContainerStateWaitingPatch(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

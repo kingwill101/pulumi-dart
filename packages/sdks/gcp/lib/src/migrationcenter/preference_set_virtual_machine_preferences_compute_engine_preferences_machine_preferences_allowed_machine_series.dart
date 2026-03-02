@@ -20,7 +20,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePrefe
 
   factory PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries.fromMap(Map<String, dynamic> map) {
     return PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeries(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

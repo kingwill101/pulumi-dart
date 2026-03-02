@@ -68,15 +68,15 @@ class LinkedDatasetState {
 
   factory LinkedDatasetState.fromMap(Map<String, dynamic> map) {
     return LinkedDatasetState(
-      bigqueryDatasets: map['bigqueryDatasets'] == null ? null : (pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(map['bigqueryDatasets'], (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      bigqueryDatasets: map['bigqueryDatasets'] == null ? null : (pulumi.Input.decodeList<LinkedDatasetBigqueryDataset>(map['bigqueryDatasets']!, (value) => LinkedDatasetBigqueryDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState']! as String).input(),
+      linkId: map['linkId'] == null ? null : (map['linkId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

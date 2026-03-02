@@ -62,15 +62,15 @@ class SaasBotDefenseProfileState {
 
   factory SaasBotDefenseProfileState.fromMap(Map<String, dynamic> map) {
     return SaasBotDefenseProfileState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectedEndpoints: map['protectedEndpoints'] == null ? null : (pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints'], (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shapeProtectionPool: map['shapeProtectionPool'] == null ? null : (map['shapeProtectionPool'] as String).input(),
-      sslProfile: map['sslProfile'] == null ? null : (map['sslProfile'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      defaultsFrom: map['defaultsFrom'] == null ? null : (map['defaultsFrom']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectedEndpoints: map['protectedEndpoints'] == null ? null : (pulumi.Input.decodeList<SaasBotDefenseProfileProtectedEndpoint>(map['protectedEndpoints']!, (value) => SaasBotDefenseProfileProtectedEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shapeProtectionPool: map['shapeProtectionPool'] == null ? null : (map['shapeProtectionPool']! as String).input(),
+      sslProfile: map['sslProfile'] == null ? null : (map['sslProfile']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

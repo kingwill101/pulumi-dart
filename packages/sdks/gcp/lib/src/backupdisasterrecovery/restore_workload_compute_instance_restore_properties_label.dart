@@ -26,7 +26,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabel {
   factory RestoreWorkloadComputeInstanceRestorePropertiesLabel.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesLabel(
       key: (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

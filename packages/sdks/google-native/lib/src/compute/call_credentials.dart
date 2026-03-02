@@ -28,8 +28,8 @@ class CallCredentials {
 
   factory CallCredentials.fromMap(Map<String, dynamic> map) {
     return CallCredentials(
-      callCredentialType: map['callCredentialType'] == null ? null : (CallCredentialsCallCredentialType.fromValue(map['callCredentialType'] as String)).input(),
-      fromPlugin: map['fromPlugin'] == null ? null : (MetadataCredentialsFromPlugin.fromMap((map['fromPlugin'] as Map).cast<String, dynamic>())).input(),
+      callCredentialType: map['callCredentialType'] == null ? null : (CallCredentialsCallCredentialType.fromValue(map['callCredentialType']! as String)).input(),
+      fromPlugin: map['fromPlugin'] == null ? null : (MetadataCredentialsFromPlugin.fromMap((map['fromPlugin']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

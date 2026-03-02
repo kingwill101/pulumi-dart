@@ -34,9 +34,9 @@ class JobTemplateResponse {
 
   factory JobTemplateResponse.fromMap(Map<String, dynamic> map) {
     return JobTemplateResponse(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ContainerResponse>(map['containers'], (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainerResponse>(map['initContainers'], (value) => InitContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeResponse>(map['volumes'], (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ContainerResponse>(map['containers']!, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<InitContainerResponse>(map['initContainers']!, (value) => InitContainerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<VolumeResponse>(map['volumes']!, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

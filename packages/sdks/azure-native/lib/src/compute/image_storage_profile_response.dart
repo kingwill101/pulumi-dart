@@ -33,9 +33,9 @@ class ImageStorageProfileResponse {
 
   factory ImageStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return ImageStorageProfileResponse(
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ImageDataDiskResponse>(map['dataDisks'], (value) => ImageDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDisk: map['osDisk'] == null ? null : (ImageOSDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
-      zoneResilient: map['zoneResilient'] == null ? null : (map['zoneResilient'] as bool).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<ImageDataDiskResponse>(map['dataDisks']!, (value) => ImageDataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDisk: map['osDisk'] == null ? null : (ImageOSDiskResponse.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
+      zoneResilient: map['zoneResilient'] == null ? null : (map['zoneResilient']! as bool).input(),
     );
   }
 }

@@ -74,16 +74,16 @@ class RoleAssignmentState {
 
   factory RoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return RoleAssignmentState(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion'] as String).input(),
-      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : (map['delegatedManagedIdentityResourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      roleDefinitionName: map['roleDefinitionName'] == null ? null : (map['roleDefinitionName'] as String).input(),
-      skipServicePrincipalAadCheck: map['skipServicePrincipalAadCheck'] == null ? null : (map['skipServicePrincipalAadCheck'] as bool).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      conditionVersion: map['conditionVersion'] == null ? null : (map['conditionVersion']! as String).input(),
+      delegatedManagedIdentityResourceId: map['delegatedManagedIdentityResourceId'] == null ? null : (map['delegatedManagedIdentityResourceId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      roleDefinitionName: map['roleDefinitionName'] == null ? null : (map['roleDefinitionName']! as String).input(),
+      skipServicePrincipalAadCheck: map['skipServicePrincipalAadCheck'] == null ? null : (map['skipServicePrincipalAadCheck']! as bool).input(),
     );
   }
 }

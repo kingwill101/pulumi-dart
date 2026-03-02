@@ -26,8 +26,8 @@ class StorageTargetSpaceAllocationResponse {
 
   factory StorageTargetSpaceAllocationResponse.fromMap(Map<String, dynamic> map) {
     return StorageTargetSpaceAllocationResponse(
-      allocationPercentage: map['allocationPercentage'] == null ? null : (map['allocationPercentage'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      allocationPercentage: map['allocationPercentage'] == null ? null : (map['allocationPercentage']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

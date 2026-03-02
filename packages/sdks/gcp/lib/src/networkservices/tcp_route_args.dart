@@ -63,12 +63,12 @@ class TcpRouteArgs {
 
   factory TcpRouteArgs.fromMap(Map<String, dynamic> map) {
     return TcpRouteArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gateways: map['gateways'] == null ? null : ((map['gateways'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      meshes: map['meshes'] == null ? null : ((map['meshes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gateways: map['gateways'] == null ? null : ((map['gateways']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      meshes: map['meshes'] == null ? null : ((map['meshes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rules: (pulumi.Input.decodeList<TcpRouteRule>(map['rules'], (value) => TcpRouteRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

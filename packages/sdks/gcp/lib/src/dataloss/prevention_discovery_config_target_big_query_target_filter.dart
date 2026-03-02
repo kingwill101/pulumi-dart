@@ -34,9 +34,9 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetFilter.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilter(
-      otherTables: map['otherTables'] == null ? null : ((map['otherTables'] as Map).cast<String, dynamic>()).input(),
-      tableReference: map['tableReference'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())).input(),
-      tables: map['tables'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.fromMap((map['tables'] as Map).cast<String, dynamic>())).input(),
+      otherTables: map['otherTables'] == null ? null : ((map['otherTables']! as Map).cast<String, dynamic>()).input(),
+      tableReference: map['tableReference'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference.fromMap((map['tableReference']! as Map).cast<String, dynamic>())).input(),
+      tables: map['tables'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.fromMap((map['tables']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

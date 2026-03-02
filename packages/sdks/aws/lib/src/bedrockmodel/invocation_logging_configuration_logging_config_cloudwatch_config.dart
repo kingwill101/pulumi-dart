@@ -31,7 +31,7 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfig {
 
   factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfig.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationLoggingConfigCloudwatchConfig(
-      largeDataDeliveryS3Config: map['largeDataDeliveryS3Config'] == null ? null : (InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap((map['largeDataDeliveryS3Config'] as Map).cast<String, dynamic>())).input(),
+      largeDataDeliveryS3Config: map['largeDataDeliveryS3Config'] == null ? null : ((InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap((map['largeDataDeliveryS3Config']! as Map).cast<String, dynamic>())).input()).input(),
       logGroupName: (map['logGroupName'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
     );

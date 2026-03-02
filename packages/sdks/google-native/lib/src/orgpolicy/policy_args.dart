@@ -45,11 +45,11 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      alternate: map['alternate'] == null ? null : (GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>())).input(),
-      dryRunSpec: map['dryRunSpec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      alternate: map['alternate'] == null ? null : (GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate']! as Map).cast<String, dynamic>())).input(),
+      dryRunSpec: map['dryRunSpec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spec: map['spec'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

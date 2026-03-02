@@ -48,9 +48,9 @@ class DefaultPatchBaselineState {
 
   factory DefaultPatchBaselineState.fromMap(Map<String, dynamic> map) {
     return DefaultPatchBaselineState(
-      baselineId: map['baselineId'] == null ? null : (map['baselineId'] as String).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      baselineId: map['baselineId'] == null ? null : ((map['baselineId'] as String).input()).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : ((map['operatingSystem'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

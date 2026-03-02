@@ -21,7 +21,7 @@ class PropertiesLockbox {
 
   factory PropertiesLockbox.fromMap(Map<String, dynamic> map) {
     return PropertiesLockbox(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

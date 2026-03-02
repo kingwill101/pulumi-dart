@@ -32,7 +32,7 @@ class ScaleSetSku {
     return ScaleSetSku(
       capacity: (map['capacity'] as int).input(),
       name: (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ConfigurationSetTrackingOptions {
   factory ConfigurationSetTrackingOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetTrackingOptions(
       customRedirectDomain: (map['customRedirectDomain'] as String).input(),
-      httpsPolicy: map['httpsPolicy'] == null ? null : (map['httpsPolicy'] as String).input(),
+      httpsPolicy: map['httpsPolicy'] == null ? null : ((map['httpsPolicy'] as String).input()).input(),
     );
   }
 }

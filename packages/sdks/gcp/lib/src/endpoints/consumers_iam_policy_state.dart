@@ -37,10 +37,10 @@ class ConsumersIamPolicyState {
 
   factory ConsumersIamPolicyState.fromMap(Map<String, dynamic> map) {
     return ConsumersIamPolicyState(
-      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      consumerProject: map['consumerProject'] == null ? null : (map['consumerProject']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

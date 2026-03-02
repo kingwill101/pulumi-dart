@@ -59,13 +59,13 @@ class V3TriggerArgs {
 
   factory V3TriggerArgs.fromMap(Map<String, dynamic> map) {
     return V3TriggerArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       functionName: (map['functionName'] as String).input(),
-      invocationRole: map['invocationRole'] == null ? null : (map['invocationRole'] as String).input(),
+      invocationRole: map['invocationRole'] == null ? null : (map['invocationRole']! as String).input(),
       qualifier: (map['qualifier'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      triggerConfig: map['triggerConfig'] == null ? null : (map['triggerConfig'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
+      triggerConfig: map['triggerConfig'] == null ? null : (map['triggerConfig']! as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
       triggerType: (map['triggerType'] as String).input(),
     );
   }

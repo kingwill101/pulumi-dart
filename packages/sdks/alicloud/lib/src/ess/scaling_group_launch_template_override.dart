@@ -37,9 +37,9 @@ class ScalingGroupLaunchTemplateOverride {
 
   factory ScalingGroupLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return ScalingGroupLaunchTemplateOverride(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      spotPriceLimit: map['spotPriceLimit'] == null ? null : (map['spotPriceLimit'] as double).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as int).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      spotPriceLimit: map['spotPriceLimit'] == null ? null : (map['spotPriceLimit']! as double).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity']! as int).input(),
     );
   }
 }

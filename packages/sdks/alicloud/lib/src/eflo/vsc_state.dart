@@ -46,12 +46,12 @@ class VscState {
 
   factory VscState.fromMap(Map<String, dynamic> map) {
     return VscState(
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vscName: map['vscName'] == null ? null : (map['vscName'] as String).input(),
-      vscType: map['vscType'] == null ? null : (map['vscType'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vscName: map['vscName'] == null ? null : (map['vscName']! as String).input(),
+      vscType: map['vscType'] == null ? null : (map['vscType']! as String).input(),
     );
   }
 }

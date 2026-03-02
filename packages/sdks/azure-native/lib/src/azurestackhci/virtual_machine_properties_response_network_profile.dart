@@ -22,7 +22,7 @@ class VirtualMachinePropertiesResponseNetworkProfile {
 
   factory VirtualMachinePropertiesResponseNetworkProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseNetworkProfile(
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesResponseNetworkInterfaces>(map['networkInterfaces'], (value) => VirtualMachinePropertiesResponseNetworkInterfaces.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<VirtualMachinePropertiesResponseNetworkInterfaces>(map['networkInterfaces']!, (value) => VirtualMachinePropertiesResponseNetworkInterfaces.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

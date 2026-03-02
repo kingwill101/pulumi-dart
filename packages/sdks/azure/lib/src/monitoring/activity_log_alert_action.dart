@@ -26,7 +26,7 @@ class ActivityLogAlertAction {
   factory ActivityLogAlertAction.fromMap(Map<String, dynamic> map) {
     return ActivityLogAlertAction(
       actionGroupId: (map['actionGroupId'] as String).input(),
-      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties'] as Map).cast<String, String>()).input(),
+      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

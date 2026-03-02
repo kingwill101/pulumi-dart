@@ -38,7 +38,7 @@ class GetImagesResult {
       id: map['id'] as String,
       images: pulumi.Input.decodeList<GetImagesImage>(map['images'], (value) => GetImagesImage.fromMap((value as Map).cast<String, dynamic>())),
       resourceGroupName: map['resourceGroupName'] as String,
-      tagsFilter: map['tagsFilter'] == null ? null : (map['tagsFilter'] as Map).cast<String, String>(),
+      tagsFilter: map['tagsFilter'] == null ? null : (map['tagsFilter']! as Map).cast<String, String>(),
     );
   }
 }

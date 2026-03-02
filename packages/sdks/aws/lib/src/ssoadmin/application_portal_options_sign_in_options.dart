@@ -28,7 +28,7 @@ class ApplicationPortalOptionsSignInOptions {
 
   factory ApplicationPortalOptionsSignInOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationPortalOptionsSignInOptions(
-      applicationUrl: map['applicationUrl'] == null ? null : (map['applicationUrl'] as String).input(),
+      applicationUrl: map['applicationUrl'] == null ? null : ((map['applicationUrl'] as String).input()).input(),
       origin: (map['origin'] as String).input(),
     );
   }

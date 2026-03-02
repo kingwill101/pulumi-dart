@@ -89,20 +89,20 @@ class NetworkProfileArgs {
 
   factory NetworkProfileArgs.fromMap(Map<String, dynamic> map) {
     return NetworkProfileArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      downlinkBandwidthBits: map['downlinkBandwidthBits'] == null ? null : (map['downlinkBandwidthBits'] as int).input(),
-      downlinkDelayMs: map['downlinkDelayMs'] == null ? null : (map['downlinkDelayMs'] as int).input(),
-      downlinkJitterMs: map['downlinkJitterMs'] == null ? null : (map['downlinkJitterMs'] as int).input(),
-      downlinkLossPercent: map['downlinkLossPercent'] == null ? null : (map['downlinkLossPercent'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      downlinkBandwidthBits: map['downlinkBandwidthBits'] == null ? null : ((map['downlinkBandwidthBits'] as int).input()).input(),
+      downlinkDelayMs: map['downlinkDelayMs'] == null ? null : ((map['downlinkDelayMs'] as int).input()).input(),
+      downlinkJitterMs: map['downlinkJitterMs'] == null ? null : ((map['downlinkJitterMs'] as int).input()).input(),
+      downlinkLossPercent: map['downlinkLossPercent'] == null ? null : ((map['downlinkLossPercent'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       projectArn: (map['projectArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      uplinkBandwidthBits: map['uplinkBandwidthBits'] == null ? null : (map['uplinkBandwidthBits'] as int).input(),
-      uplinkDelayMs: map['uplinkDelayMs'] == null ? null : (map['uplinkDelayMs'] as int).input(),
-      uplinkJitterMs: map['uplinkJitterMs'] == null ? null : (map['uplinkJitterMs'] as int).input(),
-      uplinkLossPercent: map['uplinkLossPercent'] == null ? null : (map['uplinkLossPercent'] as int).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      uplinkBandwidthBits: map['uplinkBandwidthBits'] == null ? null : ((map['uplinkBandwidthBits'] as int).input()).input(),
+      uplinkDelayMs: map['uplinkDelayMs'] == null ? null : ((map['uplinkDelayMs'] as int).input()).input(),
+      uplinkJitterMs: map['uplinkJitterMs'] == null ? null : ((map['uplinkJitterMs'] as int).input()).input(),
+      uplinkLossPercent: map['uplinkLossPercent'] == null ? null : ((map['uplinkLossPercent'] as int).input()).input(),
     );
   }
 }

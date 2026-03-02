@@ -20,7 +20,7 @@ class PipelineInputPayloadFormatAvro {
 
   factory PipelineInputPayloadFormatAvro.fromMap(Map<String, dynamic> map) {
     return PipelineInputPayloadFormatAvro(
-      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class IAppVariable {
 
   factory IAppVariable.fromMap(Map<String, dynamic> map) {
     return IAppVariable(
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

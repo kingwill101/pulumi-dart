@@ -54,13 +54,13 @@ class ServerAzureADAdministratorArgs {
 
   factory ServerAzureADAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ServerAzureADAdministratorArgs(
-      administratorName: map['administratorName'] == null ? null : (map['administratorName'] as String).input(),
-      administratorType: map['administratorType'] == null ? null : (map['administratorType'] as String).input(),
+      administratorName: map['administratorName'] == null ? null : (map['administratorName']! as String).input(),
+      administratorType: map['administratorType'] == null ? null : (map['administratorType']! as String).input(),
       login: (map['login'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       sid: (map['sid'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class SnapshotImportClientData {
 
   factory SnapshotImportClientData.fromMap(Map<String, dynamic> map) {
     return SnapshotImportClientData(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      uploadEnd: map['uploadEnd'] == null ? null : (map['uploadEnd'] as String).input(),
-      uploadSize: map['uploadSize'] == null ? null : (map['uploadSize'] as double).input(),
-      uploadStart: map['uploadStart'] == null ? null : (map['uploadStart'] as String).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      uploadEnd: map['uploadEnd'] == null ? null : ((map['uploadEnd'] as String).input()).input(),
+      uploadSize: map['uploadSize'] == null ? null : ((map['uploadSize'] as double).input()).input(),
+      uploadStart: map['uploadStart'] == null ? null : ((map['uploadStart'] as String).input()).input(),
     );
   }
 }

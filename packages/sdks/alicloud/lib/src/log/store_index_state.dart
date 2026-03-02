@@ -60,14 +60,14 @@ class StoreIndexState {
 
   factory StoreIndexState.fromMap(Map<String, dynamic> map) {
     return StoreIndexState(
-      fieldSearches: map['fieldSearches'] == null ? null : (pulumi.Input.decodeList<StoreIndexFieldSearch>(map['fieldSearches'], (value) => StoreIndexFieldSearch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullText: map['fullText'] == null ? null : (StoreIndexFullText.fromMap((map['fullText'] as Map).cast<String, dynamic>())).input(),
-      logReduce: map['logReduce'] == null ? null : (map['logReduce'] as bool).input(),
-      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists'] as List).cast<String>()).input(),
-      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists'] as List).cast<String>()).input(),
-      logstore: map['logstore'] == null ? null : (map['logstore'] as String).input(),
-      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      fieldSearches: map['fieldSearches'] == null ? null : (pulumi.Input.decodeList<StoreIndexFieldSearch>(map['fieldSearches']!, (value) => StoreIndexFieldSearch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullText: map['fullText'] == null ? null : (StoreIndexFullText.fromMap((map['fullText']! as Map).cast<String, dynamic>())).input(),
+      logReduce: map['logReduce'] == null ? null : (map['logReduce']! as bool).input(),
+      logReduceBlackLists: map['logReduceBlackLists'] == null ? null : ((map['logReduceBlackLists']! as List).cast<String>()).input(),
+      logReduceWhiteLists: map['logReduceWhiteLists'] == null ? null : ((map['logReduceWhiteLists']! as List).cast<String>()).input(),
+      logstore: map['logstore'] == null ? null : (map['logstore']! as String).input(),
+      maxTextLen: map['maxTextLen'] == null ? null : (map['maxTextLen']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class WorkforcePoolProviderKeyState {
 
   factory WorkforcePoolProviderKeyState.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderKeyState(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      keyData: map['keyData'] == null ? null : (WorkforcePoolProviderKeyKeyData.fromMap((map['keyData'] as Map).cast<String, dynamic>())).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      providerId: map['providerId'] == null ? null : (map['providerId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      use: map['use'] == null ? null : (map['use'] as String).input(),
-      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      keyData: map['keyData'] == null ? null : (WorkforcePoolProviderKeyKeyData.fromMap((map['keyData']! as Map).cast<String, dynamic>())).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      providerId: map['providerId'] == null ? null : (map['providerId']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      use: map['use'] == null ? null : (map['use']! as String).input(),
+      workforcePoolId: map['workforcePoolId'] == null ? null : (map['workforcePoolId']! as String).input(),
     );
   }
 }

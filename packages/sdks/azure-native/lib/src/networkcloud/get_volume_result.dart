@@ -105,7 +105,7 @@ class GetVolumeResult {
       serialNumber: map['serialNumber'] as String,
       sizeMiB: map['sizeMiB'] as double,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -30,9 +30,9 @@ class AppSpecIngressRuleComponent {
 
   factory AppSpecIngressRuleComponent.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRuleComponent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preservePathPrefix: map['preservePathPrefix'] == null ? null : (map['preservePathPrefix'] as bool).input(),
-      rewrite: map['rewrite'] == null ? null : (map['rewrite'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preservePathPrefix: map['preservePathPrefix'] == null ? null : (map['preservePathPrefix']! as bool).input(),
+      rewrite: map['rewrite'] == null ? null : (map['rewrite']! as String).input(),
     );
   }
 }

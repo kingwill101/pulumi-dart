@@ -20,7 +20,7 @@ class DomainDevicesGraphicEglHeadlessGl {
 
   factory DomainDevicesGraphicEglHeadlessGl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicEglHeadlessGl(
-      renderNode: map['renderNode'] == null ? null : (map['renderNode'] as String).input(),
+      renderNode: map['renderNode'] == null ? null : (map['renderNode']! as String).input(),
     );
   }
 }

@@ -46,10 +46,10 @@ class IpaDomainArgs {
   factory IpaDomainArgs.fromMap(Map<String, dynamic> map) {
     return IpaDomainArgs(
       domainName: (map['domainName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       sources: (pulumi.Input.decodeList<IpaDomainSource>(map['sources'], (value) => IpaDomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

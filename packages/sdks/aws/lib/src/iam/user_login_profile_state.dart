@@ -51,13 +51,13 @@ class UserLoginProfileState {
 
   factory UserLoginProfileState.fromMap(Map<String, dynamic> map) {
     return UserLoginProfileState(
-      encryptedPassword: map['encryptedPassword'] == null ? null : (map['encryptedPassword'] as String).input(),
-      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordLength: map['passwordLength'] == null ? null : (map['passwordLength'] as int).input(),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      encryptedPassword: map['encryptedPassword'] == null ? null : ((map['encryptedPassword'] as String).input()).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : ((map['keyFingerprint'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      passwordLength: map['passwordLength'] == null ? null : ((map['passwordLength'] as int).input()).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : ((map['passwordResetRequired'] as bool).input()).input(),
+      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
+      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
     );
   }
 }

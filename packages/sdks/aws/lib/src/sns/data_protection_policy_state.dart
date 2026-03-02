@@ -31,9 +31,9 @@ class DataProtectionPolicyState {
 
   factory DataProtectionPolicyState.fromMap(Map<String, dynamic> map) {
     return DataProtectionPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

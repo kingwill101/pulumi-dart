@@ -21,7 +21,7 @@ class PrivateEndpointConnectionPropertiesResponsePrivateEndpoint {
 
   factory PrivateEndpointConnectionPropertiesResponsePrivateEndpoint.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionPropertiesResponsePrivateEndpoint(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class WafRulesetState {
 
   factory WafRulesetState.fromMap(Map<String, dynamic> map) {
     return WafRulesetState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId'] as int).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      rulesetId: map['rulesetId'] == null ? null : (map['rulesetId']! as int).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

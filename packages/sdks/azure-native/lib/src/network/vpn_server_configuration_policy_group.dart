@@ -42,11 +42,11 @@ class VpnServerConfigurationPolicyGroup {
 
   factory VpnServerConfigurationPolicyGroup.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationPolicyGroup(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMember>(map['policyMembers'], (value) => VpnServerConfigurationPolicyGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyMembers: map['policyMembers'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMember>(map['policyMembers']!, (value) => VpnServerConfigurationPolicyGroupMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
     );
   }
 }

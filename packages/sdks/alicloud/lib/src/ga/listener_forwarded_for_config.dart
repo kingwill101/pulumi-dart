@@ -40,11 +40,11 @@ class ListenerForwardedForConfig {
 
   factory ListenerForwardedForConfig.fromMap(Map<String, dynamic> map) {
     return ListenerForwardedForConfig(
-      forwardedForGaApEnabled: map['forwardedForGaApEnabled'] == null ? null : (map['forwardedForGaApEnabled'] as bool).input(),
-      forwardedForGaIdEnabled: map['forwardedForGaIdEnabled'] == null ? null : (map['forwardedForGaIdEnabled'] as bool).input(),
-      forwardedForPortEnabled: map['forwardedForPortEnabled'] == null ? null : (map['forwardedForPortEnabled'] as bool).input(),
-      forwardedForProtoEnabled: map['forwardedForProtoEnabled'] == null ? null : (map['forwardedForProtoEnabled'] as bool).input(),
-      realIpEnabled: map['realIpEnabled'] == null ? null : (map['realIpEnabled'] as bool).input(),
+      forwardedForGaApEnabled: map['forwardedForGaApEnabled'] == null ? null : (map['forwardedForGaApEnabled']! as bool).input(),
+      forwardedForGaIdEnabled: map['forwardedForGaIdEnabled'] == null ? null : (map['forwardedForGaIdEnabled']! as bool).input(),
+      forwardedForPortEnabled: map['forwardedForPortEnabled'] == null ? null : (map['forwardedForPortEnabled']! as bool).input(),
+      forwardedForProtoEnabled: map['forwardedForProtoEnabled'] == null ? null : (map['forwardedForProtoEnabled']! as bool).input(),
+      realIpEnabled: map['realIpEnabled'] == null ? null : (map['realIpEnabled']! as bool).input(),
     );
   }
 }

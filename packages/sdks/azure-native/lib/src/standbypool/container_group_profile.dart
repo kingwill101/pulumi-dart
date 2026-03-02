@@ -27,7 +27,7 @@ class ContainerGroupProfile {
   factory ContainerGroupProfile.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfile(
       id: (map['id'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
     );
   }
 }

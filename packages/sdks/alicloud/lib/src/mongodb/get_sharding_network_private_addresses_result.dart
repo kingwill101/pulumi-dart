@@ -45,9 +45,9 @@ class GetShardingNetworkPrivateAddressesResult {
       addresses: pulumi.Input.decodeList<GetShardingNetworkPrivateAddressesAddress>(map['addresses'], (value) => GetShardingNetworkPrivateAddressesAddress.fromMap((value as Map).cast<String, dynamic>())),
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
-      nodeId: map['nodeId'] == null ? null : map['nodeId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      role: map['role'] == null ? null : map['role'] as String,
+      nodeId: map['nodeId'] == null ? null : map['nodeId']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      role: map['role'] == null ? null : map['role']! as String,
     );
   }
 }

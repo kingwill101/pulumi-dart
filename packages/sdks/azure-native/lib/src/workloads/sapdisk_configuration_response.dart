@@ -28,8 +28,8 @@ class SAPDiskConfigurationResponse {
 
   factory SAPDiskConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SAPDiskConfigurationResponse(
-      recommendedConfiguration: map['recommendedConfiguration'] == null ? null : (DiskVolumeConfigurationResponse.fromMap((map['recommendedConfiguration'] as Map).cast<String, dynamic>())).input(),
-      supportedConfigurations: map['supportedConfigurations'] == null ? null : (pulumi.Input.decodeList<DiskDetailsResponse>(map['supportedConfigurations'], (value) => DiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      recommendedConfiguration: map['recommendedConfiguration'] == null ? null : (DiskVolumeConfigurationResponse.fromMap((map['recommendedConfiguration']! as Map).cast<String, dynamic>())).input(),
+      supportedConfigurations: map['supportedConfigurations'] == null ? null : (pulumi.Input.decodeList<DiskDetailsResponse>(map['supportedConfigurations']!, (value) => DiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

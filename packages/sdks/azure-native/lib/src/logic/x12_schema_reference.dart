@@ -39,7 +39,7 @@ class X12SchemaReference {
       messageId: (map['messageId'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
       schemaVersion: (map['schemaVersion'] as String).input(),
-      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId'] as String).input(),
+      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class GetMonitorDefaultApplicationKeyResult {
 
   factory GetMonitorDefaultApplicationKeyResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorDefaultApplicationKeyResult(
-      createdBy: map['createdBy'] == null ? null : map['createdBy'] as String,
+      createdBy: map['createdBy'] == null ? null : map['createdBy']! as String,
       key: map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
     );
   }
 }

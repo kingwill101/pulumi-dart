@@ -67,16 +67,16 @@ class ScaleIOPersistentVolumeSource {
 
   factory ScaleIOPersistentVolumeSource.fromMap(Map<String, dynamic> map) {
     return ScaleIOPersistentVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
       gateway: (map['gateway'] as String).input(),
-      protectionDomain: map['protectionDomain'] == null ? null : (map['protectionDomain'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      protectionDomain: map['protectionDomain'] == null ? null : (map['protectionDomain']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
       secretRef: (SecretReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
-      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled'] as bool).input(),
-      storageMode: map['storageMode'] == null ? null : (map['storageMode'] as String).input(),
-      storagePool: map['storagePool'] == null ? null : (map['storagePool'] as String).input(),
+      sslEnabled: map['sslEnabled'] == null ? null : (map['sslEnabled']! as bool).input(),
+      storageMode: map['storageMode'] == null ? null : (map['storageMode']! as String).input(),
+      storagePool: map['storagePool'] == null ? null : (map['storagePool']! as String).input(),
       system: (map['system'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      volumeName: map['volumeName'] == null ? null : (map['volumeName']! as String).input(),
     );
   }
 }

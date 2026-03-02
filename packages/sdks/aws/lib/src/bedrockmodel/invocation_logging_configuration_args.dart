@@ -30,8 +30,8 @@ class InvocationLoggingConfigurationArgs {
 
   factory InvocationLoggingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return InvocationLoggingConfigurationArgs(
-      loggingConfig: (InvocationLoggingConfigurationLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      loggingConfig: (InvocationLoggingConfigurationLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

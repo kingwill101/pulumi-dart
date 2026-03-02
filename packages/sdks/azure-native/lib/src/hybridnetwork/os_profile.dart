@@ -37,10 +37,10 @@ class OsProfile {
 
   factory OsProfile.fromMap(Map<String, dynamic> map) {
     return OsProfile(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      customData: map['customData'] == null ? null : (map['customData'] as String).input(),
-      customDataRequired: map['customDataRequired'] == null ? null : (map['customDataRequired'] as bool).input(),
-      linuxConfiguration: map['linuxConfiguration'] == null ? null : (LinuxConfiguration.fromMap((map['linuxConfiguration'] as Map).cast<String, dynamic>())).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      customData: map['customData'] == null ? null : (map['customData']! as String).input(),
+      customDataRequired: map['customDataRequired'] == null ? null : (map['customDataRequired']! as bool).input(),
+      linuxConfiguration: map['linuxConfiguration'] == null ? null : (LinuxConfiguration.fromMap((map['linuxConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

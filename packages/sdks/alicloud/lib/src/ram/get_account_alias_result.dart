@@ -31,7 +31,7 @@ class GetAccountAliasResult {
     return GetAccountAliasResult(
       accountAlias: map['accountAlias'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

@@ -20,7 +20,7 @@ class PipelineSourceTriggerDescriptorResponse {
 
   factory PipelineSourceTriggerDescriptorResponse.fromMap(Map<String, dynamic> map) {
     return PipelineSourceTriggerDescriptorResponse(
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

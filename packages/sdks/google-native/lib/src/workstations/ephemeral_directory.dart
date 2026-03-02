@@ -27,7 +27,7 @@ class EphemeralDirectory {
 
   factory EphemeralDirectory.fromMap(Map<String, dynamic> map) {
     return EphemeralDirectory(
-      gcePd: map['gcePd'] == null ? null : (GcePersistentDisk.fromMap((map['gcePd'] as Map).cast<String, dynamic>())).input(),
+      gcePd: map['gcePd'] == null ? null : (GcePersistentDisk.fromMap((map['gcePd']! as Map).cast<String, dynamic>())).input(),
       mountPath: (map['mountPath'] as String).input(),
     );
   }

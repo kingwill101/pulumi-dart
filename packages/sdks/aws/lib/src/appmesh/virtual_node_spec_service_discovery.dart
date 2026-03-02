@@ -27,8 +27,8 @@ class VirtualNodeSpecServiceDiscovery {
 
   factory VirtualNodeSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecServiceDiscovery(
-      awsCloudMap: map['awsCloudMap'] == null ? null : (VirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap((map['awsCloudMap'] as Map).cast<String, dynamic>())).input(),
-      dns: map['dns'] == null ? null : (VirtualNodeSpecServiceDiscoveryDns.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
+      awsCloudMap: map['awsCloudMap'] == null ? null : ((VirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap((map['awsCloudMap']! as Map).cast<String, dynamic>())).input()).input(),
+      dns: map['dns'] == null ? null : ((VirtualNodeSpecServiceDiscoveryDns.fromMap((map['dns']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

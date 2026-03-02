@@ -29,9 +29,9 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSalesforce(
-      instanceUrl: map['instanceUrl'] == null ? null : (map['instanceUrl'] as String).input(),
-      isSandboxEnvironment: map['isSandboxEnvironment'] == null ? null : (map['isSandboxEnvironment'] as bool).input(),
-      usePrivatelinkForMetadataAndAuthorization: map['usePrivatelinkForMetadataAndAuthorization'] == null ? null : (map['usePrivatelinkForMetadataAndAuthorization'] as bool).input(),
+      instanceUrl: map['instanceUrl'] == null ? null : ((map['instanceUrl'] as String).input()).input(),
+      isSandboxEnvironment: map['isSandboxEnvironment'] == null ? null : ((map['isSandboxEnvironment'] as bool).input()).input(),
+      usePrivatelinkForMetadataAndAuthorization: map['usePrivatelinkForMetadataAndAuthorization'] == null ? null : ((map['usePrivatelinkForMetadataAndAuthorization'] as bool).input()).input(),
     );
   }
 }

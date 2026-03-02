@@ -26,8 +26,8 @@ class ExternalProtectionLevelOptions {
 
   factory ExternalProtectionLevelOptions.fromMap(Map<String, dynamic> map) {
     return ExternalProtectionLevelOptions(
-      ekmConnectionKeyPath: map['ekmConnectionKeyPath'] == null ? null : (map['ekmConnectionKeyPath'] as String).input(),
-      externalKeyUri: map['externalKeyUri'] == null ? null : (map['externalKeyUri'] as String).input(),
+      ekmConnectionKeyPath: map['ekmConnectionKeyPath'] == null ? null : (map['ekmConnectionKeyPath']! as String).input(),
+      externalKeyUri: map['externalKeyUri'] == null ? null : (map['externalKeyUri']! as String).input(),
     );
   }
 }

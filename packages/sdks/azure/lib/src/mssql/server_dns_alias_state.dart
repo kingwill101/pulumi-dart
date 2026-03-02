@@ -31,9 +31,9 @@ class ServerDnsAliasState {
 
   factory ServerDnsAliasState.fromMap(Map<String, dynamic> map) {
     return ServerDnsAliasState(
-      dnsRecord: map['dnsRecord'] == null ? null : (map['dnsRecord'] as String).input(),
-      mssqlServerId: map['mssqlServerId'] == null ? null : (map['mssqlServerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dnsRecord: map['dnsRecord'] == null ? null : (map['dnsRecord']! as String).input(),
+      mssqlServerId: map['mssqlServerId'] == null ? null : (map['mssqlServerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class ServiceIntegrationArgs {
 
   factory ServiceIntegrationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationArgs(
-      kmsServerSideEncryption: (ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption'] as Map).cast<String, dynamic>())).input(),
-      logsAnomalyDetection: (ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection'] as Map).cast<String, dynamic>())).input(),
-      opsCenter: (ServiceIntegrationOpsCenter.fromMap((map['opsCenter'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsServerSideEncryption: (ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption']! as Map).cast<String, dynamic>())).input(),
+      logsAnomalyDetection: (ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection']! as Map).cast<String, dynamic>())).input(),
+      opsCenter: (ServiceIntegrationOpsCenter.fromMap((map['opsCenter']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

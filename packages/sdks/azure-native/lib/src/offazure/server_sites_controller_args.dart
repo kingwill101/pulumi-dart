@@ -63,14 +63,14 @@ class ServerSitesControllerArgs {
 
   factory ServerSitesControllerArgs.fromMap(Map<String, dynamic> map) {
     return ServerSitesControllerArgs(
-      agentDetails: map['agentDetails'] == null ? null : (SiteAgentProperties.fromMap((map['agentDetails'] as Map).cast<String, dynamic>())).input(),
-      applianceName: map['applianceName'] == null ? null : (map['applianceName'] as String).input(),
-      discoverySolutionId: map['discoverySolutionId'] == null ? null : (map['discoverySolutionId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      agentDetails: map['agentDetails'] == null ? null : (SiteAgentProperties.fromMap((map['agentDetails']! as Map).cast<String, dynamic>())).input(),
+      applianceName: map['applianceName'] == null ? null : (map['applianceName']! as String).input(),
+      discoverySolutionId: map['discoverySolutionId'] == null ? null : (map['discoverySolutionId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails'] as Map).cast<String, dynamic>())).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      servicePrincipalIdentityDetails: map['servicePrincipalIdentityDetails'] == null ? null : (SiteSpnProperties.fromMap((map['servicePrincipalIdentityDetails']! as Map).cast<String, dynamic>())).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

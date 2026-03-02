@@ -26,8 +26,8 @@ class SqlDWUpsertSettings {
 
   factory SqlDWUpsertSettings.fromMap(Map<String, dynamic> map) {
     return SqlDWUpsertSettings(
-      interimSchemaName: map['interimSchemaName'] == null ? null : (map['interimSchemaName']).input(),
-      keys: map['keys'] == null ? null : (map['keys']).input(),
+      interimSchemaName: map['interimSchemaName'] == null ? null : (map['interimSchemaName']!).input(),
+      keys: map['keys'] == null ? null : (map['keys']!).input(),
     );
   }
 }

@@ -71,17 +71,17 @@ class Ec2InstanceAttributes {
 
   factory Ec2InstanceAttributes.fromMap(Map<String, dynamic> map) {
     return Ec2InstanceAttributes(
-      additionalMasterSecurityGroups: map['additionalMasterSecurityGroups'] == null ? null : ((map['additionalMasterSecurityGroups'] as List).cast<String>()).input(),
-      additionalSlaveSecurityGroups: map['additionalSlaveSecurityGroups'] == null ? null : ((map['additionalSlaveSecurityGroups'] as List).cast<String>()).input(),
-      ec2AvailabilityZone: map['ec2AvailabilityZone'] == null ? null : (map['ec2AvailabilityZone'] as String).input(),
-      ec2KeyName: map['ec2KeyName'] == null ? null : (map['ec2KeyName'] as String).input(),
-      ec2SubnetId: map['ec2SubnetId'] == null ? null : (map['ec2SubnetId'] as String).input(),
-      emrManagedMasterSecurityGroup: map['emrManagedMasterSecurityGroup'] == null ? null : (map['emrManagedMasterSecurityGroup'] as String).input(),
-      emrManagedSlaveSecurityGroup: map['emrManagedSlaveSecurityGroup'] == null ? null : (map['emrManagedSlaveSecurityGroup'] as String).input(),
-      iamInstanceProfile: map['iamInstanceProfile'] == null ? null : (map['iamInstanceProfile'] as String).input(),
-      requestedEc2AvailabilityZones: map['requestedEc2AvailabilityZones'] == null ? null : ((map['requestedEc2AvailabilityZones'] as List).cast<String>()).input(),
-      requestedEc2SubnetIds: map['requestedEc2SubnetIds'] == null ? null : ((map['requestedEc2SubnetIds'] as List).cast<String>()).input(),
-      serviceAccessSecurityGroup: map['serviceAccessSecurityGroup'] == null ? null : (map['serviceAccessSecurityGroup'] as String).input(),
+      additionalMasterSecurityGroups: map['additionalMasterSecurityGroups'] == null ? null : ((map['additionalMasterSecurityGroups']! as List).cast<String>()).input(),
+      additionalSlaveSecurityGroups: map['additionalSlaveSecurityGroups'] == null ? null : ((map['additionalSlaveSecurityGroups']! as List).cast<String>()).input(),
+      ec2AvailabilityZone: map['ec2AvailabilityZone'] == null ? null : (map['ec2AvailabilityZone']! as String).input(),
+      ec2KeyName: map['ec2KeyName'] == null ? null : (map['ec2KeyName']! as String).input(),
+      ec2SubnetId: map['ec2SubnetId'] == null ? null : (map['ec2SubnetId']! as String).input(),
+      emrManagedMasterSecurityGroup: map['emrManagedMasterSecurityGroup'] == null ? null : (map['emrManagedMasterSecurityGroup']! as String).input(),
+      emrManagedSlaveSecurityGroup: map['emrManagedSlaveSecurityGroup'] == null ? null : (map['emrManagedSlaveSecurityGroup']! as String).input(),
+      iamInstanceProfile: map['iamInstanceProfile'] == null ? null : (map['iamInstanceProfile']! as String).input(),
+      requestedEc2AvailabilityZones: map['requestedEc2AvailabilityZones'] == null ? null : ((map['requestedEc2AvailabilityZones']! as List).cast<String>()).input(),
+      requestedEc2SubnetIds: map['requestedEc2SubnetIds'] == null ? null : ((map['requestedEc2SubnetIds']! as List).cast<String>()).input(),
+      serviceAccessSecurityGroup: map['serviceAccessSecurityGroup'] == null ? null : (map['serviceAccessSecurityGroup']! as String).input(),
     );
   }
 }

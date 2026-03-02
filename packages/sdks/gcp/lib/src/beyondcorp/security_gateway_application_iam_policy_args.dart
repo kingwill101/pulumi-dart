@@ -43,7 +43,7 @@ class SecurityGatewayApplicationIamPolicyArgs {
     return SecurityGatewayApplicationIamPolicyArgs(
       applicationId: (map['applicationId'] as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       securityGatewayId: (map['securityGatewayId'] as String).input(),
     );
   }

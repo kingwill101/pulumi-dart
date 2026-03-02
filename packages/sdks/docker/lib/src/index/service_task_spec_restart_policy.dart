@@ -35,10 +35,10 @@ class ServiceTaskSpecRestartPolicy {
 
   factory ServiceTaskSpecRestartPolicy.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecRestartPolicy(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
-      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts'] as int).input(),
-      window: map['window'] == null ? null : (map['window'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as String).input(),
+      maxAttempts: map['maxAttempts'] == null ? null : (map['maxAttempts']! as int).input(),
+      window: map['window'] == null ? null : (map['window']! as String).input(),
     );
   }
 }

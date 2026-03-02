@@ -35,8 +35,8 @@ class BareMetalNodePoolNodePoolConfigNodeConfig {
 
   factory BareMetalNodePoolNodePoolConfigNodeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolNodePoolConfigNodeConfig(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodeIp: map['nodeIp'] == null ? null : (map['nodeIp'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodeIp: map['nodeIp'] == null ? null : (map['nodeIp']! as String).input(),
     );
   }
 }

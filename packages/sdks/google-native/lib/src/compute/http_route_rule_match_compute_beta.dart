@@ -59,14 +59,14 @@ class HttpRouteRuleMatchComputeBeta {
 
   factory HttpRouteRuleMatchComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleMatchComputeBeta(
-      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch'] as String).input(),
-      headerMatches: map['headerMatches'] == null ? null : (pulumi.Input.decodeList<HttpHeaderMatchComputeBeta>(map['headerMatches'], (value) => HttpHeaderMatchComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      metadataFilters: map['metadataFilters'] == null ? null : (pulumi.Input.decodeList<MetadataFilterComputeBeta>(map['metadataFilters'], (value) => MetadataFilterComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pathTemplateMatch: map['pathTemplateMatch'] == null ? null : (map['pathTemplateMatch'] as String).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
-      queryParameterMatches: map['queryParameterMatches'] == null ? null : (pulumi.Input.decodeList<HttpQueryParameterMatchComputeBeta>(map['queryParameterMatches'], (value) => HttpQueryParameterMatchComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch'] as String).input(),
+      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch']! as String).input(),
+      headerMatches: map['headerMatches'] == null ? null : (pulumi.Input.decodeList<HttpHeaderMatchComputeBeta>(map['headerMatches']!, (value) => HttpHeaderMatchComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      metadataFilters: map['metadataFilters'] == null ? null : (pulumi.Input.decodeList<MetadataFilterComputeBeta>(map['metadataFilters']!, (value) => MetadataFilterComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pathTemplateMatch: map['pathTemplateMatch'] == null ? null : (map['pathTemplateMatch']! as String).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
+      queryParameterMatches: map['queryParameterMatches'] == null ? null : (pulumi.Input.decodeList<HttpQueryParameterMatchComputeBeta>(map['queryParameterMatches']!, (value) => HttpQueryParameterMatchComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      regexMatch: map['regexMatch'] == null ? null : (map['regexMatch']! as String).input(),
     );
   }
 }

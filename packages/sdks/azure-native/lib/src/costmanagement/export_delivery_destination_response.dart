@@ -42,10 +42,10 @@ class ExportDeliveryDestinationResponse {
   factory ExportDeliveryDestinationResponse.fromMap(Map<String, dynamic> map) {
     return ExportDeliveryDestinationResponse(
       container: (map['container'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      rootFolderPath: map['rootFolderPath'] == null ? null : (map['rootFolderPath'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (map['sasToken'] as String).input(),
-      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      rootFolderPath: map['rootFolderPath'] == null ? null : (map['rootFolderPath']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (map['sasToken']! as String).input(),
+      storageAccount: map['storageAccount'] == null ? null : (map['storageAccount']! as String).input(),
     );
   }
 }

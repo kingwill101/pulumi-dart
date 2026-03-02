@@ -67,17 +67,17 @@ class GetDomainRecordsResult {
   factory GetDomainRecordsResult.fromMap(Map<String, dynamic> map) {
     return GetDomainRecordsResult(
       domainName: map['domainName'] as String,
-      hostRecordRegex: map['hostRecordRegex'] == null ? null : map['hostRecordRegex'] as String,
+      hostRecordRegex: map['hostRecordRegex'] == null ? null : map['hostRecordRegex']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      isLocked: map['isLocked'] == null ? null : map['isLocked'] as bool,
-      line: map['line'] == null ? null : map['line'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      isLocked: map['isLocked'] == null ? null : map['isLocked']! as bool,
+      line: map['line'] == null ? null : map['line']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       records: pulumi.Input.decodeList<GetDomainRecordsRecord>(map['records'], (value) => GetDomainRecordsRecord.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      type: map['type'] == null ? null : map['type'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      type: map['type'] == null ? null : map['type']! as String,
       urls: (map['urls'] as List).cast<String>(),
-      valueRegex: map['valueRegex'] == null ? null : map['valueRegex'] as String,
+      valueRegex: map['valueRegex'] == null ? null : map['valueRegex']! as String,
     );
   }
 }

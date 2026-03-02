@@ -48,7 +48,7 @@ class PartnerArgs {
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
       partnerName: (map['partnerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

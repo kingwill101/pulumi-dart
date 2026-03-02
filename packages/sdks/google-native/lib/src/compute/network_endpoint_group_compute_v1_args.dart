@@ -95,21 +95,21 @@ class NetworkEndpointGroupComputeV1Args {
 
   factory NetworkEndpointGroupComputeV1Args.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupComputeV1Args(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      appEngine: map['appEngine'] == null ? null : (NetworkEndpointGroupAppEngineComputeV1.fromMap((map['appEngine'] as Map).cast<String, dynamic>())).input(),
-      cloudFunction: map['cloudFunction'] == null ? null : (NetworkEndpointGroupCloudFunctionComputeV1.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
-      cloudRun: map['cloudRun'] == null ? null : (NetworkEndpointGroupCloudRunComputeV1.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
-      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkEndpointType: map['networkEndpointType'] == null ? null : (NetworkEndpointGroupNetworkEndpointTypeComputeV1.fromValue(map['networkEndpointType'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pscData: map['pscData'] == null ? null : ((map['pscData'] as Map).cast<String, dynamic>()).input(),
-      pscTargetService: map['pscTargetService'] == null ? null : (map['pscTargetService'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      appEngine: map['appEngine'] == null ? null : (NetworkEndpointGroupAppEngineComputeV1.fromMap((map['appEngine']! as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (NetworkEndpointGroupCloudFunctionComputeV1.fromMap((map['cloudFunction']! as Map).cast<String, dynamic>())).input(),
+      cloudRun: map['cloudRun'] == null ? null : (NetworkEndpointGroupCloudRunComputeV1.fromMap((map['cloudRun']! as Map).cast<String, dynamic>())).input(),
+      defaultPort: map['defaultPort'] == null ? null : (map['defaultPort']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkEndpointType: map['networkEndpointType'] == null ? null : (NetworkEndpointGroupNetworkEndpointTypeComputeV1.fromValue(map['networkEndpointType']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pscData: map['pscData'] == null ? null : ((map['pscData']! as Map).cast<String, dynamic>()).input(),
+      pscTargetService: map['pscTargetService'] == null ? null : (map['pscTargetService']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

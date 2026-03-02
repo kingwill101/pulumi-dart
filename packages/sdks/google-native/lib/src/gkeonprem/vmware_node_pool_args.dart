@@ -73,17 +73,17 @@ class VmwareNodePoolArgs {
 
   factory VmwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return VmwareNodePoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       config: (VmwareNodeConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : (VmwareNodePoolAutoscalingConfig.fromMap((map['nodePoolAutoscaling'] as Map).cast<String, dynamic>())).input(),
-      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : (VmwareNodePoolAutoscalingConfig.fromMap((map['nodePoolAutoscaling']! as Map).cast<String, dynamic>())).input(),
+      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       vmwareClusterId: (map['vmwareClusterId'] as String).input(),
-      vmwareNodePoolId: map['vmwareNodePoolId'] == null ? null : (map['vmwareNodePoolId'] as String).input(),
+      vmwareNodePoolId: map['vmwareNodePoolId'] == null ? null : (map['vmwareNodePoolId']! as String).input(),
     );
   }
 }

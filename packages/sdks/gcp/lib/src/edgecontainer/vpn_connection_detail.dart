@@ -43,10 +43,10 @@ class VpnConnectionDetail {
 
   factory VpnConnectionDetail.fromMap(Map<String, dynamic> map) {
     return VpnConnectionDetail(
-      cloudRouters: map['cloudRouters'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetailCloudRouter>(map['cloudRouters'], (value) => VpnConnectionDetailCloudRouter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudVpns: map['cloudVpns'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetailCloudVpn>(map['cloudVpns'], (value) => VpnConnectionDetailCloudVpn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      error: map['error'] == null ? null : (map['error'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      cloudRouters: map['cloudRouters'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetailCloudRouter>(map['cloudRouters']!, (value) => VpnConnectionDetailCloudRouter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudVpns: map['cloudVpns'] == null ? null : (pulumi.Input.decodeList<VpnConnectionDetailCloudVpn>(map['cloudVpns']!, (value) => VpnConnectionDetailCloudVpn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class DataSetLogicalTableMap {
   factory DataSetLogicalTableMap.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMap(
       alias: (map['alias'] as String).input(),
-      dataTransforms: map['dataTransforms'] == null ? null : (pulumi.Input.decodeList<DataSetLogicalTableMapDataTransform>(map['dataTransforms'], (value) => DataSetLogicalTableMapDataTransform.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataTransforms: map['dataTransforms'] == null ? null : ((pulumi.Input.decodeList<DataSetLogicalTableMapDataTransform>(map['dataTransforms']!, (value) => DataSetLogicalTableMapDataTransform.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       logicalTableMapId: (map['logicalTableMapId'] as String).input(),
-      source: (DataSetLogicalTableMapSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      source: (DataSetLogicalTableMapSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

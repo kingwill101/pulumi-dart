@@ -35,10 +35,10 @@ class InfrastructureConfigurationPlacement {
 
   factory InfrastructureConfigurationPlacement.fromMap(Map<String, dynamic> map) {
     return InfrastructureConfigurationPlacement(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      hostId: map['hostId'] == null ? null : (map['hostId'] as String).input(),
-      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : (map['hostResourceGroupArn'] as String).input(),
-      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      hostId: map['hostId'] == null ? null : ((map['hostId'] as String).input()).input(),
+      hostResourceGroupArn: map['hostResourceGroupArn'] == null ? null : ((map['hostResourceGroupArn'] as String).input()).input(),
+      tenancy: map['tenancy'] == null ? null : ((map['tenancy'] as String).input()).input(),
     );
   }
 }

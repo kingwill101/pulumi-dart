@@ -63,13 +63,13 @@ class AllocatedDeviceStatusPatchResourceK8sIoV1beta1 {
 
   factory AllocatedDeviceStatusPatchResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return AllocatedDeviceStatusPatchResourceK8sIoV1beta1(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      data: map['data'] == null ? null : (map['data']).input(),
-      device: map['device'] == null ? null : (map['device'] as String).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      networkData: map['networkData'] == null ? null : (NetworkDeviceDataPatchResourceK8sIoV1beta1.fromMap((map['networkData'] as Map).cast<String, dynamic>())).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      shareID: map['shareID'] == null ? null : (map['shareID'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      data: map['data'] == null ? null : (map['data']!).input(),
+      device: map['device'] == null ? null : (map['device']! as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      networkData: map['networkData'] == null ? null : (NetworkDeviceDataPatchResourceK8sIoV1beta1.fromMap((map['networkData']! as Map).cast<String, dynamic>())).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      shareID: map['shareID'] == null ? null : (map['shareID']! as String).input(),
     );
   }
 }

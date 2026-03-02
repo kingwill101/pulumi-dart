@@ -30,7 +30,7 @@ class IoTHubNetworkRuleSetIpRule {
 
   factory IoTHubNetworkRuleSetIpRule.fromMap(Map<String, dynamic> map) {
     return IoTHubNetworkRuleSetIpRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
       ipMask: (map['ipMask'] as String).input(),
       name: (map['name'] as String).input(),
     );

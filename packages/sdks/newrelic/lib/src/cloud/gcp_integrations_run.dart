@@ -20,7 +20,7 @@ class GcpIntegrationsRun {
 
   factory GcpIntegrationsRun.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsRun(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

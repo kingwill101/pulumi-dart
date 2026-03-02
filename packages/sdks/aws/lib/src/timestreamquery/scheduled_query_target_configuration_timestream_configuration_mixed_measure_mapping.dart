@@ -41,11 +41,11 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
 
   factory ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMapping(
-      measureName: map['measureName'] == null ? null : (map['measureName'] as String).input(),
+      measureName: map['measureName'] == null ? null : ((map['measureName'] as String).input()).input(),
       measureValueType: (map['measureValueType'] as String).input(),
-      multiMeasureAttributeMappings: map['multiMeasureAttributeMappings'] == null ? null : (pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping>(map['multiMeasureAttributeMappings'], (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceColumn: map['sourceColumn'] == null ? null : (map['sourceColumn'] as String).input(),
-      targetMeasureName: map['targetMeasureName'] == null ? null : (map['targetMeasureName'] as String).input(),
+      multiMeasureAttributeMappings: map['multiMeasureAttributeMappings'] == null ? null : ((pulumi.Input.decodeList<ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping>(map['multiMeasureAttributeMappings']!, (value) => ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      sourceColumn: map['sourceColumn'] == null ? null : ((map['sourceColumn'] as String).input()).input(),
+      targetMeasureName: map['targetMeasureName'] == null ? null : ((map['targetMeasureName'] as String).input()).input(),
     );
   }
 }

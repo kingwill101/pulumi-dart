@@ -26,8 +26,8 @@ class DefaultObjectAccessControlProjectTeam {
 
   factory DefaultObjectAccessControlProjectTeam.fromMap(Map<String, dynamic> map) {
     return DefaultObjectAccessControlProjectTeam(
-      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber'] as String).input(),
-      team: map['team'] == null ? null : (map['team'] as String).input(),
+      projectNumber: map['projectNumber'] == null ? null : (map['projectNumber']! as String).input(),
+      team: map['team'] == null ? null : (map['team']! as String).input(),
     );
   }
 }

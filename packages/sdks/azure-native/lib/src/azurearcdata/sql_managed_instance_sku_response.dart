@@ -46,12 +46,12 @@ class SqlManagedInstanceSkuResponse {
 
   factory SqlManagedInstanceSkuResponse.fromMap(Map<String, dynamic> map) {
     return SqlManagedInstanceSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      dev: map['dev'] == null ? null : (map['dev'] as bool).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      dev: map['dev'] == null ? null : (map['dev']! as bool).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
       name: (map['name'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

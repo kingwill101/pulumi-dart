@@ -31,9 +31,9 @@ class OrganizationConfigurationState {
 
   factory OrganizationConfigurationState.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationState(
-      autoEnable: map['autoEnable'] == null ? null : (map['autoEnable'] as bool).input(),
-      graphArn: map['graphArn'] == null ? null : (map['graphArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoEnable: map['autoEnable'] == null ? null : ((map['autoEnable'] as bool).input()).input(),
+      graphArn: map['graphArn'] == null ? null : ((map['graphArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

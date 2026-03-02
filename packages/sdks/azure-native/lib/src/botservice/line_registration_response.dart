@@ -31,8 +31,8 @@ class LineRegistrationResponse {
 
   factory LineRegistrationResponse.fromMap(Map<String, dynamic> map) {
     return LineRegistrationResponse(
-      channelAccessToken: map['channelAccessToken'] == null ? null : (map['channelAccessToken'] as String).input(),
-      channelSecret: map['channelSecret'] == null ? null : (map['channelSecret'] as String).input(),
+      channelAccessToken: map['channelAccessToken'] == null ? null : (map['channelAccessToken']! as String).input(),
+      channelSecret: map['channelSecret'] == null ? null : (map['channelSecret']! as String).input(),
       generatedId: (map['generatedId'] as String).input(),
     );
   }

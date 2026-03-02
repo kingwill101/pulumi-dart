@@ -54,12 +54,12 @@ class WaiterArgs {
   factory WaiterArgs.fromMap(Map<String, dynamic> map) {
     return WaiterArgs(
       configId: (map['configId'] as String).input(),
-      failure: map['failure'] == null ? null : (EndCondition.fromMap((map['failure'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      success: map['success'] == null ? null : (EndCondition.fromMap((map['success'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      failure: map['failure'] == null ? null : (EndCondition.fromMap((map['failure']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      success: map['success'] == null ? null : (EndCondition.fromMap((map['success']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class AccountPublicAccessBlockArgs {
 
   factory AccountPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
     return AccountPublicAccessBlockArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      blockPublicAcls: map['blockPublicAcls'] == null ? null : (map['blockPublicAcls'] as bool).input(),
-      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : (map['blockPublicPolicy'] as bool).input(),
-      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : (map['ignorePublicAcls'] as bool).input(),
-      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : (map['restrictPublicBuckets'] as bool).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : ((map['blockPublicAcls'] as bool).input()).input(),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : ((map['blockPublicPolicy'] as bool).input()).input(),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : ((map['ignorePublicAcls'] as bool).input()).input(),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : ((map['restrictPublicBuckets'] as bool).input()).input(),
     );
   }
 }

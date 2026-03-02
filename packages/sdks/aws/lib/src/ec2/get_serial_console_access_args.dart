@@ -24,7 +24,7 @@ class GetSerialConsoleAccessArgs {
 
   factory GetSerialConsoleAccessArgs.fromMap(Map<String, dynamic> map) {
     return GetSerialConsoleAccessArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

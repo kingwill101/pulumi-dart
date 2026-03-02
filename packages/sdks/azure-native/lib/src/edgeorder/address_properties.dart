@@ -33,9 +33,9 @@ class AddressProperties {
 
   factory AddressProperties.fromMap(Map<String, dynamic> map) {
     return AddressProperties(
-      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification'] as String).input(),
-      contactDetails: map['contactDetails'] == null ? null : (ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification']! as String).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactDetails.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

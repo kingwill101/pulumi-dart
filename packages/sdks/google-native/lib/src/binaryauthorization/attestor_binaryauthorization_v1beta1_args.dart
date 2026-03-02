@@ -50,11 +50,11 @@ class AttestorBinaryauthorizationV1beta1Args {
   factory AttestorBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
     return AttestorBinaryauthorizationV1beta1Args(
       attestorId: (map['attestorId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      userOwnedDrydockNote: map['userOwnedDrydockNote'] == null ? null : (UserOwnedDrydockNote.fromMap((map['userOwnedDrydockNote'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      userOwnedDrydockNote: map['userOwnedDrydockNote'] == null ? null : (UserOwnedDrydockNote.fromMap((map['userOwnedDrydockNote']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

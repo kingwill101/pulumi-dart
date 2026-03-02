@@ -38,9 +38,9 @@ class JWTAuthenticatorClaimMappingsResponse {
 
   factory JWTAuthenticatorClaimMappingsResponse.fromMap(Map<String, dynamic> map) {
     return JWTAuthenticatorClaimMappingsResponse(
-      extra: map['extra'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorExtraClaimMappingExpressionResponse>(map['extra'], (value) => JWTAuthenticatorExtraClaimMappingExpressionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groups: map['groups'] == null ? null : (JWTAuthenticatorClaimMappingExpressionResponse.fromMap((map['groups'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (JWTAuthenticatorClaimMappingExpressionResponse.fromMap((map['uid'] as Map).cast<String, dynamic>())).input(),
+      extra: map['extra'] == null ? null : (pulumi.Input.decodeList<JWTAuthenticatorExtraClaimMappingExpressionResponse>(map['extra']!, (value) => JWTAuthenticatorExtraClaimMappingExpressionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groups: map['groups'] == null ? null : (JWTAuthenticatorClaimMappingExpressionResponse.fromMap((map['groups']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (JWTAuthenticatorClaimMappingExpressionResponse.fromMap((map['uid']! as Map).cast<String, dynamic>())).input(),
       username: (JWTAuthenticatorClaimMappingExpressionResponse.fromMap((map['username'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -37,7 +37,7 @@ class GetDbServersArgs {
     return GetDbServersArgs(
       cloudExadataInfrastructure: (map['cloudExadataInfrastructure'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

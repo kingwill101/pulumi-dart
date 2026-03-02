@@ -27,7 +27,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingC
   factory PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl(
       region: (map['region'] as String).input(),
-      routingControls: map['routingControls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>(map['routingControls'], (value) => PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routingControls: map['routingControls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl>(map['routingControls']!, (value) => PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

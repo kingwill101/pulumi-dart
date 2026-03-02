@@ -37,10 +37,10 @@ class ExternalRefContaineranalysisV1beta1 {
 
   factory ExternalRefContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return ExternalRefContaineranalysisV1beta1(
-      category: map['category'] == null ? null : (ExternalRefCategoryContaineranalysisV1beta1.fromValue(map['category'] as String)).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      locator: map['locator'] == null ? null : (map['locator'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      category: map['category'] == null ? null : (ExternalRefCategoryContaineranalysisV1beta1.fromValue(map['category']! as String)).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      locator: map['locator'] == null ? null : (map['locator']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

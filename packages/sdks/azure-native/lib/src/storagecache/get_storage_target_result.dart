@@ -99,19 +99,19 @@ class GetStorageTargetResult {
     return GetStorageTargetResult(
       allocationPercentage: map['allocationPercentage'] as int,
       azureApiVersion: map['azureApiVersion'] as String,
-      blobNfs: map['blobNfs'] == null ? null : BlobNfsTargetResponse.fromMap((map['blobNfs'] as Map).cast<String, dynamic>()),
-      clfs: map['clfs'] == null ? null : ClfsTargetResponse.fromMap((map['clfs'] as Map).cast<String, dynamic>()),
+      blobNfs: map['blobNfs'] == null ? null : BlobNfsTargetResponse.fromMap((map['blobNfs']! as Map).cast<String, dynamic>()),
+      clfs: map['clfs'] == null ? null : ClfsTargetResponse.fromMap((map['clfs']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      junctions: map['junctions'] == null ? null : pulumi.Input.decodeList<NamespaceJunctionResponse>(map['junctions'], (value) => NamespaceJunctionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      junctions: map['junctions'] == null ? null : pulumi.Input.decodeList<NamespaceJunctionResponse>(map['junctions']!, (value) => NamespaceJunctionResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
       name: map['name'] as String,
-      nfs3: map['nfs3'] == null ? null : Nfs3TargetResponse.fromMap((map['nfs3'] as Map).cast<String, dynamic>()),
+      nfs3: map['nfs3'] == null ? null : Nfs3TargetResponse.fromMap((map['nfs3']! as Map).cast<String, dynamic>()),
       provisioningState: map['provisioningState'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       targetType: map['targetType'] as String,
       type: map['type'] as String,
-      unknown: map['unknown'] == null ? null : UnknownTargetResponse.fromMap((map['unknown'] as Map).cast<String, dynamic>()),
+      unknown: map['unknown'] == null ? null : UnknownTargetResponse.fromMap((map['unknown']! as Map).cast<String, dynamic>()),
     );
   }
 }

@@ -54,12 +54,12 @@ class AppgroupArgs {
 
   factory AppgroupArgs.fromMap(Map<String, dynamic> map) {
     return AppgroupArgs(
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      channelId: map['channelId'] == null ? null : (map['channelId'] as String).input(),
-      channelUri: map['channelUri'] == null ? null : (map['channelUri'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes']!, (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelId: map['channelId'] == null ? null : (map['channelId']! as String).input(),
+      channelUri: map['channelUri'] == null ? null : (map['channelUri']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

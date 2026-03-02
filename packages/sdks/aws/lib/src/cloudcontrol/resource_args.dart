@@ -52,11 +52,11 @@ class ResourceArgs {
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
       desiredState: (map['desiredState'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      schema: map['schema'] == null ? null : ((map['schema'] as String).input()).input(),
       typeName: (map['typeName'] as String).input(),
-      typeVersionId: map['typeVersionId'] == null ? null : (map['typeVersionId'] as String).input(),
+      typeVersionId: map['typeVersionId'] == null ? null : ((map['typeVersionId'] as String).input()).input(),
     );
   }
 }

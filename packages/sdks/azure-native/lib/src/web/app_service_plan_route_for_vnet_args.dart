@@ -64,13 +64,13 @@ class AppServicePlanRouteForVnetArgs {
 
   factory AppServicePlanRouteForVnetArgs.fromMap(Map<String, dynamic> map) {
     return AppServicePlanRouteForVnetArgs(
-      endAddress: map['endAddress'] == null ? null : (map['endAddress'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      endAddress: map['endAddress'] == null ? null : (map['endAddress']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
-      routeType: map['routeType'] == null ? null : (map['routeType'] as String).input(),
-      startAddress: map['startAddress'] == null ? null : (map['startAddress'] as String).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
+      routeType: map['routeType'] == null ? null : (map['routeType']! as String).input(),
+      startAddress: map['startAddress'] == null ? null : (map['startAddress']! as String).input(),
       vnetName: (map['vnetName'] as String).input(),
     );
   }

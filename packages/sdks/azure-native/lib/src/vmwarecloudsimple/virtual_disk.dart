@@ -40,7 +40,7 @@ class VirtualDisk {
       controllerId: (map['controllerId'] as String).input(),
       independenceMode: (DiskIndependenceMode.fromValue(map['independenceMode'] as String)).input(),
       totalSize: (map['totalSize'] as int).input(),
-      virtualDiskId: map['virtualDiskId'] == null ? null : (map['virtualDiskId'] as String).input(),
+      virtualDiskId: map['virtualDiskId'] == null ? null : (map['virtualDiskId']! as String).input(),
     );
   }
 }

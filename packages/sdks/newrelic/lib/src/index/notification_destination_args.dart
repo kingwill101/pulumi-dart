@@ -69,14 +69,14 @@ class NotificationDestinationArgs {
 
   factory NotificationDestinationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      authBasic: map['authBasic'] == null ? null : (NotificationDestinationAuthBasic.fromMap((map['authBasic'] as Map).cast<String, dynamic>())).input(),
-      authCustomHeaders: map['authCustomHeaders'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationAuthCustomHeader>(map['authCustomHeaders'], (value) => NotificationDestinationAuthCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authToken: map['authToken'] == null ? null : (NotificationDestinationAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      authBasic: map['authBasic'] == null ? null : (NotificationDestinationAuthBasic.fromMap((map['authBasic']! as Map).cast<String, dynamic>())).input(),
+      authCustomHeaders: map['authCustomHeaders'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationAuthCustomHeader>(map['authCustomHeaders']!, (value) => NotificationDestinationAuthCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authToken: map['authToken'] == null ? null : (NotificationDestinationAuthToken.fromMap((map['authToken']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       properties: (pulumi.Input.decodeList<NotificationDestinationProperty>(map['properties'], (value) => NotificationDestinationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secureUrl: map['secureUrl'] == null ? null : (NotificationDestinationSecureUrl.fromMap((map['secureUrl'] as Map).cast<String, dynamic>())).input(),
+      secureUrl: map['secureUrl'] == null ? null : (NotificationDestinationSecureUrl.fromMap((map['secureUrl']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -50,11 +50,11 @@ class AddressScopeState {
 
   factory AddressScopeState.fromMap(Map<String, dynamic> map) {
     return AddressScopeState(
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
     );
   }
 }

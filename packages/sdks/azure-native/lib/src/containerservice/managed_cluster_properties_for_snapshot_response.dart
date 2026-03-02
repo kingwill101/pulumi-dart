@@ -38,10 +38,10 @@ class ManagedClusterPropertiesForSnapshotResponse {
 
   factory ManagedClusterPropertiesForSnapshotResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterPropertiesForSnapshotResponse(
-      enableRbac: map['enableRbac'] == null ? null : (map['enableRbac'] as bool).input(),
-      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion'] as String).input(),
+      enableRbac: map['enableRbac'] == null ? null : (map['enableRbac']! as bool).input(),
+      kubernetesVersion: map['kubernetesVersion'] == null ? null : (map['kubernetesVersion']! as String).input(),
       networkProfile: (NetworkProfileForSnapshotResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (ManagedClusterSKUResponse.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (ManagedClusterSKUResponse.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

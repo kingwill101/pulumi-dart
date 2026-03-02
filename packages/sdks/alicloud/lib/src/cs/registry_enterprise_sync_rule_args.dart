@@ -90,18 +90,18 @@ class RegistryEnterpriseSyncRuleArgs {
   factory RegistryEnterpriseSyncRuleArgs.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseSyncRuleArgs(
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      repoName: map['repoName'] == null ? null : (map['repoName'] as String).input(),
-      syncRuleName: map['syncRuleName'] == null ? null : (map['syncRuleName'] as String).input(),
-      syncScope: map['syncScope'] == null ? null : (map['syncScope'] as String).input(),
-      syncTrigger: map['syncTrigger'] == null ? null : (map['syncTrigger'] as String).input(),
+      repoName: map['repoName'] == null ? null : (map['repoName']! as String).input(),
+      syncRuleName: map['syncRuleName'] == null ? null : (map['syncRuleName']! as String).input(),
+      syncScope: map['syncScope'] == null ? null : (map['syncScope']! as String).input(),
+      syncTrigger: map['syncTrigger'] == null ? null : (map['syncTrigger']! as String).input(),
       tagFilter: (map['tagFilter'] as String).input(),
       targetInstanceId: (map['targetInstanceId'] as String).input(),
       targetNamespaceName: (map['targetNamespaceName'] as String).input(),
       targetRegionId: (map['targetRegionId'] as String).input(),
-      targetRepoName: map['targetRepoName'] == null ? null : (map['targetRepoName'] as String).input(),
-      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId'] as String).input(),
+      targetRepoName: map['targetRepoName'] == null ? null : (map['targetRepoName']! as String).input(),
+      targetUserId: map['targetUserId'] == null ? null : (map['targetUserId']! as String).input(),
     );
   }
 }

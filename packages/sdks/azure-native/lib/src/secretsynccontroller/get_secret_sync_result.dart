@@ -96,8 +96,8 @@ class GetSecretSyncResult {
   factory GetSecretSyncResult.fromMap(Map<String, dynamic> map) {
     return GetSecretSyncResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      forceSynchronization: map['forceSynchronization'] == null ? null : map['forceSynchronization'] as String,
+      extendedLocation: map['extendedLocation'] == null ? null : AzureResourceManagerCommonTypesExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      forceSynchronization: map['forceSynchronization'] == null ? null : map['forceSynchronization']! as String,
       id: map['id'] as String,
       kubernetesSecretType: map['kubernetesSecretType'] as String,
       location: map['location'] as String,
@@ -108,7 +108,7 @@ class GetSecretSyncResult {
       serviceAccountName: map['serviceAccountName'] as String,
       status: SecretSyncStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

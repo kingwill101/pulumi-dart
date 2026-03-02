@@ -78,17 +78,17 @@ class EnvironmentCertificateState {
 
   factory EnvironmentCertificateState.fromMap(Map<String, dynamic> map) {
     return EnvironmentCertificateState(
-      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64'] as String).input(),
-      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault'] as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId'] as String).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      issueDate: map['issueDate'] == null ? null : (map['issueDate'] as String).input(),
-      issuer: map['issuer'] == null ? null : (map['issuer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subjectName: map['subjectName'] == null ? null : (map['subjectName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      certificateBlobBase64: map['certificateBlobBase64'] == null ? null : (map['certificateBlobBase64']! as String).input(),
+      certificateKeyVault: map['certificateKeyVault'] == null ? null : (EnvironmentCertificateCertificateKeyVault.fromMap((map['certificateKeyVault']! as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      containerAppEnvironmentId: map['containerAppEnvironmentId'] == null ? null : (map['containerAppEnvironmentId']! as String).input(),
+      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate']! as String).input(),
+      issueDate: map['issueDate'] == null ? null : (map['issueDate']! as String).input(),
+      issuer: map['issuer'] == null ? null : (map['issuer']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subjectName: map['subjectName'] == null ? null : (map['subjectName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

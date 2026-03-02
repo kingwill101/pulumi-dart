@@ -35,10 +35,10 @@ class HBaseClusterDiskEncryption {
 
   factory HBaseClusterDiskEncryption.fromMap(Map<String, dynamic> map) {
     return HBaseClusterDiskEncryption(
-      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm'] as String).input(),
-      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled'] as bool).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      keyVaultManagedIdentityId: map['keyVaultManagedIdentityId'] == null ? null : (map['keyVaultManagedIdentityId'] as String).input(),
+      encryptionAlgorithm: map['encryptionAlgorithm'] == null ? null : (map['encryptionAlgorithm']! as String).input(),
+      encryptionAtHostEnabled: map['encryptionAtHostEnabled'] == null ? null : (map['encryptionAtHostEnabled']! as bool).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      keyVaultManagedIdentityId: map['keyVaultManagedIdentityId'] == null ? null : (map['keyVaultManagedIdentityId']! as String).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class GetInterfaceEndpointArgs {
 
   factory GetInterfaceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return GetInterfaceEndpointArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       interfaceEndpointName: (map['interfaceEndpointName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

@@ -33,9 +33,9 @@ class DiskResponse {
 
   factory DiskResponse.fromMap(Map<String, dynamic> map) {
     return DiskResponse(
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
       lun: (map['lun'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

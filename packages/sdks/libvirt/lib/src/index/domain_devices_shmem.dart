@@ -70,16 +70,16 @@ class DomainDevicesShmem {
 
   factory DomainDevicesShmem.fromMap(Map<String, dynamic> map) {
     return DomainDevicesShmem(
-      acpi: map['acpi'] == null ? null : (DomainDevicesShmemAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesShmemAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (DomainDevicesShmemModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      msi: map['msi'] == null ? null : (DomainDevicesShmemMsi.fromMap((map['msi'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesShmemAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesShmemAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (DomainDevicesShmemModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      msi: map['msi'] == null ? null : (DomainDevicesShmemMsi.fromMap((map['msi']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      server: map['server'] == null ? null : (DomainDevicesShmemServer.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit'] as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      server: map['server'] == null ? null : (DomainDevicesShmemServer.fromMap((map['server']! as Map).cast<String, dynamic>())).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      sizeUnit: map['sizeUnit'] == null ? null : (map['sizeUnit']! as String).input(),
     );
   }
 }

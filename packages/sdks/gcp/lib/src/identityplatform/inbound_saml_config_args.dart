@@ -58,10 +58,10 @@ class InboundSamlConfigArgs {
   factory InboundSamlConfigArgs.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigArgs(
       displayName: (map['displayName'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       idpConfig: (InboundSamlConfigIdpConfig.fromMap((map['idpConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       spConfig: (InboundSamlConfigSpConfig.fromMap((map['spConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

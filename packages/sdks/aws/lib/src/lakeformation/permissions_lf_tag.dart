@@ -32,7 +32,7 @@ class PermissionsLfTag {
 
   factory PermissionsLfTag.fromMap(Map<String, dynamic> map) {
     return PermissionsLfTag(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       key: (map['key'] as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );

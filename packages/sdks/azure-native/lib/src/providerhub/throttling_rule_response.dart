@@ -37,9 +37,9 @@ class ThrottlingRuleResponse {
   factory ThrottlingRuleResponse.fromMap(Map<String, dynamic> map) {
     return ThrottlingRuleResponse(
       action: (map['action'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as List).cast<String>()).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId']! as List).cast<String>()).input(),
       metrics: (pulumi.Input.decodeList<ThrottlingMetricResponse>(map['metrics'], (value) => ThrottlingMetricResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
     );
   }
 }

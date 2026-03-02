@@ -47,7 +47,7 @@ class PureStoragePolicyArgs {
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       storagePolicyDefinition: (map['storagePolicyDefinition'] as String).input(),
-      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName'] as String).input(),
+      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName']! as String).input(),
       storagePoolId: (map['storagePoolId'] as String).input(),
     );
   }

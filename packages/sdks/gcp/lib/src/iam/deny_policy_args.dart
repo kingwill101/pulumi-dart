@@ -41,8 +41,8 @@ class DenyPolicyArgs {
 
   factory DenyPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DenyPolicyArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
       rules: (pulumi.Input.decodeList<DenyPolicyRule>(map['rules'], (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

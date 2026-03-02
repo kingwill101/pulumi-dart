@@ -22,7 +22,7 @@ class HealthBotProperties {
 
   factory HealthBotProperties.fromMap(Map<String, dynamic> map) {
     return HealthBotProperties(
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

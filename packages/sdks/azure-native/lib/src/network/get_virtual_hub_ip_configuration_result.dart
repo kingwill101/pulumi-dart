@@ -69,13 +69,13 @@ class GetVirtualHubIpConfigurationResult {
     return GetVirtualHubIpConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress'] as String,
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      privateIPAddress: map['privateIPAddress'] == null ? null : map['privateIPAddress']! as String,
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : map['privateIPAllocationMethod']! as String,
       provisioningState: map['provisioningState'] as String,
-      publicIPAddress: map['publicIPAddress'] == null ? null : PublicIPAddressResponse.fromMap((map['publicIPAddress'] as Map).cast<String, dynamic>()),
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      publicIPAddress: map['publicIPAddress'] == null ? null : PublicIPAddressResponse.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>()),
+      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );
   }

@@ -26,8 +26,8 @@ class PublisherAnalyticshubV1beta1 {
 
   factory PublisherAnalyticshubV1beta1.fromMap(Map<String, dynamic> map) {
     return PublisherAnalyticshubV1beta1(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
     );
   }
 }

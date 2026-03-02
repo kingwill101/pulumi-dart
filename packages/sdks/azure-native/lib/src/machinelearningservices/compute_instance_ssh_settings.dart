@@ -26,8 +26,8 @@ class ComputeInstanceSshSettings {
 
   factory ComputeInstanceSshSettings.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceSshSettings(
-      adminPublicKey: map['adminPublicKey'] == null ? null : (map['adminPublicKey'] as String).input(),
-      sshPublicAccess: map['sshPublicAccess'] == null ? null : (map['sshPublicAccess'] as String).input(),
+      adminPublicKey: map['adminPublicKey'] == null ? null : (map['adminPublicKey']! as String).input(),
+      sshPublicAccess: map['sshPublicAccess'] == null ? null : (map['sshPublicAccess']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class LogTransformerTransformerConfigAddKeysEntry {
   factory LogTransformerTransformerConfigAddKeysEntry.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigAddKeysEntry(
       key: (map['key'] as String).input(),
-      overwriteIfExists: map['overwriteIfExists'] == null ? null : (map['overwriteIfExists'] as bool).input(),
+      overwriteIfExists: map['overwriteIfExists'] == null ? null : ((map['overwriteIfExists'] as bool).input()).input(),
       value: (map['value'] as String).input(),
     );
   }

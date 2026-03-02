@@ -46,11 +46,11 @@ class ThreeTierFullResourceNamesResponse {
 
   factory ThreeTierFullResourceNamesResponse.fromMap(Map<String, dynamic> map) {
     return ThreeTierFullResourceNamesResponse(
-      applicationServer: map['applicationServer'] == null ? null : (ApplicationServerFullResourceNamesResponse.fromMap((map['applicationServer'] as Map).cast<String, dynamic>())).input(),
-      centralServer: map['centralServer'] == null ? null : (CentralServerFullResourceNamesResponse.fromMap((map['centralServer'] as Map).cast<String, dynamic>())).input(),
-      databaseServer: map['databaseServer'] == null ? null : (DatabaseServerFullResourceNamesResponse.fromMap((map['databaseServer'] as Map).cast<String, dynamic>())).input(),
+      applicationServer: map['applicationServer'] == null ? null : (ApplicationServerFullResourceNamesResponse.fromMap((map['applicationServer']! as Map).cast<String, dynamic>())).input(),
+      centralServer: map['centralServer'] == null ? null : (CentralServerFullResourceNamesResponse.fromMap((map['centralServer']! as Map).cast<String, dynamic>())).input(),
+      databaseServer: map['databaseServer'] == null ? null : (DatabaseServerFullResourceNamesResponse.fromMap((map['databaseServer']! as Map).cast<String, dynamic>())).input(),
       namingPatternType: (map['namingPatternType'] as String).input(),
-      sharedStorage: map['sharedStorage'] == null ? null : (SharedStorageResourceNamesResponse.fromMap((map['sharedStorage'] as Map).cast<String, dynamic>())).input(),
+      sharedStorage: map['sharedStorage'] == null ? null : (SharedStorageResourceNamesResponse.fromMap((map['sharedStorage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

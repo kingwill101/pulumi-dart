@@ -35,10 +35,10 @@ class FleetFleetInstanceSet {
 
   factory FleetFleetInstanceSet.fromMap(Map<String, dynamic> map) {
     return FleetFleetInstanceSet(
-      instanceIds: map['instanceIds'] == null ? null : ((map['instanceIds'] as List).cast<String>()).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      lifecycle: map['lifecycle'] == null ? null : (map['lifecycle'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      instanceIds: map['instanceIds'] == null ? null : (((map['instanceIds'] as List).cast<String>()).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      lifecycle: map['lifecycle'] == null ? null : ((map['lifecycle'] as String).input()).input(),
+      platform: map['platform'] == null ? null : ((map['platform'] as String).input()).input(),
     );
   }
 }

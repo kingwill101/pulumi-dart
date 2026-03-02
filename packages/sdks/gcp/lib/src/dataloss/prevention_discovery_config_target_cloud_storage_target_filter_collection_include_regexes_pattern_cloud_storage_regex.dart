@@ -25,8 +25,8 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex(
-      bucketNameRegex: map['bucketNameRegex'] == null ? null : (map['bucketNameRegex'] as String).input(),
-      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex'] as String).input(),
+      bucketNameRegex: map['bucketNameRegex'] == null ? null : (map['bucketNameRegex']! as String).input(),
+      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex']! as String).input(),
     );
   }
 }

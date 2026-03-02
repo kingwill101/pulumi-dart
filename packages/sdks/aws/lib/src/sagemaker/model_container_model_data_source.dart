@@ -21,7 +21,7 @@ class ModelContainerModelDataSource {
 
   factory ModelContainerModelDataSource.fromMap(Map<String, dynamic> map) {
     return ModelContainerModelDataSource(
-      s3DataSources: (pulumi.Input.decodeList<ModelContainerModelDataSourceS3DataSource>(map['s3DataSources'], (value) => ModelContainerModelDataSourceS3DataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3DataSources: (pulumi.Input.decodeList<ModelContainerModelDataSourceS3DataSource>(map['s3DataSources']!, (value) => ModelContainerModelDataSourceS3DataSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

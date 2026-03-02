@@ -25,8 +25,8 @@ class LocationHdfsQopConfiguration {
 
   factory LocationHdfsQopConfiguration.fromMap(Map<String, dynamic> map) {
     return LocationHdfsQopConfiguration(
-      dataTransferProtection: map['dataTransferProtection'] == null ? null : (map['dataTransferProtection'] as String).input(),
-      rpcProtection: map['rpcProtection'] == null ? null : (map['rpcProtection'] as String).input(),
+      dataTransferProtection: map['dataTransferProtection'] == null ? null : ((map['dataTransferProtection'] as String).input()).input(),
+      rpcProtection: map['rpcProtection'] == null ? null : ((map['rpcProtection'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ConfigManagementPolicyControllerMonitoringGkehubV1alpha {
 
   factory ConfigManagementPolicyControllerMonitoringGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return ConfigManagementPolicyControllerMonitoringGkehubV1alpha(
-      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>(map['backends'], (value) => ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha.fromValue(value as String))).input(),
+      backends: map['backends'] == null ? null : (pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha>(map['backends']!, (value) => ConfigManagementPolicyControllerMonitoringBackendsItemGkehubV1alpha.fromValue(value as String))).input(),
     );
   }
 }

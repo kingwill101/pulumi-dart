@@ -41,11 +41,11 @@ class MetricsDestinationState {
 
   factory MetricsDestinationState.fromMap(Map<String, dynamic> map) {
     return MetricsDestinationState(
-      appMonitorName: map['appMonitorName'] == null ? null : (map['appMonitorName'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      destinationArn: map['destinationArn'] == null ? null : (map['destinationArn'] as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      appMonitorName: map['appMonitorName'] == null ? null : ((map['appMonitorName'] as String).input()).input(),
+      destination: map['destination'] == null ? null : ((map['destination'] as String).input()).input(),
+      destinationArn: map['destinationArn'] == null ? null : ((map['destinationArn'] as String).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

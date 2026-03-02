@@ -26,8 +26,8 @@ class ProjectSourceVersionResponse {
 
   factory ProjectSourceVersionResponse.fromMap(Map<String, dynamic> map) {
     return ProjectSourceVersionResponse(
-      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier'] as String).input(),
-      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion'] as String).input(),
+      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier']! as String).input(),
+      sourceVersion: map['sourceVersion'] == null ? null : (map['sourceVersion']! as String).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class ChannelArgs {
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
       accountName: (map['accountName'] as String).input(),
-      channelFunctions: map['channelFunctions'] == null ? null : ((map['channelFunctions'] as List).cast<String>()).input(),
-      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
+      channelFunctions: map['channelFunctions'] == null ? null : ((map['channelFunctions']! as List).cast<String>()).input(),
+      channelName: map['channelName'] == null ? null : (map['channelName']! as String).input(),
       channelType: (map['channelType'] as String).input(),
-      credentials: map['credentials'] == null ? null : ((map['credentials'] as Map).cast<String, String>()).input(),
+      credentials: map['credentials'] == null ? null : ((map['credentials']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

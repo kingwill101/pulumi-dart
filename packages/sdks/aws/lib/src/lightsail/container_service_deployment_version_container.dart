@@ -40,11 +40,11 @@ class ContainerServiceDeploymentVersionContainer {
 
   factory ContainerServiceDeploymentVersionContainer.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionContainer(
-      commands: map['commands'] == null ? null : ((map['commands'] as List).cast<String>()).input(),
+      commands: map['commands'] == null ? null : (((map['commands'] as List).cast<String>()).input()).input(),
       containerName: (map['containerName'] as String).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
+      environment: map['environment'] == null ? null : (((map['environment'] as Map).cast<String, String>()).input()).input(),
       image: (map['image'] as String).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as Map).cast<String, String>()).input(),
+      ports: map['ports'] == null ? null : (((map['ports'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class SchedulingPolicyFairSharePolicyShareDistribution {
   factory SchedulingPolicyFairSharePolicyShareDistribution.fromMap(Map<String, dynamic> map) {
     return SchedulingPolicyFairSharePolicyShareDistribution(
       shareIdentifier: (map['shareIdentifier'] as String).input(),
-      weightFactor: map['weightFactor'] == null ? null : (map['weightFactor'] as double).input(),
+      weightFactor: map['weightFactor'] == null ? null : ((map['weightFactor'] as double).input()).input(),
     );
   }
 }

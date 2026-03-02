@@ -26,8 +26,8 @@ class DomainDevicesDiskBackingStoreSourceNetworkAuth {
 
   factory DomainDevicesDiskBackingStoreSourceNetworkAuth.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskBackingStoreSourceNetworkAuth(
-      secret: map['secret'] == null ? null : (DomainDevicesDiskBackingStoreSourceNetworkAuthSecret.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      secret: map['secret'] == null ? null : (DomainDevicesDiskBackingStoreSourceNetworkAuthSecret.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -126,22 +126,22 @@ class KubernetesClusterNetworkProfile {
 
   factory KubernetesClusterNetworkProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfile(
-      advancedNetworking: map['advancedNetworking'] == null ? null : (KubernetesClusterNetworkProfileAdvancedNetworking.fromMap((map['advancedNetworking'] as Map).cast<String, dynamic>())).input(),
-      dnsServiceIp: map['dnsServiceIp'] == null ? null : (map['dnsServiceIp'] as String).input(),
-      ipVersions: map['ipVersions'] == null ? null : ((map['ipVersions'] as List).cast<String>()).input(),
-      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (KubernetesClusterNetworkProfileLoadBalancerProfile.fromMap((map['loadBalancerProfile'] as Map).cast<String, dynamic>())).input(),
-      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku'] as String).input(),
-      natGatewayProfile: map['natGatewayProfile'] == null ? null : (KubernetesClusterNetworkProfileNatGatewayProfile.fromMap((map['natGatewayProfile'] as Map).cast<String, dynamic>())).input(),
-      networkDataPlane: map['networkDataPlane'] == null ? null : (map['networkDataPlane'] as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as String).input(),
+      advancedNetworking: map['advancedNetworking'] == null ? null : (KubernetesClusterNetworkProfileAdvancedNetworking.fromMap((map['advancedNetworking']! as Map).cast<String, dynamic>())).input(),
+      dnsServiceIp: map['dnsServiceIp'] == null ? null : (map['dnsServiceIp']! as String).input(),
+      ipVersions: map['ipVersions'] == null ? null : ((map['ipVersions']! as List).cast<String>()).input(),
+      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (KubernetesClusterNetworkProfileLoadBalancerProfile.fromMap((map['loadBalancerProfile']! as Map).cast<String, dynamic>())).input(),
+      loadBalancerSku: map['loadBalancerSku'] == null ? null : (map['loadBalancerSku']! as String).input(),
+      natGatewayProfile: map['natGatewayProfile'] == null ? null : (KubernetesClusterNetworkProfileNatGatewayProfile.fromMap((map['natGatewayProfile']! as Map).cast<String, dynamic>())).input(),
+      networkDataPlane: map['networkDataPlane'] == null ? null : (map['networkDataPlane']! as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as String).input(),
       networkPlugin: (map['networkPlugin'] as String).input(),
-      networkPluginMode: map['networkPluginMode'] == null ? null : (map['networkPluginMode'] as String).input(),
-      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy'] as String).input(),
-      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
-      podCidr: map['podCidr'] == null ? null : (map['podCidr'] as String).input(),
-      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs'] as List).cast<String>()).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
-      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs'] as List).cast<String>()).input(),
+      networkPluginMode: map['networkPluginMode'] == null ? null : (map['networkPluginMode']! as String).input(),
+      networkPolicy: map['networkPolicy'] == null ? null : (map['networkPolicy']! as String).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
+      podCidr: map['podCidr'] == null ? null : (map['podCidr']! as String).input(),
+      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs']! as List).cast<String>()).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
+      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs']! as List).cast<String>()).input(),
     );
   }
 }

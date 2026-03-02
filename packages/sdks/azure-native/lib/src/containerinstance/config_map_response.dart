@@ -21,7 +21,7 @@ class ConfigMapResponse {
 
   factory ConfigMapResponse.fromMap(Map<String, dynamic> map) {
     return ConfigMapResponse(
-      keyValuePairs: map['keyValuePairs'] == null ? null : ((map['keyValuePairs'] as Map).cast<String, String>()).input(),
+      keyValuePairs: map['keyValuePairs'] == null ? null : ((map['keyValuePairs']! as Map).cast<String, String>()).input(),
     );
   }
 }

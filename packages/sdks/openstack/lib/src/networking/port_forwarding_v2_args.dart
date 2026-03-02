@@ -68,14 +68,14 @@ class PortForwardingV2Args {
 
   factory PortForwardingV2Args.fromMap(Map<String, dynamic> map) {
     return PortForwardingV2Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       externalPort: (map['externalPort'] as int).input(),
       floatingipId: (map['floatingipId'] as String).input(),
       internalIpAddress: (map['internalIpAddress'] as String).input(),
       internalPort: (map['internalPort'] as int).input(),
       internalPortId: (map['internalPortId'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch(
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as String).input(),
       name: (map['name'] as String).input(),
-      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch'] as bool).input(),
+      presentMatch: map['presentMatch'] == null ? null : (map['presentMatch']! as bool).input(),
     );
   }
 }

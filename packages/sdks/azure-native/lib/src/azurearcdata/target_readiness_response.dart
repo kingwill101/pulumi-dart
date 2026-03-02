@@ -32,9 +32,9 @@ class TargetReadinessResponse {
 
   factory TargetReadinessResponse.fromMap(Map<String, dynamic> map) {
     return TargetReadinessResponse(
-      azureSqlDatabase: map['azureSqlDatabase'] == null ? null : (SkuRecommendationSummaryResponse.fromMap((map['azureSqlDatabase'] as Map).cast<String, dynamic>())).input(),
-      azureSqlManagedInstance: map['azureSqlManagedInstance'] == null ? null : (SkuRecommendationSummaryResponse.fromMap((map['azureSqlManagedInstance'] as Map).cast<String, dynamic>())).input(),
-      azureSqlVirtualMachine: map['azureSqlVirtualMachine'] == null ? null : (SkuRecommendationSummaryResponse.fromMap((map['azureSqlVirtualMachine'] as Map).cast<String, dynamic>())).input(),
+      azureSqlDatabase: map['azureSqlDatabase'] == null ? null : (SkuRecommendationSummaryResponse.fromMap((map['azureSqlDatabase']! as Map).cast<String, dynamic>())).input(),
+      azureSqlManagedInstance: map['azureSqlManagedInstance'] == null ? null : (SkuRecommendationSummaryResponse.fromMap((map['azureSqlManagedInstance']! as Map).cast<String, dynamic>())).input(),
+      azureSqlVirtualMachine: map['azureSqlVirtualMachine'] == null ? null : (SkuRecommendationSummaryResponse.fromMap((map['azureSqlVirtualMachine']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

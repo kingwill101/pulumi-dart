@@ -25,8 +25,8 @@ class UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings {
 
   factory UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCanvasAppSettingsTimeSeriesForecastingSettings(
-      amazonForecastRoleArn: map['amazonForecastRoleArn'] == null ? null : (map['amazonForecastRoleArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      amazonForecastRoleArn: map['amazonForecastRoleArn'] == null ? null : ((map['amazonForecastRoleArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

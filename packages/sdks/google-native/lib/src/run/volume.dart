@@ -39,10 +39,10 @@ class Volume {
 
   factory Volume.fromMap(Map<String, dynamic> map) {
     return Volume(
-      configMap: map['configMap'] == null ? null : (ConfigMapVolumeSource.fromMap((map['configMap'] as Map).cast<String, dynamic>())).input(),
-      emptyDir: map['emptyDir'] == null ? null : (EmptyDirVolumeSource.fromMap((map['emptyDir'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secret: map['secret'] == null ? null : (SecretVolumeSource.fromMap((map['secret'] as Map).cast<String, dynamic>())).input(),
+      configMap: map['configMap'] == null ? null : (ConfigMapVolumeSource.fromMap((map['configMap']! as Map).cast<String, dynamic>())).input(),
+      emptyDir: map['emptyDir'] == null ? null : (EmptyDirVolumeSource.fromMap((map['emptyDir']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secret: map['secret'] == null ? null : (SecretVolumeSource.fromMap((map['secret']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

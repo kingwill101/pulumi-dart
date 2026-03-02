@@ -36,9 +36,9 @@ class ZonePrimaryNameserver {
   factory ZonePrimaryNameserver.fromMap(Map<String, dynamic> map) {
     return ZonePrimaryNameserver(
       address: (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      tsigAlgorithm: map['tsigAlgorithm'] == null ? null : (map['tsigAlgorithm'] as String).input(),
-      tsigKey: map['tsigKey'] == null ? null : (map['tsigKey'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      tsigAlgorithm: map['tsigAlgorithm'] == null ? null : (map['tsigAlgorithm']! as String).input(),
+      tsigKey: map['tsigKey'] == null ? null : (map['tsigKey']! as String).input(),
     );
   }
 }

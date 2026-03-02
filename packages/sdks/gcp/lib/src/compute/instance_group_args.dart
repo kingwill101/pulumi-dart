@@ -67,13 +67,13 @@ class InstanceGroupArgs {
 
   factory InstanceGroupArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<InstanceGroupNamedPort>(map['namedPorts'], (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namedPorts: map['namedPorts'] == null ? null : (pulumi.Input.decodeList<InstanceGroupNamedPort>(map['namedPorts']!, (value) => InstanceGroupNamedPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

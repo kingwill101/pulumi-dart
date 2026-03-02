@@ -32,9 +32,9 @@ class ResourceQuotaSpec {
 
   factory ResourceQuotaSpec.fromMap(Map<String, dynamic> map) {
     return ResourceQuotaSpec(
-      hard: map['hard'] == null ? null : ((map['hard'] as Map).cast<String, String>()).input(),
-      scopeSelector: map['scopeSelector'] == null ? null : (ScopeSelector.fromMap((map['scopeSelector'] as Map).cast<String, dynamic>())).input(),
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      hard: map['hard'] == null ? null : ((map['hard']! as Map).cast<String, String>()).input(),
+      scopeSelector: map['scopeSelector'] == null ? null : (ScopeSelector.fromMap((map['scopeSelector']! as Map).cast<String, dynamic>())).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

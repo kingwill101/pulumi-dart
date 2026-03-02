@@ -93,14 +93,14 @@ class UnitKindArgs {
 
   factory UnitKindArgs.fromMap(Map<String, dynamic> map) {
     return UnitKindArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      defaultRelease: map['defaultRelease'] == null ? null : (map['defaultRelease'] as String).input(),
-      dependencies: map['dependencies'] == null ? null : (pulumi.Input.decodeList<UnitKindDependency>(map['dependencies'], (value) => UnitKindDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputVariableMappings: map['inputVariableMappings'] == null ? null : (pulumi.Input.decodeList<UnitKindInputVariableMapping>(map['inputVariableMappings'], (value) => UnitKindInputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      defaultRelease: map['defaultRelease'] == null ? null : (map['defaultRelease']! as String).input(),
+      dependencies: map['dependencies'] == null ? null : (pulumi.Input.decodeList<UnitKindDependency>(map['dependencies']!, (value) => UnitKindDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inputVariableMappings: map['inputVariableMappings'] == null ? null : (pulumi.Input.decodeList<UnitKindInputVariableMapping>(map['inputVariableMappings']!, (value) => UnitKindInputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      outputVariableMappings: map['outputVariableMappings'] == null ? null : (pulumi.Input.decodeList<UnitKindOutputVariableMapping>(map['outputVariableMappings'], (value) => UnitKindOutputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      outputVariableMappings: map['outputVariableMappings'] == null ? null : (pulumi.Input.decodeList<UnitKindOutputVariableMapping>(map['outputVariableMappings']!, (value) => UnitKindOutputVariableMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       saas: (map['saas'] as String).input(),
       unitKindId: (map['unitKindId'] as String).input(),
     );

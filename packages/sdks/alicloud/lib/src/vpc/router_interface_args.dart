@@ -81,18 +81,18 @@ class RouterInterfaceArgs {
 
   factory RouterInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return RouterInterfaceArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp'] as String).input(),
-      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : (map['healthCheckTargetIp'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oppositeAccessPointId: map['oppositeAccessPointId'] == null ? null : (map['oppositeAccessPointId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      healthCheckSourceIp: map['healthCheckSourceIp'] == null ? null : (map['healthCheckSourceIp']! as String).input(),
+      healthCheckTargetIp: map['healthCheckTargetIp'] == null ? null : (map['healthCheckTargetIp']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oppositeAccessPointId: map['oppositeAccessPointId'] == null ? null : (map['oppositeAccessPointId']! as String).input(),
       oppositeRegion: (map['oppositeRegion'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
       role: (map['role'] as String).input(),
       routerId: (map['routerId'] as String).input(),
       routerType: (map['routerType'] as String).input(),
-      specification: map['specification'] == null ? null : (map['specification'] as String).input(),
+      specification: map['specification'] == null ? null : (map['specification']! as String).input(),
     );
   }
 }

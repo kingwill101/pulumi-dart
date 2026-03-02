@@ -57,12 +57,12 @@ class VmHostPlacementPolicyProperties {
 
   factory VmHostPlacementPolicyProperties.fromMap(Map<String, dynamic> map) {
     return VmHostPlacementPolicyProperties(
-      affinityStrength: map['affinityStrength'] == null ? null : (map['affinityStrength'] as String).input(),
+      affinityStrength: map['affinityStrength'] == null ? null : (map['affinityStrength']! as String).input(),
       affinityType: (map['affinityType'] as String).input(),
-      azureHybridBenefitType: map['azureHybridBenefitType'] == null ? null : (map['azureHybridBenefitType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      azureHybridBenefitType: map['azureHybridBenefitType'] == null ? null : (map['azureHybridBenefitType']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       hostMembers: ((map['hostMembers'] as List).cast<String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
       vmMembers: ((map['vmMembers'] as List).cast<String>()).input(),
     );

@@ -95,19 +95,19 @@ class V2modelsSlotTypeState {
 
   factory V2modelsSlotTypeState.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotTypeState(
-      botId: map['botId'] == null ? null : (map['botId'] as String).input(),
-      botVersion: map['botVersion'] == null ? null : (map['botVersion'] as String).input(),
-      compositeSlotTypeSettings: map['compositeSlotTypeSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSetting>(map['compositeSlotTypeSettings'], (value) => V2modelsSlotTypeCompositeSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalSourceSettings: map['externalSourceSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSetting>(map['externalSourceSettings'], (value) => V2modelsSlotTypeExternalSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localeId: map['localeId'] == null ? null : (map['localeId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentSlotTypeSignature: map['parentSlotTypeSignature'] == null ? null : (map['parentSlotTypeSignature'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      slotTypeId: map['slotTypeId'] == null ? null : (map['slotTypeId'] as String).input(),
-      slotTypeValues: map['slotTypeValues'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValue>(map['slotTypeValues'], (value) => V2modelsSlotTypeSlotTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsSlotTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      valueSelectionSetting: map['valueSelectionSetting'] == null ? null : (V2modelsSlotTypeValueSelectionSetting.fromMap((map['valueSelectionSetting'] as Map).cast<String, dynamic>())).input(),
+      botId: map['botId'] == null ? null : ((map['botId'] as String).input()).input(),
+      botVersion: map['botVersion'] == null ? null : ((map['botVersion'] as String).input()).input(),
+      compositeSlotTypeSettings: map['compositeSlotTypeSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeCompositeSlotTypeSetting>(map['compositeSlotTypeSettings']!, (value) => V2modelsSlotTypeCompositeSlotTypeSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      externalSourceSettings: map['externalSourceSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeExternalSourceSetting>(map['externalSourceSettings']!, (value) => V2modelsSlotTypeExternalSourceSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      localeId: map['localeId'] == null ? null : ((map['localeId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parentSlotTypeSignature: map['parentSlotTypeSignature'] == null ? null : ((map['parentSlotTypeSignature'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      slotTypeId: map['slotTypeId'] == null ? null : ((map['slotTypeId'] as String).input()).input(),
+      slotTypeValues: map['slotTypeValues'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotTypeSlotTypeValue>(map['slotTypeValues']!, (value) => V2modelsSlotTypeSlotTypeValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsSlotTypeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      valueSelectionSetting: map['valueSelectionSetting'] == null ? null : ((V2modelsSlotTypeValueSelectionSetting.fromMap((map['valueSelectionSetting']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

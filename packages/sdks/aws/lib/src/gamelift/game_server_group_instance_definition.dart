@@ -29,7 +29,7 @@ class GameServerGroupInstanceDefinition {
   factory GameServerGroupInstanceDefinition.fromMap(Map<String, dynamic> map) {
     return GameServerGroupInstanceDefinition(
       instanceType: (map['instanceType'] as String).input(),
-      weightedCapacity: map['weightedCapacity'] == null ? null : (map['weightedCapacity'] as String).input(),
+      weightedCapacity: map['weightedCapacity'] == null ? null : ((map['weightedCapacity'] as String).input()).input(),
     );
   }
 }

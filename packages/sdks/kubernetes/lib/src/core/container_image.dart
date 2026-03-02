@@ -27,7 +27,7 @@ class ContainerImage {
   factory ContainerImage.fromMap(Map<String, dynamic> map) {
     return ContainerImage(
       names: ((map['names'] as List).cast<String>()).input(),
-      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes']! as int).input(),
     );
   }
 }

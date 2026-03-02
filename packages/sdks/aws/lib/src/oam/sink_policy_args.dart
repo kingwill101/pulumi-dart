@@ -35,7 +35,7 @@ class SinkPolicyArgs {
   factory SinkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return SinkPolicyArgs(
       policy: (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sinkIdentifier: (map['sinkIdentifier'] as String).input(),
     );
   }

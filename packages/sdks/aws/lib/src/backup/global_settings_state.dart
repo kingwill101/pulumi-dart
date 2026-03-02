@@ -21,7 +21,7 @@ class GlobalSettingsState {
 
   factory GlobalSettingsState.fromMap(Map<String, dynamic> map) {
     return GlobalSettingsState(
-      globalSettings: map['globalSettings'] == null ? null : ((map['globalSettings'] as Map).cast<String, String>()).input(),
+      globalSettings: map['globalSettings'] == null ? null : (((map['globalSettings'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

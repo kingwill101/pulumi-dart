@@ -71,17 +71,17 @@ class DatastoreDatalakeGen2State {
 
   factory DatastoreDatalakeGen2State.fromMap(Map<String, dynamic> map) {
     return DatastoreDatalakeGen2State(
-      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : (map['serviceDataIdentity'] as String).input(),
-      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceDataIdentity: map['serviceDataIdentity'] == null ? null : (map['serviceDataIdentity']! as String).input(),
+      storageContainerId: map['storageContainerId'] == null ? null : (map['storageContainerId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

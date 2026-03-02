@@ -50,12 +50,12 @@ class PricingArgs {
 
   factory PricingArgs.fromMap(Map<String, dynamic> map) {
     return PricingArgs(
-      enforce: map['enforce'] == null ? null : (map['enforce'] as String).input(),
-      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions'], (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pricingName: map['pricingName'] == null ? null : (map['pricingName'] as String).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as String).input(),
+      extensions: map['extensions'] == null ? null : (pulumi.Input.decodeList<Extension>(map['extensions']!, (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pricingName: map['pricingName'] == null ? null : (map['pricingName']! as String).input(),
       pricingTier: (map['pricingTier'] as String).input(),
       scopeId: (map['scopeId'] as String).input(),
-      subPlan: map['subPlan'] == null ? null : (map['subPlan'] as String).input(),
+      subPlan: map['subPlan'] == null ? null : (map['subPlan']! as String).input(),
     );
   }
 }

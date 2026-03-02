@@ -30,7 +30,7 @@ class GetWorkloadIdentityPoolIamPolicyArgs {
 
   factory GetWorkloadIdentityPoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolIamPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
     );
   }

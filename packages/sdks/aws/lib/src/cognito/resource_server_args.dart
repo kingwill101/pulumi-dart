@@ -46,9 +46,9 @@ class ResourceServerArgs {
   factory ResourceServerArgs.fromMap(Map<String, dynamic> map) {
     return ResourceServerArgs(
       identifier: (map['identifier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scopes: map['scopes'] == null ? null : (pulumi.Input.decodeList<ResourceServerScope>(map['scopes'], (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scopes: map['scopes'] == null ? null : ((pulumi.Input.decodeList<ResourceServerScope>(map['scopes']!, (value) => ResourceServerScope.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

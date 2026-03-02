@@ -55,13 +55,13 @@ class GetFileSystemsResult {
 
   factory GetFileSystemsResult.fromMap(Map<String, dynamic> map) {
     return GetFileSystemsResult(
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
       descriptions: (map['descriptions'] as List).cast<String>(),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      protocolType: map['protocolType'] == null ? null : map['protocolType'] as String,
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      protocolType: map['protocolType'] == null ? null : map['protocolType']! as String,
+      storageType: map['storageType'] == null ? null : map['storageType']! as String,
       systems: pulumi.Input.decodeList<GetFileSystemsSystem>(map['systems'], (value) => GetFileSystemsSystem.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

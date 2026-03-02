@@ -25,8 +25,8 @@ class InboundIpRule {
 
   factory InboundIpRule.fromMap(Map<String, dynamic> map) {
     return InboundIpRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      ipMask: map['ipMask'] == null ? null : (map['ipMask'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      ipMask: map['ipMask'] == null ? null : (map['ipMask']! as String).input(),
     );
   }
 }

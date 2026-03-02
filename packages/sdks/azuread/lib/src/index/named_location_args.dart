@@ -38,9 +38,9 @@ class NamedLocationArgs {
 
   factory NamedLocationArgs.fromMap(Map<String, dynamic> map) {
     return NamedLocationArgs(
-      country: map['country'] == null ? null : (NamedLocationCountry.fromMap((map['country'] as Map).cast<String, dynamic>())).input(),
+      country: map['country'] == null ? null : (NamedLocationCountry.fromMap((map['country']! as Map).cast<String, dynamic>())).input(),
       displayName: (map['displayName'] as String).input(),
-      ip: map['ip'] == null ? null : (NamedLocationIp.fromMap((map['ip'] as Map).cast<String, dynamic>())).input(),
+      ip: map['ip'] == null ? null : (NamedLocationIp.fromMap((map['ip']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

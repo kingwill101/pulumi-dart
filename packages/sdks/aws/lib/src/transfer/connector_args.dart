@@ -68,14 +68,14 @@ class ConnectorArgs {
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
       accessRole: (map['accessRole'] as String).input(),
-      as2Config: map['as2Config'] == null ? null : (ConnectorAs2Config.fromMap((map['as2Config'] as Map).cast<String, dynamic>())).input(),
-      egressConfig: map['egressConfig'] == null ? null : (ConnectorEgressConfig.fromMap((map['egressConfig'] as Map).cast<String, dynamic>())).input(),
-      loggingRole: map['loggingRole'] == null ? null : (map['loggingRole'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityPolicyName: map['securityPolicyName'] == null ? null : (map['securityPolicyName'] as String).input(),
-      sftpConfig: map['sftpConfig'] == null ? null : (ConnectorSftpConfig.fromMap((map['sftpConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      as2Config: map['as2Config'] == null ? null : ((ConnectorAs2Config.fromMap((map['as2Config']! as Map).cast<String, dynamic>())).input()).input(),
+      egressConfig: map['egressConfig'] == null ? null : ((ConnectorEgressConfig.fromMap((map['egressConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      loggingRole: map['loggingRole'] == null ? null : ((map['loggingRole'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityPolicyName: map['securityPolicyName'] == null ? null : ((map['securityPolicyName'] as String).input()).input(),
+      sftpConfig: map['sftpConfig'] == null ? null : ((ConnectorSftpConfig.fromMap((map['sftpConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

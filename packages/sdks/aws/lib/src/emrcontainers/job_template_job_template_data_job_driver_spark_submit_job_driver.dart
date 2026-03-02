@@ -31,8 +31,8 @@ class JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver {
   factory JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataJobDriverSparkSubmitJobDriver(
       entryPoint: (map['entryPoint'] as String).input(),
-      entryPointArguments: map['entryPointArguments'] == null ? null : ((map['entryPointArguments'] as List).cast<String>()).input(),
-      sparkSubmitParameters: map['sparkSubmitParameters'] == null ? null : (map['sparkSubmitParameters'] as String).input(),
+      entryPointArguments: map['entryPointArguments'] == null ? null : (((map['entryPointArguments'] as List).cast<String>()).input()).input(),
+      sparkSubmitParameters: map['sparkSubmitParameters'] == null ? null : ((map['sparkSubmitParameters'] as String).input()).input(),
     );
   }
 }

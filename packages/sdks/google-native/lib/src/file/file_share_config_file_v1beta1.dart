@@ -37,10 +37,10 @@ class FileShareConfigFileV1beta1 {
 
   factory FileShareConfigFileV1beta1.fromMap(Map<String, dynamic> map) {
     return FileShareConfigFileV1beta1(
-      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsFileV1beta1>(map['nfsExportOptions'], (value) => NfsExportOptionsFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceBackup: map['sourceBackup'] == null ? null : (map['sourceBackup'] as String).input(),
+      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<NfsExportOptionsFileV1beta1>(map['nfsExportOptions']!, (value) => NfsExportOptionsFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceBackup: map['sourceBackup'] == null ? null : (map['sourceBackup']! as String).input(),
     );
   }
 }

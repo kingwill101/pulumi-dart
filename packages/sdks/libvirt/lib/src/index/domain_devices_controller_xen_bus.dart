@@ -25,8 +25,8 @@ class DomainDevicesControllerXenBus {
 
   factory DomainDevicesControllerXenBus.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerXenBus(
-      maxEventChannels: map['maxEventChannels'] == null ? null : (map['maxEventChannels'] as double).input(),
-      maxGrantFrames: map['maxGrantFrames'] == null ? null : (map['maxGrantFrames'] as double).input(),
+      maxEventChannels: map['maxEventChannels'] == null ? null : (map['maxEventChannels']! as double).input(),
+      maxGrantFrames: map['maxGrantFrames'] == null ? null : (map['maxGrantFrames']! as double).input(),
     );
   }
 }

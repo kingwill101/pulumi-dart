@@ -21,7 +21,7 @@ class Entrypoint {
 
   factory Entrypoint.fromMap(Map<String, dynamic> map) {
     return Entrypoint(
-      shell: map['shell'] == null ? null : (map['shell'] as String).input(),
+      shell: map['shell'] == null ? null : (map['shell']! as String).input(),
     );
   }
 }

@@ -47,7 +47,7 @@ class GetPrivateLinkScopedResourceResult {
     return GetPrivateLinkScopedResourceResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      linkedResourceId: map['linkedResourceId'] == null ? null : map['linkedResourceId'] as String,
+      linkedResourceId: map['linkedResourceId'] == null ? null : map['linkedResourceId']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,

@@ -56,14 +56,14 @@ class ImageEventOperationState {
 
   factory ImageEventOperationState.fromMap(Map<String, dynamic> map) {
     return ImageEventOperationState(
-      conditions: map['conditions'] == null ? null : (map['conditions'] as String).input(),
-      eventKey: map['eventKey'] == null ? null : (map['eventKey'] as String).input(),
-      eventName: map['eventName'] == null ? null : (map['eventName'] as String).input(),
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
-      note: map['note'] == null ? null : (map['note'] as String).input(),
-      operationCode: map['operationCode'] == null ? null : (map['operationCode'] as String).input(),
-      scenarios: map['scenarios'] == null ? null : (map['scenarios'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      conditions: map['conditions'] == null ? null : (map['conditions']! as String).input(),
+      eventKey: map['eventKey'] == null ? null : (map['eventKey']! as String).input(),
+      eventName: map['eventName'] == null ? null : (map['eventName']! as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
+      note: map['note'] == null ? null : (map['note']! as String).input(),
+      operationCode: map['operationCode'] == null ? null : (map['operationCode']! as String).input(),
+      scenarios: map['scenarios'] == null ? null : (map['scenarios']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

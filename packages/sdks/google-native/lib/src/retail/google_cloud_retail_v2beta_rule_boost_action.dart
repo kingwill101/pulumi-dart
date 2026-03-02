@@ -26,8 +26,8 @@ class GoogleCloudRetailV2betaRuleBoostAction {
 
   factory GoogleCloudRetailV2betaRuleBoostAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRuleBoostAction(
-      boost: map['boost'] == null ? null : (map['boost'] as double).input(),
-      productsFilter: map['productsFilter'] == null ? null : (map['productsFilter'] as String).input(),
+      boost: map['boost'] == null ? null : (map['boost']! as double).input(),
+      productsFilter: map['productsFilter'] == null ? null : (map['productsFilter']! as String).input(),
     );
   }
 }

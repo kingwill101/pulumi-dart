@@ -46,12 +46,12 @@ class RaiPolicyContentFilter {
 
   factory RaiPolicyContentFilter.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilter(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      severityThreshold: map['severityThreshold'] == null ? null : (map['severityThreshold'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      severityThreshold: map['severityThreshold'] == null ? null : (map['severityThreshold']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

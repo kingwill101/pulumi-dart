@@ -101,21 +101,21 @@ class NodePoolContainerV1beta1 {
 
   factory NodePoolContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NodePoolContainerV1beta1(
-      autoscaling: map['autoscaling'] == null ? null : (NodePoolAutoscalingContainerV1beta1.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
-      bestEffortProvisioning: map['bestEffortProvisioning'] == null ? null : (BestEffortProvisioningContainerV1beta1.fromMap((map['bestEffortProvisioning'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatusConditionContainerV1beta1>(map['conditions'], (value) => StatusConditionContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      config: map['config'] == null ? null : (NodeConfigContainerV1beta1.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      initialNodeCount: map['initialNodeCount'] == null ? null : (map['initialNodeCount'] as int).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      management: map['management'] == null ? null : (NodeManagementContainerV1beta1.fromMap((map['management'] as Map).cast<String, dynamic>())).input(),
-      maxPodsConstraint: map['maxPodsConstraint'] == null ? null : (MaxPodsConstraintContainerV1beta1.fromMap((map['maxPodsConstraint'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (NodeNetworkConfigContainerV1beta1.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      placementPolicy: map['placementPolicy'] == null ? null : (PlacementPolicyContainerV1beta1.fromMap((map['placementPolicy'] as Map).cast<String, dynamic>())).input(),
-      queuedProvisioning: map['queuedProvisioning'] == null ? null : (QueuedProvisioningContainerV1beta1.fromMap((map['queuedProvisioning'] as Map).cast<String, dynamic>())).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (UpgradeSettingsContainerV1beta1.fromMap((map['upgradeSettings'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      autoscaling: map['autoscaling'] == null ? null : (NodePoolAutoscalingContainerV1beta1.fromMap((map['autoscaling']! as Map).cast<String, dynamic>())).input(),
+      bestEffortProvisioning: map['bestEffortProvisioning'] == null ? null : (BestEffortProvisioningContainerV1beta1.fromMap((map['bestEffortProvisioning']! as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<StatusConditionContainerV1beta1>(map['conditions']!, (value) => StatusConditionContainerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (NodeConfigContainerV1beta1.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      initialNodeCount: map['initialNodeCount'] == null ? null : (map['initialNodeCount']! as int).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      management: map['management'] == null ? null : (NodeManagementContainerV1beta1.fromMap((map['management']! as Map).cast<String, dynamic>())).input(),
+      maxPodsConstraint: map['maxPodsConstraint'] == null ? null : (MaxPodsConstraintContainerV1beta1.fromMap((map['maxPodsConstraint']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NodeNetworkConfigContainerV1beta1.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      placementPolicy: map['placementPolicy'] == null ? null : (PlacementPolicyContainerV1beta1.fromMap((map['placementPolicy']! as Map).cast<String, dynamic>())).input(),
+      queuedProvisioning: map['queuedProvisioning'] == null ? null : (QueuedProvisioningContainerV1beta1.fromMap((map['queuedProvisioning']! as Map).cast<String, dynamic>())).input(),
+      upgradeSettings: map['upgradeSettings'] == null ? null : (UpgradeSettingsContainerV1beta1.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class StandardAppVersionDeployment {
 
   factory StandardAppVersionDeployment.fromMap(Map<String, dynamic> map) {
     return StandardAppVersionDeployment(
-      files: map['files'] == null ? null : (pulumi.Input.decodeList<StandardAppVersionDeploymentFile>(map['files'], (value) => StandardAppVersionDeploymentFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zip: map['zip'] == null ? null : (StandardAppVersionDeploymentZip.fromMap((map['zip'] as Map).cast<String, dynamic>())).input(),
+      files: map['files'] == null ? null : (pulumi.Input.decodeList<StandardAppVersionDeploymentFile>(map['files']!, (value) => StandardAppVersionDeploymentFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zip: map['zip'] == null ? null : (StandardAppVersionDeploymentZip.fromMap((map['zip']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class BlockchainNodesEthereumDetailsValidatorConfig {
 
   factory BlockchainNodesEthereumDetailsValidatorConfig.fromMap(Map<String, dynamic> map) {
     return BlockchainNodesEthereumDetailsValidatorConfig(
-      mevRelayUrls: map['mevRelayUrls'] == null ? null : ((map['mevRelayUrls'] as List).cast<String>()).input(),
+      mevRelayUrls: map['mevRelayUrls'] == null ? null : ((map['mevRelayUrls']! as List).cast<String>()).input(),
     );
   }
 }

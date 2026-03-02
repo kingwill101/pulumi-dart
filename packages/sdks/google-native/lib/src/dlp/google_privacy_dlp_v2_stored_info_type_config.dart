@@ -44,11 +44,11 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
 
   factory GooglePrivacyDlpV2StoredInfoTypeConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StoredInfoTypeConfig(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dictionary: map['dictionary'] == null ? null : (GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : (GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap((map['largeCustomDictionary'] as Map).cast<String, dynamic>())).input(),
-      regex: map['regex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dictionary: map['dictionary'] == null ? null : (GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      largeCustomDictionary: map['largeCustomDictionary'] == null ? null : (GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromMap((map['largeCustomDictionary']! as Map).cast<String, dynamic>())).input(),
+      regex: map['regex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

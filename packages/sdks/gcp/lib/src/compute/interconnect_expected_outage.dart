@@ -80,14 +80,14 @@ class InterconnectExpectedOutage {
 
   factory InterconnectExpectedOutage.fromMap(Map<String, dynamic> map) {
     return InterconnectExpectedOutage(
-      affectedCircuits: map['affectedCircuits'] == null ? null : ((map['affectedCircuits'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      issueType: map['issueType'] == null ? null : (map['issueType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      affectedCircuits: map['affectedCircuits'] == null ? null : ((map['affectedCircuits']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      issueType: map['issueType'] == null ? null : (map['issueType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

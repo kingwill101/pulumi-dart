@@ -27,7 +27,7 @@ class GetSslCertificateArgs {
 
   factory GetSslCertificateArgs.fromMap(Map<String, dynamic> map) {
     return GetSslCertificateArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sslCertificate: (map['sslCertificate'] as String).input(),
     );
   }

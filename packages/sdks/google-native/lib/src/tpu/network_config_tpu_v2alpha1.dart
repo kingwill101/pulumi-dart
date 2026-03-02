@@ -36,10 +36,10 @@ class NetworkConfigTpuV2alpha1 {
 
   factory NetworkConfigTpuV2alpha1.fromMap(Map<String, dynamic> map) {
     return NetworkConfigTpuV2alpha1(
-      canIpForward: map['canIpForward'] == null ? null : (map['canIpForward'] as bool).input(),
-      enableExternalIps: map['enableExternalIps'] == null ? null : (map['enableExternalIps'] as bool).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      canIpForward: map['canIpForward'] == null ? null : (map['canIpForward']! as bool).input(),
+      enableExternalIps: map['enableExternalIps'] == null ? null : (map['enableExternalIps']! as bool).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

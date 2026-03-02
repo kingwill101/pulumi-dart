@@ -21,7 +21,7 @@ class VMMServerPropertiesResponseCredentials {
 
   factory VMMServerPropertiesResponseCredentials.fromMap(Map<String, dynamic> map) {
     return VMMServerPropertiesResponseCredentials(
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

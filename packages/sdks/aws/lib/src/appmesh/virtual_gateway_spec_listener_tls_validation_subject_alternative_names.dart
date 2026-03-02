@@ -21,7 +21,7 @@ class VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames {
 
   factory VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames(
-      match: (VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
+      match: (VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

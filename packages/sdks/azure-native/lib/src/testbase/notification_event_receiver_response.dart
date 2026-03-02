@@ -27,8 +27,8 @@ class NotificationEventReceiverResponse {
 
   factory NotificationEventReceiverResponse.fromMap(Map<String, dynamic> map) {
     return NotificationEventReceiverResponse(
-      receiverType: map['receiverType'] == null ? null : (map['receiverType'] as String).input(),
-      receiverValue: map['receiverValue'] == null ? null : (NotificationReceiverValueResponse.fromMap((map['receiverValue'] as Map).cast<String, dynamic>())).input(),
+      receiverType: map['receiverType'] == null ? null : (map['receiverType']! as String).input(),
+      receiverValue: map['receiverValue'] == null ? null : (NotificationReceiverValueResponse.fromMap((map['receiverValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class DirectConnection {
 
   factory DirectConnection.fromMap(Map<String, dynamic> map) {
     return DirectConnection(
-      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps'] as int).input(),
-      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession'] as Map).cast<String, dynamic>())).input(),
-      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier'] as String).input(),
-      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId'] as int).input(),
-      sessionAddressProvider: map['sessionAddressProvider'] == null ? null : (map['sessionAddressProvider'] as String).input(),
-      useForPeeringService: map['useForPeeringService'] == null ? null : (map['useForPeeringService'] as bool).input(),
+      bandwidthInMbps: map['bandwidthInMbps'] == null ? null : (map['bandwidthInMbps']! as int).input(),
+      bgpSession: map['bgpSession'] == null ? null : (BgpSession.fromMap((map['bgpSession']! as Map).cast<String, dynamic>())).input(),
+      connectionIdentifier: map['connectionIdentifier'] == null ? null : (map['connectionIdentifier']! as String).input(),
+      peeringDBFacilityId: map['peeringDBFacilityId'] == null ? null : (map['peeringDBFacilityId']! as int).input(),
+      sessionAddressProvider: map['sessionAddressProvider'] == null ? null : (map['sessionAddressProvider']! as String).input(),
+      useForPeeringService: map['useForPeeringService'] == null ? null : (map['useForPeeringService']! as bool).input(),
     );
   }
 }

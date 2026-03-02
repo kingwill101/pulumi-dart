@@ -27,7 +27,7 @@ class ContainerGroupProfileResponse {
   factory ContainerGroupProfileResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfileResponse(
       id: (map['id'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
     );
   }
 }

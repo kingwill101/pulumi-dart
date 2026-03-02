@@ -56,12 +56,12 @@ class GuardrailSensitiveInformationPolicyConfigRegexesConfig {
   factory GuardrailSensitiveInformationPolicyConfigRegexesConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailSensitiveInformationPolicyConfigRegexesConfig(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      inputAction: map['inputAction'] == null ? null : (map['inputAction'] as String).input(),
-      inputEnabled: map['inputEnabled'] == null ? null : (map['inputEnabled'] as bool).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      inputAction: map['inputAction'] == null ? null : ((map['inputAction'] as String).input()).input(),
+      inputEnabled: map['inputEnabled'] == null ? null : ((map['inputEnabled'] as bool).input()).input(),
       name: (map['name'] as String).input(),
-      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
-      outputEnabled: map['outputEnabled'] == null ? null : (map['outputEnabled'] as bool).input(),
+      outputAction: map['outputAction'] == null ? null : ((map['outputAction'] as String).input()).input(),
+      outputEnabled: map['outputEnabled'] == null ? null : ((map['outputEnabled'] as bool).input()).input(),
       pattern: (map['pattern'] as String).input(),
     );
   }

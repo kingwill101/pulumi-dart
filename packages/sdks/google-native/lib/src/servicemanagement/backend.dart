@@ -22,7 +22,7 @@ class Backend {
 
   factory Backend.fromMap(Map<String, dynamic> map) {
     return Backend(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BackendRule>(map['rules'], (value) => BackendRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BackendRule>(map['rules']!, (value) => BackendRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

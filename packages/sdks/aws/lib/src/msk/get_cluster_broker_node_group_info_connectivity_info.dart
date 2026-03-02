@@ -25,8 +25,8 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfo {
 
   factory GetClusterBrokerNodeGroupInfoConnectivityInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfo(
-      publicAccesses: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess>(map['publicAccesses'], (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcConnectivities: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity>(map['vpcConnectivities'], (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicAccesses: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess>(map['publicAccesses']!, (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcConnectivities: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity>(map['vpcConnectivities']!, (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

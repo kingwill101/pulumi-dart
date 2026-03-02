@@ -46,12 +46,12 @@ class PortMappingResponse {
 
   factory PortMappingResponse.fromMap(Map<String, dynamic> map) {
     return PortMappingResponse(
-      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol'] as String).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
-      containerPortRange: map['containerPortRange'] == null ? null : (map['containerPortRange'] as String).input(),
-      hostPort: map['hostPort'] == null ? null : (map['hostPort'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      appProtocol: map['appProtocol'] == null ? null : (map['appProtocol']! as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
+      containerPortRange: map['containerPortRange'] == null ? null : (map['containerPortRange']! as String).input(),
+      hostPort: map['hostPort'] == null ? null : (map['hostPort']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

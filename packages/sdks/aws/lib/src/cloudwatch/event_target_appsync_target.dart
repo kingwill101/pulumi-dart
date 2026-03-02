@@ -20,7 +20,7 @@ class EventTargetAppsyncTarget {
 
   factory EventTargetAppsyncTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetAppsyncTarget(
-      graphqlOperation: map['graphqlOperation'] == null ? null : (map['graphqlOperation'] as String).input(),
+      graphqlOperation: map['graphqlOperation'] == null ? null : ((map['graphqlOperation'] as String).input()).input(),
     );
   }
 }

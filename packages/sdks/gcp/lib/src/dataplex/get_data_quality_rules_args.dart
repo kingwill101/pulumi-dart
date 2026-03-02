@@ -35,8 +35,8 @@ class GetDataQualityRulesArgs {
   factory GetDataQualityRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetDataQualityRulesArgs(
       dataScanId: (map['dataScanId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

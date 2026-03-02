@@ -22,7 +22,7 @@ class WorkstationConfigHost {
 
   factory WorkstationConfigHost.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHost(
-      gceInstance: map['gceInstance'] == null ? null : (WorkstationConfigHostGceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>())).input(),
+      gceInstance: map['gceInstance'] == null ? null : (WorkstationConfigHostGceInstance.fromMap((map['gceInstance']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

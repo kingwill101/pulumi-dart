@@ -31,7 +31,7 @@ class GetCloudExadataInfrastructuresResult {
 
   factory GetCloudExadataInfrastructuresResult.fromMap(Map<String, dynamic> map) {
     return GetCloudExadataInfrastructuresResult(
-      cloudExadataInfrastructures: pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure>(map['cloudExadataInfrastructures'], (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap((value as Map).cast<String, dynamic>())),
+      cloudExadataInfrastructures: pulumi.Input.decodeList<GetCloudExadataInfrastructuresCloudExadataInfrastructure>(map['cloudExadataInfrastructures']!, (value) => GetCloudExadataInfrastructuresCloudExadataInfrastructure.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

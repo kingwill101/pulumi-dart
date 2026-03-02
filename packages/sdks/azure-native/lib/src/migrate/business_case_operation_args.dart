@@ -40,10 +40,10 @@ class BusinessCaseOperationArgs {
 
   factory BusinessCaseOperationArgs.fromMap(Map<String, dynamic> map) {
     return BusinessCaseOperationArgs(
-      businessCaseName: map['businessCaseName'] == null ? null : (map['businessCaseName'] as String).input(),
+      businessCaseName: map['businessCaseName'] == null ? null : (map['businessCaseName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      settings: map['settings'] == null ? null : (Settings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (Settings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

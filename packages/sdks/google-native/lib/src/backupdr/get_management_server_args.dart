@@ -33,7 +33,7 @@ class GetManagementServerArgs {
     return GetManagementServerArgs(
       location: (map['location'] as String).input(),
       managementServerId: (map['managementServerId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

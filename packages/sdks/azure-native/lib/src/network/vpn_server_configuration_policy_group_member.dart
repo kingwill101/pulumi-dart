@@ -31,9 +31,9 @@ class VpnServerConfigurationPolicyGroupMember {
 
   factory VpnServerConfigurationPolicyGroupMember.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationPolicyGroupMember(
-      attributeType: map['attributeType'] == null ? null : (map['attributeType'] as String).input(),
-      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
+      attributeValue: map['attributeValue'] == null ? null : (map['attributeValue']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

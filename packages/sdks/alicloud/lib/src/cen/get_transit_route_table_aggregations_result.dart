@@ -61,11 +61,11 @@ class GetTransitRouteTableAggregationsResult {
     return GetTransitRouteTableAggregationsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : map['transitRouteTableAggregationCidr'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      transitRouteTableAggregationCidr: map['transitRouteTableAggregationCidr'] == null ? null : map['transitRouteTableAggregationCidr']! as String,
       transitRouteTableAggregations: pulumi.Input.decodeList<GetTransitRouteTableAggregationsTransitRouteTableAggregation>(map['transitRouteTableAggregations'], (value) => GetTransitRouteTableAggregationsTransitRouteTableAggregation.fromMap((value as Map).cast<String, dynamic>())),
       transitRouteTableId: map['transitRouteTableId'] as String,
     );

@@ -32,9 +32,9 @@ class LogConfigResponse {
 
   factory LogConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigResponse(
-      cloudWatchLogsRoleArn: map['cloudWatchLogsRoleArn'] == null ? null : (map['cloudWatchLogsRoleArn'] as String).input(),
-      excludeVerboseContent: map['excludeVerboseContent'] == null ? null : (map['excludeVerboseContent'] as bool).input(),
-      fieldLogLevel: map['fieldLogLevel'] == null ? null : (FieldLogLevelEnumValueResponse.fromMap((map['fieldLogLevel'] as Map).cast<String, dynamic>())).input(),
+      cloudWatchLogsRoleArn: map['cloudWatchLogsRoleArn'] == null ? null : (map['cloudWatchLogsRoleArn']! as String).input(),
+      excludeVerboseContent: map['excludeVerboseContent'] == null ? null : (map['excludeVerboseContent']! as bool).input(),
+      fieldLogLevel: map['fieldLogLevel'] == null ? null : (FieldLogLevelEnumValueResponse.fromMap((map['fieldLogLevel']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

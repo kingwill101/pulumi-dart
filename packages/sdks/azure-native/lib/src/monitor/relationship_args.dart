@@ -47,8 +47,8 @@ class RelationshipArgs {
     return RelationshipArgs(
       azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
       healthModelName: (map['healthModelName'] as String).input(),
-      properties: map['properties'] == null ? null : (RelationshipProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName'] as String).input(),
+      properties: map['properties'] == null ? null : (RelationshipProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      relationshipName: map['relationshipName'] == null ? null : (map['relationshipName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -58,13 +58,13 @@ class SessionLoggerArgs {
 
   factory SessionLoggerArgs.fromMap(Map<String, dynamic> map) {
     return SessionLoggerArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : ((map['additionalEncryptionContext'] as Map).cast<String, String>()).input(),
-      customerManagedKey: map['customerManagedKey'] == null ? null : (map['customerManagedKey'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      eventFilter: (SessionLoggerEventFilter.fromMap((map['eventFilter'] as Map).cast<String, dynamic>())).input(),
-      logConfiguration: (SessionLoggerLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (((map['additionalEncryptionContext'] as Map).cast<String, String>()).input()).input(),
+      customerManagedKey: map['customerManagedKey'] == null ? null : ((map['customerManagedKey'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      eventFilter: (SessionLoggerEventFilter.fromMap((map['eventFilter']! as Map).cast<String, dynamic>())).input(),
+      logConfiguration: (SessionLoggerLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

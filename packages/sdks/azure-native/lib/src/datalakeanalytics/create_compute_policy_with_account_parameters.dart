@@ -41,8 +41,8 @@ class CreateComputePolicyWithAccountParameters {
 
   factory CreateComputePolicyWithAccountParameters.fromMap(Map<String, dynamic> map) {
     return CreateComputePolicyWithAccountParameters(
-      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob'] as int).input(),
-      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob'] as int).input(),
+      maxDegreeOfParallelismPerJob: map['maxDegreeOfParallelismPerJob'] == null ? null : (map['maxDegreeOfParallelismPerJob']! as int).input(),
+      minPriorityPerJob: map['minPriorityPerJob'] == null ? null : (map['minPriorityPerJob']! as int).input(),
       name: (map['name'] as String).input(),
       objectId: (map['objectId'] as String).input(),
       objectType: (map['objectType'] as String).input(),

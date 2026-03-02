@@ -21,7 +21,7 @@ class AmdSevSnpSpecificationEnumValueResponse {
 
   factory AmdSevSnpSpecificationEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return AmdSevSnpSpecificationEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

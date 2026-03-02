@@ -26,8 +26,8 @@ class TriggerTransportPubsub {
 
   factory TriggerTransportPubsub.fromMap(Map<String, dynamic> map) {
     return TriggerTransportPubsub(
-      subscription: map['subscription'] == null ? null : (map['subscription'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      subscription: map['subscription'] == null ? null : (map['subscription']! as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

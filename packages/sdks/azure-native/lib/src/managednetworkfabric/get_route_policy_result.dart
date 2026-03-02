@@ -93,12 +93,12 @@ class GetRoutePolicyResult {
 
   factory GetRoutePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetRoutePolicyResult(
-      addressFamilyType: map['addressFamilyType'] == null ? null : map['addressFamilyType'] as String,
+      addressFamilyType: map['addressFamilyType'] == null ? null : map['addressFamilyType']! as String,
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
-      defaultAction: map['defaultAction'] == null ? null : map['defaultAction'] as String,
+      defaultAction: map['defaultAction'] == null ? null : map['defaultAction']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -106,7 +106,7 @@ class GetRoutePolicyResult {
       provisioningState: map['provisioningState'] as String,
       statements: pulumi.Input.decodeList<RoutePolicyStatementPropertiesResponse>(map['statements'], (value) => RoutePolicyStatementPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

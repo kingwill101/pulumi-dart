@@ -25,8 +25,8 @@ class SparkResourceConfiguration {
 
   factory SparkResourceConfiguration.fromMap(Map<String, dynamic> map) {
     return SparkResourceConfiguration(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

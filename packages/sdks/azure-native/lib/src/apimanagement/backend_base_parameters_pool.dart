@@ -21,7 +21,7 @@ class BackendBaseParametersPool {
 
   factory BackendBaseParametersPool.fromMap(Map<String, dynamic> map) {
     return BackendBaseParametersPool(
-      services: map['services'] == null ? null : (pulumi.Input.decodeList<BackendPoolItem>(map['services'], (value) => BackendPoolItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      services: map['services'] == null ? null : (pulumi.Input.decodeList<BackendPoolItem>(map['services']!, (value) => BackendPoolItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

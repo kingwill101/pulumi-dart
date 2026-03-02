@@ -21,7 +21,7 @@ class PathOverride {
 
   factory PathOverride.fromMap(Map<String, dynamic> map) {
     return PathOverride(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

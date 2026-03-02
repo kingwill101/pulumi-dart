@@ -31,8 +31,8 @@ class ScheduledQueryRulesAlertAction {
   factory ScheduledQueryRulesAlertAction.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRulesAlertAction(
       actionGroups: ((map['actionGroups'] as List).cast<String>()).input(),
-      customWebhookPayload: map['customWebhookPayload'] == null ? null : (map['customWebhookPayload'] as String).input(),
-      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
+      customWebhookPayload: map['customWebhookPayload'] == null ? null : (map['customWebhookPayload']! as String).input(),
+      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject']! as String).input(),
     );
   }
 }

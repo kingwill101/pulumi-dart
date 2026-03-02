@@ -66,15 +66,15 @@ class SkypeChannelPropertiesResponse {
 
   factory SkypeChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SkypeChannelPropertiesResponse(
-      callingWebHook: map['callingWebHook'] == null ? null : (map['callingWebHook'] as String).input(),
-      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling'] as bool).input(),
-      enableGroups: map['enableGroups'] == null ? null : (map['enableGroups'] as bool).input(),
-      enableMediaCards: map['enableMediaCards'] == null ? null : (map['enableMediaCards'] as bool).input(),
-      enableMessaging: map['enableMessaging'] == null ? null : (map['enableMessaging'] as bool).input(),
-      enableScreenSharing: map['enableScreenSharing'] == null ? null : (map['enableScreenSharing'] as bool).input(),
-      enableVideo: map['enableVideo'] == null ? null : (map['enableVideo'] as bool).input(),
-      groupsMode: map['groupsMode'] == null ? null : (map['groupsMode'] as String).input(),
-      incomingCallRoute: map['incomingCallRoute'] == null ? null : (map['incomingCallRoute'] as String).input(),
+      callingWebHook: map['callingWebHook'] == null ? null : (map['callingWebHook']! as String).input(),
+      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling']! as bool).input(),
+      enableGroups: map['enableGroups'] == null ? null : (map['enableGroups']! as bool).input(),
+      enableMediaCards: map['enableMediaCards'] == null ? null : (map['enableMediaCards']! as bool).input(),
+      enableMessaging: map['enableMessaging'] == null ? null : (map['enableMessaging']! as bool).input(),
+      enableScreenSharing: map['enableScreenSharing'] == null ? null : (map['enableScreenSharing']! as bool).input(),
+      enableVideo: map['enableVideo'] == null ? null : (map['enableVideo']! as bool).input(),
+      groupsMode: map['groupsMode'] == null ? null : (map['groupsMode']! as String).input(),
+      incomingCallRoute: map['incomingCallRoute'] == null ? null : (map['incomingCallRoute']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
     );
   }

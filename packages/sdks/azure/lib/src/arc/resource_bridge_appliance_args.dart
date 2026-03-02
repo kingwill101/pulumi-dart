@@ -63,11 +63,11 @@ class ResourceBridgeApplianceArgs {
       distro: (map['distro'] as String).input(),
       identity: (ResourceBridgeApplianceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
       infrastructureProvider: (map['infrastructureProvider'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicKeyBase64: map['publicKeyBase64'] == null ? null : (map['publicKeyBase64'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicKeyBase64: map['publicKeyBase64'] == null ? null : (map['publicKeyBase64']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

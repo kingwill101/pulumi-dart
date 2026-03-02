@@ -21,7 +21,7 @@ class DataCacheConfig {
 
   factory DataCacheConfig.fromMap(Map<String, dynamic> map) {
     return DataCacheConfig(
-      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled'] as bool).input(),
+      dataCacheEnabled: map['dataCacheEnabled'] == null ? null : (map['dataCacheEnabled']! as bool).input(),
     );
   }
 }

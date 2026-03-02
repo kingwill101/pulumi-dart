@@ -78,16 +78,16 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      contactNotices: map['contactNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationContactNoticesItem>(map['contactNotices'], (value) => RegistrationContactNoticesItem.fromValue(value as String))).input(),
+      contactNotices: map['contactNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationContactNoticesItem>(map['contactNotices']!, (value) => RegistrationContactNoticesItem.fromValue(value as String))).input(),
       contactSettings: (ContactSettings.fromMap((map['contactSettings'] as Map).cast<String, dynamic>())).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (DnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
       domainName: (map['domainName'] as String).input(),
-      domainNotices: map['domainNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationDomainNoticesItem>(map['domainNotices'], (value) => RegistrationDomainNoticesItem.fromValue(value as String))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementSettings: map['managementSettings'] == null ? null : (ManagementSettings.fromMap((map['managementSettings'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly'] as bool).input(),
+      domainNotices: map['domainNotices'] == null ? null : (pulumi.Input.decodeList<RegistrationDomainNoticesItem>(map['domainNotices']!, (value) => RegistrationDomainNoticesItem.fromValue(value as String))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementSettings: map['managementSettings'] == null ? null : (ManagementSettings.fromMap((map['managementSettings']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      validateOnly: map['validateOnly'] == null ? null : (map['validateOnly']! as bool).input(),
       yearlyPrice: (Money.fromMap((map['yearlyPrice'] as Map).cast<String, dynamic>())).input(),
     );
   }

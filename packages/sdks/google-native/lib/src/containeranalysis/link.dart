@@ -44,11 +44,11 @@ class Link {
 
   factory Link.fromMap(Map<String, dynamic> map) {
     return Link(
-      byproducts: map['byproducts'] == null ? null : (ByProducts.fromMap((map['byproducts'] as Map).cast<String, dynamic>())).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      environment: map['environment'] == null ? null : (Environment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoArtifact>(map['materials'], (value) => GrafeasV1beta1IntotoArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      products: map['products'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoArtifact>(map['products'], (value) => GrafeasV1beta1IntotoArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      byproducts: map['byproducts'] == null ? null : (ByProducts.fromMap((map['byproducts']! as Map).cast<String, dynamic>())).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      environment: map['environment'] == null ? null : (Environment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoArtifact>(map['materials']!, (value) => GrafeasV1beta1IntotoArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      products: map['products'] == null ? null : (pulumi.Input.decodeList<GrafeasV1beta1IntotoArtifact>(map['products']!, (value) => GrafeasV1beta1IntotoArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class ManagedHardwareSecurityModuleRoleDefinitionState {
 
   factory ManagedHardwareSecurityModuleRoleDefinitionState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleDefinitionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions'], (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      roleType: map['roleType'] == null ? null : (map['roleType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managedHsmId: map['managedHsmId'] == null ? null : (map['managedHsmId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<ManagedHardwareSecurityModuleRoleDefinitionPermission>(map['permissions']!, (value) => ManagedHardwareSecurityModuleRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      roleType: map['roleType'] == null ? null : (map['roleType']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class CryptoKeyVersionArgs {
 
   factory CryptoKeyVersionArgs.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionArgs(
-      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId'] as String).input(),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (ExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
+      cryptoKeyId: map['cryptoKeyId'] == null ? null : (map['cryptoKeyId']! as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (ExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions']! as Map).cast<String, dynamic>())).input(),
       keyRingId: (map['keyRingId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (CryptoKeyVersionState.fromValue(map['state'] as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (CryptoKeyVersionState.fromValue(map['state']! as String)).input(),
     );
   }
 }

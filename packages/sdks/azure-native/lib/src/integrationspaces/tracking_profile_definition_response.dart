@@ -33,9 +33,9 @@ class TrackingProfileDefinitionResponse {
 
   factory TrackingProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return TrackingProfileDefinitionResponse(
-      businessProcess: map['businessProcess'] == null ? null : (BusinessProcessReferenceResponse.fromMap((map['businessProcess'] as Map).cast<String, dynamic>())).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      trackingDefinitions: map['trackingDefinitions'] == null ? null : (pulumi.Input.decodeMapValues<FlowTrackingDefinitionResponse>(map['trackingDefinitions'], (value) => FlowTrackingDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessProcess: map['businessProcess'] == null ? null : (BusinessProcessReferenceResponse.fromMap((map['businessProcess']! as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      trackingDefinitions: map['trackingDefinitions'] == null ? null : (pulumi.Input.decodeMapValues<FlowTrackingDefinitionResponse>(map['trackingDefinitions']!, (value) => FlowTrackingDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

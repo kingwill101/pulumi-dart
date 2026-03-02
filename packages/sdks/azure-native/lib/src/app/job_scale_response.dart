@@ -37,10 +37,10 @@ class JobScaleResponse {
 
   factory JobScaleResponse.fromMap(Map<String, dynamic> map) {
     return JobScaleResponse(
-      maxExecutions: map['maxExecutions'] == null ? null : (map['maxExecutions'] as int).input(),
-      minExecutions: map['minExecutions'] == null ? null : (map['minExecutions'] as int).input(),
-      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval'] as int).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<JobScaleRuleResponse>(map['rules'], (value) => JobScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxExecutions: map['maxExecutions'] == null ? null : (map['maxExecutions']! as int).input(),
+      minExecutions: map['minExecutions'] == null ? null : (map['minExecutions']! as int).input(),
+      pollingInterval: map['pollingInterval'] == null ? null : (map['pollingInterval']! as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<JobScaleRuleResponse>(map['rules']!, (value) => JobScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

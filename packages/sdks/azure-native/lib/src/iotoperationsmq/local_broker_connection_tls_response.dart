@@ -26,8 +26,8 @@ class LocalBrokerConnectionTlsResponse {
 
   factory LocalBrokerConnectionTlsResponse.fromMap(Map<String, dynamic> map) {
     return LocalBrokerConnectionTlsResponse(
-      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled'] as bool).input(),
-      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap'] as String).input(),
+      tlsEnabled: map['tlsEnabled'] == null ? null : (map['tlsEnabled']! as bool).input(),
+      trustedCaCertificateConfigMap: map['trustedCaCertificateConfigMap'] == null ? null : (map['trustedCaCertificateConfigMap']! as String).input(),
     );
   }
 }

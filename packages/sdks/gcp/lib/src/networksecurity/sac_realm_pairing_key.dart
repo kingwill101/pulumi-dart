@@ -27,8 +27,8 @@ class SacRealmPairingKey {
 
   factory SacRealmPairingKey.fromMap(Map<String, dynamic> map) {
     return SacRealmPairingKey(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

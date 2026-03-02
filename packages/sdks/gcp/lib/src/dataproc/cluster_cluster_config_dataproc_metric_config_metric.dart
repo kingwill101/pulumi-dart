@@ -27,7 +27,7 @@ class ClusterClusterConfigDataprocMetricConfigMetric {
 
   factory ClusterClusterConfigDataprocMetricConfigMetric.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigDataprocMetricConfigMetric(
-      metricOverrides: map['metricOverrides'] == null ? null : ((map['metricOverrides'] as List).cast<String>()).input(),
+      metricOverrides: map['metricOverrides'] == null ? null : ((map['metricOverrides']! as List).cast<String>()).input(),
       metricSource: (map['metricSource'] as String).input(),
     );
   }

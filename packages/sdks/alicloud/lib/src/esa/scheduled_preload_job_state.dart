@@ -55,13 +55,13 @@ class ScheduledPreloadJobState {
 
   factory ScheduledPreloadJobState.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadJobState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      insertWay: map['insertWay'] == null ? null : (map['insertWay'] as String).input(),
-      ossUrl: map['ossUrl'] == null ? null : (map['ossUrl'] as String).input(),
-      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId'] as String).input(),
-      scheduledPreloadJobName: map['scheduledPreloadJobName'] == null ? null : (map['scheduledPreloadJobName'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      urlList: map['urlList'] == null ? null : (map['urlList'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      insertWay: map['insertWay'] == null ? null : (map['insertWay']! as String).input(),
+      ossUrl: map['ossUrl'] == null ? null : (map['ossUrl']! as String).input(),
+      scheduledPreloadJobId: map['scheduledPreloadJobId'] == null ? null : (map['scheduledPreloadJobId']! as String).input(),
+      scheduledPreloadJobName: map['scheduledPreloadJobName'] == null ? null : (map['scheduledPreloadJobName']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      urlList: map['urlList'] == null ? null : (map['urlList']! as String).input(),
     );
   }
 }

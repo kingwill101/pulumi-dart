@@ -47,12 +47,12 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sourceLanguageCode: map['sourceLanguageCode'] == null ? null : (map['sourceLanguageCode'] as String).input(),
-      targetLanguageCode: map['targetLanguageCode'] == null ? null : (map['targetLanguageCode'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sourceLanguageCode: map['sourceLanguageCode'] == null ? null : (map['sourceLanguageCode']! as String).input(),
+      targetLanguageCode: map['targetLanguageCode'] == null ? null : (map['targetLanguageCode']! as String).input(),
     );
   }
 }

@@ -42,9 +42,9 @@ class GetInstanceV2Args {
   factory GetInstanceV2Args.fromMap(Map<String, dynamic> map) {
     return GetInstanceV2Args(
       id: (map['id'] as String).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetInstanceV2Network>(map['networks'], (value) => GetInstanceV2Network.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<GetInstanceV2Network>(map['networks']!, (value) => GetInstanceV2Network.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      userData: map['userData'] == null ? null : (map['userData']! as String).input(),
     );
   }
 }

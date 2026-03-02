@@ -26,8 +26,8 @@ class QosIpRangeResponse {
 
   factory QosIpRangeResponse.fromMap(Map<String, dynamic> map) {
     return QosIpRangeResponse(
-      endIP: map['endIP'] == null ? null : (map['endIP'] as String).input(),
-      startIP: map['startIP'] == null ? null : (map['startIP'] as String).input(),
+      endIP: map['endIP'] == null ? null : (map['endIP']! as String).input(),
+      startIP: map['startIP'] == null ? null : (map['startIP']! as String).input(),
     );
   }
 }

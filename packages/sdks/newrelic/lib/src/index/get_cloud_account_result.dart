@@ -32,7 +32,7 @@ class GetCloudAccountResult {
 
   factory GetCloudAccountResult.fromMap(Map<String, dynamic> map) {
     return GetCloudAccountResult(
-      accountId: map['accountId'] == null ? null : map['accountId'] as String,
+      accountId: map['accountId'] == null ? null : map['accountId']! as String,
       cloudProvider: map['cloudProvider'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

@@ -36,8 +36,8 @@ class GetAgentAgentVersionsArgs {
   factory GetAgentAgentVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetAgentAgentVersionsArgs(
       agentId: (map['agentId'] as String).input(),
-      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : (pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries'], (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      agentVersionSummaries: map['agentVersionSummaries'] == null ? null : ((pulumi.Input.decodeList<GetAgentAgentVersionsAgentVersionSummary>(map['agentVersionSummaries']!, (value) => GetAgentAgentVersionsAgentVersionSummary.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

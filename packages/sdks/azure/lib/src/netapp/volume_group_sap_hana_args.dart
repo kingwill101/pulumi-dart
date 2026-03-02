@@ -58,8 +58,8 @@ class VolumeGroupSapHanaArgs {
       accountName: (map['accountName'] as String).input(),
       applicationIdentifier: (map['applicationIdentifier'] as String).input(),
       groupDescription: (map['groupDescription'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       volumes: (pulumi.Input.decodeList<VolumeGroupSapHanaVolume>(map['volumes'], (value) => VolumeGroupSapHanaVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

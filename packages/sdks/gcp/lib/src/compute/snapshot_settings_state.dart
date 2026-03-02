@@ -30,8 +30,8 @@ class SnapshotSettingsState {
 
   factory SnapshotSettingsState.fromMap(Map<String, dynamic> map) {
     return SnapshotSettingsState(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (SnapshotSettingsStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (SnapshotSettingsStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

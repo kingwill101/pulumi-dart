@@ -33,9 +33,9 @@ class GoogleCloudRunV2VpcAccess {
 
   factory GoogleCloudRunV2VpcAccess.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2VpcAccess(
-      connector: map['connector'] == null ? null : (map['connector'] as String).input(),
-      egress: map['egress'] == null ? null : (GoogleCloudRunV2VpcAccessEgress.fromValue(map['egress'] as String)).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2NetworkInterface>(map['networkInterfaces'], (value) => GoogleCloudRunV2NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connector: map['connector'] == null ? null : (map['connector']! as String).input(),
+      egress: map['egress'] == null ? null : (GoogleCloudRunV2VpcAccessEgress.fromValue(map['egress']! as String)).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRunV2NetworkInterface>(map['networkInterfaces']!, (value) => GoogleCloudRunV2NetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

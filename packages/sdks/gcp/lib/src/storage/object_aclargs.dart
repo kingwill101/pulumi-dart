@@ -44,8 +44,8 @@ class ObjectACLArgs {
     return ObjectACLArgs(
       bucket: (map['bucket'] as String).input(),
       object: (map['object'] as String).input(),
-      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl'] as String).input(),
-      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities'] as List).cast<String>()).input(),
+      predefinedAcl: map['predefinedAcl'] == null ? null : (map['predefinedAcl']! as String).input(),
+      roleEntities: map['roleEntities'] == null ? null : ((map['roleEntities']! as List).cast<String>()).input(),
     );
   }
 }

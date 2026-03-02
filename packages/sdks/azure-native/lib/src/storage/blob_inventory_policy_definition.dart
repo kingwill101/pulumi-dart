@@ -42,7 +42,7 @@ class BlobInventoryPolicyDefinition {
 
   factory BlobInventoryPolicyDefinition.fromMap(Map<String, dynamic> map) {
     return BlobInventoryPolicyDefinition(
-      filters: map['filters'] == null ? null : (BlobInventoryPolicyFilter.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      filters: map['filters'] == null ? null : (BlobInventoryPolicyFilter.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
       format: (map['format'] as String).input(),
       objectType: (map['objectType'] as String).input(),
       schedule: (map['schedule'] as String).input(),

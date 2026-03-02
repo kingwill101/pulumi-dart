@@ -31,9 +31,9 @@ class LinuxContainerUserPatch {
 
   factory LinuxContainerUserPatch.fromMap(Map<String, dynamic> map) {
     return LinuxContainerUserPatch(
-      gid: map['gid'] == null ? null : (map['gid'] as int).input(),
-      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups'] as List).cast<int>()).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as int).input(),
+      gid: map['gid'] == null ? null : (map['gid']! as int).input(),
+      supplementalGroups: map['supplementalGroups'] == null ? null : ((map['supplementalGroups']! as List).cast<int>()).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as int).input(),
     );
   }
 }

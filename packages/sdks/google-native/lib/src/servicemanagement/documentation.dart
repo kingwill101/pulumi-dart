@@ -53,13 +53,13 @@ class Documentation {
 
   factory Documentation.fromMap(Map<String, dynamic> map) {
     return Documentation(
-      documentationRootUrl: map['documentationRootUrl'] == null ? null : (map['documentationRootUrl'] as String).input(),
-      overview: map['overview'] == null ? null : (map['overview'] as String).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<Page>(map['pages'], (value) => Page.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DocumentationRule>(map['rules'], (value) => DocumentationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sectionOverrides: map['sectionOverrides'] == null ? null : (pulumi.Input.decodeList<Page>(map['sectionOverrides'], (value) => Page.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceRootUrl: map['serviceRootUrl'] == null ? null : (map['serviceRootUrl'] as String).input(),
-      summary: map['summary'] == null ? null : (map['summary'] as String).input(),
+      documentationRootUrl: map['documentationRootUrl'] == null ? null : (map['documentationRootUrl']! as String).input(),
+      overview: map['overview'] == null ? null : (map['overview']! as String).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<Page>(map['pages']!, (value) => Page.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DocumentationRule>(map['rules']!, (value) => DocumentationRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sectionOverrides: map['sectionOverrides'] == null ? null : (pulumi.Input.decodeList<Page>(map['sectionOverrides']!, (value) => Page.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceRootUrl: map['serviceRootUrl'] == null ? null : (map['serviceRootUrl']! as String).input(),
+      summary: map['summary'] == null ? null : (map['summary']! as String).input(),
     );
   }
 }

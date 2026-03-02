@@ -34,7 +34,7 @@ class PipelineDestinationAuthenticationConfigOauthToken {
 
   factory PipelineDestinationAuthenticationConfigOauthToken.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationAuthenticationConfigOauthToken(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }

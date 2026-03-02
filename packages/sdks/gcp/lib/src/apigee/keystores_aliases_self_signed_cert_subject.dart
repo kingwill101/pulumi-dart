@@ -50,13 +50,13 @@ class KeystoresAliasesSelfSignedCertSubject {
 
   factory KeystoresAliasesSelfSignedCertSubject.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertSubject(
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      locality: map['locality'] == null ? null : (map['locality'] as String).input(),
-      org: map['org'] == null ? null : (map['org'] as String).input(),
-      orgUnit: map['orgUnit'] == null ? null : (map['orgUnit'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
+      countryCode: map['countryCode'] == null ? null : (map['countryCode']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      locality: map['locality'] == null ? null : (map['locality']! as String).input(),
+      org: map['org'] == null ? null : (map['org']! as String).input(),
+      orgUnit: map['orgUnit'] == null ? null : (map['orgUnit']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

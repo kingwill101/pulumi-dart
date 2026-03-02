@@ -30,8 +30,8 @@ class InstanceKibanaConfiguration {
 
   factory InstanceKibanaConfiguration.fromMap(Map<String, dynamic> map) {
     return InstanceKibanaConfiguration(
-      amount: map['amount'] == null ? null : (map['amount'] as int).input(),
-      disk: map['disk'] == null ? null : (map['disk'] as int).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as int).input(),
+      disk: map['disk'] == null ? null : (map['disk']! as int).input(),
       spec: (map['spec'] as String).input(),
     );
   }

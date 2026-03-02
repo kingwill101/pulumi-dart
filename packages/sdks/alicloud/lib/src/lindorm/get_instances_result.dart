@@ -58,16 +58,16 @@ class GetInstancesResult {
 
   factory GetInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetInstancesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instances: pulumi.Input.decodeList<GetInstancesInstance>(map['instances'], (value) => GetInstancesInstance.fromMap((value as Map).cast<String, dynamic>())),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      queryStr: map['queryStr'] == null ? null : map['queryStr'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      supportEngine: map['supportEngine'] == null ? null : map['supportEngine'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      queryStr: map['queryStr'] == null ? null : map['queryStr']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      supportEngine: map['supportEngine'] == null ? null : map['supportEngine']! as int,
     );
   }
 }

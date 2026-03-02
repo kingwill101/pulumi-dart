@@ -70,12 +70,12 @@ class KxVolumeArgs {
     return KxVolumeArgs(
       availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
       azMode: (map['azMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nas1Configurations: map['nas1Configurations'] == null ? null : (pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations'], (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      nas1Configurations: map['nas1Configurations'] == null ? null : ((pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations']!, (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

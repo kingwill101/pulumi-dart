@@ -36,9 +36,9 @@ class IdentityPoolRoleAttachmentRoleMapping {
 
   factory IdentityPoolRoleAttachmentRoleMapping.fromMap(Map<String, dynamic> map) {
     return IdentityPoolRoleAttachmentRoleMapping(
-      ambiguousRoleResolution: map['ambiguousRoleResolution'] == null ? null : (map['ambiguousRoleResolution'] as String).input(),
+      ambiguousRoleResolution: map['ambiguousRoleResolution'] == null ? null : ((map['ambiguousRoleResolution'] as String).input()).input(),
       identityProvider: (map['identityProvider'] as String).input(),
-      mappingRules: map['mappingRules'] == null ? null : (pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMappingMappingRule>(map['mappingRules'], (value) => IdentityPoolRoleAttachmentRoleMappingMappingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mappingRules: map['mappingRules'] == null ? null : ((pulumi.Input.decodeList<IdentityPoolRoleAttachmentRoleMappingMappingRule>(map['mappingRules']!, (value) => IdentityPoolRoleAttachmentRoleMappingMappingRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

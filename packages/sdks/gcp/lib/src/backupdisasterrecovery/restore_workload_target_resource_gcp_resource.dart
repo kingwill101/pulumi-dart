@@ -30,9 +30,9 @@ class RestoreWorkloadTargetResourceGcpResource {
 
   factory RestoreWorkloadTargetResourceGcpResource.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadTargetResourceGcpResource(
-      gcpResourcename: map['gcpResourcename'] == null ? null : (map['gcpResourcename'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      gcpResourcename: map['gcpResourcename'] == null ? null : (map['gcpResourcename']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

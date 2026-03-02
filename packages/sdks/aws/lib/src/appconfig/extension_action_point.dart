@@ -26,7 +26,7 @@ class ExtensionActionPoint {
 
   factory ExtensionActionPoint.fromMap(Map<String, dynamic> map) {
     return ExtensionActionPoint(
-      actions: (pulumi.Input.decodeList<ExtensionActionPointAction>(map['actions'], (value) => ExtensionActionPointAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<ExtensionActionPointAction>(map['actions']!, (value) => ExtensionActionPointAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       point: (map['point'] as String).input(),
     );
   }

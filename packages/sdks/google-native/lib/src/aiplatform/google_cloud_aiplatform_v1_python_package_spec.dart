@@ -42,8 +42,8 @@ class GoogleCloudAiplatformV1PythonPackageSpec {
 
   factory GoogleCloudAiplatformV1PythonPackageSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1PythonPackageSpec(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env'], (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env']!, (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
       executorImageUri: (map['executorImageUri'] as String).input(),
       packageUris: ((map['packageUris'] as List).cast<String>()).input(),
       pythonModule: (map['pythonModule'] as String).input(),

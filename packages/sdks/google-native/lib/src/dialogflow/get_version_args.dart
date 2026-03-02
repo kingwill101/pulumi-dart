@@ -32,7 +32,7 @@ class GetVersionArgs {
   factory GetVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       versionId: (map['versionId'] as String).input(),
     );
   }

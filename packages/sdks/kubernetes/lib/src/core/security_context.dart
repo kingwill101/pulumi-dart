@@ -81,18 +81,18 @@ class SecurityContext {
 
   factory SecurityContext.fromMap(Map<String, dynamic> map) {
     return SecurityContext(
-      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation'] as bool).input(),
-      appArmorProfile: map['appArmorProfile'] == null ? null : (AppArmorProfile.fromMap((map['appArmorProfile'] as Map).cast<String, dynamic>())).input(),
-      capabilities: map['capabilities'] == null ? null : (Capabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
-      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
-      procMount: map['procMount'] == null ? null : (map['procMount'] as String).input(),
-      readOnlyRootFilesystem: map['readOnlyRootFilesystem'] == null ? null : (map['readOnlyRootFilesystem'] as bool).input(),
-      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
-      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot'] as bool).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
-      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptions.fromMap((map['seLinuxOptions'] as Map).cast<String, dynamic>())).input(),
-      seccompProfile: map['seccompProfile'] == null ? null : (SeccompProfile.fromMap((map['seccompProfile'] as Map).cast<String, dynamic>())).input(),
-      windowsOptions: map['windowsOptions'] == null ? null : (WindowsSecurityContextOptions.fromMap((map['windowsOptions'] as Map).cast<String, dynamic>())).input(),
+      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation']! as bool).input(),
+      appArmorProfile: map['appArmorProfile'] == null ? null : (AppArmorProfile.fromMap((map['appArmorProfile']! as Map).cast<String, dynamic>())).input(),
+      capabilities: map['capabilities'] == null ? null : (Capabilities.fromMap((map['capabilities']! as Map).cast<String, dynamic>())).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
+      procMount: map['procMount'] == null ? null : (map['procMount']! as String).input(),
+      readOnlyRootFilesystem: map['readOnlyRootFilesystem'] == null ? null : (map['readOnlyRootFilesystem']! as bool).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup']! as int).input(),
+      runAsNonRoot: map['runAsNonRoot'] == null ? null : (map['runAsNonRoot']! as bool).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
+      seLinuxOptions: map['seLinuxOptions'] == null ? null : (SELinuxOptions.fromMap((map['seLinuxOptions']! as Map).cast<String, dynamic>())).input(),
+      seccompProfile: map['seccompProfile'] == null ? null : (SeccompProfile.fromMap((map['seccompProfile']! as Map).cast<String, dynamic>())).input(),
+      windowsOptions: map['windowsOptions'] == null ? null : (WindowsSecurityContextOptions.fromMap((map['windowsOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class JsonArrayMapper {
 
   factory JsonArrayMapper.fromMap(Map<String, dynamic> map) {
     return JsonArrayMapper(
-      destinationField: map['destinationField'] == null ? null : (JsonMapperDestinationField.fromMap((map['destinationField'] as Map).cast<String, dynamic>())).input(),
+      destinationField: map['destinationField'] == null ? null : (JsonMapperDestinationField.fromMap((map['destinationField']! as Map).cast<String, dynamic>())).input(),
       keys: ((map['keys'] as List).cast<String>()).input(),
-      sourceField: map['sourceField'] == null ? null : (JsonMapperSourceField.fromMap((map['sourceField'] as Map).cast<String, dynamic>())).input(),
+      sourceField: map['sourceField'] == null ? null : (JsonMapperSourceField.fromMap((map['sourceField']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

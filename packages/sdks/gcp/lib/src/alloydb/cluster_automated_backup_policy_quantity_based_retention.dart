@@ -20,7 +20,7 @@ class ClusterAutomatedBackupPolicyQuantityBasedRetention {
 
   factory ClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupPolicyQuantityBasedRetention(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
     );
   }
 }

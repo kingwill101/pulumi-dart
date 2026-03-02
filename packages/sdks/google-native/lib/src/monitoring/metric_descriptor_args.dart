@@ -83,18 +83,18 @@ class MetricDescriptorArgs {
 
   factory MetricDescriptorArgs.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelDescriptor>(map['labels'], (value) => LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchStage: map['launchStage'] == null ? null : (MetricDescriptorLaunchStage.fromValue(map['launchStage'] as String)).input(),
-      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      metricKind: map['metricKind'] == null ? null : (MetricDescriptorMetricKind.fromValue(map['metricKind'] as String)).input(),
-      monitoredResourceTypes: map['monitoredResourceTypes'] == null ? null : ((map['monitoredResourceTypes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
-      valueType: map['valueType'] == null ? null : (MetricDescriptorValueType.fromValue(map['valueType'] as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<LabelDescriptor>(map['labels']!, (value) => LabelDescriptor.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      launchStage: map['launchStage'] == null ? null : (MetricDescriptorLaunchStage.fromValue(map['launchStage']! as String)).input(),
+      metadata: map['metadata'] == null ? null : (MetricDescriptorMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      metricKind: map['metricKind'] == null ? null : (MetricDescriptorMetricKind.fromValue(map['metricKind']! as String)).input(),
+      monitoredResourceTypes: map['monitoredResourceTypes'] == null ? null : ((map['monitoredResourceTypes']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
+      valueType: map['valueType'] == null ? null : (MetricDescriptorValueType.fromValue(map['valueType']! as String)).input(),
     );
   }
 }

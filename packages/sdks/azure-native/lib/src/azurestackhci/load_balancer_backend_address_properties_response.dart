@@ -50,10 +50,10 @@ class LoadBalancerBackendAddressPropertiesResponse {
 
   factory LoadBalancerBackendAddressPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddressPropertiesResponse(
-      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
       ipAddress: (map['ipAddress'] as String).input(),
       logicalNetwork: (LogicalNetworkArmReferenceResponse.fromMap((map['logicalNetwork'] as Map).cast<String, dynamic>())).input(),
-      networkInterfaceIPConfiguration: map['networkInterfaceIPConfiguration'] == null ? null : (IPConfigurationArmReferenceResponse.fromMap((map['networkInterfaceIPConfiguration'] as Map).cast<String, dynamic>())).input(),
+      networkInterfaceIPConfiguration: map['networkInterfaceIPConfiguration'] == null ? null : (IPConfigurationArmReferenceResponse.fromMap((map['networkInterfaceIPConfiguration']! as Map).cast<String, dynamic>())).input(),
       subnet: (VirtualNetworkSubnetArmReferenceResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
       virtualNetwork: (VirtualNetworkArmReferenceResponse.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
     );

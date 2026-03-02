@@ -115,21 +115,21 @@ class DocumentClassifierState {
 
   factory DocumentClassifierState.fromMap(Map<String, dynamic> map) {
     return DocumentClassifierState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataAccessRoleArn: map['dataAccessRoleArn'] == null ? null : (map['dataAccessRoleArn'] as String).input(),
-      inputDataConfig: map['inputDataConfig'] == null ? null : (DocumentClassifierInputDataConfig.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : (map['modelKmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputDataConfig: map['outputDataConfig'] == null ? null : (DocumentClassifierOutputDataConfig.fromMap((map['outputDataConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
-      versionNamePrefix: map['versionNamePrefix'] == null ? null : (map['versionNamePrefix'] as String).input(),
-      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : (map['volumeKmsKeyId'] as String).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (DocumentClassifierVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dataAccessRoleArn: map['dataAccessRoleArn'] == null ? null : ((map['dataAccessRoleArn'] as String).input()).input(),
+      inputDataConfig: map['inputDataConfig'] == null ? null : ((DocumentClassifierInputDataConfig.fromMap((map['inputDataConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      languageCode: map['languageCode'] == null ? null : ((map['languageCode'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      modelKmsKeyId: map['modelKmsKeyId'] == null ? null : ((map['modelKmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      outputDataConfig: map['outputDataConfig'] == null ? null : ((DocumentClassifierOutputDataConfig.fromMap((map['outputDataConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      versionName: map['versionName'] == null ? null : ((map['versionName'] as String).input()).input(),
+      versionNamePrefix: map['versionNamePrefix'] == null ? null : ((map['versionNamePrefix'] as String).input()).input(),
+      volumeKmsKeyId: map['volumeKmsKeyId'] == null ? null : ((map['volumeKmsKeyId'] as String).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((DocumentClassifierVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

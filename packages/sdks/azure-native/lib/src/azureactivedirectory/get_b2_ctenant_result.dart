@@ -74,15 +74,15 @@ class GetB2CTenantResult {
   factory GetB2CTenantResult.fromMap(Map<String, dynamic> map) {
     return GetB2CTenantResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      billingConfig: map['billingConfig'] == null ? null : B2CTenantResourcePropertiesResponseBillingConfig.fromMap((map['billingConfig'] as Map).cast<String, dynamic>()),
+      billingConfig: map['billingConfig'] == null ? null : B2CTenantResourcePropertiesResponseBillingConfig.fromMap((map['billingConfig']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : map['isGoLocalTenant'] as bool,
+      isGoLocalTenant: map['isGoLocalTenant'] == null ? null : map['isGoLocalTenant']! as bool,
       location: map['location'] as String,
       name: map['name'] as String,
       sku: B2CResourceSKUResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

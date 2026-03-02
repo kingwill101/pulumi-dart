@@ -30,8 +30,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetConditions(
-      amazonS3BucketConditions: map['amazonS3BucketConditions'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap((map['amazonS3BucketConditions'] as Map).cast<String, dynamic>())).input(),
-      minAge: map['minAge'] == null ? null : (map['minAge'] as String).input(),
+      amazonS3BucketConditions: map['amazonS3BucketConditions'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions.fromMap((map['amazonS3BucketConditions']! as Map).cast<String, dynamic>())).input(),
+      minAge: map['minAge'] == null ? null : (map['minAge']! as String).input(),
     );
   }
 }

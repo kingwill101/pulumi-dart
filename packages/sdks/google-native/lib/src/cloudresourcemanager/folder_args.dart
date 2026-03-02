@@ -29,7 +29,7 @@ class FolderArgs {
 
   factory FolderArgs.fromMap(Map<String, dynamic> map) {
     return FolderArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

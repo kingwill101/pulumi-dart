@@ -37,7 +37,7 @@ class SubAccountArgs {
 
   factory SubAccountArgs.fromMap(Map<String, dynamic> map) {
     return SubAccountArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       masterBillingAccount: (map['masterBillingAccount'] as String).input(),
     );

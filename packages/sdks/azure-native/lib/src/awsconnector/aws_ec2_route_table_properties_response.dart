@@ -32,9 +32,9 @@ class AwsEc2RouteTablePropertiesResponse {
 
   factory AwsEc2RouteTablePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsEc2RouteTablePropertiesResponse(
-      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      routeTableId: map['routeTableId'] == null ? null : (map['routeTableId']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

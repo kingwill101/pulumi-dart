@@ -41,11 +41,11 @@ class ApplicationGatewaySslCertificate {
 
   factory ApplicationGatewaySslCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewaySslCertificate(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

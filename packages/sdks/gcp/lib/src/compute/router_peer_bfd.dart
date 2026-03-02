@@ -52,9 +52,9 @@ class RouterPeerBfd {
 
   factory RouterPeerBfd.fromMap(Map<String, dynamic> map) {
     return RouterPeerBfd(
-      minReceiveInterval: map['minReceiveInterval'] == null ? null : (map['minReceiveInterval'] as int).input(),
-      minTransmitInterval: map['minTransmitInterval'] == null ? null : (map['minTransmitInterval'] as int).input(),
-      multiplier: map['multiplier'] == null ? null : (map['multiplier'] as int).input(),
+      minReceiveInterval: map['minReceiveInterval'] == null ? null : (map['minReceiveInterval']! as int).input(),
+      minTransmitInterval: map['minTransmitInterval'] == null ? null : (map['minTransmitInterval']! as int).input(),
+      multiplier: map['multiplier'] == null ? null : (map['multiplier']! as int).input(),
       sessionInitializationMode: (map['sessionInitializationMode'] as String).input(),
     );
   }

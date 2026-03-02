@@ -25,8 +25,8 @@ class TemplateApplicationsQuotaApplicationDetailPeriod {
 
   factory TemplateApplicationsQuotaApplicationDetailPeriod.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsQuotaApplicationDetailPeriod(
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      periodValue: map['periodValue'] == null ? null : (map['periodValue'] as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      periodValue: map['periodValue'] == null ? null : (map['periodValue']! as int).input(),
     );
   }
 }

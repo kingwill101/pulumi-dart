@@ -22,7 +22,7 @@ class SecurityGatewayServiceDiscovery {
 
   factory SecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscovery(
-      apiGateway: map['apiGateway'] == null ? null : (SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway'] as Map).cast<String, dynamic>())).input(),
+      apiGateway: map['apiGateway'] == null ? null : (SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

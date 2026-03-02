@@ -47,12 +47,12 @@ class NetworkAppengineV1beta {
 
   factory NetworkAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return NetworkAppengineV1beta(
-      forwardedPorts: map['forwardedPorts'] == null ? null : ((map['forwardedPorts'] as List).cast<String>()).input(),
-      instanceIpMode: map['instanceIpMode'] == null ? null : (NetworkInstanceIpModeAppengineV1beta.fromValue(map['instanceIpMode'] as String)).input(),
-      instanceTag: map['instanceTag'] == null ? null : (map['instanceTag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity'] as bool).input(),
-      subnetworkName: map['subnetworkName'] == null ? null : (map['subnetworkName'] as String).input(),
+      forwardedPorts: map['forwardedPorts'] == null ? null : ((map['forwardedPorts']! as List).cast<String>()).input(),
+      instanceIpMode: map['instanceIpMode'] == null ? null : (NetworkInstanceIpModeAppengineV1beta.fromValue(map['instanceIpMode']! as String)).input(),
+      instanceTag: map['instanceTag'] == null ? null : (map['instanceTag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sessionAffinity: map['sessionAffinity'] == null ? null : (map['sessionAffinity']! as bool).input(),
+      subnetworkName: map['subnetworkName'] == null ? null : (map['subnetworkName']! as String).input(),
     );
   }
 }

@@ -257,9 +257,50 @@ func resolveProgramDirectory(info *pulumirpc.ProgramInfo, fallbacks ...string) s
 	return ""
 }
 
-func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string) string {
-	if info != nil && strings.TrimSpace(info.GetEntryPoint()) != "" {
-		return strings.TrimSpace(info.GetEntryPoint())
+func shouldResolveToBinDartEntryPoint(entryPoint string) bool {
+	entryPoint = strings.TrimSpace(entryPoint)
+	if entryPoint == "" || entryPoint == "." {
+		return false
+	}
+	if filepath.Ext(entryPoint) != "" {
+		return false
+	}
+	if strings.ContainsAny(entryPoint, `/\\`) {
+		return false
+	}
+	return true
+}
+
+func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, programDirectory string) string {
+	if info != nil && strings.TrimSpace(info.GetEntryPoint()) != "" && strings.TrimSpace(info.GetEntryPoint()) != "." {
+		entryPoint := strings.TrimSpace(info.GetEntryPoint())
+		if shouldResolveToBinDartEntryPoint(entryPoint) {
+			if programDirectory != "" {
+				candidate := filepath.Join("bin", entryPoint+".dart")
+				if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
+					return filepath.ToSlash(candidate)
+				}
+			}
+		}
+		return entryPoint
+	}
+	if strings.TrimSpace(fallback) == "." {
+		if programDirectory != "" {
+			if _, err := os.Stat(filepath.Join(programDirectory, "bin", "main.dart")); err == nil {
+				return filepath.ToSlash(filepath.Join("bin", "main.dart"))
+			}
+
+			if pubspecPath, err := findPubspecYaml(programDirectory); err == nil {
+				pubspec, err := ReadAndParsePubspec(pubspecPath)
+				if err == nil && strings.TrimSpace(pubspec.Name) != "" {
+					candidate := filepath.Join("bin", strings.TrimSpace(pubspec.Name)+".dart")
+					if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
+						return filepath.ToSlash(candidate)
+					}
+				}
+			}
+		}
+		return "."
 	}
 	return strings.TrimSpace(fallback)
 }
@@ -932,7 +973,7 @@ func (host *dartLanguageHost) Run(ctx context.Context, req *pulumirpc.RunRequest
 	executable := host.exec
 	args := []string{}
 	programDirectory := resolveProgramDirectory(req.GetInfo(), req.GetPwd())
-	entryPoint := resolveProgramEntryPoint(req.GetInfo(), req.GetProgram())
+	entryPoint := resolveProgramEntryPoint(req.GetInfo(), req.GetProgram(), programDirectory)
 
 	if host.binary != "" {
 		// Use the specified binary

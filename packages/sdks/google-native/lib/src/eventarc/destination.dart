@@ -50,12 +50,12 @@ class Destination {
 
   factory Destination.fromMap(Map<String, dynamic> map) {
     return Destination(
-      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction'] as String).input(),
-      cloudRun: map['cloudRun'] == null ? null : (CloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
-      gke: map['gke'] == null ? null : (GKE.fromMap((map['gke'] as Map).cast<String, dynamic>())).input(),
-      httpEndpoint: map['httpEndpoint'] == null ? null : (HttpEndpoint.fromMap((map['httpEndpoint'] as Map).cast<String, dynamic>())).input(),
-      networkConfig: map['networkConfig'] == null ? null : (NetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      workflow: map['workflow'] == null ? null : (map['workflow'] as String).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (map['cloudFunction']! as String).input(),
+      cloudRun: map['cloudRun'] == null ? null : (CloudRun.fromMap((map['cloudRun']! as Map).cast<String, dynamic>())).input(),
+      gke: map['gke'] == null ? null : (GKE.fromMap((map['gke']! as Map).cast<String, dynamic>())).input(),
+      httpEndpoint: map['httpEndpoint'] == null ? null : (HttpEndpoint.fromMap((map['httpEndpoint']! as Map).cast<String, dynamic>())).input(),
+      networkConfig: map['networkConfig'] == null ? null : (NetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      workflow: map['workflow'] == null ? null : (map['workflow']! as String).input(),
     );
   }
 }

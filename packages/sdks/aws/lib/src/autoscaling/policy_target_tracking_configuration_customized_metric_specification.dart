@@ -52,13 +52,13 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
 
   factory PolicyTargetTrackingConfigurationCustomizedMetricSpecification.fromMap(Map<String, dynamic> map) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecification(
-      metricDimensions: map['metricDimensions'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension>(map['metricDimensions'], (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>(map['metrics'], (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      statistic: map['statistic'] == null ? null : (map['statistic'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      metricDimensions: map['metricDimensions'] == null ? null : ((pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension>(map['metricDimensions']!, (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      metrics: map['metrics'] == null ? null : ((pulumi.Input.decodeList<PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric>(map['metrics']!, (value) => PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      period: map['period'] == null ? null : ((map['period'] as int).input()).input(),
+      statistic: map['statistic'] == null ? null : ((map['statistic'] as String).input()).input(),
+      unit: map['unit'] == null ? null : ((map['unit'] as String).input()).input(),
     );
   }
 }

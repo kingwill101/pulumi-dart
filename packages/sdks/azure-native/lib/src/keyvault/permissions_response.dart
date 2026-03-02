@@ -36,10 +36,10 @@ class PermissionsResponse {
 
   factory PermissionsResponse.fromMap(Map<String, dynamic> map) {
     return PermissionsResponse(
-      certificates: map['certificates'] == null ? null : ((map['certificates'] as List).cast<String>()).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
-      secrets: map['secrets'] == null ? null : ((map['secrets'] as List).cast<String>()).input(),
-      storage: map['storage'] == null ? null : ((map['storage'] as List).cast<String>()).input(),
+      certificates: map['certificates'] == null ? null : ((map['certificates']! as List).cast<String>()).input(),
+      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
+      secrets: map['secrets'] == null ? null : ((map['secrets']! as List).cast<String>()).input(),
+      storage: map['storage'] == null ? null : ((map['storage']! as List).cast<String>()).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class ChannelWebChatSite {
 
   factory ChannelWebChatSite.fromMap(Map<String, dynamic> map) {
     return ChannelWebChatSite(
-      endpointParametersEnabled: map['endpointParametersEnabled'] == null ? null : (map['endpointParametersEnabled'] as bool).input(),
+      endpointParametersEnabled: map['endpointParametersEnabled'] == null ? null : (map['endpointParametersEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      storageEnabled: map['storageEnabled'] == null ? null : (map['storageEnabled'] as bool).input(),
-      userUploadEnabled: map['userUploadEnabled'] == null ? null : (map['userUploadEnabled'] as bool).input(),
+      storageEnabled: map['storageEnabled'] == null ? null : (map['storageEnabled']! as bool).input(),
+      userUploadEnabled: map['userUploadEnabled'] == null ? null : (map['userUploadEnabled']! as bool).input(),
     );
   }
 }

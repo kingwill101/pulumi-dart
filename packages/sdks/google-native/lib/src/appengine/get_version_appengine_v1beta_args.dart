@@ -40,10 +40,10 @@ class GetVersionAppengineV1betaArgs {
   factory GetVersionAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionAppengineV1betaArgs(
       appId: (map['appId'] as String).input(),
-      includeExtraData: map['includeExtraData'] == null ? null : (map['includeExtraData'] as String).input(),
+      includeExtraData: map['includeExtraData'] == null ? null : (map['includeExtraData']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
       versionId: (map['versionId'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

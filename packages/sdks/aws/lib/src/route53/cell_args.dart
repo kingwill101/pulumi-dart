@@ -37,8 +37,8 @@ class CellArgs {
   factory CellArgs.fromMap(Map<String, dynamic> map) {
     return CellArgs(
       cellName: (map['cellName'] as String).input(),
-      cells: map['cells'] == null ? null : ((map['cells'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cells: map['cells'] == null ? null : (((map['cells'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

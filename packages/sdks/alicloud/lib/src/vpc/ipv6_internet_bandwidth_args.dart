@@ -40,7 +40,7 @@ class Ipv6InternetBandwidthArgs {
   factory Ipv6InternetBandwidthArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6InternetBandwidthArgs(
       bandwidth: (map['bandwidth'] as int).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
       ipv6AddressId: (map['ipv6AddressId'] as String).input(),
       ipv6GatewayId: (map['ipv6GatewayId'] as String).input(),
     );

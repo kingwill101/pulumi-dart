@@ -31,9 +31,9 @@ class Placement {
 
   factory Placement.fromMap(Map<String, dynamic> map) {
     return Placement(
-      excludeZones: map['excludeZones'] == null ? null : ((map['excludeZones'] as List).cast<String>()).input(),
-      includeZones: map['includeZones'] == null ? null : ((map['includeZones'] as List).cast<String>()).input(),
-      zonePlacementPolicy: map['zonePlacementPolicy'] == null ? null : (map['zonePlacementPolicy'] as String).input(),
+      excludeZones: map['excludeZones'] == null ? null : ((map['excludeZones']! as List).cast<String>()).input(),
+      includeZones: map['includeZones'] == null ? null : ((map['includeZones']! as List).cast<String>()).input(),
+      zonePlacementPolicy: map['zonePlacementPolicy'] == null ? null : (map['zonePlacementPolicy']! as String).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class ConfigBlockingFunctions {
 
   factory ConfigBlockingFunctions.fromMap(Map<String, dynamic> map) {
     return ConfigBlockingFunctions(
-      forwardInboundCredentials: map['forwardInboundCredentials'] == null ? null : (ConfigBlockingFunctionsForwardInboundCredentials.fromMap((map['forwardInboundCredentials'] as Map).cast<String, dynamic>())).input(),
+      forwardInboundCredentials: map['forwardInboundCredentials'] == null ? null : (ConfigBlockingFunctionsForwardInboundCredentials.fromMap((map['forwardInboundCredentials']! as Map).cast<String, dynamic>())).input(),
       triggers: (pulumi.Input.decodeList<ConfigBlockingFunctionsTrigger>(map['triggers'], (value) => ConfigBlockingFunctionsTrigger.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -75,17 +75,17 @@ class ReplicationDestinationResponse {
 
   factory ReplicationDestinationResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationDestinationResponse(
-      accessControlTranslation: map['accessControlTranslation'] == null ? null : (AccessControlTranslationResponse.fromMap((map['accessControlTranslation'] as Map).cast<String, dynamic>())).input(),
-      account: map['account'] == null ? null : (map['account'] as String).input(),
-      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (EncryptionConfigurationResponse.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      replicationTime: map['replicationTime'] == null ? null : (ReplicationTimeResponse.fromMap((map['replicationTime'] as Map).cast<String, dynamic>())).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      accessControlTranslation: map['accessControlTranslation'] == null ? null : (AccessControlTranslationResponse.fromMap((map['accessControlTranslation']! as Map).cast<String, dynamic>())).input(),
+      account: map['account'] == null ? null : (map['account']! as String).input(),
+      availabilityZoneName: map['availabilityZoneName'] == null ? null : (map['availabilityZoneName']! as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (EncryptionConfigurationResponse.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      metrics: map['metrics'] == null ? null : (MetricsResponse.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      replicationTime: map['replicationTime'] == null ? null : (ReplicationTimeResponse.fromMap((map['replicationTime']! as Map).cast<String, dynamic>())).input(),
+      storageClass: map['storageClass'] == null ? null : (map['storageClass']! as String).input(),
     );
   }
 }

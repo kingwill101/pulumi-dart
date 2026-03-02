@@ -26,8 +26,8 @@ class VpnLinkProviderProperties {
 
   factory VpnLinkProviderProperties.fromMap(Map<String, dynamic> map) {
     return VpnLinkProviderProperties(
-      linkProviderName: map['linkProviderName'] == null ? null : (map['linkProviderName'] as String).input(),
-      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps'] as int).input(),
+      linkProviderName: map['linkProviderName'] == null ? null : (map['linkProviderName']! as String).input(),
+      linkSpeedInMbps: map['linkSpeedInMbps'] == null ? null : (map['linkSpeedInMbps']! as int).input(),
     );
   }
 }

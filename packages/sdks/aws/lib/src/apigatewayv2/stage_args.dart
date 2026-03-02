@@ -86,18 +86,18 @@ class StageArgs {
 
   factory StageArgs.fromMap(Map<String, dynamic> map) {
     return StageArgs(
-      accessLogSettings: map['accessLogSettings'] == null ? null : (StageAccessLogSettings.fromMap((map['accessLogSettings'] as Map).cast<String, dynamic>())).input(),
+      accessLogSettings: map['accessLogSettings'] == null ? null : ((StageAccessLogSettings.fromMap((map['accessLogSettings']! as Map).cast<String, dynamic>())).input()).input(),
       apiId: (map['apiId'] as String).input(),
-      autoDeploy: map['autoDeploy'] == null ? null : (map['autoDeploy'] as bool).input(),
-      clientCertificateId: map['clientCertificateId'] == null ? null : (map['clientCertificateId'] as String).input(),
-      defaultRouteSettings: map['defaultRouteSettings'] == null ? null : (StageDefaultRouteSettings.fromMap((map['defaultRouteSettings'] as Map).cast<String, dynamic>())).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeSettings: map['routeSettings'] == null ? null : (pulumi.Input.decodeList<StageRouteSetting>(map['routeSettings'], (value) => StageRouteSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stageVariables: map['stageVariables'] == null ? null : ((map['stageVariables'] as Map).cast<String, String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      autoDeploy: map['autoDeploy'] == null ? null : ((map['autoDeploy'] as bool).input()).input(),
+      clientCertificateId: map['clientCertificateId'] == null ? null : ((map['clientCertificateId'] as String).input()).input(),
+      defaultRouteSettings: map['defaultRouteSettings'] == null ? null : ((StageDefaultRouteSettings.fromMap((map['defaultRouteSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      deploymentId: map['deploymentId'] == null ? null : ((map['deploymentId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeSettings: map['routeSettings'] == null ? null : ((pulumi.Input.decodeList<StageRouteSetting>(map['routeSettings']!, (value) => StageRouteSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stageVariables: map['stageVariables'] == null ? null : (((map['stageVariables'] as Map).cast<String, String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

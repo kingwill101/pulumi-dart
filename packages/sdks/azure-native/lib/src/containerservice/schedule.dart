@@ -40,10 +40,10 @@ class Schedule {
 
   factory Schedule.fromMap(Map<String, dynamic> map) {
     return Schedule(
-      absoluteMonthly: map['absoluteMonthly'] == null ? null : (AbsoluteMonthlySchedule.fromMap((map['absoluteMonthly'] as Map).cast<String, dynamic>())).input(),
-      daily: map['daily'] == null ? null : (DailySchedule.fromMap((map['daily'] as Map).cast<String, dynamic>())).input(),
-      relativeMonthly: map['relativeMonthly'] == null ? null : (RelativeMonthlySchedule.fromMap((map['relativeMonthly'] as Map).cast<String, dynamic>())).input(),
-      weekly: map['weekly'] == null ? null : (WeeklySchedule.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
+      absoluteMonthly: map['absoluteMonthly'] == null ? null : (AbsoluteMonthlySchedule.fromMap((map['absoluteMonthly']! as Map).cast<String, dynamic>())).input(),
+      daily: map['daily'] == null ? null : (DailySchedule.fromMap((map['daily']! as Map).cast<String, dynamic>())).input(),
+      relativeMonthly: map['relativeMonthly'] == null ? null : (RelativeMonthlySchedule.fromMap((map['relativeMonthly']! as Map).cast<String, dynamic>())).input(),
+      weekly: map['weekly'] == null ? null : (WeeklySchedule.fromMap((map['weekly']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class V2FunctionInstanceLifecycleConfigPreFreeze {
 
   factory V2FunctionInstanceLifecycleConfigPreFreeze.fromMap(Map<String, dynamic> map) {
     return V2FunctionInstanceLifecycleConfigPreFreeze(
-      handler: map['handler'] == null ? null : (map['handler'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      handler: map['handler'] == null ? null : (map['handler']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

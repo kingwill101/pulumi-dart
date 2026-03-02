@@ -41,10 +41,10 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
-      gcs: map['gcs'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      remote: map['remote'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
+      gcs: map['gcs'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
+      remote: map['remote'] == null ? null : (OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class NodeIpAllocationPolicy {
 
   factory NodeIpAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return NodeIpAllocationPolicy(
-      bondPolicy: map['bondPolicy'] == null ? null : (NodeIpAllocationPolicyBondPolicy.fromMap((map['bondPolicy'] as Map).cast<String, dynamic>())).input(),
-      machineTypePolicies: map['machineTypePolicies'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyMachineTypePolicy>(map['machineTypePolicies'], (value) => NodeIpAllocationPolicyMachineTypePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodePolicies: map['nodePolicies'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyNodePolicy>(map['nodePolicies'], (value) => NodeIpAllocationPolicyNodePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bondPolicy: map['bondPolicy'] == null ? null : (NodeIpAllocationPolicyBondPolicy.fromMap((map['bondPolicy']! as Map).cast<String, dynamic>())).input(),
+      machineTypePolicies: map['machineTypePolicies'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyMachineTypePolicy>(map['machineTypePolicies']!, (value) => NodeIpAllocationPolicyMachineTypePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodePolicies: map['nodePolicies'] == null ? null : (pulumi.Input.decodeList<NodeIpAllocationPolicyNodePolicy>(map['nodePolicies']!, (value) => NodeIpAllocationPolicyNodePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

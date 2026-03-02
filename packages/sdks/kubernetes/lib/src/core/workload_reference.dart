@@ -33,7 +33,7 @@ class WorkloadReference {
     return WorkloadReference(
       name: (map['name'] as String).input(),
       podGroup: (map['podGroup'] as String).input(),
-      podGroupReplicaKey: map['podGroupReplicaKey'] == null ? null : (map['podGroupReplicaKey'] as String).input(),
+      podGroupReplicaKey: map['podGroupReplicaKey'] == null ? null : (map['podGroupReplicaKey']! as String).input(),
     );
   }
 }

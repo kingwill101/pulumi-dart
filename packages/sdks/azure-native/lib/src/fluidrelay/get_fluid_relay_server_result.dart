@@ -85,17 +85,17 @@ class GetFluidRelayServerResult {
   factory GetFluidRelayServerResult.fromMap(Map<String, dynamic> map) {
     return GetFluidRelayServerResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryption: map['encryption'] == null ? null : EncryptionPropertiesResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: map['encryption'] == null ? null : EncryptionPropertiesResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
       fluidRelayEndpoints: FluidRelayEndpointsResponse.fromMap((map['fluidRelayEndpoints'] as Map).cast<String, dynamic>()),
       frsTenantId: map['frsTenantId'] as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : IdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      storagesku: map['storagesku'] == null ? null : map['storagesku'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
+      storagesku: map['storagesku'] == null ? null : map['storagesku']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

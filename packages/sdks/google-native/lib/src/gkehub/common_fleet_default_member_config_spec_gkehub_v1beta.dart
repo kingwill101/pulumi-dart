@@ -40,10 +40,10 @@ class CommonFleetDefaultMemberConfigSpecGkehubV1beta {
 
   factory CommonFleetDefaultMemberConfigSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return CommonFleetDefaultMemberConfigSpecGkehubV1beta(
-      configmanagement: map['configmanagement'] == null ? null : (ConfigManagementMembershipSpecGkehubV1beta.fromMap((map['configmanagement'] as Map).cast<String, dynamic>())).input(),
-      identityservice: map['identityservice'] == null ? null : (IdentityServiceMembershipSpecGkehubV1beta.fromMap((map['identityservice'] as Map).cast<String, dynamic>())).input(),
-      mesh: map['mesh'] == null ? null : (ServiceMeshMembershipSpecGkehubV1beta.fromMap((map['mesh'] as Map).cast<String, dynamic>())).input(),
-      policycontroller: map['policycontroller'] == null ? null : (PolicyControllerMembershipSpecGkehubV1beta.fromMap((map['policycontroller'] as Map).cast<String, dynamic>())).input(),
+      configmanagement: map['configmanagement'] == null ? null : (ConfigManagementMembershipSpecGkehubV1beta.fromMap((map['configmanagement']! as Map).cast<String, dynamic>())).input(),
+      identityservice: map['identityservice'] == null ? null : (IdentityServiceMembershipSpecGkehubV1beta.fromMap((map['identityservice']! as Map).cast<String, dynamic>())).input(),
+      mesh: map['mesh'] == null ? null : (ServiceMeshMembershipSpecGkehubV1beta.fromMap((map['mesh']! as Map).cast<String, dynamic>())).input(),
+      policycontroller: map['policycontroller'] == null ? null : (PolicyControllerMembershipSpecGkehubV1beta.fromMap((map['policycontroller']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

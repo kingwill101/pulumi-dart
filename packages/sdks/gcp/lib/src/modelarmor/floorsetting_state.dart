@@ -82,17 +82,17 @@ class FloorsettingState {
 
   factory FloorsettingState.fromMap(Map<String, dynamic> map) {
     return FloorsettingState(
-      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : (FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : (map['enableFloorSettingEnforcement'] as bool).input(),
-      filterConfig: map['filterConfig'] == null ? null : (FloorsettingFilterConfig.fromMap((map['filterConfig'] as Map).cast<String, dynamic>())).input(),
-      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : (FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata'] as Map).cast<String, dynamic>())).input(),
-      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : (FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting'] as Map).cast<String, dynamic>())).input(),
-      integratedServices: map['integratedServices'] == null ? null : ((map['integratedServices'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      aiPlatformFloorSetting: map['aiPlatformFloorSetting'] == null ? null : (FloorsettingAiPlatformFloorSetting.fromMap((map['aiPlatformFloorSetting']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      enableFloorSettingEnforcement: map['enableFloorSettingEnforcement'] == null ? null : (map['enableFloorSettingEnforcement']! as bool).input(),
+      filterConfig: map['filterConfig'] == null ? null : (FloorsettingFilterConfig.fromMap((map['filterConfig']! as Map).cast<String, dynamic>())).input(),
+      floorSettingMetadata: map['floorSettingMetadata'] == null ? null : (FloorsettingFloorSettingMetadata.fromMap((map['floorSettingMetadata']! as Map).cast<String, dynamic>())).input(),
+      googleMcpServerFloorSetting: map['googleMcpServerFloorSetting'] == null ? null : (FloorsettingGoogleMcpServerFloorSetting.fromMap((map['googleMcpServerFloorSetting']! as Map).cast<String, dynamic>())).input(),
+      integratedServices: map['integratedServices'] == null ? null : ((map['integratedServices']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

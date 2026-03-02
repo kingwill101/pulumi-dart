@@ -54,13 +54,13 @@ class ExecutionConfig {
 
   factory ExecutionConfig.fromMap(Map<String, dynamic> map) {
     return ExecutionConfig(
-      artifactStorage: map['artifactStorage'] == null ? null : (map['artifactStorage'] as String).input(),
-      defaultPool: map['defaultPool'] == null ? null : (DefaultPool.fromMap((map['defaultPool'] as Map).cast<String, dynamic>())).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
-      privatePool: map['privatePool'] == null ? null : (PrivatePool.fromMap((map['privatePool'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      artifactStorage: map['artifactStorage'] == null ? null : (map['artifactStorage']! as String).input(),
+      defaultPool: map['defaultPool'] == null ? null : (DefaultPool.fromMap((map['defaultPool']! as Map).cast<String, dynamic>())).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
+      privatePool: map['privatePool'] == null ? null : (PrivatePool.fromMap((map['privatePool']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       usages: (pulumi.Input.decodeList<ExecutionConfigUsagesItem>(map['usages'], (value) => ExecutionConfigUsagesItem.fromValue(value as String))).input(),
-      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool']! as String).input(),
     );
   }
 }

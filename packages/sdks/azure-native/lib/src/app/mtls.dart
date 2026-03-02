@@ -21,7 +21,7 @@ class Mtls {
 
   factory Mtls.fromMap(Map<String, dynamic> map) {
     return Mtls(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

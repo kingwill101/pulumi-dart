@@ -34,7 +34,7 @@ class ResourceHealth {
 
   factory ResourceHealth.fromMap(Map<String, dynamic> map) {
     return ResourceHealth(
-      health: map['health'] == null ? null : (map['health'] as String).input(),
+      health: map['health'] == null ? null : (map['health']! as String).input(),
       resourceID: (map['resourceID'] as String).input(),
     );
   }

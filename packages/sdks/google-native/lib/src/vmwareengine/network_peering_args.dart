@@ -84,18 +84,18 @@ class NetworkPeeringArgs {
 
   factory NetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      exchangeSubnetRoutes: map['exchangeSubnetRoutes'] == null ? null : (map['exchangeSubnetRoutes'] as bool).input(),
-      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes'] as bool).input(),
-      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp'] as bool).input(),
-      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes'] as bool).input(),
-      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      exchangeSubnetRoutes: map['exchangeSubnetRoutes'] == null ? null : (map['exchangeSubnetRoutes']! as bool).input(),
+      exportCustomRoutes: map['exportCustomRoutes'] == null ? null : (map['exportCustomRoutes']! as bool).input(),
+      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] == null ? null : (map['exportCustomRoutesWithPublicIp']! as bool).input(),
+      importCustomRoutes: map['importCustomRoutes'] == null ? null : (map['importCustomRoutes']! as bool).input(),
+      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] == null ? null : (map['importCustomRoutesWithPublicIp']! as bool).input(),
       networkPeeringId: (map['networkPeeringId'] as String).input(),
-      peerMtu: map['peerMtu'] == null ? null : (map['peerMtu'] as int).input(),
+      peerMtu: map['peerMtu'] == null ? null : (map['peerMtu']! as int).input(),
       peerNetwork: (map['peerNetwork'] as String).input(),
       peerNetworkType: (NetworkPeeringPeerNetworkType.fromValue(map['peerNetworkType'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       vmwareEngineNetwork: (map['vmwareEngineNetwork'] as String).input(),
     );
   }

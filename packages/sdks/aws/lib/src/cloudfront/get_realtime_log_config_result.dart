@@ -47,7 +47,7 @@ class GetRealtimeLogConfigResult {
   factory GetRealtimeLogConfigResult.fromMap(Map<String, dynamic> map) {
     return GetRealtimeLogConfigResult(
       arn: map['arn'] as String,
-      endpoints: pulumi.Input.decodeList<GetRealtimeLogConfigEndpoint>(map['endpoints'], (value) => GetRealtimeLogConfigEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<GetRealtimeLogConfigEndpoint>(map['endpoints']!, (value) => GetRealtimeLogConfigEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       fields: (map['fields'] as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,

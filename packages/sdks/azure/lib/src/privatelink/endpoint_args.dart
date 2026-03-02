@@ -67,15 +67,15 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName'] as String).input(),
-      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointIpConfiguration>(map['ipConfigurations'], (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateDnsZoneGroup: map['privateDnsZoneGroup'] == null ? null : (EndpointPrivateDnsZoneGroup.fromMap((map['privateDnsZoneGroup'] as Map).cast<String, dynamic>())).input(),
+      customNetworkInterfaceName: map['customNetworkInterfaceName'] == null ? null : (map['customNetworkInterfaceName']! as String).input(),
+      ipConfigurations: map['ipConfigurations'] == null ? null : (pulumi.Input.decodeList<EndpointIpConfiguration>(map['ipConfigurations']!, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateDnsZoneGroup: map['privateDnsZoneGroup'] == null ? null : (EndpointPrivateDnsZoneGroup.fromMap((map['privateDnsZoneGroup']! as Map).cast<String, dynamic>())).input(),
       privateServiceConnection: (EndpointPrivateServiceConnection.fromMap((map['privateServiceConnection'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

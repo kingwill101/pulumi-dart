@@ -31,8 +31,8 @@ class RegionResizeRequestStatus {
 
   factory RegionResizeRequestStatus.fromMap(Map<String, dynamic> map) {
     return RegionResizeRequestStatus(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusError>(map['errors'], (value) => RegionResizeRequestStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lastAttempts: map['lastAttempts'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttempt>(map['lastAttempts'], (value) => RegionResizeRequestStatusLastAttempt.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusError>(map['errors']!, (value) => RegionResizeRequestStatusError.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lastAttempts: map['lastAttempts'] == null ? null : (pulumi.Input.decodeList<RegionResizeRequestStatusLastAttempt>(map['lastAttempts']!, (value) => RegionResizeRequestStatusLastAttempt.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

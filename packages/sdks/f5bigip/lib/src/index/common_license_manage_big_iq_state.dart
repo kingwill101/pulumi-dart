@@ -96,22 +96,22 @@ class CommonLicenseManageBigIqState {
 
   factory CommonLicenseManageBigIqState.fromMap(Map<String, dynamic> map) {
     return CommonLicenseManageBigIqState(
-      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType'] as String).input(),
-      bigiqAddress: map['bigiqAddress'] == null ? null : (map['bigiqAddress'] as String).input(),
-      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef'] as String).input(),
-      bigiqPassword: map['bigiqPassword'] == null ? null : (map['bigiqPassword'] as String).input(),
-      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort'] as String).input(),
-      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth'] as bool).input(),
-      bigiqUser: map['bigiqUser'] == null ? null : (map['bigiqUser'] as String).input(),
-      deviceLicenseStatus: map['deviceLicenseStatus'] == null ? null : (map['deviceLicenseStatus'] as String).input(),
-      hypervisor: map['hypervisor'] == null ? null : (map['hypervisor'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      licensePoolname: map['licensePoolname'] == null ? null : (map['licensePoolname'] as String).input(),
-      macAddress: map['macAddress'] == null ? null : (map['macAddress'] as String).input(),
-      skukeyword1: map['skukeyword1'] == null ? null : (map['skukeyword1'] as String).input(),
-      skukeyword2: map['skukeyword2'] == null ? null : (map['skukeyword2'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
-      unitOfMeasure: map['unitOfMeasure'] == null ? null : (map['unitOfMeasure'] as String).input(),
+      assignmentType: map['assignmentType'] == null ? null : (map['assignmentType']! as String).input(),
+      bigiqAddress: map['bigiqAddress'] == null ? null : (map['bigiqAddress']! as String).input(),
+      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef']! as String).input(),
+      bigiqPassword: map['bigiqPassword'] == null ? null : (map['bigiqPassword']! as String).input(),
+      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort']! as String).input(),
+      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth']! as bool).input(),
+      bigiqUser: map['bigiqUser'] == null ? null : (map['bigiqUser']! as String).input(),
+      deviceLicenseStatus: map['deviceLicenseStatus'] == null ? null : (map['deviceLicenseStatus']! as String).input(),
+      hypervisor: map['hypervisor'] == null ? null : (map['hypervisor']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      licensePoolname: map['licensePoolname'] == null ? null : (map['licensePoolname']! as String).input(),
+      macAddress: map['macAddress'] == null ? null : (map['macAddress']! as String).input(),
+      skukeyword1: map['skukeyword1'] == null ? null : (map['skukeyword1']! as String).input(),
+      skukeyword2: map['skukeyword2'] == null ? null : (map['skukeyword2']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      unitOfMeasure: map['unitOfMeasure'] == null ? null : (map['unitOfMeasure']! as String).input(),
     );
   }
 }

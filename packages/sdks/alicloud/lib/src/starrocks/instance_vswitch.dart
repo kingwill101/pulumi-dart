@@ -26,7 +26,7 @@ class InstanceVswitch {
   factory InstanceVswitch.fromMap(Map<String, dynamic> map) {
     return InstanceVswitch(
       vswitchId: (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

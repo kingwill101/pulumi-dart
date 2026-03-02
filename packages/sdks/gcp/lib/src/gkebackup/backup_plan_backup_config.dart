@@ -68,14 +68,14 @@ class BackupPlanBackupConfig {
 
   factory BackupPlanBackupConfig.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupConfig(
-      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces'] as bool).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (BackupPlanBackupConfigEncryptionKey.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())).input(),
-      includeSecrets: map['includeSecrets'] == null ? null : (map['includeSecrets'] as bool).input(),
-      includeVolumeData: map['includeVolumeData'] == null ? null : (map['includeVolumeData'] as bool).input(),
-      permissiveMode: map['permissiveMode'] == null ? null : (map['permissiveMode'] as bool).input(),
-      selectedApplications: map['selectedApplications'] == null ? null : (BackupPlanBackupConfigSelectedApplications.fromMap((map['selectedApplications'] as Map).cast<String, dynamic>())).input(),
-      selectedNamespaceLabels: map['selectedNamespaceLabels'] == null ? null : (BackupPlanBackupConfigSelectedNamespaceLabels.fromMap((map['selectedNamespaceLabels'] as Map).cast<String, dynamic>())).input(),
-      selectedNamespaces: map['selectedNamespaces'] == null ? null : (BackupPlanBackupConfigSelectedNamespaces.fromMap((map['selectedNamespaces'] as Map).cast<String, dynamic>())).input(),
+      allNamespaces: map['allNamespaces'] == null ? null : (map['allNamespaces']! as bool).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : (BackupPlanBackupConfigEncryptionKey.fromMap((map['encryptionKey']! as Map).cast<String, dynamic>())).input(),
+      includeSecrets: map['includeSecrets'] == null ? null : (map['includeSecrets']! as bool).input(),
+      includeVolumeData: map['includeVolumeData'] == null ? null : (map['includeVolumeData']! as bool).input(),
+      permissiveMode: map['permissiveMode'] == null ? null : (map['permissiveMode']! as bool).input(),
+      selectedApplications: map['selectedApplications'] == null ? null : (BackupPlanBackupConfigSelectedApplications.fromMap((map['selectedApplications']! as Map).cast<String, dynamic>())).input(),
+      selectedNamespaceLabels: map['selectedNamespaceLabels'] == null ? null : (BackupPlanBackupConfigSelectedNamespaceLabels.fromMap((map['selectedNamespaceLabels']! as Map).cast<String, dynamic>())).input(),
+      selectedNamespaces: map['selectedNamespaces'] == null ? null : (BackupPlanBackupConfigSelectedNamespaces.fromMap((map['selectedNamespaces']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

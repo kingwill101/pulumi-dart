@@ -71,17 +71,17 @@ class ServiceSpecificCredentialState {
 
   factory ServiceSpecificCredentialState.fromMap(Map<String, dynamic> map) {
     return ServiceSpecificCredentialState(
-      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
-      credentialAgeDays: map['credentialAgeDays'] == null ? null : (map['credentialAgeDays'] as int).input(),
-      expirationDate: map['expirationDate'] == null ? null : (map['expirationDate'] as String).input(),
-      serviceCredentialAlias: map['serviceCredentialAlias'] == null ? null : (map['serviceCredentialAlias'] as String).input(),
-      serviceCredentialSecret: map['serviceCredentialSecret'] == null ? null : (map['serviceCredentialSecret'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      servicePassword: map['servicePassword'] == null ? null : (map['servicePassword'] as String).input(),
-      serviceSpecificCredentialId: map['serviceSpecificCredentialId'] == null ? null : (map['serviceSpecificCredentialId'] as String).input(),
-      serviceUserName: map['serviceUserName'] == null ? null : (map['serviceUserName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      createDate: map['createDate'] == null ? null : ((map['createDate'] as String).input()).input(),
+      credentialAgeDays: map['credentialAgeDays'] == null ? null : ((map['credentialAgeDays'] as int).input()).input(),
+      expirationDate: map['expirationDate'] == null ? null : ((map['expirationDate'] as String).input()).input(),
+      serviceCredentialAlias: map['serviceCredentialAlias'] == null ? null : ((map['serviceCredentialAlias'] as String).input()).input(),
+      serviceCredentialSecret: map['serviceCredentialSecret'] == null ? null : ((map['serviceCredentialSecret'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      servicePassword: map['servicePassword'] == null ? null : ((map['servicePassword'] as String).input()).input(),
+      serviceSpecificCredentialId: map['serviceSpecificCredentialId'] == null ? null : ((map['serviceSpecificCredentialId'] as String).input()).input(),
+      serviceUserName: map['serviceUserName'] == null ? null : ((map['serviceUserName'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class AppServiceBackup {
 
   factory AppServiceBackup.fromMap(Map<String, dynamic> map) {
     return AppServiceBackup(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       name: (map['name'] as String).input(),
       schedule: (AppServiceBackupSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
       storageAccountUrl: (map['storageAccountUrl'] as String).input(),

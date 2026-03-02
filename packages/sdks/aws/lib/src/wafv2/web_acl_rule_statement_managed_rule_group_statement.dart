@@ -48,12 +48,12 @@ class WebAclRuleStatementManagedRuleGroupStatement {
 
   factory WebAclRuleStatementManagedRuleGroupStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatement(
-      managedRuleGroupConfigs: map['managedRuleGroupConfigs'] == null ? null : (pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig>(map['managedRuleGroupConfigs'], (value) => WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedRuleGroupConfigs: map['managedRuleGroupConfigs'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig>(map['managedRuleGroupConfigs']!, (value) => WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       name: (map['name'] as String).input(),
-      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : (pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride>(map['ruleActionOverrides'], (value) => WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scopeDownStatement: map['scopeDownStatement'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement.fromMap((map['scopeDownStatement'] as Map).cast<String, dynamic>())).input(),
+      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : ((pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride>(map['ruleActionOverrides']!, (value) => WebAclRuleStatementManagedRuleGroupStatementRuleActionOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scopeDownStatement: map['scopeDownStatement'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatement.fromMap((map['scopeDownStatement']! as Map).cast<String, dynamic>())).input()).input(),
       vendorName: (map['vendorName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

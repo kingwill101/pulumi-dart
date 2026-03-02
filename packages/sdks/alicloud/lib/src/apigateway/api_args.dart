@@ -103,20 +103,20 @@ class ApiArgs {
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
       authType: (map['authType'] as String).input(),
-      constantParameters: map['constantParameters'] == null ? null : (pulumi.Input.decodeList<ApiConstantParameter>(map['constantParameters'], (value) => ApiConstantParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constantParameters: map['constantParameters'] == null ? null : (pulumi.Input.decodeList<ApiConstantParameter>(map['constantParameters']!, (value) => ApiConstantParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       description: (map['description'] as String).input(),
-      fcServiceConfig: map['fcServiceConfig'] == null ? null : (ApiFcServiceConfig.fromMap((map['fcServiceConfig'] as Map).cast<String, dynamic>())).input(),
-      forceNonceCheck: map['forceNonceCheck'] == null ? null : (map['forceNonceCheck'] as bool).input(),
+      fcServiceConfig: map['fcServiceConfig'] == null ? null : (ApiFcServiceConfig.fromMap((map['fcServiceConfig']! as Map).cast<String, dynamic>())).input(),
+      forceNonceCheck: map['forceNonceCheck'] == null ? null : (map['forceNonceCheck']! as bool).input(),
       groupId: (map['groupId'] as String).input(),
-      httpServiceConfig: map['httpServiceConfig'] == null ? null : (ApiHttpServiceConfig.fromMap((map['httpServiceConfig'] as Map).cast<String, dynamic>())).input(),
-      httpVpcServiceConfig: map['httpVpcServiceConfig'] == null ? null : (ApiHttpVpcServiceConfig.fromMap((map['httpVpcServiceConfig'] as Map).cast<String, dynamic>())).input(),
-      mockServiceConfig: map['mockServiceConfig'] == null ? null : (ApiMockServiceConfig.fromMap((map['mockServiceConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      httpServiceConfig: map['httpServiceConfig'] == null ? null : (ApiHttpServiceConfig.fromMap((map['httpServiceConfig']! as Map).cast<String, dynamic>())).input(),
+      httpVpcServiceConfig: map['httpVpcServiceConfig'] == null ? null : (ApiHttpVpcServiceConfig.fromMap((map['httpVpcServiceConfig']! as Map).cast<String, dynamic>())).input(),
+      mockServiceConfig: map['mockServiceConfig'] == null ? null : (ApiMockServiceConfig.fromMap((map['mockServiceConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       requestConfig: (ApiRequestConfig.fromMap((map['requestConfig'] as Map).cast<String, dynamic>())).input(),
-      requestParameters: map['requestParameters'] == null ? null : (pulumi.Input.decodeList<ApiRequestParameter>(map['requestParameters'], (value) => ApiRequestParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestParameters: map['requestParameters'] == null ? null : (pulumi.Input.decodeList<ApiRequestParameter>(map['requestParameters']!, (value) => ApiRequestParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceType: (map['serviceType'] as String).input(),
-      stageNames: map['stageNames'] == null ? null : ((map['stageNames'] as List).cast<String>()).input(),
-      systemParameters: map['systemParameters'] == null ? null : (pulumi.Input.decodeList<ApiSystemParameter>(map['systemParameters'], (value) => ApiSystemParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stageNames: map['stageNames'] == null ? null : ((map['stageNames']! as List).cast<String>()).input(),
+      systemParameters: map['systemParameters'] == null ? null : (pulumi.Input.decodeList<ApiSystemParameter>(map['systemParameters']!, (value) => ApiSystemParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

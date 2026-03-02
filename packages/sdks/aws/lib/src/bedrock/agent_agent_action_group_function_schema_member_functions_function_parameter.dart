@@ -37,9 +37,9 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
 
   factory AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       mapBlockKey: (map['mapBlockKey'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      required: map['required'] == null ? null : ((map['required'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

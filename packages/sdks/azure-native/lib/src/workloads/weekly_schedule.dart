@@ -27,8 +27,8 @@ class WeeklySchedule {
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
     return WeeklySchedule(
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['scheduleRunDays'], (value) => DayOfWeek.fromValue(value as String))).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes'] as List).cast<String>()).input(),
+      scheduleRunDays: map['scheduleRunDays'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['scheduleRunDays']!, (value) => DayOfWeek.fromValue(value as String))).input(),
+      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
     );
   }
 }

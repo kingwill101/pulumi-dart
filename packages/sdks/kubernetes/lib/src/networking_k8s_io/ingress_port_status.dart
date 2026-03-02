@@ -34,7 +34,7 @@ class IngressPortStatus {
 
   factory IngressPortStatus.fromMap(Map<String, dynamic> map) {
     return IngressPortStatus(
-      error: map['error'] == null ? null : (map['error'] as String).input(),
+      error: map['error'] == null ? null : (map['error']! as String).input(),
       port: (map['port'] as int).input(),
       protocol: (map['protocol'] as String).input(),
     );

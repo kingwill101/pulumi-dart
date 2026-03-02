@@ -21,7 +21,7 @@ class LoggingConfig {
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels'] as Map).cast<String, String>()).input(),
+      driverLogLevels: map['driverLogLevels'] == null ? null : ((map['driverLogLevels']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettings(
-      aacSettings: map['aacSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings.fromMap((map['aacSettings'] as Map).cast<String, dynamic>())).input(),
-      ac3Settings: map['ac3Settings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings.fromMap((map['ac3Settings'] as Map).cast<String, dynamic>())).input(),
-      eac3AtmosSettings: map['eac3AtmosSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings.fromMap((map['eac3AtmosSettings'] as Map).cast<String, dynamic>())).input(),
-      eac3Settings: map['eac3Settings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings.fromMap((map['eac3Settings'] as Map).cast<String, dynamic>())).input(),
-      mp2Settings: map['mp2Settings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings.fromMap((map['mp2Settings'] as Map).cast<String, dynamic>())).input(),
-      passThroughSettings: map['passThroughSettings'] == null ? null : ((map['passThroughSettings'] as Map).cast<String, dynamic>()).input(),
-      wavSettings: map['wavSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings.fromMap((map['wavSettings'] as Map).cast<String, dynamic>())).input(),
+      aacSettings: map['aacSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings.fromMap((map['aacSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      ac3Settings: map['ac3Settings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings.fromMap((map['ac3Settings']! as Map).cast<String, dynamic>())).input()).input(),
+      eac3AtmosSettings: map['eac3AtmosSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings.fromMap((map['eac3AtmosSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      eac3Settings: map['eac3Settings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings.fromMap((map['eac3Settings']! as Map).cast<String, dynamic>())).input()).input(),
+      mp2Settings: map['mp2Settings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings.fromMap((map['mp2Settings']! as Map).cast<String, dynamic>())).input()).input(),
+      passThroughSettings: map['passThroughSettings'] == null ? null : (((map['passThroughSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      wavSettings: map['wavSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings.fromMap((map['wavSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class IndexUserTokenConfigurations {
 
   factory IndexUserTokenConfigurations.fromMap(Map<String, dynamic> map) {
     return IndexUserTokenConfigurations(
-      jsonTokenTypeConfiguration: map['jsonTokenTypeConfiguration'] == null ? null : (IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap((map['jsonTokenTypeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      jwtTokenTypeConfiguration: map['jwtTokenTypeConfiguration'] == null ? null : (IndexUserTokenConfigurationsJwtTokenTypeConfiguration.fromMap((map['jwtTokenTypeConfiguration'] as Map).cast<String, dynamic>())).input(),
+      jsonTokenTypeConfiguration: map['jsonTokenTypeConfiguration'] == null ? null : ((IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap((map['jsonTokenTypeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      jwtTokenTypeConfiguration: map['jwtTokenTypeConfiguration'] == null ? null : ((IndexUserTokenConfigurationsJwtTokenTypeConfiguration.fromMap((map['jwtTokenTypeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

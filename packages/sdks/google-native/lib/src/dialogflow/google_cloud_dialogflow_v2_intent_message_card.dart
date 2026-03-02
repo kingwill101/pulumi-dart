@@ -37,10 +37,10 @@ class GoogleCloudDialogflowV2IntentMessageCard {
 
   factory GoogleCloudDialogflowV2IntentMessageCard.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageCard(
-      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageCardButton>(map['buttons'], (value) => GoogleCloudDialogflowV2IntentMessageCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      buttons: map['buttons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageCardButton>(map['buttons']!, (value) => GoogleCloudDialogflowV2IntentMessageCardButton.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      subtitle: map['subtitle'] == null ? null : (map['subtitle']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

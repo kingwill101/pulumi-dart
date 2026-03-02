@@ -56,10 +56,10 @@ class AntiBruteForceRuleArgs {
   factory AntiBruteForceRuleArgs.fromMap(Map<String, dynamic> map) {
     return AntiBruteForceRuleArgs(
       antiBruteForceRuleName: (map['antiBruteForceRuleName'] as String).input(),
-      defaultRule: map['defaultRule'] == null ? null : (map['defaultRule'] as bool).input(),
+      defaultRule: map['defaultRule'] == null ? null : (map['defaultRule']! as bool).input(),
       failCount: (map['failCount'] as int).input(),
       forbiddenTime: (map['forbiddenTime'] as int).input(),
-      protocolType: map['protocolType'] == null ? null : (AntiBruteForceRuleProtocolType.fromMap((map['protocolType'] as Map).cast<String, dynamic>())).input(),
+      protocolType: map['protocolType'] == null ? null : (AntiBruteForceRuleProtocolType.fromMap((map['protocolType']! as Map).cast<String, dynamic>())).input(),
       span: (map['span'] as int).input(),
       uuidLists: ((map['uuidLists'] as List).cast<String>()).input(),
     );

@@ -40,10 +40,10 @@ class ConfigurationPolicyArgs {
 
   factory ConfigurationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationPolicyArgs(
-      configurationPolicy: (ConfigurationPolicyConfigurationPolicy.fromMap((map['configurationPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      configurationPolicy: (ConfigurationPolicyConfigurationPolicy.fromMap((map['configurationPolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

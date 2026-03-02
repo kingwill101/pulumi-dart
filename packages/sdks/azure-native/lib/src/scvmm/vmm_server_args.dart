@@ -61,14 +61,14 @@ class VmmServerArgs {
 
   factory VmmServerArgs.fromMap(Map<String, dynamic> map) {
     return VmmServerArgs(
-      credentials: map['credentials'] == null ? null : (VMMServerPropertiesCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (VMMServerPropertiesCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       fqdn: (map['fqdn'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vmmServerName: map['vmmServerName'] == null ? null : (map['vmmServerName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vmmServerName: map['vmmServerName'] == null ? null : (map['vmmServerName']! as String).input(),
     );
   }
 }

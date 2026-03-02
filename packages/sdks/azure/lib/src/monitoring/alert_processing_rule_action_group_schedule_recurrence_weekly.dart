@@ -31,8 +31,8 @@ class AlertProcessingRuleActionGroupScheduleRecurrenceWeekly {
   factory AlertProcessingRuleActionGroupScheduleRecurrenceWeekly.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleActionGroupScheduleRecurrenceWeekly(
       daysOfWeeks: ((map['daysOfWeeks'] as List).cast<String>()).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

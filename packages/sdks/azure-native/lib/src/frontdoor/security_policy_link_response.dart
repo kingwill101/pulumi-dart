@@ -21,7 +21,7 @@ class SecurityPolicyLinkResponse {
 
   factory SecurityPolicyLinkResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyLinkResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

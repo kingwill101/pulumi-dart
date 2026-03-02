@@ -93,17 +93,17 @@ class CertificateState {
 
   factory CertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managed: map['managed'] == null ? null : (CertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      sanDnsnames: map['sanDnsnames'] == null ? null : ((map['sanDnsnames'] as List).cast<String>()).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      selfManaged: map['selfManaged'] == null ? null : (CertificateSelfManaged.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managed: map['managed'] == null ? null : (CertificateManaged.fromMap((map['managed']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      sanDnsnames: map['sanDnsnames'] == null ? null : ((map['sanDnsnames']! as List).cast<String>()).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      selfManaged: map['selfManaged'] == null ? null : (CertificateSelfManaged.fromMap((map['selfManaged']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

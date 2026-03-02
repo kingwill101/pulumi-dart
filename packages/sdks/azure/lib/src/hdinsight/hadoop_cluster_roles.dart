@@ -39,7 +39,7 @@ class HadoopClusterRoles {
 
   factory HadoopClusterRoles.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRoles(
-      edgeNode: map['edgeNode'] == null ? null : (HadoopClusterRolesEdgeNode.fromMap((map['edgeNode'] as Map).cast<String, dynamic>())).input(),
+      edgeNode: map['edgeNode'] == null ? null : (HadoopClusterRolesEdgeNode.fromMap((map['edgeNode']! as Map).cast<String, dynamic>())).input(),
       headNode: (HadoopClusterRolesHeadNode.fromMap((map['headNode'] as Map).cast<String, dynamic>())).input(),
       workerNode: (HadoopClusterRolesWorkerNode.fromMap((map['workerNode'] as Map).cast<String, dynamic>())).input(),
       zookeeperNode: (HadoopClusterRolesZookeeperNode.fromMap((map['zookeeperNode'] as Map).cast<String, dynamic>())).input(),

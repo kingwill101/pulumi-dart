@@ -29,7 +29,7 @@ class VirtualMachineScaleSetIPConfiguration {
   factory VirtualMachineScaleSetIPConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetIPConfiguration(
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetIPConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetIPConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

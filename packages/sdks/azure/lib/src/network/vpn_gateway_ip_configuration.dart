@@ -30,9 +30,9 @@ class VpnGatewayIpConfiguration {
 
   factory VpnGatewayIpConfiguration.fromMap(Map<String, dynamic> map) {
     return VpnGatewayIpConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      publicIpAddress: map['publicIpAddress'] == null ? null : (map['publicIpAddress']! as String).input(),
     );
   }
 }

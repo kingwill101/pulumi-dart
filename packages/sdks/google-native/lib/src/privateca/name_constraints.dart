@@ -61,15 +61,15 @@ class NameConstraints {
 
   factory NameConstraints.fromMap(Map<String, dynamic> map) {
     return NameConstraints(
-      critical: map['critical'] == null ? null : (map['critical'] as bool).input(),
-      excludedDnsNames: map['excludedDnsNames'] == null ? null : ((map['excludedDnsNames'] as List).cast<String>()).input(),
-      excludedEmailAddresses: map['excludedEmailAddresses'] == null ? null : ((map['excludedEmailAddresses'] as List).cast<String>()).input(),
-      excludedIpRanges: map['excludedIpRanges'] == null ? null : ((map['excludedIpRanges'] as List).cast<String>()).input(),
-      excludedUris: map['excludedUris'] == null ? null : ((map['excludedUris'] as List).cast<String>()).input(),
-      permittedDnsNames: map['permittedDnsNames'] == null ? null : ((map['permittedDnsNames'] as List).cast<String>()).input(),
-      permittedEmailAddresses: map['permittedEmailAddresses'] == null ? null : ((map['permittedEmailAddresses'] as List).cast<String>()).input(),
-      permittedIpRanges: map['permittedIpRanges'] == null ? null : ((map['permittedIpRanges'] as List).cast<String>()).input(),
-      permittedUris: map['permittedUris'] == null ? null : ((map['permittedUris'] as List).cast<String>()).input(),
+      critical: map['critical'] == null ? null : (map['critical']! as bool).input(),
+      excludedDnsNames: map['excludedDnsNames'] == null ? null : ((map['excludedDnsNames']! as List).cast<String>()).input(),
+      excludedEmailAddresses: map['excludedEmailAddresses'] == null ? null : ((map['excludedEmailAddresses']! as List).cast<String>()).input(),
+      excludedIpRanges: map['excludedIpRanges'] == null ? null : ((map['excludedIpRanges']! as List).cast<String>()).input(),
+      excludedUris: map['excludedUris'] == null ? null : ((map['excludedUris']! as List).cast<String>()).input(),
+      permittedDnsNames: map['permittedDnsNames'] == null ? null : ((map['permittedDnsNames']! as List).cast<String>()).input(),
+      permittedEmailAddresses: map['permittedEmailAddresses'] == null ? null : ((map['permittedEmailAddresses']! as List).cast<String>()).input(),
+      permittedIpRanges: map['permittedIpRanges'] == null ? null : ((map['permittedIpRanges']! as List).cast<String>()).input(),
+      permittedUris: map['permittedUris'] == null ? null : ((map['permittedUris']! as List).cast<String>()).input(),
     );
   }
 }

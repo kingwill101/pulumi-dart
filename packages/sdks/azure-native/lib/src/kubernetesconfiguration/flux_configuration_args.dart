@@ -103,22 +103,22 @@ class FluxConfigurationArgs {
 
   factory FluxConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return FluxConfigurationArgs(
-      azureBlob: map['azureBlob'] == null ? null : (AzureBlobDefinition.fromMap((map['azureBlob'] as Map).cast<String, dynamic>())).input(),
-      bucket: map['bucket'] == null ? null : (BucketDefinition.fromMap((map['bucket'] as Map).cast<String, dynamic>())).input(),
+      azureBlob: map['azureBlob'] == null ? null : (AzureBlobDefinition.fromMap((map['azureBlob']! as Map).cast<String, dynamic>())).input(),
+      bucket: map['bucket'] == null ? null : (BucketDefinition.fromMap((map['bucket']! as Map).cast<String, dynamic>())).input(),
       clusterName: (map['clusterName'] as String).input(),
       clusterResourceName: (map['clusterResourceName'] as String).input(),
       clusterRp: (map['clusterRp'] as String).input(),
-      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings'] as Map).cast<String, String>()).input(),
-      fluxConfigurationName: map['fluxConfigurationName'] == null ? null : (map['fluxConfigurationName'] as String).input(),
-      gitRepository: map['gitRepository'] == null ? null : (GitRepositoryDefinition.fromMap((map['gitRepository'] as Map).cast<String, dynamic>())).input(),
-      kustomizations: map['kustomizations'] == null ? null : (pulumi.Input.decodeMapValues<KustomizationDefinition>(map['kustomizations'], (value) => KustomizationDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      reconciliationWaitDuration: map['reconciliationWaitDuration'] == null ? null : (map['reconciliationWaitDuration'] as String).input(),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : ((map['configurationProtectedSettings']! as Map).cast<String, String>()).input(),
+      fluxConfigurationName: map['fluxConfigurationName'] == null ? null : (map['fluxConfigurationName']! as String).input(),
+      gitRepository: map['gitRepository'] == null ? null : (GitRepositoryDefinition.fromMap((map['gitRepository']! as Map).cast<String, dynamic>())).input(),
+      kustomizations: map['kustomizations'] == null ? null : (pulumi.Input.decodeMapValues<KustomizationDefinition>(map['kustomizations']!, (value) => KustomizationDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      reconciliationWaitDuration: map['reconciliationWaitDuration'] == null ? null : (map['reconciliationWaitDuration']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sourceKind: map['sourceKind'] == null ? null : (map['sourceKind'] as String).input(),
-      suspend: map['suspend'] == null ? null : (map['suspend'] as bool).input(),
-      waitForReconciliation: map['waitForReconciliation'] == null ? null : (map['waitForReconciliation'] as bool).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sourceKind: map['sourceKind'] == null ? null : (map['sourceKind']! as String).input(),
+      suspend: map['suspend'] == null ? null : (map['suspend']! as bool).input(),
+      waitForReconciliation: map['waitForReconciliation'] == null ? null : (map['waitForReconciliation']! as bool).input(),
     );
   }
 }

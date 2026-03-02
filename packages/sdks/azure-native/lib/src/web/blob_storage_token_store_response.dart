@@ -21,7 +21,7 @@ class BlobStorageTokenStoreResponse {
 
   factory BlobStorageTokenStoreResponse.fromMap(Map<String, dynamic> map) {
     return BlobStorageTokenStoreResponse(
-      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName'] as String).input(),
+      sasUrlSettingName: map['sasUrlSettingName'] == null ? null : (map['sasUrlSettingName']! as String).input(),
     );
   }
 }

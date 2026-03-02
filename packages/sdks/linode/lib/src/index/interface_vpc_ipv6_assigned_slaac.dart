@@ -25,8 +25,8 @@ class InterfaceVpcIpv6AssignedSlaac {
 
   factory InterfaceVpcIpv6AssignedSlaac.fromMap(Map<String, dynamic> map) {
     return InterfaceVpcIpv6AssignedSlaac(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

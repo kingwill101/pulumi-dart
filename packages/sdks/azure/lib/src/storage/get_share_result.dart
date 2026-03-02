@@ -53,14 +53,14 @@ class GetShareResult {
 
   factory GetShareResult.fromMap(Map<String, dynamic> map) {
     return GetShareResult(
-      acls: map['acls'] == null ? null : pulumi.Input.decodeList<GetShareAcl>(map['acls'], (value) => GetShareAcl.fromMap((value as Map).cast<String, dynamic>())),
+      acls: map['acls'] == null ? null : pulumi.Input.decodeList<GetShareAcl>(map['acls']!, (value) => GetShareAcl.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       quota: map['quota'] as int,
       resourceManagerId: map['resourceManagerId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
-      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName'] as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
+      storageAccountName: map['storageAccountName'] == null ? null : map['storageAccountName']! as String,
     );
   }
 }

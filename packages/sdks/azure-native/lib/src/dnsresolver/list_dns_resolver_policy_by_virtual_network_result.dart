@@ -28,7 +28,7 @@ class ListDnsResolverPolicyByVirtualNetworkResult {
   factory ListDnsResolverPolicyByVirtualNetworkResult.fromMap(Map<String, dynamic> map) {
     return ListDnsResolverPolicyByVirtualNetworkResult(
       nextLink: map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['value'], (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<SubResourceResponse>(map['value']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

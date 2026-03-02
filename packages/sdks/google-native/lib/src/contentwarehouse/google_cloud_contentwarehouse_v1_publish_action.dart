@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1PublishAction {
 
   factory GoogleCloudContentwarehouseV1PublishAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PublishAction(
-      messages: map['messages'] == null ? null : ((map['messages'] as List).cast<String>()).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
+      messages: map['messages'] == null ? null : ((map['messages']! as List).cast<String>()).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
     );
   }
 }

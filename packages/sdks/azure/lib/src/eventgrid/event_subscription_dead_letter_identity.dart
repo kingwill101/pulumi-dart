@@ -26,7 +26,7 @@ class EventSubscriptionDeadLetterIdentity {
   factory EventSubscriptionDeadLetterIdentity.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDeadLetterIdentity(
       type: (map['type'] as String).input(),
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

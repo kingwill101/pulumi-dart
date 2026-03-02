@@ -21,7 +21,7 @@ class EndpointDeploymentConfigAutoRollbackConfiguration {
 
   factory EndpointDeploymentConfigAutoRollbackConfiguration.fromMap(Map<String, dynamic> map) {
     return EndpointDeploymentConfigAutoRollbackConfiguration(
-      alarms: map['alarms'] == null ? null : (pulumi.Input.decodeList<EndpointDeploymentConfigAutoRollbackConfigurationAlarm>(map['alarms'], (value) => EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alarms: map['alarms'] == null ? null : ((pulumi.Input.decodeList<EndpointDeploymentConfigAutoRollbackConfigurationAlarm>(map['alarms']!, (value) => EndpointDeploymentConfigAutoRollbackConfigurationAlarm.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class ImageTemplateWindowsUpdateCustomizer {
 
   factory ImageTemplateWindowsUpdateCustomizer.fromMap(Map<String, dynamic> map) {
     return ImageTemplateWindowsUpdateCustomizer(
-      filters: map['filters'] == null ? null : ((map['filters'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      searchCriteria: map['searchCriteria'] == null ? null : (map['searchCriteria'] as String).input(),
+      filters: map['filters'] == null ? null : ((map['filters']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      searchCriteria: map['searchCriteria'] == null ? null : (map['searchCriteria']! as String).input(),
       type: (map['type'] as String).input(),
-      updateLimit: map['updateLimit'] == null ? null : (map['updateLimit'] as int).input(),
+      updateLimit: map['updateLimit'] == null ? null : (map['updateLimit']! as int).input(),
     );
   }
 }

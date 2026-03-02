@@ -20,7 +20,7 @@ class DomainFeaturesVmPort {
 
   factory DomainFeaturesVmPort.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesVmPort(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -80,18 +80,18 @@ class ClickHouseEnterpriseDbClusterArgs {
 
   factory ClickHouseEnterpriseDbClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClickHouseEnterpriseDbClusterArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      multiZones: map['multiZones'] == null ? null : (pulumi.Input.decodeList<ClickHouseEnterpriseDbClusterMultiZone>(map['multiZones'], (value) => ClickHouseEnterpriseDbClusterMultiZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      nodeScaleMax: map['nodeScaleMax'] == null ? null : (map['nodeScaleMax'] as int).input(),
-      nodeScaleMin: map['nodeScaleMin'] == null ? null : (map['nodeScaleMin'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      scaleMax: map['scaleMax'] == null ? null : (map['scaleMax'] as String).input(),
-      scaleMin: map['scaleMin'] == null ? null : (map['scaleMin'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      multiZones: map['multiZones'] == null ? null : (pulumi.Input.decodeList<ClickHouseEnterpriseDbClusterMultiZone>(map['multiZones']!, (value) => ClickHouseEnterpriseDbClusterMultiZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      nodeScaleMax: map['nodeScaleMax'] == null ? null : (map['nodeScaleMax']! as int).input(),
+      nodeScaleMin: map['nodeScaleMin'] == null ? null : (map['nodeScaleMin']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      scaleMax: map['scaleMax'] == null ? null : (map['scaleMax']! as String).input(),
+      scaleMin: map['scaleMin'] == null ? null : (map['scaleMin']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

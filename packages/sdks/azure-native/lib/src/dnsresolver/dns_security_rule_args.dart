@@ -69,12 +69,12 @@ class DnsSecurityRuleArgs {
       action: (DnsSecurityRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
       dnsResolverDomainLists: (pulumi.Input.decodeList<SubResource>(map['dnsResolverDomainLists'], (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dnsResolverPolicyName: (map['dnsResolverPolicyName'] as String).input(),
-      dnsSecurityRuleName: map['dnsSecurityRuleName'] == null ? null : (map['dnsSecurityRuleName'] as String).input(),
-      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : (map['dnsSecurityRuleState'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      dnsSecurityRuleName: map['dnsSecurityRuleName'] == null ? null : (map['dnsSecurityRuleName']! as String).input(),
+      dnsSecurityRuleState: map['dnsSecurityRuleState'] == null ? null : (map['dnsSecurityRuleState']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       priority: (map['priority'] as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

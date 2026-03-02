@@ -49,11 +49,11 @@ class SystemCreatedStorageAccount {
 
   factory SystemCreatedStorageAccount.fromMap(Map<String, dynamic> map) {
     return SystemCreatedStorageAccount(
-      allowBlobPublicAccess: map['allowBlobPublicAccess'] == null ? null : (map['allowBlobPublicAccess'] as bool).input(),
-      armResourceId: map['armResourceId'] == null ? null : (ArmResourceId.fromMap((map['armResourceId'] as Map).cast<String, dynamic>())).input(),
-      storageAccountHnsEnabled: map['storageAccountHnsEnabled'] == null ? null : (map['storageAccountHnsEnabled'] as bool).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      allowBlobPublicAccess: map['allowBlobPublicAccess'] == null ? null : (map['allowBlobPublicAccess']! as bool).input(),
+      armResourceId: map['armResourceId'] == null ? null : (ArmResourceId.fromMap((map['armResourceId']! as Map).cast<String, dynamic>())).input(),
+      storageAccountHnsEnabled: map['storageAccountHnsEnabled'] == null ? null : (map['storageAccountHnsEnabled']! as bool).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

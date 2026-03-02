@@ -30,7 +30,7 @@ class CxAgentClientCertificateSettings {
 
   factory CxAgentClientCertificateSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentClientCertificateSettings(
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
       privateKey: (map['privateKey'] as String).input(),
       sslCertificate: (map['sslCertificate'] as String).input(),
     );

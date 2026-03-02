@@ -40,9 +40,9 @@ class MonitoredSubscriptionArgs {
 
   factory MonitoredSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return MonitoredSubscriptionArgs(
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
       monitorName: (map['monitorName'] as String).input(),
-      properties: map['properties'] == null ? null : (SubscriptionList.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SubscriptionList.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

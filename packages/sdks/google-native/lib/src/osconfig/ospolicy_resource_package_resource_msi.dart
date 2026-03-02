@@ -27,7 +27,7 @@ class OSPolicyResourcePackageResourceMSI {
 
   factory OSPolicyResourcePackageResourceMSI.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourcePackageResourceMSI(
-      properties: map['properties'] == null ? null : ((map['properties'] as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as List).cast<String>()).input(),
       source: (OSPolicyResourceFile.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

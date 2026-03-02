@@ -23,7 +23,7 @@ class BareMetalClusterFleet {
 
   factory BareMetalClusterFleet.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterFleet(
-      membership: map['membership'] == null ? null : (map['membership'] as String).input(),
+      membership: map['membership'] == null ? null : (map['membership']! as String).input(),
     );
   }
 }

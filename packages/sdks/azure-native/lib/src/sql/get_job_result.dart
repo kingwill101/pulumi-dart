@@ -52,10 +52,10 @@ class GetJobResult {
   factory GetJobResult.fromMap(Map<String, dynamic> map) {
     return GetJobResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      schedule: map['schedule'] == null ? null : JobScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      schedule: map['schedule'] == null ? null : JobScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       version: map['version'] as int,
     );

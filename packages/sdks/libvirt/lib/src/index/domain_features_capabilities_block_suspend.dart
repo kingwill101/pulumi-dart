@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesBlockSuspend {
 
   factory DomainFeaturesCapabilitiesBlockSuspend.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesBlockSuspend(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -44,7 +44,7 @@ class DatabaseMysqlUpdates {
       duration: (map['duration'] as int).input(),
       frequency: (map['frequency'] as String).input(),
       hourOfDay: (map['hourOfDay'] as int).input(),
-      weekOfMonth: map['weekOfMonth'] == null ? null : (map['weekOfMonth'] as int).input(),
+      weekOfMonth: map['weekOfMonth'] == null ? null : (map['weekOfMonth']! as int).input(),
     );
   }
 }

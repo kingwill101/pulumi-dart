@@ -27,8 +27,8 @@ class GooglePrivacyDlpV2OrgConfig {
 
   factory GooglePrivacyDlpV2OrgConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2OrgConfig(
-      location: map['location'] == null ? null : (GooglePrivacyDlpV2DiscoveryStartingLocation.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (GooglePrivacyDlpV2DiscoveryStartingLocation.fromMap((map['location']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

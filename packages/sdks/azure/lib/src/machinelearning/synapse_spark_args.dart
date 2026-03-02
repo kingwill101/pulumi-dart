@@ -60,14 +60,14 @@ class SynapseSparkArgs {
 
   factory SynapseSparkArgs.fromMap(Map<String, dynamic> map) {
     return SynapseSparkArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (SynapseSparkIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (SynapseSparkIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       machineLearningWorkspaceId: (map['machineLearningWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       synapseSparkPoolId: (map['synapseSparkPoolId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

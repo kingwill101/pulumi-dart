@@ -48,12 +48,12 @@ class AnnotationArgs {
 
   factory AnnotationArgs.fromMap(Map<String, dynamic> map) {
     return AnnotationArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      type: map['type'] == null ? null : (AnnotationType.fromValue(map['type'] as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      type: map['type'] == null ? null : (AnnotationType.fromValue(map['type']! as String)).input(),
     );
   }
 }

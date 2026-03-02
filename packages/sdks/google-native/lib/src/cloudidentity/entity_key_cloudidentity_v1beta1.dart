@@ -26,8 +26,8 @@ class EntityKeyCloudidentityV1beta1 {
 
   factory EntityKeyCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return EntityKeyCloudidentityV1beta1(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

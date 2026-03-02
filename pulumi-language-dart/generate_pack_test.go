@@ -478,13 +478,13 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<int> size;")
 	assert.Contains(t, content, "final pulumi.Input<String>? label;")
-	assert.Contains(t, content, "required pulumi.Input<int> size")
-	assert.Contains(t, content, "pulumi.Input<String>? label")
-	assert.Contains(t, content, "size = pulumi.Input.asInput<int>(size)")
+	assert.Contains(t, content, "required this.size")
+	assert.Contains(t, content, "this.label")
+	assert.NotContains(t, content, "size: map['size'] as int")
 	assert.Contains(t, content, "WidgetArgs? args")
 	assert.Contains(t, content, "args?.toMap()")
-	assert.Contains(t, content, "size: map['size'] as int")
-	assert.Contains(t, content, "label: map['label'] == null ? null : map['label'] as String")
+	assert.Contains(t, content, "size: (map['size'] as int).input()")
+	assert.Contains(t, content, "label: map['label'] == null ? null : (map['label']! as String).input()")
 
 	assert.Contains(t, content, "late final pulumi.Output<String> arn;")
 	assert.Contains(t, content, "late final pulumi.Output<int?> size;")
@@ -495,15 +495,15 @@ func TestGeneratePackageEmitsArgsAndResultClasses(t *testing.T) {
 
 	assert.Contains(t, content, "class GetWidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<String> id;")
-	assert.Contains(t, content, "required pulumi.Input<String> id")
-	assert.Contains(t, content, "id = pulumi.Input.asInput<String>(id)")
+	assert.Contains(t, content, "required this.id")
+	assert.NotContains(t, content, "id =")
 	assert.Contains(t, content, "class GetWidgetResult")
 	assert.Contains(t, content, "final String name;")
 	assert.Contains(t, content, "final List<String>? tags;")
 	assert.Contains(t, content, "Future<GetWidgetResult> getWidget")
 	assert.Contains(t, content, "GetWidgetResult.fromMap(result)")
 	assert.Contains(t, content, "name: map['name'] as String")
-	assert.Contains(t, content, "tags: map['tags'] == null ? null : (map['tags'] as List).cast<String>()")
+	assert.Contains(t, content, "tags: map['tags'] == null ? null : (map['tags']! as List).cast<String>()")
 }
 
 func TestGeneratePackageInvalidSchemaReturnsError(t *testing.T) {
@@ -1800,6 +1800,7 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "class WidgetArgs")
 	assert.Contains(t, content, "final pulumi.Input<WidgetMode> mode;")
 	assert.Contains(t, content, "final pulumi.Input<WidgetMetadata>? metadata;")
+	assert.Contains(t, content, "metadata: map['metadata'] == null ? null : (WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input()")
 	assert.Contains(t, content, "pulumi.Input.mapInputValue<WidgetMode, String>(mode, (value) => value.value)")
 	assert.Contains(
 		t,
@@ -1812,6 +1813,60 @@ func TestGeneratePackageEmitsNamedTypesAndRefs(t *testing.T) {
 	assert.Contains(t, content, "metadata: WidgetMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())")
 	assert.Contains(t, content, "final WidgetMode mode;")
 	assert.Contains(t, content, "mode: WidgetMode.fromValue(map['mode'] as String)")
+}
+
+func TestGeneratePackageFromMapUsesNonNullDecodeForOptionalObjectProperties(t *testing.T) {
+	t.Parallel()
+
+	host := &dartLanguageHost{}
+	targetDir := t.TempDir()
+	schema := `{
+		"name": "sample",
+		"version": "1.2.3",
+		"types": {
+			"sample:index:WidgetMetadata": {
+				"type": "object",
+				"properties": {
+					"owner": { "type": "string" }
+				},
+				"required": ["owner"]
+			}
+		},
+		"resources": {
+			"sample:index:Widget": {
+				"inputProperties": {
+					"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" }
+				}
+			}
+		},
+		"functions": {
+			"sample:index:getWidget": {
+				"outputs": {
+					"properties": {
+						"metadata": { "$ref": "#/types/sample:index:WidgetMetadata" }
+					}
+				}
+			}
+		}
+	}`
+
+	_, err := host.GeneratePackage(context.Background(), &pulumirpc.GeneratePackageRequest{
+		Directory: targetDir,
+		Schema:    schema,
+	})
+	require.NoError(t, err)
+
+	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
+	assert.Contains(
+		t,
+		content,
+		"metadata: map['metadata'] == null ? null : (WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input()",
+	)
+	assert.Contains(
+		t,
+		content,
+		"metadata: map['metadata'] == null ? null : WidgetMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())",
+	)
 }
 
 func TestGeneratePackageTreatsEmptyObjectTypesAsMaps(t *testing.T) {
@@ -2247,7 +2302,7 @@ func TestGeneratePackageSanitizesRuntimeTypeFieldName(t *testing.T) {
 	_, content := readGeneratedPackageLibraries(t, targetDir, "pulumi_sample")
 	assert.Contains(t, content, "final pulumi.Input<String> runtimeType_;")
 	assert.Contains(t, content, "'runtimeType': runtimeType_,")
-	assert.Contains(t, content, "runtimeType_: map['runtimeType'] as String")
+	assert.Contains(t, content, "runtimeType_: (map['runtimeType'] as String).input()")
 }
 
 func TestGeneratePackageSanitizesDocCommentMarkup(t *testing.T) {

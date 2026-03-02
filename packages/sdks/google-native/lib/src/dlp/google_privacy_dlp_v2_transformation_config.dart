@@ -31,9 +31,9 @@ class GooglePrivacyDlpV2TransformationConfig {
 
   factory GooglePrivacyDlpV2TransformationConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TransformationConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate'] as String).input(),
-      imageRedactTemplate: map['imageRedactTemplate'] == null ? null : (map['imageRedactTemplate'] as String).input(),
-      structuredDeidentifyTemplate: map['structuredDeidentifyTemplate'] == null ? null : (map['structuredDeidentifyTemplate'] as String).input(),
+      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : (map['deidentifyTemplate']! as String).input(),
+      imageRedactTemplate: map['imageRedactTemplate'] == null ? null : (map['imageRedactTemplate']! as String).input(),
+      structuredDeidentifyTemplate: map['structuredDeidentifyTemplate'] == null ? null : (map['structuredDeidentifyTemplate']! as String).input(),
     );
   }
 }

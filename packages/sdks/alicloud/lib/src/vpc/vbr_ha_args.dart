@@ -47,10 +47,10 @@ class VbrHaArgs {
 
   factory VbrHaArgs.fromMap(Map<String, dynamic> map) {
     return VbrHaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       peerVbrId: (map['peerVbrId'] as String).input(),
-      vbrHaName: map['vbrHaName'] == null ? null : (map['vbrHaName'] as String).input(),
+      vbrHaName: map['vbrHaName'] == null ? null : (map['vbrHaName']! as String).input(),
       vbrId: (map['vbrId'] as String).input(),
     );
   }

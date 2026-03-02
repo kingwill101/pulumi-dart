@@ -35,10 +35,10 @@ class ListSignalRKeysResult {
 
   factory ListSignalRKeysResult.fromMap(Map<String, dynamic> map) {
     return ListSignalRKeysResult(
-      primaryConnectionString: map['primaryConnectionString'] == null ? null : map['primaryConnectionString'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : map['secondaryConnectionString'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      primaryConnectionString: map['primaryConnectionString'] == null ? null : map['primaryConnectionString']! as String,
+      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
+      secondaryConnectionString: map['secondaryConnectionString'] == null ? null : map['secondaryConnectionString']! as String,
+      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
     );
   }
 }

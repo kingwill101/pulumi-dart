@@ -39,10 +39,10 @@ class DeploymentConfiguration {
 
   factory DeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentConfiguration(
-      appLocation: map['appLocation'] == null ? null : (map['appLocation'] as String).input(),
+      appLocation: map['appLocation'] == null ? null : (map['appLocation']! as String).input(),
       configurationType: (map['configurationType'] as String).input(),
-      infrastructureConfiguration: map['infrastructureConfiguration'] == null ? null : (SingleServerConfiguration.fromMap((map['infrastructureConfiguration'] as Map).cast<String, dynamic>())).input(),
-      softwareConfiguration: map['softwareConfiguration'] == null ? null : (ExternalInstallationSoftwareConfiguration.fromMap((map['softwareConfiguration'] as Map).cast<String, dynamic>())).input(),
+      infrastructureConfiguration: map['infrastructureConfiguration'] == null ? null : (SingleServerConfiguration.fromMap((map['infrastructureConfiguration']! as Map).cast<String, dynamic>())).input(),
+      softwareConfiguration: map['softwareConfiguration'] == null ? null : (ExternalInstallationSoftwareConfiguration.fromMap((map['softwareConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

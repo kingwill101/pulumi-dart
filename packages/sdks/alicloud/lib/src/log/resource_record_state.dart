@@ -36,10 +36,10 @@ class ResourceRecordState {
 
   factory ResourceRecordState.fromMap(Map<String, dynamic> map) {
     return ResourceRecordState(
-      recordId: map['recordId'] == null ? null : (map['recordId'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      recordId: map['recordId'] == null ? null : (map['recordId']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -148,18 +148,18 @@ class WorkloadIdentityPoolProviderArgs {
 
   factory WorkloadIdentityPoolProviderArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderArgs(
-      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
-      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
-      aws: map['aws'] == null ? null : (WorkloadIdentityPoolProviderAws.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      oidc: map['oidc'] == null ? null : (WorkloadIdentityPoolProviderOidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      saml: map['saml'] == null ? null : (WorkloadIdentityPoolProviderSaml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition']! as String).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping']! as Map).cast<String, String>()).input(),
+      aws: map['aws'] == null ? null : (WorkloadIdentityPoolProviderAws.fromMap((map['aws']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      oidc: map['oidc'] == null ? null : (WorkloadIdentityPoolProviderOidc.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      saml: map['saml'] == null ? null : (WorkloadIdentityPoolProviderSaml.fromMap((map['saml']! as Map).cast<String, dynamic>())).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
       workloadIdentityPoolProviderId: (map['workloadIdentityPoolProviderId'] as String).input(),
-      x509: map['x509'] == null ? null : (WorkloadIdentityPoolProviderX509.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
+      x509: map['x509'] == null ? null : (WorkloadIdentityPoolProviderX509.fromMap((map['x509']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

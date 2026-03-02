@@ -43,11 +43,11 @@ class AccessBoundaryPolicyState {
 
   factory AccessBoundaryPolicyState.fromMap(Map<String, dynamic> map) {
     return AccessBoundaryPolicyState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules'], (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<AccessBoundaryPolicyRule>(map['rules']!, (value) => AccessBoundaryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

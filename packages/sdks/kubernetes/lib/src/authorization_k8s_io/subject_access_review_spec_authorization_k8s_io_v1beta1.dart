@@ -48,12 +48,12 @@ class SubjectAccessReviewSpecAuthorizationK8sIoV1beta1 {
 
   factory SubjectAccessReviewSpecAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SubjectAccessReviewSpecAuthorizationK8sIoV1beta1(
-      extra: map['extra'] == null ? null : ((map['extra'] as Map).cast<String, List<String>>()).input(),
-      group: map['group'] == null ? null : ((map['group'] as List).cast<String>()).input(),
-      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributesAuthorizationK8sIoV1beta1.fromMap((map['nonResourceAttributes'] as Map).cast<String, dynamic>())).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributesAuthorizationK8sIoV1beta1.fromMap((map['resourceAttributes'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, List<String>>()).input(),
+      group: map['group'] == null ? null : ((map['group']! as List).cast<String>()).input(),
+      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributesAuthorizationK8sIoV1beta1.fromMap((map['nonResourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributesAuthorizationK8sIoV1beta1.fromMap((map['resourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

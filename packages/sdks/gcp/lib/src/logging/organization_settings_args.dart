@@ -39,10 +39,10 @@ class OrganizationSettingsArgs {
 
   factory OrganizationSettingsArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSettingsArgs(
-      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink'] as bool).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      disableDefaultSink: map['disableDefaultSink'] == null ? null : (map['disableDefaultSink']! as bool).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       organization: (map['organization'] as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation'] as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (map['storageLocation']! as String).input(),
     );
   }
 }

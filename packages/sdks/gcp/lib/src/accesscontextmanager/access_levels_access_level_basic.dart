@@ -33,7 +33,7 @@ class AccessLevelsAccessLevelBasic {
 
   factory AccessLevelsAccessLevelBasic.fromMap(Map<String, dynamic> map) {
     return AccessLevelsAccessLevelBasic(
-      combiningFunction: map['combiningFunction'] == null ? null : (map['combiningFunction'] as String).input(),
+      combiningFunction: map['combiningFunction'] == null ? null : (map['combiningFunction']! as String).input(),
       conditions: (pulumi.Input.decodeList<AccessLevelsAccessLevelBasicCondition>(map['conditions'], (value) => AccessLevelsAccessLevelBasicCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

@@ -55,12 +55,12 @@ class TestLineArgs {
   factory TestLineArgs.fromMap(Map<String, dynamic> map) {
     return TestLineArgs(
       communicationsGatewayName: (map['communicationsGatewayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       purpose: (map['purpose'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      testLineName: map['testLineName'] == null ? null : (map['testLineName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      testLineName: map['testLineName'] == null ? null : (map['testLineName']! as String).input(),
     );
   }
 }

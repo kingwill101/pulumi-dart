@@ -60,14 +60,14 @@ class PublicAdvertisedPrefixArgs {
 
   factory PublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicAdvertisedPrefixArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : (map['dnsVerificationIp'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pdpScope: map['pdpScope'] == null ? null : (PublicAdvertisedPrefixPdpScope.fromValue(map['pdpScope'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      status: map['status'] == null ? null : (PublicAdvertisedPrefixStatus.fromValue(map['status'] as String)).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : (map['dnsVerificationIp']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pdpScope: map['pdpScope'] == null ? null : (PublicAdvertisedPrefixPdpScope.fromValue(map['pdpScope']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      status: map['status'] == null ? null : (PublicAdvertisedPrefixStatus.fromValue(map['status']! as String)).input(),
     );
   }
 }

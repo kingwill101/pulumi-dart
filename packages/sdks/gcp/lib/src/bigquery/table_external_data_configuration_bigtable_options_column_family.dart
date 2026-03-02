@@ -41,11 +41,11 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamily {
 
   factory TableExternalDataConfigurationBigtableOptionsColumnFamily.fromMap(Map<String, dynamic> map) {
     return TableExternalDataConfigurationBigtableOptionsColumnFamily(
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn>(map['columns'], (value) => TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
-      familyId: map['familyId'] == null ? null : (map['familyId'] as String).input(),
-      onlyReadLatest: map['onlyReadLatest'] == null ? null : (map['onlyReadLatest'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn>(map['columns']!, (value) => TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
+      familyId: map['familyId'] == null ? null : (map['familyId']! as String).input(),
+      onlyReadLatest: map['onlyReadLatest'] == null ? null : (map['onlyReadLatest']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

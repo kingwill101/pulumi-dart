@@ -104,22 +104,22 @@ class GetAccessControlListResult {
 
   factory GetAccessControlListResult.fromMap(Map<String, dynamic> map) {
     return GetAccessControlListResult(
-      aclsUrl: map['aclsUrl'] == null ? null : map['aclsUrl'] as String,
+      aclsUrl: map['aclsUrl'] == null ? null : map['aclsUrl']! as String,
       administrativeState: map['administrativeState'] as String,
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
       configurationType: map['configurationType'] as String,
-      defaultAction: map['defaultAction'] == null ? null : map['defaultAction'] as String,
-      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(map['dynamicMatchConfigurations'], (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      defaultAction: map['defaultAction'] == null ? null : map['defaultAction']! as String,
+      dynamicMatchConfigurations: map['dynamicMatchConfigurations'] == null ? null : pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(map['dynamicMatchConfigurations']!, (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       lastSyncedTime: map['lastSyncedTime'] as String,
       location: map['location'] as String,
-      matchConfigurations: map['matchConfigurations'] == null ? null : pulumi.Input.decodeList<AccessControlListMatchConfigurationResponse>(map['matchConfigurations'], (value) => AccessControlListMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      matchConfigurations: map['matchConfigurations'] == null ? null : pulumi.Input.decodeList<AccessControlListMatchConfigurationResponse>(map['matchConfigurations']!, (value) => AccessControlListMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

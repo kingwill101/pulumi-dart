@@ -54,13 +54,13 @@ class ScopeState {
 
   factory ScopeState.fromMap(Map<String, dynamic> map) {
     return ScopeState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scopeArn: map['scopeArn'] == null ? null : (map['scopeArn'] as String).input(),
-      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<ScopeTarget>(map['targets'], (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (ScopeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scopeArn: map['scopeArn'] == null ? null : ((map['scopeArn'] as String).input()).input(),
+      scopeId: map['scopeId'] == null ? null : ((map['scopeId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targets: map['targets'] == null ? null : ((pulumi.Input.decodeList<ScopeTarget>(map['targets']!, (value) => ScopeTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ScopeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -91,17 +91,17 @@ class SearchEngineArgs {
 
   factory SearchEngineArgs.fromMap(Map<String, dynamic> map) {
     return SearchEngineArgs(
-      appType: map['appType'] == null ? null : (map['appType'] as String).input(),
+      appType: map['appType'] == null ? null : (map['appType']! as String).input(),
       collectionId: (map['collectionId'] as String).input(),
-      commonConfig: map['commonConfig'] == null ? null : (SearchEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
+      commonConfig: map['commonConfig'] == null ? null : (SearchEngineCommonConfig.fromMap((map['commonConfig']! as Map).cast<String, dynamic>())).input(),
       dataStoreIds: ((map['dataStoreIds'] as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
       engineId: (map['engineId'] as String).input(),
-      features: map['features'] == null ? null : ((map['features'] as Map).cast<String, String>()).input(),
-      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      features: map['features'] == null ? null : ((map['features']! as Map).cast<String, String>()).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       searchEngineConfig: (SearchEngineSearchEngineConfig.fromMap((map['searchEngineConfig'] as Map).cast<String, dynamic>())).input(),
     );
   }

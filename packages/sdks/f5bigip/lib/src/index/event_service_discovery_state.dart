@@ -72,8 +72,8 @@ class EventServiceDiscoveryState {
 
   factory EventServiceDiscoveryState.fromMap(Map<String, dynamic> map) {
     return EventServiceDiscoveryState(
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<EventServiceDiscoveryNode>(map['nodes'], (value) => EventServiceDiscoveryNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      taskid: map['taskid'] == null ? null : (map['taskid'] as String).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<EventServiceDiscoveryNode>(map['nodes']!, (value) => EventServiceDiscoveryNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskid: map['taskid'] == null ? null : (map['taskid']! as String).input(),
     );
   }
 }

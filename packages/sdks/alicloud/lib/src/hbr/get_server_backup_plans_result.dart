@@ -39,10 +39,10 @@ class GetServerBackupPlansResult {
 
   factory GetServerBackupPlansResult.fromMap(Map<String, dynamic> map) {
     return GetServerBackupPlansResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetServerBackupPlansFilter>(map['filters'], (value) => GetServerBackupPlansFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetServerBackupPlansFilter>(map['filters']!, (value) => GetServerBackupPlansFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       plans: pulumi.Input.decodeList<GetServerBackupPlansPlan>(map['plans'], (value) => GetServerBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

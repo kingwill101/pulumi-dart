@@ -22,7 +22,7 @@ class SubscriptionListResponse {
 
   factory SubscriptionListResponse.fromMap(Map<String, dynamic> map) {
     return SubscriptionListResponse(
-      monitoredSubscriptionList: map['monitoredSubscriptionList'] == null ? null : (pulumi.Input.decodeList<MonitoredSubscriptionResponse>(map['monitoredSubscriptionList'], (value) => MonitoredSubscriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      monitoredSubscriptionList: map['monitoredSubscriptionList'] == null ? null : (pulumi.Input.decodeList<MonitoredSubscriptionResponse>(map['monitoredSubscriptionList']!, (value) => MonitoredSubscriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

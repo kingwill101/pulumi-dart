@@ -43,10 +43,10 @@ class FloorsettingFilterConfig {
 
   factory FloorsettingFilterConfig.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfig(
-      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      raiSettings: map['raiSettings'] == null ? null : (FloorsettingFilterConfigRaiSettings.fromMap((map['raiSettings'] as Map).cast<String, dynamic>())).input(),
-      sdpSettings: map['sdpSettings'] == null ? null : (FloorsettingFilterConfigSdpSettings.fromMap((map['sdpSettings'] as Map).cast<String, dynamic>())).input(),
+      maliciousUriFilterSettings: map['maliciousUriFilterSettings'] == null ? null : (FloorsettingFilterConfigMaliciousUriFilterSettings.fromMap((map['maliciousUriFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      piAndJailbreakFilterSettings: map['piAndJailbreakFilterSettings'] == null ? null : (FloorsettingFilterConfigPiAndJailbreakFilterSettings.fromMap((map['piAndJailbreakFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      raiSettings: map['raiSettings'] == null ? null : (FloorsettingFilterConfigRaiSettings.fromMap((map['raiSettings']! as Map).cast<String, dynamic>())).input(),
+      sdpSettings: map['sdpSettings'] == null ? null : (FloorsettingFilterConfigSdpSettings.fromMap((map['sdpSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

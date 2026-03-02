@@ -44,10 +44,10 @@ class InstanceNetworkConfig {
 
   factory InstanceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkConfig(
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      ipAllocation: map['ipAllocation'] == null ? null : (map['ipAllocation'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (InstanceNetworkConfigPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      ipAllocation: map['ipAllocation'] == null ? null : (map['ipAllocation']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (InstanceNetworkConfigPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

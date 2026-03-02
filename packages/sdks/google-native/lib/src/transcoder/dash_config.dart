@@ -22,7 +22,7 @@ class DashConfig {
 
   factory DashConfig.fromMap(Map<String, dynamic> map) {
     return DashConfig(
-      segmentReferenceScheme: map['segmentReferenceScheme'] == null ? null : (DashConfigSegmentReferenceScheme.fromValue(map['segmentReferenceScheme'] as String)).input(),
+      segmentReferenceScheme: map['segmentReferenceScheme'] == null ? null : (DashConfigSegmentReferenceScheme.fromValue(map['segmentReferenceScheme']! as String)).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ApplicationSinglePageApplication {
 
   factory ApplicationSinglePageApplication.fromMap(Map<String, dynamic> map) {
     return ApplicationSinglePageApplication(
-      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris'] as List).cast<String>()).input(),
+      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris']! as List).cast<String>()).input(),
     );
   }
 }

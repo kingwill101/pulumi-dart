@@ -41,11 +41,11 @@ class ConsumerChannelState {
 
   factory ConsumerChannelState.fromMap(Map<String, dynamic> map) {
     return ConsumerChannelState(
-      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId'] as String).input(),
-      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName'] as String).input(),
-      consumerGroupPassword: map['consumerGroupPassword'] == null ? null : (map['consumerGroupPassword'] as String).input(),
-      consumerGroupUserName: map['consumerGroupUserName'] == null ? null : (map['consumerGroupUserName'] as String).input(),
-      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId'] as String).input(),
+      consumerGroupId: map['consumerGroupId'] == null ? null : (map['consumerGroupId']! as String).input(),
+      consumerGroupName: map['consumerGroupName'] == null ? null : (map['consumerGroupName']! as String).input(),
+      consumerGroupPassword: map['consumerGroupPassword'] == null ? null : (map['consumerGroupPassword']! as String).input(),
+      consumerGroupUserName: map['consumerGroupUserName'] == null ? null : (map['consumerGroupUserName']! as String).input(),
+      dtsInstanceId: map['dtsInstanceId'] == null ? null : (map['dtsInstanceId']! as String).input(),
     );
   }
 }

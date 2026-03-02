@@ -36,10 +36,10 @@ class ArchiveRuleset {
 
   factory ArchiveRuleset.fromMap(Map<String, dynamic> map) {
     return ArchiveRuleset(
-      maximumCompressionRatioLimit: map['maximumCompressionRatioLimit'] == null ? null : (map['maximumCompressionRatioLimit'] as double).input(),
-      maximumDepthLimit: map['maximumDepthLimit'] == null ? null : (map['maximumDepthLimit'] as double).input(),
-      maximumExpansionSizeLimit: map['maximumExpansionSizeLimit'] == null ? null : (map['maximumExpansionSizeLimit'] as double).input(),
-      minimumSizeForExpansion: map['minimumSizeForExpansion'] == null ? null : (map['minimumSizeForExpansion'] as double).input(),
+      maximumCompressionRatioLimit: map['maximumCompressionRatioLimit'] == null ? null : (map['maximumCompressionRatioLimit']! as double).input(),
+      maximumDepthLimit: map['maximumDepthLimit'] == null ? null : (map['maximumDepthLimit']! as double).input(),
+      maximumExpansionSizeLimit: map['maximumExpansionSizeLimit'] == null ? null : (map['maximumExpansionSizeLimit']! as double).input(),
+      minimumSizeForExpansion: map['minimumSizeForExpansion'] == null ? null : (map['minimumSizeForExpansion']! as double).input(),
     );
   }
 }

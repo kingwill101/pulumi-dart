@@ -40,10 +40,10 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditions {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetConditions.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetConditions(
-      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter'] as String).input(),
-      orConditions: map['orConditions'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.fromMap((map['orConditions'] as Map).cast<String, dynamic>())).input(),
-      typeCollection: map['typeCollection'] == null ? null : (map['typeCollection'] as String).input(),
-      types: map['types'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes.fromMap((map['types'] as Map).cast<String, dynamic>())).input(),
+      createdAfter: map['createdAfter'] == null ? null : (map['createdAfter']! as String).input(),
+      orConditions: map['orConditions'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions.fromMap((map['orConditions']! as Map).cast<String, dynamic>())).input(),
+      typeCollection: map['typeCollection'] == null ? null : (map['typeCollection']! as String).input(),
+      types: map['types'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes.fromMap((map['types']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

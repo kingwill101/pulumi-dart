@@ -55,14 +55,14 @@ class ClusterUserManagedKeysConfig {
 
   factory ClusterUserManagedKeysConfig.fromMap(Map<String, dynamic> map) {
     return ClusterUserManagedKeysConfig(
-      aggregationCa: map['aggregationCa'] == null ? null : (map['aggregationCa'] as String).input(),
-      clusterCa: map['clusterCa'] == null ? null : (map['clusterCa'] as String).input(),
-      controlPlaneDiskEncryptionKey: map['controlPlaneDiskEncryptionKey'] == null ? null : (map['controlPlaneDiskEncryptionKey'] as String).input(),
-      etcdApiCa: map['etcdApiCa'] == null ? null : (map['etcdApiCa'] as String).input(),
-      etcdPeerCa: map['etcdPeerCa'] == null ? null : (map['etcdPeerCa'] as String).input(),
-      gkeopsEtcdBackupEncryptionKey: map['gkeopsEtcdBackupEncryptionKey'] == null ? null : (map['gkeopsEtcdBackupEncryptionKey'] as String).input(),
-      serviceAccountSigningKeys: map['serviceAccountSigningKeys'] == null ? null : ((map['serviceAccountSigningKeys'] as List).cast<String>()).input(),
-      serviceAccountVerificationKeys: map['serviceAccountVerificationKeys'] == null ? null : ((map['serviceAccountVerificationKeys'] as List).cast<String>()).input(),
+      aggregationCa: map['aggregationCa'] == null ? null : (map['aggregationCa']! as String).input(),
+      clusterCa: map['clusterCa'] == null ? null : (map['clusterCa']! as String).input(),
+      controlPlaneDiskEncryptionKey: map['controlPlaneDiskEncryptionKey'] == null ? null : (map['controlPlaneDiskEncryptionKey']! as String).input(),
+      etcdApiCa: map['etcdApiCa'] == null ? null : (map['etcdApiCa']! as String).input(),
+      etcdPeerCa: map['etcdPeerCa'] == null ? null : (map['etcdPeerCa']! as String).input(),
+      gkeopsEtcdBackupEncryptionKey: map['gkeopsEtcdBackupEncryptionKey'] == null ? null : (map['gkeopsEtcdBackupEncryptionKey']! as String).input(),
+      serviceAccountSigningKeys: map['serviceAccountSigningKeys'] == null ? null : ((map['serviceAccountSigningKeys']! as List).cast<String>()).input(),
+      serviceAccountVerificationKeys: map['serviceAccountVerificationKeys'] == null ? null : ((map['serviceAccountVerificationKeys']! as List).cast<String>()).input(),
     );
   }
 }

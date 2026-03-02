@@ -26,8 +26,8 @@ class OneDashboardPageWidgetFunnelUnit {
 
   factory OneDashboardPageWidgetFunnelUnit.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetFunnelUnit(
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnelUnitSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetFunnelUnitSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnelUnitSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetFunnelUnitSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

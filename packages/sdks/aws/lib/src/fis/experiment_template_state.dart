@@ -78,17 +78,17 @@ class ExperimentTemplateState {
 
   factory ExperimentTemplateState.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateState(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateAction>(map['actions'], (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      experimentOptions: map['experimentOptions'] == null ? null : (ExperimentTemplateExperimentOptions.fromMap((map['experimentOptions'] as Map).cast<String, dynamic>())).input(),
-      experimentReportConfiguration: map['experimentReportConfiguration'] == null ? null : (ExperimentTemplateExperimentReportConfiguration.fromMap((map['experimentReportConfiguration'] as Map).cast<String, dynamic>())).input(),
-      logConfiguration: map['logConfiguration'] == null ? null : (ExperimentTemplateLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      stopConditions: map['stopConditions'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateStopCondition>(map['stopConditions'], (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targets: map['targets'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateTarget>(map['targets'], (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateAction>(map['actions']!, (value) => ExperimentTemplateAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      experimentOptions: map['experimentOptions'] == null ? null : ((ExperimentTemplateExperimentOptions.fromMap((map['experimentOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      experimentReportConfiguration: map['experimentReportConfiguration'] == null ? null : ((ExperimentTemplateExperimentReportConfiguration.fromMap((map['experimentReportConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      logConfiguration: map['logConfiguration'] == null ? null : ((ExperimentTemplateLogConfiguration.fromMap((map['logConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      stopConditions: map['stopConditions'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateStopCondition>(map['stopConditions']!, (value) => ExperimentTemplateStopCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targets: map['targets'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateTarget>(map['targets']!, (value) => ExperimentTemplateTarget.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

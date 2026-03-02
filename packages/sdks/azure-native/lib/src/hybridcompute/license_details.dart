@@ -47,12 +47,12 @@ class LicenseDetails {
 
   factory LicenseDetails.fromMap(Map<String, dynamic> map) {
     return LicenseDetails(
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      processors: map['processors'] == null ? null : (map['processors'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      volumeLicenseDetails: map['volumeLicenseDetails'] == null ? null : (pulumi.Input.decodeList<VolumeLicenseDetails>(map['volumeLicenseDetails'], (value) => VolumeLicenseDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      processors: map['processors'] == null ? null : (map['processors']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      volumeLicenseDetails: map['volumeLicenseDetails'] == null ? null : (pulumi.Input.decodeList<VolumeLicenseDetails>(map['volumeLicenseDetails']!, (value) => VolumeLicenseDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

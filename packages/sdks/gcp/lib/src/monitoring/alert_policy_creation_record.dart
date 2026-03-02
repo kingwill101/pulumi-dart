@@ -27,8 +27,8 @@ class AlertPolicyCreationRecord {
 
   factory AlertPolicyCreationRecord.fromMap(Map<String, dynamic> map) {
     return AlertPolicyCreationRecord(
-      mutateTime: map['mutateTime'] == null ? null : (map['mutateTime'] as String).input(),
-      mutatedBy: map['mutatedBy'] == null ? null : (map['mutatedBy'] as String).input(),
+      mutateTime: map['mutateTime'] == null ? null : (map['mutateTime']! as String).input(),
+      mutatedBy: map['mutatedBy'] == null ? null : (map['mutatedBy']! as String).input(),
     );
   }
 }

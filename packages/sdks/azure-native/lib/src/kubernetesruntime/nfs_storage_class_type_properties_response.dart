@@ -47,11 +47,11 @@ class NfsStorageClassTypePropertiesResponse {
 
   factory NfsStorageClassTypePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NfsStorageClassTypePropertiesResponse(
-      mountPermissions: map['mountPermissions'] == null ? null : (map['mountPermissions'] as String).input(),
-      onDelete: map['onDelete'] == null ? null : (map['onDelete'] as String).input(),
+      mountPermissions: map['mountPermissions'] == null ? null : (map['mountPermissions']! as String).input(),
+      onDelete: map['onDelete'] == null ? null : (map['onDelete']! as String).input(),
       server: (map['server'] as String).input(),
       share: (map['share'] as String).input(),
-      subDir: map['subDir'] == null ? null : (map['subDir'] as String).input(),
+      subDir: map['subDir'] == null ? null : (map['subDir']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

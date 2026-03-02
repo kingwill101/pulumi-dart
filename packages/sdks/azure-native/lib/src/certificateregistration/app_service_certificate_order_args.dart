@@ -81,18 +81,18 @@ class AppServiceCertificateOrderArgs {
 
   factory AppServiceCertificateOrderArgs.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificateOrderArgs(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      certificateOrderName: map['certificateOrderName'] == null ? null : (map['certificateOrderName'] as String).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeMapValues<AppServiceCertificate>(map['certificates'], (value) => AppServiceCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      csr: map['csr'] == null ? null : (map['csr'] as String).input(),
-      distinguishedName: map['distinguishedName'] == null ? null : (map['distinguishedName'] as String).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as int).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      certificateOrderName: map['certificateOrderName'] == null ? null : (map['certificateOrderName']! as String).input(),
+      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeMapValues<AppServiceCertificate>(map['certificates']!, (value) => AppServiceCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      csr: map['csr'] == null ? null : (map['csr']! as String).input(),
+      distinguishedName: map['distinguishedName'] == null ? null : (map['distinguishedName']! as String).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as int).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       productType: (CertificateProductType.fromValue(map['productType'] as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validityInYears: map['validityInYears'] == null ? null : (map['validityInYears'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      validityInYears: map['validityInYears'] == null ? null : (map['validityInYears']! as int).input(),
     );
   }
 }

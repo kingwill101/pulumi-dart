@@ -44,10 +44,10 @@ class AccountBackup {
 
   factory AccountBackup.fromMap(Map<String, dynamic> map) {
     return AccountBackup(
-      intervalInMinutes: map['intervalInMinutes'] == null ? null : (map['intervalInMinutes'] as int).input(),
-      retentionInHours: map['retentionInHours'] == null ? null : (map['retentionInHours'] as int).input(),
-      storageRedundancy: map['storageRedundancy'] == null ? null : (map['storageRedundancy'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      intervalInMinutes: map['intervalInMinutes'] == null ? null : (map['intervalInMinutes']! as int).input(),
+      retentionInHours: map['retentionInHours'] == null ? null : (map['retentionInHours']! as int).input(),
+      storageRedundancy: map['storageRedundancy'] == null ? null : (map['storageRedundancy']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

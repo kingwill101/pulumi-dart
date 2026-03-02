@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsDataPointDrillUpDownOption {
 
   factory DashboardDashboardPublishOptionsDataPointDrillUpDownOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsDataPointDrillUpDownOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

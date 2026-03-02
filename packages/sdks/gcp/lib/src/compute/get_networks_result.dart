@@ -37,7 +37,7 @@ class GetNetworksResult {
     return GetNetworksResult(
       id: map['id'] as String,
       networks: (map['networks'] as List).cast<String>(),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

@@ -76,7 +76,7 @@ class GetEnclaveEndpointResult {
       resourceCollection: (map['resourceCollection'] as List).cast<String>(),
       ruleCollection: pulumi.Input.decodeList<EnclaveEndpointDestinationRuleResponse>(map['ruleCollection'], (value) => EnclaveEndpointDestinationRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

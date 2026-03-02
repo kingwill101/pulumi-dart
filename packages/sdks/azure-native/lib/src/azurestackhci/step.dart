@@ -61,15 +61,15 @@ class Step {
 
   factory Step.fromMap(Map<String, dynamic> map) {
     return Step(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endTimeUtc: map['endTimeUtc'] == null ? null : (map['endTimeUtc'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      expectedExecutionTime: map['expectedExecutionTime'] == null ? null : (map['expectedExecutionTime'] as String).input(),
-      lastUpdatedTimeUtc: map['lastUpdatedTimeUtc'] == null ? null : (map['lastUpdatedTimeUtc'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<Step>(map['steps'], (value) => Step.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endTimeUtc: map['endTimeUtc'] == null ? null : (map['endTimeUtc']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      expectedExecutionTime: map['expectedExecutionTime'] == null ? null : (map['expectedExecutionTime']! as String).input(),
+      lastUpdatedTimeUtc: map['lastUpdatedTimeUtc'] == null ? null : (map['lastUpdatedTimeUtc']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startTimeUtc: map['startTimeUtc'] == null ? null : (map['startTimeUtc']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      steps: map['steps'] == null ? null : (pulumi.Input.decodeList<Step>(map['steps']!, (value) => Step.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

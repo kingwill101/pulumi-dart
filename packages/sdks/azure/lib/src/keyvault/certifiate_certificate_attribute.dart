@@ -45,12 +45,12 @@ class CertifiateCertificateAttribute {
 
   factory CertifiateCertificateAttribute.fromMap(Map<String, dynamic> map) {
     return CertifiateCertificateAttribute(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
-      notBefore: map['notBefore'] == null ? null : (map['notBefore'] as String).input(),
-      recoveryLevel: map['recoveryLevel'] == null ? null : (map['recoveryLevel'] as String).input(),
-      updated: map['updated'] == null ? null : (map['updated'] as String).input(),
+      created: map['created'] == null ? null : (map['created']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      expires: map['expires'] == null ? null : (map['expires']! as String).input(),
+      notBefore: map['notBefore'] == null ? null : (map['notBefore']! as String).input(),
+      recoveryLevel: map['recoveryLevel'] == null ? null : (map['recoveryLevel']! as String).input(),
+      updated: map['updated'] == null ? null : (map['updated']! as String).input(),
     );
   }
 }

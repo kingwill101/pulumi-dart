@@ -30,9 +30,9 @@ class PlacementGroupAssignmentState {
 
   factory PlacementGroupAssignmentState.fromMap(Map<String, dynamic> map) {
     return PlacementGroupAssignmentState(
-      compliantOnly: map['compliantOnly'] == null ? null : (map['compliantOnly'] as bool).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId'] as int).input(),
+      compliantOnly: map['compliantOnly'] == null ? null : (map['compliantOnly']! as bool).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      placementGroupId: map['placementGroupId'] == null ? null : (map['placementGroupId']! as int).input(),
     );
   }
 }

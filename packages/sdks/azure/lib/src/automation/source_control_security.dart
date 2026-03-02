@@ -30,7 +30,7 @@ class SourceControlSecurity {
 
   factory SourceControlSecurity.fromMap(Map<String, dynamic> map) {
     return SourceControlSecurity(
-      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken'] as String).input(),
+      refreshToken: map['refreshToken'] == null ? null : (map['refreshToken']! as String).input(),
       token: (map['token'] as String).input(),
       tokenType: (map['tokenType'] as String).input(),
     );

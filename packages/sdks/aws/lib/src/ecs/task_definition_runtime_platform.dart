@@ -25,8 +25,8 @@ class TaskDefinitionRuntimePlatform {
 
   factory TaskDefinitionRuntimePlatform.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionRuntimePlatform(
-      cpuArchitecture: map['cpuArchitecture'] == null ? null : (map['cpuArchitecture'] as String).input(),
-      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : (map['operatingSystemFamily'] as String).input(),
+      cpuArchitecture: map['cpuArchitecture'] == null ? null : ((map['cpuArchitecture'] as String).input()).input(),
+      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : ((map['operatingSystemFamily'] as String).input()).input(),
     );
   }
 }

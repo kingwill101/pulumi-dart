@@ -38,10 +38,10 @@ class InstanceStateState {
 
   factory InstanceStateState.fromMap(Map<String, dynamic> map) {
     return InstanceStateState(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      force: map['force'] == null ? null : ((map['force'] as bool).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

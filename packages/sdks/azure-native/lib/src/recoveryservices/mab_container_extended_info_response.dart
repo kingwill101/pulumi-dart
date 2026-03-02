@@ -41,11 +41,11 @@ class MabContainerExtendedInfoResponse {
 
   factory MabContainerExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return MabContainerExtendedInfoResponse(
-      backupItemType: map['backupItemType'] == null ? null : (map['backupItemType'] as String).input(),
-      backupItems: map['backupItems'] == null ? null : ((map['backupItems'] as List).cast<String>()).input(),
-      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus'] as String).input(),
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
+      backupItemType: map['backupItemType'] == null ? null : (map['backupItemType']! as String).input(),
+      backupItems: map['backupItems'] == null ? null : ((map['backupItems']! as List).cast<String>()).input(),
+      lastBackupStatus: map['lastBackupStatus'] == null ? null : (map['lastBackupStatus']! as String).input(),
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
     );
   }
 }

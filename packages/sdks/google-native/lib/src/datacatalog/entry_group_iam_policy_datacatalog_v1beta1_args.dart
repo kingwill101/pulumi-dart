@@ -47,12 +47,12 @@ class EntryGroupIamPolicyDatacatalogV1beta1Args {
 
   factory EntryGroupIamPolicyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return EntryGroupIamPolicyDatacatalogV1beta1Args(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingDatacatalogV1beta1>(map['bindings'], (value) => BindingDatacatalogV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingDatacatalogV1beta1>(map['bindings']!, (value) => BindingDatacatalogV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       entryGroupId: (map['entryGroupId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

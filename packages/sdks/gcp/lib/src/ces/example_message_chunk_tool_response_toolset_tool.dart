@@ -27,7 +27,7 @@ class ExampleMessageChunkToolResponseToolsetTool {
 
   factory ExampleMessageChunkToolResponseToolsetTool.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunkToolResponseToolsetTool(
-      toolId: map['toolId'] == null ? null : (map['toolId'] as String).input(),
+      toolId: map['toolId'] == null ? null : (map['toolId']! as String).input(),
       toolset: (map['toolset'] as String).input(),
     );
   }

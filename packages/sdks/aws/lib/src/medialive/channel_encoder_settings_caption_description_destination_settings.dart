@@ -85,19 +85,19 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettings {
 
   factory ChannelEncoderSettingsCaptionDescriptionDestinationSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsCaptionDescriptionDestinationSettings(
-      aribDestinationSettings: map['aribDestinationSettings'] == null ? null : ((map['aribDestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      burnInDestinationSettings: map['burnInDestinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings.fromMap((map['burnInDestinationSettings'] as Map).cast<String, dynamic>())).input(),
-      dvbSubDestinationSettings: map['dvbSubDestinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings.fromMap((map['dvbSubDestinationSettings'] as Map).cast<String, dynamic>())).input(),
-      ebuTtDDestinationSettings: map['ebuTtDDestinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings.fromMap((map['ebuTtDDestinationSettings'] as Map).cast<String, dynamic>())).input(),
-      embeddedDestinationSettings: map['embeddedDestinationSettings'] == null ? null : ((map['embeddedDestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      embeddedPlusScte20DestinationSettings: map['embeddedPlusScte20DestinationSettings'] == null ? null : ((map['embeddedPlusScte20DestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      rtmpCaptionInfoDestinationSettings: map['rtmpCaptionInfoDestinationSettings'] == null ? null : ((map['rtmpCaptionInfoDestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      scte20PlusEmbeddedDestinationSettings: map['scte20PlusEmbeddedDestinationSettings'] == null ? null : ((map['scte20PlusEmbeddedDestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      scte27DestinationSettings: map['scte27DestinationSettings'] == null ? null : ((map['scte27DestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      smpteTtDestinationSettings: map['smpteTtDestinationSettings'] == null ? null : ((map['smpteTtDestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      teletextDestinationSettings: map['teletextDestinationSettings'] == null ? null : ((map['teletextDestinationSettings'] as Map).cast<String, dynamic>()).input(),
-      ttmlDestinationSettings: map['ttmlDestinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap((map['ttmlDestinationSettings'] as Map).cast<String, dynamic>())).input(),
-      webvttDestinationSettings: map['webvttDestinationSettings'] == null ? null : (ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings.fromMap((map['webvttDestinationSettings'] as Map).cast<String, dynamic>())).input(),
+      aribDestinationSettings: map['aribDestinationSettings'] == null ? null : (((map['aribDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      burnInDestinationSettings: map['burnInDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsBurnInDestinationSettings.fromMap((map['burnInDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      dvbSubDestinationSettings: map['dvbSubDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings.fromMap((map['dvbSubDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      ebuTtDDestinationSettings: map['ebuTtDDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsEbuTtDDestinationSettings.fromMap((map['ebuTtDDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      embeddedDestinationSettings: map['embeddedDestinationSettings'] == null ? null : (((map['embeddedDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      embeddedPlusScte20DestinationSettings: map['embeddedPlusScte20DestinationSettings'] == null ? null : (((map['embeddedPlusScte20DestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      rtmpCaptionInfoDestinationSettings: map['rtmpCaptionInfoDestinationSettings'] == null ? null : (((map['rtmpCaptionInfoDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      scte20PlusEmbeddedDestinationSettings: map['scte20PlusEmbeddedDestinationSettings'] == null ? null : (((map['scte20PlusEmbeddedDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      scte27DestinationSettings: map['scte27DestinationSettings'] == null ? null : (((map['scte27DestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      smpteTtDestinationSettings: map['smpteTtDestinationSettings'] == null ? null : (((map['smpteTtDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      teletextDestinationSettings: map['teletextDestinationSettings'] == null ? null : (((map['teletextDestinationSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      ttmlDestinationSettings: map['ttmlDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings.fromMap((map['ttmlDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      webvttDestinationSettings: map['webvttDestinationSettings'] == null ? null : ((ChannelEncoderSettingsCaptionDescriptionDestinationSettingsWebvttDestinationSettings.fromMap((map['webvttDestinationSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class DeliveryPipelineConditionTargetsTypeCondition {
 
   factory DeliveryPipelineConditionTargetsTypeCondition.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineConditionTargetsTypeCondition(
-      errorDetails: map['errorDetails'] == null ? null : (map['errorDetails'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as bool).input(),
+      errorDetails: map['errorDetails'] == null ? null : (map['errorDetails']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as bool).input(),
     );
   }
 }

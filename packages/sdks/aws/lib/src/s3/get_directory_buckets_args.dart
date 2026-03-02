@@ -24,7 +24,7 @@ class GetDirectoryBucketsArgs {
 
   factory GetDirectoryBucketsArgs.fromMap(Map<String, dynamic> map) {
     return GetDirectoryBucketsArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

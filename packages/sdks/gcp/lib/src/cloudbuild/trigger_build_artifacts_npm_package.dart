@@ -26,8 +26,8 @@ class TriggerBuildArtifactsNpmPackage {
 
   factory TriggerBuildArtifactsNpmPackage.fromMap(Map<String, dynamic> map) {
     return TriggerBuildArtifactsNpmPackage(
-      packagePath: map['packagePath'] == null ? null : (map['packagePath'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      packagePath: map['packagePath'] == null ? null : (map['packagePath']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

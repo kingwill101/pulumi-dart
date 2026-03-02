@@ -49,12 +49,12 @@ class PersistentDiskDefaults {
 
   factory PersistentDiskDefaults.fromMap(Map<String, dynamic> map) {
     return PersistentDiskDefaults(
-      additionalLabels: map['additionalLabels'] == null ? null : ((map['additionalLabels'] as Map).cast<String, String>()).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskType: map['diskType'] == null ? null : (PersistentDiskDefaultsDiskType.fromValue(map['diskType'] as String)).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      additionalLabels: map['additionalLabels'] == null ? null : ((map['additionalLabels']! as Map).cast<String, String>()).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskType: map['diskType'] == null ? null : (PersistentDiskDefaultsDiskType.fromValue(map['diskType']! as String)).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       sourceDiskNumber: (map['sourceDiskNumber'] as int).input(),
-      vmAttachmentDetails: map['vmAttachmentDetails'] == null ? null : (VmAttachmentDetails.fromMap((map['vmAttachmentDetails'] as Map).cast<String, dynamic>())).input(),
+      vmAttachmentDetails: map['vmAttachmentDetails'] == null ? null : (VmAttachmentDetails.fromMap((map['vmAttachmentDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

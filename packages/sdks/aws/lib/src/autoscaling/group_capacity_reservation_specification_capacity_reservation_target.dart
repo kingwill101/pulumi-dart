@@ -25,8 +25,8 @@ class GroupCapacityReservationSpecificationCapacityReservationTarget {
 
   factory GroupCapacityReservationSpecificationCapacityReservationTarget.fromMap(Map<String, dynamic> map) {
     return GroupCapacityReservationSpecificationCapacityReservationTarget(
-      capacityReservationIds: map['capacityReservationIds'] == null ? null : ((map['capacityReservationIds'] as List).cast<String>()).input(),
-      capacityReservationResourceGroupArns: map['capacityReservationResourceGroupArns'] == null ? null : ((map['capacityReservationResourceGroupArns'] as List).cast<String>()).input(),
+      capacityReservationIds: map['capacityReservationIds'] == null ? null : (((map['capacityReservationIds'] as List).cast<String>()).input()).input(),
+      capacityReservationResourceGroupArns: map['capacityReservationResourceGroupArns'] == null ? null : (((map['capacityReservationResourceGroupArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

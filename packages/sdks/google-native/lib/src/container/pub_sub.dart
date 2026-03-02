@@ -32,9 +32,9 @@ class PubSub {
 
   factory PubSub.fromMap(Map<String, dynamic> map) {
     return PubSub(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (Filter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      filter: map['filter'] == null ? null : (Filter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

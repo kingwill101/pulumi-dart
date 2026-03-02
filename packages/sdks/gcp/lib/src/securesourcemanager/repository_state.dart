@@ -88,18 +88,18 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      initialConfig: map['initialConfig'] == null ? null : (RepositoryInitialConfig.fromMap((map['initialConfig'] as Map).cast<String, dynamic>())).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      uris: map['uris'] == null ? null : (pulumi.Input.decodeList<RepositoryUri>(map['uris'], (value) => RepositoryUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      initialConfig: map['initialConfig'] == null ? null : (RepositoryInitialConfig.fromMap((map['initialConfig']! as Map).cast<String, dynamic>())).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      repositoryId: map['repositoryId'] == null ? null : (map['repositoryId']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      uris: map['uris'] == null ? null : (pulumi.Input.decodeList<RepositoryUri>(map['uris']!, (value) => RepositoryUri.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

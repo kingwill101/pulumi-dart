@@ -69,16 +69,16 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       metadata: (map['metadata']).input(),
       metadataSchemaUri: (map['metadataSchemaUri'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      savedQueries: map['savedQueries'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1SavedQuery>(map['savedQueries'], (value) => GoogleCloudAiplatformV1SavedQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      savedQueries: map['savedQueries'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1SavedQuery>(map['savedQueries']!, (value) => GoogleCloudAiplatformV1SavedQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

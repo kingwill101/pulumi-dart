@@ -40,11 +40,11 @@ class SiteDnsConfig {
 
   factory SiteDnsConfig.fromMap(Map<String, dynamic> map) {
     return SiteDnsConfig(
-      dnsAltServer: map['dnsAltServer'] == null ? null : (map['dnsAltServer'] as String).input(),
-      dnsMaxCacheTimeout: map['dnsMaxCacheTimeout'] == null ? null : (map['dnsMaxCacheTimeout'] as int).input(),
-      dnsRetryAttemptCount: map['dnsRetryAttemptCount'] == null ? null : (map['dnsRetryAttemptCount'] as int).input(),
-      dnsRetryAttemptTimeout: map['dnsRetryAttemptTimeout'] == null ? null : (map['dnsRetryAttemptTimeout'] as int).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsAltServer: map['dnsAltServer'] == null ? null : (map['dnsAltServer']! as String).input(),
+      dnsMaxCacheTimeout: map['dnsMaxCacheTimeout'] == null ? null : (map['dnsMaxCacheTimeout']! as int).input(),
+      dnsRetryAttemptCount: map['dnsRetryAttemptCount'] == null ? null : (map['dnsRetryAttemptCount']! as int).input(),
+      dnsRetryAttemptTimeout: map['dnsRetryAttemptTimeout'] == null ? null : (map['dnsRetryAttemptTimeout']! as int).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

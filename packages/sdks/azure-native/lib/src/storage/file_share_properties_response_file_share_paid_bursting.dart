@@ -31,9 +31,9 @@ class FileSharePropertiesResponseFileSharePaidBursting {
 
   factory FileSharePropertiesResponseFileSharePaidBursting.fromMap(Map<String, dynamic> map) {
     return FileSharePropertiesResponseFileSharePaidBursting(
-      paidBurstingEnabled: map['paidBurstingEnabled'] == null ? null : (map['paidBurstingEnabled'] as bool).input(),
-      paidBurstingMaxBandwidthMibps: map['paidBurstingMaxBandwidthMibps'] == null ? null : (map['paidBurstingMaxBandwidthMibps'] as int).input(),
-      paidBurstingMaxIops: map['paidBurstingMaxIops'] == null ? null : (map['paidBurstingMaxIops'] as int).input(),
+      paidBurstingEnabled: map['paidBurstingEnabled'] == null ? null : (map['paidBurstingEnabled']! as bool).input(),
+      paidBurstingMaxBandwidthMibps: map['paidBurstingMaxBandwidthMibps'] == null ? null : (map['paidBurstingMaxBandwidthMibps']! as int).input(),
+      paidBurstingMaxIops: map['paidBurstingMaxIops'] == null ? null : (map['paidBurstingMaxIops']! as int).input(),
     );
   }
 }

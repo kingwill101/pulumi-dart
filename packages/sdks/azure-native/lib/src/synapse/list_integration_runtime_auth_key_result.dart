@@ -25,8 +25,8 @@ class ListIntegrationRuntimeAuthKeyResult {
 
   factory ListIntegrationRuntimeAuthKeyResult.fromMap(Map<String, dynamic> map) {
     return ListIntegrationRuntimeAuthKeyResult(
-      authKey1: map['authKey1'] == null ? null : map['authKey1'] as String,
-      authKey2: map['authKey2'] == null ? null : map['authKey2'] as String,
+      authKey1: map['authKey1'] == null ? null : map['authKey1']! as String,
+      authKey2: map['authKey2'] == null ? null : map['authKey2']! as String,
     );
   }
 }

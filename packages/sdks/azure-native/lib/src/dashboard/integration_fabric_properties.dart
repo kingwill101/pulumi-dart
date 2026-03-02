@@ -30,9 +30,9 @@ class IntegrationFabricProperties {
 
   factory IntegrationFabricProperties.fromMap(Map<String, dynamic> map) {
     return IntegrationFabricProperties(
-      dataSourceResourceId: map['dataSourceResourceId'] == null ? null : (map['dataSourceResourceId'] as String).input(),
-      scenarios: map['scenarios'] == null ? null : ((map['scenarios'] as List).cast<String>()).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
+      dataSourceResourceId: map['dataSourceResourceId'] == null ? null : (map['dataSourceResourceId']! as String).input(),
+      scenarios: map['scenarios'] == null ? null : ((map['scenarios']! as List).cast<String>()).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
     );
   }
 }

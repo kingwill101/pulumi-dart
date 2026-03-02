@@ -53,13 +53,13 @@ class FeatureGroupAiplatformV1beta1Args {
 
   factory FeatureGroupAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return FeatureGroupAiplatformV1beta1Args(
-      bigQuery: map['bigQuery'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureGroupBigQuery.fromMap((map['bigQuery'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bigQuery: map['bigQuery'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureGroupBigQuery.fromMap((map['bigQuery']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featureGroupId: (map['featureGroupId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

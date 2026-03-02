@@ -21,7 +21,7 @@ class BareMetalMultipleNetworkInterfacesConfig {
 
   factory BareMetalMultipleNetworkInterfacesConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalMultipleNetworkInterfacesConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

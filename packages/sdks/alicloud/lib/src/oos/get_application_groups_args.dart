@@ -45,10 +45,10 @@ class GetApplicationGroupsArgs {
   factory GetApplicationGroupsArgs.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupsArgs(
       applicationName: (map['applicationName'] as String).input(),
-      deployRegionId: map['deployRegionId'] == null ? null : (map['deployRegionId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      deployRegionId: map['deployRegionId'] == null ? null : (map['deployRegionId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

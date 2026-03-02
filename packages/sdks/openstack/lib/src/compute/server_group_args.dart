@@ -51,11 +51,11 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policies: map['policies'] == null ? null : (map['policies'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (ServerGroupRules.fromMap((map['rules'] as Map).cast<String, dynamic>())).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policies: map['policies'] == null ? null : (map['policies']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      rules: map['rules'] == null ? null : (ServerGroupRules.fromMap((map['rules']! as Map).cast<String, dynamic>())).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

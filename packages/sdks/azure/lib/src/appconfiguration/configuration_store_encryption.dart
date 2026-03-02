@@ -25,8 +25,8 @@ class ConfigurationStoreEncryption {
 
   factory ConfigurationStoreEncryption.fromMap(Map<String, dynamic> map) {
     return ConfigurationStoreEncryption(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      keyVaultKeyIdentifier: map['keyVaultKeyIdentifier'] == null ? null : (map['keyVaultKeyIdentifier'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      keyVaultKeyIdentifier: map['keyVaultKeyIdentifier'] == null ? null : (map['keyVaultKeyIdentifier']! as String).input(),
     );
   }
 }

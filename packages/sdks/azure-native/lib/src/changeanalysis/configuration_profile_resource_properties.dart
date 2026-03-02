@@ -22,7 +22,7 @@ class ConfigurationProfileResourceProperties {
 
   factory ConfigurationProfileResourceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileResourceProperties(
-      notifications: map['notifications'] == null ? null : (NotificationSettings.fromMap((map['notifications'] as Map).cast<String, dynamic>())).input(),
+      notifications: map['notifications'] == null ? null : (NotificationSettings.fromMap((map['notifications']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

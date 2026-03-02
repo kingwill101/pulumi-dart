@@ -48,11 +48,11 @@ class CertifiateArgs {
 
   factory CertifiateArgs.fromMap(Map<String, dynamic> map) {
     return CertifiateArgs(
-      certificate: map['certificate'] == null ? null : (CertifiateCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      certificatePolicy: map['certificatePolicy'] == null ? null : (CertifiateCertificatePolicy.fromMap((map['certificatePolicy'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : (CertifiateCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      certificatePolicy: map['certificatePolicy'] == null ? null : (CertifiateCertificatePolicy.fromMap((map['certificatePolicy']! as Map).cast<String, dynamic>())).input(),
       keyVaultId: (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

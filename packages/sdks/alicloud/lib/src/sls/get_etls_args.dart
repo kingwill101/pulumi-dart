@@ -49,12 +49,12 @@ class GetEtlsArgs {
 
   factory GetEtlsArgs.fromMap(Map<String, dynamic> map) {
     return GetEtlsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       logstore: (map['logstore'] as String).input(),
-      offset: map['offset'] == null ? null : (map['offset'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       project: (map['project'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

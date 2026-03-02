@@ -47,12 +47,12 @@ class TrustStoreState {
 
   factory TrustStoreState.fromMap(Map<String, dynamic> map) {
     return TrustStoreState(
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TrustStoreCertificate>(map['certificates'], (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      trustStoreArn: map['trustStoreArn'] == null ? null : (map['trustStoreArn'] as String).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
+      certificates: map['certificates'] == null ? null : ((pulumi.Input.decodeList<TrustStoreCertificate>(map['certificates']!, (value) => TrustStoreCertificate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      trustStoreArn: map['trustStoreArn'] == null ? null : ((map['trustStoreArn'] as String).input()).input(),
     );
   }
 }

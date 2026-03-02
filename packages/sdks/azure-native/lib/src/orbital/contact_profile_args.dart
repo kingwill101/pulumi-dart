@@ -78,17 +78,17 @@ class ContactProfileArgs {
 
   factory ContactProfileArgs.fromMap(Map<String, dynamic> map) {
     return ContactProfileArgs(
-      autoTrackingConfiguration: map['autoTrackingConfiguration'] == null ? null : (AutoTrackingConfiguration.fromValue(map['autoTrackingConfiguration'] as String)).input(),
-      contactProfileName: map['contactProfileName'] == null ? null : (map['contactProfileName'] as String).input(),
-      eventHubUri: map['eventHubUri'] == null ? null : (map['eventHubUri'] as String).input(),
+      autoTrackingConfiguration: map['autoTrackingConfiguration'] == null ? null : (AutoTrackingConfiguration.fromValue(map['autoTrackingConfiguration']! as String)).input(),
+      contactProfileName: map['contactProfileName'] == null ? null : (map['contactProfileName']! as String).input(),
+      eventHubUri: map['eventHubUri'] == null ? null : (map['eventHubUri']! as String).input(),
       links: (pulumi.Input.decodeList<ContactProfileLink>(map['links'], (value) => ContactProfileLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : (map['minimumElevationDegrees'] as double).input(),
-      minimumViableContactDuration: map['minimumViableContactDuration'] == null ? null : (map['minimumViableContactDuration'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      minimumElevationDegrees: map['minimumElevationDegrees'] == null ? null : (map['minimumElevationDegrees']! as double).input(),
+      minimumViableContactDuration: map['minimumViableContactDuration'] == null ? null : (map['minimumViableContactDuration']! as String).input(),
       networkConfiguration: (ContactProfilesPropertiesNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      thirdPartyConfigurations: map['thirdPartyConfigurations'] == null ? null : (pulumi.Input.decodeList<ContactProfileThirdPartyConfiguration>(map['thirdPartyConfigurations'], (value) => ContactProfileThirdPartyConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      thirdPartyConfigurations: map['thirdPartyConfigurations'] == null ? null : (pulumi.Input.decodeList<ContactProfileThirdPartyConfiguration>(map['thirdPartyConfigurations']!, (value) => ContactProfileThirdPartyConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

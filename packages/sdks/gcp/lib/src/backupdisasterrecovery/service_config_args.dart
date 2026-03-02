@@ -36,7 +36,7 @@ class ServiceConfigArgs {
   factory ServiceConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resourceType: (map['resourceType'] as String).input(),
     );
   }

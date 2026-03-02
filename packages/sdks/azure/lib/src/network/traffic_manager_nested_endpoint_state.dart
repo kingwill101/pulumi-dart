@@ -85,19 +85,19 @@ class TrafficManagerNestedEndpointState {
 
   factory TrafficManagerNestedEndpointState.fromMap(Map<String, dynamic> map) {
     return TrafficManagerNestedEndpointState(
-      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(map['customHeaders'], (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointLocation: map['endpointLocation'] == null ? null : (map['endpointLocation'] as String).input(),
-      geoMappings: map['geoMappings'] == null ? null : ((map['geoMappings'] as List).cast<String>()).input(),
-      minimumChildEndpoints: map['minimumChildEndpoints'] == null ? null : (map['minimumChildEndpoints'] as int).input(),
-      minimumRequiredChildEndpointsIpv4: map['minimumRequiredChildEndpointsIpv4'] == null ? null : (map['minimumRequiredChildEndpointsIpv4'] as int).input(),
-      minimumRequiredChildEndpointsIpv6: map['minimumRequiredChildEndpointsIpv6'] == null ? null : (map['minimumRequiredChildEndpointsIpv6'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(map['subnets'], (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(map['customHeaders']!, (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointLocation: map['endpointLocation'] == null ? null : (map['endpointLocation']! as String).input(),
+      geoMappings: map['geoMappings'] == null ? null : ((map['geoMappings']! as List).cast<String>()).input(),
+      minimumChildEndpoints: map['minimumChildEndpoints'] == null ? null : (map['minimumChildEndpoints']! as int).input(),
+      minimumRequiredChildEndpointsIpv4: map['minimumRequiredChildEndpointsIpv4'] == null ? null : (map['minimumRequiredChildEndpointsIpv4']! as int).input(),
+      minimumRequiredChildEndpointsIpv6: map['minimumRequiredChildEndpointsIpv6'] == null ? null : (map['minimumRequiredChildEndpointsIpv6']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<TrafficManagerNestedEndpointSubnet>(map['subnets']!, (value) => TrafficManagerNestedEndpointSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

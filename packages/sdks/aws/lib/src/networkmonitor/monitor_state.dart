@@ -48,12 +48,12 @@ class MonitorState {
 
   factory MonitorState.fromMap(Map<String, dynamic> map) {
     return MonitorState(
-      aggregationPeriod: map['aggregationPeriod'] == null ? null : (map['aggregationPeriod'] as int).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      aggregationPeriod: map['aggregationPeriod'] == null ? null : ((map['aggregationPeriod'] as int).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      monitorName: map['monitorName'] == null ? null : ((map['monitorName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

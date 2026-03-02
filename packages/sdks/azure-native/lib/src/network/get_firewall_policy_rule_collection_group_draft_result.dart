@@ -53,10 +53,10 @@ class GetFirewallPolicyRuleCollectionGroupDraftResult {
   factory GetFirewallPolicyRuleCollectionGroupDraftResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyRuleCollectionGroupDraftResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
-      ruleCollections: map['ruleCollections'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFilterRuleCollectionResponse>(map['ruleCollections'], (value) => FirewallPolicyFilterRuleCollectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      priority: map['priority'] == null ? null : map['priority']! as int,
+      ruleCollections: map['ruleCollections'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFilterRuleCollectionResponse>(map['ruleCollections']!, (value) => FirewallPolicyFilterRuleCollectionResponse.fromMap((value as Map).cast<String, dynamic>())),
       size: map['size'] as String,
       type: map['type'] as String,
     );

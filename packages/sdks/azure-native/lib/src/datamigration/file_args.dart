@@ -45,10 +45,10 @@ class FileArgs {
 
   factory FileArgs.fromMap(Map<String, dynamic> map) {
     return FileArgs(
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
       groupName: (map['groupName'] as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ProjectFileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ProjectFileProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

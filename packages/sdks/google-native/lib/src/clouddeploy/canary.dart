@@ -34,9 +34,9 @@ class Canary {
 
   factory Canary.fromMap(Map<String, dynamic> map) {
     return Canary(
-      canaryDeployment: map['canaryDeployment'] == null ? null : (CanaryDeployment.fromMap((map['canaryDeployment'] as Map).cast<String, dynamic>())).input(),
-      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : (CustomCanaryDeployment.fromMap((map['customCanaryDeployment'] as Map).cast<String, dynamic>())).input(),
-      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>())).input(),
+      canaryDeployment: map['canaryDeployment'] == null ? null : (CanaryDeployment.fromMap((map['canaryDeployment']! as Map).cast<String, dynamic>())).input(),
+      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : (CustomCanaryDeployment.fromMap((map['customCanaryDeployment']! as Map).cast<String, dynamic>())).input(),
+      runtimeConfig: map['runtimeConfig'] == null ? null : (RuntimeConfig.fromMap((map['runtimeConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class AdvancedMachineFeaturesComputeBeta {
 
   factory AdvancedMachineFeaturesComputeBeta.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesComputeBeta(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking'] as bool).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
-      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount'] as int).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking']! as bool).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
+      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount']! as int).input(),
     );
   }
 }

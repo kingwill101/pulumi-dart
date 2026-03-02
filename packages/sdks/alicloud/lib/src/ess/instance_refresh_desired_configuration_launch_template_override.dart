@@ -20,7 +20,7 @@ class InstanceRefreshDesiredConfigurationLaunchTemplateOverride {
 
   factory InstanceRefreshDesiredConfigurationLaunchTemplateOverride.fromMap(Map<String, dynamic> map) {
     return InstanceRefreshDesiredConfigurationLaunchTemplateOverride(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
     );
   }
 }

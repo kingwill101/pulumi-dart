@@ -31,7 +31,7 @@ class GetStoragePoolTypesArgs {
 
   factory GetStoragePoolTypesArgs.fromMap(Map<String, dynamic> map) {
     return GetStoragePoolTypesArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       storagePoolType: (map['storagePoolType'] as String).input(),
       zone: (map['zone'] as String).input(),
     );

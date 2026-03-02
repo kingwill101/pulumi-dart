@@ -27,7 +27,7 @@ class ApplicationPackageReference {
   factory ApplicationPackageReference.fromMap(Map<String, dynamic> map) {
     return ApplicationPackageReference(
       id: (map['id'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

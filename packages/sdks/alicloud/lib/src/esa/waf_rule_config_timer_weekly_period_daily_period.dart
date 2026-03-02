@@ -25,8 +25,8 @@ class WafRuleConfigTimerWeeklyPeriodDailyPeriod {
 
   factory WafRuleConfigTimerWeeklyPeriodDailyPeriod.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigTimerWeeklyPeriodDailyPeriod(
-      end: map['end'] == null ? null : (map['end'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as String).input(),
+      end: map['end'] == null ? null : (map['end']! as String).input(),
+      start: map['start'] == null ? null : (map['start']! as String).input(),
     );
   }
 }

@@ -30,8 +30,8 @@ class AssistantGenerationConfig {
 
   factory AssistantGenerationConfig.fromMap(Map<String, dynamic> map) {
     return AssistantGenerationConfig(
-      defaultLanguage: map['defaultLanguage'] == null ? null : (map['defaultLanguage'] as String).input(),
-      systemInstruction: map['systemInstruction'] == null ? null : (AssistantGenerationConfigSystemInstruction.fromMap((map['systemInstruction'] as Map).cast<String, dynamic>())).input(),
+      defaultLanguage: map['defaultLanguage'] == null ? null : (map['defaultLanguage']! as String).input(),
+      systemInstruction: map['systemInstruction'] == null ? null : (AssistantGenerationConfigSystemInstruction.fromMap((map['systemInstruction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

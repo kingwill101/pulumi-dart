@@ -26,7 +26,7 @@ class TopNFeaturesByAttribution {
   factory TopNFeaturesByAttribution.fromMap(Map<String, dynamic> map) {
     return TopNFeaturesByAttribution(
       filterType: (map['filterType'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class ManagedComputeIdentityResponse {
   factory ManagedComputeIdentityResponse.fromMap(Map<String, dynamic> map) {
     return ManagedComputeIdentityResponse(
       computeIdentityType: (map['computeIdentityType'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

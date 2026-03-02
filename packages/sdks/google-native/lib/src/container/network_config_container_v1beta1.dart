@@ -84,18 +84,18 @@ class NetworkConfigContainerV1beta1 {
 
   factory NetworkConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkConfigContainerV1beta1(
-      datapathProvider: map['datapathProvider'] == null ? null : (NetworkConfigDatapathProviderContainerV1beta1.fromValue(map['datapathProvider'] as String)).input(),
-      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : (DefaultSnatStatusContainerV1beta1.fromMap((map['defaultSnatStatus'] as Map).cast<String, dynamic>())).input(),
-      dnsConfig: map['dnsConfig'] == null ? null : (DNSConfigContainerV1beta1.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
-      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : (map['enableFqdnNetworkPolicy'] as bool).input(),
-      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : (map['enableIntraNodeVisibility'] as bool).input(),
-      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : (map['enableL4ilbSubsetting'] as bool).input(),
-      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : (map['enableMultiNetworking'] as bool).input(),
-      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : (GatewayAPIConfigContainerV1beta1.fromMap((map['gatewayApiConfig'] as Map).cast<String, dynamic>())).input(),
-      inTransitEncryptionConfig: map['inTransitEncryptionConfig'] == null ? null : (NetworkConfigInTransitEncryptionConfig.fromValue(map['inTransitEncryptionConfig'] as String)).input(),
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (ClusterNetworkPerformanceConfigContainerV1beta1.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>())).input(),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1.fromValue(map['privateIpv6GoogleAccess'] as String)).input(),
-      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : (ServiceExternalIPsConfigContainerV1beta1.fromMap((map['serviceExternalIpsConfig'] as Map).cast<String, dynamic>())).input(),
+      datapathProvider: map['datapathProvider'] == null ? null : (NetworkConfigDatapathProviderContainerV1beta1.fromValue(map['datapathProvider']! as String)).input(),
+      defaultSnatStatus: map['defaultSnatStatus'] == null ? null : (DefaultSnatStatusContainerV1beta1.fromMap((map['defaultSnatStatus']! as Map).cast<String, dynamic>())).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : (DNSConfigContainerV1beta1.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())).input(),
+      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] == null ? null : (map['enableFqdnNetworkPolicy']! as bool).input(),
+      enableIntraNodeVisibility: map['enableIntraNodeVisibility'] == null ? null : (map['enableIntraNodeVisibility']! as bool).input(),
+      enableL4ilbSubsetting: map['enableL4ilbSubsetting'] == null ? null : (map['enableL4ilbSubsetting']! as bool).input(),
+      enableMultiNetworking: map['enableMultiNetworking'] == null ? null : (map['enableMultiNetworking']! as bool).input(),
+      gatewayApiConfig: map['gatewayApiConfig'] == null ? null : (GatewayAPIConfigContainerV1beta1.fromMap((map['gatewayApiConfig']! as Map).cast<String, dynamic>())).input(),
+      inTransitEncryptionConfig: map['inTransitEncryptionConfig'] == null ? null : (NetworkConfigInTransitEncryptionConfig.fromValue(map['inTransitEncryptionConfig']! as String)).input(),
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : (ClusterNetworkPerformanceConfigContainerV1beta1.fromMap((map['networkPerformanceConfig']! as Map).cast<String, dynamic>())).input(),
+      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] == null ? null : (NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1.fromValue(map['privateIpv6GoogleAccess']! as String)).input(),
+      serviceExternalIpsConfig: map['serviceExternalIpsConfig'] == null ? null : (ServiceExternalIPsConfigContainerV1beta1.fromMap((map['serviceExternalIpsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

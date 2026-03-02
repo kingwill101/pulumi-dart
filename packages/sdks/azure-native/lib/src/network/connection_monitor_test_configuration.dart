@@ -60,14 +60,14 @@ class ConnectionMonitorTestConfiguration {
 
   factory ConnectionMonitorTestConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTestConfiguration(
-      httpConfiguration: map['httpConfiguration'] == null ? null : (ConnectionMonitorHttpConfiguration.fromMap((map['httpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      icmpConfiguration: map['icmpConfiguration'] == null ? null : (ConnectionMonitorIcmpConfiguration.fromMap((map['icmpConfiguration'] as Map).cast<String, dynamic>())).input(),
+      httpConfiguration: map['httpConfiguration'] == null ? null : (ConnectionMonitorHttpConfiguration.fromMap((map['httpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      icmpConfiguration: map['icmpConfiguration'] == null ? null : (ConnectionMonitorIcmpConfiguration.fromMap((map['icmpConfiguration']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      preferredIPVersion: map['preferredIPVersion'] == null ? null : (map['preferredIPVersion'] as String).input(),
+      preferredIPVersion: map['preferredIPVersion'] == null ? null : (map['preferredIPVersion']! as String).input(),
       protocol: (map['protocol'] as String).input(),
-      successThreshold: map['successThreshold'] == null ? null : (ConnectionMonitorSuccessThreshold.fromMap((map['successThreshold'] as Map).cast<String, dynamic>())).input(),
-      tcpConfiguration: map['tcpConfiguration'] == null ? null : (ConnectionMonitorTcpConfiguration.fromMap((map['tcpConfiguration'] as Map).cast<String, dynamic>())).input(),
-      testFrequencySec: map['testFrequencySec'] == null ? null : (map['testFrequencySec'] as int).input(),
+      successThreshold: map['successThreshold'] == null ? null : (ConnectionMonitorSuccessThreshold.fromMap((map['successThreshold']! as Map).cast<String, dynamic>())).input(),
+      tcpConfiguration: map['tcpConfiguration'] == null ? null : (ConnectionMonitorTcpConfiguration.fromMap((map['tcpConfiguration']! as Map).cast<String, dynamic>())).input(),
+      testFrequencySec: map['testFrequencySec'] == null ? null : (map['testFrequencySec']! as int).input(),
     );
   }
 }

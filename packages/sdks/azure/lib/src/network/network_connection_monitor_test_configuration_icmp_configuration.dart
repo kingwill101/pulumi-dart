@@ -20,7 +20,7 @@ class NetworkConnectionMonitorTestConfigurationIcmpConfiguration {
 
   factory NetworkConnectionMonitorTestConfigurationIcmpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationIcmpConfiguration(
-      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : (map['traceRouteEnabled'] as bool).input(),
+      traceRouteEnabled: map['traceRouteEnabled'] == null ? null : (map['traceRouteEnabled']! as bool).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class AutoscaleScheduleResponse {
 
   factory AutoscaleScheduleResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleScheduleResponse(
-      days: map['days'] == null ? null : ((map['days'] as List).cast<String>()).input(),
-      timeAndCapacity: map['timeAndCapacity'] == null ? null : (AutoscaleTimeAndCapacityResponse.fromMap((map['timeAndCapacity'] as Map).cast<String, dynamic>())).input(),
+      days: map['days'] == null ? null : ((map['days']! as List).cast<String>()).input(),
+      timeAndCapacity: map['timeAndCapacity'] == null ? null : (AutoscaleTimeAndCapacityResponse.fromMap((map['timeAndCapacity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

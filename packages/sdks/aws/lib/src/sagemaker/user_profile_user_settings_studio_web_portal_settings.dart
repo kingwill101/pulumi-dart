@@ -30,9 +30,9 @@ class UserProfileUserSettingsStudioWebPortalSettings {
 
   factory UserProfileUserSettingsStudioWebPortalSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsStudioWebPortalSettings(
-      hiddenAppTypes: map['hiddenAppTypes'] == null ? null : ((map['hiddenAppTypes'] as List).cast<String>()).input(),
-      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null ? null : ((map['hiddenInstanceTypes'] as List).cast<String>()).input(),
-      hiddenMlTools: map['hiddenMlTools'] == null ? null : ((map['hiddenMlTools'] as List).cast<String>()).input(),
+      hiddenAppTypes: map['hiddenAppTypes'] == null ? null : (((map['hiddenAppTypes'] as List).cast<String>()).input()).input(),
+      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null ? null : (((map['hiddenInstanceTypes'] as List).cast<String>()).input()).input(),
+      hiddenMlTools: map['hiddenMlTools'] == null ? null : (((map['hiddenMlTools'] as List).cast<String>()).input()).input(),
     );
   }
 }

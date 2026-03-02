@@ -26,8 +26,8 @@ class CloudBuildOptionsAppengineV1beta {
 
   factory CloudBuildOptionsAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return CloudBuildOptionsAppengineV1beta(
-      appYamlPath: map['appYamlPath'] == null ? null : (map['appYamlPath'] as String).input(),
-      cloudBuildTimeout: map['cloudBuildTimeout'] == null ? null : (map['cloudBuildTimeout'] as String).input(),
+      appYamlPath: map['appYamlPath'] == null ? null : (map['appYamlPath']! as String).input(),
+      cloudBuildTimeout: map['cloudBuildTimeout'] == null ? null : (map['cloudBuildTimeout']! as String).input(),
     );
   }
 }

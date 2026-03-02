@@ -63,10 +63,10 @@ class TransportLayerApplicationRule {
   factory TransportLayerApplicationRule.fromMap(Map<String, dynamic> map) {
     return TransportLayerApplicationRule(
       clientIpPassThroughMode: (map['clientIpPassThroughMode'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       edgePort: (map['edgePort'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as int).input(),
+      ruleId: map['ruleId'] == null ? null : (map['ruleId']! as int).input(),
       source: (map['source'] as String).input(),
       sourcePort: (map['sourcePort'] as String).input(),
       sourceType: (map['sourceType'] as String).input(),

@@ -94,20 +94,20 @@ class PatchBaselineArgs {
 
   factory PatchBaselineArgs.fromMap(Map<String, dynamic> map) {
     return PatchBaselineArgs(
-      approvalRules: map['approvalRules'] == null ? null : (pulumi.Input.decodeList<PatchBaselineApprovalRule>(map['approvalRules'], (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      approvedPatches: map['approvedPatches'] == null ? null : ((map['approvedPatches'] as List).cast<String>()).input(),
-      approvedPatchesComplianceLevel: map['approvedPatchesComplianceLevel'] == null ? null : (map['approvedPatchesComplianceLevel'] as String).input(),
-      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : (map['approvedPatchesEnableNonSecurity'] as bool).input(),
-      availableSecurityUpdatesComplianceStatus: map['availableSecurityUpdatesComplianceStatus'] == null ? null : (map['availableSecurityUpdatesComplianceStatus'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      globalFilters: map['globalFilters'] == null ? null : (pulumi.Input.decodeList<PatchBaselineGlobalFilter>(map['globalFilters'], (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rejectedPatches: map['rejectedPatches'] == null ? null : ((map['rejectedPatches'] as List).cast<String>()).input(),
-      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : (map['rejectedPatchesAction'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<PatchBaselineSource>(map['sources'], (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      approvalRules: map['approvalRules'] == null ? null : ((pulumi.Input.decodeList<PatchBaselineApprovalRule>(map['approvalRules']!, (value) => PatchBaselineApprovalRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      approvedPatches: map['approvedPatches'] == null ? null : (((map['approvedPatches'] as List).cast<String>()).input()).input(),
+      approvedPatchesComplianceLevel: map['approvedPatchesComplianceLevel'] == null ? null : ((map['approvedPatchesComplianceLevel'] as String).input()).input(),
+      approvedPatchesEnableNonSecurity: map['approvedPatchesEnableNonSecurity'] == null ? null : ((map['approvedPatchesEnableNonSecurity'] as bool).input()).input(),
+      availableSecurityUpdatesComplianceStatus: map['availableSecurityUpdatesComplianceStatus'] == null ? null : ((map['availableSecurityUpdatesComplianceStatus'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      globalFilters: map['globalFilters'] == null ? null : ((pulumi.Input.decodeList<PatchBaselineGlobalFilter>(map['globalFilters']!, (value) => PatchBaselineGlobalFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : ((map['operatingSystem'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rejectedPatches: map['rejectedPatches'] == null ? null : (((map['rejectedPatches'] as List).cast<String>()).input()).input(),
+      rejectedPatchesAction: map['rejectedPatchesAction'] == null ? null : ((map['rejectedPatchesAction'] as String).input()).input(),
+      sources: map['sources'] == null ? null : ((pulumi.Input.decodeList<PatchBaselineSource>(map['sources']!, (value) => PatchBaselineSource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

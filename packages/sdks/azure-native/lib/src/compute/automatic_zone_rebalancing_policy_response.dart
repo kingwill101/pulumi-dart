@@ -31,9 +31,9 @@ class AutomaticZoneRebalancingPolicyResponse {
 
   factory AutomaticZoneRebalancingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticZoneRebalancingPolicyResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      rebalanceBehavior: map['rebalanceBehavior'] == null ? null : (map['rebalanceBehavior'] as String).input(),
-      rebalanceStrategy: map['rebalanceStrategy'] == null ? null : (map['rebalanceStrategy'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      rebalanceBehavior: map['rebalanceBehavior'] == null ? null : (map['rebalanceBehavior']! as String).input(),
+      rebalanceStrategy: map['rebalanceStrategy'] == null ? null : (map['rebalanceStrategy']! as String).input(),
     );
   }
 }

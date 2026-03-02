@@ -26,7 +26,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
   factory EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
     );
   }
 }

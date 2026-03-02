@@ -63,15 +63,15 @@ class PersistenceProfileSslArgs {
 
   factory PersistenceProfileSslArgs.fromMap(Map<String, dynamic> map) {
     return PersistenceProfileSslArgs(
-      appService: map['appService'] == null ? null : (map['appService'] as String).input(),
+      appService: map['appService'] == null ? null : (map['appService']! as String).input(),
       defaultsFrom: (map['defaultsFrom'] as String).input(),
-      matchAcrossPools: map['matchAcrossPools'] == null ? null : (map['matchAcrossPools'] as String).input(),
-      matchAcrossServices: map['matchAcrossServices'] == null ? null : (map['matchAcrossServices'] as String).input(),
-      matchAcrossVirtuals: map['matchAcrossVirtuals'] == null ? null : (map['matchAcrossVirtuals'] as String).input(),
-      mirror: map['mirror'] == null ? null : (map['mirror'] as String).input(),
+      matchAcrossPools: map['matchAcrossPools'] == null ? null : (map['matchAcrossPools']! as String).input(),
+      matchAcrossServices: map['matchAcrossServices'] == null ? null : (map['matchAcrossServices']! as String).input(),
+      matchAcrossVirtuals: map['matchAcrossVirtuals'] == null ? null : (map['matchAcrossVirtuals']! as String).input(),
+      mirror: map['mirror'] == null ? null : (map['mirror']! as String).input(),
       name: (map['name'] as String).input(),
-      overrideConnLimit: map['overrideConnLimit'] == null ? null : (map['overrideConnLimit'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      overrideConnLimit: map['overrideConnLimit'] == null ? null : (map['overrideConnLimit']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

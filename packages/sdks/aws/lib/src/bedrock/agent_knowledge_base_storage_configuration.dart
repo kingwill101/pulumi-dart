@@ -68,14 +68,14 @@ class AgentKnowledgeBaseStorageConfiguration {
 
   factory AgentKnowledgeBaseStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfiguration(
-      mongoDbAtlasConfiguration: map['mongoDbAtlasConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration.fromMap((map['mongoDbAtlasConfiguration'] as Map).cast<String, dynamic>())).input(),
-      neptuneAnalyticsConfiguration: map['neptuneAnalyticsConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap((map['neptuneAnalyticsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      opensearchManagedClusterConfiguration: map['opensearchManagedClusterConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration.fromMap((map['opensearchManagedClusterConfiguration'] as Map).cast<String, dynamic>())).input(),
-      opensearchServerlessConfiguration: map['opensearchServerlessConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap((map['opensearchServerlessConfiguration'] as Map).cast<String, dynamic>())).input(),
-      pineconeConfiguration: map['pineconeConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationPineconeConfiguration.fromMap((map['pineconeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rdsConfiguration: map['rdsConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationRdsConfiguration.fromMap((map['rdsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      redisEnterpriseCloudConfiguration: map['redisEnterpriseCloudConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap((map['redisEnterpriseCloudConfiguration'] as Map).cast<String, dynamic>())).input(),
-      s3VectorsConfiguration: map['s3VectorsConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap((map['s3VectorsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      mongoDbAtlasConfiguration: map['mongoDbAtlasConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration.fromMap((map['mongoDbAtlasConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      neptuneAnalyticsConfiguration: map['neptuneAnalyticsConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap((map['neptuneAnalyticsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      opensearchManagedClusterConfiguration: map['opensearchManagedClusterConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration.fromMap((map['opensearchManagedClusterConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      opensearchServerlessConfiguration: map['opensearchServerlessConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration.fromMap((map['opensearchServerlessConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      pineconeConfiguration: map['pineconeConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationPineconeConfiguration.fromMap((map['pineconeConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      rdsConfiguration: map['rdsConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationRdsConfiguration.fromMap((map['rdsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      redisEnterpriseCloudConfiguration: map['redisEnterpriseCloudConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration.fromMap((map['redisEnterpriseCloudConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      s3VectorsConfiguration: map['s3VectorsConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration.fromMap((map['s3VectorsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

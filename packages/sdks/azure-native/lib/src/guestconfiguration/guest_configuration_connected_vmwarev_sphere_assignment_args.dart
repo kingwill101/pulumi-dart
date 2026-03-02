@@ -50,10 +50,10 @@ class GuestConfigurationConnectedVMwarevSphereAssignmentArgs {
 
   factory GuestConfigurationConnectedVMwarevSphereAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationConnectedVMwarevSphereAssignmentArgs(
-      guestConfigurationAssignmentName: map['guestConfigurationAssignmentName'] == null ? null : (map['guestConfigurationAssignmentName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      guestConfigurationAssignmentName: map['guestConfigurationAssignmentName'] == null ? null : (map['guestConfigurationAssignmentName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (GuestConfigurationAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (GuestConfigurationAssignmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       vmName: (map['vmName'] as String).input(),
     );

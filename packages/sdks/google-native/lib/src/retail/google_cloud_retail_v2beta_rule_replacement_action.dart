@@ -31,9 +31,9 @@ class GoogleCloudRetailV2betaRuleReplacementAction {
 
   factory GoogleCloudRetailV2betaRuleReplacementAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRuleReplacementAction(
-      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms'] as List).cast<String>()).input(),
-      replacementTerm: map['replacementTerm'] == null ? null : (map['replacementTerm'] as String).input(),
-      term: map['term'] == null ? null : (map['term'] as String).input(),
+      queryTerms: map['queryTerms'] == null ? null : ((map['queryTerms']! as List).cast<String>()).input(),
+      replacementTerm: map['replacementTerm'] == null ? null : (map['replacementTerm']! as String).input(),
+      term: map['term'] == null ? null : (map['term']! as String).input(),
     );
   }
 }

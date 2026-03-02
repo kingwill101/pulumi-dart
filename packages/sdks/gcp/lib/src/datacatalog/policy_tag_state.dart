@@ -54,12 +54,12 @@ class PolicyTagState {
 
   factory PolicyTagState.fromMap(Map<String, dynamic> map) {
     return PolicyTagState(
-      childPolicyTags: map['childPolicyTags'] == null ? null : ((map['childPolicyTags'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag'] as String).input(),
-      taxonomy: map['taxonomy'] == null ? null : (map['taxonomy'] as String).input(),
+      childPolicyTags: map['childPolicyTags'] == null ? null : ((map['childPolicyTags']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentPolicyTag: map['parentPolicyTag'] == null ? null : (map['parentPolicyTag']! as String).input(),
+      taxonomy: map['taxonomy'] == null ? null : (map['taxonomy']! as String).input(),
     );
   }
 }

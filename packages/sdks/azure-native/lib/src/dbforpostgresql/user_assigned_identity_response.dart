@@ -44,9 +44,9 @@ class UserAssignedIdentityResponse {
     return UserAssignedIdentityResponse(
       clientId: (map['clientId'] as String).input(),
       principalId: (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityResponse>(map['userAssignedIdentities'], (value) => UserIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityResponse>(map['userAssignedIdentities']!, (value) => UserIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

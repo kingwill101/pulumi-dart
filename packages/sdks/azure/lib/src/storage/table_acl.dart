@@ -26,7 +26,7 @@ class TableAcl {
 
   factory TableAcl.fromMap(Map<String, dynamic> map) {
     return TableAcl(
-      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<TableAclAccessPolicy>(map['accessPolicies'], (value) => TableAclAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessPolicies: map['accessPolicies'] == null ? null : (pulumi.Input.decodeList<TableAclAccessPolicy>(map['accessPolicies']!, (value) => TableAclAccessPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       id: (map['id'] as String).input(),
     );
   }

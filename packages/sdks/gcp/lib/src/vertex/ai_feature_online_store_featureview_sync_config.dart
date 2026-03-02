@@ -26,8 +26,8 @@ class AiFeatureOnlineStoreFeatureviewSyncConfig {
 
   factory AiFeatureOnlineStoreFeatureviewSyncConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreFeatureviewSyncConfig(
-      continuous: map['continuous'] == null ? null : (map['continuous'] as bool).input(),
-      cron: map['cron'] == null ? null : (map['cron'] as String).input(),
+      continuous: map['continuous'] == null ? null : (map['continuous']! as bool).input(),
+      cron: map['cron'] == null ? null : (map['cron']! as String).input(),
     );
   }
 }

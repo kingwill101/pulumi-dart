@@ -36,10 +36,10 @@ class PrivateEndpointIPConfiguration {
 
   factory PrivateEndpointIPConfiguration.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointIPConfiguration(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      memberName: map['memberName'] == null ? null : (map['memberName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      memberName: map['memberName'] == null ? null : (map['memberName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
     );
   }
 }

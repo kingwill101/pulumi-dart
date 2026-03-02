@@ -27,8 +27,8 @@ class StatefulSetUpdateStrategy {
 
   factory StatefulSetUpdateStrategy.fromMap(Map<String, dynamic> map) {
     return StatefulSetUpdateStrategy(
-      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateStatefulSetStrategy.fromMap((map['rollingUpdate'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateStatefulSetStrategy.fromMap((map['rollingUpdate']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
 
   factory GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource.fromMap(Map<String, dynamic> map) {
     return GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      itemPath: map['itemPath'] == null ? null : (map['itemPath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      itemPath: map['itemPath'] == null ? null : (map['itemPath']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

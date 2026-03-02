@@ -28,8 +28,8 @@ class RegionBackendServiceHaPolicyLeader {
 
   factory RegionBackendServiceHaPolicyLeader.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicyLeader(
-      backendGroup: map['backendGroup'] == null ? null : (map['backendGroup'] as String).input(),
-      networkEndpoint: map['networkEndpoint'] == null ? null : (RegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap((map['networkEndpoint'] as Map).cast<String, dynamic>())).input(),
+      backendGroup: map['backendGroup'] == null ? null : (map['backendGroup']! as String).input(),
+      networkEndpoint: map['networkEndpoint'] == null ? null : (RegionBackendServiceHaPolicyLeaderNetworkEndpoint.fromMap((map['networkEndpoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -59,9 +59,9 @@ class AttestorIamBindingArgs {
   factory AttestorIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return AttestorIamBindingArgs(
       attestor: (map['attestor'] as String).input(),
-      condition: map['condition'] == null ? null : (AttestorIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (AttestorIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

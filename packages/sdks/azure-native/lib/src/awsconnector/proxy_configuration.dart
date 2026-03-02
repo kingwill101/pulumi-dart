@@ -32,9 +32,9 @@ class ProxyConfiguration {
 
   factory ProxyConfiguration.fromMap(Map<String, dynamic> map) {
     return ProxyConfiguration(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      proxyConfigurationProperties: map['proxyConfigurationProperties'] == null ? null : (pulumi.Input.decodeList<KeyValuePair>(map['proxyConfigurationProperties'], (value) => KeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      proxyConfigurationProperties: map['proxyConfigurationProperties'] == null ? null : (pulumi.Input.decodeList<KeyValuePair>(map['proxyConfigurationProperties']!, (value) => KeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

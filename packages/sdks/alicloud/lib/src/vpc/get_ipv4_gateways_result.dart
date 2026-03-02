@@ -57,12 +57,12 @@ class GetIpv4GatewaysResult {
       gateways: pulumi.Input.decodeList<GetIpv4GatewaysGateway>(map['gateways'], (value) => GetIpv4GatewaysGateway.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : map['ipv4GatewayName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      ipv4GatewayName: map['ipv4GatewayName'] == null ? null : map['ipv4GatewayName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      vpcId: map['vpcId'] == null ? null : map['vpcId']! as String,
     );
   }
 }

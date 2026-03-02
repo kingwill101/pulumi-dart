@@ -31,10 +31,10 @@ class DomainIdentityCenterOptions {
 
   factory DomainIdentityCenterOptions.fromMap(Map<String, dynamic> map) {
     return DomainIdentityCenterOptions(
-      enabledApiAccess: map['enabledApiAccess'] == null ? null : (map['enabledApiAccess'] as bool).input(),
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : (map['identityCenterInstanceArn'] as String).input(),
-      rolesKey: map['rolesKey'] == null ? null : (map['rolesKey'] as String).input(),
-      subjectKey: map['subjectKey'] == null ? null : (map['subjectKey'] as String).input(),
+      enabledApiAccess: map['enabledApiAccess'] == null ? null : ((map['enabledApiAccess'] as bool).input()).input(),
+      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : ((map['identityCenterInstanceArn'] as String).input()).input(),
+      rolesKey: map['rolesKey'] == null ? null : ((map['rolesKey'] as String).input()).input(),
+      subjectKey: map['subjectKey'] == null ? null : ((map['subjectKey'] as String).input()).input(),
     );
   }
 }

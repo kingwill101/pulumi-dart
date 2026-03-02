@@ -37,10 +37,10 @@ class HostingCustomDomainCertVerificationHttp {
 
   factory HostingCustomDomainCertVerificationHttp.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainCertVerificationHttp(
-      desired: map['desired'] == null ? null : (map['desired'] as String).input(),
-      discovered: map['discovered'] == null ? null : (map['discovered'] as String).input(),
-      lastCheckTime: map['lastCheckTime'] == null ? null : (map['lastCheckTime'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      desired: map['desired'] == null ? null : (map['desired']! as String).input(),
+      discovered: map['discovered'] == null ? null : (map['discovered']! as String).input(),
+      lastCheckTime: map['lastCheckTime'] == null ? null : (map['lastCheckTime']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

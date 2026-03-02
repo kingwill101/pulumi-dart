@@ -31,8 +31,8 @@ class ActionGroupsInformationResponse {
 
   factory ActionGroupsInformationResponse.fromMap(Map<String, dynamic> map) {
     return ActionGroupsInformationResponse(
-      customEmailSubject: map['customEmailSubject'] == null ? null : (map['customEmailSubject'] as String).input(),
-      customWebhookPayload: map['customWebhookPayload'] == null ? null : (map['customWebhookPayload'] as String).input(),
+      customEmailSubject: map['customEmailSubject'] == null ? null : (map['customEmailSubject']! as String).input(),
+      customWebhookPayload: map['customWebhookPayload'] == null ? null : (map['customWebhookPayload']! as String).input(),
       groupIds: ((map['groupIds'] as List).cast<String>()).input(),
     );
   }

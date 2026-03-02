@@ -80,17 +80,17 @@ class ExtensionArgs {
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
       arcSettingName: (map['arcSettingName'] as String).input(),
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion'] as bool).input(),
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : (map['autoUpgradeMinorVersion']! as bool).input(),
       clusterName: (map['clusterName'] as String).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
-      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag'] as String).input(),
-      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : (map['forceUpdateTag']! as String).input(),
+      protectedSettings: map['protectedSettings'] == null ? null : (map['protectedSettings']!).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion'] as String).input(),
+      settings: map['settings'] == null ? null : (map['settings']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : (map['typeHandlerVersion']! as String).input(),
     );
   }
 }

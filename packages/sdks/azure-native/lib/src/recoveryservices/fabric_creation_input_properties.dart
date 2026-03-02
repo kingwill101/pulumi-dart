@@ -22,7 +22,7 @@ class FabricCreationInputProperties {
 
   factory FabricCreationInputProperties.fromMap(Map<String, dynamic> map) {
     return FabricCreationInputProperties(
-      customDetails: map['customDetails'] == null ? null : (AzureFabricCreationInput.fromMap((map['customDetails'] as Map).cast<String, dynamic>())).input(),
+      customDetails: map['customDetails'] == null ? null : (AzureFabricCreationInput.fromMap((map['customDetails']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

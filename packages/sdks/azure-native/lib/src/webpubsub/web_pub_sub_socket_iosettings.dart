@@ -23,7 +23,7 @@ class WebPubSubSocketIOSettings {
 
   factory WebPubSubSocketIOSettings.fromMap(Map<String, dynamic> map) {
     return WebPubSubSocketIOSettings(
-      serviceMode: map['serviceMode'] == null ? null : (map['serviceMode'] as String).input(),
+      serviceMode: map['serviceMode'] == null ? null : (map['serviceMode']! as String).input(),
     );
   }
 }

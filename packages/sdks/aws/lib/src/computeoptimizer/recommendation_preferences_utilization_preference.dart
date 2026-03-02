@@ -27,7 +27,7 @@ class RecommendationPreferencesUtilizationPreference {
   factory RecommendationPreferencesUtilizationPreference.fromMap(Map<String, dynamic> map) {
     return RecommendationPreferencesUtilizationPreference(
       metricName: (map['metricName'] as String).input(),
-      metricParameters: (RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap((map['metricParameters'] as Map).cast<String, dynamic>())).input(),
+      metricParameters: (RecommendationPreferencesUtilizationPreferenceMetricParameters.fromMap((map['metricParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -86,17 +86,17 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      disableProxyAccess: map['disableProxyAccess'] == null ? null : (map['disableProxyAccess'] as bool).input(),
-      enableManagedEuc: map['enableManagedEuc'] == null ? null : (map['enableManagedEuc'] as bool).input(),
-      enableThirdPartyIdentity: map['enableThirdPartyIdentity'] == null ? null : (map['enableThirdPartyIdentity'] as bool).input(),
-      gceSetup: map['gceSetup'] == null ? null : (InstanceGceSetup.fromMap((map['gceSetup'] as Map).cast<String, dynamic>())).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceOwners: map['instanceOwners'] == null ? null : ((map['instanceOwners'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
+      disableProxyAccess: map['disableProxyAccess'] == null ? null : (map['disableProxyAccess']! as bool).input(),
+      enableManagedEuc: map['enableManagedEuc'] == null ? null : (map['enableManagedEuc']! as bool).input(),
+      enableThirdPartyIdentity: map['enableThirdPartyIdentity'] == null ? null : (map['enableThirdPartyIdentity']! as bool).input(),
+      gceSetup: map['gceSetup'] == null ? null : (InstanceGceSetup.fromMap((map['gceSetup']! as Map).cast<String, dynamic>())).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceOwners: map['instanceOwners'] == null ? null : ((map['instanceOwners']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

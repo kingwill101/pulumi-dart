@@ -45,7 +45,7 @@ class GetPatchBaselineApprovalRule {
       approveUntilDate: (map['approveUntilDate'] as String).input(),
       complianceLevel: (map['complianceLevel'] as String).input(),
       enableNonSecurity: (map['enableNonSecurity'] as bool).input(),
-      patchFilters: (pulumi.Input.decodeList<GetPatchBaselineApprovalRulePatchFilter>(map['patchFilters'], (value) => GetPatchBaselineApprovalRulePatchFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patchFilters: (pulumi.Input.decodeList<GetPatchBaselineApprovalRulePatchFilter>(map['patchFilters']!, (value) => GetPatchBaselineApprovalRulePatchFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

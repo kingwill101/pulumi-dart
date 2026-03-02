@@ -32,9 +32,9 @@ class PacketMirroringMirroredResourceInfoComputeV1 {
 
   factory PacketMirroringMirroredResourceInfoComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringMirroredResourceInfoComputeV1(
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoInstanceInfoComputeV1>(map['instances'], (value) => PacketMirroringMirroredResourceInfoInstanceInfoComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subnetworks: map['subnetworks'] == null ? null : (pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoSubnetInfoComputeV1>(map['subnetworks'], (value) => PacketMirroringMirroredResourceInfoSubnetInfoComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoInstanceInfoComputeV1>(map['instances']!, (value) => PacketMirroringMirroredResourceInfoInstanceInfoComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subnetworks: map['subnetworks'] == null ? null : (pulumi.Input.decodeList<PacketMirroringMirroredResourceInfoSubnetInfoComputeV1>(map['subnetworks']!, (value) => PacketMirroringMirroredResourceInfoSubnetInfoComputeV1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

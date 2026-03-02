@@ -62,13 +62,13 @@ class PodIdentityAssociationArgs {
   factory PodIdentityAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PodIdentityAssociationArgs(
       clusterName: (map['clusterName'] as String).input(),
-      disableSessionTags: map['disableSessionTags'] == null ? null : (map['disableSessionTags'] as bool).input(),
+      disableSessionTags: map['disableSessionTags'] == null ? null : ((map['disableSessionTags'] as bool).input()).input(),
       namespace: (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetRoleArn: map['targetRoleArn'] == null ? null : (map['targetRoleArn'] as String).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetRoleArn: map['targetRoleArn'] == null ? null : ((map['targetRoleArn'] as String).input()).input(),
     );
   }
 }

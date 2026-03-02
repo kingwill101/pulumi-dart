@@ -37,7 +37,7 @@ class NamespaceArgs {
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
       namespace: (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       tableBucketArn: (map['tableBucketArn'] as String).input(),
     );
   }

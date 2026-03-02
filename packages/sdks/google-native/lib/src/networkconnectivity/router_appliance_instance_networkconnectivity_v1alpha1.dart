@@ -30,9 +30,9 @@ class RouterApplianceInstanceNetworkconnectivityV1alpha1 {
 
   factory RouterApplianceInstanceNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
     return RouterApplianceInstanceNetworkconnectivityV1alpha1(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      networkInterface: map['networkInterface'] == null ? null : (map['networkInterface'] as String).input(),
-      virtualMachine: map['virtualMachine'] == null ? null : (map['virtualMachine'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      networkInterface: map['networkInterface'] == null ? null : (map['networkInterface']! as String).input(),
+      virtualMachine: map['virtualMachine'] == null ? null : (map['virtualMachine']! as String).input(),
     );
   }
 }

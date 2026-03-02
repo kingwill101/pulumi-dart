@@ -59,13 +59,13 @@ class OutputCosmosdbArgs {
 
   factory OutputCosmosdbArgs.fromMap(Map<String, dynamic> map) {
     return OutputCosmosdbArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
       containerName: (map['containerName'] as String).input(),
       cosmosdbAccountKey: (map['cosmosdbAccountKey'] as String).input(),
       cosmosdbSqlDatabaseId: (map['cosmosdbSqlDatabaseId'] as String).input(),
-      documentId: map['documentId'] == null ? null : (map['documentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey'] as String).input(),
+      documentId: map['documentId'] == null ? null : (map['documentId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partitionKey: map['partitionKey'] == null ? null : (map['partitionKey']! as String).input(),
       streamAnalyticsJobId: (map['streamAnalyticsJobId'] as String).input(),
     );
   }

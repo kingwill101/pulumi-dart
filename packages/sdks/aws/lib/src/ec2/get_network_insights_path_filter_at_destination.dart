@@ -34,9 +34,9 @@ class GetNetworkInsightsPathFilterAtDestination {
   factory GetNetworkInsightsPathFilterAtDestination.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsPathFilterAtDestination(
       destinationAddress: (map['destinationAddress'] as String).input(),
-      destinationPortRanges: (pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestinationDestinationPortRange>(map['destinationPortRanges'], (value) => GetNetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinationPortRanges: (pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestinationDestinationPortRange>(map['destinationPortRanges']!, (value) => GetNetworkInsightsPathFilterAtDestinationDestinationPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceAddress: (map['sourceAddress'] as String).input(),
-      sourcePortRanges: (pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestinationSourcePortRange>(map['sourcePortRanges'], (value) => GetNetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourcePortRanges: (pulumi.Input.decodeList<GetNetworkInsightsPathFilterAtDestinationSourcePortRange>(map['sourcePortRanges']!, (value) => GetNetworkInsightsPathFilterAtDestinationSourcePortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

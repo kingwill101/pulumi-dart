@@ -71,16 +71,16 @@ class StandardArgs {
 
   factory StandardArgs.fromMap(Map<String, dynamic> map) {
     return StandardArgs(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      components: map['components'] == null ? null : (pulumi.Input.decodeList<StandardComponentProperties>(map['components'], (value) => StandardComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<StandardComponentProperties>(map['components']!, (value) => StandardComponentProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      standardId: map['standardId'] == null ? null : (map['standardId'] as String).input(),
-      supportedClouds: map['supportedClouds'] == null ? null : (pulumi.Input.decodeList<StandardSupportedClouds>(map['supportedClouds'], (value) => StandardSupportedClouds.fromValue(value as String))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      standardId: map['standardId'] == null ? null : (map['standardId']! as String).input(),
+      supportedClouds: map['supportedClouds'] == null ? null : (pulumi.Input.decodeList<StandardSupportedClouds>(map['supportedClouds']!, (value) => StandardSupportedClouds.fromValue(value as String))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

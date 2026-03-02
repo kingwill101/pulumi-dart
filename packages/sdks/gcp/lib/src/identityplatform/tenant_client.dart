@@ -22,7 +22,7 @@ class TenantClient {
 
   factory TenantClient.fromMap(Map<String, dynamic> map) {
     return TenantClient(
-      permissions: map['permissions'] == null ? null : (TenantClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (TenantClientPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

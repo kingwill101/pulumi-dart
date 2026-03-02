@@ -162,13 +162,13 @@ class FlowTriggerConfigTriggerPropertiesScheduled {
 
   factory FlowTriggerConfigTriggerPropertiesScheduled.fromMap(Map<String, dynamic> map) {
     return FlowTriggerConfigTriggerPropertiesScheduled(
-      dataPullMode: map['dataPullMode'] == null ? null : (map['dataPullMode'] as String).input(),
-      firstExecutionFrom: map['firstExecutionFrom'] == null ? null : (map['firstExecutionFrom'] as String).input(),
-      scheduleEndTime: map['scheduleEndTime'] == null ? null : (map['scheduleEndTime'] as String).input(),
+      dataPullMode: map['dataPullMode'] == null ? null : ((map['dataPullMode'] as String).input()).input(),
+      firstExecutionFrom: map['firstExecutionFrom'] == null ? null : ((map['firstExecutionFrom'] as String).input()).input(),
+      scheduleEndTime: map['scheduleEndTime'] == null ? null : ((map['scheduleEndTime'] as String).input()).input(),
       scheduleExpression: (map['scheduleExpression'] as String).input(),
-      scheduleOffset: map['scheduleOffset'] == null ? null : (map['scheduleOffset'] as int).input(),
-      scheduleStartTime: map['scheduleStartTime'] == null ? null : (map['scheduleStartTime'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      scheduleOffset: map['scheduleOffset'] == null ? null : ((map['scheduleOffset'] as int).input()).input(),
+      scheduleStartTime: map['scheduleStartTime'] == null ? null : ((map['scheduleStartTime'] as String).input()).input(),
+      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
     );
   }
 }

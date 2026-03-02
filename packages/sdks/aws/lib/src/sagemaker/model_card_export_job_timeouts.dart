@@ -20,7 +20,7 @@ class ModelCardExportJobTimeouts {
 
   factory ModelCardExportJobTimeouts.fromMap(Map<String, dynamic> map) {
     return ModelCardExportJobTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

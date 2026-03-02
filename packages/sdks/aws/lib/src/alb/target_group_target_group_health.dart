@@ -27,8 +27,8 @@ class TargetGroupTargetGroupHealth {
 
   factory TargetGroupTargetGroupHealth.fromMap(Map<String, dynamic> map) {
     return TargetGroupTargetGroupHealth(
-      dnsFailover: map['dnsFailover'] == null ? null : (TargetGroupTargetGroupHealthDnsFailover.fromMap((map['dnsFailover'] as Map).cast<String, dynamic>())).input(),
-      unhealthyStateRouting: map['unhealthyStateRouting'] == null ? null : (TargetGroupTargetGroupHealthUnhealthyStateRouting.fromMap((map['unhealthyStateRouting'] as Map).cast<String, dynamic>())).input(),
+      dnsFailover: map['dnsFailover'] == null ? null : ((TargetGroupTargetGroupHealthDnsFailover.fromMap((map['dnsFailover']! as Map).cast<String, dynamic>())).input()).input(),
+      unhealthyStateRouting: map['unhealthyStateRouting'] == null ? null : ((TargetGroupTargetGroupHealthUnhealthyStateRouting.fromMap((map['unhealthyStateRouting']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -45,11 +45,11 @@ class ContributorInsightRuleArgs {
 
   factory ContributorInsightRuleArgs.fromMap(Map<String, dynamic> map) {
     return ContributorInsightRuleArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       ruleDefinition: (map['ruleDefinition'] as String).input(),
       ruleName: (map['ruleName'] as String).input(),
-      ruleState: map['ruleState'] == null ? null : (map['ruleState'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      ruleState: map['ruleState'] == null ? null : ((map['ruleState'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

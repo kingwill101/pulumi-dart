@@ -21,7 +21,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
 
   factory GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig(
-      useElapsedTime: map['useElapsedTime'] == null ? null : (map['useElapsedTime'] as bool).input(),
+      useElapsedTime: map['useElapsedTime'] == null ? null : (map['useElapsedTime']! as bool).input(),
     );
   }
 }

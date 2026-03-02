@@ -66,11 +66,11 @@ class AutonomousDatabasePropertiesLocalStandbyDb {
 
   factory AutonomousDatabasePropertiesLocalStandbyDb.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabasePropertiesLocalStandbyDb(
-      dataGuardRoleChangedTime: map['dataGuardRoleChangedTime'] == null ? null : (map['dataGuardRoleChangedTime'] as String).input(),
-      disasterRecoveryRoleChangedTime: map['disasterRecoveryRoleChangedTime'] == null ? null : (map['disasterRecoveryRoleChangedTime'] as String).input(),
-      lagTimeDuration: map['lagTimeDuration'] == null ? null : (map['lagTimeDuration'] as String).input(),
-      lifecycleDetails: map['lifecycleDetails'] == null ? null : (map['lifecycleDetails'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      dataGuardRoleChangedTime: map['dataGuardRoleChangedTime'] == null ? null : (map['dataGuardRoleChangedTime']! as String).input(),
+      disasterRecoveryRoleChangedTime: map['disasterRecoveryRoleChangedTime'] == null ? null : (map['disasterRecoveryRoleChangedTime']! as String).input(),
+      lagTimeDuration: map['lagTimeDuration'] == null ? null : (map['lagTimeDuration']! as String).input(),
+      lifecycleDetails: map['lifecycleDetails'] == null ? null : (map['lifecycleDetails']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

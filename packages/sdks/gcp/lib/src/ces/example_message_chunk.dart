@@ -55,12 +55,12 @@ class ExampleMessageChunk {
 
   factory ExampleMessageChunk.fromMap(Map<String, dynamic> map) {
     return ExampleMessageChunk(
-      agentTransfer: map['agentTransfer'] == null ? null : (ExampleMessageChunkAgentTransfer.fromMap((map['agentTransfer'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (ExampleMessageChunkImage.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
-      toolCall: map['toolCall'] == null ? null : (ExampleMessageChunkToolCall.fromMap((map['toolCall'] as Map).cast<String, dynamic>())).input(),
-      toolResponse: map['toolResponse'] == null ? null : (ExampleMessageChunkToolResponse.fromMap((map['toolResponse'] as Map).cast<String, dynamic>())).input(),
-      updatedVariables: map['updatedVariables'] == null ? null : (map['updatedVariables'] as String).input(),
+      agentTransfer: map['agentTransfer'] == null ? null : (ExampleMessageChunkAgentTransfer.fromMap((map['agentTransfer']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (ExampleMessageChunkImage.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
+      toolCall: map['toolCall'] == null ? null : (ExampleMessageChunkToolCall.fromMap((map['toolCall']! as Map).cast<String, dynamic>())).input(),
+      toolResponse: map['toolResponse'] == null ? null : (ExampleMessageChunkToolResponse.fromMap((map['toolResponse']! as Map).cast<String, dynamic>())).input(),
+      updatedVariables: map['updatedVariables'] == null ? null : (map['updatedVariables']! as String).input(),
     );
   }
 }

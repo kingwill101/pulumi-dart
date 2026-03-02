@@ -57,14 +57,14 @@ class StudioApplicationState {
 
   factory StudioApplicationState.fromMap(Map<String, dynamic> map) {
     return StudioApplicationState(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      areaId: map['areaId'] == null ? null : (map['areaId'] as String).input(),
-      configuration: map['configuration'] == null ? null : ((map['configuration'] as Map).cast<String, String>()).input(),
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<StudioApplicationInstance>(map['instances'], (value) => StudioApplicationInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      variables: map['variables'] == null ? null : ((map['variables'] as Map).cast<String, String>()).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      areaId: map['areaId'] == null ? null : (map['areaId']! as String).input(),
+      configuration: map['configuration'] == null ? null : ((map['configuration']! as Map).cast<String, String>()).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<StudioApplicationInstance>(map['instances']!, (value) => StudioApplicationInstance.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      variables: map['variables'] == null ? null : ((map['variables']! as Map).cast<String, String>()).input(),
     );
   }
 }

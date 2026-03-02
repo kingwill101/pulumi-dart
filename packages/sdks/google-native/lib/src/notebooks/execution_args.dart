@@ -48,12 +48,12 @@ class ExecutionArgs {
 
   factory ExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ExecutionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       executionId: (map['executionId'] as String).input(),
-      executionTemplate: map['executionTemplate'] == null ? null : (ExecutionTemplate.fromMap((map['executionTemplate'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      outputNotebookFile: map['outputNotebookFile'] == null ? null : (map['outputNotebookFile'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      executionTemplate: map['executionTemplate'] == null ? null : (ExecutionTemplate.fromMap((map['executionTemplate']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      outputNotebookFile: map['outputNotebookFile'] == null ? null : (map['outputNotebookFile']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ManagedNotificationAccountContactAssociationState {
 
   factory ManagedNotificationAccountContactAssociationState.fromMap(Map<String, dynamic> map) {
     return ManagedNotificationAccountContactAssociationState(
-      contactIdentifier: map['contactIdentifier'] == null ? null : (map['contactIdentifier'] as String).input(),
-      managedNotificationConfigurationArn: map['managedNotificationConfigurationArn'] == null ? null : (map['managedNotificationConfigurationArn'] as String).input(),
+      contactIdentifier: map['contactIdentifier'] == null ? null : ((map['contactIdentifier'] as String).input()).input(),
+      managedNotificationConfigurationArn: map['managedNotificationConfigurationArn'] == null ? null : ((map['managedNotificationConfigurationArn'] as String).input()).input(),
     );
   }
 }

@@ -46,8 +46,8 @@ class BaiduChannelArgs {
     return BaiduChannelArgs(
       apiKey: (map['apiKey'] as String).input(),
       applicationId: (map['applicationId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretKey: (map['secretKey'] as String).input(),
     );
   }

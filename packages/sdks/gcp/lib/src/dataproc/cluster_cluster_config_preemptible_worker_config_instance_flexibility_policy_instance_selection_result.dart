@@ -25,8 +25,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 
   factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult(
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      vmCount: map['vmCount'] == null ? null : (map['vmCount'] as int).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      vmCount: map['vmCount'] == null ? null : (map['vmCount']! as int).input(),
     );
   }
 }

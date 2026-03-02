@@ -22,7 +22,7 @@ class DirectoryServicesConfig {
 
   factory DirectoryServicesConfig.fromMap(Map<String, dynamic> map) {
     return DirectoryServicesConfig(
-      managedActiveDirectory: map['managedActiveDirectory'] == null ? null : (ManagedActiveDirectoryConfig.fromMap((map['managedActiveDirectory'] as Map).cast<String, dynamic>())).input(),
+      managedActiveDirectory: map['managedActiveDirectory'] == null ? null : (ManagedActiveDirectoryConfig.fromMap((map['managedActiveDirectory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

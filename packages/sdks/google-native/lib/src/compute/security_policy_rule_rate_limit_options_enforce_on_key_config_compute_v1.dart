@@ -26,8 +26,8 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1 {
 
   factory SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigComputeV1(
-      enforceOnKeyName: map['enforceOnKeyName'] == null ? null : (map['enforceOnKeyName'] as String).input(),
-      enforceOnKeyType: map['enforceOnKeyType'] == null ? null : (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeComputeV1.fromValue(map['enforceOnKeyType'] as String)).input(),
+      enforceOnKeyName: map['enforceOnKeyName'] == null ? null : (map['enforceOnKeyName']! as String).input(),
+      enforceOnKeyType: map['enforceOnKeyType'] == null ? null : (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyTypeComputeV1.fromValue(map['enforceOnKeyType']! as String)).input(),
     );
   }
 }

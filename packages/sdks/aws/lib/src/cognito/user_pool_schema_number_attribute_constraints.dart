@@ -25,8 +25,8 @@ class UserPoolSchemaNumberAttributeConstraints {
 
   factory UserPoolSchemaNumberAttributeConstraints.fromMap(Map<String, dynamic> map) {
     return UserPoolSchemaNumberAttributeConstraints(
-      maxValue: map['maxValue'] == null ? null : (map['maxValue'] as String).input(),
-      minValue: map['minValue'] == null ? null : (map['minValue'] as String).input(),
+      maxValue: map['maxValue'] == null ? null : ((map['maxValue'] as String).input()).input(),
+      minValue: map['minValue'] == null ? null : ((map['minValue'] as String).input()).input(),
     );
   }
 }

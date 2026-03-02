@@ -20,7 +20,7 @@ class AssetTypeTimeouts {
 
   factory AssetTypeTimeouts.fromMap(Map<String, dynamic> map) {
     return AssetTypeTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

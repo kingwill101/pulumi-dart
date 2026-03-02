@@ -39,8 +39,8 @@ class GetPricesArgs {
 
   factory GetPricesArgs.fromMap(Map<String, dynamic> map) {
     return GetPricesArgs(
-      desireAttributes: map['desireAttributes'] == null ? null : ((map['desireAttributes'] as Map).cast<String, String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      desireAttributes: map['desireAttributes'] == null ? null : ((map['desireAttributes']! as Map).cast<String, String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       product: (map['product'] as String).input(),
       resourceCode: (map['resourceCode'] as String).input(),
     );

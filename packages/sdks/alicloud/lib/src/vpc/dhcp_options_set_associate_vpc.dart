@@ -25,7 +25,7 @@ class DhcpOptionsSetAssociateVpc {
 
   factory DhcpOptionsSetAssociateVpc.fromMap(Map<String, dynamic> map) {
     return DhcpOptionsSetAssociateVpc(
-      associateStatus: map['associateStatus'] == null ? null : (map['associateStatus'] as String).input(),
+      associateStatus: map['associateStatus'] == null ? null : (map['associateStatus']! as String).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

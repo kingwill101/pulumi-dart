@@ -31,9 +31,9 @@ class ExpressRouteCircuitSku {
 
   factory ExpressRouteCircuitSku.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitSku(
-      family: map['family'] == null ? null : (map['family'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

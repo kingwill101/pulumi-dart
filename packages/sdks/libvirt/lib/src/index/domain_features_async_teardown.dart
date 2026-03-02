@@ -20,7 +20,7 @@ class DomainFeaturesAsyncTeardown {
 
   factory DomainFeaturesAsyncTeardown.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesAsyncTeardown(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
     );
   }
 }

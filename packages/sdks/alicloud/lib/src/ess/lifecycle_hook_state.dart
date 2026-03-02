@@ -51,13 +51,13 @@ class LifecycleHookState {
 
   factory LifecycleHookState.fromMap(Map<String, dynamic> map) {
     return LifecycleHookState(
-      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult'] as String).input(),
-      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout'] as int).input(),
-      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn'] as String).input(),
-      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata'] as String).input(),
-      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId'] as String).input(),
+      defaultResult: map['defaultResult'] == null ? null : (map['defaultResult']! as String).input(),
+      heartbeatTimeout: map['heartbeatTimeout'] == null ? null : (map['heartbeatTimeout']! as int).input(),
+      lifecycleTransition: map['lifecycleTransition'] == null ? null : (map['lifecycleTransition']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationArn: map['notificationArn'] == null ? null : (map['notificationArn']! as String).input(),
+      notificationMetadata: map['notificationMetadata'] == null ? null : (map['notificationMetadata']! as String).input(),
+      scalingGroupId: map['scalingGroupId'] == null ? null : (map['scalingGroupId']! as String).input(),
     );
   }
 }

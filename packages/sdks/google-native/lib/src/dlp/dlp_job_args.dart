@@ -45,11 +45,11 @@ class DlpJobArgs {
 
   factory DlpJobArgs.fromMap(Map<String, dynamic> map) {
     return DlpJobArgs(
-      inspectJob: map['inspectJob'] == null ? null : (GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob'] as Map).cast<String, dynamic>())).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      riskJob: map['riskJob'] == null ? null : (GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap((map['riskJob'] as Map).cast<String, dynamic>())).input(),
+      inspectJob: map['inspectJob'] == null ? null : (GooglePrivacyDlpV2InspectJobConfig.fromMap((map['inspectJob']! as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      riskJob: map['riskJob'] == null ? null : (GooglePrivacyDlpV2RiskAnalysisJobConfig.fromMap((map['riskJob']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,8 +35,8 @@ class ReplicationConfigurationArgs {
 
   factory ReplicationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationArgs(
-      destination: (ReplicationConfigurationDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      destination: (ReplicationConfigurationDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       sourceFileSystemId: (map['sourceFileSystemId'] as String).input(),
     );
   }

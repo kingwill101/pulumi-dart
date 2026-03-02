@@ -63,13 +63,13 @@ class BlobEventsTrigger {
 
   factory BlobEventsTrigger.fromMap(Map<String, dynamic> map) {
     return BlobEventsTrigger(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      blobPathBeginsWith: map['blobPathBeginsWith'] == null ? null : (map['blobPathBeginsWith'] as String).input(),
-      blobPathEndsWith: map['blobPathEndsWith'] == null ? null : (map['blobPathEndsWith'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      blobPathBeginsWith: map['blobPathBeginsWith'] == null ? null : (map['blobPathBeginsWith']! as String).input(),
+      blobPathEndsWith: map['blobPathEndsWith'] == null ? null : (map['blobPathEndsWith']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       events: ((map['events'] as List).cast<String>()).input(),
-      ignoreEmptyBlobs: map['ignoreEmptyBlobs'] == null ? null : (map['ignoreEmptyBlobs'] as bool).input(),
-      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines'], (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreEmptyBlobs: map['ignoreEmptyBlobs'] == null ? null : (map['ignoreEmptyBlobs']! as bool).input(),
+      pipelines: map['pipelines'] == null ? null : (pulumi.Input.decodeList<TriggerPipelineReference>(map['pipelines']!, (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scope: (map['scope'] as String).input(),
       type: (map['type'] as String).input(),
     );

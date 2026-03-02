@@ -61,15 +61,15 @@ class BasicDefenseThresholdState {
 
   factory BasicDefenseThresholdState.fromMap(Map<String, dynamic> map) {
     return BasicDefenseThresholdState(
-      bps: map['bps'] == null ? null : (map['bps'] as int).input(),
-      ddosType: map['ddosType'] == null ? null : (map['ddosType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
-      isAuto: map['isAuto'] == null ? null : (map['isAuto'] as bool).input(),
-      maxBps: map['maxBps'] == null ? null : (map['maxBps'] as int).input(),
-      maxPps: map['maxPps'] == null ? null : (map['maxPps'] as int).input(),
-      pps: map['pps'] == null ? null : (map['pps'] as int).input(),
+      bps: map['bps'] == null ? null : (map['bps']! as int).input(),
+      ddosType: map['ddosType'] == null ? null : (map['ddosType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp']! as String).input(),
+      isAuto: map['isAuto'] == null ? null : (map['isAuto']! as bool).input(),
+      maxBps: map['maxBps'] == null ? null : (map['maxBps']! as int).input(),
+      maxPps: map['maxPps'] == null ? null : (map['maxPps']! as int).input(),
+      pps: map['pps'] == null ? null : (map['pps']! as int).input(),
     );
   }
 }

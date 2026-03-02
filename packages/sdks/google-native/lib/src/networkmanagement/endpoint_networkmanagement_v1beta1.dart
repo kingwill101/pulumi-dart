@@ -80,18 +80,18 @@ class EndpointNetworkmanagementV1beta1 {
 
   factory EndpointNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkmanagementV1beta1(
-      appEngineVersion: map['appEngineVersion'] == null ? null : (AppEngineVersionEndpointNetworkmanagementV1beta1.fromMap((map['appEngineVersion'] as Map).cast<String, dynamic>())).input(),
-      cloudFunction: map['cloudFunction'] == null ? null : (CloudFunctionEndpointNetworkmanagementV1beta1.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>())).input(),
-      cloudRunRevision: map['cloudRunRevision'] == null ? null : (CloudRunRevisionEndpointNetworkmanagementV1beta1.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>())).input(),
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance'] as String).input(),
-      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
-      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkType: map['networkType'] == null ? null : (EndpointNetworkTypeNetworkmanagementV1beta1.fromValue(map['networkType'] as String)).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      appEngineVersion: map['appEngineVersion'] == null ? null : (AppEngineVersionEndpointNetworkmanagementV1beta1.fromMap((map['appEngineVersion']! as Map).cast<String, dynamic>())).input(),
+      cloudFunction: map['cloudFunction'] == null ? null : (CloudFunctionEndpointNetworkmanagementV1beta1.fromMap((map['cloudFunction']! as Map).cast<String, dynamic>())).input(),
+      cloudRunRevision: map['cloudRunRevision'] == null ? null : (CloudRunRevisionEndpointNetworkmanagementV1beta1.fromMap((map['cloudRunRevision']! as Map).cast<String, dynamic>())).input(),
+      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : (map['cloudSqlInstance']! as String).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule']! as String).input(),
+      gkeMasterCluster: map['gkeMasterCluster'] == null ? null : (map['gkeMasterCluster']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkType: map['networkType'] == null ? null : (EndpointNetworkTypeNetworkmanagementV1beta1.fromValue(map['networkType']! as String)).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

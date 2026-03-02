@@ -42,10 +42,10 @@ class ProvisioningIssuePropertiesResponse {
 
   factory ProvisioningIssuePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ProvisioningIssuePropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      issueType: map['issueType'] == null ? null : (map['issueType'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      suggestedAccessRules: map['suggestedAccessRules'] == null ? null : (pulumi.Input.decodeList<NspAccessRuleResponse>(map['suggestedAccessRules'], (value) => NspAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      issueType: map['issueType'] == null ? null : (map['issueType']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      suggestedAccessRules: map['suggestedAccessRules'] == null ? null : (pulumi.Input.decodeList<NspAccessRuleResponse>(map['suggestedAccessRules']!, (value) => NspAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       suggestedResourceIds: ((map['suggestedResourceIds'] as List).cast<String>()).input(),
     );
   }

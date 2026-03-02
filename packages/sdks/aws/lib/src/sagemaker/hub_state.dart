@@ -62,15 +62,15 @@ class HubState {
 
   factory HubState.fromMap(Map<String, dynamic> map) {
     return HubState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      hubDescription: map['hubDescription'] == null ? null : (map['hubDescription'] as String).input(),
-      hubDisplayName: map['hubDisplayName'] == null ? null : (map['hubDisplayName'] as String).input(),
-      hubName: map['hubName'] == null ? null : (map['hubName'] as String).input(),
-      hubSearchKeywords: map['hubSearchKeywords'] == null ? null : ((map['hubSearchKeywords'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3StorageConfig: map['s3StorageConfig'] == null ? null : (HubS3StorageConfig.fromMap((map['s3StorageConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      hubDescription: map['hubDescription'] == null ? null : ((map['hubDescription'] as String).input()).input(),
+      hubDisplayName: map['hubDisplayName'] == null ? null : ((map['hubDisplayName'] as String).input()).input(),
+      hubName: map['hubName'] == null ? null : ((map['hubName'] as String).input()).input(),
+      hubSearchKeywords: map['hubSearchKeywords'] == null ? null : (((map['hubSearchKeywords'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3StorageConfig: map['s3StorageConfig'] == null ? null : ((HubS3StorageConfig.fromMap((map['s3StorageConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

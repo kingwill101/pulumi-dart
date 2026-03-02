@@ -45,7 +45,7 @@ class PrivateEndpointConnectionResponse {
     return PrivateEndpointConnectionResponse(
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       systemData: (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );

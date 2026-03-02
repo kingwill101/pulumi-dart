@@ -39,10 +39,10 @@ class CertificateConfigX509ConfigCaOptions {
 
   factory CertificateConfigX509ConfigCaOptions.fromMap(Map<String, dynamic> map) {
     return CertificateConfigX509ConfigCaOptions(
-      isCa: map['isCa'] == null ? null : (map['isCa'] as bool).input(),
-      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength'] as int).input(),
-      nonCa: map['nonCa'] == null ? null : (map['nonCa'] as bool).input(),
-      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] == null ? null : (map['zeroMaxIssuerPathLength'] as bool).input(),
+      isCa: map['isCa'] == null ? null : (map['isCa']! as bool).input(),
+      maxIssuerPathLength: map['maxIssuerPathLength'] == null ? null : (map['maxIssuerPathLength']! as int).input(),
+      nonCa: map['nonCa'] == null ? null : (map['nonCa']! as bool).input(),
+      zeroMaxIssuerPathLength: map['zeroMaxIssuerPathLength'] == null ? null : (map['zeroMaxIssuerPathLength']! as bool).input(),
     );
   }
 }

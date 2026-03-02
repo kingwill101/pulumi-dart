@@ -42,9 +42,9 @@ class DedicatedIpPoolArgs {
   factory DedicatedIpPoolArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedIpPoolArgs(
       poolName: (map['poolName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingMode: map['scalingMode'] == null ? null : ((map['scalingMode'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

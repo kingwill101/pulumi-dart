@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2PubSubCondition {
 
   factory GooglePrivacyDlpV2PubSubCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PubSubCondition(
-      minimumRiskScore: map['minimumRiskScore'] == null ? null : (GooglePrivacyDlpV2PubSubConditionMinimumRiskScore.fromValue(map['minimumRiskScore'] as String)).input(),
-      minimumSensitivityScore: map['minimumSensitivityScore'] == null ? null : (GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore.fromValue(map['minimumSensitivityScore'] as String)).input(),
+      minimumRiskScore: map['minimumRiskScore'] == null ? null : (GooglePrivacyDlpV2PubSubConditionMinimumRiskScore.fromValue(map['minimumRiskScore']! as String)).input(),
+      minimumSensitivityScore: map['minimumSensitivityScore'] == null ? null : (GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore.fromValue(map['minimumSensitivityScore']! as String)).input(),
     );
   }
 }

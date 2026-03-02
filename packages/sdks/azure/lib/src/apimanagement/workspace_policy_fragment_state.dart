@@ -41,11 +41,11 @@ class WorkspacePolicyFragmentState {
 
   factory WorkspacePolicyFragmentState.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyFragmentState(
-      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
-      xmlFormat: map['xmlFormat'] == null ? null : (map['xmlFormat'] as String).input(),
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : (map['apiManagementWorkspaceId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent']! as String).input(),
+      xmlFormat: map['xmlFormat'] == null ? null : (map['xmlFormat']! as String).input(),
     );
   }
 }

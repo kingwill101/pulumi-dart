@@ -35,10 +35,10 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
 
   factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern(
-      databaseRegex: map['databaseRegex'] == null ? null : (map['databaseRegex'] as String).input(),
-      databaseResourceNameRegex: map['databaseResourceNameRegex'] == null ? null : (map['databaseResourceNameRegex'] as String).input(),
-      instanceRegex: map['instanceRegex'] == null ? null : (map['instanceRegex'] as String).input(),
-      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex'] as String).input(),
+      databaseRegex: map['databaseRegex'] == null ? null : (map['databaseRegex']! as String).input(),
+      databaseResourceNameRegex: map['databaseResourceNameRegex'] == null ? null : (map['databaseResourceNameRegex']! as String).input(),
+      instanceRegex: map['instanceRegex'] == null ? null : (map['instanceRegex']! as String).input(),
+      projectIdRegex: map['projectIdRegex'] == null ? null : (map['projectIdRegex']! as String).input(),
     );
   }
 }

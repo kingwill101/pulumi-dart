@@ -43,10 +43,10 @@ class ExpressRouteCircuitPeeringIpv6 {
 
   factory ExpressRouteCircuitPeeringIpv6.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringIpv6(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      microsoftPeering: map['microsoftPeering'] == null ? null : (ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap((map['microsoftPeering'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      microsoftPeering: map['microsoftPeering'] == null ? null : (ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap((map['microsoftPeering']! as Map).cast<String, dynamic>())).input(),
       primaryPeerAddressPrefix: (map['primaryPeerAddressPrefix'] as String).input(),
-      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId'] as String).input(),
+      routeFilterId: map['routeFilterId'] == null ? null : (map['routeFilterId']! as String).input(),
       secondaryPeerAddressPrefix: (map['secondaryPeerAddressPrefix'] as String).input(),
     );
   }

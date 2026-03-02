@@ -22,7 +22,7 @@ class BareMetalAdminSecurityConfig {
 
   factory BareMetalAdminSecurityConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminSecurityConfig(
-      authorization: map['authorization'] == null ? null : (Authorization.fromMap((map['authorization'] as Map).cast<String, dynamic>())).input(),
+      authorization: map['authorization'] == null ? null : (Authorization.fromMap((map['authorization']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

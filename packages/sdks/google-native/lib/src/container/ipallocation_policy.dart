@@ -99,22 +99,22 @@ class IPAllocationPolicy {
 
   factory IPAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return IPAllocationPolicy(
-      clusterIpv4Cidr: map['clusterIpv4Cidr'] == null ? null : (map['clusterIpv4Cidr'] as String).input(),
-      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock'] as String).input(),
-      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName'] as String).input(),
-      createSubnetwork: map['createSubnetwork'] == null ? null : (map['createSubnetwork'] as bool).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (IPAllocationPolicyIpv6AccessType.fromValue(map['ipv6AccessType'] as String)).input(),
-      nodeIpv4Cidr: map['nodeIpv4Cidr'] == null ? null : (map['nodeIpv4Cidr'] as String).input(),
-      nodeIpv4CidrBlock: map['nodeIpv4CidrBlock'] == null ? null : (map['nodeIpv4CidrBlock'] as String).input(),
-      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (PodCIDROverprovisionConfig.fromMap((map['podCidrOverprovisionConfig'] as Map).cast<String, dynamic>())).input(),
-      servicesIpv4Cidr: map['servicesIpv4Cidr'] == null ? null : (map['servicesIpv4Cidr'] as String).input(),
-      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock'] as String).input(),
-      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName'] as String).input(),
-      stackType: map['stackType'] == null ? null : (IPAllocationPolicyStackType.fromValue(map['stackType'] as String)).input(),
-      subnetworkName: map['subnetworkName'] == null ? null : (map['subnetworkName'] as String).input(),
-      tpuIpv4CidrBlock: map['tpuIpv4CidrBlock'] == null ? null : (map['tpuIpv4CidrBlock'] as String).input(),
-      useIpAliases: map['useIpAliases'] == null ? null : (map['useIpAliases'] as bool).input(),
-      useRoutes: map['useRoutes'] == null ? null : (map['useRoutes'] as bool).input(),
+      clusterIpv4Cidr: map['clusterIpv4Cidr'] == null ? null : (map['clusterIpv4Cidr']! as String).input(),
+      clusterIpv4CidrBlock: map['clusterIpv4CidrBlock'] == null ? null : (map['clusterIpv4CidrBlock']! as String).input(),
+      clusterSecondaryRangeName: map['clusterSecondaryRangeName'] == null ? null : (map['clusterSecondaryRangeName']! as String).input(),
+      createSubnetwork: map['createSubnetwork'] == null ? null : (map['createSubnetwork']! as bool).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (IPAllocationPolicyIpv6AccessType.fromValue(map['ipv6AccessType']! as String)).input(),
+      nodeIpv4Cidr: map['nodeIpv4Cidr'] == null ? null : (map['nodeIpv4Cidr']! as String).input(),
+      nodeIpv4CidrBlock: map['nodeIpv4CidrBlock'] == null ? null : (map['nodeIpv4CidrBlock']! as String).input(),
+      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : (PodCIDROverprovisionConfig.fromMap((map['podCidrOverprovisionConfig']! as Map).cast<String, dynamic>())).input(),
+      servicesIpv4Cidr: map['servicesIpv4Cidr'] == null ? null : (map['servicesIpv4Cidr']! as String).input(),
+      servicesIpv4CidrBlock: map['servicesIpv4CidrBlock'] == null ? null : (map['servicesIpv4CidrBlock']! as String).input(),
+      servicesSecondaryRangeName: map['servicesSecondaryRangeName'] == null ? null : (map['servicesSecondaryRangeName']! as String).input(),
+      stackType: map['stackType'] == null ? null : (IPAllocationPolicyStackType.fromValue(map['stackType']! as String)).input(),
+      subnetworkName: map['subnetworkName'] == null ? null : (map['subnetworkName']! as String).input(),
+      tpuIpv4CidrBlock: map['tpuIpv4CidrBlock'] == null ? null : (map['tpuIpv4CidrBlock']! as String).input(),
+      useIpAliases: map['useIpAliases'] == null ? null : (map['useIpAliases']! as bool).input(),
+      useRoutes: map['useRoutes'] == null ? null : (map['useRoutes']! as bool).input(),
     );
   }
 }

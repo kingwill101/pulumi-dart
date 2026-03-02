@@ -20,7 +20,7 @@ class ConnectorKafkaClusterClientAuthentication {
 
   factory ConnectorKafkaClusterClientAuthentication.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaClusterClientAuthentication(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : ((map['authenticationType'] as String).input()).input(),
     );
   }
 }

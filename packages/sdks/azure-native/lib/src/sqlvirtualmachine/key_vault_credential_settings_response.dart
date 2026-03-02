@@ -36,10 +36,10 @@ class KeyVaultCredentialSettingsResponse {
 
   factory KeyVaultCredentialSettingsResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultCredentialSettingsResponse(
-      azureKeyVaultUrl: map['azureKeyVaultUrl'] == null ? null : (map['azureKeyVaultUrl'] as String).input(),
-      credentialName: map['credentialName'] == null ? null : (map['credentialName'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      servicePrincipalName: map['servicePrincipalName'] == null ? null : (map['servicePrincipalName'] as String).input(),
+      azureKeyVaultUrl: map['azureKeyVaultUrl'] == null ? null : (map['azureKeyVaultUrl']! as String).input(),
+      credentialName: map['credentialName'] == null ? null : (map['credentialName']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      servicePrincipalName: map['servicePrincipalName'] == null ? null : (map['servicePrincipalName']! as String).input(),
     );
   }
 }

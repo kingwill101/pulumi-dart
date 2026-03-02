@@ -30,9 +30,9 @@ class ApiEventConfigAuthProviderLambdaAuthorizerConfig {
 
   factory ApiEventConfigAuthProviderLambdaAuthorizerConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderLambdaAuthorizerConfig(
-      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : (map['authorizerResultTtlInSeconds'] as int).input(),
+      authorizerResultTtlInSeconds: map['authorizerResultTtlInSeconds'] == null ? null : ((map['authorizerResultTtlInSeconds'] as int).input()).input(),
       authorizerUri: (map['authorizerUri'] as String).input(),
-      identityValidationExpression: map['identityValidationExpression'] == null ? null : (map['identityValidationExpression'] as String).input(),
+      identityValidationExpression: map['identityValidationExpression'] == null ? null : ((map['identityValidationExpression'] as String).input()).input(),
     );
   }
 }

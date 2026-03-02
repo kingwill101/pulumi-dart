@@ -61,15 +61,15 @@ class SslCert {
 
   factory SslCert.fromMap(Map<String, dynamic> map) {
     return SslCert(
-      cert: map['cert'] == null ? null : (map['cert'] as String).input(),
-      certSerialNumber: map['certSerialNumber'] == null ? null : (map['certSerialNumber'] as String).input(),
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint'] as String).input(),
+      cert: map['cert'] == null ? null : (map['cert']! as String).input(),
+      certSerialNumber: map['certSerialNumber'] == null ? null : (map['certSerialNumber']! as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      sha1Fingerprint: map['sha1Fingerprint'] == null ? null : (map['sha1Fingerprint']! as String).input(),
     );
   }
 }

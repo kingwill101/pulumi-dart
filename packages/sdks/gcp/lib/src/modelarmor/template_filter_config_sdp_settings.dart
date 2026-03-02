@@ -29,8 +29,8 @@ class TemplateFilterConfigSdpSettings {
 
   factory TemplateFilterConfigSdpSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettings(
-      advancedConfig: map['advancedConfig'] == null ? null : (TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>())).input(),
-      basicConfig: map['basicConfig'] == null ? null : (TemplateFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedConfig: map['advancedConfig'] == null ? null : (TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig']! as Map).cast<String, dynamic>())).input(),
+      basicConfig: map['basicConfig'] == null ? null : (TemplateFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

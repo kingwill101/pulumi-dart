@@ -20,7 +20,7 @@ class LiteTopicReservationConfig {
 
   factory LiteTopicReservationConfig.fromMap(Map<String, dynamic> map) {
     return LiteTopicReservationConfig(
-      throughputReservation: map['throughputReservation'] == null ? null : (map['throughputReservation'] as String).input(),
+      throughputReservation: map['throughputReservation'] == null ? null : (map['throughputReservation']! as String).input(),
     );
   }
 }

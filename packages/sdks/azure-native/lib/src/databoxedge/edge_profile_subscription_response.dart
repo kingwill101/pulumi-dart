@@ -59,16 +59,16 @@ class EdgeProfileSubscriptionResponse {
 
   factory EdgeProfileSubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return EdgeProfileSubscriptionResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      locationPlacementId: map['locationPlacementId'] == null ? null : (map['locationPlacementId'] as String).input(),
-      quotaId: map['quotaId'] == null ? null : (map['quotaId'] as String).input(),
-      registeredFeatures: map['registeredFeatures'] == null ? null : (pulumi.Input.decodeList<SubscriptionRegisteredFeaturesResponse>(map['registeredFeatures'], (value) => SubscriptionRegisteredFeaturesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      registrationDate: map['registrationDate'] == null ? null : (map['registrationDate'] as String).input(),
-      registrationId: map['registrationId'] == null ? null : (map['registrationId'] as String).input(),
-      serializedDetails: map['serializedDetails'] == null ? null : (map['serializedDetails'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      locationPlacementId: map['locationPlacementId'] == null ? null : (map['locationPlacementId']! as String).input(),
+      quotaId: map['quotaId'] == null ? null : (map['quotaId']! as String).input(),
+      registeredFeatures: map['registeredFeatures'] == null ? null : (pulumi.Input.decodeList<SubscriptionRegisteredFeaturesResponse>(map['registeredFeatures']!, (value) => SubscriptionRegisteredFeaturesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      registrationDate: map['registrationDate'] == null ? null : (map['registrationDate']! as String).input(),
+      registrationId: map['registrationId'] == null ? null : (map['registrationId']! as String).input(),
+      serializedDetails: map['serializedDetails'] == null ? null : (map['serializedDetails']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

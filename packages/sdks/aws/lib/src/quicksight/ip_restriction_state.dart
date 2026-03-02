@@ -46,12 +46,12 @@ class IpRestrictionState {
 
   factory IpRestrictionState.fromMap(Map<String, dynamic> map) {
     return IpRestrictionState(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      ipRestrictionRuleMap: map['ipRestrictionRuleMap'] == null ? null : ((map['ipRestrictionRuleMap'] as Map).cast<String, String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcEndpointIdRestrictionRuleMap: map['vpcEndpointIdRestrictionRuleMap'] == null ? null : ((map['vpcEndpointIdRestrictionRuleMap'] as Map).cast<String, String>()).input(),
-      vpcIdRestrictionRuleMap: map['vpcIdRestrictionRuleMap'] == null ? null : ((map['vpcIdRestrictionRuleMap'] as Map).cast<String, String>()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      ipRestrictionRuleMap: map['ipRestrictionRuleMap'] == null ? null : (((map['ipRestrictionRuleMap'] as Map).cast<String, String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcEndpointIdRestrictionRuleMap: map['vpcEndpointIdRestrictionRuleMap'] == null ? null : (((map['vpcEndpointIdRestrictionRuleMap'] as Map).cast<String, String>()).input()).input(),
+      vpcIdRestrictionRuleMap: map['vpcIdRestrictionRuleMap'] == null ? null : (((map['vpcIdRestrictionRuleMap'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

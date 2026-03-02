@@ -32,9 +32,9 @@ class RecordSetRoutingPolicyGeo {
 
   factory RecordSetRoutingPolicyGeo.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyGeo(
-      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>())).input(),
+      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : (RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas'] as List).cast<String>()).input(),
+      rrdatas: map['rrdatas'] == null ? null : ((map['rrdatas']! as List).cast<String>()).input(),
     );
   }
 }

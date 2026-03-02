@@ -26,8 +26,8 @@ class GradientaiAgentKnowledgeBaseAttachmentState {
 
   factory GradientaiAgentKnowledgeBaseAttachmentState.fromMap(Map<String, dynamic> map) {
     return GradientaiAgentKnowledgeBaseAttachmentState(
-      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid'] as String).input(),
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid'] as String).input(),
+      agentUuid: map['agentUuid'] == null ? null : (map['agentUuid']! as String).input(),
+      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
     );
   }
 }

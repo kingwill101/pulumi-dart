@@ -36,9 +36,9 @@ class EnvironmentNodeConfig {
 
   factory EnvironmentNodeConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentNodeConfig(
-      currentAggregateNodeCount: map['currentAggregateNodeCount'] == null ? null : (map['currentAggregateNodeCount'] as String).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as String).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as String).input(),
+      currentAggregateNodeCount: map['currentAggregateNodeCount'] == null ? null : (map['currentAggregateNodeCount']! as String).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as String).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as String).input(),
     );
   }
 }

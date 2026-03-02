@@ -26,7 +26,7 @@ class GroupPolicyAssignmentNonComplianceMessage {
   factory GroupPolicyAssignmentNonComplianceMessage.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAssignmentNonComplianceMessage(
       content: (map['content'] as String).input(),
-      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId'] as String).input(),
+      policyDefinitionReferenceId: map['policyDefinitionReferenceId'] == null ? null : (map['policyDefinitionReferenceId']! as String).input(),
     );
   }
 }

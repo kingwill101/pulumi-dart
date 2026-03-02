@@ -20,7 +20,7 @@ class PipelineInputPayloadFormatProtobuf {
 
   factory PipelineInputPayloadFormatProtobuf.fromMap(Map<String, dynamic> map) {
     return PipelineInputPayloadFormatProtobuf(
-      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition']! as String).input(),
     );
   }
 }

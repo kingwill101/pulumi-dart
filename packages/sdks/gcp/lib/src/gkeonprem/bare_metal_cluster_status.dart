@@ -33,8 +33,8 @@ class BareMetalClusterStatus {
 
   factory BareMetalClusterStatus.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterStatusCondition>(map['conditions'], (value) => BareMetalClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterStatusCondition>(map['conditions']!, (value) => BareMetalClusterStatusCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
     );
   }
 }

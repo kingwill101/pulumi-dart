@@ -61,15 +61,15 @@ class AccessKeyState {
 
   factory AccessKeyState.fromMap(Map<String, dynamic> map) {
     return AccessKeyState(
-      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
-      encryptedSecret: map['encryptedSecret'] == null ? null : (map['encryptedSecret'] as String).input(),
-      encryptedSesSmtpPasswordV4: map['encryptedSesSmtpPasswordV4'] == null ? null : (map['encryptedSesSmtpPasswordV4'] as String).input(),
-      keyFingerprint: map['keyFingerprint'] == null ? null : (map['keyFingerprint'] as String).input(),
-      pgpKey: map['pgpKey'] == null ? null : (map['pgpKey'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
-      sesSmtpPasswordV4: map['sesSmtpPasswordV4'] == null ? null : (map['sesSmtpPasswordV4'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      createDate: map['createDate'] == null ? null : ((map['createDate'] as String).input()).input(),
+      encryptedSecret: map['encryptedSecret'] == null ? null : ((map['encryptedSecret'] as String).input()).input(),
+      encryptedSesSmtpPasswordV4: map['encryptedSesSmtpPasswordV4'] == null ? null : ((map['encryptedSesSmtpPasswordV4'] as String).input()).input(),
+      keyFingerprint: map['keyFingerprint'] == null ? null : ((map['keyFingerprint'] as String).input()).input(),
+      pgpKey: map['pgpKey'] == null ? null : ((map['pgpKey'] as String).input()).input(),
+      secret: map['secret'] == null ? null : ((map['secret'] as String).input()).input(),
+      sesSmtpPasswordV4: map['sesSmtpPasswordV4'] == null ? null : ((map['sesSmtpPasswordV4'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      user: map['user'] == null ? null : ((map['user'] as String).input()).input(),
     );
   }
 }

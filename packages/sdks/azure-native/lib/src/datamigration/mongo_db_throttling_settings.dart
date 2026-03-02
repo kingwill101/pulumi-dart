@@ -31,9 +31,9 @@ class MongoDbThrottlingSettings {
 
   factory MongoDbThrottlingSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbThrottlingSettings(
-      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism'] as int).input(),
-      minFreeCpu: map['minFreeCpu'] == null ? null : (map['minFreeCpu'] as int).input(),
-      minFreeMemoryMb: map['minFreeMemoryMb'] == null ? null : (map['minFreeMemoryMb'] as int).input(),
+      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism']! as int).input(),
+      minFreeCpu: map['minFreeCpu'] == null ? null : (map['minFreeCpu']! as int).input(),
+      minFreeMemoryMb: map['minFreeMemoryMb'] == null ? null : (map['minFreeMemoryMb']! as int).input(),
     );
   }
 }

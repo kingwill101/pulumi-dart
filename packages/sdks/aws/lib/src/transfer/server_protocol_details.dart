@@ -35,10 +35,10 @@ class ServerProtocolDetails {
 
   factory ServerProtocolDetails.fromMap(Map<String, dynamic> map) {
     return ServerProtocolDetails(
-      as2Transports: map['as2Transports'] == null ? null : ((map['as2Transports'] as List).cast<String>()).input(),
-      passiveIp: map['passiveIp'] == null ? null : (map['passiveIp'] as String).input(),
-      setStatOption: map['setStatOption'] == null ? null : (map['setStatOption'] as String).input(),
-      tlsSessionResumptionMode: map['tlsSessionResumptionMode'] == null ? null : (map['tlsSessionResumptionMode'] as String).input(),
+      as2Transports: map['as2Transports'] == null ? null : (((map['as2Transports'] as List).cast<String>()).input()).input(),
+      passiveIp: map['passiveIp'] == null ? null : ((map['passiveIp'] as String).input()).input(),
+      setStatOption: map['setStatOption'] == null ? null : ((map['setStatOption'] as String).input()).input(),
+      tlsSessionResumptionMode: map['tlsSessionResumptionMode'] == null ? null : ((map['tlsSessionResumptionMode'] as String).input()).input(),
     );
   }
 }

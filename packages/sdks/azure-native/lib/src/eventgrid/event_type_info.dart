@@ -29,8 +29,8 @@ class EventTypeInfo {
 
   factory EventTypeInfo.fromMap(Map<String, dynamic> map) {
     return EventTypeInfo(
-      inlineEventTypes: map['inlineEventTypes'] == null ? null : (pulumi.Input.decodeMapValues<InlineEventProperties>(map['inlineEventTypes'], (value) => InlineEventProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      inlineEventTypes: map['inlineEventTypes'] == null ? null : (pulumi.Input.decodeMapValues<InlineEventProperties>(map['inlineEventTypes']!, (value) => InlineEventProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

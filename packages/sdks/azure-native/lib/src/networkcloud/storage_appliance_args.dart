@@ -73,14 +73,14 @@ class StorageApplianceArgs {
     return StorageApplianceArgs(
       administratorCredentials: (AdministrativeCredentials.fromMap((map['administratorCredentials'] as Map).cast<String, dynamic>())).input(),
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       rackId: (map['rackId'] as String).input(),
       rackSlot: (map['rackSlot'] as double).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialNumber: (map['serialNumber'] as String).input(),
-      storageApplianceName: map['storageApplianceName'] == null ? null : (map['storageApplianceName'] as String).input(),
+      storageApplianceName: map['storageApplianceName'] == null ? null : (map['storageApplianceName']! as String).input(),
       storageApplianceSkuId: (map['storageApplianceSkuId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

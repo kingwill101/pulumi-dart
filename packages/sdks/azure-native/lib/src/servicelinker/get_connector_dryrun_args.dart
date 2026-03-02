@@ -42,7 +42,7 @@ class GetConnectorDryrunArgs {
       dryrunName: (map['dryrunName'] as String).input(),
       location: (map['location'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

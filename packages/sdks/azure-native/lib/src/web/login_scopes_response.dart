@@ -21,7 +21,7 @@ class LoginScopesResponse {
 
   factory LoginScopesResponse.fromMap(Map<String, dynamic> map) {
     return LoginScopesResponse(
-      scopes: map['scopes'] == null ? null : ((map['scopes'] as List).cast<String>()).input(),
+      scopes: map['scopes'] == null ? null : ((map['scopes']! as List).cast<String>()).input(),
     );
   }
 }

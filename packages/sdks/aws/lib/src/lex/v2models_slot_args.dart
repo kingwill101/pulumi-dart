@@ -99,17 +99,17 @@ class V2modelsSlotArgs {
     return V2modelsSlotArgs(
       botId: (map['botId'] as String).input(),
       botVersion: (map['botVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       intentId: (map['intentId'] as String).input(),
       localeId: (map['localeId'] as String).input(),
-      multipleValuesSettings: map['multipleValuesSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotMultipleValuesSetting>(map['multipleValuesSettings'], (value) => V2modelsSlotMultipleValuesSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      obfuscationSettings: map['obfuscationSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotObfuscationSetting>(map['obfuscationSettings'], (value) => V2modelsSlotObfuscationSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      slotTypeId: map['slotTypeId'] == null ? null : (map['slotTypeId'] as String).input(),
-      subSlotSettings: map['subSlotSettings'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotSubSlotSetting>(map['subSlotSettings'], (value) => V2modelsSlotSubSlotSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: map['timeouts'] == null ? null : (V2modelsSlotTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      valueElicitationSetting: (V2modelsSlotValueElicitationSetting.fromMap((map['valueElicitationSetting'] as Map).cast<String, dynamic>())).input(),
+      multipleValuesSettings: map['multipleValuesSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotMultipleValuesSetting>(map['multipleValuesSettings']!, (value) => V2modelsSlotMultipleValuesSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      obfuscationSettings: map['obfuscationSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotObfuscationSetting>(map['obfuscationSettings']!, (value) => V2modelsSlotObfuscationSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      slotTypeId: map['slotTypeId'] == null ? null : ((map['slotTypeId'] as String).input()).input(),
+      subSlotSettings: map['subSlotSettings'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotSubSlotSetting>(map['subSlotSettings']!, (value) => V2modelsSlotSubSlotSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((V2modelsSlotTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      valueElicitationSetting: (V2modelsSlotValueElicitationSetting.fromMap((map['valueElicitationSetting']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

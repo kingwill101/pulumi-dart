@@ -42,11 +42,11 @@ class DomainDevicesCrypto {
 
   factory DomainDevicesCrypto.fromMap(Map<String, dynamic> map) {
     return DomainDevicesCrypto(
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesCryptoAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      backend: map['backend'] == null ? null : (DomainDevicesCryptoBackend.fromMap((map['backend'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesCryptoAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      backend: map['backend'] == null ? null : (DomainDevicesCryptoBackend.fromMap((map['backend']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

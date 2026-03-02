@@ -27,8 +27,8 @@ class ListGitLabGroupAvailableResult {
 
   factory ListGitLabGroupAvailableResult.fromMap(Map<String, dynamic> map) {
     return ListGitLabGroupAvailableResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<GitLabGroupResponse>(map['value'], (value) => GitLabGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<GitLabGroupResponse>(map['value']!, (value) => GitLabGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

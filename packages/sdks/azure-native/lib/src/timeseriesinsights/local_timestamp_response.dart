@@ -27,8 +27,8 @@ class LocalTimestampResponse {
 
   factory LocalTimestampResponse.fromMap(Map<String, dynamic> map) {
     return LocalTimestampResponse(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      timeZoneOffset: map['timeZoneOffset'] == null ? null : (LocalTimestampResponseTimeZoneOffset.fromMap((map['timeZoneOffset'] as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      timeZoneOffset: map['timeZoneOffset'] == null ? null : (LocalTimestampResponseTimeZoneOffset.fromMap((map['timeZoneOffset']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ConsumerGroupState {
 
   factory ConsumerGroupState.fromMap(Map<String, dynamic> map) {
     return ConsumerGroupState(
-      eventhubEndpointName: map['eventhubEndpointName'] == null ? null : (map['eventhubEndpointName'] as String).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      eventhubEndpointName: map['eventhubEndpointName'] == null ? null : (map['eventhubEndpointName']! as String).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

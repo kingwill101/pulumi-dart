@@ -29,7 +29,7 @@ class FunctionAppActiveSlotArgs {
 
   factory FunctionAppActiveSlotArgs.fromMap(Map<String, dynamic> map) {
     return FunctionAppActiveSlotArgs(
-      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : (map['overwriteNetworkConfig'] as bool).input(),
+      overwriteNetworkConfig: map['overwriteNetworkConfig'] == null ? null : (map['overwriteNetworkConfig']! as bool).input(),
       slotId: (map['slotId'] as String).input(),
     );
   }

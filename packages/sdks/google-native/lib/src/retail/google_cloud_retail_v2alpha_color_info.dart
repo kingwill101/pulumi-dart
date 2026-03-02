@@ -26,8 +26,8 @@ class GoogleCloudRetailV2alphaColorInfo {
 
   factory GoogleCloudRetailV2alphaColorInfo.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaColorInfo(
-      colorFamilies: map['colorFamilies'] == null ? null : ((map['colorFamilies'] as List).cast<String>()).input(),
-      colors: map['colors'] == null ? null : ((map['colors'] as List).cast<String>()).input(),
+      colorFamilies: map['colorFamilies'] == null ? null : ((map['colorFamilies']! as List).cast<String>()).input(),
+      colors: map['colors'] == null ? null : ((map['colors']! as List).cast<String>()).input(),
     );
   }
 }

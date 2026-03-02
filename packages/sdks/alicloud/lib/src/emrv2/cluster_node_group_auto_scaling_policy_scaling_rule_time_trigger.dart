@@ -45,12 +45,12 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
 
   factory ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      launchExpirationTime: map['launchExpirationTime'] == null ? null : (map['launchExpirationTime'] as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      launchExpirationTime: map['launchExpirationTime'] == null ? null : (map['launchExpirationTime']! as int).input(),
       launchTime: (map['launchTime'] as String).input(),
-      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType'] as String).input(),
-      recurrenceValue: map['recurrenceValue'] == null ? null : (map['recurrenceValue'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType']! as String).input(),
+      recurrenceValue: map['recurrenceValue'] == null ? null : (map['recurrenceValue']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

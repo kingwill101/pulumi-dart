@@ -87,20 +87,20 @@ class BuildStep {
 
   factory BuildStep.fromMap(Map<String, dynamic> map) {
     return BuildStep(
-      allowExitCodes: map['allowExitCodes'] == null ? null : ((map['allowExitCodes'] as List).cast<int>()).input(),
-      allowFailure: map['allowFailure'] == null ? null : (map['allowFailure'] as bool).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      automapSubstitutions: map['automapSubstitutions'] == null ? null : (map['automapSubstitutions'] as bool).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint'] as String).input(),
-      env: map['env'] == null ? null : ((map['env'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      allowExitCodes: map['allowExitCodes'] == null ? null : ((map['allowExitCodes']! as List).cast<int>()).input(),
+      allowFailure: map['allowFailure'] == null ? null : (map['allowFailure']! as bool).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      automapSubstitutions: map['automapSubstitutions'] == null ? null : (map['automapSubstitutions']! as bool).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      entrypoint: map['entrypoint'] == null ? null : (map['entrypoint']! as String).input(),
+      env: map['env'] == null ? null : ((map['env']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      script: map['script'] == null ? null : (map['script'] as String).input(),
-      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      waitFor: map['waitFor'] == null ? null : ((map['waitFor'] as List).cast<String>()).input(),
+      script: map['script'] == null ? null : (map['script']! as String).input(),
+      secretEnv: map['secretEnv'] == null ? null : ((map['secretEnv']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      waitFor: map['waitFor'] == null ? null : ((map['waitFor']! as List).cast<String>()).input(),
     );
   }
 }

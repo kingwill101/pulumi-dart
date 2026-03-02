@@ -51,7 +51,7 @@ class ReplicationNetworkMappingArgs {
   factory ReplicationNetworkMappingArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationNetworkMappingArgs(
       fabricName: (map['fabricName'] as String).input(),
-      networkMappingName: map['networkMappingName'] == null ? null : (map['networkMappingName'] as String).input(),
+      networkMappingName: map['networkMappingName'] == null ? null : (map['networkMappingName']! as String).input(),
       networkName: (map['networkName'] as String).input(),
       properties: (CreateNetworkMappingInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

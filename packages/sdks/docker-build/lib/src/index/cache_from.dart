@@ -60,13 +60,13 @@ class CacheFrom {
 
   factory CacheFrom.fromMap(Map<String, dynamic> map) {
     return CacheFrom(
-      azblob: map['azblob'] == null ? null : (CacheFromAzureBlob.fromMap((map['azblob'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      gha: map['gha'] == null ? null : (CacheFromGitHubActions.fromMap((map['gha'] as Map).cast<String, dynamic>())).input(),
-      local: map['local'] == null ? null : (CacheFromLocal.fromMap((map['local'] as Map).cast<String, dynamic>())).input(),
-      raw: map['raw'] == null ? null : (map['raw'] as String).input(),
-      registry: map['registry'] == null ? null : (CacheFromRegistry.fromMap((map['registry'] as Map).cast<String, dynamic>())).input(),
-      s3: map['s3'] == null ? null : (CacheFromS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      azblob: map['azblob'] == null ? null : (CacheFromAzureBlob.fromMap((map['azblob']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      gha: map['gha'] == null ? null : (CacheFromGitHubActions.fromMap((map['gha']! as Map).cast<String, dynamic>())).input(),
+      local: map['local'] == null ? null : (CacheFromLocal.fromMap((map['local']! as Map).cast<String, dynamic>())).input(),
+      raw: map['raw'] == null ? null : (map['raw']! as String).input(),
+      registry: map['registry'] == null ? null : (CacheFromRegistry.fromMap((map['registry']! as Map).cast<String, dynamic>())).input(),
+      s3: map['s3'] == null ? null : (CacheFromS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

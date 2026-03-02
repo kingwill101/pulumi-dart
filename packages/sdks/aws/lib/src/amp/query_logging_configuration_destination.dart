@@ -27,8 +27,8 @@ class QueryLoggingConfigurationDestination {
 
   factory QueryLoggingConfigurationDestination.fromMap(Map<String, dynamic> map) {
     return QueryLoggingConfigurationDestination(
-      cloudwatchLogs: (QueryLoggingConfigurationDestinationCloudwatchLogs.fromMap((map['cloudwatchLogs'] as Map).cast<String, dynamic>())).input(),
-      filters: (QueryLoggingConfigurationDestinationFilters.fromMap((map['filters'] as Map).cast<String, dynamic>())).input(),
+      cloudwatchLogs: (QueryLoggingConfigurationDestinationCloudwatchLogs.fromMap((map['cloudwatchLogs']! as Map).cast<String, dynamic>())).input(),
+      filters: (QueryLoggingConfigurationDestinationFilters.fromMap((map['filters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

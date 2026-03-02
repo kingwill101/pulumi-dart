@@ -27,7 +27,7 @@ class WindowsWebAppSlotLogsHttpLogsAzureBlobStorage {
 
   factory WindowsWebAppSlotLogsHttpLogsAzureBlobStorage.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotLogsHttpLogsAzureBlobStorage(
-      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays'] as int).input(),
+      retentionInDays: map['retentionInDays'] == null ? null : (map['retentionInDays']! as int).input(),
       sasUrl: (map['sasUrl'] as String).input(),
     );
   }

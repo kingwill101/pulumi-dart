@@ -21,7 +21,7 @@ class DomainDevicesControllerDriverIoThreads {
 
   factory DomainDevicesControllerDriverIoThreads.fromMap(Map<String, dynamic> map) {
     return DomainDevicesControllerDriverIoThreads(
-      ioThreads: map['ioThreads'] == null ? null : (pulumi.Input.decodeList<DomainDevicesControllerDriverIoThreadsIoThread>(map['ioThreads'], (value) => DomainDevicesControllerDriverIoThreadsIoThread.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ioThreads: map['ioThreads'] == null ? null : (pulumi.Input.decodeList<DomainDevicesControllerDriverIoThreadsIoThread>(map['ioThreads']!, (value) => DomainDevicesControllerDriverIoThreadsIoThread.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

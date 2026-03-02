@@ -21,7 +21,7 @@ class FormulaPropertiesFromVm {
 
   factory FormulaPropertiesFromVm.fromMap(Map<String, dynamic> map) {
     return FormulaPropertiesFromVm(
-      labVmId: map['labVmId'] == null ? null : (map['labVmId'] as String).input(),
+      labVmId: map['labVmId'] == null ? null : (map['labVmId']! as String).input(),
     );
   }
 }

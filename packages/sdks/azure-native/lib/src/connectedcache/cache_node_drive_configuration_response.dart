@@ -36,10 +36,10 @@ class CacheNodeDriveConfigurationResponse {
 
   factory CacheNodeDriveConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CacheNodeDriveConfigurationResponse(
-      cacheNumber: map['cacheNumber'] == null ? null : (map['cacheNumber'] as int).input(),
-      nginxMapping: map['nginxMapping'] == null ? null : (map['nginxMapping'] as String).input(),
-      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
-      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb'] as int).input(),
+      cacheNumber: map['cacheNumber'] == null ? null : (map['cacheNumber']! as int).input(),
+      nginxMapping: map['nginxMapping'] == null ? null : (map['nginxMapping']! as String).input(),
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath']! as String).input(),
+      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb']! as int).input(),
     );
   }
 }

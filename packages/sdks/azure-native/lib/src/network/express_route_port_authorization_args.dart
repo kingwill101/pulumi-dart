@@ -44,10 +44,10 @@ class ExpressRoutePortAuthorizationArgs {
 
   factory ExpressRoutePortAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortAuthorizationArgs(
-      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName'] as String).input(),
+      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName']! as String).input(),
       expressRoutePortName: (map['expressRoutePortName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

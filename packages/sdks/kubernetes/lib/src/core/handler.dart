@@ -34,9 +34,9 @@ class Handler {
 
   factory Handler.fromMap(Map<String, dynamic> map) {
     return Handler(
-      exec: map['exec'] == null ? null : (ExecAction.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      httpGet: map['httpGet'] == null ? null : (HTTPGetAction.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketAction.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
+      exec: map['exec'] == null ? null : (ExecAction.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      httpGet: map['httpGet'] == null ? null : (HTTPGetAction.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (TCPSocketAction.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

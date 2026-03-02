@@ -31,9 +31,9 @@ class ServerFarmInstanceResponse {
 
   factory ServerFarmInstanceResponse.fromMap(Map<String, dynamic> map) {
     return ServerFarmInstanceResponse(
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

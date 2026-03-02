@@ -31,9 +31,9 @@ class VirtualNetworkGatewayBgpSettings {
 
   factory VirtualNetworkGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayBgpSettings(
-      asn: map['asn'] == null ? null : (map['asn'] as int).input(),
-      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight'] as int).input(),
-      peeringAddresses: map['peeringAddresses'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayBgpSettingsPeeringAddress>(map['peeringAddresses'], (value) => VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as int).input(),
+      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight']! as int).input(),
+      peeringAddresses: map['peeringAddresses'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkGatewayBgpSettingsPeeringAddress>(map['peeringAddresses']!, (value) => VirtualNetworkGatewayBgpSettingsPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

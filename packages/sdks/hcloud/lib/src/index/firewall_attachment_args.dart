@@ -38,8 +38,8 @@ class FirewallAttachmentArgs {
   factory FirewallAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return FirewallAttachmentArgs(
       firewallId: (map['firewallId'] as int).input(),
-      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors'] as List).cast<String>()).input(),
-      serverIds: map['serverIds'] == null ? null : ((map['serverIds'] as List).cast<int>()).input(),
+      labelSelectors: map['labelSelectors'] == null ? null : ((map['labelSelectors']! as List).cast<String>()).input(),
+      serverIds: map['serverIds'] == null ? null : ((map['serverIds']! as List).cast<int>()).input(),
     );
   }
 }

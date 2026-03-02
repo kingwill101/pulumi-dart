@@ -36,10 +36,10 @@ class OneDashboardRawPage {
 
   factory OneDashboardRawPage.fromMap(Map<String, dynamic> map) {
     return OneDashboardRawPage(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
       name: (map['name'] as String).input(),
-      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<OneDashboardRawPageWidget>(map['widgets'], (value) => OneDashboardRawPageWidget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<OneDashboardRawPageWidget>(map['widgets']!, (value) => OneDashboardRawPageWidget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ListingPubsubTopic {
 
   factory ListingPubsubTopic.fromMap(Map<String, dynamic> map) {
     return ListingPubsubTopic(
-      dataAffinityRegions: map['dataAffinityRegions'] == null ? null : ((map['dataAffinityRegions'] as List).cast<String>()).input(),
+      dataAffinityRegions: map['dataAffinityRegions'] == null ? null : ((map['dataAffinityRegions']! as List).cast<String>()).input(),
       topic: (map['topic'] as String).input(),
     );
   }

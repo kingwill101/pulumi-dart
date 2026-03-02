@@ -49,7 +49,7 @@ class ProfileRewriteUriRulesArgs {
       clients: (pulumi.Input.decodeList<ProfileRewriteUriRulesClient>(map['clients'], (value) => ProfileRewriteUriRulesClient.fromMap((value as Map).cast<String, dynamic>()))).input(),
       profileName: (map['profileName'] as String).input(),
       ruleName: (map['ruleName'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as String).input(),
       servers: (pulumi.Input.decodeList<ProfileRewriteUriRulesServer>(map['servers'], (value) => ProfileRewriteUriRulesServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

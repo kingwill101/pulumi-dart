@@ -67,16 +67,16 @@ class CSIPersistentVolumeSourcePatch {
 
   factory CSIPersistentVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return CSIPersistentVolumeSourcePatch(
-      controllerExpandSecretRef: map['controllerExpandSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['controllerExpandSecretRef'] as Map).cast<String, dynamic>())).input(),
-      controllerPublishSecretRef: map['controllerPublishSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['controllerPublishSecretRef'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      nodeExpandSecretRef: map['nodeExpandSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['nodeExpandSecretRef'] as Map).cast<String, dynamic>())).input(),
-      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['nodePublishSecretRef'] as Map).cast<String, dynamic>())).input(),
-      nodeStageSecretRef: map['nodeStageSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['nodeStageSecretRef'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes'] as Map).cast<String, String>()).input(),
-      volumeHandle: map['volumeHandle'] == null ? null : (map['volumeHandle'] as String).input(),
+      controllerExpandSecretRef: map['controllerExpandSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['controllerExpandSecretRef']! as Map).cast<String, dynamic>())).input(),
+      controllerPublishSecretRef: map['controllerPublishSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['controllerPublishSecretRef']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      nodeExpandSecretRef: map['nodeExpandSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['nodeExpandSecretRef']! as Map).cast<String, dynamic>())).input(),
+      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['nodePublishSecretRef']! as Map).cast<String, dynamic>())).input(),
+      nodeStageSecretRef: map['nodeStageSecretRef'] == null ? null : (SecretReferencePatch.fromMap((map['nodeStageSecretRef']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes']! as Map).cast<String, String>()).input(),
+      volumeHandle: map['volumeHandle'] == null ? null : (map['volumeHandle']! as String).input(),
     );
   }
 }

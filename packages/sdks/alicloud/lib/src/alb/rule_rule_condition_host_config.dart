@@ -20,7 +20,7 @@ class RuleRuleConditionHostConfig {
 
   factory RuleRuleConditionHostConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleConditionHostConfig(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

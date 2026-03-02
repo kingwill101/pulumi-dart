@@ -30,7 +30,7 @@ class Ec2InstanceArgs {
 
   factory Ec2InstanceArgs.fromMap(Map<String, dynamic> map) {
     return Ec2InstanceArgs(
-      properties: map['properties'] == null ? null : (Ec2InstanceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (Ec2InstanceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

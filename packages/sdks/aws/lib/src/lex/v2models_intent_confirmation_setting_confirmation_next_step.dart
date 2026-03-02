@@ -32,9 +32,9 @@ class V2modelsIntentConfirmationSettingConfirmationNextStep {
 
   factory V2modelsIntentConfirmationSettingConfirmationNextStep.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingConfirmationNextStep(
-      dialogAction: map['dialogAction'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationNextStepDialogAction.fromMap((map['dialogAction'] as Map).cast<String, dynamic>())).input(),
-      intent: map['intent'] == null ? null : (V2modelsIntentConfirmationSettingConfirmationNextStepIntent.fromMap((map['intent'] as Map).cast<String, dynamic>())).input(),
-      sessionAttributes: map['sessionAttributes'] == null ? null : ((map['sessionAttributes'] as Map).cast<String, String>()).input(),
+      dialogAction: map['dialogAction'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationNextStepDialogAction.fromMap((map['dialogAction']! as Map).cast<String, dynamic>())).input()).input(),
+      intent: map['intent'] == null ? null : ((V2modelsIntentConfirmationSettingConfirmationNextStepIntent.fromMap((map['intent']! as Map).cast<String, dynamic>())).input()).input(),
+      sessionAttributes: map['sessionAttributes'] == null ? null : (((map['sessionAttributes'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

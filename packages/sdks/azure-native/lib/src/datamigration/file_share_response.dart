@@ -31,9 +31,9 @@ class FileShareResponse {
 
   factory FileShareResponse.fromMap(Map<String, dynamic> map) {
     return FileShareResponse(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       path: (map['path'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

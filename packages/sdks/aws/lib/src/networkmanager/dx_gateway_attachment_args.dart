@@ -54,9 +54,9 @@ class DxGatewayAttachmentArgs {
       coreNetworkId: (map['coreNetworkId'] as String).input(),
       directConnectGatewayArn: (map['directConnectGatewayArn'] as String).input(),
       edgeLocations: ((map['edgeLocations'] as List).cast<String>()).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (DxGatewayAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DxGatewayAttachmentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

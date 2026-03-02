@@ -21,7 +21,7 @@ class DomainDevicesInterfaceCoalesce {
 
   factory DomainDevicesInterfaceCoalesce.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceCoalesce(
-      rx: map['rx'] == null ? null : (DomainDevicesInterfaceCoalesceRx.fromMap((map['rx'] as Map).cast<String, dynamic>())).input(),
+      rx: map['rx'] == null ? null : (DomainDevicesInterfaceCoalesceRx.fromMap((map['rx']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

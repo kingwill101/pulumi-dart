@@ -84,12 +84,12 @@ class ValidationRulePatch {
 
   factory ValidationRulePatch.fromMap(Map<String, dynamic> map) {
     return ValidationRulePatch(
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      messageExpression: map['messageExpression'] == null ? null : (map['messageExpression'] as String).input(),
-      optionalOldSelf: map['optionalOldSelf'] == null ? null : (map['optionalOldSelf'] as bool).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      messageExpression: map['messageExpression'] == null ? null : (map['messageExpression']! as String).input(),
+      optionalOldSelf: map['optionalOldSelf'] == null ? null : (map['optionalOldSelf']! as bool).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
     );
   }
 }

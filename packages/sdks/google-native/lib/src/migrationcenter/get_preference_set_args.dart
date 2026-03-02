@@ -33,7 +33,7 @@ class GetPreferenceSetArgs {
     return GetPreferenceSetArgs(
       location: (map['location'] as String).input(),
       preferenceSetId: (map['preferenceSetId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

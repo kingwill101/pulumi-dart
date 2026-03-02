@@ -31,9 +31,9 @@ class DataTransferConfigSensitiveParams {
 
   factory DataTransferConfigSensitiveParams.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigSensitiveParams(
-      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey'] as String).input(),
-      secretAccessKeyWo: map['secretAccessKeyWo'] == null ? null : (map['secretAccessKeyWo'] as String).input(),
-      secretAccessKeyWoVersion: map['secretAccessKeyWoVersion'] == null ? null : (map['secretAccessKeyWoVersion'] as int).input(),
+      secretAccessKey: map['secretAccessKey'] == null ? null : (map['secretAccessKey']! as String).input(),
+      secretAccessKeyWo: map['secretAccessKeyWo'] == null ? null : (map['secretAccessKeyWo']! as String).input(),
+      secretAccessKeyWoVersion: map['secretAccessKeyWoVersion'] == null ? null : (map['secretAccessKeyWoVersion']! as int).input(),
     );
   }
 }

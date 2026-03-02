@@ -35,10 +35,10 @@ class LogTransformerTransformerConfigCsv {
 
   factory LogTransformerTransformerConfigCsv.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigCsv(
-      columns: map['columns'] == null ? null : ((map['columns'] as List).cast<String>()).input(),
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      quoteCharacter: map['quoteCharacter'] == null ? null : (map['quoteCharacter'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      columns: map['columns'] == null ? null : (((map['columns'] as List).cast<String>()).input()).input(),
+      delimiter: map['delimiter'] == null ? null : ((map['delimiter'] as String).input()).input(),
+      quoteCharacter: map['quoteCharacter'] == null ? null : ((map['quoteCharacter'] as String).input()).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

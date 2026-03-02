@@ -37,10 +37,10 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<TableAcl>(map['acls'], (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      acls: map['acls'] == null ? null : (pulumi.Input.decodeList<TableAcl>(map['acls']!, (value) => TableAcl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

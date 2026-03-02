@@ -45,9 +45,9 @@ class EnvReferencesArgs {
 
   factory EnvReferencesArgs.fromMap(Map<String, dynamic> map) {
     return EnvReferencesArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       envId: (map['envId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       refers: (map['refers'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
     );

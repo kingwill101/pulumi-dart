@@ -31,7 +31,7 @@ class ApplicationGatewayHttpListenerCustomErrorConfiguration {
   factory ApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHttpListenerCustomErrorConfiguration(
       customErrorPageUrl: (map['customErrorPageUrl'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       statusCode: (map['statusCode'] as String).input(),
     );
   }

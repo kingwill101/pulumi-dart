@@ -26,7 +26,7 @@ class ListenerRuleActionForwardStickiness {
   factory ListenerRuleActionForwardStickiness.fromMap(Map<String, dynamic> map) {
     return ListenerRuleActionForwardStickiness(
       duration: (map['duration'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

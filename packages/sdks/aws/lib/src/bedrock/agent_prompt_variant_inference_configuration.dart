@@ -21,7 +21,7 @@ class AgentPromptVariantInferenceConfiguration {
 
   factory AgentPromptVariantInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantInferenceConfiguration(
-      text: map['text'] == null ? null : (AgentPromptVariantInferenceConfigurationText.fromMap((map['text'] as Map).cast<String, dynamic>())).input(),
+      text: map['text'] == null ? null : ((AgentPromptVariantInferenceConfigurationText.fromMap((map['text']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

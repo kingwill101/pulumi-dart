@@ -33,8 +33,8 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
   factory GoogleCloudDialogflowV2IntentMessageListSelect.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageListSelect(
       items: (pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageListSelectItem>(map['items'], (value) => GoogleCloudDialogflowV2IntentMessageListSelectItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      subtitle: map['subtitle'] == null ? null : (map['subtitle'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      subtitle: map['subtitle'] == null ? null : (map['subtitle']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

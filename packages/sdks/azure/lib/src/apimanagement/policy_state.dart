@@ -31,9 +31,9 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent'] as String).input(),
-      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink'] as String).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      xmlContent: map['xmlContent'] == null ? null : (map['xmlContent']! as String).input(),
+      xmlLink: map['xmlLink'] == null ? null : (map['xmlLink']! as String).input(),
     );
   }
 }

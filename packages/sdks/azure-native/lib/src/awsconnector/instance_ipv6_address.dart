@@ -26,8 +26,8 @@ class InstanceIpv6Address {
 
   factory InstanceIpv6Address.fromMap(Map<String, dynamic> map) {
     return InstanceIpv6Address(
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      isPrimaryIpv6: map['isPrimaryIpv6'] == null ? null : (map['isPrimaryIpv6'] as bool).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      isPrimaryIpv6: map['isPrimaryIpv6'] == null ? null : (map['isPrimaryIpv6']! as bool).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
   factory V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsi(
-      properties: map['properties'] == null ? null : ((map['properties'] as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as List).cast<String>()).input(),
       source: (V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
     );
   }

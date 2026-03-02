@@ -22,7 +22,7 @@ class MetastoreServiceTelemetryConfig {
 
   factory MetastoreServiceTelemetryConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceTelemetryConfig(
-      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat']! as String).input(),
     );
   }
 }

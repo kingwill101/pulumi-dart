@@ -25,7 +25,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorCustom(
-      credentialsMap: map['credentialsMap'] == null ? null : ((map['credentialsMap'] as Map).cast<String, String>()).input(),
+      credentialsMap: map['credentialsMap'] == null ? null : (((map['credentialsMap'] as Map).cast<String, String>()).input()).input(),
       customAuthenticationType: (map['customAuthenticationType'] as String).input(),
     );
   }

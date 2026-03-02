@@ -31,9 +31,9 @@ class ReceiptRuleSetState {
 
   factory ReceiptRuleSetState.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleSetState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleSetName: map['ruleSetName'] == null ? null : ((map['ruleSetName'] as String).input()).input(),
     );
   }
 }

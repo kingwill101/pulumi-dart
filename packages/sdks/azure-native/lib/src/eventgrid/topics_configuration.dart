@@ -22,7 +22,7 @@ class TopicsConfiguration {
 
   factory TopicsConfiguration.fromMap(Map<String, dynamic> map) {
     return TopicsConfiguration(
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfiguration>(map['customDomains'], (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<CustomDomainConfiguration>(map['customDomains']!, (value) => CustomDomainConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class PostgresqlClusterMaintenanceWindow {
 
   factory PostgresqlClusterMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return PostgresqlClusterMaintenanceWindow(
-      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek'] as int).input(),
-      startHour: map['startHour'] == null ? null : (map['startHour'] as int).input(),
-      startMinute: map['startMinute'] == null ? null : (map['startMinute'] as int).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (map['dayOfWeek']! as int).input(),
+      startHour: map['startHour'] == null ? null : (map['startHour']! as int).input(),
+      startMinute: map['startMinute'] == null ? null : (map['startMinute']! as int).input(),
     );
   }
 }

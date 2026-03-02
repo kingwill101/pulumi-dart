@@ -31,7 +31,7 @@ class GetResourcesResourceTagMappingList {
 
   factory GetResourcesResourceTagMappingList.fromMap(Map<String, dynamic> map) {
     return GetResourcesResourceTagMappingList(
-      complianceDetails: (pulumi.Input.decodeList<GetResourcesResourceTagMappingListComplianceDetail>(map['complianceDetails'], (value) => GetResourcesResourceTagMappingListComplianceDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      complianceDetails: (pulumi.Input.decodeList<GetResourcesResourceTagMappingListComplianceDetail>(map['complianceDetails']!, (value) => GetResourcesResourceTagMappingListComplianceDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceArn: (map['resourceArn'] as String).input(),
       tags: ((map['tags'] as Map).cast<String, String>()).input(),
     );

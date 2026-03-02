@@ -86,7 +86,7 @@ class GetPipelineResult {
   factory GetPipelineResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       enabled: map['enabled'] as bool,
       extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
@@ -96,7 +96,7 @@ class GetPipelineResult {
       provisioningState: map['provisioningState'] as String,
       stages: pulumi.Input.decodeMapValues<PipelineStageResponse>(map['stages'], (value) => PipelineStageResponse.fromMap((value as Map).cast<String, dynamic>())),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

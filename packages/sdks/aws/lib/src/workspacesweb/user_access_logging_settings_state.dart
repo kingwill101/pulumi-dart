@@ -48,12 +48,12 @@ class UserAccessLoggingSettingsState {
 
   factory UserAccessLoggingSettingsState.fromMap(Map<String, dynamic> map) {
     return UserAccessLoggingSettingsState(
-      associatedPortalArns: map['associatedPortalArns'] == null ? null : ((map['associatedPortalArns'] as List).cast<String>()).input(),
-      kinesisStreamArn: map['kinesisStreamArn'] == null ? null : (map['kinesisStreamArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      userAccessLoggingSettingsArn: map['userAccessLoggingSettingsArn'] == null ? null : (map['userAccessLoggingSettingsArn'] as String).input(),
+      associatedPortalArns: map['associatedPortalArns'] == null ? null : (((map['associatedPortalArns'] as List).cast<String>()).input()).input(),
+      kinesisStreamArn: map['kinesisStreamArn'] == null ? null : ((map['kinesisStreamArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      userAccessLoggingSettingsArn: map['userAccessLoggingSettingsArn'] == null ? null : ((map['userAccessLoggingSettingsArn'] as String).input()).input(),
     );
   }
 }

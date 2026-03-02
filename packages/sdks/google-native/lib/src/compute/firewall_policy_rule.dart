@@ -84,19 +84,19 @@ class FirewallPolicyRule {
 
   factory FirewallPolicyRule.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      direction: map['direction'] == null ? null : (FirewallPolicyRuleDirection.fromValue(map['direction'] as String)).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      match: map['match'] == null ? null : (FirewallPolicyRuleMatcher.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup'] as String).input(),
-      targetResources: map['targetResources'] == null ? null : ((map['targetResources'] as List).cast<String>()).input(),
-      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleSecureTag>(map['targetSecureTags'], (value) => FirewallPolicyRuleSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts'] as List).cast<String>()).input(),
-      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect'] as bool).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      direction: map['direction'] == null ? null : (FirewallPolicyRuleDirection.fromValue(map['direction']! as String)).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      match: map['match'] == null ? null : (FirewallPolicyRuleMatcher.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      securityProfileGroup: map['securityProfileGroup'] == null ? null : (map['securityProfileGroup']! as String).input(),
+      targetResources: map['targetResources'] == null ? null : ((map['targetResources']! as List).cast<String>()).input(),
+      targetSecureTags: map['targetSecureTags'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRuleSecureTag>(map['targetSecureTags']!, (value) => FirewallPolicyRuleSecureTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetServiceAccounts: map['targetServiceAccounts'] == null ? null : ((map['targetServiceAccounts']! as List).cast<String>()).input(),
+      tlsInspect: map['tlsInspect'] == null ? null : (map['tlsInspect']! as bool).input(),
     );
   }
 }

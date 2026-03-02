@@ -92,20 +92,20 @@ class GoogleCloudDataplexV1DataQualityRule {
 
   factory GoogleCloudDataplexV1DataQualityRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataQualityRule(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       dimension: (map['dimension'] as String).input(),
-      ignoreNull: map['ignoreNull'] == null ? null : (map['ignoreNull'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nonNullExpectation: map['nonNullExpectation'] == null ? null : ((map['nonNullExpectation'] as Map).cast<String, dynamic>()).input(),
-      rangeExpectation: map['rangeExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromMap((map['rangeExpectation'] as Map).cast<String, dynamic>())).input(),
-      regexExpectation: map['regexExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap((map['regexExpectation'] as Map).cast<String, dynamic>())).input(),
-      rowConditionExpectation: map['rowConditionExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation.fromMap((map['rowConditionExpectation'] as Map).cast<String, dynamic>())).input(),
-      setExpectation: map['setExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromMap((map['setExpectation'] as Map).cast<String, dynamic>())).input(),
-      statisticRangeExpectation: map['statisticRangeExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromMap((map['statisticRangeExpectation'] as Map).cast<String, dynamic>())).input(),
-      tableConditionExpectation: map['tableConditionExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation.fromMap((map['tableConditionExpectation'] as Map).cast<String, dynamic>())).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
-      uniquenessExpectation: map['uniquenessExpectation'] == null ? null : ((map['uniquenessExpectation'] as Map).cast<String, dynamic>()).input(),
+      ignoreNull: map['ignoreNull'] == null ? null : (map['ignoreNull']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nonNullExpectation: map['nonNullExpectation'] == null ? null : ((map['nonNullExpectation']! as Map).cast<String, dynamic>()).input(),
+      rangeExpectation: map['rangeExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleRangeExpectation.fromMap((map['rangeExpectation']! as Map).cast<String, dynamic>())).input(),
+      regexExpectation: map['regexExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleRegexExpectation.fromMap((map['regexExpectation']! as Map).cast<String, dynamic>())).input(),
+      rowConditionExpectation: map['rowConditionExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation.fromMap((map['rowConditionExpectation']! as Map).cast<String, dynamic>())).input(),
+      setExpectation: map['setExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleSetExpectation.fromMap((map['setExpectation']! as Map).cast<String, dynamic>())).input(),
+      statisticRangeExpectation: map['statisticRangeExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation.fromMap((map['statisticRangeExpectation']! as Map).cast<String, dynamic>())).input(),
+      tableConditionExpectation: map['tableConditionExpectation'] == null ? null : (GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation.fromMap((map['tableConditionExpectation']! as Map).cast<String, dynamic>())).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
+      uniquenessExpectation: map['uniquenessExpectation'] == null ? null : ((map['uniquenessExpectation']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

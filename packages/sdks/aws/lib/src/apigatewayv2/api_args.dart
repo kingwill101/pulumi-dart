@@ -107,22 +107,22 @@ class ApiArgs {
 
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
-      apiKeySelectionExpression: map['apiKeySelectionExpression'] == null ? null : (map['apiKeySelectionExpression'] as String).input(),
-      body: map['body'] == null ? null : (map['body'] as String).input(),
-      corsConfiguration: map['corsConfiguration'] == null ? null : (ApiCorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      credentialsArn: map['credentialsArn'] == null ? null : (map['credentialsArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] == null ? null : (map['disableExecuteApiEndpoint'] as bool).input(),
-      failOnWarnings: map['failOnWarnings'] == null ? null : (map['failOnWarnings'] as bool).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      apiKeySelectionExpression: map['apiKeySelectionExpression'] == null ? null : ((map['apiKeySelectionExpression'] as String).input()).input(),
+      body: map['body'] == null ? null : ((map['body'] as String).input()).input(),
+      corsConfiguration: map['corsConfiguration'] == null ? null : ((ApiCorsConfiguration.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      credentialsArn: map['credentialsArn'] == null ? null : ((map['credentialsArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] == null ? null : ((map['disableExecuteApiEndpoint'] as bool).input()).input(),
+      failOnWarnings: map['failOnWarnings'] == null ? null : ((map['failOnWarnings'] as bool).input()).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       protocolType: (map['protocolType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeKey: map['routeKey'] == null ? null : (map['routeKey'] as String).input(),
-      routeSelectionExpression: map['routeSelectionExpression'] == null ? null : (map['routeSelectionExpression'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeKey: map['routeKey'] == null ? null : ((map['routeKey'] as String).input()).input(),
+      routeSelectionExpression: map['routeSelectionExpression'] == null ? null : ((map['routeSelectionExpression'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

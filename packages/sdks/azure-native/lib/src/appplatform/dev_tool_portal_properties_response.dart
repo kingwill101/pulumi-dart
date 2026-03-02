@@ -50,10 +50,10 @@ class DevToolPortalPropertiesResponse {
   factory DevToolPortalPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DevToolPortalPropertiesResponse(
       components: (pulumi.Input.decodeList<DevToolPortalComponentResponse>(map['components'], (value) => DevToolPortalComponentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      features: map['features'] == null ? null : (DevToolPortalFeatureSettingsResponse.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
+      features: map['features'] == null ? null : (DevToolPortalFeatureSettingsResponse.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      ssoProperties: map['ssoProperties'] == null ? null : (DevToolPortalSsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (DevToolPortalSsoPropertiesResponse.fromMap((map['ssoProperties']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

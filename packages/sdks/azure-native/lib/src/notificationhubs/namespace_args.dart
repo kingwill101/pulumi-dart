@@ -97,21 +97,21 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      dataCenter: map['dataCenter'] == null ? null : (map['dataCenter'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      namespaceType: map['namespaceType'] == null ? null : (map['namespaceType'] as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (NetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
-      pnsCredentials: map['pnsCredentials'] == null ? null : (PnsCredentials.fromMap((map['pnsCredentials'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      replicationRegion: map['replicationRegion'] == null ? null : (map['replicationRegion'] as String).input(),
+      dataCenter: map['dataCenter'] == null ? null : (map['dataCenter']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      namespaceType: map['namespaceType'] == null ? null : (map['namespaceType']! as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (NetworkAcls.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
+      pnsCredentials: map['pnsCredentials'] == null ? null : (PnsCredentials.fromMap((map['pnsCredentials']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      replicationRegion: map['replicationRegion'] == null ? null : (map['replicationRegion']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scaleUnit: map['scaleUnit'] == null ? null : (map['scaleUnit'] as String).input(),
+      scaleUnit: map['scaleUnit'] == null ? null : (map['scaleUnit']! as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundancy: map['zoneRedundancy'] == null ? null : (map['zoneRedundancy']! as String).input(),
     );
   }
 }

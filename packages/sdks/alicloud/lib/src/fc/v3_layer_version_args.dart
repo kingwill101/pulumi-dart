@@ -55,13 +55,13 @@ class V3LayerVersionArgs {
 
   factory V3LayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return V3LayerVersionArgs(
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      code: map['code'] == null ? null : (V3LayerVersionCode.fromMap((map['code'] as Map).cast<String, dynamic>())).input(),
-      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      acl: map['acl'] == null ? null : (map['acl']! as String).input(),
+      code: map['code'] == null ? null : (V3LayerVersionCode.fromMap((map['code']! as Map).cast<String, dynamic>())).input(),
+      compatibleRuntimes: map['compatibleRuntimes'] == null ? null : ((map['compatibleRuntimes']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       layerName: (map['layerName'] as String).input(),
-      license: map['license'] == null ? null : (map['license'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as String).input(),
+      license: map['license'] == null ? null : (map['license']! as String).input(),
+      public: map['public'] == null ? null : (map['public']! as String).input(),
     );
   }
 }

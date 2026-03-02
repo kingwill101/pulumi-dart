@@ -43,11 +43,11 @@ class TaxonomyDatacatalogV1beta1Args {
 
   factory TaxonomyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TaxonomyDatacatalogV1beta1Args(
-      activatedPolicyTypes: map['activatedPolicyTypes'] == null ? null : (pulumi.Input.decodeList<TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1>(map['activatedPolicyTypes'], (value) => TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1.fromValue(value as String))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      activatedPolicyTypes: map['activatedPolicyTypes'] == null ? null : (pulumi.Input.decodeList<TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1>(map['activatedPolicyTypes']!, (value) => TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1.fromValue(value as String))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

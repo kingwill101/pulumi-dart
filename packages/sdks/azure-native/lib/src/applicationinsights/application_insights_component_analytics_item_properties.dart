@@ -21,7 +21,7 @@ class ApplicationInsightsComponentAnalyticsItemProperties {
 
   factory ApplicationInsightsComponentAnalyticsItemProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentAnalyticsItemProperties(
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
     );
   }
 }

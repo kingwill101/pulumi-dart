@@ -59,14 +59,14 @@ class OriginPoolOrigin {
 
   factory OriginPoolOrigin.fromMap(Map<String, dynamic> map) {
     return OriginPoolOrigin(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      authConf: map['authConf'] == null ? null : (OriginPoolOriginAuthConf.fromMap((map['authConf'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      header: map['header'] == null ? null : (map['header'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originId: map['originId'] == null ? null : (map['originId'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      authConf: map['authConf'] == null ? null : (OriginPoolOriginAuthConf.fromMap((map['authConf']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      header: map['header'] == null ? null : (map['header']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      originId: map['originId'] == null ? null : (map['originId']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

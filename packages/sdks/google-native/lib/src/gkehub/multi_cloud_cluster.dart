@@ -21,7 +21,7 @@ class MultiCloudCluster {
 
   factory MultiCloudCluster.fromMap(Map<String, dynamic> map) {
     return MultiCloudCluster(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

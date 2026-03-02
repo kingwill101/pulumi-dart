@@ -59,14 +59,14 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 
   factory GoogleCloudDocumentaiV1DocumentStyle.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentStyle(
-      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>())).input(),
-      color: map['color'] == null ? null : (GoogleTypeColor.fromMap((map['color'] as Map).cast<String, dynamic>())).input(),
-      fontFamily: map['fontFamily'] == null ? null : (map['fontFamily'] as String).input(),
-      fontSize: map['fontSize'] == null ? null : (GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap((map['fontSize'] as Map).cast<String, dynamic>())).input(),
-      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight'] as String).input(),
-      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor'] as Map).cast<String, dynamic>())).input(),
-      textDecoration: map['textDecoration'] == null ? null : (map['textDecoration'] as String).input(),
-      textStyle: map['textStyle'] == null ? null : (map['textStyle'] as String).input(),
+      backgroundColor: map['backgroundColor'] == null ? null : (GoogleTypeColor.fromMap((map['backgroundColor']! as Map).cast<String, dynamic>())).input(),
+      color: map['color'] == null ? null : (GoogleTypeColor.fromMap((map['color']! as Map).cast<String, dynamic>())).input(),
+      fontFamily: map['fontFamily'] == null ? null : (map['fontFamily']! as String).input(),
+      fontSize: map['fontSize'] == null ? null : (GoogleCloudDocumentaiV1DocumentStyleFontSize.fromMap((map['fontSize']! as Map).cast<String, dynamic>())).input(),
+      fontWeight: map['fontWeight'] == null ? null : (map['fontWeight']! as String).input(),
+      textAnchor: map['textAnchor'] == null ? null : (GoogleCloudDocumentaiV1DocumentTextAnchor.fromMap((map['textAnchor']! as Map).cast<String, dynamic>())).input(),
+      textDecoration: map['textDecoration'] == null ? null : (map['textDecoration']! as String).input(),
+      textStyle: map['textStyle'] == null ? null : (map['textStyle']! as String).input(),
     );
   }
 }

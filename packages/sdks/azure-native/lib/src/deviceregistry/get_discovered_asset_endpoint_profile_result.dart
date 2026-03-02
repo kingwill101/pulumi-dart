@@ -92,7 +92,7 @@ class GetDiscoveredAssetEndpointProfileResult {
 
   factory GetDiscoveredAssetEndpointProfileResult.fromMap(Map<String, dynamic> map) {
     return GetDiscoveredAssetEndpointProfileResult(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : map['additionalConfiguration'] as String,
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : map['additionalConfiguration']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       discoveryId: map['discoveryId'] as String,
       endpointProfileType: map['endpointProfileType'] as String,
@@ -101,9 +101,9 @@ class GetDiscoveredAssetEndpointProfileResult {
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : (map['supportedAuthenticationMethods'] as List).cast<String>(),
+      supportedAuthenticationMethods: map['supportedAuthenticationMethods'] == null ? null : (map['supportedAuthenticationMethods']! as List).cast<String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       targetAddress: map['targetAddress'] as String,
       type: map['type'] as String,
       version: map['version'] as double,

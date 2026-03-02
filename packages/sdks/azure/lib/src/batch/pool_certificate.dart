@@ -34,8 +34,8 @@ class PoolCertificate {
     return PoolCertificate(
       id: (map['id'] as String).input(),
       storeLocation: (map['storeLocation'] as String).input(),
-      storeName: map['storeName'] == null ? null : (map['storeName'] as String).input(),
-      visibilities: map['visibilities'] == null ? null : ((map['visibilities'] as List).cast<String>()).input(),
+      storeName: map['storeName'] == null ? null : (map['storeName']! as String).input(),
+      visibilities: map['visibilities'] == null ? null : ((map['visibilities']! as List).cast<String>()).input(),
     );
   }
 }

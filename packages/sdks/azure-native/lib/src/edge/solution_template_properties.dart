@@ -38,8 +38,8 @@ class SolutionTemplateProperties {
     return SolutionTemplateProperties(
       capabilities: ((map['capabilities'] as List).cast<String>()).input(),
       description: (map['description'] as String).input(),
-      enableExternalValidation: map['enableExternalValidation'] == null ? null : (map['enableExternalValidation'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      enableExternalValidation: map['enableExternalValidation'] == null ? null : (map['enableExternalValidation']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

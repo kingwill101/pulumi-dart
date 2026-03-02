@@ -72,17 +72,17 @@ class NatRule {
 
   factory NatRule.fromMap(Map<String, dynamic> map) {
     return NatRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses'] as List).cast<String>()).input(),
-      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts'] as List).cast<String>()).input(),
-      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destinationAddresses: map['destinationAddresses'] == null ? null : ((map['destinationAddresses']! as List).cast<String>()).input(),
+      destinationPorts: map['destinationPorts'] == null ? null : ((map['destinationPorts']! as List).cast<String>()).input(),
+      ipProtocols: map['ipProtocols'] == null ? null : ((map['ipProtocols']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       ruleType: (map['ruleType'] as String).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
-      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress'] as String).input(),
-      translatedFqdn: map['translatedFqdn'] == null ? null : (map['translatedFqdn'] as String).input(),
-      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort'] as String).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
+      translatedAddress: map['translatedAddress'] == null ? null : (map['translatedAddress']! as String).input(),
+      translatedFqdn: map['translatedFqdn'] == null ? null : (map['translatedFqdn']! as String).input(),
+      translatedPort: map['translatedPort'] == null ? null : (map['translatedPort']! as String).input(),
     );
   }
 }

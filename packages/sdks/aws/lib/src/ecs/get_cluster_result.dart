@@ -78,8 +78,8 @@ class GetClusterResult {
       region: map['region'] as String,
       registeredContainerInstancesCount: map['registeredContainerInstancesCount'] as int,
       runningTasksCount: map['runningTasksCount'] as int,
-      serviceConnectDefaults: pulumi.Input.decodeList<GetClusterServiceConnectDefault>(map['serviceConnectDefaults'], (value) => GetClusterServiceConnectDefault.fromMap((value as Map).cast<String, dynamic>())),
-      settings: pulumi.Input.decodeList<GetClusterSetting>(map['settings'], (value) => GetClusterSetting.fromMap((value as Map).cast<String, dynamic>())),
+      serviceConnectDefaults: pulumi.Input.decodeList<GetClusterServiceConnectDefault>(map['serviceConnectDefaults']!, (value) => GetClusterServiceConnectDefault.fromMap((value as Map).cast<String, dynamic>())),
+      settings: pulumi.Input.decodeList<GetClusterSetting>(map['settings']!, (value) => GetClusterSetting.fromMap((value as Map).cast<String, dynamic>())),
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );

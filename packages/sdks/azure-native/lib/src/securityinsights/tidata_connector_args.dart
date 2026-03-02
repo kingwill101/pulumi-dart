@@ -56,12 +56,12 @@ class TIDataConnectorArgs {
 
   factory TIDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return TIDataConnectorArgs(
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
       dataTypes: (TIDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
-      tipLookbackPeriod: map['tipLookbackPeriod'] == null ? null : (map['tipLookbackPeriod'] as String).input(),
+      tipLookbackPeriod: map['tipLookbackPeriod'] == null ? null : (map['tipLookbackPeriod']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -52,7 +52,7 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse {
   factory ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse(
       azureApp: (AzureActiveDirectoryAppResponse.fromMap((map['azureApp'] as Map).cast<String, dynamic>())).input(),
-      backupFileShare: map['backupFileShare'] == null ? null : (FileShareResponse.fromMap((map['backupFileShare'] as Map).cast<String, dynamic>())).input(),
+      backupFileShare: map['backupFileShare'] == null ? null : (FileShareResponse.fromMap((map['backupFileShare']! as Map).cast<String, dynamic>())).input(),
       selectedDatabases: (pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases'], (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       sourceConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo'] as Map).cast<String, dynamic>())).input(),
       storageResourceId: (map['storageResourceId'] as String).input(),

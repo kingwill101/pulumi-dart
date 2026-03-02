@@ -49,12 +49,12 @@ class PrivateLinkScopedResourceArgs {
 
   factory PrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      linkedResourceId: map['linkedResourceId'] == null ? null : (map['linkedResourceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scopeName: (map['scopeName'] as String).input(),
-      subscriptionLocation: map['subscriptionLocation'] == null ? null : (map['subscriptionLocation'] as String).input(),
+      subscriptionLocation: map['subscriptionLocation'] == null ? null : (map['subscriptionLocation']! as String).input(),
     );
   }
 }

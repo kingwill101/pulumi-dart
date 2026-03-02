@@ -35,7 +35,7 @@ class GetRegionalSecretArgs {
   factory GetRegionalSecretArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

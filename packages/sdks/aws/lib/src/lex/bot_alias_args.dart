@@ -52,10 +52,10 @@ class BotAliasArgs {
     return BotAliasArgs(
       botName: (map['botName'] as String).input(),
       botVersion: (map['botVersion'] as String).input(),
-      conversationLogs: map['conversationLogs'] == null ? null : (BotAliasConversationLogs.fromMap((map['conversationLogs'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      conversationLogs: map['conversationLogs'] == null ? null : ((BotAliasConversationLogs.fromMap((map['conversationLogs']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class GetDatabaseMysqlBackupsResult {
     return GetDatabaseMysqlBackupsResult(
       backups: pulumi.Input.decodeList<GetDatabaseMysqlBackupsBackup>(map['backups'], (value) => GetDatabaseMysqlBackupsBackup.fromMap((value as Map).cast<String, dynamic>())),
       databaseId: map['databaseId'] as int,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDatabaseMysqlBackupsFilter>(map['filters'], (value) => GetDatabaseMysqlBackupsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetDatabaseMysqlBackupsFilter>(map['filters']!, (value) => GetDatabaseMysqlBackupsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      latest: map['latest'] == null ? null : map['latest'] as bool,
-      order: map['order'] == null ? null : map['order'] as String,
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
+      latest: map['latest'] == null ? null : map['latest']! as bool,
+      order: map['order'] == null ? null : map['order']! as String,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
     );
   }
 }

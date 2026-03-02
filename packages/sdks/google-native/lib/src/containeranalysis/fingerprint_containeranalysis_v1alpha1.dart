@@ -26,8 +26,8 @@ class FingerprintContaineranalysisV1alpha1 {
 
   factory FingerprintContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return FingerprintContaineranalysisV1alpha1(
-      v1Name: map['v1Name'] == null ? null : (map['v1Name'] as String).input(),
-      v2Blob: map['v2Blob'] == null ? null : ((map['v2Blob'] as List).cast<String>()).input(),
+      v1Name: map['v1Name'] == null ? null : (map['v1Name']! as String).input(),
+      v2Blob: map['v2Blob'] == null ? null : ((map['v2Blob']! as List).cast<String>()).input(),
     );
   }
 }

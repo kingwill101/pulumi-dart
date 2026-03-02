@@ -25,8 +25,8 @@ class VMwareClusterControlPlaneNodeVsphereConfig {
 
   factory VMwareClusterControlPlaneNodeVsphereConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterControlPlaneNodeVsphereConfig(
-      datastore: map['datastore'] == null ? null : (map['datastore'] as String).input(),
-      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName'] as String).input(),
+      datastore: map['datastore'] == null ? null : (map['datastore']! as String).input(),
+      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName']! as String).input(),
     );
   }
 }

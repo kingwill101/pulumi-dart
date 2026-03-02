@@ -58,13 +58,13 @@ class DomainManagedidentitiesV1alpha1Args {
 
   factory DomainManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return DomainManagedidentitiesV1alpha1Args(
-      auditLogsEnabled: map['auditLogsEnabled'] == null ? null : (map['auditLogsEnabled'] as bool).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks'] as List).cast<String>()).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      auditLogsEnabled: map['auditLogsEnabled'] == null ? null : (map['auditLogsEnabled']! as bool).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks']! as List).cast<String>()).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       locations: ((map['locations'] as List).cast<String>()).input(),
-      managedIdentitiesAdminName: map['managedIdentitiesAdminName'] == null ? null : (map['managedIdentitiesAdminName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      managedIdentitiesAdminName: map['managedIdentitiesAdminName'] == null ? null : (map['managedIdentitiesAdminName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reservedIpRange: (map['reservedIpRange'] as String).input(),
     );
   }

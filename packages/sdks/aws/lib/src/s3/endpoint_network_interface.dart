@@ -20,7 +20,7 @@ class EndpointNetworkInterface {
 
   factory EndpointNetworkInterface.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterface(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
     );
   }
 }

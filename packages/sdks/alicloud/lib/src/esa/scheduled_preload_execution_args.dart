@@ -44,11 +44,11 @@ class ScheduledPreloadExecutionArgs {
 
   factory ScheduledPreloadExecutionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledPreloadExecutionArgs(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       interval: (map['interval'] as int).input(),
       scheduledPreloadJobId: (map['scheduledPreloadJobId'] as String).input(),
       sliceLen: (map['sliceLen'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

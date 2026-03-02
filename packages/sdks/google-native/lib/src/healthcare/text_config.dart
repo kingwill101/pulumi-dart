@@ -31,9 +31,9 @@ class TextConfig {
 
   factory TextConfig.fromMap(Map<String, dynamic> map) {
     return TextConfig(
-      additionalTransformations: map['additionalTransformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformation>(map['additionalTransformations'], (value) => InfoTypeTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : ((map['excludeInfoTypes'] as List).cast<String>()).input(),
-      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformation>(map['transformations'], (value) => InfoTypeTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalTransformations: map['additionalTransformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformation>(map['additionalTransformations']!, (value) => InfoTypeTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : ((map['excludeInfoTypes']! as List).cast<String>()).input(),
+      transformations: map['transformations'] == null ? null : (pulumi.Input.decodeList<InfoTypeTransformation>(map['transformations']!, (value) => InfoTypeTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

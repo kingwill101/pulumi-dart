@@ -21,7 +21,7 @@ class ThemeConfigurationSheetTile {
 
   factory ThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTile(
-      border: map['border'] == null ? null : (ThemeConfigurationSheetTileBorder.fromMap((map['border'] as Map).cast<String, dynamic>())).input(),
+      border: map['border'] == null ? null : ((ThemeConfigurationSheetTileBorder.fromMap((map['border']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

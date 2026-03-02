@@ -55,14 +55,14 @@ class ApiHttpVpcServiceConfig {
 
   factory ApiHttpVpcServiceConfig.fromMap(Map<String, dynamic> map) {
     return ApiHttpVpcServiceConfig(
-      aoneName: map['aoneName'] == null ? null : (map['aoneName'] as String).input(),
-      contentTypeCategory: map['contentTypeCategory'] == null ? null : (map['contentTypeCategory'] as String).input(),
-      contentTypeValue: map['contentTypeValue'] == null ? null : (map['contentTypeValue'] as String).input(),
+      aoneName: map['aoneName'] == null ? null : (map['aoneName']! as String).input(),
+      contentTypeCategory: map['contentTypeCategory'] == null ? null : (map['contentTypeCategory']! as String).input(),
+      contentTypeValue: map['contentTypeValue'] == null ? null : (map['contentTypeValue']! as String).input(),
       method: (map['method'] as String).input(),
       name: (map['name'] as String).input(),
       path: (map['path'] as String).input(),
       timeout: (map['timeout'] as int).input(),
-      vpcScheme: map['vpcScheme'] == null ? null : (map['vpcScheme'] as String).input(),
+      vpcScheme: map['vpcScheme'] == null ? null : (map['vpcScheme']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class NodeCustomizationProperties {
 
   factory NodeCustomizationProperties.fromMap(Map<String, dynamic> map) {
     return NodeCustomizationProperties(
-      containerImages: map['containerImages'] == null ? null : ((map['containerImages'] as List).cast<String>()).input(),
-      customizationScripts: map['customizationScripts'] == null ? null : (pulumi.Input.decodeList<NodeCustomizationScript>(map['customizationScripts'], (value) => NodeCustomizationScript.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      containerImages: map['containerImages'] == null ? null : ((map['containerImages']! as List).cast<String>()).input(),
+      customizationScripts: map['customizationScripts'] == null ? null : (pulumi.Input.decodeList<NodeCustomizationScript>(map['customizationScripts']!, (value) => NodeCustomizationScript.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

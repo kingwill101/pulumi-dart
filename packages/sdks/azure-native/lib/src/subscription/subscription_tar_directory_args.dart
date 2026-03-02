@@ -30,8 +30,8 @@ class SubscriptionTarDirectoryArgs {
 
   factory SubscriptionTarDirectoryArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionTarDirectoryArgs(
-      properties: map['properties'] == null ? null : (TargetDirectoryRequestProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      properties: map['properties'] == null ? null : (TargetDirectoryRequestProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

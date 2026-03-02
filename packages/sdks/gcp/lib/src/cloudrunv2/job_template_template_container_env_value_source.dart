@@ -22,7 +22,7 @@ class JobTemplateTemplateContainerEnvValueSource {
 
   factory JobTemplateTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null ? null : (JobTemplateTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (JobTemplateTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

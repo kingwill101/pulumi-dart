@@ -60,7 +60,7 @@ class OutputSynapseArgs {
   factory OutputSynapseArgs.fromMap(Map<String, dynamic> map) {
     return OutputSynapseArgs(
       database: (map['database'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       password: (map['password'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       server: (map['server'] as String).input(),

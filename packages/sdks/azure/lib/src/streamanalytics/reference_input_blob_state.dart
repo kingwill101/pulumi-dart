@@ -72,17 +72,17 @@ class ReferenceInputBlobState {
 
   factory ReferenceInputBlobState.fromMap(Map<String, dynamic> map) {
     return ReferenceInputBlobState(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathPattern: map['pathPattern'] == null ? null : (map['pathPattern'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serialization: map['serialization'] == null ? null : (ReferenceInputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
-      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathPattern: map['pathPattern'] == null ? null : (map['pathPattern']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serialization: map['serialization'] == null ? null : (ReferenceInputBlobSerialization.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
+      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat']! as String).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap {
 
   factory WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap(
-      deviceVisibilities: map['deviceVisibilities'] == null ? null : ((map['deviceVisibilities'] as List).cast<String>()).input(),
-      displayTemplate: map['displayTemplate'] == null ? null : (map['displayTemplate'] as String).input(),
+      deviceVisibilities: map['deviceVisibilities'] == null ? null : ((map['deviceVisibilities']! as List).cast<String>()).input(),
+      displayTemplate: map['displayTemplate'] == null ? null : (map['displayTemplate']! as String).input(),
       field: (map['field'] as String).input(),
       uiComponent: (map['uiComponent'] as String).input(),
     );

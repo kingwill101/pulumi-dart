@@ -99,21 +99,21 @@ class ParameterArgs {
 
   factory ParameterArgs.fromMap(Map<String, dynamic> map) {
     return ParameterArgs(
-      allowedPattern: map['allowedPattern'] == null ? null : (map['allowedPattern'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      insecureValue: map['insecureValue'] == null ? null : (map['insecureValue'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overwrite: map['overwrite'] == null ? null : (map['overwrite'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      allowedPattern: map['allowedPattern'] == null ? null : ((map['allowedPattern'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dataType: map['dataType'] == null ? null : ((map['dataType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      insecureValue: map['insecureValue'] == null ? null : ((map['insecureValue'] as String).input()).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      overwrite: map['overwrite'] == null ? null : ((map['overwrite'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tier: map['tier'] == null ? null : ((map['tier'] as String).input()).input(),
       type: (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueWo: map['valueWo'] == null ? null : (map['valueWo'] as String).input(),
-      valueWoVersion: map['valueWoVersion'] == null ? null : (map['valueWoVersion'] as int).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
+      valueWo: map['valueWo'] == null ? null : ((map['valueWo'] as String).input()).input(),
+      valueWoVersion: map['valueWoVersion'] == null ? null : ((map['valueWoVersion'] as int).input()).input(),
     );
   }
 }

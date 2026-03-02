@@ -80,16 +80,16 @@ class GetImageResult {
   factory GetImageResult.fromMap(Map<String, dynamic> map) {
     return GetImageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : map['hyperVGeneration'] as String,
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : map['hyperVGeneration']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : SubResourceResponse.fromMap((map['sourceVirtualMachine'] as Map).cast<String, dynamic>()),
-      storageProfile: map['storageProfile'] == null ? null : ImageStorageProfileResponse.fromMap((map['storageProfile'] as Map).cast<String, dynamic>()),
+      sourceVirtualMachine: map['sourceVirtualMachine'] == null ? null : SubResourceResponse.fromMap((map['sourceVirtualMachine']! as Map).cast<String, dynamic>()),
+      storageProfile: map['storageProfile'] == null ? null : ImageStorageProfileResponse.fromMap((map['storageProfile']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

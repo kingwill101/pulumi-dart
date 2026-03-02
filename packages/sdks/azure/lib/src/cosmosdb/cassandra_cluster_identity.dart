@@ -28,8 +28,8 @@ class CassandraClusterIdentity {
 
   factory CassandraClusterIdentity.fromMap(Map<String, dynamic> map) {
     return CassandraClusterIdentity(
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

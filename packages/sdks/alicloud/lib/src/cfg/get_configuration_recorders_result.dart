@@ -32,7 +32,7 @@ class GetConfigurationRecordersResult {
   factory GetConfigurationRecordersResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationRecordersResult(
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       recorders: pulumi.Input.decodeList<GetConfigurationRecordersRecorder>(map['recorders'], (value) => GetConfigurationRecordersRecorder.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

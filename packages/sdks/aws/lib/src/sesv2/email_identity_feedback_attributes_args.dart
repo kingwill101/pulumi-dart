@@ -34,9 +34,9 @@ class EmailIdentityFeedbackAttributesArgs {
 
   factory EmailIdentityFeedbackAttributesArgs.fromMap(Map<String, dynamic> map) {
     return EmailIdentityFeedbackAttributesArgs(
-      emailForwardingEnabled: map['emailForwardingEnabled'] == null ? null : (map['emailForwardingEnabled'] as bool).input(),
+      emailForwardingEnabled: map['emailForwardingEnabled'] == null ? null : ((map['emailForwardingEnabled'] as bool).input()).input(),
       emailIdentity: (map['emailIdentity'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

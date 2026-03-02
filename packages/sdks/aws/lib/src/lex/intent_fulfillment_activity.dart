@@ -28,7 +28,7 @@ class IntentFulfillmentActivity {
 
   factory IntentFulfillmentActivity.fromMap(Map<String, dynamic> map) {
     return IntentFulfillmentActivity(
-      codeHook: map['codeHook'] == null ? null : (IntentFulfillmentActivityCodeHook.fromMap((map['codeHook'] as Map).cast<String, dynamic>())).input(),
+      codeHook: map['codeHook'] == null ? null : ((IntentFulfillmentActivityCodeHook.fromMap((map['codeHook']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

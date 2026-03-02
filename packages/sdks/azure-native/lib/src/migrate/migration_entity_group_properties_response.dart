@@ -58,11 +58,11 @@ class MigrationEntityGroupPropertiesResponse {
     return MigrationEntityGroupPropertiesResponse(
       applicationDisplayName: (map['applicationDisplayName'] as String).input(),
       applicationId: (map['applicationId'] as String).input(),
-      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId'] as String).input(),
-      associatedWaveIds: map['associatedWaveIds'] == null ? null : ((map['associatedWaveIds'] as List).cast<String>()).input(),
+      associatedAssessmentId: map['associatedAssessmentId'] == null ? null : (map['associatedAssessmentId']! as String).input(),
+      associatedWaveIds: map['associatedWaveIds'] == null ? null : ((map['associatedWaveIds']! as List).cast<String>()).input(),
       executionStartDate: (map['executionStartDate'] as String).input(),
       executionStatus: (map['executionStatus'] as String).input(),
-      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath'] as String).input(),
+      migrationPath: map['migrationPath'] == null ? null : (map['migrationPath']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

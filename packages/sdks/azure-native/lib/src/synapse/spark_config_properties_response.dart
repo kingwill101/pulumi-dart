@@ -36,9 +36,9 @@ class SparkConfigPropertiesResponse {
 
   factory SparkConfigPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SparkConfigPropertiesResponse(
-      configurationType: map['configurationType'] == null ? null : (map['configurationType'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      configurationType: map['configurationType'] == null ? null : (map['configurationType']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
       time: (map['time'] as String).input(),
     );
   }

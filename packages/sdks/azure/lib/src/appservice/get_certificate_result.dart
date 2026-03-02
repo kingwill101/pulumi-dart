@@ -81,7 +81,7 @@ class GetCertificateResult {
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
       subjectName: map['subjectName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       thumbprint: map['thumbprint'] as String,
     );
   }

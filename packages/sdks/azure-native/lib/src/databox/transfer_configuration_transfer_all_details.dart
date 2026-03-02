@@ -22,7 +22,7 @@ class TransferConfigurationTransferAllDetails {
 
   factory TransferConfigurationTransferAllDetails.fromMap(Map<String, dynamic> map) {
     return TransferConfigurationTransferAllDetails(
-      include: map['include'] == null ? null : (TransferAllDetails.fromMap((map['include'] as Map).cast<String, dynamic>())).input(),
+      include: map['include'] == null ? null : (TransferAllDetails.fromMap((map['include']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

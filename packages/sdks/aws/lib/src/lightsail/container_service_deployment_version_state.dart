@@ -55,13 +55,13 @@ class ContainerServiceDeploymentVersionState {
 
   factory ContainerServiceDeploymentVersionState.fromMap(Map<String, dynamic> map) {
     return ContainerServiceDeploymentVersionState(
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers'], (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      publicEndpoint: map['publicEndpoint'] == null ? null : (ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      containers: map['containers'] == null ? null : ((pulumi.Input.decodeList<ContainerServiceDeploymentVersionContainer>(map['containers']!, (value) => ContainerServiceDeploymentVersionContainer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      publicEndpoint: map['publicEndpoint'] == null ? null : ((ContainerServiceDeploymentVersionPublicEndpoint.fromMap((map['publicEndpoint']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      serviceName: map['serviceName'] == null ? null : ((map['serviceName'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

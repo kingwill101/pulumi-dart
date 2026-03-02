@@ -31,9 +31,9 @@ class VpnGatewayAttachmentState {
 
   factory VpnGatewayAttachmentState.fromMap(Map<String, dynamic> map) {
     return VpnGatewayAttachmentState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : ((map['vpnGatewayId'] as String).input()).input(),
     );
   }
 }

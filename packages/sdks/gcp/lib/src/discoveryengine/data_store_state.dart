@@ -117,21 +117,21 @@ class DataStoreState {
 
   factory DataStoreState.fromMap(Map<String, dynamic> map) {
     return DataStoreState(
-      advancedSiteSearchConfig: map['advancedSiteSearchConfig'] == null ? null : (DataStoreAdvancedSiteSearchConfig.fromMap((map['advancedSiteSearchConfig'] as Map).cast<String, dynamic>())).input(),
-      contentConfig: map['contentConfig'] == null ? null : (map['contentConfig'] as String).input(),
-      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
-      defaultSchemaId: map['defaultSchemaId'] == null ? null : (map['defaultSchemaId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentProcessingConfig: map['documentProcessingConfig'] == null ? null : (DataStoreDocumentProcessingConfig.fromMap((map['documentProcessingConfig'] as Map).cast<String, dynamic>())).input(),
-      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      skipDefaultSchemaCreation: map['skipDefaultSchemaCreation'] == null ? null : (map['skipDefaultSchemaCreation'] as bool).input(),
-      solutionTypes: map['solutionTypes'] == null ? null : ((map['solutionTypes'] as List).cast<String>()).input(),
+      advancedSiteSearchConfig: map['advancedSiteSearchConfig'] == null ? null : (DataStoreAdvancedSiteSearchConfig.fromMap((map['advancedSiteSearchConfig']! as Map).cast<String, dynamic>())).input(),
+      contentConfig: map['contentConfig'] == null ? null : (map['contentConfig']! as String).input(),
+      createAdvancedSiteSearch: map['createAdvancedSiteSearch'] == null ? null : (map['createAdvancedSiteSearch']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId']! as String).input(),
+      defaultSchemaId: map['defaultSchemaId'] == null ? null : (map['defaultSchemaId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentProcessingConfig: map['documentProcessingConfig'] == null ? null : (DataStoreDocumentProcessingConfig.fromMap((map['documentProcessingConfig']! as Map).cast<String, dynamic>())).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      skipDefaultSchemaCreation: map['skipDefaultSchemaCreation'] == null ? null : (map['skipDefaultSchemaCreation']! as bool).input(),
+      solutionTypes: map['solutionTypes'] == null ? null : ((map['solutionTypes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AlertConfigurationSeverityConfigurationEvalCondition {
 
   factory AlertConfigurationSeverityConfigurationEvalCondition.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSeverityConfigurationEvalCondition(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      countCondition: map['countCondition'] == null ? null : (map['countCondition'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      countCondition: map['countCondition'] == null ? null : (map['countCondition']! as String).input(),
     );
   }
 }

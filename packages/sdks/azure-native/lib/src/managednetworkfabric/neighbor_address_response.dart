@@ -26,7 +26,7 @@ class NeighborAddressResponse {
 
   factory NeighborAddressResponse.fromMap(Map<String, dynamic> map) {
     return NeighborAddressResponse(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
       configurationState: (map['configurationState'] as String).input(),
     );
   }

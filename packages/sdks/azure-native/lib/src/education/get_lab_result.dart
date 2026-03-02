@@ -99,7 +99,7 @@ class GetLabResult {
     return GetLabResult(
       azureApiVersion: map['azureApiVersion'] as String,
       budgetPerStudent: AmountResponse.fromMap((map['budgetPerStudent'] as Map).cast<String, dynamic>()),
-      currency: map['currency'] == null ? null : map['currency'] as String,
+      currency: map['currency'] == null ? null : map['currency']! as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       effectiveDate: map['effectiveDate'] as String,
@@ -112,7 +112,7 @@ class GetLabResult {
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       totalBudget: AmountResponse.fromMap((map['totalBudget'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      value: map['value'] == null ? null : map['value'] as double,
+      value: map['value'] == null ? null : map['value']! as double,
     );
   }
 }

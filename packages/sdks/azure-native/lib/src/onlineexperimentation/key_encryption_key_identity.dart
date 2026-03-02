@@ -31,9 +31,9 @@ class KeyEncryptionKeyIdentity {
 
   factory KeyEncryptionKeyIdentity.fromMap(Map<String, dynamic> map) {
     return KeyEncryptionKeyIdentity(
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

@@ -40,8 +40,8 @@ class RegionBackendServiceHaPolicy {
 
   factory RegionBackendServiceHaPolicy.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceHaPolicy(
-      fastIpMove: map['fastIpMove'] == null ? null : (map['fastIpMove'] as String).input(),
-      leader: map['leader'] == null ? null : (RegionBackendServiceHaPolicyLeader.fromMap((map['leader'] as Map).cast<String, dynamic>())).input(),
+      fastIpMove: map['fastIpMove'] == null ? null : (map['fastIpMove']! as String).input(),
+      leader: map['leader'] == null ? null : (RegionBackendServiceHaPolicyLeader.fromMap((map['leader']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

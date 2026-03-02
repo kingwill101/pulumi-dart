@@ -73,16 +73,16 @@ class RegistryArgs {
 
   factory RegistryArgs.fromMap(Map<String, dynamic> map) {
     return RegistryArgs(
-      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<RegistryCredential>(map['credentials'], (value) => RegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventNotificationConfigs: map['eventNotificationConfigs'] == null ? null : (pulumi.Input.decodeList<EventNotificationConfig>(map['eventNotificationConfigs'], (value) => EventNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpConfig: map['httpConfig'] == null ? null : (HttpConfig.fromMap((map['httpConfig'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logLevel: map['logLevel'] == null ? null : (RegistryLogLevel.fromValue(map['logLevel'] as String)).input(),
-      mqttConfig: map['mqttConfig'] == null ? null : (MqttConfig.fromMap((map['mqttConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      stateNotificationConfig: map['stateNotificationConfig'] == null ? null : (StateNotificationConfig.fromMap((map['stateNotificationConfig'] as Map).cast<String, dynamic>())).input(),
+      credentials: map['credentials'] == null ? null : (pulumi.Input.decodeList<RegistryCredential>(map['credentials']!, (value) => RegistryCredential.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventNotificationConfigs: map['eventNotificationConfigs'] == null ? null : (pulumi.Input.decodeList<EventNotificationConfig>(map['eventNotificationConfigs']!, (value) => EventNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpConfig: map['httpConfig'] == null ? null : (HttpConfig.fromMap((map['httpConfig']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logLevel: map['logLevel'] == null ? null : (RegistryLogLevel.fromValue(map['logLevel']! as String)).input(),
+      mqttConfig: map['mqttConfig'] == null ? null : (MqttConfig.fromMap((map['mqttConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      stateNotificationConfig: map['stateNotificationConfig'] == null ? null : (StateNotificationConfig.fromMap((map['stateNotificationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

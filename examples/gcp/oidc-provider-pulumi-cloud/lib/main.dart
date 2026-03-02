@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_gcp/pulumi_gcp.dart' as gcp;
-import 'package:pulumi_pulumiservice/pulumiservice.dart' as pcloud;
+import 'package:pulumi_pulumiservice/pulumi_pulumiservice.dart' as pcloud;
 import 'package:pulumi_random/pulumi_random.dart' as random;
 
 class ExampleStack extends pulumi.Stack {
@@ -19,13 +19,13 @@ class ExampleStack extends pulumi.Stack {
     final workloadIdentityPoolId = '$escEnvOrg-admin';
     final serviceAccountId = workloadIdentityPoolId.replaceAll('-', '');
 
-    final randomSuffix = random.RandomString(
+    final randomSuffix = random.index.RandomString(
       'random-suffix',
-      args: random.RandomStringArgs(
-        length: 5,
-        lower: true,
-        upper: false,
-        special: false,
+      args: random.index.RandomStringArgs(
+        length: 5.output(),
+        lower: true.output(),
+        upper: false.output(),
+        special: false.output(),
       ),
     );
 
@@ -42,20 +42,20 @@ class ExampleStack extends pulumi.Stack {
       'identity-pool-provider',
       args: gcp.iam.WorkloadIdentityPoolProviderArgs(
         workloadIdentityPoolId: identityPool.workloadIdentityPoolId,
-        workloadIdentityPoolProviderId: 'pulumi-cloud-$escEnvOrg-oidc',
+        workloadIdentityPoolProviderId: 'pulumi-cloud-$escEnvOrg-oidc'.output(),
         oidc: gcp.iam.WorkloadIdentityPoolProviderOidc(
-          issuerUri: issuer,
-          allowedAudiences: ['gcp:$escEnvOrg'],
-        ),
-        attributeMapping: const {'google.subject': 'assertion.sub'},
+          issuerUri: issuer.output(),
+          allowedAudiences: ['gcp:$escEnvOrg'].output(),
+        ).output(),
+        attributeMapping: const {'google.subject': 'assertion.sub'}.output(),
       ),
     );
 
     gcp.projects.Service(
       'enableIamCredentialsApi',
       args: gcp.projects.ServiceArgs(
-        service: 'iamcredentials.googleapis.com',
-        project: gcpProjectName,
+        service: 'iamcredentials.googleapis.com'.output(),
+        project: gcpProjectName.output(),
       ),
       options: pulumi.CustomResourceOptions(retainOnDelete: true),
     );
@@ -63,17 +63,18 @@ class ExampleStack extends pulumi.Stack {
     final serviceAccount = gcp.serviceaccount.Account(
       'service-account',
       args: gcp.serviceaccount.AccountArgs(
-        accountId: serviceAccountId,
-        project: gcpProjectName,
+        accountId: serviceAccountId.output(),
+        project: gcpProjectName.output(),
       ),
     );
 
     gcp.projects.IAMMember(
       'service-account-role',
       args: gcp.projects.IAMMemberArgs(
-        member: serviceAccount.email.apply((email) => 'serviceAccount:$email'),
-        role: 'roles/admin',
-        project: gcpProjectName,
+        member: serviceAccount.email
+            .apply((email) => 'serviceAccount:$email'),
+        role: 'roles/admin'.output(),
+        project: gcpProjectName.output(),
       ),
     );
 
@@ -81,12 +82,9 @@ class ExampleStack extends pulumi.Stack {
       'service-account-binding',
       args: gcp.serviceaccount.IAMBindingArgs(
         serviceAccountId: serviceAccount.id,
-        role: 'roles/iam.workloadIdentityUser',
-        members: [
-          identityPool.name.apply(
-            (name) => 'principalSet://iam.googleapis.com/$name/*',
-          ),
-        ],
+        role: 'roles/iam.workloadIdentityUser'.output(),
+        members: identityPool.name
+            .apply((name) => ['principalSet://iam.googleapis.com/$name/*']),
       ),
     );
 
@@ -135,9 +133,9 @@ class ExampleStack extends pulumi.Stack {
 ''';
         });
 
-    final environment = pcloud.Environment(
+    final environment = pcloud.index.Environment(
       'environment',
-      args: pcloud.EnvironmentArgs(
+      args: pcloud.index.EnvironmentArgs(
         organization: escEnvOrg.output(),
         project: escEnvProject.output(),
         name: escEnvName.output(),
@@ -147,8 +145,4 @@ class ExampleStack extends pulumi.Stack {
 
     registerOutputs({'escEnvId': environment.id});
   }
-}
-
-Future<void> run() async {
-  await pulumi.Deployment.run(() => ExampleStack());
 }

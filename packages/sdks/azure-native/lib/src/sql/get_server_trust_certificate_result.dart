@@ -54,7 +54,7 @@ class GetServerTrustCertificateResult {
       certificateName: map['certificateName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      publicBlob: map['publicBlob'] == null ? null : map['publicBlob'] as String,
+      publicBlob: map['publicBlob'] == null ? null : map['publicBlob']! as String,
       thumbprint: map['thumbprint'] as String,
       type: map['type'] as String,
     );

@@ -22,7 +22,7 @@ class ListenerRuleMatch {
 
   factory ListenerRuleMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatch(
-      httpMatch: (ListenerRuleMatchHttpMatch.fromMap((map['httpMatch'] as Map).cast<String, dynamic>())).input(),
+      httpMatch: (ListenerRuleMatchHttpMatch.fromMap((map['httpMatch']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

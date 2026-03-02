@@ -58,7 +58,7 @@ class GetAccountResult {
       resourceGroupName: map['resourceGroupName'] as String,
       secondaryAccessKey: map['secondaryAccessKey'] as String,
       skuName: map['skuName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       xMsClientId: map['xMsClientId'] as String,
     );
   }

@@ -30,7 +30,7 @@ class DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration {
 
   factory DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration.fromMap(Map<String, dynamic> map) {
     return DataSourceConfigurationWebCrawlerConfigurationProxyConfiguration(
-      credentials: map['credentials'] == null ? null : (map['credentials'] as String).input(),
+      credentials: map['credentials'] == null ? null : ((map['credentials'] as String).input()).input(),
       host: (map['host'] as String).input(),
       port: (map['port'] as int).input(),
     );

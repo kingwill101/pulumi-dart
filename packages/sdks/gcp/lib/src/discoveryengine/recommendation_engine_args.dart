@@ -68,14 +68,14 @@ class RecommendationEngineArgs {
 
   factory RecommendationEngineArgs.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineArgs(
-      commonConfig: map['commonConfig'] == null ? null : (RecommendationEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())).input(),
+      commonConfig: map['commonConfig'] == null ? null : (RecommendationEngineCommonConfig.fromMap((map['commonConfig']! as Map).cast<String, dynamic>())).input(),
       dataStoreIds: ((map['dataStoreIds'] as List).cast<String>()).input(),
       displayName: (map['displayName'] as String).input(),
       engineId: (map['engineId'] as String).input(),
-      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical'] as String).input(),
+      industryVertical: map['industryVertical'] == null ? null : (map['industryVertical']! as String).input(),
       location: (map['location'] as String).input(),
-      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : (RecommendationEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

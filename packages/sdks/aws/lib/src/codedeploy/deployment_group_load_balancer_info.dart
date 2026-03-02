@@ -33,9 +33,9 @@ class DeploymentGroupLoadBalancerInfo {
 
   factory DeploymentGroupLoadBalancerInfo.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupLoadBalancerInfo(
-      elbInfos: map['elbInfos'] == null ? null : (pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoElbInfo>(map['elbInfos'], (value) => DeploymentGroupLoadBalancerInfoElbInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetGroupInfos: map['targetGroupInfos'] == null ? null : (pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo>(map['targetGroupInfos'], (value) => DeploymentGroupLoadBalancerInfoTargetGroupInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetGroupPairInfo: map['targetGroupPairInfo'] == null ? null : (DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap((map['targetGroupPairInfo'] as Map).cast<String, dynamic>())).input(),
+      elbInfos: map['elbInfos'] == null ? null : ((pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoElbInfo>(map['elbInfos']!, (value) => DeploymentGroupLoadBalancerInfoElbInfo.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      targetGroupInfos: map['targetGroupInfos'] == null ? null : ((pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupInfo>(map['targetGroupInfos']!, (value) => DeploymentGroupLoadBalancerInfoTargetGroupInfo.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      targetGroupPairInfo: map['targetGroupPairInfo'] == null ? null : ((DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap((map['targetGroupPairInfo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

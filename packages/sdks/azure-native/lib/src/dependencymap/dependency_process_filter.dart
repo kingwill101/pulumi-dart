@@ -22,7 +22,7 @@ class DependencyProcessFilter {
 
   factory DependencyProcessFilter.fromMap(Map<String, dynamic> map) {
     return DependencyProcessFilter(
-      processNameFilter: map['processNameFilter'] == null ? null : (ProcessNameFilter.fromMap((map['processNameFilter'] as Map).cast<String, dynamic>())).input(),
+      processNameFilter: map['processNameFilter'] == null ? null : (ProcessNameFilter.fromMap((map['processNameFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

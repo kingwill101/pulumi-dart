@@ -91,21 +91,21 @@ class GradientaiIndexingJobCancelState {
 
   factory GradientaiIndexingJobCancelState.fromMap(Map<String, dynamic> map) {
     return GradientaiIndexingJobCancelState(
-      completedDatasources: map['completedDatasources'] == null ? null : (map['completedDatasources'] as int).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      dataSourceUuids: map['dataSourceUuids'] == null ? null : ((map['dataSourceUuids'] as List).cast<String>()).input(),
-      finishedAt: map['finishedAt'] == null ? null : (map['finishedAt'] as String).input(),
-      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid'] as String).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      startedAt: map['startedAt'] == null ? null : (map['startedAt'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tokens: map['tokens'] == null ? null : (map['tokens'] as int).input(),
-      totalDatasources: map['totalDatasources'] == null ? null : (map['totalDatasources'] as int).input(),
-      totalItemsFailed: map['totalItemsFailed'] == null ? null : (map['totalItemsFailed'] as int).input(),
-      totalItemsIndexed: map['totalItemsIndexed'] == null ? null : (map['totalItemsIndexed'] as int).input(),
-      totalItemsSkipped: map['totalItemsSkipped'] == null ? null : (map['totalItemsSkipped'] as int).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      completedDatasources: map['completedDatasources'] == null ? null : (map['completedDatasources']! as int).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      dataSourceUuids: map['dataSourceUuids'] == null ? null : ((map['dataSourceUuids']! as List).cast<String>()).input(),
+      finishedAt: map['finishedAt'] == null ? null : (map['finishedAt']! as String).input(),
+      knowledgeBaseUuid: map['knowledgeBaseUuid'] == null ? null : (map['knowledgeBaseUuid']! as String).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      startedAt: map['startedAt'] == null ? null : (map['startedAt']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tokens: map['tokens'] == null ? null : (map['tokens']! as int).input(),
+      totalDatasources: map['totalDatasources'] == null ? null : (map['totalDatasources']! as int).input(),
+      totalItemsFailed: map['totalItemsFailed'] == null ? null : (map['totalItemsFailed']! as int).input(),
+      totalItemsIndexed: map['totalItemsIndexed'] == null ? null : (map['totalItemsIndexed']! as int).input(),
+      totalItemsSkipped: map['totalItemsSkipped'] == null ? null : (map['totalItemsSkipped']! as int).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

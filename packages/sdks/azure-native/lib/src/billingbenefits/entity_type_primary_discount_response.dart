@@ -88,20 +88,20 @@ class EntityTypePrimaryDiscountResponse {
 
   factory EntityTypePrimaryDiscountResponse.fromMap(Map<String, dynamic> map) {
     return EntityTypePrimaryDiscountResponse(
-      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType'] as String).input(),
+      appliedScopeType: map['appliedScopeType'] == null ? null : (map['appliedScopeType']! as String).input(),
       benefitResourceId: (map['benefitResourceId'] as String).input(),
       billingAccountResourceId: (map['billingAccountResourceId'] as String).input(),
       billingProfileResourceId: (map['billingProfileResourceId'] as String).input(),
       customerResourceId: (map['customerResourceId'] as String).input(),
-      discountTypeProperties: map['discountTypeProperties'] == null ? null : (DiscountCustomPriceResponse.fromMap((map['discountTypeProperties'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      discountTypeProperties: map['discountTypeProperties'] == null ? null : (DiscountCustomPriceResponse.fromMap((map['discountTypeProperties']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       endAt: (map['endAt'] as String).input(),
       entityType: (map['entityType'] as String).input(),
       productCode: (map['productCode'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       startAt: (map['startAt'] as String).input(),
       status: (map['status'] as String).input(),
-      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']! as String).input(),
     );
   }
 }

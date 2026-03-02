@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1Vertex {
 
   factory GoogleCloudDocumentaiV1Vertex.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1Vertex(
-      x: map['x'] == null ? null : (map['x'] as int).input(),
-      y: map['y'] == null ? null : (map['y'] as int).input(),
+      x: map['x'] == null ? null : (map['x']! as int).input(),
+      y: map['y'] == null ? null : (map['y']! as int).input(),
     );
   }
 }

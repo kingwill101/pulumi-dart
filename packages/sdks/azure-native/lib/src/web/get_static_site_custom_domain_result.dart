@@ -69,7 +69,7 @@ class GetStaticSiteCustomDomainResult {
       domainName: map['domainName'] as String,
       errorMessage: map['errorMessage'] as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       status: map['status'] as String,
       type: map['type'] as String,

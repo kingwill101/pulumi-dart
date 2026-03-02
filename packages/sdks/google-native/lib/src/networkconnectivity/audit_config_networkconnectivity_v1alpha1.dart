@@ -27,8 +27,8 @@ class AuditConfigNetworkconnectivityV1alpha1 {
 
   factory AuditConfigNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
     return AuditConfigNetworkconnectivityV1alpha1(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigNetworkconnectivityV1alpha1>(map['auditLogConfigs'], (value) => AuditLogConfigNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigNetworkconnectivityV1alpha1>(map['auditLogConfigs']!, (value) => AuditLogConfigNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

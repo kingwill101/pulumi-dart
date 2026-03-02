@@ -35,10 +35,10 @@ class SubscriptionFeatureRegistrationProperties {
 
   factory SubscriptionFeatureRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return SubscriptionFeatureRegistrationProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      shouldFeatureDisplayInPortal: map['shouldFeatureDisplayInPortal'] == null ? null : (map['shouldFeatureDisplayInPortal']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

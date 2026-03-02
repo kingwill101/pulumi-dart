@@ -25,8 +25,8 @@ class PrivateConnectionError {
 
   factory PrivateConnectionError.fromMap(Map<String, dynamic> map) {
     return PrivateConnectionError(
-      details: map['details'] == null ? null : ((map['details'] as Map).cast<String, String>()).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      details: map['details'] == null ? null : ((map['details']! as Map).cast<String, String>()).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatJson.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInputDatasetFormatJson(
-      line: map['line'] == null ? null : (map['line'] as bool).input(),
+      line: map['line'] == null ? null : ((map['line'] as bool).input()).input(),
     );
   }
 }

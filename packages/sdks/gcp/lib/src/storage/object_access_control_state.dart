@@ -72,15 +72,15 @@ class ObjectAccessControlState {
 
   factory ObjectAccessControlState.fromMap(Map<String, dynamic> map) {
     return ObjectAccessControlState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      entity: map['entity'] == null ? null : (map['entity'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as int).input(),
-      object: map['object'] == null ? null : (map['object'] as String).input(),
-      projectTeams: map['projectTeams'] == null ? null : (pulumi.Input.decodeList<ObjectAccessControlProjectTeam>(map['projectTeams'], (value) => ObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      entity: map['entity'] == null ? null : (map['entity']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as int).input(),
+      object: map['object'] == null ? null : (map['object']! as String).input(),
+      projectTeams: map['projectTeams'] == null ? null : (pulumi.Input.decodeList<ObjectAccessControlProjectTeam>(map['projectTeams']!, (value) => ObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

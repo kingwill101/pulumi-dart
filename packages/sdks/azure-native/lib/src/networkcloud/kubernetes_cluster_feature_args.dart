@@ -50,12 +50,12 @@ class KubernetesClusterFeatureArgs {
 
   factory KubernetesClusterFeatureArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterFeatureArgs(
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
       kubernetesClusterName: (map['kubernetesClusterName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<StringKeyValuePair>(map['options'], (value) => StringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : (pulumi.Input.decodeList<StringKeyValuePair>(map['options']!, (value) => StringKeyValuePair.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

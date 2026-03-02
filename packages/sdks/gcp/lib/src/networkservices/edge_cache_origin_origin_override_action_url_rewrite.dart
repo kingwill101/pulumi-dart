@@ -23,7 +23,7 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite {
 
   factory EdgeCacheOriginOriginOverrideActionUrlRewrite.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideActionUrlRewrite(
-      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite'] as String).input(),
+      hostRewrite: map['hostRewrite'] == null ? null : (map['hostRewrite']! as String).input(),
     );
   }
 }

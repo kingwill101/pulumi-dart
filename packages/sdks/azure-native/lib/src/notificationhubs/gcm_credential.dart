@@ -26,7 +26,7 @@ class GcmCredential {
 
   factory GcmCredential.fromMap(Map<String, dynamic> map) {
     return GcmCredential(
-      gcmEndpoint: map['gcmEndpoint'] == null ? null : (map['gcmEndpoint'] as String).input(),
+      gcmEndpoint: map['gcmEndpoint'] == null ? null : (map['gcmEndpoint']! as String).input(),
       googleApiKey: (map['googleApiKey'] as String).input(),
     );
   }

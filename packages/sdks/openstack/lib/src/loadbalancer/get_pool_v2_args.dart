@@ -60,13 +60,13 @@ class GetPoolV2Args {
 
   factory GetPoolV2Args.fromMap(Map<String, dynamic> map) {
     return GetPoolV2Args(
-      lbMethod: map['lbMethod'] == null ? null : (map['lbMethod'] as String).input(),
-      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      poolId: map['poolId'] == null ? null : (map['poolId'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
+      lbMethod: map['lbMethod'] == null ? null : (map['lbMethod']! as String).input(),
+      loadbalancerId: map['loadbalancerId'] == null ? null : (map['loadbalancerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      poolId: map['poolId'] == null ? null : (map['poolId']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
     );
   }
 }

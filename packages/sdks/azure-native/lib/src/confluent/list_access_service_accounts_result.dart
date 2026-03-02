@@ -33,9 +33,9 @@ class ListAccessServiceAccountsResult {
 
   factory ListAccessServiceAccountsResult.fromMap(Map<String, dynamic> map) {
     return ListAccessServiceAccountsResult(
-      data: map['data'] == null ? null : pulumi.Input.decodeList<ServiceAccountRecordResponse>(map['data'], (value) => ServiceAccountRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] == null ? null : map['kind'] as String,
-      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      data: map['data'] == null ? null : pulumi.Input.decodeList<ServiceAccountRecordResponse>(map['data']!, (value) => ServiceAccountRecordResponse.fromMap((value as Map).cast<String, dynamic>())),
+      kind: map['kind'] == null ? null : map['kind']! as String,
+      metadata: map['metadata'] == null ? null : ConfluentListMetadataResponse.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
     );
   }
 }

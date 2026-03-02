@@ -65,14 +65,14 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInput {
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInput.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInput(
-      inAppStreamNames: map['inAppStreamNames'] == null ? null : ((map['inAppStreamNames'] as List).cast<String>()).input(),
-      inputId: map['inputId'] == null ? null : (map['inputId'] as String).input(),
-      inputParallelism: map['inputParallelism'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism.fromMap((map['inputParallelism'] as Map).cast<String, dynamic>())).input(),
-      inputProcessingConfiguration: map['inputProcessingConfiguration'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration.fromMap((map['inputProcessingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      inputSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema.fromMap((map['inputSchema'] as Map).cast<String, dynamic>())).input(),
-      inputStartingPositionConfigurations: map['inputStartingPositionConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration>(map['inputStartingPositionConfigurations'], (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kinesisFirehoseInput: map['kinesisFirehoseInput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput.fromMap((map['kinesisFirehoseInput'] as Map).cast<String, dynamic>())).input(),
-      kinesisStreamsInput: map['kinesisStreamsInput'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput.fromMap((map['kinesisStreamsInput'] as Map).cast<String, dynamic>())).input(),
+      inAppStreamNames: map['inAppStreamNames'] == null ? null : (((map['inAppStreamNames'] as List).cast<String>()).input()).input(),
+      inputId: map['inputId'] == null ? null : ((map['inputId'] as String).input()).input(),
+      inputParallelism: map['inputParallelism'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism.fromMap((map['inputParallelism']! as Map).cast<String, dynamic>())).input()).input(),
+      inputProcessingConfiguration: map['inputProcessingConfiguration'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfiguration.fromMap((map['inputProcessingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      inputSchema: (ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema.fromMap((map['inputSchema']! as Map).cast<String, dynamic>())).input(),
+      inputStartingPositionConfigurations: map['inputStartingPositionConfigurations'] == null ? null : ((pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration>(map['inputStartingPositionConfigurations']!, (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      kinesisFirehoseInput: map['kinesisFirehoseInput'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisFirehoseInput.fromMap((map['kinesisFirehoseInput']! as Map).cast<String, dynamic>())).input()).input(),
+      kinesisStreamsInput: map['kinesisStreamsInput'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput.fromMap((map['kinesisStreamsInput']! as Map).cast<String, dynamic>())).input()).input(),
       namePrefix: (map['namePrefix'] as String).input(),
     );
   }

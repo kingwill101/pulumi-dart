@@ -74,17 +74,17 @@ class IpAllocationArgs {
 
   factory IpAllocationArgs.fromMap(Map<String, dynamic> map) {
     return IpAllocationArgs(
-      allocationTags: map['allocationTags'] == null ? null : ((map['allocationTags'] as Map).cast<String, String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAllocationName: map['ipAllocationName'] == null ? null : (map['ipAllocationName'] as String).input(),
-      ipamAllocationId: map['ipamAllocationId'] == null ? null : (map['ipamAllocationId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength'] as int).input(),
-      prefixType: map['prefixType'] == null ? null : (map['prefixType'] as String).input(),
+      allocationTags: map['allocationTags'] == null ? null : ((map['allocationTags']! as Map).cast<String, String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAllocationName: map['ipAllocationName'] == null ? null : (map['ipAllocationName']! as String).input(),
+      ipamAllocationId: map['ipamAllocationId'] == null ? null : (map['ipamAllocationId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      prefixLength: map['prefixLength'] == null ? null : (map['prefixLength']! as int).input(),
+      prefixType: map['prefixType'] == null ? null : (map['prefixType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

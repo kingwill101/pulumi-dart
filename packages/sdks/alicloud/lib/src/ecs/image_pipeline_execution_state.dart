@@ -32,9 +32,9 @@ class ImagePipelineExecutionState {
 
   factory ImagePipelineExecutionState.fromMap(Map<String, dynamic> map) {
     return ImagePipelineExecutionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      imagePipelineId: map['imagePipelineId'] == null ? null : (map['imagePipelineId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      imagePipelineId: map['imagePipelineId'] == null ? null : (map['imagePipelineId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

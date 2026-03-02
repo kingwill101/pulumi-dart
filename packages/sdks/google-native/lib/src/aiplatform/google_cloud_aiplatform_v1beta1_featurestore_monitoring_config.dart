@@ -39,10 +39,10 @@ class GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig {
 
   factory GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfig(
-      categoricalThresholdConfig: map['categoricalThresholdConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig.fromMap((map['categoricalThresholdConfig'] as Map).cast<String, dynamic>())).input(),
-      importFeaturesAnalysis: map['importFeaturesAnalysis'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis.fromMap((map['importFeaturesAnalysis'] as Map).cast<String, dynamic>())).input(),
-      numericalThresholdConfig: map['numericalThresholdConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig.fromMap((map['numericalThresholdConfig'] as Map).cast<String, dynamic>())).input(),
-      snapshotAnalysis: map['snapshotAnalysis'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis.fromMap((map['snapshotAnalysis'] as Map).cast<String, dynamic>())).input(),
+      categoricalThresholdConfig: map['categoricalThresholdConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig.fromMap((map['categoricalThresholdConfig']! as Map).cast<String, dynamic>())).input(),
+      importFeaturesAnalysis: map['importFeaturesAnalysis'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigImportFeaturesAnalysis.fromMap((map['importFeaturesAnalysis']! as Map).cast<String, dynamic>())).input(),
+      numericalThresholdConfig: map['numericalThresholdConfig'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigThresholdConfig.fromMap((map['numericalThresholdConfig']! as Map).cast<String, dynamic>())).input(),
+      snapshotAnalysis: map['snapshotAnalysis'] == null ? null : (GoogleCloudAiplatformV1beta1FeaturestoreMonitoringConfigSnapshotAnalysis.fromMap((map['snapshotAnalysis']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

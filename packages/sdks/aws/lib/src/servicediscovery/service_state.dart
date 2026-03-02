@@ -78,18 +78,18 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsConfig: map['dnsConfig'] == null ? null : (ServiceDnsConfig.fromMap((map['dnsConfig'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      healthCheckConfig: map['healthCheckConfig'] == null ? null : (ServiceHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())).input(),
-      healthCheckCustomConfig: map['healthCheckCustomConfig'] == null ? null : (ServiceHealthCheckCustomConfig.fromMap((map['healthCheckCustomConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      dnsConfig: map['dnsConfig'] == null ? null : ((ServiceDnsConfig.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : ((ServiceHealthCheckConfig.fromMap((map['healthCheckConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      healthCheckCustomConfig: map['healthCheckCustomConfig'] == null ? null : ((ServiceHealthCheckCustomConfig.fromMap((map['healthCheckCustomConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namespaceId: map['namespaceId'] == null ? null : ((map['namespaceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

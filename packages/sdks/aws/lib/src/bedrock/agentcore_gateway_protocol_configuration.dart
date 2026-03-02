@@ -21,7 +21,7 @@ class AgentcoreGatewayProtocolConfiguration {
 
   factory AgentcoreGatewayProtocolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayProtocolConfiguration(
-      mcp: map['mcp'] == null ? null : (AgentcoreGatewayProtocolConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>())).input(),
+      mcp: map['mcp'] == null ? null : ((AgentcoreGatewayProtocolConfigurationMcp.fromMap((map['mcp']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class ProductProvisioningArtifactParameters {
 
   factory ProductProvisioningArtifactParameters.fromMap(Map<String, dynamic> map) {
     return ProductProvisioningArtifactParameters(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableTemplateValidation: map['disableTemplateValidation'] == null ? null : (map['disableTemplateValidation'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      templatePhysicalId: map['templatePhysicalId'] == null ? null : (map['templatePhysicalId'] as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      disableTemplateValidation: map['disableTemplateValidation'] == null ? null : ((map['disableTemplateValidation'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      templatePhysicalId: map['templatePhysicalId'] == null ? null : ((map['templatePhysicalId'] as String).input()).input(),
+      templateUrl: map['templateUrl'] == null ? null : ((map['templateUrl'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

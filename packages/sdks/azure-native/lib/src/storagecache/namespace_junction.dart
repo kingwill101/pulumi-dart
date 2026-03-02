@@ -36,10 +36,10 @@ class NamespaceJunction {
 
   factory NamespaceJunction.fromMap(Map<String, dynamic> map) {
     return NamespaceJunction(
-      namespacePath: map['namespacePath'] == null ? null : (map['namespacePath'] as String).input(),
-      nfsAccessPolicy: map['nfsAccessPolicy'] == null ? null : (map['nfsAccessPolicy'] as String).input(),
-      nfsExport: map['nfsExport'] == null ? null : (map['nfsExport'] as String).input(),
-      targetPath: map['targetPath'] == null ? null : (map['targetPath'] as String).input(),
+      namespacePath: map['namespacePath'] == null ? null : (map['namespacePath']! as String).input(),
+      nfsAccessPolicy: map['nfsAccessPolicy'] == null ? null : (map['nfsAccessPolicy']! as String).input(),
+      nfsExport: map['nfsExport'] == null ? null : (map['nfsExport']! as String).input(),
+      targetPath: map['targetPath'] == null ? null : (map['targetPath']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class NetworkPerformanceConfigComputeV1 {
 
   factory NetworkPerformanceConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return NetworkPerformanceConfigComputeV1(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1.fromValue(map['totalEgressBandwidthTier'] as String)).input(),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (NetworkPerformanceConfigTotalEgressBandwidthTierComputeV1.fromValue(map['totalEgressBandwidthTier']! as String)).input(),
     );
   }
 }

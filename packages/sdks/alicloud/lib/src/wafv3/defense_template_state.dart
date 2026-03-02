@@ -72,17 +72,17 @@ class DefenseTemplateState {
 
   factory DefenseTemplateState.fromMap(Map<String, dynamic> map) {
     return DefenseTemplateState(
-      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene'] as String).input(),
-      defenseTemplateId: map['defenseTemplateId'] == null ? null : (map['defenseTemplateId'] as int).input(),
-      defenseTemplateName: map['defenseTemplateName'] == null ? null : (map['defenseTemplateName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups'] as List).cast<String>()).input(),
-      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      templateOrigin: map['templateOrigin'] == null ? null : (map['templateOrigin'] as String).input(),
-      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
+      defenseScene: map['defenseScene'] == null ? null : (map['defenseScene']! as String).input(),
+      defenseTemplateId: map['defenseTemplateId'] == null ? null : (map['defenseTemplateId']! as int).input(),
+      defenseTemplateName: map['defenseTemplateName'] == null ? null : (map['defenseTemplateName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : ((map['resourceGroups']! as List).cast<String>()).input(),
+      resourceManagerResourceGroupId: map['resourceManagerResourceGroupId'] == null ? null : (map['resourceManagerResourceGroupId']! as String).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      templateOrigin: map['templateOrigin'] == null ? null : (map['templateOrigin']! as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType']! as String).input(),
     );
   }
 }

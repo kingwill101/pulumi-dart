@@ -36,10 +36,10 @@ class CacheConfigurationResponse {
 
   factory CacheConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CacheConfigurationResponse(
-      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration'] as String).input(),
-      dynamicCompression: map['dynamicCompression'] == null ? null : (map['dynamicCompression'] as String).input(),
-      queryParameterStripDirective: map['queryParameterStripDirective'] == null ? null : (map['queryParameterStripDirective'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as String).input(),
+      cacheDuration: map['cacheDuration'] == null ? null : (map['cacheDuration']! as String).input(),
+      dynamicCompression: map['dynamicCompression'] == null ? null : (map['dynamicCompression']! as String).input(),
+      queryParameterStripDirective: map['queryParameterStripDirective'] == null ? null : (map['queryParameterStripDirective']! as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']! as String).input(),
     );
   }
 }

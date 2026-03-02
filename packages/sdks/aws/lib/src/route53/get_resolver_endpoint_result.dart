@@ -85,7 +85,7 @@ class GetResolverEndpointResult {
     return GetResolverEndpointResult(
       arn: map['arn'] as String,
       direction: map['direction'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetResolverEndpointFilter>(map['filters'], (value) => GetResolverEndpointFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetResolverEndpointFilter>(map['filters']!, (value) => GetResolverEndpointFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipAddresses: (map['ipAddresses'] as List).cast<String>(),
       name: map['name'] as String,

@@ -37,10 +37,10 @@ class VirtualApplicationResponse {
 
   factory VirtualApplicationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualApplicationResponse(
-      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
-      preloadEnabled: map['preloadEnabled'] == null ? null : (map['preloadEnabled'] as bool).input(),
-      virtualDirectories: map['virtualDirectories'] == null ? null : (pulumi.Input.decodeList<VirtualDirectoryResponse>(map['virtualDirectories'], (value) => VirtualDirectoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath'] as String).input(),
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath']! as String).input(),
+      preloadEnabled: map['preloadEnabled'] == null ? null : (map['preloadEnabled']! as bool).input(),
+      virtualDirectories: map['virtualDirectories'] == null ? null : (pulumi.Input.decodeList<VirtualDirectoryResponse>(map['virtualDirectories']!, (value) => VirtualDirectoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath']! as String).input(),
     );
   }
 }

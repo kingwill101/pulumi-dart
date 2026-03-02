@@ -82,15 +82,15 @@ class HaVpnGatewayArgs {
 
   factory HaVpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return HaVpnGatewayArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : (map['gatewayIpVersion'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : (map['gatewayIpVersion']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      vpnInterfaces: map['vpnInterfaces'] == null ? null : (pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(map['vpnInterfaces'], (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      vpnInterfaces: map['vpnInterfaces'] == null ? null : (pulumi.Input.decodeList<HaVpnGatewayVpnInterface>(map['vpnInterfaces']!, (value) => HaVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

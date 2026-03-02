@@ -33,7 +33,7 @@ class WorkloadIdentityPoolProviderX509TrustStore {
 
   factory WorkloadIdentityPoolProviderX509TrustStore.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509TrustStore(
-      intermediateCas: map['intermediateCas'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>(map['intermediateCas'], (value) => WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      intermediateCas: map['intermediateCas'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa>(map['intermediateCas']!, (value) => WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa.fromMap((value as Map).cast<String, dynamic>()))).input(),
       trustAnchors: (pulumi.Input.decodeList<WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor>(map['trustAnchors'], (value) => WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

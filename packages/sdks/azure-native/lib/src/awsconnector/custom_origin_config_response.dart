@@ -46,12 +46,12 @@ class CustomOriginConfigResponse {
 
   factory CustomOriginConfigResponse.fromMap(Map<String, dynamic> map) {
     return CustomOriginConfigResponse(
-      httpPort: map['httpPort'] == null ? null : (map['httpPort'] as int).input(),
-      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort'] as int).input(),
-      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : (map['originKeepaliveTimeout'] as int).input(),
-      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : (map['originProtocolPolicy'] as String).input(),
-      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout'] as int).input(),
-      originSSLProtocols: map['originSSLProtocols'] == null ? null : ((map['originSSLProtocols'] as List).cast<String>()).input(),
+      httpPort: map['httpPort'] == null ? null : (map['httpPort']! as int).input(),
+      httpsPort: map['httpsPort'] == null ? null : (map['httpsPort']! as int).input(),
+      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : (map['originKeepaliveTimeout']! as int).input(),
+      originProtocolPolicy: map['originProtocolPolicy'] == null ? null : (map['originProtocolPolicy']! as String).input(),
+      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout']! as int).input(),
+      originSSLProtocols: map['originSSLProtocols'] == null ? null : ((map['originSSLProtocols']! as List).cast<String>()).input(),
     );
   }
 }

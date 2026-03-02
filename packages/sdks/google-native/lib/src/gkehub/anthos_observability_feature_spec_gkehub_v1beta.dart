@@ -22,7 +22,7 @@ class AnthosObservabilityFeatureSpecGkehubV1beta {
 
   factory AnthosObservabilityFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return AnthosObservabilityFeatureSpecGkehubV1beta(
-      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : (AnthosObservabilityMembershipSpecGkehubV1beta.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>())).input(),
+      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : (AnthosObservabilityMembershipSpecGkehubV1beta.fromMap((map['defaultMembershipSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

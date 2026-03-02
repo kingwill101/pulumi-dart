@@ -21,7 +21,7 @@ class SingleHeaderModelProperties {
 
   factory SingleHeaderModelProperties.fromMap(Map<String, dynamic> map) {
     return SingleHeaderModelProperties(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class EntraAuthentication {
 
   factory EntraAuthentication.fromMap(Map<String, dynamic> map) {
     return EntraAuthentication(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
     );
   }
 }

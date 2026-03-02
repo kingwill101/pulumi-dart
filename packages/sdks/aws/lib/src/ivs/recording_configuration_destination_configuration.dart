@@ -21,7 +21,7 @@ class RecordingConfigurationDestinationConfiguration {
 
   factory RecordingConfigurationDestinationConfiguration.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationDestinationConfiguration(
-      s3: (RecordingConfigurationDestinationConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      s3: (RecordingConfigurationDestinationConfigurationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

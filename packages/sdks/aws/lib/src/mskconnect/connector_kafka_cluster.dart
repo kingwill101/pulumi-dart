@@ -21,7 +21,7 @@ class ConnectorKafkaCluster {
 
   factory ConnectorKafkaCluster.fromMap(Map<String, dynamic> map) {
     return ConnectorKafkaCluster(
-      apacheKafkaCluster: (ConnectorKafkaClusterApacheKafkaCluster.fromMap((map['apacheKafkaCluster'] as Map).cast<String, dynamic>())).input(),
+      apacheKafkaCluster: (ConnectorKafkaClusterApacheKafkaCluster.fromMap((map['apacheKafkaCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

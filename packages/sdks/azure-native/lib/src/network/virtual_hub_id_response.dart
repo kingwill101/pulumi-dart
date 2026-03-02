@@ -21,7 +21,7 @@ class VirtualHubIdResponse {
 
   factory VirtualHubIdResponse.fromMap(Map<String, dynamic> map) {
     return VirtualHubIdResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

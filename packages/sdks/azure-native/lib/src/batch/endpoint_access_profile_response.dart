@@ -28,7 +28,7 @@ class EndpointAccessProfileResponse {
   factory EndpointAccessProfileResponse.fromMap(Map<String, dynamic> map) {
     return EndpointAccessProfileResponse(
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules'], (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IPRuleResponse>(map['ipRules']!, (value) => IPRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

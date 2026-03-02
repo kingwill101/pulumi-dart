@@ -27,8 +27,8 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfigurat
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDynamicPartitioningConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      retryDuration: map['retryDuration'] == null ? null : (map['retryDuration'] as int).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      retryDuration: map['retryDuration'] == null ? null : ((map['retryDuration'] as int).input()).input(),
     );
   }
 }

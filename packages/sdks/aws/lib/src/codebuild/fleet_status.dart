@@ -30,9 +30,9 @@ class FleetStatus {
 
   factory FleetStatus.fromMap(Map<String, dynamic> map) {
     return FleetStatus(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      context: map['context'] == null ? null : ((map['context'] as String).input()).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class OffPeakWindowResponse {
 
   factory OffPeakWindowResponse.fromMap(Map<String, dynamic> map) {
     return OffPeakWindowResponse(
-      windowStartTime: map['windowStartTime'] == null ? null : (WindowStartTimeResponse.fromMap((map['windowStartTime'] as Map).cast<String, dynamic>())).input(),
+      windowStartTime: map['windowStartTime'] == null ? null : (WindowStartTimeResponse.fromMap((map['windowStartTime']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

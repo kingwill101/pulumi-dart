@@ -53,13 +53,13 @@ class GetPolicyDocumentArgs {
 
   factory GetPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentArgs(
-      overrideJson: map['overrideJson'] == null ? null : (map['overrideJson'] as String).input(),
-      overridePolicyDocuments: map['overridePolicyDocuments'] == null ? null : ((map['overridePolicyDocuments'] as List).cast<String>()).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      sourceJson: map['sourceJson'] == null ? null : (map['sourceJson'] as String).input(),
-      sourcePolicyDocuments: map['sourcePolicyDocuments'] == null ? null : ((map['sourcePolicyDocuments'] as List).cast<String>()).input(),
-      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      overrideJson: map['overrideJson'] == null ? null : ((map['overrideJson'] as String).input()).input(),
+      overridePolicyDocuments: map['overridePolicyDocuments'] == null ? null : (((map['overridePolicyDocuments'] as List).cast<String>()).input()).input(),
+      policyId: map['policyId'] == null ? null : ((map['policyId'] as String).input()).input(),
+      sourceJson: map['sourceJson'] == null ? null : ((map['sourceJson'] as String).input()).input(),
+      sourcePolicyDocuments: map['sourcePolicyDocuments'] == null ? null : (((map['sourcePolicyDocuments'] as List).cast<String>()).input()).input(),
+      statements: map['statements'] == null ? null : ((pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements']!, (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

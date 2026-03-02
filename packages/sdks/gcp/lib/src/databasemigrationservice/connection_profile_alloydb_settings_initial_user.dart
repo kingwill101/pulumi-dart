@@ -33,7 +33,7 @@ class ConnectionProfileAlloydbSettingsInitialUser {
   factory ConnectionProfileAlloydbSettingsInitialUser.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsInitialUser(
       password: (map['password'] as String).input(),
-      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet'] as bool).input(),
+      passwordSet: map['passwordSet'] == null ? null : (map['passwordSet']! as bool).input(),
       user: (map['user'] as String).input(),
     );
   }

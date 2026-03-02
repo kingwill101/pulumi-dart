@@ -45,11 +45,11 @@ class EnvironmentConfigWorkloadsConfig {
 
   factory EnvironmentConfigWorkloadsConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfig(
-      dagProcessor: map['dagProcessor'] == null ? null : (EnvironmentConfigWorkloadsConfigDagProcessor.fromMap((map['dagProcessor'] as Map).cast<String, dynamic>())).input(),
-      scheduler: map['scheduler'] == null ? null : (EnvironmentConfigWorkloadsConfigScheduler.fromMap((map['scheduler'] as Map).cast<String, dynamic>())).input(),
-      triggerer: map['triggerer'] == null ? null : (EnvironmentConfigWorkloadsConfigTriggerer.fromMap((map['triggerer'] as Map).cast<String, dynamic>())).input(),
-      webServer: map['webServer'] == null ? null : (EnvironmentConfigWorkloadsConfigWebServer.fromMap((map['webServer'] as Map).cast<String, dynamic>())).input(),
-      worker: map['worker'] == null ? null : (EnvironmentConfigWorkloadsConfigWorker.fromMap((map['worker'] as Map).cast<String, dynamic>())).input(),
+      dagProcessor: map['dagProcessor'] == null ? null : (EnvironmentConfigWorkloadsConfigDagProcessor.fromMap((map['dagProcessor']! as Map).cast<String, dynamic>())).input(),
+      scheduler: map['scheduler'] == null ? null : (EnvironmentConfigWorkloadsConfigScheduler.fromMap((map['scheduler']! as Map).cast<String, dynamic>())).input(),
+      triggerer: map['triggerer'] == null ? null : (EnvironmentConfigWorkloadsConfigTriggerer.fromMap((map['triggerer']! as Map).cast<String, dynamic>())).input(),
+      webServer: map['webServer'] == null ? null : (EnvironmentConfigWorkloadsConfigWebServer.fromMap((map['webServer']! as Map).cast<String, dynamic>())).input(),
+      worker: map['worker'] == null ? null : (EnvironmentConfigWorkloadsConfigWorker.fromMap((map['worker']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

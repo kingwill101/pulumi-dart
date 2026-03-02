@@ -49,12 +49,12 @@ class GatewayRouteSpecHttp2RouteMatch {
 
   factory GatewayRouteSpecHttp2RouteMatch.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteMatch(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchHeader>(map['headers'], (value) => GatewayRouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostname: map['hostname'] == null ? null : (GatewayRouteSpecHttp2RouteMatchHostname.fromMap((map['hostname'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (GatewayRouteSpecHttp2RouteMatchPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters'], (value) => GatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchHeader>(map['headers']!, (value) => GatewayRouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      hostname: map['hostname'] == null ? null : ((GatewayRouteSpecHttp2RouteMatchHostname.fromMap((map['hostname']! as Map).cast<String, dynamic>())).input()).input(),
+      path: map['path'] == null ? null : ((GatewayRouteSpecHttp2RouteMatchPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((pulumi.Input.decodeList<GatewayRouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters']!, (value) => GatewayRouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

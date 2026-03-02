@@ -40,10 +40,10 @@ class ScheduleResponse {
 
   factory ScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ScheduleResponse(
-      absoluteMonthly: map['absoluteMonthly'] == null ? null : (AbsoluteMonthlyScheduleResponse.fromMap((map['absoluteMonthly'] as Map).cast<String, dynamic>())).input(),
-      daily: map['daily'] == null ? null : (DailyScheduleResponse.fromMap((map['daily'] as Map).cast<String, dynamic>())).input(),
-      relativeMonthly: map['relativeMonthly'] == null ? null : (RelativeMonthlyScheduleResponse.fromMap((map['relativeMonthly'] as Map).cast<String, dynamic>())).input(),
-      weekly: map['weekly'] == null ? null : (WeeklyScheduleResponse.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),
+      absoluteMonthly: map['absoluteMonthly'] == null ? null : (AbsoluteMonthlyScheduleResponse.fromMap((map['absoluteMonthly']! as Map).cast<String, dynamic>())).input(),
+      daily: map['daily'] == null ? null : (DailyScheduleResponse.fromMap((map['daily']! as Map).cast<String, dynamic>())).input(),
+      relativeMonthly: map['relativeMonthly'] == null ? null : (RelativeMonthlyScheduleResponse.fromMap((map['relativeMonthly']! as Map).cast<String, dynamic>())).input(),
+      weekly: map['weekly'] == null ? null : (WeeklyScheduleResponse.fromMap((map['weekly']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

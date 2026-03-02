@@ -57,13 +57,13 @@ class CxVersionState {
 
   factory CxVersionState.fromMap(Map<String, dynamic> map) {
     return CxVersionState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nluSettings: map['nluSettings'] == null ? null : (pulumi.Input.decodeList<CxVersionNluSetting>(map['nluSettings'], (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nluSettings: map['nluSettings'] == null ? null : (pulumi.Input.decodeList<CxVersionNluSetting>(map['nluSettings']!, (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

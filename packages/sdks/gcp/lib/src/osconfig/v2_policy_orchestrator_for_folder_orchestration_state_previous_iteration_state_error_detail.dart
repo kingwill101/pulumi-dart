@@ -26,8 +26,8 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
 
   factory V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetail(
-      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      typeUrl: map['typeUrl'] == null ? null : (map['typeUrl']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

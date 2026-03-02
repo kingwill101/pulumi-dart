@@ -53,13 +53,13 @@ class DevBoxDefinitionState {
 
   factory DevBoxDefinitionState.fromMap(Map<String, dynamic> map) {
     return DevBoxDefinitionState(
-      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId'] as String).input(),
-      hibernateSupportEnabled: map['hibernateSupportEnabled'] == null ? null : (map['hibernateSupportEnabled'] as bool).input(),
-      imageReferenceId: map['imageReferenceId'] == null ? null : (map['imageReferenceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      devCenterId: map['devCenterId'] == null ? null : (map['devCenterId']! as String).input(),
+      hibernateSupportEnabled: map['hibernateSupportEnabled'] == null ? null : (map['hibernateSupportEnabled']! as bool).input(),
+      imageReferenceId: map['imageReferenceId'] == null ? null : (map['imageReferenceId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

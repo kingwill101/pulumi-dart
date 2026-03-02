@@ -52,13 +52,13 @@ class VirtualNetworkState {
 
   factory VirtualNetworkState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labName: map['labName'] == null ? null : (map['labName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (VirtualNetworkSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : (map['uniqueIdentifier'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labName: map['labName'] == null ? null : (map['labName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subnet: map['subnet'] == null ? null : (VirtualNetworkSubnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      uniqueIdentifier: map['uniqueIdentifier'] == null ? null : (map['uniqueIdentifier']! as String).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class TriggerEventBatchingCondition {
   factory TriggerEventBatchingCondition.fromMap(Map<String, dynamic> map) {
     return TriggerEventBatchingCondition(
       batchSize: (map['batchSize'] as int).input(),
-      batchWindow: map['batchWindow'] == null ? null : (map['batchWindow'] as int).input(),
+      batchWindow: map['batchWindow'] == null ? null : ((map['batchWindow'] as int).input()).input(),
     );
   }
 }

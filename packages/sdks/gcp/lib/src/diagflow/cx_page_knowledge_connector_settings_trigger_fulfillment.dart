@@ -65,14 +65,14 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillment {
 
   factory CxPageKnowledgeConnectorSettingsTriggerFulfillment.fromMap(Map<String, dynamic> map) {
     return CxPageKnowledgeConnectorSettingsTriggerFulfillment(
-      advancedSettings: map['advancedSettings'] == null ? null : (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
-      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase>(map['conditionalCases'], (value) => CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableGenerativeFallback: map['enableGenerativeFallback'] == null ? null : (map['enableGenerativeFallback'] as bool).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage>(map['messages'], (value) => CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses'] as bool).input(),
-      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction>(map['setParameterActions'], (value) => CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (CxPageKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
+      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase>(map['conditionalCases']!, (value) => CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableGenerativeFallback: map['enableGenerativeFallback'] == null ? null : (map['enableGenerativeFallback']! as bool).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage>(map['messages']!, (value) => CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses']! as bool).input(),
+      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction>(map['setParameterActions']!, (value) => CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

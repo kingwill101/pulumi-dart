@@ -53,12 +53,12 @@ class LicenseProfileMachineInstanceViewEsuPropertiesResponse {
 
   factory LicenseProfileMachineInstanceViewEsuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LicenseProfileMachineInstanceViewEsuPropertiesResponse(
-      assignedLicense: map['assignedLicense'] == null ? null : (LicenseResponse.fromMap((map['assignedLicense'] as Map).cast<String, dynamic>())).input(),
+      assignedLicense: map['assignedLicense'] == null ? null : (LicenseResponse.fromMap((map['assignedLicense']! as Map).cast<String, dynamic>())).input(),
       assignedLicenseImmutableId: (map['assignedLicenseImmutableId'] as String).input(),
       esuEligibility: (map['esuEligibility'] as String).input(),
       esuKeyState: (map['esuKeyState'] as String).input(),
       esuKeys: (pulumi.Input.decodeList<EsuKeyResponse>(map['esuKeys'], (value) => EsuKeyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseAssignmentState: map['licenseAssignmentState'] == null ? null : (map['licenseAssignmentState'] as String).input(),
+      licenseAssignmentState: map['licenseAssignmentState'] == null ? null : (map['licenseAssignmentState']! as String).input(),
       serverType: (map['serverType'] as String).input(),
     );
   }

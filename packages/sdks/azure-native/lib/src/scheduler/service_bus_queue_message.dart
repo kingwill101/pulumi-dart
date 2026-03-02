@@ -53,13 +53,13 @@ class ServiceBusQueueMessage {
 
   factory ServiceBusQueueMessage.fromMap(Map<String, dynamic> map) {
     return ServiceBusQueueMessage(
-      authentication: map['authentication'] == null ? null : (ServiceBusAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      brokeredMessageProperties: map['brokeredMessageProperties'] == null ? null : (ServiceBusBrokeredMessageProperties.fromMap((map['brokeredMessageProperties'] as Map).cast<String, dynamic>())).input(),
-      customMessageProperties: map['customMessageProperties'] == null ? null : ((map['customMessageProperties'] as Map).cast<String, String>()).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      queueName: map['queueName'] == null ? null : (map['queueName'] as String).input(),
-      transportType: map['transportType'] == null ? null : (ServiceBusTransportType.fromValue(map['transportType'] as String)).input(),
+      authentication: map['authentication'] == null ? null : (ServiceBusAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      brokeredMessageProperties: map['brokeredMessageProperties'] == null ? null : (ServiceBusBrokeredMessageProperties.fromMap((map['brokeredMessageProperties']! as Map).cast<String, dynamic>())).input(),
+      customMessageProperties: map['customMessageProperties'] == null ? null : ((map['customMessageProperties']! as Map).cast<String, String>()).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      queueName: map['queueName'] == null ? null : (map['queueName']! as String).input(),
+      transportType: map['transportType'] == null ? null : (ServiceBusTransportType.fromValue(map['transportType']! as String)).input(),
     );
   }
 }

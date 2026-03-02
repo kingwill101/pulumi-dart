@@ -31,9 +31,9 @@ class BrokerResourceRuleResponse {
 
   factory BrokerResourceRuleResponse.fromMap(Map<String, dynamic> map) {
     return BrokerResourceRuleResponse(
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds']! as List).cast<String>()).input(),
       method: (map['method'] as String).input(),
-      topics: map['topics'] == null ? null : ((map['topics'] as List).cast<String>()).input(),
+      topics: map['topics'] == null ? null : ((map['topics']! as List).cast<String>()).input(),
     );
   }
 }

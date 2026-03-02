@@ -48,8 +48,8 @@ class SmbMountEndpointPropertiesResponse {
 
   factory SmbMountEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SmbMountEndpointPropertiesResponse(
-      credentials: map['credentials'] == null ? null : (AzureKeyVaultSmbCredentialsResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      credentials: map['credentials'] == null ? null : (AzureKeyVaultSmbCredentialsResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
       host: (map['host'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),

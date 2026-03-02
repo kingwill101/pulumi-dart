@@ -51,12 +51,12 @@ class WindowsFileSystemSelfManagedActiveDirectory {
   factory WindowsFileSystemSelfManagedActiveDirectory.fromMap(Map<String, dynamic> map) {
     return WindowsFileSystemSelfManagedActiveDirectory(
       dnsIps: ((map['dnsIps'] as List).cast<String>()).input(),
-      domainJoinServiceAccountSecret: map['domainJoinServiceAccountSecret'] == null ? null : (map['domainJoinServiceAccountSecret'] as String).input(),
+      domainJoinServiceAccountSecret: map['domainJoinServiceAccountSecret'] == null ? null : ((map['domainJoinServiceAccountSecret'] as String).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      fileSystemAdministratorsGroup: map['fileSystemAdministratorsGroup'] == null ? null : (map['fileSystemAdministratorsGroup'] as String).input(),
-      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : (map['organizationalUnitDistinguishedName'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      fileSystemAdministratorsGroup: map['fileSystemAdministratorsGroup'] == null ? null : ((map['fileSystemAdministratorsGroup'] as String).input()).input(),
+      organizationalUnitDistinguishedName: map['organizationalUnitDistinguishedName'] == null ? null : ((map['organizationalUnitDistinguishedName'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class AgentPoolSecurityProfileResponse {
 
   factory AgentPoolSecurityProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolSecurityProfileResponse(
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
-      enableVTPM: map['enableVTPM'] == null ? null : (map['enableVTPM'] as bool).input(),
-      sshAccess: map['sshAccess'] == null ? null : (map['sshAccess'] as String).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
+      enableVTPM: map['enableVTPM'] == null ? null : (map['enableVTPM']! as bool).input(),
+      sshAccess: map['sshAccess'] == null ? null : (map['sshAccess']! as String).input(),
     );
   }
 }

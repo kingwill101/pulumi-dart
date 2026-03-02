@@ -21,7 +21,7 @@ class PscConfig {
 
   factory PscConfig.fromMap(Map<String, dynamic> map) {
     return PscConfig(
-      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled'] as bool).input(),
+      pscEnabled: map['pscEnabled'] == null ? null : (map['pscEnabled']! as bool).input(),
     );
   }
 }

@@ -77,18 +77,18 @@ class DataRepositoryAssociationState {
 
   factory DataRepositoryAssociationState.fromMap(Map<String, dynamic> map) {
     return DataRepositoryAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      batchImportMetaDataOnCreate: map['batchImportMetaDataOnCreate'] == null ? null : (map['batchImportMetaDataOnCreate'] as bool).input(),
-      dataRepositoryPath: map['dataRepositoryPath'] == null ? null : (map['dataRepositoryPath'] as String).input(),
-      deleteDataInFilesystem: map['deleteDataInFilesystem'] == null ? null : (map['deleteDataInFilesystem'] as bool).input(),
-      fileSystemId: map['fileSystemId'] == null ? null : (map['fileSystemId'] as String).input(),
-      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath'] as String).input(),
-      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : (map['importedFileChunkSize'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3: map['s3'] == null ? null : (DataRepositoryAssociationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      batchImportMetaDataOnCreate: map['batchImportMetaDataOnCreate'] == null ? null : ((map['batchImportMetaDataOnCreate'] as bool).input()).input(),
+      dataRepositoryPath: map['dataRepositoryPath'] == null ? null : ((map['dataRepositoryPath'] as String).input()).input(),
+      deleteDataInFilesystem: map['deleteDataInFilesystem'] == null ? null : ((map['deleteDataInFilesystem'] as bool).input()).input(),
+      fileSystemId: map['fileSystemId'] == null ? null : ((map['fileSystemId'] as String).input()).input(),
+      fileSystemPath: map['fileSystemPath'] == null ? null : ((map['fileSystemPath'] as String).input()).input(),
+      importedFileChunkSize: map['importedFileChunkSize'] == null ? null : ((map['importedFileChunkSize'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3: map['s3'] == null ? null : ((DataRepositoryAssociationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

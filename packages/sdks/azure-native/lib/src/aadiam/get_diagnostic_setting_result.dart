@@ -68,15 +68,15 @@ class GetDiagnosticSettingResult {
   factory GetDiagnosticSettingResult.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticSettingResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId'] as String,
-      eventHubName: map['eventHubName'] == null ? null : map['eventHubName'] as String,
+      eventHubAuthorizationRuleId: map['eventHubAuthorizationRuleId'] == null ? null : map['eventHubAuthorizationRuleId']! as String,
+      eventHubName: map['eventHubName'] == null ? null : map['eventHubName']! as String,
       id: map['id'] as String,
-      logs: map['logs'] == null ? null : pulumi.Input.decodeList<LogSettingsResponse>(map['logs'], (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      logs: map['logs'] == null ? null : pulumi.Input.decodeList<LogSettingsResponse>(map['logs']!, (value) => LogSettingsResponse.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId'] as String,
-      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId'] as String,
+      serviceBusRuleId: map['serviceBusRuleId'] == null ? null : map['serviceBusRuleId']! as String,
+      storageAccountId: map['storageAccountId'] == null ? null : map['storageAccountId']! as String,
       type: map['type'] as String,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'] as String,
+      workspaceId: map['workspaceId'] == null ? null : map['workspaceId']! as String,
     );
   }
 }

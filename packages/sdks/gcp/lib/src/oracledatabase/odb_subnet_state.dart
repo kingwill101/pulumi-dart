@@ -96,19 +96,19 @@ class OdbSubnetState {
 
   factory OdbSubnetState.fromMap(Map<String, dynamic> map) {
     return OdbSubnetState(
-      cidrRange: map['cidrRange'] == null ? null : (map['cidrRange'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      odbSubnetId: map['odbSubnetId'] == null ? null : (map['odbSubnetId'] as String).input(),
-      odbnetwork: map['odbnetwork'] == null ? null : (map['odbnetwork'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      cidrRange: map['cidrRange'] == null ? null : (map['cidrRange']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      odbSubnetId: map['odbSubnetId'] == null ? null : (map['odbSubnetId']! as String).input(),
+      odbnetwork: map['odbnetwork'] == null ? null : (map['odbnetwork']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class FunctionType {
 
   factory FunctionType.fromMap(Map<String, dynamic> map) {
     return FunctionType(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (AggregateFunctionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (AggregateFunctionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

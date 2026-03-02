@@ -31,9 +31,9 @@ class SmartIdentityProviderApplication {
 
   factory SmartIdentityProviderApplication.fromMap(Map<String, dynamic> map) {
     return SmartIdentityProviderApplication(
-      allowedDataActions: map['allowedDataActions'] == null ? null : ((map['allowedDataActions'] as List).cast<String>()).input(),
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
+      allowedDataActions: map['allowedDataActions'] == null ? null : ((map['allowedDataActions']! as List).cast<String>()).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
     );
   }
 }

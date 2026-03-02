@@ -52,11 +52,11 @@ class TagTemplateArgs {
 
   factory TagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       fields: (pulumi.Input.decodeList<TagTemplateField>(map['fields'], (value) => TagTemplateField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       tagTemplateId: (map['tagTemplateId'] as String).input(),
     );
   }

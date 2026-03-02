@@ -21,7 +21,7 @@ class SnapshotOptionsResponse {
 
   factory SnapshotOptionsResponse.fromMap(Map<String, dynamic> map) {
     return SnapshotOptionsResponse(
-      automatedSnapshotStartHour: map['automatedSnapshotStartHour'] == null ? null : (map['automatedSnapshotStartHour'] as int).input(),
+      automatedSnapshotStartHour: map['automatedSnapshotStartHour'] == null ? null : (map['automatedSnapshotStartHour']! as int).input(),
     );
   }
 }

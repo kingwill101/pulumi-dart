@@ -30,9 +30,9 @@ class TaskNotebookInfrastructureSpecVpcNetwork {
 
   factory TaskNotebookInfrastructureSpecVpcNetwork.fromMap(Map<String, dynamic> map) {
     return TaskNotebookInfrastructureSpecVpcNetwork(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkTags: map['networkTags'] == null ? null : ((map['networkTags'] as List).cast<String>()).input(),
-      subNetwork: map['subNetwork'] == null ? null : (map['subNetwork'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkTags: map['networkTags'] == null ? null : ((map['networkTags']! as List).cast<String>()).input(),
+      subNetwork: map['subNetwork'] == null ? null : (map['subNetwork']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class SlsGroupState {
 
   factory SlsGroupState.fromMap(Map<String, dynamic> map) {
     return SlsGroupState(
-      slsGroupConfigs: map['slsGroupConfigs'] == null ? null : (pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => SlsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slsGroupDescription: map['slsGroupDescription'] == null ? null : (map['slsGroupDescription'] as String).input(),
-      slsGroupName: map['slsGroupName'] == null ? null : (map['slsGroupName'] as String).input(),
+      slsGroupConfigs: map['slsGroupConfigs'] == null ? null : (pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(map['slsGroupConfigs']!, (value) => SlsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slsGroupDescription: map['slsGroupDescription'] == null ? null : (map['slsGroupDescription']! as String).input(),
+      slsGroupName: map['slsGroupName'] == null ? null : (map['slsGroupName']! as String).input(),
     );
   }
 }

@@ -87,20 +87,20 @@ class GetDiagnosticResult {
 
   factory GetDiagnosticResult.fromMap(Map<String, dynamic> map) {
     return GetDiagnosticResult(
-      alwaysLog: map['alwaysLog'] == null ? null : map['alwaysLog'] as String,
+      alwaysLog: map['alwaysLog'] == null ? null : map['alwaysLog']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      backend: map['backend'] == null ? null : PipelineDiagnosticSettingsResponse.fromMap((map['backend'] as Map).cast<String, dynamic>()),
-      frontend: map['frontend'] == null ? null : PipelineDiagnosticSettingsResponse.fromMap((map['frontend'] as Map).cast<String, dynamic>()),
-      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : map['httpCorrelationProtocol'] as String,
+      backend: map['backend'] == null ? null : PipelineDiagnosticSettingsResponse.fromMap((map['backend']! as Map).cast<String, dynamic>()),
+      frontend: map['frontend'] == null ? null : PipelineDiagnosticSettingsResponse.fromMap((map['frontend']! as Map).cast<String, dynamic>()),
+      httpCorrelationProtocol: map['httpCorrelationProtocol'] == null ? null : map['httpCorrelationProtocol']! as String,
       id: map['id'] as String,
-      logClientIp: map['logClientIp'] == null ? null : map['logClientIp'] as bool,
+      logClientIp: map['logClientIp'] == null ? null : map['logClientIp']! as bool,
       loggerId: map['loggerId'] as String,
-      metrics: map['metrics'] == null ? null : map['metrics'] as bool,
+      metrics: map['metrics'] == null ? null : map['metrics']! as bool,
       name: map['name'] as String,
-      operationNameFormat: map['operationNameFormat'] == null ? null : map['operationNameFormat'] as String,
-      sampling: map['sampling'] == null ? null : SamplingSettingsResponse.fromMap((map['sampling'] as Map).cast<String, dynamic>()),
+      operationNameFormat: map['operationNameFormat'] == null ? null : map['operationNameFormat']! as String,
+      sampling: map['sampling'] == null ? null : SamplingSettingsResponse.fromMap((map['sampling']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      verbosity: map['verbosity'] == null ? null : map['verbosity'] as String,
+      verbosity: map['verbosity'] == null ? null : map['verbosity']! as String,
     );
   }
 }

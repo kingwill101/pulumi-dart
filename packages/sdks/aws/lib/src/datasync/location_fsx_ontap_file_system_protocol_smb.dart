@@ -36,8 +36,8 @@ class LocationFsxOntapFileSystemProtocolSmb {
 
   factory LocationFsxOntapFileSystemProtocolSmb.fromMap(Map<String, dynamic> map) {
     return LocationFsxOntapFileSystemProtocolSmb(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      mountOptions: (LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>())).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      mountOptions: (LocationFsxOntapFileSystemProtocolSmbMountOptions.fromMap((map['mountOptions']! as Map).cast<String, dynamic>())).input(),
       password: (map['password'] as String).input(),
       user: (map['user'] as String).input(),
     );

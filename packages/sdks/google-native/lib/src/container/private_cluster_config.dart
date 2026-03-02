@@ -42,11 +42,11 @@ class PrivateClusterConfig {
 
   factory PrivateClusterConfig.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfig(
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
-      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes'] as bool).input(),
-      masterGlobalAccessConfig: map['masterGlobalAccessConfig'] == null ? null : (PrivateClusterMasterGlobalAccessConfig.fromMap((map['masterGlobalAccessConfig'] as Map).cast<String, dynamic>())).input(),
-      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock'] as String).input(),
-      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] == null ? null : (map['privateEndpointSubnetwork'] as String).input(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint']! as bool).input(),
+      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : (map['enablePrivateNodes']! as bool).input(),
+      masterGlobalAccessConfig: map['masterGlobalAccessConfig'] == null ? null : (PrivateClusterMasterGlobalAccessConfig.fromMap((map['masterGlobalAccessConfig']! as Map).cast<String, dynamic>())).input(),
+      masterIpv4CidrBlock: map['masterIpv4CidrBlock'] == null ? null : (map['masterIpv4CidrBlock']! as String).input(),
+      privateEndpointSubnetwork: map['privateEndpointSubnetwork'] == null ? null : (map['privateEndpointSubnetwork']! as String).input(),
     );
   }
 }

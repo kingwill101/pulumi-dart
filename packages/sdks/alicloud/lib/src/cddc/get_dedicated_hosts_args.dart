@@ -70,16 +70,16 @@ class GetDedicatedHostsArgs {
 
   factory GetDedicatedHostsArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsArgs(
-      allocationStatus: map['allocationStatus'] == null ? null : (map['allocationStatus'] as String).input(),
+      allocationStatus: map['allocationStatus'] == null ? null : (map['allocationStatus']! as String).input(),
       dedicatedHostGroupId: (map['dedicatedHostGroupId'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      hostType: map['hostType'] == null ? null : (map['hostType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      orderId: map['orderId'] == null ? null : (map['orderId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      hostType: map['hostType'] == null ? null : (map['hostType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      orderId: map['orderId'] == null ? null : (map['orderId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

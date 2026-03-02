@@ -68,15 +68,15 @@ class TableReplica {
 
   factory TableReplica.fromMap(Map<String, dynamic> map) {
     return TableReplica(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      consistencyMode: map['consistencyMode'] == null ? null : (map['consistencyMode'] as String).input(),
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : (map['pointInTimeRecovery'] as bool).input(),
-      propagateTags: map['propagateTags'] == null ? null : (map['propagateTags'] as bool).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      consistencyMode: map['consistencyMode'] == null ? null : ((map['consistencyMode'] as String).input()).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : ((map['deletionProtectionEnabled'] as bool).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : ((map['pointInTimeRecovery'] as bool).input()).input(),
+      propagateTags: map['propagateTags'] == null ? null : ((map['propagateTags'] as bool).input()).input(),
       regionName: (map['regionName'] as String).input(),
-      streamArn: map['streamArn'] == null ? null : (map['streamArn'] as String).input(),
-      streamLabel: map['streamLabel'] == null ? null : (map['streamLabel'] as String).input(),
+      streamArn: map['streamArn'] == null ? null : ((map['streamArn'] as String).input()).input(),
+      streamLabel: map['streamLabel'] == null ? null : ((map['streamLabel'] as String).input()).input(),
     );
   }
 }

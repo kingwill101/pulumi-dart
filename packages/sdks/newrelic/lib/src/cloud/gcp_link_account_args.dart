@@ -36,8 +36,8 @@ class GcpLinkAccountArgs {
 
   factory GcpLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return GcpLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       projectId: (map['projectId'] as String).input(),
     );
   }

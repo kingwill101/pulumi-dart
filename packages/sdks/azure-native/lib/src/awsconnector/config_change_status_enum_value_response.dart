@@ -21,7 +21,7 @@ class ConfigChangeStatusEnumValueResponse {
 
   factory ConfigChangeStatusEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return ConfigChangeStatusEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

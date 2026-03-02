@@ -32,9 +32,9 @@ class PrivateDnsNameOptionsResponse {
 
   factory PrivateDnsNameOptionsResponse.fromMap(Map<String, dynamic> map) {
     return PrivateDnsNameOptionsResponse(
-      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord'] as bool).input(),
-      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord'] as bool).input(),
-      hostnameType: map['hostnameType'] == null ? null : (HostnameTypeEnumValue.fromMap((map['hostnameType'] as Map).cast<String, dynamic>())).input(),
+      enableResourceNameDnsAAAARecord: map['enableResourceNameDnsAAAARecord'] == null ? null : (map['enableResourceNameDnsAAAARecord']! as bool).input(),
+      enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] == null ? null : (map['enableResourceNameDnsARecord']! as bool).input(),
+      hostnameType: map['hostnameType'] == null ? null : (HostnameTypeEnumValue.fromMap((map['hostnameType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

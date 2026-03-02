@@ -51,12 +51,12 @@ class AllocationPolicy {
 
   factory AllocationPolicy.fromMap(Map<String, dynamic> map) {
     return AllocationPolicy(
-      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<InstancePolicyOrTemplate>(map['instances'], (value) => InstancePolicyOrTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (LocationPolicy.fromMap((map['location'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (NetworkPolicy.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      placement: map['placement'] == null ? null : (PlacementPolicy.fromMap((map['placement'] as Map).cast<String, dynamic>())).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>())).input(),
+      instances: map['instances'] == null ? null : (pulumi.Input.decodeList<InstancePolicyOrTemplate>(map['instances']!, (value) => InstancePolicyOrTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (LocationPolicy.fromMap((map['location']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (NetworkPolicy.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      placement: map['placement'] == null ? null : (PlacementPolicy.fromMap((map['placement']! as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (ServiceAccount.fromMap((map['serviceAccount']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

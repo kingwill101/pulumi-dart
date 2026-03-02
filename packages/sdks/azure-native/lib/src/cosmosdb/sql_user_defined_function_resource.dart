@@ -26,7 +26,7 @@ class SqlUserDefinedFunctionResource {
 
   factory SqlUserDefinedFunctionResource.fromMap(Map<String, dynamic> map) {
     return SqlUserDefinedFunctionResource(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
       id: (map['id'] as String).input(),
     );
   }

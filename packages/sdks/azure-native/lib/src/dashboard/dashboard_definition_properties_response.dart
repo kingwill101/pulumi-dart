@@ -27,7 +27,7 @@ class DashboardDefinitionPropertiesResponse {
   factory DashboardDefinitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DashboardDefinitionPropertiesResponse(
       provisioningState: (map['provisioningState'] as String).input(),
-      serializedData: map['serializedData'] == null ? null : (map['serializedData'] as String).input(),
+      serializedData: map['serializedData'] == null ? null : (map['serializedData']! as String).input(),
     );
   }
 }

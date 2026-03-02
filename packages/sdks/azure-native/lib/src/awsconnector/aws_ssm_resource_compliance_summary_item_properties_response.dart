@@ -61,14 +61,14 @@ class AwsSsmResourceComplianceSummaryItemPropertiesResponse {
 
   factory AwsSsmResourceComplianceSummaryItemPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSsmResourceComplianceSummaryItemPropertiesResponse(
-      complianceType: map['complianceType'] == null ? null : (map['complianceType'] as String).input(),
-      compliantSummary: map['compliantSummary'] == null ? null : (CompliantSummaryResponse.fromMap((map['compliantSummary'] as Map).cast<String, dynamic>())).input(),
-      executionSummary: map['executionSummary'] == null ? null : (ComplianceExecutionSummaryResponse.fromMap((map['executionSummary'] as Map).cast<String, dynamic>())).input(),
-      nonCompliantSummary: map['nonCompliantSummary'] == null ? null : (NonCompliantSummaryResponse.fromMap((map['nonCompliantSummary'] as Map).cast<String, dynamic>())).input(),
-      overallSeverity: map['overallSeverity'] == null ? null : (ComplianceSeverityEnumValueResponse.fromMap((map['overallSeverity'] as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (ComplianceStatusEnumValueResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
+      complianceType: map['complianceType'] == null ? null : (map['complianceType']! as String).input(),
+      compliantSummary: map['compliantSummary'] == null ? null : (CompliantSummaryResponse.fromMap((map['compliantSummary']! as Map).cast<String, dynamic>())).input(),
+      executionSummary: map['executionSummary'] == null ? null : (ComplianceExecutionSummaryResponse.fromMap((map['executionSummary']! as Map).cast<String, dynamic>())).input(),
+      nonCompliantSummary: map['nonCompliantSummary'] == null ? null : (NonCompliantSummaryResponse.fromMap((map['nonCompliantSummary']! as Map).cast<String, dynamic>())).input(),
+      overallSeverity: map['overallSeverity'] == null ? null : (ComplianceSeverityEnumValueResponse.fromMap((map['overallSeverity']! as Map).cast<String, dynamic>())).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      status: map['status'] == null ? null : (ComplianceStatusEnumValueResponse.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

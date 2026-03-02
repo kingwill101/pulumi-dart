@@ -43,12 +43,12 @@ class SourceIamMemberState {
 
   factory SourceIamMemberState.fromMap(Map<String, dynamic> map) {
     return SourceIamMemberState(
-      condition: map['condition'] == null ? null : (SourceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      condition: map['condition'] == null ? null : (SourceIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

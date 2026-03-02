@@ -52,13 +52,13 @@ class HyperVReplicaAzurePolicyDetailsResponse {
 
   factory HyperVReplicaAzurePolicyDetailsResponse.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaAzurePolicyDetailsResponse(
-      activeStorageAccountId: map['activeStorageAccountId'] == null ? null : (map['activeStorageAccountId'] as String).input(),
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours'] as int).input(),
-      encryption: map['encryption'] == null ? null : (map['encryption'] as String).input(),
+      activeStorageAccountId: map['activeStorageAccountId'] == null ? null : (map['activeStorageAccountId']! as String).input(),
+      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours']! as int).input(),
+      encryption: map['encryption'] == null ? null : (map['encryption']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime'] as String).input(),
-      recoveryPointHistoryDurationInHours: map['recoveryPointHistoryDurationInHours'] == null ? null : (map['recoveryPointHistoryDurationInHours'] as int).input(),
-      replicationInterval: map['replicationInterval'] == null ? null : (map['replicationInterval'] as int).input(),
+      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime']! as String).input(),
+      recoveryPointHistoryDurationInHours: map['recoveryPointHistoryDurationInHours'] == null ? null : (map['recoveryPointHistoryDurationInHours']! as int).input(),
+      replicationInterval: map['replicationInterval'] == null ? null : (map['replicationInterval']! as int).input(),
     );
   }
 }

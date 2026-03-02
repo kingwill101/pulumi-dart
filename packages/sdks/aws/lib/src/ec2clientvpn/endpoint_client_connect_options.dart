@@ -25,8 +25,8 @@ class EndpointClientConnectOptions {
 
   factory EndpointClientConnectOptions.fromMap(Map<String, dynamic> map) {
     return EndpointClientConnectOptions(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      lambdaFunctionArn: map['lambdaFunctionArn'] == null ? null : (map['lambdaFunctionArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      lambdaFunctionArn: map['lambdaFunctionArn'] == null ? null : ((map['lambdaFunctionArn'] as String).input()).input(),
     );
   }
 }

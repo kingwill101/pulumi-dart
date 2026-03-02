@@ -79,18 +79,18 @@ class WorkloadState {
 
   factory WorkloadState.fromMap(Map<String, dynamic> map) {
     return WorkloadState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      compositeEntitySearchQuery: map['compositeEntitySearchQuery'] == null ? null : (map['compositeEntitySearchQuery'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      entityGuids: map['entityGuids'] == null ? null : ((map['entityGuids'] as List).cast<String>()).input(),
-      entitySearchQueries: map['entitySearchQueries'] == null ? null : (pulumi.Input.decodeList<WorkloadEntitySearchQuery>(map['entitySearchQueries'], (value) => WorkloadEntitySearchQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permalink: map['permalink'] == null ? null : (map['permalink'] as String).input(),
-      scopeAccountIds: map['scopeAccountIds'] == null ? null : ((map['scopeAccountIds'] as List).cast<String>()).input(),
-      statusConfigAutomatic: map['statusConfigAutomatic'] == null ? null : (WorkloadStatusConfigAutomatic.fromMap((map['statusConfigAutomatic'] as Map).cast<String, dynamic>())).input(),
-      statusConfigStatic: map['statusConfigStatic'] == null ? null : (WorkloadStatusConfigStatic.fromMap((map['statusConfigStatic'] as Map).cast<String, dynamic>())).input(),
-      workloadId: map['workloadId'] == null ? null : (map['workloadId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      compositeEntitySearchQuery: map['compositeEntitySearchQuery'] == null ? null : (map['compositeEntitySearchQuery']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      entityGuids: map['entityGuids'] == null ? null : ((map['entityGuids']! as List).cast<String>()).input(),
+      entitySearchQueries: map['entitySearchQueries'] == null ? null : (pulumi.Input.decodeList<WorkloadEntitySearchQuery>(map['entitySearchQueries']!, (value) => WorkloadEntitySearchQuery.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      permalink: map['permalink'] == null ? null : (map['permalink']! as String).input(),
+      scopeAccountIds: map['scopeAccountIds'] == null ? null : ((map['scopeAccountIds']! as List).cast<String>()).input(),
+      statusConfigAutomatic: map['statusConfigAutomatic'] == null ? null : (WorkloadStatusConfigAutomatic.fromMap((map['statusConfigAutomatic']! as Map).cast<String, dynamic>())).input(),
+      statusConfigStatic: map['statusConfigStatic'] == null ? null : (WorkloadStatusConfigStatic.fromMap((map['statusConfigStatic']! as Map).cast<String, dynamic>())).input(),
+      workloadId: map['workloadId'] == null ? null : (map['workloadId']! as String).input(),
     );
   }
 }

@@ -37,8 +37,8 @@ class GetManagedFolderIamPolicyArgs {
     return GetManagedFolderIamPolicyArgs(
       bucket: (map['bucket'] as String).input(),
       managedFolder: (map['managedFolder'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

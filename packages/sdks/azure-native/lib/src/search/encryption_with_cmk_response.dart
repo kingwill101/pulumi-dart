@@ -27,7 +27,7 @@ class EncryptionWithCmkResponse {
   factory EncryptionWithCmkResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionWithCmkResponse(
       encryptionComplianceStatus: (map['encryptionComplianceStatus'] as String).input(),
-      enforcement: map['enforcement'] == null ? null : (map['enforcement'] as String).input(),
+      enforcement: map['enforcement'] == null ? null : (map['enforcement']! as String).input(),
     );
   }
 }

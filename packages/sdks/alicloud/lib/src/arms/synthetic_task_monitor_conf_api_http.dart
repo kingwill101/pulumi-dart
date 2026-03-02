@@ -46,12 +46,12 @@ class SyntheticTaskMonitorConfApiHttp {
 
   factory SyntheticTaskMonitorConfApiHttp.fromMap(Map<String, dynamic> map) {
     return SyntheticTaskMonitorConfApiHttp(
-      connectTimeout: map['connectTimeout'] == null ? null : (map['connectTimeout'] as int).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      requestBody: map['requestBody'] == null ? null : (SyntheticTaskMonitorConfApiHttpRequestBody.fromMap((map['requestBody'] as Map).cast<String, dynamic>())).input(),
-      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders'] as Map).cast<String, String>()).input(),
+      connectTimeout: map['connectTimeout'] == null ? null : (map['connectTimeout']! as int).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      requestBody: map['requestBody'] == null ? null : (SyntheticTaskMonitorConfApiHttpRequestBody.fromMap((map['requestBody']! as Map).cast<String, dynamic>())).input(),
+      requestHeaders: map['requestHeaders'] == null ? null : ((map['requestHeaders']! as Map).cast<String, String>()).input(),
       targetUrl: (map['targetUrl'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

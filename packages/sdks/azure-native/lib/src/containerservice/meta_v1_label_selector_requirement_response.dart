@@ -33,7 +33,7 @@ class MetaV1LabelSelectorRequirementResponse {
     return MetaV1LabelSelectorRequirementResponse(
       key: (map['key'] as String).input(),
       operator: (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

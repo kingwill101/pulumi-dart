@@ -72,16 +72,16 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      addOn: map['addOn'] == null ? null : (InstanceAddOn.fromMap((map['addOn'] as Map).cast<String, dynamic>())).input(),
+      addOn: map['addOn'] == null ? null : ((InstanceAddOn.fromMap((map['addOn']! as Map).cast<String, dynamic>())).input()).input(),
       availabilityZone: (map['availabilityZone'] as String).input(),
       blueprintId: (map['blueprintId'] as String).input(),
       bundleId: (map['bundleId'] as String).input(),
-      ipAddressType: map['ipAddressType'] == null ? null : (map['ipAddressType'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userData: map['userData'] == null ? null : (map['userData'] as String).input(),
+      ipAddressType: map['ipAddressType'] == null ? null : ((map['ipAddressType'] as String).input()).input(),
+      keyPairName: map['keyPairName'] == null ? null : ((map['keyPairName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      userData: map['userData'] == null ? null : ((map['userData'] as String).input()).input(),
     );
   }
 }

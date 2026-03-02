@@ -26,8 +26,8 @@ class FirewallRuleProperties {
 
   factory FirewallRuleProperties.fromMap(Map<String, dynamic> map) {
     return FirewallRuleProperties(
-      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
-      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress']! as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress']! as String).input(),
     );
   }
 }

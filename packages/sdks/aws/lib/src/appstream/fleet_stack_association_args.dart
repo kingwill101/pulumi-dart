@@ -35,7 +35,7 @@ class FleetStackAssociationArgs {
   factory FleetStackAssociationArgs.fromMap(Map<String, dynamic> map) {
     return FleetStackAssociationArgs(
       fleetName: (map['fleetName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       stackName: (map['stackName'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class PostgresqlClusterServer {
 
   factory PostgresqlClusterServer.fromMap(Map<String, dynamic> map) {
     return PostgresqlClusterServer(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

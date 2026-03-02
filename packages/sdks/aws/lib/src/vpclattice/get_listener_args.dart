@@ -40,9 +40,9 @@ class GetListenerArgs {
   factory GetListenerArgs.fromMap(Map<String, dynamic> map) {
     return GetListenerArgs(
       listenerIdentifier: (map['listenerIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceIdentifier: (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

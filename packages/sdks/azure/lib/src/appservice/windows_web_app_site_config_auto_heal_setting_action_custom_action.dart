@@ -26,7 +26,7 @@ class WindowsWebAppSiteConfigAutoHealSettingActionCustomAction {
   factory WindowsWebAppSiteConfigAutoHealSettingActionCustomAction.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingActionCustomAction(
       executable: (map['executable'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
     );
   }
 }

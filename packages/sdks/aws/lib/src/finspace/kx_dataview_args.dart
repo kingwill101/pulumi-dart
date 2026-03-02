@@ -88,17 +88,17 @@ class KxDataviewArgs {
   factory KxDataviewArgs.fromMap(Map<String, dynamic> map) {
     return KxDataviewArgs(
       autoUpdate: (map['autoUpdate'] as bool).input(),
-      availabilityZoneId: map['availabilityZoneId'] == null ? null : (map['availabilityZoneId'] as String).input(),
+      availabilityZoneId: map['availabilityZoneId'] == null ? null : ((map['availabilityZoneId'] as String).input()).input(),
       azMode: (map['azMode'] as String).input(),
-      changesetId: map['changesetId'] == null ? null : (map['changesetId'] as String).input(),
+      changesetId: map['changesetId'] == null ? null : ((map['changesetId'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       environmentId: (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readWrite: map['readWrite'] == null ? null : (map['readWrite'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      segmentConfigurations: map['segmentConfigurations'] == null ? null : (pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(map['segmentConfigurations'], (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      readWrite: map['readWrite'] == null ? null : ((map['readWrite'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      segmentConfigurations: map['segmentConfigurations'] == null ? null : ((pulumi.Input.decodeList<KxDataviewSegmentConfiguration>(map['segmentConfigurations']!, (value) => KxDataviewSegmentConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

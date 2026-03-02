@@ -43,11 +43,11 @@ class TrafficQosState {
 
   factory TrafficQosState.fromMap(Map<String, dynamic> map) {
     return TrafficQosState(
-      qosDescription: map['qosDescription'] == null ? null : (map['qosDescription'] as String).input(),
-      qosName: map['qosName'] == null ? null : (map['qosName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      qosDescription: map['qosDescription'] == null ? null : (map['qosDescription']! as String).input(),
+      qosName: map['qosName'] == null ? null : (map['qosName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

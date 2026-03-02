@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 
   factory GooglePrivacyDlpV2ReplaceValueConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ReplaceValueConfig(
-      newValue: map['newValue'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['newValue'] as Map).cast<String, dynamic>())).input(),
+      newValue: map['newValue'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['newValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

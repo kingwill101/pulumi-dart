@@ -72,15 +72,15 @@ class VirtualMachineInstanceArgs {
 
   factory VirtualMachineInstanceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile'] as Map).cast<String, dynamic>())).input(),
-      infrastructureProfile: map['infrastructureProfile'] == null ? null : (InfrastructureProfile.fromMap((map['infrastructureProfile'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (OsProfileForVMInstance.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      placementProfile: map['placementProfile'] == null ? null : (PlacementProfile.fromMap((map['placementProfile'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      hardwareProfile: map['hardwareProfile'] == null ? null : (HardwareProfile.fromMap((map['hardwareProfile']! as Map).cast<String, dynamic>())).input(),
+      infrastructureProfile: map['infrastructureProfile'] == null ? null : (InfrastructureProfile.fromMap((map['infrastructureProfile']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (OsProfileForVMInstance.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      placementProfile: map['placementProfile'] == null ? null : (PlacementProfile.fromMap((map['placementProfile']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
+      securityProfile: map['securityProfile'] == null ? null : (SecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

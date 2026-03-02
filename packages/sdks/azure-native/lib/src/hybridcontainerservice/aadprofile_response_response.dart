@@ -46,12 +46,12 @@ class AADProfileResponseResponse {
 
   factory AADProfileResponseResponse.fromMap(Map<String, dynamic> map) {
     return AADProfileResponseResponse(
-      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs'] as List).cast<String>()).input(),
-      clientAppID: map['clientAppID'] == null ? null : (map['clientAppID'] as String).input(),
-      enableAzureRbac: map['enableAzureRbac'] == null ? null : (map['enableAzureRbac'] as bool).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      serverAppID: map['serverAppID'] == null ? null : (map['serverAppID'] as String).input(),
-      tenantID: map['tenantID'] == null ? null : (map['tenantID'] as String).input(),
+      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs']! as List).cast<String>()).input(),
+      clientAppID: map['clientAppID'] == null ? null : (map['clientAppID']! as String).input(),
+      enableAzureRbac: map['enableAzureRbac'] == null ? null : (map['enableAzureRbac']! as bool).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      serverAppID: map['serverAppID'] == null ? null : (map['serverAppID']! as String).input(),
+      tenantID: map['tenantID'] == null ? null : (map['tenantID']! as String).input(),
     );
   }
 }

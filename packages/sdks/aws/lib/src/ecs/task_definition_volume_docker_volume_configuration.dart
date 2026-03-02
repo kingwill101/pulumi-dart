@@ -40,11 +40,11 @@ class TaskDefinitionVolumeDockerVolumeConfiguration {
 
   factory TaskDefinitionVolumeDockerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionVolumeDockerVolumeConfiguration(
-      autoprovision: map['autoprovision'] == null ? null : (map['autoprovision'] as bool).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      driverOpts: map['driverOpts'] == null ? null : ((map['driverOpts'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      autoprovision: map['autoprovision'] == null ? null : ((map['autoprovision'] as bool).input()).input(),
+      driver: map['driver'] == null ? null : ((map['driver'] as String).input()).input(),
+      driverOpts: map['driverOpts'] == null ? null : (((map['driverOpts'] as Map).cast<String, String>()).input()).input(),
+      labels: map['labels'] == null ? null : (((map['labels'] as Map).cast<String, String>()).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
     );
   }
 }

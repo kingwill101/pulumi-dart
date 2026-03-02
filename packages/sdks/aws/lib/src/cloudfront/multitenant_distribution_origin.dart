@@ -74,17 +74,17 @@ class MultitenantDistributionOrigin {
 
   factory MultitenantDistributionOrigin.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOrigin(
-      connectionAttempts: map['connectionAttempts'] == null ? null : (map['connectionAttempts'] as int).input(),
-      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout'] as int).input(),
-      customHeaders: map['customHeaders'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionOriginCustomHeader>(map['customHeaders'], (value) => MultitenantDistributionOriginCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customOriginConfigs: map['customOriginConfigs'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionOriginCustomOriginConfig>(map['customOriginConfigs'], (value) => MultitenantDistributionOriginCustomOriginConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectionAttempts: map['connectionAttempts'] == null ? null : ((map['connectionAttempts'] as int).input()).input(),
+      connectionTimeout: map['connectionTimeout'] == null ? null : ((map['connectionTimeout'] as int).input()).input(),
+      customHeaders: map['customHeaders'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionOriginCustomHeader>(map['customHeaders']!, (value) => MultitenantDistributionOriginCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      customOriginConfigs: map['customOriginConfigs'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionOriginCustomOriginConfig>(map['customOriginConfigs']!, (value) => MultitenantDistributionOriginCustomOriginConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       domainName: (map['domainName'] as String).input(),
       id: (map['id'] as String).input(),
-      originAccessControlId: map['originAccessControlId'] == null ? null : (map['originAccessControlId'] as String).input(),
-      originPath: map['originPath'] == null ? null : (map['originPath'] as String).input(),
-      originShields: map['originShields'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionOriginOriginShield>(map['originShields'], (value) => MultitenantDistributionOriginOriginShield.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      responseCompletionTimeout: map['responseCompletionTimeout'] == null ? null : (map['responseCompletionTimeout'] as int).input(),
-      vpcOriginConfigs: map['vpcOriginConfigs'] == null ? null : (pulumi.Input.decodeList<MultitenantDistributionOriginVpcOriginConfig>(map['vpcOriginConfigs'], (value) => MultitenantDistributionOriginVpcOriginConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      originAccessControlId: map['originAccessControlId'] == null ? null : ((map['originAccessControlId'] as String).input()).input(),
+      originPath: map['originPath'] == null ? null : ((map['originPath'] as String).input()).input(),
+      originShields: map['originShields'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionOriginOriginShield>(map['originShields']!, (value) => MultitenantDistributionOriginOriginShield.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      responseCompletionTimeout: map['responseCompletionTimeout'] == null ? null : ((map['responseCompletionTimeout'] as int).input()).input(),
+      vpcOriginConfigs: map['vpcOriginConfigs'] == null ? null : ((pulumi.Input.decodeList<MultitenantDistributionOriginVpcOriginConfig>(map['vpcOriginConfigs']!, (value) => MultitenantDistributionOriginVpcOriginConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

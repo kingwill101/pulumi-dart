@@ -31,7 +31,7 @@ class GetCustomModelsResult {
   factory GetCustomModelsResult.fromMap(Map<String, dynamic> map) {
     return GetCustomModelsResult(
       id: map['id'] as String,
-      modelSummaries: pulumi.Input.decodeList<GetCustomModelsModelSummary>(map['modelSummaries'], (value) => GetCustomModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())),
+      modelSummaries: pulumi.Input.decodeList<GetCustomModelsModelSummary>(map['modelSummaries']!, (value) => GetCustomModelsModelSummary.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

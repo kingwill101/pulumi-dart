@@ -27,8 +27,8 @@ class VirtualMachineConfigAgentInstanceViewResponse {
 
   factory VirtualMachineConfigAgentInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigAgentInstanceViewResponse(
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmConfigAgentVersion: map['vmConfigAgentVersion'] == null ? null : (map['vmConfigAgentVersion'] as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmConfigAgentVersion: map['vmConfigAgentVersion'] == null ? null : (map['vmConfigAgentVersion']! as String).input(),
     );
   }
 }

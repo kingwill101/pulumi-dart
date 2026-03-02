@@ -38,7 +38,7 @@ class ProxyProtocolPolicyArgs {
     return ProxyProtocolPolicyArgs(
       instancePorts: ((map['instancePorts'] as List).cast<String>()).input(),
       loadBalancer: (map['loadBalancer'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

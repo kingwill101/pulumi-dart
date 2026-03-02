@@ -19,7 +19,7 @@ class ProviderFeaturesApplicationInsights {
 
   factory ProviderFeaturesApplicationInsights.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesApplicationInsights(
-      disableGeneratedRule: map['disableGeneratedRule'] == null ? null : (map['disableGeneratedRule'] as bool).input(),
+      disableGeneratedRule: map['disableGeneratedRule'] == null ? null : (map['disableGeneratedRule']! as bool).input(),
     );
   }
 }

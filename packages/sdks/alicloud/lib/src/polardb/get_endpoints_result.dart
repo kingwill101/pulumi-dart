@@ -37,7 +37,7 @@ class GetEndpointsResult {
   factory GetEndpointsResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointsResult(
       dbClusterId: map['dbClusterId'] as String,
-      dbEndpointId: map['dbEndpointId'] == null ? null : map['dbEndpointId'] as String,
+      dbEndpointId: map['dbEndpointId'] == null ? null : map['dbEndpointId']! as String,
       endpoints: pulumi.Input.decodeList<GetEndpointsEndpoint>(map['endpoints'], (value) => GetEndpointsEndpoint.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
     );

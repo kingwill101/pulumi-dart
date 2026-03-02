@@ -20,7 +20,7 @@ class CustomRoutingEndpointGroupEndpointConfiguration {
 
   factory CustomRoutingEndpointGroupEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointGroupEndpointConfiguration(
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
+      endpointId: map['endpointId'] == null ? null : ((map['endpointId'] as String).input()).input(),
     );
   }
 }

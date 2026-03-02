@@ -26,8 +26,8 @@ class TlsProperties {
 
   factory TlsProperties.fromMap(Map<String, dynamic> map) {
     return TlsProperties(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      trustedCaCertificateConfigMapRef: map['trustedCaCertificateConfigMapRef'] == null ? null : (map['trustedCaCertificateConfigMapRef'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      trustedCaCertificateConfigMapRef: map['trustedCaCertificateConfigMapRef'] == null ? null : (map['trustedCaCertificateConfigMapRef']! as String).input(),
     );
   }
 }

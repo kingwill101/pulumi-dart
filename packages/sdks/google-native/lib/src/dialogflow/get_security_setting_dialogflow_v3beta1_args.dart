@@ -32,7 +32,7 @@ class GetSecuritySettingDialogflowV3beta1Args {
   factory GetSecuritySettingDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return GetSecuritySettingDialogflowV3beta1Args(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       securitySettingId: (map['securitySettingId'] as String).input(),
     );
   }

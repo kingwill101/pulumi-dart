@@ -24,8 +24,8 @@ class WafRuleConfigRateLimitCharacteristics {
 
   factory WafRuleConfigRateLimitCharacteristics.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimitCharacteristics(
-      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigRateLimitCharacteristicsCriteria>(map['criterias'], (value) => WafRuleConfigRateLimitCharacteristicsCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logic: map['logic'] == null ? null : (map['logic'] as String).input(),
+      criterias: map['criterias'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigRateLimitCharacteristicsCriteria>(map['criterias']!, (value) => WafRuleConfigRateLimitCharacteristicsCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logic: map['logic'] == null ? null : (map['logic']! as String).input(),
     );
   }
 }

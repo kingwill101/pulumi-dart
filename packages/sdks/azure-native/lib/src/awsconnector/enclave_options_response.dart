@@ -21,7 +21,7 @@ class EnclaveOptionsResponse {
 
   factory EnclaveOptionsResponse.fromMap(Map<String, dynamic> map) {
     return EnclaveOptionsResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

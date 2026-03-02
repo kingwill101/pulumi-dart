@@ -117,7 +117,7 @@ class GetAgentResult {
       arcResourceId: map['arcResourceId'] as String,
       arcVmUuid: map['arcVmUuid'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       errorDetails: AgentPropertiesErrorDetailsResponse.fromMap((map['errorDetails'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       lastStatusUpdate: map['lastStatusUpdate'] as String,
@@ -129,7 +129,7 @@ class GetAgentResult {
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       timeZone: map['timeZone'] as String,
       type: map['type'] as String,
-      uploadLimitSchedule: map['uploadLimitSchedule'] == null ? null : UploadLimitScheduleResponse.fromMap((map['uploadLimitSchedule'] as Map).cast<String, dynamic>()),
+      uploadLimitSchedule: map['uploadLimitSchedule'] == null ? null : UploadLimitScheduleResponse.fromMap((map['uploadLimitSchedule']! as Map).cast<String, dynamic>()),
       uptimeInSeconds: map['uptimeInSeconds'] as double,
     );
   }

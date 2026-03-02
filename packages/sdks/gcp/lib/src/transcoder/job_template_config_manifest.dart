@@ -31,9 +31,9 @@ class JobTemplateConfigManifest {
 
   factory JobTemplateConfigManifest.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigManifest(
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      muxStreams: map['muxStreams'] == null ? null : ((map['muxStreams'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      muxStreams: map['muxStreams'] == null ? null : ((map['muxStreams']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

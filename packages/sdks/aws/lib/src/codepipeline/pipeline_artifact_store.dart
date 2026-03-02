@@ -36,9 +36,9 @@ class PipelineArtifactStore {
 
   factory PipelineArtifactStore.fromMap(Map<String, dynamic> map) {
     return PipelineArtifactStore(
-      encryptionKey: map['encryptionKey'] == null ? null : (PipelineArtifactStoreEncryptionKey.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>())).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : ((PipelineArtifactStoreEncryptionKey.fromMap((map['encryptionKey']! as Map).cast<String, dynamic>())).input()).input(),
       location: (map['location'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

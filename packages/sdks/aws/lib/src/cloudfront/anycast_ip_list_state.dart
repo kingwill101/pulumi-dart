@@ -58,14 +58,14 @@ class AnycastIpListState {
 
   factory AnycastIpListState.fromMap(Map<String, dynamic> map) {
     return AnycastIpListState(
-      anycastIps: map['anycastIps'] == null ? null : ((map['anycastIps'] as List).cast<String>()).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      ipCount: map['ipCount'] == null ? null : (map['ipCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AnycastIpListTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      anycastIps: map['anycastIps'] == null ? null : (((map['anycastIps'] as List).cast<String>()).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      etag: map['etag'] == null ? null : ((map['etag'] as String).input()).input(),
+      ipCount: map['ipCount'] == null ? null : ((map['ipCount'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AnycastIpListTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

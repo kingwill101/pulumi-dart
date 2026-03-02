@@ -30,7 +30,7 @@ class LinkedOperationRuleResponse {
 
   factory LinkedOperationRuleResponse.fromMap(Map<String, dynamic> map) {
     return LinkedOperationRuleResponse(
-      dependsOnTypes: map['dependsOnTypes'] == null ? null : ((map['dependsOnTypes'] as List).cast<String>()).input(),
+      dependsOnTypes: map['dependsOnTypes'] == null ? null : ((map['dependsOnTypes']! as List).cast<String>()).input(),
       linkedAction: (map['linkedAction'] as String).input(),
       linkedOperation: (map['linkedOperation'] as String).input(),
     );

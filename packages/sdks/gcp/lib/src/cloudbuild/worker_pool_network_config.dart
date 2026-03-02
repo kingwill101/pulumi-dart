@@ -26,7 +26,7 @@ class WorkerPoolNetworkConfig {
   factory WorkerPoolNetworkConfig.fromMap(Map<String, dynamic> map) {
     return WorkerPoolNetworkConfig(
       peeredNetwork: (map['peeredNetwork'] as String).input(),
-      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange'] as String).input(),
+      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange']! as String).input(),
     );
   }
 }

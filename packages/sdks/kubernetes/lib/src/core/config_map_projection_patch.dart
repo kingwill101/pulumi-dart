@@ -34,9 +34,9 @@ class ConfigMapProjectionPatch {
 
   factory ConfigMapProjectionPatch.fromMap(Map<String, dynamic> map) {
     return ConfigMapProjectionPatch(
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPathPatch>(map['items'], (value) => KeyToPathPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<KeyToPathPatch>(map['items']!, (value) => KeyToPathPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

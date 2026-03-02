@@ -29,7 +29,7 @@ class LoadBalancerProfileResponse {
   factory LoadBalancerProfileResponse.fromMap(Map<String, dynamic> map) {
     return LoadBalancerProfileResponse(
       effectiveOutboundIps: (pulumi.Input.decodeList<EffectiveOutboundIPResponse>(map['effectiveOutboundIps'], (value) => EffectiveOutboundIPResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedOutboundIps: map['managedOutboundIps'] == null ? null : (ManagedOutboundIPsResponse.fromMap((map['managedOutboundIps'] as Map).cast<String, dynamic>())).input(),
+      managedOutboundIps: map['managedOutboundIps'] == null ? null : (ManagedOutboundIPsResponse.fromMap((map['managedOutboundIps']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

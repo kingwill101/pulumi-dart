@@ -36,7 +36,7 @@ class DockerImageResponse {
     return DockerImageResponse(
       dockerImageUri: (map['dockerImageUri'] as String).input(),
       dockerSpecificationType: (map['dockerSpecificationType'] as String).input(),
-      platform: map['platform'] == null ? null : (DockerImagePlatformResponse.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      platform: map['platform'] == null ? null : (DockerImagePlatformResponse.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

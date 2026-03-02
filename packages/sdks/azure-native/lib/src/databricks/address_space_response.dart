@@ -21,7 +21,7 @@ class AddressSpaceResponse {
 
   factory AddressSpaceResponse.fromMap(Map<String, dynamic> map) {
     return AddressSpaceResponse(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
     );
   }
 }

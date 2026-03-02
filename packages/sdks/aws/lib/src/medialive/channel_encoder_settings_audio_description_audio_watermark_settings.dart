@@ -20,7 +20,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettings(
-      nielsenWatermarksSettings: map['nielsenWatermarksSettings'] == null ? null : (ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings.fromMap((map['nielsenWatermarksSettings'] as Map).cast<String, dynamic>())).input(),
+      nielsenWatermarksSettings: map['nielsenWatermarksSettings'] == null ? null : ((ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings.fromMap((map['nielsenWatermarksSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

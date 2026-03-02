@@ -57,14 +57,14 @@ class OracleConnectionInfoResponse {
 
   factory OracleConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return OracleConnectionInfoResponse(
-      authentication: map['authentication'] == null ? null : (map['authentication'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']! as String).input(),
       dataSource: (map['dataSource'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
       type: (map['type'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

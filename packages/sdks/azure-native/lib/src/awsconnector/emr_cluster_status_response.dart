@@ -40,10 +40,10 @@ class EmrClusterStatusResponse {
 
   factory EmrClusterStatusResponse.fromMap(Map<String, dynamic> map) {
     return EmrClusterStatusResponse(
-      errorDetails: map['errorDetails'] == null ? null : (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails'], (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (ClusterStateEnumValueResponse.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
-      stateChangeReason: map['stateChangeReason'] == null ? null : (ClusterStateChangeReasonResponse.fromMap((map['stateChangeReason'] as Map).cast<String, dynamic>())).input(),
-      timeline: map['timeline'] == null ? null : (ClusterTimelineResponse.fromMap((map['timeline'] as Map).cast<String, dynamic>())).input(),
+      errorDetails: map['errorDetails'] == null ? null : (pulumi.Input.decodeList<ErrorDetailResponse>(map['errorDetails']!, (value) => ErrorDetailResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (ClusterStateEnumValueResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
+      stateChangeReason: map['stateChangeReason'] == null ? null : (ClusterStateChangeReasonResponse.fromMap((map['stateChangeReason']! as Map).cast<String, dynamic>())).input(),
+      timeline: map['timeline'] == null ? null : (ClusterTimelineResponse.fromMap((map['timeline']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class NetworkUtilizationAppengineV1beta {
 
   factory NetworkUtilizationAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return NetworkUtilizationAppengineV1beta(
-      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null ? null : (map['targetReceivedBytesPerSecond'] as int).input(),
-      targetReceivedPacketsPerSecond: map['targetReceivedPacketsPerSecond'] == null ? null : (map['targetReceivedPacketsPerSecond'] as int).input(),
-      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null ? null : (map['targetSentBytesPerSecond'] as int).input(),
-      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null ? null : (map['targetSentPacketsPerSecond'] as int).input(),
+      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null ? null : (map['targetReceivedBytesPerSecond']! as int).input(),
+      targetReceivedPacketsPerSecond: map['targetReceivedPacketsPerSecond'] == null ? null : (map['targetReceivedPacketsPerSecond']! as int).input(),
+      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null ? null : (map['targetSentBytesPerSecond']! as int).input(),
+      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null ? null : (map['targetSentPacketsPerSecond']! as int).input(),
     );
   }
 }

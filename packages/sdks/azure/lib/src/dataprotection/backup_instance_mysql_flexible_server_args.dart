@@ -45,8 +45,8 @@ class BackupInstanceMysqlFlexibleServerArgs {
   factory BackupInstanceMysqlFlexibleServerArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceMysqlFlexibleServerArgs(
       backupPolicyId: (map['backupPolicyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       serverId: (map['serverId'] as String).input(),
       vaultId: (map['vaultId'] as String).input(),
     );

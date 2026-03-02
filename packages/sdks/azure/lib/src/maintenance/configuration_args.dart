@@ -73,16 +73,16 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      inGuestUserPatchMode: map['inGuestUserPatchMode'] == null ? null : (map['inGuestUserPatchMode'] as String).input(),
-      installPatches: map['installPatches'] == null ? null : (ConfigurationInstallPatches.fromMap((map['installPatches'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      inGuestUserPatchMode: map['inGuestUserPatchMode'] == null ? null : (map['inGuestUserPatchMode']! as String).input(),
+      installPatches: map['installPatches'] == null ? null : (ConfigurationInstallPatches.fromMap((map['installPatches']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       scope: (map['scope'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
-      window: map['window'] == null ? null : (ConfigurationWindow.fromMap((map['window'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
+      window: map['window'] == null ? null : (ConfigurationWindow.fromMap((map['window']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

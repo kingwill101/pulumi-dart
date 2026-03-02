@@ -22,7 +22,7 @@ class FilterContainerV1beta1 {
 
   factory FilterContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return FilterContainerV1beta1(
-      eventType: map['eventType'] == null ? null : (pulumi.Input.decodeList<FilterEventTypeItemContainerV1beta1>(map['eventType'], (value) => FilterEventTypeItemContainerV1beta1.fromValue(value as String))).input(),
+      eventType: map['eventType'] == null ? null : (pulumi.Input.decodeList<FilterEventTypeItemContainerV1beta1>(map['eventType']!, (value) => FilterEventTypeItemContainerV1beta1.fromValue(value as String))).input(),
     );
   }
 }

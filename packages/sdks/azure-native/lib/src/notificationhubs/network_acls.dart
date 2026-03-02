@@ -28,8 +28,8 @@ class NetworkAcls {
 
   factory NetworkAcls.fromMap(Map<String, dynamic> map) {
     return NetworkAcls(
-      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IpRule>(map['ipRules'], (value) => IpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicNetworkRule: map['publicNetworkRule'] == null ? null : (PublicInternetAuthorizationRule.fromMap((map['publicNetworkRule'] as Map).cast<String, dynamic>())).input(),
+      ipRules: map['ipRules'] == null ? null : (pulumi.Input.decodeList<IpRule>(map['ipRules']!, (value) => IpRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicNetworkRule: map['publicNetworkRule'] == null ? null : (PublicInternetAuthorizationRule.fromMap((map['publicNetworkRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -49,12 +49,12 @@ class WorkloadNetworkVMGroupArgs {
 
   factory WorkloadNetworkVMGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkVMGroupArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
-      vmGroupId: map['vmGroupId'] == null ? null : (map['vmGroupId'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
+      vmGroupId: map['vmGroupId'] == null ? null : (map['vmGroupId']! as String).input(),
     );
   }
 }

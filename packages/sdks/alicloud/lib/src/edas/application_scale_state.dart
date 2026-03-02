@@ -41,11 +41,11 @@ class ApplicationScaleState {
 
   factory ApplicationScaleState.fromMap(Map<String, dynamic> map) {
     return ApplicationScaleState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      deployGroup: map['deployGroup'] == null ? null : (map['deployGroup'] as String).input(),
-      eccInfo: map['eccInfo'] == null ? null : (map['eccInfo'] as String).input(),
-      ecuInfos: map['ecuInfos'] == null ? null : ((map['ecuInfos'] as List).cast<String>()).input(),
-      forceStatus: map['forceStatus'] == null ? null : (map['forceStatus'] as bool).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      deployGroup: map['deployGroup'] == null ? null : (map['deployGroup']! as String).input(),
+      eccInfo: map['eccInfo'] == null ? null : (map['eccInfo']! as String).input(),
+      ecuInfos: map['ecuInfos'] == null ? null : ((map['ecuInfos']! as List).cast<String>()).input(),
+      forceStatus: map['forceStatus'] == null ? null : (map['forceStatus']! as bool).input(),
     );
   }
 }

@@ -53,13 +53,13 @@ class ApplicationLivenessV2 {
 
   factory ApplicationLivenessV2.fromMap(Map<String, dynamic> map) {
     return ApplicationLivenessV2(
-      exec: map['exec'] == null ? null : (ApplicationLivenessV2Exec.fromMap((map['exec'] as Map).cast<String, dynamic>())).input(),
-      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold'] as int).input(),
-      httpGet: map['httpGet'] == null ? null : (ApplicationLivenessV2HttpGet.fromMap((map['httpGet'] as Map).cast<String, dynamic>())).input(),
-      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds'] as int).input(),
-      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds'] as int).input(),
-      tcpSocket: map['tcpSocket'] == null ? null : (ApplicationLivenessV2TcpSocket.fromMap((map['tcpSocket'] as Map).cast<String, dynamic>())).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      exec: map['exec'] == null ? null : (ApplicationLivenessV2Exec.fromMap((map['exec']! as Map).cast<String, dynamic>())).input(),
+      failureThreshold: map['failureThreshold'] == null ? null : (map['failureThreshold']! as int).input(),
+      httpGet: map['httpGet'] == null ? null : (ApplicationLivenessV2HttpGet.fromMap((map['httpGet']! as Map).cast<String, dynamic>())).input(),
+      initialDelaySeconds: map['initialDelaySeconds'] == null ? null : (map['initialDelaySeconds']! as int).input(),
+      periodSeconds: map['periodSeconds'] == null ? null : (map['periodSeconds']! as int).input(),
+      tcpSocket: map['tcpSocket'] == null ? null : (ApplicationLivenessV2TcpSocket.fromMap((map['tcpSocket']! as Map).cast<String, dynamic>())).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

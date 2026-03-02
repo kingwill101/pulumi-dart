@@ -53,11 +53,11 @@ class ToolDataStoreTool {
 
   factory ToolDataStoreTool.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreTool(
-      boostSpecs: map['boostSpecs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolBoostSpec>(map['boostSpecs'], (value) => ToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      engineSource: map['engineSource'] == null ? null : (ToolDataStoreToolEngineSource.fromMap((map['engineSource'] as Map).cast<String, dynamic>())).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      modalityConfigs: map['modalityConfigs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolModalityConfig>(map['modalityConfigs'], (value) => ToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      boostSpecs: map['boostSpecs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolBoostSpec>(map['boostSpecs']!, (value) => ToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      engineSource: map['engineSource'] == null ? null : (ToolDataStoreToolEngineSource.fromMap((map['engineSource']! as Map).cast<String, dynamic>())).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      modalityConfigs: map['modalityConfigs'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolModalityConfig>(map['modalityConfigs']!, (value) => ToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

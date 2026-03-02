@@ -48,7 +48,7 @@ class CallbackArgs {
       callbackSuggestions: ((map['callbackSuggestions'] as List).cast<String>()).input(),
       callbackTypes: ((map['callbackTypes'] as List).cast<String>()).input(),
       callbackUrl: (map['callbackUrl'] as String).input(),
-      cryptType: map['cryptType'] == null ? null : (map['cryptType'] as int).input(),
+      cryptType: map['cryptType'] == null ? null : (map['cryptType']! as int).input(),
     );
   }
 }

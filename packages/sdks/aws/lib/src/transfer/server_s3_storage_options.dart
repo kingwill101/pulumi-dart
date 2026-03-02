@@ -22,7 +22,7 @@ class ServerS3StorageOptions {
 
   factory ServerS3StorageOptions.fromMap(Map<String, dynamic> map) {
     return ServerS3StorageOptions(
-      directoryListingOptimization: map['directoryListingOptimization'] == null ? null : (map['directoryListingOptimization'] as String).input(),
+      directoryListingOptimization: map['directoryListingOptimization'] == null ? null : ((map['directoryListingOptimization'] as String).input()).input(),
     );
   }
 }

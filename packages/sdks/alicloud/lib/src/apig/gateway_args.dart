@@ -87,18 +87,18 @@ class GatewayArgs {
 
   factory GatewayArgs.fromMap(Map<String, dynamic> map) {
     return GatewayArgs(
-      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName'] as String).input(),
-      gatewayType: map['gatewayType'] == null ? null : (map['gatewayType'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (GatewayLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
-      networkAccessConfig: map['networkAccessConfig'] == null ? null : (GatewayNetworkAccessConfig.fromMap((map['networkAccessConfig'] as Map).cast<String, dynamic>())).input(),
+      gatewayName: map['gatewayName'] == null ? null : (map['gatewayName']! as String).input(),
+      gatewayType: map['gatewayType'] == null ? null : (map['gatewayType']! as String).input(),
+      logConfig: map['logConfig'] == null ? null : (GatewayLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
+      networkAccessConfig: map['networkAccessConfig'] == null ? null : (GatewayNetworkAccessConfig.fromMap((map['networkAccessConfig']! as Map).cast<String, dynamic>())).input(),
       paymentType: (map['paymentType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpc: map['vpc'] == null ? null : (GatewayVpc.fromMap((map['vpc'] as Map).cast<String, dynamic>())).input(),
-      vswitch: map['vswitch'] == null ? null : (GatewayVswitch.fromMap((map['vswitch'] as Map).cast<String, dynamic>())).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vpc: map['vpc'] == null ? null : (GatewayVpc.fromMap((map['vpc']! as Map).cast<String, dynamic>())).input(),
+      vswitch: map['vswitch'] == null ? null : (GatewayVswitch.fromMap((map['vswitch']! as Map).cast<String, dynamic>())).input(),
       zoneConfig: (GatewayZoneConfig.fromMap((map['zoneConfig'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<GatewayZone>(map['zones'], (value) => GatewayZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zones: map['zones'] == null ? null : (pulumi.Input.decodeList<GatewayZone>(map['zones']!, (value) => GatewayZone.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ScalingPlanApplicationSourceTagFilter {
   factory ScalingPlanApplicationSourceTagFilter.fromMap(Map<String, dynamic> map) {
     return ScalingPlanApplicationSourceTagFilter(
       key: (map['key'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

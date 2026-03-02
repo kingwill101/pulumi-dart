@@ -32,9 +32,9 @@ class PreventionJobTriggerInspectJobInspectConfigLimits {
 
   factory PreventionJobTriggerInspectJobInspectConfigLimits.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigLimits(
-      maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>(map['maxFindingsPerInfoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : (map['maxFindingsPerItem'] as int).input(),
-      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : (map['maxFindingsPerRequest'] as int).input(),
+      maxFindingsPerInfoTypes: map['maxFindingsPerInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType>(map['maxFindingsPerInfoTypes']!, (value) => PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : (map['maxFindingsPerItem']! as int).input(),
+      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : (map['maxFindingsPerRequest']! as int).input(),
     );
   }
 }

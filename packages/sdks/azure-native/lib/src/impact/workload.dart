@@ -26,8 +26,8 @@ class Workload {
 
   factory Workload.fromMap(Map<String, dynamic> map) {
     return Workload(
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      toolset: map['toolset'] == null ? null : (map['toolset'] as String).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      toolset: map['toolset'] == null ? null : (map['toolset']! as String).input(),
     );
   }
 }

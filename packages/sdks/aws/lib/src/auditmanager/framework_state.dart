@@ -64,15 +64,15 @@ class FrameworkState {
 
   factory FrameworkState.fromMap(Map<String, dynamic> map) {
     return FrameworkState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      complianceType: map['complianceType'] == null ? null : (map['complianceType'] as String).input(),
-      controlSets: map['controlSets'] == null ? null : (pulumi.Input.decodeList<FrameworkControlSet>(map['controlSets'], (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      frameworkType: map['frameworkType'] == null ? null : (map['frameworkType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      complianceType: map['complianceType'] == null ? null : ((map['complianceType'] as String).input()).input(),
+      controlSets: map['controlSets'] == null ? null : ((pulumi.Input.decodeList<FrameworkControlSet>(map['controlSets']!, (value) => FrameworkControlSet.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      frameworkType: map['frameworkType'] == null ? null : ((map['frameworkType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class GetParameterVersionRenderArgs {
     return GetParameterVersionRenderArgs(
       parameter: (map['parameter'] as String).input(),
       parameterVersionId: (map['parameterVersionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

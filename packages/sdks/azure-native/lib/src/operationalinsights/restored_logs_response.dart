@@ -37,9 +37,9 @@ class RestoredLogsResponse {
   factory RestoredLogsResponse.fromMap(Map<String, dynamic> map) {
     return RestoredLogsResponse(
       azureAsyncOperationId: (map['azureAsyncOperationId'] as String).input(),
-      endRestoreTime: map['endRestoreTime'] == null ? null : (map['endRestoreTime'] as String).input(),
-      sourceTable: map['sourceTable'] == null ? null : (map['sourceTable'] as String).input(),
-      startRestoreTime: map['startRestoreTime'] == null ? null : (map['startRestoreTime'] as String).input(),
+      endRestoreTime: map['endRestoreTime'] == null ? null : (map['endRestoreTime']! as String).input(),
+      sourceTable: map['sourceTable'] == null ? null : (map['sourceTable']! as String).input(),
+      startRestoreTime: map['startRestoreTime'] == null ? null : (map['startRestoreTime']! as String).input(),
     );
   }
 }

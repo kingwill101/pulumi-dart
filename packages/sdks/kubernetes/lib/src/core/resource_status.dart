@@ -28,7 +28,7 @@ class ResourceStatus {
   factory ResourceStatus.fromMap(Map<String, dynamic> map) {
     return ResourceStatus(
       name: (map['name'] as String).input(),
-      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceHealth>(map['resources'], (value) => ResourceHealth.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : (pulumi.Input.decodeList<ResourceHealth>(map['resources']!, (value) => ResourceHealth.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

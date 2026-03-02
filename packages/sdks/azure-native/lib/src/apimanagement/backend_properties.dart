@@ -22,7 +22,7 @@ class BackendProperties {
 
   factory BackendProperties.fromMap(Map<String, dynamic> map) {
     return BackendProperties(
-      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricClusterProperties.fromMap((map['serviceFabricCluster'] as Map).cast<String, dynamic>())).input(),
+      serviceFabricCluster: map['serviceFabricCluster'] == null ? null : (BackendServiceFabricClusterProperties.fromMap((map['serviceFabricCluster']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

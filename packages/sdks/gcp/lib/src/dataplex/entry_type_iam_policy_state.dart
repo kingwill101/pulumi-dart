@@ -46,11 +46,11 @@ class EntryTypeIamPolicyState {
 
   factory EntryTypeIamPolicyState.fromMap(Map<String, dynamic> map) {
     return EntryTypeIamPolicyState(
-      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      entryTypeId: map['entryTypeId'] == null ? null : (map['entryTypeId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

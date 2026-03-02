@@ -28,8 +28,8 @@ class NatGatewayProperties {
 
   factory NatGatewayProperties.fromMap(Map<String, dynamic> map) {
     return NatGatewayProperties(
-      inboundNATRules: map['inboundNATRules'] == null ? null : (pulumi.Input.decodeList<InboundNATRule>(map['inboundNATRules'], (value) => InboundNATRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      publicIPAddresses: map['publicIPAddresses'] == null ? null : (pulumi.Input.decodeList<PublicIPAddressArmReference>(map['publicIPAddresses'], (value) => PublicIPAddressArmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inboundNATRules: map['inboundNATRules'] == null ? null : (pulumi.Input.decodeList<InboundNATRule>(map['inboundNATRules']!, (value) => InboundNATRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicIPAddresses: map['publicIPAddresses'] == null ? null : (pulumi.Input.decodeList<PublicIPAddressArmReference>(map['publicIPAddresses']!, (value) => PublicIPAddressArmReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

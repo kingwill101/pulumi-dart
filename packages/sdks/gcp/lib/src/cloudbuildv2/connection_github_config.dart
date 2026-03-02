@@ -27,8 +27,8 @@ class ConnectionGithubConfig {
 
   factory ConnectionGithubConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubConfig(
-      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId'] as int).input(),
-      authorizerCredential: map['authorizerCredential'] == null ? null : (ConnectionGithubConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>())).input(),
+      appInstallationId: map['appInstallationId'] == null ? null : (map['appInstallationId']! as int).input(),
+      authorizerCredential: map['authorizerCredential'] == null ? null : (ConnectionGithubConfigAuthorizerCredential.fromMap((map['authorizerCredential']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

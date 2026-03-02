@@ -37,10 +37,10 @@ class QueryExecutionResultResponse {
 
   factory QueryExecutionResultResponse.fromMap(Map<String, dynamic> map) {
     return QueryExecutionResultResponse(
-      queryText: map['queryText'] == null ? null : (map['queryText'] as String).input(),
-      sourceResult: map['sourceResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['sourceResult'] as Map).cast<String, dynamic>())).input(),
-      statementsInBatch: map['statementsInBatch'] == null ? null : (map['statementsInBatch'] as double).input(),
-      targetResult: map['targetResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['targetResult'] as Map).cast<String, dynamic>())).input(),
+      queryText: map['queryText'] == null ? null : (map['queryText']! as String).input(),
+      sourceResult: map['sourceResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['sourceResult']! as Map).cast<String, dynamic>())).input(),
+      statementsInBatch: map['statementsInBatch'] == null ? null : (map['statementsInBatch']! as double).input(),
+      targetResult: map['targetResult'] == null ? null : (ExecutionStatisticsResponse.fromMap((map['targetResult']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

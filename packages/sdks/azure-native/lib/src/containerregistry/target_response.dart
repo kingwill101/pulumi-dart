@@ -61,15 +61,15 @@ class TargetResponse {
 
   factory TargetResponse.fromMap(Map<String, dynamic> map) {
     return TargetResponse(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      length: map['length'] == null ? null : (map['length'] as double).input(),
-      mediaType: map['mediaType'] == null ? null : (map['mediaType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as double).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      length: map['length'] == null ? null : (map['length']! as double).input(),
+      mediaType: map['mediaType'] == null ? null : (map['mediaType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as double).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

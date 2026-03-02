@@ -31,9 +31,9 @@ class AzureMachineLearningWebServiceInputColumnResponse {
 
   factory AzureMachineLearningWebServiceInputColumnResponse.fromMap(Map<String, dynamic> map) {
     return AzureMachineLearningWebServiceInputColumnResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      mapTo: map['mapTo'] == null ? null : (map['mapTo'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      mapTo: map['mapTo'] == null ? null : (map['mapTo']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

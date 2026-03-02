@@ -96,20 +96,20 @@ class CacheArgs {
 
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
-      cacheName: map['cacheName'] == null ? null : (map['cacheName'] as String).input(),
-      cacheSizeGB: map['cacheSizeGB'] == null ? null : (map['cacheSizeGB'] as int).input(),
-      directoryServicesSettings: map['directoryServicesSettings'] == null ? null : (CacheDirectorySettings.fromMap((map['directoryServicesSettings'] as Map).cast<String, dynamic>())).input(),
-      encryptionSettings: map['encryptionSettings'] == null ? null : (CacheEncryptionSettings.fromMap((map['encryptionSettings'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (CacheIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkSettings: map['networkSettings'] == null ? null : (CacheNetworkSettings.fromMap((map['networkSettings'] as Map).cast<String, dynamic>())).input(),
+      cacheName: map['cacheName'] == null ? null : (map['cacheName']! as String).input(),
+      cacheSizeGB: map['cacheSizeGB'] == null ? null : (map['cacheSizeGB']! as int).input(),
+      directoryServicesSettings: map['directoryServicesSettings'] == null ? null : (CacheDirectorySettings.fromMap((map['directoryServicesSettings']! as Map).cast<String, dynamic>())).input(),
+      encryptionSettings: map['encryptionSettings'] == null ? null : (CacheEncryptionSettings.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (CacheIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkSettings: map['networkSettings'] == null ? null : (CacheNetworkSettings.fromMap((map['networkSettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securitySettings: map['securitySettings'] == null ? null : (CacheSecuritySettings.fromMap((map['securitySettings'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (CacheSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      upgradeSettings: map['upgradeSettings'] == null ? null : (CacheUpgradeSettings.fromMap((map['upgradeSettings'] as Map).cast<String, dynamic>())).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      securitySettings: map['securitySettings'] == null ? null : (CacheSecuritySettings.fromMap((map['securitySettings']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (CacheSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      upgradeSettings: map['upgradeSettings'] == null ? null : (CacheUpgradeSettings.fromMap((map['upgradeSettings']! as Map).cast<String, dynamic>())).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class EventEndpointRoutingConfigFailoverConfigSecondary {
 
   factory EventEndpointRoutingConfigFailoverConfigSecondary.fromMap(Map<String, dynamic> map) {
     return EventEndpointRoutingConfigFailoverConfigSecondary(
-      route: map['route'] == null ? null : (map['route'] as String).input(),
+      route: map['route'] == null ? null : ((map['route'] as String).input()).input(),
     );
   }
 }

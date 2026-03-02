@@ -33,8 +33,8 @@ class ListGlobalRulestackCountriesArgs {
   factory ListGlobalRulestackCountriesArgs.fromMap(Map<String, dynamic> map) {
     return ListGlobalRulestackCountriesArgs(
       globalRulestackName: (map['globalRulestackName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
-      top: map['top'] == null ? null : (map['top'] as int).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
+      top: map['top'] == null ? null : (map['top']! as int).input(),
     );
   }
 }

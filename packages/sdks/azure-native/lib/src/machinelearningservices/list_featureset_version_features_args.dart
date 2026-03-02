@@ -51,8 +51,8 @@ class ListFeaturesetVersionFeaturesArgs {
     return ListFeaturesetVersionFeaturesArgs(
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skip: map['skip'] == null ? null : (map['skip'] as String).input(),
-      tags: map['tags'] == null ? null : (map['tags'] as String).input(),
+      skip: map['skip'] == null ? null : (map['skip']! as String).input(),
+      tags: map['tags'] == null ? null : (map['tags']! as String).input(),
       version: (map['version'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

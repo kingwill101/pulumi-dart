@@ -37,10 +37,10 @@ class SynchronizationJobProvisionOnDemandState {
 
   factory SynchronizationJobProvisionOnDemandState.fromMap(Map<String, dynamic> map) {
     return SynchronizationJobProvisionOnDemandState(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(map['parameters'], (value) => SynchronizationJobProvisionOnDemandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId'] as String).input(),
-      synchronizationJobId: map['synchronizationJobId'] == null ? null : (map['synchronizationJobId'] as String).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as Map).cast<String, String>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SynchronizationJobProvisionOnDemandParameter>(map['parameters']!, (value) => SynchronizationJobProvisionOnDemandParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']! as String).input(),
+      synchronizationJobId: map['synchronizationJobId'] == null ? null : (map['synchronizationJobId']! as String).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as Map).cast<String, String>()).input(),
     );
   }
 }

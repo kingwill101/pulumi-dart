@@ -49,7 +49,7 @@ class DatabaseAccountTableArgs {
       options: ((map['options'] as Map).cast<String, String>()).input(),
       resource: (TableResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

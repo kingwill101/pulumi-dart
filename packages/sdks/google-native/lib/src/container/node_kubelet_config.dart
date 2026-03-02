@@ -41,11 +41,11 @@ class NodeKubeletConfig {
 
   factory NodeKubeletConfig.fromMap(Map<String, dynamic> map) {
     return NodeKubeletConfig(
-      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota'] as bool).input(),
-      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod'] as String).input(),
-      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy'] as String).input(),
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled'] as bool).input(),
-      podPidsLimit: map['podPidsLimit'] == null ? null : (map['podPidsLimit'] as String).input(),
+      cpuCfsQuota: map['cpuCfsQuota'] == null ? null : (map['cpuCfsQuota']! as bool).input(),
+      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod']! as String).input(),
+      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy']! as String).input(),
+      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : (map['insecureKubeletReadonlyPortEnabled']! as bool).input(),
+      podPidsLimit: map['podPidsLimit'] == null ? null : (map['podPidsLimit']! as String).input(),
     );
   }
 }

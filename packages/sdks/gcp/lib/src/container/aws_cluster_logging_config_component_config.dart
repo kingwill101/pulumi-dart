@@ -20,7 +20,7 @@ class AwsClusterLoggingConfigComponentConfig {
 
   factory AwsClusterLoggingConfigComponentConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterLoggingConfigComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents'] as List).cast<String>()).input(),
+      enableComponents: map['enableComponents'] == null ? null : ((map['enableComponents']! as List).cast<String>()).input(),
     );
   }
 }

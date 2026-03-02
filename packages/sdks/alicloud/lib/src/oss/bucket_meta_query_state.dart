@@ -31,9 +31,9 @@ class BucketMetaQueryState {
 
   factory BucketMetaQueryState.fromMap(Map<String, dynamic> map) {
     return BucketMetaQueryState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

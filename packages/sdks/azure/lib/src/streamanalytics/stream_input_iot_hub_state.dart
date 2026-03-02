@@ -62,15 +62,15 @@ class StreamInputIotHubState {
 
   factory StreamInputIotHubState.fromMap(Map<String, dynamic> map) {
     return StreamInputIotHubState(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName'] as String).input(),
-      iothubNamespace: map['iothubNamespace'] == null ? null : (map['iothubNamespace'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      serialization: map['serialization'] == null ? null : (StreamInputIotHubSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
-      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey'] as String).input(),
-      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName'] as String).input(),
-      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      eventhubConsumerGroupName: map['eventhubConsumerGroupName'] == null ? null : (map['eventhubConsumerGroupName']! as String).input(),
+      iothubNamespace: map['iothubNamespace'] == null ? null : (map['iothubNamespace']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      serialization: map['serialization'] == null ? null : (StreamInputIotHubSerialization.fromMap((map['serialization']! as Map).cast<String, dynamic>())).input(),
+      sharedAccessPolicyKey: map['sharedAccessPolicyKey'] == null ? null : (map['sharedAccessPolicyKey']! as String).input(),
+      sharedAccessPolicyName: map['sharedAccessPolicyName'] == null ? null : (map['sharedAccessPolicyName']! as String).input(),
+      streamAnalyticsJobName: map['streamAnalyticsJobName'] == null ? null : (map['streamAnalyticsJobName']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class MongoCollectionIndex {
   factory MongoCollectionIndex.fromMap(Map<String, dynamic> map) {
     return MongoCollectionIndex(
       keys: ((map['keys'] as List).cast<String>()).input(),
-      unique: map['unique'] == null ? null : (map['unique'] as bool).input(),
+      unique: map['unique'] == null ? null : (map['unique']! as bool).input(),
     );
   }
 }

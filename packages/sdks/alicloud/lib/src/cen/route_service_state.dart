@@ -53,13 +53,13 @@ class RouteServiceState {
 
   factory RouteServiceState.fromMap(Map<String, dynamic> map) {
     return RouteServiceState(
-      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId'] as String).input(),
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId'] as String).input(),
-      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accessRegionId: map['accessRegionId'] == null ? null : (map['accessRegionId']! as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      hostRegionId: map['hostRegionId'] == null ? null : (map['hostRegionId']! as String).input(),
+      hostVpcId: map['hostVpcId'] == null ? null : (map['hostVpcId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

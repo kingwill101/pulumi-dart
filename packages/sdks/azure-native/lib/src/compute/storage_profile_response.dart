@@ -44,11 +44,11 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      alignRegionalDisksToVMZone: map['alignRegionalDisksToVMZone'] == null ? null : (map['alignRegionalDisksToVMZone'] as bool).input(),
-      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks'], (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskControllerType: map['diskControllerType'] == null ? null : (map['diskControllerType'] as String).input(),
-      imageReference: map['imageReference'] == null ? null : (ImageReferenceResponse.fromMap((map['imageReference'] as Map).cast<String, dynamic>())).input(),
-      osDisk: map['osDisk'] == null ? null : (OSDiskResponse.fromMap((map['osDisk'] as Map).cast<String, dynamic>())).input(),
+      alignRegionalDisksToVMZone: map['alignRegionalDisksToVMZone'] == null ? null : (map['alignRegionalDisksToVMZone']! as bool).input(),
+      dataDisks: map['dataDisks'] == null ? null : (pulumi.Input.decodeList<DataDiskResponse>(map['dataDisks']!, (value) => DataDiskResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskControllerType: map['diskControllerType'] == null ? null : (map['diskControllerType']! as String).input(),
+      imageReference: map['imageReference'] == null ? null : (ImageReferenceResponse.fromMap((map['imageReference']! as Map).cast<String, dynamic>())).input(),
+      osDisk: map['osDisk'] == null ? null : (OSDiskResponse.fromMap((map['osDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

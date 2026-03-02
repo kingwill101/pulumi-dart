@@ -89,19 +89,19 @@ class DiskArgs {
 
   factory DiskArgs.fromMap(Map<String, dynamic> map) {
     return DiskArgs(
-      diskBlobName: map['diskBlobName'] == null ? null : (map['diskBlobName'] as String).input(),
-      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      diskUri: map['diskUri'] == null ? null : (map['diskUri'] as String).input(),
-      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching'] as String).input(),
+      diskBlobName: map['diskBlobName'] == null ? null : (map['diskBlobName']! as String).input(),
+      diskSizeGiB: map['diskSizeGiB'] == null ? null : (map['diskSizeGiB']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      diskUri: map['diskUri'] == null ? null : (map['diskUri']! as String).input(),
+      hostCaching: map['hostCaching'] == null ? null : (map['hostCaching']! as String).input(),
       labName: (map['labName'] as String).input(),
-      leasedByLabVmId: map['leasedByLabVmId'] == null ? null : (map['leasedByLabVmId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      leasedByLabVmId: map['leasedByLabVmId'] == null ? null : (map['leasedByLabVmId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedDiskId: map['managedDiskId'] == null ? null : (map['managedDiskId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

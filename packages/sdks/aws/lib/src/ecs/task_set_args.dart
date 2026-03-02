@@ -106,22 +106,22 @@ class TaskSetArgs {
 
   factory TaskSetArgs.fromMap(Map<String, dynamic> map) {
     return TaskSetArgs(
-      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : (pulumi.Input.decodeList<TaskSetCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => TaskSetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : ((pulumi.Input.decodeList<TaskSetCapacityProviderStrategy>(map['capacityProviderStrategies']!, (value) => TaskSetCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       cluster: (map['cluster'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      launchType: map['launchType'] == null ? null : (map['launchType'] as String).input(),
-      loadBalancers: map['loadBalancers'] == null ? null : (pulumi.Input.decodeList<TaskSetLoadBalancer>(map['loadBalancers'], (value) => TaskSetLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (TaskSetNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      platformVersion: map['platformVersion'] == null ? null : (map['platformVersion'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scale: map['scale'] == null ? null : (TaskSetScale.fromMap((map['scale'] as Map).cast<String, dynamic>())).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
+      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
+      launchType: map['launchType'] == null ? null : ((map['launchType'] as String).input()).input(),
+      loadBalancers: map['loadBalancers'] == null ? null : ((pulumi.Input.decodeList<TaskSetLoadBalancer>(map['loadBalancers']!, (value) => TaskSetLoadBalancer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : ((TaskSetNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      platformVersion: map['platformVersion'] == null ? null : ((map['platformVersion'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scale: map['scale'] == null ? null : ((TaskSetScale.fromMap((map['scale']! as Map).cast<String, dynamic>())).input()).input(),
       service: (map['service'] as String).input(),
-      serviceRegistries: map['serviceRegistries'] == null ? null : (TaskSetServiceRegistries.fromMap((map['serviceRegistries'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serviceRegistries: map['serviceRegistries'] == null ? null : ((TaskSetServiceRegistries.fromMap((map['serviceRegistries']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       taskDefinition: (map['taskDefinition'] as String).input(),
-      waitUntilStable: map['waitUntilStable'] == null ? null : (map['waitUntilStable'] as bool).input(),
-      waitUntilStableTimeout: map['waitUntilStableTimeout'] == null ? null : (map['waitUntilStableTimeout'] as String).input(),
+      waitUntilStable: map['waitUntilStable'] == null ? null : ((map['waitUntilStable'] as bool).input()).input(),
+      waitUntilStableTimeout: map['waitUntilStableTimeout'] == null ? null : ((map['waitUntilStableTimeout'] as String).input()).input(),
     );
   }
 }

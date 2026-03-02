@@ -20,7 +20,7 @@ class AppJobConfig {
 
   factory AppJobConfig.fromMap(Map<String, dynamic> map) {
     return AppJobConfig(
-      buildComputeType: map['buildComputeType'] == null ? null : (map['buildComputeType'] as String).input(),
+      buildComputeType: map['buildComputeType'] == null ? null : ((map['buildComputeType'] as String).input()).input(),
     );
   }
 }

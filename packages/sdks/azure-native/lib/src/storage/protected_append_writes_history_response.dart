@@ -26,7 +26,7 @@ class ProtectedAppendWritesHistoryResponse {
 
   factory ProtectedAppendWritesHistoryResponse.fromMap(Map<String, dynamic> map) {
     return ProtectedAppendWritesHistoryResponse(
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll'] as bool).input(),
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll']! as bool).input(),
       timestamp: (map['timestamp'] as String).input(),
     );
   }

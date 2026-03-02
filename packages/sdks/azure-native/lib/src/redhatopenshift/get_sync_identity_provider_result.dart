@@ -48,7 +48,7 @@ class GetSyncIdentityProviderResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      resources: map['resources'] == null ? null : map['resources'] as String,
+      resources: map['resources'] == null ? null : map['resources']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

@@ -39,9 +39,9 @@ class ObfuscationExpressionArgs {
 
   factory ObfuscationExpressionArgs.fromMap(Map<String, dynamic> map) {
     return ObfuscationExpressionArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       regex: (map['regex'] as String).input(),
     );
   }

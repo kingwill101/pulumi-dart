@@ -62,7 +62,7 @@ class GetServiceResult {
       location: map['location'] as String,
       metadatas: pulumi.Input.decodeList<GetServiceMetadata>(map['metadatas'], (value) => GetServiceMetadata.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       statuses: pulumi.Input.decodeList<GetServiceStatus>(map['statuses'], (value) => GetServiceStatus.fromMap((value as Map).cast<String, dynamic>())),
       templates: pulumi.Input.decodeList<GetServiceTemplate>(map['templates'], (value) => GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>())),
       traffics: pulumi.Input.decodeList<GetServiceTraffic>(map['traffics'], (value) => GetServiceTraffic.fromMap((value as Map).cast<String, dynamic>())),

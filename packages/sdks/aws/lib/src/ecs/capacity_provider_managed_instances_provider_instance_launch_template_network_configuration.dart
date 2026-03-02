@@ -25,7 +25,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfi
 
   factory CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration(
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
       subnets: ((map['subnets'] as List).cast<String>()).input(),
     );
   }

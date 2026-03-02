@@ -28,8 +28,8 @@ class InMageDiskExclusionInput {
 
   factory InMageDiskExclusionInput.fromMap(Map<String, dynamic> map) {
     return InMageDiskExclusionInput(
-      diskSignatureOptions: map['diskSignatureOptions'] == null ? null : (pulumi.Input.decodeList<InMageDiskSignatureExclusionOptions>(map['diskSignatureOptions'], (value) => InMageDiskSignatureExclusionOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeOptions: map['volumeOptions'] == null ? null : (pulumi.Input.decodeList<InMageVolumeExclusionOptions>(map['volumeOptions'], (value) => InMageVolumeExclusionOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskSignatureOptions: map['diskSignatureOptions'] == null ? null : (pulumi.Input.decodeList<InMageDiskSignatureExclusionOptions>(map['diskSignatureOptions']!, (value) => InMageDiskSignatureExclusionOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeOptions: map['volumeOptions'] == null ? null : (pulumi.Input.decodeList<InMageVolumeExclusionOptions>(map['volumeOptions']!, (value) => InMageVolumeExclusionOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

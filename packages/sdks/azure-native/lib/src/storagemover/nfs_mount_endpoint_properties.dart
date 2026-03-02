@@ -42,11 +42,11 @@ class NfsMountEndpointProperties {
 
   factory NfsMountEndpointProperties.fromMap(Map<String, dynamic> map) {
     return NfsMountEndpointProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
       export: (map['export'] as String).input(),
       host: (map['host'] as String).input(),
-      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion'] as String).input(),
+      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion']! as String).input(),
     );
   }
 }

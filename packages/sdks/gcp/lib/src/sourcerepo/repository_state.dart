@@ -51,12 +51,12 @@ class RepositoryState {
 
   factory RepositoryState.fromMap(Map<String, dynamic> map) {
     return RepositoryState(
-      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs'], (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      createIgnoreAlreadyExists: map['createIgnoreAlreadyExists'] == null ? null : (map['createIgnoreAlreadyExists']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pubsubConfigs: map['pubsubConfigs'] == null ? null : (pulumi.Input.decodeList<RepositoryPubsubConfig>(map['pubsubConfigs']!, (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

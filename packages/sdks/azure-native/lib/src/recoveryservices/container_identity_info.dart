@@ -36,10 +36,10 @@ class ContainerIdentityInfo {
 
   factory ContainerIdentityInfo.fromMap(Map<String, dynamic> map) {
     return ContainerIdentityInfo(
-      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId'] as String).input(),
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId'] as String).input(),
-      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName'] as String).input(),
+      aadTenantId: map['aadTenantId'] == null ? null : (map['aadTenantId']! as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      servicePrincipalClientId: map['servicePrincipalClientId'] == null ? null : (map['servicePrincipalClientId']! as String).input(),
+      uniqueName: map['uniqueName'] == null ? null : (map['uniqueName']! as String).input(),
     );
   }
 }

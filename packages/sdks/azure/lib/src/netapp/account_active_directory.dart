@@ -87,18 +87,18 @@ class AccountActiveDirectory {
 
   factory AccountActiveDirectory.fromMap(Map<String, dynamic> map) {
     return AccountActiveDirectory(
-      aesEncryptionEnabled: map['aesEncryptionEnabled'] == null ? null : (map['aesEncryptionEnabled'] as bool).input(),
+      aesEncryptionEnabled: map['aesEncryptionEnabled'] == null ? null : (map['aesEncryptionEnabled']! as bool).input(),
       dnsServers: ((map['dnsServers'] as List).cast<String>()).input(),
       domain: (map['domain'] as String).input(),
-      kerberosAdName: map['kerberosAdName'] == null ? null : (map['kerberosAdName'] as String).input(),
-      kerberosKdcIp: map['kerberosKdcIp'] == null ? null : (map['kerberosKdcIp'] as String).input(),
-      ldapOverTlsEnabled: map['ldapOverTlsEnabled'] == null ? null : (map['ldapOverTlsEnabled'] as bool).input(),
-      ldapSigningEnabled: map['ldapSigningEnabled'] == null ? null : (map['ldapSigningEnabled'] as bool).input(),
-      localNfsUsersWithLdapAllowed: map['localNfsUsersWithLdapAllowed'] == null ? null : (map['localNfsUsersWithLdapAllowed'] as bool).input(),
-      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      kerberosAdName: map['kerberosAdName'] == null ? null : (map['kerberosAdName']! as String).input(),
+      kerberosKdcIp: map['kerberosKdcIp'] == null ? null : (map['kerberosKdcIp']! as String).input(),
+      ldapOverTlsEnabled: map['ldapOverTlsEnabled'] == null ? null : (map['ldapOverTlsEnabled']! as bool).input(),
+      ldapSigningEnabled: map['ldapSigningEnabled'] == null ? null : (map['ldapSigningEnabled']! as bool).input(),
+      localNfsUsersWithLdapAllowed: map['localNfsUsersWithLdapAllowed'] == null ? null : (map['localNfsUsersWithLdapAllowed']! as bool).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit']! as String).input(),
       password: (map['password'] as String).input(),
-      serverRootCaCertificate: map['serverRootCaCertificate'] == null ? null : (map['serverRootCaCertificate'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      serverRootCaCertificate: map['serverRootCaCertificate'] == null ? null : (map['serverRootCaCertificate']! as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
       smbServerName: (map['smbServerName'] as String).input(),
       username: (map['username'] as String).input(),
     );

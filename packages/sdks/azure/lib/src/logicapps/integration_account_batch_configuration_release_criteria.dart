@@ -31,9 +31,9 @@ class IntegrationAccountBatchConfigurationReleaseCriteria {
 
   factory IntegrationAccountBatchConfigurationReleaseCriteria.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountBatchConfigurationReleaseCriteria(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      messageCount: map['messageCount'] == null ? null : (map['messageCount'] as int).input(),
-      recurrence: map['recurrence'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
+      messageCount: map['messageCount'] == null ? null : (map['messageCount']! as int).input(),
+      recurrence: map['recurrence'] == null ? null : (IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

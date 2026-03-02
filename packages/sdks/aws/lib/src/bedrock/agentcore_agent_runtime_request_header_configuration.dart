@@ -20,7 +20,7 @@ class AgentcoreAgentRuntimeRequestHeaderConfiguration {
 
   factory AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeRequestHeaderConfiguration(
-      requestHeaderAllowlists: map['requestHeaderAllowlists'] == null ? null : ((map['requestHeaderAllowlists'] as List).cast<String>()).input(),
+      requestHeaderAllowlists: map['requestHeaderAllowlists'] == null ? null : (((map['requestHeaderAllowlists'] as List).cast<String>()).input()).input(),
     );
   }
 }

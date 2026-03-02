@@ -20,7 +20,7 @@ class ObservabilityConfigurationTraceConfiguration {
 
   factory ObservabilityConfigurationTraceConfiguration.fromMap(Map<String, dynamic> map) {
     return ObservabilityConfigurationTraceConfiguration(
-      vendor: map['vendor'] == null ? null : (map['vendor'] as String).input(),
+      vendor: map['vendor'] == null ? null : ((map['vendor'] as String).input()).input(),
     );
   }
 }

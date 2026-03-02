@@ -59,13 +59,13 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
       connectorProperties: ((map['connectorProperties'] as Map).cast<String, dynamic>()).input(),
       connectorType: (map['connectorType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       hubName: (map['hubName'] as String).input(),
-      isInternal: map['isInternal'] == null ? null : (map['isInternal'] as bool).input(),
+      isInternal: map['isInternal'] == null ? null : (map['isInternal']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

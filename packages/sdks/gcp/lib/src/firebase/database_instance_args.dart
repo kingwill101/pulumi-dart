@@ -52,11 +52,11 @@ class DatabaseInstanceArgs {
 
   factory DatabaseInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceArgs(
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

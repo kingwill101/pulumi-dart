@@ -41,11 +41,11 @@ class WorkflowEnrichmentsNrql {
 
   factory WorkflowEnrichmentsNrql.fromMap(Map<String, dynamic> map) {
     return WorkflowEnrichmentsNrql(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       configurations: (pulumi.Input.decodeList<WorkflowEnrichmentsNrqlConfiguration>(map['configurations'], (value) => WorkflowEnrichmentsNrqlConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enrichmentId: map['enrichmentId'] == null ? null : (map['enrichmentId'] as String).input(),
+      enrichmentId: map['enrichmentId'] == null ? null : (map['enrichmentId']! as String).input(),
       name: (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

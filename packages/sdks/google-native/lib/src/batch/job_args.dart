@@ -71,15 +71,15 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (AllocationPolicy.fromMap((map['allocationPolicy'] as Map).cast<String, dynamic>())).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logsPolicy: map['logsPolicy'] == null ? null : (LogsPolicy.fromMap((map['logsPolicy'] as Map).cast<String, dynamic>())).input(),
-      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<JobNotification>(map['notifications'], (value) => JobNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (AllocationPolicy.fromMap((map['allocationPolicy']! as Map).cast<String, dynamic>())).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logsPolicy: map['logsPolicy'] == null ? null : (LogsPolicy.fromMap((map['logsPolicy']! as Map).cast<String, dynamic>())).input(),
+      notifications: map['notifications'] == null ? null : (pulumi.Input.decodeList<JobNotification>(map['notifications']!, (value) => JobNotification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       taskGroups: (pulumi.Input.decodeList<TaskGroup>(map['taskGroups'], (value) => TaskGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

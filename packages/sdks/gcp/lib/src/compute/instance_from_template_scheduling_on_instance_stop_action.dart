@@ -20,7 +20,7 @@ class InstanceFromTemplateSchedulingOnInstanceStopAction {
 
   factory InstanceFromTemplateSchedulingOnInstanceStopAction.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateSchedulingOnInstanceStopAction(
-      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd'] as bool).input(),
+      discardLocalSsd: map['discardLocalSsd'] == null ? null : (map['discardLocalSsd']! as bool).input(),
     );
   }
 }

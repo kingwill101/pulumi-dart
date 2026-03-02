@@ -27,8 +27,8 @@ class AutoHealCustomAction {
 
   factory AutoHealCustomAction.fromMap(Map<String, dynamic> map) {
     return AutoHealCustomAction(
-      exe: map['exe'] == null ? null : (map['exe'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      exe: map['exe'] == null ? null : (map['exe']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
     );
   }
 }

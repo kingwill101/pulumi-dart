@@ -36,9 +36,9 @@ class StreamSourceConfigMongodbSourceConfig {
 
   factory StreamSourceConfigMongodbSourceConfig.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfig(
-      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigMongodbSourceConfigExcludeObjects.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>())).input(),
-      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigMongodbSourceConfigIncludeObjects.fromMap((map['includeObjects'] as Map).cast<String, dynamic>())).input(),
-      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks'] as int).input(),
+      excludeObjects: map['excludeObjects'] == null ? null : (StreamSourceConfigMongodbSourceConfigExcludeObjects.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())).input(),
+      includeObjects: map['includeObjects'] == null ? null : (StreamSourceConfigMongodbSourceConfigIncludeObjects.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())).input(),
+      maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] == null ? null : (map['maxConcurrentBackfillTasks']! as int).input(),
     );
   }
 }

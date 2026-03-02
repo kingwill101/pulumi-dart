@@ -54,14 +54,14 @@ class DeploymentState {
 
   factory DeploymentState.fromMap(Map<String, dynamic> map) {
     return DeploymentState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      applicationVersion: map['applicationVersion'] == null ? null : (map['applicationVersion'] as int).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      forceStop: map['forceStop'] == null ? null : (map['forceStop'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      start: map['start'] == null ? null : (map['start'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (DeploymentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      applicationVersion: map['applicationVersion'] == null ? null : ((map['applicationVersion'] as int).input()).input(),
+      deploymentId: map['deploymentId'] == null ? null : ((map['deploymentId'] as String).input()).input(),
+      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
+      forceStop: map['forceStop'] == null ? null : ((map['forceStop'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      start: map['start'] == null ? null : ((map['start'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DeploymentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

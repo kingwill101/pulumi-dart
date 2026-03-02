@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1EntryOverview {
 
   factory GoogleCloudDatacatalogV1EntryOverview.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1EntryOverview(
-      overview: map['overview'] == null ? null : (map['overview'] as String).input(),
+      overview: map['overview'] == null ? null : (map['overview']! as String).input(),
     );
   }
 }

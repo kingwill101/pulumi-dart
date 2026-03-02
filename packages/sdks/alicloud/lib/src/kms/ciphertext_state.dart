@@ -36,10 +36,10 @@ class CiphertextState {
 
   factory CiphertextState.fromMap(Map<String, dynamic> map) {
     return CiphertextState(
-      ciphertextBlob: map['ciphertextBlob'] == null ? null : (map['ciphertextBlob'] as String).input(),
-      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext'] as Map).cast<String, String>()).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      plaintext: map['plaintext'] == null ? null : (map['plaintext'] as String).input(),
+      ciphertextBlob: map['ciphertextBlob'] == null ? null : (map['ciphertextBlob']! as String).input(),
+      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext']! as Map).cast<String, String>()).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      plaintext: map['plaintext'] == null ? null : (map['plaintext']! as String).input(),
     );
   }
 }

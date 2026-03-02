@@ -20,7 +20,7 @@ class Clustering {
 
   factory Clustering.fromMap(Map<String, dynamic> map) {
     return Clustering(
-      fields: map['fields'] == null ? null : ((map['fields'] as List).cast<String>()).input(),
+      fields: map['fields'] == null ? null : ((map['fields']! as List).cast<String>()).input(),
     );
   }
 }

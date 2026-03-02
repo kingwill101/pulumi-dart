@@ -21,7 +21,7 @@ class VICredentialResponse {
 
   factory VICredentialResponse.fromMap(Map<String, dynamic> map) {
     return VICredentialResponse(
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -60,14 +60,14 @@ class DiscoveredContaineranalysisV1beta1 {
 
   factory DiscoveredContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DiscoveredContaineranalysisV1beta1(
-      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompletedContaineranalysisV1beta1.fromMap((map['analysisCompleted'] as Map).cast<String, dynamic>())).input(),
-      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<StatusContaineranalysisV1beta1>(map['analysisError'], (value) => StatusContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveredAnalysisStatusContaineranalysisV1beta1.fromValue(map['analysisStatus'] as String)).input(),
-      analysisStatusError: map['analysisStatusError'] == null ? null : (StatusContaineranalysisV1beta1.fromMap((map['analysisStatusError'] as Map).cast<String, dynamic>())).input(),
-      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveredContinuousAnalysisContaineranalysisV1beta1.fromValue(map['continuousAnalysis'] as String)).input(),
-      lastAnalysisTime: map['lastAnalysisTime'] == null ? null : (map['lastAnalysisTime'] as String).input(),
-      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime'] as String).input(),
-      sbomStatus: map['sbomStatus'] == null ? null : (SBOMStatusContaineranalysisV1beta1.fromMap((map['sbomStatus'] as Map).cast<String, dynamic>())).input(),
+      analysisCompleted: map['analysisCompleted'] == null ? null : (AnalysisCompletedContaineranalysisV1beta1.fromMap((map['analysisCompleted']! as Map).cast<String, dynamic>())).input(),
+      analysisError: map['analysisError'] == null ? null : (pulumi.Input.decodeList<StatusContaineranalysisV1beta1>(map['analysisError']!, (value) => StatusContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      analysisStatus: map['analysisStatus'] == null ? null : (DiscoveredAnalysisStatusContaineranalysisV1beta1.fromValue(map['analysisStatus']! as String)).input(),
+      analysisStatusError: map['analysisStatusError'] == null ? null : (StatusContaineranalysisV1beta1.fromMap((map['analysisStatusError']! as Map).cast<String, dynamic>())).input(),
+      continuousAnalysis: map['continuousAnalysis'] == null ? null : (DiscoveredContinuousAnalysisContaineranalysisV1beta1.fromValue(map['continuousAnalysis']! as String)).input(),
+      lastAnalysisTime: map['lastAnalysisTime'] == null ? null : (map['lastAnalysisTime']! as String).input(),
+      lastScanTime: map['lastScanTime'] == null ? null : (map['lastScanTime']! as String).input(),
+      sbomStatus: map['sbomStatus'] == null ? null : (SBOMStatusContaineranalysisV1beta1.fromMap((map['sbomStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

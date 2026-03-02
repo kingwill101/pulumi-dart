@@ -32,8 +32,8 @@ class ServiceLevelEventsValidEvents {
   factory ServiceLevelEventsValidEvents.fromMap(Map<String, dynamic> map) {
     return ServiceLevelEventsValidEvents(
       from: (map['from'] as String).input(),
-      select: map['select'] == null ? null : (ServiceLevelEventsValidEventsSelect.fromMap((map['select'] as Map).cast<String, dynamic>())).input(),
-      where: map['where'] == null ? null : (map['where'] as String).input(),
+      select: map['select'] == null ? null : (ServiceLevelEventsValidEventsSelect.fromMap((map['select']! as Map).cast<String, dynamic>())).input(),
+      where: map['where'] == null ? null : (map['where']! as String).input(),
     );
   }
 }

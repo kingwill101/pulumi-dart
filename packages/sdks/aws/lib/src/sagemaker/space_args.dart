@@ -63,13 +63,13 @@ class SpaceArgs {
   factory SpaceArgs.fromMap(Map<String, dynamic> map) {
     return SpaceArgs(
       domainId: (map['domainId'] as String).input(),
-      ownershipSettings: map['ownershipSettings'] == null ? null : (SpaceOwnershipSettings.fromMap((map['ownershipSettings'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spaceDisplayName: map['spaceDisplayName'] == null ? null : (map['spaceDisplayName'] as String).input(),
+      ownershipSettings: map['ownershipSettings'] == null ? null : ((SpaceOwnershipSettings.fromMap((map['ownershipSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      spaceDisplayName: map['spaceDisplayName'] == null ? null : ((map['spaceDisplayName'] as String).input()).input(),
       spaceName: (map['spaceName'] as String).input(),
-      spaceSettings: map['spaceSettings'] == null ? null : (SpaceSpaceSettings.fromMap((map['spaceSettings'] as Map).cast<String, dynamic>())).input(),
-      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : (SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      spaceSettings: map['spaceSettings'] == null ? null : ((SpaceSpaceSettings.fromMap((map['spaceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : ((SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

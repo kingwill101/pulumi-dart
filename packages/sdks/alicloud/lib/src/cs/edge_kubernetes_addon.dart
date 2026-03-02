@@ -48,10 +48,10 @@ class EdgeKubernetesAddon {
 
   factory EdgeKubernetesAddon.fromMap(Map<String, dynamic> map) {
     return EdgeKubernetesAddon(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

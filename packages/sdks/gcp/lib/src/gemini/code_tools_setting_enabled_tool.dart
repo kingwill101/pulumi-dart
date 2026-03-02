@@ -43,11 +43,11 @@ class CodeToolsSettingEnabledTool {
 
   factory CodeToolsSettingEnabledTool.fromMap(Map<String, dynamic> map) {
     return CodeToolsSettingEnabledTool(
-      accountConnector: map['accountConnector'] == null ? null : (map['accountConnector'] as String).input(),
-      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<CodeToolsSettingEnabledToolConfig>(map['configs'], (value) => CodeToolsSettingEnabledToolConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountConnector: map['accountConnector'] == null ? null : (map['accountConnector']! as String).input(),
+      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<CodeToolsSettingEnabledToolConfig>(map['configs']!, (value) => CodeToolsSettingEnabledToolConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       handle: (map['handle'] as String).input(),
       tool: (map['tool'] as String).input(),
-      uriOverride: map['uriOverride'] == null ? null : (map['uriOverride'] as String).input(),
+      uriOverride: map['uriOverride'] == null ? null : (map['uriOverride']! as String).input(),
     );
   }
 }

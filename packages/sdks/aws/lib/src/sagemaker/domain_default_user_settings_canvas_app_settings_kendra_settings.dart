@@ -20,7 +20,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsKendraSettings {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsKendraSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsKendraSettings(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class NatGatewayStatusProvisioningStatusResponse {
 
   factory NatGatewayStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return NatGatewayStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

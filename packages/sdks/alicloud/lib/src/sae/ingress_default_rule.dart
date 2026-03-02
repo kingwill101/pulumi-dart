@@ -30,9 +30,9 @@ class IngressDefaultRule {
 
   factory IngressDefaultRule.fromMap(Map<String, dynamic> map) {
     return IngressDefaultRule(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      containerPort: map['containerPort'] == null ? null : (map['containerPort'] as int).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      containerPort: map['containerPort'] == null ? null : (map['containerPort']! as int).input(),
     );
   }
 }

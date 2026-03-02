@@ -24,8 +24,8 @@ class ExternalDocumentationPatch {
 
   factory ExternalDocumentationPatch.fromMap(Map<String, dynamic> map) {
     return ExternalDocumentationPatch(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

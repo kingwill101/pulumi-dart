@@ -66,15 +66,15 @@ class ServerBackupPlanDetail {
   factory ServerBackupPlanDetail.fromMap(Map<String, dynamic> map) {
     return ServerBackupPlanDetail(
       appConsistent: (map['appConsistent'] as bool).input(),
-      destinationRegionId: map['destinationRegionId'] == null ? null : (map['destinationRegionId'] as String).input(),
-      destinationRetention: map['destinationRetention'] == null ? null : (map['destinationRetention'] as int).input(),
-      diskIdLists: map['diskIdLists'] == null ? null : ((map['diskIdLists'] as List).cast<String>()).input(),
-      doCopy: map['doCopy'] == null ? null : (map['doCopy'] as bool).input(),
-      enableFsFreeze: map['enableFsFreeze'] == null ? null : (map['enableFsFreeze'] as bool).input(),
-      postScriptPath: map['postScriptPath'] == null ? null : (map['postScriptPath'] as String).input(),
-      preScriptPath: map['preScriptPath'] == null ? null : (map['preScriptPath'] as String).input(),
+      destinationRegionId: map['destinationRegionId'] == null ? null : (map['destinationRegionId']! as String).input(),
+      destinationRetention: map['destinationRetention'] == null ? null : (map['destinationRetention']! as int).input(),
+      diskIdLists: map['diskIdLists'] == null ? null : ((map['diskIdLists']! as List).cast<String>()).input(),
+      doCopy: map['doCopy'] == null ? null : (map['doCopy']! as bool).input(),
+      enableFsFreeze: map['enableFsFreeze'] == null ? null : (map['enableFsFreeze']! as bool).input(),
+      postScriptPath: map['postScriptPath'] == null ? null : (map['postScriptPath']! as String).input(),
+      preScriptPath: map['preScriptPath'] == null ? null : (map['preScriptPath']! as String).input(),
       snapshotGroup: (map['snapshotGroup'] as bool).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds']! as int).input(),
     );
   }
 }

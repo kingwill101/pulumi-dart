@@ -78,17 +78,17 @@ class ActiveDirectoryConfigPropertiesResponse {
   factory ActiveDirectoryConfigPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConfigPropertiesResponse(
       activeDirectoryStatus: (map['activeDirectoryStatus'] as String).input(),
-      administrators: map['administrators'] == null ? null : ((map['administrators'] as List).cast<String>()).input(),
-      backupOperators: map['backupOperators'] == null ? null : ((map['backupOperators'] as List).cast<String>()).input(),
-      dns: map['dns'] == null ? null : ((map['dns'] as List).cast<String>()).input(),
+      administrators: map['administrators'] == null ? null : ((map['administrators']! as List).cast<String>()).input(),
+      backupOperators: map['backupOperators'] == null ? null : ((map['backupOperators']! as List).cast<String>()).input(),
+      dns: map['dns'] == null ? null : ((map['dns']! as List).cast<String>()).input(),
       domain: (map['domain'] as String).input(),
-      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       secretPassword: (SecretPasswordResponse.fromMap((map['secretPassword'] as Map).cast<String, dynamic>())).input(),
-      securityOperators: map['securityOperators'] == null ? null : ((map['securityOperators'] as List).cast<String>()).input(),
-      site: map['site'] == null ? null : (map['site'] as String).input(),
-      smbServerName: map['smbServerName'] == null ? null : (map['smbServerName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      securityOperators: map['securityOperators'] == null ? null : ((map['securityOperators']! as List).cast<String>()).input(),
+      site: map['site'] == null ? null : (map['site']! as String).input(),
+      smbServerName: map['smbServerName'] == null ? null : (map['smbServerName']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

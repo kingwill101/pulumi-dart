@@ -36,9 +36,9 @@ class InstanceToConnectVpcIpBlock {
   factory InstanceToConnectVpcIpBlock.fromMap(Map<String, dynamic> map) {
     return InstanceToConnectVpcIpBlock(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      customized: map['customized'] == null ? null : (map['customized'] as bool).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      customized: map['customized'] == null ? null : (map['customized']! as bool).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

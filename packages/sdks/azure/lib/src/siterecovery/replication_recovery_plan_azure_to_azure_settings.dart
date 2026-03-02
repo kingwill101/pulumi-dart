@@ -39,10 +39,10 @@ class ReplicationRecoveryPlanAzureToAzureSettings {
 
   factory ReplicationRecoveryPlanAzureToAzureSettings.fromMap(Map<String, dynamic> map) {
     return ReplicationRecoveryPlanAzureToAzureSettings(
-      primaryEdgeZone: map['primaryEdgeZone'] == null ? null : (map['primaryEdgeZone'] as String).input(),
-      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone'] as String).input(),
-      recoveryEdgeZone: map['recoveryEdgeZone'] == null ? null : (map['recoveryEdgeZone'] as String).input(),
-      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone'] as String).input(),
+      primaryEdgeZone: map['primaryEdgeZone'] == null ? null : (map['primaryEdgeZone']! as String).input(),
+      primaryZone: map['primaryZone'] == null ? null : (map['primaryZone']! as String).input(),
+      recoveryEdgeZone: map['recoveryEdgeZone'] == null ? null : (map['recoveryEdgeZone']! as String).input(),
+      recoveryZone: map['recoveryZone'] == null ? null : (map['recoveryZone']! as String).input(),
     );
   }
 }

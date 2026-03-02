@@ -38,10 +38,10 @@ class EnrichmentDomainWhoisDetailsResponse {
 
   factory EnrichmentDomainWhoisDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentDomainWhoisDetailsResponse(
-      contacts: map['contacts'] == null ? null : (EnrichmentDomainWhoisContactsResponse.fromMap((map['contacts'] as Map).cast<String, dynamic>())).input(),
-      nameServers: map['nameServers'] == null ? null : ((map['nameServers'] as List).cast<String>()).input(),
-      registrar: map['registrar'] == null ? null : (EnrichmentDomainWhoisRegistrarDetailsResponse.fromMap((map['registrar'] as Map).cast<String, dynamic>())).input(),
-      statuses: map['statuses'] == null ? null : ((map['statuses'] as List).cast<String>()).input(),
+      contacts: map['contacts'] == null ? null : (EnrichmentDomainWhoisContactsResponse.fromMap((map['contacts']! as Map).cast<String, dynamic>())).input(),
+      nameServers: map['nameServers'] == null ? null : ((map['nameServers']! as List).cast<String>()).input(),
+      registrar: map['registrar'] == null ? null : (EnrichmentDomainWhoisRegistrarDetailsResponse.fromMap((map['registrar']! as Map).cast<String, dynamic>())).input(),
+      statuses: map['statuses'] == null ? null : ((map['statuses']! as List).cast<String>()).input(),
     );
   }
 }

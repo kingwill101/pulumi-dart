@@ -35,7 +35,7 @@ class SnapshotCreateVolumePermissionArgs {
   factory SnapshotCreateVolumePermissionArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCreateVolumePermissionArgs(
       accountId: (map['accountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       snapshotId: (map['snapshotId'] as String).input(),
     );
   }

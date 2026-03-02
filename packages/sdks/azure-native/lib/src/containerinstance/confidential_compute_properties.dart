@@ -21,7 +21,7 @@ class ConfidentialComputeProperties {
 
   factory ConfidentialComputeProperties.fromMap(Map<String, dynamic> map) {
     return ConfidentialComputeProperties(
-      ccePolicy: map['ccePolicy'] == null ? null : (map['ccePolicy'] as String).input(),
+      ccePolicy: map['ccePolicy'] == null ? null : (map['ccePolicy']! as String).input(),
     );
   }
 }

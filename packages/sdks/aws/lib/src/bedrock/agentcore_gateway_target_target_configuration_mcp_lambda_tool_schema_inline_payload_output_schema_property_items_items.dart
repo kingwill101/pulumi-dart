@@ -35,9 +35,9 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
 
   factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyItemsItems(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      itemsJson: map['itemsJson'] == null ? null : (map['itemsJson'] as String).input(),
-      propertiesJson: map['propertiesJson'] == null ? null : (map['propertiesJson'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      itemsJson: map['itemsJson'] == null ? null : ((map['itemsJson'] as String).input()).input(),
+      propertiesJson: map['propertiesJson'] == null ? null : ((map['propertiesJson'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

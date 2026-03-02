@@ -20,7 +20,7 @@ class DomainDevicesGraphicSdlGl {
 
   factory DomainDevicesGraphicSdlGl.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicSdlGl(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class AbusePenaltyResponse {
 
   factory AbusePenaltyResponse.fromMap(Map<String, dynamic> map) {
     return AbusePenaltyResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      rateLimitPercentage: map['rateLimitPercentage'] == null ? null : (map['rateLimitPercentage'] as double).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      rateLimitPercentage: map['rateLimitPercentage'] == null ? null : (map['rateLimitPercentage']! as double).input(),
     );
   }
 }

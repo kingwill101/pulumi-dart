@@ -40,9 +40,9 @@ class DppResourceGuardProxyArgs {
 
   factory DppResourceGuardProxyArgs.fromMap(Map<String, dynamic> map) {
     return DppResourceGuardProxyArgs(
-      properties: map['properties'] == null ? null : (ResourceGuardProxyBase.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ResourceGuardProxyBase.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceGuardProxyName: map['resourceGuardProxyName'] == null ? null : (map['resourceGuardProxyName'] as String).input(),
+      resourceGuardProxyName: map['resourceGuardProxyName'] == null ? null : (map['resourceGuardProxyName']! as String).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

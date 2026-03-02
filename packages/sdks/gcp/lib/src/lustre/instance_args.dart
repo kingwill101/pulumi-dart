@@ -102,19 +102,19 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      accessRulesOptions: map['accessRulesOptions'] == null ? null : (InstanceAccessRulesOptions.fromMap((map['accessRulesOptions'] as Map).cast<String, dynamic>())).input(),
+      accessRulesOptions: map['accessRulesOptions'] == null ? null : (InstanceAccessRulesOptions.fromMap((map['accessRulesOptions']! as Map).cast<String, dynamic>())).input(),
       capacityGib: (map['capacityGib'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       filesystem: (map['filesystem'] as String).input(),
-      gkeSupportEnabled: map['gkeSupportEnabled'] == null ? null : (map['gkeSupportEnabled'] as bool).input(),
+      gkeSupportEnabled: map['gkeSupportEnabled'] == null ? null : (map['gkeSupportEnabled']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
       network: (map['network'] as String).input(),
       perUnitStorageThroughput: (map['perUnitStorageThroughput'] as String).input(),
-      placementPolicy: map['placementPolicy'] == null ? null : (map['placementPolicy'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      placementPolicy: map['placementPolicy'] == null ? null : (map['placementPolicy']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

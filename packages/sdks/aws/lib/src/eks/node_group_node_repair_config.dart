@@ -46,12 +46,12 @@ class NodeGroupNodeRepairConfig {
 
   factory NodeGroupNodeRepairConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupNodeRepairConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxParallelNodesRepairedCount: map['maxParallelNodesRepairedCount'] == null ? null : (map['maxParallelNodesRepairedCount'] as int).input(),
-      maxParallelNodesRepairedPercentage: map['maxParallelNodesRepairedPercentage'] == null ? null : (map['maxParallelNodesRepairedPercentage'] as int).input(),
-      maxUnhealthyNodeThresholdCount: map['maxUnhealthyNodeThresholdCount'] == null ? null : (map['maxUnhealthyNodeThresholdCount'] as int).input(),
-      maxUnhealthyNodeThresholdPercentage: map['maxUnhealthyNodeThresholdPercentage'] == null ? null : (map['maxUnhealthyNodeThresholdPercentage'] as int).input(),
-      nodeRepairConfigOverrides: map['nodeRepairConfigOverrides'] == null ? null : (pulumi.Input.decodeList<NodeGroupNodeRepairConfigNodeRepairConfigOverride>(map['nodeRepairConfigOverrides'], (value) => NodeGroupNodeRepairConfigNodeRepairConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      maxParallelNodesRepairedCount: map['maxParallelNodesRepairedCount'] == null ? null : ((map['maxParallelNodesRepairedCount'] as int).input()).input(),
+      maxParallelNodesRepairedPercentage: map['maxParallelNodesRepairedPercentage'] == null ? null : ((map['maxParallelNodesRepairedPercentage'] as int).input()).input(),
+      maxUnhealthyNodeThresholdCount: map['maxUnhealthyNodeThresholdCount'] == null ? null : ((map['maxUnhealthyNodeThresholdCount'] as int).input()).input(),
+      maxUnhealthyNodeThresholdPercentage: map['maxUnhealthyNodeThresholdPercentage'] == null ? null : ((map['maxUnhealthyNodeThresholdPercentage'] as int).input()).input(),
+      nodeRepairConfigOverrides: map['nodeRepairConfigOverrides'] == null ? null : ((pulumi.Input.decodeList<NodeGroupNodeRepairConfigNodeRepairConfigOverride>(map['nodeRepairConfigOverrides']!, (value) => NodeGroupNodeRepairConfigNodeRepairConfigOverride.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

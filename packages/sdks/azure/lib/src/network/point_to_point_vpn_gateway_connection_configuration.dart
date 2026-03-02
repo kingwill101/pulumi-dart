@@ -37,9 +37,9 @@ class PointToPointVpnGatewayConnectionConfiguration {
 
   factory PointToPointVpnGatewayConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayConnectionConfiguration(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled']! as bool).input(),
       name: (map['name'] as String).input(),
-      route: map['route'] == null ? null : (PointToPointVpnGatewayConnectionConfigurationRoute.fromMap((map['route'] as Map).cast<String, dynamic>())).input(),
+      route: map['route'] == null ? null : (PointToPointVpnGatewayConnectionConfigurationRoute.fromMap((map['route']! as Map).cast<String, dynamic>())).input(),
       vpnClientAddressPool: (PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
     );
   }

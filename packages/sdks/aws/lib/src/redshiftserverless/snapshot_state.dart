@@ -71,17 +71,17 @@ class SnapshotState {
 
   factory SnapshotState.fromMap(Map<String, dynamic> map) {
     return SnapshotState(
-      accountsWithProvisionedRestoreAccesses: map['accountsWithProvisionedRestoreAccesses'] == null ? null : ((map['accountsWithProvisionedRestoreAccesses'] as List).cast<String>()).input(),
-      accountsWithRestoreAccesses: map['accountsWithRestoreAccesses'] == null ? null : ((map['accountsWithRestoreAccesses'] as List).cast<String>()).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      namespaceArn: map['namespaceArn'] == null ? null : (map['namespaceArn'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      snapshotName: map['snapshotName'] == null ? null : (map['snapshotName'] as String).input(),
+      accountsWithProvisionedRestoreAccesses: map['accountsWithProvisionedRestoreAccesses'] == null ? null : (((map['accountsWithProvisionedRestoreAccesses'] as List).cast<String>()).input()).input(),
+      accountsWithRestoreAccesses: map['accountsWithRestoreAccesses'] == null ? null : (((map['accountsWithRestoreAccesses'] as List).cast<String>()).input()).input(),
+      adminUsername: map['adminUsername'] == null ? null : ((map['adminUsername'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      namespaceArn: map['namespaceArn'] == null ? null : ((map['namespaceArn'] as String).input()).input(),
+      namespaceName: map['namespaceName'] == null ? null : ((map['namespaceName'] as String).input()).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : ((map['ownerAccount'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
+      snapshotName: map['snapshotName'] == null ? null : ((map['snapshotName'] as String).input()).input(),
     );
   }
 }

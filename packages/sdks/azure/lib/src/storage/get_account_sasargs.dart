@@ -71,12 +71,12 @@ class GetAccountSASArgs {
     return GetAccountSASArgs(
       connectionString: (map['connectionString'] as String).input(),
       expiry: (map['expiry'] as String).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as String).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses']! as String).input(),
       permissions: (GetAccountSASPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
       resourceTypes: (GetAccountSASResourceTypes.fromMap((map['resourceTypes'] as Map).cast<String, dynamic>())).input(),
       services: (GetAccountSASServices.fromMap((map['services'] as Map).cast<String, dynamic>())).input(),
-      signedVersion: map['signedVersion'] == null ? null : (map['signedVersion'] as String).input(),
+      signedVersion: map['signedVersion'] == null ? null : (map['signedVersion']! as String).input(),
       start: (map['start'] as String).input(),
     );
   }

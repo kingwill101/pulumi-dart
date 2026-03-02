@@ -107,7 +107,7 @@ class GetTaskExecutionResult {
 
   factory GetTaskExecutionResult.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionResult(
-      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => GetTaskExecutionCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())),
+      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(map['capacityProviderStrategies']!, (value) => GetTaskExecutionCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())),
       clientToken: map['clientToken'] == null ? null : map['clientToken'] as String,
       cluster: map['cluster'] as String,
       desiredCount: map['desiredCount'] == null ? null : map['desiredCount'] as int,
@@ -116,10 +116,10 @@ class GetTaskExecutionResult {
       group: map['group'] == null ? null : map['group'] as String,
       id: map['id'] as String,
       launchType: map['launchType'] == null ? null : map['launchType'] as String,
-      networkConfiguration: map['networkConfiguration'] == null ? null : GetTaskExecutionNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
-      overrides: map['overrides'] == null ? null : GetTaskExecutionOverrides.fromMap((map['overrides'] as Map).cast<String, dynamic>()),
-      placementConstraints: map['placementConstraints'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionPlacementConstraint>(map['placementConstraints'], (value) => GetTaskExecutionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      placementStrategies: map['placementStrategies'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionPlacementStrategy>(map['placementStrategies'], (value) => GetTaskExecutionPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())),
+      networkConfiguration: map['networkConfiguration'] == null ? null : GetTaskExecutionNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>()),
+      overrides: map['overrides'] == null ? null : GetTaskExecutionOverrides.fromMap((map['overrides']! as Map).cast<String, dynamic>()),
+      placementConstraints: map['placementConstraints'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionPlacementConstraint>(map['placementConstraints']!, (value) => GetTaskExecutionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())),
+      placementStrategies: map['placementStrategies'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionPlacementStrategy>(map['placementStrategies']!, (value) => GetTaskExecutionPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())),
       platformVersion: map['platformVersion'] == null ? null : map['platformVersion'] as String,
       propagateTags: map['propagateTags'] == null ? null : map['propagateTags'] as String,
       referenceId: map['referenceId'] == null ? null : map['referenceId'] as String,

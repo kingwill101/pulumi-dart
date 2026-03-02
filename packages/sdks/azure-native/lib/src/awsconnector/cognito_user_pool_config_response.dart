@@ -31,9 +31,9 @@ class CognitoUserPoolConfigResponse {
 
   factory CognitoUserPoolConfigResponse.fromMap(Map<String, dynamic> map) {
     return CognitoUserPoolConfigResponse(
-      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex'] as String).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId'] as String).input(),
+      appIdClientRegex: map['appIdClientRegex'] == null ? null : (map['appIdClientRegex']! as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      userPoolId: map['userPoolId'] == null ? null : (map['userPoolId']! as String).input(),
     );
   }
 }

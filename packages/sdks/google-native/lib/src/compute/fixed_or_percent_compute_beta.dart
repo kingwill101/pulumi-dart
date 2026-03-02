@@ -26,8 +26,8 @@ class FixedOrPercentComputeBeta {
 
   factory FixedOrPercentComputeBeta.fromMap(Map<String, dynamic> map) {
     return FixedOrPercentComputeBeta(
-      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
     );
   }
 }

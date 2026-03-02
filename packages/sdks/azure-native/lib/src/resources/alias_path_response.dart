@@ -38,10 +38,10 @@ class AliasPathResponse {
 
   factory AliasPathResponse.fromMap(Map<String, dynamic> map) {
     return AliasPathResponse(
-      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions']! as List).cast<String>()).input(),
       metadata: (AliasPathMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      pattern: map['pattern'] == null ? null : (AliasPatternResponse.fromMap((map['pattern'] as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      pattern: map['pattern'] == null ? null : (AliasPatternResponse.fromMap((map['pattern']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

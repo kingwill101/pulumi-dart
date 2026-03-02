@@ -39,10 +39,10 @@ class AppSpecIngressRule {
 
   factory AppSpecIngressRule.fromMap(Map<String, dynamic> map) {
     return AppSpecIngressRule(
-      component: map['component'] == null ? null : (AppSpecIngressRuleComponent.fromMap((map['component'] as Map).cast<String, dynamic>())).input(),
-      cors: map['cors'] == null ? null : (AppSpecIngressRuleCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      match: map['match'] == null ? null : (AppSpecIngressRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      redirect: map['redirect'] == null ? null : (AppSpecIngressRuleRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>())).input(),
+      component: map['component'] == null ? null : (AppSpecIngressRuleComponent.fromMap((map['component']! as Map).cast<String, dynamic>())).input(),
+      cors: map['cors'] == null ? null : (AppSpecIngressRuleCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      match: map['match'] == null ? null : (AppSpecIngressRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      redirect: map['redirect'] == null ? null : (AppSpecIngressRuleRedirect.fromMap((map['redirect']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

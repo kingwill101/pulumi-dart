@@ -33,7 +33,7 @@ class GoogleCloudApigeeV1Quota {
     return GoogleCloudApigeeV1Quota(
       interval: (map['interval'] as String).input(),
       limit: (map['limit'] as String).input(),
-      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit'] as String).input(),
+      timeUnit: map['timeUnit'] == null ? null : (map['timeUnit']! as String).input(),
     );
   }
 }

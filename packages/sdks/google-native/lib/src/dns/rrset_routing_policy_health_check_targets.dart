@@ -21,7 +21,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
 
   factory RRSetRoutingPolicyHealthCheckTargets.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyHealthCheckTargets(
-      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyLoadBalancerTarget>(map['internalLoadBalancers'], (value) => RRSetRoutingPolicyLoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyLoadBalancerTarget>(map['internalLoadBalancers']!, (value) => RRSetRoutingPolicyLoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class AadDiagnosticSettingEnabledLog {
   factory AadDiagnosticSettingEnabledLog.fromMap(Map<String, dynamic> map) {
     return AadDiagnosticSettingEnabledLog(
       category: (map['category'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (AadDiagnosticSettingEnabledLogRetentionPolicy.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (AadDiagnosticSettingEnabledLogRetentionPolicy.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

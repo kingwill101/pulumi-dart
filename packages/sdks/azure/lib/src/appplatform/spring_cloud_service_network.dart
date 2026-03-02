@@ -50,12 +50,12 @@ class SpringCloudServiceNetwork {
 
   factory SpringCloudServiceNetwork.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceNetwork(
-      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup'] as String).input(),
+      appNetworkResourceGroup: map['appNetworkResourceGroup'] == null ? null : (map['appNetworkResourceGroup']! as String).input(),
       appSubnetId: (map['appSubnetId'] as String).input(),
       cidrRanges: ((map['cidrRanges'] as List).cast<String>()).input(),
-      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
-      readTimeoutSeconds: map['readTimeoutSeconds'] == null ? null : (map['readTimeoutSeconds'] as int).input(),
-      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup'] as String).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
+      readTimeoutSeconds: map['readTimeoutSeconds'] == null ? null : (map['readTimeoutSeconds']! as int).input(),
+      serviceRuntimeNetworkResourceGroup: map['serviceRuntimeNetworkResourceGroup'] == null ? null : (map['serviceRuntimeNetworkResourceGroup']! as String).input(),
       serviceRuntimeSubnetId: (map['serviceRuntimeSubnetId'] as String).input(),
     );
   }

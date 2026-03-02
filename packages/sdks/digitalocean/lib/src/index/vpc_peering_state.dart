@@ -36,10 +36,10 @@ class VpcPeeringState {
 
   factory VpcPeeringState.fromMap(Map<String, dynamic> map) {
     return VpcPeeringState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds']! as List).cast<String>()).input(),
     );
   }
 }

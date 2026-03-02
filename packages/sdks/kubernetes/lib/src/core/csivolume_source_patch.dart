@@ -42,11 +42,11 @@ class CSIVolumeSourcePatch {
 
   factory CSIVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return CSIVolumeSourcePatch(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['nodePublishSecretRef'] as Map).cast<String, dynamic>())).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes'] as Map).cast<String, String>()).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      nodePublishSecretRef: map['nodePublishSecretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['nodePublishSecretRef']! as Map).cast<String, dynamic>())).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      volumeAttributes: map['volumeAttributes'] == null ? null : ((map['volumeAttributes']! as Map).cast<String, String>()).input(),
     );
   }
 }

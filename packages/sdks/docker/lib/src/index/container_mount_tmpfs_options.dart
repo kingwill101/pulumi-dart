@@ -25,8 +25,8 @@ class ContainerMountTmpfsOptions {
 
   factory ContainerMountTmpfsOptions.fromMap(Map<String, dynamic> map) {
     return ContainerMountTmpfsOptions(
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes']! as int).input(),
     );
   }
 }

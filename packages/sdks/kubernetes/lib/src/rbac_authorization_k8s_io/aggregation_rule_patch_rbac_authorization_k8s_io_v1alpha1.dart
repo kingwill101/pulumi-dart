@@ -22,7 +22,7 @@ class AggregationRulePatchRbacAuthorizationK8sIoV1alpha1 {
 
   factory AggregationRulePatchRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return AggregationRulePatchRbacAuthorizationK8sIoV1alpha1(
-      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelectorPatch>(map['clusterRoleSelectors'], (value) => LabelSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterRoleSelectors: map['clusterRoleSelectors'] == null ? null : (pulumi.Input.decodeList<LabelSelectorPatch>(map['clusterRoleSelectors']!, (value) => LabelSelectorPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

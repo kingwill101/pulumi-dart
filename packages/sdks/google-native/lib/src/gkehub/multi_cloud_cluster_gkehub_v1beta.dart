@@ -21,7 +21,7 @@ class MultiCloudClusterGkehubV1beta {
 
   factory MultiCloudClusterGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return MultiCloudClusterGkehubV1beta(
-      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink'] as String).input(),
+      resourceLink: map['resourceLink'] == null ? null : (map['resourceLink']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class TemplateContents {
 
   factory TemplateContents.fromMap(Map<String, dynamic> map) {
     return TemplateContents(
-      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFile>(map['imports'], (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      interpreter: map['interpreter'] == null ? null : (TemplateContentsInterpreter.fromValue(map['interpreter'] as String)).input(),
-      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<ImportFile>(map['imports']!, (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      interpreter: map['interpreter'] == null ? null : (TemplateContentsInterpreter.fromValue(map['interpreter']! as String)).input(),
+      mainTemplate: map['mainTemplate'] == null ? null : (map['mainTemplate']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class BillingProfileArgs {
   factory BillingProfileArgs.fromMap(Map<String, dynamic> map) {
     return BillingProfileArgs(
       billingAccountName: (map['billingAccountName'] as String).input(),
-      billingProfileName: map['billingProfileName'] == null ? null : (map['billingProfileName'] as String).input(),
-      properties: map['properties'] == null ? null : (BillingProfileProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      billingProfileName: map['billingProfileName'] == null ? null : (map['billingProfileName']! as String).input(),
+      properties: map['properties'] == null ? null : (BillingProfileProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

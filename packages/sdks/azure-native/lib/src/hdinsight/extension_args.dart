@@ -45,10 +45,10 @@ class ExtensionArgs {
   factory ExtensionArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionArgs(
       clusterName: (map['clusterName'] as String).input(),
-      extensionName: map['extensionName'] == null ? null : (map['extensionName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      extensionName: map['extensionName'] == null ? null : (map['extensionName']! as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class DetectorFeatureState {
 
   factory DetectorFeatureState.fromMap(Map<String, dynamic> map) {
     return DetectorFeatureState(
-      additionalConfigurations: map['additionalConfigurations'] == null ? null : (pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(map['additionalConfigurations'], (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      additionalConfigurations: map['additionalConfigurations'] == null ? null : ((pulumi.Input.decodeList<DetectorFeatureAdditionalConfiguration>(map['additionalConfigurations']!, (value) => DetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

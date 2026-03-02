@@ -21,7 +21,7 @@ class DeploymentSettingsCacheOptions {
 
   factory DeploymentSettingsCacheOptions.fromMap(Map<String, dynamic> map) {
     return DeploymentSettingsCacheOptions(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

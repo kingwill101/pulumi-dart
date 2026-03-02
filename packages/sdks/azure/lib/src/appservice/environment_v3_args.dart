@@ -78,16 +78,16 @@ class EnvironmentV3Args {
 
   factory EnvironmentV3Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentV3Args(
-      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections'] as bool).input(),
-      clusterSettings: map['clusterSettings'] == null ? null : (pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(map['clusterSettings'], (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dedicatedHostCount: map['dedicatedHostCount'] == null ? null : (map['dedicatedHostCount'] as int).input(),
-      internalLoadBalancingMode: map['internalLoadBalancingMode'] == null ? null : (map['internalLoadBalancingMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : (map['remoteDebuggingEnabled'] as bool).input(),
+      allowNewPrivateEndpointConnections: map['allowNewPrivateEndpointConnections'] == null ? null : (map['allowNewPrivateEndpointConnections']! as bool).input(),
+      clusterSettings: map['clusterSettings'] == null ? null : (pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(map['clusterSettings']!, (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dedicatedHostCount: map['dedicatedHostCount'] == null ? null : (map['dedicatedHostCount']! as int).input(),
+      internalLoadBalancingMode: map['internalLoadBalancingMode'] == null ? null : (map['internalLoadBalancingMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      remoteDebuggingEnabled: map['remoteDebuggingEnabled'] == null ? null : (map['remoteDebuggingEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

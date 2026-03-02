@@ -34,9 +34,9 @@ class GalleryImageVersionStorageProfile {
 
   factory GalleryImageVersionStorageProfile.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionStorageProfile(
-      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<GalleryDataDiskImage>(map['dataDiskImages'], (value) => GalleryDataDiskImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImage.fromMap((map['osDiskImage'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (GalleryArtifactVersionFullSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      dataDiskImages: map['dataDiskImages'] == null ? null : (pulumi.Input.decodeList<GalleryDataDiskImage>(map['dataDiskImages']!, (value) => GalleryDataDiskImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osDiskImage: map['osDiskImage'] == null ? null : (GalleryOSDiskImage.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (GalleryArtifactVersionFullSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

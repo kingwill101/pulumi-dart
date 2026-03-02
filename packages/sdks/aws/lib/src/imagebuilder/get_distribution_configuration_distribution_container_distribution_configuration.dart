@@ -33,7 +33,7 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
     return GetDistributionConfigurationDistributionContainerDistributionConfiguration(
       containerTags: ((map['containerTags'] as List).cast<String>()).input(),
       description: (map['description'] as String).input(),
-      targetRepositories: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository>(map['targetRepositories'], (value) => GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRepositories: (pulumi.Input.decodeList<GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository>(map['targetRepositories']!, (value) => GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

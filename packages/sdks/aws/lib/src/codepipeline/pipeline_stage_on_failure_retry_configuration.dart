@@ -20,7 +20,7 @@ class PipelineStageOnFailureRetryConfiguration {
 
   factory PipelineStageOnFailureRetryConfiguration.fromMap(Map<String, dynamic> map) {
     return PipelineStageOnFailureRetryConfiguration(
-      retryMode: map['retryMode'] == null ? null : (map['retryMode'] as String).input(),
+      retryMode: map['retryMode'] == null ? null : ((map['retryMode'] as String).input()).input(),
     );
   }
 }

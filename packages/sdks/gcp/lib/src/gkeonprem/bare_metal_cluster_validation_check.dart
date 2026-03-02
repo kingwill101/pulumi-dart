@@ -35,9 +35,9 @@ class BareMetalClusterValidationCheck {
 
   factory BareMetalClusterValidationCheck.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterValidationCheck(
-      options: map['options'] == null ? null : (map['options'] as String).input(),
-      scenario: map['scenario'] == null ? null : (map['scenario'] as String).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterValidationCheckStatus>(map['statuses'], (value) => BareMetalClusterValidationCheckStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      options: map['options'] == null ? null : (map['options']! as String).input(),
+      scenario: map['scenario'] == null ? null : (map['scenario']! as String).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterValidationCheckStatus>(map['statuses']!, (value) => BareMetalClusterValidationCheckStatus.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

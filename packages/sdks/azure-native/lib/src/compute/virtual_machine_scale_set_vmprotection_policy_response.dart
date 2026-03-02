@@ -26,8 +26,8 @@ class VirtualMachineScaleSetVMProtectionPolicyResponse {
 
   factory VirtualMachineScaleSetVMProtectionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetVMProtectionPolicyResponse(
-      protectFromScaleIn: map['protectFromScaleIn'] == null ? null : (map['protectFromScaleIn'] as bool).input(),
-      protectFromScaleSetActions: map['protectFromScaleSetActions'] == null ? null : (map['protectFromScaleSetActions'] as bool).input(),
+      protectFromScaleIn: map['protectFromScaleIn'] == null ? null : (map['protectFromScaleIn']! as bool).input(),
+      protectFromScaleSetActions: map['protectFromScaleSetActions'] == null ? null : (map['protectFromScaleSetActions']! as bool).input(),
     );
   }
 }

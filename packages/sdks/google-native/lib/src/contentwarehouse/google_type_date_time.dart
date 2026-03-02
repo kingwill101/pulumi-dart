@@ -62,15 +62,15 @@ class GoogleTypeDateTime {
 
   factory GoogleTypeDateTime.fromMap(Map<String, dynamic> map) {
     return GoogleTypeDateTime(
-      day: map['day'] == null ? null : (map['day'] as int).input(),
-      hours: map['hours'] == null ? null : (map['hours'] as int).input(),
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
-      month: map['month'] == null ? null : (map['month'] as int).input(),
-      nanos: map['nanos'] == null ? null : (map['nanos'] as int).input(),
-      seconds: map['seconds'] == null ? null : (map['seconds'] as int).input(),
-      timeZone: map['timeZone'] == null ? null : (GoogleTypeTimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
-      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset'] as String).input(),
-      year: map['year'] == null ? null : (map['year'] as int).input(),
+      day: map['day'] == null ? null : (map['day']! as int).input(),
+      hours: map['hours'] == null ? null : (map['hours']! as int).input(),
+      minutes: map['minutes'] == null ? null : (map['minutes']! as int).input(),
+      month: map['month'] == null ? null : (map['month']! as int).input(),
+      nanos: map['nanos'] == null ? null : (map['nanos']! as int).input(),
+      seconds: map['seconds'] == null ? null : (map['seconds']! as int).input(),
+      timeZone: map['timeZone'] == null ? null : (GoogleTypeTimeZone.fromMap((map['timeZone']! as Map).cast<String, dynamic>())).input(),
+      utcOffset: map['utcOffset'] == null ? null : (map['utcOffset']! as String).input(),
+      year: map['year'] == null ? null : (map['year']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class NetworkPolicyInternetAccess {
 
   factory NetworkPolicyInternetAccess.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyInternetAccess(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

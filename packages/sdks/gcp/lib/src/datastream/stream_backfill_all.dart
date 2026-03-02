@@ -64,13 +64,13 @@ class StreamBackfillAll {
 
   factory StreamBackfillAll.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAll(
-      mongodbExcludedObjects: map['mongodbExcludedObjects'] == null ? null : (StreamBackfillAllMongodbExcludedObjects.fromMap((map['mongodbExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (StreamBackfillAllMysqlExcludedObjects.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (StreamBackfillAllOracleExcludedObjects.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null ? null : (StreamBackfillAllPostgresqlExcludedObjects.fromMap((map['postgresqlExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      salesforceExcludedObjects: map['salesforceExcludedObjects'] == null ? null : (StreamBackfillAllSalesforceExcludedObjects.fromMap((map['salesforceExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      spannerExcludedObjects: map['spannerExcludedObjects'] == null ? null : (StreamBackfillAllSpannerExcludedObjects.fromMap((map['spannerExcludedObjects'] as Map).cast<String, dynamic>())).input(),
-      sqlServerExcludedObjects: map['sqlServerExcludedObjects'] == null ? null : (StreamBackfillAllSqlServerExcludedObjects.fromMap((map['sqlServerExcludedObjects'] as Map).cast<String, dynamic>())).input(),
+      mongodbExcludedObjects: map['mongodbExcludedObjects'] == null ? null : (StreamBackfillAllMongodbExcludedObjects.fromMap((map['mongodbExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : (StreamBackfillAllMysqlExcludedObjects.fromMap((map['mysqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : (StreamBackfillAllOracleExcludedObjects.fromMap((map['oracleExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null ? null : (StreamBackfillAllPostgresqlExcludedObjects.fromMap((map['postgresqlExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      salesforceExcludedObjects: map['salesforceExcludedObjects'] == null ? null : (StreamBackfillAllSalesforceExcludedObjects.fromMap((map['salesforceExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      spannerExcludedObjects: map['spannerExcludedObjects'] == null ? null : (StreamBackfillAllSpannerExcludedObjects.fromMap((map['spannerExcludedObjects']! as Map).cast<String, dynamic>())).input(),
+      sqlServerExcludedObjects: map['sqlServerExcludedObjects'] == null ? null : (StreamBackfillAllSqlServerExcludedObjects.fromMap((map['sqlServerExcludedObjects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

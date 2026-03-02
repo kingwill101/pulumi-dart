@@ -26,8 +26,8 @@ class InstancePropertiesPatchComputeBeta {
 
   factory InstancePropertiesPatchComputeBeta.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesPatchComputeBeta(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -47,10 +47,10 @@ class CertificateDatastoreCredentialsResponse {
 
   factory CertificateDatastoreCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return CertificateDatastoreCredentialsResponse(
-      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl'] as String).input(),
+      authorityUrl: map['authorityUrl'] == null ? null : (map['authorityUrl']! as String).input(),
       clientId: (map['clientId'] as String).input(),
       credentialsType: (map['credentialsType'] as String).input(),
-      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl'] as String).input(),
+      resourceUrl: map['resourceUrl'] == null ? null : (map['resourceUrl']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       thumbprint: (map['thumbprint'] as String).input(),
     );

@@ -21,7 +21,7 @@ class LaunchScheduledSplitsConfig {
 
   factory LaunchScheduledSplitsConfig.fromMap(Map<String, dynamic> map) {
     return LaunchScheduledSplitsConfig(
-      steps: (pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(map['steps'], (value) => LaunchScheduledSplitsConfigStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      steps: (pulumi.Input.decodeList<LaunchScheduledSplitsConfigStep>(map['steps']!, (value) => LaunchScheduledSplitsConfigStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

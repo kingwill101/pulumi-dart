@@ -20,7 +20,7 @@ class JobNotificationProperty {
 
   factory JobNotificationProperty.fromMap(Map<String, dynamic> map) {
     return JobNotificationProperty(
-      notifyDelayAfter: map['notifyDelayAfter'] == null ? null : (map['notifyDelayAfter'] as int).input(),
+      notifyDelayAfter: map['notifyDelayAfter'] == null ? null : ((map['notifyDelayAfter'] as int).input()).input(),
     );
   }
 }

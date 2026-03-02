@@ -39,10 +39,10 @@ class SyncSetArgs {
 
   factory SyncSetArgs.fromMap(Map<String, dynamic> map) {
     return SyncSetArgs(
-      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName'] as String).input(),
+      childResourceName: map['childResourceName'] == null ? null : (map['childResourceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      resources: map['resources'] == null ? null : (map['resources'] as String).input(),
+      resources: map['resources'] == null ? null : (map['resources']! as String).input(),
     );
   }
 }

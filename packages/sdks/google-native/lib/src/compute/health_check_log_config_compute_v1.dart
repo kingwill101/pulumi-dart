@@ -21,7 +21,7 @@ class HealthCheckLogConfigComputeV1 {
 
   factory HealthCheckLogConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return HealthCheckLogConfigComputeV1(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

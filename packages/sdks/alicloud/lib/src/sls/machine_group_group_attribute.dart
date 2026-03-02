@@ -25,8 +25,8 @@ class MachineGroupGroupAttribute {
 
   factory MachineGroupGroupAttribute.fromMap(Map<String, dynamic> map) {
     return MachineGroupGroupAttribute(
-      externalName: map['externalName'] == null ? null : (map['externalName'] as String).input(),
-      groupTopic: map['groupTopic'] == null ? null : (map['groupTopic'] as String).input(),
+      externalName: map['externalName'] == null ? null : (map['externalName']! as String).input(),
+      groupTopic: map['groupTopic'] == null ? null : (map['groupTopic']! as String).input(),
     );
   }
 }

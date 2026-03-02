@@ -63,12 +63,12 @@ class GetNamespaceTopicResult {
   factory GetNamespaceTopicResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : map['eventRetentionInDays'] as int,
+      eventRetentionInDays: map['eventRetentionInDays'] == null ? null : map['eventRetentionInDays']! as int,
       id: map['id'] as String,
-      inputSchema: map['inputSchema'] == null ? null : map['inputSchema'] as String,
+      inputSchema: map['inputSchema'] == null ? null : map['inputSchema']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      publisherType: map['publisherType'] == null ? null : map['publisherType'] as String,
+      publisherType: map['publisherType'] == null ? null : map['publisherType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

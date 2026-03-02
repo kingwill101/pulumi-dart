@@ -109,22 +109,22 @@ class BatchDeployment {
 
   factory BatchDeployment.fromMap(Map<String, dynamic> map) {
     return BatchDeployment(
-      codeConfiguration: map['codeConfiguration'] == null ? null : (CodeConfiguration.fromMap((map['codeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      compute: map['compute'] == null ? null : (map['compute'] as String).input(),
-      deploymentConfiguration: map['deploymentConfiguration'] == null ? null : (BatchPipelineComponentDeploymentConfiguration.fromMap((map['deploymentConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      errorThreshold: map['errorThreshold'] == null ? null : (map['errorThreshold'] as int).input(),
-      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel'] as String).input(),
-      maxConcurrencyPerInstance: map['maxConcurrencyPerInstance'] == null ? null : (map['maxConcurrencyPerInstance'] as int).input(),
-      miniBatchSize: map['miniBatchSize'] == null ? null : (map['miniBatchSize'] as double).input(),
-      model: map['model'] == null ? null : (DataPathAssetReference.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      outputAction: map['outputAction'] == null ? null : (map['outputAction'] as String).input(),
-      outputFileName: map['outputFileName'] == null ? null : (map['outputFileName'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      resources: map['resources'] == null ? null : (DeploymentResourceConfiguration.fromMap((map['resources'] as Map).cast<String, dynamic>())).input(),
-      retrySettings: map['retrySettings'] == null ? null : (BatchRetrySettings.fromMap((map['retrySettings'] as Map).cast<String, dynamic>())).input(),
+      codeConfiguration: map['codeConfiguration'] == null ? null : (CodeConfiguration.fromMap((map['codeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      compute: map['compute'] == null ? null : (map['compute']! as String).input(),
+      deploymentConfiguration: map['deploymentConfiguration'] == null ? null : (BatchPipelineComponentDeploymentConfiguration.fromMap((map['deploymentConfiguration']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      errorThreshold: map['errorThreshold'] == null ? null : (map['errorThreshold']! as int).input(),
+      loggingLevel: map['loggingLevel'] == null ? null : (map['loggingLevel']! as String).input(),
+      maxConcurrencyPerInstance: map['maxConcurrencyPerInstance'] == null ? null : (map['maxConcurrencyPerInstance']! as int).input(),
+      miniBatchSize: map['miniBatchSize'] == null ? null : (map['miniBatchSize']! as double).input(),
+      model: map['model'] == null ? null : (DataPathAssetReference.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
+      outputAction: map['outputAction'] == null ? null : (map['outputAction']! as String).input(),
+      outputFileName: map['outputFileName'] == null ? null : (map['outputFileName']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      resources: map['resources'] == null ? null : (DeploymentResourceConfiguration.fromMap((map['resources']! as Map).cast<String, dynamic>())).input(),
+      retrySettings: map['retrySettings'] == null ? null : (BatchRetrySettings.fromMap((map['retrySettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

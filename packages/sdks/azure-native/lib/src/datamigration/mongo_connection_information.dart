@@ -46,12 +46,12 @@ class MongoConnectionInformation {
 
   factory MongoConnectionInformation.fromMap(Map<String, dynamic> map) {
     return MongoConnectionInformation(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      useSsl: map['useSsl'] == null ? null : (map['useSsl'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      useSsl: map['useSsl'] == null ? null : (map['useSsl']! as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

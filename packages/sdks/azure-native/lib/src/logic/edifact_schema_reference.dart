@@ -51,13 +51,13 @@ class EdifactSchemaReference {
 
   factory EdifactSchemaReference.fromMap(Map<String, dynamic> map) {
     return EdifactSchemaReference(
-      associationAssignedCode: map['associationAssignedCode'] == null ? null : (map['associationAssignedCode'] as String).input(),
+      associationAssignedCode: map['associationAssignedCode'] == null ? null : (map['associationAssignedCode']! as String).input(),
       messageId: (map['messageId'] as String).input(),
       messageRelease: (map['messageRelease'] as String).input(),
       messageVersion: (map['messageVersion'] as String).input(),
       schemaName: (map['schemaName'] as String).input(),
-      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId'] as String).input(),
-      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : (map['senderApplicationQualifier'] as String).input(),
+      senderApplicationId: map['senderApplicationId'] == null ? null : (map['senderApplicationId']! as String).input(),
+      senderApplicationQualifier: map['senderApplicationQualifier'] == null ? null : (map['senderApplicationQualifier']! as String).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputGroupSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettings(
-      archiveGroupSettings: map['archiveGroupSettings'] == null ? null : (pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting>(map['archiveGroupSettings'], (value) => ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      frameCaptureGroupSettings: map['frameCaptureGroupSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings.fromMap((map['frameCaptureGroupSettings'] as Map).cast<String, dynamic>())).input(),
-      hlsGroupSettings: map['hlsGroupSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings.fromMap((map['hlsGroupSettings'] as Map).cast<String, dynamic>())).input(),
-      mediaPackageGroupSettings: map['mediaPackageGroupSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings.fromMap((map['mediaPackageGroupSettings'] as Map).cast<String, dynamic>())).input(),
-      msSmoothGroupSettings: map['msSmoothGroupSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings.fromMap((map['msSmoothGroupSettings'] as Map).cast<String, dynamic>())).input(),
-      multiplexGroupSettings: map['multiplexGroupSettings'] == null ? null : ((map['multiplexGroupSettings'] as Map).cast<String, dynamic>()).input(),
-      rtmpGroupSettings: map['rtmpGroupSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings.fromMap((map['rtmpGroupSettings'] as Map).cast<String, dynamic>())).input(),
-      udpGroupSettings: map['udpGroupSettings'] == null ? null : (ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap((map['udpGroupSettings'] as Map).cast<String, dynamic>())).input(),
+      archiveGroupSettings: map['archiveGroupSettings'] == null ? null : ((pulumi.Input.decodeList<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting>(map['archiveGroupSettings']!, (value) => ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      frameCaptureGroupSettings: map['frameCaptureGroupSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings.fromMap((map['frameCaptureGroupSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      hlsGroupSettings: map['hlsGroupSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings.fromMap((map['hlsGroupSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      mediaPackageGroupSettings: map['mediaPackageGroupSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings.fromMap((map['mediaPackageGroupSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      msSmoothGroupSettings: map['msSmoothGroupSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings.fromMap((map['msSmoothGroupSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      multiplexGroupSettings: map['multiplexGroupSettings'] == null ? null : (((map['multiplexGroupSettings'] as Map).cast<String, dynamic>()).input()).input(),
+      rtmpGroupSettings: map['rtmpGroupSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings.fromMap((map['rtmpGroupSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      udpGroupSettings: map['udpGroupSettings'] == null ? null : ((ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap((map['udpGroupSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

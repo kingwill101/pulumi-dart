@@ -51,13 +51,13 @@ class GatewayAssociationProposalState {
 
   factory GatewayAssociationProposalState.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationProposalState(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : ((map['allowedPrefixes'] as List).cast<String>()).input(),
-      associatedGatewayId: map['associatedGatewayId'] == null ? null : (map['associatedGatewayId'] as String).input(),
-      associatedGatewayOwnerAccountId: map['associatedGatewayOwnerAccountId'] == null ? null : (map['associatedGatewayOwnerAccountId'] as String).input(),
-      associatedGatewayType: map['associatedGatewayType'] == null ? null : (map['associatedGatewayType'] as String).input(),
-      dxGatewayId: map['dxGatewayId'] == null ? null : (map['dxGatewayId'] as String).input(),
-      dxGatewayOwnerAccountId: map['dxGatewayOwnerAccountId'] == null ? null : (map['dxGatewayOwnerAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      allowedPrefixes: map['allowedPrefixes'] == null ? null : (((map['allowedPrefixes'] as List).cast<String>()).input()).input(),
+      associatedGatewayId: map['associatedGatewayId'] == null ? null : ((map['associatedGatewayId'] as String).input()).input(),
+      associatedGatewayOwnerAccountId: map['associatedGatewayOwnerAccountId'] == null ? null : ((map['associatedGatewayOwnerAccountId'] as String).input()).input(),
+      associatedGatewayType: map['associatedGatewayType'] == null ? null : ((map['associatedGatewayType'] as String).input()).input(),
+      dxGatewayId: map['dxGatewayId'] == null ? null : ((map['dxGatewayId'] as String).input()).input(),
+      dxGatewayOwnerAccountId: map['dxGatewayOwnerAccountId'] == null ? null : ((map['dxGatewayOwnerAccountId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

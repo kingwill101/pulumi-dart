@@ -37,10 +37,10 @@ class GatewayState {
 
   factory GatewayState.fromMap(Map<String, dynamic> map) {
     return GatewayState(
-      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      locationData: map['locationData'] == null ? null : (GatewayLocationData.fromMap((map['locationData'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      apiManagementId: map['apiManagementId'] == null ? null : (map['apiManagementId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      locationData: map['locationData'] == null ? null : (GatewayLocationData.fromMap((map['locationData']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

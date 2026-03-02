@@ -84,15 +84,15 @@ class FrontdoorArgs {
     return FrontdoorArgs(
       backendPoolHealthProbes: (pulumi.Input.decodeList<FrontdoorBackendPoolHealthProbe>(map['backendPoolHealthProbes'], (value) => FrontdoorBackendPoolHealthProbe.fromMap((value as Map).cast<String, dynamic>()))).input(),
       backendPoolLoadBalancings: (pulumi.Input.decodeList<FrontdoorBackendPoolLoadBalancing>(map['backendPoolLoadBalancings'], (value) => FrontdoorBackendPoolLoadBalancing.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      backendPoolSettings: map['backendPoolSettings'] == null ? null : (pulumi.Input.decodeList<FrontdoorBackendPoolSetting>(map['backendPoolSettings'], (value) => FrontdoorBackendPoolSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendPoolSettings: map['backendPoolSettings'] == null ? null : (pulumi.Input.decodeList<FrontdoorBackendPoolSetting>(map['backendPoolSettings']!, (value) => FrontdoorBackendPoolSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
       backendPools: (pulumi.Input.decodeList<FrontdoorBackendPool>(map['backendPools'], (value) => FrontdoorBackendPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
       frontendEndpoints: (pulumi.Input.decodeList<FrontdoorFrontendEndpoint>(map['frontendEndpoints'], (value) => FrontdoorFrontendEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loadBalancerEnabled: map['loadBalancerEnabled'] == null ? null : (map['loadBalancerEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      loadBalancerEnabled: map['loadBalancerEnabled'] == null ? null : (map['loadBalancerEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       routingRules: (pulumi.Input.decodeList<FrontdoorRoutingRule>(map['routingRules'], (value) => FrontdoorRoutingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

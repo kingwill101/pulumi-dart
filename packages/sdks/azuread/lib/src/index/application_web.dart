@@ -36,10 +36,10 @@ class ApplicationWeb {
 
   factory ApplicationWeb.fromMap(Map<String, dynamic> map) {
     return ApplicationWeb(
-      homepageUrl: map['homepageUrl'] == null ? null : (map['homepageUrl'] as String).input(),
-      implicitGrant: map['implicitGrant'] == null ? null : (ApplicationWebImplicitGrant.fromMap((map['implicitGrant'] as Map).cast<String, dynamic>())).input(),
-      logoutUrl: map['logoutUrl'] == null ? null : (map['logoutUrl'] as String).input(),
-      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris'] as List).cast<String>()).input(),
+      homepageUrl: map['homepageUrl'] == null ? null : (map['homepageUrl']! as String).input(),
+      implicitGrant: map['implicitGrant'] == null ? null : (ApplicationWebImplicitGrant.fromMap((map['implicitGrant']! as Map).cast<String, dynamic>())).input(),
+      logoutUrl: map['logoutUrl'] == null ? null : (map['logoutUrl']! as String).input(),
+      redirectUris: map['redirectUris'] == null ? null : ((map['redirectUris']! as List).cast<String>()).input(),
     );
   }
 }

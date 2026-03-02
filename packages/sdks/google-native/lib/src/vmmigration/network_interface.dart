@@ -36,10 +36,10 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

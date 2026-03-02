@@ -31,7 +31,7 @@ class SQuotaAdjusterSettingsArgs {
   factory SQuotaAdjusterSettingsArgs.fromMap(Map<String, dynamic> map) {
     return SQuotaAdjusterSettingsArgs(
       enablement: (map['enablement'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

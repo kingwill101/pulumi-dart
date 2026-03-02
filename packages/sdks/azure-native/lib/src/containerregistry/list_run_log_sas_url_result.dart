@@ -25,8 +25,8 @@ class ListRunLogSasUrlResult {
 
   factory ListRunLogSasUrlResult.fromMap(Map<String, dynamic> map) {
     return ListRunLogSasUrlResult(
-      logArtifactLink: map['logArtifactLink'] == null ? null : map['logArtifactLink'] as String,
-      logLink: map['logLink'] == null ? null : map['logLink'] as String,
+      logArtifactLink: map['logArtifactLink'] == null ? null : map['logArtifactLink']! as String,
+      logLink: map['logLink'] == null ? null : map['logLink']! as String,
     );
   }
 }

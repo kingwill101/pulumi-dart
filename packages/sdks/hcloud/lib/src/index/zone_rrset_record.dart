@@ -25,7 +25,7 @@ class ZoneRrsetRecord {
 
   factory ZoneRrsetRecord.fromMap(Map<String, dynamic> map) {
     return ZoneRrsetRecord(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

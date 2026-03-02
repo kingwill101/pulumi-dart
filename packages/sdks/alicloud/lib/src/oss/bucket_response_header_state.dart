@@ -27,8 +27,8 @@ class BucketResponseHeaderState {
 
   factory BucketResponseHeaderState.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules'], (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<BucketResponseHeaderRule>(map['rules']!, (value) => BucketResponseHeaderRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

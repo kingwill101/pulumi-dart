@@ -39,10 +39,10 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
 
   factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig(
-      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap((map['endUserSuggestionConfig'] as Map).cast<String, dynamic>())).input(),
-      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap((map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>())).input(),
-      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
+      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap((map['endUserSuggestionConfig']! as Map).cast<String, dynamic>())).input(),
+      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap((map['humanAgentSuggestionConfig']! as Map).cast<String, dynamic>())).input(),
+      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

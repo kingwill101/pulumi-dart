@@ -36,10 +36,10 @@ class ThingGroupMembershipState {
 
   factory ThingGroupMembershipState.fromMap(Map<String, dynamic> map) {
     return ThingGroupMembershipState(
-      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : (map['overrideDynamicGroup'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      thingGroupName: map['thingGroupName'] == null ? null : (map['thingGroupName'] as String).input(),
-      thingName: map['thingName'] == null ? null : (map['thingName'] as String).input(),
+      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : ((map['overrideDynamicGroup'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      thingGroupName: map['thingGroupName'] == null ? null : ((map['thingGroupName'] as String).input()).input(),
+      thingName: map['thingName'] == null ? null : ((map['thingName'] as String).input()).input(),
     );
   }
 }

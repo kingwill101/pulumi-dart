@@ -36,10 +36,10 @@ class ConfigState {
 
   factory ConfigState.fromMap(Map<String, dynamic> map) {
     return ConfigState(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

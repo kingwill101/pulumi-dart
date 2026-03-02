@@ -26,8 +26,8 @@ class GoogleCloudRunV2BinaryAuthorization {
 
   factory GoogleCloudRunV2BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2BinaryAuthorization(
-      breakglassJustification: map['breakglassJustification'] == null ? null : (map['breakglassJustification'] as String).input(),
-      useDefault: map['useDefault'] == null ? null : (map['useDefault'] as bool).input(),
+      breakglassJustification: map['breakglassJustification'] == null ? null : (map['breakglassJustification']! as String).input(),
+      useDefault: map['useDefault'] == null ? null : (map['useDefault']! as bool).input(),
     );
   }
 }

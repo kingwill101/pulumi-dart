@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
 
   factory PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern(
-      cloudStorageRegex: map['cloudStorageRegex'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex.fromMap((map['cloudStorageRegex'] as Map).cast<String, dynamic>())).input(),
+      cloudStorageRegex: map['cloudStorageRegex'] == null ? null : (PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex.fromMap((map['cloudStorageRegex']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

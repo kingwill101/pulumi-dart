@@ -35,9 +35,9 @@ class QosAssociationV3State {
 
   factory QosAssociationV3State.fromMap(Map<String, dynamic> map) {
     return QosAssociationV3State(
-      qosId: map['qosId'] == null ? null : (map['qosId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      volumeTypeId: map['volumeTypeId'] == null ? null : (map['volumeTypeId'] as String).input(),
+      qosId: map['qosId'] == null ? null : (map['qosId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      volumeTypeId: map['volumeTypeId'] == null ? null : (map['volumeTypeId']! as String).input(),
     );
   }
 }

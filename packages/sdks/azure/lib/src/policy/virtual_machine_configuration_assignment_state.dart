@@ -37,10 +37,10 @@ class VirtualMachineConfigurationAssignmentState {
 
   factory VirtualMachineConfigurationAssignmentState.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigurationAssignmentState(
-      configuration: map['configuration'] == null ? null : (VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId'] as String).input(),
+      configuration: map['configuration'] == null ? null : (VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      virtualMachineId: map['virtualMachineId'] == null ? null : (map['virtualMachineId']! as String).input(),
     );
   }
 }

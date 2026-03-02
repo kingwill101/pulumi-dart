@@ -52,12 +52,12 @@ class PoliciesResponse {
 
   factory PoliciesResponse.fromMap(Map<String, dynamic> map) {
     return PoliciesResponse(
-      azureADAuthenticationAsArmPolicy: map['azureADAuthenticationAsArmPolicy'] == null ? null : (AzureADAuthenticationAsArmPolicyResponse.fromMap((map['azureADAuthenticationAsArmPolicy'] as Map).cast<String, dynamic>())).input(),
-      exportPolicy: map['exportPolicy'] == null ? null : (ExportPolicyResponse.fromMap((map['exportPolicy'] as Map).cast<String, dynamic>())).input(),
-      quarantinePolicy: map['quarantinePolicy'] == null ? null : (QuarantinePolicyResponse.fromMap((map['quarantinePolicy'] as Map).cast<String, dynamic>())).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyResponse.fromMap((map['retentionPolicy'] as Map).cast<String, dynamic>())).input(),
-      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicyResponse.fromMap((map['softDeletePolicy'] as Map).cast<String, dynamic>())).input(),
-      trustPolicy: map['trustPolicy'] == null ? null : (TrustPolicyResponse.fromMap((map['trustPolicy'] as Map).cast<String, dynamic>())).input(),
+      azureADAuthenticationAsArmPolicy: map['azureADAuthenticationAsArmPolicy'] == null ? null : (AzureADAuthenticationAsArmPolicyResponse.fromMap((map['azureADAuthenticationAsArmPolicy']! as Map).cast<String, dynamic>())).input(),
+      exportPolicy: map['exportPolicy'] == null ? null : (ExportPolicyResponse.fromMap((map['exportPolicy']! as Map).cast<String, dynamic>())).input(),
+      quarantinePolicy: map['quarantinePolicy'] == null ? null : (QuarantinePolicyResponse.fromMap((map['quarantinePolicy']! as Map).cast<String, dynamic>())).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (RetentionPolicyResponse.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>())).input(),
+      softDeletePolicy: map['softDeletePolicy'] == null ? null : (SoftDeletePolicyResponse.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>())).input(),
+      trustPolicy: map['trustPolicy'] == null ? null : (TrustPolicyResponse.fromMap((map['trustPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

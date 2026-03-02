@@ -26,8 +26,8 @@ class SubResourceWithColocationStatusResponse {
 
   factory SubResourceWithColocationStatusResponse.fromMap(Map<String, dynamic> map) {
     return SubResourceWithColocationStatusResponse(
-      colocationStatus: map['colocationStatus'] == null ? null : (InstanceViewStatusResponse.fromMap((map['colocationStatus'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      colocationStatus: map['colocationStatus'] == null ? null : (InstanceViewStatusResponse.fromMap((map['colocationStatus']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

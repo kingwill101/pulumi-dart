@@ -42,10 +42,10 @@ class ImageTemplateShellCustomizerResponse {
 
   factory ImageTemplateShellCustomizerResponse.fromMap(Map<String, dynamic> map) {
     return ImageTemplateShellCustomizerResponse(
-      inline: map['inline'] == null ? null : ((map['inline'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      scriptUri: map['scriptUri'] == null ? null : (map['scriptUri'] as String).input(),
-      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum'] as String).input(),
+      inline: map['inline'] == null ? null : ((map['inline']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      scriptUri: map['scriptUri'] == null ? null : (map['scriptUri']! as String).input(),
+      sha256Checksum: map['sha256Checksum'] == null ? null : (map['sha256Checksum']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

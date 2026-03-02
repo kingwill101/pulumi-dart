@@ -31,9 +31,9 @@ class EndpointPropertiesSubnetsItemResponse {
 
   factory EndpointPropertiesSubnetsItemResponse.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesSubnetsItemResponse(
-      first: map['first'] == null ? null : (map['first'] as String).input(),
-      last: map['last'] == null ? null : (map['last'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as int).input(),
+      first: map['first'] == null ? null : (map['first']! as String).input(),
+      last: map['last'] == null ? null : (map['last']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as int).input(),
     );
   }
 }

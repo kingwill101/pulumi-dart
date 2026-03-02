@@ -33,7 +33,7 @@ class DataflowGraphNodeGraphSettings {
   factory DataflowGraphNodeGraphSettings.fromMap(Map<String, dynamic> map) {
     return DataflowGraphNodeGraphSettings(
       artifact: (map['artifact'] as String).input(),
-      configuration: map['configuration'] == null ? null : (pulumi.Input.decodeList<DataflowGraphGraphNodeConfiguration>(map['configuration'], (value) => DataflowGraphGraphNodeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configuration: map['configuration'] == null ? null : (pulumi.Input.decodeList<DataflowGraphGraphNodeConfiguration>(map['configuration']!, (value) => DataflowGraphGraphNodeConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       registryEndpointRef: (map['registryEndpointRef'] as String).input(),
     );
   }

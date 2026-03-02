@@ -39,7 +39,7 @@ class RouterNatSubnetwork {
   factory RouterNatSubnetwork.fromMap(Map<String, dynamic> map) {
     return RouterNatSubnetwork(
       name: (map['name'] as String).input(),
-      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null ? null : ((map['secondaryIpRangeNames'] as List).cast<String>()).input(),
+      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null ? null : ((map['secondaryIpRangeNames']! as List).cast<String>()).input(),
       sourceIpRangesToNats: ((map['sourceIpRangesToNats'] as List).cast<String>()).input(),
     );
   }

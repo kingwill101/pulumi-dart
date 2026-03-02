@@ -39,9 +39,9 @@ class GoogleCloudDataplexV1Schema {
 
   factory GoogleCloudDataplexV1Schema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1Schema(
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaField>(map['fields'], (value) => GoogleCloudDataplexV1SchemaSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partitionFields: map['partitionFields'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaPartitionField>(map['partitionFields'], (value) => GoogleCloudDataplexV1SchemaPartitionField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partitionStyle: map['partitionStyle'] == null ? null : (GoogleCloudDataplexV1SchemaPartitionStyle.fromValue(map['partitionStyle'] as String)).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaSchemaField>(map['fields']!, (value) => GoogleCloudDataplexV1SchemaSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partitionFields: map['partitionFields'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDataplexV1SchemaPartitionField>(map['partitionFields']!, (value) => GoogleCloudDataplexV1SchemaPartitionField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partitionStyle: map['partitionStyle'] == null ? null : (GoogleCloudDataplexV1SchemaPartitionStyle.fromValue(map['partitionStyle']! as String)).input(),
       userManaged: (map['userManaged'] as bool).input(),
     );
   }

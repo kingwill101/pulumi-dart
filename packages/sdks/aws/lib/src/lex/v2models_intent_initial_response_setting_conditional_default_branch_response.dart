@@ -26,8 +26,8 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse {
 
   factory V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
-      messageGroups: map['messageGroups'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup>(map['messageGroups'], (value) => V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
+      messageGroups: map['messageGroups'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup>(map['messageGroups']!, (value) => V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

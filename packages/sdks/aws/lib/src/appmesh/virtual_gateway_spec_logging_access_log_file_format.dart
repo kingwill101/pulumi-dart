@@ -26,8 +26,8 @@ class VirtualGatewaySpecLoggingAccessLogFileFormat {
 
   factory VirtualGatewaySpecLoggingAccessLogFileFormat.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLoggingAccessLogFileFormat(
-      jsons: map['jsons'] == null ? null : (pulumi.Input.decodeList<VirtualGatewaySpecLoggingAccessLogFileFormatJson>(map['jsons'], (value) => VirtualGatewaySpecLoggingAccessLogFileFormatJson.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      jsons: map['jsons'] == null ? null : ((pulumi.Input.decodeList<VirtualGatewaySpecLoggingAccessLogFileFormatJson>(map['jsons']!, (value) => VirtualGatewaySpecLoggingAccessLogFileFormatJson.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      text: map['text'] == null ? null : ((map['text'] as String).input()).input(),
     );
   }
 }

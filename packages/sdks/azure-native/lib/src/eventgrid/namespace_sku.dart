@@ -28,8 +28,8 @@ class NamespaceSku {
 
   factory NamespaceSku.fromMap(Map<String, dynamic> map) {
     return NamespaceSku(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

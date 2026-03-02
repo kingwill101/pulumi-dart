@@ -27,8 +27,8 @@ class GetIntegrationRuntimeObjectMetadatumResult {
 
   factory GetIntegrationRuntimeObjectMetadatumResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationRuntimeObjectMetadatumResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<SsisEnvironmentResponse>(map['value'], (value) => SsisEnvironmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<SsisEnvironmentResponse>(map['value']!, (value) => SsisEnvironmentResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

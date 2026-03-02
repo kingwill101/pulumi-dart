@@ -56,12 +56,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule(
-      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch'] as String).input(),
-      headerMatches: map['headerMatches'] == null ? null : (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch>(map['headerMatches'], (value) => EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase'] as bool).input(),
-      pathTemplateMatch: map['pathTemplateMatch'] == null ? null : (map['pathTemplateMatch'] as String).input(),
-      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch'] as String).input(),
-      queryParameterMatches: map['queryParameterMatches'] == null ? null : (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch>(map['queryParameterMatches'], (value) => EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullPathMatch: map['fullPathMatch'] == null ? null : (map['fullPathMatch']! as String).input(),
+      headerMatches: map['headerMatches'] == null ? null : (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch>(map['headerMatches']!, (value) => EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ignoreCase: map['ignoreCase'] == null ? null : (map['ignoreCase']! as bool).input(),
+      pathTemplateMatch: map['pathTemplateMatch'] == null ? null : (map['pathTemplateMatch']! as String).input(),
+      prefixMatch: map['prefixMatch'] == null ? null : (map['prefixMatch']! as String).input(),
+      queryParameterMatches: map['queryParameterMatches'] == null ? null : (pulumi.Input.decodeList<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch>(map['queryParameterMatches']!, (value) => EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

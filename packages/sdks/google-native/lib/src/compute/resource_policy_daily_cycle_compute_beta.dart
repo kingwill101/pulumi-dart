@@ -26,8 +26,8 @@ class ResourcePolicyDailyCycleComputeBeta {
 
   factory ResourcePolicyDailyCycleComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyDailyCycleComputeBeta(
-      daysInCycle: map['daysInCycle'] == null ? null : (map['daysInCycle'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      daysInCycle: map['daysInCycle'] == null ? null : (map['daysInCycle']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

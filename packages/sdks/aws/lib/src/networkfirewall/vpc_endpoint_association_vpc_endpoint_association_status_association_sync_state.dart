@@ -26,7 +26,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
 
   factory VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState.fromMap(Map<String, dynamic> map) {
     return VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState(
-      attachments: (pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment>(map['attachments'], (value) => VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      attachments: (pulumi.Input.decodeList<VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment>(map['attachments']!, (value) => VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncStateAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
       availabilityZone: (map['availabilityZone'] as String).input(),
     );
   }

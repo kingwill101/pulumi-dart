@@ -66,15 +66,15 @@ class DataCollectionEndpointArgs {
 
   factory DataCollectionEndpointArgs.fromMap(Map<String, dynamic> map) {
     return DataCollectionEndpointArgs(
-      dataCollectionEndpointName: map['dataCollectionEndpointName'] == null ? null : (map['dataCollectionEndpointName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (DataCollectionEndpointResourceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      immutableId: map['immutableId'] == null ? null : (map['immutableId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      networkAcls: map['networkAcls'] == null ? null : (DataCollectionEndpointNetworkAcls.fromMap((map['networkAcls'] as Map).cast<String, dynamic>())).input(),
+      dataCollectionEndpointName: map['dataCollectionEndpointName'] == null ? null : (map['dataCollectionEndpointName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (DataCollectionEndpointResourceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      immutableId: map['immutableId'] == null ? null : (map['immutableId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      networkAcls: map['networkAcls'] == null ? null : (DataCollectionEndpointNetworkAcls.fromMap((map['networkAcls']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

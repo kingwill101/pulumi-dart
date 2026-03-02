@@ -47,8 +47,8 @@ class BudgetNotification {
     return BudgetNotification(
       comparisonOperator: (map['comparisonOperator'] as String).input(),
       notificationType: (map['notificationType'] as String).input(),
-      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : ((map['subscriberEmailAddresses'] as List).cast<String>()).input(),
-      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null ? null : ((map['subscriberSnsTopicArns'] as List).cast<String>()).input(),
+      subscriberEmailAddresses: map['subscriberEmailAddresses'] == null ? null : (((map['subscriberEmailAddresses'] as List).cast<String>()).input()).input(),
+      subscriberSnsTopicArns: map['subscriberSnsTopicArns'] == null ? null : (((map['subscriberSnsTopicArns'] as List).cast<String>()).input()).input(),
       threshold: (map['threshold'] as double).input(),
       thresholdType: (map['thresholdType'] as String).input(),
     );

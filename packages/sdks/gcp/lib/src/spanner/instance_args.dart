@@ -99,18 +99,18 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceAutoscalingConfig.fromMap((map['autoscalingConfig'] as Map).cast<String, dynamic>())).input(),
+      autoscalingConfig: map['autoscalingConfig'] == null ? null : (InstanceAutoscalingConfig.fromMap((map['autoscalingConfig']! as Map).cast<String, dynamic>())).input(),
       config: (map['config'] as String).input(),
-      defaultBackupScheduleType: map['defaultBackupScheduleType'] == null ? null : (map['defaultBackupScheduleType'] as String).input(),
+      defaultBackupScheduleType: map['defaultBackupScheduleType'] == null ? null : (map['defaultBackupScheduleType']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numNodes: map['numNodes'] == null ? null : (map['numNodes'] as int).input(),
-      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      numNodes: map['numNodes'] == null ? null : (map['numNodes']! as int).input(),
+      processingUnits: map['processingUnits'] == null ? null : (map['processingUnits']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption {
 
   factory DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap(Map<String, dynamic> map) {
     return DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
     );
   }
 }

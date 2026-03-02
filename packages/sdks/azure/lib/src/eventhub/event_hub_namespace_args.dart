@@ -93,20 +93,20 @@ class EventHubNamespaceArgs {
 
   factory EventHubNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return EventHubNamespaceArgs(
-      autoInflateEnabled: map['autoInflateEnabled'] == null ? null : (map['autoInflateEnabled'] as bool).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId'] as String).input(),
-      identity: map['identity'] == null ? null : (EventHubNamespaceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumThroughputUnits: map['maximumThroughputUnits'] == null ? null : (map['maximumThroughputUnits'] as int).input(),
-      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkRulesets: map['networkRulesets'] == null ? null : (EventHubNamespaceNetworkRulesets.fromMap((map['networkRulesets'] as Map).cast<String, dynamic>())).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      autoInflateEnabled: map['autoInflateEnabled'] == null ? null : (map['autoInflateEnabled']! as bool).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId']! as String).input(),
+      identity: map['identity'] == null ? null : (EventHubNamespaceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthenticationEnabled: map['localAuthenticationEnabled'] == null ? null : (map['localAuthenticationEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumThroughputUnits: map['maximumThroughputUnits'] == null ? null : (map['maximumThroughputUnits']! as int).input(),
+      minimumTlsVersion: map['minimumTlsVersion'] == null ? null : (map['minimumTlsVersion']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkRulesets: map['networkRulesets'] == null ? null : (EventHubNamespaceNetworkRulesets.fromMap((map['networkRulesets']! as Map).cast<String, dynamic>())).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class DiJobDestinationDataSourceSetting {
 
   factory DiJobDestinationDataSourceSetting.fromMap(Map<String, dynamic> map) {
     return DiJobDestinationDataSourceSetting(
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
     );
   }
 }

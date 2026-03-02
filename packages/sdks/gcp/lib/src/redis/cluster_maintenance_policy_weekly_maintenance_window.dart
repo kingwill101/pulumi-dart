@@ -46,7 +46,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
   factory ClusterMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyWeeklyMaintenanceWindow(
       day: (map['day'] as String).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
       startTime: (ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>())).input(),
     );
   }

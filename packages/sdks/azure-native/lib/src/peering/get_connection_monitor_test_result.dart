@@ -71,15 +71,15 @@ class GetConnectionMonitorTestResult {
   factory GetConnectionMonitorTestResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionMonitorTestResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
-      destinationPort: map['destinationPort'] == null ? null : map['destinationPort'] as int,
+      destination: map['destination'] == null ? null : map['destination']! as String,
+      destinationPort: map['destinationPort'] == null ? null : map['destinationPort']! as int,
       id: map['id'] as String,
       isTestSuccessful: map['isTestSuccessful'] as bool,
       name: map['name'] as String,
       path: (map['path'] as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      sourceAgent: map['sourceAgent'] == null ? null : map['sourceAgent'] as String,
-      testFrequencyInSec: map['testFrequencyInSec'] == null ? null : map['testFrequencyInSec'] as int,
+      sourceAgent: map['sourceAgent'] == null ? null : map['sourceAgent']! as String,
+      testFrequencyInSec: map['testFrequencyInSec'] == null ? null : map['testFrequencyInSec']! as int,
       type: map['type'] as String,
     );
   }

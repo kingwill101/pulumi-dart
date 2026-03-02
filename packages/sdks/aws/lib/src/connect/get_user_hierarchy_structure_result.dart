@@ -35,7 +35,7 @@ class GetUserHierarchyStructureResult {
 
   factory GetUserHierarchyStructureResult.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureResult(
-      hierarchyStructures: pulumi.Input.decodeList<GetUserHierarchyStructureHierarchyStructure>(map['hierarchyStructures'], (value) => GetUserHierarchyStructureHierarchyStructure.fromMap((value as Map).cast<String, dynamic>())),
+      hierarchyStructures: pulumi.Input.decodeList<GetUserHierarchyStructureHierarchyStructure>(map['hierarchyStructures']!, (value) => GetUserHierarchyStructureHierarchyStructure.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       instanceId: map['instanceId'] as String,
       region: map['region'] as String,

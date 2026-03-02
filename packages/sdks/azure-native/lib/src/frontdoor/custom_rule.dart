@@ -64,13 +64,13 @@ class CustomRule {
   factory CustomRule.fromMap(Map<String, dynamic> map) {
     return CustomRule(
       action: (map['action'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      groupBy: map['groupBy'] == null ? null : (pulumi.Input.decodeList<GroupByVariable>(map['groupBy'], (value) => GroupByVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      groupBy: map['groupBy'] == null ? null : (pulumi.Input.decodeList<GroupByVariable>(map['groupBy']!, (value) => GroupByVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
       matchConditions: (pulumi.Input.decodeList<MatchCondition>(map['matchConditions'], (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       priority: (map['priority'] as int).input(),
-      rateLimitDurationInMinutes: map['rateLimitDurationInMinutes'] == null ? null : (map['rateLimitDurationInMinutes'] as int).input(),
-      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold'] as int).input(),
+      rateLimitDurationInMinutes: map['rateLimitDurationInMinutes'] == null ? null : (map['rateLimitDurationInMinutes']! as int).input(),
+      rateLimitThreshold: map['rateLimitThreshold'] == null ? null : (map['rateLimitThreshold']! as int).input(),
       ruleType: (map['ruleType'] as String).input(),
     );
   }

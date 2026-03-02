@@ -34,9 +34,9 @@ class GetProtocolsArgs {
 
   factory GetProtocolsArgs.fromMap(Map<String, dynamic> map) {
     return GetProtocolsArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       type: (map['type'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

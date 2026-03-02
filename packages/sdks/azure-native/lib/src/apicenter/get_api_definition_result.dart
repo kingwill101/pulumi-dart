@@ -58,7 +58,7 @@ class GetApiDefinitionResult {
   factory GetApiDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetApiDefinitionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       specification: ApiDefinitionPropertiesSpecificationResponse.fromMap((map['specification'] as Map).cast<String, dynamic>()),

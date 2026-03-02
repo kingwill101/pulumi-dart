@@ -58,13 +58,13 @@ class TargetStorageProfileResponse {
 
   factory TargetStorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return TargetStorageProfileResponse(
-      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile'] as Map).cast<String, dynamic>())).input(),
-      hydrationStorageProviderType: map['hydrationStorageProviderType'] == null ? null : (map['hydrationStorageProviderType'] as String).input(),
-      persistentVolumeId: map['persistentVolumeId'] == null ? null : (map['persistentVolumeId'] as String).input(),
-      storageAccessType: map['storageAccessType'] == null ? null : (map['storageAccessType'] as String).input(),
-      storageProjectionType: map['storageProjectionType'] == null ? null : (map['storageProjectionType'] as String).input(),
-      targetName: map['targetName'] == null ? null : (map['targetName'] as String).input(),
-      targetSize: map['targetSize'] == null ? null : (map['targetSize'] as String).input(),
+      azureFileShareProfile: map['azureFileShareProfile'] == null ? null : (AzureFileShareHydrationProfileResponse.fromMap((map['azureFileShareProfile']! as Map).cast<String, dynamic>())).input(),
+      hydrationStorageProviderType: map['hydrationStorageProviderType'] == null ? null : (map['hydrationStorageProviderType']! as String).input(),
+      persistentVolumeId: map['persistentVolumeId'] == null ? null : (map['persistentVolumeId']! as String).input(),
+      storageAccessType: map['storageAccessType'] == null ? null : (map['storageAccessType']! as String).input(),
+      storageProjectionType: map['storageProjectionType'] == null ? null : (map['storageProjectionType']! as String).input(),
+      targetName: map['targetName'] == null ? null : (map['targetName']! as String).input(),
+      targetSize: map['targetSize'] == null ? null : (map['targetSize']! as String).input(),
     );
   }
 }

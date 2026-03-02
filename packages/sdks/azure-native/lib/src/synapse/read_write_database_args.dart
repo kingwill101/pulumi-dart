@@ -60,13 +60,13 @@ class ReadWriteDatabaseArgs {
 
   factory ReadWriteDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return ReadWriteDatabaseArgs(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod'] as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      hotCachePeriod: map['hotCachePeriod'] == null ? null : (map['hotCachePeriod']! as String).input(),
       kind: (map['kind'] as String).input(),
       kustoPoolName: (map['kustoPoolName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod'] as String).input(),
+      softDeletePeriod: map['softDeletePeriod'] == null ? null : (map['softDeletePeriod']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

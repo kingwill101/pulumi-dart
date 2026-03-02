@@ -27,8 +27,8 @@ class AuditLogConfigCloudresourcemanagerV3 {
 
   factory AuditLogConfigCloudresourcemanagerV3.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigCloudresourcemanagerV3(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeCloudresourcemanagerV3.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeCloudresourcemanagerV3.fromValue(map['logType']! as String)).input(),
     );
   }
 }

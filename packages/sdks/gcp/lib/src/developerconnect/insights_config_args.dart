@@ -64,13 +64,13 @@ class InsightsConfigArgs {
 
   factory InsightsConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsConfigArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       appHubApplication: (map['appHubApplication'] as String).input(),
-      artifactConfigs: map['artifactConfigs'] == null ? null : (pulumi.Input.decodeList<InsightsConfigArtifactConfig>(map['artifactConfigs'], (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifactConfigs: map['artifactConfigs'] == null ? null : (pulumi.Input.decodeList<InsightsConfigArtifactConfig>(map['artifactConfigs']!, (value) => InsightsConfigArtifactConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       insightsConfigId: (map['insightsConfigId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

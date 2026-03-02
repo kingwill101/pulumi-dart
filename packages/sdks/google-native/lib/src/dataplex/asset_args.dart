@@ -68,15 +68,15 @@ class AssetArgs {
   factory AssetArgs.fromMap(Map<String, dynamic> map) {
     return AssetArgs(
       assetId: (map['assetId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      discoverySpec: map['discoverySpec'] == null ? null : (GoogleCloudDataplexV1AssetDiscoverySpec.fromMap((map['discoverySpec'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      discoverySpec: map['discoverySpec'] == null ? null : (GoogleCloudDataplexV1AssetDiscoverySpec.fromMap((map['discoverySpec']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       lakeId: (map['lakeId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resourceSpec: (GoogleCloudDataplexV1AssetResourceSpec.fromMap((map['resourceSpec'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

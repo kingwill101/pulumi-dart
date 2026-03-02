@@ -72,16 +72,16 @@ class SapOpenHubSourceResponse {
 
   factory SapOpenHubSourceResponse.fromMap(Map<String, dynamic> map) {
     return SapOpenHubSourceResponse(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      baseRequestId: map['baseRequestId'] == null ? null : (map['baseRequestId']).input(),
-      customRfcReadTableFunctionModule: map['customRfcReadTableFunctionModule'] == null ? null : (map['customRfcReadTableFunctionModule']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      excludeLastRequest: map['excludeLastRequest'] == null ? null : (map['excludeLastRequest']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sapDataColumnDelimiter: map['sapDataColumnDelimiter'] == null ? null : (map['sapDataColumnDelimiter']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      baseRequestId: map['baseRequestId'] == null ? null : (map['baseRequestId']!).input(),
+      customRfcReadTableFunctionModule: map['customRfcReadTableFunctionModule'] == null ? null : (map['customRfcReadTableFunctionModule']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      excludeLastRequest: map['excludeLastRequest'] == null ? null : (map['excludeLastRequest']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sapDataColumnDelimiter: map['sapDataColumnDelimiter'] == null ? null : (map['sapDataColumnDelimiter']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

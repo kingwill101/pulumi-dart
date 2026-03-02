@@ -48,10 +48,10 @@ class StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinat
     return StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestination(
       accountId: (map['accountId'] as String).input(),
       arn: (map['arn'] as String).input(),
-      encryption: map['encryption'] == null ? null : (StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : ((StorageLensConfigurationStorageLensConfigurationDataExportS3BucketDestinationEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input()).input(),
       format: (map['format'] as String).input(),
       outputSchemaVersion: (map['outputSchemaVersion'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
     );
   }
 }

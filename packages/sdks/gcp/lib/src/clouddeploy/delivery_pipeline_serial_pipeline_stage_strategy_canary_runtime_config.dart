@@ -27,8 +27,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(
-      cloudRun: map['cloudRun'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.fromMap((map['cloudRun'] as Map).cast<String, dynamic>())).input(),
-      kubernetes: map['kubernetes'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
+      cloudRun: map['cloudRun'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.fromMap((map['cloudRun']! as Map).cast<String, dynamic>())).input(),
+      kubernetes: map['kubernetes'] == null ? null : (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

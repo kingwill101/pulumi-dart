@@ -25,7 +25,7 @@ class InterfaceVlan {
 
   factory InterfaceVlan.fromMap(Map<String, dynamic> map) {
     return InterfaceVlan(
-      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress'] as String).input(),
+      ipamAddress: map['ipamAddress'] == null ? null : (map['ipamAddress']! as String).input(),
       vlanLabel: (map['vlanLabel'] as String).input(),
     );
   }

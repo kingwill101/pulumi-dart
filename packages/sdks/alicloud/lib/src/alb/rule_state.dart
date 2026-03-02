@@ -60,14 +60,14 @@ class RuleState {
 
   factory RuleState.fromMap(Map<String, dynamic> map) {
     return RuleState(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      ruleActions: map['ruleActions'] == null ? null : (pulumi.Input.decodeList<RuleRuleAction>(map['ruleActions'], (value) => RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<RuleRuleCondition>(map['ruleConditions'], (value) => RuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      ruleActions: map['ruleActions'] == null ? null : (pulumi.Input.decodeList<RuleRuleAction>(map['ruleActions']!, (value) => RuleRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleConditions: map['ruleConditions'] == null ? null : (pulumi.Input.decodeList<RuleRuleCondition>(map['ruleConditions']!, (value) => RuleRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TrafficPortSelectorNetworkservicesV1beta1 {
 
   factory TrafficPortSelectorNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return TrafficPortSelectorNetworkservicesV1beta1(
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

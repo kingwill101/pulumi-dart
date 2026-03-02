@@ -67,15 +67,15 @@ class FirewallPolicyArgs {
 
   factory FirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyArgs(
-      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyAssociation>(map['associations'], (value) => FirewallPolicyAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRule>(map['rules'], (value) => FirewallPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      shortName: map['shortName'] == null ? null : (map['shortName'] as String).input(),
-      vpcNetworkScope: map['vpcNetworkScope'] == null ? null : (FirewallPolicyVpcNetworkScope.fromValue(map['vpcNetworkScope'] as String)).input(),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyAssociation>(map['associations']!, (value) => FirewallPolicyAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<FirewallPolicyRule>(map['rules']!, (value) => FirewallPolicyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shortName: map['shortName'] == null ? null : (map['shortName']! as String).input(),
+      vpcNetworkScope: map['vpcNetworkScope'] == null ? null : (FirewallPolicyVpcNetworkScope.fromValue(map['vpcNetworkScope']! as String)).input(),
     );
   }
 }

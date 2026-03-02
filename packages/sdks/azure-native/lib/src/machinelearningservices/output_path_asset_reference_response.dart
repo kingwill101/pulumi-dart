@@ -32,8 +32,8 @@ class OutputPathAssetReferenceResponse {
 
   factory OutputPathAssetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return OutputPathAssetReferenceResponse(
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       referenceType: (map['referenceType'] as String).input(),
     );
   }

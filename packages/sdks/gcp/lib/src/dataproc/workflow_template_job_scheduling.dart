@@ -25,8 +25,8 @@ class WorkflowTemplateJobScheduling {
 
   factory WorkflowTemplateJobScheduling.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobScheduling(
-      maxFailuresPerHour: map['maxFailuresPerHour'] == null ? null : (map['maxFailuresPerHour'] as int).input(),
-      maxFailuresTotal: map['maxFailuresTotal'] == null ? null : (map['maxFailuresTotal'] as int).input(),
+      maxFailuresPerHour: map['maxFailuresPerHour'] == null ? null : (map['maxFailuresPerHour']! as int).input(),
+      maxFailuresTotal: map['maxFailuresTotal'] == null ? null : (map['maxFailuresTotal']! as int).input(),
     );
   }
 }

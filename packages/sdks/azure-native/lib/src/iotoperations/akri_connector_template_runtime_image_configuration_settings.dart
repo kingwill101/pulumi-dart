@@ -44,10 +44,10 @@ class AkriConnectorTemplateRuntimeImageConfigurationSettings {
   factory AkriConnectorTemplateRuntimeImageConfigurationSettings.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateRuntimeImageConfigurationSettings(
       imageName: (map['imageName'] as String).input(),
-      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy'] as String).input(),
-      registrySettings: map['registrySettings'] == null ? null : (AkriConnectorsContainerRegistry.fromMap((map['registrySettings'] as Map).cast<String, dynamic>())).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      tagDigestSettings: map['tagDigestSettings'] == null ? null : (AkriConnectorsDigest.fromMap((map['tagDigestSettings'] as Map).cast<String, dynamic>())).input(),
+      imagePullPolicy: map['imagePullPolicy'] == null ? null : (map['imagePullPolicy']! as String).input(),
+      registrySettings: map['registrySettings'] == null ? null : (AkriConnectorsContainerRegistry.fromMap((map['registrySettings']! as Map).cast<String, dynamic>())).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      tagDigestSettings: map['tagDigestSettings'] == null ? null : (AkriConnectorsDigest.fromMap((map['tagDigestSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

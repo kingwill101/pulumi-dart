@@ -53,11 +53,11 @@ class TagKeyArgs {
 
   factory TagKeyArgs.fromMap(Map<String, dynamic> map) {
     return TagKeyArgs(
-      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : (map['allowedValuesRegex'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allowedValuesRegex: map['allowedValuesRegex'] == null ? null : (map['allowedValuesRegex']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       parent: (map['parent'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
-      purposeData: map['purposeData'] == null ? null : ((map['purposeData'] as Map).cast<String, String>()).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
+      purposeData: map['purposeData'] == null ? null : ((map['purposeData']! as Map).cast<String, String>()).input(),
       shortName: (map['shortName'] as String).input(),
     );
   }

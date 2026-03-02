@@ -21,7 +21,7 @@ class WebhookFilterGroup {
 
   factory WebhookFilterGroup.fromMap(Map<String, dynamic> map) {
     return WebhookFilterGroup(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<WebhookFilterGroupFilter>(map['filters'], (value) => WebhookFilterGroupFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<WebhookFilterGroupFilter>(map['filters']!, (value) => WebhookFilterGroupFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

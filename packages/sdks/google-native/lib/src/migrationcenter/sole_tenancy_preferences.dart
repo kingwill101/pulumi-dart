@@ -39,10 +39,10 @@ class SoleTenancyPreferences {
 
   factory SoleTenancyPreferences.fromMap(Map<String, dynamic> map) {
     return SoleTenancyPreferences(
-      commitmentPlan: map['commitmentPlan'] == null ? null : (SoleTenancyPreferencesCommitmentPlan.fromValue(map['commitmentPlan'] as String)).input(),
-      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio'] as double).input(),
-      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (SoleTenancyPreferencesHostMaintenancePolicy.fromValue(map['hostMaintenancePolicy'] as String)).input(),
-      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<SoleTenantNodeType>(map['nodeTypes'], (value) => SoleTenantNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commitmentPlan: map['commitmentPlan'] == null ? null : (SoleTenancyPreferencesCommitmentPlan.fromValue(map['commitmentPlan']! as String)).input(),
+      cpuOvercommitRatio: map['cpuOvercommitRatio'] == null ? null : (map['cpuOvercommitRatio']! as double).input(),
+      hostMaintenancePolicy: map['hostMaintenancePolicy'] == null ? null : (SoleTenancyPreferencesHostMaintenancePolicy.fromValue(map['hostMaintenancePolicy']! as String)).input(),
+      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<SoleTenantNodeType>(map['nodeTypes']!, (value) => SoleTenantNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

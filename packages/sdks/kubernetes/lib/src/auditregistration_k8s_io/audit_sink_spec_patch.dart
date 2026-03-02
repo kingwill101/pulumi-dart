@@ -28,8 +28,8 @@ class AuditSinkSpecPatch {
 
   factory AuditSinkSpecPatch.fromMap(Map<String, dynamic> map) {
     return AuditSinkSpecPatch(
-      policy: map['policy'] == null ? null : (PolicyPatch.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      webhook: map['webhook'] == null ? null : (WebhookPatch.fromMap((map['webhook'] as Map).cast<String, dynamic>())).input(),
+      policy: map['policy'] == null ? null : (PolicyPatch.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      webhook: map['webhook'] == null ? null : (WebhookPatch.fromMap((map['webhook']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

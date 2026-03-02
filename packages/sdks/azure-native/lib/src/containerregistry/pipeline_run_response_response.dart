@@ -70,16 +70,16 @@ class PipelineRunResponseResponse {
 
   factory PipelineRunResponseResponse.fromMap(Map<String, dynamic> map) {
     return PipelineRunResponseResponse(
-      catalogDigest: map['catalogDigest'] == null ? null : (map['catalogDigest'] as String).input(),
-      finishTime: map['finishTime'] == null ? null : (map['finishTime'] as String).input(),
-      importedArtifacts: map['importedArtifacts'] == null ? null : ((map['importedArtifacts'] as List).cast<String>()).input(),
-      pipelineRunErrorMessage: map['pipelineRunErrorMessage'] == null ? null : (map['pipelineRunErrorMessage'] as String).input(),
-      progress: map['progress'] == null ? null : (ProgressPropertiesResponse.fromMap((map['progress'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (ImportPipelineSourcePropertiesResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      target: map['target'] == null ? null : (ExportPipelineTargetPropertiesResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (PipelineTriggerDescriptorResponse.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
+      catalogDigest: map['catalogDigest'] == null ? null : (map['catalogDigest']! as String).input(),
+      finishTime: map['finishTime'] == null ? null : (map['finishTime']! as String).input(),
+      importedArtifacts: map['importedArtifacts'] == null ? null : ((map['importedArtifacts']! as List).cast<String>()).input(),
+      pipelineRunErrorMessage: map['pipelineRunErrorMessage'] == null ? null : (map['pipelineRunErrorMessage']! as String).input(),
+      progress: map['progress'] == null ? null : (ProgressPropertiesResponse.fromMap((map['progress']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (ImportPipelineSourcePropertiesResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      target: map['target'] == null ? null : (ExportPipelineTargetPropertiesResponse.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (PipelineTriggerDescriptorResponse.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

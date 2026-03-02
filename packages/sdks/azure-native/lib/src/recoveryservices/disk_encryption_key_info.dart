@@ -26,8 +26,8 @@ class DiskEncryptionKeyInfo {
 
   factory DiskEncryptionKeyInfo.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionKeyInfo(
-      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : (map['keyVaultResourceArmId'] as String).input(),
-      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier'] as String).input(),
+      keyVaultResourceArmId: map['keyVaultResourceArmId'] == null ? null : (map['keyVaultResourceArmId']! as String).input(),
+      secretIdentifier: map['secretIdentifier'] == null ? null : (map['secretIdentifier']! as String).input(),
     );
   }
 }

@@ -72,15 +72,15 @@ class GetOpenIdConnectProviderResult {
     return GetOpenIdConnectProviderResult(
       azureApiVersion: map['azureApiVersion'] as String,
       clientId: map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      clientSecret: map['clientSecret'] == null ? null : map['clientSecret']! as String,
+      description: map['description'] == null ? null : map['description']! as String,
       displayName: map['displayName'] as String,
       id: map['id'] as String,
       metadataEndpoint: map['metadataEndpoint'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : map['useInApiDocumentation'] as bool,
-      useInTestConsole: map['useInTestConsole'] == null ? null : map['useInTestConsole'] as bool,
+      useInApiDocumentation: map['useInApiDocumentation'] == null ? null : map['useInApiDocumentation']! as bool,
+      useInTestConsole: map['useInTestConsole'] == null ? null : map['useInTestConsole']! as bool,
     );
   }
 }

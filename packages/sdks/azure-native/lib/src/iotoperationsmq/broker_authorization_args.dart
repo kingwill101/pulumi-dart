@@ -66,15 +66,15 @@ class BrokerAuthorizationArgs {
 
   factory BrokerAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return BrokerAuthorizationArgs(
-      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName'] as String).input(),
+      authorizationName: map['authorizationName'] == null ? null : (map['authorizationName']! as String).input(),
       authorizationPolicies: (AuthorizationConfig.fromMap((map['authorizationPolicies'] as Map).cast<String, dynamic>())).input(),
       brokerName: (map['brokerName'] as String).input(),
       extendedLocation: (ExtendedLocationProperty.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
       listenerRef: ((map['listenerRef'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       mqName: (map['mqName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

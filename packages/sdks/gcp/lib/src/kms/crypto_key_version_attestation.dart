@@ -41,10 +41,10 @@ class CryptoKeyVersionAttestation {
 
   factory CryptoKeyVersionAttestation.fromMap(Map<String, dynamic> map) {
     return CryptoKeyVersionAttestation(
-      certChains: map['certChains'] == null ? null : (CryptoKeyVersionAttestationCertChains.fromMap((map['certChains'] as Map).cast<String, dynamic>())).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionAttestationExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions'] as Map).cast<String, dynamic>())).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      certChains: map['certChains'] == null ? null : (CryptoKeyVersionAttestationCertChains.fromMap((map['certChains']! as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      externalProtectionLevelOptions: map['externalProtectionLevelOptions'] == null ? null : (CryptoKeyVersionAttestationExternalProtectionLevelOptions.fromMap((map['externalProtectionLevelOptions']! as Map).cast<String, dynamic>())).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
     );
   }
 }

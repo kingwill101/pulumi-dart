@@ -31,9 +31,9 @@ class SparkConfigProperties {
 
   factory SparkConfigProperties.fromMap(Map<String, dynamic> map) {
     return SparkConfigProperties(
-      configurationType: map['configurationType'] == null ? null : (map['configurationType'] as String).input(),
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      configurationType: map['configurationType'] == null ? null : (map['configurationType']! as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
     );
   }
 }

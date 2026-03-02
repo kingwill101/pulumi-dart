@@ -32,10 +32,10 @@ class EndpointNetworkInterfaceOptions {
 
   factory EndpointNetworkInterfaceOptions.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterfaceOptions(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(map['portRanges'], (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      portRanges: map['portRanges'] == null ? null : ((pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(map['portRanges']!, (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
     );
   }
 }

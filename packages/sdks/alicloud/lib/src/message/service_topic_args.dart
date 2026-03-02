@@ -46,10 +46,10 @@ class ServiceTopicArgs {
 
   factory ServiceTopicArgs.fromMap(Map<String, dynamic> map) {
     return ServiceTopicArgs(
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled'] as bool).input(),
-      maxMessageSize: map['maxMessageSize'] == null ? null : (map['maxMessageSize'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      loggingEnabled: map['loggingEnabled'] == null ? null : (map['loggingEnabled']! as bool).input(),
+      maxMessageSize: map['maxMessageSize'] == null ? null : (map['maxMessageSize']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

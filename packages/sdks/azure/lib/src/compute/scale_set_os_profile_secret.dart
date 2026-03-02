@@ -27,7 +27,7 @@ class ScaleSetOsProfileSecret {
   factory ScaleSetOsProfileSecret.fromMap(Map<String, dynamic> map) {
     return ScaleSetOsProfileSecret(
       sourceVaultId: (map['sourceVaultId'] as String).input(),
-      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileSecretVaultCertificate>(map['vaultCertificates'], (value) => ScaleSetOsProfileSecretVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vaultCertificates: map['vaultCertificates'] == null ? null : (pulumi.Input.decodeList<ScaleSetOsProfileSecretVaultCertificate>(map['vaultCertificates']!, (value) => ScaleSetOsProfileSecretVaultCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

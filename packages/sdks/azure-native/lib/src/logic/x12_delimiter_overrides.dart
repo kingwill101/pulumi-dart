@@ -64,13 +64,13 @@ class X12DelimiterOverrides {
     return X12DelimiterOverrides(
       componentSeparator: (map['componentSeparator'] as int).input(),
       dataElementSeparator: (map['dataElementSeparator'] as int).input(),
-      messageId: map['messageId'] == null ? null : (map['messageId'] as String).input(),
-      protocolVersion: map['protocolVersion'] == null ? null : (map['protocolVersion'] as String).input(),
+      messageId: map['messageId'] == null ? null : (map['messageId']! as String).input(),
+      protocolVersion: map['protocolVersion'] == null ? null : (map['protocolVersion']! as String).input(),
       replaceCharacter: (map['replaceCharacter'] as int).input(),
       replaceSeparatorsInPayload: (map['replaceSeparatorsInPayload'] as bool).input(),
       segmentTerminator: (map['segmentTerminator'] as int).input(),
       segmentTerminatorSuffix: (SegmentTerminatorSuffix.fromValue(map['segmentTerminatorSuffix'] as String)).input(),
-      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace'] as String).input(),
+      targetNamespace: map['targetNamespace'] == null ? null : (map['targetNamespace']! as String).input(),
     );
   }
 }

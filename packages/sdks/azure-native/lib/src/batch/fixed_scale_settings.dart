@@ -37,10 +37,10 @@ class FixedScaleSettings {
 
   factory FixedScaleSettings.fromMap(Map<String, dynamic> map) {
     return FixedScaleSettings(
-      nodeDeallocationOption: map['nodeDeallocationOption'] == null ? null : (ComputeNodeDeallocationOption.fromValue(map['nodeDeallocationOption'] as String)).input(),
-      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout'] as String).input(),
-      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes'] as int).input(),
-      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes'] as int).input(),
+      nodeDeallocationOption: map['nodeDeallocationOption'] == null ? null : (ComputeNodeDeallocationOption.fromValue(map['nodeDeallocationOption']! as String)).input(),
+      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout']! as String).input(),
+      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes']! as int).input(),
+      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes']! as int).input(),
     );
   }
 }

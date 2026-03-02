@@ -26,8 +26,8 @@ class DiffDiskSettingsResponse {
 
   factory DiffDiskSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DiffDiskSettingsResponse(
-      option: map['option'] == null ? null : (map['option'] as String).input(),
-      placement: map['placement'] == null ? null : (map['placement'] as String).input(),
+      option: map['option'] == null ? null : (map['option']! as String).input(),
+      placement: map['placement'] == null ? null : (map['placement']! as String).input(),
     );
   }
 }

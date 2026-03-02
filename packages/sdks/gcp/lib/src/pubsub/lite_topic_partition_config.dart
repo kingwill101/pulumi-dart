@@ -27,7 +27,7 @@ class LiteTopicPartitionConfig {
 
   factory LiteTopicPartitionConfig.fromMap(Map<String, dynamic> map) {
     return LiteTopicPartitionConfig(
-      capacity: map['capacity'] == null ? null : (LiteTopicPartitionConfigCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
+      capacity: map['capacity'] == null ? null : (LiteTopicPartitionConfigCapacity.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
       count: (map['count'] as int).input(),
     );
   }

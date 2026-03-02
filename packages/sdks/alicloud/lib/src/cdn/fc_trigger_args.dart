@@ -56,7 +56,7 @@ class FcTriggerArgs {
     return FcTriggerArgs(
       eventMetaName: (map['eventMetaName'] as String).input(),
       eventMetaVersion: (map['eventMetaVersion'] as String).input(),
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn']! as String).input(),
       notes: (map['notes'] as String).input(),
       roleArn: (map['roleArn'] as String).input(),
       sourceArn: (map['sourceArn'] as String).input(),

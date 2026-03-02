@@ -44,11 +44,11 @@ class GetMailAddressesArgs {
 
   factory GetMailAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetMailAddressesArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      keyWord: map['keyWord'] == null ? null : (map['keyWord'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      sendtype: map['sendtype'] == null ? null : (map['sendtype'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      keyWord: map['keyWord'] == null ? null : (map['keyWord']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      sendtype: map['sendtype'] == null ? null : (map['sendtype']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

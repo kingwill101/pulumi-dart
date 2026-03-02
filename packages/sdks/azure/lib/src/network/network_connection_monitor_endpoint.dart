@@ -56,14 +56,14 @@ class NetworkConnectionMonitorEndpoint {
 
   factory NetworkConnectionMonitorEndpoint.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      coverageLevel: map['coverageLevel'] == null ? null : (map['coverageLevel'] as String).input(),
-      excludedIpAddresses: map['excludedIpAddresses'] == null ? null : ((map['excludedIpAddresses'] as List).cast<String>()).input(),
-      filter: map['filter'] == null ? null : (NetworkConnectionMonitorEndpointFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      includedIpAddresses: map['includedIpAddresses'] == null ? null : ((map['includedIpAddresses'] as List).cast<String>()).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      coverageLevel: map['coverageLevel'] == null ? null : (map['coverageLevel']! as String).input(),
+      excludedIpAddresses: map['excludedIpAddresses'] == null ? null : ((map['excludedIpAddresses']! as List).cast<String>()).input(),
+      filter: map['filter'] == null ? null : (NetworkConnectionMonitorEndpointFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      includedIpAddresses: map['includedIpAddresses'] == null ? null : ((map['includedIpAddresses']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
-      targetResourceType: map['targetResourceType'] == null ? null : (map['targetResourceType'] as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      targetResourceType: map['targetResourceType'] == null ? null : (map['targetResourceType']! as String).input(),
     );
   }
 }

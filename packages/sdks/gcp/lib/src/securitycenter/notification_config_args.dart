@@ -49,7 +49,7 @@ class NotificationConfigArgs {
   factory NotificationConfigArgs.fromMap(Map<String, dynamic> map) {
     return NotificationConfigArgs(
       configId: (map['configId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       organization: (map['organization'] as String).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
       streamingConfig: (NotificationConfigStreamingConfig.fromMap((map['streamingConfig'] as Map).cast<String, dynamic>())).input(),

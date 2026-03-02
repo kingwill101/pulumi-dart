@@ -41,11 +41,11 @@ class FirstPartyAppDefinition {
 
   factory FirstPartyAppDefinition.fromMap(Map<String, dynamic> map) {
     return FirstPartyAppDefinition(
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
-      channel: map['channel'] == null ? null : (map['channel'] as String).input(),
-      interopExecutionMode: map['interopExecutionMode'] == null ? null : (map['interopExecutionMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ring: map['ring'] == null ? null : (map['ring'] as String).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
+      channel: map['channel'] == null ? null : (map['channel']! as String).input(),
+      interopExecutionMode: map['interopExecutionMode'] == null ? null : (map['interopExecutionMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ring: map['ring'] == null ? null : (map['ring']! as String).input(),
     );
   }
 }

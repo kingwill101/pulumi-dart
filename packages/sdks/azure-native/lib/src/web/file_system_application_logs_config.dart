@@ -22,7 +22,7 @@ class FileSystemApplicationLogsConfig {
 
   factory FileSystemApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return FileSystemApplicationLogsConfig(
-      level: map['level'] == null ? null : (LogLevel.fromValue(map['level'] as String)).input(),
+      level: map['level'] == null ? null : (LogLevel.fromValue(map['level']! as String)).input(),
     );
   }
 }

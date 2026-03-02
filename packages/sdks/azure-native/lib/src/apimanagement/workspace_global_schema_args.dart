@@ -54,12 +54,12 @@ class WorkspaceGlobalSchemaArgs {
 
   factory WorkspaceGlobalSchemaArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceGlobalSchemaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
       schemaType: (map['schemaType'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

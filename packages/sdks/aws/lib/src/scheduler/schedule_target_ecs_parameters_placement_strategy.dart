@@ -25,7 +25,7 @@ class ScheduleTargetEcsParametersPlacementStrategy {
 
   factory ScheduleTargetEcsParametersPlacementStrategy.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetEcsParametersPlacementStrategy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
+      field: map['field'] == null ? null : ((map['field'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

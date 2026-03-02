@@ -64,15 +64,15 @@ class CustomRecommendationArgs {
 
   factory CustomRecommendationArgs.fromMap(Map<String, dynamic> map) {
     return CustomRecommendationArgs(
-      cloudProviders: map['cloudProviders'] == null ? null : ((map['cloudProviders'] as List).cast<String>()).input(),
-      customRecommendationName: map['customRecommendationName'] == null ? null : (map['customRecommendationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription'] as String).input(),
+      cloudProviders: map['cloudProviders'] == null ? null : ((map['cloudProviders']! as List).cast<String>()).input(),
+      customRecommendationName: map['customRecommendationName'] == null ? null : (map['customRecommendationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      remediationDescription: map['remediationDescription'] == null ? null : (map['remediationDescription']! as String).input(),
       scope: (map['scope'] as String).input(),
-      securityIssue: map['securityIssue'] == null ? null : (map['securityIssue'] as String).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
+      securityIssue: map['securityIssue'] == null ? null : (map['securityIssue']! as String).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
     );
   }
 }

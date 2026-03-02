@@ -30,9 +30,9 @@ class TokenAuthConfigurationResponse {
 
   factory TokenAuthConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TokenAuthConfigurationResponse(
-      authenticationScheme: map['authenticationScheme'] == null ? null : (map['authenticationScheme'] as String).input(),
-      disableCertificateAuthenticationFallback: map['disableCertificateAuthenticationFallback'] == null ? null : (map['disableCertificateAuthenticationFallback'] as bool).input(),
-      signedRequestScope: map['signedRequestScope'] == null ? null : (map['signedRequestScope'] as String).input(),
+      authenticationScheme: map['authenticationScheme'] == null ? null : (map['authenticationScheme']! as String).input(),
+      disableCertificateAuthenticationFallback: map['disableCertificateAuthenticationFallback'] == null ? null : (map['disableCertificateAuthenticationFallback']! as bool).input(),
+      signedRequestScope: map['signedRequestScope'] == null ? null : (map['signedRequestScope']! as String).input(),
     );
   }
 }

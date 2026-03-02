@@ -42,7 +42,7 @@ class ChannelLineArgs {
     return ChannelLineArgs(
       botName: (map['botName'] as String).input(),
       lineChannels: (pulumi.Input.decodeList<ChannelLineLineChannel>(map['lineChannels'], (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

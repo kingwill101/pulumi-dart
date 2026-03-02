@@ -33,9 +33,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
 
   factory ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(
-      instanceSelectionLists: map['instanceSelectionLists'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>(map['instanceSelectionLists'], (value) => ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceSelectionResults: map['instanceSelectionResults'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>(map['instanceSelectionResults'], (value) => ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      provisioningModelMix: map['provisioningModelMix'] == null ? null : (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.fromMap((map['provisioningModelMix'] as Map).cast<String, dynamic>())).input(),
+      instanceSelectionLists: map['instanceSelectionLists'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>(map['instanceSelectionLists']!, (value) => ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceSelectionResults: map['instanceSelectionResults'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>(map['instanceSelectionResults']!, (value) => ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      provisioningModelMix: map['provisioningModelMix'] == null ? null : (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.fromMap((map['provisioningModelMix']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

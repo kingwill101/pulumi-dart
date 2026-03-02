@@ -28,7 +28,7 @@ class UserOwnedGrafeasNote {
   factory UserOwnedGrafeasNote.fromMap(Map<String, dynamic> map) {
     return UserOwnedGrafeasNote(
       noteReference: (map['noteReference'] as String).input(),
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<AttestorPublicKey>(map['publicKeys'], (value) => AttestorPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<AttestorPublicKey>(map['publicKeys']!, (value) => AttestorPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

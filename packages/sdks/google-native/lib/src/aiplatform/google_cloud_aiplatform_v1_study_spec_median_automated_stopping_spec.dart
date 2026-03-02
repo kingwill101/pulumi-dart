@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec {
 
   factory GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1StudySpecMedianAutomatedStoppingSpec(
-      useElapsedDuration: map['useElapsedDuration'] == null ? null : (map['useElapsedDuration'] as bool).input(),
+      useElapsedDuration: map['useElapsedDuration'] == null ? null : (map['useElapsedDuration']! as bool).input(),
     );
   }
 }

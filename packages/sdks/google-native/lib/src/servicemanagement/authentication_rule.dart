@@ -38,10 +38,10 @@ class AuthenticationRule {
 
   factory AuthenticationRule.fromMap(Map<String, dynamic> map) {
     return AuthenticationRule(
-      allowWithoutCredential: map['allowWithoutCredential'] == null ? null : (map['allowWithoutCredential'] as bool).input(),
-      oauth: map['oauth'] == null ? null : (OAuthRequirements.fromMap((map['oauth'] as Map).cast<String, dynamic>())).input(),
-      requirements: map['requirements'] == null ? null : (pulumi.Input.decodeList<AuthRequirement>(map['requirements'], (value) => AuthRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      allowWithoutCredential: map['allowWithoutCredential'] == null ? null : (map['allowWithoutCredential']! as bool).input(),
+      oauth: map['oauth'] == null ? null : (OAuthRequirements.fromMap((map['oauth']! as Map).cast<String, dynamic>())).input(),
+      requirements: map['requirements'] == null ? null : (pulumi.Input.decodeList<AuthRequirement>(map['requirements']!, (value) => AuthRequirement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

@@ -47,10 +47,10 @@ class GuardrailCodeCallback {
 
   factory GuardrailCodeCallback.fromMap(Map<String, dynamic> map) {
     return GuardrailCodeCallback(
-      afterAgentCallback: map['afterAgentCallback'] == null ? null : (GuardrailCodeCallbackAfterAgentCallback.fromMap((map['afterAgentCallback'] as Map).cast<String, dynamic>())).input(),
-      afterModelCallback: map['afterModelCallback'] == null ? null : (GuardrailCodeCallbackAfterModelCallback.fromMap((map['afterModelCallback'] as Map).cast<String, dynamic>())).input(),
-      beforeAgentCallback: map['beforeAgentCallback'] == null ? null : (GuardrailCodeCallbackBeforeAgentCallback.fromMap((map['beforeAgentCallback'] as Map).cast<String, dynamic>())).input(),
-      beforeModelCallback: map['beforeModelCallback'] == null ? null : (GuardrailCodeCallbackBeforeModelCallback.fromMap((map['beforeModelCallback'] as Map).cast<String, dynamic>())).input(),
+      afterAgentCallback: map['afterAgentCallback'] == null ? null : (GuardrailCodeCallbackAfterAgentCallback.fromMap((map['afterAgentCallback']! as Map).cast<String, dynamic>())).input(),
+      afterModelCallback: map['afterModelCallback'] == null ? null : (GuardrailCodeCallbackAfterModelCallback.fromMap((map['afterModelCallback']! as Map).cast<String, dynamic>())).input(),
+      beforeAgentCallback: map['beforeAgentCallback'] == null ? null : (GuardrailCodeCallbackBeforeAgentCallback.fromMap((map['beforeAgentCallback']! as Map).cast<String, dynamic>())).input(),
+      beforeModelCallback: map['beforeModelCallback'] == null ? null : (GuardrailCodeCallbackBeforeModelCallback.fromMap((map['beforeModelCallback']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

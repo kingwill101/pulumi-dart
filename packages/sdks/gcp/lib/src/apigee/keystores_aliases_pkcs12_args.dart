@@ -62,7 +62,7 @@ class KeystoresAliasesPkcs12Args {
       filehash: (map['filehash'] as String).input(),
       keystore: (map['keystore'] as String).input(),
       orgId: (map['orgId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

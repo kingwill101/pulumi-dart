@@ -43,11 +43,11 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
 
   factory GoogleCloudRecaptchaenterpriseV1FirewallAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1FirewallAction(
-      allow: map['allow'] == null ? null : ((map['allow'] as Map).cast<String, dynamic>()).input(),
-      block: map['block'] == null ? null : ((map['block'] as Map).cast<String, dynamic>()).input(),
-      redirect: map['redirect'] == null ? null : ((map['redirect'] as Map).cast<String, dynamic>()).input(),
-      setHeader: map['setHeader'] == null ? null : (GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromMap((map['setHeader'] as Map).cast<String, dynamic>())).input(),
-      substitute: map['substitute'] == null ? null : (GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromMap((map['substitute'] as Map).cast<String, dynamic>())).input(),
+      allow: map['allow'] == null ? null : ((map['allow']! as Map).cast<String, dynamic>()).input(),
+      block: map['block'] == null ? null : ((map['block']! as Map).cast<String, dynamic>()).input(),
+      redirect: map['redirect'] == null ? null : ((map['redirect']! as Map).cast<String, dynamic>()).input(),
+      setHeader: map['setHeader'] == null ? null : (GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction.fromMap((map['setHeader']! as Map).cast<String, dynamic>())).input(),
+      substitute: map['substitute'] == null ? null : (GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction.fromMap((map['substitute']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class BindingDatacatalogV1beta1 {
 
   factory BindingDatacatalogV1beta1.fromMap(Map<String, dynamic> map) {
     return BindingDatacatalogV1beta1(
-      condition: map['condition'] == null ? null : (ExprDatacatalogV1beta1.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      condition: map['condition'] == null ? null : (ExprDatacatalogV1beta1.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

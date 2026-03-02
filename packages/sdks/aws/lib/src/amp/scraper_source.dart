@@ -21,7 +21,7 @@ class ScraperSource {
 
   factory ScraperSource.fromMap(Map<String, dynamic> map) {
     return ScraperSource(
-      eks: (ScraperSourceEks.fromMap((map['eks'] as Map).cast<String, dynamic>())).input(),
+      eks: (ScraperSourceEks.fromMap((map['eks']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

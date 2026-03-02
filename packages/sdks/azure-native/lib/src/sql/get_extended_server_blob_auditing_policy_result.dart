@@ -170,20 +170,20 @@ class GetExtendedServerBlobAuditingPolicyResult {
 
   factory GetExtendedServerBlobAuditingPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetExtendedServerBlobAuditingPolicyResult(
-      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : (map['auditActionsAndGroups'] as List).cast<String>(),
+      auditActionsAndGroups: map['auditActionsAndGroups'] == null ? null : (map['auditActionsAndGroups']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : map['isAzureMonitorTargetEnabled'] as bool,
-      isDevopsAuditEnabled: map['isDevopsAuditEnabled'] == null ? null : map['isDevopsAuditEnabled'] as bool,
-      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : map['isManagedIdentityInUse'] as bool,
-      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : map['isStorageSecondaryKeyInUse'] as bool,
+      isAzureMonitorTargetEnabled: map['isAzureMonitorTargetEnabled'] == null ? null : map['isAzureMonitorTargetEnabled']! as bool,
+      isDevopsAuditEnabled: map['isDevopsAuditEnabled'] == null ? null : map['isDevopsAuditEnabled']! as bool,
+      isManagedIdentityInUse: map['isManagedIdentityInUse'] == null ? null : map['isManagedIdentityInUse']! as bool,
+      isStorageSecondaryKeyInUse: map['isStorageSecondaryKeyInUse'] == null ? null : map['isStorageSecondaryKeyInUse']! as bool,
       name: map['name'] as String,
-      predicateExpression: map['predicateExpression'] == null ? null : map['predicateExpression'] as String,
-      queueDelayMs: map['queueDelayMs'] == null ? null : map['queueDelayMs'] as int,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      predicateExpression: map['predicateExpression'] == null ? null : map['predicateExpression']! as String,
+      queueDelayMs: map['queueDelayMs'] == null ? null : map['queueDelayMs']! as int,
+      retentionDays: map['retentionDays'] == null ? null : map['retentionDays']! as int,
       state: map['state'] as String,
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : map['storageAccountSubscriptionId'] as String,
-      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint'] as String,
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : map['storageAccountSubscriptionId']! as String,
+      storageEndpoint: map['storageEndpoint'] == null ? null : map['storageEndpoint']! as String,
       type: map['type'] as String,
     );
   }

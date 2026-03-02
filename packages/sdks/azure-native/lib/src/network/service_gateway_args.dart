@@ -69,15 +69,15 @@ class ServiceGatewayArgs {
 
   factory ServiceGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ServiceGatewayArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      routeTargetAddress: map['routeTargetAddress'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddress'] as Map).cast<String, dynamic>())).input(),
-      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddressV6'] as Map).cast<String, dynamic>())).input(),
-      serviceGatewayName: map['serviceGatewayName'] == null ? null : (map['serviceGatewayName'] as String).input(),
-      sku: map['sku'] == null ? null : (ServiceGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualNetwork: map['virtualNetwork'] == null ? null : (map['virtualNetwork'] as VirtualNetworkNetwork).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      routeTargetAddress: map['routeTargetAddress'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddress']! as Map).cast<String, dynamic>())).input(),
+      routeTargetAddressV6: map['routeTargetAddressV6'] == null ? null : (RouteTargetAddressPropertiesFormat.fromMap((map['routeTargetAddressV6']! as Map).cast<String, dynamic>())).input(),
+      serviceGatewayName: map['serviceGatewayName'] == null ? null : (map['serviceGatewayName']! as String).input(),
+      sku: map['sku'] == null ? null : (ServiceGatewaySku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (map['virtualNetwork']! as VirtualNetworkNetwork).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

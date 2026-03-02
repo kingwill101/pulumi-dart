@@ -21,7 +21,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
 
   factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio.fromMap(Map<String, dynamic> map) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio(
-      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(map['segments'], (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      segments: map['segments'] == null ? null : (pulumi.Input.decodeList<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>(map['segments']!, (value) => CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

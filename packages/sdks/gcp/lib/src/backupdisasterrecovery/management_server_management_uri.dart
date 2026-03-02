@@ -27,8 +27,8 @@ class ManagementServerManagementUri {
 
   factory ManagementServerManagementUri.fromMap(Map<String, dynamic> map) {
     return ManagementServerManagementUri(
-      api: map['api'] == null ? null : (map['api'] as String).input(),
-      webUi: map['webUi'] == null ? null : (map['webUi'] as String).input(),
+      api: map['api'] == null ? null : (map['api']! as String).input(),
+      webUi: map['webUi'] == null ? null : (map['webUi']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class MetastoreTableIamBindingCondition {
 
   factory MetastoreTableIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

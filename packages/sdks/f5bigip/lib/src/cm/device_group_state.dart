@@ -67,16 +67,16 @@ class DeviceGroupState {
 
   factory DeviceGroupState.fromMap(Map<String, dynamic> map) {
     return DeviceGroupState(
-      autoSync: map['autoSync'] == null ? null : (map['autoSync'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceGroupDevice>(map['devices'], (value) => DeviceGroupDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fullLoadOnSync: map['fullLoadOnSync'] == null ? null : (map['fullLoadOnSync'] as String).input(),
-      incrementalConfig: map['incrementalConfig'] == null ? null : (map['incrementalConfig'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkFailover: map['networkFailover'] == null ? null : (map['networkFailover'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      saveOnAutoSync: map['saveOnAutoSync'] == null ? null : (map['saveOnAutoSync'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      autoSync: map['autoSync'] == null ? null : (map['autoSync']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<DeviceGroupDevice>(map['devices']!, (value) => DeviceGroupDevice.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fullLoadOnSync: map['fullLoadOnSync'] == null ? null : (map['fullLoadOnSync']! as String).input(),
+      incrementalConfig: map['incrementalConfig'] == null ? null : (map['incrementalConfig']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkFailover: map['networkFailover'] == null ? null : (map['networkFailover']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      saveOnAutoSync: map['saveOnAutoSync'] == null ? null : (map['saveOnAutoSync']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

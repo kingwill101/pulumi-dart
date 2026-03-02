@@ -27,8 +27,8 @@ class RiskConfigurationAccountTakeoverRiskConfiguration {
 
   factory RiskConfigurationAccountTakeoverRiskConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfiguration(
-      actions: (RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      notifyConfiguration: map['notifyConfiguration'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration.fromMap((map['notifyConfiguration'] as Map).cast<String, dynamic>())).input(),
+      actions: (RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
+      notifyConfiguration: map['notifyConfiguration'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration.fromMap((map['notifyConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

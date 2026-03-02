@@ -48,11 +48,11 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration {
 
   factory RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration.fromMap(Map<String, dynamic> map) {
     return RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfiguration(
-      blockEmail: map['blockEmail'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockEmail.fromMap((map['blockEmail'] as Map).cast<String, dynamic>())).input(),
-      from: map['from'] == null ? null : (map['from'] as String).input(),
-      mfaEmail: map['mfaEmail'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail.fromMap((map['mfaEmail'] as Map).cast<String, dynamic>())).input(),
-      noActionEmail: map['noActionEmail'] == null ? null : (RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail.fromMap((map['noActionEmail'] as Map).cast<String, dynamic>())).input(),
-      replyTo: map['replyTo'] == null ? null : (map['replyTo'] as String).input(),
+      blockEmail: map['blockEmail'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationBlockEmail.fromMap((map['blockEmail']! as Map).cast<String, dynamic>())).input()).input(),
+      from: map['from'] == null ? null : ((map['from'] as String).input()).input(),
+      mfaEmail: map['mfaEmail'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationMfaEmail.fromMap((map['mfaEmail']! as Map).cast<String, dynamic>())).input()).input(),
+      noActionEmail: map['noActionEmail'] == null ? null : ((RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail.fromMap((map['noActionEmail']! as Map).cast<String, dynamic>())).input()).input(),
+      replyTo: map['replyTo'] == null ? null : ((map['replyTo'] as String).input()).input(),
       sourceArn: (map['sourceArn'] as String).input(),
     );
   }

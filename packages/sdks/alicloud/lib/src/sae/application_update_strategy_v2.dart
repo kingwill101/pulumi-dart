@@ -26,8 +26,8 @@ class ApplicationUpdateStrategyV2 {
 
   factory ApplicationUpdateStrategyV2.fromMap(Map<String, dynamic> map) {
     return ApplicationUpdateStrategyV2(
-      batchUpdate: map['batchUpdate'] == null ? null : (ApplicationUpdateStrategyV2BatchUpdate.fromMap((map['batchUpdate'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      batchUpdate: map['batchUpdate'] == null ? null : (ApplicationUpdateStrategyV2BatchUpdate.fromMap((map['batchUpdate']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

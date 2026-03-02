@@ -46,12 +46,12 @@ class NetworkManagerDeploymentStatusResponse {
 
   factory NetworkManagerDeploymentStatusResponse.fromMap(Map<String, dynamic> map) {
     return NetworkManagerDeploymentStatusResponse(
-      commitTime: map['commitTime'] == null ? null : (map['commitTime'] as String).input(),
-      configurationIds: map['configurationIds'] == null ? null : ((map['configurationIds'] as List).cast<String>()).input(),
-      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus'] as String).input(),
-      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      commitTime: map['commitTime'] == null ? null : (map['commitTime']! as String).input(),
+      configurationIds: map['configurationIds'] == null ? null : ((map['configurationIds']! as List).cast<String>()).input(),
+      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus']! as String).input(),
+      deploymentType: map['deploymentType'] == null ? null : (map['deploymentType']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class AgentcoreOauth2CredentialProviderState {
 
   factory AgentcoreOauth2CredentialProviderState.fromMap(Map<String, dynamic> map) {
     return AgentcoreOauth2CredentialProviderState(
-      clientSecretArns: map['clientSecretArns'] == null ? null : (pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(map['clientSecretArns'], (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      credentialProviderArn: map['credentialProviderArn'] == null ? null : (map['credentialProviderArn'] as String).input(),
-      credentialProviderVendor: map['credentialProviderVendor'] == null ? null : (map['credentialProviderVendor'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oauth2ProviderConfig: map['oauth2ProviderConfig'] == null ? null : (AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((map['oauth2ProviderConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      clientSecretArns: map['clientSecretArns'] == null ? null : ((pulumi.Input.decodeList<AgentcoreOauth2CredentialProviderClientSecretArn>(map['clientSecretArns']!, (value) => AgentcoreOauth2CredentialProviderClientSecretArn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      credentialProviderArn: map['credentialProviderArn'] == null ? null : ((map['credentialProviderArn'] as String).input()).input(),
+      credentialProviderVendor: map['credentialProviderVendor'] == null ? null : ((map['credentialProviderVendor'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      oauth2ProviderConfig: map['oauth2ProviderConfig'] == null ? null : ((AgentcoreOauth2CredentialProviderOauth2ProviderConfig.fromMap((map['oauth2ProviderConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class RdnsState {
 
   factory RdnsState.fromMap(Map<String, dynamic> map) {
     return RdnsState(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      rdns: map['rdns'] == null ? null : (map['rdns'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (RdnsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForAvailable: map['waitForAvailable'] == null ? null : (map['waitForAvailable'] as bool).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      rdns: map['rdns'] == null ? null : (map['rdns']! as String).input(),
+      timeouts: map['timeouts'] == null ? null : (RdnsTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
+      waitForAvailable: map['waitForAvailable'] == null ? null : (map['waitForAvailable']! as bool).input(),
     );
   }
 }

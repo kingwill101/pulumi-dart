@@ -61,11 +61,11 @@ class CertificateArgs {
   factory CertificateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateArgs(
       apiManagementName: (map['apiManagementName'] as String).input(),
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      keyVaultIdentityClientId: map['keyVaultIdentityClientId'] == null ? null : (map['keyVaultIdentityClientId'] as String).input(),
-      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      keyVaultIdentityClientId: map['keyVaultIdentityClientId'] == null ? null : (map['keyVaultIdentityClientId']! as String).input(),
+      keyVaultSecretId: map['keyVaultSecretId'] == null ? null : (map['keyVaultSecretId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

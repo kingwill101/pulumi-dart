@@ -57,12 +57,12 @@ class GetChildInstanceRouteEntryToAttachmentsResult {
   factory GetChildInstanceRouteEntryToAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetChildInstanceRouteEntryToAttachmentsResult(
       attachments: pulumi.Input.decodeList<GetChildInstanceRouteEntryToAttachmentsAttachment>(map['attachments'], (value) => GetChildInstanceRouteEntryToAttachmentsAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      cenId: map['cenId'] == null ? null : map['cenId'] as String,
+      cenId: map['cenId'] == null ? null : map['cenId']! as String,
       childInstanceRouteTableId: map['childInstanceRouteTableId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      serviceType: map['serviceType'] == null ? null : map['serviceType'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      serviceType: map['serviceType'] == null ? null : map['serviceType']! as String,
       transitRouterAttachmentId: map['transitRouterAttachmentId'] as String,
     );
   }

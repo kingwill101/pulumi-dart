@@ -70,16 +70,16 @@ class PrometheusRuleGroupArgs {
 
   factory PrometheusRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return PrometheusRuleGroupArgs(
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName'] as String).input(),
+      ruleGroupName: map['ruleGroupName'] == null ? null : (map['ruleGroupName']! as String).input(),
       rules: (pulumi.Input.decodeList<PrometheusRule>(map['rules'], (value) => PrometheusRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       scopes: ((map['scopes'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

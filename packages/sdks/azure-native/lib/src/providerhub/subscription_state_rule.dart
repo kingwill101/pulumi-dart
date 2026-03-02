@@ -25,8 +25,8 @@ class SubscriptionStateRule {
 
   factory SubscriptionStateRule.fromMap(Map<String, dynamic> map) {
     return SubscriptionStateRule(
-      allowedActions: map['allowedActions'] == null ? null : ((map['allowedActions'] as List).cast<String>()).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      allowedActions: map['allowedActions'] == null ? null : ((map['allowedActions']! as List).cast<String>()).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

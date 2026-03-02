@@ -32,9 +32,9 @@ class CloudWatchLogsConfig {
 
   factory CloudWatchLogsConfig.fromMap(Map<String, dynamic> map) {
     return CloudWatchLogsConfig(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      status: map['status'] == null ? null : (LogsConfigStatusTypeEnumValue.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      streamName: map['streamName'] == null ? null : (map['streamName'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      status: map['status'] == null ? null : (LogsConfigStatusTypeEnumValue.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      streamName: map['streamName'] == null ? null : (map['streamName']! as String).input(),
     );
   }
 }

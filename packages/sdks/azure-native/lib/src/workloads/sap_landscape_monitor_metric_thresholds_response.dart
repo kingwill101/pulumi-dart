@@ -36,10 +36,10 @@ class SapLandscapeMonitorMetricThresholdsResponse {
 
   factory SapLandscapeMonitorMetricThresholdsResponse.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorMetricThresholdsResponse(
-      green: map['green'] == null ? null : (map['green'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      red: map['red'] == null ? null : (map['red'] as double).input(),
-      yellow: map['yellow'] == null ? null : (map['yellow'] as double).input(),
+      green: map['green'] == null ? null : (map['green']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      red: map['red'] == null ? null : (map['red']! as double).input(),
+      yellow: map['yellow'] == null ? null : (map['yellow']! as double).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class AttributeDefinitionResponse {
 
   factory AttributeDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return AttributeDefinitionResponse(
-      attributeName: map['attributeName'] == null ? null : (map['attributeName'] as String).input(),
-      attributeType: map['attributeType'] == null ? null : (map['attributeType'] as String).input(),
+      attributeName: map['attributeName'] == null ? null : (map['attributeName']! as String).input(),
+      attributeType: map['attributeType'] == null ? null : (map['attributeType']! as String).input(),
     );
   }
 }

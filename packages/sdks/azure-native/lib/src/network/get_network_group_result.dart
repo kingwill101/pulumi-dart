@@ -67,10 +67,10 @@ class GetNetworkGroupResult {
   factory GetNetworkGroupResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      memberType: map['memberType'] == null ? null : map['memberType'] as String,
+      memberType: map['memberType'] == null ? null : map['memberType']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,

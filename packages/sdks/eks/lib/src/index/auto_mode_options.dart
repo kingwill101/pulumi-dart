@@ -35,8 +35,8 @@ class AutoModeOptions {
 
   factory AutoModeOptions.fromMap(Map<String, dynamic> map) {
     return AutoModeOptions(
-      computeConfig: map['computeConfig'] == null ? null : (ClusterComputeConfig.fromMap((map['computeConfig'] as Map).cast<String, dynamic>())).input(),
-      createNodeRole: map['createNodeRole'] == null ? null : (map['createNodeRole'] as bool).input(),
+      computeConfig: map['computeConfig'] == null ? null : (ClusterComputeConfig.fromMap((map['computeConfig']! as Map).cast<String, dynamic>())).input(),
+      createNodeRole: map['createNodeRole'] == null ? null : (map['createNodeRole']! as bool).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

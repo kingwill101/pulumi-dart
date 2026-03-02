@@ -36,10 +36,10 @@ class RoutineRelatedRecordState {
 
   factory RoutineRelatedRecordState.fromMap(Map<String, dynamic> map) {
     return RoutineRelatedRecordState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recordId: map['recordId'] == null ? null : (map['recordId'] as int).input(),
-      recordName: map['recordName'] == null ? null : (map['recordName'] as String).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recordId: map['recordId'] == null ? null : (map['recordId']! as int).input(),
+      recordName: map['recordName'] == null ? null : (map['recordName']! as String).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
     );
   }
 }

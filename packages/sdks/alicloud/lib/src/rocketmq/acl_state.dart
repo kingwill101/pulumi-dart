@@ -53,13 +53,13 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      decision: map['decision'] == null ? null : (map['decision'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists'] as List).cast<String>()).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      decision: map['decision'] == null ? null : (map['decision']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      ipWhitelists: map['ipWhitelists'] == null ? null : ((map['ipWhitelists']! as List).cast<String>()).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

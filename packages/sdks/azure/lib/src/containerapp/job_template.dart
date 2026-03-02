@@ -34,8 +34,8 @@ class JobTemplate {
   factory JobTemplate.fromMap(Map<String, dynamic> map) {
     return JobTemplate(
       containers: (pulumi.Input.decodeList<JobTemplateContainer>(map['containers'], (value) => JobTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<JobTemplateInitContainer>(map['initContainers'], (value) => JobTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<JobTemplateVolume>(map['volumes'], (value) => JobTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      initContainers: map['initContainers'] == null ? null : (pulumi.Input.decodeList<JobTemplateInitContainer>(map['initContainers']!, (value) => JobTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<JobTemplateVolume>(map['volumes']!, (value) => JobTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

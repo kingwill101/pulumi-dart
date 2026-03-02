@@ -33,8 +33,8 @@ class GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig {
 
   factory GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1BatchPredictionJobOutputConfig(
-      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudAiplatformV1beta1BigQueryDestination.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>())).input(),
-      gcsDestination: map['gcsDestination'] == null ? null : (GoogleCloudAiplatformV1beta1GcsDestination.fromMap((map['gcsDestination'] as Map).cast<String, dynamic>())).input(),
+      bigqueryDestination: map['bigqueryDestination'] == null ? null : (GoogleCloudAiplatformV1beta1BigQueryDestination.fromMap((map['bigqueryDestination']! as Map).cast<String, dynamic>())).input(),
+      gcsDestination: map['gcsDestination'] == null ? null : (GoogleCloudAiplatformV1beta1GcsDestination.fromMap((map['gcsDestination']! as Map).cast<String, dynamic>())).input(),
       predictionsFormat: (map['predictionsFormat'] as String).input(),
     );
   }

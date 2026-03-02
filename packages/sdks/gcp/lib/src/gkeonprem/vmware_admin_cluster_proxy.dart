@@ -26,7 +26,7 @@ class VmwareAdminClusterProxy {
 
   factory VmwareAdminClusterProxy.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterProxy(
-      noProxy: map['noProxy'] == null ? null : (map['noProxy'] as String).input(),
+      noProxy: map['noProxy'] == null ? null : (map['noProxy']! as String).input(),
       url: (map['url'] as String).input(),
     );
   }

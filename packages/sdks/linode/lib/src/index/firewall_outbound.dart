@@ -51,11 +51,11 @@ class FirewallOutbound {
   factory FirewallOutbound.fromMap(Map<String, dynamic> map) {
     return FirewallOutbound(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipv4s: map['ipv4s'] == null ? null : ((map['ipv4s'] as List).cast<String>()).input(),
-      ipv6s: map['ipv6s'] == null ? null : ((map['ipv6s'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipv4s: map['ipv4s'] == null ? null : ((map['ipv4s']! as List).cast<String>()).input(),
+      ipv6s: map['ipv6s'] == null ? null : ((map['ipv6s']! as List).cast<String>()).input(),
       label: (map['label'] as String).input(),
-      ports: map['ports'] == null ? null : (map['ports'] as String).input(),
+      ports: map['ports'] == null ? null : (map['ports']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

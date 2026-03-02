@@ -47,12 +47,12 @@ class DedicatedIpPoolState {
 
   factory DedicatedIpPoolState.fromMap(Map<String, dynamic> map) {
     return DedicatedIpPoolState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scalingMode: map['scalingMode'] == null ? null : (map['scalingMode'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      poolName: map['poolName'] == null ? null : ((map['poolName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scalingMode: map['scalingMode'] == null ? null : ((map['scalingMode'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

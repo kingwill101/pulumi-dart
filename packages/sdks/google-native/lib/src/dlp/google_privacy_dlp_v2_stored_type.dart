@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2StoredType {
 
   factory GooglePrivacyDlpV2StoredType.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StoredType(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

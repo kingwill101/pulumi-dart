@@ -44,11 +44,11 @@ class AlertContactArgs {
 
   factory AlertContactArgs.fromMap(Map<String, dynamic> map) {
     return AlertContactArgs(
-      alertContactName: map['alertContactName'] == null ? null : (map['alertContactName'] as String).input(),
-      dingRobotWebhookUrl: map['dingRobotWebhookUrl'] == null ? null : (map['dingRobotWebhookUrl'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      phoneNum: map['phoneNum'] == null ? null : (map['phoneNum'] as String).input(),
-      systemNoc: map['systemNoc'] == null ? null : (map['systemNoc'] as bool).input(),
+      alertContactName: map['alertContactName'] == null ? null : (map['alertContactName']! as String).input(),
+      dingRobotWebhookUrl: map['dingRobotWebhookUrl'] == null ? null : (map['dingRobotWebhookUrl']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      phoneNum: map['phoneNum'] == null ? null : (map['phoneNum']! as String).input(),
+      systemNoc: map['systemNoc'] == null ? null : (map['systemNoc']! as bool).input(),
     );
   }
 }

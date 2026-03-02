@@ -66,7 +66,7 @@ class GetScopeMapResult {
       actions: (map['actions'] as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

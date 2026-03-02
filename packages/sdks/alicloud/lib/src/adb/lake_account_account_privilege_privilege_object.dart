@@ -30,9 +30,9 @@ class LakeAccountAccountPrivilegePrivilegeObject {
 
   factory LakeAccountAccountPrivilegePrivilegeObject.fromMap(Map<String, dynamic> map) {
     return LakeAccountAccountPrivilegePrivilegeObject(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

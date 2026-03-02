@@ -119,7 +119,7 @@ class GetTransitGatewayResult {
       description: map['description'] as String,
       dnsSupport: map['dnsSupport'] as String,
       encryptionSupport: map['encryptionSupport'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetTransitGatewayFilter>(map['filters'], (value) => GetTransitGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetTransitGatewayFilter>(map['filters']!, (value) => GetTransitGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       multicastSupport: map['multicastSupport'] as String,
       ownerId: map['ownerId'] as String,

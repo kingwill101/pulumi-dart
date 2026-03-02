@@ -52,13 +52,13 @@ class SolutionInstanceState {
 
   factory SolutionInstanceState.fromMap(Map<String, dynamic> map) {
     return SolutionInstanceState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SolutionInstanceParameter>(map['parameters'], (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      solutionId: map['solutionId'] == null ? null : (map['solutionId'] as String).input(),
-      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<SolutionInstanceParameter>(map['parameters']!, (value) => SolutionInstanceParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      solutionId: map['solutionId'] == null ? null : (map['solutionId']! as String).input(),
+      solutionInstanceName: map['solutionInstanceName'] == null ? null : (map['solutionInstanceName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

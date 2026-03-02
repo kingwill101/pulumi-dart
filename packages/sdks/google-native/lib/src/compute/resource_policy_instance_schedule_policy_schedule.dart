@@ -21,7 +21,7 @@ class ResourcePolicyInstanceSchedulePolicySchedule {
 
   factory ResourcePolicyInstanceSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyInstanceSchedulePolicySchedule(
-      schedule: map['schedule'] == null ? null : (map['schedule'] as String).input(),
+      schedule: map['schedule'] == null ? null : (map['schedule']! as String).input(),
     );
   }
 }

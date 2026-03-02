@@ -30,7 +30,7 @@ class DatabaseUserSettingAcl {
 
   factory DatabaseUserSettingAcl.fromMap(Map<String, dynamic> map) {
     return DatabaseUserSettingAcl(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       permission: (map['permission'] as String).input(),
       topic: (map['topic'] as String).input(),
     );

@@ -35,7 +35,7 @@ class ReplicaSetArgs {
   factory ReplicaSetArgs.fromMap(Map<String, dynamic> map) {
     return ReplicaSetArgs(
       domainServiceId: (map['domainServiceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );
   }

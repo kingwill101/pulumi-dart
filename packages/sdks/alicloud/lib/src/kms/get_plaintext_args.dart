@@ -30,7 +30,7 @@ class GetPlaintextArgs {
   factory GetPlaintextArgs.fromMap(Map<String, dynamic> map) {
     return GetPlaintextArgs(
       ciphertextBlob: (map['ciphertextBlob'] as String).input(),
-      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext'] as Map).cast<String, String>()).input(),
+      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext']! as Map).cast<String, String>()).input(),
     );
   }
 }

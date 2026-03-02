@@ -36,10 +36,10 @@ class IpsecProfileState {
 
   factory IpsecProfileState.fromMap(Map<String, dynamic> map) {
     return IpsecProfileState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentProfile: map['parentProfile'] == null ? null : (map['parentProfile'] as String).input(),
-      trafficSelector: map['trafficSelector'] == null ? null : (map['trafficSelector'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentProfile: map['parentProfile'] == null ? null : (map['parentProfile']! as String).input(),
+      trafficSelector: map['trafficSelector'] == null ? null : (map['trafficSelector']! as String).input(),
     );
   }
 }

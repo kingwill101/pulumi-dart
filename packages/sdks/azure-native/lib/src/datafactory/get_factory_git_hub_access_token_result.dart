@@ -20,7 +20,7 @@ class GetFactoryGitHubAccessTokenResult {
 
   factory GetFactoryGitHubAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetFactoryGitHubAccessTokenResult(
-      gitHubAccessToken: map['gitHubAccessToken'] == null ? null : map['gitHubAccessToken'] as String,
+      gitHubAccessToken: map['gitHubAccessToken'] == null ? null : map['gitHubAccessToken']! as String,
     );
   }
 }

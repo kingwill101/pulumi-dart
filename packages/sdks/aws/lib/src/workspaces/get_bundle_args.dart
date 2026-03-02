@@ -39,10 +39,10 @@ class GetBundleArgs {
 
   factory GetBundleArgs.fromMap(Map<String, dynamic> map) {
     return GetBundleArgs(
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : ((map['bundleId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ManagedEnvironmentPeerTrafficConfiguration {
 
   factory ManagedEnvironmentPeerTrafficConfiguration.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentPeerTrafficConfiguration(
-      encryption: map['encryption'] == null ? null : (ManagedEnvironmentEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (ManagedEnvironmentEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

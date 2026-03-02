@@ -60,13 +60,13 @@ class WorkspaceGroupArgs {
 
   factory WorkspaceGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      externalId: map['externalId'] == null ? null : (map['externalId']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      type: map['type'] == null ? null : (GroupType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GroupType.fromValue(map['type']! as String)).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

@@ -27,7 +27,7 @@ class ConnectionAuthConfigUserPassword {
 
   factory ConnectionAuthConfigUserPassword.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigUserPassword(
-      password: map['password'] == null ? null : (ConnectionAuthConfigUserPasswordPassword.fromMap((map['password'] as Map).cast<String, dynamic>())).input(),
+      password: map['password'] == null ? null : (ConnectionAuthConfigUserPasswordPassword.fromMap((map['password']! as Map).cast<String, dynamic>())).input(),
       username: (map['username'] as String).input(),
     );
   }

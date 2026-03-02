@@ -31,9 +31,9 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
 
   factory GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit'] as String).input(),
-      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      finishDigit: map['finishDigit'] == null ? null : (map['finishDigit']! as String).input(),
+      maxDigits: map['maxDigits'] == null ? null : (map['maxDigits']! as int).input(),
     );
   }
 }

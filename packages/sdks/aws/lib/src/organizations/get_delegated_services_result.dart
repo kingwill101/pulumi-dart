@@ -32,7 +32,7 @@ class GetDelegatedServicesResult {
   factory GetDelegatedServicesResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedServicesResult(
       accountId: map['accountId'] as String,
-      delegatedServices: pulumi.Input.decodeList<GetDelegatedServicesDelegatedService>(map['delegatedServices'], (value) => GetDelegatedServicesDelegatedService.fromMap((value as Map).cast<String, dynamic>())),
+      delegatedServices: pulumi.Input.decodeList<GetDelegatedServicesDelegatedService>(map['delegatedServices']!, (value) => GetDelegatedServicesDelegatedService.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
     );
   }

@@ -30,9 +30,9 @@ class DomainMemoryBackingMemoryHugePagesHugepage {
 
   factory DomainMemoryBackingMemoryHugePagesHugepage.fromMap(Map<String, dynamic> map) {
     return DomainMemoryBackingMemoryHugePagesHugepage(
-      nodeset: map['nodeset'] == null ? null : (map['nodeset'] as String).input(),
+      nodeset: map['nodeset'] == null ? null : (map['nodeset']! as String).input(),
       size: (map['size'] as double).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

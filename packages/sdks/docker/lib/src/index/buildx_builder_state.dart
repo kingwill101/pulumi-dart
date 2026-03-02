@@ -89,20 +89,20 @@ class BuildxBuilderState {
 
   factory BuildxBuilderState.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderState(
-      append: map['append'] == null ? null : (map['append'] as bool).input(),
-      bootstrap: map['bootstrap'] == null ? null : (map['bootstrap'] as bool).input(),
-      buildkitConfig: map['buildkitConfig'] == null ? null : (map['buildkitConfig'] as String).input(),
-      buildkitFlags: map['buildkitFlags'] == null ? null : (map['buildkitFlags'] as String).input(),
-      dockerContainer: map['dockerContainer'] == null ? null : (BuildxBuilderDockerContainer.fromMap((map['dockerContainer'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
-      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions'] as Map).cast<String, String>()).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      kubernetes: map['kubernetes'] == null ? null : (BuildxBuilderKubernetes.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      node: map['node'] == null ? null : (map['node'] as String).input(),
-      platforms: map['platforms'] == null ? null : ((map['platforms'] as List).cast<String>()).input(),
-      remote: map['remote'] == null ? null : (BuildxBuilderRemote.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
-      use: map['use'] == null ? null : (map['use'] as bool).input(),
+      append: map['append'] == null ? null : (map['append']! as bool).input(),
+      bootstrap: map['bootstrap'] == null ? null : (map['bootstrap']! as bool).input(),
+      buildkitConfig: map['buildkitConfig'] == null ? null : (map['buildkitConfig']! as String).input(),
+      buildkitFlags: map['buildkitFlags'] == null ? null : (map['buildkitFlags']! as String).input(),
+      dockerContainer: map['dockerContainer'] == null ? null : (BuildxBuilderDockerContainer.fromMap((map['dockerContainer']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
+      driverOptions: map['driverOptions'] == null ? null : ((map['driverOptions']! as Map).cast<String, String>()).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      kubernetes: map['kubernetes'] == null ? null : (BuildxBuilderKubernetes.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      node: map['node'] == null ? null : (map['node']! as String).input(),
+      platforms: map['platforms'] == null ? null : ((map['platforms']! as List).cast<String>()).input(),
+      remote: map['remote'] == null ? null : (BuildxBuilderRemote.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
+      use: map['use'] == null ? null : (map['use']! as bool).input(),
     );
   }
 }

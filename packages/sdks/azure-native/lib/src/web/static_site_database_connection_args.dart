@@ -59,10 +59,10 @@ class StaticSiteDatabaseConnectionArgs {
 
   factory StaticSiteDatabaseConnectionArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteDatabaseConnectionArgs(
-      connectionIdentity: map['connectionIdentity'] == null ? null : (map['connectionIdentity'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      databaseConnectionName: map['databaseConnectionName'] == null ? null : (map['databaseConnectionName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      connectionIdentity: map['connectionIdentity'] == null ? null : (map['connectionIdentity']! as String).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      databaseConnectionName: map['databaseConnectionName'] == null ? null : (map['databaseConnectionName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       region: (map['region'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

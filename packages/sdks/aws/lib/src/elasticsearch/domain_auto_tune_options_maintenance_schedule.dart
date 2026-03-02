@@ -32,7 +32,7 @@ class DomainAutoTuneOptionsMaintenanceSchedule {
   factory DomainAutoTuneOptionsMaintenanceSchedule.fromMap(Map<String, dynamic> map) {
     return DomainAutoTuneOptionsMaintenanceSchedule(
       cronExpressionForRecurrence: (map['cronExpressionForRecurrence'] as String).input(),
-      duration: (DomainAutoTuneOptionsMaintenanceScheduleDuration.fromMap((map['duration'] as Map).cast<String, dynamic>())).input(),
+      duration: (DomainAutoTuneOptionsMaintenanceScheduleDuration.fromMap((map['duration']! as Map).cast<String, dynamic>())).input(),
       startAt: (map['startAt'] as String).input(),
     );
   }

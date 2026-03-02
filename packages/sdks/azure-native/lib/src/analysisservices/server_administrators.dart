@@ -21,7 +21,7 @@ class ServerAdministrators {
 
   factory ServerAdministrators.fromMap(Map<String, dynamic> map) {
     return ServerAdministrators(
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
     );
   }
 }

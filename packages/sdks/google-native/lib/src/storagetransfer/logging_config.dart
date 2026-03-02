@@ -33,9 +33,9 @@ class LoggingConfig {
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      enableOnpremGcsTransferLogs: map['enableOnpremGcsTransferLogs'] == null ? null : (map['enableOnpremGcsTransferLogs'] as bool).input(),
-      logActionStates: map['logActionStates'] == null ? null : (pulumi.Input.decodeList<LoggingConfigLogActionStatesItem>(map['logActionStates'], (value) => LoggingConfigLogActionStatesItem.fromValue(value as String))).input(),
-      logActions: map['logActions'] == null ? null : (pulumi.Input.decodeList<LoggingConfigLogActionsItem>(map['logActions'], (value) => LoggingConfigLogActionsItem.fromValue(value as String))).input(),
+      enableOnpremGcsTransferLogs: map['enableOnpremGcsTransferLogs'] == null ? null : (map['enableOnpremGcsTransferLogs']! as bool).input(),
+      logActionStates: map['logActionStates'] == null ? null : (pulumi.Input.decodeList<LoggingConfigLogActionStatesItem>(map['logActionStates']!, (value) => LoggingConfigLogActionStatesItem.fromValue(value as String))).input(),
+      logActions: map['logActions'] == null ? null : (pulumi.Input.decodeList<LoggingConfigLogActionsItem>(map['logActions']!, (value) => LoggingConfigLogActionsItem.fromValue(value as String))).input(),
     );
   }
 }

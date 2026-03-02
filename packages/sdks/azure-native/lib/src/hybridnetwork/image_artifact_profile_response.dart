@@ -26,8 +26,8 @@ class ImageArtifactProfileResponse {
 
   factory ImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return ImageArtifactProfileResponse(
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion'] as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      imageVersion: map['imageVersion'] == null ? null : (map['imageVersion']! as String).input(),
     );
   }
 }

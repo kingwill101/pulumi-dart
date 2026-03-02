@@ -91,19 +91,19 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : ((map['accessPolicyObjectIds'] as List).cast<String>()).input(),
-      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : (map['configurationExportStorageAccountName'] as String).input(),
-      corsConfiguration: map['corsConfiguration'] == null ? null : (ServiceCorsConfiguration.fromMap((map['corsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      cosmosdbKeyVaultKeyVersionlessId: map['cosmosdbKeyVaultKeyVersionlessId'] == null ? null : (map['cosmosdbKeyVaultKeyVersionlessId'] as String).input(),
-      cosmosdbThroughput: map['cosmosdbThroughput'] == null ? null : (map['cosmosdbThroughput'] as int).input(),
-      identity: map['identity'] == null ? null : (ServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      accessPolicyObjectIds: map['accessPolicyObjectIds'] == null ? null : ((map['accessPolicyObjectIds']! as List).cast<String>()).input(),
+      authenticationConfiguration: map['authenticationConfiguration'] == null ? null : (ServiceAuthenticationConfiguration.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input(),
+      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] == null ? null : (map['configurationExportStorageAccountName']! as String).input(),
+      corsConfiguration: map['corsConfiguration'] == null ? null : (ServiceCorsConfiguration.fromMap((map['corsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      cosmosdbKeyVaultKeyVersionlessId: map['cosmosdbKeyVaultKeyVersionlessId'] == null ? null : (map['cosmosdbKeyVaultKeyVersionlessId']! as String).input(),
+      cosmosdbThroughput: map['cosmosdbThroughput'] == null ? null : (map['cosmosdbThroughput']! as int).input(),
+      identity: map['identity'] == null ? null : (ServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

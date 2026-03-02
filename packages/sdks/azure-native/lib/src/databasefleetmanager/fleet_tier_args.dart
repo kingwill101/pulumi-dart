@@ -41,9 +41,9 @@ class FleetTierArgs {
   factory FleetTierArgs.fromMap(Map<String, dynamic> map) {
     return FleetTierArgs(
       fleetName: (map['fleetName'] as String).input(),
-      properties: map['properties'] == null ? null : (FleetTierProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (FleetTierProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tierName: map['tierName'] == null ? null : (map['tierName'] as String).input(),
+      tierName: map['tierName'] == null ? null : (map['tierName']! as String).input(),
     );
   }
 }

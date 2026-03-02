@@ -63,15 +63,15 @@ class ResourceAttributesPatch {
 
   factory ResourceAttributesPatch.fromMap(Map<String, dynamic> map) {
     return ResourceAttributesPatch(
-      fieldSelector: map['fieldSelector'] == null ? null : (FieldSelectorAttributesPatch.fromMap((map['fieldSelector'] as Map).cast<String, dynamic>())).input(),
-      group: map['group'] == null ? null : (map['group'] as String).input(),
-      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorAttributesPatch.fromMap((map['labelSelector'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      resource: map['resource'] == null ? null : (map['resource'] as String).input(),
-      subresource: map['subresource'] == null ? null : (map['subresource'] as String).input(),
-      verb: map['verb'] == null ? null : (map['verb'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      fieldSelector: map['fieldSelector'] == null ? null : (FieldSelectorAttributesPatch.fromMap((map['fieldSelector']! as Map).cast<String, dynamic>())).input(),
+      group: map['group'] == null ? null : (map['group']! as String).input(),
+      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorAttributesPatch.fromMap((map['labelSelector']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      resource: map['resource'] == null ? null : (map['resource']! as String).input(),
+      subresource: map['subresource'] == null ? null : (map['subresource']! as String).input(),
+      verb: map['verb'] == null ? null : (map['verb']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

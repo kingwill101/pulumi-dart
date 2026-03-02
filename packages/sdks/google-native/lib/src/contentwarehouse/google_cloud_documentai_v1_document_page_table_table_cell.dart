@@ -38,10 +38,10 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableCell {
 
   factory GoogleCloudDocumentaiV1DocumentPageTableTableCell.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableCell(
-      colSpan: map['colSpan'] == null ? null : (map['colSpan'] as int).input(),
-      detectedLanguages: map['detectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>())).input(),
-      rowSpan: map['rowSpan'] == null ? null : (map['rowSpan'] as int).input(),
+      colSpan: map['colSpan'] == null ? null : (map['colSpan']! as int).input(),
+      detectedLanguages: map['detectedLanguages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>(map['detectedLanguages']!, (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout']! as Map).cast<String, dynamic>())).input(),
+      rowSpan: map['rowSpan'] == null ? null : (map['rowSpan']! as int).input(),
     );
   }
 }

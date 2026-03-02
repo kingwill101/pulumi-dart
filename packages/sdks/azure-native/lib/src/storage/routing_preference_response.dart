@@ -31,9 +31,9 @@ class RoutingPreferenceResponse {
 
   factory RoutingPreferenceResponse.fromMap(Map<String, dynamic> map) {
     return RoutingPreferenceResponse(
-      publishInternetEndpoints: map['publishInternetEndpoints'] == null ? null : (map['publishInternetEndpoints'] as bool).input(),
-      publishMicrosoftEndpoints: map['publishMicrosoftEndpoints'] == null ? null : (map['publishMicrosoftEndpoints'] as bool).input(),
-      routingChoice: map['routingChoice'] == null ? null : (map['routingChoice'] as String).input(),
+      publishInternetEndpoints: map['publishInternetEndpoints'] == null ? null : (map['publishInternetEndpoints']! as bool).input(),
+      publishMicrosoftEndpoints: map['publishMicrosoftEndpoints'] == null ? null : (map['publishMicrosoftEndpoints']! as bool).input(),
+      routingChoice: map['routingChoice'] == null ? null : (map['routingChoice']! as String).input(),
     );
   }
 }

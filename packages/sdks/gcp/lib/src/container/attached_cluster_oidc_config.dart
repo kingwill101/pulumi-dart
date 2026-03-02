@@ -26,7 +26,7 @@ class AttachedClusterOidcConfig {
   factory AttachedClusterOidcConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterOidcConfig(
       issuerUrl: (map['issuerUrl'] as String).input(),
-      jwks: map['jwks'] == null ? null : (map['jwks'] as String).input(),
+      jwks: map['jwks'] == null ? null : (map['jwks']! as String).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class GetRegistryImageArgs {
 
   factory GetRegistryImageArgs.fromMap(Map<String, dynamic> map) {
     return GetRegistryImageArgs(
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

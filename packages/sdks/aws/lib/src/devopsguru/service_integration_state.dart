@@ -39,10 +39,10 @@ class ServiceIntegrationState {
 
   factory ServiceIntegrationState.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationState(
-      kmsServerSideEncryption: map['kmsServerSideEncryption'] == null ? null : (ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption'] as Map).cast<String, dynamic>())).input(),
-      logsAnomalyDetection: map['logsAnomalyDetection'] == null ? null : (ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection'] as Map).cast<String, dynamic>())).input(),
-      opsCenter: map['opsCenter'] == null ? null : (ServiceIntegrationOpsCenter.fromMap((map['opsCenter'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      kmsServerSideEncryption: map['kmsServerSideEncryption'] == null ? null : ((ServiceIntegrationKmsServerSideEncryption.fromMap((map['kmsServerSideEncryption']! as Map).cast<String, dynamic>())).input()).input(),
+      logsAnomalyDetection: map['logsAnomalyDetection'] == null ? null : ((ServiceIntegrationLogsAnomalyDetection.fromMap((map['logsAnomalyDetection']! as Map).cast<String, dynamic>())).input()).input(),
+      opsCenter: map['opsCenter'] == null ? null : ((ServiceIntegrationOpsCenter.fromMap((map['opsCenter']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

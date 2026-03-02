@@ -102,21 +102,21 @@ class RegionInstanceTemplateNetworkInterface {
 
   factory RegionInstanceTemplateNetworkInterface.fromMap(Map<String, dynamic> map) {
     return RegionInstanceTemplateNetworkInterface(
-      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAccessConfig>(map['accessConfigs'], (value) => RegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges'], (value) => RegionInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      igmpQuery: map['igmpQuery'] == null ? null : (map['igmpQuery'] as String).input(),
-      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength'] as int).input(),
-      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs'], (value) => RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      networkIp: map['networkIp'] == null ? null : (map['networkIp'] as String).input(),
-      nicType: map['nicType'] == null ? null : (map['nicType'] as String).input(),
-      queueCount: map['queueCount'] == null ? null : (map['queueCount'] as int).input(),
-      stackType: map['stackType'] == null ? null : (map['stackType'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      subnetworkProject: map['subnetworkProject'] == null ? null : (map['subnetworkProject'] as String).input(),
+      accessConfigs: map['accessConfigs'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAccessConfig>(map['accessConfigs']!, (value) => RegionInstanceTemplateNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aliasIpRanges: map['aliasIpRanges'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges']!, (value) => RegionInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      igmpQuery: map['igmpQuery'] == null ? null : (map['igmpQuery']! as String).input(),
+      internalIpv6PrefixLength: map['internalIpv6PrefixLength'] == null ? null : (map['internalIpv6PrefixLength']! as int).input(),
+      ipv6AccessConfigs: map['ipv6AccessConfigs'] == null ? null : (pulumi.Input.decodeList<RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs']!, (value) => RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6AccessType: map['ipv6AccessType'] == null ? null : (map['ipv6AccessType']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      networkIp: map['networkIp'] == null ? null : (map['networkIp']! as String).input(),
+      nicType: map['nicType'] == null ? null : (map['nicType']! as String).input(),
+      queueCount: map['queueCount'] == null ? null : (map['queueCount']! as int).input(),
+      stackType: map['stackType'] == null ? null : (map['stackType']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      subnetworkProject: map['subnetworkProject'] == null ? null : (map['subnetworkProject']! as String).input(),
     );
   }
 }

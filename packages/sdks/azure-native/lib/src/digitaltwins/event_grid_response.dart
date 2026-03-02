@@ -69,13 +69,13 @@ class EventGridResponse {
   factory EventGridResponse.fromMap(Map<String, dynamic> map) {
     return EventGridResponse(
       accessKey1: (map['accessKey1'] as String).input(),
-      accessKey2: map['accessKey2'] == null ? null : (map['accessKey2'] as String).input(),
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      accessKey2: map['accessKey2'] == null ? null : (map['accessKey2']! as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
       createdTime: (map['createdTime'] as String).input(),
-      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret'] as String).input(),
-      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri'] as String).input(),
+      deadLetterSecret: map['deadLetterSecret'] == null ? null : (map['deadLetterSecret']! as String).input(),
+      deadLetterUri: map['deadLetterUri'] == null ? null : (map['deadLetterUri']! as String).input(),
       endpointType: (map['endpointType'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityReferenceResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityReferenceResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       topicEndpoint: (map['topicEndpoint'] as String).input(),
     );

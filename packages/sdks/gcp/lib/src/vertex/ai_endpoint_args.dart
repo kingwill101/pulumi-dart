@@ -98,19 +98,19 @@ class AiEndpointArgs {
 
   factory AiEndpointArgs.fromMap(Map<String, dynamic> map) {
     return AiEndpointArgs(
-      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : (map['dedicatedEndpointEnabled'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : (map['dedicatedEndpointEnabled']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiEndpointEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiEndpointEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : (AiEndpointPredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      trafficSplit: map['trafficSplit'] == null ? null : (map['trafficSplit'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : (AiEndpointPredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : (AiEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      trafficSplit: map['trafficSplit'] == null ? null : (map['trafficSplit']! as String).input(),
     );
   }
 }

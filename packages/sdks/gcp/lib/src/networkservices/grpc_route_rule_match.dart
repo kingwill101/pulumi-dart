@@ -29,8 +29,8 @@ class GrpcRouteRuleMatch {
 
   factory GrpcRouteRuleMatch.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleMatch(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRuleMatchHeader>(map['headers'], (value) => GrpcRouteRuleMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      method: map['method'] == null ? null : (GrpcRouteRuleMatchMethod.fromMap((map['method'] as Map).cast<String, dynamic>())).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRuleMatchHeader>(map['headers']!, (value) => GrpcRouteRuleMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      method: map['method'] == null ? null : (GrpcRouteRuleMatchMethod.fromMap((map['method']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

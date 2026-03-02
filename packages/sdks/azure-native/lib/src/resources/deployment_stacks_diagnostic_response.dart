@@ -42,11 +42,11 @@ class DeploymentStacksDiagnosticResponse {
 
   factory DeploymentStacksDiagnosticResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksDiagnosticResponse(
-      additionalInfo: map['additionalInfo'] == null ? null : (pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo'], (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalInfo: map['additionalInfo'] == null ? null : (pulumi.Input.decodeList<ErrorAdditionalInfoResponse>(map['additionalInfo']!, (value) => ErrorAdditionalInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       code: (map['code'] as String).input(),
       level: (map['level'] as String).input(),
       message: (map['message'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

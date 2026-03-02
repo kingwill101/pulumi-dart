@@ -31,9 +31,9 @@ class VpcFirewallAclEngineModeState {
 
   factory VpcFirewallAclEngineModeState.fromMap(Map<String, dynamic> map) {
     return VpcFirewallAclEngineModeState(
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      strictMode: map['strictMode'] == null ? null : (map['strictMode'] as int).input(),
-      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId'] as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      strictMode: map['strictMode'] == null ? null : (map['strictMode']! as int).input(),
+      vpcFirewallId: map['vpcFirewallId'] == null ? null : (map['vpcFirewallId']! as String).input(),
     );
   }
 }

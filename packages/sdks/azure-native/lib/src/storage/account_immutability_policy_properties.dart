@@ -31,9 +31,9 @@ class AccountImmutabilityPolicyProperties {
 
   factory AccountImmutabilityPolicyProperties.fromMap(Map<String, dynamic> map) {
     return AccountImmutabilityPolicyProperties(
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites'] as bool).input(),
-      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays'] as int).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites']! as bool).input(),
+      immutabilityPeriodSinceCreationInDays: map['immutabilityPeriodSinceCreationInDays'] == null ? null : (map['immutabilityPeriodSinceCreationInDays']! as int).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

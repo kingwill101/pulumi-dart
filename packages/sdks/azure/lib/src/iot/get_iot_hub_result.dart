@@ -49,7 +49,7 @@ class GetIotHubResult {
       identities: pulumi.Input.decodeList<GetIotHubIdentity>(map['identities'], (value) => GetIotHubIdentity.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

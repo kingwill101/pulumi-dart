@@ -36,9 +36,9 @@ class GetSubscribedRuleGroupArgs {
 
   factory GetSubscribedRuleGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetSubscribedRuleGroupArgs(
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

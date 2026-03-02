@@ -26,8 +26,8 @@ class GPUDriverConfig {
 
   factory GPUDriverConfig.fromMap(Map<String, dynamic> map) {
     return GPUDriverConfig(
-      customGpuDriverPath: map['customGpuDriverPath'] == null ? null : (map['customGpuDriverPath'] as String).input(),
-      enableGpuDriver: map['enableGpuDriver'] == null ? null : (map['enableGpuDriver'] as bool).input(),
+      customGpuDriverPath: map['customGpuDriverPath'] == null ? null : (map['customGpuDriverPath']! as String).input(),
+      enableGpuDriver: map['enableGpuDriver'] == null ? null : (map['enableGpuDriver']! as bool).input(),
     );
   }
 }

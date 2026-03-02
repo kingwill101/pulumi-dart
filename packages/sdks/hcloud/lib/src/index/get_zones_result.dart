@@ -32,7 +32,7 @@ class GetZonesResult {
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
       id: map['id'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

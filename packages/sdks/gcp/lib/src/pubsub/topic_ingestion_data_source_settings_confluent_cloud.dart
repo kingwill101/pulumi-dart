@@ -42,7 +42,7 @@ class TopicIngestionDataSourceSettingsConfluentCloud {
   factory TopicIngestionDataSourceSettingsConfluentCloud.fromMap(Map<String, dynamic> map) {
     return TopicIngestionDataSourceSettingsConfluentCloud(
       bootstrapServer: (map['bootstrapServer'] as String).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
       gcpServiceAccount: (map['gcpServiceAccount'] as String).input(),
       identityPoolId: (map['identityPoolId'] as String).input(),
       topic: (map['topic'] as String).input(),

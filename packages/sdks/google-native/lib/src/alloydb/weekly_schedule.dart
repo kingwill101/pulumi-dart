@@ -28,8 +28,8 @@ class WeeklySchedule {
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
     return WeeklySchedule(
-      daysOfWeek: map['daysOfWeek'] == null ? null : (pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItem>(map['daysOfWeek'], (value) => WeeklyScheduleDaysOfWeekItem.fromValue(value as String))).input(),
-      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<GoogleTypeTimeOfDay>(map['startTimes'], (value) => GoogleTypeTimeOfDay.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : (pulumi.Input.decodeList<WeeklyScheduleDaysOfWeekItem>(map['daysOfWeek']!, (value) => WeeklyScheduleDaysOfWeekItem.fromValue(value as String))).input(),
+      startTimes: map['startTimes'] == null ? null : (pulumi.Input.decodeList<GoogleTypeTimeOfDay>(map['startTimes']!, (value) => GoogleTypeTimeOfDay.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

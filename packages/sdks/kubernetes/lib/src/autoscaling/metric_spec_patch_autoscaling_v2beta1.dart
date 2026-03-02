@@ -51,12 +51,12 @@ class MetricSpecPatchAutoscalingV2beta1 {
 
   factory MetricSpecPatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return MetricSpecPatchAutoscalingV2beta1(
-      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricSourcePatchAutoscalingV2beta1.fromMap((map['containerResource'] as Map).cast<String, dynamic>())).input(),
-      external: map['external'] == null ? null : (ExternalMetricSourcePatchAutoscalingV2beta1.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
-      object: map['object'] == null ? null : (ObjectMetricSourcePatchAutoscalingV2beta1.fromMap((map['object'] as Map).cast<String, dynamic>())).input(),
-      pods: map['pods'] == null ? null : (PodsMetricSourcePatchAutoscalingV2beta1.fromMap((map['pods'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (ResourceMetricSourcePatchAutoscalingV2beta1.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      containerResource: map['containerResource'] == null ? null : (ContainerResourceMetricSourcePatchAutoscalingV2beta1.fromMap((map['containerResource']! as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (ExternalMetricSourcePatchAutoscalingV2beta1.fromMap((map['external']! as Map).cast<String, dynamic>())).input(),
+      object: map['object'] == null ? null : (ObjectMetricSourcePatchAutoscalingV2beta1.fromMap((map['object']! as Map).cast<String, dynamic>())).input(),
+      pods: map['pods'] == null ? null : (PodsMetricSourcePatchAutoscalingV2beta1.fromMap((map['pods']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (ResourceMetricSourcePatchAutoscalingV2beta1.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings(
-      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null ? null : (map['amazonBedrockRoleArn'] as String).input(),
+      amazonBedrockRoleArn: map['amazonBedrockRoleArn'] == null ? null : ((map['amazonBedrockRoleArn'] as String).input()).input(),
     );
   }
 }

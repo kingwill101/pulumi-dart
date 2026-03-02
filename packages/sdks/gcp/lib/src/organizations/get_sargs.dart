@@ -24,7 +24,7 @@ class GetSArgs {
 
   factory GetSArgs.fromMap(Map<String, dynamic> map) {
     return GetSArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount(
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

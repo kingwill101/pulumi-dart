@@ -33,9 +33,9 @@ class PersistenceConfig {
 
   factory PersistenceConfig.fromMap(Map<String, dynamic> map) {
     return PersistenceConfig(
-      persistenceMode: map['persistenceMode'] == null ? null : (PersistenceConfigPersistenceMode.fromValue(map['persistenceMode'] as String)).input(),
-      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (PersistenceConfigRdbSnapshotPeriod.fromValue(map['rdbSnapshotPeriod'] as String)).input(),
-      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime'] as String).input(),
+      persistenceMode: map['persistenceMode'] == null ? null : (PersistenceConfigPersistenceMode.fromValue(map['persistenceMode']! as String)).input(),
+      rdbSnapshotPeriod: map['rdbSnapshotPeriod'] == null ? null : (PersistenceConfigRdbSnapshotPeriod.fromValue(map['rdbSnapshotPeriod']! as String)).input(),
+      rdbSnapshotStartTime: map['rdbSnapshotStartTime'] == null ? null : (map['rdbSnapshotStartTime']! as String).input(),
     );
   }
 }

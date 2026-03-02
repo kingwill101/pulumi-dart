@@ -28,8 +28,8 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
 
   factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcode.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedBarcode(
-      barcode: map['barcode'] == null ? null : (GoogleCloudDocumentaiV1Barcode.fromMap((map['barcode'] as Map).cast<String, dynamic>())).input(),
-      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout'] as Map).cast<String, dynamic>())).input(),
+      barcode: map['barcode'] == null ? null : (GoogleCloudDocumentaiV1Barcode.fromMap((map['barcode']! as Map).cast<String, dynamic>())).input(),
+      layout: map['layout'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageLayout.fromMap((map['layout']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

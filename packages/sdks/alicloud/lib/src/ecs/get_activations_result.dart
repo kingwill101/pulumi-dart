@@ -53,10 +53,10 @@ class GetActivationsResult {
       activations: pulumi.Input.decodeList<GetActivationsActivation>(map['activations'], (value) => GetActivationsActivation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceName: map['instanceName'] == null ? null : map['instanceName'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
+      instanceName: map['instanceName'] == null ? null : map['instanceName']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
       totalCount: map['totalCount'] as int,
     );
   }

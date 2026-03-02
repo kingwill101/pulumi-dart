@@ -46,11 +46,11 @@ class MsTeamsChannelProperties {
 
   factory MsTeamsChannelProperties.fromMap(Map<String, dynamic> map) {
     return MsTeamsChannelProperties(
-      acceptedTerms: map['acceptedTerms'] == null ? null : (map['acceptedTerms'] as bool).input(),
-      callingWebhook: map['callingWebhook'] == null ? null : (map['callingWebhook'] as String).input(),
-      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment'] as String).input(),
-      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling'] as bool).input(),
-      incomingCallRoute: map['incomingCallRoute'] == null ? null : (map['incomingCallRoute'] as String).input(),
+      acceptedTerms: map['acceptedTerms'] == null ? null : (map['acceptedTerms']! as bool).input(),
+      callingWebhook: map['callingWebhook'] == null ? null : (map['callingWebhook']! as String).input(),
+      deploymentEnvironment: map['deploymentEnvironment'] == null ? null : (map['deploymentEnvironment']! as String).input(),
+      enableCalling: map['enableCalling'] == null ? null : (map['enableCalling']! as bool).input(),
+      incomingCallRoute: map['incomingCallRoute'] == null ? null : (map['incomingCallRoute']! as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
     );
   }

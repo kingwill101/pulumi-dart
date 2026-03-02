@@ -63,15 +63,15 @@ class GetChainsResult {
   factory GetChainsResult.fromMap(Map<String, dynamic> map) {
     return GetChainsResult(
       chains: pulumi.Input.decodeList<GetChainsChain>(map['chains'], (value) => GetChainsChain.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      repoName: map['repoName'] == null ? null : map['repoName'] as String,
-      repoNamespaceName: map['repoNamespaceName'] == null ? null : map['repoNamespaceName'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      repoName: map['repoName'] == null ? null : map['repoName']! as String,
+      repoNamespaceName: map['repoNamespaceName'] == null ? null : map['repoNamespaceName']! as String,
     );
   }
 }

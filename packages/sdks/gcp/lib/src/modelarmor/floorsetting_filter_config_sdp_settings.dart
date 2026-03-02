@@ -29,8 +29,8 @@ class FloorsettingFilterConfigSdpSettings {
 
   factory FloorsettingFilterConfigSdpSettings.fromMap(Map<String, dynamic> map) {
     return FloorsettingFilterConfigSdpSettings(
-      advancedConfig: map['advancedConfig'] == null ? null : (FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>())).input(),
-      basicConfig: map['basicConfig'] == null ? null : (FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>())).input(),
+      advancedConfig: map['advancedConfig'] == null ? null : (FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig']! as Map).cast<String, dynamic>())).input(),
+      basicConfig: map['basicConfig'] == null ? null : (FloorsettingFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

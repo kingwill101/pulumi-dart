@@ -80,17 +80,17 @@ class RdsInstanceCrossBackupPolicyState {
 
   factory RdsInstanceCrossBackupPolicyState.fromMap(Map<String, dynamic> map) {
     return RdsInstanceCrossBackupPolicyState(
-      backupEnabled: map['backupEnabled'] == null ? null : (map['backupEnabled'] as String).input(),
-      backupEnabledTime: map['backupEnabledTime'] == null ? null : (map['backupEnabledTime'] as String).input(),
-      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion'] as String).input(),
-      crossBackupType: map['crossBackupType'] == null ? null : (map['crossBackupType'] as String).input(),
-      dbInstanceStatus: map['dbInstanceStatus'] == null ? null : (map['dbInstanceStatus'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      lockMode: map['lockMode'] == null ? null : (map['lockMode'] as String).input(),
-      logBackupEnabled: map['logBackupEnabled'] == null ? null : (map['logBackupEnabled'] as String).input(),
-      logBackupEnabledTime: map['logBackupEnabledTime'] == null ? null : (map['logBackupEnabledTime'] as String).input(),
-      retentType: map['retentType'] == null ? null : (map['retentType'] as String).input(),
-      retention: map['retention'] == null ? null : (map['retention'] as int).input(),
+      backupEnabled: map['backupEnabled'] == null ? null : (map['backupEnabled']! as String).input(),
+      backupEnabledTime: map['backupEnabledTime'] == null ? null : (map['backupEnabledTime']! as String).input(),
+      crossBackupRegion: map['crossBackupRegion'] == null ? null : (map['crossBackupRegion']! as String).input(),
+      crossBackupType: map['crossBackupType'] == null ? null : (map['crossBackupType']! as String).input(),
+      dbInstanceStatus: map['dbInstanceStatus'] == null ? null : (map['dbInstanceStatus']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      lockMode: map['lockMode'] == null ? null : (map['lockMode']! as String).input(),
+      logBackupEnabled: map['logBackupEnabled'] == null ? null : (map['logBackupEnabled']! as String).input(),
+      logBackupEnabledTime: map['logBackupEnabledTime'] == null ? null : (map['logBackupEnabledTime']! as String).input(),
+      retentType: map['retentType'] == null ? null : (map['retentType']! as String).input(),
+      retention: map['retention'] == null ? null : (map['retention']! as int).input(),
     );
   }
 }

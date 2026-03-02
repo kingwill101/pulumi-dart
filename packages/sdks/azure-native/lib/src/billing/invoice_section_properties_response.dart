@@ -51,13 +51,13 @@ class InvoiceSectionPropertiesResponse {
 
   factory InvoiceSectionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InvoiceSectionPropertiesResponse(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      reasonCode: map['reasonCode'] == null ? null : (map['reasonCode'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      reasonCode: map['reasonCode'] == null ? null : (map['reasonCode']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       systemId: (map['systemId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetCloud: map['targetCloud'] == null ? null : (map['targetCloud'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetCloud: map['targetCloud'] == null ? null : (map['targetCloud']! as String).input(),
     );
   }
 }

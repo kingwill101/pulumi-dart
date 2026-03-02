@@ -26,8 +26,8 @@ class Capacity {
 
   factory Capacity.fromMap(Map<String, dynamic> map) {
     return Capacity(
-      publishMibPerSec: map['publishMibPerSec'] == null ? null : (map['publishMibPerSec'] as int).input(),
-      subscribeMibPerSec: map['subscribeMibPerSec'] == null ? null : (map['subscribeMibPerSec'] as int).input(),
+      publishMibPerSec: map['publishMibPerSec'] == null ? null : (map['publishMibPerSec']! as int).input(),
+      subscribeMibPerSec: map['subscribeMibPerSec'] == null ? null : (map['subscribeMibPerSec']! as int).input(),
     );
   }
 }

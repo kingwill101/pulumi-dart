@@ -32,9 +32,9 @@ class OsConstraint {
 
   factory OsConstraint.fromMap(Map<String, dynamic> map) {
     return OsConstraint(
-      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion'] as String).input(),
+      minimumVersion: map['minimumVersion'] == null ? null : (map['minimumVersion']! as String).input(),
       osType: (OsConstraintOsType.fromValue(map['osType'] as String)).input(),
-      requireVerifiedChromeOs: map['requireVerifiedChromeOs'] == null ? null : (map['requireVerifiedChromeOs'] as bool).input(),
+      requireVerifiedChromeOs: map['requireVerifiedChromeOs'] == null ? null : (map['requireVerifiedChromeOs']! as bool).input(),
     );
   }
 }

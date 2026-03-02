@@ -37,8 +37,8 @@ class DataConnectorDynamics365Args {
   factory DataConnectorDynamics365Args.fromMap(Map<String, dynamic> map) {
     return DataConnectorDynamics365Args(
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

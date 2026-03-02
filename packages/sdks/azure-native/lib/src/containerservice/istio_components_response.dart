@@ -28,8 +28,8 @@ class IstioComponentsResponse {
 
   factory IstioComponentsResponse.fromMap(Map<String, dynamic> map) {
     return IstioComponentsResponse(
-      egressGateways: map['egressGateways'] == null ? null : (pulumi.Input.decodeList<IstioEgressGatewayResponse>(map['egressGateways'], (value) => IstioEgressGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingressGateways: map['ingressGateways'] == null ? null : (pulumi.Input.decodeList<IstioIngressGatewayResponse>(map['ingressGateways'], (value) => IstioIngressGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      egressGateways: map['egressGateways'] == null ? null : (pulumi.Input.decodeList<IstioEgressGatewayResponse>(map['egressGateways']!, (value) => IstioEgressGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingressGateways: map['ingressGateways'] == null ? null : (pulumi.Input.decodeList<IstioIngressGatewayResponse>(map['ingressGateways']!, (value) => IstioIngressGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

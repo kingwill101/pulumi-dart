@@ -30,9 +30,9 @@ class BucketWebsiteIndexDocument {
 
   factory BucketWebsiteIndexDocument.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteIndexDocument(
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
-      supportSubDir: map['supportSubDir'] == null ? null : (map['supportSubDir'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
+      supportSubDir: map['supportSubDir'] == null ? null : (map['supportSubDir']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

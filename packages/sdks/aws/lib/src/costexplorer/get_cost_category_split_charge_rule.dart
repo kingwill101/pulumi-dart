@@ -37,7 +37,7 @@ class GetCostCategorySplitChargeRule {
   factory GetCostCategorySplitChargeRule.fromMap(Map<String, dynamic> map) {
     return GetCostCategorySplitChargeRule(
       method: (map['method'] as String).input(),
-      parameters: (pulumi.Input.decodeList<GetCostCategorySplitChargeRuleParameter>(map['parameters'], (value) => GetCostCategorySplitChargeRuleParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: (pulumi.Input.decodeList<GetCostCategorySplitChargeRuleParameter>(map['parameters']!, (value) => GetCostCategorySplitChargeRuleParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       source: (map['source'] as String).input(),
       targets: ((map['targets'] as List).cast<String>()).input(),
     );

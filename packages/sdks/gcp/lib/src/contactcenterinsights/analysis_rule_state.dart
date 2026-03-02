@@ -77,16 +77,16 @@ class AnalysisRuleState {
 
   factory AnalysisRuleState.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage'] as double).input(),
-      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector'] as Map).cast<String, dynamic>())).input(),
-      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      analysisPercentage: map['analysisPercentage'] == null ? null : (map['analysisPercentage']! as double).input(),
+      annotatorSelector: map['annotatorSelector'] == null ? null : (AnalysisRuleAnnotatorSelector.fromMap((map['annotatorSelector']! as Map).cast<String, dynamic>())).input(),
+      conversationFilter: map['conversationFilter'] == null ? null : (map['conversationFilter']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

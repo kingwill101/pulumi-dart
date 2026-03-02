@@ -44,9 +44,9 @@ class TemplateArgs {
 
   factory TemplateArgs.fromMap(Map<String, dynamic> map) {
     return TemplateArgs(
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
       quotaCode: (map['quotaCode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceCode: (map['serviceCode'] as String).input(),
       value: (map['value'] as double).input(),
     );

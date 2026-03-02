@@ -60,14 +60,14 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      characterSetName: map['characterSetName'] == null ? null : (map['characterSetName'] as String).input(),
-      collate: map['collate'] == null ? null : (map['collate'] as String).input(),
-      ctype: map['ctype'] == null ? null : (map['ctype'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      dbDescription: map['dbDescription'] == null ? null : (map['dbDescription'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      characterSetName: map['characterSetName'] == null ? null : (map['characterSetName']! as String).input(),
+      collate: map['collate'] == null ? null : (map['collate']! as String).input(),
+      ctype: map['ctype'] == null ? null : (map['ctype']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      dbDescription: map['dbDescription'] == null ? null : (map['dbDescription']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

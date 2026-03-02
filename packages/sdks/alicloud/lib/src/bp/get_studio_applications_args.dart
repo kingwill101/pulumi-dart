@@ -58,14 +58,14 @@ class GetStudioApplicationsArgs {
 
   factory GetStudioApplicationsArgs.fromMap(Map<String, dynamic> map) {
     return GetStudioApplicationsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      keyword: map['keyword'] == null ? null : (map['keyword'] as String).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType'] as int).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      keyword: map['keyword'] == null ? null : (map['keyword']! as String).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType']! as int).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -38,9 +38,9 @@ class ShardingInstanceShardList {
   factory ShardingInstanceShardList.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceShardList(
       nodeClass: (map['nodeClass'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
       nodeStorage: (map['nodeStorage'] as int).input(),
-      readonlyReplicas: map['readonlyReplicas'] == null ? null : (map['readonlyReplicas'] as int).input(),
+      readonlyReplicas: map['readonlyReplicas'] == null ? null : (map['readonlyReplicas']! as int).input(),
     );
   }
 }

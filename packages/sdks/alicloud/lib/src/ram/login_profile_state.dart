@@ -45,11 +45,11 @@ class LoginProfileState {
 
   factory LoginProfileState.fromMap(Map<String, dynamic> map) {
     return LoginProfileState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      mfaBindRequired: map['mfaBindRequired'] == null ? null : (map['mfaBindRequired'] as bool).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired'] as bool).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      mfaBindRequired: map['mfaBindRequired'] == null ? null : (map['mfaBindRequired']! as bool).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordResetRequired: map['passwordResetRequired'] == null ? null : (map['passwordResetRequired']! as bool).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

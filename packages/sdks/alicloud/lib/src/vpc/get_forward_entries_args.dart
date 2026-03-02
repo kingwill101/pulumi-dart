@@ -74,17 +74,17 @@ class GetForwardEntriesArgs {
 
   factory GetForwardEntriesArgs.fromMap(Map<String, dynamic> map) {
     return GetForwardEntriesArgs(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
-      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as String).input(),
-      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as String).input(),
+      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName']! as String).input(),
       forwardTableId: (map['forwardTableId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

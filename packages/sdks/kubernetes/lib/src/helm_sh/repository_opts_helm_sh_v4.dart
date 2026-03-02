@@ -46,12 +46,12 @@ class RepositoryOptsHelmShV4 {
 
   factory RepositoryOptsHelmShV4.fromMap(Map<String, dynamic> map) {
     return RepositoryOptsHelmShV4(
-      caFile: map['caFile'] == null ? null : (map['caFile']).input(),
-      certFile: map['certFile'] == null ? null : (map['certFile']).input(),
-      keyFile: map['keyFile'] == null ? null : (map['keyFile']).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      caFile: map['caFile'] == null ? null : (map['caFile']!).input(),
+      certFile: map['certFile'] == null ? null : (map['certFile']!).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile']!).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      repo: map['repo'] == null ? null : (map['repo']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class DatabaseFirewallState {
 
   factory DatabaseFirewallState.fromMap(Map<String, dynamic> map) {
     return DatabaseFirewallState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DatabaseFirewallRule>(map['rules'], (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<DatabaseFirewallRule>(map['rules']!, (value) => DatabaseFirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

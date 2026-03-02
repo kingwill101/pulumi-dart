@@ -100,7 +100,7 @@ class GetBlobDataSetMappingResult {
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,
-      outputType: map['outputType'] == null ? null : map['outputType'] as String,
+      outputType: map['outputType'] == null ? null : map['outputType']! as String,
       provisioningState: map['provisioningState'] as String,
       resourceGroup: map['resourceGroup'] as String,
       storageAccountName: map['storageAccountName'] as String,

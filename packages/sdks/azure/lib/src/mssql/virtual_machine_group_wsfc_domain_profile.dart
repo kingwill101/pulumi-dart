@@ -55,14 +55,14 @@ class VirtualMachineGroupWsfcDomainProfile {
 
   factory VirtualMachineGroupWsfcDomainProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineGroupWsfcDomainProfile(
-      clusterBootstrapAccountName: map['clusterBootstrapAccountName'] == null ? null : (map['clusterBootstrapAccountName'] as String).input(),
-      clusterOperatorAccountName: map['clusterOperatorAccountName'] == null ? null : (map['clusterOperatorAccountName'] as String).input(),
+      clusterBootstrapAccountName: map['clusterBootstrapAccountName'] == null ? null : (map['clusterBootstrapAccountName']! as String).input(),
+      clusterOperatorAccountName: map['clusterOperatorAccountName'] == null ? null : (map['clusterOperatorAccountName']! as String).input(),
       clusterSubnetType: (map['clusterSubnetType'] as String).input(),
       fqdn: (map['fqdn'] as String).input(),
-      organizationalUnitPath: map['organizationalUnitPath'] == null ? null : (map['organizationalUnitPath'] as String).input(),
-      sqlServiceAccountName: map['sqlServiceAccountName'] == null ? null : (map['sqlServiceAccountName'] as String).input(),
-      storageAccountPrimaryKey: map['storageAccountPrimaryKey'] == null ? null : (map['storageAccountPrimaryKey'] as String).input(),
-      storageAccountUrl: map['storageAccountUrl'] == null ? null : (map['storageAccountUrl'] as String).input(),
+      organizationalUnitPath: map['organizationalUnitPath'] == null ? null : (map['organizationalUnitPath']! as String).input(),
+      sqlServiceAccountName: map['sqlServiceAccountName'] == null ? null : (map['sqlServiceAccountName']! as String).input(),
+      storageAccountPrimaryKey: map['storageAccountPrimaryKey'] == null ? null : (map['storageAccountPrimaryKey']! as String).input(),
+      storageAccountUrl: map['storageAccountUrl'] == null ? null : (map['storageAccountUrl']! as String).input(),
     );
   }
 }

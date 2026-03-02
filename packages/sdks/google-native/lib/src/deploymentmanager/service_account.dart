@@ -21,7 +21,7 @@ class ServiceAccount {
 
   factory ServiceAccount.fromMap(Map<String, dynamic> map) {
     return ServiceAccount(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
     );
   }
 }

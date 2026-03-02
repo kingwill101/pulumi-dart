@@ -73,17 +73,17 @@ class InstanceConfig {
 
   factory InstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfig(
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      devices: map['devices'] == null ? null : (InstanceConfigDevices.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
-      helpers: map['helpers'] == null ? null : (InstanceConfigHelpers.fromMap((map['helpers'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<InstanceConfigInterface>(map['interfaces'], (value) => InstanceConfigInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kernel: map['kernel'] == null ? null : (map['kernel'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      devices: map['devices'] == null ? null : (InstanceConfigDevices.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
+      helpers: map['helpers'] == null ? null : (InstanceConfigHelpers.fromMap((map['helpers']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      interfaces: map['interfaces'] == null ? null : (pulumi.Input.decodeList<InstanceConfigInterface>(map['interfaces']!, (value) => InstanceConfigInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kernel: map['kernel'] == null ? null : (map['kernel']! as String).input(),
       label: (map['label'] as String).input(),
-      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit'] as int).input(),
-      rootDevice: map['rootDevice'] == null ? null : (map['rootDevice'] as String).input(),
-      runLevel: map['runLevel'] == null ? null : (map['runLevel'] as String).input(),
-      virtMode: map['virtMode'] == null ? null : (map['virtMode'] as String).input(),
+      memoryLimit: map['memoryLimit'] == null ? null : (map['memoryLimit']! as int).input(),
+      rootDevice: map['rootDevice'] == null ? null : (map['rootDevice']! as String).input(),
+      runLevel: map['runLevel'] == null ? null : (map['runLevel']! as String).input(),
+      virtMode: map['virtMode'] == null ? null : (map['virtMode']! as String).input(),
     );
   }
 }

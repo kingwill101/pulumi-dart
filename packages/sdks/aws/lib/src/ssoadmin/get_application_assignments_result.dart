@@ -36,7 +36,7 @@ class GetApplicationAssignmentsResult {
   factory GetApplicationAssignmentsResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationAssignmentsResult(
       applicationArn: map['applicationArn'] as String,
-      applicationAssignments: pulumi.Input.decodeList<GetApplicationAssignmentsApplicationAssignment>(map['applicationAssignments'], (value) => GetApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>())),
+      applicationAssignments: pulumi.Input.decodeList<GetApplicationAssignmentsApplicationAssignment>(map['applicationAssignments']!, (value) => GetApplicationAssignmentsApplicationAssignment.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

@@ -27,7 +27,7 @@ class Datapolicyv2DataPolicyIamMemberCondition {
 
   factory Datapolicyv2DataPolicyIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyIamMemberCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

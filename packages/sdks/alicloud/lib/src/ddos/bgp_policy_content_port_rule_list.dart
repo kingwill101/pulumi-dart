@@ -58,7 +58,7 @@ class BgpPolicyContentPortRuleList {
       dstPortEnd: (map['dstPortEnd'] as int).input(),
       dstPortStart: (map['dstPortStart'] as int).input(),
       matchAction: (map['matchAction'] as String).input(),
-      portRuleId: map['portRuleId'] == null ? null : (map['portRuleId'] as String).input(),
+      portRuleId: map['portRuleId'] == null ? null : (map['portRuleId']! as String).input(),
       protocol: (map['protocol'] as String).input(),
       seqNo: (map['seqNo'] as int).input(),
       srcPortEnd: (map['srcPortEnd'] as int).input(),

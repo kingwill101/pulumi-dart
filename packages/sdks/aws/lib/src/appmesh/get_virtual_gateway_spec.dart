@@ -30,9 +30,9 @@ class GetVirtualGatewaySpec {
 
   factory GetVirtualGatewaySpec.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpec(
-      backendDefaults: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefault>(map['backendDefaults'], (value) => GetVirtualGatewaySpecBackendDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      listeners: (pulumi.Input.decodeList<GetVirtualGatewaySpecListener>(map['listeners'], (value) => GetVirtualGatewaySpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      loggings: (pulumi.Input.decodeList<GetVirtualGatewaySpecLogging>(map['loggings'], (value) => GetVirtualGatewaySpecLogging.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      backendDefaults: (pulumi.Input.decodeList<GetVirtualGatewaySpecBackendDefault>(map['backendDefaults']!, (value) => GetVirtualGatewaySpecBackendDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listeners: (pulumi.Input.decodeList<GetVirtualGatewaySpecListener>(map['listeners']!, (value) => GetVirtualGatewaySpecListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggings: (pulumi.Input.decodeList<GetVirtualGatewaySpecLogging>(map['loggings']!, (value) => GetVirtualGatewaySpecLogging.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

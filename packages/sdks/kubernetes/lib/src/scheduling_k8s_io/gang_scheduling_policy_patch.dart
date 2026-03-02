@@ -21,7 +21,7 @@ class GangSchedulingPolicyPatch {
 
   factory GangSchedulingPolicyPatch.fromMap(Map<String, dynamic> map) {
     return GangSchedulingPolicyPatch(
-      minCount: map['minCount'] == null ? null : (map['minCount'] as int).input(),
+      minCount: map['minCount'] == null ? null : (map['minCount']! as int).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class NetworkManagerRoutingRuleState {
 
   factory NetworkManagerRoutingRuleState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      destination: map['destination'] == null ? null : (NetworkManagerRoutingRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nextHop: map['nextHop'] == null ? null : (NetworkManagerRoutingRuleNextHop.fromMap((map['nextHop'] as Map).cast<String, dynamic>())).input(),
-      ruleCollectionId: map['ruleCollectionId'] == null ? null : (map['ruleCollectionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      destination: map['destination'] == null ? null : (NetworkManagerRoutingRuleDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nextHop: map['nextHop'] == null ? null : (NetworkManagerRoutingRuleNextHop.fromMap((map['nextHop']! as Map).cast<String, dynamic>())).input(),
+      ruleCollectionId: map['ruleCollectionId'] == null ? null : (map['ruleCollectionId']! as String).input(),
     );
   }
 }

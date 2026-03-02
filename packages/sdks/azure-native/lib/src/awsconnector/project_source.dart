@@ -70,16 +70,16 @@ class ProjectSource {
 
   factory ProjectSource.fromMap(Map<String, dynamic> map) {
     return ProjectSource(
-      auth: map['auth'] == null ? null : (SourceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      buildStatusConfig: map['buildStatusConfig'] == null ? null : (BuildStatusConfig.fromMap((map['buildStatusConfig'] as Map).cast<String, dynamic>())).input(),
-      buildspec: map['buildspec'] == null ? null : (map['buildspec'] as String).input(),
-      gitCloneDepth: map['gitCloneDepth'] == null ? null : (map['gitCloneDepth'] as int).input(),
-      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : (GitSubmodulesConfig.fromMap((map['gitSubmodulesConfig'] as Map).cast<String, dynamic>())).input(),
-      insecureSsl: map['insecureSsl'] == null ? null : (map['insecureSsl'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      reportBuildStatus: map['reportBuildStatus'] == null ? null : (map['reportBuildStatus'] as bool).input(),
-      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier'] as String).input(),
-      type: map['type'] == null ? null : (SourceTypeEnumValue.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      auth: map['auth'] == null ? null : (SourceAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      buildStatusConfig: map['buildStatusConfig'] == null ? null : (BuildStatusConfig.fromMap((map['buildStatusConfig']! as Map).cast<String, dynamic>())).input(),
+      buildspec: map['buildspec'] == null ? null : (map['buildspec']! as String).input(),
+      gitCloneDepth: map['gitCloneDepth'] == null ? null : (map['gitCloneDepth']! as int).input(),
+      gitSubmodulesConfig: map['gitSubmodulesConfig'] == null ? null : (GitSubmodulesConfig.fromMap((map['gitSubmodulesConfig']! as Map).cast<String, dynamic>())).input(),
+      insecureSsl: map['insecureSsl'] == null ? null : (map['insecureSsl']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      reportBuildStatus: map['reportBuildStatus'] == null ? null : (map['reportBuildStatus']! as bool).input(),
+      sourceIdentifier: map['sourceIdentifier'] == null ? null : (map['sourceIdentifier']! as String).input(),
+      type: map['type'] == null ? null : (SourceTypeEnumValue.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

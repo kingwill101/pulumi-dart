@@ -40,11 +40,11 @@ class AwsNodePoolConfigRootVolume {
 
   factory AwsNodePoolConfigRootVolume.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolConfigRootVolume(
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib'] as int).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (map['volumeType'] as String).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn']! as String).input(),
+      sizeGib: map['sizeGib'] == null ? null : (map['sizeGib']! as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      volumeType: map['volumeType'] == null ? null : (map['volumeType']! as String).input(),
     );
   }
 }

@@ -91,21 +91,21 @@ class DirectLineSite {
 
   factory DirectLineSite.fromMap(Map<String, dynamic> map) {
     return DirectLineSite(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      isBlockUserUploadEnabled: map['isBlockUserUploadEnabled'] == null ? null : (map['isBlockUserUploadEnabled'] as bool).input(),
-      isDetailedLoggingEnabled: map['isDetailedLoggingEnabled'] == null ? null : (map['isDetailedLoggingEnabled'] as bool).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      isBlockUserUploadEnabled: map['isBlockUserUploadEnabled'] == null ? null : (map['isBlockUserUploadEnabled']! as bool).input(),
+      isDetailedLoggingEnabled: map['isDetailedLoggingEnabled'] == null ? null : (map['isDetailedLoggingEnabled']! as bool).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      isEndpointParametersEnabled: map['isEndpointParametersEnabled'] == null ? null : (map['isEndpointParametersEnabled'] as bool).input(),
-      isNoStorageEnabled: map['isNoStorageEnabled'] == null ? null : (map['isNoStorageEnabled'] as bool).input(),
-      isSecureSiteEnabled: map['isSecureSiteEnabled'] == null ? null : (map['isSecureSiteEnabled'] as bool).input(),
-      isV1Enabled: map['isV1Enabled'] == null ? null : (map['isV1Enabled'] as bool).input(),
-      isV3Enabled: map['isV3Enabled'] == null ? null : (map['isV3Enabled'] as bool).input(),
-      isWebChatSpeechEnabled: map['isWebChatSpeechEnabled'] == null ? null : (map['isWebChatSpeechEnabled'] as bool).input(),
-      isWebchatPreviewEnabled: map['isWebchatPreviewEnabled'] == null ? null : (map['isWebchatPreviewEnabled'] as bool).input(),
+      isEndpointParametersEnabled: map['isEndpointParametersEnabled'] == null ? null : (map['isEndpointParametersEnabled']! as bool).input(),
+      isNoStorageEnabled: map['isNoStorageEnabled'] == null ? null : (map['isNoStorageEnabled']! as bool).input(),
+      isSecureSiteEnabled: map['isSecureSiteEnabled'] == null ? null : (map['isSecureSiteEnabled']! as bool).input(),
+      isV1Enabled: map['isV1Enabled'] == null ? null : (map['isV1Enabled']! as bool).input(),
+      isV3Enabled: map['isV3Enabled'] == null ? null : (map['isV3Enabled']! as bool).input(),
+      isWebChatSpeechEnabled: map['isWebChatSpeechEnabled'] == null ? null : (map['isWebChatSpeechEnabled']! as bool).input(),
+      isWebchatPreviewEnabled: map['isWebchatPreviewEnabled'] == null ? null : (map['isWebchatPreviewEnabled']! as bool).input(),
       siteName: (map['siteName'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
-      trustedOrigins: map['trustedOrigins'] == null ? null : ((map['trustedOrigins'] as List).cast<String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
+      trustedOrigins: map['trustedOrigins'] == null ? null : ((map['trustedOrigins']! as List).cast<String>()).input(),
     );
   }
 }

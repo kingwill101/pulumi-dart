@@ -38,7 +38,7 @@ class SlsGroupSlsGroupConfig {
       slsLogstore: (map['slsLogstore'] as String).input(),
       slsProject: (map['slsProject'] as String).input(),
       slsRegion: (map['slsRegion'] as String).input(),
-      slsUserId: map['slsUserId'] == null ? null : (map['slsUserId'] as String).input(),
+      slsUserId: map['slsUserId'] == null ? null : (map['slsUserId']! as String).input(),
     );
   }
 }

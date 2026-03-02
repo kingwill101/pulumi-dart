@@ -26,8 +26,8 @@ class EventActionActionExportRevisionToS3Encryption {
 
   factory EventActionActionExportRevisionToS3Encryption.fromMap(Map<String, dynamic> map) {
     return EventActionActionExportRevisionToS3Encryption(
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

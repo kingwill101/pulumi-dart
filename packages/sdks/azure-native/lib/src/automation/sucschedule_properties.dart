@@ -82,19 +82,19 @@ class SUCScheduleProperties {
 
   factory SUCScheduleProperties.fromMap(Map<String, dynamic> map) {
     return SUCScheduleProperties(
-      advancedSchedule: map['advancedSchedule'] == null ? null : (AdvancedSchedule.fromMap((map['advancedSchedule'] as Map).cast<String, dynamic>())).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime'] as String).input(),
-      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : (map['expiryTimeOffsetMinutes'] as double).input(),
-      frequency: map['frequency'] == null ? null : (map['frequency'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as double).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      nextRun: map['nextRun'] == null ? null : (map['nextRun'] as String).input(),
-      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : (map['nextRunOffsetMinutes'] as double).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      advancedSchedule: map['advancedSchedule'] == null ? null : (AdvancedSchedule.fromMap((map['advancedSchedule']! as Map).cast<String, dynamic>())).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiryTime: map['expiryTime'] == null ? null : (map['expiryTime']! as String).input(),
+      expiryTimeOffsetMinutes: map['expiryTimeOffsetMinutes'] == null ? null : (map['expiryTimeOffsetMinutes']! as double).input(),
+      frequency: map['frequency'] == null ? null : (map['frequency']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as double).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      nextRun: map['nextRun'] == null ? null : (map['nextRun']! as String).input(),
+      nextRunOffsetMinutes: map['nextRunOffsetMinutes'] == null ? null : (map['nextRunOffsetMinutes']! as double).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

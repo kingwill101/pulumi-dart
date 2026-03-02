@@ -20,7 +20,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecIn
 
   factory AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpecInputSchema(
-      json: map['json'] == null ? null : (map['json'] as String).input(),
+      json: map['json'] == null ? null : ((map['json'] as String).input()).input(),
     );
   }
 }

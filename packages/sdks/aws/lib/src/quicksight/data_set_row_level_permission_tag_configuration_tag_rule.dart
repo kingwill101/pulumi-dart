@@ -36,9 +36,9 @@ class DataSetRowLevelPermissionTagConfigurationTagRule {
   factory DataSetRowLevelPermissionTagConfigurationTagRule.fromMap(Map<String, dynamic> map) {
     return DataSetRowLevelPermissionTagConfigurationTagRule(
       columnName: (map['columnName'] as String).input(),
-      matchAllValue: map['matchAllValue'] == null ? null : (map['matchAllValue'] as String).input(),
+      matchAllValue: map['matchAllValue'] == null ? null : ((map['matchAllValue'] as String).input()).input(),
       tagKey: (map['tagKey'] as String).input(),
-      tagMultiValueDelimiter: map['tagMultiValueDelimiter'] == null ? null : (map['tagMultiValueDelimiter'] as String).input(),
+      tagMultiValueDelimiter: map['tagMultiValueDelimiter'] == null ? null : ((map['tagMultiValueDelimiter'] as String).input()).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class InstanceFromTemplateAdvancedMachineFeatures {
 
   factory InstanceFromTemplateAdvancedMachineFeatures.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateAdvancedMachineFeatures(
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking'] as bool).input(),
-      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (map['performanceMonitoringUnit'] as String).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
-      turboMode: map['turboMode'] == null ? null : (map['turboMode'] as String).input(),
-      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount'] as int).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      enableUefiNetworking: map['enableUefiNetworking'] == null ? null : (map['enableUefiNetworking']! as bool).input(),
+      performanceMonitoringUnit: map['performanceMonitoringUnit'] == null ? null : (map['performanceMonitoringUnit']! as String).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore']! as int).input(),
+      turboMode: map['turboMode'] == null ? null : (map['turboMode']! as String).input(),
+      visibleCoreCount: map['visibleCoreCount'] == null ? null : (map['visibleCoreCount']! as int).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class ThingGroupMetadataRootToParentGroup {
 
   factory ThingGroupMetadataRootToParentGroup.fromMap(Map<String, dynamic> map) {
     return ThingGroupMetadataRootToParentGroup(
-      groupArn: map['groupArn'] == null ? null : (map['groupArn'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupArn: map['groupArn'] == null ? null : ((map['groupArn'] as String).input()).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
     );
   }
 }

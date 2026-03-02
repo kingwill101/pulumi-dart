@@ -32,8 +32,8 @@ class Image {
 
   factory Image.fromMap(Map<String, dynamic> map) {
     return Image(
-      alpha: map['alpha'] == null ? null : (map['alpha'] as double).input(),
-      resolution: map['resolution'] == null ? null : (NormalizedCoordinate.fromMap((map['resolution'] as Map).cast<String, dynamic>())).input(),
+      alpha: map['alpha'] == null ? null : (map['alpha']! as double).input(),
+      resolution: map['resolution'] == null ? null : (NormalizedCoordinate.fromMap((map['resolution']! as Map).cast<String, dynamic>())).input(),
       uri: (map['uri'] as String).input(),
     );
   }

@@ -40,10 +40,10 @@ class InstanceGroupManagerStatus {
 
   factory InstanceGroupManagerStatus.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerStatus(
-      allInstancesConfigs: map['allInstancesConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusAllInstancesConfig>(map['allInstancesConfigs'], (value) => InstanceGroupManagerStatusAllInstancesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isStable: map['isStable'] == null ? null : (map['isStable'] as bool).input(),
-      statefuls: map['statefuls'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusStateful>(map['statefuls'], (value) => InstanceGroupManagerStatusStateful.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      versionTargets: map['versionTargets'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusVersionTarget>(map['versionTargets'], (value) => InstanceGroupManagerStatusVersionTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allInstancesConfigs: map['allInstancesConfigs'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusAllInstancesConfig>(map['allInstancesConfigs']!, (value) => InstanceGroupManagerStatusAllInstancesConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isStable: map['isStable'] == null ? null : (map['isStable']! as bool).input(),
+      statefuls: map['statefuls'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusStateful>(map['statefuls']!, (value) => InstanceGroupManagerStatusStateful.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versionTargets: map['versionTargets'] == null ? null : (pulumi.Input.decodeList<InstanceGroupManagerStatusVersionTarget>(map['versionTargets']!, (value) => InstanceGroupManagerStatusVersionTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

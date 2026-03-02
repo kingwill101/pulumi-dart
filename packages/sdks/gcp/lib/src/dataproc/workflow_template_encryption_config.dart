@@ -20,7 +20,7 @@ class WorkflowTemplateEncryptionConfig {
 
   factory WorkflowTemplateEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateEncryptionConfig(
-      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey'] as String).input(),
+      kmsKey: map['kmsKey'] == null ? null : (map['kmsKey']! as String).input(),
     );
   }
 }

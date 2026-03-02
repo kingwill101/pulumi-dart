@@ -39,7 +39,7 @@ class CustomCertificateArgs {
   factory CustomCertificateArgs.fromMap(Map<String, dynamic> map) {
     return CustomCertificateArgs(
       customCertificateId: (map['customCertificateId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       webPubsubId: (map['webPubsubId'] as String).input(),
     );
   }

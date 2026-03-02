@@ -46,7 +46,7 @@ class GetEndpointAclServiceArgs {
       enable: (map['enable'] as bool).input(),
       endpointType: (map['endpointType'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      moduleName: map['moduleName'] == null ? null : (map['moduleName'] as String).input(),
+      moduleName: map['moduleName'] == null ? null : (map['moduleName']! as String).input(),
     );
   }
 }

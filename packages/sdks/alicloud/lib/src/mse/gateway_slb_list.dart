@@ -55,14 +55,14 @@ class GatewaySlbList {
 
   factory GatewaySlbList.fromMap(Map<String, dynamic> map) {
     return GatewaySlbList(
-      associateId: map['associateId'] == null ? null : (map['associateId'] as String).input(),
-      gatewaySlbMode: map['gatewaySlbMode'] == null ? null : (map['gatewaySlbMode'] as String).input(),
-      gatewaySlbStatus: map['gatewaySlbStatus'] == null ? null : (map['gatewaySlbStatus'] as String).input(),
-      gmtCreate: map['gmtCreate'] == null ? null : (map['gmtCreate'] as String).input(),
-      slbId: map['slbId'] == null ? null : (map['slbId'] as String).input(),
-      slbIp: map['slbIp'] == null ? null : (map['slbIp'] as String).input(),
-      slbPort: map['slbPort'] == null ? null : (map['slbPort'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      associateId: map['associateId'] == null ? null : (map['associateId']! as String).input(),
+      gatewaySlbMode: map['gatewaySlbMode'] == null ? null : (map['gatewaySlbMode']! as String).input(),
+      gatewaySlbStatus: map['gatewaySlbStatus'] == null ? null : (map['gatewaySlbStatus']! as String).input(),
+      gmtCreate: map['gmtCreate'] == null ? null : (map['gmtCreate']! as String).input(),
+      slbId: map['slbId'] == null ? null : (map['slbId']! as String).input(),
+      slbIp: map['slbIp'] == null ? null : (map['slbIp']! as String).input(),
+      slbPort: map['slbPort'] == null ? null : (map['slbPort']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

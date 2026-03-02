@@ -34,8 +34,8 @@ class VMDiskSecurityProfile {
 
   factory VMDiskSecurityProfile.fromMap(Map<String, dynamic> map) {
     return VMDiskSecurityProfile(
-      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet'] as Map).cast<String, dynamic>())).input(),
-      securityEncryptionType: map['securityEncryptionType'] == null ? null : (map['securityEncryptionType'] as String).input(),
+      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet']! as Map).cast<String, dynamic>())).input(),
+      securityEncryptionType: map['securityEncryptionType'] == null ? null : (map['securityEncryptionType']! as String).input(),
     );
   }
 }

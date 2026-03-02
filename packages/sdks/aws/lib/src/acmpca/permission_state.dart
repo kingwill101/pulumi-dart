@@ -46,12 +46,12 @@ class PermissionState {
 
   factory PermissionState.fromMap(Map<String, dynamic> map) {
     return PermissionState(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceAccount: map['sourceAccount'] == null ? null : (map['sourceAccount'] as String).input(),
+      actions: map['actions'] == null ? null : (((map['actions'] as List).cast<String>()).input()).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : ((map['certificateAuthorityArn'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceAccount: map['sourceAccount'] == null ? null : ((map['sourceAccount'] as String).input()).input(),
     );
   }
 }

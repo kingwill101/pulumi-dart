@@ -32,9 +32,9 @@ class JobTargetGroupState {
 
   factory JobTargetGroupState.fromMap(Map<String, dynamic> map) {
     return JobTargetGroupState(
-      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId'] as String).input(),
-      jobTargets: map['jobTargets'] == null ? null : (pulumi.Input.decodeList<JobTargetGroupJobTarget>(map['jobTargets'], (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      jobAgentId: map['jobAgentId'] == null ? null : (map['jobAgentId']! as String).input(),
+      jobTargets: map['jobTargets'] == null ? null : (pulumi.Input.decodeList<JobTargetGroupJobTarget>(map['jobTargets']!, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

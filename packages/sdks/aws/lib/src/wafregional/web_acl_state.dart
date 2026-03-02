@@ -64,15 +64,15 @@ class WebAclState {
 
   factory WebAclState.fromMap(Map<String, dynamic> map) {
     return WebAclState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      defaultAction: map['defaultAction'] == null ? null : (WebAclDefaultAction.fromMap((map['defaultAction'] as Map).cast<String, dynamic>())).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : (WebAclLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<WebAclRule>(map['rules'], (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      defaultAction: map['defaultAction'] == null ? null : ((WebAclDefaultAction.fromMap((map['defaultAction']! as Map).cast<String, dynamic>())).input()).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((WebAclLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      metricName: map['metricName'] == null ? null : ((map['metricName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rules: map['rules'] == null ? null : ((pulumi.Input.decodeList<WebAclRule>(map['rules']!, (value) => WebAclRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

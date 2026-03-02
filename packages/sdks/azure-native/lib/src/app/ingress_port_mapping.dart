@@ -31,7 +31,7 @@ class IngressPortMapping {
 
   factory IngressPortMapping.fromMap(Map<String, dynamic> map) {
     return IngressPortMapping(
-      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort'] as int).input(),
+      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort']! as int).input(),
       external: (map['external'] as bool).input(),
       targetPort: (map['targetPort'] as int).input(),
     );

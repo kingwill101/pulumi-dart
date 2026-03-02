@@ -21,7 +21,7 @@ class EventGridAndResourceGraph {
 
   factory EventGridAndResourceGraph.fromMap(Map<String, dynamic> map) {
     return EventGridAndResourceGraph(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

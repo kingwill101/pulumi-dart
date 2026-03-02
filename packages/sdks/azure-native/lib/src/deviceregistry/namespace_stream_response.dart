@@ -37,10 +37,10 @@ class NamespaceStreamResponse {
 
   factory NamespaceStreamResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceStreamResponse(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<StreamMqttDestinationResponse>(map['destinations'], (value) => StreamMqttDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<StreamMqttDestinationResponse>(map['destinations']!, (value) => StreamMqttDestinationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      streamConfiguration: map['streamConfiguration'] == null ? null : (map['streamConfiguration'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      streamConfiguration: map['streamConfiguration'] == null ? null : (map['streamConfiguration']! as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class CxWebhookServiceDirectory {
 
   factory CxWebhookServiceDirectory.fromMap(Map<String, dynamic> map) {
     return CxWebhookServiceDirectory(
-      genericWebService: map['genericWebService'] == null ? null : (CxWebhookServiceDirectoryGenericWebService.fromMap((map['genericWebService'] as Map).cast<String, dynamic>())).input(),
+      genericWebService: map['genericWebService'] == null ? null : (CxWebhookServiceDirectoryGenericWebService.fromMap((map['genericWebService']! as Map).cast<String, dynamic>())).input(),
       service: (map['service'] as String).input(),
     );
   }

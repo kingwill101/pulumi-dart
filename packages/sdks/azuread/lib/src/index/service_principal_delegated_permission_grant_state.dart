@@ -38,10 +38,10 @@ class ServicePrincipalDelegatedPermissionGrantState {
 
   factory ServicePrincipalDelegatedPermissionGrantState.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalDelegatedPermissionGrantState(
-      claimValues: map['claimValues'] == null ? null : ((map['claimValues'] as List).cast<String>()).input(),
-      resourceServicePrincipalObjectId: map['resourceServicePrincipalObjectId'] == null ? null : (map['resourceServicePrincipalObjectId'] as String).input(),
-      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId'] as String).input(),
-      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId'] as String).input(),
+      claimValues: map['claimValues'] == null ? null : ((map['claimValues']! as List).cast<String>()).input(),
+      resourceServicePrincipalObjectId: map['resourceServicePrincipalObjectId'] == null ? null : (map['resourceServicePrincipalObjectId']! as String).input(),
+      servicePrincipalObjectId: map['servicePrincipalObjectId'] == null ? null : (map['servicePrincipalObjectId']! as String).input(),
+      userObjectId: map['userObjectId'] == null ? null : (map['userObjectId']! as String).input(),
     );
   }
 }

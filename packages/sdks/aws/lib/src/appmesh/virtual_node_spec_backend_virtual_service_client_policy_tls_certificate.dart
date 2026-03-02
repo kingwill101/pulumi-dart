@@ -27,8 +27,8 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate {
 
   factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificate(
-      file: map['file'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

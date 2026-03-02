@@ -27,7 +27,7 @@ class PropagationPolicyResponse {
 
   factory PropagationPolicyResponse.fromMap(Map<String, dynamic> map) {
     return PropagationPolicyResponse(
-      placementProfile: map['placementProfile'] == null ? null : (PlacementProfileResponse.fromMap((map['placementProfile'] as Map).cast<String, dynamic>())).input(),
+      placementProfile: map['placementProfile'] == null ? null : (PlacementProfileResponse.fromMap((map['placementProfile']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

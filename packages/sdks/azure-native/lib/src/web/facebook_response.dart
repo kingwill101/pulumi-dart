@@ -38,10 +38,10 @@ class FacebookResponse {
 
   factory FacebookResponse.fromMap(Map<String, dynamic> map) {
     return FacebookResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      graphApiVersion: map['graphApiVersion'] == null ? null : (map['graphApiVersion'] as String).input(),
-      login: map['login'] == null ? null : (LoginScopesResponse.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
-      registration: map['registration'] == null ? null : (AppRegistrationResponse.fromMap((map['registration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      graphApiVersion: map['graphApiVersion'] == null ? null : (map['graphApiVersion']! as String).input(),
+      login: map['login'] == null ? null : (LoginScopesResponse.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
+      registration: map['registration'] == null ? null : (AppRegistrationResponse.fromMap((map['registration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

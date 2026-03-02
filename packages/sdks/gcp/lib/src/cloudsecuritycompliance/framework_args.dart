@@ -54,9 +54,9 @@ class FrameworkArgs {
 
   factory FrameworkArgs.fromMap(Map<String, dynamic> map) {
     return FrameworkArgs(
-      cloudControlDetails: map['cloudControlDetails'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails'], (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      cloudControlDetails: map['cloudControlDetails'] == null ? null : (pulumi.Input.decodeList<FrameworkCloudControlDetail>(map['cloudControlDetails']!, (value) => FrameworkCloudControlDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       frameworkId: (map['frameworkId'] as String).input(),
       location: (map['location'] as String).input(),
       organization: (map['organization'] as String).input(),

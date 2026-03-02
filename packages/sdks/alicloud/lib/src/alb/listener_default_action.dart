@@ -26,7 +26,7 @@ class ListenerDefaultAction {
 
   factory ListenerDefaultAction.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultAction(
-      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (ListenerDefaultActionForwardGroupConfig.fromMap((map['forwardGroupConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardGroupConfig: map['forwardGroupConfig'] == null ? null : (ListenerDefaultActionForwardGroupConfig.fromMap((map['forwardGroupConfig']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

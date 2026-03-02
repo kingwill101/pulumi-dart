@@ -32,7 +32,7 @@ class GetSslCertSqladminV1beta4Args {
   factory GetSslCertSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return GetSslCertSqladminV1beta4Args(
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sha1Fingerprint: (map['sha1Fingerprint'] as String).input(),
     );
   }

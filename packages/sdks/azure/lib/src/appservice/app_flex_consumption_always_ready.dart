@@ -25,7 +25,7 @@ class AppFlexConsumptionAlwaysReady {
 
   factory AppFlexConsumptionAlwaysReady.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionAlwaysReady(
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
       name: (map['name'] as String).input(),
     );
   }

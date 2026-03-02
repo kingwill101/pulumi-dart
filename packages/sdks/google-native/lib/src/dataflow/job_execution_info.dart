@@ -21,7 +21,7 @@ class JobExecutionInfo {
 
   factory JobExecutionInfo.fromMap(Map<String, dynamic> map) {
     return JobExecutionInfo(
-      stages: map['stages'] == null ? null : ((map['stages'] as Map).cast<String, String>()).input(),
+      stages: map['stages'] == null ? null : ((map['stages']! as Map).cast<String, String>()).input(),
     );
   }
 }

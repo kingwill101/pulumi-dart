@@ -31,8 +31,8 @@ class ListenerRuleConditionHttpHeader {
   factory ListenerRuleConditionHttpHeader.fromMap(Map<String, dynamic> map) {
     return ListenerRuleConditionHttpHeader(
       httpHeaderName: (map['httpHeaderName'] as String).input(),
-      regexValues: map['regexValues'] == null ? null : ((map['regexValues'] as List).cast<String>()).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      regexValues: map['regexValues'] == null ? null : (((map['regexValues'] as List).cast<String>()).input()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

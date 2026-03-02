@@ -39,9 +39,9 @@ class LfTagArgs {
 
   factory LfTagArgs.fromMap(Map<String, dynamic> map) {
     return LfTagArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       key: (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

@@ -41,9 +41,9 @@ class ServiceArgs {
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
       accountName: (map['accountName'] as String).input(),
-      properties: map['properties'] == null ? null : (DataTransferServiceResourceCreateUpdateProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (DataTransferServiceResourceCreateUpdateProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

@@ -41,10 +41,10 @@ class ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1beta1Args
 
   factory ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyBindingPatchAdmissionregistrationK8sIoV1beta1Args(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      spec: map['spec'] == null ? null : (ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMetaPatch.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (ValidatingAdmissionPolicyBindingSpecPatchAdmissionregistrationK8sIoV1beta1.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchema {
   factory StreamBackfillAllSpannerExcludedObjectsSchema.fromMap(Map<String, dynamic> map) {
     return StreamBackfillAllSpannerExcludedObjectsSchema(
       schema: (map['schema'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTable>(map['tables'], (value) => StreamBackfillAllSpannerExcludedObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTable>(map['tables']!, (value) => StreamBackfillAllSpannerExcludedObjectsSchemaTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

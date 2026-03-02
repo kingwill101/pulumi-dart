@@ -51,7 +51,7 @@ class DatasetIamMemberArgs {
 
   factory DatasetIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return DatasetIamMemberArgs(
-      condition: map['condition'] == null ? null : (DatasetIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DatasetIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       datasetId: (map['datasetId'] as String).input(),
       member: (map['member'] as String).input(),
       role: (map['role'] as String).input(),

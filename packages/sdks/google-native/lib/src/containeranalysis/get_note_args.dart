@@ -28,7 +28,7 @@ class GetNoteArgs {
   factory GetNoteArgs.fromMap(Map<String, dynamic> map) {
     return GetNoteArgs(
       noteId: (map['noteId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

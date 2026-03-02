@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1TextArray {
 
   factory GoogleCloudContentwarehouseV1TextArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TextArray(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

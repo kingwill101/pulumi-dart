@@ -38,10 +38,10 @@ class FlexibleServerVirtualEndpointState {
 
   factory FlexibleServerVirtualEndpointState.fromMap(Map<String, dynamic> map) {
     return FlexibleServerVirtualEndpointState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      replicaServerId: map['replicaServerId'] == null ? null : (map['replicaServerId'] as String).input(),
-      sourceServerId: map['sourceServerId'] == null ? null : (map['sourceServerId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      replicaServerId: map['replicaServerId'] == null ? null : (map['replicaServerId']! as String).input(),
+      sourceServerId: map['sourceServerId'] == null ? null : (map['sourceServerId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

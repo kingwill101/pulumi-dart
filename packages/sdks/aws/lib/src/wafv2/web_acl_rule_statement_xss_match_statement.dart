@@ -27,8 +27,8 @@ class WebAclRuleStatementXssMatchStatement {
 
   factory WebAclRuleStatementXssMatchStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatement(
-      fieldToMatch: map['fieldToMatch'] == null ? null : (WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fieldToMatch: map['fieldToMatch'] == null ? null : ((WebAclRuleStatementXssMatchStatementFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input()).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementXssMatchStatementTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementXssMatchStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

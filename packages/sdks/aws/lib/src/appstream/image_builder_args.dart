@@ -94,20 +94,20 @@ class ImageBuilderArgs {
 
   factory ImageBuilderArgs.fromMap(Map<String, dynamic> map) {
     return ImageBuilderArgs(
-      accessEndpoints: map['accessEndpoints'] == null ? null : (pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(map['accessEndpoints'], (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      appstreamAgentVersion: map['appstreamAgentVersion'] == null ? null : (map['appstreamAgentVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      domainJoinInfo: map['domainJoinInfo'] == null ? null : (ImageBuilderDomainJoinInfo.fromMap((map['domainJoinInfo'] as Map).cast<String, dynamic>())).input(),
-      enableDefaultInternetAccess: map['enableDefaultInternetAccess'] == null ? null : (map['enableDefaultInternetAccess'] as bool).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      imageArn: map['imageArn'] == null ? null : (map['imageArn'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
+      accessEndpoints: map['accessEndpoints'] == null ? null : ((pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(map['accessEndpoints']!, (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      appstreamAgentVersion: map['appstreamAgentVersion'] == null ? null : ((map['appstreamAgentVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      domainJoinInfo: map['domainJoinInfo'] == null ? null : ((ImageBuilderDomainJoinInfo.fromMap((map['domainJoinInfo']! as Map).cast<String, dynamic>())).input()).input(),
+      enableDefaultInternetAccess: map['enableDefaultInternetAccess'] == null ? null : ((map['enableDefaultInternetAccess'] as bool).input()).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : ((map['iamRoleArn'] as String).input()).input(),
+      imageArn: map['imageArn'] == null ? null : ((map['imageArn'] as String).input()).input(),
+      imageName: map['imageName'] == null ? null : ((map['imageName'] as String).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (ImageBuilderVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((ImageBuilderVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

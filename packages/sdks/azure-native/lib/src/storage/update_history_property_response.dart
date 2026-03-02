@@ -56,8 +56,8 @@ class UpdateHistoryPropertyResponse {
 
   factory UpdateHistoryPropertyResponse.fromMap(Map<String, dynamic> map) {
     return UpdateHistoryPropertyResponse(
-      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites'] as bool).input(),
-      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll'] as bool).input(),
+      allowProtectedAppendWrites: map['allowProtectedAppendWrites'] == null ? null : (map['allowProtectedAppendWrites']! as bool).input(),
+      allowProtectedAppendWritesAll: map['allowProtectedAppendWritesAll'] == null ? null : (map['allowProtectedAppendWritesAll']! as bool).input(),
       immutabilityPeriodSinceCreationInDays: (map['immutabilityPeriodSinceCreationInDays'] as int).input(),
       objectIdentifier: (map['objectIdentifier'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),

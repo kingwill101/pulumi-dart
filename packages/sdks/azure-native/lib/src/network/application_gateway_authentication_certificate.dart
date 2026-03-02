@@ -31,9 +31,9 @@ class ApplicationGatewayAuthenticationCertificate {
 
   factory ApplicationGatewayAuthenticationCertificate.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAuthenticationCertificate(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

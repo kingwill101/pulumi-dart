@@ -36,10 +36,10 @@ class TrackingInfoResponse {
 
   factory TrackingInfoResponse.fromMap(Map<String, dynamic> map) {
     return TrackingInfoResponse(
-      carrierName: map['carrierName'] == null ? null : (map['carrierName'] as String).input(),
-      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber'] as String).input(),
-      trackingId: map['trackingId'] == null ? null : (map['trackingId'] as String).input(),
-      trackingUrl: map['trackingUrl'] == null ? null : (map['trackingUrl'] as String).input(),
+      carrierName: map['carrierName'] == null ? null : (map['carrierName']! as String).input(),
+      serialNumber: map['serialNumber'] == null ? null : (map['serialNumber']! as String).input(),
+      trackingId: map['trackingId'] == null ? null : (map['trackingId']! as String).input(),
+      trackingUrl: map['trackingUrl'] == null ? null : (map['trackingUrl']! as String).input(),
     );
   }
 }

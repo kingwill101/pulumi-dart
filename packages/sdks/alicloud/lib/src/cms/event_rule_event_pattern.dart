@@ -48,11 +48,11 @@ class EventRuleEventPattern {
 
   factory EventRuleEventPattern.fromMap(Map<String, dynamic> map) {
     return EventRuleEventPattern(
-      eventTypeLists: map['eventTypeLists'] == null ? null : ((map['eventTypeLists'] as List).cast<String>()).input(),
-      levelLists: map['levelLists'] == null ? null : ((map['levelLists'] as List).cast<String>()).input(),
-      nameLists: map['nameLists'] == null ? null : ((map['nameLists'] as List).cast<String>()).input(),
+      eventTypeLists: map['eventTypeLists'] == null ? null : ((map['eventTypeLists']! as List).cast<String>()).input(),
+      levelLists: map['levelLists'] == null ? null : ((map['levelLists']! as List).cast<String>()).input(),
+      nameLists: map['nameLists'] == null ? null : ((map['nameLists']! as List).cast<String>()).input(),
       product: (map['product'] as String).input(),
-      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter'] as String).input(),
+      sqlFilter: map['sqlFilter'] == null ? null : (map['sqlFilter']! as String).input(),
     );
   }
 }

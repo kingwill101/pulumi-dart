@@ -51,11 +51,11 @@ class InstancePscInstanceConfig {
 
   factory InstancePscInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePscInstanceConfig(
-      allowedConsumerProjects: map['allowedConsumerProjects'] == null ? null : ((map['allowedConsumerProjects'] as List).cast<String>()).input(),
-      pscAutoConnections: map['pscAutoConnections'] == null ? null : (pulumi.Input.decodeList<InstancePscInstanceConfigPscAutoConnection>(map['pscAutoConnections'], (value) => InstancePscInstanceConfigPscAutoConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pscDnsName: map['pscDnsName'] == null ? null : (map['pscDnsName'] as String).input(),
-      pscInterfaceConfigs: map['pscInterfaceConfigs'] == null ? null : (pulumi.Input.decodeList<InstancePscInstanceConfigPscInterfaceConfig>(map['pscInterfaceConfigs'], (value) => InstancePscInstanceConfigPscInterfaceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceAttachmentLink: map['serviceAttachmentLink'] == null ? null : (map['serviceAttachmentLink'] as String).input(),
+      allowedConsumerProjects: map['allowedConsumerProjects'] == null ? null : ((map['allowedConsumerProjects']! as List).cast<String>()).input(),
+      pscAutoConnections: map['pscAutoConnections'] == null ? null : (pulumi.Input.decodeList<InstancePscInstanceConfigPscAutoConnection>(map['pscAutoConnections']!, (value) => InstancePscInstanceConfigPscAutoConnection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pscDnsName: map['pscDnsName'] == null ? null : (map['pscDnsName']! as String).input(),
+      pscInterfaceConfigs: map['pscInterfaceConfigs'] == null ? null : (pulumi.Input.decodeList<InstancePscInstanceConfigPscInterfaceConfig>(map['pscInterfaceConfigs']!, (value) => InstancePscInstanceConfigPscInterfaceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAttachmentLink: map['serviceAttachmentLink'] == null ? null : (map['serviceAttachmentLink']! as String).input(),
     );
   }
 }

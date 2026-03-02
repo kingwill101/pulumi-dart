@@ -58,9 +58,9 @@ class TopicIAMBindingArgs {
 
   factory TopicIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return TopicIAMBindingArgs(
-      condition: map['condition'] == null ? null : (TopicIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (TopicIAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       topic: (map['topic'] as String).input(),
     );

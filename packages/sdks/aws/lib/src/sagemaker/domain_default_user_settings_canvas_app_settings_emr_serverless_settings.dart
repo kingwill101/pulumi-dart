@@ -25,8 +25,8 @@ class DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings {
 
   factory DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCanvasAppSettingsEmrServerlessSettings(
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

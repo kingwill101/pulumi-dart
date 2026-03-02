@@ -106,20 +106,20 @@ class ClusterV2ManagerManagerNode {
 
   factory ClusterV2ManagerManagerNode.fromMap(Map<String, dynamic> map) {
     return ClusterV2ManagerManagerNode(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod'] as int).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      enableHt: map['enableHt'] == null ? null : (map['enableHt'] as bool).input(),
-      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as String).input(),
-      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit'] as String).input(),
-      spotPriceLimit: map['spotPriceLimit'] == null ? null : (map['spotPriceLimit'] as double).input(),
-      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy'] as String).input(),
-      systemDisk: map['systemDisk'] == null ? null : (ClusterV2ManagerManagerNodeSystemDisk.fromMap((map['systemDisk'] as Map).cast<String, dynamic>())).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      autoRenewPeriod: map['autoRenewPeriod'] == null ? null : (map['autoRenewPeriod']! as int).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      enableHt: map['enableHt'] == null ? null : (map['enableHt']! as bool).input(),
+      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as String).input(),
+      instanceChargeType: map['instanceChargeType'] == null ? null : (map['instanceChargeType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      periodUnit: map['periodUnit'] == null ? null : (map['periodUnit']! as String).input(),
+      spotPriceLimit: map['spotPriceLimit'] == null ? null : (map['spotPriceLimit']! as double).input(),
+      spotStrategy: map['spotStrategy'] == null ? null : (map['spotStrategy']! as String).input(),
+      systemDisk: map['systemDisk'] == null ? null : (ClusterV2ManagerManagerNodeSystemDisk.fromMap((map['systemDisk']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

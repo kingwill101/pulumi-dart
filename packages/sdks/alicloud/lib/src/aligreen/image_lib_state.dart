@@ -41,11 +41,11 @@ class ImageLibState {
 
   factory ImageLibState.fromMap(Map<String, dynamic> map) {
     return ImageLibState(
-      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes'] as List).cast<String>()).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      imageLibName: map['imageLibName'] == null ? null : (map['imageLibName'] as String).input(),
-      scene: map['scene'] == null ? null : (map['scene'] as String).input(),
+      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes']! as List).cast<String>()).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      imageLibName: map['imageLibName'] == null ? null : (map['imageLibName']! as String).input(),
+      scene: map['scene'] == null ? null : (map['scene']! as String).input(),
     );
   }
 }

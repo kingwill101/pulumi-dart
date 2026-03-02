@@ -47,11 +47,11 @@ class SecurityGatewayProxyProtocolConfig {
 
   factory SecurityGatewayProxyProtocolConfig.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayProxyProtocolConfig(
-      allowedClientHeaders: map['allowedClientHeaders'] == null ? null : ((map['allowedClientHeaders'] as List).cast<String>()).input(),
-      clientIp: map['clientIp'] == null ? null : (map['clientIp'] as bool).input(),
-      contextualHeaders: map['contextualHeaders'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeaders.fromMap((map['contextualHeaders'] as Map).cast<String, dynamic>())).input(),
-      gatewayIdentity: map['gatewayIdentity'] == null ? null : (map['gatewayIdentity'] as String).input(),
-      metadataHeaders: map['metadataHeaders'] == null ? null : ((map['metadataHeaders'] as Map).cast<String, String>()).input(),
+      allowedClientHeaders: map['allowedClientHeaders'] == null ? null : ((map['allowedClientHeaders']! as List).cast<String>()).input(),
+      clientIp: map['clientIp'] == null ? null : (map['clientIp']! as bool).input(),
+      contextualHeaders: map['contextualHeaders'] == null ? null : (SecurityGatewayProxyProtocolConfigContextualHeaders.fromMap((map['contextualHeaders']! as Map).cast<String, dynamic>())).input(),
+      gatewayIdentity: map['gatewayIdentity'] == null ? null : (map['gatewayIdentity']! as String).input(),
+      metadataHeaders: map['metadataHeaders'] == null ? null : ((map['metadataHeaders']! as Map).cast<String, String>()).input(),
     );
   }
 }

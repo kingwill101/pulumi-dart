@@ -64,14 +64,14 @@ class SecurityGroupIngress {
 
   factory SecurityGroupIngress.fromMap(Map<String, dynamic> map) {
     return SecurityGroupIngress(
-      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (((map['cidrBlocks'] as List).cast<String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       fromPort: (map['fromPort'] as int).input(),
-      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : ((map['ipv6CidrBlocks'] as List).cast<String>()).input(),
-      prefixListIds: map['prefixListIds'] == null ? null : ((map['prefixListIds'] as List).cast<String>()).input(),
+      ipv6CidrBlocks: map['ipv6CidrBlocks'] == null ? null : (((map['ipv6CidrBlocks'] as List).cast<String>()).input()).input(),
+      prefixListIds: map['prefixListIds'] == null ? null : (((map['prefixListIds'] as List).cast<String>()).input()).input(),
       protocol: (map['protocol'] as String).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      self: map['self'] == null ? null : (map['self'] as bool).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
+      self: map['self'] == null ? null : ((map['self'] as bool).input()).input(),
       toPort: (map['toPort'] as int).input(),
     );
   }

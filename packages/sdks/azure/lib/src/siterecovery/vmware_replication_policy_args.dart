@@ -40,7 +40,7 @@ class VMWareReplicationPolicyArgs {
   factory VMWareReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return VMWareReplicationPolicyArgs(
       applicationConsistentSnapshotFrequencyInMinutes: (map['applicationConsistentSnapshotFrequencyInMinutes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryPointRetentionInMinutes: (map['recoveryPointRetentionInMinutes'] as int).input(),
       recoveryVaultId: (map['recoveryVaultId'] as String).input(),
     );

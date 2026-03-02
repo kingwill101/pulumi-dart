@@ -65,15 +65,15 @@ class CustomResourceDefinitionVersion {
 
   factory CustomResourceDefinitionVersion.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionVersion(
-      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinition>(map['additionalPrinterColumns'], (value) => CustomResourceColumnDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
-      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning'] as String).input(),
+      additionalPrinterColumns: map['additionalPrinterColumns'] == null ? null : (pulumi.Input.decodeList<CustomResourceColumnDefinition>(map['additionalPrinterColumns']!, (value) => CustomResourceColumnDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deprecated: map['deprecated'] == null ? null : (map['deprecated']! as bool).input(),
+      deprecationWarning: map['deprecationWarning'] == null ? null : (map['deprecationWarning']! as String).input(),
       name: (map['name'] as String).input(),
-      schema: map['schema'] == null ? null : (CustomResourceValidation.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
-      selectableFields: map['selectableFields'] == null ? null : (pulumi.Input.decodeList<SelectableField>(map['selectableFields'], (value) => SelectableField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      schema: map['schema'] == null ? null : (CustomResourceValidation.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
+      selectableFields: map['selectableFields'] == null ? null : (pulumi.Input.decodeList<SelectableField>(map['selectableFields']!, (value) => SelectableField.fromMap((value as Map).cast<String, dynamic>()))).input(),
       served: (map['served'] as bool).input(),
       storage: (map['storage'] as bool).input(),
-      subresources: map['subresources'] == null ? null : (CustomResourceSubresources.fromMap((map['subresources'] as Map).cast<String, dynamic>())).input(),
+      subresources: map['subresources'] == null ? null : (CustomResourceSubresources.fromMap((map['subresources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

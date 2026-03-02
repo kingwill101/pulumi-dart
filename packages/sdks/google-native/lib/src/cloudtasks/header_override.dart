@@ -22,7 +22,7 @@ class HeaderOverride {
 
   factory HeaderOverride.fromMap(Map<String, dynamic> map) {
     return HeaderOverride(
-      header: map['header'] == null ? null : (Header.fromMap((map['header'] as Map).cast<String, dynamic>())).input(),
+      header: map['header'] == null ? null : (Header.fromMap((map['header']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

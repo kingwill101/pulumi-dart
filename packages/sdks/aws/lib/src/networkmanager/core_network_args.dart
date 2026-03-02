@@ -76,12 +76,12 @@ class CoreNetworkArgs {
 
   factory CoreNetworkArgs.fromMap(Map<String, dynamic> map) {
     return CoreNetworkArgs(
-      basePolicyDocument: map['basePolicyDocument'] == null ? null : (map['basePolicyDocument'] as String).input(),
-      basePolicyRegions: map['basePolicyRegions'] == null ? null : ((map['basePolicyRegions'] as List).cast<String>()).input(),
-      createBasePolicy: map['createBasePolicy'] == null ? null : (map['createBasePolicy'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      basePolicyDocument: map['basePolicyDocument'] == null ? null : ((map['basePolicyDocument'] as String).input()).input(),
+      basePolicyRegions: map['basePolicyRegions'] == null ? null : (((map['basePolicyRegions'] as List).cast<String>()).input()).input(),
+      createBasePolicy: map['createBasePolicy'] == null ? null : ((map['createBasePolicy'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

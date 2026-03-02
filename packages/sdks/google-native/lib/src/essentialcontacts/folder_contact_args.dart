@@ -54,8 +54,8 @@ class FolderContactArgs {
       folderId: (map['folderId'] as String).input(),
       languageTag: (map['languageTag'] as String).input(),
       notificationCategorySubscriptions: (pulumi.Input.decodeList<FolderContactNotificationCategorySubscriptionsItem>(map['notificationCategorySubscriptions'], (value) => FolderContactNotificationCategorySubscriptionsItem.fromValue(value as String))).input(),
-      validateTime: map['validateTime'] == null ? null : (map['validateTime'] as String).input(),
-      validationState: map['validationState'] == null ? null : (FolderContactValidationState.fromValue(map['validationState'] as String)).input(),
+      validateTime: map['validateTime'] == null ? null : (map['validateTime']! as String).input(),
+      validationState: map['validationState'] == null ? null : (FolderContactValidationState.fromValue(map['validationState']! as String)).input(),
     );
   }
 }

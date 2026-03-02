@@ -37,7 +37,7 @@ class GetStepArgs {
     return GetStepArgs(
       executionId: (map['executionId'] as String).input(),
       historyId: (map['historyId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       stepId: (map['stepId'] as String).input(),
     );
   }

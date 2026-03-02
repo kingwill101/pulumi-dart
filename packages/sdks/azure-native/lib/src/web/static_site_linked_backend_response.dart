@@ -36,10 +36,10 @@ class StaticSiteLinkedBackendResponse {
 
   factory StaticSiteLinkedBackendResponse.fromMap(Map<String, dynamic> map) {
     return StaticSiteLinkedBackendResponse(
-      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId'] as String).input(),
+      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId']! as String).input(),
       createdOn: (map['createdOn'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -93,10 +93,10 @@ class GetCatalogResult {
 
   factory GetCatalogResult.fromMap(Map<String, dynamic> map) {
     return GetCatalogResult(
-      adoGit: map['adoGit'] == null ? null : GitCatalogResponse.fromMap((map['adoGit'] as Map).cast<String, dynamic>()),
+      adoGit: map['adoGit'] == null ? null : GitCatalogResponse.fromMap((map['adoGit']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       connectionState: map['connectionState'] as String,
-      gitHub: map['gitHub'] == null ? null : GitCatalogResponse.fromMap((map['gitHub'] as Map).cast<String, dynamic>()),
+      gitHub: map['gitHub'] == null ? null : GitCatalogResponse.fromMap((map['gitHub']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       lastConnectionTime: map['lastConnectionTime'] as String,
       lastSyncStats: SyncStatsResponse.fromMap((map['lastSyncStats'] as Map).cast<String, dynamic>()),
@@ -104,9 +104,9 @@ class GetCatalogResult {
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       syncState: map['syncState'] as String,
-      syncType: map['syncType'] == null ? null : map['syncType'] as String,
+      syncType: map['syncType'] == null ? null : map['syncType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

@@ -33,9 +33,9 @@ class RoleState {
 
   factory RoleState.fromMap(Map<String, dynamic> map) {
     return RoleState(
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

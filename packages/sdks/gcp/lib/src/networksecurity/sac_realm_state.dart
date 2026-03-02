@@ -81,17 +81,17 @@ class SacRealmState {
 
   factory SacRealmState.fromMap(Map<String, dynamic> map) {
     return SacRealmState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pairingKeys: map['pairingKeys'] == null ? null : (pulumi.Input.decodeList<SacRealmPairingKey>(map['pairingKeys'], (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      securityService: map['securityService'] == null ? null : (map['securityService'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions'] as Map).cast<String, dynamic>())).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pairingKeys: map['pairingKeys'] == null ? null : (pulumi.Input.decodeList<SacRealmPairingKey>(map['pairingKeys']!, (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      securityService: map['securityService'] == null ? null : (map['securityService']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      symantecOptions: map['symantecOptions'] == null ? null : (SacRealmSymantecOptions.fromMap((map['symantecOptions']! as Map).cast<String, dynamic>())).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

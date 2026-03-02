@@ -26,8 +26,8 @@ class SchedulingConfigTpuV1alpha1 {
 
   factory SchedulingConfigTpuV1alpha1.fromMap(Map<String, dynamic> map) {
     return SchedulingConfigTpuV1alpha1(
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
     );
   }
 }

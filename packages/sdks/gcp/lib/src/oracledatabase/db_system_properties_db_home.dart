@@ -42,8 +42,8 @@ class DbSystemPropertiesDbHome {
     return DbSystemPropertiesDbHome(
       database: (DbSystemPropertiesDbHomeDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
       dbVersion: (map['dbVersion'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      isUnifiedAuditingEnabled: map['isUnifiedAuditingEnabled'] == null ? null : (map['isUnifiedAuditingEnabled'] as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      isUnifiedAuditingEnabled: map['isUnifiedAuditingEnabled'] == null ? null : (map['isUnifiedAuditingEnabled']! as bool).input(),
     );
   }
 }

@@ -30,9 +30,9 @@ class QueryParameterValue {
 
   factory QueryParameterValue.fromMap(Map<String, dynamic> map) {
     return QueryParameterValue(
-      arrayValues: map['arrayValues'] == null ? null : (pulumi.Input.decodeList<QueryParameterValue>(map['arrayValues'], (value) => QueryParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      structValues: map['structValues'] == null ? null : ((map['structValues'] as Map).cast<String, String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      arrayValues: map['arrayValues'] == null ? null : (pulumi.Input.decodeList<QueryParameterValue>(map['arrayValues']!, (value) => QueryParameterValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      structValues: map['structValues'] == null ? null : ((map['structValues']! as Map).cast<String, String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

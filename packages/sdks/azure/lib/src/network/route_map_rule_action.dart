@@ -26,7 +26,7 @@ class RouteMapRuleAction {
 
   factory RouteMapRuleAction.fromMap(Map<String, dynamic> map) {
     return RouteMapRuleAction(
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RouteMapRuleActionParameter>(map['parameters'], (value) => RouteMapRuleActionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RouteMapRuleActionParameter>(map['parameters']!, (value) => RouteMapRuleActionParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

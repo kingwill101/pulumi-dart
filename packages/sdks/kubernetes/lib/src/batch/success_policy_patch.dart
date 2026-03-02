@@ -22,7 +22,7 @@ class SuccessPolicyPatch {
 
   factory SuccessPolicyPatch.fromMap(Map<String, dynamic> map) {
     return SuccessPolicyPatch(
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SuccessPolicyRulePatch>(map['rules'], (value) => SuccessPolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<SuccessPolicyRulePatch>(map['rules']!, (value) => SuccessPolicyRulePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

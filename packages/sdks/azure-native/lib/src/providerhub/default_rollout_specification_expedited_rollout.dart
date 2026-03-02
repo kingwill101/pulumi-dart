@@ -21,7 +21,7 @@ class DefaultRolloutSpecificationExpeditedRollout {
 
   factory DefaultRolloutSpecificationExpeditedRollout.fromMap(Map<String, dynamic> map) {
     return DefaultRolloutSpecificationExpeditedRollout(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

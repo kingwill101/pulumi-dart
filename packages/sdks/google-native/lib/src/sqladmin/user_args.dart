@@ -77,17 +77,17 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      dualPasswordType: map['dualPasswordType'] == null ? null : (UserDualPasswordType.fromValue(map['dualPasswordType'] as String)).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      dualPasswordType: map['dualPasswordType'] == null ? null : (UserDualPasswordType.fromValue(map['dualPasswordType']! as String)).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       instance: (map['instance'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordValidationPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sqlserverUserDetails: map['sqlserverUserDetails'] == null ? null : (SqlServerUserDetails.fromMap((map['sqlserverUserDetails'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (UserType.fromValue(map['type'] as String)).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (UserPasswordValidationPolicy.fromMap((map['passwordPolicy']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sqlserverUserDetails: map['sqlserverUserDetails'] == null ? null : (SqlServerUserDetails.fromMap((map['sqlserverUserDetails']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (UserType.fromValue(map['type']! as String)).input(),
     );
   }
 }

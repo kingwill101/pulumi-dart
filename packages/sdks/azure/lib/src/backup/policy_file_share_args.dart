@@ -84,16 +84,16 @@ class PolicyFileShareArgs {
   factory PolicyFileShareArgs.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareArgs(
       backup: (PolicyFileShareBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
-      backupTier: map['backupTier'] == null ? null : (map['backupTier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      backupTier: map['backupTier'] == null ? null : (map['backupTier']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       recoveryVaultName: (map['recoveryVaultName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       retentionDaily: (PolicyFileShareRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())).input(),
-      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyFileShareRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())).input(),
-      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyFileShareRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())).input(),
-      retentionYearly: map['retentionYearly'] == null ? null : (PolicyFileShareRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())).input(),
-      snapshotRetentionInDays: map['snapshotRetentionInDays'] == null ? null : (map['snapshotRetentionInDays'] as int).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyFileShareRetentionMonthly.fromMap((map['retentionMonthly']! as Map).cast<String, dynamic>())).input(),
+      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyFileShareRetentionWeekly.fromMap((map['retentionWeekly']! as Map).cast<String, dynamic>())).input(),
+      retentionYearly: map['retentionYearly'] == null ? null : (PolicyFileShareRetentionYearly.fromMap((map['retentionYearly']! as Map).cast<String, dynamic>())).input(),
+      snapshotRetentionInDays: map['snapshotRetentionInDays'] == null ? null : (map['snapshotRetentionInDays']! as int).input(),
+      timezone: map['timezone'] == null ? null : (map['timezone']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class SSH {
   factory SSH.fromMap(Map<String, dynamic> map) {
     return SSH(
       id: (map['id'] as String).input(),
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
     );
   }
 }

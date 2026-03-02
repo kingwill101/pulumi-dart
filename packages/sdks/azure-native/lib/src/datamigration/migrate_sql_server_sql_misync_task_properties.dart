@@ -38,9 +38,9 @@ class MigrateSqlServerSqlMISyncTaskProperties {
 
   factory MigrateSqlServerSqlMISyncTaskProperties.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMISyncTaskProperties(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
-      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
-      input: map['input'] == null ? null : (MigrateSqlServerSqlMISyncTaskInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
+      createdOn: map['createdOn'] == null ? null : (map['createdOn']! as String).input(),
+      input: map['input'] == null ? null : (MigrateSqlServerSqlMISyncTaskInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

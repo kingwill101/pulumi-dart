@@ -75,17 +75,17 @@ class ModelState {
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
     return ModelState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ModelContainer>(map['containers'], (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : (map['enableNetworkIsolation'] as bool).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      inferenceExecutionConfig: map['inferenceExecutionConfig'] == null ? null : (ModelInferenceExecutionConfig.fromMap((map['inferenceExecutionConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryContainer: map['primaryContainer'] == null ? null : (ModelPrimaryContainer.fromMap((map['primaryContainer'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcConfig: map['vpcConfig'] == null ? null : (ModelVpcConfig.fromMap((map['vpcConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      containers: map['containers'] == null ? null : ((pulumi.Input.decodeList<ModelContainer>(map['containers']!, (value) => ModelContainer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enableNetworkIsolation: map['enableNetworkIsolation'] == null ? null : ((map['enableNetworkIsolation'] as bool).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      inferenceExecutionConfig: map['inferenceExecutionConfig'] == null ? null : ((ModelInferenceExecutionConfig.fromMap((map['inferenceExecutionConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      primaryContainer: map['primaryContainer'] == null ? null : ((ModelPrimaryContainer.fromMap((map['primaryContainer']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcConfig: map['vpcConfig'] == null ? null : ((ModelVpcConfig.fromMap((map['vpcConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

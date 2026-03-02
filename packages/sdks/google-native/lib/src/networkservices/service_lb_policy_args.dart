@@ -65,14 +65,14 @@ class ServiceLbPolicyArgs {
 
   factory ServiceLbPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServiceLbPolicyArgs(
-      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPolicyAutoCapacityDrain.fromMap((map['autoCapacityDrain'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPolicyFailoverConfig.fromMap((map['failoverConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (ServiceLbPolicyLoadBalancingAlgorithm.fromValue(map['loadBalancingAlgorithm'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      autoCapacityDrain: map['autoCapacityDrain'] == null ? null : (ServiceLbPolicyAutoCapacityDrain.fromMap((map['autoCapacityDrain']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      failoverConfig: map['failoverConfig'] == null ? null : (ServiceLbPolicyFailoverConfig.fromMap((map['failoverConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      loadBalancingAlgorithm: map['loadBalancingAlgorithm'] == null ? null : (ServiceLbPolicyLoadBalancingAlgorithm.fromValue(map['loadBalancingAlgorithm']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceLbPolicyId: (map['serviceLbPolicyId'] as String).input(),
     );
   }

@@ -43,10 +43,10 @@ class SecurityGatewayApplicationUpstream {
 
   factory SecurityGatewayApplicationUpstream.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayApplicationUpstream(
-      egressPolicy: map['egressPolicy'] == null ? null : (SecurityGatewayApplicationUpstreamEgressPolicy.fromMap((map['egressPolicy'] as Map).cast<String, dynamic>())).input(),
-      external: map['external'] == null ? null : (SecurityGatewayApplicationUpstreamExternal.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
-      network: map['network'] == null ? null : (SecurityGatewayApplicationUpstreamNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      proxyProtocol: map['proxyProtocol'] == null ? null : (SecurityGatewayApplicationUpstreamProxyProtocol.fromMap((map['proxyProtocol'] as Map).cast<String, dynamic>())).input(),
+      egressPolicy: map['egressPolicy'] == null ? null : (SecurityGatewayApplicationUpstreamEgressPolicy.fromMap((map['egressPolicy']! as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (SecurityGatewayApplicationUpstreamExternal.fromMap((map['external']! as Map).cast<String, dynamic>())).input(),
+      network: map['network'] == null ? null : (SecurityGatewayApplicationUpstreamNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      proxyProtocol: map['proxyProtocol'] == null ? null : (SecurityGatewayApplicationUpstreamProxyProtocol.fromMap((map['proxyProtocol']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

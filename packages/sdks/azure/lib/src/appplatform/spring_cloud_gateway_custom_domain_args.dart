@@ -34,9 +34,9 @@ class SpringCloudGatewayCustomDomainArgs {
 
   factory SpringCloudGatewayCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayCustomDomainArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       springCloudGatewayId: (map['springCloudGatewayId'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

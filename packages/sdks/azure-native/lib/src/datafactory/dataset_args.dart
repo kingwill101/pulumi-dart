@@ -40,7 +40,7 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      datasetName: map['datasetName'] == null ? null : (map['datasetName'] as String).input(),
+      datasetName: map['datasetName'] == null ? null : (map['datasetName']! as String).input(),
       factoryName: (map['factoryName'] as String).input(),
       properties: (AmazonMWSObjectDataset.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

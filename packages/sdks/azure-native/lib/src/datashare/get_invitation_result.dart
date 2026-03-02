@@ -94,7 +94,7 @@ class GetInvitationResult {
   factory GetInvitationResult.fromMap(Map<String, dynamic> map) {
     return GetInvitationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      expirationDate: map['expirationDate'] == null ? null : map['expirationDate'] as String,
+      expirationDate: map['expirationDate'] == null ? null : map['expirationDate']! as String,
       id: map['id'] as String,
       invitationId: map['invitationId'] as String,
       invitationStatus: map['invitationStatus'] as String,
@@ -102,9 +102,9 @@ class GetInvitationResult {
       respondedAt: map['respondedAt'] as String,
       sentAt: map['sentAt'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : map['targetActiveDirectoryId'] as String,
-      targetEmail: map['targetEmail'] == null ? null : map['targetEmail'] as String,
-      targetObjectId: map['targetObjectId'] == null ? null : map['targetObjectId'] as String,
+      targetActiveDirectoryId: map['targetActiveDirectoryId'] == null ? null : map['targetActiveDirectoryId']! as String,
+      targetEmail: map['targetEmail'] == null ? null : map['targetEmail']! as String,
+      targetObjectId: map['targetObjectId'] == null ? null : map['targetObjectId']! as String,
       type: map['type'] as String,
       userEmail: map['userEmail'] as String,
       userName: map['userName'] as String,

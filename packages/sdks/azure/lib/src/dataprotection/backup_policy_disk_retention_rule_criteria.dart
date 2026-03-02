@@ -20,7 +20,7 @@ class BackupPolicyDiskRetentionRuleCriteria {
 
   factory BackupPolicyDiskRetentionRuleCriteria.fromMap(Map<String, dynamic> map) {
     return BackupPolicyDiskRetentionRuleCriteria(
-      absoluteCriteria: map['absoluteCriteria'] == null ? null : (map['absoluteCriteria'] as String).input(),
+      absoluteCriteria: map['absoluteCriteria'] == null ? null : (map['absoluteCriteria']! as String).input(),
     );
   }
 }

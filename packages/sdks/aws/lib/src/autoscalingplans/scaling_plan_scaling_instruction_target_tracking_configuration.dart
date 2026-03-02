@@ -57,12 +57,12 @@ class ScalingPlanScalingInstructionTargetTrackingConfiguration {
 
   factory ScalingPlanScalingInstructionTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
     return ScalingPlanScalingInstructionTargetTrackingConfiguration(
-      customizedScalingMetricSpecification: map['customizedScalingMetricSpecification'] == null ? null : (ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap((map['customizedScalingMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      disableScaleIn: map['disableScaleIn'] == null ? null : (map['disableScaleIn'] as bool).input(),
-      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : (map['estimatedInstanceWarmup'] as int).input(),
-      predefinedScalingMetricSpecification: map['predefinedScalingMetricSpecification'] == null ? null : (ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap((map['predefinedScalingMetricSpecification'] as Map).cast<String, dynamic>())).input(),
-      scaleInCooldown: map['scaleInCooldown'] == null ? null : (map['scaleInCooldown'] as int).input(),
-      scaleOutCooldown: map['scaleOutCooldown'] == null ? null : (map['scaleOutCooldown'] as int).input(),
+      customizedScalingMetricSpecification: map['customizedScalingMetricSpecification'] == null ? null : ((ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap((map['customizedScalingMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      disableScaleIn: map['disableScaleIn'] == null ? null : ((map['disableScaleIn'] as bool).input()).input(),
+      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : ((map['estimatedInstanceWarmup'] as int).input()).input(),
+      predefinedScalingMetricSpecification: map['predefinedScalingMetricSpecification'] == null ? null : ((ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap((map['predefinedScalingMetricSpecification']! as Map).cast<String, dynamic>())).input()).input(),
+      scaleInCooldown: map['scaleInCooldown'] == null ? null : ((map['scaleInCooldown'] as int).input()).input(),
+      scaleOutCooldown: map['scaleOutCooldown'] == null ? null : ((map['scaleOutCooldown'] as int).input()).input(),
       targetValue: (map['targetValue'] as double).input(),
     );
   }

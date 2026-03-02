@@ -45,11 +45,11 @@ class SystemTopicEventSubscriptionWebhookEndpoint {
 
   factory SystemTopicEventSubscriptionWebhookEndpoint.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionWebhookEndpoint(
-      activeDirectoryAppIdOrUri: map['activeDirectoryAppIdOrUri'] == null ? null : (map['activeDirectoryAppIdOrUri'] as String).input(),
-      activeDirectoryTenantId: map['activeDirectoryTenantId'] == null ? null : (map['activeDirectoryTenantId'] as String).input(),
-      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl'] as String).input(),
-      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch'] as int).input(),
-      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes'] as int).input(),
+      activeDirectoryAppIdOrUri: map['activeDirectoryAppIdOrUri'] == null ? null : (map['activeDirectoryAppIdOrUri']! as String).input(),
+      activeDirectoryTenantId: map['activeDirectoryTenantId'] == null ? null : (map['activeDirectoryTenantId']! as String).input(),
+      baseUrl: map['baseUrl'] == null ? null : (map['baseUrl']! as String).input(),
+      maxEventsPerBatch: map['maxEventsPerBatch'] == null ? null : (map['maxEventsPerBatch']! as int).input(),
+      preferredBatchSizeInKilobytes: map['preferredBatchSizeInKilobytes'] == null ? null : (map['preferredBatchSizeInKilobytes']! as int).input(),
       url: (map['url'] as String).input(),
     );
   }

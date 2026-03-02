@@ -25,8 +25,8 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanary {
 
   factory DeploymentConfigTrafficRoutingConfigTimeBasedCanary.fromMap(Map<String, dynamic> map) {
     return DeploymentConfigTrafficRoutingConfigTimeBasedCanary(
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as int).input(),
+      interval: map['interval'] == null ? null : ((map['interval'] as int).input()).input(),
+      percentage: map['percentage'] == null ? null : ((map['percentage'] as int).input()).input(),
     );
   }
 }

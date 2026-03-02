@@ -20,7 +20,7 @@ class CustomKeys {
 
   factory CustomKeys.fromMap(Map<String, dynamic> map) {
     return CustomKeys(
-      keys: map['keys'] == null ? null : ((map['keys'] as Map).cast<String, String>()).input(),
+      keys: map['keys'] == null ? null : ((map['keys']! as Map).cast<String, String>()).input(),
     );
   }
 }

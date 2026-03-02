@@ -69,14 +69,14 @@ class GetRuleResult {
 
   factory GetRuleResult.fromMap(Map<String, dynamic> map) {
     return GetRuleResult(
-      action: map['action'] == null ? null : ActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
+      action: map['action'] == null ? null : ActionResponse.fromMap((map['action']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      correlationFilter: map['correlationFilter'] == null ? null : CorrelationFilterResponse.fromMap((map['correlationFilter'] as Map).cast<String, dynamic>()),
-      filterType: map['filterType'] == null ? null : map['filterType'] as String,
+      correlationFilter: map['correlationFilter'] == null ? null : CorrelationFilterResponse.fromMap((map['correlationFilter']! as Map).cast<String, dynamic>()),
+      filterType: map['filterType'] == null ? null : map['filterType']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      sqlFilter: map['sqlFilter'] == null ? null : SqlFilterResponse.fromMap((map['sqlFilter'] as Map).cast<String, dynamic>()),
+      sqlFilter: map['sqlFilter'] == null ? null : SqlFilterResponse.fromMap((map['sqlFilter']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

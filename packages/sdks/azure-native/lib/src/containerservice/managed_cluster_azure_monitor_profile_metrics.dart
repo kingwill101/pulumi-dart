@@ -28,7 +28,7 @@ class ManagedClusterAzureMonitorProfileMetrics {
   factory ManagedClusterAzureMonitorProfileMetrics.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAzureMonitorProfileMetrics(
       enabled: (map['enabled'] as bool).input(),
-      kubeStateMetrics: map['kubeStateMetrics'] == null ? null : (ManagedClusterAzureMonitorProfileKubeStateMetrics.fromMap((map['kubeStateMetrics'] as Map).cast<String, dynamic>())).input(),
+      kubeStateMetrics: map['kubeStateMetrics'] == null ? null : (ManagedClusterAzureMonitorProfileKubeStateMetrics.fromMap((map['kubeStateMetrics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

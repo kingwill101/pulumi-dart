@@ -27,7 +27,7 @@ class EndpointPropertiesUpdateParametersDeliveryPolicy {
 
   factory EndpointPropertiesUpdateParametersDeliveryPolicy.fromMap(Map<String, dynamic> map) {
     return EndpointPropertiesUpdateParametersDeliveryPolicy(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       rules: (pulumi.Input.decodeList<DeliveryRule>(map['rules'], (value) => DeliveryRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

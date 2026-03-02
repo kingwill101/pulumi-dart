@@ -50,12 +50,12 @@ class CompensationEntryJobsV4 {
 
   factory CompensationEntryJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationEntryJobsV4(
-      amount: map['amount'] == null ? null : (MoneyJobsV4.fromMap((map['amount'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null ? null : (map['expectedUnitsPerYear'] as double).input(),
-      range: map['range'] == null ? null : (CompensationRangeJobsV4.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (CompensationEntryTypeJobsV4.fromValue(map['type'] as String)).input(),
-      unit: map['unit'] == null ? null : (CompensationEntryUnitJobsV4.fromValue(map['unit'] as String)).input(),
+      amount: map['amount'] == null ? null : (MoneyJobsV4.fromMap((map['amount']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null ? null : (map['expectedUnitsPerYear']! as double).input(),
+      range: map['range'] == null ? null : (CompensationRangeJobsV4.fromMap((map['range']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (CompensationEntryTypeJobsV4.fromValue(map['type']! as String)).input(),
+      unit: map['unit'] == null ? null : (CompensationEntryUnitJobsV4.fromValue(map['unit']! as String)).input(),
     );
   }
 }

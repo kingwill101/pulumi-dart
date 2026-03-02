@@ -41,11 +41,11 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta {
 
   factory PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta(
-      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange'] as String).input(),
-      isAddress: map['isAddress'] == null ? null : (map['isAddress'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      delegateeProject: map['delegateeProject'] == null ? null : (map['delegateeProject']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipCidrRange: map['ipCidrRange'] == null ? null : (map['ipCidrRange']! as String).input(),
+      isAddress: map['isAddress'] == null ? null : (map['isAddress']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

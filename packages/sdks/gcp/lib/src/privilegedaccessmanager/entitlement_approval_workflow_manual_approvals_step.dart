@@ -41,10 +41,10 @@ class EntitlementApprovalWorkflowManualApprovalsStep {
 
   factory EntitlementApprovalWorkflowManualApprovalsStep.fromMap(Map<String, dynamic> map) {
     return EntitlementApprovalWorkflowManualApprovalsStep(
-      approvalsNeeded: map['approvalsNeeded'] == null ? null : (map['approvalsNeeded'] as int).input(),
-      approverEmailRecipients: map['approverEmailRecipients'] == null ? null : ((map['approverEmailRecipients'] as List).cast<String>()).input(),
+      approvalsNeeded: map['approvalsNeeded'] == null ? null : (map['approvalsNeeded']! as int).input(),
+      approverEmailRecipients: map['approverEmailRecipients'] == null ? null : ((map['approverEmailRecipients']! as List).cast<String>()).input(),
       approvers: (EntitlementApprovalWorkflowManualApprovalsStepApprovers.fromMap((map['approvers'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

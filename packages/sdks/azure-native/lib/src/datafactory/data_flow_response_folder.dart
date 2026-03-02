@@ -21,7 +21,7 @@ class DataFlowResponseFolder {
 
   factory DataFlowResponseFolder.fromMap(Map<String, dynamic> map) {
     return DataFlowResponseFolder(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

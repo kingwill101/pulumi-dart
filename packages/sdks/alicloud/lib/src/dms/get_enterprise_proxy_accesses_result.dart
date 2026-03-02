@@ -46,10 +46,10 @@ class GetEnterpriseProxyAccessesResult {
   factory GetEnterpriseProxyAccessesResult.fromMap(Map<String, dynamic> map) {
     return GetEnterpriseProxyAccessesResult(
       accesses: pulumi.Input.decodeList<GetEnterpriseProxyAccessesAccess>(map['accesses'], (value) => GetEnterpriseProxyAccessesAccess.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       proxyId: map['proxyId'] as String,
     );
   }

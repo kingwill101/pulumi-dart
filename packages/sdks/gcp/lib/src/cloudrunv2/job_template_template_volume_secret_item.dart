@@ -30,7 +30,7 @@ class JobTemplateTemplateVolumeSecretItem {
 
   factory JobTemplateTemplateVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVolumeSecretItem(
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
       path: (map['path'] as String).input(),
       version: (map['version'] as String).input(),
     );

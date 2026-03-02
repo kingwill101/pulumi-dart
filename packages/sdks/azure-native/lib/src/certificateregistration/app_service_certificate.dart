@@ -26,8 +26,8 @@ class AppServiceCertificate {
 
   factory AppServiceCertificate.fromMap(Map<String, dynamic> map) {
     return AppServiceCertificate(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      keyVaultSecretName: map['keyVaultSecretName'] == null ? null : (map['keyVaultSecretName']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class Accelerator {
 
   factory Accelerator.fromMap(Map<String, dynamic> map) {
     return Accelerator(
-      count: map['count'] == null ? null : (map['count'] as String).input(),
-      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion'] as String).input(),
-      installGpuDrivers: map['installGpuDrivers'] == null ? null : (map['installGpuDrivers'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as String).input(),
+      driverVersion: map['driverVersion'] == null ? null : (map['driverVersion']! as String).input(),
+      installGpuDrivers: map['installGpuDrivers'] == null ? null : (map['installGpuDrivers']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

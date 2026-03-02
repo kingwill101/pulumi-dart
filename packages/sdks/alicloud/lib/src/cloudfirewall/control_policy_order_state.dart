@@ -32,9 +32,9 @@ class ControlPolicyOrderState {
 
   factory ControlPolicyOrderState.fromMap(Map<String, dynamic> map) {
     return ControlPolicyOrderState(
-      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
+      aclUuid: map['aclUuid'] == null ? null : (map['aclUuid']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
     );
   }
 }

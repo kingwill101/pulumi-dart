@@ -26,8 +26,8 @@ class NodeRuntimeHandlerFeatures {
 
   factory NodeRuntimeHandlerFeatures.fromMap(Map<String, dynamic> map) {
     return NodeRuntimeHandlerFeatures(
-      recursiveReadOnlyMounts: map['recursiveReadOnlyMounts'] == null ? null : (map['recursiveReadOnlyMounts'] as bool).input(),
-      userNamespaces: map['userNamespaces'] == null ? null : (map['userNamespaces'] as bool).input(),
+      recursiveReadOnlyMounts: map['recursiveReadOnlyMounts'] == null ? null : (map['recursiveReadOnlyMounts']! as bool).input(),
+      userNamespaces: map['userNamespaces'] == null ? null : (map['userNamespaces']! as bool).input(),
     );
   }
 }

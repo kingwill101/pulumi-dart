@@ -70,16 +70,16 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      bandwidth: map['bandwidth'] == null ? null : (NetworkConfigBandwidth.fromValue(map['bandwidth'] as String)).input(),
-      cidr: map['cidr'] == null ? null : (map['cidr'] as String).input(),
-      gcpService: map['gcpService'] == null ? null : (map['gcpService'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      jumboFramesEnabled: map['jumboFramesEnabled'] == null ? null : (map['jumboFramesEnabled'] as bool).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (NetworkConfigServiceCidr.fromValue(map['serviceCidr'] as String)).input(),
-      type: map['type'] == null ? null : (NetworkConfigType.fromValue(map['type'] as String)).input(),
-      userNote: map['userNote'] == null ? null : (map['userNote'] as String).input(),
-      vlanAttachments: map['vlanAttachments'] == null ? null : (pulumi.Input.decodeList<IntakeVlanAttachment>(map['vlanAttachments'], (value) => IntakeVlanAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vlanSameProject: map['vlanSameProject'] == null ? null : (map['vlanSameProject'] as bool).input(),
+      bandwidth: map['bandwidth'] == null ? null : (NetworkConfigBandwidth.fromValue(map['bandwidth']! as String)).input(),
+      cidr: map['cidr'] == null ? null : (map['cidr']! as String).input(),
+      gcpService: map['gcpService'] == null ? null : (map['gcpService']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      jumboFramesEnabled: map['jumboFramesEnabled'] == null ? null : (map['jumboFramesEnabled']! as bool).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (NetworkConfigServiceCidr.fromValue(map['serviceCidr']! as String)).input(),
+      type: map['type'] == null ? null : (NetworkConfigType.fromValue(map['type']! as String)).input(),
+      userNote: map['userNote'] == null ? null : (map['userNote']! as String).input(),
+      vlanAttachments: map['vlanAttachments'] == null ? null : (pulumi.Input.decodeList<IntakeVlanAttachment>(map['vlanAttachments']!, (value) => IntakeVlanAttachment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vlanSameProject: map['vlanSameProject'] == null ? null : (map['vlanSameProject']! as bool).input(),
     );
   }
 }

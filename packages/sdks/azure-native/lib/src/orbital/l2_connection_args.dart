@@ -70,11 +70,11 @@ class L2ConnectionArgs {
       edgeSite: (L2ConnectionsPropertiesEdgeSite.fromMap((map['edgeSite'] as Map).cast<String, dynamic>())).input(),
       groundStation: (L2ConnectionsPropertiesGroundStation.fromMap((map['groundStation'] as Map).cast<String, dynamic>())).input(),
       groundStationPartnerRouter: (L2ConnectionsPropertiesGroundStationPartnerRouter.fromMap((map['groundStationPartnerRouter'] as Map).cast<String, dynamic>())).input(),
-      l2ConnectionName: map['l2ConnectionName'] == null ? null : (map['l2ConnectionName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      l2ConnectionName: map['l2ConnectionName'] == null ? null : (map['l2ConnectionName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vlanId: (map['vlanId'] as int).input(),
     );
   }

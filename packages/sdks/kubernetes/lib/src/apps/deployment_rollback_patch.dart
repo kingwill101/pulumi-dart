@@ -42,11 +42,11 @@ class DeploymentRollbackPatch {
 
   factory DeploymentRollbackPatch.fromMap(Map<String, dynamic> map) {
     return DeploymentRollbackPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rollbackTo: map['rollbackTo'] == null ? null : (RollbackConfigPatch.fromMap((map['rollbackTo'] as Map).cast<String, dynamic>())).input(),
-      updatedAnnotations: map['updatedAnnotations'] == null ? null : ((map['updatedAnnotations'] as Map).cast<String, String>()).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rollbackTo: map['rollbackTo'] == null ? null : (RollbackConfigPatch.fromMap((map['rollbackTo']! as Map).cast<String, dynamic>())).input(),
+      updatedAnnotations: map['updatedAnnotations'] == null ? null : ((map['updatedAnnotations']! as Map).cast<String, String>()).input(),
     );
   }
 }

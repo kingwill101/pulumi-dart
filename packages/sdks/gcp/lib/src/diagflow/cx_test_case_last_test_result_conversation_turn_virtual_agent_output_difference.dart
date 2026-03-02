@@ -31,8 +31,8 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
 
   factory CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

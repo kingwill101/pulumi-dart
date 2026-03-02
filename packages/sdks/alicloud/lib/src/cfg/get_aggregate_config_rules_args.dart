@@ -59,14 +59,14 @@ class GetAggregateConfigRulesArgs {
 
   factory GetAggregateConfigRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetAggregateConfigRulesArgs(
-      aggregateConfigRuleName: map['aggregateConfigRuleName'] == null ? null : (map['aggregateConfigRuleName'] as String).input(),
+      aggregateConfigRuleName: map['aggregateConfigRuleName'] == null ? null : (map['aggregateConfigRuleName']! as String).input(),
       aggregatorId: (map['aggregatorId'] as String).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      riskLevel: map['riskLevel'] == null ? null : (map['riskLevel']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class MetricsResponse {
 
   factory MetricsResponse.fromMap(Map<String, dynamic> map) {
     return MetricsResponse(
-      eventThreshold: map['eventThreshold'] == null ? null : (ReplicationTimeValueResponse.fromMap((map['eventThreshold'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      eventThreshold: map['eventThreshold'] == null ? null : (ReplicationTimeValueResponse.fromMap((map['eventThreshold']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

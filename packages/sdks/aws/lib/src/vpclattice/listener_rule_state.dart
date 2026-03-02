@@ -77,17 +77,17 @@ class ListenerRuleState {
 
   factory ListenerRuleState.fromMap(Map<String, dynamic> map) {
     return ListenerRuleState(
-      action: map['action'] == null ? null : (ListenerRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      listenerIdentifier: map['listenerIdentifier'] == null ? null : (map['listenerIdentifier'] as String).input(),
-      match: map['match'] == null ? null : (ListenerRuleMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleId: map['ruleId'] == null ? null : (map['ruleId'] as String).input(),
-      serviceIdentifier: map['serviceIdentifier'] == null ? null : (map['serviceIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      action: map['action'] == null ? null : ((ListenerRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      listenerIdentifier: map['listenerIdentifier'] == null ? null : ((map['listenerIdentifier'] as String).input()).input(),
+      match: map['match'] == null ? null : ((ListenerRuleMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleId: map['ruleId'] == null ? null : ((map['ruleId'] as String).input()).input(),
+      serviceIdentifier: map['serviceIdentifier'] == null ? null : ((map['serviceIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

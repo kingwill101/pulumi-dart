@@ -23,7 +23,7 @@ class InterceptDeploymentGroupConnectedEndpointGroup {
 
   factory InterceptDeploymentGroupConnectedEndpointGroup.fromMap(Map<String, dynamic> map) {
     return InterceptDeploymentGroupConnectedEndpointGroup(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

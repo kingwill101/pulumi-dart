@@ -37,7 +37,7 @@ class VariableAtManagementGroupArgs {
     return VariableAtManagementGroupArgs(
       columns: (pulumi.Input.decodeList<PolicyVariableColumn>(map['columns'], (value) => PolicyVariableColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
-      variableName: map['variableName'] == null ? null : (map['variableName'] as String).input(),
+      variableName: map['variableName'] == null ? null : (map['variableName']! as String).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class P2SConnectionConfiguration {
 
   factory P2SConnectionConfiguration.fromMap(Map<String, dynamic> map) {
     return P2SConnectionConfiguration(
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpace.fromMap((map['vpnClientAddressPool'] as Map).cast<String, dynamic>())).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      vpnClientAddressPool: map['vpnClientAddressPool'] == null ? null : (AddressSpace.fromMap((map['vpnClientAddressPool']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

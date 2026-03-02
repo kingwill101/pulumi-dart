@@ -21,7 +21,7 @@ class TopicsRelatedLink {
 
   factory TopicsRelatedLink.fromMap(Map<String, dynamic> map) {
     return TopicsRelatedLink(
-      related: map['related'] == null ? null : (map['related'] as String).input(),
+      related: map['related'] == null ? null : (map['related']! as String).input(),
     );
   }
 }

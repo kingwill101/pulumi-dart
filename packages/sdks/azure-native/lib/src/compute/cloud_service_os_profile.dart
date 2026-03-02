@@ -22,7 +22,7 @@ class CloudServiceOsProfile {
 
   factory CloudServiceOsProfile.fromMap(Map<String, dynamic> map) {
     return CloudServiceOsProfile(
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<CloudServiceVaultSecretGroup>(map['secrets'], (value) => CloudServiceVaultSecretGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<CloudServiceVaultSecretGroup>(map['secrets']!, (value) => CloudServiceVaultSecretGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

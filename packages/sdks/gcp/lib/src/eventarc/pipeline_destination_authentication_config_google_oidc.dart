@@ -33,7 +33,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
 
   factory PipelineDestinationAuthenticationConfigGoogleOidc.fromMap(Map<String, dynamic> map) {
     return PipelineDestinationAuthenticationConfigGoogleOidc(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
       serviceAccount: (map['serviceAccount'] as String).input(),
     );
   }

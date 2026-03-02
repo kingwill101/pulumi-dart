@@ -66,15 +66,15 @@ class GrantArgs {
 
   factory GrantArgs.fromMap(Map<String, dynamic> map) {
     return GrantArgs(
-      constraints: map['constraints'] == null ? null : (pulumi.Input.decodeList<GrantConstraint>(map['constraints'], (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      grantCreationTokens: map['grantCreationTokens'] == null ? null : ((map['grantCreationTokens'] as List).cast<String>()).input(),
+      constraints: map['constraints'] == null ? null : ((pulumi.Input.decodeList<GrantConstraint>(map['constraints']!, (value) => GrantConstraint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      grantCreationTokens: map['grantCreationTokens'] == null ? null : (((map['grantCreationTokens'] as List).cast<String>()).input()).input(),
       granteePrincipal: (map['granteePrincipal'] as String).input(),
       keyId: (map['keyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       operations: ((map['operations'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retireOnDelete: map['retireOnDelete'] == null ? null : (map['retireOnDelete'] as bool).input(),
-      retiringPrincipal: map['retiringPrincipal'] == null ? null : (map['retiringPrincipal'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retireOnDelete: map['retireOnDelete'] == null ? null : ((map['retireOnDelete'] as bool).input()).input(),
+      retiringPrincipal: map['retiringPrincipal'] == null ? null : ((map['retiringPrincipal'] as String).input()).input(),
     );
   }
 }

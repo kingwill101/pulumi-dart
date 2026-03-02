@@ -35,9 +35,9 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence {
 
   factory PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence(
-      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence'] as Map).cast<String, dynamic>())).input(),
-      refreshFrequency: map['refreshFrequency'] == null ? null : (map['refreshFrequency'] as String).input(),
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence.fromMap((map['schemaModifiedCadence'] as Map).cast<String, dynamic>())).input(),
+      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence']! as Map).cast<String, dynamic>())).input(),
+      refreshFrequency: map['refreshFrequency'] == null ? null : (map['refreshFrequency']! as String).input(),
+      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : (PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence.fromMap((map['schemaModifiedCadence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

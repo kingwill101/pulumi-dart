@@ -41,11 +41,11 @@ class ApiDeploymentParameterMetadataResponse {
 
   factory ApiDeploymentParameterMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ApiDeploymentParameterMetadataResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      isRequired: map['isRequired'] == null ? null : (map['isRequired'] as bool).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      isRequired: map['isRequired'] == null ? null : (map['isRequired']! as bool).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

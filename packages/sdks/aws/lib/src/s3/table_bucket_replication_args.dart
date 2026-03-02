@@ -40,9 +40,9 @@ class TableBucketReplicationArgs {
 
   factory TableBucketReplicationArgs.fromMap(Map<String, dynamic> map) {
     return TableBucketReplicationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       role: (map['role'] as String).input(),
-      rule: map['rule'] == null ? null : (TableBucketReplicationRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
+      rule: map['rule'] == null ? null : ((TableBucketReplicationRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
       tableBucketArn: (map['tableBucketArn'] as String).input(),
     );
   }

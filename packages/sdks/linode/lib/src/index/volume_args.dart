@@ -61,14 +61,14 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      encryption: map['encryption'] == null ? null : (map['encryption'] as String).input(),
+      encryption: map['encryption'] == null ? null : (map['encryption']! as String).input(),
       label: (map['label'] as String).input(),
-      linodeId: map['linodeId'] == null ? null : (map['linodeId'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      sourceVolumeId: map['sourceVolumeId'] == null ? null : (map['sourceVolumeId'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (VolumeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      linodeId: map['linodeId'] == null ? null : (map['linodeId']! as int).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      sourceVolumeId: map['sourceVolumeId'] == null ? null : (map['sourceVolumeId']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      timeouts: map['timeouts'] == null ? null : (VolumeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

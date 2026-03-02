@@ -31,7 +31,7 @@ class GetImageIamPolicyArgs {
   factory GetImageIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetImageIamPolicyArgs(
       image: (map['image'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

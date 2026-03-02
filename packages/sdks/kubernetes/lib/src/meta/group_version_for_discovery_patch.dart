@@ -26,8 +26,8 @@ class GroupVersionForDiscoveryPatch {
 
   factory GroupVersionForDiscoveryPatch.fromMap(Map<String, dynamic> map) {
     return GroupVersionForDiscoveryPatch(
-      groupVersion: map['groupVersion'] == null ? null : (map['groupVersion'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      groupVersion: map['groupVersion'] == null ? null : (map['groupVersion']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

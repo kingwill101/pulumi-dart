@@ -25,7 +25,7 @@ class AppImageConfigKernelGatewayImageConfigKernelSpec {
 
   factory AppImageConfigKernelGatewayImageConfigKernelSpec.fromMap(Map<String, dynamic> map) {
     return AppImageConfigKernelGatewayImageConfigKernelSpec(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
       name: (map['name'] as String).input(),
     );
   }

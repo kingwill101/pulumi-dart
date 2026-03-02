@@ -96,20 +96,20 @@ class ServicePlanState {
 
   factory ServicePlanState.fromMap(Map<String, dynamic> map) {
     return ServicePlanState(
-      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : (map['appServiceEnvironmentId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : (map['maximumElasticWorkerCount'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      perSiteScalingEnabled: map['perSiteScalingEnabled'] == null ? null : (map['perSiteScalingEnabled'] as bool).input(),
-      premiumPlanAutoScaleEnabled: map['premiumPlanAutoScaleEnabled'] == null ? null : (map['premiumPlanAutoScaleEnabled'] as bool).input(),
-      reserved: map['reserved'] == null ? null : (map['reserved'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skuName: map['skuName'] == null ? null : (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workerCount: map['workerCount'] == null ? null : (map['workerCount'] as int).input(),
-      zoneBalancingEnabled: map['zoneBalancingEnabled'] == null ? null : (map['zoneBalancingEnabled'] as bool).input(),
+      appServiceEnvironmentId: map['appServiceEnvironmentId'] == null ? null : (map['appServiceEnvironmentId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumElasticWorkerCount: map['maximumElasticWorkerCount'] == null ? null : (map['maximumElasticWorkerCount']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      perSiteScalingEnabled: map['perSiteScalingEnabled'] == null ? null : (map['perSiteScalingEnabled']! as bool).input(),
+      premiumPlanAutoScaleEnabled: map['premiumPlanAutoScaleEnabled'] == null ? null : (map['premiumPlanAutoScaleEnabled']! as bool).input(),
+      reserved: map['reserved'] == null ? null : (map['reserved']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skuName: map['skuName'] == null ? null : (map['skuName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workerCount: map['workerCount'] == null ? null : (map['workerCount']! as int).input(),
+      zoneBalancingEnabled: map['zoneBalancingEnabled'] == null ? null : (map['zoneBalancingEnabled']! as bool).input(),
     );
   }
 }

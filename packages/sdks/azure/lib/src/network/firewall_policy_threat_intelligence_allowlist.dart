@@ -25,8 +25,8 @@ class FirewallPolicyThreatIntelligenceAllowlist {
 
   factory FirewallPolicyThreatIntelligenceAllowlist.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyThreatIntelligenceAllowlist(
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
     );
   }
 }

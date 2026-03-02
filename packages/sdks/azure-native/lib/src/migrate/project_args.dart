@@ -50,12 +50,12 @@ class ProjectArgs {
 
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
+      properties: map['properties'] == null ? null : (ProjectProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : (map['tags']).input(),
+      tags: map['tags'] == null ? null : (map['tags']!).input(),
     );
   }
 }

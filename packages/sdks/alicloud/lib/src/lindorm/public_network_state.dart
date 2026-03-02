@@ -36,10 +36,10 @@ class PublicNetworkState {
 
   factory PublicNetworkState.fromMap(Map<String, dynamic> map) {
     return PublicNetworkState(
-      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork'] as int).input(),
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      enablePublicNetwork: map['enablePublicNetwork'] == null ? null : (map['enablePublicNetwork']! as int).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

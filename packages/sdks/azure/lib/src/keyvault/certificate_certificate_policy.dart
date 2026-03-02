@@ -47,9 +47,9 @@ class CertificateCertificatePolicy {
     return CertificateCertificatePolicy(
       issuerParameters: (CertificateCertificatePolicyIssuerParameters.fromMap((map['issuerParameters'] as Map).cast<String, dynamic>())).input(),
       keyProperties: (CertificateCertificatePolicyKeyProperties.fromMap((map['keyProperties'] as Map).cast<String, dynamic>())).input(),
-      lifetimeActions: map['lifetimeActions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificatePolicyLifetimeAction>(map['lifetimeActions'], (value) => CertificateCertificatePolicyLifetimeAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifetimeActions: map['lifetimeActions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificatePolicyLifetimeAction>(map['lifetimeActions']!, (value) => CertificateCertificatePolicyLifetimeAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       secretProperties: (CertificateCertificatePolicySecretProperties.fromMap((map['secretProperties'] as Map).cast<String, dynamic>())).input(),
-      x509CertificateProperties: map['x509CertificateProperties'] == null ? null : (CertificateCertificatePolicyX509CertificateProperties.fromMap((map['x509CertificateProperties'] as Map).cast<String, dynamic>())).input(),
+      x509CertificateProperties: map['x509CertificateProperties'] == null ? null : (CertificateCertificatePolicyX509CertificateProperties.fromMap((map['x509CertificateProperties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

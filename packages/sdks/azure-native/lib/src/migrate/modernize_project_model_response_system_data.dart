@@ -47,12 +47,12 @@ class ModernizeProjectModelResponseSystemData {
 
   factory ModernizeProjectModelResponseSystemData.fromMap(Map<String, dynamic> map) {
     return ModernizeProjectModelResponseSystemData(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      createdByType: map['createdByType'] == null ? null : (map['createdByType'] as String).input(),
-      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt'] as String).input(),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy'] as String).input(),
-      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
+      createdByType: map['createdByType'] == null ? null : (map['createdByType']! as String).input(),
+      lastModifiedAt: map['lastModifiedAt'] == null ? null : (map['lastModifiedAt']! as String).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : (map['lastModifiedBy']! as String).input(),
+      lastModifiedByType: map['lastModifiedByType'] == null ? null : (map['lastModifiedByType']! as String).input(),
     );
   }
 }

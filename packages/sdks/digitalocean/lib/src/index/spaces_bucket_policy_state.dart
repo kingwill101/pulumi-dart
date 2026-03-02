@@ -31,9 +31,9 @@ class SpacesBucketPolicyState {
 
   factory SpacesBucketPolicyState.fromMap(Map<String, dynamic> map) {
     return SpacesBucketPolicyState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

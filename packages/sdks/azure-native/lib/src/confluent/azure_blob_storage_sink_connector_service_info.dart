@@ -38,9 +38,9 @@ class AzureBlobStorageSinkConnectorServiceInfo {
   factory AzureBlobStorageSinkConnectorServiceInfo.fromMap(Map<String, dynamic> map) {
     return AzureBlobStorageSinkConnectorServiceInfo(
       connectorServiceType: (map['connectorServiceType'] as String).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
-      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
+      storageContainerName: map['storageContainerName'] == null ? null : (map['storageContainerName']! as String).input(),
     );
   }
 }

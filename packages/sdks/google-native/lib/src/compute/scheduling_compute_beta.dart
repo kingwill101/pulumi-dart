@@ -92,20 +92,20 @@ class SchedulingComputeBeta {
 
   factory SchedulingComputeBeta.fromMap(Map<String, dynamic> map) {
     return SchedulingComputeBeta(
-      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart'] as bool).input(),
-      hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] == null ? null : (map['hostErrorTimeoutSeconds'] as int).input(),
-      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (SchedulingInstanceTerminationActionComputeBeta.fromValue(map['instanceTerminationAction'] as String)).input(),
-      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (DurationComputeBeta.fromMap((map['localSsdRecoveryTimeout'] as Map).cast<String, dynamic>())).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : (map['maintenanceFreezeDurationHours'] as int).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (SchedulingMaintenanceIntervalComputeBeta.fromValue(map['maintenanceInterval'] as String)).input(),
-      maxRunDuration: map['maxRunDuration'] == null ? null : (DurationComputeBeta.fromMap((map['maxRunDuration'] as Map).cast<String, dynamic>())).input(),
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
-      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinityComputeBeta>(map['nodeAffinities'], (value) => SchedulingNodeAffinityComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : (SchedulingOnHostMaintenanceComputeBeta.fromValue(map['onHostMaintenance'] as String)).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      provisioningModel: map['provisioningModel'] == null ? null : (SchedulingProvisioningModelComputeBeta.fromValue(map['provisioningModel'] as String)).input(),
-      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime'] as String).input(),
+      automaticRestart: map['automaticRestart'] == null ? null : (map['automaticRestart']! as bool).input(),
+      hostErrorTimeoutSeconds: map['hostErrorTimeoutSeconds'] == null ? null : (map['hostErrorTimeoutSeconds']! as int).input(),
+      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : (SchedulingInstanceTerminationActionComputeBeta.fromValue(map['instanceTerminationAction']! as String)).input(),
+      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : (DurationComputeBeta.fromMap((map['localSsdRecoveryTimeout']! as Map).cast<String, dynamic>())).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : (map['maintenanceFreezeDurationHours']! as int).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (SchedulingMaintenanceIntervalComputeBeta.fromValue(map['maintenanceInterval']! as String)).input(),
+      maxRunDuration: map['maxRunDuration'] == null ? null : (DurationComputeBeta.fromMap((map['maxRunDuration']! as Map).cast<String, dynamic>())).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
+      nodeAffinities: map['nodeAffinities'] == null ? null : (pulumi.Input.decodeList<SchedulingNodeAffinityComputeBeta>(map['nodeAffinities']!, (value) => SchedulingNodeAffinityComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      onHostMaintenance: map['onHostMaintenance'] == null ? null : (SchedulingOnHostMaintenanceComputeBeta.fromValue(map['onHostMaintenance']! as String)).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      provisioningModel: map['provisioningModel'] == null ? null : (SchedulingProvisioningModelComputeBeta.fromValue(map['provisioningModel']! as String)).input(),
+      terminationTime: map['terminationTime'] == null ? null : (map['terminationTime']! as String).input(),
     );
   }
 }

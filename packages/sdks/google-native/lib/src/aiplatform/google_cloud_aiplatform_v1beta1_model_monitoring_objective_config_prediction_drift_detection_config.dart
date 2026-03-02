@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftD
 
   factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfig(
-      attributionScoreDriftThresholds: map['attributionScoreDriftThresholds'] == null ? null : ((map['attributionScoreDriftThresholds'] as Map).cast<String, String>()).input(),
-      defaultDriftThreshold: map['defaultDriftThreshold'] == null ? null : (GoogleCloudAiplatformV1beta1ThresholdConfig.fromMap((map['defaultDriftThreshold'] as Map).cast<String, dynamic>())).input(),
-      driftThresholds: map['driftThresholds'] == null ? null : ((map['driftThresholds'] as Map).cast<String, String>()).input(),
+      attributionScoreDriftThresholds: map['attributionScoreDriftThresholds'] == null ? null : ((map['attributionScoreDriftThresholds']! as Map).cast<String, String>()).input(),
+      defaultDriftThreshold: map['defaultDriftThreshold'] == null ? null : (GoogleCloudAiplatformV1beta1ThresholdConfig.fromMap((map['defaultDriftThreshold']! as Map).cast<String, dynamic>())).input(),
+      driftThresholds: map['driftThresholds'] == null ? null : ((map['driftThresholds']! as Map).cast<String, String>()).input(),
     );
   }
 }

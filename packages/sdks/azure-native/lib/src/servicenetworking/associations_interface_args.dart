@@ -55,12 +55,12 @@ class AssociationsInterfaceArgs {
 
   factory AssociationsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return AssociationsInterfaceArgs(
-      associationName: map['associationName'] == null ? null : (map['associationName'] as String).input(),
+      associationName: map['associationName'] == null ? null : (map['associationName']! as String).input(),
       associationType: (map['associationType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (AssociationSubnet.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subnet: map['subnet'] == null ? null : (AssociationSubnet.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       trafficControllerName: (map['trafficControllerName'] as String).input(),
     );
   }

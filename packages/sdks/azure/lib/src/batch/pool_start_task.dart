@@ -54,12 +54,12 @@ class PoolStartTask {
   factory PoolStartTask.fromMap(Map<String, dynamic> map) {
     return PoolStartTask(
       commandLine: (map['commandLine'] as String).input(),
-      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties'] as Map).cast<String, String>()).input(),
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<PoolStartTaskContainer>(map['containers'], (value) => PoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceFiles: map['resourceFiles'] == null ? null : (pulumi.Input.decodeList<PoolStartTaskResourceFile>(map['resourceFiles'], (value) => PoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      taskRetryMaximum: map['taskRetryMaximum'] == null ? null : (map['taskRetryMaximum'] as int).input(),
+      commonEnvironmentProperties: map['commonEnvironmentProperties'] == null ? null : ((map['commonEnvironmentProperties']! as Map).cast<String, String>()).input(),
+      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<PoolStartTaskContainer>(map['containers']!, (value) => PoolStartTaskContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceFiles: map['resourceFiles'] == null ? null : (pulumi.Input.decodeList<PoolStartTaskResourceFile>(map['resourceFiles']!, (value) => PoolStartTaskResourceFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskRetryMaximum: map['taskRetryMaximum'] == null ? null : (map['taskRetryMaximum']! as int).input(),
       userIdentity: (PoolStartTaskUserIdentity.fromMap((map['userIdentity'] as Map).cast<String, dynamic>())).input(),
-      waitForSuccess: map['waitForSuccess'] == null ? null : (map['waitForSuccess'] as bool).input(),
+      waitForSuccess: map['waitForSuccess'] == null ? null : (map['waitForSuccess']! as bool).input(),
     );
   }
 }

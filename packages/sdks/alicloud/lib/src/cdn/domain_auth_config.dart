@@ -31,10 +31,10 @@ class DomainAuthConfig {
 
   factory DomainAuthConfig.fromMap(Map<String, dynamic> map) {
     return DomainAuthConfig(
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      masterKey: map['masterKey'] == null ? null : (map['masterKey'] as String).input(),
-      slaveKey: map['slaveKey'] == null ? null : (map['slaveKey'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      masterKey: map['masterKey'] == null ? null : (map['masterKey']! as String).input(),
+      slaveKey: map['slaveKey'] == null ? null : (map['slaveKey']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

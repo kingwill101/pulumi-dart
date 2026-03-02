@@ -52,13 +52,13 @@ class ComponentVersionResponse {
 
   factory ComponentVersionResponse.fromMap(Map<String, dynamic> map) {
     return ComponentVersionResponse(
-      componentSpec: map['componentSpec'] == null ? null : (map['componentSpec']).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      componentSpec: map['componentSpec'] == null ? null : (map['componentSpec']!).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

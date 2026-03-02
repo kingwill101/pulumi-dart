@@ -106,21 +106,21 @@ class GatewayPropertiesResponse {
 
   factory GatewayPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayPropertiesResponse(
-      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
-      apiMetadataProperties: map['apiMetadataProperties'] == null ? null : (GatewayApiMetadataPropertiesResponse.fromMap((map['apiMetadataProperties'] as Map).cast<String, dynamic>())).input(),
-      apmTypes: map['apmTypes'] == null ? null : ((map['apmTypes'] as List).cast<String>()).input(),
-      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReferenceResponse>(map['apms'], (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      clientAuth: map['clientAuth'] == null ? null : (GatewayPropertiesResponseClientAuth.fromMap((map['clientAuth'] as Map).cast<String, dynamic>())).input(),
-      corsProperties: map['corsProperties'] == null ? null : (GatewayCorsPropertiesResponse.fromMap((map['corsProperties'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (GatewayPropertiesResponseEnvironmentVariables.fromMap((map['environmentVariables'] as Map).cast<String, dynamic>())).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs']! as Map).cast<String, dynamic>()).input(),
+      apiMetadataProperties: map['apiMetadataProperties'] == null ? null : (GatewayApiMetadataPropertiesResponse.fromMap((map['apiMetadataProperties']! as Map).cast<String, dynamic>())).input(),
+      apmTypes: map['apmTypes'] == null ? null : ((map['apmTypes']! as List).cast<String>()).input(),
+      apms: map['apms'] == null ? null : (pulumi.Input.decodeList<ApmReferenceResponse>(map['apms']!, (value) => ApmReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAuth: map['clientAuth'] == null ? null : (GatewayPropertiesResponseClientAuth.fromMap((map['clientAuth']! as Map).cast<String, dynamic>())).input(),
+      corsProperties: map['corsProperties'] == null ? null : (GatewayCorsPropertiesResponse.fromMap((map['corsProperties']! as Map).cast<String, dynamic>())).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (GatewayPropertiesResponseEnvironmentVariables.fromMap((map['environmentVariables']! as Map).cast<String, dynamic>())).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
       instances: (pulumi.Input.decodeList<GatewayInstanceResponse>(map['instances'], (value) => GatewayInstanceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       operatorProperties: (GatewayOperatorPropertiesResponse.fromMap((map['operatorProperties'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      resourceRequests: map['resourceRequests'] == null ? null : (GatewayResourceRequestsResponse.fromMap((map['resourceRequests'] as Map).cast<String, dynamic>())).input(),
-      responseCacheProperties: map['responseCacheProperties'] == null ? null : (GatewayLocalResponseCachePerInstancePropertiesResponse.fromMap((map['responseCacheProperties'] as Map).cast<String, dynamic>())).input(),
-      ssoProperties: map['ssoProperties'] == null ? null : (SsoPropertiesResponse.fromMap((map['ssoProperties'] as Map).cast<String, dynamic>())).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      resourceRequests: map['resourceRequests'] == null ? null : (GatewayResourceRequestsResponse.fromMap((map['resourceRequests']! as Map).cast<String, dynamic>())).input(),
+      responseCacheProperties: map['responseCacheProperties'] == null ? null : (GatewayLocalResponseCachePerInstancePropertiesResponse.fromMap((map['responseCacheProperties']! as Map).cast<String, dynamic>())).input(),
+      ssoProperties: map['ssoProperties'] == null ? null : (SsoPropertiesResponse.fromMap((map['ssoProperties']! as Map).cast<String, dynamic>())).input(),
       url: (map['url'] as String).input(),
     );
   }

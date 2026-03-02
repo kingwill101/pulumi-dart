@@ -60,14 +60,14 @@ class VirtualMachineScaleSetPublicIPAddressConfiguration {
 
   factory VirtualMachineScaleSetPublicIPAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetPublicIPAddressConfiguration(
-      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption'] as String).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetIpTag>(map['ipTags'], (value) => VirtualMachineScaleSetIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteOption: map['deleteOption'] == null ? null : (map['deleteOption']! as String).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      ipTags: map['ipTags'] == null ? null : (pulumi.Input.decodeList<VirtualMachineScaleSetIpTag>(map['ipTags']!, (value) => VirtualMachineScaleSetIpTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion'] as String).input(),
-      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResource.fromMap((map['publicIPPrefix'] as Map).cast<String, dynamic>())).input(),
-      sku: map['sku'] == null ? null : (PublicIPAddressSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
+      publicIPAddressVersion: map['publicIPAddressVersion'] == null ? null : (map['publicIPAddressVersion']! as String).input(),
+      publicIPPrefix: map['publicIPPrefix'] == null ? null : (SubResource.fromMap((map['publicIPPrefix']! as Map).cast<String, dynamic>())).input(),
+      sku: map['sku'] == null ? null : (PublicIPAddressSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

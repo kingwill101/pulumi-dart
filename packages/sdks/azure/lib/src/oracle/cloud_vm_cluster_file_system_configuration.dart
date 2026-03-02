@@ -25,8 +25,8 @@ class CloudVmClusterFileSystemConfiguration {
 
   factory CloudVmClusterFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterFileSystemConfiguration(
-      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint'] as String).input(),
-      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb'] as int).input(),
+      mountPoint: map['mountPoint'] == null ? null : (map['mountPoint']! as String).input(),
+      sizeInGb: map['sizeInGb'] == null ? null : (map['sizeInGb']! as int).input(),
     );
   }
 }

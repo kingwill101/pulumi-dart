@@ -36,9 +36,9 @@ class SiteConnectionDpd {
 
   factory SiteConnectionDpd.fromMap(Map<String, dynamic> map) {
     return SiteConnectionDpd(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ArtifactHashes {
 
   factory ArtifactHashes.fromMap(Map<String, dynamic> map) {
     return ArtifactHashes(
-      sha256: map['sha256'] == null ? null : (map['sha256'] as String).input(),
+      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
     );
   }
 }

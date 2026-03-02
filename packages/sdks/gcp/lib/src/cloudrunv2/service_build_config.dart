@@ -61,15 +61,15 @@ class ServiceBuildConfig {
 
   factory ServiceBuildConfig.fromMap(Map<String, dynamic> map) {
     return ServiceBuildConfig(
-      baseImage: map['baseImage'] == null ? null : (map['baseImage'] as String).input(),
-      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates'] as bool).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      functionTarget: map['functionTarget'] == null ? null : (map['functionTarget'] as String).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation'] as String).input(),
-      workerPool: map['workerPool'] == null ? null : (map['workerPool'] as String).input(),
+      baseImage: map['baseImage'] == null ? null : (map['baseImage']! as String).input(),
+      enableAutomaticUpdates: map['enableAutomaticUpdates'] == null ? null : (map['enableAutomaticUpdates']! as bool).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      functionTarget: map['functionTarget'] == null ? null : (map['functionTarget']! as String).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      sourceLocation: map['sourceLocation'] == null ? null : (map['sourceLocation']! as String).input(),
+      workerPool: map['workerPool'] == null ? null : (map['workerPool']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GoogleCloudDatalabelingV1beta1TextMetadata {
 
   factory GoogleCloudDatalabelingV1beta1TextMetadata.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatalabelingV1beta1TextMetadata(
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
     );
   }
 }

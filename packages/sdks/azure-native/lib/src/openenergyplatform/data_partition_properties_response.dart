@@ -26,8 +26,8 @@ class DataPartitionPropertiesResponse {
 
   factory DataPartitionPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DataPartitionPropertiesResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
     );
   }
 }

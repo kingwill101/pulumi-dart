@@ -40,9 +40,9 @@ class WebAppAssessmentV3OperationArgs {
 
   factory WebAppAssessmentV3OperationArgs.fromMap(Map<String, dynamic> map) {
     return WebAppAssessmentV3OperationArgs(
-      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName'] as String).input(),
+      assessmentName: map['assessmentName'] == null ? null : (map['assessmentName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (WebAppAssessmentV3Properties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (WebAppAssessmentV3Properties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

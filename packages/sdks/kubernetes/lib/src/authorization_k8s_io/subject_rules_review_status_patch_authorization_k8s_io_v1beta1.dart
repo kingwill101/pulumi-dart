@@ -38,10 +38,10 @@ class SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1 {
 
   factory SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SubjectRulesReviewStatusPatchAuthorizationK8sIoV1beta1(
-      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError'] as String).input(),
-      incomplete: map['incomplete'] == null ? null : (map['incomplete'] as bool).input(),
-      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourceRulePatchAuthorizationK8sIoV1beta1>(map['nonResourceRules'], (value) => NonResourceRulePatchAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourceRulePatchAuthorizationK8sIoV1beta1>(map['resourceRules'], (value) => ResourceRulePatchAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError']! as String).input(),
+      incomplete: map['incomplete'] == null ? null : (map['incomplete']! as bool).input(),
+      nonResourceRules: map['nonResourceRules'] == null ? null : (pulumi.Input.decodeList<NonResourceRulePatchAuthorizationK8sIoV1beta1>(map['nonResourceRules']!, (value) => NonResourceRulePatchAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceRules: map['resourceRules'] == null ? null : (pulumi.Input.decodeList<ResourceRulePatchAuthorizationK8sIoV1beta1>(map['resourceRules']!, (value) => ResourceRulePatchAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -82,7 +82,7 @@ class GetTopicResult {
       messageStoragePolicies: pulumi.Input.decodeList<GetTopicMessageStoragePolicy>(map['messageStoragePolicies'], (value) => GetTopicMessageStoragePolicy.fromMap((value as Map).cast<String, dynamic>())),
       messageTransforms: pulumi.Input.decodeList<GetTopicMessageTransform>(map['messageTransforms'], (value) => GetTopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       schemaSettings: pulumi.Input.decodeList<GetTopicSchemaSetting>(map['schemaSettings'], (value) => GetTopicSchemaSetting.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),

@@ -26,8 +26,8 @@ class PrivateClusterConfigWorkstationsV1beta {
 
   factory PrivateClusterConfigWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return PrivateClusterConfigWorkstationsV1beta(
-      allowedProjects: map['allowedProjects'] == null ? null : ((map['allowedProjects'] as List).cast<String>()).input(),
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint'] as bool).input(),
+      allowedProjects: map['allowedProjects'] == null ? null : ((map['allowedProjects']! as List).cast<String>()).input(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : (map['enablePrivateEndpoint']! as bool).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class FrontdoorBackendPoolHealthProbe {
 
   factory FrontdoorBackendPoolHealthProbe.fromMap(Map<String, dynamic> map) {
     return FrontdoorBackendPoolHealthProbe(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      intervalInSeconds: map['intervalInSeconds'] == null ? null : (map['intervalInSeconds']! as int).input(),
       name: (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      probeMethod: map['probeMethod'] == null ? null : (map['probeMethod'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      probeMethod: map['probeMethod'] == null ? null : (map['probeMethod']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

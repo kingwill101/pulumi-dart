@@ -51,13 +51,13 @@ class ChannelEncoderSettingsVideoDescription {
 
   factory ChannelEncoderSettingsVideoDescription.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescription(
-      codecSettings: map['codecSettings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettings.fromMap((map['codecSettings'] as Map).cast<String, dynamic>())).input(),
-      height: map['height'] == null ? null : (map['height'] as int).input(),
+      codecSettings: map['codecSettings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettings.fromMap((map['codecSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      height: map['height'] == null ? null : ((map['height'] as int).input()).input(),
       name: (map['name'] as String).input(),
-      respondToAfd: map['respondToAfd'] == null ? null : (map['respondToAfd'] as String).input(),
-      scalingBehavior: map['scalingBehavior'] == null ? null : (map['scalingBehavior'] as String).input(),
-      sharpness: map['sharpness'] == null ? null : (map['sharpness'] as int).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
+      respondToAfd: map['respondToAfd'] == null ? null : ((map['respondToAfd'] as String).input()).input(),
+      scalingBehavior: map['scalingBehavior'] == null ? null : ((map['scalingBehavior'] as String).input()).input(),
+      sharpness: map['sharpness'] == null ? null : ((map['sharpness'] as int).input()).input(),
+      width: map['width'] == null ? null : ((map['width'] as int).input()).input(),
     );
   }
 }

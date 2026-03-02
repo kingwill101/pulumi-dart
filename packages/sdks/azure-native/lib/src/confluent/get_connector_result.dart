@@ -60,11 +60,11 @@ class GetConnectorResult {
   factory GetConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : ConnectorInfoBaseResponse.fromMap((map['connectorBasicInfo'] as Map).cast<String, dynamic>()),
-      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap((map['connectorServiceTypeInfo'] as Map).cast<String, dynamic>()),
+      connectorBasicInfo: map['connectorBasicInfo'] == null ? null : ConnectorInfoBaseResponse.fromMap((map['connectorBasicInfo']! as Map).cast<String, dynamic>()),
+      connectorServiceTypeInfo: map['connectorServiceTypeInfo'] == null ? null : AzureBlobStorageSinkConnectorServiceInfoResponse.fromMap((map['connectorServiceTypeInfo']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap((map['partnerConnectorInfo'] as Map).cast<String, dynamic>()),
+      partnerConnectorInfo: map['partnerConnectorInfo'] == null ? null : KafkaAzureBlobStorageSinkConnectorInfoResponse.fromMap((map['partnerConnectorInfo']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

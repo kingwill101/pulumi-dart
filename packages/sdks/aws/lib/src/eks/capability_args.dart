@@ -67,12 +67,12 @@ class CapabilityArgs {
     return CapabilityArgs(
       capabilityName: (map['capabilityName'] as String).input(),
       clusterName: (map['clusterName'] as String).input(),
-      configuration: map['configuration'] == null ? null : (CapabilityConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      configuration: map['configuration'] == null ? null : ((CapabilityConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
       deletePropagationPolicy: (map['deletePropagationPolicy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (CapabilityTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((CapabilityTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

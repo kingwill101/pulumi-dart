@@ -42,11 +42,11 @@ class PerformanceResponse {
 
   factory PerformanceResponse.fromMap(Map<String, dynamic> map) {
     return PerformanceResponse(
-      actual: map['actual'] == null ? null : (map['actual'] as double).input(),
-      expected: map['expected'] == null ? null : (map['expected'] as double).input(),
-      expectedValueRange: map['expectedValueRange'] == null ? null : (ExpectedValueRangeResponse.fromMap((map['expectedValueRange'] as Map).cast<String, dynamic>())).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      actual: map['actual'] == null ? null : (map['actual']! as double).input(),
+      expected: map['expected'] == null ? null : (map['expected']! as double).input(),
+      expectedValueRange: map['expectedValueRange'] == null ? null : (ExpectedValueRangeResponse.fromMap((map['expectedValueRange']! as Map).cast<String, dynamic>())).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

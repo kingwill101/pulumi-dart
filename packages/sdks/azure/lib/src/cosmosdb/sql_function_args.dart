@@ -36,7 +36,7 @@ class SqlFunctionArgs {
     return SqlFunctionArgs(
       body: (map['body'] as String).input(),
       containerId: (map['containerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

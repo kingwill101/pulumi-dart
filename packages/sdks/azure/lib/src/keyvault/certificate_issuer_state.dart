@@ -52,13 +52,13 @@ class CertificateIssuerState {
 
   factory CertificateIssuerState.fromMap(Map<String, dynamic> map) {
     return CertificateIssuerState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      admins: map['admins'] == null ? null : (pulumi.Input.decodeList<CertificateIssuerAdmin>(map['admins'], (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      admins: map['admins'] == null ? null : (pulumi.Input.decodeList<CertificateIssuerAdmin>(map['admins']!, (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
     );
   }
 }

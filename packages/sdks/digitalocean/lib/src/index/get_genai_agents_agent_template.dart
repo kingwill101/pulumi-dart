@@ -78,17 +78,17 @@ class GetGenaiAgentsAgentTemplate {
   factory GetGenaiAgentsAgentTemplate.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentsAgentTemplate(
       createdAt: (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      instruction: map['instruction'] == null ? null : (map['instruction'] as String).input(),
-      k: map['k'] == null ? null : (map['k'] as int).input(),
-      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateKnowledgeBase>(map['knowledgeBases'], (value) => GetGenaiAgentsAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens'] as int).input(),
-      models: map['models'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateModel>(map['models'], (value) => GetGenaiAgentsAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
-      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      instruction: map['instruction'] == null ? null : (map['instruction']! as String).input(),
+      k: map['k'] == null ? null : (map['k']! as int).input(),
+      knowledgeBases: map['knowledgeBases'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateKnowledgeBase>(map['knowledgeBases']!, (value) => GetGenaiAgentsAgentTemplateKnowledgeBase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxTokens: map['maxTokens'] == null ? null : (map['maxTokens']! as int).input(),
+      models: map['models'] == null ? null : (pulumi.Input.decodeList<GetGenaiAgentsAgentTemplateModel>(map['models']!, (value) => GetGenaiAgentsAgentTemplateModel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
+      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
       updatedAt: (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

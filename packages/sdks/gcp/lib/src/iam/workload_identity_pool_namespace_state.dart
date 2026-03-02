@@ -76,14 +76,14 @@ class WorkloadIdentityPoolNamespaceState {
 
   factory WorkloadIdentityPoolNamespaceState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolNamespaceState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ownerServices: map['ownerServices'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(map['ownerServices'], (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId'] as String).input(),
-      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : (map['workloadIdentityPoolNamespaceId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ownerServices: map['ownerServices'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolNamespaceOwnerService>(map['ownerServices']!, (value) => WorkloadIdentityPoolNamespaceOwnerService.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId']! as String).input(),
+      workloadIdentityPoolNamespaceId: map['workloadIdentityPoolNamespaceId'] == null ? null : (map['workloadIdentityPoolNamespaceId']! as String).input(),
     );
   }
 }

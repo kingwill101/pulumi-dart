@@ -26,8 +26,8 @@ class BucketServerProperties {
 
   factory BucketServerProperties.fromMap(Map<String, dynamic> map) {
     return BucketServerProperties(
-      certificateObject: map['certificateObject'] == null ? null : (map['certificateObject'] as String).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
+      certificateObject: map['certificateObject'] == null ? null : (map['certificateObject']! as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
     );
   }
 }

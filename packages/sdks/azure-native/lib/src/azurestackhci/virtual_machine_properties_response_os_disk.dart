@@ -21,7 +21,7 @@ class VirtualMachinePropertiesResponseOsDisk {
 
   factory VirtualMachinePropertiesResponseOsDisk.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePropertiesResponseOsDisk(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

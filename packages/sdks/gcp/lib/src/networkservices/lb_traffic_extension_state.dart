@@ -80,16 +80,16 @@ class LbTrafficExtensionState {
 
   factory LbTrafficExtensionState.fromMap(Map<String, dynamic> map) {
     return LbTrafficExtensionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      extensionChains: map['extensionChains'] == null ? null : (pulumi.Input.decodeList<LbTrafficExtensionExtensionChain>(map['extensionChains'], (value) => LbTrafficExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      forwardingRules: map['forwardingRules'] == null ? null : ((map['forwardingRules'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : (map['loadBalancingScheme'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      extensionChains: map['extensionChains'] == null ? null : (pulumi.Input.decodeList<LbTrafficExtensionExtensionChain>(map['extensionChains']!, (value) => LbTrafficExtensionExtensionChain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      forwardingRules: map['forwardingRules'] == null ? null : ((map['forwardingRules']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : (map['loadBalancingScheme']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

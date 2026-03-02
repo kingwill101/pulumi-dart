@@ -44,11 +44,11 @@ class DomainDevicesVideo {
 
   factory DomainDevicesVideo.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideo(
-      acpi: map['acpi'] == null ? null : (DomainDevicesVideoAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesVideoAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesVideoDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (DomainDevicesVideoModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesVideoAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesVideoAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesVideoDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (DomainDevicesVideoModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

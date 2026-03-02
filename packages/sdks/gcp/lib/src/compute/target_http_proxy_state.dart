@@ -87,16 +87,16 @@ class TargetHttpProxyState {
 
   factory TargetHttpProxyState.fromMap(Map<String, dynamic> map) {
     return TargetHttpProxyState(
-      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind'] as bool).input(),
-      proxyId: map['proxyId'] == null ? null : (map['proxyId'] as int).input(),
-      selfLink: map['selfLink'] == null ? null : (map['selfLink'] as String).input(),
-      urlMap: map['urlMap'] == null ? null : (map['urlMap'] as String).input(),
+      creationTimestamp: map['creationTimestamp'] == null ? null : (map['creationTimestamp']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
+      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] == null ? null : (map['httpKeepAliveTimeoutSec']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxyBind: map['proxyBind'] == null ? null : (map['proxyBind']! as bool).input(),
+      proxyId: map['proxyId'] == null ? null : (map['proxyId']! as int).input(),
+      selfLink: map['selfLink'] == null ? null : (map['selfLink']! as String).input(),
+      urlMap: map['urlMap'] == null ? null : (map['urlMap']! as String).input(),
     );
   }
 }

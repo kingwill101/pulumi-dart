@@ -38,7 +38,7 @@ class UserMembershipV3Args {
   factory UserMembershipV3Args.fromMap(Map<String, dynamic> map) {
     return UserMembershipV3Args(
       groupId: (map['groupId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       userId: (map['userId'] as String).input(),
     );
   }

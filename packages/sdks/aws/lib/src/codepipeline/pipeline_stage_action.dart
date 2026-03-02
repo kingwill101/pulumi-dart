@@ -81,17 +81,17 @@ class PipelineStageAction {
   factory PipelineStageAction.fromMap(Map<String, dynamic> map) {
     return PipelineStageAction(
       category: (map['category'] as String).input(),
-      configuration: map['configuration'] == null ? null : ((map['configuration'] as Map).cast<String, String>()).input(),
-      inputArtifacts: map['inputArtifacts'] == null ? null : ((map['inputArtifacts'] as List).cast<String>()).input(),
+      configuration: map['configuration'] == null ? null : (((map['configuration'] as Map).cast<String, String>()).input()).input(),
+      inputArtifacts: map['inputArtifacts'] == null ? null : (((map['inputArtifacts'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      outputArtifacts: map['outputArtifacts'] == null ? null : ((map['outputArtifacts'] as List).cast<String>()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      outputArtifacts: map['outputArtifacts'] == null ? null : (((map['outputArtifacts'] as List).cast<String>()).input()).input(),
       owner: (map['owner'] as String).input(),
       provider: (map['provider'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      runOrder: map['runOrder'] == null ? null : (map['runOrder'] as int).input(),
-      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : (map['timeoutInMinutes'] as int).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      runOrder: map['runOrder'] == null ? null : ((map['runOrder'] as int).input()).input(),
+      timeoutInMinutes: map['timeoutInMinutes'] == null ? null : ((map['timeoutInMinutes'] as int).input()).input(),
       version: (map['version'] as String).input(),
     );
   }

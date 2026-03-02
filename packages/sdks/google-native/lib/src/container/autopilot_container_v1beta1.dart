@@ -32,9 +32,9 @@ class AutopilotContainerV1beta1 {
 
   factory AutopilotContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AutopilotContainerV1beta1(
-      conversionStatus: map['conversionStatus'] == null ? null : ((map['conversionStatus'] as Map).cast<String, dynamic>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : (WorkloadPolicyConfigContainerV1beta1.fromMap((map['workloadPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      conversionStatus: map['conversionStatus'] == null ? null : ((map['conversionStatus']! as Map).cast<String, dynamic>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      workloadPolicyConfig: map['workloadPolicyConfig'] == null ? null : (WorkloadPolicyConfigContainerV1beta1.fromMap((map['workloadPolicyConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

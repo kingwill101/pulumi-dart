@@ -41,11 +41,11 @@ class LaunchTemplateSpecificationResponse {
 
   factory LaunchTemplateSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateSpecificationResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId'] as String).input(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId']! as String).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

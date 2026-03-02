@@ -61,8 +61,8 @@ class BareMetalMachineConfigurationDataResponse {
       bmcCredentials: (AdministrativeCredentialsResponse.fromMap((map['bmcCredentials'] as Map).cast<String, dynamic>())).input(),
       bmcMacAddress: (map['bmcMacAddress'] as String).input(),
       bootMacAddress: (map['bootMacAddress'] as String).input(),
-      machineDetails: map['machineDetails'] == null ? null : (map['machineDetails'] as String).input(),
-      machineName: map['machineName'] == null ? null : (map['machineName'] as String).input(),
+      machineDetails: map['machineDetails'] == null ? null : (map['machineDetails']! as String).input(),
+      machineName: map['machineName'] == null ? null : (map['machineName']! as String).input(),
       rackSlot: (map['rackSlot'] as double).input(),
       serialNumber: (map['serialNumber'] as String).input(),
     );

@@ -37,10 +37,10 @@ class CassandraTableResource {
 
   factory CassandraTableResource.fromMap(Map<String, dynamic> map) {
     return CassandraTableResource(
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as int).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as int).input(),
       id: (map['id'] as String).input(),
-      schema: map['schema'] == null ? null : (CassandraSchema.fromMap((map['schema'] as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (CassandraSchema.fromMap((map['schema']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

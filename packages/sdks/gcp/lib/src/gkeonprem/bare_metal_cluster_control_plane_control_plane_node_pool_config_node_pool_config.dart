@@ -48,10 +48,10 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
 
   factory BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs'], (value) => BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem'] as String).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>(map['taints'], (value) => BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodeConfigs: map['nodeConfigs'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>(map['nodeConfigs']!, (value) => BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      operatingSystem: map['operatingSystem'] == null ? null : (map['operatingSystem']! as String).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>(map['taints']!, (value) => BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

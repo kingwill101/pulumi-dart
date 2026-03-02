@@ -27,8 +27,8 @@ class VirtualNetworkDnsForwardingRulesetResponse {
 
   factory VirtualNetworkDnsForwardingRulesetResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkDnsForwardingRulesetResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      virtualNetworkLink: map['virtualNetworkLink'] == null ? null : (SubResourceResponse.fromMap((map['virtualNetworkLink'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      virtualNetworkLink: map['virtualNetworkLink'] == null ? null : (SubResourceResponse.fromMap((map['virtualNetworkLink']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

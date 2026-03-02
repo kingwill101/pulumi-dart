@@ -21,7 +21,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParams {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesParams.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesParams(
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag>(map['resourceManagerTags'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : (pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag>(map['resourceManagerTags']!, (value) => RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -62,15 +62,15 @@ class OsProfileForVMInstanceResponse {
 
   factory OsProfileForVMInstanceResponse.fromMap(Map<String, dynamic> map) {
     return OsProfileForVMInstanceResponse(
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      guestId: map['guestId'] == null ? null : (map['guestId'] as String).input(),
+      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername']! as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      guestId: map['guestId'] == null ? null : (map['guestId']! as String).input(),
       osSku: (map['osSku'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
       toolsRunningStatus: (map['toolsRunningStatus'] as String).input(),
       toolsVersion: (map['toolsVersion'] as String).input(),
       toolsVersionStatus: (map['toolsVersionStatus'] as String).input(),
-      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfigurationResponse.fromMap((map['windowsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      windowsConfiguration: map['windowsConfiguration'] == null ? null : (WindowsConfigurationResponse.fromMap((map['windowsConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

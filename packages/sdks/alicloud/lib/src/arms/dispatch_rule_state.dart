@@ -60,14 +60,14 @@ class DispatchRuleState {
 
   factory DispatchRuleState.fromMap(Map<String, dynamic> map) {
     return DispatchRuleState(
-      dispatchRuleName: map['dispatchRuleName'] == null ? null : (map['dispatchRuleName'] as String).input(),
-      dispatchType: map['dispatchType'] == null ? null : (map['dispatchType'] as String).input(),
-      groupRules: map['groupRules'] == null ? null : (pulumi.Input.decodeList<DispatchRuleGroupRule>(map['groupRules'], (value) => DispatchRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isRecover: map['isRecover'] == null ? null : (map['isRecover'] as bool).input(),
-      labelMatchExpressionGrids: map['labelMatchExpressionGrids'] == null ? null : (pulumi.Input.decodeList<DispatchRuleLabelMatchExpressionGrid>(map['labelMatchExpressionGrids'], (value) => DispatchRuleLabelMatchExpressionGrid.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notifyRules: map['notifyRules'] == null ? null : (pulumi.Input.decodeList<DispatchRuleNotifyRule>(map['notifyRules'], (value) => DispatchRuleNotifyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notifyTemplates: map['notifyTemplates'] == null ? null : (pulumi.Input.decodeList<DispatchRuleNotifyTemplate>(map['notifyTemplates'], (value) => DispatchRuleNotifyTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      dispatchRuleName: map['dispatchRuleName'] == null ? null : (map['dispatchRuleName']! as String).input(),
+      dispatchType: map['dispatchType'] == null ? null : (map['dispatchType']! as String).input(),
+      groupRules: map['groupRules'] == null ? null : (pulumi.Input.decodeList<DispatchRuleGroupRule>(map['groupRules']!, (value) => DispatchRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isRecover: map['isRecover'] == null ? null : (map['isRecover']! as bool).input(),
+      labelMatchExpressionGrids: map['labelMatchExpressionGrids'] == null ? null : (pulumi.Input.decodeList<DispatchRuleLabelMatchExpressionGrid>(map['labelMatchExpressionGrids']!, (value) => DispatchRuleLabelMatchExpressionGrid.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notifyRules: map['notifyRules'] == null ? null : (pulumi.Input.decodeList<DispatchRuleNotifyRule>(map['notifyRules']!, (value) => DispatchRuleNotifyRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notifyTemplates: map['notifyTemplates'] == null ? null : (pulumi.Input.decodeList<DispatchRuleNotifyTemplate>(map['notifyTemplates']!, (value) => DispatchRuleNotifyTemplate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class RuntimePlatform {
 
   factory RuntimePlatform.fromMap(Map<String, dynamic> map) {
     return RuntimePlatform(
-      cpuArchitecture: map['cpuArchitecture'] == null ? null : (map['cpuArchitecture'] as String).input(),
-      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : (map['operatingSystemFamily'] as String).input(),
+      cpuArchitecture: map['cpuArchitecture'] == null ? null : (map['cpuArchitecture']! as String).input(),
+      operatingSystemFamily: map['operatingSystemFamily'] == null ? null : (map['operatingSystemFamily']! as String).input(),
     );
   }
 }

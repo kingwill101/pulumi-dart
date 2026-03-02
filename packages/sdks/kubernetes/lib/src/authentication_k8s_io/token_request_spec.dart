@@ -33,8 +33,8 @@ class TokenRequestSpec {
   factory TokenRequestSpec.fromMap(Map<String, dynamic> map) {
     return TokenRequestSpec(
       audiences: ((map['audiences'] as List).cast<String>()).input(),
-      boundObjectRef: map['boundObjectRef'] == null ? null : (BoundObjectReference.fromMap((map['boundObjectRef'] as Map).cast<String, dynamic>())).input(),
-      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds'] as int).input(),
+      boundObjectRef: map['boundObjectRef'] == null ? null : (BoundObjectReference.fromMap((map['boundObjectRef']! as Map).cast<String, dynamic>())).input(),
+      expirationSeconds: map['expirationSeconds'] == null ? null : (map['expirationSeconds']! as int).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class MasterAuthorizedNetworksConfigComposerV1beta1 {
 
   factory MasterAuthorizedNetworksConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfigComposerV1beta1(
-      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<CidrBlockComposerV1beta1>(map['cidrBlocks'], (value) => CidrBlockComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<CidrBlockComposerV1beta1>(map['cidrBlocks']!, (value) => CidrBlockComposerV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

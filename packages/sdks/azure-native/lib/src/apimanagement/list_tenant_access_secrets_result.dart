@@ -40,11 +40,11 @@ class ListTenantAccessSecretsResult {
 
   factory ListTenantAccessSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListTenantAccessSecretsResult(
-      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      id: map['id'] == null ? null : map['id'] as String,
-      primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as String,
-      principalId: map['principalId'] == null ? null : map['principalId'] as String,
-      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey'] as String,
+      enabled: map['enabled'] == null ? null : map['enabled']! as bool,
+      id: map['id'] == null ? null : map['id']! as String,
+      primaryKey: map['primaryKey'] == null ? null : map['primaryKey']! as String,
+      principalId: map['principalId'] == null ? null : map['principalId']! as String,
+      secondaryKey: map['secondaryKey'] == null ? null : map['secondaryKey']! as String,
     );
   }
 }

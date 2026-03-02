@@ -22,7 +22,7 @@ class EnterprisePolicyIdentity {
 
   factory EnterprisePolicyIdentity.fromMap(Map<String, dynamic> map) {
     return EnterprisePolicyIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
     );
   }
 }

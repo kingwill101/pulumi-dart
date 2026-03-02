@@ -34,7 +34,7 @@ class GetPolicySetDefinitionAtManagementGroupArgs {
 
   factory GetPolicySetDefinitionAtManagementGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicySetDefinitionAtManagementGroupArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       managementGroupId: (map['managementGroupId'] as String).input(),
       policySetDefinitionName: (map['policySetDefinitionName'] as String).input(),
     );

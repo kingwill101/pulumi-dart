@@ -44,10 +44,10 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
 
   factory AiReasoningEngineSpecSourceCodeSpecPythonSpec.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineSpecSourceCodeSpecPythonSpec(
-      entrypointModule: map['entrypointModule'] == null ? null : (map['entrypointModule'] as String).input(),
-      entrypointObject: map['entrypointObject'] == null ? null : (map['entrypointObject'] as String).input(),
-      requirementsFile: map['requirementsFile'] == null ? null : (map['requirementsFile'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      entrypointModule: map['entrypointModule'] == null ? null : (map['entrypointModule']! as String).input(),
+      entrypointObject: map['entrypointObject'] == null ? null : (map['entrypointObject']! as String).input(),
+      requirementsFile: map['requirementsFile'] == null ? null : (map['requirementsFile']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

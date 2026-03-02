@@ -26,8 +26,8 @@ class AgentcoreBrowserRecording {
 
   factory AgentcoreBrowserRecording.fromMap(Map<String, dynamic> map) {
     return AgentcoreBrowserRecording(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      s3Location: map['s3Location'] == null ? null : (AgentcoreBrowserRecordingS3Location.fromMap((map['s3Location'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      s3Location: map['s3Location'] == null ? null : ((AgentcoreBrowserRecordingS3Location.fromMap((map['s3Location']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

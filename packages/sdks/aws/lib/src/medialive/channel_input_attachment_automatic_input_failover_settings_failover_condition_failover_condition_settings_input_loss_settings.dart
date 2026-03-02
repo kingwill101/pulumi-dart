@@ -20,7 +20,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailo
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettingsInputLossSettings(
-      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null ? null : (map['inputLossThresholdMsec'] as int).input(),
+      inputLossThresholdMsec: map['inputLossThresholdMsec'] == null ? null : ((map['inputLossThresholdMsec'] as int).input()).input(),
     );
   }
 }

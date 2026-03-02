@@ -31,7 +31,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig
 
   factory GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig(
-      business: map['business'] == null ? null : (map['business'] as String).input(),
+      business: map['business'] == null ? null : (map['business']! as String).input(),
       defaultLanguageCode: (map['defaultLanguageCode'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),
     );

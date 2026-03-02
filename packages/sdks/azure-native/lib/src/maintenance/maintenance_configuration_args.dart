@@ -90,20 +90,20 @@ class MaintenanceConfigurationArgs {
 
   factory MaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceConfigurationArgs(
-      duration: map['duration'] == null ? null : (map['duration'] as String).input(),
-      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime'] as String).input(),
-      extensionProperties: map['extensionProperties'] == null ? null : ((map['extensionProperties'] as Map).cast<String, String>()).input(),
-      installPatches: map['installPatches'] == null ? null : (InputPatchConfiguration.fromMap((map['installPatches'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenanceScope: map['maintenanceScope'] == null ? null : (map['maintenanceScope'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery'] as String).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as String).input(),
+      expirationDateTime: map['expirationDateTime'] == null ? null : (map['expirationDateTime']! as String).input(),
+      extensionProperties: map['extensionProperties'] == null ? null : ((map['extensionProperties']! as Map).cast<String, String>()).input(),
+      installPatches: map['installPatches'] == null ? null : (InputPatchConfiguration.fromMap((map['installPatches']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenanceScope: map['maintenanceScope'] == null ? null : (map['maintenanceScope']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      recurEvery: map['recurEvery'] == null ? null : (map['recurEvery']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
-      visibility: map['visibility'] == null ? null : (map['visibility'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
+      visibility: map['visibility'] == null ? null : (map['visibility']! as String).input(),
     );
   }
 }

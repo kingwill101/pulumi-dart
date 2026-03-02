@@ -31,9 +31,9 @@ class DiagnosticFrontendRequest {
 
   factory DiagnosticFrontendRequest.fromMap(Map<String, dynamic> map) {
     return DiagnosticFrontendRequest(
-      bodyBytes: map['bodyBytes'] == null ? null : (map['bodyBytes'] as int).input(),
-      dataMasking: map['dataMasking'] == null ? null : (DiagnosticFrontendRequestDataMasking.fromMap((map['dataMasking'] as Map).cast<String, dynamic>())).input(),
-      headersToLogs: map['headersToLogs'] == null ? null : ((map['headersToLogs'] as List).cast<String>()).input(),
+      bodyBytes: map['bodyBytes'] == null ? null : (map['bodyBytes']! as int).input(),
+      dataMasking: map['dataMasking'] == null ? null : (DiagnosticFrontendRequestDataMasking.fromMap((map['dataMasking']! as Map).cast<String, dynamic>())).input(),
+      headersToLogs: map['headersToLogs'] == null ? null : ((map['headersToLogs']! as List).cast<String>()).input(),
     );
   }
 }

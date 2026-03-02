@@ -31,9 +31,9 @@ class NetworkInterfaceNatRuleAssociationState {
 
   factory NetworkInterfaceNatRuleAssociationState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceNatRuleAssociationState(
-      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName'] as String).input(),
-      natRuleId: map['natRuleId'] == null ? null : (map['natRuleId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      ipConfigurationName: map['ipConfigurationName'] == null ? null : (map['ipConfigurationName']! as String).input(),
+      natRuleId: map['natRuleId'] == null ? null : (map['natRuleId']! as String).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId']! as String).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class InstanceConnectionPoolConfig {
   factory InstanceConnectionPoolConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConnectionPoolConfig(
       enabled: (map['enabled'] as bool).input(),
-      flags: map['flags'] == null ? null : ((map['flags'] as Map).cast<String, String>()).input(),
-      poolerCount: map['poolerCount'] == null ? null : (map['poolerCount'] as int).input(),
+      flags: map['flags'] == null ? null : ((map['flags']! as Map).cast<String, String>()).input(),
+      poolerCount: map['poolerCount'] == null ? null : (map['poolerCount']! as int).input(),
     );
   }
 }

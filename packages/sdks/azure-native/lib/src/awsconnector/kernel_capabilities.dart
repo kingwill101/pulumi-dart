@@ -26,8 +26,8 @@ class KernelCapabilities {
 
   factory KernelCapabilities.fromMap(Map<String, dynamic> map) {
     return KernelCapabilities(
-      add: map['add'] == null ? null : ((map['add'] as List).cast<String>()).input(),
-      drop: map['drop'] == null ? null : ((map['drop'] as List).cast<String>()).input(),
+      add: map['add'] == null ? null : ((map['add']! as List).cast<String>()).input(),
+      drop: map['drop'] == null ? null : ((map['drop']! as List).cast<String>()).input(),
     );
   }
 }

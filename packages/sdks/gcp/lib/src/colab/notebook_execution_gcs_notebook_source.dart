@@ -25,7 +25,7 @@ class NotebookExecutionGcsNotebookSource {
 
   factory NotebookExecutionGcsNotebookSource.fromMap(Map<String, dynamic> map) {
     return NotebookExecutionGcsNotebookSource(
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
       uri: (map['uri'] as String).input(),
     );
   }

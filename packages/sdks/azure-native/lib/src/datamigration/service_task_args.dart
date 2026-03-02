@@ -41,9 +41,9 @@ class ServiceTaskArgs {
   factory ServiceTaskArgs.fromMap(Map<String, dynamic> map) {
     return ServiceTaskArgs(
       groupName: (map['groupName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConnectToMongoDbTaskProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ConnectToMongoDbTaskProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
     );
   }
 }

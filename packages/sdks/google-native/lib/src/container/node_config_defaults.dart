@@ -28,8 +28,8 @@ class NodeConfigDefaults {
 
   factory NodeConfigDefaults.fromMap(Map<String, dynamic> map) {
     return NodeConfigDefaults(
-      gcfsConfig: map['gcfsConfig'] == null ? null : (GcfsConfig.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>())).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (NodePoolLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      gcfsConfig: map['gcfsConfig'] == null ? null : (GcfsConfig.fromMap((map['gcfsConfig']! as Map).cast<String, dynamic>())).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (NodePoolLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

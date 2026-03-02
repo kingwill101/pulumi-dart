@@ -46,10 +46,10 @@ class GetCustomerSubscriptionResult {
   factory GetCustomerSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetCustomerSubscriptionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

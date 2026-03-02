@@ -28,8 +28,8 @@ class Hl7TypesConfigHealthcareV1beta1 {
 
   factory Hl7TypesConfigHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfigHealthcareV1beta1(
-      type: map['type'] == null ? null : (pulumi.Input.decodeList<TypeHealthcareV1beta1>(map['type'], (value) => TypeHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSourceHealthcareV1beta1>(map['version'], (value) => VersionSourceHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (pulumi.Input.decodeList<TypeHealthcareV1beta1>(map['type']!, (value) => TypeHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (pulumi.Input.decodeList<VersionSourceHealthcareV1beta1>(map['version']!, (value) => VersionSourceHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

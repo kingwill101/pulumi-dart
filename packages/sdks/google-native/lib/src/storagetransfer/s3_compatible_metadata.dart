@@ -40,10 +40,10 @@ class S3CompatibleMetadata {
 
   factory S3CompatibleMetadata.fromMap(Map<String, dynamic> map) {
     return S3CompatibleMetadata(
-      authMethod: map['authMethod'] == null ? null : (S3CompatibleMetadataAuthMethod.fromValue(map['authMethod'] as String)).input(),
-      listApi: map['listApi'] == null ? null : (S3CompatibleMetadataListApi.fromValue(map['listApi'] as String)).input(),
-      protocol: map['protocol'] == null ? null : (S3CompatibleMetadataProtocol.fromValue(map['protocol'] as String)).input(),
-      requestModel: map['requestModel'] == null ? null : (S3CompatibleMetadataRequestModel.fromValue(map['requestModel'] as String)).input(),
+      authMethod: map['authMethod'] == null ? null : (S3CompatibleMetadataAuthMethod.fromValue(map['authMethod']! as String)).input(),
+      listApi: map['listApi'] == null ? null : (S3CompatibleMetadataListApi.fromValue(map['listApi']! as String)).input(),
+      protocol: map['protocol'] == null ? null : (S3CompatibleMetadataProtocol.fromValue(map['protocol']! as String)).input(),
+      requestModel: map['requestModel'] == null ? null : (S3CompatibleMetadataRequestModel.fromValue(map['requestModel']! as String)).input(),
     );
   }
 }

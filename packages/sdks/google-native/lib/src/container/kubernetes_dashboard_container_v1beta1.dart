@@ -21,7 +21,7 @@ class KubernetesDashboardContainerV1beta1 {
 
   factory KubernetesDashboardContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return KubernetesDashboardContainerV1beta1(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

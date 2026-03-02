@@ -30,7 +30,7 @@ class WindowsWebAppSiteConfigHandlerMapping {
 
   factory WindowsWebAppSiteConfigHandlerMapping.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigHandlerMapping(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
       extension: (map['extension'] as String).input(),
       scriptProcessorPath: (map['scriptProcessorPath'] as String).input(),
     );

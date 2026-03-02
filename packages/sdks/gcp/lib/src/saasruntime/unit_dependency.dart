@@ -27,8 +27,8 @@ class UnitDependency {
 
   factory UnitDependency.fromMap(Map<String, dynamic> map) {
     return UnitDependency(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

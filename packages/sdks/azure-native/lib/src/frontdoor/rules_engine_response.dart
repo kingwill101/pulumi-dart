@@ -45,7 +45,7 @@ class RulesEngineResponse {
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
       resourceState: (map['resourceState'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleResponse>(map['rules'], (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RulesEngineRuleResponse>(map['rules']!, (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
     );
   }

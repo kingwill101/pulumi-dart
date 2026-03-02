@@ -21,7 +21,7 @@ class SubscriberSetting {
 
   factory SubscriberSetting.fromMap(Map<String, dynamic> map) {
     return SubscriberSetting(
-      filterRules: map['filterRules'] == null ? null : (pulumi.Input.decodeList<FilterRule>(map['filterRules'], (value) => FilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterRules: map['filterRules'] == null ? null : (pulumi.Input.decodeList<FilterRule>(map['filterRules']!, (value) => FilterRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class SshKeyArgs {
   factory SshKeyArgs.fromMap(Map<String, dynamic> map) {
     return SshKeyArgs(
       body: (map['body'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serverId: (map['serverId'] as String).input(),
       userName: (map['userName'] as String).input(),
     );

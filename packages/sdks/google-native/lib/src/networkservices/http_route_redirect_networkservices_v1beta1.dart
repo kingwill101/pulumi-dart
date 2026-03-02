@@ -52,13 +52,13 @@ class HttpRouteRedirectNetworkservicesV1beta1 {
 
   factory HttpRouteRedirectNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRedirectNetworkservicesV1beta1(
-      hostRedirect: map['hostRedirect'] == null ? null : (map['hostRedirect'] as String).input(),
-      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect'] as bool).input(),
-      pathRedirect: map['pathRedirect'] == null ? null : (map['pathRedirect'] as String).input(),
-      portRedirect: map['portRedirect'] == null ? null : (map['portRedirect'] as int).input(),
-      prefixRewrite: map['prefixRewrite'] == null ? null : (map['prefixRewrite'] as String).input(),
-      responseCode: map['responseCode'] == null ? null : (HttpRouteRedirectResponseCodeNetworkservicesV1beta1.fromValue(map['responseCode'] as String)).input(),
-      stripQuery: map['stripQuery'] == null ? null : (map['stripQuery'] as bool).input(),
+      hostRedirect: map['hostRedirect'] == null ? null : (map['hostRedirect']! as String).input(),
+      httpsRedirect: map['httpsRedirect'] == null ? null : (map['httpsRedirect']! as bool).input(),
+      pathRedirect: map['pathRedirect'] == null ? null : (map['pathRedirect']! as String).input(),
+      portRedirect: map['portRedirect'] == null ? null : (map['portRedirect']! as int).input(),
+      prefixRewrite: map['prefixRewrite'] == null ? null : (map['prefixRewrite']! as String).input(),
+      responseCode: map['responseCode'] == null ? null : (HttpRouteRedirectResponseCodeNetworkservicesV1beta1.fromValue(map['responseCode']! as String)).input(),
+      stripQuery: map['stripQuery'] == null ? null : (map['stripQuery']! as bool).input(),
     );
   }
 }

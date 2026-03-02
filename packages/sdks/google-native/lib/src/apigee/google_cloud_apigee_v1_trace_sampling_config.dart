@@ -27,8 +27,8 @@ class GoogleCloudApigeeV1TraceSamplingConfig {
 
   factory GoogleCloudApigeeV1TraceSamplingConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1TraceSamplingConfig(
-      sampler: map['sampler'] == null ? null : (GoogleCloudApigeeV1TraceSamplingConfigSampler.fromValue(map['sampler'] as String)).input(),
-      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate'] as double).input(),
+      sampler: map['sampler'] == null ? null : (GoogleCloudApigeeV1TraceSamplingConfigSampler.fromValue(map['sampler']! as String)).input(),
+      samplingRate: map['samplingRate'] == null ? null : (map['samplingRate']! as double).input(),
     );
   }
 }

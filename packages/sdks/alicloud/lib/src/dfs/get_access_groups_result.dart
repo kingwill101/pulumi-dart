@@ -61,13 +61,13 @@ class GetAccessGroupsResult {
       groups: pulumi.Input.decodeList<GetAccessGroupsGroup>(map['groups'], (value) => GetAccessGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      limit: map['limit'] == null ? null : map['limit'] as int,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      limit: map['limit'] == null ? null : map['limit']! as int,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      orderBy: map['orderBy'] == null ? null : map['orderBy'] as String,
-      orderType: map['orderType'] == null ? null : map['orderType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      startOffset: map['startOffset'] == null ? null : map['startOffset'] as int,
+      orderBy: map['orderBy'] == null ? null : map['orderBy']! as String,
+      orderType: map['orderType'] == null ? null : map['orderType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      startOffset: map['startOffset'] == null ? null : map['startOffset']! as int,
     );
   }
 }

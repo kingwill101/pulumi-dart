@@ -110,21 +110,21 @@ class VpcFlowLogsConfigArgs {
 
   factory VpcFlowLogsConfigArgs.fromMap(Map<String, dynamic> map) {
     return VpcFlowLogsConfigArgs(
-      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr'] as String).input(),
-      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling'] as double).input(),
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      aggregationInterval: map['aggregationInterval'] == null ? null : (map['aggregationInterval']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filterExpr: map['filterExpr'] == null ? null : (map['filterExpr']! as String).input(),
+      flowSampling: map['flowSampling'] == null ? null : (map['flowSampling']! as double).input(),
+      interconnectAttachment: map['interconnectAttachment'] == null ? null : (map['interconnectAttachment']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields'] as List).cast<String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      metadataFields: map['metadataFields'] == null ? null : ((map['metadataFields']! as List).cast<String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
       vpcFlowLogsConfigId: (map['vpcFlowLogsConfigId'] as String).input(),
-      vpnTunnel: map['vpnTunnel'] == null ? null : (map['vpnTunnel'] as String).input(),
+      vpnTunnel: map['vpnTunnel'] == null ? null : (map['vpnTunnel']! as String).input(),
     );
   }
 }

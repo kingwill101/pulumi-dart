@@ -27,7 +27,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferen
   factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatement(
       arn: (map['arn'] as String).input(),
-      ipSetForwardedIpConfig: map['ipSetForwardedIpConfig'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIpConfig.fromMap((map['ipSetForwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      ipSetForwardedIpConfig: map['ipSetForwardedIpConfig'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementIpSetReferenceStatementIpSetForwardedIpConfig.fromMap((map['ipSetForwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

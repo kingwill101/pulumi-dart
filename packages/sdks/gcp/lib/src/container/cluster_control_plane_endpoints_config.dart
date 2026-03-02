@@ -27,8 +27,8 @@ class ClusterControlPlaneEndpointsConfig {
 
   factory ClusterControlPlaneEndpointsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEndpointsConfig(
-      dnsEndpointConfig: map['dnsEndpointConfig'] == null ? null : (ClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap((map['dnsEndpointConfig'] as Map).cast<String, dynamic>())).input(),
-      ipEndpointsConfig: map['ipEndpointsConfig'] == null ? null : (ClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap((map['ipEndpointsConfig'] as Map).cast<String, dynamic>())).input(),
+      dnsEndpointConfig: map['dnsEndpointConfig'] == null ? null : (ClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap((map['dnsEndpointConfig']! as Map).cast<String, dynamic>())).input(),
+      ipEndpointsConfig: map['ipEndpointsConfig'] == null ? null : (ClusterControlPlaneEndpointsConfigIpEndpointsConfig.fromMap((map['ipEndpointsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

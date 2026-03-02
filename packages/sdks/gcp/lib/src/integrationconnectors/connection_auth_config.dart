@@ -68,14 +68,14 @@ class ConnectionAuthConfig {
 
   factory ConnectionAuthConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthConfigAdditionalVariable>(map['additionalVariables'], (value) => ConnectionAuthConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
+      additionalVariables: map['additionalVariables'] == null ? null : (pulumi.Input.decodeList<ConnectionAuthConfigAdditionalVariable>(map['additionalVariables']!, (value) => ConnectionAuthConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
       authType: (map['authType'] as String).input(),
-      oauth2AuthCodeFlow: map['oauth2AuthCodeFlow'] == null ? null : (ConnectionAuthConfigOauth2AuthCodeFlow.fromMap((map['oauth2AuthCodeFlow'] as Map).cast<String, dynamic>())).input(),
-      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (ConnectionAuthConfigOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>())).input(),
-      oauth2JwtBearer: map['oauth2JwtBearer'] == null ? null : (ConnectionAuthConfigOauth2JwtBearer.fromMap((map['oauth2JwtBearer'] as Map).cast<String, dynamic>())).input(),
-      sshPublicKey: map['sshPublicKey'] == null ? null : (ConnectionAuthConfigSshPublicKey.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>())).input(),
-      userPassword: map['userPassword'] == null ? null : (ConnectionAuthConfigUserPassword.fromMap((map['userPassword'] as Map).cast<String, dynamic>())).input(),
+      oauth2AuthCodeFlow: map['oauth2AuthCodeFlow'] == null ? null : (ConnectionAuthConfigOauth2AuthCodeFlow.fromMap((map['oauth2AuthCodeFlow']! as Map).cast<String, dynamic>())).input(),
+      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (ConnectionAuthConfigOauth2ClientCredentials.fromMap((map['oauth2ClientCredentials']! as Map).cast<String, dynamic>())).input(),
+      oauth2JwtBearer: map['oauth2JwtBearer'] == null ? null : (ConnectionAuthConfigOauth2JwtBearer.fromMap((map['oauth2JwtBearer']! as Map).cast<String, dynamic>())).input(),
+      sshPublicKey: map['sshPublicKey'] == null ? null : (ConnectionAuthConfigSshPublicKey.fromMap((map['sshPublicKey']! as Map).cast<String, dynamic>())).input(),
+      userPassword: map['userPassword'] == null ? null : (ConnectionAuthConfigUserPassword.fromMap((map['userPassword']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

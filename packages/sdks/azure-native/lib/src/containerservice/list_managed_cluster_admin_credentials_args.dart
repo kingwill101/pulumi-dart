@@ -36,7 +36,7 @@ class ListManagedClusterAdminCredentialsArgs {
     return ListManagedClusterAdminCredentialsArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn'] as String).input(),
+      serverFqdn: map['serverFqdn'] == null ? null : (map['serverFqdn']! as String).input(),
     );
   }
 }

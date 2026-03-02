@@ -37,9 +37,9 @@ class ManagedRuleOverrideResponse {
 
   factory ManagedRuleOverrideResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverrideResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      enabledState: map['enabledState'] == null ? null : (map['enabledState'] as String).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ManagedRuleExclusionResponse>(map['exclusions'], (value) => ManagedRuleExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      enabledState: map['enabledState'] == null ? null : (map['enabledState']! as String).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<ManagedRuleExclusionResponse>(map['exclusions']!, (value) => ManagedRuleExclusionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleId: (map['ruleId'] as String).input(),
     );
   }

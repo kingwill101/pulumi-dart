@@ -56,13 +56,13 @@ class JobActionResponse {
 
   factory JobActionResponse.fromMap(Map<String, dynamic> map) {
     return JobActionResponse(
-      errorAction: map['errorAction'] == null ? null : (JobErrorActionResponse.fromMap((map['errorAction'] as Map).cast<String, dynamic>())).input(),
-      queueMessage: map['queueMessage'] == null ? null : (StorageQueueMessageResponse.fromMap((map['queueMessage'] as Map).cast<String, dynamic>())).input(),
-      request: map['request'] == null ? null : (HttpRequestResponse.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicyResponse.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : (ServiceBusQueueMessageResponse.fromMap((map['serviceBusQueueMessage'] as Map).cast<String, dynamic>())).input(),
-      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : (ServiceBusTopicMessageResponse.fromMap((map['serviceBusTopicMessage'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      errorAction: map['errorAction'] == null ? null : (JobErrorActionResponse.fromMap((map['errorAction']! as Map).cast<String, dynamic>())).input(),
+      queueMessage: map['queueMessage'] == null ? null : (StorageQueueMessageResponse.fromMap((map['queueMessage']! as Map).cast<String, dynamic>())).input(),
+      request: map['request'] == null ? null : (HttpRequestResponse.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicyResponse.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      serviceBusQueueMessage: map['serviceBusQueueMessage'] == null ? null : (ServiceBusQueueMessageResponse.fromMap((map['serviceBusQueueMessage']! as Map).cast<String, dynamic>())).input(),
+      serviceBusTopicMessage: map['serviceBusTopicMessage'] == null ? null : (ServiceBusTopicMessageResponse.fromMap((map['serviceBusTopicMessage']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

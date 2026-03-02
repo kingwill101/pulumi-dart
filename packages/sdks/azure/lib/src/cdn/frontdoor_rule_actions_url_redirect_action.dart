@@ -45,11 +45,11 @@ class FrontdoorRuleActionsUrlRedirectAction {
 
   factory FrontdoorRuleActionsUrlRedirectAction.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleActionsUrlRedirectAction(
-      destinationFragment: map['destinationFragment'] == null ? null : (map['destinationFragment'] as String).input(),
+      destinationFragment: map['destinationFragment'] == null ? null : (map['destinationFragment']! as String).input(),
       destinationHostname: (map['destinationHostname'] as String).input(),
-      destinationPath: map['destinationPath'] == null ? null : (map['destinationPath'] as String).input(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
-      redirectProtocol: map['redirectProtocol'] == null ? null : (map['redirectProtocol'] as String).input(),
+      destinationPath: map['destinationPath'] == null ? null : (map['destinationPath']! as String).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
+      redirectProtocol: map['redirectProtocol'] == null ? null : (map['redirectProtocol']! as String).input(),
       redirectType: (map['redirectType'] as String).input(),
     );
   }

@@ -29,8 +29,8 @@ class TableMaintenanceConfiguration {
 
   factory TableMaintenanceConfiguration.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfiguration(
-      icebergCompaction: (TableMaintenanceConfigurationIcebergCompaction.fromMap((map['icebergCompaction'] as Map).cast<String, dynamic>())).input(),
-      icebergSnapshotManagement: (TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap((map['icebergSnapshotManagement'] as Map).cast<String, dynamic>())).input(),
+      icebergCompaction: (TableMaintenanceConfigurationIcebergCompaction.fromMap((map['icebergCompaction']! as Map).cast<String, dynamic>())).input(),
+      icebergSnapshotManagement: (TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap((map['icebergSnapshotManagement']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

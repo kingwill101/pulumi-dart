@@ -35,9 +35,9 @@ class ResourceDataSyncArgs {
 
   factory ResourceDataSyncArgs.fromMap(Map<String, dynamic> map) {
     return ResourceDataSyncArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3Destination: (ResourceDataSyncS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3Destination: (ResourceDataSyncS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

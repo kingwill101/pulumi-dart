@@ -79,17 +79,17 @@ class GetTemplateSpecVersionResult {
   factory GetTemplateSpecVersionResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateSpecVersionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      linkedTemplates: map['linkedTemplates'] == null ? null : pulumi.Input.decodeList<LinkedTemplateArtifactResponse>(map['linkedTemplates'], (value) => LinkedTemplateArtifactResponse.fromMap((value as Map).cast<String, dynamic>())),
+      linkedTemplates: map['linkedTemplates'] == null ? null : pulumi.Input.decodeList<LinkedTemplateArtifactResponse>(map['linkedTemplates']!, (value) => LinkedTemplateArtifactResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      mainTemplate: map['mainTemplate'] == null ? null : map['mainTemplate'],
-      metadata: map['metadata'] == null ? null : map['metadata'],
+      mainTemplate: map['mainTemplate'] == null ? null : map['mainTemplate']!,
+      metadata: map['metadata'] == null ? null : map['metadata']!,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      uiFormDefinition: map['uiFormDefinition'] == null ? null : map['uiFormDefinition'],
+      uiFormDefinition: map['uiFormDefinition'] == null ? null : map['uiFormDefinition']!,
     );
   }
 }

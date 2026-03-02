@@ -28,8 +28,8 @@ class PartnerAuthorizationResponse {
 
   factory PartnerAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return PartnerAuthorizationResponse(
-      authorizedPartnersList: map['authorizedPartnersList'] == null ? null : (pulumi.Input.decodeList<PartnerResponse>(map['authorizedPartnersList'], (value) => PartnerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultMaximumExpirationTimeInDays: map['defaultMaximumExpirationTimeInDays'] == null ? null : (map['defaultMaximumExpirationTimeInDays'] as int).input(),
+      authorizedPartnersList: map['authorizedPartnersList'] == null ? null : (pulumi.Input.decodeList<PartnerResponse>(map['authorizedPartnersList']!, (value) => PartnerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultMaximumExpirationTimeInDays: map['defaultMaximumExpirationTimeInDays'] == null ? null : (map['defaultMaximumExpirationTimeInDays']! as int).input(),
     );
   }
 }

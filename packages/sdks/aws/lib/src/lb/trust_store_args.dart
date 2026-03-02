@@ -56,11 +56,11 @@ class TrustStoreArgs {
     return TrustStoreArgs(
       caCertificatesBundleS3Bucket: (map['caCertificatesBundleS3Bucket'] as String).input(),
       caCertificatesBundleS3Key: (map['caCertificatesBundleS3Key'] as String).input(),
-      caCertificatesBundleS3ObjectVersion: map['caCertificatesBundleS3ObjectVersion'] == null ? null : (map['caCertificatesBundleS3ObjectVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      caCertificatesBundleS3ObjectVersion: map['caCertificatesBundleS3ObjectVersion'] == null ? null : ((map['caCertificatesBundleS3ObjectVersion'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

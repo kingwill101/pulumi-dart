@@ -50,13 +50,13 @@ class TagArtifactregistryV1beta1Args {
 
   factory TagArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TagArtifactregistryV1beta1Args(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       packageId: (map['packageId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      tagId: map['tagId'] == null ? null : (map['tagId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      tagId: map['tagId'] == null ? null : (map['tagId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class HighAvailability {
 
   factory HighAvailability.fromMap(Map<String, dynamic> map) {
     return HighAvailability(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      standbyAvailabilityZone: map['standbyAvailabilityZone'] == null ? null : (map['standbyAvailabilityZone'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      standbyAvailabilityZone: map['standbyAvailabilityZone'] == null ? null : (map['standbyAvailabilityZone']! as String).input(),
     );
   }
 }

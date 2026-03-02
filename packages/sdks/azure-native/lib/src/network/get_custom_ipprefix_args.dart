@@ -35,7 +35,7 @@ class GetCustomIPPrefixArgs {
   factory GetCustomIPPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomIPPrefixArgs(
       customIpPrefixName: (map['customIpPrefixName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

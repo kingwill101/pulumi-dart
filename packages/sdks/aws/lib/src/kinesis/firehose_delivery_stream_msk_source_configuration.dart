@@ -36,9 +36,9 @@ class FirehoseDeliveryStreamMskSourceConfiguration {
 
   factory FirehoseDeliveryStreamMskSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamMskSourceConfiguration(
-      authenticationConfiguration: (FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration'] as Map).cast<String, dynamic>())).input(),
+      authenticationConfiguration: (FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration.fromMap((map['authenticationConfiguration']! as Map).cast<String, dynamic>())).input(),
       mskClusterArn: (map['mskClusterArn'] as String).input(),
-      readFromTimestamp: map['readFromTimestamp'] == null ? null : (map['readFromTimestamp'] as String).input(),
+      readFromTimestamp: map['readFromTimestamp'] == null ? null : ((map['readFromTimestamp'] as String).input()).input(),
       topicName: (map['topicName'] as String).input(),
     );
   }

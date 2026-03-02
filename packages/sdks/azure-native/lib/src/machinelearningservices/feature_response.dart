@@ -36,10 +36,10 @@ class FeatureResponse {
 
   factory FeatureResponse.fromMap(Map<String, dynamic> map) {
     return FeatureResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

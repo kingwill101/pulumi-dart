@@ -70,9 +70,9 @@ class GetServerGroupRoleResult {
       objectId: map['objectId'] as String,
       principalType: map['principalType'] as String,
       provisioningState: map['provisioningState'] as String,
-      roleType: map['roleType'] == null ? null : map['roleType'] as String,
+      roleType: map['roleType'] == null ? null : map['roleType']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

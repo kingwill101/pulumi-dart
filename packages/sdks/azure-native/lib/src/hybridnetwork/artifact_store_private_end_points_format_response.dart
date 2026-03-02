@@ -22,7 +22,7 @@ class ArtifactStorePrivateEndPointsFormatResponse {
 
   factory ArtifactStorePrivateEndPointsFormatResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactStorePrivateEndPointsFormatResponse(
-      manualPrivateEndPointConnections: map['manualPrivateEndPointConnections'] == null ? null : (pulumi.Input.decodeList<ReferencedResourceResponse>(map['manualPrivateEndPointConnections'], (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manualPrivateEndPointConnections: map['manualPrivateEndPointConnections'] == null ? null : (pulumi.Input.decodeList<ReferencedResourceResponse>(map['manualPrivateEndPointConnections']!, (value) => ReferencedResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

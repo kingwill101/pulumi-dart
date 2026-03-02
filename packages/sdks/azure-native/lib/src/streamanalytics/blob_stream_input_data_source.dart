@@ -58,13 +58,13 @@ class BlobStreamInputDataSource {
 
   factory BlobStreamInputDataSource.fromMap(Map<String, dynamic> map) {
     return BlobStreamInputDataSource(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat'] as String).input(),
-      pathPattern: map['pathPattern'] == null ? null : (map['pathPattern'] as String).input(),
-      sourcePartitionCount: map['sourcePartitionCount'] == null ? null : (map['sourcePartitionCount'] as int).input(),
-      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<StorageAccount>(map['storageAccounts'], (value) => StorageAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      dateFormat: map['dateFormat'] == null ? null : (map['dateFormat']! as String).input(),
+      pathPattern: map['pathPattern'] == null ? null : (map['pathPattern']! as String).input(),
+      sourcePartitionCount: map['sourcePartitionCount'] == null ? null : (map['sourcePartitionCount']! as int).input(),
+      storageAccounts: map['storageAccounts'] == null ? null : (pulumi.Input.decodeList<StorageAccount>(map['storageAccounts']!, (value) => StorageAccount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeFormat: map['timeFormat'] == null ? null : (map['timeFormat']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

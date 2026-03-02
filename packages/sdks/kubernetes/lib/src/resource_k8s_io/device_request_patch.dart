@@ -41,9 +41,9 @@ class DeviceRequestPatch {
 
   factory DeviceRequestPatch.fromMap(Map<String, dynamic> map) {
     return DeviceRequestPatch(
-      exactly: map['exactly'] == null ? null : (ExactDeviceRequestPatch.fromMap((map['exactly'] as Map).cast<String, dynamic>())).input(),
-      firstAvailable: map['firstAvailable'] == null ? null : (pulumi.Input.decodeList<DeviceSubRequestPatch>(map['firstAvailable'], (value) => DeviceSubRequestPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      exactly: map['exactly'] == null ? null : (ExactDeviceRequestPatch.fromMap((map['exactly']! as Map).cast<String, dynamic>())).input(),
+      firstAvailable: map['firstAvailable'] == null ? null : (pulumi.Input.decodeList<DeviceSubRequestPatch>(map['firstAvailable']!, (value) => DeviceSubRequestPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

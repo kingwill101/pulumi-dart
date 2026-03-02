@@ -50,7 +50,7 @@ class RegistryCredentialSetArgs {
       containerRegistryId: (map['containerRegistryId'] as String).input(),
       identity: (RegistryCredentialSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
       loginServer: (map['loginServer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

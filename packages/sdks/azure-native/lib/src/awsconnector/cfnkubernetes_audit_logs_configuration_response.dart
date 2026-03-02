@@ -21,7 +21,7 @@ class CFNKubernetesAuditLogsConfigurationResponse {
 
   factory CFNKubernetesAuditLogsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CFNKubernetesAuditLogsConfigurationResponse(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
     );
   }
 }

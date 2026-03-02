@@ -30,9 +30,9 @@ class NodeGroupUpdateConfig {
 
   factory NodeGroupUpdateConfig.fromMap(Map<String, dynamic> map) {
     return NodeGroupUpdateConfig(
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
-      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : (map['maxUnavailablePercentage'] as int).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : ((map['maxUnavailable'] as int).input()).input(),
+      maxUnavailablePercentage: map['maxUnavailablePercentage'] == null ? null : ((map['maxUnavailablePercentage'] as int).input()).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : ((map['updateStrategy'] as String).input()).input(),
     );
   }
 }

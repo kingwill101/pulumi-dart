@@ -66,14 +66,14 @@ class GetGatewayHostnameConfigurationResult {
   factory GetGatewayHostnameConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayHostnameConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      certificateId: map['certificateId'] == null ? null : map['certificateId'] as String,
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      http2Enabled: map['http2Enabled'] == null ? null : map['http2Enabled'] as bool,
+      certificateId: map['certificateId'] == null ? null : map['certificateId']! as String,
+      hostname: map['hostname'] == null ? null : map['hostname']! as String,
+      http2Enabled: map['http2Enabled'] == null ? null : map['http2Enabled']! as bool,
       id: map['id'] as String,
       name: map['name'] as String,
-      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : map['negotiateClientCertificate'] as bool,
-      tls10Enabled: map['tls10Enabled'] == null ? null : map['tls10Enabled'] as bool,
-      tls11Enabled: map['tls11Enabled'] == null ? null : map['tls11Enabled'] as bool,
+      negotiateClientCertificate: map['negotiateClientCertificate'] == null ? null : map['negotiateClientCertificate']! as bool,
+      tls10Enabled: map['tls10Enabled'] == null ? null : map['tls10Enabled']! as bool,
+      tls11Enabled: map['tls11Enabled'] == null ? null : map['tls11Enabled']! as bool,
       type: map['type'] as String,
     );
   }

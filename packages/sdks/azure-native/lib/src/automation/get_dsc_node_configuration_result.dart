@@ -67,14 +67,14 @@ class GetDscNodeConfigurationResult {
   factory GetDscNodeConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetDscNodeConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      configuration: map['configuration'] == null ? null : DscConfigurationAssociationPropertyResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      creationTime: map['creationTime'] == null ? null : map['creationTime'] as String,
+      configuration: map['configuration'] == null ? null : DscConfigurationAssociationPropertyResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>()),
+      creationTime: map['creationTime'] == null ? null : map['creationTime']! as String,
       id: map['id'] as String,
-      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : map['incrementNodeConfigurationBuild'] as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
+      incrementNodeConfigurationBuild: map['incrementNodeConfigurationBuild'] == null ? null : map['incrementNodeConfigurationBuild']! as bool,
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
       name: map['name'] as String,
-      nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as double,
-      source: map['source'] == null ? null : map['source'] as String,
+      nodeCount: map['nodeCount'] == null ? null : map['nodeCount']! as double,
+      source: map['source'] == null ? null : map['source']! as String,
       type: map['type'] as String,
     );
   }

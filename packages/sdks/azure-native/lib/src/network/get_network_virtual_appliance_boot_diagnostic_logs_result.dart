@@ -20,7 +20,7 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsResult {
 
   factory GetNetworkVirtualApplianceBootDiagnosticLogsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceBootDiagnosticLogsResult(
-      instanceId: map['instanceId'] == null ? null : map['instanceId'] as int,
+      instanceId: map['instanceId'] == null ? null : map['instanceId']! as int,
     );
   }
 }

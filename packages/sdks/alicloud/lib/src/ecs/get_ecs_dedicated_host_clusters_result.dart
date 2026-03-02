@@ -59,15 +59,15 @@ class GetEcsDedicatedHostClustersResult {
   factory GetEcsDedicatedHostClustersResult.fromMap(Map<String, dynamic> map) {
     return GetEcsDedicatedHostClustersResult(
       clusters: pulumi.Input.decodeList<GetEcsDedicatedHostClustersCluster>(map['clusters'], (value) => GetEcsDedicatedHostClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      dedicatedHostClusterIds: map['dedicatedHostClusterIds'] == null ? null : (map['dedicatedHostClusterIds'] as List).cast<String>(),
-      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : map['dedicatedHostClusterName'] as String,
+      dedicatedHostClusterIds: map['dedicatedHostClusterIds'] == null ? null : (map['dedicatedHostClusterIds']! as List).cast<String>(),
+      dedicatedHostClusterName: map['dedicatedHostClusterName'] == null ? null : map['dedicatedHostClusterName']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      zoneId: map['zoneId'] == null ? null : map['zoneId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      zoneId: map['zoneId'] == null ? null : map['zoneId']! as String,
     );
   }
 }

@@ -76,14 +76,14 @@ class DynamicMetricCriteriaResponse {
     return DynamicMetricCriteriaResponse(
       alertSensitivity: (map['alertSensitivity'] as String).input(),
       criterionType: (map['criterionType'] as String).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['dimensions'], (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<MetricDimensionResponse>(map['dimensions']!, (value) => MetricDimensionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       failingPeriods: (DynamicThresholdFailingPeriodsResponse.fromMap((map['failingPeriods'] as Map).cast<String, dynamic>())).input(),
-      ignoreDataBefore: map['ignoreDataBefore'] == null ? null : (map['ignoreDataBefore'] as String).input(),
+      ignoreDataBefore: map['ignoreDataBefore'] == null ? null : (map['ignoreDataBefore']! as String).input(),
       metricName: (map['metricName'] as String).input(),
-      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace']! as String).input(),
       name: (map['name'] as String).input(),
       operator: (map['operator'] as String).input(),
-      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation'] as bool).input(),
+      skipMetricValidation: map['skipMetricValidation'] == null ? null : (map['skipMetricValidation']! as bool).input(),
       timeAggregation: (map['timeAggregation'] as String).input(),
     );
   }

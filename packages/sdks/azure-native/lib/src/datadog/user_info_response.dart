@@ -31,9 +31,9 @@ class UserInfoResponse {
 
   factory UserInfoResponse.fromMap(Map<String, dynamic> map) {
     return UserInfoResponse(
-      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
+      emailAddress: map['emailAddress'] == null ? null : (map['emailAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
     );
   }
 }

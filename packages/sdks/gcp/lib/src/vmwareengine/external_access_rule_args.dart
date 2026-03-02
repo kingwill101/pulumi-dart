@@ -79,11 +79,11 @@ class ExternalAccessRuleArgs {
   factory ExternalAccessRuleArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAccessRuleArgs(
       action: (map['action'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationIpRanges: (pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(map['destinationIpRanges'], (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
       priority: (map['priority'] as int).input(),
       sourceIpRanges: (pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(map['sourceIpRanges'], (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),

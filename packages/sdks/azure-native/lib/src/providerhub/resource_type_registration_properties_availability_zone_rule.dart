@@ -20,7 +20,7 @@ class ResourceTypeRegistrationPropertiesAvailabilityZoneRule {
 
   factory ResourceTypeRegistrationPropertiesAvailabilityZoneRule.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesAvailabilityZoneRule(
-      availabilityZonePolicy: map['availabilityZonePolicy'] == null ? null : (map['availabilityZonePolicy'] as String).input(),
+      availabilityZonePolicy: map['availabilityZonePolicy'] == null ? null : (map['availabilityZonePolicy']! as String).input(),
     );
   }
 }

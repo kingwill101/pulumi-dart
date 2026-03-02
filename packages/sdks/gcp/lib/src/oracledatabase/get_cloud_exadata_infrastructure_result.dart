@@ -85,7 +85,7 @@ class GetCloudExadataInfrastructureResult {
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       properties: pulumi.Input.decodeList<GetCloudExadataInfrastructureProperty>(map['properties'], (value) => GetCloudExadataInfrastructureProperty.fromMap((value as Map).cast<String, dynamic>())),
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );

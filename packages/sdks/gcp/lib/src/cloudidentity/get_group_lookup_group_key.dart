@@ -34,7 +34,7 @@ class GetGroupLookupGroupKey {
   factory GetGroupLookupGroupKey.fromMap(Map<String, dynamic> map) {
     return GetGroupLookupGroupKey(
       id: (map['id'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

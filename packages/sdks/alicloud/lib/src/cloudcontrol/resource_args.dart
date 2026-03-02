@@ -39,10 +39,10 @@ class ResourceArgs {
 
   factory ResourceArgs.fromMap(Map<String, dynamic> map) {
     return ResourceArgs(
-      desireAttributes: map['desireAttributes'] == null ? null : (map['desireAttributes'] as String).input(),
+      desireAttributes: map['desireAttributes'] == null ? null : (map['desireAttributes']! as String).input(),
       product: (map['product'] as String).input(),
       resourceCode: (map['resourceCode'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

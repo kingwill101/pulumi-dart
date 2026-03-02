@@ -41,9 +41,9 @@ class AssessmentStatusResponseResponse {
 
   factory AssessmentStatusResponseResponse.fromMap(Map<String, dynamic> map) {
     return AssessmentStatusResponseResponse(
-      cause: map['cause'] == null ? null : (map['cause'] as String).input(),
+      cause: map['cause'] == null ? null : (map['cause']! as String).input(),
       code: (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       firstEvaluationDate: (map['firstEvaluationDate'] as String).input(),
       statusChangeDate: (map['statusChangeDate'] as String).input(),
     );

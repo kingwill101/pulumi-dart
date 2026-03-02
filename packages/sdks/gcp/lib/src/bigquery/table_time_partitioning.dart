@@ -42,9 +42,9 @@ class TableTimePartitioning {
 
   factory TableTimePartitioning.fromMap(Map<String, dynamic> map) {
     return TableTimePartitioning(
-      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs'] as int).input(),
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter'] as bool).input(),
+      expirationMs: map['expirationMs'] == null ? null : (map['expirationMs']! as int).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      requirePartitionFilter: map['requirePartitionFilter'] == null ? null : (map['requirePartitionFilter']! as bool).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -41,9 +41,9 @@ class OptInResourceDataTableWithColumns {
 
   factory OptInResourceDataTableWithColumns.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataTableWithColumns(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
-      columnWildcard: map['columnWildcard'] == null ? null : (OptInResourceDataTableWithColumnsColumnWildcard.fromMap((map['columnWildcard'] as Map).cast<String, dynamic>())).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      columnNames: map['columnNames'] == null ? null : (((map['columnNames'] as List).cast<String>()).input()).input(),
+      columnWildcard: map['columnWildcard'] == null ? null : ((OptInResourceDataTableWithColumnsColumnWildcard.fromMap((map['columnWildcard']! as Map).cast<String, dynamic>())).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
       name: (map['name'] as String).input(),
     );

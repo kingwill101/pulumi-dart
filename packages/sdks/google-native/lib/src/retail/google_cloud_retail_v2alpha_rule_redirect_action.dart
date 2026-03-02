@@ -21,7 +21,7 @@ class GoogleCloudRetailV2alphaRuleRedirectAction {
 
   factory GoogleCloudRetailV2alphaRuleRedirectAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleRedirectAction(
-      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri'] as String).input(),
+      redirectUri: map['redirectUri'] == null ? null : (map['redirectUri']! as String).input(),
     );
   }
 }

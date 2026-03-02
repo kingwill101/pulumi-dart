@@ -56,14 +56,14 @@ class ApiSchemaState {
 
   factory ApiSchemaState.fromMap(Map<String, dynamic> map) {
     return ApiSchemaState(
-      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName'] as String).input(),
-      apiName: map['apiName'] == null ? null : (map['apiName'] as String).input(),
-      components: map['components'] == null ? null : (map['components'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      definitions: map['definitions'] == null ? null : (map['definitions'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      apiManagementName: map['apiManagementName'] == null ? null : (map['apiManagementName']! as String).input(),
+      apiName: map['apiName'] == null ? null : (map['apiName']! as String).input(),
+      components: map['components'] == null ? null : (map['components']! as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      definitions: map['definitions'] == null ? null : (map['definitions']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

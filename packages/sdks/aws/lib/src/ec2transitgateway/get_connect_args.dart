@@ -40,10 +40,10 @@ class GetConnectArgs {
 
   factory GetConnectArgs.fromMap(Map<String, dynamic> map) {
     return GetConnectArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetConnectFilter>(map['filters'], (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayConnectId: map['transitGatewayConnectId'] == null ? null : (map['transitGatewayConnectId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetConnectFilter>(map['filters']!, (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayConnectId: map['transitGatewayConnectId'] == null ? null : ((map['transitGatewayConnectId'] as String).input()).input(),
     );
   }
 }

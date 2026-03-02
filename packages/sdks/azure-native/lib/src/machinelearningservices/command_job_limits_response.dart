@@ -27,7 +27,7 @@ class CommandJobLimitsResponse {
   factory CommandJobLimitsResponse.fromMap(Map<String, dynamic> map) {
     return CommandJobLimitsResponse(
       jobLimitsType: (map['jobLimitsType'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

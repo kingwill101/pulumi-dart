@@ -31,9 +31,9 @@ class SAPSupportedSkuResponse {
 
   factory SAPSupportedSkuResponse.fromMap(Map<String, dynamic> map) {
     return SAPSupportedSkuResponse(
-      isAppServerCertified: map['isAppServerCertified'] == null ? null : (map['isAppServerCertified'] as bool).input(),
-      isDatabaseCertified: map['isDatabaseCertified'] == null ? null : (map['isDatabaseCertified'] as bool).input(),
-      vmSku: map['vmSku'] == null ? null : (map['vmSku'] as String).input(),
+      isAppServerCertified: map['isAppServerCertified'] == null ? null : (map['isAppServerCertified']! as bool).input(),
+      isDatabaseCertified: map['isDatabaseCertified'] == null ? null : (map['isDatabaseCertified']! as bool).input(),
+      vmSku: map['vmSku'] == null ? null : (map['vmSku']! as String).input(),
     );
   }
 }

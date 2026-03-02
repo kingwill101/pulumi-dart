@@ -58,11 +58,11 @@ class GetAlarmsResult {
       alarms: pulumi.Input.decodeList<GetAlarmsAlarm>(map['alarms'], (value) => GetAlarmsAlarm.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      metricType: map['metricType'] == null ? null : map['metricType'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      metricType: map['metricType'] == null ? null : map['metricType']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      scalingGroupId: map['scalingGroupId'] == null ? null : map['scalingGroupId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      scalingGroupId: map['scalingGroupId'] == null ? null : map['scalingGroupId']! as String,
     );
   }
 }

@@ -31,9 +31,9 @@ class GetFactoryDataPlaneAccessResult {
 
   factory GetFactoryDataPlaneAccessResult.fromMap(Map<String, dynamic> map) {
     return GetFactoryDataPlaneAccessResult(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
-      dataPlaneUrl: map['dataPlaneUrl'] == null ? null : map['dataPlaneUrl'] as String,
-      policy: map['policy'] == null ? null : UserAccessPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>()),
+      accessToken: map['accessToken'] == null ? null : map['accessToken']! as String,
+      dataPlaneUrl: map['dataPlaneUrl'] == null ? null : map['dataPlaneUrl']! as String,
+      policy: map['policy'] == null ? null : UserAccessPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>()),
     );
   }
 }

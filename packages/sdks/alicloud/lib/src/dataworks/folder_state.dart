@@ -34,10 +34,10 @@ class FolderState {
 
   factory FolderState.fromMap(Map<String, dynamic> map) {
     return FolderState(
-      folderId: map['folderId'] == null ? null : (map['folderId'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      projectIdentifier: map['projectIdentifier'] == null ? null : (map['projectIdentifier'] as String).input(),
+      folderId: map['folderId'] == null ? null : (map['folderId']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      projectIdentifier: map['projectIdentifier'] == null ? null : (map['projectIdentifier']! as String).input(),
     );
   }
 }

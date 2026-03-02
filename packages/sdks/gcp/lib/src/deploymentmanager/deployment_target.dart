@@ -32,7 +32,7 @@ class DeploymentTarget {
   factory DeploymentTarget.fromMap(Map<String, dynamic> map) {
     return DeploymentTarget(
       config: (DeploymentTargetConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<DeploymentTargetImport>(map['imports'], (value) => DeploymentTargetImport.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<DeploymentTargetImport>(map['imports']!, (value) => DeploymentTargetImport.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -33,7 +33,7 @@ class GetLoadBalancersResult {
     return GetLoadBalancersResult(
       id: map['id'] as String,
       loadBalancers: pulumi.Input.decodeList<GetLoadBalancersLoadBalancer>(map['loadBalancers'], (value) => GetLoadBalancersLoadBalancer.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

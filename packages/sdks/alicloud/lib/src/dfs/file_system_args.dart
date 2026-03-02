@@ -81,18 +81,18 @@ class FileSystemArgs {
 
   factory FileSystemArgs.fromMap(Map<String, dynamic> map) {
     return FileSystemArgs(
-      dataRedundancyType: map['dataRedundancyType'] == null ? null : (map['dataRedundancyType'] as String).input(),
-      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataRedundancyType: map['dataRedundancyType'] == null ? null : (map['dataRedundancyType']! as String).input(),
+      dedicatedClusterId: map['dedicatedClusterId'] == null ? null : (map['dedicatedClusterId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fileSystemName: (map['fileSystemName'] as String).input(),
-      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber'] as int).input(),
+      partitionNumber: map['partitionNumber'] == null ? null : (map['partitionNumber']! as int).input(),
       protocolType: (map['protocolType'] as String).input(),
-      provisionedThroughputInMiBps: map['provisionedThroughputInMiBps'] == null ? null : (map['provisionedThroughputInMiBps'] as int).input(),
+      provisionedThroughputInMiBps: map['provisionedThroughputInMiBps'] == null ? null : (map['provisionedThroughputInMiBps']! as int).input(),
       spaceCapacity: (map['spaceCapacity'] as int).input(),
-      storageSetName: map['storageSetName'] == null ? null : (map['storageSetName'] as String).input(),
+      storageSetName: map['storageSetName'] == null ? null : (map['storageSetName']! as String).input(),
       storageType: (map['storageType'] as String).input(),
-      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      throughputMode: map['throughputMode'] == null ? null : (map['throughputMode']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

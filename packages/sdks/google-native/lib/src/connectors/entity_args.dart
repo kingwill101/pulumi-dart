@@ -42,9 +42,9 @@ class EntityArgs {
     return EntityArgs(
       connectionId: (map['connectionId'] as String).input(),
       entityTypeId: (map['entityTypeId'] as String).input(),
-      fields: map['fields'] == null ? null : ((map['fields'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      fields: map['fields'] == null ? null : ((map['fields']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

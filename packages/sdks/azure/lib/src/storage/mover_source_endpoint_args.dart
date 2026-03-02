@@ -49,11 +49,11 @@ class MoverSourceEndpointArgs {
 
   factory MoverSourceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return MoverSourceEndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      export: map['export'] == null ? null : (map['export'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      export: map['export'] == null ? null : (map['export']! as String).input(),
       host: (map['host'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion']! as String).input(),
       storageMoverId: (map['storageMoverId'] as String).input(),
     );
   }

@@ -32,9 +32,9 @@ class MultiStep {
 
   factory MultiStep.fromMap(Map<String, dynamic> map) {
     return MultiStep(
-      multistepNumber: map['multistepNumber'] == null ? null : (map['multistepNumber'] as int).input(),
-      primaryStep: map['primaryStep'] == null ? null : (PrimaryStep.fromMap((map['primaryStep'] as Map).cast<String, dynamic>())).input(),
-      primaryStepId: map['primaryStepId'] == null ? null : (map['primaryStepId'] as String).input(),
+      multistepNumber: map['multistepNumber'] == null ? null : (map['multistepNumber']! as int).input(),
+      primaryStep: map['primaryStep'] == null ? null : (PrimaryStep.fromMap((map['primaryStep']! as Map).cast<String, dynamic>())).input(),
+      primaryStepId: map['primaryStepId'] == null ? null : (map['primaryStepId']! as String).input(),
     );
   }
 }

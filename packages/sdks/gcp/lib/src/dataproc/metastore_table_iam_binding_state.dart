@@ -77,15 +77,15 @@ class MetastoreTableIamBindingState {
 
   factory MetastoreTableIamBindingState.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamBindingState(
-      condition: map['condition'] == null ? null : (MetastoreTableIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      serviceId: map['serviceId'] == null ? null : (map['serviceId'] as String).input(),
-      table: map['table'] == null ? null : (map['table'] as String).input(),
+      condition: map['condition'] == null ? null : (MetastoreTableIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      serviceId: map['serviceId'] == null ? null : (map['serviceId']! as String).input(),
+      table: map['table'] == null ? null : (map['table']! as String).input(),
     );
   }
 }

@@ -62,14 +62,14 @@ class ServiceGroupMonitoringAgentProcessAlertConfig {
   factory ServiceGroupMonitoringAgentProcessAlertConfig.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMonitoringAgentProcessAlertConfig(
       comparisonOperator: (map['comparisonOperator'] as String).input(),
-      effectiveInterval: map['effectiveInterval'] == null ? null : (map['effectiveInterval'] as String).input(),
+      effectiveInterval: map['effectiveInterval'] == null ? null : (map['effectiveInterval']! as String).input(),
       escalationsLevel: (map['escalationsLevel'] as String).input(),
-      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime'] as int).input(),
+      silenceTime: map['silenceTime'] == null ? null : (map['silenceTime']! as int).input(),
       statistics: (map['statistics'] as String).input(),
-      targetLists: map['targetLists'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfigTargetList>(map['targetLists'], (value) => ServiceGroupMonitoringAgentProcessAlertConfigTargetList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetLists: map['targetLists'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfigTargetList>(map['targetLists']!, (value) => ServiceGroupMonitoringAgentProcessAlertConfigTargetList.fromMap((value as Map).cast<String, dynamic>()))).input(),
       threshold: (map['threshold'] as String).input(),
       times: (map['times'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

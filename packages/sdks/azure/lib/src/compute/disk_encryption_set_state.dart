@@ -83,17 +83,17 @@ class DiskEncryptionSetState {
 
   factory DiskEncryptionSetState.fromMap(Map<String, dynamic> map) {
     return DiskEncryptionSetState(
-      autoKeyRotationEnabled: map['autoKeyRotationEnabled'] == null ? null : (map['autoKeyRotationEnabled'] as bool).input(),
-      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType'] as String).input(),
-      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId'] as String).input(),
-      identity: map['identity'] == null ? null : (DiskEncryptionSetIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      keyVaultKeyUrl: map['keyVaultKeyUrl'] == null ? null : (map['keyVaultKeyUrl'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      autoKeyRotationEnabled: map['autoKeyRotationEnabled'] == null ? null : (map['autoKeyRotationEnabled']! as bool).input(),
+      encryptionType: map['encryptionType'] == null ? null : (map['encryptionType']! as String).input(),
+      federatedClientId: map['federatedClientId'] == null ? null : (map['federatedClientId']! as String).input(),
+      identity: map['identity'] == null ? null : (DiskEncryptionSetIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      keyVaultKeyUrl: map['keyVaultKeyUrl'] == null ? null : (map['keyVaultKeyUrl']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

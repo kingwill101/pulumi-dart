@@ -69,16 +69,16 @@ class AgentcoreCodeInterpreterState {
 
   factory AgentcoreCodeInterpreterState.fromMap(Map<String, dynamic> map) {
     return AgentcoreCodeInterpreterState(
-      codeInterpreterArn: map['codeInterpreterArn'] == null ? null : (map['codeInterpreterArn'] as String).input(),
-      codeInterpreterId: map['codeInterpreterId'] == null ? null : (map['codeInterpreterId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRoleArn: map['executionRoleArn'] == null ? null : (map['executionRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfiguration: map['networkConfiguration'] == null ? null : (AgentcoreCodeInterpreterNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreCodeInterpreterTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      codeInterpreterArn: map['codeInterpreterArn'] == null ? null : ((map['codeInterpreterArn'] as String).input()).input(),
+      codeInterpreterId: map['codeInterpreterId'] == null ? null : ((map['codeInterpreterId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      executionRoleArn: map['executionRoleArn'] == null ? null : ((map['executionRoleArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkConfiguration: map['networkConfiguration'] == null ? null : ((AgentcoreCodeInterpreterNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreCodeInterpreterTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ApiKeyState {
 
   factory ApiKeyState.fromMap(Map<String, dynamic> map) {
     return ApiKeyState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      tokenDomains: map['tokenDomains'] == null ? null : ((map['tokenDomains'] as List).cast<String>()).input(),
+      apiKey: map['apiKey'] == null ? null : ((map['apiKey'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((map['scope'] as String).input()).input(),
+      tokenDomains: map['tokenDomains'] == null ? null : (((map['tokenDomains'] as List).cast<String>()).input()).input(),
     );
   }
 }

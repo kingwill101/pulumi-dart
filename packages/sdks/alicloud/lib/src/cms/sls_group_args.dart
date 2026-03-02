@@ -36,7 +36,7 @@ class SlsGroupArgs {
   factory SlsGroupArgs.fromMap(Map<String, dynamic> map) {
     return SlsGroupArgs(
       slsGroupConfigs: (pulumi.Input.decodeList<SlsGroupSlsGroupConfig>(map['slsGroupConfigs'], (value) => SlsGroupSlsGroupConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slsGroupDescription: map['slsGroupDescription'] == null ? null : (map['slsGroupDescription'] as String).input(),
+      slsGroupDescription: map['slsGroupDescription'] == null ? null : (map['slsGroupDescription']! as String).input(),
       slsGroupName: (map['slsGroupName'] as String).input(),
     );
   }

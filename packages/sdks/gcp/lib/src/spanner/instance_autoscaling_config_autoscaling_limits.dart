@@ -38,10 +38,10 @@ class InstanceAutoscalingConfigAutoscalingLimits {
 
   factory InstanceAutoscalingConfigAutoscalingLimits.fromMap(Map<String, dynamic> map) {
     return InstanceAutoscalingConfigAutoscalingLimits(
-      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes'] as int).input(),
-      maxProcessingUnits: map['maxProcessingUnits'] == null ? null : (map['maxProcessingUnits'] as int).input(),
-      minNodes: map['minNodes'] == null ? null : (map['minNodes'] as int).input(),
-      minProcessingUnits: map['minProcessingUnits'] == null ? null : (map['minProcessingUnits'] as int).input(),
+      maxNodes: map['maxNodes'] == null ? null : (map['maxNodes']! as int).input(),
+      maxProcessingUnits: map['maxProcessingUnits'] == null ? null : (map['maxProcessingUnits']! as int).input(),
+      minNodes: map['minNodes'] == null ? null : (map['minNodes']! as int).input(),
+      minProcessingUnits: map['minProcessingUnits'] == null ? null : (map['minProcessingUnits']! as int).input(),
     );
   }
 }

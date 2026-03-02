@@ -26,8 +26,8 @@ class RuleResolveConfigurationResponse {
 
   factory RuleResolveConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return RuleResolveConfigurationResponse(
-      autoResolved: map['autoResolved'] == null ? null : (map['autoResolved'] as bool).input(),
-      timeToResolve: map['timeToResolve'] == null ? null : (map['timeToResolve'] as String).input(),
+      autoResolved: map['autoResolved'] == null ? null : (map['autoResolved']! as bool).input(),
+      timeToResolve: map['timeToResolve'] == null ? null : (map['timeToResolve']! as String).input(),
     );
   }
 }

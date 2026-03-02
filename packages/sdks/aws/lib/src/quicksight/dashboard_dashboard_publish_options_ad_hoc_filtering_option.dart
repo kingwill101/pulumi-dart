@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsAdHocFilteringOption {
 
   factory DashboardDashboardPublishOptionsAdHocFilteringOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsAdHocFilteringOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

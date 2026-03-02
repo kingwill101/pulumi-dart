@@ -73,17 +73,17 @@ class HttpHealthCheckArgs {
 
   factory HttpHealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return HttpHealthCheckArgs(
-      checkIntervalSec: map['checkIntervalSec'] == null ? null : (map['checkIntervalSec'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold'] as int).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      requestPath: map['requestPath'] == null ? null : (map['requestPath'] as String).input(),
-      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec'] as int).input(),
-      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold'] as int).input(),
+      checkIntervalSec: map['checkIntervalSec'] == null ? null : (map['checkIntervalSec']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      healthyThreshold: map['healthyThreshold'] == null ? null : (map['healthyThreshold']! as int).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      requestPath: map['requestPath'] == null ? null : (map['requestPath']! as String).input(),
+      timeoutSec: map['timeoutSec'] == null ? null : (map['timeoutSec']! as int).input(),
+      unhealthyThreshold: map['unhealthyThreshold'] == null ? null : (map['unhealthyThreshold']! as int).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class LLMMessageDiagnosticSettings {
 
   factory LLMMessageDiagnosticSettings.fromMap(Map<String, dynamic> map) {
     return LLMMessageDiagnosticSettings(
-      maxSizeInBytes: map['maxSizeInBytes'] == null ? null : (map['maxSizeInBytes'] as int).input(),
-      messages: map['messages'] == null ? null : (map['messages'] as String).input(),
+      maxSizeInBytes: map['maxSizeInBytes'] == null ? null : (map['maxSizeInBytes']! as int).input(),
+      messages: map['messages'] == null ? null : (map['messages']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class ManagedActiveDirectoryConfig {
 
   factory ManagedActiveDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ManagedActiveDirectoryConfig(
-      computer: map['computer'] == null ? null : (map['computer'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      computer: map['computer'] == null ? null : (map['computer']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
     );
   }
 }

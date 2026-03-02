@@ -26,8 +26,8 @@ class StopOnDisconnectConfigurationResponse {
 
   factory StopOnDisconnectConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return StopOnDisconnectConfigurationResponse(
-      gracePeriodMinutes: map['gracePeriodMinutes'] == null ? null : (map['gracePeriodMinutes'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      gracePeriodMinutes: map['gracePeriodMinutes'] == null ? null : (map['gracePeriodMinutes']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

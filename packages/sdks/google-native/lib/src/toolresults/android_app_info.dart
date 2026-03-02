@@ -36,10 +36,10 @@ class AndroidAppInfo {
 
   factory AndroidAppInfo.fromMap(Map<String, dynamic> map) {
     return AndroidAppInfo(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      versionCode: map['versionCode'] == null ? null : (map['versionCode'] as String).input(),
-      versionName: map['versionName'] == null ? null : (map['versionName'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      versionCode: map['versionCode'] == null ? null : (map['versionCode']! as String).input(),
+      versionName: map['versionName'] == null ? null : (map['versionName']! as String).input(),
     );
   }
 }

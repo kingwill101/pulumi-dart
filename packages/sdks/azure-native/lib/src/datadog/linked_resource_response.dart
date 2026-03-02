@@ -26,8 +26,8 @@ class LinkedResourceResponse {
 
   factory LinkedResourceResponse.fromMap(Map<String, dynamic> map) {
     return LinkedResourceResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

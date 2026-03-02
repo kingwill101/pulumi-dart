@@ -36,10 +36,10 @@ class MasterAuthContainerV1beta1 {
 
   factory MasterAuthContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return MasterAuthContainerV1beta1(
-      clientCertificateConfig: map['clientCertificateConfig'] == null ? null : (ClientCertificateConfigContainerV1beta1.fromMap((map['clientCertificateConfig'] as Map).cast<String, dynamic>())).input(),
-      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      clientCertificateConfig: map['clientCertificateConfig'] == null ? null : (ClientCertificateConfigContainerV1beta1.fromMap((map['clientCertificateConfig']! as Map).cast<String, dynamic>())).input(),
+      clusterCaCertificate: map['clusterCaCertificate'] == null ? null : (map['clusterCaCertificate']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

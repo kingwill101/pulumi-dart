@@ -39,10 +39,10 @@ class ServiceIdentityState {
 
   factory ServiceIdentityState.fromMap(Map<String, dynamic> map) {
     return ServiceIdentityState(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      member: map['member'] == null ? null : (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      member: map['member'] == null ? null : (map['member']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

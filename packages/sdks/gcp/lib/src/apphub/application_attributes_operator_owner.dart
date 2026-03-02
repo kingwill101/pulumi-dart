@@ -25,7 +25,7 @@ class ApplicationAttributesOperatorOwner {
 
   factory ApplicationAttributesOperatorOwner.fromMap(Map<String, dynamic> map) {
     return ApplicationAttributesOperatorOwner(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       email: (map['email'] as String).input(),
     );
   }

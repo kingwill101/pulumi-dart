@@ -32,9 +32,9 @@ class AppVersionSnapshotAgentBeforeModelCallback {
 
   factory AppVersionSnapshotAgentBeforeModelCallback.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAgentBeforeModelCallback(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      pythonCode: map['pythonCode'] == null ? null : (map['pythonCode'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      pythonCode: map['pythonCode'] == null ? null : (map['pythonCode']! as String).input(),
     );
   }
 }

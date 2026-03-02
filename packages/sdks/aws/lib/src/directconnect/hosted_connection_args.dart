@@ -46,7 +46,7 @@ class HostedConnectionArgs {
     return HostedConnectionArgs(
       bandwidth: (map['bandwidth'] as String).input(),
       connectionId: (map['connectionId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       ownerAccountId: (map['ownerAccountId'] as String).input(),
       vlan: (map['vlan'] as int).input(),
     );

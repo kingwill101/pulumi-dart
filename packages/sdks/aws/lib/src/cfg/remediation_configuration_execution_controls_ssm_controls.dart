@@ -25,8 +25,8 @@ class RemediationConfigurationExecutionControlsSsmControls {
 
   factory RemediationConfigurationExecutionControlsSsmControls.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationExecutionControlsSsmControls(
-      concurrentExecutionRatePercentage: map['concurrentExecutionRatePercentage'] == null ? null : (map['concurrentExecutionRatePercentage'] as int).input(),
-      errorPercentage: map['errorPercentage'] == null ? null : (map['errorPercentage'] as int).input(),
+      concurrentExecutionRatePercentage: map['concurrentExecutionRatePercentage'] == null ? null : ((map['concurrentExecutionRatePercentage'] as int).input()).input(),
+      errorPercentage: map['errorPercentage'] == null ? null : ((map['errorPercentage'] as int).input()).input(),
     );
   }
 }

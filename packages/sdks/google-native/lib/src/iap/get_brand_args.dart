@@ -28,7 +28,7 @@ class GetBrandArgs {
   factory GetBrandArgs.fromMap(Map<String, dynamic> map) {
     return GetBrandArgs(
       brandId: (map['brandId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -86,19 +86,19 @@ class NodeGroupComputeBetaArgs {
 
   factory NodeGroupComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupComputeBetaArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (NodeGroupAutoscalingPolicyComputeBeta.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (NodeGroupAutoscalingPolicyComputeBeta.fromMap((map['autoscalingPolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       initialNodeCount: (map['initialNodeCount'] as int).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (NodeGroupMaintenanceIntervalComputeBeta.fromValue(map['maintenanceInterval'] as String)).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (NodeGroupMaintenancePolicyComputeBeta.fromValue(map['maintenancePolicy'] as String)).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (NodeGroupMaintenanceWindowComputeBeta.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeTemplate: map['nodeTemplate'] == null ? null : (map['nodeTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (NodeGroupMaintenanceIntervalComputeBeta.fromValue(map['maintenanceInterval']! as String)).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (NodeGroupMaintenancePolicyComputeBeta.fromValue(map['maintenancePolicy']! as String)).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (NodeGroupMaintenanceWindowComputeBeta.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeTemplate: map['nodeTemplate'] == null ? null : (map['nodeTemplate']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ShareSettingsComputeBeta.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

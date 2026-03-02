@@ -50,12 +50,12 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
 
   factory GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold'] as double).input(),
-      contextFilterSettings: map['contextFilterSettings'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings'] as Map).cast<String, dynamic>())).input(),
-      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource'] as Map).cast<String, dynamic>())).input(),
-      documentQuerySource: map['documentQuerySource'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromMap((map['documentQuerySource'] as Map).cast<String, dynamic>())).input(),
-      knowledgeBaseQuerySource: map['knowledgeBaseQuerySource'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromMap((map['knowledgeBaseQuerySource'] as Map).cast<String, dynamic>())).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
+      confidenceThreshold: map['confidenceThreshold'] == null ? null : (map['confidenceThreshold']! as double).input(),
+      contextFilterSettings: map['contextFilterSettings'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings']! as Map).cast<String, dynamic>())).input(),
+      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource']! as Map).cast<String, dynamic>())).input(),
+      documentQuerySource: map['documentQuerySource'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromMap((map['documentQuerySource']! as Map).cast<String, dynamic>())).input(),
+      knowledgeBaseQuerySource: map['knowledgeBaseQuerySource'] == null ? null : (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromMap((map['knowledgeBaseQuerySource']! as Map).cast<String, dynamic>())).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
     );
   }
 }

@@ -61,13 +61,13 @@ class LineageEventArgs {
 
   factory LineageEventArgs.fromMap(Map<String, dynamic> map) {
     return LineageEventArgs(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      links: map['links'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogLineageV1EventLink>(map['links'], (value) => GoogleCloudDatacatalogLineageV1EventLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      links: map['links'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDatacatalogLineageV1EventLink>(map['links']!, (value) => GoogleCloudDatacatalogLineageV1EventLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       processId: (map['processId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       runId: (map['runId'] as String).input(),
       startTime: (map['startTime'] as String).input(),
     );

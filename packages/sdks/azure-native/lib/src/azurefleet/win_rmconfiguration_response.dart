@@ -22,7 +22,7 @@ class WinRMConfigurationResponse {
 
   factory WinRMConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WinRMConfigurationResponse(
-      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<WinRMListenerResponse>(map['listeners'], (value) => WinRMListenerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<WinRMListenerResponse>(map['listeners']!, (value) => WinRMListenerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

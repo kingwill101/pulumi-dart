@@ -23,8 +23,8 @@ class NotebookPreparationErrorResponse {
 
   factory NotebookPreparationErrorResponse.fromMap(Map<String, dynamic> map) {
     return NotebookPreparationErrorResponse(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as int).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      statusCode: map['statusCode'] == null ? null : (map['statusCode']! as int).input(),
     );
   }
 }

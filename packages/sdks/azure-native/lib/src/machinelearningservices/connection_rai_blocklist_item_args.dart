@@ -57,8 +57,8 @@ class ConnectionRaiBlocklistItemArgs {
     return ConnectionRaiBlocklistItemArgs(
       connectionName: (map['connectionName'] as String).input(),
       properties: (RaiBlocklistItemProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion'] as String).input(),
-      raiBlocklistItemName: map['raiBlocklistItemName'] == null ? null : (map['raiBlocklistItemName'] as String).input(),
+      proxyApiVersion: map['proxyApiVersion'] == null ? null : (map['proxyApiVersion']! as String).input(),
+      raiBlocklistItemName: map['raiBlocklistItemName'] == null ? null : (map['raiBlocklistItemName']! as String).input(),
       raiBlocklistName: (map['raiBlocklistName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

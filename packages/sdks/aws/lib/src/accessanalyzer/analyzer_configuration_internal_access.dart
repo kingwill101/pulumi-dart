@@ -21,7 +21,7 @@ class AnalyzerConfigurationInternalAccess {
 
   factory AnalyzerConfigurationInternalAccess.fromMap(Map<String, dynamic> map) {
     return AnalyzerConfigurationInternalAccess(
-      analysisRule: map['analysisRule'] == null ? null : (AnalyzerConfigurationInternalAccessAnalysisRule.fromMap((map['analysisRule'] as Map).cast<String, dynamic>())).input(),
+      analysisRule: map['analysisRule'] == null ? null : ((AnalyzerConfigurationInternalAccessAnalysisRule.fromMap((map['analysisRule']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

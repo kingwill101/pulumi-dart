@@ -40,10 +40,10 @@ class GetSpotPriceArgs {
 
   factory GetSpotPriceArgs.fromMap(Map<String, dynamic> map) {
     return GetSpotPriceArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters'], (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSpotPriceFilter>(map['filters']!, (value) => GetSpotPriceFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      instanceType: map['instanceType'] == null ? null : ((map['instanceType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

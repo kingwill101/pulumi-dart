@@ -46,11 +46,11 @@ class LongTermRetentionPolicyResponse {
 
   factory LongTermRetentionPolicyResponse.fromMap(Map<String, dynamic> map) {
     return LongTermRetentionPolicyResponse(
-      dailySchedule: map['dailySchedule'] == null ? null : (DailyRetentionScheduleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>())).input(),
-      monthlySchedule: map['monthlySchedule'] == null ? null : (MonthlyRetentionScheduleResponse.fromMap((map['monthlySchedule'] as Map).cast<String, dynamic>())).input(),
+      dailySchedule: map['dailySchedule'] == null ? null : (DailyRetentionScheduleResponse.fromMap((map['dailySchedule']! as Map).cast<String, dynamic>())).input(),
+      monthlySchedule: map['monthlySchedule'] == null ? null : (MonthlyRetentionScheduleResponse.fromMap((map['monthlySchedule']! as Map).cast<String, dynamic>())).input(),
       retentionPolicyType: (map['retentionPolicyType'] as String).input(),
-      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklyRetentionScheduleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>())).input(),
-      yearlySchedule: map['yearlySchedule'] == null ? null : (YearlyRetentionScheduleResponse.fromMap((map['yearlySchedule'] as Map).cast<String, dynamic>())).input(),
+      weeklySchedule: map['weeklySchedule'] == null ? null : (WeeklyRetentionScheduleResponse.fromMap((map['weeklySchedule']! as Map).cast<String, dynamic>())).input(),
+      yearlySchedule: map['yearlySchedule'] == null ? null : (YearlyRetentionScheduleResponse.fromMap((map['yearlySchedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

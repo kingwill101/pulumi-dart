@@ -29,7 +29,7 @@ class GetTaskDefinitionArgs {
 
   factory GetTaskDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       taskDefinition: (map['taskDefinition'] as String).input(),
     );
   }

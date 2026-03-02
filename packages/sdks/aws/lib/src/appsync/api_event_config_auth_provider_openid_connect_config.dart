@@ -35,9 +35,9 @@ class ApiEventConfigAuthProviderOpenidConnectConfig {
 
   factory ApiEventConfigAuthProviderOpenidConnectConfig.fromMap(Map<String, dynamic> map) {
     return ApiEventConfigAuthProviderOpenidConnectConfig(
-      authTtl: map['authTtl'] == null ? null : (map['authTtl'] as int).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      iatTtl: map['iatTtl'] == null ? null : (map['iatTtl'] as int).input(),
+      authTtl: map['authTtl'] == null ? null : ((map['authTtl'] as int).input()).input(),
+      clientId: map['clientId'] == null ? null : ((map['clientId'] as String).input()).input(),
+      iatTtl: map['iatTtl'] == null ? null : ((map['iatTtl'] as int).input()).input(),
       issuer: (map['issuer'] as String).input(),
     );
   }

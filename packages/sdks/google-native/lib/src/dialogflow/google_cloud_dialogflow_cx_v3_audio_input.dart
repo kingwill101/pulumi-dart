@@ -27,7 +27,7 @@ class GoogleCloudDialogflowCxV3AudioInput {
 
   factory GoogleCloudDialogflowCxV3AudioInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3AudioInput(
-      audio: map['audio'] == null ? null : (map['audio'] as String).input(),
+      audio: map['audio'] == null ? null : (map['audio']! as String).input(),
       config: (GoogleCloudDialogflowCxV3InputAudioConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
     );
   }

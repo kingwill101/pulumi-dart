@@ -35,10 +35,10 @@ class GetRouteSpecGrpcRoute {
 
   factory GetRouteSpecGrpcRoute.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRoute(
-      actions: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteAction>(map['actions'], (value) => GetRouteSpecGrpcRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      matches: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatch>(map['matches'], (value) => GetRouteSpecGrpcRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      retryPolicies: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteRetryPolicy>(map['retryPolicies'], (value) => GetRouteSpecGrpcRouteRetryPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timeouts: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteTimeout>(map['timeouts'], (value) => GetRouteSpecGrpcRouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteAction>(map['actions']!, (value) => GetRouteSpecGrpcRouteAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteMatch>(map['matches']!, (value) => GetRouteSpecGrpcRouteMatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      retryPolicies: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteRetryPolicy>(map['retryPolicies']!, (value) => GetRouteSpecGrpcRouteRetryPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeouts: (pulumi.Input.decodeList<GetRouteSpecGrpcRouteTimeout>(map['timeouts']!, (value) => GetRouteSpecGrpcRouteTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

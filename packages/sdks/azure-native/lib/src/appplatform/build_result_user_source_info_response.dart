@@ -32,9 +32,9 @@ class BuildResultUserSourceInfoResponse {
 
   factory BuildResultUserSourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return BuildResultUserSourceInfoResponse(
-      buildResultId: map['buildResultId'] == null ? null : (map['buildResultId'] as String).input(),
+      buildResultId: map['buildResultId'] == null ? null : (map['buildResultId']! as String).input(),
       type: (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

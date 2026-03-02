@@ -27,7 +27,7 @@ class NodeInitializationAction {
   factory NodeInitializationAction.fromMap(Map<String, dynamic> map) {
     return NodeInitializationAction(
       executableFile: (map['executableFile'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
     );
   }
 }

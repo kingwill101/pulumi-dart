@@ -79,16 +79,16 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition'] as String).input(),
-      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping'] as Map).cast<String, String>()).input(),
-      aws: map['aws'] == null ? null : (Aws.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      oidc: map['oidc'] == null ? null : (Oidc.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      saml: map['saml'] == null ? null : (Saml.fromMap((map['saml'] as Map).cast<String, dynamic>())).input(),
+      attributeCondition: map['attributeCondition'] == null ? null : (map['attributeCondition']! as String).input(),
+      attributeMapping: map['attributeMapping'] == null ? null : ((map['attributeMapping']! as Map).cast<String, String>()).input(),
+      aws: map['aws'] == null ? null : (Aws.fromMap((map['aws']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      oidc: map['oidc'] == null ? null : (Oidc.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      saml: map['saml'] == null ? null : (Saml.fromMap((map['saml']! as Map).cast<String, dynamic>())).input(),
       workloadIdentityPoolId: (map['workloadIdentityPoolId'] as String).input(),
       workloadIdentityPoolProviderId: (map['workloadIdentityPoolProviderId'] as String).input(),
     );

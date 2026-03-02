@@ -30,9 +30,9 @@ class PipelineContentConfigPermission {
 
   factory PipelineContentConfigPermission.fromMap(Map<String, dynamic> map) {
     return PipelineContentConfigPermission(
-      accesses: map['accesses'] == null ? null : ((map['accesses'] as List).cast<String>()).input(),
-      grantee: map['grantee'] == null ? null : (map['grantee'] as String).input(),
-      granteeType: map['granteeType'] == null ? null : (map['granteeType'] as String).input(),
+      accesses: map['accesses'] == null ? null : (((map['accesses'] as List).cast<String>()).input()).input(),
+      grantee: map['grantee'] == null ? null : ((map['grantee'] as String).input()).input(),
+      granteeType: map['granteeType'] == null ? null : ((map['granteeType'] as String).input()).input(),
     );
   }
 }

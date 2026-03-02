@@ -21,7 +21,7 @@ class BucketObjectLockConfigurationV2Rule {
 
   factory BucketObjectLockConfigurationV2Rule.fromMap(Map<String, dynamic> map) {
     return BucketObjectLockConfigurationV2Rule(
-      defaultRetention: (BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap((map['defaultRetention'] as Map).cast<String, dynamic>())).input(),
+      defaultRetention: (BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap((map['defaultRetention']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class BgpPolicyArgs {
 
   factory BgpPolicyArgs.fromMap(Map<String, dynamic> map) {
     return BgpPolicyArgs(
-      content: map['content'] == null ? null : (BgpPolicyContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (BgpPolicyContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
       policyName: (map['policyName'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -49,12 +49,12 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      argocdEnabled: map['argocdEnabled'] == null ? null : (map['argocdEnabled'] as bool).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      network: map['network'] == null ? null : (ClusterNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      argocdEnabled: map['argocdEnabled'] == null ? null : (map['argocdEnabled']! as bool).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      network: map['network'] == null ? null : (ClusterNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

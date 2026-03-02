@@ -39,10 +39,10 @@ class GetThemeConfiguration {
 
   factory GetThemeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetThemeConfiguration(
-      dataColorPalettes: (pulumi.Input.decodeList<GetThemeConfigurationDataColorPalette>(map['dataColorPalettes'], (value) => GetThemeConfigurationDataColorPalette.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sheets: (pulumi.Input.decodeList<GetThemeConfigurationSheet>(map['sheets'], (value) => GetThemeConfigurationSheet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      typographies: (pulumi.Input.decodeList<GetThemeConfigurationTypography>(map['typographies'], (value) => GetThemeConfigurationTypography.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uiColorPalettes: (pulumi.Input.decodeList<GetThemeConfigurationUiColorPalette>(map['uiColorPalettes'], (value) => GetThemeConfigurationUiColorPalette.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataColorPalettes: (pulumi.Input.decodeList<GetThemeConfigurationDataColorPalette>(map['dataColorPalettes']!, (value) => GetThemeConfigurationDataColorPalette.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sheets: (pulumi.Input.decodeList<GetThemeConfigurationSheet>(map['sheets']!, (value) => GetThemeConfigurationSheet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      typographies: (pulumi.Input.decodeList<GetThemeConfigurationTypography>(map['typographies']!, (value) => GetThemeConfigurationTypography.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uiColorPalettes: (pulumi.Input.decodeList<GetThemeConfigurationUiColorPalette>(map['uiColorPalettes']!, (value) => GetThemeConfigurationUiColorPalette.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

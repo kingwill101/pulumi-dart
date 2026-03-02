@@ -26,7 +26,7 @@ class TablePointInTimeRecovery {
   factory TablePointInTimeRecovery.fromMap(Map<String, dynamic> map) {
     return TablePointInTimeRecovery(
       enabled: (map['enabled'] as bool).input(),
-      recoveryPeriodInDays: map['recoveryPeriodInDays'] == null ? null : (map['recoveryPeriodInDays'] as int).input(),
+      recoveryPeriodInDays: map['recoveryPeriodInDays'] == null ? null : ((map['recoveryPeriodInDays'] as int).input()).input(),
     );
   }
 }

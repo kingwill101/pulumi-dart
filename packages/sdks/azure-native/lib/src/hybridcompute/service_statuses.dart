@@ -27,8 +27,8 @@ class ServiceStatuses {
 
   factory ServiceStatuses.fromMap(Map<String, dynamic> map) {
     return ServiceStatuses(
-      extensionService: map['extensionService'] == null ? null : (ServiceStatus.fromMap((map['extensionService'] as Map).cast<String, dynamic>())).input(),
-      guestConfigurationService: map['guestConfigurationService'] == null ? null : (ServiceStatus.fromMap((map['guestConfigurationService'] as Map).cast<String, dynamic>())).input(),
+      extensionService: map['extensionService'] == null ? null : (ServiceStatus.fromMap((map['extensionService']! as Map).cast<String, dynamic>())).input(),
+      guestConfigurationService: map['guestConfigurationService'] == null ? null : (ServiceStatus.fromMap((map['guestConfigurationService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -43,9 +43,9 @@ class NetworkTapPropertiesDestinations {
   factory NetworkTapPropertiesDestinations.fromMap(Map<String, dynamic> map) {
     return NetworkTapPropertiesDestinations(
       destinationId: (map['destinationId'] as String).input(),
-      destinationTapRuleId: map['destinationTapRuleId'] == null ? null : (map['destinationTapRuleId'] as String).input(),
+      destinationTapRuleId: map['destinationTapRuleId'] == null ? null : (map['destinationTapRuleId']! as String).input(),
       destinationType: (map['destinationType'] as String).input(),
-      isolationDomainProperties: map['isolationDomainProperties'] == null ? null : (IsolationDomainProperties.fromMap((map['isolationDomainProperties'] as Map).cast<String, dynamic>())).input(),
+      isolationDomainProperties: map['isolationDomainProperties'] == null ? null : (IsolationDomainProperties.fromMap((map['isolationDomainProperties']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
     );
   }

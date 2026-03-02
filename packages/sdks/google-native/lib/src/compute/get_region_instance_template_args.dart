@@ -36,9 +36,9 @@ class GetRegionInstanceTemplateArgs {
   factory GetRegionInstanceTemplateArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateArgs(
       instanceTemplate: (map['instanceTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      view: map['view'] == null ? null : (map['view'] as String).input(),
+      view: map['view'] == null ? null : (map['view']! as String).input(),
     );
   }
 }

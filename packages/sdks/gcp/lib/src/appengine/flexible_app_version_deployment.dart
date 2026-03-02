@@ -44,10 +44,10 @@ class FlexibleAppVersionDeployment {
 
   factory FlexibleAppVersionDeployment.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeployment(
-      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : (FlexibleAppVersionDeploymentCloudBuildOptions.fromMap((map['cloudBuildOptions'] as Map).cast<String, dynamic>())).input(),
-      container: map['container'] == null ? null : (FlexibleAppVersionDeploymentContainer.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
-      files: map['files'] == null ? null : (pulumi.Input.decodeList<FlexibleAppVersionDeploymentFile>(map['files'], (value) => FlexibleAppVersionDeploymentFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zip: map['zip'] == null ? null : (FlexibleAppVersionDeploymentZip.fromMap((map['zip'] as Map).cast<String, dynamic>())).input(),
+      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : (FlexibleAppVersionDeploymentCloudBuildOptions.fromMap((map['cloudBuildOptions']! as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (FlexibleAppVersionDeploymentContainer.fromMap((map['container']! as Map).cast<String, dynamic>())).input(),
+      files: map['files'] == null ? null : (pulumi.Input.decodeList<FlexibleAppVersionDeploymentFile>(map['files']!, (value) => FlexibleAppVersionDeploymentFile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zip: map['zip'] == null ? null : (FlexibleAppVersionDeploymentZip.fromMap((map['zip']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

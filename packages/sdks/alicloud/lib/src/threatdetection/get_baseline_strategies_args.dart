@@ -43,11 +43,11 @@ class GetBaselineStrategiesArgs {
 
   factory GetBaselineStrategiesArgs.fromMap(Map<String, dynamic> map) {
     return GetBaselineStrategiesArgs(
-      customType: map['customType'] == null ? null : (map['customType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      strategyIds: map['strategyIds'] == null ? null : (map['strategyIds'] as String).input(),
+      customType: map['customType'] == null ? null : (map['customType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      strategyIds: map['strategyIds'] == null ? null : (map['strategyIds']! as String).input(),
     );
   }
 }

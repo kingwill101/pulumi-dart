@@ -40,8 +40,8 @@ class RecurrencePattern {
     return RecurrencePattern(
       expirationDate: (map['expirationDate'] as String).input(),
       frequency: (RecurrenceFrequency.fromValue(map['frequency'] as String)).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      weekDays: map['weekDays'] == null ? null : (pulumi.Input.decodeList<WeekDay>(map['weekDays'], (value) => WeekDay.fromValue(value as String))).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      weekDays: map['weekDays'] == null ? null : (pulumi.Input.decodeList<WeekDay>(map['weekDays']!, (value) => WeekDay.fromValue(value as String))).input(),
     );
   }
 }

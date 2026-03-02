@@ -31,9 +31,9 @@ class LinkedInfoResponse {
 
   factory LinkedInfoResponse.fromMap(Map<String, dynamic> map) {
     return LinkedInfoResponse(
-      linkedId: map['linkedId'] == null ? null : (map['linkedId'] as String).input(),
-      linkedResourceName: map['linkedResourceName'] == null ? null : (map['linkedResourceName'] as String).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
+      linkedId: map['linkedId'] == null ? null : (map['linkedId']! as String).input(),
+      linkedResourceName: map['linkedResourceName'] == null ? null : (map['linkedResourceName']! as String).input(),
+      origin: map['origin'] == null ? null : (map['origin']! as String).input(),
     );
   }
 }

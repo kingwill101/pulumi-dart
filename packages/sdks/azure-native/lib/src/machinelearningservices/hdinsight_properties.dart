@@ -32,9 +32,9 @@ class HDInsightProperties {
 
   factory HDInsightProperties.fromMap(Map<String, dynamic> map) {
     return HDInsightProperties(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      administratorAccount: map['administratorAccount'] == null ? null : (VirtualMachineSshCredentials.fromMap((map['administratorAccount'] as Map).cast<String, dynamic>())).input(),
-      sshPort: map['sshPort'] == null ? null : (map['sshPort'] as int).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      administratorAccount: map['administratorAccount'] == null ? null : (VirtualMachineSshCredentials.fromMap((map['administratorAccount']! as Map).cast<String, dynamic>())).input(),
+      sshPort: map['sshPort'] == null ? null : (map['sshPort']! as int).input(),
     );
   }
 }

@@ -61,14 +61,14 @@ class GetRouteMapsResult {
   factory GetRouteMapsResult.fromMap(Map<String, dynamic> map) {
     return GetRouteMapsResult(
       cenId: map['cenId'] as String,
-      cenRegionId: map['cenRegionId'] == null ? null : map['cenRegionId'] as String,
-      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex'] as String,
+      cenRegionId: map['cenRegionId'] == null ? null : map['cenRegionId']! as String,
+      descriptionRegex: map['descriptionRegex'] == null ? null : map['descriptionRegex']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       maps: pulumi.Input.decodeList<GetRouteMapsMap>(map['maps'], (value) => GetRouteMapsMap.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      transmitDirection: map['transmitDirection'] == null ? null : map['transmitDirection'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      transmitDirection: map['transmitDirection'] == null ? null : map['transmitDirection']! as String,
     );
   }
 }

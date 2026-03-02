@@ -49,7 +49,7 @@ class TransparentDataEncryptionArgs {
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
       state: (TransparentDataEncryptionState.fromValue(map['state'] as String)).input(),
-      tdeName: map['tdeName'] == null ? null : (map['tdeName'] as String).input(),
+      tdeName: map['tdeName'] == null ? null : (map['tdeName']! as String).input(),
     );
   }
 }

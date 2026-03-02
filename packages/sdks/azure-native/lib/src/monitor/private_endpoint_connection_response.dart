@@ -59,13 +59,13 @@ class PrivateEndpointConnectionResponse {
 
   factory PrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionResponse(
-      groupIds: map['groupIds'] == null ? null : ((map['groupIds'] as List).cast<String>()).input(),
+      groupIds: map['groupIds'] == null ? null : ((map['groupIds']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
       privateLinkServiceConnectionState: (PrivateLinkServiceConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      systemData: map['systemData'] == null ? null : (SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>())).input(),
+      systemData: map['systemData'] == null ? null : (SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

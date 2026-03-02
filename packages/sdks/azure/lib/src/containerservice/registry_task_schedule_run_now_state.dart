@@ -21,7 +21,7 @@ class RegistryTaskScheduleRunNowState {
 
   factory RegistryTaskScheduleRunNowState.fromMap(Map<String, dynamic> map) {
     return RegistryTaskScheduleRunNowState(
-      containerRegistryTaskId: map['containerRegistryTaskId'] == null ? null : (map['containerRegistryTaskId'] as String).input(),
+      containerRegistryTaskId: map['containerRegistryTaskId'] == null ? null : (map['containerRegistryTaskId']! as String).input(),
     );
   }
 }

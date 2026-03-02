@@ -57,11 +57,11 @@ class HanaBackupData {
     return HanaBackupData(
       backupPolicy: (DBBackupPolicyProperties.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
       backupType: (map['backupType'] as String).input(),
-      dbInstanceSnapshotBackupPolicy: map['dbInstanceSnapshotBackupPolicy'] == null ? null : (DBBackupPolicyProperties.fromMap((map['dbInstanceSnapshotBackupPolicy'] as Map).cast<String, dynamic>())).input(),
+      dbInstanceSnapshotBackupPolicy: map['dbInstanceSnapshotBackupPolicy'] == null ? null : (DBBackupPolicyProperties.fromMap((map['dbInstanceSnapshotBackupPolicy']! as Map).cast<String, dynamic>())).input(),
       hdbuserstoreKeyName: (map['hdbuserstoreKeyName'] as String).input(),
-      instanceNumber: map['instanceNumber'] == null ? null : (map['instanceNumber'] as String).input(),
+      instanceNumber: map['instanceNumber'] == null ? null : (map['instanceNumber']! as String).input(),
       recoveryServicesVault: (ExistingRecoveryServicesVault.fromMap((map['recoveryServicesVault'] as Map).cast<String, dynamic>())).input(),
-      sslConfiguration: map['sslConfiguration'] == null ? null : (SSLConfiguration.fromMap((map['sslConfiguration'] as Map).cast<String, dynamic>())).input(),
+      sslConfiguration: map['sslConfiguration'] == null ? null : (SSLConfiguration.fromMap((map['sslConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class LaunchTemplateCpuOptions {
 
   factory LaunchTemplateCpuOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateCpuOptions(
-      amdSevSnp: map['amdSevSnp'] == null ? null : (map['amdSevSnp'] as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      nestedVirtualization: map['nestedVirtualization'] == null ? null : (map['nestedVirtualization'] as String).input(),
-      threadsPerCore: map['threadsPerCore'] == null ? null : (map['threadsPerCore'] as int).input(),
+      amdSevSnp: map['amdSevSnp'] == null ? null : ((map['amdSevSnp'] as String).input()).input(),
+      coreCount: map['coreCount'] == null ? null : ((map['coreCount'] as int).input()).input(),
+      nestedVirtualization: map['nestedVirtualization'] == null ? null : ((map['nestedVirtualization'] as String).input()).input(),
+      threadsPerCore: map['threadsPerCore'] == null ? null : ((map['threadsPerCore'] as int).input()).input(),
     );
   }
 }

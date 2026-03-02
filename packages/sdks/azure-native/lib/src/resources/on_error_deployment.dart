@@ -27,8 +27,8 @@ class OnErrorDeployment {
 
   factory OnErrorDeployment.fromMap(Map<String, dynamic> map) {
     return OnErrorDeployment(
-      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName'] as String).input(),
-      type: map['type'] == null ? null : (OnErrorDeploymentType.fromValue(map['type'] as String)).input(),
+      deploymentName: map['deploymentName'] == null ? null : (map['deploymentName']! as String).input(),
+      type: map['type'] == null ? null : (OnErrorDeploymentType.fromValue(map['type']! as String)).input(),
     );
   }
 }

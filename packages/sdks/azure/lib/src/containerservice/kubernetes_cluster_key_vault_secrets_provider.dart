@@ -33,9 +33,9 @@ class KubernetesClusterKeyVaultSecretsProvider {
 
   factory KubernetesClusterKeyVaultSecretsProvider.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterKeyVaultSecretsProvider(
-      secretIdentities: map['secretIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterKeyVaultSecretsProviderSecretIdentity>(map['secretIdentities'], (value) => KubernetesClusterKeyVaultSecretsProviderSecretIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretRotationEnabled: map['secretRotationEnabled'] == null ? null : (map['secretRotationEnabled'] as bool).input(),
-      secretRotationInterval: map['secretRotationInterval'] == null ? null : (map['secretRotationInterval'] as String).input(),
+      secretIdentities: map['secretIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterKeyVaultSecretsProviderSecretIdentity>(map['secretIdentities']!, (value) => KubernetesClusterKeyVaultSecretsProviderSecretIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretRotationEnabled: map['secretRotationEnabled'] == null ? null : (map['secretRotationEnabled']! as bool).input(),
+      secretRotationInterval: map['secretRotationInterval'] == null ? null : (map['secretRotationInterval']! as String).input(),
     );
   }
 }

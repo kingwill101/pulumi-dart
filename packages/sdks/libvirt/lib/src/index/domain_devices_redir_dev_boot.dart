@@ -25,7 +25,7 @@ class DomainDevicesRedirDevBoot {
 
   factory DomainDevicesRedirDevBoot.fromMap(Map<String, dynamic> map) {
     return DomainDevicesRedirDevBoot(
-      loadParm: map['loadParm'] == null ? null : (map['loadParm'] as String).input(),
+      loadParm: map['loadParm'] == null ? null : (map['loadParm']! as String).input(),
       order: (map['order'] as double).input(),
     );
   }

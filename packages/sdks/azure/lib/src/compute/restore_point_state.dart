@@ -36,10 +36,10 @@ class RestorePointState {
 
   factory RestorePointState.fromMap(Map<String, dynamic> map) {
     return RestorePointState(
-      crashConsistencyModeEnabled: map['crashConsistencyModeEnabled'] == null ? null : (map['crashConsistencyModeEnabled'] as bool).input(),
-      excludedDisks: map['excludedDisks'] == null ? null : ((map['excludedDisks'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      virtualMachineRestorePointCollectionId: map['virtualMachineRestorePointCollectionId'] == null ? null : (map['virtualMachineRestorePointCollectionId'] as String).input(),
+      crashConsistencyModeEnabled: map['crashConsistencyModeEnabled'] == null ? null : (map['crashConsistencyModeEnabled']! as bool).input(),
+      excludedDisks: map['excludedDisks'] == null ? null : ((map['excludedDisks']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      virtualMachineRestorePointCollectionId: map['virtualMachineRestorePointCollectionId'] == null ? null : (map['virtualMachineRestorePointCollectionId']! as String).input(),
     );
   }
 }

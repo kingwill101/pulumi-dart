@@ -67,15 +67,15 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      evaluationModes: map['evaluationModes'] == null ? null : (pulumi.Input.decodeList<RuleEvaluationMode>(map['evaluationModes'], (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inputParameters: map['inputParameters'] == null ? null : (map['inputParameters'] as String).input(),
-      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : (map['maximumExecutionFrequency'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scope: map['scope'] == null ? null : (RuleScope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      source: (RuleSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      evaluationModes: map['evaluationModes'] == null ? null : ((pulumi.Input.decodeList<RuleEvaluationMode>(map['evaluationModes']!, (value) => RuleEvaluationMode.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      inputParameters: map['inputParameters'] == null ? null : ((map['inputParameters'] as String).input()).input(),
+      maximumExecutionFrequency: map['maximumExecutionFrequency'] == null ? null : ((map['maximumExecutionFrequency'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scope: map['scope'] == null ? null : ((RuleScope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input()).input(),
+      source: (RuleSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetExternalVpnGatewayComputeBetaArgs {
   factory GetExternalVpnGatewayComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetExternalVpnGatewayComputeBetaArgs(
       externalVpnGateway: (map['externalVpnGateway'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

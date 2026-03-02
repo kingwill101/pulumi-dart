@@ -28,7 +28,7 @@ class AuxiliaryNodeGroup {
   factory AuxiliaryNodeGroup.fromMap(Map<String, dynamic> map) {
     return AuxiliaryNodeGroup(
       nodeGroup: (NodeGroup.fromMap((map['nodeGroup'] as Map).cast<String, dynamic>())).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
     );
   }
 }

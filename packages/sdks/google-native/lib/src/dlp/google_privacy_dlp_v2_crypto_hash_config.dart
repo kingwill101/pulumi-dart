@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 
   factory GooglePrivacyDlpV2CryptoHashConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoHashConfig(
-      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

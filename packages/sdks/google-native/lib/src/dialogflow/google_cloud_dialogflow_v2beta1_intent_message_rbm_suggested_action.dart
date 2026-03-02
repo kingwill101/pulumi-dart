@@ -43,11 +43,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction(
-      dial: map['dial'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromMap((map['dial'] as Map).cast<String, dynamic>())).input(),
-      openUrl: map['openUrl'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromMap((map['openUrl'] as Map).cast<String, dynamic>())).input(),
-      postbackData: map['postbackData'] == null ? null : (map['postbackData'] as String).input(),
-      shareLocation: map['shareLocation'] == null ? null : ((map['shareLocation'] as Map).cast<String, dynamic>()).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      dial: map['dial'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromMap((map['dial']! as Map).cast<String, dynamic>())).input(),
+      openUrl: map['openUrl'] == null ? null : (GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromMap((map['openUrl']! as Map).cast<String, dynamic>())).input(),
+      postbackData: map['postbackData'] == null ? null : (map['postbackData']! as String).input(),
+      shareLocation: map['shareLocation'] == null ? null : ((map['shareLocation']! as Map).cast<String, dynamic>()).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

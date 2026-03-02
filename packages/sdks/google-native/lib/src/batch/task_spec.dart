@@ -61,14 +61,14 @@ class TaskSpec {
 
   factory TaskSpec.fromMap(Map<String, dynamic> map) {
     return TaskSpec(
-      computeResource: map['computeResource'] == null ? null : (ComputeResource.fromMap((map['computeResource'] as Map).cast<String, dynamic>())).input(),
-      environment: map['environment'] == null ? null : (Environment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      environments: map['environments'] == null ? null : ((map['environments'] as Map).cast<String, String>()).input(),
-      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicy>(map['lifecyclePolicies'], (value) => LifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxRetryCount: map['maxRetryCount'] == null ? null : (map['maxRetryCount'] as int).input(),
-      maxRunDuration: map['maxRunDuration'] == null ? null : (map['maxRunDuration'] as String).input(),
-      runnables: map['runnables'] == null ? null : (pulumi.Input.decodeList<Runnable>(map['runnables'], (value) => Runnable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      computeResource: map['computeResource'] == null ? null : (ComputeResource.fromMap((map['computeResource']! as Map).cast<String, dynamic>())).input(),
+      environment: map['environment'] == null ? null : (Environment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      environments: map['environments'] == null ? null : ((map['environments']! as Map).cast<String, String>()).input(),
+      lifecyclePolicies: map['lifecyclePolicies'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicy>(map['lifecyclePolicies']!, (value) => LifecyclePolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxRetryCount: map['maxRetryCount'] == null ? null : (map['maxRetryCount']! as int).input(),
+      maxRunDuration: map['maxRunDuration'] == null ? null : (map['maxRunDuration']! as String).input(),
+      runnables: map['runnables'] == null ? null : (pulumi.Input.decodeList<Runnable>(map['runnables']!, (value) => Runnable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

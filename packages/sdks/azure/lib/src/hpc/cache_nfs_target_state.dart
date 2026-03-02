@@ -57,14 +57,14 @@ class CacheNfsTargetState {
 
   factory CacheNfsTargetState.fromMap(Map<String, dynamic> map) {
     return CacheNfsTargetState(
-      cacheName: map['cacheName'] == null ? null : (map['cacheName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceJunctions: map['namespaceJunctions'] == null ? null : (pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(map['namespaceJunctions'], (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      targetHostName: map['targetHostName'] == null ? null : (map['targetHostName'] as String).input(),
-      usageModel: map['usageModel'] == null ? null : (map['usageModel'] as String).input(),
-      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds'] as int).input(),
-      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds'] as int).input(),
+      cacheName: map['cacheName'] == null ? null : (map['cacheName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceJunctions: map['namespaceJunctions'] == null ? null : (pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(map['namespaceJunctions']!, (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      targetHostName: map['targetHostName'] == null ? null : (map['targetHostName']! as String).input(),
+      usageModel: map['usageModel'] == null ? null : (map['usageModel']! as String).input(),
+      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds']! as int).input(),
+      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds']! as int).input(),
     );
   }
 }

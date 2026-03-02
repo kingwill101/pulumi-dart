@@ -38,10 +38,10 @@ class ConnectedEnvironmentStorageResponseProperties {
 
   factory ConnectedEnvironmentStorageResponseProperties.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentStorageResponseProperties(
-      azureFile: map['azureFile'] == null ? null : (AzureFilePropertiesResponse.fromMap((map['azureFile'] as Map).cast<String, dynamic>())).input(),
+      azureFile: map['azureFile'] == null ? null : (AzureFilePropertiesResponse.fromMap((map['azureFile']! as Map).cast<String, dynamic>())).input(),
       deploymentErrors: (map['deploymentErrors'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      smb: map['smb'] == null ? null : (SmbStorageResponse.fromMap((map['smb'] as Map).cast<String, dynamic>())).input(),
+      smb: map['smb'] == null ? null : (SmbStorageResponse.fromMap((map['smb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

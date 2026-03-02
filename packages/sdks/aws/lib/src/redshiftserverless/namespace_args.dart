@@ -93,20 +93,20 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      adminPasswordSecretKmsKeyId: map['adminPasswordSecretKmsKeyId'] == null ? null : (map['adminPasswordSecretKmsKeyId'] as String).input(),
-      adminUserPassword: map['adminUserPassword'] == null ? null : (map['adminUserPassword'] as String).input(),
-      adminUserPasswordWo: map['adminUserPasswordWo'] == null ? null : (map['adminUserPasswordWo'] as String).input(),
-      adminUserPasswordWoVersion: map['adminUserPasswordWoVersion'] == null ? null : (map['adminUserPasswordWoVersion'] as int).input(),
-      adminUsername: map['adminUsername'] == null ? null : (map['adminUsername'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : (map['defaultIamRoleArn'] as String).input(),
-      iamRoles: map['iamRoles'] == null ? null : ((map['iamRoles'] as List).cast<String>()).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      logExports: map['logExports'] == null ? null : ((map['logExports'] as List).cast<String>()).input(),
-      manageAdminPassword: map['manageAdminPassword'] == null ? null : (map['manageAdminPassword'] as bool).input(),
+      adminPasswordSecretKmsKeyId: map['adminPasswordSecretKmsKeyId'] == null ? null : ((map['adminPasswordSecretKmsKeyId'] as String).input()).input(),
+      adminUserPassword: map['adminUserPassword'] == null ? null : ((map['adminUserPassword'] as String).input()).input(),
+      adminUserPasswordWo: map['adminUserPasswordWo'] == null ? null : ((map['adminUserPasswordWo'] as String).input()).input(),
+      adminUserPasswordWoVersion: map['adminUserPasswordWoVersion'] == null ? null : ((map['adminUserPasswordWoVersion'] as int).input()).input(),
+      adminUsername: map['adminUsername'] == null ? null : ((map['adminUsername'] as String).input()).input(),
+      dbName: map['dbName'] == null ? null : ((map['dbName'] as String).input()).input(),
+      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : ((map['defaultIamRoleArn'] as String).input()).input(),
+      iamRoles: map['iamRoles'] == null ? null : (((map['iamRoles'] as List).cast<String>()).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      logExports: map['logExports'] == null ? null : (((map['logExports'] as List).cast<String>()).input()).input(),
+      manageAdminPassword: map['manageAdminPassword'] == null ? null : ((map['manageAdminPassword'] as bool).input()).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

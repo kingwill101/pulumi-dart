@@ -54,13 +54,13 @@ class IntegrationRuntimeAzureArgs {
 
   factory IntegrationRuntimeAzureArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeAzureArgs(
-      computeType: map['computeType'] == null ? null : (map['computeType'] as String).input(),
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      computeType: map['computeType'] == null ? null : (map['computeType']! as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       synapseWorkspaceId: (map['synapseWorkspaceId'] as String).input(),
-      timeToLiveMin: map['timeToLiveMin'] == null ? null : (map['timeToLiveMin'] as int).input(),
+      timeToLiveMin: map['timeToLiveMin'] == null ? null : (map['timeToLiveMin']! as int).input(),
     );
   }
 }

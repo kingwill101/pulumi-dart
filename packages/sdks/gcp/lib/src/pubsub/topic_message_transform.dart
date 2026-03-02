@@ -29,8 +29,8 @@ class TopicMessageTransform {
 
   factory TopicMessageTransform.fromMap(Map<String, dynamic> map) {
     return TopicMessageTransform(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      javascriptUdf: map['javascriptUdf'] == null ? null : (TopicMessageTransformJavascriptUdf.fromMap((map['javascriptUdf'] as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      javascriptUdf: map['javascriptUdf'] == null ? null : (TopicMessageTransformJavascriptUdf.fromMap((map['javascriptUdf']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

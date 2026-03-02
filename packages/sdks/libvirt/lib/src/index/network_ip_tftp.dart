@@ -20,7 +20,7 @@ class NetworkIpTftp {
 
   factory NetworkIpTftp.fromMap(Map<String, dynamic> map) {
     return NetworkIpTftp(
-      root: map['root'] == null ? null : (map['root'] as String).input(),
+      root: map['root'] == null ? null : (map['root']! as String).input(),
     );
   }
 }

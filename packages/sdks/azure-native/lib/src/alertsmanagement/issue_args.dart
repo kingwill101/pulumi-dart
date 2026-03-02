@@ -35,8 +35,8 @@ class IssueArgs {
 
   factory IssueArgs.fromMap(Map<String, dynamic> map) {
     return IssueArgs(
-      issueName: map['issueName'] == null ? null : (map['issueName'] as String).input(),
-      properties: map['properties'] == null ? null : (IssueProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      issueName: map['issueName'] == null ? null : (map['issueName']! as String).input(),
+      properties: map['properties'] == null ? null : (IssueProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

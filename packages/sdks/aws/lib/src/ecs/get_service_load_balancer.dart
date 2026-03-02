@@ -41,7 +41,7 @@ class GetServiceLoadBalancer {
 
   factory GetServiceLoadBalancer.fromMap(Map<String, dynamic> map) {
     return GetServiceLoadBalancer(
-      advancedConfigurations: (pulumi.Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(map['advancedConfigurations'], (value) => GetServiceLoadBalancerAdvancedConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advancedConfigurations: (pulumi.Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(map['advancedConfigurations']!, (value) => GetServiceLoadBalancerAdvancedConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       containerName: (map['containerName'] as String).input(),
       containerPort: (map['containerPort'] as int).input(),
       elbName: (map['elbName'] as String).input(),

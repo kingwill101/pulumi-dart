@@ -51,11 +51,11 @@ class ModelArgs {
   factory ModelArgs.fromMap(Map<String, dynamic> map) {
     return ModelArgs(
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (ModelState.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      tfliteModel: map['tfliteModel'] == null ? null : (TfLiteModel.fromMap((map['tfliteModel'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (ModelState.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      tfliteModel: map['tfliteModel'] == null ? null : (TfLiteModel.fromMap((map['tfliteModel']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -71,14 +71,14 @@ class TestCaseArgs {
     return TestCaseArgs(
       agentId: (map['agentId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      lastTestResult: map['lastTestResult'] == null ? null : (GoogleCloudDialogflowCxV3TestCaseResult.fromMap((map['lastTestResult'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurn>(map['testCaseConversationTurns'], (value) => GoogleCloudDialogflowCxV3ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      testConfig: map['testConfig'] == null ? null : (GoogleCloudDialogflowCxV3TestConfig.fromMap((map['testConfig'] as Map).cast<String, dynamic>())).input(),
+      lastTestResult: map['lastTestResult'] == null ? null : (GoogleCloudDialogflowCxV3TestCaseResult.fromMap((map['lastTestResult']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      testCaseConversationTurns: map['testCaseConversationTurns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurn>(map['testCaseConversationTurns']!, (value) => GoogleCloudDialogflowCxV3ConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testConfig: map['testConfig'] == null ? null : (GoogleCloudDialogflowCxV3TestConfig.fromMap((map['testConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

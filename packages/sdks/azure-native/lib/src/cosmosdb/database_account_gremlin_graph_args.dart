@@ -52,7 +52,7 @@ class DatabaseAccountGremlinGraphArgs {
     return DatabaseAccountGremlinGraphArgs(
       accountName: (map['accountName'] as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      graphName: map['graphName'] == null ? null : (map['graphName'] as String).input(),
+      graphName: map['graphName'] == null ? null : (map['graphName']! as String).input(),
       options: ((map['options'] as Map).cast<String, String>()).input(),
       resource: (GremlinGraphResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

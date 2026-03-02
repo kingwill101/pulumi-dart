@@ -49,10 +49,10 @@ class MqttBridgeRoutesResponse {
     return MqttBridgeRoutesResponse(
       direction: (map['direction'] as String).input(),
       name: (map['name'] as String).input(),
-      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
-      sharedSubscription: map['sharedSubscription'] == null ? null : (MqttBridgeRouteSharedSubscriptionResponse.fromMap((map['sharedSubscription'] as Map).cast<String, dynamic>())).input(),
+      qos: map['qos'] == null ? null : (map['qos']! as int).input(),
+      sharedSubscription: map['sharedSubscription'] == null ? null : (MqttBridgeRouteSharedSubscriptionResponse.fromMap((map['sharedSubscription']! as Map).cast<String, dynamic>())).input(),
       source: (map['source'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

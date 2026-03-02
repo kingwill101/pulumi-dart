@@ -34,7 +34,7 @@ class ListApplianceKeysArgs {
 
   factory ListApplianceKeysArgs.fromMap(Map<String, dynamic> map) {
     return ListApplianceKeysArgs(
-      artifactType: map['artifactType'] == null ? null : (map['artifactType'] as String).input(),
+      artifactType: map['artifactType'] == null ? null : (map['artifactType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

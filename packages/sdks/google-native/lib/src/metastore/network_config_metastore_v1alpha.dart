@@ -27,8 +27,8 @@ class NetworkConfigMetastoreV1alpha {
 
   factory NetworkConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return NetworkConfigMetastoreV1alpha(
-      consumers: map['consumers'] == null ? null : (pulumi.Input.decodeList<ConsumerMetastoreV1alpha>(map['consumers'], (value) => ConsumerMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customRoutesEnabled: map['customRoutesEnabled'] == null ? null : (map['customRoutesEnabled'] as bool).input(),
+      consumers: map['consumers'] == null ? null : (pulumi.Input.decodeList<ConsumerMetastoreV1alpha>(map['consumers']!, (value) => ConsumerMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customRoutesEnabled: map['customRoutesEnabled'] == null ? null : (map['customRoutesEnabled']! as bool).input(),
     );
   }
 }

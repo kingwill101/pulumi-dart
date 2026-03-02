@@ -69,14 +69,14 @@ class GetApplicationResult {
   factory GetApplicationResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      trackingDataStores: map['trackingDataStores'] == null ? null : pulumi.Input.decodeMapValues<TrackingDataStoreResponse>(map['trackingDataStores'], (value) => TrackingDataStoreResponse.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
+      trackingDataStores: map['trackingDataStores'] == null ? null : pulumi.Input.decodeMapValues<TrackingDataStoreResponse>(map['trackingDataStores']!, (value) => TrackingDataStoreResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

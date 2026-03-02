@@ -81,18 +81,18 @@ class EnterpriseSnapshotPolicyState {
 
   factory EnterpriseSnapshotPolicyState.fromMap(Map<String, dynamic> map) {
     return EnterpriseSnapshotPolicyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      crossRegionCopyInfo: map['crossRegionCopyInfo'] == null ? null : (EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((map['crossRegionCopyInfo'] as Map).cast<String, dynamic>())).input(),
-      desc: map['desc'] == null ? null : (map['desc'] as String).input(),
-      enterpriseSnapshotPolicyName: map['enterpriseSnapshotPolicyName'] == null ? null : (map['enterpriseSnapshotPolicyName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      retainRule: map['retainRule'] == null ? null : (EnterpriseSnapshotPolicyRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (EnterpriseSnapshotPolicySchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      specialRetainRules: map['specialRetainRules'] == null ? null : (EnterpriseSnapshotPolicySpecialRetainRules.fromMap((map['specialRetainRules'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      storageRule: map['storageRule'] == null ? null : (EnterpriseSnapshotPolicyStorageRule.fromMap((map['storageRule'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      crossRegionCopyInfo: map['crossRegionCopyInfo'] == null ? null : (EnterpriseSnapshotPolicyCrossRegionCopyInfo.fromMap((map['crossRegionCopyInfo']! as Map).cast<String, dynamic>())).input(),
+      desc: map['desc'] == null ? null : (map['desc']! as String).input(),
+      enterpriseSnapshotPolicyName: map['enterpriseSnapshotPolicyName'] == null ? null : (map['enterpriseSnapshotPolicyName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      retainRule: map['retainRule'] == null ? null : (EnterpriseSnapshotPolicyRetainRule.fromMap((map['retainRule']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (EnterpriseSnapshotPolicySchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      specialRetainRules: map['specialRetainRules'] == null ? null : (EnterpriseSnapshotPolicySpecialRetainRules.fromMap((map['specialRetainRules']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      storageRule: map['storageRule'] == null ? null : (EnterpriseSnapshotPolicyStorageRule.fromMap((map['storageRule']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

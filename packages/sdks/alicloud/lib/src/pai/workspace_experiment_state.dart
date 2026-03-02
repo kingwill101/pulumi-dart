@@ -41,11 +41,11 @@ class WorkspaceExperimentState {
 
   factory WorkspaceExperimentState.fromMap(Map<String, dynamic> map) {
     return WorkspaceExperimentState(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
-      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      experimentName: map['experimentName'] == null ? null : (map['experimentName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
+      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      experimentName: map['experimentName'] == null ? null : (map['experimentName']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

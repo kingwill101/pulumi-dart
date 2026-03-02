@@ -94,20 +94,20 @@ class WorkerPoolState {
 
   factory WorkerPoolState.fromMap(Map<String, dynamic> map) {
     return WorkerPoolState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (WorkerPoolNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      privateServiceConnect: map['privateServiceConnect'] == null ? null : (WorkerPoolPrivateServiceConnect.fromMap((map['privateServiceConnect'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      workerConfig: map['workerConfig'] == null ? null : (WorkerPoolWorkerConfig.fromMap((map['workerConfig'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (WorkerPoolNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      privateServiceConnect: map['privateServiceConnect'] == null ? null : (WorkerPoolPrivateServiceConnect.fromMap((map['privateServiceConnect']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      workerConfig: map['workerConfig'] == null ? null : (WorkerPoolWorkerConfig.fromMap((map['workerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

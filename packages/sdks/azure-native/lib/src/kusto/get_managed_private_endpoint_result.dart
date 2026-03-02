@@ -71,9 +71,9 @@ class GetManagedPrivateEndpointResult {
       id: map['id'] as String,
       name: map['name'] as String,
       privateLinkResourceId: map['privateLinkResourceId'] as String,
-      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : map['privateLinkResourceRegion'] as String,
+      privateLinkResourceRegion: map['privateLinkResourceRegion'] == null ? null : map['privateLinkResourceRegion']! as String,
       provisioningState: map['provisioningState'] as String,
-      requestMessage: map['requestMessage'] == null ? null : map['requestMessage'] as String,
+      requestMessage: map['requestMessage'] == null ? null : map['requestMessage']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

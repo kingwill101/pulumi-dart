@@ -56,10 +56,10 @@ class UpstreamTemplateResponse {
 
   factory UpstreamTemplateResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamTemplateResponse(
-      auth: map['auth'] == null ? null : (UpstreamAuthSettingsResponse.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      categoryPattern: map['categoryPattern'] == null ? null : (map['categoryPattern'] as String).input(),
-      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern'] as String).input(),
-      hubPattern: map['hubPattern'] == null ? null : (map['hubPattern'] as String).input(),
+      auth: map['auth'] == null ? null : (UpstreamAuthSettingsResponse.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      categoryPattern: map['categoryPattern'] == null ? null : (map['categoryPattern']! as String).input(),
+      eventPattern: map['eventPattern'] == null ? null : (map['eventPattern']! as String).input(),
+      hubPattern: map['hubPattern'] == null ? null : (map['hubPattern']! as String).input(),
       urlTemplate: (map['urlTemplate'] as String).input(),
     );
   }

@@ -31,8 +31,8 @@ class ConfigurationRecorderArgs {
 
   factory ConfigurationRecorderArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationRecorderArgs(
-      enterpriseEdition: map['enterpriseEdition'] == null ? null : (map['enterpriseEdition'] as bool).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
+      enterpriseEdition: map['enterpriseEdition'] == null ? null : (map['enterpriseEdition']! as bool).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes']! as List).cast<String>()).input(),
     );
   }
 }

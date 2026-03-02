@@ -72,16 +72,16 @@ class GetTransitRouterRouteTablesResult {
     return GetTransitRouterRouteTablesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       tables: pulumi.Input.decodeList<GetTransitRouterRouteTablesTable>(map['tables'], (value) => GetTransitRouterRouteTablesTable.fromMap((value as Map).cast<String, dynamic>())),
       transitRouterId: map['transitRouterId'] as String,
-      transitRouterRouteTableIds: map['transitRouterRouteTableIds'] == null ? null : (map['transitRouterRouteTableIds'] as List).cast<String>(),
-      transitRouterRouteTableNames: map['transitRouterRouteTableNames'] == null ? null : (map['transitRouterRouteTableNames'] as List).cast<String>(),
-      transitRouterRouteTableStatus: map['transitRouterRouteTableStatus'] == null ? null : map['transitRouterRouteTableStatus'] as String,
-      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : map['transitRouterRouteTableType'] as String,
+      transitRouterRouteTableIds: map['transitRouterRouteTableIds'] == null ? null : (map['transitRouterRouteTableIds']! as List).cast<String>(),
+      transitRouterRouteTableNames: map['transitRouterRouteTableNames'] == null ? null : (map['transitRouterRouteTableNames']! as List).cast<String>(),
+      transitRouterRouteTableStatus: map['transitRouterRouteTableStatus'] == null ? null : map['transitRouterRouteTableStatus']! as String,
+      transitRouterRouteTableType: map['transitRouterRouteTableType'] == null ? null : map['transitRouterRouteTableType']! as String,
     );
   }
 }

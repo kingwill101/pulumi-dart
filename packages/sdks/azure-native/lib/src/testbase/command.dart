@@ -87,19 +87,19 @@ class Command {
   factory Command.fromMap(Map<String, dynamic> map) {
     return Command(
       action: (map['action'] as String).input(),
-      alwaysRun: map['alwaysRun'] == null ? null : (map['alwaysRun'] as bool).input(),
-      applyUpdateBefore: map['applyUpdateBefore'] == null ? null : (map['applyUpdateBefore'] as bool).input(),
+      alwaysRun: map['alwaysRun'] == null ? null : (map['alwaysRun']! as bool).input(),
+      applyUpdateBefore: map['applyUpdateBefore'] == null ? null : (map['applyUpdateBefore']! as bool).input(),
       content: (map['content'] as String).input(),
       contentType: (map['contentType'] as String).input(),
-      enrollIntuneBefore: map['enrollIntuneBefore'] == null ? null : (map['enrollIntuneBefore'] as bool).input(),
-      install1PAppBefore: map['install1PAppBefore'] == null ? null : (map['install1PAppBefore'] as bool).input(),
-      maxRunTime: map['maxRunTime'] == null ? null : (map['maxRunTime'] as int).input(),
+      enrollIntuneBefore: map['enrollIntuneBefore'] == null ? null : (map['enrollIntuneBefore']! as bool).input(),
+      install1PAppBefore: map['install1PAppBefore'] == null ? null : (map['install1PAppBefore']! as bool).input(),
+      maxRunTime: map['maxRunTime'] == null ? null : (map['maxRunTime']! as int).input(),
       name: (map['name'] as String).input(),
-      postUpgrade: map['postUpgrade'] == null ? null : (map['postUpgrade'] as bool).input(),
-      preUpgrade: map['preUpgrade'] == null ? null : (map['preUpgrade'] as bool).input(),
-      restartAfter: map['restartAfter'] == null ? null : (map['restartAfter'] as bool).input(),
-      runAsInteractive: map['runAsInteractive'] == null ? null : (map['runAsInteractive'] as bool).input(),
-      runElevated: map['runElevated'] == null ? null : (map['runElevated'] as bool).input(),
+      postUpgrade: map['postUpgrade'] == null ? null : (map['postUpgrade']! as bool).input(),
+      preUpgrade: map['preUpgrade'] == null ? null : (map['preUpgrade']! as bool).input(),
+      restartAfter: map['restartAfter'] == null ? null : (map['restartAfter']! as bool).input(),
+      runAsInteractive: map['runAsInteractive'] == null ? null : (map['runAsInteractive']! as bool).input(),
+      runElevated: map['runElevated'] == null ? null : (map['runElevated']! as bool).input(),
     );
   }
 }

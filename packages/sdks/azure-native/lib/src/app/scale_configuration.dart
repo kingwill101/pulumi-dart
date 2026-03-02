@@ -26,8 +26,8 @@ class ScaleConfiguration {
 
   factory ScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return ScaleConfiguration(
-      maxConcurrentSessions: map['maxConcurrentSessions'] == null ? null : (map['maxConcurrentSessions'] as int).input(),
-      readySessionInstances: map['readySessionInstances'] == null ? null : (map['readySessionInstances'] as int).input(),
+      maxConcurrentSessions: map['maxConcurrentSessions'] == null ? null : (map['maxConcurrentSessions']! as int).input(),
+      readySessionInstances: map['readySessionInstances'] == null ? null : (map['readySessionInstances']! as int).input(),
     );
   }
 }

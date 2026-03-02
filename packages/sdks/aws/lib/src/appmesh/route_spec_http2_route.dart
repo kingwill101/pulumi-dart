@@ -39,10 +39,10 @@ class RouteSpecHttp2Route {
 
   factory RouteSpecHttp2Route.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2Route(
-      action: (RouteSpecHttp2RouteAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      match: (RouteSpecHttp2RouteMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RouteSpecHttp2RouteRetryPolicy.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (RouteSpecHttp2RouteTimeout.fromMap((map['timeout'] as Map).cast<String, dynamic>())).input(),
+      action: (RouteSpecHttp2RouteAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      match: (RouteSpecHttp2RouteMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : ((RouteSpecHttp2RouteRetryPolicy.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      timeout: map['timeout'] == null ? null : ((RouteSpecHttp2RouteTimeout.fromMap((map['timeout']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

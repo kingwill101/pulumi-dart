@@ -54,14 +54,14 @@ class GetDesktopTypesResult {
 
   factory GetDesktopTypesResult.fromMap(Map<String, dynamic> map) {
     return GetDesktopTypesResult(
-      cpuCount: map['cpuCount'] == null ? null : map['cpuCount'] as int,
-      gpuCount: map['gpuCount'] == null ? null : map['gpuCount'] as double,
+      cpuCount: map['cpuCount'] == null ? null : map['cpuCount']! as int,
+      gpuCount: map['gpuCount'] == null ? null : map['gpuCount']! as double,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      instanceTypeFamily: map['instanceTypeFamily'] == null ? null : map['instanceTypeFamily'] as String,
-      memorySize: map['memorySize'] == null ? null : map['memorySize'] as int,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      instanceTypeFamily: map['instanceTypeFamily'] == null ? null : map['instanceTypeFamily']! as String,
+      memorySize: map['memorySize'] == null ? null : map['memorySize']! as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       types: pulumi.Input.decodeList<GetDesktopTypesType>(map['types'], (value) => GetDesktopTypesType.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

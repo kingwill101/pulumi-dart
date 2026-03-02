@@ -40,7 +40,7 @@ class SqlUserDefinedFunctionGetPropertiesResponseResource {
 
   factory SqlUserDefinedFunctionGetPropertiesResponseResource.fromMap(Map<String, dynamic> map) {
     return SqlUserDefinedFunctionGetPropertiesResponseResource(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
       rid: (map['rid'] as String).input(),

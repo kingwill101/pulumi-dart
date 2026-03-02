@@ -90,18 +90,18 @@ class RestApiPollerDataConnectorArgs {
 
   factory RestApiPollerDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return RestApiPollerDataConnectorArgs(
-      addOnAttributes: map['addOnAttributes'] == null ? null : ((map['addOnAttributes'] as Map).cast<String, String>()).input(),
+      addOnAttributes: map['addOnAttributes'] == null ? null : ((map['addOnAttributes']! as Map).cast<String, String>()).input(),
       auth: (AWSAuthModel.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
       connectorDefinitionName: (map['connectorDefinitionName'] as String).input(),
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      dcrConfig: map['dcrConfig'] == null ? null : (DCRConfiguration.fromMap((map['dcrConfig'] as Map).cast<String, dynamic>())).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      dcrConfig: map['dcrConfig'] == null ? null : (DCRConfiguration.fromMap((map['dcrConfig']! as Map).cast<String, dynamic>())).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
       kind: (map['kind'] as String).input(),
-      paging: map['paging'] == null ? null : (RestApiPollerRequestPagingConfig.fromMap((map['paging'] as Map).cast<String, dynamic>())).input(),
+      paging: map['paging'] == null ? null : (RestApiPollerRequestPagingConfig.fromMap((map['paging']! as Map).cast<String, dynamic>())).input(),
       request: (RestApiPollerRequestConfig.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      response: map['response'] == null ? null : (CcpResponseConfig.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      response: map['response'] == null ? null : (CcpResponseConfig.fromMap((map['response']! as Map).cast<String, dynamic>())).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

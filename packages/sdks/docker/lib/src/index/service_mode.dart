@@ -26,8 +26,8 @@ class ServiceMode {
 
   factory ServiceMode.fromMap(Map<String, dynamic> map) {
     return ServiceMode(
-      global: map['global'] == null ? null : (map['global'] as bool).input(),
-      replicated: map['replicated'] == null ? null : (ServiceModeReplicated.fromMap((map['replicated'] as Map).cast<String, dynamic>())).input(),
+      global: map['global'] == null ? null : (map['global']! as bool).input(),
+      replicated: map['replicated'] == null ? null : (ServiceModeReplicated.fromMap((map['replicated']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

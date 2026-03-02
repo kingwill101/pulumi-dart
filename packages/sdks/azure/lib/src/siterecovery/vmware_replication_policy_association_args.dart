@@ -35,7 +35,7 @@ class VmwareReplicationPolicyAssociationArgs {
 
   factory VmwareReplicationPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
     return VmwareReplicationPolicyAssociationArgs(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policyId: (map['policyId'] as String).input(),
       recoveryVaultId: (map['recoveryVaultId'] as String).input(),
     );

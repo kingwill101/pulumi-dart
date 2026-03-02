@@ -55,13 +55,13 @@ class EventContentResponse {
 
   factory EventContentResponse.fromMap(Map<String, dynamic> map) {
     return EventContentResponse(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      actor: map['actor'] == null ? null : (ActorResponse.fromMap((map['actor'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      request: map['request'] == null ? null : (RequestResponse.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (SourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (TargetResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      actor: map['actor'] == null ? null : (ActorResponse.fromMap((map['actor']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      request: map['request'] == null ? null : (RequestResponse.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (SourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (TargetResponse.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as String).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class GetCapacityReservationArgs {
     return GetCapacityReservationArgs(
       capacityReservationGroupName: (map['capacityReservationGroupName'] as String).input(),
       capacityReservationName: (map['capacityReservationName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

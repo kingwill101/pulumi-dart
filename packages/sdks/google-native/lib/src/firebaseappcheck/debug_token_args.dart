@@ -44,8 +44,8 @@ class DebugTokenArgs {
     return DebugTokenArgs(
       appId: (map['appId'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       token: (map['token'] as String).input(),
     );
   }

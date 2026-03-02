@@ -27,8 +27,8 @@ class Column {
 
   factory Column.fromMap(Map<String, dynamic> map) {
     return Column(
-      weight: map['weight'] == null ? null : (map['weight'] as String).input(),
-      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<Widget>(map['widgets'], (value) => Widget.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as String).input(),
+      widgets: map['widgets'] == null ? null : (pulumi.Input.decodeList<Widget>(map['widgets']!, (value) => Widget.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

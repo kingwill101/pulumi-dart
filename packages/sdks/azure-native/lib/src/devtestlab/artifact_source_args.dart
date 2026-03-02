@@ -84,19 +84,19 @@ class ArtifactSourceArgs {
 
   factory ArtifactSourceArgs.fromMap(Map<String, dynamic> map) {
     return ArtifactSourceArgs(
-      armTemplateFolderPath: map['armTemplateFolderPath'] == null ? null : (map['armTemplateFolderPath'] as String).input(),
-      branchRef: map['branchRef'] == null ? null : (map['branchRef'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
+      armTemplateFolderPath: map['armTemplateFolderPath'] == null ? null : (map['armTemplateFolderPath']! as String).input(),
+      branchRef: map['branchRef'] == null ? null : (map['branchRef']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
       labName: (map['labName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityToken: map['securityToken'] == null ? null : (map['securityToken'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      securityToken: map['securityToken'] == null ? null : (map['securityToken']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

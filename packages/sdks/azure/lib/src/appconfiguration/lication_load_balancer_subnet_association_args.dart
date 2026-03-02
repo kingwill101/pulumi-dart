@@ -42,9 +42,9 @@ class LicationLoadBalancerSubnetAssociationArgs {
   factory LicationLoadBalancerSubnetAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LicationLoadBalancerSubnetAssociationArgs(
       applicationLoadBalancerId: (map['applicationLoadBalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ContainerRegistryWithCustomImageResponse {
 
   factory ContainerRegistryWithCustomImageResponse.fromMap(Map<String, dynamic> map) {
     return ContainerRegistryWithCustomImageResponse(
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
       server: (map['server'] as String).input(),
     );
   }

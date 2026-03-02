@@ -36,10 +36,10 @@ class GetGenaiRegionsResult {
 
   factory GetGenaiRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetGenaiRegionsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiRegionsFilter>(map['filters'], (value) => GetGenaiRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGenaiRegionsFilter>(map['filters']!, (value) => GetGenaiRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       regions: pulumi.Input.decodeList<GetGenaiRegionsRegion>(map['regions'], (value) => GetGenaiRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiRegionsSort>(map['sorts'], (value) => GetGenaiRegionsSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGenaiRegionsSort>(map['sorts']!, (value) => GetGenaiRegionsSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

@@ -37,8 +37,8 @@ class DataConnectorMicrosoftThreatProtectionArgs {
   factory DataConnectorMicrosoftThreatProtectionArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorMicrosoftThreatProtectionArgs(
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

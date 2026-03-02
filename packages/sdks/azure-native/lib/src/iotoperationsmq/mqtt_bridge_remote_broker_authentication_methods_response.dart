@@ -28,8 +28,8 @@ class MqttBridgeRemoteBrokerAuthenticationMethodsResponse {
 
   factory MqttBridgeRemoteBrokerAuthenticationMethodsResponse.fromMap(Map<String, dynamic> map) {
     return MqttBridgeRemoteBrokerAuthenticationMethodsResponse(
-      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthenticationResponse.fromMap((map['systemAssignedManagedIdentity'] as Map).cast<String, dynamic>())).input(),
-      x509: map['x509'] == null ? null : (MqttBridgeRemoteBrokerX509AuthenticationResponse.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
+      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthenticationResponse.fromMap((map['systemAssignedManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      x509: map['x509'] == null ? null : (MqttBridgeRemoteBrokerX509AuthenticationResponse.fromMap((map['x509']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

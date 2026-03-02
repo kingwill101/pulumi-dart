@@ -43,7 +43,7 @@ class GetSupportPlanTypeResult {
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
       type: map['type'] as String,
     );
   }

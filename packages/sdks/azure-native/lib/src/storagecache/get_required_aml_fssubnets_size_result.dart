@@ -20,7 +20,7 @@ class GetRequiredAmlFSSubnetsSizeResult {
 
   factory GetRequiredAmlFSSubnetsSizeResult.fromMap(Map<String, dynamic> map) {
     return GetRequiredAmlFSSubnetsSizeResult(
-      filesystemSubnetSize: map['filesystemSubnetSize'] == null ? null : map['filesystemSubnetSize'] as int,
+      filesystemSubnetSize: map['filesystemSubnetSize'] == null ? null : map['filesystemSubnetSize']! as int,
     );
   }
 }

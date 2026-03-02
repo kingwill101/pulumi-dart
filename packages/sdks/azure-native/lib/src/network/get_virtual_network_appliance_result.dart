@@ -79,16 +79,16 @@ class GetVirtualNetworkApplianceResult {
   factory GetVirtualNetworkApplianceResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkApplianceResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : map['bandwidthInGbps'] as String,
+      bandwidthInGbps: map['bandwidthInGbps'] == null ? null : map['bandwidthInGbps']! as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
       ipConfigurations: pulumi.Input.decodeList<VirtualNetworkApplianceIpConfigurationResponse>(map['ipConfigurations'], (value) => VirtualNetworkApplianceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      subnet: map['subnet'] == null ? null : SubnetResponse.fromMap((map['subnet']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

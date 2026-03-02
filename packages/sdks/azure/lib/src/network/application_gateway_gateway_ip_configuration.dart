@@ -30,7 +30,7 @@ class ApplicationGatewayGatewayIpConfiguration {
 
   factory ApplicationGatewayGatewayIpConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayGatewayIpConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
     );

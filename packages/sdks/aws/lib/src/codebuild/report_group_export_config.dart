@@ -26,7 +26,7 @@ class ReportGroupExportConfig {
 
   factory ReportGroupExportConfig.fromMap(Map<String, dynamic> map) {
     return ReportGroupExportConfig(
-      s3Destination: map['s3Destination'] == null ? null : (ReportGroupExportConfigS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>())).input(),
+      s3Destination: map['s3Destination'] == null ? null : ((ReportGroupExportConfigS3Destination.fromMap((map['s3Destination']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

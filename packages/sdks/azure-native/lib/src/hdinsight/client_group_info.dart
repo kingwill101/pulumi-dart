@@ -26,8 +26,8 @@ class ClientGroupInfo {
 
   factory ClientGroupInfo.fromMap(Map<String, dynamic> map) {
     return ClientGroupInfo(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
     );
   }
 }

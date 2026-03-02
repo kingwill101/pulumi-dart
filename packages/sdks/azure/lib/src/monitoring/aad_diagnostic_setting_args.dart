@@ -54,12 +54,12 @@ class AadDiagnosticSettingArgs {
 
   factory AadDiagnosticSettingArgs.fromMap(Map<String, dynamic> map) {
     return AadDiagnosticSettingArgs(
-      enabledLogs: map['enabledLogs'] == null ? null : (pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(map['enabledLogs'], (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : (map['eventhubAuthorizationRuleId'] as String).input(),
-      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName'] as String).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
+      enabledLogs: map['enabledLogs'] == null ? null : (pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(map['enabledLogs']!, (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventhubAuthorizationRuleId: map['eventhubAuthorizationRuleId'] == null ? null : (map['eventhubAuthorizationRuleId']! as String).input(),
+      eventhubName: map['eventhubName'] == null ? null : (map['eventhubName']! as String).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
     );
   }
 }

@@ -64,11 +64,11 @@ class CaCertificateArgs {
       active: (map['active'] as bool).input(),
       allowAutoRegistration: (map['allowAutoRegistration'] as bool).input(),
       caCertificatePem: (map['caCertificatePem'] as String).input(),
-      certificateMode: map['certificateMode'] == null ? null : (map['certificateMode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registrationConfig: map['registrationConfig'] == null ? null : (CaCertificateRegistrationConfig.fromMap((map['registrationConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      verificationCertificatePem: map['verificationCertificatePem'] == null ? null : (map['verificationCertificatePem'] as String).input(),
+      certificateMode: map['certificateMode'] == null ? null : ((map['certificateMode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registrationConfig: map['registrationConfig'] == null ? null : ((CaCertificateRegistrationConfig.fromMap((map['registrationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      verificationCertificatePem: map['verificationCertificatePem'] == null ? null : ((map['verificationCertificatePem'] as String).input()).input(),
     );
   }
 }

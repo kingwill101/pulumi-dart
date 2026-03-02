@@ -31,9 +31,9 @@ class OSProfileLinuxConfiguration {
 
   factory OSProfileLinuxConfiguration.fromMap(Map<String, dynamic> map) {
     return OSProfileLinuxConfiguration(
-      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode'] as String).input(),
-      enableHotpatching: map['enableHotpatching'] == null ? null : (map['enableHotpatching'] as bool).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
+      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode']! as String).input(),
+      enableHotpatching: map['enableHotpatching'] == null ? null : (map['enableHotpatching']! as bool).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
     );
   }
 }

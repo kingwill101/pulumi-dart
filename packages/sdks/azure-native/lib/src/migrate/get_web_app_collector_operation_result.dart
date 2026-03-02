@@ -67,10 +67,10 @@ class GetWebAppCollectorOperationResult {
 
   factory GetWebAppCollectorOperationResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppCollectorOperationResult(
-      agentProperties: map['agentProperties'] == null ? null : CollectorAgentPropertiesBaseResponse.fromMap((map['agentProperties'] as Map).cast<String, dynamic>()),
+      agentProperties: map['agentProperties'] == null ? null : CollectorAgentPropertiesBaseResponse.fromMap((map['agentProperties']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
       createdTimestamp: map['createdTimestamp'] as String,
-      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId'] as String,
+      discoverySiteId: map['discoverySiteId'] == null ? null : map['discoverySiteId']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

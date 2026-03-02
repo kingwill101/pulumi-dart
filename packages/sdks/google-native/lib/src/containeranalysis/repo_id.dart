@@ -27,8 +27,8 @@ class RepoId {
 
   factory RepoId.fromMap(Map<String, dynamic> map) {
     return RepoId(
-      projectRepoId: map['projectRepoId'] == null ? null : (ProjectRepoId.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
+      projectRepoId: map['projectRepoId'] == null ? null : (ProjectRepoId.fromMap((map['projectRepoId']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
     );
   }
 }

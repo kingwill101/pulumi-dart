@@ -28,8 +28,8 @@ class CapacityReservationInstanceViewResponse {
 
   factory CapacityReservationInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationInstanceViewResponse(
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      utilizationInfo: map['utilizationInfo'] == null ? null : (CapacityReservationUtilizationResponse.fromMap((map['utilizationInfo'] as Map).cast<String, dynamic>())).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      utilizationInfo: map['utilizationInfo'] == null ? null : (CapacityReservationUtilizationResponse.fromMap((map['utilizationInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

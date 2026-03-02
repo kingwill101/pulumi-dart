@@ -75,16 +75,16 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      directoryGlobalAccessStatus: map['directoryGlobalAccessStatus'] == null ? null : (map['directoryGlobalAccessStatus'] as String).input(),
-      directoryName: map['directoryName'] == null ? null : (map['directoryName'] as String).input(),
-      loginPreference: map['loginPreference'] == null ? null : (DirectoryLoginPreference.fromMap((map['loginPreference'] as Map).cast<String, dynamic>())).input(),
-      mfaAuthenticationSettingInfo: map['mfaAuthenticationSettingInfo'] == null ? null : (DirectoryMfaAuthenticationSettingInfo.fromMap((map['mfaAuthenticationSettingInfo'] as Map).cast<String, dynamic>())).input(),
-      mfaAuthenticationStatus: map['mfaAuthenticationStatus'] == null ? null : (map['mfaAuthenticationStatus'] as String).input(),
-      passwordPolicy: map['passwordPolicy'] == null ? null : (DirectoryPasswordPolicy.fromMap((map['passwordPolicy'] as Map).cast<String, dynamic>())).input(),
-      samlIdentityProviderConfiguration: map['samlIdentityProviderConfiguration'] == null ? null : (DirectorySamlIdentityProviderConfiguration.fromMap((map['samlIdentityProviderConfiguration'] as Map).cast<String, dynamic>())).input(),
-      samlServiceProvider: map['samlServiceProvider'] == null ? null : (DirectorySamlServiceProvider.fromMap((map['samlServiceProvider'] as Map).cast<String, dynamic>())).input(),
-      scimSynchronizationStatus: map['scimSynchronizationStatus'] == null ? null : (map['scimSynchronizationStatus'] as String).input(),
-      userProvisioningConfiguration: map['userProvisioningConfiguration'] == null ? null : (DirectoryUserProvisioningConfiguration.fromMap((map['userProvisioningConfiguration'] as Map).cast<String, dynamic>())).input(),
+      directoryGlobalAccessStatus: map['directoryGlobalAccessStatus'] == null ? null : (map['directoryGlobalAccessStatus']! as String).input(),
+      directoryName: map['directoryName'] == null ? null : (map['directoryName']! as String).input(),
+      loginPreference: map['loginPreference'] == null ? null : (DirectoryLoginPreference.fromMap((map['loginPreference']! as Map).cast<String, dynamic>())).input(),
+      mfaAuthenticationSettingInfo: map['mfaAuthenticationSettingInfo'] == null ? null : (DirectoryMfaAuthenticationSettingInfo.fromMap((map['mfaAuthenticationSettingInfo']! as Map).cast<String, dynamic>())).input(),
+      mfaAuthenticationStatus: map['mfaAuthenticationStatus'] == null ? null : (map['mfaAuthenticationStatus']! as String).input(),
+      passwordPolicy: map['passwordPolicy'] == null ? null : (DirectoryPasswordPolicy.fromMap((map['passwordPolicy']! as Map).cast<String, dynamic>())).input(),
+      samlIdentityProviderConfiguration: map['samlIdentityProviderConfiguration'] == null ? null : (DirectorySamlIdentityProviderConfiguration.fromMap((map['samlIdentityProviderConfiguration']! as Map).cast<String, dynamic>())).input(),
+      samlServiceProvider: map['samlServiceProvider'] == null ? null : (DirectorySamlServiceProvider.fromMap((map['samlServiceProvider']! as Map).cast<String, dynamic>())).input(),
+      scimSynchronizationStatus: map['scimSynchronizationStatus'] == null ? null : (map['scimSynchronizationStatus']! as String).input(),
+      userProvisioningConfiguration: map['userProvisioningConfiguration'] == null ? null : (DirectoryUserProvisioningConfiguration.fromMap((map['userProvisioningConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

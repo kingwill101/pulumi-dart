@@ -35,8 +35,8 @@ class BatchOperationsJobBucketListBuckets {
   factory BatchOperationsJobBucketListBuckets.fromMap(Map<String, dynamic> map) {
     return BatchOperationsJobBucketListBuckets(
       bucket: (map['bucket'] as String).input(),
-      manifest: map['manifest'] == null ? null : (BatchOperationsJobBucketListBucketsManifest.fromMap((map['manifest'] as Map).cast<String, dynamic>())).input(),
-      prefixList: map['prefixList'] == null ? null : (BatchOperationsJobBucketListBucketsPrefixList.fromMap((map['prefixList'] as Map).cast<String, dynamic>())).input(),
+      manifest: map['manifest'] == null ? null : (BatchOperationsJobBucketListBucketsManifest.fromMap((map['manifest']! as Map).cast<String, dynamic>())).input(),
+      prefixList: map['prefixList'] == null ? null : (BatchOperationsJobBucketListBucketsPrefixList.fromMap((map['prefixList']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

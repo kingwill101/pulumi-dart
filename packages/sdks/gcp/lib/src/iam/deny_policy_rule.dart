@@ -27,8 +27,8 @@ class DenyPolicyRule {
 
   factory DenyPolicyRule.fromMap(Map<String, dynamic> map) {
     return DenyPolicyRule(
-      denyRule: map['denyRule'] == null ? null : (DenyPolicyRuleDenyRule.fromMap((map['denyRule'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      denyRule: map['denyRule'] == null ? null : (DenyPolicyRuleDenyRule.fromMap((map['denyRule']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

@@ -39,7 +39,7 @@ class IpCommunityRuleResponse {
       action: (map['action'] as String).input(),
       communityMembers: ((map['communityMembers'] as List).cast<String>()).input(),
       sequenceNumber: (map['sequenceNumber'] as double).input(),
-      wellKnownCommunities: map['wellKnownCommunities'] == null ? null : ((map['wellKnownCommunities'] as List).cast<String>()).input(),
+      wellKnownCommunities: map['wellKnownCommunities'] == null ? null : ((map['wellKnownCommunities']! as List).cast<String>()).input(),
     );
   }
 }

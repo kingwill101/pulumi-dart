@@ -40,7 +40,7 @@ class GetFileShareArgs {
   factory GetFileShareArgs.fromMap(Map<String, dynamic> map) {
     return GetFileShareArgs(
       accountName: (map['accountName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       shareName: (map['shareName'] as String).input(),
     );

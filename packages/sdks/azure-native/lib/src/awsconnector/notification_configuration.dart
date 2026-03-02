@@ -40,10 +40,10 @@ class NotificationConfiguration {
 
   factory NotificationConfiguration.fromMap(Map<String, dynamic> map) {
     return NotificationConfiguration(
-      eventBridgeConfiguration: map['eventBridgeConfiguration'] == null ? null : (EventBridgeConfiguration.fromMap((map['eventBridgeConfiguration'] as Map).cast<String, dynamic>())).input(),
-      lambdaConfigurations: map['lambdaConfigurations'] == null ? null : (pulumi.Input.decodeList<LambdaConfiguration>(map['lambdaConfigurations'], (value) => LambdaConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queueConfigurations: map['queueConfigurations'] == null ? null : (pulumi.Input.decodeList<QueueConfiguration>(map['queueConfigurations'], (value) => QueueConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      topicConfigurations: map['topicConfigurations'] == null ? null : (pulumi.Input.decodeList<TopicConfiguration>(map['topicConfigurations'], (value) => TopicConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventBridgeConfiguration: map['eventBridgeConfiguration'] == null ? null : (EventBridgeConfiguration.fromMap((map['eventBridgeConfiguration']! as Map).cast<String, dynamic>())).input(),
+      lambdaConfigurations: map['lambdaConfigurations'] == null ? null : (pulumi.Input.decodeList<LambdaConfiguration>(map['lambdaConfigurations']!, (value) => LambdaConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      queueConfigurations: map['queueConfigurations'] == null ? null : (pulumi.Input.decodeList<QueueConfiguration>(map['queueConfigurations']!, (value) => QueueConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topicConfigurations: map['topicConfigurations'] == null ? null : (pulumi.Input.decodeList<TopicConfiguration>(map['topicConfigurations']!, (value) => TopicConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

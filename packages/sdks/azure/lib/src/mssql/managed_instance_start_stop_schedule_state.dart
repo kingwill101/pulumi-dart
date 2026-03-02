@@ -47,12 +47,12 @@ class ManagedInstanceStartStopScheduleState {
 
   factory ManagedInstanceStartStopScheduleState.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceStartStopScheduleState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId'] as String).input(),
-      nextExecutionTime: map['nextExecutionTime'] == null ? null : (map['nextExecutionTime'] as String).input(),
-      nextRunAction: map['nextRunAction'] == null ? null : (map['nextRunAction'] as String).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(map['schedules'], (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      timezoneId: map['timezoneId'] == null ? null : (map['timezoneId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managedInstanceId: map['managedInstanceId'] == null ? null : (map['managedInstanceId']! as String).input(),
+      nextExecutionTime: map['nextExecutionTime'] == null ? null : (map['nextExecutionTime']! as String).input(),
+      nextRunAction: map['nextRunAction'] == null ? null : (map['nextRunAction']! as String).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<ManagedInstanceStartStopScheduleSchedule>(map['schedules']!, (value) => ManagedInstanceStartStopScheduleSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timezoneId: map['timezoneId'] == null ? null : (map['timezoneId']! as String).input(),
     );
   }
 }

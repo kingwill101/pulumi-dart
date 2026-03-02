@@ -25,8 +25,8 @@ class ServiceTaskSpecContainerSpecMountTmpfsOptions {
 
   factory ServiceTaskSpecContainerSpecMountTmpfsOptions.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecMountTmpfsOptions(
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
-      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
+      sizeBytes: map['sizeBytes'] == null ? null : (map['sizeBytes']! as int).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class DocumentationRule {
 
   factory DocumentationRule.fromMap(Map<String, dynamic> map) {
     return DocumentationRule(
-      deprecationDescription: map['deprecationDescription'] == null ? null : (map['deprecationDescription'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableReplacementWords: map['disableReplacementWords'] == null ? null : (map['disableReplacementWords'] as String).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as String).input(),
+      deprecationDescription: map['deprecationDescription'] == null ? null : (map['deprecationDescription']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableReplacementWords: map['disableReplacementWords'] == null ? null : (map['disableReplacementWords']! as String).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as String).input(),
     );
   }
 }

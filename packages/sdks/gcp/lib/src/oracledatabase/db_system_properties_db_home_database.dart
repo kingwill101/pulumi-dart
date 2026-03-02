@@ -102,19 +102,19 @@ class DbSystemPropertiesDbHomeDatabase {
   factory DbSystemPropertiesDbHomeDatabase.fromMap(Map<String, dynamic> map) {
     return DbSystemPropertiesDbHomeDatabase(
       adminPassword: (map['adminPassword'] as String).input(),
-      characterSet: map['characterSet'] == null ? null : (map['characterSet'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
+      characterSet: map['characterSet'] == null ? null : (map['characterSet']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
       databaseId: (map['databaseId'] as String).input(),
-      dbHomeName: map['dbHomeName'] == null ? null : (map['dbHomeName'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
-      dbUniqueName: map['dbUniqueName'] == null ? null : (map['dbUniqueName'] as String).input(),
-      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ncharacterSet: map['ncharacterSet'] == null ? null : (map['ncharacterSet'] as String).input(),
-      ociUrl: map['ociUrl'] == null ? null : (map['ociUrl'] as String).input(),
-      opsInsightsStatus: map['opsInsightsStatus'] == null ? null : (map['opsInsightsStatus'] as String).input(),
-      properties: map['properties'] == null ? null : (DbSystemPropertiesDbHomeDatabaseProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      tdeWalletPassword: map['tdeWalletPassword'] == null ? null : (map['tdeWalletPassword'] as String).input(),
+      dbHomeName: map['dbHomeName'] == null ? null : (map['dbHomeName']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
+      dbUniqueName: map['dbUniqueName'] == null ? null : (map['dbUniqueName']! as String).input(),
+      gcpOracleZone: map['gcpOracleZone'] == null ? null : (map['gcpOracleZone']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ncharacterSet: map['ncharacterSet'] == null ? null : (map['ncharacterSet']! as String).input(),
+      ociUrl: map['ociUrl'] == null ? null : (map['ociUrl']! as String).input(),
+      opsInsightsStatus: map['opsInsightsStatus'] == null ? null : (map['opsInsightsStatus']! as String).input(),
+      properties: map['properties'] == null ? null : (DbSystemPropertiesDbHomeDatabaseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      tdeWalletPassword: map['tdeWalletPassword'] == null ? null : (map['tdeWalletPassword']! as String).input(),
     );
   }
 }

@@ -51,10 +51,10 @@ class AppVersionSnapshotGuardrailCodeCallback {
 
   factory AppVersionSnapshotGuardrailCodeCallback.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailCodeCallback(
-      afterAgentCallbacks: map['afterAgentCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback>(map['afterAgentCallbacks'], (value) => AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      afterModelCallbacks: map['afterModelCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback>(map['afterModelCallbacks'], (value) => AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      beforeAgentCallbacks: map['beforeAgentCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback>(map['beforeAgentCallbacks'], (value) => AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      beforeModelCallbacks: map['beforeModelCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback>(map['beforeModelCallbacks'], (value) => AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      afterAgentCallbacks: map['afterAgentCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback>(map['afterAgentCallbacks']!, (value) => AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      afterModelCallbacks: map['afterModelCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback>(map['afterModelCallbacks']!, (value) => AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      beforeAgentCallbacks: map['beforeAgentCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback>(map['beforeAgentCallbacks']!, (value) => AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      beforeModelCallbacks: map['beforeModelCallbacks'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback>(map['beforeModelCallbacks']!, (value) => AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallback.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

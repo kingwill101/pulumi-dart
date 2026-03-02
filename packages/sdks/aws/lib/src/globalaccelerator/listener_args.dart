@@ -41,8 +41,8 @@ class ListenerArgs {
   factory ListenerArgs.fromMap(Map<String, dynamic> map) {
     return ListenerArgs(
       acceleratorArn: (map['acceleratorArn'] as String).input(),
-      clientAffinity: map['clientAffinity'] == null ? null : (map['clientAffinity'] as String).input(),
-      portRanges: (pulumi.Input.decodeList<ListenerPortRange>(map['portRanges'], (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAffinity: map['clientAffinity'] == null ? null : ((map['clientAffinity'] as String).input()).input(),
+      portRanges: (pulumi.Input.decodeList<ListenerPortRange>(map['portRanges']!, (value) => ListenerPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

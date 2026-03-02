@@ -32,8 +32,8 @@ class PgpSignedAttestationContaineranalysisV1beta1 {
 
   factory PgpSignedAttestationContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return PgpSignedAttestationContaineranalysisV1beta1(
-      contentType: map['contentType'] == null ? null : (PgpSignedAttestationContentTypeContaineranalysisV1beta1.fromValue(map['contentType'] as String)).input(),
-      pgpKeyId: map['pgpKeyId'] == null ? null : (map['pgpKeyId'] as String).input(),
+      contentType: map['contentType'] == null ? null : (PgpSignedAttestationContentTypeContaineranalysisV1beta1.fromValue(map['contentType']! as String)).input(),
+      pgpKeyId: map['pgpKeyId'] == null ? null : (map['pgpKeyId']! as String).input(),
       signature: (map['signature'] as String).input(),
     );
   }

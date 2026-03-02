@@ -58,7 +58,7 @@ class EntryLinkArgs {
       entryLinkType: (map['entryLinkType'] as String).input(),
       entryReferences: (pulumi.Input.decodeList<EntryLinkEntryReference>(map['entryReferences'], (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

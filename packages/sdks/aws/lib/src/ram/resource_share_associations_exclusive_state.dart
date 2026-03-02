@@ -47,11 +47,11 @@ class ResourceShareAssociationsExclusiveState {
 
   factory ResourceShareAssociationsExclusiveState.fromMap(Map<String, dynamic> map) {
     return ResourceShareAssociationsExclusiveState(
-      principals: map['principals'] == null ? null : ((map['principals'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArns: map['resourceArns'] == null ? null : ((map['resourceArns'] as List).cast<String>()).input(),
-      resourceShareArn: map['resourceShareArn'] == null ? null : (map['resourceShareArn'] as String).input(),
-      sources: map['sources'] == null ? null : ((map['sources'] as List).cast<String>()).input(),
+      principals: map['principals'] == null ? null : (((map['principals'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArns: map['resourceArns'] == null ? null : (((map['resourceArns'] as List).cast<String>()).input()).input(),
+      resourceShareArn: map['resourceShareArn'] == null ? null : ((map['resourceShareArn'] as String).input()).input(),
+      sources: map['sources'] == null ? null : (((map['sources'] as List).cast<String>()).input()).input(),
     );
   }
 }

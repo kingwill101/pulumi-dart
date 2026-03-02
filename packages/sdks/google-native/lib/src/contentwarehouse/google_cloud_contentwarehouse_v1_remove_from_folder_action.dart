@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1RemoveFromFolderAction {
 
   factory GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1RemoveFromFolderAction(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
     );
   }
 }

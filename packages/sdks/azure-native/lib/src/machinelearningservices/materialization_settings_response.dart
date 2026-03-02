@@ -43,11 +43,11 @@ class MaterializationSettingsResponse {
 
   factory MaterializationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MaterializationSettingsResponse(
-      notification: map['notification'] == null ? null : (NotificationSettingResponse.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (MaterializationComputeResourceResponse.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
-      schedule: map['schedule'] == null ? null : (RecurrenceTriggerResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      sparkConfiguration: map['sparkConfiguration'] == null ? null : ((map['sparkConfiguration'] as Map).cast<String, String>()).input(),
-      storeType: map['storeType'] == null ? null : (map['storeType'] as String).input(),
+      notification: map['notification'] == null ? null : (NotificationSettingResponse.fromMap((map['notification']! as Map).cast<String, dynamic>())).input(),
+      resource: map['resource'] == null ? null : (MaterializationComputeResourceResponse.fromMap((map['resource']! as Map).cast<String, dynamic>())).input(),
+      schedule: map['schedule'] == null ? null : (RecurrenceTriggerResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      sparkConfiguration: map['sparkConfiguration'] == null ? null : ((map['sparkConfiguration']! as Map).cast<String, String>()).input(),
+      storeType: map['storeType'] == null ? null : (map['storeType']! as String).input(),
     );
   }
 }

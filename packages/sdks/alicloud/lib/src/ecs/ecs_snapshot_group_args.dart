@@ -64,15 +64,15 @@ class EcsSnapshotGroupArgs {
 
   factory EcsSnapshotGroupArgs.fromMap(Map<String, dynamic> map) {
     return EcsSnapshotGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskIds: map['diskIds'] == null ? null : ((map['diskIds'] as List).cast<String>()).input(),
-      excludeDiskIds: map['excludeDiskIds'] == null ? null : ((map['excludeDiskIds'] as List).cast<String>()).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instantAccess: map['instantAccess'] == null ? null : (map['instantAccess'] as bool).input(),
-      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : (map['instantAccessRetentionDays'] as int).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      snapshotGroupName: map['snapshotGroupName'] == null ? null : (map['snapshotGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskIds: map['diskIds'] == null ? null : ((map['diskIds']! as List).cast<String>()).input(),
+      excludeDiskIds: map['excludeDiskIds'] == null ? null : ((map['excludeDiskIds']! as List).cast<String>()).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instantAccess: map['instantAccess'] == null ? null : (map['instantAccess']! as bool).input(),
+      instantAccessRetentionDays: map['instantAccessRetentionDays'] == null ? null : (map['instantAccessRetentionDays']! as int).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      snapshotGroupName: map['snapshotGroupName'] == null ? null : (map['snapshotGroupName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

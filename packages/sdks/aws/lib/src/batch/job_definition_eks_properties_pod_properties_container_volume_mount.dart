@@ -30,7 +30,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount {
     return JobDefinitionEksPropertiesPodPropertiesContainerVolumeMount(
       mountPath: (map['mountPath'] as String).input(),
       name: (map['name'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      readOnly: map['readOnly'] == null ? null : ((map['readOnly'] as bool).input()).input(),
     );
   }
 }

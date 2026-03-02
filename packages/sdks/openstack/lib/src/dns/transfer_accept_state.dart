@@ -46,11 +46,11 @@ class TransferAcceptState {
 
   factory TransferAcceptState.fromMap(Map<String, dynamic> map) {
     return TransferAcceptState(
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
-      zoneTransferRequestId: map['zoneTransferRequestId'] == null ? null : (map['zoneTransferRequestId'] as String).input(),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
+      zoneTransferRequestId: map['zoneTransferRequestId'] == null ? null : (map['zoneTransferRequestId']! as String).input(),
     );
   }
 }

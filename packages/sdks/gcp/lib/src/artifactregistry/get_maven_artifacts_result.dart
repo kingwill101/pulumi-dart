@@ -42,7 +42,7 @@ class GetMavenArtifactsResult {
       id: map['id'] as String,
       location: map['location'] as String,
       mavenArtifacts: pulumi.Input.decodeList<GetMavenArtifactsMavenArtifact>(map['mavenArtifacts'], (value) => GetMavenArtifactsMavenArtifact.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositoryId: map['repositoryId'] as String,
     );
   }

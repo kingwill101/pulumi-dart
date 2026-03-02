@@ -46,12 +46,12 @@ class UsagePlanKeyState {
 
   factory UsagePlanKeyState.fromMap(Map<String, dynamic> map) {
     return UsagePlanKeyState(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyType: map['keyType'] == null ? null : (map['keyType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      usagePlanId: map['usagePlanId'] == null ? null : (map['usagePlanId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      keyType: map['keyType'] == null ? null : ((map['keyType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      usagePlanId: map['usagePlanId'] == null ? null : ((map['usagePlanId'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

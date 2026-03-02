@@ -38,10 +38,10 @@ class ClientTlsSettings {
 
   factory ClientTlsSettings.fromMap(Map<String, dynamic> map) {
     return ClientTlsSettings(
-      clientTlsContext: map['clientTlsContext'] == null ? null : (TlsContext.fromMap((map['clientTlsContext'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (ClientTlsSettingsMode.fromValue(map['mode'] as String)).input(),
-      sni: map['sni'] == null ? null : (map['sni'] as String).input(),
-      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames'] as List).cast<String>()).input(),
+      clientTlsContext: map['clientTlsContext'] == null ? null : (TlsContext.fromMap((map['clientTlsContext']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (ClientTlsSettingsMode.fromValue(map['mode']! as String)).input(),
+      sni: map['sni'] == null ? null : (map['sni']! as String).input(),
+      subjectAltNames: map['subjectAltNames'] == null ? null : ((map['subjectAltNames']! as List).cast<String>()).input(),
     );
   }
 }

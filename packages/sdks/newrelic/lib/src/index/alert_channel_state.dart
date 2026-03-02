@@ -37,10 +37,10 @@ class AlertChannelState {
 
   factory AlertChannelState.fromMap(Map<String, dynamic> map) {
     return AlertChannelState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      config: map['config'] == null ? null : (AlertChannelConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      config: map['config'] == null ? null : (AlertChannelConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

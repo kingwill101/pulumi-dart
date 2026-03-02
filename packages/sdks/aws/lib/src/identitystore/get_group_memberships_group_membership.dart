@@ -37,7 +37,7 @@ class GetGroupMembershipsGroupMembership {
     return GetGroupMembershipsGroupMembership(
       groupId: (map['groupId'] as String).input(),
       identityStoreId: (map['identityStoreId'] as String).input(),
-      memberId: (GetGroupMembershipsGroupMembershipMemberId.fromMap((map['memberId'] as Map).cast<String, dynamic>())).input(),
+      memberId: (GetGroupMembershipsGroupMembershipMemberId.fromMap((map['memberId']! as Map).cast<String, dynamic>())).input(),
       membershipId: (map['membershipId'] as String).input(),
     );
   }

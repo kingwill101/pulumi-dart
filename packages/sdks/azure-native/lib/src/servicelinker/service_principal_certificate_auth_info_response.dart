@@ -52,13 +52,13 @@ class ServicePrincipalCertificateAuthInfoResponse {
 
   factory ServicePrincipalCertificateAuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalCertificateAuthInfoResponse(
-      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authMode: map['authMode'] == null ? null : (map['authMode']! as String).input(),
       authType: (map['authType'] as String).input(),
       certificate: (map['certificate'] as String).input(),
       clientId: (map['clientId'] as String).input(),
-      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior'] as String).input(),
+      deleteOrUpdateBehavior: map['deleteOrUpdateBehavior'] == null ? null : (map['deleteOrUpdateBehavior']! as String).input(),
       principalId: (map['principalId'] as String).input(),
-      roles: map['roles'] == null ? null : ((map['roles'] as List).cast<String>()).input(),
+      roles: map['roles'] == null ? null : ((map['roles']! as List).cast<String>()).input(),
     );
   }
 }

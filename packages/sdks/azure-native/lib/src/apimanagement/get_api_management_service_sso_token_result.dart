@@ -20,7 +20,7 @@ class GetApiManagementServiceSsoTokenResult {
 
   factory GetApiManagementServiceSsoTokenResult.fromMap(Map<String, dynamic> map) {
     return GetApiManagementServiceSsoTokenResult(
-      redirectUri: map['redirectUri'] == null ? null : map['redirectUri'] as String,
+      redirectUri: map['redirectUri'] == null ? null : map['redirectUri']! as String,
     );
   }
 }

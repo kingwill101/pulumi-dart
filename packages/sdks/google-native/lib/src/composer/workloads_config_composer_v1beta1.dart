@@ -40,10 +40,10 @@ class WorkloadsConfigComposerV1beta1 {
 
   factory WorkloadsConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadsConfigComposerV1beta1(
-      scheduler: map['scheduler'] == null ? null : (SchedulerResourceComposerV1beta1.fromMap((map['scheduler'] as Map).cast<String, dynamic>())).input(),
-      triggerer: map['triggerer'] == null ? null : (TriggererResourceComposerV1beta1.fromMap((map['triggerer'] as Map).cast<String, dynamic>())).input(),
-      webServer: map['webServer'] == null ? null : (WebServerResourceComposerV1beta1.fromMap((map['webServer'] as Map).cast<String, dynamic>())).input(),
-      worker: map['worker'] == null ? null : (WorkerResourceComposerV1beta1.fromMap((map['worker'] as Map).cast<String, dynamic>())).input(),
+      scheduler: map['scheduler'] == null ? null : (SchedulerResourceComposerV1beta1.fromMap((map['scheduler']! as Map).cast<String, dynamic>())).input(),
+      triggerer: map['triggerer'] == null ? null : (TriggererResourceComposerV1beta1.fromMap((map['triggerer']! as Map).cast<String, dynamic>())).input(),
+      webServer: map['webServer'] == null ? null : (WebServerResourceComposerV1beta1.fromMap((map['webServer']! as Map).cast<String, dynamic>())).input(),
+      worker: map['worker'] == null ? null : (WorkerResourceComposerV1beta1.fromMap((map['worker']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

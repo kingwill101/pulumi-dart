@@ -31,9 +31,9 @@ class Color {
 
   factory Color.fromMap(Map<String, dynamic> map) {
     return Color(
-      brightness: map['brightness'] == null ? null : (map['brightness'] as double).input(),
-      contrast: map['contrast'] == null ? null : (map['contrast'] as double).input(),
-      saturation: map['saturation'] == null ? null : (map['saturation'] as double).input(),
+      brightness: map['brightness'] == null ? null : (map['brightness']! as double).input(),
+      contrast: map['contrast'] == null ? null : (map['contrast']! as double).input(),
+      saturation: map['saturation'] == null ? null : (map['saturation']! as double).input(),
     );
   }
 }

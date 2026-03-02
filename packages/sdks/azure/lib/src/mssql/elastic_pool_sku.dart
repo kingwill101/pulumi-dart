@@ -36,7 +36,7 @@ class ElasticPoolSku {
   factory ElasticPoolSku.fromMap(Map<String, dynamic> map) {
     return ElasticPoolSku(
       capacity: (map['capacity'] as int).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
       name: (map['name'] as String).input(),
       tier: (map['tier'] as String).input(),
     );

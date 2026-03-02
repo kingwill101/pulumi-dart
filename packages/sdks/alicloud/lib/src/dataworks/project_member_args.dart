@@ -36,7 +36,7 @@ class ProjectMemberArgs {
   factory ProjectMemberArgs.fromMap(Map<String, dynamic> map) {
     return ProjectMemberArgs(
       projectId: (map['projectId'] as int).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ProjectMemberRole>(map['roles'], (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<ProjectMemberRole>(map['roles']!, (value) => ProjectMemberRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
       userId: (map['userId'] as String).input(),
     );
   }

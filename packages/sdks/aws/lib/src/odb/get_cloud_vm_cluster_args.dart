@@ -32,7 +32,7 @@ class GetCloudVmClusterArgs {
   factory GetCloudVmClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClusterArgs(
       id: (map['id'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

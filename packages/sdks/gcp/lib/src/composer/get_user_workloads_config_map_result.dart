@@ -46,8 +46,8 @@ class GetUserWorkloadsConfigMapResult {
       environment: map['environment'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
     );
   }
 }

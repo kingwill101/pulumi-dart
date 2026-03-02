@@ -45,10 +45,10 @@ class FirewallRuleArgs {
 
   factory FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return FirewallRuleArgs(
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
       fleetName: (map['fleetName'] as String).input(),
       fleetspaceName: (map['fleetspaceName'] as String).input(),
-      properties: map['properties'] == null ? null : (FirewallRuleProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (FirewallRuleProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

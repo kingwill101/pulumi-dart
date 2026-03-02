@@ -24,7 +24,7 @@ class GetRepositoriesArgs {
 
   factory GetRepositoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetRepositoriesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -50,10 +50,10 @@ class ActionGroup {
   factory ActionGroup.fromMap(Map<String, dynamic> map) {
     return ActionGroup(
       actionGroupId: (map['actionGroupId'] as String).input(),
-      conditions: map['conditions'] == null ? null : (Conditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      conditions: map['conditions'] == null ? null : (Conditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      scope: map['scope'] == null ? null : (Scope.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

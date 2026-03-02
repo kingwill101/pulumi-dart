@@ -39,10 +39,10 @@ class InstanceStateInfoUpdateInfo {
 
   factory InstanceStateInfoUpdateInfo.fromMap(Map<String, dynamic> map) {
     return InstanceStateInfoUpdateInfo(
-      targetEngineVersion: map['targetEngineVersion'] == null ? null : (map['targetEngineVersion'] as String).input(),
-      targetNodeType: map['targetNodeType'] == null ? null : (map['targetNodeType'] as String).input(),
-      targetReplicaCount: map['targetReplicaCount'] == null ? null : (map['targetReplicaCount'] as int).input(),
-      targetShardCount: map['targetShardCount'] == null ? null : (map['targetShardCount'] as int).input(),
+      targetEngineVersion: map['targetEngineVersion'] == null ? null : (map['targetEngineVersion']! as String).input(),
+      targetNodeType: map['targetNodeType'] == null ? null : (map['targetNodeType']! as String).input(),
+      targetReplicaCount: map['targetReplicaCount'] == null ? null : (map['targetReplicaCount']! as int).input(),
+      targetShardCount: map['targetShardCount'] == null ? null : (map['targetShardCount']! as int).input(),
     );
   }
 }

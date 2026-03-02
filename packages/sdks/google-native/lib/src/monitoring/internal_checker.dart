@@ -47,12 +47,12 @@ class InternalChecker {
 
   factory InternalChecker.fromMap(Map<String, dynamic> map) {
     return InternalChecker(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gcpZone: map['gcpZone'] == null ? null : (map['gcpZone'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      peerProjectId: map['peerProjectId'] == null ? null : (map['peerProjectId'] as String).input(),
-      state: map['state'] == null ? null : (InternalCheckerState.fromValue(map['state'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gcpZone: map['gcpZone'] == null ? null : (map['gcpZone']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      peerProjectId: map['peerProjectId'] == null ? null : (map['peerProjectId']! as String).input(),
+      state: map['state'] == null ? null : (InternalCheckerState.fromValue(map['state']! as String)).input(),
     );
   }
 }

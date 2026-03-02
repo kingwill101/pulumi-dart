@@ -27,8 +27,8 @@ class RuntimeResponseJavaAgent {
 
   factory RuntimeResponseJavaAgent.fromMap(Map<String, dynamic> map) {
     return RuntimeResponseJavaAgent(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logging: map['logging'] == null ? null : (RuntimeResponseLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      logging: map['logging'] == null ? null : (RuntimeResponseLogging.fromMap((map['logging']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

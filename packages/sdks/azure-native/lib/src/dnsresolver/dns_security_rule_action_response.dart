@@ -26,8 +26,8 @@ class DnsSecurityRuleActionResponse {
 
   factory DnsSecurityRuleActionResponse.fromMap(Map<String, dynamic> map) {
     return DnsSecurityRuleActionResponse(
-      actionType: map['actionType'] == null ? null : (map['actionType'] as String).input(),
-      blockResponseCode: map['blockResponseCode'] == null ? null : (map['blockResponseCode'] as String).input(),
+      actionType: map['actionType'] == null ? null : (map['actionType']! as String).input(),
+      blockResponseCode: map['blockResponseCode'] == null ? null : (map['blockResponseCode']! as String).input(),
     );
   }
 }

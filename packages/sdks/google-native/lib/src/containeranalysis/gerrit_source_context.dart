@@ -37,10 +37,10 @@ class GerritSourceContext {
 
   factory GerritSourceContext.fromMap(Map<String, dynamic> map) {
     return GerritSourceContext(
-      aliasContext: map['aliasContext'] == null ? null : (AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
-      gerritProject: map['gerritProject'] == null ? null : (map['gerritProject'] as String).input(),
-      hostUri: map['hostUri'] == null ? null : (map['hostUri'] as String).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      aliasContext: map['aliasContext'] == null ? null : (AliasContext.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())).input(),
+      gerritProject: map['gerritProject'] == null ? null : (map['gerritProject']! as String).input(),
+      hostUri: map['hostUri'] == null ? null : (map['hostUri']! as String).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
     );
   }
 }

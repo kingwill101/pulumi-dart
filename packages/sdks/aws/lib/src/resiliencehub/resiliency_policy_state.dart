@@ -78,17 +78,17 @@ class ResiliencyPolicyState {
 
   factory ResiliencyPolicyState.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dataLocationConstraint: map['dataLocationConstraint'] == null ? null : (map['dataLocationConstraint'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      estimatedCostTier: map['estimatedCostTier'] == null ? null : (map['estimatedCostTier'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (ResiliencyPolicyPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (ResiliencyPolicyTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dataLocationConstraint: map['dataLocationConstraint'] == null ? null : ((map['dataLocationConstraint'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      estimatedCostTier: map['estimatedCostTier'] == null ? null : ((map['estimatedCostTier'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policy: map['policy'] == null ? null : ((ResiliencyPolicyPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      tier: map['tier'] == null ? null : ((map['tier'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ResiliencyPolicyTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

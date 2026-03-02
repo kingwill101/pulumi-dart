@@ -31,7 +31,7 @@ class DocumentAttachmentsSource {
   factory DocumentAttachmentsSource.fromMap(Map<String, dynamic> map) {
     return DocumentAttachmentsSource(
       key: (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

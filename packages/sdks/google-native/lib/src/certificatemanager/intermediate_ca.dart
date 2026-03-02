@@ -21,7 +21,7 @@ class IntermediateCA {
 
   factory IntermediateCA.fromMap(Map<String, dynamic> map) {
     return IntermediateCA(
-      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate'] as String).input(),
+      pemCertificate: map['pemCertificate'] == null ? null : (map['pemCertificate']! as String).input(),
     );
   }
 }

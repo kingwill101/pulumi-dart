@@ -66,16 +66,16 @@ class DataLimitState {
 
   factory DataLimitState.fromMap(Map<String, dynamic> map) {
     return DataLimitState(
-      auditStatus: map['auditStatus'] == null ? null : (map['auditStatus'] as int).input(),
-      engineType: map['engineType'] == null ? null : (map['engineType'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      logStoreDay: map['logStoreDay'] == null ? null : (map['logStoreDay'] as int).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      serviceRegionId: map['serviceRegionId'] == null ? null : (map['serviceRegionId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      auditStatus: map['auditStatus'] == null ? null : (map['auditStatus']! as int).input(),
+      engineType: map['engineType'] == null ? null : (map['engineType']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      logStoreDay: map['logStoreDay'] == null ? null : (map['logStoreDay']! as int).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      serviceRegionId: map['serviceRegionId'] == null ? null : (map['serviceRegionId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

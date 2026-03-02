@@ -34,9 +34,9 @@ class KafkaRemoteBrokerAuthenticationTypes {
 
   factory KafkaRemoteBrokerAuthenticationTypes.fromMap(Map<String, dynamic> map) {
     return KafkaRemoteBrokerAuthenticationTypes(
-      sasl: map['sasl'] == null ? null : (SaslRemoteBrokerBasicAuthentication.fromMap((map['sasl'] as Map).cast<String, dynamic>())).input(),
-      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthentication.fromMap((map['systemAssignedManagedIdentity'] as Map).cast<String, dynamic>())).input(),
-      x509: map['x509'] == null ? null : (KafkaX509Authentication.fromMap((map['x509'] as Map).cast<String, dynamic>())).input(),
+      sasl: map['sasl'] == null ? null : (SaslRemoteBrokerBasicAuthentication.fromMap((map['sasl']! as Map).cast<String, dynamic>())).input(),
+      systemAssignedManagedIdentity: map['systemAssignedManagedIdentity'] == null ? null : (ManagedIdentityAuthentication.fromMap((map['systemAssignedManagedIdentity']! as Map).cast<String, dynamic>())).input(),
+      x509: map['x509'] == null ? null : (KafkaX509Authentication.fromMap((map['x509']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

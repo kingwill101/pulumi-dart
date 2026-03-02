@@ -73,14 +73,14 @@ class BackupScheduleArgs {
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
       database: (map['database'] as String).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupScheduleEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
-      fullBackupSpec: map['fullBackupSpec'] == null ? null : ((map['fullBackupSpec'] as Map).cast<String, dynamic>()).input(),
-      incrementalBackupSpec: map['incrementalBackupSpec'] == null ? null : ((map['incrementalBackupSpec'] as Map).cast<String, dynamic>()).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (BackupScheduleEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
+      fullBackupSpec: map['fullBackupSpec'] == null ? null : ((map['fullBackupSpec']! as Map).cast<String, dynamic>()).input(),
+      incrementalBackupSpec: map['incrementalBackupSpec'] == null ? null : ((map['incrementalBackupSpec']! as Map).cast<String, dynamic>()).input(),
       instance: (map['instance'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       retentionDuration: (map['retentionDuration'] as String).input(),
-      spec: map['spec'] == null ? null : (BackupScheduleSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      spec: map['spec'] == null ? null : (BackupScheduleSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

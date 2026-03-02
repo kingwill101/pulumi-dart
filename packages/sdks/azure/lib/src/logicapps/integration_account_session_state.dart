@@ -36,10 +36,10 @@ class IntegrationAccountSessionState {
 
   factory IntegrationAccountSessionState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSessionState(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

@@ -116,23 +116,23 @@ class CacheArgs {
 
   factory CacheArgs.fromMap(Map<String, dynamic> map) {
     return CacheArgs(
-      automaticallyRotateKeyToLatestEnabled: map['automaticallyRotateKeyToLatestEnabled'] == null ? null : (map['automaticallyRotateKeyToLatestEnabled'] as bool).input(),
+      automaticallyRotateKeyToLatestEnabled: map['automaticallyRotateKeyToLatestEnabled'] == null ? null : (map['automaticallyRotateKeyToLatestEnabled']! as bool).input(),
       cacheSizeInGb: (map['cacheSizeInGb'] as int).input(),
-      defaultAccessPolicy: map['defaultAccessPolicy'] == null ? null : (CacheDefaultAccessPolicy.fromMap((map['defaultAccessPolicy'] as Map).cast<String, dynamic>())).input(),
-      directoryActiveDirectory: map['directoryActiveDirectory'] == null ? null : (CacheDirectoryActiveDirectory.fromMap((map['directoryActiveDirectory'] as Map).cast<String, dynamic>())).input(),
-      directoryFlatFile: map['directoryFlatFile'] == null ? null : (CacheDirectoryFlatFile.fromMap((map['directoryFlatFile'] as Map).cast<String, dynamic>())).input(),
-      directoryLdap: map['directoryLdap'] == null ? null : (CacheDirectoryLdap.fromMap((map['directoryLdap'] as Map).cast<String, dynamic>())).input(),
-      dns: map['dns'] == null ? null : (CacheDns.fromMap((map['dns'] as Map).cast<String, dynamic>())).input(),
-      identity: map['identity'] == null ? null : (CacheIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ntpServer: map['ntpServer'] == null ? null : (map['ntpServer'] as String).input(),
+      defaultAccessPolicy: map['defaultAccessPolicy'] == null ? null : (CacheDefaultAccessPolicy.fromMap((map['defaultAccessPolicy']! as Map).cast<String, dynamic>())).input(),
+      directoryActiveDirectory: map['directoryActiveDirectory'] == null ? null : (CacheDirectoryActiveDirectory.fromMap((map['directoryActiveDirectory']! as Map).cast<String, dynamic>())).input(),
+      directoryFlatFile: map['directoryFlatFile'] == null ? null : (CacheDirectoryFlatFile.fromMap((map['directoryFlatFile']! as Map).cast<String, dynamic>())).input(),
+      directoryLdap: map['directoryLdap'] == null ? null : (CacheDirectoryLdap.fromMap((map['directoryLdap']! as Map).cast<String, dynamic>())).input(),
+      dns: map['dns'] == null ? null : (CacheDns.fromMap((map['dns']! as Map).cast<String, dynamic>())).input(),
+      identity: map['identity'] == null ? null : (CacheIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultKeyId: map['keyVaultKeyId'] == null ? null : (map['keyVaultKeyId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      mtu: map['mtu'] == null ? null : (map['mtu']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ntpServer: map['ntpServer'] == null ? null : (map['ntpServer']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       skuName: (map['skuName'] as String).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

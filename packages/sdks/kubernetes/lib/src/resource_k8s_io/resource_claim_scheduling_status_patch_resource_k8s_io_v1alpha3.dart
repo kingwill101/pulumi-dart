@@ -28,8 +28,8 @@ class ResourceClaimSchedulingStatusPatchResourceK8sIoV1alpha3 {
 
   factory ResourceClaimSchedulingStatusPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return ResourceClaimSchedulingStatusPatchResourceK8sIoV1alpha3(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      unsuitableNodes: map['unsuitableNodes'] == null ? null : ((map['unsuitableNodes'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      unsuitableNodes: map['unsuitableNodes'] == null ? null : ((map['unsuitableNodes']! as List).cast<String>()).input(),
     );
   }
 }

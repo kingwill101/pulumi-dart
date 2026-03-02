@@ -57,7 +57,7 @@ class GetProjectCmekSettingsResult {
   factory GetProjectCmekSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetProjectCmekSettingsResult(
       id: map['id'] as String,
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
+      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName']! as String,
       kmsKeyVersionName: map['kmsKeyVersionName'] as String,
       name: map['name'] as String,
       project: map['project'] as String,

@@ -36,10 +36,10 @@ class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry
 
   factory GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

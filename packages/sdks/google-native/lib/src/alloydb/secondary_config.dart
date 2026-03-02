@@ -21,7 +21,7 @@ class SecondaryConfig {
 
   factory SecondaryConfig.fromMap(Map<String, dynamic> map) {
     return SecondaryConfig(
-      primaryClusterName: map['primaryClusterName'] == null ? null : (map['primaryClusterName'] as String).input(),
+      primaryClusterName: map['primaryClusterName'] == null ? null : (map['primaryClusterName']! as String).input(),
     );
   }
 }

@@ -49,9 +49,9 @@ class ChainingTrigger {
 
   factory ChainingTrigger.fromMap(Map<String, dynamic> map) {
     return ChainingTrigger(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
       dependsOn: (pulumi.Input.decodeList<PipelineReference>(map['dependsOn'], (value) => PipelineReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       pipeline: (TriggerPipelineReference.fromMap((map['pipeline'] as Map).cast<String, dynamic>())).input(),
       runDimension: (map['runDimension'] as String).input(),
       type: (map['type'] as String).input(),

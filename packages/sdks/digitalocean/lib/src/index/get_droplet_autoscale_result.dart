@@ -55,8 +55,8 @@ class GetDropletAutoscaleResult {
       createdAt: map['createdAt'] as String,
       currentUtilizations: pulumi.Input.decodeList<GetDropletAutoscaleCurrentUtilization>(map['currentUtilizations'], (value) => GetDropletAutoscaleCurrentUtilization.fromMap((value as Map).cast<String, dynamic>())),
       dropletTemplates: pulumi.Input.decodeList<GetDropletAutoscaleDropletTemplate>(map['dropletTemplates'], (value) => GetDropletAutoscaleDropletTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       status: map['status'] as String,
       updatedAt: map['updatedAt'] as String,
     );

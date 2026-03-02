@@ -46,12 +46,12 @@ class Command {
 
   factory Command.fromMap(Map<String, dynamic> map) {
     return Command(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      env: map['env'] == null ? null : ((map['env'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      env: map['env'] == null ? null : ((map['env']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      waitFor: map['waitFor'] == null ? null : ((map['waitFor'] as List).cast<String>()).input(),
+      waitFor: map['waitFor'] == null ? null : ((map['waitFor']! as List).cast<String>()).input(),
     );
   }
 }

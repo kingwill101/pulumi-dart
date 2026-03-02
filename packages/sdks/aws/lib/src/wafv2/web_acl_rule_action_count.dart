@@ -21,7 +21,7 @@ class WebAclRuleActionCount {
 
   factory WebAclRuleActionCount.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionCount(
-      customRequestHandling: map['customRequestHandling'] == null ? null : (WebAclRuleActionCountCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>())).input(),
+      customRequestHandling: map['customRequestHandling'] == null ? null : ((WebAclRuleActionCountCustomRequestHandling.fromMap((map['customRequestHandling']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

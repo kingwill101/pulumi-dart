@@ -21,7 +21,7 @@ class ControlOrganizationIntelligenceConfigTrialConfig {
 
   factory ControlOrganizationIntelligenceConfigTrialConfig.fromMap(Map<String, dynamic> map) {
     return ControlOrganizationIntelligenceConfigTrialConfig(
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
     );
   }
 }

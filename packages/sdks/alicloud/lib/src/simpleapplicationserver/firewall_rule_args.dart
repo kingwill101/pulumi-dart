@@ -41,7 +41,7 @@ class FirewallRuleArgs {
     return FirewallRuleArgs(
       instanceId: (map['instanceId'] as String).input(),
       port: (map['port'] as String).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
       ruleProtocol: (map['ruleProtocol'] as String).input(),
     );
   }

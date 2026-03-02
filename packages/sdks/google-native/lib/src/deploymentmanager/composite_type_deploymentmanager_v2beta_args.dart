@@ -49,12 +49,12 @@ class CompositeTypeDeploymentmanagerV2betaArgs {
 
   factory CompositeTypeDeploymentmanagerV2betaArgs.fromMap(Map<String, dynamic> map) {
     return CompositeTypeDeploymentmanagerV2betaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<CompositeTypeLabelEntryDeploymentmanagerV2beta>(map['labels'], (value) => CompositeTypeLabelEntryDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      templateContents: map['templateContents'] == null ? null : (TemplateContentsDeploymentmanagerV2beta.fromMap((map['templateContents'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<CompositeTypeLabelEntryDeploymentmanagerV2beta>(map['labels']!, (value) => CompositeTypeLabelEntryDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      templateContents: map['templateContents'] == null ? null : (TemplateContentsDeploymentmanagerV2beta.fromMap((map['templateContents']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

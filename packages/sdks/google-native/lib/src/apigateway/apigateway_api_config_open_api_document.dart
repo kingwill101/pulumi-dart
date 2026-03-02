@@ -22,7 +22,7 @@ class ApigatewayApiConfigOpenApiDocument {
 
   factory ApigatewayApiConfigOpenApiDocument.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigOpenApiDocument(
-      document: map['document'] == null ? null : (ApigatewayApiConfigFile.fromMap((map['document'] as Map).cast<String, dynamic>())).input(),
+      document: map['document'] == null ? null : (ApigatewayApiConfigFile.fromMap((map['document']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

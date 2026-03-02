@@ -64,14 +64,14 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       evaluatorType: (map['evaluatorType'] as String).input(),
-      factData: map['factData'] == null ? null : (map['factData'] as String).input(),
+      factData: map['factData'] == null ? null : (map['factData']! as String).input(),
       labName: (map['labName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       policySetName: (map['policySetName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       threshold: (map['threshold'] as String).input(),
     );
   }

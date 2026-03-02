@@ -67,7 +67,7 @@ class GetMembershipResult {
       location: map['location'] as String,
       membershipId: map['membershipId'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
     );
   }

@@ -36,10 +36,10 @@ class ExecutedValidationResponse {
 
   factory ExecutedValidationResponse.fromMap(Map<String, dynamic> map) {
     return ExecutedValidationResponse(
-      executionTime: map['executionTime'] == null ? null : (map['executionTime'] as String).input(),
+      executionTime: map['executionTime'] == null ? null : (map['executionTime']! as String).input(),
       status: (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class AddVCenterRequestProperties {
 
   factory AddVCenterRequestProperties.fromMap(Map<String, dynamic> map) {
     return AddVCenterRequestProperties(
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      processServerId: map['processServerId'] == null ? null : (map['processServerId'] as String).input(),
-      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId'] as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      processServerId: map['processServerId'] == null ? null : (map['processServerId']! as String).input(),
+      runAsAccountId: map['runAsAccountId'] == null ? null : (map['runAsAccountId']! as String).input(),
     );
   }
 }

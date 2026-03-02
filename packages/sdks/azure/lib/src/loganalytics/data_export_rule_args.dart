@@ -50,8 +50,8 @@ class DataExportRuleArgs {
   factory DataExportRuleArgs.fromMap(Map<String, dynamic> map) {
     return DataExportRuleArgs(
       destinationResourceId: (map['destinationResourceId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       tableNames: ((map['tableNames'] as List).cast<String>()).input(),
       workspaceResourceId: (map['workspaceResourceId'] as String).input(),

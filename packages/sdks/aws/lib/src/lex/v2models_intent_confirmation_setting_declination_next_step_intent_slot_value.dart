@@ -20,7 +20,7 @@ class V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlotValue {
 
   factory V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlotValue.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationNextStepIntentSlotValue(
-      interpretedValue: map['interpretedValue'] == null ? null : (map['interpretedValue'] as String).input(),
+      interpretedValue: map['interpretedValue'] == null ? null : ((map['interpretedValue'] as String).input()).input(),
     );
   }
 }

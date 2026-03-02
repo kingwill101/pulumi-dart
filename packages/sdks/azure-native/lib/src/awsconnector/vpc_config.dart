@@ -41,11 +41,11 @@ class VpcConfig {
 
   factory VpcConfig.fromMap(Map<String, dynamic> map) {
     return VpcConfig(
-      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : (map['ipv6AllowedForDualStack'] as bool).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      subnets: map['subnets'] == null ? null : ((map['subnets'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : (map['ipv6AllowedForDualStack']! as bool).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
+      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds']! as List).cast<String>()).input(),
+      subnets: map['subnets'] == null ? null : ((map['subnets']! as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
     );
   }
 }

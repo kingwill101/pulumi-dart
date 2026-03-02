@@ -21,7 +21,7 @@ class AzureMonitorWorkspaceIntegrationResponse {
 
   factory AzureMonitorWorkspaceIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return AzureMonitorWorkspaceIntegrationResponse(
-      azureMonitorWorkspaceResourceId: map['azureMonitorWorkspaceResourceId'] == null ? null : (map['azureMonitorWorkspaceResourceId'] as String).input(),
+      azureMonitorWorkspaceResourceId: map['azureMonitorWorkspaceResourceId'] == null ? null : (map['azureMonitorWorkspaceResourceId']! as String).input(),
     );
   }
 }

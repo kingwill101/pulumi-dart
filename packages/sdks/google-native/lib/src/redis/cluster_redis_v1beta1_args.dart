@@ -70,16 +70,16 @@ class ClusterRedisV1beta1Args {
 
   factory ClusterRedisV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ClusterRedisV1beta1Args(
-      authorizationMode: map['authorizationMode'] == null ? null : (ClusterAuthorizationModeRedisV1beta1.fromValue(map['authorizationMode'] as String)).input(),
+      authorizationMode: map['authorizationMode'] == null ? null : (ClusterAuthorizationModeRedisV1beta1.fromValue(map['authorizationMode']! as String)).input(),
       clusterId: (map['clusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       pscConfigs: (pulumi.Input.decodeList<PscConfigRedisV1beta1>(map['pscConfigs'], (value) => PscConfigRedisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as int).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as int).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       shardCount: (map['shardCount'] as int).input(),
-      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : (ClusterTransitEncryptionModeRedisV1beta1.fromValue(map['transitEncryptionMode'] as String)).input(),
+      transitEncryptionMode: map['transitEncryptionMode'] == null ? null : (ClusterTransitEncryptionModeRedisV1beta1.fromValue(map['transitEncryptionMode']! as String)).input(),
     );
   }
 }

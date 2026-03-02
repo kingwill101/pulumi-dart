@@ -25,8 +25,8 @@ class UserPoolEmailMfaConfiguration {
 
   factory UserPoolEmailMfaConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolEmailMfaConfiguration(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
+      message: map['message'] == null ? null : ((map['message'] as String).input()).input(),
+      subject: map['subject'] == null ? null : ((map['subject'] as String).input()).input(),
     );
   }
 }

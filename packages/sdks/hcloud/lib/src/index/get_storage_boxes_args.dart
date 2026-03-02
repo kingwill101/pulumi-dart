@@ -24,7 +24,7 @@ class GetStorageBoxesArgs {
 
   factory GetStorageBoxesArgs.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxesArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

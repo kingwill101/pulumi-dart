@@ -98,8 +98,8 @@ class GetImageRecipeResult {
     return GetImageRecipeResult(
       amiTags: (map['amiTags'] as Map).cast<String, String>(),
       arn: map['arn'] as String,
-      blockDeviceMappings: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(map['blockDeviceMappings'], (value) => GetImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
-      components: pulumi.Input.decodeList<GetImageRecipeComponent>(map['components'], (value) => GetImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
+      blockDeviceMappings: pulumi.Input.decodeList<GetImageRecipeBlockDeviceMapping>(map['blockDeviceMappings']!, (value) => GetImageRecipeBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())),
+      components: pulumi.Input.decodeList<GetImageRecipeComponent>(map['components']!, (value) => GetImageRecipeComponent.fromMap((value as Map).cast<String, dynamic>())),
       dateCreated: map['dateCreated'] as String,
       description: map['description'] as String,
       id: map['id'] as String,

@@ -62,15 +62,15 @@ class Ec2ImagePropertiesResponse {
 
   factory Ec2ImagePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return Ec2ImagePropertiesResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      awsProperties: map['awsProperties'] == null ? null : (AwsEc2ImagePropertiesResponse.fromMap((map['awsProperties'] as Map).cast<String, dynamic>())).input(),
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema'] as String).input(),
-      awsTags: map['awsTags'] == null ? null : ((map['awsTags'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId']! as String).input(),
+      awsProperties: map['awsProperties'] == null ? null : (AwsEc2ImagePropertiesResponse.fromMap((map['awsProperties']! as Map).cast<String, dynamic>())).input(),
+      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion']! as String).input(),
+      awsSourceSchema: map['awsSourceSchema'] == null ? null : (map['awsSourceSchema']! as String).input(),
+      awsTags: map['awsTags'] == null ? null : ((map['awsTags']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId'] as String).input(),
-      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName'] as String).input(),
+      publicCloudConnectorsResourceId: map['publicCloudConnectorsResourceId'] == null ? null : (map['publicCloudConnectorsResourceId']! as String).input(),
+      publicCloudResourceName: map['publicCloudResourceName'] == null ? null : (map['publicCloudResourceName']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
   factory S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser(
       gid: (map['gid'] as int).input(),
-      secondaryGids: map['secondaryGids'] == null ? null : ((map['secondaryGids'] as List).cast<int>()).input(),
+      secondaryGids: map['secondaryGids'] == null ? null : (((map['secondaryGids'] as List).cast<int>()).input()).input(),
       uid: (map['uid'] as int).input(),
     );
   }

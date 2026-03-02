@@ -22,7 +22,7 @@ class ServiceProviderResponse {
 
   factory ServiceProviderResponse.fromMap(Map<String, dynamic> map) {
     return ServiceProviderResponse(
-      properties: map['properties'] == null ? null : (ServiceProviderPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ServiceProviderPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

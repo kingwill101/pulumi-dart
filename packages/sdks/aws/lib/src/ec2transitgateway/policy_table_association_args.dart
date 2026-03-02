@@ -34,7 +34,7 @@ class PolicyTableAssociationArgs {
 
   factory PolicyTableAssociationArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTableAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
       transitGatewayPolicyTableId: (map['transitGatewayPolicyTableId'] as String).input(),
     );

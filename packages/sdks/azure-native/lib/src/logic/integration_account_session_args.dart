@@ -49,12 +49,12 @@ class IntegrationAccountSessionArgs {
 
   factory IntegrationAccountSessionArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountSessionArgs(
-      content: map['content'] == null ? null : (map['content']).input(),
+      content: map['content'] == null ? null : (map['content']!).input(),
       integrationAccountName: (map['integrationAccountName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sessionName: map['sessionName'] == null ? null : (map['sessionName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

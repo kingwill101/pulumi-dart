@@ -27,8 +27,8 @@ class GoogleCloudIntegrationsV1alphaParameterMapEntry {
 
   factory GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaParameterMapEntry(
-      key: map['key'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,7 +40,7 @@ class BucketStyleArgs {
   factory BucketStyleArgs.fromMap(Map<String, dynamic> map) {
     return BucketStyleArgs(
       bucket: (map['bucket'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
       content: (map['content'] as String).input(),
       styleName: (map['styleName'] as String).input(),
     );

@@ -83,18 +83,18 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : (map['aadAuthEnabled'] as bool).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      identity: map['identity'] == null ? null : (ServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      liveTrace: map['liveTrace'] == null ? null : (ServiceLiveTrace.fromMap((map['liveTrace'] as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
+      aadAuthEnabled: map['aadAuthEnabled'] == null ? null : (map['aadAuthEnabled']! as bool).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      identity: map['identity'] == null ? null : (ServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      liveTrace: map['liveTrace'] == null ? null : (ServiceLiveTrace.fromMap((map['liveTrace']! as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : (map['tlsClientCertEnabled'] as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tlsClientCertEnabled: map['tlsClientCertEnabled'] == null ? null : (map['tlsClientCertEnabled']! as bool).input(),
     );
   }
 }

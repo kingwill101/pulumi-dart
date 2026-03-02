@@ -26,8 +26,8 @@ class DeploymentTypeResponse {
 
   factory DeploymentTypeResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentTypeResponse(
-      appSourceUri: map['appSourceUri'] == null ? null : (map['appSourceUri'] as String).input(),
-      languageRuntime: map['languageRuntime'] == null ? null : (map['languageRuntime'] as String).input(),
+      appSourceUri: map['appSourceUri'] == null ? null : (map['appSourceUri']! as String).input(),
+      languageRuntime: map['languageRuntime'] == null ? null : (map['languageRuntime']! as String).input(),
     );
   }
 }

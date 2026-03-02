@@ -22,7 +22,7 @@ class SerialPipeline {
 
   factory SerialPipeline.fromMap(Map<String, dynamic> map) {
     return SerialPipeline(
-      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<Stage>(map['stages'], (value) => Stage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stages: map['stages'] == null ? null : (pulumi.Input.decodeList<Stage>(map['stages']!, (value) => Stage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

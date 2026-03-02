@@ -31,9 +31,9 @@ class ResourceRestoreParameters {
 
   factory ResourceRestoreParameters.fromMap(Map<String, dynamic> map) {
     return ResourceRestoreParameters(
-      restoreSource: map['restoreSource'] == null ? null : (map['restoreSource'] as String).input(),
-      restoreTimestampInUtc: map['restoreTimestampInUtc'] == null ? null : (map['restoreTimestampInUtc'] as String).input(),
-      restoreWithTtlDisabled: map['restoreWithTtlDisabled'] == null ? null : (map['restoreWithTtlDisabled'] as bool).input(),
+      restoreSource: map['restoreSource'] == null ? null : (map['restoreSource']! as String).input(),
+      restoreTimestampInUtc: map['restoreTimestampInUtc'] == null ? null : (map['restoreTimestampInUtc']! as String).input(),
+      restoreWithTtlDisabled: map['restoreWithTtlDisabled'] == null ? null : (map['restoreWithTtlDisabled']! as bool).input(),
     );
   }
 }

@@ -77,16 +77,16 @@ class AppProfileArgs {
   factory AppProfileArgs.fromMap(Map<String, dynamic> map) {
     return AppProfileArgs(
       appProfileId: (map['appProfileId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      ignoreWarnings: map['ignoreWarnings'] == null ? null : (map['ignoreWarnings']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : (MultiClusterRoutingUseAny.fromMap((map['multiClusterRoutingUseAny'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      priority: map['priority'] == null ? null : (AppProfilePriority.fromValue(map['priority'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      singleClusterRouting: map['singleClusterRouting'] == null ? null : (SingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>())).input(),
-      standardIsolation: map['standardIsolation'] == null ? null : (StandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>())).input(),
+      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : (MultiClusterRoutingUseAny.fromMap((map['multiClusterRoutingUseAny']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      priority: map['priority'] == null ? null : (AppProfilePriority.fromValue(map['priority']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      singleClusterRouting: map['singleClusterRouting'] == null ? null : (SingleClusterRouting.fromMap((map['singleClusterRouting']! as Map).cast<String, dynamic>())).input(),
+      standardIsolation: map['standardIsolation'] == null ? null : (StandardIsolation.fromMap((map['standardIsolation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

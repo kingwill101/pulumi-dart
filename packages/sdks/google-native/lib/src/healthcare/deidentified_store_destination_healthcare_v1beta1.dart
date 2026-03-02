@@ -27,8 +27,8 @@ class DeidentifiedStoreDestinationHealthcareV1beta1 {
 
   factory DeidentifiedStoreDestinationHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return DeidentifiedStoreDestinationHealthcareV1beta1(
-      config: map['config'] == null ? null : (DeidentifyConfigHealthcareV1beta1.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      store: map['store'] == null ? null : (map['store'] as String).input(),
+      config: map['config'] == null ? null : (DeidentifyConfigHealthcareV1beta1.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      store: map['store'] == null ? null : (map['store']! as String).input(),
     );
   }
 }

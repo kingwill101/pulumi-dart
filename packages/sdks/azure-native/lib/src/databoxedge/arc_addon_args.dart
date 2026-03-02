@@ -60,7 +60,7 @@ class ArcAddonArgs {
 
   factory ArcAddonArgs.fromMap(Map<String, dynamic> map) {
     return ArcAddonArgs(
-      addonName: map['addonName'] == null ? null : (map['addonName'] as String).input(),
+      addonName: map['addonName'] == null ? null : (map['addonName']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

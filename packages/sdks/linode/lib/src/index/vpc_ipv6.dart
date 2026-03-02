@@ -31,9 +31,9 @@ class VpcIpv6 {
 
   factory VpcIpv6.fromMap(Map<String, dynamic> map) {
     return VpcIpv6(
-      allocatedRange: map['allocatedRange'] == null ? null : (map['allocatedRange'] as String).input(),
-      allocationClass: map['allocationClass'] == null ? null : (map['allocationClass'] as String).input(),
-      range: map['range'] == null ? null : (map['range'] as String).input(),
+      allocatedRange: map['allocatedRange'] == null ? null : (map['allocatedRange']! as String).input(),
+      allocationClass: map['allocationClass'] == null ? null : (map['allocationClass']! as String).input(),
+      range: map['range'] == null ? null : (map['range']! as String).input(),
     );
   }
 }

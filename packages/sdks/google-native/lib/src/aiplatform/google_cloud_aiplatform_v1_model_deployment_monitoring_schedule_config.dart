@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig {
   factory GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelDeploymentMonitoringScheduleConfig(
       monitorInterval: (map['monitorInterval'] as String).input(),
-      monitorWindow: map['monitorWindow'] == null ? null : (map['monitorWindow'] as String).input(),
+      monitorWindow: map['monitorWindow'] == null ? null : (map['monitorWindow']! as String).input(),
     );
   }
 }

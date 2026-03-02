@@ -51,12 +51,12 @@ class OrganizationEnvironmentByIdArgs {
 
   factory OrganizationEnvironmentByIdArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationEnvironmentByIdArgs(
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (SCMetadataEntity.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       organizationName: (map['organizationName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      streamGovernanceConfig: map['streamGovernanceConfig'] == null ? null : (StreamGovernanceConfig.fromMap((map['streamGovernanceConfig'] as Map).cast<String, dynamic>())).input(),
+      streamGovernanceConfig: map['streamGovernanceConfig'] == null ? null : (StreamGovernanceConfig.fromMap((map['streamGovernanceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

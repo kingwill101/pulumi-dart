@@ -36,10 +36,10 @@ class LoadBalancerCommonBandwidthPackageAttachmentState {
 
   factory LoadBalancerCommonBandwidthPackageAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerCommonBandwidthPackageAttachmentState(
-      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bandwidthPackageId: map['bandwidthPackageId'] == null ? null : (map['bandwidthPackageId']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

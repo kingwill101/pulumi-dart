@@ -22,7 +22,7 @@ class PrivateEndpointConnectionProxyProperties {
 
   factory PrivateEndpointConnectionProxyProperties.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnectionProxyProperties(
-      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : (RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint'] as Map).cast<String, dynamic>())).input(),
+      remotePrivateEndpoint: map['remotePrivateEndpoint'] == null ? null : (RemotePrivateEndpoint.fromMap((map['remotePrivateEndpoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

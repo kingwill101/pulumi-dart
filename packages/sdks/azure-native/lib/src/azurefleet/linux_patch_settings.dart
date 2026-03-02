@@ -42,9 +42,9 @@ class LinuxPatchSettings {
 
   factory LinuxPatchSettings.fromMap(Map<String, dynamic> map) {
     return LinuxPatchSettings(
-      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode'] as String).input(),
-      automaticByPlatformSettings: map['automaticByPlatformSettings'] == null ? null : (LinuxVMGuestPatchAutomaticByPlatformSettings.fromMap((map['automaticByPlatformSettings'] as Map).cast<String, dynamic>())).input(),
-      patchMode: map['patchMode'] == null ? null : (map['patchMode'] as String).input(),
+      assessmentMode: map['assessmentMode'] == null ? null : (map['assessmentMode']! as String).input(),
+      automaticByPlatformSettings: map['automaticByPlatformSettings'] == null ? null : (LinuxVMGuestPatchAutomaticByPlatformSettings.fromMap((map['automaticByPlatformSettings']! as Map).cast<String, dynamic>())).input(),
+      patchMode: map['patchMode'] == null ? null : (map['patchMode']! as String).input(),
     );
   }
 }

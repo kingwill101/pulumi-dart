@@ -26,8 +26,8 @@ class GoogleCloudRetailV2alphaAudience {
 
   factory GoogleCloudRetailV2alphaAudience.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaAudience(
-      ageGroups: map['ageGroups'] == null ? null : ((map['ageGroups'] as List).cast<String>()).input(),
-      genders: map['genders'] == null ? null : ((map['genders'] as List).cast<String>()).input(),
+      ageGroups: map['ageGroups'] == null ? null : ((map['ageGroups']! as List).cast<String>()).input(),
+      genders: map['genders'] == null ? null : ((map['genders']! as List).cast<String>()).input(),
     );
   }
 }

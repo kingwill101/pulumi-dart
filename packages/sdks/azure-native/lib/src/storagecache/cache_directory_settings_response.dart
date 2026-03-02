@@ -28,8 +28,8 @@ class CacheDirectorySettingsResponse {
 
   factory CacheDirectorySettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheDirectorySettingsResponse(
-      activeDirectory: map['activeDirectory'] == null ? null : (CacheActiveDirectorySettingsResponse.fromMap((map['activeDirectory'] as Map).cast<String, dynamic>())).input(),
-      usernameDownload: map['usernameDownload'] == null ? null : (CacheUsernameDownloadSettingsResponse.fromMap((map['usernameDownload'] as Map).cast<String, dynamic>())).input(),
+      activeDirectory: map['activeDirectory'] == null ? null : (CacheActiveDirectorySettingsResponse.fromMap((map['activeDirectory']! as Map).cast<String, dynamic>())).input(),
+      usernameDownload: map['usernameDownload'] == null ? null : (CacheUsernameDownloadSettingsResponse.fromMap((map['usernameDownload']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

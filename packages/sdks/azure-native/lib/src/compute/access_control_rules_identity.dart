@@ -41,11 +41,11 @@ class AccessControlRulesIdentity {
 
   factory AccessControlRulesIdentity.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesIdentity(
-      exePath: map['exePath'] == null ? null : (map['exePath'] as String).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      exePath: map['exePath'] == null ? null : (map['exePath']! as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
       name: (map['name'] as String).input(),
-      processName: map['processName'] == null ? null : (map['processName'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      processName: map['processName'] == null ? null : (map['processName']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

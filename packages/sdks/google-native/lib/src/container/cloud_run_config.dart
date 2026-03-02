@@ -27,8 +27,8 @@ class CloudRunConfig {
 
   factory CloudRunConfig.fromMap(Map<String, dynamic> map) {
     return CloudRunConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (CloudRunConfigLoadBalancerType.fromValue(map['loadBalancerType'] as String)).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (CloudRunConfigLoadBalancerType.fromValue(map['loadBalancerType']! as String)).input(),
     );
   }
 }

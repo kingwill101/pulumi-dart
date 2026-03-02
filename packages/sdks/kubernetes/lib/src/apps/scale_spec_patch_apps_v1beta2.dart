@@ -21,7 +21,7 @@ class ScaleSpecPatchAppsV1beta2 {
 
   factory ScaleSpecPatchAppsV1beta2.fromMap(Map<String, dynamic> map) {
     return ScaleSpecPatchAppsV1beta2(
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
     );
   }
 }

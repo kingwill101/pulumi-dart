@@ -20,7 +20,7 @@ class AccessGrantAccessGrantsLocationConfiguration {
 
   factory AccessGrantAccessGrantsLocationConfiguration.fromMap(Map<String, dynamic> map) {
     return AccessGrantAccessGrantsLocationConfiguration(
-      s3SubPrefix: map['s3SubPrefix'] == null ? null : (map['s3SubPrefix'] as String).input(),
+      s3SubPrefix: map['s3SubPrefix'] == null ? null : ((map['s3SubPrefix'] as String).input()).input(),
     );
   }
 }

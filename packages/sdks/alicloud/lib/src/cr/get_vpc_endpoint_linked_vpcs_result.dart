@@ -54,8 +54,8 @@ class GetVpcEndpointLinkedVpcsResult {
       ids: (map['ids'] as List).cast<String>(),
       instanceId: map['instanceId'] as String,
       moduleName: map['moduleName'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       vpcEndpointLinkedVpcs: pulumi.Input.decodeList<GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc>(map['vpcEndpointLinkedVpcs'], (value) => GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

@@ -37,9 +37,9 @@ class PoolStartTaskContainer {
   factory PoolStartTaskContainer.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskContainer(
       imageName: (map['imageName'] as String).input(),
-      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<PoolStartTaskContainerRegistry>(map['registries'], (value) => PoolStartTaskContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      runOptions: map['runOptions'] == null ? null : (map['runOptions'] as String).input(),
-      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory'] as String).input(),
+      registries: map['registries'] == null ? null : (pulumi.Input.decodeList<PoolStartTaskContainerRegistry>(map['registries']!, (value) => PoolStartTaskContainerRegistry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      runOptions: map['runOptions'] == null ? null : (map['runOptions']! as String).input(),
+      workingDirectory: map['workingDirectory'] == null ? null : (map['workingDirectory']! as String).input(),
     );
   }
 }

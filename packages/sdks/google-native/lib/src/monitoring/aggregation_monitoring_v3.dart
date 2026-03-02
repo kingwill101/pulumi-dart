@@ -38,10 +38,10 @@ class AggregationMonitoringV3 {
 
   factory AggregationMonitoringV3.fromMap(Map<String, dynamic> map) {
     return AggregationMonitoringV3(
-      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod'] as String).input(),
-      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (AggregationCrossSeriesReducerMonitoringV3.fromValue(map['crossSeriesReducer'] as String)).input(),
-      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields'] as List).cast<String>()).input(),
-      perSeriesAligner: map['perSeriesAligner'] == null ? null : (AggregationPerSeriesAlignerMonitoringV3.fromValue(map['perSeriesAligner'] as String)).input(),
+      alignmentPeriod: map['alignmentPeriod'] == null ? null : (map['alignmentPeriod']! as String).input(),
+      crossSeriesReducer: map['crossSeriesReducer'] == null ? null : (AggregationCrossSeriesReducerMonitoringV3.fromValue(map['crossSeriesReducer']! as String)).input(),
+      groupByFields: map['groupByFields'] == null ? null : ((map['groupByFields']! as List).cast<String>()).input(),
+      perSeriesAligner: map['perSeriesAligner'] == null ? null : (AggregationPerSeriesAlignerMonitoringV3.fromValue(map['perSeriesAligner']! as String)).input(),
     );
   }
 }

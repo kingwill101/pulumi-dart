@@ -41,11 +41,11 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      languageTag: map['languageTag'] == null ? null : (map['languageTag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notificationCategorySubscriptions: map['notificationCategorySubscriptions'] == null ? null : ((map['notificationCategorySubscriptions'] as List).cast<String>()).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      languageTag: map['languageTag'] == null ? null : (map['languageTag']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notificationCategorySubscriptions: map['notificationCategorySubscriptions'] == null ? null : ((map['notificationCategorySubscriptions']! as List).cast<String>()).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
     );
   }
 }

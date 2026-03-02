@@ -29,8 +29,8 @@ class SubscriptionMessageTransform {
 
   factory SubscriptionMessageTransform.fromMap(Map<String, dynamic> map) {
     return SubscriptionMessageTransform(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      javascriptUdf: map['javascriptUdf'] == null ? null : (SubscriptionMessageTransformJavascriptUdf.fromMap((map['javascriptUdf'] as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      javascriptUdf: map['javascriptUdf'] == null ? null : (SubscriptionMessageTransformJavascriptUdf.fromMap((map['javascriptUdf']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class WorkloadMetadataConfig {
 
   factory WorkloadMetadataConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadMetadataConfig(
-      mode: map['mode'] == null ? null : (WorkloadMetadataConfigMode.fromValue(map['mode'] as String)).input(),
+      mode: map['mode'] == null ? null : (WorkloadMetadataConfigMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ConsistentHashLoadBalancerSettingsComputeBeta {
 
   factory ConsistentHashLoadBalancerSettingsComputeBeta.fromMap(Map<String, dynamic> map) {
     return ConsistentHashLoadBalancerSettingsComputeBeta(
-      httpCookie: map['httpCookie'] == null ? null : (ConsistentHashLoadBalancerSettingsHttpCookieComputeBeta.fromMap((map['httpCookie'] as Map).cast<String, dynamic>())).input(),
-      httpHeaderName: map['httpHeaderName'] == null ? null : (map['httpHeaderName'] as String).input(),
-      minimumRingSize: map['minimumRingSize'] == null ? null : (map['minimumRingSize'] as String).input(),
+      httpCookie: map['httpCookie'] == null ? null : (ConsistentHashLoadBalancerSettingsHttpCookieComputeBeta.fromMap((map['httpCookie']! as Map).cast<String, dynamic>())).input(),
+      httpHeaderName: map['httpHeaderName'] == null ? null : (map['httpHeaderName']! as String).input(),
+      minimumRingSize: map['minimumRingSize'] == null ? null : (map['minimumRingSize']! as String).input(),
     );
   }
 }

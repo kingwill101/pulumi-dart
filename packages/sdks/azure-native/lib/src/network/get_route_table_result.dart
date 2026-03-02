@@ -79,16 +79,16 @@ class GetRouteTableResult {
   factory GetRouteTableResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : map['disableBgpRoutePropagation'] as bool,
+      disableBgpRoutePropagation: map['disableBgpRoutePropagation'] == null ? null : map['disableBgpRoutePropagation']! as bool,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      routes: map['routes'] == null ? null : pulumi.Input.decodeList<RouteResponse>(map['routes'], (value) => RouteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      routes: map['routes'] == null ? null : pulumi.Input.decodeList<RouteResponse>(map['routes']!, (value) => RouteResponse.fromMap((value as Map).cast<String, dynamic>())),
       subnets: pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

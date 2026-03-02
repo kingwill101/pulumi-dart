@@ -62,12 +62,12 @@ class GetTransitRouterRouteTableAssociationsResult {
       associations: pulumi.Input.decodeList<GetTransitRouterRouteTableAssociationsAssociation>(map['associations'], (value) => GetTransitRouterRouteTableAssociationsAssociation.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId'] as String,
-      transitRouterAttachmentResourceId: map['transitRouterAttachmentResourceId'] == null ? null : map['transitRouterAttachmentResourceId'] as String,
-      transitRouterAttachmentResourceType: map['transitRouterAttachmentResourceType'] == null ? null : map['transitRouterAttachmentResourceType'] as String,
-      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : map['transitRouterRouteTableId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      transitRouterAttachmentId: map['transitRouterAttachmentId'] == null ? null : map['transitRouterAttachmentId']! as String,
+      transitRouterAttachmentResourceId: map['transitRouterAttachmentResourceId'] == null ? null : map['transitRouterAttachmentResourceId']! as String,
+      transitRouterAttachmentResourceType: map['transitRouterAttachmentResourceType'] == null ? null : map['transitRouterAttachmentResourceType']! as String,
+      transitRouterRouteTableId: map['transitRouterRouteTableId'] == null ? null : map['transitRouterRouteTableId']! as String,
     );
   }
 }

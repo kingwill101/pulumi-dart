@@ -51,12 +51,12 @@ class ObjectStorageBucketLifecycleRule {
 
   factory ObjectStorageBucketLifecycleRule.fromMap(Map<String, dynamic> map) {
     return ObjectStorageBucketLifecycleRule(
-      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays'] as int).input(),
+      abortIncompleteMultipartUploadDays: map['abortIncompleteMultipartUploadDays'] == null ? null : (map['abortIncompleteMultipartUploadDays']! as int).input(),
       enabled: (map['enabled'] as bool).input(),
-      expiration: map['expiration'] == null ? null : (ObjectStorageBucketLifecycleRuleExpiration.fromMap((map['expiration'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      expiration: map['expiration'] == null ? null : (ObjectStorageBucketLifecycleRuleExpiration.fromMap((map['expiration']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      noncurrentVersionExpiration: map['noncurrentVersionExpiration'] == null ? null : (ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration.fromMap((map['noncurrentVersionExpiration']! as Map).cast<String, dynamic>())).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

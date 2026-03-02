@@ -39,8 +39,8 @@ class GroupArgs {
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
       authenticationDomainId: (map['authenticationDomainId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      userIds: map['userIds'] == null ? null : ((map['userIds'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      userIds: map['userIds'] == null ? null : ((map['userIds']! as List).cast<String>()).input(),
     );
   }
 }

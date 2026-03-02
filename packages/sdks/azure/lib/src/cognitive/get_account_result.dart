@@ -186,7 +186,7 @@ class GetAccountResult {
       secondaryAccessKey: map['secondaryAccessKey'] as String,
       skuName: map['skuName'] as String,
       storages: pulumi.Input.decodeList<GetAccountStorage>(map['storages'], (value) => GetAccountStorage.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

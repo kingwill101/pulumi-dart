@@ -22,7 +22,7 @@ class SearchConfig {
 
   factory SearchConfig.fromMap(Map<String, dynamic> map) {
     return SearchConfig(
-      searchParameters: map['searchParameters'] == null ? null : (pulumi.Input.decodeList<SearchParameter>(map['searchParameters'], (value) => SearchParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searchParameters: map['searchParameters'] == null ? null : (pulumi.Input.decodeList<SearchParameter>(map['searchParameters']!, (value) => SearchParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

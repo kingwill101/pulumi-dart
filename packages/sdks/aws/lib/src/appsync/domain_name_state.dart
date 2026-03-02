@@ -46,12 +46,12 @@ class DomainNameState {
 
   factory DomainNameState.fromMap(Map<String, dynamic> map) {
     return DomainNameState(
-      appsyncDomainName: map['appsyncDomainName'] == null ? null : (map['appsyncDomainName'] as String).input(),
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      appsyncDomainName: map['appsyncDomainName'] == null ? null : ((map['appsyncDomainName'] as String).input()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -43,13 +43,13 @@ class RunCommandInstanceView {
 
   factory RunCommandInstanceView.fromMap(Map<String, dynamic> map) {
     return RunCommandInstanceView(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage'] as String).input(),
-      executionState: map['executionState'] == null ? null : (map['executionState'] as String).input(),
-      exitCode: map['exitCode'] == null ? null : (map['exitCode'] as int).input(),
-      output: map['output'] == null ? null : (map['output'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      executionMessage: map['executionMessage'] == null ? null : (map['executionMessage']! as String).input(),
+      executionState: map['executionState'] == null ? null : (map['executionState']! as String).input(),
+      exitCode: map['exitCode'] == null ? null : (map['exitCode']! as int).input(),
+      output: map['output'] == null ? null : (map['output']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

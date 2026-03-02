@@ -71,17 +71,17 @@ class AlidnsRecordState {
 
   factory AlidnsRecordState.fromMap(Map<String, dynamic> map) {
     return AlidnsRecordState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      line: map['line'] == null ? null : (map['line'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      rr: map['rr'] == null ? null : (map['rr'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      line: map['line'] == null ? null : (map['line']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      rr: map['rr'] == null ? null : (map['rr']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

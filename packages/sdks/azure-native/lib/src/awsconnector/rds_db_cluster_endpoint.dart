@@ -26,8 +26,8 @@ class RdsDbClusterEndpoint {
 
   factory RdsDbClusterEndpoint.fromMap(Map<String, dynamic> map) {
     return RdsDbClusterEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

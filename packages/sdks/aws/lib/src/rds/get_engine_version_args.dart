@@ -87,19 +87,19 @@ class GetEngineVersionArgs {
 
   factory GetEngineVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionArgs(
-      defaultOnly: map['defaultOnly'] == null ? null : (map['defaultOnly'] as bool).input(),
+      defaultOnly: map['defaultOnly'] == null ? null : ((map['defaultOnly'] as bool).input()).input(),
       engine: (map['engine'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetEngineVersionFilter>(map['filters'], (value) => GetEngineVersionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hasMajorTarget: map['hasMajorTarget'] == null ? null : (map['hasMajorTarget'] as bool).input(),
-      hasMinorTarget: map['hasMinorTarget'] == null ? null : (map['hasMinorTarget'] as bool).input(),
-      includeAll: map['includeAll'] == null ? null : (map['includeAll'] as bool).input(),
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : (map['parameterGroupFamily'] as String).input(),
-      preferredMajorTargets: map['preferredMajorTargets'] == null ? null : ((map['preferredMajorTargets'] as List).cast<String>()).input(),
-      preferredUpgradeTargets: map['preferredUpgradeTargets'] == null ? null : ((map['preferredUpgradeTargets'] as List).cast<String>()).input(),
-      preferredVersions: map['preferredVersions'] == null ? null : ((map['preferredVersions'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetEngineVersionFilter>(map['filters']!, (value) => GetEngineVersionFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      hasMajorTarget: map['hasMajorTarget'] == null ? null : ((map['hasMajorTarget'] as bool).input()).input(),
+      hasMinorTarget: map['hasMinorTarget'] == null ? null : ((map['hasMinorTarget'] as bool).input()).input(),
+      includeAll: map['includeAll'] == null ? null : ((map['includeAll'] as bool).input()).input(),
+      latest: map['latest'] == null ? null : ((map['latest'] as bool).input()).input(),
+      parameterGroupFamily: map['parameterGroupFamily'] == null ? null : ((map['parameterGroupFamily'] as String).input()).input(),
+      preferredMajorTargets: map['preferredMajorTargets'] == null ? null : (((map['preferredMajorTargets'] as List).cast<String>()).input()).input(),
+      preferredUpgradeTargets: map['preferredUpgradeTargets'] == null ? null : (((map['preferredUpgradeTargets'] as List).cast<String>()).input()).input(),
+      preferredVersions: map['preferredVersions'] == null ? null : (((map['preferredVersions'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

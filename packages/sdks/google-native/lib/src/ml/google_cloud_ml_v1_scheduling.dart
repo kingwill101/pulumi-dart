@@ -31,9 +31,9 @@ class GoogleCloudMlV1Scheduling {
 
   factory GoogleCloudMlV1Scheduling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1Scheduling(
-      maxRunningTime: map['maxRunningTime'] == null ? null : (map['maxRunningTime'] as String).input(),
-      maxWaitTime: map['maxWaitTime'] == null ? null : (map['maxWaitTime'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      maxRunningTime: map['maxRunningTime'] == null ? null : (map['maxRunningTime']! as String).input(),
+      maxWaitTime: map['maxWaitTime'] == null ? null : (map['maxWaitTime']! as String).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
     );
   }
 }

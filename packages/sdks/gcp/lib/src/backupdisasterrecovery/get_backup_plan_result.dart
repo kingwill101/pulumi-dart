@@ -89,7 +89,7 @@ class GetBackupPlanResult {
       logRetentionDays: map['logRetentionDays'] as int,
       maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] as int,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       resourceType: map['resourceType'] as String,
       supportedResourceTypes: (map['supportedResourceTypes'] as List).cast<String>(),
       updateTime: map['updateTime'] as String,

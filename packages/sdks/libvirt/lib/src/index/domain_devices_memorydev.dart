@@ -64,15 +64,15 @@ class DomainDevicesMemorydev {
 
   factory DomainDevicesMemorydev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesMemorydev(
-      access: map['access'] == null ? null : (map['access'] as String).input(),
-      acpi: map['acpi'] == null ? null : (DomainDevicesMemorydevAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesMemorydevAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      discard: map['discard'] == null ? null : (map['discard'] as String).input(),
+      access: map['access'] == null ? null : (map['access']! as String).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesMemorydevAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesMemorydevAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      discard: map['discard'] == null ? null : (map['discard']! as String).input(),
       model: (map['model'] as String).input(),
-      source: map['source'] == null ? null : (DomainDevicesMemorydevSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (DomainDevicesMemorydevTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      source: map['source'] == null ? null : (DomainDevicesMemorydevSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (DomainDevicesMemorydevTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

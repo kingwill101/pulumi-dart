@@ -31,9 +31,9 @@ class ODataErrorResponse {
 
   factory ODataErrorResponse.fromMap(Map<String, dynamic> map) {
     return ODataErrorResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      details: map['details'] == null ? null : (pulumi.Input.decodeList<ODataErrorResponse>(map['details'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      details: map['details'] == null ? null : (pulumi.Input.decodeList<ODataErrorResponse>(map['details']!, (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
     );
   }
 }

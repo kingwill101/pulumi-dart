@@ -46,11 +46,11 @@ class GetServicePrincipalsArgs {
 
   factory GetServicePrincipalsArgs.fromMap(Map<String, dynamic> map) {
     return GetServicePrincipalsArgs(
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
-      displayNames: map['displayNames'] == null ? null : ((map['displayNames'] as List).cast<String>()).input(),
-      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing'] as bool).input(),
-      objectIds: map['objectIds'] == null ? null : ((map['objectIds'] as List).cast<String>()).input(),
-      returnAll: map['returnAll'] == null ? null : (map['returnAll'] as bool).input(),
+      clientIds: map['clientIds'] == null ? null : ((map['clientIds']! as List).cast<String>()).input(),
+      displayNames: map['displayNames'] == null ? null : ((map['displayNames']! as List).cast<String>()).input(),
+      ignoreMissing: map['ignoreMissing'] == null ? null : (map['ignoreMissing']! as bool).input(),
+      objectIds: map['objectIds'] == null ? null : ((map['objectIds']! as List).cast<String>()).input(),
+      returnAll: map['returnAll'] == null ? null : (map['returnAll']! as bool).input(),
     );
   }
 }

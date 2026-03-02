@@ -62,15 +62,15 @@ class V3AsyncInvokeConfigState {
 
   factory V3AsyncInvokeConfigState.fromMap(Map<String, dynamic> map) {
     return V3AsyncInvokeConfigState(
-      asyncTask: map['asyncTask'] == null ? null : (map['asyncTask'] as bool).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      destinationConfig: map['destinationConfig'] == null ? null : (V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>())).input(),
-      functionArn: map['functionArn'] == null ? null : (map['functionArn'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : (map['maxAsyncEventAgeInSeconds'] as int).input(),
-      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : (map['maxAsyncRetryAttempts'] as int).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      asyncTask: map['asyncTask'] == null ? null : (map['asyncTask']! as bool).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      destinationConfig: map['destinationConfig'] == null ? null : (V3AsyncInvokeConfigDestinationConfig.fromMap((map['destinationConfig']! as Map).cast<String, dynamic>())).input(),
+      functionArn: map['functionArn'] == null ? null : (map['functionArn']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      maxAsyncEventAgeInSeconds: map['maxAsyncEventAgeInSeconds'] == null ? null : (map['maxAsyncEventAgeInSeconds']! as int).input(),
+      maxAsyncRetryAttempts: map['maxAsyncRetryAttempts'] == null ? null : (map['maxAsyncRetryAttempts']! as int).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
     );
   }
 }

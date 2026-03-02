@@ -34,9 +34,9 @@ class AgreementContentResponse {
 
   factory AgreementContentResponse.fromMap(Map<String, dynamic> map) {
     return AgreementContentResponse(
-      aS2: map['aS2'] == null ? null : (AS2AgreementContentResponse.fromMap((map['aS2'] as Map).cast<String, dynamic>())).input(),
-      edifact: map['edifact'] == null ? null : (EdifactAgreementContentResponse.fromMap((map['edifact'] as Map).cast<String, dynamic>())).input(),
-      x12: map['x12'] == null ? null : (X12AgreementContentResponse.fromMap((map['x12'] as Map).cast<String, dynamic>())).input(),
+      aS2: map['aS2'] == null ? null : (AS2AgreementContentResponse.fromMap((map['aS2']! as Map).cast<String, dynamic>())).input(),
+      edifact: map['edifact'] == null ? null : (EdifactAgreementContentResponse.fromMap((map['edifact']! as Map).cast<String, dynamic>())).input(),
+      x12: map['x12'] == null ? null : (X12AgreementContentResponse.fromMap((map['x12']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class VirtualNetworkGatewayAutoScaleConfiguration {
 
   factory VirtualNetworkGatewayAutoScaleConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewayAutoScaleConfiguration(
-      bounds: map['bounds'] == null ? null : (VirtualNetworkGatewayAutoScaleBounds.fromMap((map['bounds'] as Map).cast<String, dynamic>())).input(),
+      bounds: map['bounds'] == null ? null : (VirtualNetworkGatewayAutoScaleBounds.fromMap((map['bounds']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

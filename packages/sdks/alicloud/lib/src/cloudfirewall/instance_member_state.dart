@@ -46,12 +46,12 @@ class InstanceMemberState {
 
   factory InstanceMemberState.fromMap(Map<String, dynamic> map) {
     return InstanceMemberState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      memberDesc: map['memberDesc'] == null ? null : (map['memberDesc'] as String).input(),
-      memberDisplayName: map['memberDisplayName'] == null ? null : (map['memberDisplayName'] as String).input(),
-      memberUid: map['memberUid'] == null ? null : (map['memberUid'] as String).input(),
-      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      memberDesc: map['memberDesc'] == null ? null : (map['memberDesc']! as String).input(),
+      memberDisplayName: map['memberDisplayName'] == null ? null : (map['memberDisplayName']! as String).input(),
+      memberUid: map['memberUid'] == null ? null : (map['memberUid']! as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

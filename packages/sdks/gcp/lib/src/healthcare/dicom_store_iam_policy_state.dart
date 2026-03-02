@@ -35,9 +35,9 @@ class DicomStoreIamPolicyState {
 
   factory DicomStoreIamPolicyState.fromMap(Map<String, dynamic> map) {
     return DicomStoreIamPolicyState(
-      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      dicomStoreId: map['dicomStoreId'] == null ? null : (map['dicomStoreId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

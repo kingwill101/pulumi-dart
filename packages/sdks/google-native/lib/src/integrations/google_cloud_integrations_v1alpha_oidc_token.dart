@@ -36,10 +36,10 @@ class GoogleCloudIntegrationsV1alphaOidcToken {
 
   factory GoogleCloudIntegrationsV1alphaOidcToken.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaOidcToken(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      tokenExpireTime: map['tokenExpireTime'] == null ? null : (map['tokenExpireTime'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
+      tokenExpireTime: map['tokenExpireTime'] == null ? null : (map['tokenExpireTime']! as String).input(),
     );
   }
 }

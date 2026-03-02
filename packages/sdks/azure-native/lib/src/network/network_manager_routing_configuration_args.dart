@@ -39,8 +39,8 @@ class NetworkManagerRoutingConfigurationArgs {
 
   factory NetworkManagerRoutingConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingConfigurationArgs(
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

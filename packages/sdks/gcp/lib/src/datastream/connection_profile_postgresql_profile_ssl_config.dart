@@ -31,8 +31,8 @@ class ConnectionProfilePostgresqlProfileSslConfig {
 
   factory ConnectionProfilePostgresqlProfileSslConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionProfilePostgresqlProfileSslConfig(
-      serverAndClientVerification: map['serverAndClientVerification'] == null ? null : (ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.fromMap((map['serverAndClientVerification'] as Map).cast<String, dynamic>())).input(),
-      serverVerification: map['serverVerification'] == null ? null : (ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap((map['serverVerification'] as Map).cast<String, dynamic>())).input(),
+      serverAndClientVerification: map['serverAndClientVerification'] == null ? null : (ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification.fromMap((map['serverAndClientVerification']! as Map).cast<String, dynamic>())).input(),
+      serverVerification: map['serverVerification'] == null ? null : (ConnectionProfilePostgresqlProfileSslConfigServerVerification.fromMap((map['serverVerification']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

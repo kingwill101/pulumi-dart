@@ -22,7 +22,7 @@ class ExperimentsResponse {
 
   factory ExperimentsResponse.fromMap(Map<String, dynamic> map) {
     return ExperimentsResponse(
-      rampUpRules: map['rampUpRules'] == null ? null : (pulumi.Input.decodeList<RampUpRuleResponse>(map['rampUpRules'], (value) => RampUpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rampUpRules: map['rampUpRules'] == null ? null : (pulumi.Input.decodeList<RampUpRuleResponse>(map['rampUpRules']!, (value) => RampUpRuleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

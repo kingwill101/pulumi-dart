@@ -86,18 +86,18 @@ class CloudServicePropertiesResponse {
 
   factory CloudServicePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CloudServicePropertiesResponse(
-      allowModelOverride: map['allowModelOverride'] == null ? null : (map['allowModelOverride'] as bool).input(),
-      configuration: map['configuration'] == null ? null : (map['configuration'] as String).input(),
-      configurationUrl: map['configurationUrl'] == null ? null : (map['configurationUrl'] as String).input(),
-      extensionProfile: map['extensionProfile'] == null ? null : (CloudServiceExtensionProfileResponse.fromMap((map['extensionProfile'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (CloudServiceNetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      osProfile: map['osProfile'] == null ? null : (CloudServiceOsProfileResponse.fromMap((map['osProfile'] as Map).cast<String, dynamic>())).input(),
-      packageUrl: map['packageUrl'] == null ? null : (map['packageUrl'] as String).input(),
+      allowModelOverride: map['allowModelOverride'] == null ? null : (map['allowModelOverride']! as bool).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration']! as String).input(),
+      configurationUrl: map['configurationUrl'] == null ? null : (map['configurationUrl']! as String).input(),
+      extensionProfile: map['extensionProfile'] == null ? null : (CloudServiceExtensionProfileResponse.fromMap((map['extensionProfile']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (CloudServiceNetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      osProfile: map['osProfile'] == null ? null : (CloudServiceOsProfileResponse.fromMap((map['osProfile']! as Map).cast<String, dynamic>())).input(),
+      packageUrl: map['packageUrl'] == null ? null : (map['packageUrl']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      roleProfile: map['roleProfile'] == null ? null : (CloudServiceRoleProfileResponse.fromMap((map['roleProfile'] as Map).cast<String, dynamic>())).input(),
-      startCloudService: map['startCloudService'] == null ? null : (map['startCloudService'] as bool).input(),
+      roleProfile: map['roleProfile'] == null ? null : (CloudServiceRoleProfileResponse.fromMap((map['roleProfile']! as Map).cast<String, dynamic>())).input(),
+      startCloudService: map['startCloudService'] == null ? null : (map['startCloudService']! as bool).input(),
       uniqueId: (map['uniqueId'] as String).input(),
-      upgradeMode: map['upgradeMode'] == null ? null : (map['upgradeMode'] as String).input(),
+      upgradeMode: map['upgradeMode'] == null ? null : (map['upgradeMode']! as String).input(),
     );
   }
 }

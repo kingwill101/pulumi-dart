@@ -27,7 +27,7 @@ class GetPublicAdvertisedPrefixArgs {
 
   factory GetPublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicAdvertisedPrefixArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       publicAdvertisedPrefix: (map['publicAdvertisedPrefix'] as String).input(),
     );
   }

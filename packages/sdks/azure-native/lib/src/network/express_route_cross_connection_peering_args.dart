@@ -97,20 +97,20 @@ class ExpressRouteCrossConnectionPeeringArgs {
   factory ExpressRouteCrossConnectionPeeringArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCrossConnectionPeeringArgs(
       crossConnectionName: (map['crossConnectionName'] as String).input(),
-      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : (map['gatewayManagerEtag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipv6PeeringConfig: map['ipv6PeeringConfig'] == null ? null : (Ipv6ExpressRouteCircuitPeeringConfig.fromMap((map['ipv6PeeringConfig'] as Map).cast<String, dynamic>())).input(),
-      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringConfig.fromMap((map['microsoftPeeringConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerASN: map['peerASN'] == null ? null : (map['peerASN'] as double).input(),
-      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
-      peeringType: map['peeringType'] == null ? null : (map['peeringType'] as String).input(),
-      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix'] as String).input(),
+      gatewayManagerEtag: map['gatewayManagerEtag'] == null ? null : (map['gatewayManagerEtag']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipv6PeeringConfig: map['ipv6PeeringConfig'] == null ? null : (Ipv6ExpressRouteCircuitPeeringConfig.fromMap((map['ipv6PeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      microsoftPeeringConfig: map['microsoftPeeringConfig'] == null ? null : (ExpressRouteCircuitPeeringConfig.fromMap((map['microsoftPeeringConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerASN: map['peerASN'] == null ? null : (map['peerASN']! as double).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName']! as String).input(),
+      peeringType: map['peeringType'] == null ? null : (map['peeringType']! as String).input(),
+      primaryPeerAddressPrefix: map['primaryPeerAddressPrefix'] == null ? null : (map['primaryPeerAddressPrefix']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix'] as String).input(),
-      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
+      secondaryPeerAddressPrefix: map['secondaryPeerAddressPrefix'] == null ? null : (map['secondaryPeerAddressPrefix']! as String).input(),
+      sharedKey: map['sharedKey'] == null ? null : (map['sharedKey']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
     );
   }
 }

@@ -59,13 +59,13 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs {
 
   factory SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs.fromMap(Map<String, dynamic> map) {
     return SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs(
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      roleInstance: map['roleInstance'] == null ? null : (map['roleInstance'] as String).input(),
-      roleName: map['roleName'] == null ? null : (map['roleName'] as String).input(),
-      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage'] as int).input(),
-      samplingRequestsPerSecond: map['samplingRequestsPerSecond'] == null ? null : (map['samplingRequestsPerSecond'] as int).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      roleInstance: map['roleInstance'] == null ? null : (map['roleInstance']! as String).input(),
+      roleName: map['roleName'] == null ? null : (map['roleName']! as String).input(),
+      samplingPercentage: map['samplingPercentage'] == null ? null : (map['samplingPercentage']! as int).input(),
+      samplingRequestsPerSecond: map['samplingRequestsPerSecond'] == null ? null : (map['samplingRequestsPerSecond']! as int).input(),
       springCloudServiceId: (map['springCloudServiceId'] as String).input(),
     );
   }

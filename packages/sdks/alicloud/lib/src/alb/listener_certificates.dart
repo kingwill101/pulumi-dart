@@ -20,7 +20,7 @@ class ListenerCertificates {
 
   factory ListenerCertificates.fromMap(Map<String, dynamic> map) {
     return ListenerCertificates(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
     );
   }
 }

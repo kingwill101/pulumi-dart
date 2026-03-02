@@ -27,8 +27,8 @@ class SpaceSpaceSettingsCodeEditorAppSettings {
 
   factory SpaceSpaceSettingsCodeEditorAppSettings.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCodeEditorAppSettings(
-      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : (SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement'] as Map).cast<String, dynamic>())).input(),
-      defaultResourceSpec: (SpaceSpaceSettingsCodeEditorAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
+      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : ((SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement']! as Map).cast<String, dynamic>())).input()).input(),
+      defaultResourceSpec: (SpaceSpaceSettingsCodeEditorAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

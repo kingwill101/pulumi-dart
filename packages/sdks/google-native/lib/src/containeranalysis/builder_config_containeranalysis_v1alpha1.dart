@@ -19,7 +19,7 @@ class BuilderConfigContaineranalysisV1alpha1 {
 
   factory BuilderConfigContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return BuilderConfigContaineranalysisV1alpha1(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

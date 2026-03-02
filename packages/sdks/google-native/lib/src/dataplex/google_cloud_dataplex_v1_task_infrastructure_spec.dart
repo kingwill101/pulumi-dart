@@ -34,9 +34,9 @@ class GoogleCloudDataplexV1TaskInfrastructureSpec {
 
   factory GoogleCloudDataplexV1TaskInfrastructureSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskInfrastructureSpec(
-      batch: map['batch'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources.fromMap((map['batch'] as Map).cast<String, dynamic>())).input(),
-      containerImage: map['containerImage'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromMap((map['containerImage'] as Map).cast<String, dynamic>())).input(),
-      vpcNetwork: map['vpcNetwork'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork'] as Map).cast<String, dynamic>())).input(),
+      batch: map['batch'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources.fromMap((map['batch']! as Map).cast<String, dynamic>())).input(),
+      containerImage: map['containerImage'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime.fromMap((map['containerImage']! as Map).cast<String, dynamic>())).input(),
+      vpcNetwork: map['vpcNetwork'] == null ? null : (GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork.fromMap((map['vpcNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class Identity {
 
   factory Identity.fromMap(Map<String, dynamic> map) {
     return Identity(
-      oidc: map['oidc'] == null ? null : (OIDC.fromMap((map['oidc'] as Map).cast<String, dynamic>())).input(),
+      oidc: map['oidc'] == null ? null : (OIDC.fromMap((map['oidc']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

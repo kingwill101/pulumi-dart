@@ -26,7 +26,7 @@ class SqlStoredProcedureResource {
 
   factory SqlStoredProcedureResource.fromMap(Map<String, dynamic> map) {
     return SqlStoredProcedureResource(
-      body: map['body'] == null ? null : (map['body'] as String).input(),
+      body: map['body'] == null ? null : (map['body']! as String).input(),
       id: (map['id'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class DomainCpuFeature {
 
   factory DomainCpuFeature.fromMap(Map<String, dynamic> map) {
     return DomainCpuFeature(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policy: map['policy'] == null ? null : (map['policy']! as String).input(),
     );
   }
 }

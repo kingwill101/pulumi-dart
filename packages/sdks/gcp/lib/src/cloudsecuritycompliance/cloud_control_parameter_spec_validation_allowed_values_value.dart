@@ -44,11 +44,11 @@ class CloudControlParameterSpecValidationAllowedValuesValue {
 
   factory CloudControlParameterSpecValidationAllowedValuesValue.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpecValidationAllowedValuesValue(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as bool).input(),
-      numberValue: map['numberValue'] == null ? null : (map['numberValue'] as double).input(),
-      oneofValue: map['oneofValue'] == null ? null : (CloudControlParameterSpecValidationAllowedValuesValueOneofValue.fromMap((map['oneofValue'] as Map).cast<String, dynamic>())).input(),
-      stringListValue: map['stringListValue'] == null ? null : (CloudControlParameterSpecValidationAllowedValuesValueStringListValue.fromMap((map['stringListValue'] as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
+      numberValue: map['numberValue'] == null ? null : (map['numberValue']! as double).input(),
+      oneofValue: map['oneofValue'] == null ? null : (CloudControlParameterSpecValidationAllowedValuesValueOneofValue.fromMap((map['oneofValue']! as Map).cast<String, dynamic>())).input(),
+      stringListValue: map['stringListValue'] == null ? null : (CloudControlParameterSpecValidationAllowedValuesValueStringListValue.fromMap((map['stringListValue']! as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

@@ -89,18 +89,18 @@ class RouteArgs {
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
       apiId: (map['apiId'] as String).input(),
-      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired'] as bool).input(),
-      authorizationScopes: map['authorizationScopes'] == null ? null : ((map['authorizationScopes'] as List).cast<String>()).input(),
-      authorizationType: map['authorizationType'] == null ? null : (map['authorizationType'] as String).input(),
-      authorizerId: map['authorizerId'] == null ? null : (map['authorizerId'] as String).input(),
-      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : (map['modelSelectionExpression'] as String).input(),
-      operationName: map['operationName'] == null ? null : (map['operationName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestModels: map['requestModels'] == null ? null : ((map['requestModels'] as Map).cast<String, String>()).input(),
-      requestParameters: map['requestParameters'] == null ? null : (pulumi.Input.decodeList<RouteRequestParameter>(map['requestParameters'], (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiKeyRequired: map['apiKeyRequired'] == null ? null : ((map['apiKeyRequired'] as bool).input()).input(),
+      authorizationScopes: map['authorizationScopes'] == null ? null : (((map['authorizationScopes'] as List).cast<String>()).input()).input(),
+      authorizationType: map['authorizationType'] == null ? null : ((map['authorizationType'] as String).input()).input(),
+      authorizerId: map['authorizerId'] == null ? null : ((map['authorizerId'] as String).input()).input(),
+      modelSelectionExpression: map['modelSelectionExpression'] == null ? null : ((map['modelSelectionExpression'] as String).input()).input(),
+      operationName: map['operationName'] == null ? null : ((map['operationName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestModels: map['requestModels'] == null ? null : (((map['requestModels'] as Map).cast<String, String>()).input()).input(),
+      requestParameters: map['requestParameters'] == null ? null : ((pulumi.Input.decodeList<RouteRequestParameter>(map['requestParameters']!, (value) => RouteRequestParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       routeKey: (map['routeKey'] as String).input(),
-      routeResponseSelectionExpression: map['routeResponseSelectionExpression'] == null ? null : (map['routeResponseSelectionExpression'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      routeResponseSelectionExpression: map['routeResponseSelectionExpression'] == null ? null : ((map['routeResponseSelectionExpression'] as String).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
     );
   }
 }

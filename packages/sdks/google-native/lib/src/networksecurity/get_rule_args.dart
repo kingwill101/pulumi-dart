@@ -37,7 +37,7 @@ class GetRuleArgs {
     return GetRuleArgs(
       gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       ruleId: (map['ruleId'] as String).input(),
     );
   }

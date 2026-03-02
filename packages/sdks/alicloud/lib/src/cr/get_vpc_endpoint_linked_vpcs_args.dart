@@ -46,11 +46,11 @@ class GetVpcEndpointLinkedVpcsArgs {
 
   factory GetVpcEndpointLinkedVpcsArgs.fromMap(Map<String, dynamic> map) {
     return GetVpcEndpointLinkedVpcsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
       moduleName: (map['moduleName'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

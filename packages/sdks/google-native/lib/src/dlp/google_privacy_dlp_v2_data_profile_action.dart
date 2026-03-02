@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2DataProfileAction {
 
   factory GooglePrivacyDlpV2DataProfileAction.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfileAction(
-      exportData: map['exportData'] == null ? null : (GooglePrivacyDlpV2Export.fromMap((map['exportData'] as Map).cast<String, dynamic>())).input(),
-      pubSubNotification: map['pubSubNotification'] == null ? null : (GooglePrivacyDlpV2PubSubNotification.fromMap((map['pubSubNotification'] as Map).cast<String, dynamic>())).input(),
+      exportData: map['exportData'] == null ? null : (GooglePrivacyDlpV2Export.fromMap((map['exportData']! as Map).cast<String, dynamic>())).input(),
+      pubSubNotification: map['pubSubNotification'] == null ? null : (GooglePrivacyDlpV2PubSubNotification.fromMap((map['pubSubNotification']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class EnhancedSecurityComplianceDefinitionResponse {
 
   factory EnhancedSecurityComplianceDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return EnhancedSecurityComplianceDefinitionResponse(
-      automaticClusterUpdate: map['automaticClusterUpdate'] == null ? null : (AutomaticClusterUpdateDefinitionResponse.fromMap((map['automaticClusterUpdate'] as Map).cast<String, dynamic>())).input(),
-      complianceSecurityProfile: map['complianceSecurityProfile'] == null ? null : (ComplianceSecurityProfileDefinitionResponse.fromMap((map['complianceSecurityProfile'] as Map).cast<String, dynamic>())).input(),
-      enhancedSecurityMonitoring: map['enhancedSecurityMonitoring'] == null ? null : (EnhancedSecurityMonitoringDefinitionResponse.fromMap((map['enhancedSecurityMonitoring'] as Map).cast<String, dynamic>())).input(),
+      automaticClusterUpdate: map['automaticClusterUpdate'] == null ? null : (AutomaticClusterUpdateDefinitionResponse.fromMap((map['automaticClusterUpdate']! as Map).cast<String, dynamic>())).input(),
+      complianceSecurityProfile: map['complianceSecurityProfile'] == null ? null : (ComplianceSecurityProfileDefinitionResponse.fromMap((map['complianceSecurityProfile']! as Map).cast<String, dynamic>())).input(),
+      enhancedSecurityMonitoring: map['enhancedSecurityMonitoring'] == null ? null : (EnhancedSecurityMonitoringDefinitionResponse.fromMap((map['enhancedSecurityMonitoring']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

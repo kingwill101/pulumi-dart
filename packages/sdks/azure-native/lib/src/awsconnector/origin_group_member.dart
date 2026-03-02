@@ -21,7 +21,7 @@ class OriginGroupMember {
 
   factory OriginGroupMember.fromMap(Map<String, dynamic> map) {
     return OriginGroupMember(
-      originId: map['originId'] == null ? null : (map['originId'] as String).input(),
+      originId: map['originId'] == null ? null : (map['originId']! as String).input(),
     );
   }
 }

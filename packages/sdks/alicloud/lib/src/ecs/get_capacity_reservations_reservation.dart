@@ -120,7 +120,7 @@ class GetCapacityReservationsReservation {
       startTime: (map['startTime'] as String).input(),
       startTimeType: (map['startTimeType'] as String).input(),
       status: (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       timeSlot: (map['timeSlot'] as String).input(),
       zoneIds: ((map['zoneIds'] as List).cast<String>()).input(),
     );

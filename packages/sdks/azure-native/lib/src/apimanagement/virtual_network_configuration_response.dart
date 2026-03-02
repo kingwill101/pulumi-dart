@@ -31,7 +31,7 @@ class VirtualNetworkConfigurationResponse {
 
   factory VirtualNetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkConfigurationResponse(
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
       subnetname: (map['subnetname'] as String).input(),
       vnetid: (map['vnetid'] as String).input(),
     );

@@ -31,8 +31,8 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
 
   factory MirroringEndpointGroupConnectedDeploymentGroup.fromMap(Map<String, dynamic> map) {
     return MirroringEndpointGroupConnectedDeploymentGroup(
-      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<MirroringEndpointGroupConnectedDeploymentGroupLocation>(map['locations'], (value) => MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      locations: map['locations'] == null ? null : (pulumi.Input.decodeList<MirroringEndpointGroupConnectedDeploymentGroupLocation>(map['locations']!, (value) => MirroringEndpointGroupConnectedDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

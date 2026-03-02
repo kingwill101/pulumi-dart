@@ -26,8 +26,8 @@ class CatalogDatabaseCreateTableDefaultPermission {
 
   factory CatalogDatabaseCreateTableDefaultPermission.fromMap(Map<String, dynamic> map) {
     return CatalogDatabaseCreateTableDefaultPermission(
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      principal: map['principal'] == null ? null : (CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap((map['principal'] as Map).cast<String, dynamic>())).input(),
+      permissions: map['permissions'] == null ? null : (((map['permissions'] as List).cast<String>()).input()).input(),
+      principal: map['principal'] == null ? null : ((CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap((map['principal']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

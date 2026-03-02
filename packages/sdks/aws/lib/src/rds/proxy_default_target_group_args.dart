@@ -35,9 +35,9 @@ class ProxyDefaultTargetGroupArgs {
 
   factory ProxyDefaultTargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return ProxyDefaultTargetGroupArgs(
-      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : (ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>())).input(),
+      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : ((ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig']! as Map).cast<String, dynamic>())).input()).input(),
       dbProxyName: (map['dbProxyName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

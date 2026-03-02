@@ -27,8 +27,8 @@ class GetLinkLinkConfiguration {
 
   factory GetLinkLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return GetLinkLinkConfiguration(
-      logGroupConfigurations: (pulumi.Input.decodeList<GetLinkLinkConfigurationLogGroupConfiguration>(map['logGroupConfigurations'], (value) => GetLinkLinkConfigurationLogGroupConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricConfigurations: (pulumi.Input.decodeList<GetLinkLinkConfigurationMetricConfiguration>(map['metricConfigurations'], (value) => GetLinkLinkConfigurationMetricConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logGroupConfigurations: (pulumi.Input.decodeList<GetLinkLinkConfigurationLogGroupConfiguration>(map['logGroupConfigurations']!, (value) => GetLinkLinkConfigurationLogGroupConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricConfigurations: (pulumi.Input.decodeList<GetLinkLinkConfigurationMetricConfiguration>(map['metricConfigurations']!, (value) => GetLinkLinkConfigurationMetricConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

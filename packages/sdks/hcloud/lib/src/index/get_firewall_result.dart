@@ -51,13 +51,13 @@ class GetFirewallResult {
 
   factory GetFirewallResult.fromMap(Map<String, dynamic> map) {
     return GetFirewallResult(
-      applyTos: map['applyTos'] == null ? null : pulumi.Input.decodeList<GetFirewallApplyTo>(map['applyTos'], (value) => GetFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] == null ? null : map['id'] as int,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      applyTos: map['applyTos'] == null ? null : pulumi.Input.decodeList<GetFirewallApplyTo>(map['applyTos']!, (value) => GetFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : map['id']! as int,
+      labels: map['labels'] == null ? null : (map['labels']! as Map).cast<String, String>(),
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
       name: map['name'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetFirewallRule>(map['rules'], (value) => GetFirewallRule.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<GetFirewallRule>(map['rules']!, (value) => GetFirewallRule.fromMap((value as Map).cast<String, dynamic>())),
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

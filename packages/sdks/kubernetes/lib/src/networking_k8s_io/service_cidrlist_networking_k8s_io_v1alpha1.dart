@@ -38,10 +38,10 @@ class ServiceCIDRListNetworkingK8sIoV1alpha1 {
 
   factory ServiceCIDRListNetworkingK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ServiceCIDRListNetworkingK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       items: (pulumi.Input.decodeList<ServiceCIDRNetworkingK8sIoV1alpha1>(map['items'], (value) => ServiceCIDRNetworkingK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ListMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

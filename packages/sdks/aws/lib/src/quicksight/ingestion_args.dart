@@ -46,11 +46,11 @@ class IngestionArgs {
 
   factory IngestionArgs.fromMap(Map<String, dynamic> map) {
     return IngestionArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       dataSetId: (map['dataSetId'] as String).input(),
       ingestionId: (map['ingestionId'] as String).input(),
       ingestionType: (map['ingestionType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

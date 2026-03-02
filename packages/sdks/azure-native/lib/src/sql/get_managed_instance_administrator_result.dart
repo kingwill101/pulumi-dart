@@ -61,7 +61,7 @@ class GetManagedInstanceAdministratorResult {
       login: map['login'] as String,
       name: map['name'] as String,
       sid: map['sid'] as String,
-      tenantId: map['tenantId'] == null ? null : map['tenantId'] as String,
+      tenantId: map['tenantId'] == null ? null : map['tenantId']! as String,
       type: map['type'] as String,
     );
   }

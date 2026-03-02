@@ -22,7 +22,7 @@ class WorkerPoolTemplateContainerEnvValueSource {
 
   factory WorkerPoolTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
     return WorkerPoolTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null ? null : (WorkerPoolTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>())).input(),
+      secretKeyRef: map['secretKeyRef'] == null ? null : (WorkerPoolTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

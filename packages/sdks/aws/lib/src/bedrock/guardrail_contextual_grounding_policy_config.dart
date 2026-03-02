@@ -21,7 +21,7 @@ class GuardrailContextualGroundingPolicyConfig {
 
   factory GuardrailContextualGroundingPolicyConfig.fromMap(Map<String, dynamic> map) {
     return GuardrailContextualGroundingPolicyConfig(
-      filtersConfigs: map['filtersConfigs'] == null ? null : (pulumi.Input.decodeList<GuardrailContextualGroundingPolicyConfigFiltersConfig>(map['filtersConfigs'], (value) => GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filtersConfigs: map['filtersConfigs'] == null ? null : ((pulumi.Input.decodeList<GuardrailContextualGroundingPolicyConfigFiltersConfig>(map['filtersConfigs']!, (value) => GuardrailContextualGroundingPolicyConfigFiltersConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

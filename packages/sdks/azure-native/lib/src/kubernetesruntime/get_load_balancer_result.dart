@@ -69,11 +69,11 @@ class GetLoadBalancerResult {
       addresses: (map['addresses'] as List).cast<String>(),
       advertiseMode: map['advertiseMode'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      bgpPeers: map['bgpPeers'] == null ? null : (map['bgpPeers'] as List).cast<String>(),
+      bgpPeers: map['bgpPeers'] == null ? null : (map['bgpPeers']! as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      serviceSelector: map['serviceSelector'] == null ? null : (map['serviceSelector'] as Map).cast<String, String>(),
+      serviceSelector: map['serviceSelector'] == null ? null : (map['serviceSelector']! as Map).cast<String, String>(),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

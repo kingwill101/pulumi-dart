@@ -31,8 +31,8 @@ class AppVersionSnapshotAppModelSetting {
 
   factory AppVersionSnapshotAppModelSetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotAppModelSetting(
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
     );
   }
 }

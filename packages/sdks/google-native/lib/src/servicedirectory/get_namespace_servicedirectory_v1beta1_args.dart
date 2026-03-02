@@ -33,7 +33,7 @@ class GetNamespaceServicedirectoryV1beta1Args {
     return GetNamespaceServicedirectoryV1beta1Args(
       location: (map['location'] as String).input(),
       namespaceId: (map['namespaceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

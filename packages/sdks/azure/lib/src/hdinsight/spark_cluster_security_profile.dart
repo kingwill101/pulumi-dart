@@ -51,7 +51,7 @@ class SparkClusterSecurityProfile {
   factory SparkClusterSecurityProfile.fromMap(Map<String, dynamic> map) {
     return SparkClusterSecurityProfile(
       aaddsResourceId: (map['aaddsResourceId'] as String).input(),
-      clusterUsersGroupDns: map['clusterUsersGroupDns'] == null ? null : ((map['clusterUsersGroupDns'] as List).cast<String>()).input(),
+      clusterUsersGroupDns: map['clusterUsersGroupDns'] == null ? null : ((map['clusterUsersGroupDns']! as List).cast<String>()).input(),
       domainName: (map['domainName'] as String).input(),
       domainUserPassword: (map['domainUserPassword'] as String).input(),
       domainUsername: (map['domainUsername'] as String).input(),

@@ -23,8 +23,8 @@ class TaskDefinitionKernelCapabilities {
 
   factory TaskDefinitionKernelCapabilities.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionKernelCapabilities(
-      add: map['add'] == null ? null : ((map['add'] as List).cast<String>()).input(),
-      drop: map['drop'] == null ? null : ((map['drop'] as List).cast<String>()).input(),
+      add: map['add'] == null ? null : ((map['add']! as List).cast<String>()).input(),
+      drop: map['drop'] == null ? null : ((map['drop']! as List).cast<String>()).input(),
     );
   }
 }

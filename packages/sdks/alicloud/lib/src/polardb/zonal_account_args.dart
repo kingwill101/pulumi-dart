@@ -44,10 +44,10 @@ class ZonalAccountArgs {
 
   factory ZonalAccountArgs.fromMap(Map<String, dynamic> map) {
     return ZonalAccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
       accountName: (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
     );
   }

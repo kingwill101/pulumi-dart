@@ -20,7 +20,7 @@ class ProjectEnvironmentFleet {
 
   factory ProjectEnvironmentFleet.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentFleet(
-      fleetArn: map['fleetArn'] == null ? null : (map['fleetArn'] as String).input(),
+      fleetArn: map['fleetArn'] == null ? null : ((map['fleetArn'] as String).input()).input(),
     );
   }
 }

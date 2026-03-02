@@ -27,8 +27,8 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 
   factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValue(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValue: map['parameterValue'] == null ? null : (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValue: map['parameterValue'] == null ? null : (FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValue.fromMap((map['parameterValue']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

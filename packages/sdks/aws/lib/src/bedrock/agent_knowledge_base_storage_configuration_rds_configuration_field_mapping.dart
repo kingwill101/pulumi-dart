@@ -40,7 +40,7 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping {
 
   factory AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseStorageConfigurationRdsConfigurationFieldMapping(
-      customMetadataField: map['customMetadataField'] == null ? null : (map['customMetadataField'] as String).input(),
+      customMetadataField: map['customMetadataField'] == null ? null : ((map['customMetadataField'] as String).input()).input(),
       metadataField: (map['metadataField'] as String).input(),
       primaryKeyField: (map['primaryKeyField'] as String).input(),
       textField: (map['textField'] as String).input(),

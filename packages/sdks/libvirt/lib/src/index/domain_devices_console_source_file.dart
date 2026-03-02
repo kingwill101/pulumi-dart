@@ -31,9 +31,9 @@ class DomainDevicesConsoleSourceFile {
 
   factory DomainDevicesConsoleSourceFile.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceFile(
-      append: map['append'] == null ? null : (map['append'] as String).input(),
+      append: map['append'] == null ? null : (map['append']! as String).input(),
       path: (map['path'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourceFileSecLabel>(map['secLabels'], (value) => DomainDevicesConsoleSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesConsoleSourceFileSecLabel>(map['secLabels']!, (value) => DomainDevicesConsoleSourceFileSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class LoadBalancerSecurityGroupAttachmentState {
 
   factory LoadBalancerSecurityGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerSecurityGroupAttachmentState(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      loadBalancerId: map['loadBalancerId'] == null ? null : (map['loadBalancerId']! as String).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId']! as String).input(),
     );
   }
 }

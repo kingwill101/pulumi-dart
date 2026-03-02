@@ -21,7 +21,7 @@ class ContainerExec {
 
   factory ContainerExec.fromMap(Map<String, dynamic> map) {
     return ContainerExec(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
     );
   }
 }

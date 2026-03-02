@@ -36,10 +36,10 @@ class AccessGroupState {
 
   factory AccessGroupState.fromMap(Map<String, dynamic> map) {
     return AccessGroupState(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class ServiceTemplateScaling {
 
   factory ServiceTemplateScaling.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
     );
   }
 }

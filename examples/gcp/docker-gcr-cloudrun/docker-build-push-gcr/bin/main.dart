@@ -10,11 +10,14 @@ class DockerBuildPushStack extends pulumi.Stack {
 
     const imageName = 'ruby-app';
 
-    final myImage = docker.Image(
+    final myImage = docker.index.Image(
       imageName,
-      args: docker.ImageArgs(
-        imageName: 'gcr.io/$project/$imageName:latest',
-        build: docker.DockerBuild(context: './app', platform: 'linux/amd64'),
+      args: docker.index.ImageArgs(
+        imageName: 'gcr.io/$project/$imageName:latest'.output(),
+        build: docker.index.DockerBuild(
+          context: './app'.output(),
+          platform: 'linux/amd64'.output(),
+        ).output(),
       ),
     );
 

@@ -49,12 +49,12 @@ class MongoDbMigrationSettingsResponse {
 
   factory MongoDbMigrationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbMigrationSettingsResponse(
-      boostRUs: map['boostRUs'] == null ? null : (map['boostRUs'] as int).input(),
+      boostRUs: map['boostRUs'] == null ? null : (map['boostRUs']! as int).input(),
       databases: (pulumi.Input.decodeMapValues<MongoDbDatabaseSettingsResponse>(map['databases'], (value) => MongoDbDatabaseSettingsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      replication: map['replication'] == null ? null : (map['replication'] as String).input(),
+      replication: map['replication'] == null ? null : (map['replication']! as String).input(),
       source: (MongoDbConnectionInfoResponse.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
       target: (MongoDbConnectionInfoResponse.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      throttling: map['throttling'] == null ? null : (MongoDbThrottlingSettingsResponse.fromMap((map['throttling'] as Map).cast<String, dynamic>())).input(),
+      throttling: map['throttling'] == null ? null : (MongoDbThrottlingSettingsResponse.fromMap((map['throttling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -99,21 +99,21 @@ class MongoClusterPropertiesResponse {
 
   factory MongoClusterPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MongoClusterPropertiesResponse(
-      administrator: map['administrator'] == null ? null : (AdministratorPropertiesResponse.fromMap((map['administrator'] as Map).cast<String, dynamic>())).input(),
-      backup: map['backup'] == null ? null : (BackupPropertiesResponse.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
+      administrator: map['administrator'] == null ? null : (AdministratorPropertiesResponse.fromMap((map['administrator']! as Map).cast<String, dynamic>())).input(),
+      backup: map['backup'] == null ? null : (BackupPropertiesResponse.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
       clusterStatus: (map['clusterStatus'] as String).input(),
-      compute: map['compute'] == null ? null : (ComputePropertiesResponse.fromMap((map['compute'] as Map).cast<String, dynamic>())).input(),
+      compute: map['compute'] == null ? null : (ComputePropertiesResponse.fromMap((map['compute']! as Map).cast<String, dynamic>())).input(),
       connectionString: (map['connectionString'] as String).input(),
-      highAvailability: map['highAvailability'] == null ? null : (HighAvailabilityPropertiesResponse.fromMap((map['highAvailability'] as Map).cast<String, dynamic>())).input(),
+      highAvailability: map['highAvailability'] == null ? null : (HighAvailabilityPropertiesResponse.fromMap((map['highAvailability']! as Map).cast<String, dynamic>())).input(),
       infrastructureVersion: (map['infrastructureVersion'] as String).input(),
-      previewFeatures: map['previewFeatures'] == null ? null : ((map['previewFeatures'] as List).cast<String>()).input(),
+      previewFeatures: map['previewFeatures'] == null ? null : ((map['previewFeatures']! as List).cast<String>()).input(),
       privateEndpointConnections: (pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections'], (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
       replica: (ReplicationPropertiesResponse.fromMap((map['replica'] as Map).cast<String, dynamic>())).input(),
-      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion'] as String).input(),
-      sharding: map['sharding'] == null ? null : (ShardingPropertiesResponse.fromMap((map['sharding'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (StoragePropertiesResponse.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      serverVersion: map['serverVersion'] == null ? null : (map['serverVersion']! as String).input(),
+      sharding: map['sharding'] == null ? null : (ShardingPropertiesResponse.fromMap((map['sharding']! as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (StoragePropertiesResponse.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

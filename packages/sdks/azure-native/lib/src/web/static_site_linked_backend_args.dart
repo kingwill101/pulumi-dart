@@ -49,9 +49,9 @@ class StaticSiteLinkedBackendArgs {
 
   factory StaticSiteLinkedBackendArgs.fromMap(Map<String, dynamic> map) {
     return StaticSiteLinkedBackendArgs(
-      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName'] as String).input(),
+      backendResourceId: map['backendResourceId'] == null ? null : (map['backendResourceId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      linkedBackendName: map['linkedBackendName'] == null ? null : (map['linkedBackendName']! as String).input(),
       name: (map['name'] as String).input(),
       region: (map['region'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

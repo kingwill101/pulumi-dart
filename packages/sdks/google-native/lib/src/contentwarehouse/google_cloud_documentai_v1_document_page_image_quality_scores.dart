@@ -27,8 +27,8 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 
   factory GoogleCloudDocumentaiV1DocumentPageImageQualityScores.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageImageQualityScores(
-      detectedDefects: map['detectedDefects'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>(map['detectedDefects'], (value) => GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      qualityScore: map['qualityScore'] == null ? null : (map['qualityScore'] as double).input(),
+      detectedDefects: map['detectedDefects'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect>(map['detectedDefects']!, (value) => GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      qualityScore: map['qualityScore'] == null ? null : (map['qualityScore']! as double).input(),
     );
   }
 }

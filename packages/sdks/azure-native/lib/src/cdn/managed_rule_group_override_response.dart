@@ -28,7 +28,7 @@ class ManagedRuleGroupOverrideResponse {
   factory ManagedRuleGroupOverrideResponse.fromMap(Map<String, dynamic> map) {
     return ManagedRuleGroupOverrideResponse(
       ruleGroupName: (map['ruleGroupName'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagedRuleOverrideResponse>(map['rules'], (value) => ManagedRuleOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<ManagedRuleOverrideResponse>(map['rules']!, (value) => ManagedRuleOverrideResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

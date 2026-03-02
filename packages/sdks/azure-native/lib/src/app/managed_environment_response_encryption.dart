@@ -21,7 +21,7 @@ class ManagedEnvironmentResponseEncryption {
 
   factory ManagedEnvironmentResponseEncryption.fromMap(Map<String, dynamic> map) {
     return ManagedEnvironmentResponseEncryption(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -49,8 +49,8 @@ class MaterializedViewsBuilderServiceResourcePropertiesResponse {
   factory MaterializedViewsBuilderServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MaterializedViewsBuilderServiceResourcePropertiesResponse(
       creationTime: (map['creationTime'] as String).input(),
-      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount'] as int).input(),
-      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize'] as String).input(),
+      instanceCount: map['instanceCount'] == null ? null : (map['instanceCount']! as int).input(),
+      instanceSize: map['instanceSize'] == null ? null : (map['instanceSize']! as String).input(),
       locations: (pulumi.Input.decodeList<MaterializedViewsBuilderRegionalServiceResourceResponse>(map['locations'], (value) => MaterializedViewsBuilderRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceType: (map['serviceType'] as String).input(),
       status: (map['status'] as String).input(),

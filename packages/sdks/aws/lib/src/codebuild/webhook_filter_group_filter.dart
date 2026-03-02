@@ -30,7 +30,7 @@ class WebhookFilterGroupFilter {
 
   factory WebhookFilterGroupFilter.fromMap(Map<String, dynamic> map) {
     return WebhookFilterGroupFilter(
-      excludeMatchedPattern: map['excludeMatchedPattern'] == null ? null : (map['excludeMatchedPattern'] as bool).input(),
+      excludeMatchedPattern: map['excludeMatchedPattern'] == null ? null : ((map['excludeMatchedPattern'] as bool).input()).input(),
       pattern: (map['pattern'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -27,8 +27,8 @@ class ImageOutputResource {
 
   factory ImageOutputResource.fromMap(Map<String, dynamic> map) {
     return ImageOutputResource(
-      amis: map['amis'] == null ? null : (pulumi.Input.decodeList<ImageOutputResourceAmi>(map['amis'], (value) => ImageOutputResourceAmi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      containers: map['containers'] == null ? null : (pulumi.Input.decodeList<ImageOutputResourceContainer>(map['containers'], (value) => ImageOutputResourceContainer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      amis: map['amis'] == null ? null : ((pulumi.Input.decodeList<ImageOutputResourceAmi>(map['amis']!, (value) => ImageOutputResourceAmi.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      containers: map['containers'] == null ? null : ((pulumi.Input.decodeList<ImageOutputResourceContainer>(map['containers']!, (value) => ImageOutputResourceContainer.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

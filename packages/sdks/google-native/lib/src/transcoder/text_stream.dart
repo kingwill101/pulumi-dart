@@ -37,10 +37,10 @@ class TextStream {
 
   factory TextStream.fromMap(Map<String, dynamic> map) {
     return TextStream(
-      codec: map['codec'] == null ? null : (map['codec'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      mapping: map['mapping'] == null ? null : (pulumi.Input.decodeList<TextMapping>(map['mapping'], (value) => TextMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      codec: map['codec'] == null ? null : (map['codec']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      mapping: map['mapping'] == null ? null : (pulumi.Input.decodeList<TextMapping>(map['mapping']!, (value) => TextMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -110,7 +110,7 @@ class GetPrivateCloudResult {
       name: map['name'] as String,
       networkConfigs: pulumi.Input.decodeList<GetPrivateCloudNetworkConfig>(map['networkConfigs'], (value) => GetPrivateCloudNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
       nsxes: pulumi.Input.decodeList<GetPrivateCloudNsx>(map['nsxes'], (value) => GetPrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] as bool,
       state: map['state'] as String,
       type: map['type'] as String,

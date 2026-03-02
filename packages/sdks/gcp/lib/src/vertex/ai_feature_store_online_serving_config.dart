@@ -27,8 +27,8 @@ class AiFeatureStoreOnlineServingConfig {
 
   factory AiFeatureStoreOnlineServingConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreOnlineServingConfig(
-      fixedNodeCount: map['fixedNodeCount'] == null ? null : (map['fixedNodeCount'] as int).input(),
-      scaling: map['scaling'] == null ? null : (AiFeatureStoreOnlineServingConfigScaling.fromMap((map['scaling'] as Map).cast<String, dynamic>())).input(),
+      fixedNodeCount: map['fixedNodeCount'] == null ? null : (map['fixedNodeCount']! as int).input(),
+      scaling: map['scaling'] == null ? null : (AiFeatureStoreOnlineServingConfigScaling.fromMap((map['scaling']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

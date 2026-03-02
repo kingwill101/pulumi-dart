@@ -34,9 +34,9 @@ class SqlServerAvailabilityGroupResourceProperties {
 
   factory SqlServerAvailabilityGroupResourceProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerAvailabilityGroupResourceProperties(
-      databases: map['databases'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesDatabases.fromMap((map['databases'] as Map).cast<String, dynamic>())).input(),
-      info: map['info'] == null ? null : (AvailabilityGroupInfo.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
-      replicas: map['replicas'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesReplicas.fromMap((map['replicas'] as Map).cast<String, dynamic>())).input(),
+      databases: map['databases'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesDatabases.fromMap((map['databases']! as Map).cast<String, dynamic>())).input(),
+      info: map['info'] == null ? null : (AvailabilityGroupInfo.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
+      replicas: map['replicas'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesReplicas.fromMap((map['replicas']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

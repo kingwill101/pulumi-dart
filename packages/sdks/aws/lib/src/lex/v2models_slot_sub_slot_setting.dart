@@ -27,8 +27,8 @@ class V2modelsSlotSubSlotSetting {
 
   factory V2modelsSlotSubSlotSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotSubSlotSetting(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      slotSpecifications: map['slotSpecifications'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecification>(map['slotSpecifications'], (value) => V2modelsSlotSubSlotSettingSlotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
+      slotSpecifications: map['slotSpecifications'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotSubSlotSettingSlotSpecification>(map['slotSpecifications']!, (value) => V2modelsSlotSubSlotSettingSlotSpecification.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

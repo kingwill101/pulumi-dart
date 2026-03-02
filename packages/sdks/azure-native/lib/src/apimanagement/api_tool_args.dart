@@ -55,12 +55,12 @@ class ApiToolArgs {
   factory ApiToolArgs.fromMap(Map<String, dynamic> map) {
     return ApiToolArgs(
       apiId: (map['apiId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
-      toolId: map['toolId'] == null ? null : (map['toolId'] as String).input(),
+      toolId: map['toolId'] == null ? null : (map['toolId']! as String).input(),
     );
   }
 }

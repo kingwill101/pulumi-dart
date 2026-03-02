@@ -27,8 +27,8 @@ class MimeFilterRuleset {
 
   factory MimeFilterRuleset.fromMap(Map<String, dynamic> map) {
     return MimeFilterRuleset(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<MimeTypeFilter>(map['filters'], (value) => MimeTypeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<MimeTypeFilter>(map['filters']!, (value) => MimeTypeFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

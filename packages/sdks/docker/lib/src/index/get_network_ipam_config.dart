@@ -35,10 +35,10 @@ class GetNetworkIpamConfig {
 
   factory GetNetworkIpamConfig.fromMap(Map<String, dynamic> map) {
     return GetNetworkIpamConfig(
-      auxAddress: map['auxAddress'] == null ? null : ((map['auxAddress'] as Map).cast<String, String>()).input(),
-      gateway: map['gateway'] == null ? null : (map['gateway'] as String).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as String).input(),
+      auxAddress: map['auxAddress'] == null ? null : ((map['auxAddress']! as Map).cast<String, String>()).input(),
+      gateway: map['gateway'] == null ? null : (map['gateway']! as String).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as String).input(),
     );
   }
 }

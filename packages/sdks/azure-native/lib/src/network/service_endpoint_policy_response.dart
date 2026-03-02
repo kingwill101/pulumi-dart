@@ -83,18 +83,18 @@ class ServiceEndpointPolicyResponse {
 
   factory ServiceEndpointPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicyResponse(
-      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies'] as List).cast<String>()).input(),
+      contextualServiceEndpointPolicies: map['contextualServiceEndpointPolicies'] == null ? null : ((map['contextualServiceEndpointPolicies']! as List).cast<String>()).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       kind: (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceGuid: (map['resourceGuid'] as String).input(),
-      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias'] as String).input(),
-      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(map['serviceEndpointPolicyDefinitions'], (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceAlias: map['serviceAlias'] == null ? null : (map['serviceAlias']! as String).input(),
+      serviceEndpointPolicyDefinitions: map['serviceEndpointPolicyDefinitions'] == null ? null : (pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(map['serviceEndpointPolicyDefinitions']!, (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       subnets: (pulumi.Input.decodeList<SubnetResponse>(map['subnets'], (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       type: (map['type'] as String).input(),
     );
   }

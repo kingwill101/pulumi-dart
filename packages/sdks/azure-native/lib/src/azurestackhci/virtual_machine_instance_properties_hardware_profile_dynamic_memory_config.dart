@@ -31,9 +31,9 @@ class VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig {
 
   factory VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesHardwareProfileDynamicMemoryConfig(
-      maximumMemoryMB: map['maximumMemoryMB'] == null ? null : (map['maximumMemoryMB'] as double).input(),
-      minimumMemoryMB: map['minimumMemoryMB'] == null ? null : (map['minimumMemoryMB'] as double).input(),
-      targetMemoryBuffer: map['targetMemoryBuffer'] == null ? null : (map['targetMemoryBuffer'] as int).input(),
+      maximumMemoryMB: map['maximumMemoryMB'] == null ? null : (map['maximumMemoryMB']! as double).input(),
+      minimumMemoryMB: map['minimumMemoryMB'] == null ? null : (map['minimumMemoryMB']! as double).input(),
+      targetMemoryBuffer: map['targetMemoryBuffer'] == null ? null : (map['targetMemoryBuffer']! as int).input(),
     );
   }
 }

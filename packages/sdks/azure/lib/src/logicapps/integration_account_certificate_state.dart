@@ -47,12 +47,12 @@ class IntegrationAccountCertificateState {
 
   factory IntegrationAccountCertificateState.fromMap(Map<String, dynamic> map) {
     return IntegrationAccountCertificateState(
-      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName'] as String).input(),
-      keyVaultKey: map['keyVaultKey'] == null ? null : (IntegrationAccountCertificateKeyVaultKey.fromMap((map['keyVaultKey'] as Map).cast<String, dynamic>())).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      integrationAccountName: map['integrationAccountName'] == null ? null : (map['integrationAccountName']! as String).input(),
+      keyVaultKey: map['keyVaultKey'] == null ? null : (IntegrationAccountCertificateKeyVaultKey.fromMap((map['keyVaultKey']! as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicCertificate: map['publicCertificate'] == null ? null : (map['publicCertificate']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

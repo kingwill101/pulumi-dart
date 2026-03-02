@@ -25,8 +25,8 @@ class NetworkPortGroupVirtualPortParamsOpenVSwitch {
 
   factory NetworkPortGroupVirtualPortParamsOpenVSwitch.fromMap(Map<String, dynamic> map) {
     return NetworkPortGroupVirtualPortParamsOpenVSwitch(
-      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId']! as String).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
     );
   }
 }

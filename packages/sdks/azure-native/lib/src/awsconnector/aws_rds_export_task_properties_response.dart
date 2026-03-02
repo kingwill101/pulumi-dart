@@ -97,22 +97,22 @@ class AwsRdsExportTaskPropertiesResponse {
 
   factory AwsRdsExportTaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsRdsExportTaskPropertiesResponse(
-      exportOnly: map['exportOnly'] == null ? null : ((map['exportOnly'] as List).cast<String>()).input(),
-      exportTaskIdentifier: map['exportTaskIdentifier'] == null ? null : (map['exportTaskIdentifier'] as String).input(),
-      failureCause: map['failureCause'] == null ? null : (map['failureCause'] as String).input(),
-      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      percentProgress: map['percentProgress'] == null ? null : (map['percentProgress'] as int).input(),
-      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket'] as String).input(),
-      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix'] as String).input(),
-      snapshotTime: map['snapshotTime'] == null ? null : (map['snapshotTime'] as String).input(),
-      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (ExportSourceTypeEnumValueResponse.fromMap((map['sourceType'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      taskEndTime: map['taskEndTime'] == null ? null : (map['taskEndTime'] as String).input(),
-      taskStartTime: map['taskStartTime'] == null ? null : (map['taskStartTime'] as String).input(),
-      totalExtractedDataInGB: map['totalExtractedDataInGB'] == null ? null : (map['totalExtractedDataInGB'] as int).input(),
-      warningMessage: map['warningMessage'] == null ? null : (map['warningMessage'] as String).input(),
+      exportOnly: map['exportOnly'] == null ? null : ((map['exportOnly']! as List).cast<String>()).input(),
+      exportTaskIdentifier: map['exportTaskIdentifier'] == null ? null : (map['exportTaskIdentifier']! as String).input(),
+      failureCause: map['failureCause'] == null ? null : (map['failureCause']! as String).input(),
+      iamRoleArn: map['iamRoleArn'] == null ? null : (map['iamRoleArn']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      percentProgress: map['percentProgress'] == null ? null : (map['percentProgress']! as int).input(),
+      s3Bucket: map['s3Bucket'] == null ? null : (map['s3Bucket']! as String).input(),
+      s3Prefix: map['s3Prefix'] == null ? null : (map['s3Prefix']! as String).input(),
+      snapshotTime: map['snapshotTime'] == null ? null : (map['snapshotTime']! as String).input(),
+      sourceArn: map['sourceArn'] == null ? null : (map['sourceArn']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (ExportSourceTypeEnumValueResponse.fromMap((map['sourceType']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      taskEndTime: map['taskEndTime'] == null ? null : (map['taskEndTime']! as String).input(),
+      taskStartTime: map['taskStartTime'] == null ? null : (map['taskStartTime']! as String).input(),
+      totalExtractedDataInGB: map['totalExtractedDataInGB'] == null ? null : (map['totalExtractedDataInGB']! as int).input(),
+      warningMessage: map['warningMessage'] == null ? null : (map['warningMessage']! as String).input(),
     );
   }
 }

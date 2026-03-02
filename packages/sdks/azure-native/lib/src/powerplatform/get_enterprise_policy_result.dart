@@ -91,18 +91,18 @@ class GetEnterprisePolicyResult {
   factory GetEnterprisePolicyResult.fromMap(Map<String, dynamic> map) {
     return GetEnterprisePolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      encryption: map['encryption'] == null ? null : PropertiesResponseEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
-      healthStatus: map['healthStatus'] == null ? null : map['healthStatus'] as String,
+      encryption: map['encryption'] == null ? null : PropertiesResponseEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
+      healthStatus: map['healthStatus'] == null ? null : map['healthStatus']! as String,
       id: map['id'] as String,
-      identity: map['identity'] == null ? null : EnterprisePolicyIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      identity: map['identity'] == null ? null : EnterprisePolicyIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>()),
       kind: map['kind'] as String,
       location: map['location'] as String,
-      lockbox: map['lockbox'] == null ? null : PropertiesResponseLockbox.fromMap((map['lockbox'] as Map).cast<String, dynamic>()),
+      lockbox: map['lockbox'] == null ? null : PropertiesResponseLockbox.fromMap((map['lockbox']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networkInjection: map['networkInjection'] == null ? null : PropertiesResponseNetworkInjection.fromMap((map['networkInjection'] as Map).cast<String, dynamic>()),
+      networkInjection: map['networkInjection'] == null ? null : PropertiesResponseNetworkInjection.fromMap((map['networkInjection']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       systemId: map['systemId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

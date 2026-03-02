@@ -41,7 +41,7 @@ class CooWebCcRuleRuleDetailRateLimit {
   factory CooWebCcRuleRuleDetailRateLimit.fromMap(Map<String, dynamic> map) {
     return CooWebCcRuleRuleDetailRateLimit(
       interval: (map['interval'] as int).input(),
-      subKey: map['subKey'] == null ? null : (map['subKey'] as String).input(),
+      subKey: map['subKey'] == null ? null : (map['subKey']! as String).input(),
       target: (map['target'] as String).input(),
       threshold: (map['threshold'] as int).input(),
       ttl: (map['ttl'] as int).input(),

@@ -36,10 +36,10 @@ class WorkspaceAadAdminState {
 
   factory WorkspaceAadAdminState.fromMap(Map<String, dynamic> map) {
     return WorkspaceAadAdminState(
-      login: map['login'] == null ? null : (map['login'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      login: map['login'] == null ? null : (map['login']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

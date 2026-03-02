@@ -30,8 +30,8 @@ class OrganizationConfigurationArgs {
 
   factory OrganizationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationConfigurationArgs(
-      autoEnable: (OrganizationConfigurationAutoEnable.fromMap((map['autoEnable'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      autoEnable: (OrganizationConfigurationAutoEnable.fromMap((map['autoEnable']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

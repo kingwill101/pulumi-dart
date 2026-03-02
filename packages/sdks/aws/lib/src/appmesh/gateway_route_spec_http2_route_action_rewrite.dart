@@ -33,9 +33,9 @@ class GatewayRouteSpecHttp2RouteActionRewrite {
 
   factory GatewayRouteSpecHttp2RouteActionRewrite.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecHttp2RouteActionRewrite(
-      hostname: map['hostname'] == null ? null : (GatewayRouteSpecHttp2RouteActionRewriteHostname.fromMap((map['hostname'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (GatewayRouteSpecHttp2RouteActionRewritePath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      prefix: map['prefix'] == null ? null : (GatewayRouteSpecHttp2RouteActionRewritePrefix.fromMap((map['prefix'] as Map).cast<String, dynamic>())).input(),
+      hostname: map['hostname'] == null ? null : ((GatewayRouteSpecHttp2RouteActionRewriteHostname.fromMap((map['hostname']! as Map).cast<String, dynamic>())).input()).input(),
+      path: map['path'] == null ? null : ((GatewayRouteSpecHttp2RouteActionRewritePath.fromMap((map['path']! as Map).cast<String, dynamic>())).input()).input(),
+      prefix: map['prefix'] == null ? null : ((GatewayRouteSpecHttp2RouteActionRewritePrefix.fromMap((map['prefix']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

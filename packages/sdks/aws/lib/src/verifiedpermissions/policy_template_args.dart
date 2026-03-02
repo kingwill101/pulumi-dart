@@ -41,9 +41,9 @@ class PolicyTemplateArgs {
 
   factory PolicyTemplateArgs.fromMap(Map<String, dynamic> map) {
     return PolicyTemplateArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       policyStoreId: (map['policyStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       statement: (map['statement'] as String).input(),
     );
   }

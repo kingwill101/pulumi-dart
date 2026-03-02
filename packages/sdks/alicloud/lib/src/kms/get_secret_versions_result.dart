@@ -53,13 +53,13 @@ class GetSecretVersionsResult {
 
   factory GetSecretVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      includeDeprecated: map['includeDeprecated'] == null ? null : map['includeDeprecated']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       secretName: map['secretName'] as String,
-      versionStage: map['versionStage'] == null ? null : map['versionStage'] as String,
+      versionStage: map['versionStage'] == null ? null : map['versionStage']! as String,
       versions: pulumi.Input.decodeList<GetSecretVersionsVersion>(map['versions'], (value) => GetSecretVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

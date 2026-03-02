@@ -51,9 +51,9 @@ class VirtualHubRouteTableRouteArgs {
     return VirtualHubRouteTableRouteArgs(
       destinations: ((map['destinations'] as List).cast<String>()).input(),
       destinationsType: (map['destinationsType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nextHop: (map['nextHop'] as String).input(),
-      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType'] as String).input(),
+      nextHopType: map['nextHopType'] == null ? null : (map['nextHopType']! as String).input(),
       routeTableId: (map['routeTableId'] as String).input(),
     );
   }

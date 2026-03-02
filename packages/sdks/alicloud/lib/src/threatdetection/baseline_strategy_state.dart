@@ -69,15 +69,15 @@ class BaselineStrategyState {
 
   factory BaselineStrategyState.fromMap(Map<String, dynamic> map) {
     return BaselineStrategyState(
-      baselineStrategyId: map['baselineStrategyId'] == null ? null : (map['baselineStrategyId'] as String).input(),
-      baselineStrategyName: map['baselineStrategyName'] == null ? null : (map['baselineStrategyName'] as String).input(),
-      customType: map['customType'] == null ? null : (map['customType'] as String).input(),
-      cycleDays: map['cycleDays'] == null ? null : (map['cycleDays'] as int).input(),
-      cycleStartTime: map['cycleStartTime'] == null ? null : (map['cycleStartTime'] as int).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      riskSubTypeName: map['riskSubTypeName'] == null ? null : (map['riskSubTypeName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      baselineStrategyId: map['baselineStrategyId'] == null ? null : (map['baselineStrategyId']! as String).input(),
+      baselineStrategyName: map['baselineStrategyName'] == null ? null : (map['baselineStrategyName']! as String).input(),
+      customType: map['customType'] == null ? null : (map['customType']! as String).input(),
+      cycleDays: map['cycleDays'] == null ? null : (map['cycleDays']! as int).input(),
+      cycleStartTime: map['cycleStartTime'] == null ? null : (map['cycleStartTime']! as int).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      riskSubTypeName: map['riskSubTypeName'] == null ? null : (map['riskSubTypeName']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

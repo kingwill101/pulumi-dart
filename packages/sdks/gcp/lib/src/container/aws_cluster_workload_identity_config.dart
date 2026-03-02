@@ -30,9 +30,9 @@ class AwsClusterWorkloadIdentityConfig {
 
   factory AwsClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return AwsClusterWorkloadIdentityConfig(
-      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider'] as String).input(),
-      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri'] as String).input(),
-      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool'] as String).input(),
+      identityProvider: map['identityProvider'] == null ? null : (map['identityProvider']! as String).input(),
+      issuerUri: map['issuerUri'] == null ? null : (map['issuerUri']! as String).input(),
+      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool']! as String).input(),
     );
   }
 }

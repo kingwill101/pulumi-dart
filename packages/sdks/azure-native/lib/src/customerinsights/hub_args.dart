@@ -50,12 +50,12 @@ class HubArgs {
 
   factory HubArgs.fromMap(Map<String, dynamic> map) {
     return HubArgs(
-      hubBillingInfo: map['hubBillingInfo'] == null ? null : (HubBillingInfoFormat.fromMap((map['hubBillingInfo'] as Map).cast<String, dynamic>())).input(),
-      hubName: map['hubName'] == null ? null : (map['hubName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      hubBillingInfo: map['hubBillingInfo'] == null ? null : (HubBillingInfoFormat.fromMap((map['hubBillingInfo']! as Map).cast<String, dynamic>())).input(),
+      hubName: map['hubName'] == null ? null : (map['hubName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantFeatures: map['tenantFeatures'] == null ? null : (map['tenantFeatures'] as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantFeatures: map['tenantFeatures'] == null ? null : (map['tenantFeatures']! as int).input(),
     );
   }
 }

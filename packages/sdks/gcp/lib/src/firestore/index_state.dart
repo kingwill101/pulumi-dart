@@ -80,16 +80,16 @@ class IndexState {
 
   factory IndexState.fromMap(Map<String, dynamic> map) {
     return IndexState(
-      apiScope: map['apiScope'] == null ? null : (map['apiScope'] as String).input(),
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      density: map['density'] == null ? null : (map['density'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<IndexField>(map['fields'], (value) => IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      multikey: map['multikey'] == null ? null : (map['multikey'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queryScope: map['queryScope'] == null ? null : (map['queryScope'] as String).input(),
-      unique: map['unique'] == null ? null : (map['unique'] as bool).input(),
+      apiScope: map['apiScope'] == null ? null : (map['apiScope']! as String).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      density: map['density'] == null ? null : (map['density']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<IndexField>(map['fields']!, (value) => IndexField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      multikey: map['multikey'] == null ? null : (map['multikey']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queryScope: map['queryScope'] == null ? null : (map['queryScope']! as String).input(),
+      unique: map['unique'] == null ? null : (map['unique']! as bool).input(),
     );
   }
 }

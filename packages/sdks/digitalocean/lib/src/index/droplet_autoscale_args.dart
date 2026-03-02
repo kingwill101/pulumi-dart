@@ -40,7 +40,7 @@ class DropletAutoscaleArgs {
     return DropletAutoscaleArgs(
       config: (DropletAutoscaleConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
       dropletTemplate: (DropletAutoscaleDropletTemplate.fromMap((map['dropletTemplate'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

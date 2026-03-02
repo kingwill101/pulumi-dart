@@ -37,10 +37,10 @@ class BgpSettingsResponse {
 
   factory BgpSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BgpSettingsResponse(
-      asn: map['asn'] == null ? null : (map['asn'] as double).input(),
-      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress'] as String).input(),
-      bgpPeeringAddresses: map['bgpPeeringAddresses'] == null ? null : (pulumi.Input.decodeList<IPConfigurationBgpPeeringAddressResponse>(map['bgpPeeringAddresses'], (value) => IPConfigurationBgpPeeringAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight'] as int).input(),
+      asn: map['asn'] == null ? null : (map['asn']! as double).input(),
+      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress']! as String).input(),
+      bgpPeeringAddresses: map['bgpPeeringAddresses'] == null ? null : (pulumi.Input.decodeList<IPConfigurationBgpPeeringAddressResponse>(map['bgpPeeringAddresses']!, (value) => IPConfigurationBgpPeeringAddressResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      peerWeight: map['peerWeight'] == null ? null : (map['peerWeight']! as int).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class GetBuildArgs {
       buildId: (map['buildId'] as String).input(),
       id: (map['id'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       projectId: (map['projectId'] as String).input(),
     );
   }

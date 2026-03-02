@@ -27,8 +27,8 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParameters(
-      csvMappingParameters: map['csvMappingParameters'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap((map['csvMappingParameters'] as Map).cast<String, dynamic>())).input(),
-      jsonMappingParameters: map['jsonMappingParameters'] == null ? null : (ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap((map['jsonMappingParameters'] as Map).cast<String, dynamic>())).input(),
+      csvMappingParameters: map['csvMappingParameters'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters.fromMap((map['csvMappingParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      jsonMappingParameters: map['jsonMappingParameters'] == null ? null : ((ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters.fromMap((map['jsonMappingParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

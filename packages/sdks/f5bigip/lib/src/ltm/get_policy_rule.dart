@@ -30,8 +30,8 @@ class GetPolicyRule {
 
   factory GetPolicyRule.fromMap(Map<String, dynamic> map) {
     return GetPolicyRule(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GetPolicyRuleAction>(map['actions'], (value) => GetPolicyRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GetPolicyRuleCondition>(map['conditions'], (value) => GetPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GetPolicyRuleAction>(map['actions']!, (value) => GetPolicyRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<GetPolicyRuleCondition>(map['conditions']!, (value) => GetPolicyRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );
   }

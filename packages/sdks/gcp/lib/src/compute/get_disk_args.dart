@@ -38,8 +38,8 @@ class GetDiskArgs {
   factory GetDiskArgs.fromMap(Map<String, dynamic> map) {
     return GetDiskArgs(
       name: (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

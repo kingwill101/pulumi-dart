@@ -28,8 +28,8 @@ class LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
 
   factory LinuxVMGuestPatchAutomaticByPlatformSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LinuxVMGuestPatchAutomaticByPlatformSettingsResponse(
-      bypassPlatformSafetyChecksOnUserSchedule: map['bypassPlatformSafetyChecksOnUserSchedule'] == null ? null : (map['bypassPlatformSafetyChecksOnUserSchedule'] as bool).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
+      bypassPlatformSafetyChecksOnUserSchedule: map['bypassPlatformSafetyChecksOnUserSchedule'] == null ? null : (map['bypassPlatformSafetyChecksOnUserSchedule']! as bool).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
     );
   }
 }

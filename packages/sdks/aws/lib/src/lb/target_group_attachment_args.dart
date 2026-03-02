@@ -51,10 +51,10 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      quicServerId: map['quicServerId'] == null ? null : (map['quicServerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : ((map['availabilityZone'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      quicServerId: map['quicServerId'] == null ? null : ((map['quicServerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       targetGroupArn: (map['targetGroupArn'] as String).input(),
       targetId: (map['targetId'] as String).input(),
     );

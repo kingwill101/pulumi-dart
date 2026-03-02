@@ -44,11 +44,11 @@ class EndpointAddressArgs {
 
   factory EndpointAddressArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAddressArgs(
-      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix'] as String).input(),
+      connectionPrefix: map['connectionPrefix'] == null ? null : (map['connectionPrefix']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
       dbEndpointId: (map['dbEndpointId'] as String).input(),
-      netType: map['netType'] == null ? null : (map['netType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
+      netType: map['netType'] == null ? null : (map['netType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
     );
   }
 }

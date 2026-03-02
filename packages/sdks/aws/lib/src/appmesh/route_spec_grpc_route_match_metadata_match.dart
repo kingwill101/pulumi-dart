@@ -41,11 +41,11 @@ class RouteSpecGrpcRouteMatchMetadataMatch {
 
   factory RouteSpecGrpcRouteMatchMetadataMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecGrpcRouteMatchMetadataMatch(
-      exact: map['exact'] == null ? null : (map['exact'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      range: map['range'] == null ? null : (RouteSpecGrpcRouteMatchMetadataMatchRange.fromMap((map['range'] as Map).cast<String, dynamic>())).input(),
-      regex: map['regex'] == null ? null : (map['regex'] as String).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      exact: map['exact'] == null ? null : ((map['exact'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      range: map['range'] == null ? null : ((RouteSpecGrpcRouteMatchMetadataMatchRange.fromMap((map['range']! as Map).cast<String, dynamic>())).input()).input(),
+      regex: map['regex'] == null ? null : ((map['regex'] as String).input()).input(),
+      suffix: map['suffix'] == null ? null : ((map['suffix'] as String).input()).input(),
     );
   }
 }

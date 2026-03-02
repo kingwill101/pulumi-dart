@@ -39,7 +39,7 @@ class MulticastDomainAssociationArgs {
 
   factory MulticastDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastDomainAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       subnetId: (map['subnetId'] as String).input(),
       transitGatewayAttachmentId: (map['transitGatewayAttachmentId'] as String).input(),
       transitGatewayMulticastDomainId: (map['transitGatewayMulticastDomainId'] as String).input(),

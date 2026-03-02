@@ -92,19 +92,19 @@ class AccountConnectorState {
 
   factory AccountConnectorState.fromMap(Map<String, dynamic> map) {
     return AccountConnectorState(
-      accountConnectorId: map['accountConnectorId'] == null ? null : (map['accountConnectorId'] as String).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oauthStartUri: map['oauthStartUri'] == null ? null : (map['oauthStartUri'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      providerOauthConfig: map['providerOauthConfig'] == null ? null : (AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig'] as Map).cast<String, dynamic>())).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      accountConnectorId: map['accountConnectorId'] == null ? null : (map['accountConnectorId']! as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oauthStartUri: map['oauthStartUri'] == null ? null : (map['oauthStartUri']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      providerOauthConfig: map['providerOauthConfig'] == null ? null : (AccountConnectorProviderOauthConfig.fromMap((map['providerOauthConfig']! as Map).cast<String, dynamic>())).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

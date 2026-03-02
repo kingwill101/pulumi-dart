@@ -44,7 +44,7 @@ class GetKeyVersionsResult {
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       keyId: map['keyId'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       versions: pulumi.Input.decodeList<GetKeyVersionsVersion>(map['versions'], (value) => GetKeyVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

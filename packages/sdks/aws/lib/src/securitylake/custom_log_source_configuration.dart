@@ -27,8 +27,8 @@ class CustomLogSourceConfiguration {
 
   factory CustomLogSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomLogSourceConfiguration(
-      crawlerConfiguration: (CustomLogSourceConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      providerIdentity: (CustomLogSourceConfigurationProviderIdentity.fromMap((map['providerIdentity'] as Map).cast<String, dynamic>())).input(),
+      crawlerConfiguration: (CustomLogSourceConfigurationCrawlerConfiguration.fromMap((map['crawlerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      providerIdentity: (CustomLogSourceConfigurationProviderIdentity.fromMap((map['providerIdentity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

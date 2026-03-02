@@ -27,8 +27,8 @@ class GetThemeConfigurationSheet {
 
   factory GetThemeConfigurationSheet.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationSheet(
-      tileLayouts: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayout>(map['tileLayouts'], (value) => GetThemeConfigurationSheetTileLayout.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tiles: (pulumi.Input.decodeList<GetThemeConfigurationSheetTile>(map['tiles'], (value) => GetThemeConfigurationSheetTile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tileLayouts: (pulumi.Input.decodeList<GetThemeConfigurationSheetTileLayout>(map['tileLayouts']!, (value) => GetThemeConfigurationSheetTileLayout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tiles: (pulumi.Input.decodeList<GetThemeConfigurationSheetTile>(map['tiles']!, (value) => GetThemeConfigurationSheetTile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

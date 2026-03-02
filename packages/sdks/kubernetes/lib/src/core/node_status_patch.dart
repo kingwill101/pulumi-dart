@@ -95,20 +95,20 @@ class NodeStatusPatch {
 
   factory NodeStatusPatch.fromMap(Map<String, dynamic> map) {
     return NodeStatusPatch(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<NodeAddressPatch>(map['addresses'], (value) => NodeAddressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      allocatable: map['allocatable'] == null ? null : ((map['allocatable'] as Map).cast<String, String>()).input(),
-      capacity: map['capacity'] == null ? null : ((map['capacity'] as Map).cast<String, String>()).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<NodeConditionPatch>(map['conditions'], (value) => NodeConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      config: map['config'] == null ? null : (NodeConfigStatusPatch.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      daemonEndpoints: map['daemonEndpoints'] == null ? null : (NodeDaemonEndpointsPatch.fromMap((map['daemonEndpoints'] as Map).cast<String, dynamic>())).input(),
-      declaredFeatures: map['declaredFeatures'] == null ? null : ((map['declaredFeatures'] as List).cast<String>()).input(),
-      features: map['features'] == null ? null : (NodeFeaturesPatch.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      images: map['images'] == null ? null : (pulumi.Input.decodeList<ContainerImagePatch>(map['images'], (value) => ContainerImagePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeInfo: map['nodeInfo'] == null ? null : (NodeSystemInfoPatch.fromMap((map['nodeInfo'] as Map).cast<String, dynamic>())).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      runtimeHandlers: map['runtimeHandlers'] == null ? null : (pulumi.Input.decodeList<NodeRuntimeHandlerPatch>(map['runtimeHandlers'], (value) => NodeRuntimeHandlerPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumesAttached: map['volumesAttached'] == null ? null : (pulumi.Input.decodeList<AttachedVolumePatch>(map['volumesAttached'], (value) => AttachedVolumePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumesInUse: map['volumesInUse'] == null ? null : ((map['volumesInUse'] as List).cast<String>()).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<NodeAddressPatch>(map['addresses']!, (value) => NodeAddressPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocatable: map['allocatable'] == null ? null : ((map['allocatable']! as Map).cast<String, String>()).input(),
+      capacity: map['capacity'] == null ? null : ((map['capacity']! as Map).cast<String, String>()).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<NodeConditionPatch>(map['conditions']!, (value) => NodeConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (NodeConfigStatusPatch.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      daemonEndpoints: map['daemonEndpoints'] == null ? null : (NodeDaemonEndpointsPatch.fromMap((map['daemonEndpoints']! as Map).cast<String, dynamic>())).input(),
+      declaredFeatures: map['declaredFeatures'] == null ? null : ((map['declaredFeatures']! as List).cast<String>()).input(),
+      features: map['features'] == null ? null : (NodeFeaturesPatch.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      images: map['images'] == null ? null : (pulumi.Input.decodeList<ContainerImagePatch>(map['images']!, (value) => ContainerImagePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeInfo: map['nodeInfo'] == null ? null : (NodeSystemInfoPatch.fromMap((map['nodeInfo']! as Map).cast<String, dynamic>())).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      runtimeHandlers: map['runtimeHandlers'] == null ? null : (pulumi.Input.decodeList<NodeRuntimeHandlerPatch>(map['runtimeHandlers']!, (value) => NodeRuntimeHandlerPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumesAttached: map['volumesAttached'] == null ? null : (pulumi.Input.decodeList<AttachedVolumePatch>(map['volumesAttached']!, (value) => AttachedVolumePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumesInUse: map['volumesInUse'] == null ? null : ((map['volumesInUse']! as List).cast<String>()).input(),
     );
   }
 }

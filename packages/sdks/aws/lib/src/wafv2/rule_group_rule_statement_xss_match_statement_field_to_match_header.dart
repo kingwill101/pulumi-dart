@@ -31,7 +31,7 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader {
 
   factory RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementXssMatchStatementFieldToMatchHeader(
-      matchPattern: (RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (RuleGroupRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

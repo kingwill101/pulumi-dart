@@ -21,7 +21,7 @@ class ReservationConfig {
 
   factory ReservationConfig.fromMap(Map<String, dynamic> map) {
     return ReservationConfig(
-      throughputReservation: map['throughputReservation'] == null ? null : (map['throughputReservation'] as String).input(),
+      throughputReservation: map['throughputReservation'] == null ? null : (map['throughputReservation']! as String).input(),
     );
   }
 }

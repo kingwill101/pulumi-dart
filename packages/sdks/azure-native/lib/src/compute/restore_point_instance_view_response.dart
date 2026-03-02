@@ -28,8 +28,8 @@ class RestorePointInstanceViewResponse {
 
   factory RestorePointInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return RestorePointInstanceViewResponse(
-      diskRestorePoints: map['diskRestorePoints'] == null ? null : (pulumi.Input.decodeList<DiskRestorePointInstanceViewResponse>(map['diskRestorePoints'], (value) => DiskRestorePointInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses'], (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskRestorePoints: map['diskRestorePoints'] == null ? null : (pulumi.Input.decodeList<DiskRestorePointInstanceViewResponse>(map['diskRestorePoints']!, (value) => DiskRestorePointInstanceViewResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statuses: map['statuses'] == null ? null : (pulumi.Input.decodeList<InstanceViewStatusResponse>(map['statuses']!, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -83,18 +83,18 @@ class EventSourceV2State {
 
   factory EventSourceV2State.fromMap(Map<String, dynamic> map) {
     return EventSourceV2State(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
-      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName'] as String).input(),
-      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource'] as bool).input(),
-      sourceHttpEventParameters: map['sourceHttpEventParameters'] == null ? null : (EventSourceV2SourceHttpEventParameters.fromMap((map['sourceHttpEventParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceKafkaParameters: map['sourceKafkaParameters'] == null ? null : (EventSourceV2SourceKafkaParameters.fromMap((map['sourceKafkaParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceMnsParameters: map['sourceMnsParameters'] == null ? null : (EventSourceV2SourceMnsParameters.fromMap((map['sourceMnsParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceOssEventParameters: map['sourceOssEventParameters'] == null ? null : (EventSourceV2SourceOssEventParameters.fromMap((map['sourceOssEventParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceRabbitMqParameters: map['sourceRabbitMqParameters'] == null ? null : (EventSourceV2SourceRabbitMqParameters.fromMap((map['sourceRabbitMqParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceRocketmqParameters: map['sourceRocketmqParameters'] == null ? null : (EventSourceV2SourceRocketmqParameters.fromMap((map['sourceRocketmqParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceScheduledEventParameters: map['sourceScheduledEventParameters'] == null ? null : (EventSourceV2SourceScheduledEventParameters.fromMap((map['sourceScheduledEventParameters'] as Map).cast<String, dynamic>())).input(),
-      sourceSlsParameters: map['sourceSlsParameters'] == null ? null : (EventSourceV2SourceSlsParameters.fromMap((map['sourceSlsParameters'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName']! as String).input(),
+      eventSourceName: map['eventSourceName'] == null ? null : (map['eventSourceName']! as String).input(),
+      linkedExternalSource: map['linkedExternalSource'] == null ? null : (map['linkedExternalSource']! as bool).input(),
+      sourceHttpEventParameters: map['sourceHttpEventParameters'] == null ? null : (EventSourceV2SourceHttpEventParameters.fromMap((map['sourceHttpEventParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceKafkaParameters: map['sourceKafkaParameters'] == null ? null : (EventSourceV2SourceKafkaParameters.fromMap((map['sourceKafkaParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceMnsParameters: map['sourceMnsParameters'] == null ? null : (EventSourceV2SourceMnsParameters.fromMap((map['sourceMnsParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceOssEventParameters: map['sourceOssEventParameters'] == null ? null : (EventSourceV2SourceOssEventParameters.fromMap((map['sourceOssEventParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceRabbitMqParameters: map['sourceRabbitMqParameters'] == null ? null : (EventSourceV2SourceRabbitMqParameters.fromMap((map['sourceRabbitMqParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceRocketmqParameters: map['sourceRocketmqParameters'] == null ? null : (EventSourceV2SourceRocketmqParameters.fromMap((map['sourceRocketmqParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceScheduledEventParameters: map['sourceScheduledEventParameters'] == null ? null : (EventSourceV2SourceScheduledEventParameters.fromMap((map['sourceScheduledEventParameters']! as Map).cast<String, dynamic>())).input(),
+      sourceSlsParameters: map['sourceSlsParameters'] == null ? null : (EventSourceV2SourceSlsParameters.fromMap((map['sourceSlsParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -56,7 +56,7 @@ class HeterogeneousAssessmentPropertiesResponse {
 
   factory HeterogeneousAssessmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentPropertiesResponse(
-      assessmentArmIds: map['assessmentArmIds'] == null ? null : ((map['assessmentArmIds'] as List).cast<String>()).input(),
+      assessmentArmIds: map['assessmentArmIds'] == null ? null : ((map['assessmentArmIds']! as List).cast<String>()).input(),
       azureLocation: (map['azureLocation'] as String).input(),
       confidenceRatingInPercentage: (map['confidenceRatingInPercentage'] as double).input(),
       lastCalculatedOn: (map['lastCalculatedOn'] as String).input(),

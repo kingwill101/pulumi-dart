@@ -22,7 +22,7 @@ class DatascanDataProfileSpecPostScanActions {
 
   factory DatascanDataProfileSpecPostScanActions.fromMap(Map<String, dynamic> map) {
     return DatascanDataProfileSpecPostScanActions(
-      bigqueryExport: map['bigqueryExport'] == null ? null : (DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport'] as Map).cast<String, dynamic>())).input(),
+      bigqueryExport: map['bigqueryExport'] == null ? null : (DatascanDataProfileSpecPostScanActionsBigqueryExport.fromMap((map['bigqueryExport']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

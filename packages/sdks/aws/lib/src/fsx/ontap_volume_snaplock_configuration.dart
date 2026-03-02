@@ -47,12 +47,12 @@ class OntapVolumeSnaplockConfiguration {
 
   factory OntapVolumeSnaplockConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapVolumeSnaplockConfiguration(
-      auditLogVolume: map['auditLogVolume'] == null ? null : (map['auditLogVolume'] as bool).input(),
-      autocommitPeriod: map['autocommitPeriod'] == null ? null : (OntapVolumeSnaplockConfigurationAutocommitPeriod.fromMap((map['autocommitPeriod'] as Map).cast<String, dynamic>())).input(),
-      privilegedDelete: map['privilegedDelete'] == null ? null : (map['privilegedDelete'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap((map['retentionPeriod'] as Map).cast<String, dynamic>())).input(),
+      auditLogVolume: map['auditLogVolume'] == null ? null : ((map['auditLogVolume'] as bool).input()).input(),
+      autocommitPeriod: map['autocommitPeriod'] == null ? null : ((OntapVolumeSnaplockConfigurationAutocommitPeriod.fromMap((map['autocommitPeriod']! as Map).cast<String, dynamic>())).input()).input(),
+      privilegedDelete: map['privilegedDelete'] == null ? null : ((map['privilegedDelete'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap((map['retentionPeriod']! as Map).cast<String, dynamic>())).input()).input(),
       snaplockType: (map['snaplockType'] as String).input(),
-      volumeAppendModeEnabled: map['volumeAppendModeEnabled'] == null ? null : (map['volumeAppendModeEnabled'] as bool).input(),
+      volumeAppendModeEnabled: map['volumeAppendModeEnabled'] == null ? null : ((map['volumeAppendModeEnabled'] as bool).input()).input(),
     );
   }
 }

@@ -54,11 +54,11 @@ class GuestPoliciesAssignment {
 
   factory GuestPoliciesAssignment.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesAssignment(
-      groupLabels: map['groupLabels'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesAssignmentGroupLabel>(map['groupLabels'], (value) => GuestPoliciesAssignmentGroupLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instanceNamePrefixes: map['instanceNamePrefixes'] == null ? null : ((map['instanceNamePrefixes'] as List).cast<String>()).input(),
-      instances: map['instances'] == null ? null : ((map['instances'] as List).cast<String>()).input(),
-      osTypes: map['osTypes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesAssignmentOsType>(map['osTypes'], (value) => GuestPoliciesAssignmentOsType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      groupLabels: map['groupLabels'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesAssignmentGroupLabel>(map['groupLabels']!, (value) => GuestPoliciesAssignmentGroupLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instanceNamePrefixes: map['instanceNamePrefixes'] == null ? null : ((map['instanceNamePrefixes']! as List).cast<String>()).input(),
+      instances: map['instances'] == null ? null : ((map['instances']! as List).cast<String>()).input(),
+      osTypes: map['osTypes'] == null ? null : (pulumi.Input.decodeList<GuestPoliciesAssignmentOsType>(map['osTypes']!, (value) => GuestPoliciesAssignmentOsType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

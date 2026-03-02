@@ -28,7 +28,7 @@ class StackV1StackOutput {
 
   factory StackV1StackOutput.fromMap(Map<String, dynamic> map) {
     return StackV1StackOutput(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       outputKey: (map['outputKey'] as String).input(),
       outputValue: (map['outputValue'] as String).input(),
     );

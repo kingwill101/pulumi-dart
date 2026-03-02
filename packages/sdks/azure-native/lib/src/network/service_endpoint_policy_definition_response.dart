@@ -56,14 +56,14 @@ class ServiceEndpointPolicyDefinitionResponse {
 
   factory ServiceEndpointPolicyDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ServiceEndpointPolicyDefinitionResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      serviceResources: map['serviceResources'] == null ? null : ((map['serviceResources'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      serviceResources: map['serviceResources'] == null ? null : ((map['serviceResources']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

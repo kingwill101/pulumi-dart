@@ -42,7 +42,7 @@ class CustomDomainArgs {
   factory CustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainArgs(
       domainName: (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       webPubsubCustomCertificateId: (map['webPubsubCustomCertificateId'] as String).input(),
       webPubsubId: (map['webPubsubId'] as String).input(),
     );

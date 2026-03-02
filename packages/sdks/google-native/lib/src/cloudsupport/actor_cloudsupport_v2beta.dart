@@ -26,8 +26,8 @@ class ActorCloudsupportV2beta {
 
   factory ActorCloudsupportV2beta.fromMap(Map<String, dynamic> map) {
     return ActorCloudsupportV2beta(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
     );
   }
 }

@@ -71,17 +71,17 @@ class CcpResponseConfig {
 
   factory CcpResponseConfig.fromMap(Map<String, dynamic> map) {
     return CcpResponseConfig(
-      compressionAlgo: map['compressionAlgo'] == null ? null : (map['compressionAlgo'] as String).input(),
-      convertChildPropertiesToArray: map['convertChildPropertiesToArray'] == null ? null : (map['convertChildPropertiesToArray'] as bool).input(),
-      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter'] as String).input(),
-      csvEscape: map['csvEscape'] == null ? null : (map['csvEscape'] as String).input(),
+      compressionAlgo: map['compressionAlgo'] == null ? null : (map['compressionAlgo']! as String).input(),
+      convertChildPropertiesToArray: map['convertChildPropertiesToArray'] == null ? null : (map['convertChildPropertiesToArray']! as bool).input(),
+      csvDelimiter: map['csvDelimiter'] == null ? null : (map['csvDelimiter']! as String).input(),
+      csvEscape: map['csvEscape'] == null ? null : (map['csvEscape']! as String).input(),
       eventsJsonPaths: ((map['eventsJsonPaths'] as List).cast<String>()).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      hasCsvBoundary: map['hasCsvBoundary'] == null ? null : (map['hasCsvBoundary'] as bool).input(),
-      hasCsvHeader: map['hasCsvHeader'] == null ? null : (map['hasCsvHeader'] as bool).input(),
-      isGzipCompressed: map['isGzipCompressed'] == null ? null : (map['isGzipCompressed'] as bool).input(),
-      successStatusJsonPath: map['successStatusJsonPath'] == null ? null : (map['successStatusJsonPath'] as String).input(),
-      successStatusValue: map['successStatusValue'] == null ? null : (map['successStatusValue'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      hasCsvBoundary: map['hasCsvBoundary'] == null ? null : (map['hasCsvBoundary']! as bool).input(),
+      hasCsvHeader: map['hasCsvHeader'] == null ? null : (map['hasCsvHeader']! as bool).input(),
+      isGzipCompressed: map['isGzipCompressed'] == null ? null : (map['isGzipCompressed']! as bool).input(),
+      successStatusJsonPath: map['successStatusJsonPath'] == null ? null : (map['successStatusJsonPath']! as String).input(),
+      successStatusValue: map['successStatusValue'] == null ? null : (map['successStatusValue']! as String).input(),
     );
   }
 }

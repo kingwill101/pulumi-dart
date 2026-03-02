@@ -58,13 +58,13 @@ class GetProjectArgs {
 
   factory GetProjectArgs.fromMap(Map<String, dynamic> map) {
     return GetProjectArgs(
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      isDomain: map['isDomain'] == null ? null : (map['isDomain'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parentId: map['parentId'] == null ? null : (map['parentId'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainId: map['domainId'] == null ? null : (map['domainId']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      isDomain: map['isDomain'] == null ? null : (map['isDomain']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parentId: map['parentId'] == null ? null : (map['parentId']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

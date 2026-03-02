@@ -43,11 +43,11 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
 
   factory GoogleCloudOrgpolicyV2PolicySpecPolicyRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudOrgpolicyV2PolicySpecPolicyRule(
-      allowAll: map['allowAll'] == null ? null : (map['allowAll'] as bool).input(),
-      condition: map['condition'] == null ? null : (GoogleTypeExpr.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      denyAll: map['denyAll'] == null ? null : (map['denyAll'] as bool).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
-      values: map['values'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromMap((map['values'] as Map).cast<String, dynamic>())).input(),
+      allowAll: map['allowAll'] == null ? null : (map['allowAll']! as bool).input(),
+      condition: map['condition'] == null ? null : (GoogleTypeExpr.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      denyAll: map['denyAll'] == null ? null : (map['denyAll']! as bool).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as bool).input(),
+      values: map['values'] == null ? null : (GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues.fromMap((map['values']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class RevisionAssetsTimeouts {
 
   factory RevisionAssetsTimeouts.fromMap(Map<String, dynamic> map) {
     return RevisionAssetsTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

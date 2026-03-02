@@ -45,10 +45,10 @@ class EntityAnalyticsArgs {
 
   factory EntityAnalyticsArgs.fromMap(Map<String, dynamic> map) {
     return EntityAnalyticsArgs(
-      entityProviders: map['entityProviders'] == null ? null : ((map['entityProviders'] as List).cast<String>()).input(),
+      entityProviders: map['entityProviders'] == null ? null : ((map['entityProviders']! as List).cast<String>()).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      settingsName: map['settingsName'] == null ? null : (map['settingsName'] as String).input(),
+      settingsName: map['settingsName'] == null ? null : (map['settingsName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -51,12 +51,12 @@ class GetPublicIpAddressPoolCidrBlocksResult {
   factory GetPublicIpAddressPoolCidrBlocksResult.fromMap(Map<String, dynamic> map) {
     return GetPublicIpAddressPoolCidrBlocksResult(
       blocks: pulumi.Input.decodeList<GetPublicIpAddressPoolCidrBlocksBlock>(map['blocks'], (value) => GetPublicIpAddressPoolCidrBlocksBlock.fromMap((value as Map).cast<String, dynamic>())),
-      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock'] as String,
+      cidrBlock: map['cidrBlock'] == null ? null : map['cidrBlock']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       publicIpAddressPoolId: map['publicIpAddressPoolId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

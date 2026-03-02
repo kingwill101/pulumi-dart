@@ -25,8 +25,8 @@ class TableWarmThroughput {
 
   factory TableWarmThroughput.fromMap(Map<String, dynamic> map) {
     return TableWarmThroughput(
-      readUnitsPerSecond: map['readUnitsPerSecond'] == null ? null : (map['readUnitsPerSecond'] as int).input(),
-      writeUnitsPerSecond: map['writeUnitsPerSecond'] == null ? null : (map['writeUnitsPerSecond'] as int).input(),
+      readUnitsPerSecond: map['readUnitsPerSecond'] == null ? null : ((map['readUnitsPerSecond'] as int).input()).input(),
+      writeUnitsPerSecond: map['writeUnitsPerSecond'] == null ? null : ((map['writeUnitsPerSecond'] as int).input()).input(),
     );
   }
 }

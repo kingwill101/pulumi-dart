@@ -54,9 +54,9 @@ class V2OrganizationMuteConfigArgs {
 
   factory V2OrganizationMuteConfigArgs.fromMap(Map<String, dynamic> map) {
     return V2OrganizationMuteConfigArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       filter: (map['filter'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       muteConfigId: (map['muteConfigId'] as String).input(),
       organization: (map['organization'] as String).input(),
       type: (map['type'] as String).input(),

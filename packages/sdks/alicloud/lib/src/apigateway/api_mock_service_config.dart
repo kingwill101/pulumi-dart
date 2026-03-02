@@ -25,7 +25,7 @@ class ApiMockServiceConfig {
 
   factory ApiMockServiceConfig.fromMap(Map<String, dynamic> map) {
     return ApiMockServiceConfig(
-      aoneName: map['aoneName'] == null ? null : (map['aoneName'] as String).input(),
+      aoneName: map['aoneName'] == null ? null : (map['aoneName']! as String).input(),
       result: (map['result'] as String).input(),
     );
   }

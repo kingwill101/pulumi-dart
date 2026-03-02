@@ -26,8 +26,8 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextSt
 
   factory V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStepIntent.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStepIntent(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      slots: map['slots'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStepIntentSlot>(map['slots'], (value) => V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      slots: map['slots'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStepIntentSlot>(map['slots']!, (value) => V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchNextStepIntentSlot.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

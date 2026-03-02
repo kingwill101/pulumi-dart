@@ -40,9 +40,9 @@ class ExtensionMonitoringStatusArgs {
   factory ExtensionMonitoringStatusArgs.fromMap(Map<String, dynamic> map) {
     return ExtensionMonitoringStatusArgs(
       clusterName: (map['clusterName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

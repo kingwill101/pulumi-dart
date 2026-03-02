@@ -21,7 +21,7 @@ class WorkloadPolicyConfig {
 
   factory WorkloadPolicyConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadPolicyConfig(
-      allowNetAdmin: map['allowNetAdmin'] == null ? null : (map['allowNetAdmin'] as bool).input(),
+      allowNetAdmin: map['allowNetAdmin'] == null ? null : (map['allowNetAdmin']! as bool).input(),
     );
   }
 }

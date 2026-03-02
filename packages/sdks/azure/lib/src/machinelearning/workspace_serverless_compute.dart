@@ -27,8 +27,8 @@ class WorkspaceServerlessCompute {
 
   factory WorkspaceServerlessCompute.fromMap(Map<String, dynamic> map) {
     return WorkspaceServerlessCompute(
-      publicIpEnabled: map['publicIpEnabled'] == null ? null : (map['publicIpEnabled'] as bool).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      publicIpEnabled: map['publicIpEnabled'] == null ? null : (map['publicIpEnabled']! as bool).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

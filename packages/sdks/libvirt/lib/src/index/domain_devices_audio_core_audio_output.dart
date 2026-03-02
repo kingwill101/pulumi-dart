@@ -20,7 +20,7 @@ class DomainDevicesAudioCoreAudioOutput {
 
   factory DomainDevicesAudioCoreAudioOutput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesAudioCoreAudioOutput(
-      bufferCount: map['bufferCount'] == null ? null : (map['bufferCount'] as double).input(),
+      bufferCount: map['bufferCount'] == null ? null : (map['bufferCount']! as double).input(),
     );
   }
 }

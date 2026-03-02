@@ -37,9 +37,9 @@ class InputSecurityGroupArgs {
 
   factory InputSecurityGroupArgs.fromMap(Map<String, dynamic> map) {
     return InputSecurityGroupArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      whitelistRules: (pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(map['whitelistRules'], (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      whitelistRules: (pulumi.Input.decodeList<InputSecurityGroupWhitelistRule>(map['whitelistRules']!, (value) => InputSecurityGroupWhitelistRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

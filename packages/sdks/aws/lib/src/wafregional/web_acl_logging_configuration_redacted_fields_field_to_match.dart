@@ -25,7 +25,7 @@ class WebAclLoggingConfigurationRedactedFieldsFieldToMatch {
 
   factory WebAclLoggingConfigurationRedactedFieldsFieldToMatch.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationRedactedFieldsFieldToMatch(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : ((map['data'] as String).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

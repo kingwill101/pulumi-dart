@@ -35,10 +35,10 @@ class CustomDomainAssociationCertificateValidationRecord {
 
   factory CustomDomainAssociationCertificateValidationRecord.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationCertificateValidationRecord(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

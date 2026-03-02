@@ -43,11 +43,11 @@ class SubscriptionIamPolicyPubsubV1beta2Args {
 
   factory SubscriptionIamPolicyPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
     return SubscriptionIamPolicyPubsubV1beta2Args(
-      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingPubsubV1beta2>(map['bindings'], (value) => BindingPubsubV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      bindings: map['bindings'] == null ? null : (pulumi.Input.decodeList<BindingPubsubV1beta2>(map['bindings']!, (value) => BindingPubsubV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

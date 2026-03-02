@@ -26,8 +26,8 @@ class Disk {
 
   factory Disk.fromMap(Map<String, dynamic> map) {
     return Disk(
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

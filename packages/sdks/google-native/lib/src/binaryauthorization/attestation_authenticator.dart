@@ -27,8 +27,8 @@ class AttestationAuthenticator {
 
   factory AttestationAuthenticator.fromMap(Map<String, dynamic> map) {
     return AttestationAuthenticator(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      pkixPublicKeySet: map['pkixPublicKeySet'] == null ? null : (PkixPublicKeySet.fromMap((map['pkixPublicKeySet'] as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      pkixPublicKeySet: map['pkixPublicKeySet'] == null ? null : (PkixPublicKeySet.fromMap((map['pkixPublicKeySet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

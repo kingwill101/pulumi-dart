@@ -35,8 +35,8 @@ class ClusterInstanceHybridIdentityMetadatumArgs {
   factory ClusterInstanceHybridIdentityMetadatumArgs.fromMap(Map<String, dynamic> map) {
     return ClusterInstanceHybridIdentityMetadatumArgs(
       connectedClusterResourceUri: (map['connectedClusterResourceUri'] as String).input(),
-      publicKey: map['publicKey'] == null ? null : (map['publicKey'] as String).input(),
-      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid'] as String).input(),
+      publicKey: map['publicKey'] == null ? null : (map['publicKey']! as String).input(),
+      resourceUid: map['resourceUid'] == null ? null : (map['resourceUid']! as String).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class LocationTagBindingArgs {
 
   factory LocationTagBindingArgs.fromMap(Map<String, dynamic> map) {
     return LocationTagBindingArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       parent: (map['parent'] as String).input(),
       tagValue: (map['tagValue'] as String).input(),
     );

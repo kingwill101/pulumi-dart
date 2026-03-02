@@ -32,8 +32,8 @@ class RegionalParameterPolicyMember {
 
   factory RegionalParameterPolicyMember.fromMap(Map<String, dynamic> map) {
     return RegionalParameterPolicyMember(
-      iamPolicyNamePrincipal: map['iamPolicyNamePrincipal'] == null ? null : (map['iamPolicyNamePrincipal'] as String).input(),
-      iamPolicyUidPrincipal: map['iamPolicyUidPrincipal'] == null ? null : (map['iamPolicyUidPrincipal'] as String).input(),
+      iamPolicyNamePrincipal: map['iamPolicyNamePrincipal'] == null ? null : (map['iamPolicyNamePrincipal']! as String).input(),
+      iamPolicyUidPrincipal: map['iamPolicyUidPrincipal'] == null ? null : (map['iamPolicyUidPrincipal']! as String).input(),
     );
   }
 }

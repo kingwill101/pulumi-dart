@@ -34,9 +34,9 @@ class Authentication {
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      customAccount: map['customAccount'] == null ? null : (CustomAccount.fromMap((map['customAccount'] as Map).cast<String, dynamic>())).input(),
-      googleAccount: map['googleAccount'] == null ? null : (GoogleAccount.fromMap((map['googleAccount'] as Map).cast<String, dynamic>())).input(),
-      iapCredential: map['iapCredential'] == null ? null : (IapCredential.fromMap((map['iapCredential'] as Map).cast<String, dynamic>())).input(),
+      customAccount: map['customAccount'] == null ? null : (CustomAccount.fromMap((map['customAccount']! as Map).cast<String, dynamic>())).input(),
+      googleAccount: map['googleAccount'] == null ? null : (GoogleAccount.fromMap((map['googleAccount']! as Map).cast<String, dynamic>())).input(),
+      iapCredential: map['iapCredential'] == null ? null : (IapCredential.fromMap((map['iapCredential']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

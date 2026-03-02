@@ -20,7 +20,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
 
   factory GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity(
-      clientAuthentications: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication>(map['clientAuthentications'], (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientAuthentications: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication>(map['clientAuthentications']!, (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

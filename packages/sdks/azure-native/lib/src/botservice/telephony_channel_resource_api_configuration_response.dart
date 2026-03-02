@@ -46,12 +46,12 @@ class TelephonyChannelResourceApiConfigurationResponse {
 
   factory TelephonyChannelResourceApiConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return TelephonyChannelResourceApiConfigurationResponse(
-      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion'] as String).input(),
-      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId'] as String).input(),
-      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey'] as String).input(),
-      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      cognitiveServiceRegion: map['cognitiveServiceRegion'] == null ? null : (map['cognitiveServiceRegion']! as String).input(),
+      cognitiveServiceResourceId: map['cognitiveServiceResourceId'] == null ? null : (map['cognitiveServiceResourceId']! as String).input(),
+      cognitiveServiceSubscriptionKey: map['cognitiveServiceSubscriptionKey'] == null ? null : (map['cognitiveServiceSubscriptionKey']! as String).input(),
+      defaultLocale: map['defaultLocale'] == null ? null : (map['defaultLocale']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
     );
   }
 }

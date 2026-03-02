@@ -21,7 +21,7 @@ class CloudFunctionEndpoint {
 
   factory CloudFunctionEndpoint.fromMap(Map<String, dynamic> map) {
     return CloudFunctionEndpoint(
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

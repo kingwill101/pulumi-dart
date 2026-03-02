@@ -20,7 +20,7 @@ class DataQualityJobDefinitionStoppingCondition {
 
   factory DataQualityJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : (map['maxRuntimeInSeconds'] as int).input(),
+      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : ((map['maxRuntimeInSeconds'] as int).input()).input(),
     );
   }
 }

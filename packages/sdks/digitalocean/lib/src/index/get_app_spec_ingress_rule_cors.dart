@@ -46,12 +46,12 @@ class GetAppSpecIngressRuleCors {
 
   factory GetAppSpecIngressRuleCors.fromMap(Map<String, dynamic> map) {
     return GetAppSpecIngressRuleCors(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders'] as List).cast<String>()).input(),
-      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods'] as List).cast<String>()).input(),
-      allowOrigins: map['allowOrigins'] == null ? null : (GetAppSpecIngressRuleCorsAllowOrigins.fromMap((map['allowOrigins'] as Map).cast<String, dynamic>())).input(),
-      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as String).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      allowHeaders: map['allowHeaders'] == null ? null : ((map['allowHeaders']! as List).cast<String>()).input(),
+      allowMethods: map['allowMethods'] == null ? null : ((map['allowMethods']! as List).cast<String>()).input(),
+      allowOrigins: map['allowOrigins'] == null ? null : (GetAppSpecIngressRuleCorsAllowOrigins.fromMap((map['allowOrigins']! as Map).cast<String, dynamic>())).input(),
+      exposeHeaders: map['exposeHeaders'] == null ? null : ((map['exposeHeaders']! as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as String).input(),
     );
   }
 }

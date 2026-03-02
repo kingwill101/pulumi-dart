@@ -105,22 +105,22 @@ class VpnServerConfigurationPropertiesResponse {
 
   factory VpnServerConfigurationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationPropertiesResponse(
-      aadAuthenticationParameters: map['aadAuthenticationParameters'] == null ? null : (AadAuthenticationParametersResponse.fromMap((map['aadAuthenticationParameters'] as Map).cast<String, dynamic>())).input(),
-      configurationPolicyGroups: map['configurationPolicyGroups'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupResponse>(map['configurationPolicyGroups'], (value) => VpnServerConfigurationPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aadAuthenticationParameters: map['aadAuthenticationParameters'] == null ? null : (AadAuthenticationParametersResponse.fromMap((map['aadAuthenticationParameters']! as Map).cast<String, dynamic>())).input(),
+      configurationPolicyGroups: map['configurationPolicyGroups'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupResponse>(map['configurationPolicyGroups']!, (value) => VpnServerConfigurationPolicyGroupResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       etag: (map['etag'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       p2SVpnGateways: (pulumi.Input.decodeList<P2SVpnGatewayResponse>(map['p2SVpnGateways'], (value) => P2SVpnGatewayResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      radiusClientRootCertificates: map['radiusClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigRadiusClientRootCertificateResponse>(map['radiusClientRootCertificates'], (value) => VpnServerConfigRadiusClientRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      radiusServerAddress: map['radiusServerAddress'] == null ? null : (map['radiusServerAddress'] as String).input(),
-      radiusServerRootCertificates: map['radiusServerRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigRadiusServerRootCertificateResponse>(map['radiusServerRootCertificates'], (value) => VpnServerConfigRadiusServerRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret'] as String).input(),
-      radiusServers: map['radiusServers'] == null ? null : (pulumi.Input.decodeList<RadiusServerResponse>(map['radiusServers'], (value) => RadiusServerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : ((map['vpnAuthenticationTypes'] as List).cast<String>()).input(),
-      vpnClientIpsecPolicies: map['vpnClientIpsecPolicies'] == null ? null : (pulumi.Input.decodeList<IpsecPolicyResponse>(map['vpnClientIpsecPolicies'], (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnClientRevokedCertificates: map['vpnClientRevokedCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigVpnClientRevokedCertificateResponse>(map['vpnClientRevokedCertificates'], (value) => VpnServerConfigVpnClientRevokedCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnClientRootCertificates: map['vpnClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigVpnClientRootCertificateResponse>(map['vpnClientRootCertificates'], (value) => VpnServerConfigVpnClientRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vpnProtocols: map['vpnProtocols'] == null ? null : ((map['vpnProtocols'] as List).cast<String>()).input(),
+      radiusClientRootCertificates: map['radiusClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigRadiusClientRootCertificateResponse>(map['radiusClientRootCertificates']!, (value) => VpnServerConfigRadiusClientRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      radiusServerAddress: map['radiusServerAddress'] == null ? null : (map['radiusServerAddress']! as String).input(),
+      radiusServerRootCertificates: map['radiusServerRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigRadiusServerRootCertificateResponse>(map['radiusServerRootCertificates']!, (value) => VpnServerConfigRadiusServerRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      radiusServerSecret: map['radiusServerSecret'] == null ? null : (map['radiusServerSecret']! as String).input(),
+      radiusServers: map['radiusServers'] == null ? null : (pulumi.Input.decodeList<RadiusServerResponse>(map['radiusServers']!, (value) => RadiusServerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnAuthenticationTypes: map['vpnAuthenticationTypes'] == null ? null : ((map['vpnAuthenticationTypes']! as List).cast<String>()).input(),
+      vpnClientIpsecPolicies: map['vpnClientIpsecPolicies'] == null ? null : (pulumi.Input.decodeList<IpsecPolicyResponse>(map['vpnClientIpsecPolicies']!, (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientRevokedCertificates: map['vpnClientRevokedCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigVpnClientRevokedCertificateResponse>(map['vpnClientRevokedCertificates']!, (value) => VpnServerConfigVpnClientRevokedCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnClientRootCertificates: map['vpnClientRootCertificates'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigVpnClientRootCertificateResponse>(map['vpnClientRootCertificates']!, (value) => VpnServerConfigVpnClientRootCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vpnProtocols: map['vpnProtocols'] == null ? null : ((map['vpnProtocols']! as List).cast<String>()).input(),
     );
   }
 }

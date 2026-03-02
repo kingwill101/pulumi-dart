@@ -39,10 +39,10 @@ class GetSharedTargetsArgs {
 
   factory GetSharedTargetsArgs.fromMap(Map<String, dynamic> map) {
     return GetSharedTargetsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceShareId: map['resourceShareId'] == null ? null : (map['resourceShareId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

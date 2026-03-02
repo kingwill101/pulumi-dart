@@ -27,8 +27,8 @@ class SchedulingGracefulShutdown {
 
   factory SchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
     return SchedulingGracefulShutdown(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxDuration: map['maxDuration'] == null ? null : (Duration.fromMap((map['maxDuration'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxDuration: map['maxDuration'] == null ? null : (Duration.fromMap((map['maxDuration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ScheduleWeeklyRecurrence {
   factory ScheduleWeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleWeeklyRecurrence(
       time: (map['time'] as String).input(),
-      weekDays: map['weekDays'] == null ? null : ((map['weekDays'] as List).cast<String>()).input(),
+      weekDays: map['weekDays'] == null ? null : ((map['weekDays']! as List).cast<String>()).input(),
     );
   }
 }

@@ -41,9 +41,9 @@ class Ec2CredentialV3Args {
 
   factory Ec2CredentialV3Args.fromMap(Map<String, dynamic> map) {
     return Ec2CredentialV3Args(
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
     );
   }
 }

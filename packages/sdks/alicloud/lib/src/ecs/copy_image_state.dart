@@ -56,16 +56,16 @@ class CopyImageState {
 
   factory CopyImageState.fromMap(Map<String, dynamic> map) {
     return CopyImageState(
-      deleteAutoSnapshot: map['deleteAutoSnapshot'] == null ? null : (map['deleteAutoSnapshot'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId'] as String).input(),
-      sourceRegionId: map['sourceRegionId'] == null ? null : (map['sourceRegionId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      deleteAutoSnapshot: map['deleteAutoSnapshot'] == null ? null : (map['deleteAutoSnapshot']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sourceImageId: map['sourceImageId'] == null ? null : (map['sourceImageId']! as String).input(),
+      sourceRegionId: map['sourceRegionId'] == null ? null : (map['sourceRegionId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -61,13 +61,13 @@ class MECRoleArgs {
 
   factory MECRoleArgs.fromMap(Map<String, dynamic> map) {
     return MECRoleArgs(
-      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['connectionString'] as Map).cast<String, dynamic>())).input(),
-      controllerEndpoint: map['controllerEndpoint'] == null ? null : (map['controllerEndpoint'] as String).input(),
+      connectionString: map['connectionString'] == null ? null : (AsymmetricEncryptedSecret.fromMap((map['connectionString']! as Map).cast<String, dynamic>())).input(),
+      controllerEndpoint: map['controllerEndpoint'] == null ? null : (map['controllerEndpoint']! as String).input(),
       deviceName: (map['deviceName'] as String).input(),
       kind: (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceUniqueId: map['resourceUniqueId'] == null ? null : (map['resourceUniqueId'] as String).input(),
+      resourceUniqueId: map['resourceUniqueId'] == null ? null : (map['resourceUniqueId']! as String).input(),
       roleStatus: (map['roleStatus'] as String).input(),
     );
   }

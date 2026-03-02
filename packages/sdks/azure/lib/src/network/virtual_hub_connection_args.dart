@@ -45,10 +45,10 @@ class VirtualHubConnectionArgs {
 
   factory VirtualHubConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VirtualHubConnectionArgs(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       remoteVirtualNetworkId: (map['remoteVirtualNetworkId'] as String).input(),
-      routing: map['routing'] == null ? null : (VirtualHubConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
+      routing: map['routing'] == null ? null : (VirtualHubConnectionRouting.fromMap((map['routing']! as Map).cast<String, dynamic>())).input(),
       virtualHubId: (map['virtualHubId'] as String).input(),
     );
   }

@@ -38,10 +38,10 @@ class BackupState {
 
   factory BackupState.fromMap(Map<String, dynamic> map) {
     return BackupState(
-      backupId: map['backupId'] == null ? null : (map['backupId'] as int).input(),
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      backupId: map['backupId'] == null ? null : (map['backupId']! as int).input(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : (map['backupRetentionPeriod']! as int).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

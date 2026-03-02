@@ -76,16 +76,16 @@ class MigrateSqlServerSqlMITaskPropertiesResponse {
 
   factory MigrateSqlServerSqlMITaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigrateSqlServerSqlMITaskPropertiesResponse(
-      clientData: map['clientData'] == null ? null : ((map['clientData'] as Map).cast<String, String>()).input(),
+      clientData: map['clientData'] == null ? null : ((map['clientData']! as Map).cast<String, String>()).input(),
       commands: (pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands'], (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createdOn: map['createdOn'] == null ? null : (map['createdOn'] as String).input(),
+      createdOn: map['createdOn'] == null ? null : (map['createdOn']! as String).input(),
       errors: (pulumi.Input.decodeList<ODataErrorResponse>(map['errors'], (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      input: map['input'] == null ? null : (MigrateSqlServerSqlMITaskInputResponse.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable'] as bool).input(),
+      input: map['input'] == null ? null : (MigrateSqlServerSqlMITaskInputResponse.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      isCloneable: map['isCloneable'] == null ? null : (map['isCloneable']! as bool).input(),
       output: (pulumi.Input.decodeList<MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse>(map['output'], (value) => MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parentTaskId: map['parentTaskId'] == null ? null : (map['parentTaskId'] as String).input(),
+      parentTaskId: map['parentTaskId'] == null ? null : (map['parentTaskId']! as String).input(),
       state: (map['state'] as String).input(),
-      taskId: map['taskId'] == null ? null : (map['taskId'] as String).input(),
+      taskId: map['taskId'] == null ? null : (map['taskId']! as String).input(),
       taskType: (map['taskType'] as String).input(),
     );
   }

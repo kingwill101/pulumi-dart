@@ -61,15 +61,15 @@ class SpringCloudDynatraceApplicationPerformanceMonitoringState {
 
   factory SpringCloudDynatraceApplicationPerformanceMonitoringState.fromMap(Map<String, dynamic> map) {
     return SpringCloudDynatraceApplicationPerformanceMonitoringState(
-      apiToken: map['apiToken'] == null ? null : (map['apiToken'] as String).input(),
-      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl'] as String).input(),
-      connectionPoint: map['connectionPoint'] == null ? null : (map['connectionPoint'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant'] as String).input(),
-      tenantToken: map['tenantToken'] == null ? null : (map['tenantToken'] as String).input(),
+      apiToken: map['apiToken'] == null ? null : (map['apiToken']! as String).input(),
+      apiUrl: map['apiUrl'] == null ? null : (map['apiUrl']! as String).input(),
+      connectionPoint: map['connectionPoint'] == null ? null : (map['connectionPoint']! as String).input(),
+      environmentId: map['environmentId'] == null ? null : (map['environmentId']! as String).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']! as String).input(),
+      tenantToken: map['tenantToken'] == null ? null : (map['tenantToken']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class TableMetadataIcebergSchema {
 
   factory TableMetadataIcebergSchema.fromMap(Map<String, dynamic> map) {
     return TableMetadataIcebergSchema(
-      fields: (pulumi.Input.decodeList<TableMetadataIcebergSchemaField>(map['fields'], (value) => TableMetadataIcebergSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fields: (pulumi.Input.decodeList<TableMetadataIcebergSchemaField>(map['fields']!, (value) => TableMetadataIcebergSchemaField.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -108,22 +108,22 @@ class KxVolumeState {
 
   factory KxVolumeState.fromMap(Map<String, dynamic> map) {
     return KxVolumeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      attachedClusters: map['attachedClusters'] == null ? null : (pulumi.Input.decodeList<KxVolumeAttachedCluster>(map['attachedClusters'], (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      azMode: map['azMode'] == null ? null : (map['azMode'] as String).input(),
-      createdTimestamp: map['createdTimestamp'] == null ? null : (map['createdTimestamp'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : (map['lastModifiedTimestamp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nas1Configurations: map['nas1Configurations'] == null ? null : (pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations'], (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusReason: map['statusReason'] == null ? null : (map['statusReason'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      attachedClusters: map['attachedClusters'] == null ? null : ((pulumi.Input.decodeList<KxVolumeAttachedCluster>(map['attachedClusters']!, (value) => KxVolumeAttachedCluster.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : (((map['availabilityZones'] as List).cast<String>()).input()).input(),
+      azMode: map['azMode'] == null ? null : ((map['azMode'] as String).input()).input(),
+      createdTimestamp: map['createdTimestamp'] == null ? null : ((map['createdTimestamp'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
+      lastModifiedTimestamp: map['lastModifiedTimestamp'] == null ? null : ((map['lastModifiedTimestamp'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      nas1Configurations: map['nas1Configurations'] == null ? null : ((pulumi.Input.decodeList<KxVolumeNas1Configuration>(map['nas1Configurations']!, (value) => KxVolumeNas1Configuration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      statusReason: map['statusReason'] == null ? null : ((map['statusReason'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

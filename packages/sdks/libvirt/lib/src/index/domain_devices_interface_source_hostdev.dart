@@ -27,8 +27,8 @@ class DomainDevicesInterfaceSourceHostdev {
 
   factory DomainDevicesInterfaceSourceHostdev.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceHostdev(
-      pci: map['pci'] == null ? null : (DomainDevicesInterfaceSourceHostdevPci.fromMap((map['pci'] as Map).cast<String, dynamic>())).input(),
-      usb: map['usb'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsb.fromMap((map['usb'] as Map).cast<String, dynamic>())).input(),
+      pci: map['pci'] == null ? null : (DomainDevicesInterfaceSourceHostdevPci.fromMap((map['pci']! as Map).cast<String, dynamic>())).input(),
+      usb: map['usb'] == null ? null : (DomainDevicesInterfaceSourceHostdevUsb.fromMap((map['usb']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

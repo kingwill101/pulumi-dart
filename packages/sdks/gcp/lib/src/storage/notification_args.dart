@@ -55,9 +55,9 @@ class NotificationArgs {
   factory NotificationArgs.fromMap(Map<String, dynamic> map) {
     return NotificationArgs(
       bucket: (map['bucket'] as String).input(),
-      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes'] as Map).cast<String, String>()).input(),
-      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes'] as List).cast<String>()).input(),
-      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix'] as String).input(),
+      customAttributes: map['customAttributes'] == null ? null : ((map['customAttributes']! as Map).cast<String, String>()).input(),
+      eventTypes: map['eventTypes'] == null ? null : ((map['eventTypes']! as List).cast<String>()).input(),
+      objectNamePrefix: map['objectNamePrefix'] == null ? null : (map['objectNamePrefix']! as String).input(),
       payloadFormat: (map['payloadFormat'] as String).input(),
       topic: (map['topic'] as String).input(),
     );

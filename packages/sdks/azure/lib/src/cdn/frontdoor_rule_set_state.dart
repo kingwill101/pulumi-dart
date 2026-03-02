@@ -26,8 +26,8 @@ class FrontdoorRuleSetState {
 
   factory FrontdoorRuleSetState.fromMap(Map<String, dynamic> map) {
     return FrontdoorRuleSetState(
-      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      cdnFrontdoorProfileId: map['cdnFrontdoorProfileId'] == null ? null : (map['cdnFrontdoorProfileId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

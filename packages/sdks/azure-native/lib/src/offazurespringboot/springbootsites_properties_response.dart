@@ -31,9 +31,9 @@ class SpringbootsitesPropertiesResponse {
 
   factory SpringbootsitesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SpringbootsitesPropertiesResponse(
-      masterSiteId: map['masterSiteId'] == null ? null : (map['masterSiteId'] as String).input(),
-      migrateProjectId: map['migrateProjectId'] == null ? null : (map['migrateProjectId'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      masterSiteId: map['masterSiteId'] == null ? null : (map['masterSiteId']! as String).input(),
+      migrateProjectId: map['migrateProjectId'] == null ? null : (map['migrateProjectId']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
     );
   }
 }

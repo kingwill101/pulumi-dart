@@ -26,8 +26,8 @@ class ServicePrincipalProfile {
 
   factory ServicePrincipalProfile.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalProfile(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
     );
   }
 }

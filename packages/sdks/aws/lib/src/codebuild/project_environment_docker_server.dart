@@ -26,7 +26,7 @@ class ProjectEnvironmentDockerServer {
   factory ProjectEnvironmentDockerServer.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironmentDockerServer(
       computeType: (map['computeType'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

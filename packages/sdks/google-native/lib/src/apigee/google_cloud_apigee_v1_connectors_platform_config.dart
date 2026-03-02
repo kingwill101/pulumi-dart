@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1ConnectorsPlatformConfig {
 
   factory GoogleCloudApigeeV1ConnectorsPlatformConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1ConnectorsPlatformConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class ClusterClientAuthenticationSasl {
 
   factory ClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
     return ClusterClientAuthenticationSasl(
-      iam: map['iam'] == null ? null : (map['iam'] as bool).input(),
-      scram: map['scram'] == null ? null : (map['scram'] as bool).input(),
+      iam: map['iam'] == null ? null : ((map['iam'] as bool).input()).input(),
+      scram: map['scram'] == null ? null : ((map['scram'] as bool).input()).input(),
     );
   }
 }

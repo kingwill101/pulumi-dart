@@ -41,11 +41,11 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      exposeRoutesToVswitch: map['exposeRoutesToVswitch'] == null ? null : (map['exposeRoutesToVswitch'] as bool).input(),
-      ipRange: map['ipRange'] == null ? null : (map['ipRange'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection']! as bool).input(),
+      exposeRoutesToVswitch: map['exposeRoutesToVswitch'] == null ? null : (map['exposeRoutesToVswitch']! as bool).input(),
+      ipRange: map['ipRange'] == null ? null : (map['ipRange']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -64,12 +64,12 @@ class GetPartnerConfigurationResult {
     return GetPartnerConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      partnerAuthorization: map['partnerAuthorization'] == null ? null : PartnerAuthorizationResponse.fromMap((map['partnerAuthorization'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
+      partnerAuthorization: map['partnerAuthorization'] == null ? null : PartnerAuthorizationResponse.fromMap((map['partnerAuthorization']! as Map).cast<String, dynamic>()),
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

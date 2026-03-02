@@ -66,11 +66,11 @@ class SqlServerAvailabilityGroupResourcePropertiesResponse {
     return SqlServerAvailabilityGroupResourcePropertiesResponse(
       availabilityGroupId: (map['availabilityGroupId'] as String).input(),
       collectionTimestamp: (map['collectionTimestamp'] as String).input(),
-      databases: map['databases'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesResponseDatabases.fromMap((map['databases'] as Map).cast<String, dynamic>())).input(),
-      info: map['info'] == null ? null : (AvailabilityGroupInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>())).input(),
+      databases: map['databases'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesResponseDatabases.fromMap((map['databases']! as Map).cast<String, dynamic>())).input(),
+      info: map['info'] == null ? null : (AvailabilityGroupInfoResponse.fromMap((map['info']! as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      replicas: map['replicas'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesResponseReplicas.fromMap((map['replicas'] as Map).cast<String, dynamic>())).input(),
+      replicas: map['replicas'] == null ? null : (SqlServerAvailabilityGroupResourcePropertiesResponseReplicas.fromMap((map['replicas']! as Map).cast<String, dynamic>())).input(),
       serverName: (map['serverName'] as String).input(),
       vmId: (map['vmId'] as String).input(),
     );

@@ -100,18 +100,18 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      mobileCountryCode: map['mobileCountryCode'] == null ? null : (map['mobileCountryCode'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
-      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      mobileCountryCode: map['mobileCountryCode'] == null ? null : (map['mobileCountryCode']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
+      sourceUserId: map['sourceUserId'] == null ? null : (map['sourceUserId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

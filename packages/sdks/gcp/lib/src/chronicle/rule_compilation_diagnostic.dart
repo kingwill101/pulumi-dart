@@ -45,10 +45,10 @@ class RuleCompilationDiagnostic {
 
   factory RuleCompilationDiagnostic.fromMap(Map<String, dynamic> map) {
     return RuleCompilationDiagnostic(
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      position: map['position'] == null ? null : (RuleCompilationDiagnosticPosition.fromMap((map['position'] as Map).cast<String, dynamic>())).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      position: map['position'] == null ? null : (RuleCompilationDiagnosticPosition.fromMap((map['position']! as Map).cast<String, dynamic>())).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

@@ -66,13 +66,13 @@ class DomainArgs {
 
   factory DomainArgs.fromMap(Map<String, dynamic> map) {
     return DomainArgs(
-      admin: map['admin'] == null ? null : (map['admin'] as String).input(),
-      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks'] as List).cast<String>()).input(),
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
+      admin: map['admin'] == null ? null : (map['admin']! as String).input(),
+      authorizedNetworks: map['authorizedNetworks'] == null ? null : ((map['authorizedNetworks']! as List).cast<String>()).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
       domainName: (map['domainName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       locations: ((map['locations'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       reservedIpRange: (map['reservedIpRange'] as String).input(),
     );
   }

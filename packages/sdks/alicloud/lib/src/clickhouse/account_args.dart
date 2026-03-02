@@ -74,17 +74,17 @@ class AccountArgs {
 
   factory AccountArgs.fromMap(Map<String, dynamic> map) {
     return AccountArgs(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
       accountName: (map['accountName'] as String).input(),
       accountPassword: (map['accountPassword'] as String).input(),
-      allowDatabases: map['allowDatabases'] == null ? null : (map['allowDatabases'] as String).input(),
-      allowDictionaries: map['allowDictionaries'] == null ? null : (map['allowDictionaries'] as String).input(),
+      allowDatabases: map['allowDatabases'] == null ? null : (map['allowDatabases']! as String).input(),
+      allowDictionaries: map['allowDictionaries'] == null ? null : (map['allowDictionaries']! as String).input(),
       dbClusterId: (map['dbClusterId'] as String).input(),
-      ddlAuthority: map['ddlAuthority'] == null ? null : (map['ddlAuthority'] as bool).input(),
-      dmlAuthority: map['dmlAuthority'] == null ? null : (map['dmlAuthority'] as String).input(),
-      totalDatabases: map['totalDatabases'] == null ? null : (map['totalDatabases'] as String).input(),
-      totalDictionaries: map['totalDictionaries'] == null ? null : (map['totalDictionaries'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      ddlAuthority: map['ddlAuthority'] == null ? null : (map['ddlAuthority']! as bool).input(),
+      dmlAuthority: map['dmlAuthority'] == null ? null : (map['dmlAuthority']! as String).input(),
+      totalDatabases: map['totalDatabases'] == null ? null : (map['totalDatabases']! as String).input(),
+      totalDictionaries: map['totalDictionaries'] == null ? null : (map['totalDictionaries']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

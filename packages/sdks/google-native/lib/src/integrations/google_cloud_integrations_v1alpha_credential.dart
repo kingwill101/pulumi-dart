@@ -70,15 +70,15 @@ class GoogleCloudIntegrationsV1alphaCredential {
 
   factory GoogleCloudIntegrationsV1alphaCredential.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaCredential(
-      authToken: map['authToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>())).input(),
-      credentialType: map['credentialType'] == null ? null : (GoogleCloudIntegrationsV1alphaCredentialCredentialType.fromValue(map['credentialType'] as String)).input(),
-      jwt: map['jwt'] == null ? null : (GoogleCloudIntegrationsV1alphaJwt.fromMap((map['jwt'] as Map).cast<String, dynamic>())).input(),
-      oauth2AuthorizationCode: map['oauth2AuthorizationCode'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap((map['oauth2AuthorizationCode'] as Map).cast<String, dynamic>())).input(),
-      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>())).input(),
-      oauth2ResourceOwnerCredentials: map['oauth2ResourceOwnerCredentials'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromMap((map['oauth2ResourceOwnerCredentials'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (GoogleCloudIntegrationsV1alphaOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : (GoogleCloudIntegrationsV1alphaServiceAccountCredentials.fromMap((map['serviceAccountCredentials'] as Map).cast<String, dynamic>())).input(),
-      usernameAndPassword: map['usernameAndPassword'] == null ? null : (GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromMap((map['usernameAndPassword'] as Map).cast<String, dynamic>())).input(),
+      authToken: map['authToken'] == null ? null : (GoogleCloudIntegrationsV1alphaAuthToken.fromMap((map['authToken']! as Map).cast<String, dynamic>())).input(),
+      credentialType: map['credentialType'] == null ? null : (GoogleCloudIntegrationsV1alphaCredentialCredentialType.fromValue(map['credentialType']! as String)).input(),
+      jwt: map['jwt'] == null ? null : (GoogleCloudIntegrationsV1alphaJwt.fromMap((map['jwt']! as Map).cast<String, dynamic>())).input(),
+      oauth2AuthorizationCode: map['oauth2AuthorizationCode'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap((map['oauth2AuthorizationCode']! as Map).cast<String, dynamic>())).input(),
+      oauth2ClientCredentials: map['oauth2ClientCredentials'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials.fromMap((map['oauth2ClientCredentials']! as Map).cast<String, dynamic>())).input(),
+      oauth2ResourceOwnerCredentials: map['oauth2ResourceOwnerCredentials'] == null ? null : (GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials.fromMap((map['oauth2ResourceOwnerCredentials']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (GoogleCloudIntegrationsV1alphaOidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      serviceAccountCredentials: map['serviceAccountCredentials'] == null ? null : (GoogleCloudIntegrationsV1alphaServiceAccountCredentials.fromMap((map['serviceAccountCredentials']! as Map).cast<String, dynamic>())).input(),
+      usernameAndPassword: map['usernameAndPassword'] == null ? null : (GoogleCloudIntegrationsV1alphaUsernameAndPassword.fromMap((map['usernameAndPassword']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -87,20 +87,20 @@ class InstanceFromMachineImageBootDiskInitializeParams {
 
   factory InstanceFromMachineImageBootDiskInitializeParams.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageBootDiskInitializeParams(
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops'] as int).input(),
-      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput'] as int).input(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
-      resourcePolicies: map['resourcePolicies'] == null ? null : (map['resourcePolicies'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      snapshot: map['snapshot'] == null ? null : (map['snapshot'] as String).input(),
-      sourceImageEncryptionKey: map['sourceImageEncryptionKey'] == null ? null : (InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey.fromMap((map['sourceImageEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      sourceSnapshotEncryptionKey: map['sourceSnapshotEncryptionKey'] == null ? null : (InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey.fromMap((map['sourceSnapshotEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      storagePool: map['storagePool'] == null ? null : (map['storagePool'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      provisionedIops: map['provisionedIops'] == null ? null : (map['provisionedIops']! as int).input(),
+      provisionedThroughput: map['provisionedThroughput'] == null ? null : (map['provisionedThroughput']! as int).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
+      resourcePolicies: map['resourcePolicies'] == null ? null : (map['resourcePolicies']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      snapshot: map['snapshot'] == null ? null : (map['snapshot']! as String).input(),
+      sourceImageEncryptionKey: map['sourceImageEncryptionKey'] == null ? null : (InstanceFromMachineImageBootDiskInitializeParamsSourceImageEncryptionKey.fromMap((map['sourceImageEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      sourceSnapshotEncryptionKey: map['sourceSnapshotEncryptionKey'] == null ? null : (InstanceFromMachineImageBootDiskInitializeParamsSourceSnapshotEncryptionKey.fromMap((map['sourceSnapshotEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      storagePool: map['storagePool'] == null ? null : (map['storagePool']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

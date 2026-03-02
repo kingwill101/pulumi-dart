@@ -27,7 +27,7 @@ class ReportRecurrencePeriodResponse {
   factory ReportRecurrencePeriodResponse.fromMap(Map<String, dynamic> map) {
     return ReportRecurrencePeriodResponse(
       from: (map['from'] as String).input(),
-      to: map['to'] == null ? null : (map['to'] as String).input(),
+      to: map['to'] == null ? null : (map['to']! as String).input(),
     );
   }
 }

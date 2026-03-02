@@ -45,9 +45,9 @@ class DatabaseState {
 
   factory DatabaseState.fromMap(Map<String, dynamic> map) {
     return DatabaseState(
-      defaultCharacterSet: map['defaultCharacterSet'] == null ? null : (map['defaultCharacterSet'] as String).input(),
-      defaultCollation: map['defaultCollation'] == null ? null : (map['defaultCollation'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      defaultCharacterSet: map['defaultCharacterSet'] == null ? null : (map['defaultCharacterSet']! as String).input(),
+      defaultCollation: map['defaultCollation'] == null ? null : (map['defaultCollation']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

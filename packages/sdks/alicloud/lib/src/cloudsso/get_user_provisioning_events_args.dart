@@ -40,9 +40,9 @@ class GetUserProvisioningEventsArgs {
   factory GetUserProvisioningEventsArgs.fromMap(Map<String, dynamic> map) {
     return GetUserProvisioningEventsArgs(
       directoryId: (map['directoryId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      userProvisioningId: map['userProvisioningId'] == null ? null : (map['userProvisioningId'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      userProvisioningId: map['userProvisioningId'] == null ? null : (map['userProvisioningId']! as String).input(),
     );
   }
 }

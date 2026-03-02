@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsExportToCsvOption {
 
   factory DashboardDashboardPublishOptionsExportToCsvOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsExportToCsvOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

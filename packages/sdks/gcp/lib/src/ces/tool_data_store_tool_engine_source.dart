@@ -39,9 +39,9 @@ class ToolDataStoreToolEngineSource {
 
   factory ToolDataStoreToolEngineSource.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolEngineSource(
-      dataStoreSources: map['dataStoreSources'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources'], (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataStoreSources: map['dataStoreSources'] == null ? null : (pulumi.Input.decodeList<ToolDataStoreToolEngineSourceDataStoreSource>(map['dataStoreSources']!, (value) => ToolDataStoreToolEngineSourceDataStoreSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
       engine: (map['engine'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

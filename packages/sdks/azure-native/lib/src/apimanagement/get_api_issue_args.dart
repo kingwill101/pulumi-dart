@@ -45,7 +45,7 @@ class GetApiIssueArgs {
   factory GetApiIssueArgs.fromMap(Map<String, dynamic> map) {
     return GetApiIssueArgs(
       apiId: (map['apiId'] as String).input(),
-      expandCommentsAttachments: map['expandCommentsAttachments'] == null ? null : (map['expandCommentsAttachments'] as bool).input(),
+      expandCommentsAttachments: map['expandCommentsAttachments'] == null ? null : (map['expandCommentsAttachments']! as bool).input(),
       issueId: (map['issueId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),

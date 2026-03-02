@@ -79,15 +79,15 @@ class SecurityAlertTimelineItemResponse {
     return SecurityAlertTimelineItemResponse(
       alertType: (map['alertType'] as String).input(),
       azureResourceId: (map['azureResourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
       intent: (map['intent'] as String).input(),
       kind: (map['kind'] as String).input(),
-      productName: map['productName'] == null ? null : (map['productName'] as String).input(),
+      productName: map['productName'] == null ? null : (map['productName']! as String).input(),
       severity: (map['severity'] as String).input(),
       startTimeUtc: (map['startTimeUtc'] as String).input(),
-      techniques: map['techniques'] == null ? null : ((map['techniques'] as List).cast<String>()).input(),
+      techniques: map['techniques'] == null ? null : ((map['techniques']! as List).cast<String>()).input(),
       timeGenerated: (map['timeGenerated'] as String).input(),
     );
   }

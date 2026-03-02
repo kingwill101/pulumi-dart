@@ -98,20 +98,20 @@ class WorkstationConfigHostGceInstance {
 
   factory WorkstationConfigHostGceInstance.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHostGceInstance(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(map['accelerators'], (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      boostConfigs: map['boostConfigs'] == null ? null : (pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(map['boostConfigs'], (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb'] as int).input(),
-      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      disablePublicIpAddresses: map['disablePublicIpAddresses'] == null ? null : (map['disablePublicIpAddresses'] as bool).input(),
-      disableSsh: map['disableSsh'] == null ? null : (map['disableSsh'] as bool).input(),
-      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization'] as bool).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      poolSize: map['poolSize'] == null ? null : (map['poolSize'] as int).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes'] as List).cast<String>()).input(),
-      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (WorkstationConfigHostGceInstanceShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      vmTags: map['vmTags'] == null ? null : ((map['vmTags'] as Map).cast<String, String>()).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(map['accelerators']!, (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      boostConfigs: map['boostConfigs'] == null ? null : (pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(map['boostConfigs']!, (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootDiskSizeGb: map['bootDiskSizeGb'] == null ? null : (map['bootDiskSizeGb']! as int).input(),
+      confidentialInstanceConfig: map['confidentialInstanceConfig'] == null ? null : (WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap((map['confidentialInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      disablePublicIpAddresses: map['disablePublicIpAddresses'] == null ? null : (map['disablePublicIpAddresses']! as bool).input(),
+      disableSsh: map['disableSsh'] == null ? null : (map['disableSsh']! as bool).input(),
+      enableNestedVirtualization: map['enableNestedVirtualization'] == null ? null : (map['enableNestedVirtualization']! as bool).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      poolSize: map['poolSize'] == null ? null : (map['poolSize']! as int).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      serviceAccountScopes: map['serviceAccountScopes'] == null ? null : ((map['serviceAccountScopes']! as List).cast<String>()).input(),
+      shieldedInstanceConfig: map['shieldedInstanceConfig'] == null ? null : (WorkstationConfigHostGceInstanceShieldedInstanceConfig.fromMap((map['shieldedInstanceConfig']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      vmTags: map['vmTags'] == null ? null : ((map['vmTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

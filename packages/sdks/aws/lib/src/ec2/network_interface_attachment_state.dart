@@ -51,13 +51,13 @@ class NetworkInterfaceAttachmentState {
 
   factory NetworkInterfaceAttachmentState.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentState(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
-      deviceIndex: map['deviceIndex'] == null ? null : (map['deviceIndex'] as int).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
+      deviceIndex: map['deviceIndex'] == null ? null : ((map['deviceIndex'] as int).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : ((map['networkCardIndex'] as int).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class DeliveryChannelState {
 
   factory DeliveryChannelState.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
-      s3KmsKeyArn: map['s3KmsKeyArn'] == null ? null : (map['s3KmsKeyArn'] as String).input(),
-      snapshotDeliveryProperties: map['snapshotDeliveryProperties'] == null ? null : (DeliveryChannelSnapshotDeliveryProperties.fromMap((map['snapshotDeliveryProperties'] as Map).cast<String, dynamic>())).input(),
-      snsTopicArn: map['snsTopicArn'] == null ? null : (map['snsTopicArn'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : ((map['s3BucketName'] as String).input()).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : ((map['s3KeyPrefix'] as String).input()).input(),
+      s3KmsKeyArn: map['s3KmsKeyArn'] == null ? null : ((map['s3KmsKeyArn'] as String).input()).input(),
+      snapshotDeliveryProperties: map['snapshotDeliveryProperties'] == null ? null : ((DeliveryChannelSnapshotDeliveryProperties.fromMap((map['snapshotDeliveryProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      snsTopicArn: map['snsTopicArn'] == null ? null : ((map['snsTopicArn'] as String).input()).input(),
     );
   }
 }

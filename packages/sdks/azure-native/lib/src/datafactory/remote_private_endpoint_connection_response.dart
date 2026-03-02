@@ -32,8 +32,8 @@ class RemotePrivateEndpointConnectionResponse {
 
   factory RemotePrivateEndpointConnectionResponse.fromMap(Map<String, dynamic> map) {
     return RemotePrivateEndpointConnectionResponse(
-      privateEndpoint: map['privateEndpoint'] == null ? null : (ArmIdWrapperResponse.fromMap((map['privateEndpoint'] as Map).cast<String, dynamic>())).input(),
-      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState'] as Map).cast<String, dynamic>())).input(),
+      privateEndpoint: map['privateEndpoint'] == null ? null : (ArmIdWrapperResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>())).input(),
+      privateLinkServiceConnectionState: map['privateLinkServiceConnectionState'] == null ? null : (PrivateLinkConnectionStateResponse.fromMap((map['privateLinkServiceConnectionState']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

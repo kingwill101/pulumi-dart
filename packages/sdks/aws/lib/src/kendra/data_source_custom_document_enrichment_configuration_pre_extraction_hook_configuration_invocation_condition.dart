@@ -32,7 +32,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurat
   factory DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurationInvocationCondition.fromMap(Map<String, dynamic> map) {
     return DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurationInvocationCondition(
       conditionDocumentAttributeKey: (map['conditionDocumentAttributeKey'] as String).input(),
-      conditionOnValue: map['conditionOnValue'] == null ? null : (DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurationInvocationConditionConditionOnValue.fromMap((map['conditionOnValue'] as Map).cast<String, dynamic>())).input(),
+      conditionOnValue: map['conditionOnValue'] == null ? null : ((DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurationInvocationConditionConditionOnValue.fromMap((map['conditionOnValue']! as Map).cast<String, dynamic>())).input()).input(),
       operator: (map['operator'] as String).input(),
     );
   }

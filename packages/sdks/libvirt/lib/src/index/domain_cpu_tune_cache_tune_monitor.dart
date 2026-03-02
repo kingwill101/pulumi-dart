@@ -25,8 +25,8 @@ class DomainCpuTuneCacheTuneMonitor {
 
   factory DomainCpuTuneCacheTuneMonitor.fromMap(Map<String, dynamic> map) {
     return DomainCpuTuneCacheTuneMonitor(
-      level: map['level'] == null ? null : (map['level'] as double).input(),
-      vcpus: map['vcpus'] == null ? null : (map['vcpus'] as String).input(),
+      level: map['level'] == null ? null : (map['level']! as double).input(),
+      vcpus: map['vcpus'] == null ? null : (map['vcpus']! as String).input(),
     );
   }
 }

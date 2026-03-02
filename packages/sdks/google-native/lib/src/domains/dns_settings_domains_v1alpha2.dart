@@ -34,9 +34,9 @@ class DnsSettingsDomainsV1alpha2 {
 
   factory DnsSettingsDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return DnsSettingsDomainsV1alpha2(
-      customDns: map['customDns'] == null ? null : (CustomDnsDomainsV1alpha2.fromMap((map['customDns'] as Map).cast<String, dynamic>())).input(),
-      glueRecords: map['glueRecords'] == null ? null : (pulumi.Input.decodeList<GlueRecordDomainsV1alpha2>(map['glueRecords'], (value) => GlueRecordDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      googleDomainsDns: map['googleDomainsDns'] == null ? null : (GoogleDomainsDnsDomainsV1alpha2.fromMap((map['googleDomainsDns'] as Map).cast<String, dynamic>())).input(),
+      customDns: map['customDns'] == null ? null : (CustomDnsDomainsV1alpha2.fromMap((map['customDns']! as Map).cast<String, dynamic>())).input(),
+      glueRecords: map['glueRecords'] == null ? null : (pulumi.Input.decodeList<GlueRecordDomainsV1alpha2>(map['glueRecords']!, (value) => GlueRecordDomainsV1alpha2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      googleDomainsDns: map['googleDomainsDns'] == null ? null : (GoogleDomainsDnsDomainsV1alpha2.fromMap((map['googleDomainsDns']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

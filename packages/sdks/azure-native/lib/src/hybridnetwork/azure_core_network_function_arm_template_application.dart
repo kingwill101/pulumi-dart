@@ -45,11 +45,11 @@ class AzureCoreNetworkFunctionArmTemplateApplication {
 
   factory AzureCoreNetworkFunctionArmTemplateApplication.fromMap(Map<String, dynamic> map) {
     return AzureCoreNetworkFunctionArmTemplateApplication(
-      artifactProfile: map['artifactProfile'] == null ? null : (AzureCoreArmTemplateArtifactProfile.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactProfile: map['artifactProfile'] == null ? null : (AzureCoreArmTemplateArtifactProfile.fromMap((map['artifactProfile']! as Map).cast<String, dynamic>())).input(),
       artifactType: (map['artifactType'] as String).input(),
-      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile'] as Map).cast<String, dynamic>())).input(),
-      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureCoreArmTemplateDeployMappingRuleProfile.fromMap((map['deployParametersMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      dependsOnProfile: map['dependsOnProfile'] == null ? null : (DependsOnProfile.fromMap((map['dependsOnProfile']! as Map).cast<String, dynamic>())).input(),
+      deployParametersMappingRuleProfile: map['deployParametersMappingRuleProfile'] == null ? null : (AzureCoreArmTemplateDeployMappingRuleProfile.fromMap((map['deployParametersMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

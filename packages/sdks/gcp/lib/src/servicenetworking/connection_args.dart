@@ -48,11 +48,11 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy'] as String).input(),
+      deletionPolicy: map['deletionPolicy'] == null ? null : (map['deletionPolicy']! as String).input(),
       network: (map['network'] as String).input(),
       reservedPeeringRanges: ((map['reservedPeeringRanges'] as List).cast<String>()).input(),
       service: (map['service'] as String).input(),
-      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : (map['updateOnCreationFail'] as bool).input(),
+      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : (map['updateOnCreationFail']! as bool).input(),
     );
   }
 }

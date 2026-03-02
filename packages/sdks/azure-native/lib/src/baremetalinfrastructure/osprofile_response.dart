@@ -36,10 +36,10 @@ class OSProfileResponse {
 
   factory OSProfileResponse.fromMap(Map<String, dynamic> map) {
     return OSProfileResponse(
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      sshPublicKey: map['sshPublicKey'] == null ? null : (map['sshPublicKey'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      sshPublicKey: map['sshPublicKey'] == null ? null : (map['sshPublicKey']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

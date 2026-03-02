@@ -25,8 +25,8 @@ class EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
 
   factory EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader.fromMap(Map<String, dynamic> map) {
     return EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader(
-      csvContentTypes: map['csvContentTypes'] == null ? null : ((map['csvContentTypes'] as List).cast<String>()).input(),
-      jsonContentTypes: map['jsonContentTypes'] == null ? null : ((map['jsonContentTypes'] as List).cast<String>()).input(),
+      csvContentTypes: map['csvContentTypes'] == null ? null : (((map['csvContentTypes'] as List).cast<String>()).input()).input(),
+      jsonContentTypes: map['jsonContentTypes'] == null ? null : (((map['jsonContentTypes'] as List).cast<String>()).input()).input(),
     );
   }
 }

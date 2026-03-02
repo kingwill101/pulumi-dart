@@ -47,12 +47,12 @@ class LoadBalancerBackendAddress {
 
   factory LoadBalancerBackendAddress.fromMap(Map<String, dynamic> map) {
     return LoadBalancerBackendAddress(
-      adminState: map['adminState'] == null ? null : (map['adminState'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      loadBalancerFrontendIPConfiguration: map['loadBalancerFrontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['loadBalancerFrontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
-      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResource.fromMap((map['virtualNetwork'] as Map).cast<String, dynamic>())).input(),
+      adminState: map['adminState'] == null ? null : (map['adminState']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      loadBalancerFrontendIPConfiguration: map['loadBalancerFrontendIPConfiguration'] == null ? null : (SubResource.fromMap((map['loadBalancerFrontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subnet: map['subnet'] == null ? null : (SubResource.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
+      virtualNetwork: map['virtualNetwork'] == null ? null : (SubResource.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

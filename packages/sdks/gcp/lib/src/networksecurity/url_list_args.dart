@@ -46,10 +46,10 @@ class UrlListArgs {
 
   factory UrlListArgs.fromMap(Map<String, dynamic> map) {
     return UrlListArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );
   }

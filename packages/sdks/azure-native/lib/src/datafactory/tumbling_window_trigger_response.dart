@@ -85,16 +85,16 @@ class TumblingWindowTriggerResponse {
 
   factory TumblingWindowTriggerResponse.fromMap(Map<String, dynamic> map) {
     return TumblingWindowTriggerResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      delay: map['delay'] == null ? null : (map['delay']).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<SelfDependencyTumblingWindowTriggerReferenceResponse>(map['dependsOn'], (value) => SelfDependencyTumblingWindowTriggerReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      delay: map['delay'] == null ? null : (map['delay']!).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<SelfDependencyTumblingWindowTriggerReferenceResponse>(map['dependsOn']!, (value) => SelfDependencyTumblingWindowTriggerReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       frequency: (map['frequency'] as String).input(),
       interval: (map['interval'] as int).input(),
       maxConcurrency: (map['maxConcurrency'] as int).input(),
       pipeline: (TriggerPipelineReferenceResponse.fromMap((map['pipeline'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicyResponse.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (RetryPolicyResponse.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
       runtimeState: (map['runtimeState'] as String).input(),
       startTime: (map['startTime'] as String).input(),
       type: (map['type'] as String).input(),

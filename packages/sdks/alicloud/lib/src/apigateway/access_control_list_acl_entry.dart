@@ -25,8 +25,8 @@ class AccessControlListAclEntry {
 
   factory AccessControlListAclEntry.fromMap(Map<String, dynamic> map) {
     return AccessControlListAclEntry(
-      aclEntryComment: map['aclEntryComment'] == null ? null : (map['aclEntryComment'] as String).input(),
-      aclEntryIp: map['aclEntryIp'] == null ? null : (map['aclEntryIp'] as String).input(),
+      aclEntryComment: map['aclEntryComment'] == null ? null : (map['aclEntryComment']! as String).input(),
+      aclEntryIp: map['aclEntryIp'] == null ? null : (map['aclEntryIp']! as String).input(),
     );
   }
 }

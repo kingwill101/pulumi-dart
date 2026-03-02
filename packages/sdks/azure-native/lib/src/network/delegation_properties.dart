@@ -21,7 +21,7 @@ class DelegationProperties {
 
   factory DelegationProperties.fromMap(Map<String, dynamic> map) {
     return DelegationProperties(
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

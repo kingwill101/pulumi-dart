@@ -27,8 +27,8 @@ class DataExchangeSubscriptionLinkedResource {
 
   factory DataExchangeSubscriptionLinkedResource.fromMap(Map<String, dynamic> map) {
     return DataExchangeSubscriptionLinkedResource(
-      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset'] as String).input(),
-      listing: map['listing'] == null ? null : (map['listing'] as String).input(),
+      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset']! as String).input(),
+      listing: map['listing'] == null ? null : (map['listing']! as String).input(),
     );
   }
 }

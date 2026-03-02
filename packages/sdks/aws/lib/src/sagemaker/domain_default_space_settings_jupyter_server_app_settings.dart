@@ -32,9 +32,9 @@ class DomainDefaultSpaceSettingsJupyterServerAppSettings {
 
   factory DomainDefaultSpaceSettingsJupyterServerAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettingsJupyterServerAppSettings(
-      codeRepositories: map['codeRepositories'] == null ? null : (pulumi.Input.decodeList<DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository>(map['codeRepositories'], (value) => DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (DomainDefaultSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : ((map['lifecycleConfigArns'] as List).cast<String>()).input(),
+      codeRepositories: map['codeRepositories'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository>(map['codeRepositories']!, (value) => DomainDefaultSpaceSettingsJupyterServerAppSettingsCodeRepository.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((DomainDefaultSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

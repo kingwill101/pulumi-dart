@@ -20,7 +20,7 @@ class WatchlistWatchlistUserPreferences {
 
   factory WatchlistWatchlistUserPreferences.fromMap(Map<String, dynamic> map) {
     return WatchlistWatchlistUserPreferences(
-      pinned: map['pinned'] == null ? null : (map['pinned'] as bool).input(),
+      pinned: map['pinned'] == null ? null : (map['pinned']! as bool).input(),
     );
   }
 }

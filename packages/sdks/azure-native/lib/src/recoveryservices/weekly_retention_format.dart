@@ -28,8 +28,8 @@ class WeeklyRetentionFormat {
 
   factory WeeklyRetentionFormat.fromMap(Map<String, dynamic> map) {
     return WeeklyRetentionFormat(
-      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['daysOfTheWeek'], (value) => DayOfWeek.fromValue(value as String))).input(),
-      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : (pulumi.Input.decodeList<WeekOfMonth>(map['weeksOfTheMonth'], (value) => WeekOfMonth.fromValue(value as String))).input(),
+      daysOfTheWeek: map['daysOfTheWeek'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['daysOfTheWeek']!, (value) => DayOfWeek.fromValue(value as String))).input(),
+      weeksOfTheMonth: map['weeksOfTheMonth'] == null ? null : (pulumi.Input.decodeList<WeekOfMonth>(map['weeksOfTheMonth']!, (value) => WeekOfMonth.fromValue(value as String))).input(),
     );
   }
 }

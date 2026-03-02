@@ -36,10 +36,10 @@ class LinuxPropertiesResponse {
 
   factory LinuxPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LinuxPropertiesResponse(
-      excludedPackageNameMasks: map['excludedPackageNameMasks'] == null ? null : ((map['excludedPackageNameMasks'] as List).cast<String>()).input(),
-      includedPackageClassifications: map['includedPackageClassifications'] == null ? null : (map['includedPackageClassifications'] as String).input(),
-      includedPackageNameMasks: map['includedPackageNameMasks'] == null ? null : ((map['includedPackageNameMasks'] as List).cast<String>()).input(),
-      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting'] as String).input(),
+      excludedPackageNameMasks: map['excludedPackageNameMasks'] == null ? null : ((map['excludedPackageNameMasks']! as List).cast<String>()).input(),
+      includedPackageClassifications: map['includedPackageClassifications'] == null ? null : (map['includedPackageClassifications']! as String).input(),
+      includedPackageNameMasks: map['includedPackageNameMasks'] == null ? null : ((map['includedPackageNameMasks']! as List).cast<String>()).input(),
+      rebootSetting: map['rebootSetting'] == null ? null : (map['rebootSetting']! as String).input(),
     );
   }
 }

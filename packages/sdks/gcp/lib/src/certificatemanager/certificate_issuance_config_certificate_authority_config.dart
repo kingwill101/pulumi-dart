@@ -22,7 +22,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfig {
 
   factory CertificateIssuanceConfigCertificateAuthorityConfig.fromMap(Map<String, dynamic> map) {
     return CertificateIssuanceConfigCertificateAuthorityConfig(
-      certificateAuthorityServiceConfig: map['certificateAuthorityServiceConfig'] == null ? null : (CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.fromMap((map['certificateAuthorityServiceConfig'] as Map).cast<String, dynamic>())).input(),
+      certificateAuthorityServiceConfig: map['certificateAuthorityServiceConfig'] == null ? null : (CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.fromMap((map['certificateAuthorityServiceConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

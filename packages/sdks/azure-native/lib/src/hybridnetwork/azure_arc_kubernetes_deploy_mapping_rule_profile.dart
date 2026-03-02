@@ -27,8 +27,8 @@ class AzureArcKubernetesDeployMappingRuleProfile {
 
   factory AzureArcKubernetesDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesDeployMappingRuleProfile(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement'] as String).input(),
-      helmMappingRuleProfile: map['helmMappingRuleProfile'] == null ? null : (HelmMappingRuleProfile.fromMap((map['helmMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
+      helmMappingRuleProfile: map['helmMappingRuleProfile'] == null ? null : (HelmMappingRuleProfile.fromMap((map['helmMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

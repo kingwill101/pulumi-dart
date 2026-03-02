@@ -30,8 +30,8 @@ class TenantConfigurationArgs {
 
   factory TenantConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TenantConfigurationArgs(
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

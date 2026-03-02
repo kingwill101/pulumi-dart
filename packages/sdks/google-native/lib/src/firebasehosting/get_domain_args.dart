@@ -32,7 +32,7 @@ class GetDomainArgs {
   factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
     return GetDomainArgs(
       domainId: (map['domainId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

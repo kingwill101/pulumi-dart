@@ -29,7 +29,7 @@ class SnapshotBlockPublicAccessArgs {
 
   factory SnapshotBlockPublicAccessArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotBlockPublicAccessArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       state: (map['state'] as String).input(),
     );
   }

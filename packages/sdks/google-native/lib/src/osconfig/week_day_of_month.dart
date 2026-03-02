@@ -33,7 +33,7 @@ class WeekDayOfMonth {
   factory WeekDayOfMonth.fromMap(Map<String, dynamic> map) {
     return WeekDayOfMonth(
       dayOfWeek: (WeekDayOfMonthDayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
-      dayOffset: map['dayOffset'] == null ? null : (map['dayOffset'] as int).input(),
+      dayOffset: map['dayOffset'] == null ? null : (map['dayOffset']! as int).input(),
       weekOrdinal: (map['weekOrdinal'] as int).input(),
     );
   }

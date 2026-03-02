@@ -39,9 +39,9 @@ class PodFailurePolicyOnExitCodesRequirementPatch {
 
   factory PodFailurePolicyOnExitCodesRequirementPatch.fromMap(Map<String, dynamic> map) {
     return PodFailurePolicyOnExitCodesRequirementPatch(
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<int>()).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<int>()).input(),
     );
   }
 }

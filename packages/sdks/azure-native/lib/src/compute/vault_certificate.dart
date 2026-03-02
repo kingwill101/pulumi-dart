@@ -26,8 +26,8 @@ class VaultCertificate {
 
   factory VaultCertificate.fromMap(Map<String, dynamic> map) {
     return VaultCertificate(
-      certificateStore: map['certificateStore'] == null ? null : (map['certificateStore'] as String).input(),
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      certificateStore: map['certificateStore'] == null ? null : (map['certificateStore']! as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
     );
   }
 }

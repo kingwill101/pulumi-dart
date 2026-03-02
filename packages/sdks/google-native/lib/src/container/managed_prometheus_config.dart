@@ -21,7 +21,7 @@ class ManagedPrometheusConfig {
 
   factory ManagedPrometheusConfig.fromMap(Map<String, dynamic> map) {
     return ManagedPrometheusConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

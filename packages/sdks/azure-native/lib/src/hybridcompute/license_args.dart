@@ -55,13 +55,13 @@ class LicenseArgs {
 
   factory LicenseArgs.fromMap(Map<String, dynamic> map) {
     return LicenseArgs(
-      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetails.fromMap((map['licenseDetails'] as Map).cast<String, dynamic>())).input(),
-      licenseName: map['licenseName'] == null ? null : (map['licenseName'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      licenseDetails: map['licenseDetails'] == null ? null : (LicenseDetails.fromMap((map['licenseDetails']! as Map).cast<String, dynamic>())).input(),
+      licenseName: map['licenseName'] == null ? null : (map['licenseName']! as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

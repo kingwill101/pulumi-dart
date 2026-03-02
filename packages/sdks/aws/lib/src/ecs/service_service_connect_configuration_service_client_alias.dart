@@ -31,9 +31,9 @@ class ServiceServiceConnectConfigurationServiceClientAlias {
 
   factory ServiceServiceConnectConfigurationServiceClientAlias.fromMap(Map<String, dynamic> map) {
     return ServiceServiceConnectConfigurationServiceClientAlias(
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
+      dnsName: map['dnsName'] == null ? null : ((map['dnsName'] as String).input()).input(),
       port: (map['port'] as int).input(),
-      testTrafficRules: map['testTrafficRules'] == null ? null : (pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule>(map['testTrafficRules'], (value) => ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      testTrafficRules: map['testTrafficRules'] == null ? null : ((pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule>(map['testTrafficRules']!, (value) => ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

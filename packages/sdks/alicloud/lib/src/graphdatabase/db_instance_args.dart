@@ -81,17 +81,17 @@ class DbInstanceArgs {
   factory DbInstanceArgs.fromMap(Map<String, dynamic> map) {
     return DbInstanceArgs(
       dbInstanceCategory: (map['dbInstanceCategory'] as String).input(),
-      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription'] as String).input(),
-      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : (pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays'], (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbInstanceDescription: map['dbInstanceDescription'] == null ? null : (map['dbInstanceDescription']! as String).input(),
+      dbInstanceIpArrays: map['dbInstanceIpArrays'] == null ? null : (pulumi.Input.decodeList<DbInstanceDbInstanceIpArray>(map['dbInstanceIpArrays']!, (value) => DbInstanceDbInstanceIpArray.fromMap((value as Map).cast<String, dynamic>()))).input(),
       dbInstanceNetworkType: (map['dbInstanceNetworkType'] as String).input(),
       dbInstanceStorageType: (map['dbInstanceStorageType'] as String).input(),
       dbNodeClass: (map['dbNodeClass'] as String).input(),
       dbNodeStorage: (map['dbNodeStorage'] as int).input(),
       dbVersion: (map['dbVersion'] as String).input(),
       paymentType: (map['paymentType'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

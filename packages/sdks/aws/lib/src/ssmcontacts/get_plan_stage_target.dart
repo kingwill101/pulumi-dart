@@ -25,8 +25,8 @@ class GetPlanStageTarget {
 
   factory GetPlanStageTarget.fromMap(Map<String, dynamic> map) {
     return GetPlanStageTarget(
-      channelTargetInfos: (pulumi.Input.decodeList<GetPlanStageTargetChannelTargetInfo>(map['channelTargetInfos'], (value) => GetPlanStageTargetChannelTargetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contactTargetInfos: (pulumi.Input.decodeList<GetPlanStageTargetContactTargetInfo>(map['contactTargetInfos'], (value) => GetPlanStageTargetContactTargetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      channelTargetInfos: (pulumi.Input.decodeList<GetPlanStageTargetChannelTargetInfo>(map['channelTargetInfos']!, (value) => GetPlanStageTargetChannelTargetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contactTargetInfos: (pulumi.Input.decodeList<GetPlanStageTargetContactTargetInfo>(map['contactTargetInfos']!, (value) => GetPlanStageTargetContactTargetInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

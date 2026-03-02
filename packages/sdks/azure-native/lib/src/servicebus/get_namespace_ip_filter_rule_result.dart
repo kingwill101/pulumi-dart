@@ -50,11 +50,11 @@ class GetNamespaceIpFilterRuleResult {
 
   factory GetNamespaceIpFilterRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceIpFilterRuleResult(
-      action: map['action'] == null ? null : map['action'] as String,
+      action: map['action'] == null ? null : map['action']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      filterName: map['filterName'] == null ? null : map['filterName'] as String,
+      filterName: map['filterName'] == null ? null : map['filterName']! as String,
       id: map['id'] as String,
-      ipMask: map['ipMask'] == null ? null : map['ipMask'] as String,
+      ipMask: map['ipMask'] == null ? null : map['ipMask']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

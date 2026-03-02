@@ -26,8 +26,8 @@ class OidcTokenPubsubV1beta2 {
 
   factory OidcTokenPubsubV1beta2.fromMap(Map<String, dynamic> map) {
     return OidcTokenPubsubV1beta2(
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
     );
   }
 }

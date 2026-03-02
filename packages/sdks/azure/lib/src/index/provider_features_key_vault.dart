@@ -70,17 +70,17 @@ class ProviderFeaturesKeyVault {
 
   factory ProviderFeaturesKeyVault.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesKeyVault(
-      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy'] as bool).input(),
-      purgeSoftDeletedCertificatesOnDestroy: map['purgeSoftDeletedCertificatesOnDestroy'] == null ? null : (map['purgeSoftDeletedCertificatesOnDestroy'] as bool).input(),
-      purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy: map['purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy'] == null ? null : (map['purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy'] as bool).input(),
-      purgeSoftDeletedHardwareSecurityModulesOnDestroy: map['purgeSoftDeletedHardwareSecurityModulesOnDestroy'] == null ? null : (map['purgeSoftDeletedHardwareSecurityModulesOnDestroy'] as bool).input(),
-      purgeSoftDeletedKeysOnDestroy: map['purgeSoftDeletedKeysOnDestroy'] == null ? null : (map['purgeSoftDeletedKeysOnDestroy'] as bool).input(),
-      purgeSoftDeletedSecretsOnDestroy: map['purgeSoftDeletedSecretsOnDestroy'] == null ? null : (map['purgeSoftDeletedSecretsOnDestroy'] as bool).input(),
-      recoverSoftDeletedCertificates: map['recoverSoftDeletedCertificates'] == null ? null : (map['recoverSoftDeletedCertificates'] as bool).input(),
-      recoverSoftDeletedHardwareSecurityModuleKeys: map['recoverSoftDeletedHardwareSecurityModuleKeys'] == null ? null : (map['recoverSoftDeletedHardwareSecurityModuleKeys'] as bool).input(),
-      recoverSoftDeletedKeyVaults: map['recoverSoftDeletedKeyVaults'] == null ? null : (map['recoverSoftDeletedKeyVaults'] as bool).input(),
-      recoverSoftDeletedKeys: map['recoverSoftDeletedKeys'] == null ? null : (map['recoverSoftDeletedKeys'] as bool).input(),
-      recoverSoftDeletedSecrets: map['recoverSoftDeletedSecrets'] == null ? null : (map['recoverSoftDeletedSecrets'] as bool).input(),
+      purgeSoftDeleteOnDestroy: map['purgeSoftDeleteOnDestroy'] == null ? null : (map['purgeSoftDeleteOnDestroy']! as bool).input(),
+      purgeSoftDeletedCertificatesOnDestroy: map['purgeSoftDeletedCertificatesOnDestroy'] == null ? null : (map['purgeSoftDeletedCertificatesOnDestroy']! as bool).input(),
+      purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy: map['purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy'] == null ? null : (map['purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy']! as bool).input(),
+      purgeSoftDeletedHardwareSecurityModulesOnDestroy: map['purgeSoftDeletedHardwareSecurityModulesOnDestroy'] == null ? null : (map['purgeSoftDeletedHardwareSecurityModulesOnDestroy']! as bool).input(),
+      purgeSoftDeletedKeysOnDestroy: map['purgeSoftDeletedKeysOnDestroy'] == null ? null : (map['purgeSoftDeletedKeysOnDestroy']! as bool).input(),
+      purgeSoftDeletedSecretsOnDestroy: map['purgeSoftDeletedSecretsOnDestroy'] == null ? null : (map['purgeSoftDeletedSecretsOnDestroy']! as bool).input(),
+      recoverSoftDeletedCertificates: map['recoverSoftDeletedCertificates'] == null ? null : (map['recoverSoftDeletedCertificates']! as bool).input(),
+      recoverSoftDeletedHardwareSecurityModuleKeys: map['recoverSoftDeletedHardwareSecurityModuleKeys'] == null ? null : (map['recoverSoftDeletedHardwareSecurityModuleKeys']! as bool).input(),
+      recoverSoftDeletedKeyVaults: map['recoverSoftDeletedKeyVaults'] == null ? null : (map['recoverSoftDeletedKeyVaults']! as bool).input(),
+      recoverSoftDeletedKeys: map['recoverSoftDeletedKeys'] == null ? null : (map['recoverSoftDeletedKeys']! as bool).input(),
+      recoverSoftDeletedSecrets: map['recoverSoftDeletedSecrets'] == null ? null : (map['recoverSoftDeletedSecrets']! as bool).input(),
     );
   }
 }

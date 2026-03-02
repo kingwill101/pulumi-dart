@@ -48,12 +48,12 @@ class APIGroupPatch {
 
   factory APIGroupPatch.fromMap(Map<String, dynamic> map) {
     return APIGroupPatch(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preferredVersion: map['preferredVersion'] == null ? null : (GroupVersionForDiscoveryPatch.fromMap((map['preferredVersion'] as Map).cast<String, dynamic>())).input(),
-      serverAddressByClientCIDRs: map['serverAddressByClientCIDRs'] == null ? null : (pulumi.Input.decodeList<ServerAddressByClientCIDRPatch>(map['serverAddressByClientCIDRs'], (value) => ServerAddressByClientCIDRPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<GroupVersionForDiscoveryPatch>(map['versions'], (value) => GroupVersionForDiscoveryPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preferredVersion: map['preferredVersion'] == null ? null : (GroupVersionForDiscoveryPatch.fromMap((map['preferredVersion']! as Map).cast<String, dynamic>())).input(),
+      serverAddressByClientCIDRs: map['serverAddressByClientCIDRs'] == null ? null : (pulumi.Input.decodeList<ServerAddressByClientCIDRPatch>(map['serverAddressByClientCIDRs']!, (value) => ServerAddressByClientCIDRPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      versions: map['versions'] == null ? null : (pulumi.Input.decodeList<GroupVersionForDiscoveryPatch>(map['versions']!, (value) => GroupVersionForDiscoveryPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

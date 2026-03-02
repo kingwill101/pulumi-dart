@@ -21,7 +21,7 @@ class FlowDefinitionHumanLoopActivationConfig {
 
   factory FlowDefinitionHumanLoopActivationConfig.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopActivationConfig(
-      humanLoopActivationConditionsConfig: map['humanLoopActivationConditionsConfig'] == null ? null : (FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig.fromMap((map['humanLoopActivationConditionsConfig'] as Map).cast<String, dynamic>())).input(),
+      humanLoopActivationConditionsConfig: map['humanLoopActivationConditionsConfig'] == null ? null : ((FlowDefinitionHumanLoopActivationConfigHumanLoopActivationConditionsConfig.fromMap((map['humanLoopActivationConditionsConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

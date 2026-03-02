@@ -40,8 +40,8 @@ class DeviceArgs {
   factory DeviceArgs.fromMap(Map<String, dynamic> map) {
     return DeviceArgs(
       configsyncIp: (map['configsyncIp'] as String).input(),
-      mirrorIp: map['mirrorIp'] == null ? null : (map['mirrorIp'] as String).input(),
-      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : (map['mirrorSecondaryIp'] as String).input(),
+      mirrorIp: map['mirrorIp'] == null ? null : (map['mirrorIp']! as String).input(),
+      mirrorSecondaryIp: map['mirrorSecondaryIp'] == null ? null : (map['mirrorSecondaryIp']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

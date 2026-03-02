@@ -58,12 +58,12 @@ class InstanceFileSharesNfsExportOption {
 
   factory InstanceFileSharesNfsExportOption.fromMap(Map<String, dynamic> map) {
     return InstanceFileSharesNfsExportOption(
-      accessMode: map['accessMode'] == null ? null : (map['accessMode'] as String).input(),
-      anonGid: map['anonGid'] == null ? null : (map['anonGid'] as int).input(),
-      anonUid: map['anonUid'] == null ? null : (map['anonUid'] as int).input(),
-      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges'] as List).cast<String>()).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      squashMode: map['squashMode'] == null ? null : (map['squashMode'] as String).input(),
+      accessMode: map['accessMode'] == null ? null : (map['accessMode']! as String).input(),
+      anonGid: map['anonGid'] == null ? null : (map['anonGid']! as int).input(),
+      anonUid: map['anonUid'] == null ? null : (map['anonUid']! as int).input(),
+      ipRanges: map['ipRanges'] == null ? null : ((map['ipRanges']! as List).cast<String>()).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      squashMode: map['squashMode'] == null ? null : (map['squashMode']! as String).input(),
     );
   }
 }

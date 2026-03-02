@@ -21,7 +21,7 @@ class PublicAccessProperties {
 
   factory PublicAccessProperties.fromMap(Map<String, dynamic> map) {
     return PublicAccessProperties(
-      allowedSubnets: map['allowedSubnets'] == null ? null : ((map['allowedSubnets'] as List).cast<String>()).input(),
+      allowedSubnets: map['allowedSubnets'] == null ? null : ((map['allowedSubnets']! as List).cast<String>()).input(),
     );
   }
 }

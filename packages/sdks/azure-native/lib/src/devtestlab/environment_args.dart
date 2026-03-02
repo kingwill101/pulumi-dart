@@ -60,13 +60,13 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      armTemplateDisplayName: map['armTemplateDisplayName'] == null ? null : (map['armTemplateDisplayName'] as String).input(),
-      deploymentProperties: map['deploymentProperties'] == null ? null : (EnvironmentDeploymentProperties.fromMap((map['deploymentProperties'] as Map).cast<String, dynamic>())).input(),
+      armTemplateDisplayName: map['armTemplateDisplayName'] == null ? null : (map['armTemplateDisplayName']! as String).input(),
+      deploymentProperties: map['deploymentProperties'] == null ? null : (EnvironmentDeploymentProperties.fromMap((map['deploymentProperties']! as Map).cast<String, dynamic>())).input(),
       labName: (map['labName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       userName: (map['userName'] as String).input(),
     );
   }

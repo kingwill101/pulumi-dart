@@ -40,10 +40,10 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec {
 
   factory GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpec(
-      metric: map['metric'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      multiTrialAlgorithm: map['multiTrialAlgorithm'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm.fromValue(map['multiTrialAlgorithm'] as String)).input(),
+      metric: map['metric'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMetricSpec.fromMap((map['metric']! as Map).cast<String, dynamic>())).input(),
+      multiTrialAlgorithm: map['multiTrialAlgorithm'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecMultiTrialAlgorithm.fromValue(map['multiTrialAlgorithm']! as String)).input(),
       searchTrialSpec: (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpec.fromMap((map['searchTrialSpec'] as Map).cast<String, dynamic>())).input(),
-      trainTrialSpec: map['trainTrialSpec'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec.fromMap((map['trainTrialSpec'] as Map).cast<String, dynamic>())).input(),
+      trainTrialSpec: map['trainTrialSpec'] == null ? null : (GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecTrainTrialSpec.fromMap((map['trainTrialSpec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

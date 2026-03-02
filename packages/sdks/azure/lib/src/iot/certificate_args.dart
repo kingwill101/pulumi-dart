@@ -46,8 +46,8 @@ class CertificateArgs {
     return CertificateArgs(
       certificateContent: (map['certificateContent'] as String).input(),
       iothubName: (map['iothubName'] as String).input(),
-      isVerified: map['isVerified'] == null ? null : (map['isVerified'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isVerified: map['isVerified'] == null ? null : (map['isVerified']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

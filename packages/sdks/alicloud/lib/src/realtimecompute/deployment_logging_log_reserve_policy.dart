@@ -25,8 +25,8 @@ class DeploymentLoggingLogReservePolicy {
 
   factory DeploymentLoggingLogReservePolicy.fromMap(Map<String, dynamic> map) {
     return DeploymentLoggingLogReservePolicy(
-      expirationDays: map['expirationDays'] == null ? null : (map['expirationDays'] as int).input(),
-      openHistory: map['openHistory'] == null ? null : (map['openHistory'] as bool).input(),
+      expirationDays: map['expirationDays'] == null ? null : (map['expirationDays']! as int).input(),
+      openHistory: map['openHistory'] == null ? null : (map['openHistory']! as bool).input(),
     );
   }
 }

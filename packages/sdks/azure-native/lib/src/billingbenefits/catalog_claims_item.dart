@@ -24,8 +24,8 @@ class CatalogClaimsItem {
 
   factory CatalogClaimsItem.fromMap(Map<String, dynamic> map) {
     return CatalogClaimsItem(
-      catalogClaimsItemType: map['catalogClaimsItemType'] == null ? null : (map['catalogClaimsItemType'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      catalogClaimsItemType: map['catalogClaimsItemType'] == null ? null : (map['catalogClaimsItemType']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

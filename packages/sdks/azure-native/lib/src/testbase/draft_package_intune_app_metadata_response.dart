@@ -27,8 +27,8 @@ class DraftPackageIntuneAppMetadataResponse {
 
   factory DraftPackageIntuneAppMetadataResponse.fromMap(Map<String, dynamic> map) {
     return DraftPackageIntuneAppMetadataResponse(
-      intuneApp: map['intuneApp'] == null ? null : (DraftPackageIntuneAppMetadataItemResponse.fromMap((map['intuneApp'] as Map).cast<String, dynamic>())).input(),
-      intuneAppDependencies: map['intuneAppDependencies'] == null ? null : (pulumi.Input.decodeList<DraftPackageIntuneAppMetadataItemResponse>(map['intuneAppDependencies'], (value) => DraftPackageIntuneAppMetadataItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      intuneApp: map['intuneApp'] == null ? null : (DraftPackageIntuneAppMetadataItemResponse.fromMap((map['intuneApp']! as Map).cast<String, dynamic>())).input(),
+      intuneAppDependencies: map['intuneAppDependencies'] == null ? null : (pulumi.Input.decodeList<DraftPackageIntuneAppMetadataItemResponse>(map['intuneAppDependencies']!, (value) => DraftPackageIntuneAppMetadataItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

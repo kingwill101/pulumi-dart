@@ -26,8 +26,8 @@ class Script {
 
   factory Script.fromMap(Map<String, dynamic> map) {
     return Script(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

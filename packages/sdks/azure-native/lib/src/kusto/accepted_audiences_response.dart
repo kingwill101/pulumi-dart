@@ -21,7 +21,7 @@ class AcceptedAudiencesResponse {
 
   factory AcceptedAudiencesResponse.fromMap(Map<String, dynamic> map) {
     return AcceptedAudiencesResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

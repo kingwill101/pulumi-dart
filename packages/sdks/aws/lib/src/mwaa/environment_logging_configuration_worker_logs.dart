@@ -29,9 +29,9 @@ class EnvironmentLoggingConfigurationWorkerLogs {
 
   factory EnvironmentLoggingConfigurationWorkerLogs.fromMap(Map<String, dynamic> map) {
     return EnvironmentLoggingConfigurationWorkerLogs(
-      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : (map['cloudWatchLogGroupArn'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logLevel: map['logLevel'] == null ? null : (map['logLevel'] as String).input(),
+      cloudWatchLogGroupArn: map['cloudWatchLogGroupArn'] == null ? null : ((map['cloudWatchLogGroupArn'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      logLevel: map['logLevel'] == null ? null : ((map['logLevel'] as String).input()).input(),
     );
   }
 }

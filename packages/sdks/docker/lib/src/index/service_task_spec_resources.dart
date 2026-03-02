@@ -27,8 +27,8 @@ class ServiceTaskSpecResources {
 
   factory ServiceTaskSpecResources.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecResources(
-      limits: map['limits'] == null ? null : (ServiceTaskSpecResourcesLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      reservation: map['reservation'] == null ? null : (ServiceTaskSpecResourcesReservation.fromMap((map['reservation'] as Map).cast<String, dynamic>())).input(),
+      limits: map['limits'] == null ? null : (ServiceTaskSpecResourcesLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      reservation: map['reservation'] == null ? null : (ServiceTaskSpecResourcesReservation.fromMap((map['reservation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

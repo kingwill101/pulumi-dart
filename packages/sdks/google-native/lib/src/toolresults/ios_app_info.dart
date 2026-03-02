@@ -21,7 +21,7 @@ class IosAppInfo {
 
   factory IosAppInfo.fromMap(Map<String, dynamic> map) {
     return IosAppInfo(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

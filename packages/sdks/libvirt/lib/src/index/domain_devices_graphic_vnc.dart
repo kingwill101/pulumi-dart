@@ -76,18 +76,18 @@ class DomainDevicesGraphicVnc {
 
   factory DomainDevicesGraphicVnc.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicVnc(
-      autoPort: map['autoPort'] == null ? null : (map['autoPort'] as bool).input(),
-      connected: map['connected'] == null ? null : (map['connected'] as String).input(),
-      keymap: map['keymap'] == null ? null : (map['keymap'] as String).input(),
-      listen: map['listen'] == null ? null : (map['listen'] as String).input(),
-      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<DomainDevicesGraphicVncListener>(map['listeners'], (value) => DomainDevicesGraphicVncListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      passwd: map['passwd'] == null ? null : (map['passwd'] as String).input(),
-      passwdValidTo: map['passwdValidTo'] == null ? null : (map['passwdValidTo'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      powerControl: map['powerControl'] == null ? null : (map['powerControl'] as String).input(),
-      sharePolicy: map['sharePolicy'] == null ? null : (map['sharePolicy'] as String).input(),
-      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
-      webSocket: map['webSocket'] == null ? null : (map['webSocket'] as double).input(),
+      autoPort: map['autoPort'] == null ? null : (map['autoPort']! as bool).input(),
+      connected: map['connected'] == null ? null : (map['connected']! as String).input(),
+      keymap: map['keymap'] == null ? null : (map['keymap']! as String).input(),
+      listen: map['listen'] == null ? null : (map['listen']! as String).input(),
+      listeners: map['listeners'] == null ? null : (pulumi.Input.decodeList<DomainDevicesGraphicVncListener>(map['listeners']!, (value) => DomainDevicesGraphicVncListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      passwd: map['passwd'] == null ? null : (map['passwd']! as String).input(),
+      passwdValidTo: map['passwdValidTo'] == null ? null : (map['passwdValidTo']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      powerControl: map['powerControl'] == null ? null : (map['powerControl']! as String).input(),
+      sharePolicy: map['sharePolicy'] == null ? null : (map['sharePolicy']! as String).input(),
+      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
+      webSocket: map['webSocket'] == null ? null : (map['webSocket']! as double).input(),
     );
   }
 }

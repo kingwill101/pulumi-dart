@@ -28,7 +28,7 @@ class GetCompositeTypeArgs {
   factory GetCompositeTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetCompositeTypeArgs(
       compositeType: (map['compositeType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

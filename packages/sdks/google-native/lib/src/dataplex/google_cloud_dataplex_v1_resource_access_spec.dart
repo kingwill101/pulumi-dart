@@ -31,9 +31,9 @@ class GoogleCloudDataplexV1ResourceAccessSpec {
 
   factory GoogleCloudDataplexV1ResourceAccessSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ResourceAccessSpec(
-      owners: map['owners'] == null ? null : ((map['owners'] as List).cast<String>()).input(),
-      readers: map['readers'] == null ? null : ((map['readers'] as List).cast<String>()).input(),
-      writers: map['writers'] == null ? null : ((map['writers'] as List).cast<String>()).input(),
+      owners: map['owners'] == null ? null : ((map['owners']! as List).cast<String>()).input(),
+      readers: map['readers'] == null ? null : ((map['readers']! as List).cast<String>()).input(),
+      writers: map['writers'] == null ? null : ((map['writers']! as List).cast<String>()).input(),
     );
   }
 }

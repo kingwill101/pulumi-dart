@@ -107,22 +107,22 @@ class UptimeCheckConfigArgs {
 
   factory UptimeCheckConfigArgs.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigArgs(
-      checkerType: map['checkerType'] == null ? null : (UptimeCheckConfigCheckerType.fromValue(map['checkerType'] as String)).input(),
-      contentMatchers: map['contentMatchers'] == null ? null : (pulumi.Input.decodeList<ContentMatcher>(map['contentMatchers'], (value) => ContentMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      httpCheck: map['httpCheck'] == null ? null : (HttpCheck.fromMap((map['httpCheck'] as Map).cast<String, dynamic>())).input(),
-      internalCheckers: map['internalCheckers'] == null ? null : (pulumi.Input.decodeList<InternalChecker>(map['internalCheckers'], (value) => InternalChecker.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isInternal: map['isInternal'] == null ? null : (map['isInternal'] as bool).input(),
-      monitoredResource: map['monitoredResource'] == null ? null : (MonitoredResourceMonitoringV3.fromMap((map['monitoredResource'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceGroup: map['resourceGroup'] == null ? null : (ResourceGroup.fromMap((map['resourceGroup'] as Map).cast<String, dynamic>())).input(),
-      selectedRegions: map['selectedRegions'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigSelectedRegionsItem>(map['selectedRegions'], (value) => UptimeCheckConfigSelectedRegionsItem.fromValue(value as String))).input(),
-      syntheticMonitor: map['syntheticMonitor'] == null ? null : (SyntheticMonitorTarget.fromMap((map['syntheticMonitor'] as Map).cast<String, dynamic>())).input(),
-      tcpCheck: map['tcpCheck'] == null ? null : (TcpCheck.fromMap((map['tcpCheck'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      userLabels: map['userLabels'] == null ? null : ((map['userLabels'] as Map).cast<String, String>()).input(),
+      checkerType: map['checkerType'] == null ? null : (UptimeCheckConfigCheckerType.fromValue(map['checkerType']! as String)).input(),
+      contentMatchers: map['contentMatchers'] == null ? null : (pulumi.Input.decodeList<ContentMatcher>(map['contentMatchers']!, (value) => ContentMatcher.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      httpCheck: map['httpCheck'] == null ? null : (HttpCheck.fromMap((map['httpCheck']! as Map).cast<String, dynamic>())).input(),
+      internalCheckers: map['internalCheckers'] == null ? null : (pulumi.Input.decodeList<InternalChecker>(map['internalCheckers']!, (value) => InternalChecker.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isInternal: map['isInternal'] == null ? null : (map['isInternal']! as bool).input(),
+      monitoredResource: map['monitoredResource'] == null ? null : (MonitoredResourceMonitoringV3.fromMap((map['monitoredResource']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceGroup: map['resourceGroup'] == null ? null : (ResourceGroup.fromMap((map['resourceGroup']! as Map).cast<String, dynamic>())).input(),
+      selectedRegions: map['selectedRegions'] == null ? null : (pulumi.Input.decodeList<UptimeCheckConfigSelectedRegionsItem>(map['selectedRegions']!, (value) => UptimeCheckConfigSelectedRegionsItem.fromValue(value as String))).input(),
+      syntheticMonitor: map['syntheticMonitor'] == null ? null : (SyntheticMonitorTarget.fromMap((map['syntheticMonitor']! as Map).cast<String, dynamic>())).input(),
+      tcpCheck: map['tcpCheck'] == null ? null : (TcpCheck.fromMap((map['tcpCheck']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      userLabels: map['userLabels'] == null ? null : ((map['userLabels']! as Map).cast<String, String>()).input(),
     );
   }
 }

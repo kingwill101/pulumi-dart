@@ -27,8 +27,8 @@ class EnvironmentConfigDataRetentionConfig {
 
   factory EnvironmentConfigDataRetentionConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigDataRetentionConfig(
-      airflowMetadataRetentionConfigs: map['airflowMetadataRetentionConfigs'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>(map['airflowMetadataRetentionConfigs'], (value) => EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      taskLogsRetentionConfigs: map['taskLogsRetentionConfigs'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>(map['taskLogsRetentionConfigs'], (value) => EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      airflowMetadataRetentionConfigs: map['airflowMetadataRetentionConfigs'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>(map['airflowMetadataRetentionConfigs']!, (value) => EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      taskLogsRetentionConfigs: map['taskLogsRetentionConfigs'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>(map['taskLogsRetentionConfigs']!, (value) => EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

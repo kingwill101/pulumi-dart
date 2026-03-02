@@ -89,20 +89,20 @@ class ComputeClusterState {
 
   factory ComputeClusterState.fromMap(Map<String, dynamic> map) {
     return ComputeClusterState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (ComputeClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : (map['machineLearningWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled'] as bool).input(),
-      scaleSettings: map['scaleSettings'] == null ? null : (ComputeClusterScaleSettings.fromMap((map['scaleSettings'] as Map).cast<String, dynamic>())).input(),
-      ssh: map['ssh'] == null ? null : (ComputeClusterSsh.fromMap((map['ssh'] as Map).cast<String, dynamic>())).input(),
-      sshPublicAccessEnabled: map['sshPublicAccessEnabled'] == null ? null : (map['sshPublicAccessEnabled'] as bool).input(),
-      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vmPriority: map['vmPriority'] == null ? null : (map['vmPriority'] as String).input(),
-      vmSize: map['vmSize'] == null ? null : (map['vmSize'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (ComputeClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      localAuthEnabled: map['localAuthEnabled'] == null ? null : (map['localAuthEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineLearningWorkspaceId: map['machineLearningWorkspaceId'] == null ? null : (map['machineLearningWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodePublicIpEnabled: map['nodePublicIpEnabled'] == null ? null : (map['nodePublicIpEnabled']! as bool).input(),
+      scaleSettings: map['scaleSettings'] == null ? null : (ComputeClusterScaleSettings.fromMap((map['scaleSettings']! as Map).cast<String, dynamic>())).input(),
+      ssh: map['ssh'] == null ? null : (ComputeClusterSsh.fromMap((map['ssh']! as Map).cast<String, dynamic>())).input(),
+      sshPublicAccessEnabled: map['sshPublicAccessEnabled'] == null ? null : (map['sshPublicAccessEnabled']! as bool).input(),
+      subnetResourceId: map['subnetResourceId'] == null ? null : (map['subnetResourceId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vmPriority: map['vmPriority'] == null ? null : (map['vmPriority']! as String).input(),
+      vmSize: map['vmSize'] == null ? null : (map['vmSize']! as String).input(),
     );
   }
 }

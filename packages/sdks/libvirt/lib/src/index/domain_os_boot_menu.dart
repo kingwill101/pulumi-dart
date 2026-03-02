@@ -25,8 +25,8 @@ class DomainOsBootMenu {
 
   factory DomainOsBootMenu.fromMap(Map<String, dynamic> map) {
     return DomainOsBootMenu(
-      enable: map['enable'] == null ? null : (map['enable'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

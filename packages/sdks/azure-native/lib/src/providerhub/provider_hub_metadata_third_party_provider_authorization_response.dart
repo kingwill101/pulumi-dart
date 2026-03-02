@@ -27,8 +27,8 @@ class ProviderHubMetadataThirdPartyProviderAuthorizationResponse {
 
   factory ProviderHubMetadataThirdPartyProviderAuthorizationResponse.fromMap(Map<String, dynamic> map) {
     return ProviderHubMetadataThirdPartyProviderAuthorizationResponse(
-      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<LightHouseAuthorizationResponse>(map['authorizations'], (value) => LightHouseAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedByTenantId: map['managedByTenantId'] == null ? null : (map['managedByTenantId'] as String).input(),
+      authorizations: map['authorizations'] == null ? null : (pulumi.Input.decodeList<LightHouseAuthorizationResponse>(map['authorizations']!, (value) => LightHouseAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedByTenantId: map['managedByTenantId'] == null ? null : (map['managedByTenantId']! as String).input(),
     );
   }
 }

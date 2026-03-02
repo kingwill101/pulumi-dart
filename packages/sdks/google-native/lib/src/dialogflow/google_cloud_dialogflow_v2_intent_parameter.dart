@@ -56,14 +56,14 @@ class GoogleCloudDialogflowV2IntentParameter {
 
   factory GoogleCloudDialogflowV2IntentParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentParameter(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      entityTypeDisplayName: map['entityTypeDisplayName'] == null ? null : (map['entityTypeDisplayName'] as String).input(),
-      isList: map['isList'] == null ? null : (map['isList'] as bool).input(),
-      mandatory: map['mandatory'] == null ? null : (map['mandatory'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      prompts: map['prompts'] == null ? null : ((map['prompts'] as List).cast<String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      entityTypeDisplayName: map['entityTypeDisplayName'] == null ? null : (map['entityTypeDisplayName']! as String).input(),
+      isList: map['isList'] == null ? null : (map['isList']! as bool).input(),
+      mandatory: map['mandatory'] == null ? null : (map['mandatory']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      prompts: map['prompts'] == null ? null : ((map['prompts']! as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

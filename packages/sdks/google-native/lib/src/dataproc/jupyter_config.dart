@@ -27,8 +27,8 @@ class JupyterConfig {
 
   factory JupyterConfig.fromMap(Map<String, dynamic> map) {
     return JupyterConfig(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kernel: map['kernel'] == null ? null : (JupyterConfigKernel.fromValue(map['kernel'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kernel: map['kernel'] == null ? null : (JupyterConfigKernel.fromValue(map['kernel']! as String)).input(),
     );
   }
 }

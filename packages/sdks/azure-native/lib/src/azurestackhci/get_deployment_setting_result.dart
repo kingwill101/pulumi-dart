@@ -79,7 +79,7 @@ class GetDeploymentSettingResult {
       deploymentMode: map['deploymentMode'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      operationType: map['operationType'] == null ? null : map['operationType'] as String,
+      operationType: map['operationType'] == null ? null : map['operationType']! as String,
       provisioningState: map['provisioningState'] as String,
       reportedProperties: EceReportedPropertiesResponse.fromMap((map['reportedProperties'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

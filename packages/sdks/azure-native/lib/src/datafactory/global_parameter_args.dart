@@ -41,7 +41,7 @@ class GlobalParameterArgs {
   factory GlobalParameterArgs.fromMap(Map<String, dynamic> map) {
     return GlobalParameterArgs(
       factoryName: (map['factoryName'] as String).input(),
-      globalParameterName: map['globalParameterName'] == null ? null : (map['globalParameterName'] as String).input(),
+      globalParameterName: map['globalParameterName'] == null ? null : (map['globalParameterName']! as String).input(),
       properties: (pulumi.Input.decodeMapValues<GlobalParameterSpecification>(map['properties'], (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

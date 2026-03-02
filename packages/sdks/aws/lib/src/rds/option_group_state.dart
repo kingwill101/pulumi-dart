@@ -72,17 +72,17 @@ class OptionGroupState {
 
   factory OptionGroupState.fromMap(Map<String, dynamic> map) {
     return OptionGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      engineName: map['engineName'] == null ? null : (map['engineName'] as String).input(),
-      majorEngineVersion: map['majorEngineVersion'] == null ? null : (map['majorEngineVersion'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      optionGroupDescription: map['optionGroupDescription'] == null ? null : (map['optionGroupDescription'] as String).input(),
-      options: map['options'] == null ? null : (pulumi.Input.decodeList<OptionGroupOption>(map['options'], (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      engineName: map['engineName'] == null ? null : ((map['engineName'] as String).input()).input(),
+      majorEngineVersion: map['majorEngineVersion'] == null ? null : ((map['majorEngineVersion'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      optionGroupDescription: map['optionGroupDescription'] == null ? null : ((map['optionGroupDescription'] as String).input()).input(),
+      options: map['options'] == null ? null : ((pulumi.Input.decodeList<OptionGroupOption>(map['options']!, (value) => OptionGroupOption.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

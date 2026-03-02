@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1ManualBatchTuningParameters {
 
   factory GoogleCloudAiplatformV1ManualBatchTuningParameters.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ManualBatchTuningParameters(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
     );
   }
 }

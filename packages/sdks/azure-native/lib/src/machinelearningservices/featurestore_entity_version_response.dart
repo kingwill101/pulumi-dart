@@ -57,14 +57,14 @@ class FeaturestoreEntityVersionResponse {
 
   factory FeaturestoreEntityVersionResponse.fromMap(Map<String, dynamic> map) {
     return FeaturestoreEntityVersionResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      indexColumns: map['indexColumns'] == null ? null : (pulumi.Input.decodeList<IndexColumnResponse>(map['indexColumns'], (value) => IndexColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous'] as bool).input(),
-      isArchived: map['isArchived'] == null ? null : (map['isArchived'] as bool).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      indexColumns: map['indexColumns'] == null ? null : (pulumi.Input.decodeList<IndexColumnResponse>(map['indexColumns']!, (value) => IndexColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isAnonymous: map['isAnonymous'] == null ? null : (map['isAnonymous']! as bool).input(),
+      isArchived: map['isArchived'] == null ? null : (map['isArchived']! as bool).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

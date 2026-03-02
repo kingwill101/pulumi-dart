@@ -35,8 +35,8 @@ class PublicIpAddressPoolCidrBlockArgs {
 
   factory PublicIpAddressPoolCidrBlockArgs.fromMap(Map<String, dynamic> map) {
     return PublicIpAddressPoolCidrBlockArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
       publicIpAddressPoolId: (map['publicIpAddressPoolId'] as String).input(),
     );
   }

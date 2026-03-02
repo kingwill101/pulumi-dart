@@ -40,10 +40,10 @@ class OSPolicyResourceRepositoryResourceOsconfigV1alpha {
 
   factory OSPolicyResourceRepositoryResourceOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResourceOsconfigV1alpha(
-      apt: map['apt'] == null ? null : (OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha.fromMap((map['apt'] as Map).cast<String, dynamic>())).input(),
-      goo: map['goo'] == null ? null : (OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha.fromMap((map['goo'] as Map).cast<String, dynamic>())).input(),
-      yum: map['yum'] == null ? null : (OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha.fromMap((map['yum'] as Map).cast<String, dynamic>())).input(),
-      zypper: map['zypper'] == null ? null : (OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha.fromMap((map['zypper'] as Map).cast<String, dynamic>())).input(),
+      apt: map['apt'] == null ? null : (OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha.fromMap((map['apt']! as Map).cast<String, dynamic>())).input(),
+      goo: map['goo'] == null ? null : (OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha.fromMap((map['goo']! as Map).cast<String, dynamic>())).input(),
+      yum: map['yum'] == null ? null : (OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha.fromMap((map['yum']! as Map).cast<String, dynamic>())).input(),
+      zypper: map['zypper'] == null ? null : (OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha.fromMap((map['zypper']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

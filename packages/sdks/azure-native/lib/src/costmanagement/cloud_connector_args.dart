@@ -64,15 +64,15 @@ class CloudConnectorArgs {
 
   factory CloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CloudConnectorArgs(
-      billingModel: map['billingModel'] == null ? null : (map['billingModel'] as String).input(),
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey'] as String).input(),
-      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret'] as String).input(),
-      defaultManagementGroupId: map['defaultManagementGroupId'] == null ? null : (map['defaultManagementGroupId'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      reportId: map['reportId'] == null ? null : (map['reportId'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      billingModel: map['billingModel'] == null ? null : (map['billingModel']! as String).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      credentialsKey: map['credentialsKey'] == null ? null : (map['credentialsKey']! as String).input(),
+      credentialsSecret: map['credentialsSecret'] == null ? null : (map['credentialsSecret']! as String).input(),
+      defaultManagementGroupId: map['defaultManagementGroupId'] == null ? null : (map['defaultManagementGroupId']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      reportId: map['reportId'] == null ? null : (map['reportId']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

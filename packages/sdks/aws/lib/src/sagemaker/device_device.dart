@@ -30,9 +30,9 @@ class DeviceDevice {
 
   factory DeviceDevice.fromMap(Map<String, dynamic> map) {
     return DeviceDevice(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       deviceName: (map['deviceName'] as String).input(),
-      iotThingName: map['iotThingName'] == null ? null : (map['iotThingName'] as String).input(),
+      iotThingName: map['iotThingName'] == null ? null : ((map['iotThingName'] as String).input()).input(),
     );
   }
 }

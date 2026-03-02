@@ -26,8 +26,8 @@ class CsvResponse {
 
   factory CsvResponse.fromMap(Map<String, dynamic> map) {
     return CsvResponse(
-      delimiter: map['delimiter'] == null ? null : (map['delimiter'] as String).input(),
-      headerList: map['headerList'] == null ? null : ((map['headerList'] as List).cast<String>()).input(),
+      delimiter: map['delimiter'] == null ? null : (map['delimiter']! as String).input(),
+      headerList: map['headerList'] == null ? null : ((map['headerList']! as List).cast<String>()).input(),
     );
   }
 }

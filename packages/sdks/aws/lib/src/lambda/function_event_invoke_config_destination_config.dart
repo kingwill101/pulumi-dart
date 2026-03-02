@@ -27,8 +27,8 @@ class FunctionEventInvokeConfigDestinationConfig {
 
   factory FunctionEventInvokeConfigDestinationConfig.fromMap(Map<String, dynamic> map) {
     return FunctionEventInvokeConfigDestinationConfig(
-      onFailure: map['onFailure'] == null ? null : (FunctionEventInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure'] as Map).cast<String, dynamic>())).input(),
-      onSuccess: map['onSuccess'] == null ? null : (FunctionEventInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess'] as Map).cast<String, dynamic>())).input(),
+      onFailure: map['onFailure'] == null ? null : ((FunctionEventInvokeConfigDestinationConfigOnFailure.fromMap((map['onFailure']! as Map).cast<String, dynamic>())).input()).input(),
+      onSuccess: map['onSuccess'] == null ? null : ((FunctionEventInvokeConfigDestinationConfigOnSuccess.fromMap((map['onSuccess']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

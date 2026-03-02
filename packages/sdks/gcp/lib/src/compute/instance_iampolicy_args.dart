@@ -45,8 +45,8 @@ class InstanceIAMPolicyArgs {
     return InstanceIAMPolicyArgs(
       instanceName: (map['instanceName'] as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

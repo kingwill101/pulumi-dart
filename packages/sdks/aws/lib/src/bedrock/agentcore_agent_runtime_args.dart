@@ -92,19 +92,19 @@ class AgentcoreAgentRuntimeArgs {
 
   factory AgentcoreAgentRuntimeArgs.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeArgs(
-      agentRuntimeArtifact: (AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((map['agentRuntimeArtifact'] as Map).cast<String, dynamic>())).input(),
+      agentRuntimeArtifact: (AgentcoreAgentRuntimeAgentRuntimeArtifact.fromMap((map['agentRuntimeArtifact']! as Map).cast<String, dynamic>())).input(),
       agentRuntimeName: (map['agentRuntimeName'] as String).input(),
-      authorizerConfiguration: map['authorizerConfiguration'] == null ? null : (AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((map['authorizerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      lifecycleConfigurations: map['lifecycleConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(map['lifecycleConfigurations'], (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkConfiguration: (AgentcoreAgentRuntimeNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      protocolConfiguration: map['protocolConfiguration'] == null ? null : (AgentcoreAgentRuntimeProtocolConfiguration.fromMap((map['protocolConfiguration'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      requestHeaderConfiguration: map['requestHeaderConfiguration'] == null ? null : (AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((map['requestHeaderConfiguration'] as Map).cast<String, dynamic>())).input(),
+      authorizerConfiguration: map['authorizerConfiguration'] == null ? null : ((AgentcoreAgentRuntimeAuthorizerConfiguration.fromMap((map['authorizerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (((map['environmentVariables'] as Map).cast<String, String>()).input()).input(),
+      lifecycleConfigurations: map['lifecycleConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(map['lifecycleConfigurations']!, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      networkConfiguration: (AgentcoreAgentRuntimeNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      protocolConfiguration: map['protocolConfiguration'] == null ? null : ((AgentcoreAgentRuntimeProtocolConfiguration.fromMap((map['protocolConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      requestHeaderConfiguration: map['requestHeaderConfiguration'] == null ? null : ((AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((map['requestHeaderConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentcoreAgentRuntimeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentcoreAgentRuntimeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry {
 
   factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap(Map<String, dynamic> map) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry(
-      key: map['key'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKey.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

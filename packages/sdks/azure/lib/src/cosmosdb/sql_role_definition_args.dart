@@ -59,11 +59,11 @@ class SqlRoleDefinitionArgs {
     return SqlRoleDefinitionArgs(
       accountName: (map['accountName'] as String).input(),
       assignableScopes: ((map['assignableScopes'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       permissions: (pulumi.Input.decodeList<SqlRoleDefinitionPermission>(map['permissions'], (value) => SqlRoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

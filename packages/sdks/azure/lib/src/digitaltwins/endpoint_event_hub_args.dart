@@ -44,11 +44,11 @@ class EndpointEventHubArgs {
 
   factory EndpointEventHubArgs.fromMap(Map<String, dynamic> map) {
     return EndpointEventHubArgs(
-      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret'] as String).input(),
+      deadLetterStorageSecret: map['deadLetterStorageSecret'] == null ? null : (map['deadLetterStorageSecret']! as String).input(),
       digitalTwinsId: (map['digitalTwinsId'] as String).input(),
       eventhubPrimaryConnectionString: (map['eventhubPrimaryConnectionString'] as String).input(),
       eventhubSecondaryConnectionString: (map['eventhubSecondaryConnectionString'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

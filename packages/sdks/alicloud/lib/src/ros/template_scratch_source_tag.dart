@@ -25,7 +25,7 @@ class TemplateScratchSourceTag {
   factory TemplateScratchSourceTag.fromMap(Map<String, dynamic> map) {
     return TemplateScratchSourceTag(
       resourceTags: ((map['resourceTags'] as Map).cast<String, String>()).input(),
-      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters'] as List).cast<String>()).input(),
+      resourceTypeFilters: map['resourceTypeFilters'] == null ? null : ((map['resourceTypeFilters']! as List).cast<String>()).input(),
     );
   }
 }

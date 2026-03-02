@@ -49,11 +49,11 @@ class Ipv6GatewayArgs {
 
   factory Ipv6GatewayArgs.fromMap(Map<String, dynamic> map) {
     return Ipv6GatewayArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : (map['ipv6GatewayName'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      spec: map['spec'] == null ? null : (map['spec'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipv6GatewayName: map['ipv6GatewayName'] == null ? null : (map['ipv6GatewayName']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      spec: map['spec'] == null ? null : (map['spec']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

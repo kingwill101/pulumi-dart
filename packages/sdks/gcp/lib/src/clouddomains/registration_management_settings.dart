@@ -40,9 +40,9 @@ class RegistrationManagementSettings {
 
   factory RegistrationManagementSettings.fromMap(Map<String, dynamic> map) {
     return RegistrationManagementSettings(
-      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (map['preferredRenewalMethod'] as String).input(),
-      renewalMethod: map['renewalMethod'] == null ? null : (map['renewalMethod'] as String).input(),
-      transferLockState: map['transferLockState'] == null ? null : (map['transferLockState'] as String).input(),
+      preferredRenewalMethod: map['preferredRenewalMethod'] == null ? null : (map['preferredRenewalMethod']! as String).input(),
+      renewalMethod: map['renewalMethod'] == null ? null : (map['renewalMethod']! as String).input(),
+      transferLockState: map['transferLockState'] == null ? null : (map['transferLockState']! as String).input(),
     );
   }
 }

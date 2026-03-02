@@ -21,7 +21,7 @@ class ApigatewayBackendConfig {
 
   factory ApigatewayBackendConfig.fromMap(Map<String, dynamic> map) {
     return ApigatewayBackendConfig(
-      googleServiceAccount: map['googleServiceAccount'] == null ? null : (map['googleServiceAccount'] as String).input(),
+      googleServiceAccount: map['googleServiceAccount'] == null ? null : (map['googleServiceAccount']! as String).input(),
     );
   }
 }

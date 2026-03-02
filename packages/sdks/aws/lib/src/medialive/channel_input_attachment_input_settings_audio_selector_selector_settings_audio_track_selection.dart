@@ -27,8 +27,8 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrack
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection(
-      dolbyEDecode: map['dolbyEDecode'] == null ? null : (ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode.fromMap((map['dolbyEDecode'] as Map).cast<String, dynamic>())).input(),
-      tracks: (pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack>(map['tracks'], (value) => ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dolbyEDecode: map['dolbyEDecode'] == null ? null : ((ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode.fromMap((map['dolbyEDecode']! as Map).cast<String, dynamic>())).input()).input(),
+      tracks: (pulumi.Input.decodeList<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack>(map['tracks']!, (value) => ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

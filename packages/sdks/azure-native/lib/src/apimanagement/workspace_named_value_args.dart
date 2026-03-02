@@ -66,13 +66,13 @@ class WorkspaceNamedValueArgs {
   factory WorkspaceNamedValueArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceNamedValueArgs(
       displayName: (map['displayName'] as String).input(),
-      keyVault: map['keyVault'] == null ? null : (KeyVaultContractCreateProperties.fromMap((map['keyVault'] as Map).cast<String, dynamic>())).input(),
-      namedValueId: map['namedValueId'] == null ? null : (map['namedValueId'] as String).input(),
+      keyVault: map['keyVault'] == null ? null : (KeyVaultContractCreateProperties.fromMap((map['keyVault']! as Map).cast<String, dynamic>())).input(),
+      namedValueId: map['namedValueId'] == null ? null : (map['namedValueId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as bool).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as bool).input(),
       serviceName: (map['serviceName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

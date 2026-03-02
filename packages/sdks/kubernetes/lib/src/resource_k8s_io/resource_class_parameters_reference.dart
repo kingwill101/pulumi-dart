@@ -36,10 +36,10 @@ class ResourceClassParametersReference {
 
   factory ResourceClassParametersReference.fromMap(Map<String, dynamic> map) {
     return ResourceClassParametersReference(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
       kind: (map['kind'] as String).input(),
       name: (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

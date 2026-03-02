@@ -35,10 +35,10 @@ class ServerlessKubernetesRrsaMetadata {
 
   factory ServerlessKubernetesRrsaMetadata.fromMap(Map<String, dynamic> map) {
     return ServerlessKubernetesRrsaMetadata(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      ramOidcProviderArn: map['ramOidcProviderArn'] == null ? null : (map['ramOidcProviderArn'] as String).input(),
-      ramOidcProviderName: map['ramOidcProviderName'] == null ? null : (map['ramOidcProviderName'] as String).input(),
-      rrsaOidcIssuerUrl: map['rrsaOidcIssuerUrl'] == null ? null : (map['rrsaOidcIssuerUrl'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      ramOidcProviderArn: map['ramOidcProviderArn'] == null ? null : (map['ramOidcProviderArn']! as String).input(),
+      ramOidcProviderName: map['ramOidcProviderName'] == null ? null : (map['ramOidcProviderName']! as String).input(),
+      rrsaOidcIssuerUrl: map['rrsaOidcIssuerUrl'] == null ? null : (map['rrsaOidcIssuerUrl']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class BucketLifecycleRuleItem {
 
   factory BucketLifecycleRuleItem.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleItem(
-      action: map['action'] == null ? null : (BucketLifecycleRuleItemAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      condition: map['condition'] == null ? null : (BucketLifecycleRuleItemCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (BucketLifecycleRuleItemAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (BucketLifecycleRuleItemCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class BootDiskDefaults {
 
   factory BootDiskDefaults.fromMap(Map<String, dynamic> map) {
     return BootDiskDefaults(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskType: map['diskType'] == null ? null : (BootDiskDefaultsDiskType.fromValue(map['diskType'] as String)).input(),
-      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (DiskImageDefaults.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskType: map['diskType'] == null ? null : (BootDiskDefaultsDiskType.fromValue(map['diskType']! as String)).input(),
+      encryption: map['encryption'] == null ? null : (Encryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (DiskImageDefaults.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

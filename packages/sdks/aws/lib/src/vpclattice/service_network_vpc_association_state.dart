@@ -73,17 +73,17 @@ class ServiceNetworkVpcAssociationState {
 
   factory ServiceNetworkVpcAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkVpcAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      dnsOptions: map['dnsOptions'] == null ? null : (ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions'] as Map).cast<String, dynamic>())).input(),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : (map['serviceNetworkIdentifier'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      vpcIdentifier: map['vpcIdentifier'] == null ? null : (map['vpcIdentifier'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdBy: map['createdBy'] == null ? null : ((map['createdBy'] as String).input()).input(),
+      dnsOptions: map['dnsOptions'] == null ? null : ((ServiceNetworkVpcAssociationDnsOptions.fromMap((map['dnsOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : ((map['privateDnsEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : ((map['serviceNetworkIdentifier'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      vpcIdentifier: map['vpcIdentifier'] == null ? null : ((map['vpcIdentifier'] as String).input()).input(),
     );
   }
 }

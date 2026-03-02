@@ -31,7 +31,7 @@ class LoadBalancerZoneMapping {
 
   factory LoadBalancerZoneMapping.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneMapping(
-      loadBalancerAddresses: map['loadBalancerAddresses'] == null ? null : (pulumi.Input.decodeList<LoadBalancerZoneMappingLoadBalancerAddress>(map['loadBalancerAddresses'], (value) => LoadBalancerZoneMappingLoadBalancerAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loadBalancerAddresses: map['loadBalancerAddresses'] == null ? null : (pulumi.Input.decodeList<LoadBalancerZoneMappingLoadBalancerAddress>(map['loadBalancerAddresses']!, (value) => LoadBalancerZoneMappingLoadBalancerAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),
     );

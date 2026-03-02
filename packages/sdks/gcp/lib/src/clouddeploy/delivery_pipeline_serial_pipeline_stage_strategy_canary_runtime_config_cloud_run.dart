@@ -35,10 +35,10 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
 
   factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.fromMap(Map<String, dynamic> map) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun(
-      automaticTrafficControl: map['automaticTrafficControl'] == null ? null : (map['automaticTrafficControl'] as bool).input(),
-      canaryRevisionTags: map['canaryRevisionTags'] == null ? null : ((map['canaryRevisionTags'] as List).cast<String>()).input(),
-      priorRevisionTags: map['priorRevisionTags'] == null ? null : ((map['priorRevisionTags'] as List).cast<String>()).input(),
-      stableRevisionTags: map['stableRevisionTags'] == null ? null : ((map['stableRevisionTags'] as List).cast<String>()).input(),
+      automaticTrafficControl: map['automaticTrafficControl'] == null ? null : (map['automaticTrafficControl']! as bool).input(),
+      canaryRevisionTags: map['canaryRevisionTags'] == null ? null : ((map['canaryRevisionTags']! as List).cast<String>()).input(),
+      priorRevisionTags: map['priorRevisionTags'] == null ? null : ((map['priorRevisionTags']! as List).cast<String>()).input(),
+      stableRevisionTags: map['stableRevisionTags'] == null ? null : ((map['stableRevisionTags']! as List).cast<String>()).input(),
     );
   }
 }

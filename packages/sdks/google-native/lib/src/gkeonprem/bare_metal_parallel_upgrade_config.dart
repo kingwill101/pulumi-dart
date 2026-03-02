@@ -26,8 +26,8 @@ class BareMetalParallelUpgradeConfig {
 
   factory BareMetalParallelUpgradeConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalParallelUpgradeConfig(
-      concurrentNodes: map['concurrentNodes'] == null ? null : (map['concurrentNodes'] as int).input(),
-      minimumAvailableNodes: map['minimumAvailableNodes'] == null ? null : (map['minimumAvailableNodes'] as int).input(),
+      concurrentNodes: map['concurrentNodes'] == null ? null : (map['concurrentNodes']! as int).input(),
+      minimumAvailableNodes: map['minimumAvailableNodes'] == null ? null : (map['minimumAvailableNodes']! as int).input(),
     );
   }
 }

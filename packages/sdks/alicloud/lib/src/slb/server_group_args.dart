@@ -46,11 +46,11 @@ class ServerGroupArgs {
 
   factory ServerGroupArgs.fromMap(Map<String, dynamic> map) {
     return ServerGroupArgs(
-      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation'] as bool).input(),
+      deleteProtectionValidation: map['deleteProtectionValidation'] == null ? null : (map['deleteProtectionValidation']! as bool).input(),
       loadBalancerId: (map['loadBalancerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      servers: map['servers'] == null ? null : (pulumi.Input.decodeList<ServerGroupServer>(map['servers']!, (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

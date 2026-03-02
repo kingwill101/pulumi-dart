@@ -20,7 +20,7 @@ class GetVirtualServiceSpec {
 
   factory GetVirtualServiceSpec.fromMap(Map<String, dynamic> map) {
     return GetVirtualServiceSpec(
-      providers: (pulumi.Input.decodeList<GetVirtualServiceSpecProvider>(map['providers'], (value) => GetVirtualServiceSpecProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      providers: (pulumi.Input.decodeList<GetVirtualServiceSpecProvider>(map['providers']!, (value) => GetVirtualServiceSpecProvider.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

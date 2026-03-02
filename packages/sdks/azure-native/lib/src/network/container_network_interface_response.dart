@@ -59,12 +59,12 @@ class ContainerNetworkInterfaceResponse {
 
   factory ContainerNetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return ContainerNetworkInterfaceResponse(
-      container: map['container'] == null ? null : (ContainerResponse.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (ContainerResponse.fromMap((map['container']! as Map).cast<String, dynamic>())).input(),
       containerNetworkInterfaceConfiguration: (ContainerNetworkInterfaceConfigurationResponse.fromMap((map['containerNetworkInterfaceConfiguration'] as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       ipConfigurations: (pulumi.Input.decodeList<ContainerNetworkInterfaceIpConfigurationResponse>(map['ipConfigurations'], (value) => ContainerNetworkInterfaceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

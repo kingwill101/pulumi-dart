@@ -27,8 +27,8 @@ class KeyVersionSpec {
 
   factory KeyVersionSpec.fromMap(Map<String, dynamic> map) {
     return KeyVersionSpec(
-      algorithm: map['algorithm'] == null ? null : (KeyVersionSpecAlgorithm.fromValue(map['algorithm'] as String)).input(),
-      cloudKmsKeyVersion: map['cloudKmsKeyVersion'] == null ? null : (map['cloudKmsKeyVersion'] as String).input(),
+      algorithm: map['algorithm'] == null ? null : (KeyVersionSpecAlgorithm.fromValue(map['algorithm']! as String)).input(),
+      cloudKmsKeyVersion: map['cloudKmsKeyVersion'] == null ? null : (map['cloudKmsKeyVersion']! as String).input(),
     );
   }
 }

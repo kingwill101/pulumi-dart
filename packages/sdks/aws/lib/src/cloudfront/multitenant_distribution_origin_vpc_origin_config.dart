@@ -30,8 +30,8 @@ class MultitenantDistributionOriginVpcOriginConfig {
 
   factory MultitenantDistributionOriginVpcOriginConfig.fromMap(Map<String, dynamic> map) {
     return MultitenantDistributionOriginVpcOriginConfig(
-      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : (map['originKeepaliveTimeout'] as int).input(),
-      originReadTimeout: map['originReadTimeout'] == null ? null : (map['originReadTimeout'] as int).input(),
+      originKeepaliveTimeout: map['originKeepaliveTimeout'] == null ? null : ((map['originKeepaliveTimeout'] as int).input()).input(),
+      originReadTimeout: map['originReadTimeout'] == null ? null : ((map['originReadTimeout'] as int).input()).input(),
       vpcOriginId: (map['vpcOriginId'] as String).input(),
     );
   }

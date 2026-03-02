@@ -23,7 +23,7 @@ class InstanceNetworkPscConfig {
 
   factory InstanceNetworkPscConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNetworkPscConfig(
-      endpointProject: map['endpointProject'] == null ? null : (map['endpointProject'] as String).input(),
+      endpointProject: map['endpointProject'] == null ? null : (map['endpointProject']! as String).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class GetZoneRrsetsResult {
     return GetZoneRrsetsResult(
       id: map['id'] as String,
       rrsets: pulumi.Input.decodeList<GetZoneRrsetsRrset>(map['rrsets'], (value) => GetZoneRrsetsRrset.fromMap((value as Map).cast<String, dynamic>())),
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
       zone: map['zone'] as String,
     );
   }

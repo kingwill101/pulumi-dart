@@ -44,12 +44,12 @@ class SlsaProvenanceZeroTwo {
 
   factory SlsaProvenanceZeroTwo.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceZeroTwo(
-      buildConfig: map['buildConfig'] == null ? null : ((map['buildConfig'] as Map).cast<String, String>()).input(),
-      buildType: map['buildType'] == null ? null : (map['buildType'] as String).input(),
-      builder: map['builder'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
-      invocation: map['invocation'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation'] as Map).cast<String, dynamic>())).input(),
-      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials'], (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      buildConfig: map['buildConfig'] == null ? null : ((map['buildConfig']! as Map).cast<String, String>()).input(),
+      buildType: map['buildType'] == null ? null : (map['buildType']! as String).input(),
+      builder: map['builder'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
+      invocation: map['invocation'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation.fromMap((map['invocation']! as Map).cast<String, dynamic>())).input(),
+      materials: map['materials'] == null ? null : (pulumi.Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial>(map['materials']!, (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

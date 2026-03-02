@@ -27,8 +27,8 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      dashboardJson: map['dashboardJson'] == null ? null : (map['dashboardJson'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      dashboardJson: map['dashboardJson'] == null ? null : (map['dashboardJson']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

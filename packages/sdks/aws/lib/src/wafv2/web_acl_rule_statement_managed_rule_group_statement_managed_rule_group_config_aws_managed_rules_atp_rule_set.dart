@@ -37,10 +37,10 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
 
   factory WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet(
-      enableRegexInPath: map['enableRegexInPath'] == null ? null : (map['enableRegexInPath'] as bool).input(),
+      enableRegexInPath: map['enableRegexInPath'] == null ? null : ((map['enableRegexInPath'] as bool).input()).input(),
       loginPath: (map['loginPath'] as String).input(),
-      requestInspection: map['requestInspection'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection.fromMap((map['requestInspection'] as Map).cast<String, dynamic>())).input(),
-      responseInspection: map['responseInspection'] == null ? null : (WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection.fromMap((map['responseInspection'] as Map).cast<String, dynamic>())).input(),
+      requestInspection: map['requestInspection'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetRequestInspection.fromMap((map['requestInspection']! as Map).cast<String, dynamic>())).input()).input(),
+      responseInspection: map['responseInspection'] == null ? null : ((WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspection.fromMap((map['responseInspection']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

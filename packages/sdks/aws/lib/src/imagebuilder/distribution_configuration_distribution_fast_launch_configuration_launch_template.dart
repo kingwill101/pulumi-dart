@@ -30,9 +30,9 @@ class DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate
 
   factory DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate(
-      launchTemplateId: map['launchTemplateId'] == null ? null : (map['launchTemplateId'] as String).input(),
-      launchTemplateName: map['launchTemplateName'] == null ? null : (map['launchTemplateName'] as String).input(),
-      launchTemplateVersion: map['launchTemplateVersion'] == null ? null : (map['launchTemplateVersion'] as String).input(),
+      launchTemplateId: map['launchTemplateId'] == null ? null : ((map['launchTemplateId'] as String).input()).input(),
+      launchTemplateName: map['launchTemplateName'] == null ? null : ((map['launchTemplateName'] as String).input()).input(),
+      launchTemplateVersion: map['launchTemplateVersion'] == null ? null : ((map['launchTemplateVersion'] as String).input()).input(),
     );
   }
 }

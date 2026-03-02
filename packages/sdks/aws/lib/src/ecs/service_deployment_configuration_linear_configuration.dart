@@ -25,8 +25,8 @@ class ServiceDeploymentConfigurationLinearConfiguration {
 
   factory ServiceDeploymentConfigurationLinearConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceDeploymentConfigurationLinearConfiguration(
-      stepBakeTimeInMinutes: map['stepBakeTimeInMinutes'] == null ? null : (map['stepBakeTimeInMinutes'] as String).input(),
-      stepPercent: map['stepPercent'] == null ? null : (map['stepPercent'] as double).input(),
+      stepBakeTimeInMinutes: map['stepBakeTimeInMinutes'] == null ? null : ((map['stepBakeTimeInMinutes'] as String).input()).input(),
+      stepPercent: map['stepPercent'] == null ? null : ((map['stepPercent'] as double).input()).input(),
     );
   }
 }

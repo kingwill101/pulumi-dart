@@ -19,7 +19,7 @@ class LaunchTemplateImageOptions {
 
   factory LaunchTemplateImageOptions.fromMap(Map<String, dynamic> map) {
     return LaunchTemplateImageOptions(
-      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot'] as bool).input(),
+      loginAsNonRoot: map['loginAsNonRoot'] == null ? null : (map['loginAsNonRoot']! as bool).input(),
     );
   }
 }

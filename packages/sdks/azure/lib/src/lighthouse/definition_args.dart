@@ -63,12 +63,12 @@ class DefinitionArgs {
   factory DefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DefinitionArgs(
       authorizations: (pulumi.Input.decodeList<DefinitionAuthorization>(map['authorizations'], (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionEligibleAuthorization>(map['eligibleAuthorizations'], (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lighthouseDefinitionId: map['lighthouseDefinitionId'] == null ? null : (map['lighthouseDefinitionId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      eligibleAuthorizations: map['eligibleAuthorizations'] == null ? null : (pulumi.Input.decodeList<DefinitionEligibleAuthorization>(map['eligibleAuthorizations']!, (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lighthouseDefinitionId: map['lighthouseDefinitionId'] == null ? null : (map['lighthouseDefinitionId']! as String).input(),
       managingTenantId: (map['managingTenantId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plan: map['plan'] == null ? null : (DefinitionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      plan: map['plan'] == null ? null : (DefinitionPlan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
       scope: (map['scope'] as String).input(),
     );
   }

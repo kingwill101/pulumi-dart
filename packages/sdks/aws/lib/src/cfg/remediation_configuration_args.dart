@@ -78,17 +78,17 @@ class RemediationConfigurationArgs {
 
   factory RemediationConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return RemediationConfigurationArgs(
-      automatic: map['automatic'] == null ? null : (map['automatic'] as bool).input(),
+      automatic: map['automatic'] == null ? null : ((map['automatic'] as bool).input()).input(),
       configRuleName: (map['configRuleName'] as String).input(),
-      executionControls: map['executionControls'] == null ? null : (RemediationConfigurationExecutionControls.fromMap((map['executionControls'] as Map).cast<String, dynamic>())).input(),
-      maximumAutomaticAttempts: map['maximumAutomaticAttempts'] == null ? null : (map['maximumAutomaticAttempts'] as int).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<RemediationConfigurationParameter>(map['parameters'], (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      retryAttemptSeconds: map['retryAttemptSeconds'] == null ? null : (map['retryAttemptSeconds'] as int).input(),
+      executionControls: map['executionControls'] == null ? null : ((RemediationConfigurationExecutionControls.fromMap((map['executionControls']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumAutomaticAttempts: map['maximumAutomaticAttempts'] == null ? null : ((map['maximumAutomaticAttempts'] as int).input()).input(),
+      parameters: map['parameters'] == null ? null : ((pulumi.Input.decodeList<RemediationConfigurationParameter>(map['parameters']!, (value) => RemediationConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      retryAttemptSeconds: map['retryAttemptSeconds'] == null ? null : ((map['retryAttemptSeconds'] as int).input()).input(),
       targetId: (map['targetId'] as String).input(),
       targetType: (map['targetType'] as String).input(),
-      targetVersion: map['targetVersion'] == null ? null : (map['targetVersion'] as String).input(),
+      targetVersion: map['targetVersion'] == null ? null : ((map['targetVersion'] as String).input()).input(),
     );
   }
 }

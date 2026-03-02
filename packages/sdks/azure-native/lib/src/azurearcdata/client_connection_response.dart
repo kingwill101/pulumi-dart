@@ -21,7 +21,7 @@ class ClientConnectionResponse {
 
   factory ClientConnectionResponse.fromMap(Map<String, dynamic> map) {
     return ClientConnectionResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

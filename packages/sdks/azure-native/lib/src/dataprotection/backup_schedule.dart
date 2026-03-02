@@ -60,7 +60,7 @@ class BackupSchedule {
   factory BackupSchedule.fromMap(Map<String, dynamic> map) {
     return BackupSchedule(
       repeatingTimeIntervals: ((map['repeatingTimeIntervals'] as List).cast<String>()).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

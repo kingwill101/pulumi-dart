@@ -21,7 +21,7 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation {
 
   factory GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation.fromMap(Map<String, dynamic> map) {
     return GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation(
-      s3Configurations: (pulumi.Input.decodeList<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration>(map['s3Configurations'], (value) => GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3Configurations: (pulumi.Input.decodeList<GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration>(map['s3Configurations']!, (value) => GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -66,15 +66,15 @@ class VirtualMachineTemplateArgs {
 
   factory VirtualMachineTemplateArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineTemplateArgs(
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      moRefId: map['moRefId'] == null ? null : (map['moRefId'] as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
+      inventoryItemId: map['inventoryItemId'] == null ? null : (map['inventoryItemId']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      moRefId: map['moRefId'] == null ? null : (map['moRefId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId'] as String).input(),
-      virtualMachineTemplateName: map['virtualMachineTemplateName'] == null ? null : (map['virtualMachineTemplateName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vCenterId: map['vCenterId'] == null ? null : (map['vCenterId']! as String).input(),
+      virtualMachineTemplateName: map['virtualMachineTemplateName'] == null ? null : (map['virtualMachineTemplateName']! as String).input(),
     );
   }
 }

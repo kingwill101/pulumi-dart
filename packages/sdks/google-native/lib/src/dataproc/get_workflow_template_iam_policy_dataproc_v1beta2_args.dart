@@ -36,8 +36,8 @@ class GetWorkflowTemplateIamPolicyDataprocV1beta2Args {
   factory GetWorkflowTemplateIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetWorkflowTemplateIamPolicyDataprocV1beta2Args(
       location: (map['location'] as String).input(),
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       workflowTemplateId: (map['workflowTemplateId'] as String).input(),
     );
   }

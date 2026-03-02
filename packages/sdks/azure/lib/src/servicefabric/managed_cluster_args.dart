@@ -113,24 +113,24 @@ class ManagedClusterArgs {
 
   factory ManagedClusterArgs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterArgs(
-      authentication: map['authentication'] == null ? null : (ManagedClusterAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      backupServiceEnabled: map['backupServiceEnabled'] == null ? null : (map['backupServiceEnabled'] as bool).input(),
+      authentication: map['authentication'] == null ? null : (ManagedClusterAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
+      backupServiceEnabled: map['backupServiceEnabled'] == null ? null : (map['backupServiceEnabled']! as bool).input(),
       clientConnectionPort: (map['clientConnectionPort'] as int).input(),
-      customFabricSettings: map['customFabricSettings'] == null ? null : (pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(map['customFabricSettings'], (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsName: map['dnsName'] == null ? null : (map['dnsName'] as String).input(),
-      dnsServiceEnabled: map['dnsServiceEnabled'] == null ? null : (map['dnsServiceEnabled'] as bool).input(),
+      customFabricSettings: map['customFabricSettings'] == null ? null : (pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(map['customFabricSettings']!, (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsName: map['dnsName'] == null ? null : (map['dnsName']! as String).input(),
+      dnsServiceEnabled: map['dnsServiceEnabled'] == null ? null : (map['dnsServiceEnabled']! as bool).input(),
       httpGatewayPort: (map['httpGatewayPort'] as int).input(),
       lbRules: (pulumi.Input.decodeList<ManagedClusterLbRule>(map['lbRules'], (value) => ManagedClusterLbRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<ManagedClusterNodeType>(map['nodeTypes'], (value) => ManagedClusterNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeTypes: map['nodeTypes'] == null ? null : (pulumi.Input.decodeList<ManagedClusterNodeType>(map['nodeTypes']!, (value) => ManagedClusterNodeType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      upgradeWave: map['upgradeWave'] == null ? null : (map['upgradeWave'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      upgradeWave: map['upgradeWave'] == null ? null : (map['upgradeWave']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

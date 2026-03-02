@@ -25,8 +25,8 @@ class DelegationSignerRecordTimeouts {
 
   factory DelegationSignerRecordTimeouts.fromMap(Map<String, dynamic> map) {
     return DelegationSignerRecordTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      delete: map['delete'] == null ? null : (map['delete'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
+      delete: map['delete'] == null ? null : ((map['delete'] as String).input()).input(),
     );
   }
 }

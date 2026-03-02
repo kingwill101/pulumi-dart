@@ -28,7 +28,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOption {
 
   factory GetFirewallPolicyFirewallPolicyStatefulEngineOption.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulEngineOption(
-      flowTimeouts: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout>(map['flowTimeouts'], (value) => GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      flowTimeouts: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout>(map['flowTimeouts']!, (value) => GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleOrder: (map['ruleOrder'] as String).input(),
       streamExceptionPolicy: (map['streamExceptionPolicy'] as String).input(),
     );

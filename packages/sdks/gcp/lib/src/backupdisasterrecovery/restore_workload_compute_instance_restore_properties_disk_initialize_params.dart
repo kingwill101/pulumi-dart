@@ -25,8 +25,8 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
 
   factory RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(Map<String, dynamic> map) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams(
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      replicaZones: map['replicaZones'] == null ? null : ((map['replicaZones'] as List).cast<String>()).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      replicaZones: map['replicaZones'] == null ? null : ((map['replicaZones']! as List).cast<String>()).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class ApplicationAssignmentConfigurationState {
 
   factory ApplicationAssignmentConfigurationState.fromMap(Map<String, dynamic> map) {
     return ApplicationAssignmentConfigurationState(
-      applicationArn: map['applicationArn'] == null ? null : (map['applicationArn'] as String).input(),
-      assignmentRequired: map['assignmentRequired'] == null ? null : (map['assignmentRequired'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      applicationArn: map['applicationArn'] == null ? null : ((map['applicationArn'] as String).input()).input(),
+      assignmentRequired: map['assignmentRequired'] == null ? null : ((map['assignmentRequired'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,9 +27,9 @@ class BuildMetadata {
 
   factory BuildMetadata.fromMap(Map<String, dynamic> map) {
     return BuildMetadata(
-      finishedOn: map['finishedOn'] == null ? null : (map['finishedOn'] as String).input(),
-      invocationId: map['invocationId'] == null ? null : (map['invocationId'] as String).input(),
-      startedOn: map['startedOn'] == null ? null : (map['startedOn'] as String).input(),
+      finishedOn: map['finishedOn'] == null ? null : (map['finishedOn']! as String).input(),
+      invocationId: map['invocationId'] == null ? null : (map['invocationId']! as String).input(),
+      startedOn: map['startedOn'] == null ? null : (map['startedOn']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class WorkflowParameterResponse {
 
   factory WorkflowParameterResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowParameterResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

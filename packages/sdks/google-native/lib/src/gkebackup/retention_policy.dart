@@ -31,9 +31,9 @@ class RetentionPolicy {
 
   factory RetentionPolicy.fromMap(Map<String, dynamic> map) {
     return RetentionPolicy(
-      backupDeleteLockDays: map['backupDeleteLockDays'] == null ? null : (map['backupDeleteLockDays'] as int).input(),
-      backupRetainDays: map['backupRetainDays'] == null ? null : (map['backupRetainDays'] as int).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      backupDeleteLockDays: map['backupDeleteLockDays'] == null ? null : (map['backupDeleteLockDays']! as int).input(),
+      backupRetainDays: map['backupRetainDays'] == null ? null : (map['backupRetainDays']! as int).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
     );
   }
 }

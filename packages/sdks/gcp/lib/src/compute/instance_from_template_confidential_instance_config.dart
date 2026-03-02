@@ -28,8 +28,8 @@ class InstanceFromTemplateConfidentialInstanceConfig {
 
   factory InstanceFromTemplateConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateConfidentialInstanceConfig(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType'] as String).input(),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : (map['confidentialInstanceType']! as String).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

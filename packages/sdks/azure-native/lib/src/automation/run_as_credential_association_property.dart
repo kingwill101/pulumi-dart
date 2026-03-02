@@ -21,7 +21,7 @@ class RunAsCredentialAssociationProperty {
 
   factory RunAsCredentialAssociationProperty.fromMap(Map<String, dynamic> map) {
     return RunAsCredentialAssociationProperty(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

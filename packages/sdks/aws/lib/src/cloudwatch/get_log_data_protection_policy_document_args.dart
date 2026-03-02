@@ -47,11 +47,11 @@ class GetLogDataProtectionPolicyDocumentArgs {
 
   factory GetLogDataProtectionPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetLogDataProtectionPolicyDocumentArgs(
-      configuration: map['configuration'] == null ? null : (GetLogDataProtectionPolicyDocumentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configuration: map['configuration'] == null ? null : ((GetLogDataProtectionPolicyDocumentConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       name: (map['name'] as String).input(),
-      statements: (pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(map['statements'], (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      statements: (pulumi.Input.decodeList<GetLogDataProtectionPolicyDocumentStatement>(map['statements']!, (value) => GetLogDataProtectionPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
     );
   }
 }

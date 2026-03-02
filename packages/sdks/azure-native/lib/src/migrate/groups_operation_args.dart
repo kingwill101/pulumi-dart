@@ -49,12 +49,12 @@ class GroupsOperationArgs {
 
   factory GroupsOperationArgs.fromMap(Map<String, dynamic> map) {
     return GroupsOperationArgs(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      supportedAssessmentTypes: map['supportedAssessmentTypes'] == null ? null : ((map['supportedAssessmentTypes'] as List).cast<String>()).input(),
+      supportedAssessmentTypes: map['supportedAssessmentTypes'] == null ? null : ((map['supportedAssessmentTypes']! as List).cast<String>()).input(),
     );
   }
 }

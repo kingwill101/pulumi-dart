@@ -46,12 +46,12 @@ class PodDisruptionBudgetStatusPatchPolicyV1beta1 {
 
   factory PodDisruptionBudgetStatusPatchPolicyV1beta1.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetStatusPatchPolicyV1beta1(
-      currentHealthy: map['currentHealthy'] == null ? null : (map['currentHealthy'] as int).input(),
-      desiredHealthy: map['desiredHealthy'] == null ? null : (map['desiredHealthy'] as int).input(),
-      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods'] as Map).cast<String, String>()).input(),
-      disruptionsAllowed: map['disruptionsAllowed'] == null ? null : (map['disruptionsAllowed'] as int).input(),
-      expectedPods: map['expectedPods'] == null ? null : (map['expectedPods'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      currentHealthy: map['currentHealthy'] == null ? null : (map['currentHealthy']! as int).input(),
+      desiredHealthy: map['desiredHealthy'] == null ? null : (map['desiredHealthy']! as int).input(),
+      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods']! as Map).cast<String, String>()).input(),
+      disruptionsAllowed: map['disruptionsAllowed'] == null ? null : (map['disruptionsAllowed']! as int).input(),
+      expectedPods: map['expectedPods'] == null ? null : (map['expectedPods']! as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
     );
   }
 }

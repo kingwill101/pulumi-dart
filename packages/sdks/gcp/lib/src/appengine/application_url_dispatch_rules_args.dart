@@ -33,7 +33,7 @@ class ApplicationUrlDispatchRulesArgs {
   factory ApplicationUrlDispatchRulesArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationUrlDispatchRulesArgs(
       dispatchRules: (pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(map['dispatchRules'], (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -66,17 +66,17 @@ class EnterpriseCrmEventbusProtoParameterValueType {
 
   factory EnterpriseCrmEventbusProtoParameterValueType.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoParameterValueType(
-      booleanArray: map['booleanArray'] == null ? null : (EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap((map['booleanArray'] as Map).cast<String, dynamic>())).input(),
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
-      doubleArray: map['doubleArray'] == null ? null : (EnterpriseCrmEventbusProtoDoubleParameterArray.fromMap((map['doubleArray'] as Map).cast<String, dynamic>())).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
-      intArray: map['intArray'] == null ? null : (EnterpriseCrmEventbusProtoIntParameterArray.fromMap((map['intArray'] as Map).cast<String, dynamic>())).input(),
-      intValue: map['intValue'] == null ? null : (map['intValue'] as String).input(),
-      protoArray: map['protoArray'] == null ? null : (EnterpriseCrmEventbusProtoProtoParameterArray.fromMap((map['protoArray'] as Map).cast<String, dynamic>())).input(),
-      protoValue: map['protoValue'] == null ? null : ((map['protoValue'] as Map).cast<String, String>()).input(),
-      serializedObjectValue: map['serializedObjectValue'] == null ? null : (EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap((map['serializedObjectValue'] as Map).cast<String, dynamic>())).input(),
-      stringArray: map['stringArray'] == null ? null : (EnterpriseCrmEventbusProtoStringParameterArray.fromMap((map['stringArray'] as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      booleanArray: map['booleanArray'] == null ? null : (EnterpriseCrmEventbusProtoBooleanParameterArray.fromMap((map['booleanArray']! as Map).cast<String, dynamic>())).input(),
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
+      doubleArray: map['doubleArray'] == null ? null : (EnterpriseCrmEventbusProtoDoubleParameterArray.fromMap((map['doubleArray']! as Map).cast<String, dynamic>())).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
+      intArray: map['intArray'] == null ? null : (EnterpriseCrmEventbusProtoIntParameterArray.fromMap((map['intArray']! as Map).cast<String, dynamic>())).input(),
+      intValue: map['intValue'] == null ? null : (map['intValue']! as String).input(),
+      protoArray: map['protoArray'] == null ? null : (EnterpriseCrmEventbusProtoProtoParameterArray.fromMap((map['protoArray']! as Map).cast<String, dynamic>())).input(),
+      protoValue: map['protoValue'] == null ? null : ((map['protoValue']! as Map).cast<String, String>()).input(),
+      serializedObjectValue: map['serializedObjectValue'] == null ? null : (EnterpriseCrmEventbusProtoSerializedObjectParameter.fromMap((map['serializedObjectValue']! as Map).cast<String, dynamic>())).input(),
+      stringArray: map['stringArray'] == null ? null : (EnterpriseCrmEventbusProtoStringParameterArray.fromMap((map['stringArray']! as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

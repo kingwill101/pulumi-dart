@@ -32,7 +32,7 @@ class WebAclLoggingConfigurationLoggingFilterFilter {
   factory WebAclLoggingConfigurationLoggingFilterFilter.fromMap(Map<String, dynamic> map) {
     return WebAclLoggingConfigurationLoggingFilterFilter(
       behavior: (map['behavior'] as String).input(),
-      conditions: (pulumi.Input.decodeList<WebAclLoggingConfigurationLoggingFilterFilterCondition>(map['conditions'], (value) => WebAclLoggingConfigurationLoggingFilterFilterCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: (pulumi.Input.decodeList<WebAclLoggingConfigurationLoggingFilterFilterCondition>(map['conditions']!, (value) => WebAclLoggingConfigurationLoggingFilterFilterCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
       requirement: (map['requirement'] as String).input(),
     );
   }

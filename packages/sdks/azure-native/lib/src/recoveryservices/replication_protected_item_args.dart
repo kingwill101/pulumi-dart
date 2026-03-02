@@ -51,9 +51,9 @@ class ReplicationProtectedItemArgs {
   factory ReplicationProtectedItemArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationProtectedItemArgs(
       fabricName: (map['fabricName'] as String).input(),
-      properties: map['properties'] == null ? null : (EnableProtectionInputProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (EnableProtectionInputProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       protectionContainerName: (map['protectionContainerName'] as String).input(),
-      replicatedProtectedItemName: map['replicatedProtectedItemName'] == null ? null : (map['replicatedProtectedItemName'] as String).input(),
+      replicatedProtectedItemName: map['replicatedProtectedItemName'] == null ? null : (map['replicatedProtectedItemName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );

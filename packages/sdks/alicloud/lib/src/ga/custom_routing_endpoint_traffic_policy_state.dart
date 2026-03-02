@@ -57,14 +57,14 @@ class CustomRoutingEndpointTrafficPolicyState {
 
   factory CustomRoutingEndpointTrafficPolicyState.fromMap(Map<String, dynamic> map) {
     return CustomRoutingEndpointTrafficPolicyState(
-      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId'] as String).input(),
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      customRoutingEndpointTrafficPolicyId: map['customRoutingEndpointTrafficPolicyId'] == null ? null : (map['customRoutingEndpointTrafficPolicyId'] as String).input(),
-      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId'] as String).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      listenerId: map['listenerId'] == null ? null : (map['listenerId'] as String).input(),
-      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointTrafficPolicyPortRange>(map['portRanges'], (value) => CustomRoutingEndpointTrafficPolicyPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      acceleratorId: map['acceleratorId'] == null ? null : (map['acceleratorId']! as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      customRoutingEndpointTrafficPolicyId: map['customRoutingEndpointTrafficPolicyId'] == null ? null : (map['customRoutingEndpointTrafficPolicyId']! as String).input(),
+      endpointGroupId: map['endpointGroupId'] == null ? null : (map['endpointGroupId']! as String).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      listenerId: map['listenerId'] == null ? null : (map['listenerId']! as String).input(),
+      portRanges: map['portRanges'] == null ? null : (pulumi.Input.decodeList<CustomRoutingEndpointTrafficPolicyPortRange>(map['portRanges']!, (value) => CustomRoutingEndpointTrafficPolicyPortRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

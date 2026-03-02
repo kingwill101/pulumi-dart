@@ -70,16 +70,16 @@ class ProjectArtifacts {
 
   factory ProjectArtifacts.fromMap(Map<String, dynamic> map) {
     return ProjectArtifacts(
-      artifactIdentifier: map['artifactIdentifier'] == null ? null : (map['artifactIdentifier'] as String).input(),
-      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : (BucketOwnerAccessEnumValue.fromMap((map['bucketOwnerAccess'] as Map).cast<String, dynamic>())).input(),
-      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceType: map['namespaceType'] == null ? null : (ArtifactNamespaceEnumValue.fromMap((map['namespaceType'] as Map).cast<String, dynamic>())).input(),
-      overrideArtifactName: map['overrideArtifactName'] == null ? null : (map['overrideArtifactName'] as bool).input(),
-      packaging: map['packaging'] == null ? null : (ArtifactPackagingEnumValue.fromMap((map['packaging'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      type: map['type'] == null ? null : (ArtifactsTypeEnumValue.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
+      artifactIdentifier: map['artifactIdentifier'] == null ? null : (map['artifactIdentifier']! as String).input(),
+      bucketOwnerAccess: map['bucketOwnerAccess'] == null ? null : (BucketOwnerAccessEnumValue.fromMap((map['bucketOwnerAccess']! as Map).cast<String, dynamic>())).input(),
+      encryptionDisabled: map['encryptionDisabled'] == null ? null : (map['encryptionDisabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceType: map['namespaceType'] == null ? null : (ArtifactNamespaceEnumValue.fromMap((map['namespaceType']! as Map).cast<String, dynamic>())).input(),
+      overrideArtifactName: map['overrideArtifactName'] == null ? null : (map['overrideArtifactName']! as bool).input(),
+      packaging: map['packaging'] == null ? null : (ArtifactPackagingEnumValue.fromMap((map['packaging']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      type: map['type'] == null ? null : (ArtifactsTypeEnumValue.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

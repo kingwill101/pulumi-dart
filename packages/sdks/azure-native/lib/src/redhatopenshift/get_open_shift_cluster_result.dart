@@ -110,22 +110,22 @@ class GetOpenShiftClusterResult {
 
   factory GetOpenShiftClusterResult.fromMap(Map<String, dynamic> map) {
     return GetOpenShiftClusterResult(
-      apiserverProfile: map['apiserverProfile'] == null ? null : APIServerProfileResponse.fromMap((map['apiserverProfile'] as Map).cast<String, dynamic>()),
+      apiserverProfile: map['apiserverProfile'] == null ? null : APIServerProfileResponse.fromMap((map['apiserverProfile']! as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterProfile: map['clusterProfile'] == null ? null : ClusterProfileResponse.fromMap((map['clusterProfile'] as Map).cast<String, dynamic>()),
-      consoleProfile: map['consoleProfile'] == null ? null : ConsoleProfileResponse.fromMap((map['consoleProfile'] as Map).cast<String, dynamic>()),
+      clusterProfile: map['clusterProfile'] == null ? null : ClusterProfileResponse.fromMap((map['clusterProfile']! as Map).cast<String, dynamic>()),
+      consoleProfile: map['consoleProfile'] == null ? null : ConsoleProfileResponse.fromMap((map['consoleProfile']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      ingressProfiles: map['ingressProfiles'] == null ? null : pulumi.Input.decodeList<IngressProfileResponse>(map['ingressProfiles'], (value) => IngressProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ingressProfiles: map['ingressProfiles'] == null ? null : pulumi.Input.decodeList<IngressProfileResponse>(map['ingressProfiles']!, (value) => IngressProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      masterProfile: map['masterProfile'] == null ? null : MasterProfileResponse.fromMap((map['masterProfile'] as Map).cast<String, dynamic>()),
+      masterProfile: map['masterProfile'] == null ? null : MasterProfileResponse.fromMap((map['masterProfile']! as Map).cast<String, dynamic>()),
       name: map['name'] as String,
-      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] == null ? null : map['provisioningState'] as String,
-      servicePrincipalProfile: map['servicePrincipalProfile'] == null ? null : ServicePrincipalProfileResponse.fromMap((map['servicePrincipalProfile'] as Map).cast<String, dynamic>()),
+      networkProfile: map['networkProfile'] == null ? null : NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>()),
+      provisioningState: map['provisioningState'] == null ? null : map['provisioningState']! as String,
+      servicePrincipalProfile: map['servicePrincipalProfile'] == null ? null : ServicePrincipalProfileResponse.fromMap((map['servicePrincipalProfile']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      workerProfiles: map['workerProfiles'] == null ? null : pulumi.Input.decodeList<WorkerProfileResponse>(map['workerProfiles'], (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      workerProfiles: map['workerProfiles'] == null ? null : pulumi.Input.decodeList<WorkerProfileResponse>(map['workerProfiles']!, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
       workerProfilesStatus: pulumi.Input.decodeList<WorkerProfileResponse>(map['workerProfilesStatus'], (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

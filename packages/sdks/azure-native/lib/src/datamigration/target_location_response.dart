@@ -26,8 +26,8 @@ class TargetLocationResponse {
 
   factory TargetLocationResponse.fromMap(Map<String, dynamic> map) {
     return TargetLocationResponse(
-      accountKey: map['accountKey'] == null ? null : (map['accountKey'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
+      accountKey: map['accountKey'] == null ? null : (map['accountKey']! as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
     );
   }
 }

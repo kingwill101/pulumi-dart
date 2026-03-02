@@ -28,7 +28,7 @@ class DestinationConfigDatastreamV1alpha1 {
   factory DestinationConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return DestinationConfigDatastreamV1alpha1(
       destinationConnectionProfileName: (map['destinationConnectionProfileName'] as String).input(),
-      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : (GcsDestinationConfigDatastreamV1alpha1.fromMap((map['gcsDestinationConfig'] as Map).cast<String, dynamic>())).input(),
+      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : (GcsDestinationConfigDatastreamV1alpha1.fromMap((map['gcsDestinationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

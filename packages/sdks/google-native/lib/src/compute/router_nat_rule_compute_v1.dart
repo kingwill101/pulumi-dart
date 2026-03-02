@@ -36,10 +36,10 @@ class RouterNatRuleComputeV1 {
 
   factory RouterNatRuleComputeV1.fromMap(Map<String, dynamic> map) {
     return RouterNatRuleComputeV1(
-      action: map['action'] == null ? null : (RouterNatRuleActionComputeV1.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      match: map['match'] == null ? null : (map['match'] as String).input(),
-      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber'] as int).input(),
+      action: map['action'] == null ? null : (RouterNatRuleActionComputeV1.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      match: map['match'] == null ? null : (map['match']! as String).input(),
+      ruleNumber: map['ruleNumber'] == null ? null : (map['ruleNumber']! as int).input(),
     );
   }
 }

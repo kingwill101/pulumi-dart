@@ -30,9 +30,9 @@ class LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd {
 
   factory LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd.fromMap(Map<String, dynamic> map) {
     return LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd(
-      cents: map['cents'] == null ? null : (map['cents'] as int).input(),
-      dollars: map['dollars'] == null ? null : (map['dollars'] as int).input(),
-      tenthFractionsOfACent: map['tenthFractionsOfACent'] == null ? null : (map['tenthFractionsOfACent'] as int).input(),
+      cents: map['cents'] == null ? null : ((map['cents'] as int).input()).input(),
+      dollars: map['dollars'] == null ? null : ((map['dollars'] as int).input()).input(),
+      tenthFractionsOfACent: map['tenthFractionsOfACent'] == null ? null : ((map['tenthFractionsOfACent'] as int).input()).input(),
     );
   }
 }

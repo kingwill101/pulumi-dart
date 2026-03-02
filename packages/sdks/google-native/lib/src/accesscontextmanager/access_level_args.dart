@@ -51,11 +51,11 @@ class AccessLevelArgs {
   factory AccessLevelArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelArgs(
       accessPolicyId: (map['accessPolicyId'] as String).input(),
-      basic: map['basic'] == null ? null : (BasicLevel.fromMap((map['basic'] as Map).cast<String, dynamic>())).input(),
-      custom: map['custom'] == null ? null : (CustomLevel.fromMap((map['custom'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      basic: map['basic'] == null ? null : (BasicLevel.fromMap((map['basic']! as Map).cast<String, dynamic>())).input(),
+      custom: map['custom'] == null ? null : (CustomLevel.fromMap((map['custom']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
     );
   }
 }

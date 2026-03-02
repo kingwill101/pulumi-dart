@@ -20,7 +20,7 @@ class ServicePrincipalSamlSingleSignOn {
 
   factory ServicePrincipalSamlSingleSignOn.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalSamlSingleSignOn(
-      relayState: map['relayState'] == null ? null : (map['relayState'] as String).input(),
+      relayState: map['relayState'] == null ? null : (map['relayState']! as String).input(),
     );
   }
 }

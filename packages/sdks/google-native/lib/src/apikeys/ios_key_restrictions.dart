@@ -21,7 +21,7 @@ class IosKeyRestrictions {
 
   factory IosKeyRestrictions.fromMap(Map<String, dynamic> map) {
     return IosKeyRestrictions(
-      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds'] as List).cast<String>()).input(),
+      allowedBundleIds: map['allowedBundleIds'] == null ? null : ((map['allowedBundleIds']! as List).cast<String>()).input(),
     );
   }
 }

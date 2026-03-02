@@ -35,10 +35,10 @@ class ClusterRestoreToPointInTime {
 
   factory ClusterRestoreToPointInTime.fromMap(Map<String, dynamic> map) {
     return ClusterRestoreToPointInTime(
-      restoreToTime: map['restoreToTime'] == null ? null : (map['restoreToTime'] as String).input(),
-      restoreType: map['restoreType'] == null ? null : (map['restoreType'] as String).input(),
+      restoreToTime: map['restoreToTime'] == null ? null : ((map['restoreToTime'] as String).input()).input(),
+      restoreType: map['restoreType'] == null ? null : ((map['restoreType'] as String).input()).input(),
       sourceClusterIdentifier: (map['sourceClusterIdentifier'] as String).input(),
-      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : (map['useLatestRestorableTime'] as bool).input(),
+      useLatestRestorableTime: map['useLatestRestorableTime'] == null ? null : ((map['useLatestRestorableTime'] as bool).input()).input(),
     );
   }
 }

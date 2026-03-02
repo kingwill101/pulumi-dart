@@ -113,25 +113,25 @@ class GetVirtualMachineExtensionResult {
 
   factory GetVirtualMachineExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineExtensionResult(
-      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion'] as bool,
+      autoUpgradeMinorVersion: map['autoUpgradeMinorVersion'] == null ? null : map['autoUpgradeMinorVersion']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade'] as bool,
-      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag'] as String,
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : map['enableAutomaticUpgrade']! as bool,
+      forceUpdateTag: map['forceUpdateTag'] == null ? null : map['forceUpdateTag']! as String,
       id: map['id'] as String,
-      instanceView: map['instanceView'] == null ? null : VirtualMachineExtensionInstanceViewResponse.fromMap((map['instanceView'] as Map).cast<String, dynamic>()),
+      instanceView: map['instanceView'] == null ? null : VirtualMachineExtensionInstanceViewResponse.fromMap((map['instanceView']! as Map).cast<String, dynamic>()),
       location: map['location'] as String,
       name: map['name'] as String,
-      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings'],
-      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault'] as Map).cast<String, dynamic>()),
-      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : (map['provisionAfterExtensions'] as List).cast<String>(),
+      protectedSettings: map['protectedSettings'] == null ? null : map['protectedSettings']!,
+      protectedSettingsFromKeyVault: map['protectedSettingsFromKeyVault'] == null ? null : KeyVaultSecretReferenceResponse.fromMap((map['protectedSettingsFromKeyVault']! as Map).cast<String, dynamic>()),
+      provisionAfterExtensions: map['provisionAfterExtensions'] == null ? null : (map['provisionAfterExtensions']! as List).cast<String>(),
       provisioningState: map['provisioningState'] as String,
-      publisher: map['publisher'] == null ? null : map['publisher'] as String,
-      settings: map['settings'] == null ? null : map['settings'],
-      suppressFailures: map['suppressFailures'] == null ? null : map['suppressFailures'] as bool,
+      publisher: map['publisher'] == null ? null : map['publisher']! as String,
+      settings: map['settings'] == null ? null : map['settings']!,
+      suppressFailures: map['suppressFailures'] == null ? null : map['suppressFailures']! as bool,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion'] as String,
+      typeHandlerVersion: map['typeHandlerVersion'] == null ? null : map['typeHandlerVersion']! as String,
     );
   }
 }

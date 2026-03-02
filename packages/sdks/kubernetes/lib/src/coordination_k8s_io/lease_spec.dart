@@ -51,13 +51,13 @@ class LeaseSpec {
 
   factory LeaseSpec.fromMap(Map<String, dynamic> map) {
     return LeaseSpec(
-      acquireTime: map['acquireTime'] == null ? null : (map['acquireTime'] as String).input(),
-      holderIdentity: map['holderIdentity'] == null ? null : (map['holderIdentity'] as String).input(),
-      leaseDurationSeconds: map['leaseDurationSeconds'] == null ? null : (map['leaseDurationSeconds'] as int).input(),
-      leaseTransitions: map['leaseTransitions'] == null ? null : (map['leaseTransitions'] as int).input(),
-      preferredHolder: map['preferredHolder'] == null ? null : (map['preferredHolder'] as String).input(),
-      renewTime: map['renewTime'] == null ? null : (map['renewTime'] as String).input(),
-      strategy: map['strategy'] == null ? null : (map['strategy'] as String).input(),
+      acquireTime: map['acquireTime'] == null ? null : (map['acquireTime']! as String).input(),
+      holderIdentity: map['holderIdentity'] == null ? null : (map['holderIdentity']! as String).input(),
+      leaseDurationSeconds: map['leaseDurationSeconds'] == null ? null : (map['leaseDurationSeconds']! as int).input(),
+      leaseTransitions: map['leaseTransitions'] == null ? null : (map['leaseTransitions']! as int).input(),
+      preferredHolder: map['preferredHolder'] == null ? null : (map['preferredHolder']! as String).input(),
+      renewTime: map['renewTime'] == null ? null : (map['renewTime']! as String).input(),
+      strategy: map['strategy'] == null ? null : (map['strategy']! as String).input(),
     );
   }
 }

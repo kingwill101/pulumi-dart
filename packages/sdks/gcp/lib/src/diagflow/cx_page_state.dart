@@ -107,17 +107,17 @@ class CxPageState {
 
   factory CxPageState.fromMap(Map<String, dynamic> map) {
     return CxPageState(
-      advancedSettings: map['advancedSettings'] == null ? null : (CxPageAdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entryFulfillment: map['entryFulfillment'] == null ? null : (CxPageEntryFulfillment.fromMap((map['entryFulfillment'] as Map).cast<String, dynamic>())).input(),
-      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<CxPageEventHandler>(map['eventHandlers'], (value) => CxPageEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      form: map['form'] == null ? null : (CxPageForm.fromMap((map['form'] as Map).cast<String, dynamic>())).input(),
-      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxPageKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>())).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups'] as List).cast<String>()).input(),
-      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<CxPageTransitionRoute>(map['transitionRoutes'], (value) => CxPageTransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (CxPageAdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entryFulfillment: map['entryFulfillment'] == null ? null : (CxPageEntryFulfillment.fromMap((map['entryFulfillment']! as Map).cast<String, dynamic>())).input(),
+      eventHandlers: map['eventHandlers'] == null ? null : (pulumi.Input.decodeList<CxPageEventHandler>(map['eventHandlers']!, (value) => CxPageEventHandler.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      form: map['form'] == null ? null : (CxPageForm.fromMap((map['form']! as Map).cast<String, dynamic>())).input(),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : (CxPageKnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings']! as Map).cast<String, dynamic>())).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : ((map['transitionRouteGroups']! as List).cast<String>()).input(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : (pulumi.Input.decodeList<CxPageTransitionRoute>(map['transitionRoutes']!, (value) => CxPageTransitionRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class AccessConfigurationProvisioningState {
 
   factory AccessConfigurationProvisioningState.fromMap(Map<String, dynamic> map) {
     return AccessConfigurationProvisioningState(
-      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId'] as String).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      accessConfigurationId: map['accessConfigurationId'] == null ? null : (map['accessConfigurationId']! as String).input(),
+      directoryId: map['directoryId'] == null ? null : (map['directoryId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

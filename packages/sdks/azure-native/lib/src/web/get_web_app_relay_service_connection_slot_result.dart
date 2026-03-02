@@ -69,16 +69,16 @@ class GetWebAppRelayServiceConnectionSlotResult {
   factory GetWebAppRelayServiceConnectionSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppRelayServiceConnectionSlotResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      biztalkUri: map['biztalkUri'] == null ? null : map['biztalkUri'] as String,
-      entityConnectionString: map['entityConnectionString'] == null ? null : map['entityConnectionString'] as String,
-      entityName: map['entityName'] == null ? null : map['entityName'] as String,
-      hostname: map['hostname'] == null ? null : map['hostname'] as String,
+      biztalkUri: map['biztalkUri'] == null ? null : map['biztalkUri']! as String,
+      entityConnectionString: map['entityConnectionString'] == null ? null : map['entityConnectionString']! as String,
+      entityName: map['entityName'] == null ? null : map['entityName']! as String,
+      hostname: map['hostname'] == null ? null : map['hostname']! as String,
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
-      port: map['port'] == null ? null : map['port'] as int,
-      resourceConnectionString: map['resourceConnectionString'] == null ? null : map['resourceConnectionString'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
+      port: map['port'] == null ? null : map['port']! as int,
+      resourceConnectionString: map['resourceConnectionString'] == null ? null : map['resourceConnectionString']! as String,
+      resourceType: map['resourceType'] == null ? null : map['resourceType']! as String,
       type: map['type'] as String,
     );
   }

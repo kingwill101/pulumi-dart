@@ -59,14 +59,14 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      adminDomainName: map['adminDomainName'] == null ? null : (map['adminDomainName'] as String).input(),
-      billingDomainName: map['billingDomainName'] == null ? null : (map['billingDomainName'] as String).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      quantity: map['quantity'] == null ? null : (map['quantity'] as double).input(),
+      adminDomainName: map['adminDomainName'] == null ? null : (map['adminDomainName']! as String).input(),
+      billingDomainName: map['billingDomainName'] == null ? null : (map['billingDomainName']! as String).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      notes: map['notes'] == null ? null : (map['notes']! as String).input(),
+      quantity: map['quantity'] == null ? null : (map['quantity']! as double).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

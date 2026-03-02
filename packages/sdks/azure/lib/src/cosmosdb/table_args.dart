@@ -50,10 +50,10 @@ class TableArgs {
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
       accountName: (map['accountName'] as String).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (TableAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (TableAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

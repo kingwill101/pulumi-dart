@@ -31,9 +31,9 @@ class TagProperty {
 
   factory TagProperty.fromMap(Map<String, dynamic> map) {
     return TagProperty(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      propagateAtLaunch: map['propagateAtLaunch'] == null ? null : (map['propagateAtLaunch'] as bool).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      propagateAtLaunch: map['propagateAtLaunch'] == null ? null : (map['propagateAtLaunch']! as bool).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

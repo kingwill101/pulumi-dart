@@ -85,19 +85,19 @@ class GetForwardEntriesResult {
   factory GetForwardEntriesResult.fromMap(Map<String, dynamic> map) {
     return GetForwardEntriesResult(
       entries: pulumi.Input.decodeList<GetForwardEntriesEntry>(map['entries'], (value) => GetForwardEntriesEntry.fromMap((value as Map).cast<String, dynamic>())),
-      externalIp: map['externalIp'] == null ? null : map['externalIp'] as String,
-      externalPort: map['externalPort'] == null ? null : map['externalPort'] as String,
-      forwardEntryName: map['forwardEntryName'] == null ? null : map['forwardEntryName'] as String,
+      externalIp: map['externalIp'] == null ? null : map['externalIp']! as String,
+      externalPort: map['externalPort'] == null ? null : map['externalPort']! as String,
+      forwardEntryName: map['forwardEntryName'] == null ? null : map['forwardEntryName']! as String,
       forwardTableId: map['forwardTableId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      internalIp: map['internalIp'] == null ? null : map['internalIp'] as String,
-      internalPort: map['internalPort'] == null ? null : map['internalPort'] as String,
-      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      internalIp: map['internalIp'] == null ? null : map['internalIp']! as String,
+      internalPort: map['internalPort'] == null ? null : map['internalPort']! as String,
+      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

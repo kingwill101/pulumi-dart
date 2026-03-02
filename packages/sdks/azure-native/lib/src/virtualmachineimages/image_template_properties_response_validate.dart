@@ -32,9 +32,9 @@ class ImageTemplatePropertiesResponseValidate {
 
   factory ImageTemplatePropertiesResponseValidate.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesResponseValidate(
-      continueDistributeOnFailure: map['continueDistributeOnFailure'] == null ? null : (map['continueDistributeOnFailure'] as bool).input(),
-      inVMValidations: map['inVMValidations'] == null ? null : (pulumi.Input.decodeList<ImageTemplateFileValidatorResponse>(map['inVMValidations'], (value) => ImageTemplateFileValidatorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceValidationOnly: map['sourceValidationOnly'] == null ? null : (map['sourceValidationOnly'] as bool).input(),
+      continueDistributeOnFailure: map['continueDistributeOnFailure'] == null ? null : (map['continueDistributeOnFailure']! as bool).input(),
+      inVMValidations: map['inVMValidations'] == null ? null : (pulumi.Input.decodeList<ImageTemplateFileValidatorResponse>(map['inVMValidations']!, (value) => ImageTemplateFileValidatorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceValidationOnly: map['sourceValidationOnly'] == null ? null : (map['sourceValidationOnly']! as bool).input(),
     );
   }
 }

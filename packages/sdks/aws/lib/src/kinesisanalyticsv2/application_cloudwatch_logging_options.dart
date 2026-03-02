@@ -24,7 +24,7 @@ class ApplicationCloudwatchLoggingOptions {
 
   factory ApplicationCloudwatchLoggingOptions.fromMap(Map<String, dynamic> map) {
     return ApplicationCloudwatchLoggingOptions(
-      cloudwatchLoggingOptionId: map['cloudwatchLoggingOptionId'] == null ? null : (map['cloudwatchLoggingOptionId'] as String).input(),
+      cloudwatchLoggingOptionId: map['cloudwatchLoggingOptionId'] == null ? null : ((map['cloudwatchLoggingOptionId'] as String).input()).input(),
       logStreamArn: (map['logStreamArn'] as String).input(),
     );
   }

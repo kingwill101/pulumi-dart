@@ -45,12 +45,12 @@ class ServiceCertificate {
 
   factory ServiceCertificate.fromMap(Map<String, dynamic> map) {
     return ServiceCertificate(
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
       encodedCertificate: (map['encodedCertificate'] as String).input(),
-      expiry: map['expiry'] == null ? null : (map['expiry'] as String).input(),
+      expiry: map['expiry'] == null ? null : (map['expiry']! as String).input(),
       storeName: (map['storeName'] as String).input(),
-      subject: map['subject'] == null ? null : (map['subject'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      subject: map['subject'] == null ? null : (map['subject']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

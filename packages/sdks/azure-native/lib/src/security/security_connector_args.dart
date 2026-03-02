@@ -66,15 +66,15 @@ class SecurityConnectorArgs {
 
   factory SecurityConnectorArgs.fromMap(Map<String, dynamic> map) {
     return SecurityConnectorArgs(
-      environmentData: map['environmentData'] == null ? null : (AwsEnvironmentData.fromMap((map['environmentData'] as Map).cast<String, dynamic>())).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
-      hierarchyIdentifier: map['hierarchyIdentifier'] == null ? null : (map['hierarchyIdentifier'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      offerings: map['offerings'] == null ? null : (pulumi.Input.decodeList<CspmMonitorAwsOffering>(map['offerings'], (value) => CspmMonitorAwsOffering.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environmentData: map['environmentData'] == null ? null : (AwsEnvironmentData.fromMap((map['environmentData']! as Map).cast<String, dynamic>())).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
+      hierarchyIdentifier: map['hierarchyIdentifier'] == null ? null : (map['hierarchyIdentifier']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      offerings: map['offerings'] == null ? null : (pulumi.Input.decodeList<CspmMonitorAwsOffering>(map['offerings']!, (value) => CspmMonitorAwsOffering.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      securityConnectorName: map['securityConnectorName'] == null ? null : (map['securityConnectorName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      securityConnectorName: map['securityConnectorName'] == null ? null : (map['securityConnectorName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

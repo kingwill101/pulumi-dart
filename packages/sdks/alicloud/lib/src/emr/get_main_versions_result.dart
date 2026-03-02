@@ -45,12 +45,12 @@ class GetMainVersionsResult {
 
   factory GetMainVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetMainVersionsResult(
-      clusterTypes: map['clusterTypes'] == null ? null : (map['clusterTypes'] as List).cast<String>(),
-      emrVersion: map['emrVersion'] == null ? null : map['emrVersion'] as String,
+      clusterTypes: map['clusterTypes'] == null ? null : (map['clusterTypes']! as List).cast<String>(),
+      emrVersion: map['emrVersion'] == null ? null : map['emrVersion']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       mainVersions: pulumi.Input.decodeList<GetMainVersionsMainVersion>(map['mainVersions'], (value) => GetMainVersionsMainVersion.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

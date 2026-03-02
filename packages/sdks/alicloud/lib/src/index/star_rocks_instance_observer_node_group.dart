@@ -60,14 +60,14 @@ class StarRocksInstanceObserverNodeGroup {
 
   factory StarRocksInstanceObserverNodeGroup.fromMap(Map<String, dynamic> map) {
     return StarRocksInstanceObserverNodeGroup(
-      cu: map['cu'] == null ? null : (map['cu'] as int).input(),
-      diskNumber: map['diskNumber'] == null ? null : (map['diskNumber'] as int).input(),
-      localStorageInstanceType: map['localStorageInstanceType'] == null ? null : (map['localStorageInstanceType'] as String).input(),
-      residentNodeNumber: map['residentNodeNumber'] == null ? null : (map['residentNodeNumber'] as int).input(),
-      specType: map['specType'] == null ? null : (map['specType'] as String).input(),
-      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : (map['storagePerformanceLevel'] as String).input(),
-      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      cu: map['cu'] == null ? null : (map['cu']! as int).input(),
+      diskNumber: map['diskNumber'] == null ? null : (map['diskNumber']! as int).input(),
+      localStorageInstanceType: map['localStorageInstanceType'] == null ? null : (map['localStorageInstanceType']! as String).input(),
+      residentNodeNumber: map['residentNodeNumber'] == null ? null : (map['residentNodeNumber']! as int).input(),
+      specType: map['specType'] == null ? null : (map['specType']! as String).input(),
+      storagePerformanceLevel: map['storagePerformanceLevel'] == null ? null : (map['storagePerformanceLevel']! as String).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize']! as int).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

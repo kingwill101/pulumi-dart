@@ -26,8 +26,8 @@ class Mixin {
 
   factory Mixin.fromMap(Map<String, dynamic> map) {
     return Mixin(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      root: map['root'] == null ? null : (map['root'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      root: map['root'] == null ? null : (map['root']! as String).input(),
     );
   }
 }

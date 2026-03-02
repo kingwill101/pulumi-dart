@@ -22,7 +22,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjects {
 
   factory StreamSourceConfigMongodbSourceConfigExcludeObjects.fromMap(Map<String, dynamic> map) {
     return StreamSourceConfigMongodbSourceConfigExcludeObjects(
-      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase>(map['databases'], (value) => StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databases: map['databases'] == null ? null : (pulumi.Input.decodeList<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase>(map['databases']!, (value) => StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

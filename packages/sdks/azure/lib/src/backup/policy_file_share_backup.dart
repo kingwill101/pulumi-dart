@@ -36,8 +36,8 @@ class PolicyFileShareBackup {
   factory PolicyFileShareBackup.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareBackup(
       frequency: (map['frequency'] as String).input(),
-      hourly: map['hourly'] == null ? null : (PolicyFileShareBackupHourly.fromMap((map['hourly'] as Map).cast<String, dynamic>())).input(),
-      time: map['time'] == null ? null : (map['time'] as String).input(),
+      hourly: map['hourly'] == null ? null : (PolicyFileShareBackupHourly.fromMap((map['hourly']! as Map).cast<String, dynamic>())).input(),
+      time: map['time'] == null ? null : (map['time']! as String).input(),
     );
   }
 }

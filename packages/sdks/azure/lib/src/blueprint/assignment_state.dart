@@ -90,20 +90,20 @@ class AssignmentState {
 
   factory AssignmentState.fromMap(Map<String, dynamic> map) {
     return AssignmentState(
-      blueprintName: map['blueprintName'] == null ? null : (map['blueprintName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      identity: map['identity'] == null ? null : (AssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions'] as List).cast<String>()).input(),
-      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals'] as List).cast<String>()).input(),
-      lockMode: map['lockMode'] == null ? null : (map['lockMode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
-      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups'] as String).input(),
-      targetSubscriptionId: map['targetSubscriptionId'] == null ? null : (map['targetSubscriptionId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      blueprintName: map['blueprintName'] == null ? null : (map['blueprintName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      identity: map['identity'] == null ? null : (AssignmentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      lockExcludeActions: map['lockExcludeActions'] == null ? null : ((map['lockExcludeActions']! as List).cast<String>()).input(),
+      lockExcludePrincipals: map['lockExcludePrincipals'] == null ? null : ((map['lockExcludePrincipals']! as List).cast<String>()).input(),
+      lockMode: map['lockMode'] == null ? null : (map['lockMode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
+      resourceGroups: map['resourceGroups'] == null ? null : (map['resourceGroups']! as String).input(),
+      targetSubscriptionId: map['targetSubscriptionId'] == null ? null : (map['targetSubscriptionId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   factory FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3.fromMap(Map<String, dynamic> map) {
     return FlowDistinguisherMethodPatchFlowcontrolApiserverK8sIoV1beta3(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

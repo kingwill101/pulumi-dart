@@ -25,8 +25,8 @@ class ExternalDatasetReference {
 
   factory ExternalDatasetReference.fromMap(Map<String, dynamic> map) {
     return ExternalDatasetReference(
-      connection: map['connection'] == null ? null : (map['connection'] as String).input(),
-      externalSource: map['externalSource'] == null ? null : (map['externalSource'] as String).input(),
+      connection: map['connection'] == null ? null : (map['connection']! as String).input(),
+      externalSource: map['externalSource'] == null ? null : (map['externalSource']! as String).input(),
     );
   }
 }

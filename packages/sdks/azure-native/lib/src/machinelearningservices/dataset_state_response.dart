@@ -32,9 +32,9 @@ class DatasetStateResponse {
 
   factory DatasetStateResponse.fromMap(Map<String, dynamic> map) {
     return DatasetStateResponse(
-      deprecatedBy: map['deprecatedBy'] == null ? null : (DatasetStateResponseDeprecatedBy.fromMap((map['deprecatedBy'] as Map).cast<String, dynamic>())).input(),
+      deprecatedBy: map['deprecatedBy'] == null ? null : (DatasetStateResponseDeprecatedBy.fromMap((map['deprecatedBy']! as Map).cast<String, dynamic>())).input(),
       etag: (map['etag'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

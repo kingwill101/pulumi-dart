@@ -26,7 +26,7 @@ class JobPlacement {
   factory JobPlacement.fromMap(Map<String, dynamic> map) {
     return JobPlacement(
       clusterName: (map['clusterName'] as String).input(),
-      clusterUuid: map['clusterUuid'] == null ? null : (map['clusterUuid'] as String).input(),
+      clusterUuid: map['clusterUuid'] == null ? null : (map['clusterUuid']! as String).input(),
     );
   }
 }

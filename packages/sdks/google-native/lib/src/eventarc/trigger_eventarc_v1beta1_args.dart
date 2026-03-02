@@ -60,12 +60,12 @@ class TriggerEventarcV1beta1Args {
   factory TriggerEventarcV1beta1Args.fromMap(Map<String, dynamic> map) {
     return TriggerEventarcV1beta1Args(
       destination: (DestinationEventarcV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       matchingCriteria: (pulumi.Input.decodeList<MatchingCriteria>(map['matchingCriteria'], (value) => MatchingCriteria.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
       triggerId: (map['triggerId'] as String).input(),
     );
   }

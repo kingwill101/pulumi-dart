@@ -39,9 +39,9 @@ class GetPackagesArgs {
 
   factory GetPackagesArgs.fromMap(Map<String, dynamic> map) {
     return GetPackagesArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
     );
   }

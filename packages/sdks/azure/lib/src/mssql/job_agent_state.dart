@@ -47,12 +47,12 @@ class JobAgentState {
 
   factory JobAgentState.fromMap(Map<String, dynamic> map) {
     return JobAgentState(
-      databaseId: map['databaseId'] == null ? null : (map['databaseId'] as String).input(),
-      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sku: map['sku'] == null ? null : (map['sku'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      databaseId: map['databaseId'] == null ? null : (map['databaseId']! as String).input(),
+      identity: map['identity'] == null ? null : (JobAgentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sku: map['sku'] == null ? null : (map['sku']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

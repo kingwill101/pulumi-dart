@@ -21,7 +21,7 @@ class HostVolumePropertiesResponse {
 
   factory HostVolumePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HostVolumePropertiesResponse(
-      sourcePath: map['sourcePath'] == null ? null : (map['sourcePath'] as String).input(),
+      sourcePath: map['sourcePath'] == null ? null : (map['sourcePath']! as String).input(),
     );
   }
 }

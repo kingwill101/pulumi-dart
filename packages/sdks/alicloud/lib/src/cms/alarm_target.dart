@@ -39,10 +39,10 @@ class AlarmTarget {
 
   factory AlarmTarget.fromMap(Map<String, dynamic> map) {
     return AlarmTarget(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams'] as String).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
-      targetId: map['targetId'] == null ? null : (map['targetId'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      jsonParams: map['jsonParams'] == null ? null : (map['jsonParams']! as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
+      targetId: map['targetId'] == null ? null : (map['targetId']! as String).input(),
     );
   }
 }

@@ -62,11 +62,11 @@ class QueueHttpTarget {
 
   factory QueueHttpTarget.fromMap(Map<String, dynamic> map) {
     return QueueHttpTarget(
-      headerOverrides: map['headerOverrides'] == null ? null : (pulumi.Input.decodeList<QueueHttpTargetHeaderOverride>(map['headerOverrides'], (value) => QueueHttpTargetHeaderOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod'] as String).input(),
-      oauthToken: map['oauthToken'] == null ? null : (QueueHttpTargetOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (QueueHttpTargetOidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      uriOverride: map['uriOverride'] == null ? null : (QueueHttpTargetUriOverride.fromMap((map['uriOverride'] as Map).cast<String, dynamic>())).input(),
+      headerOverrides: map['headerOverrides'] == null ? null : (pulumi.Input.decodeList<QueueHttpTargetHeaderOverride>(map['headerOverrides']!, (value) => QueueHttpTargetHeaderOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpMethod: map['httpMethod'] == null ? null : (map['httpMethod']! as String).input(),
+      oauthToken: map['oauthToken'] == null ? null : (QueueHttpTargetOauthToken.fromMap((map['oauthToken']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (QueueHttpTargetOidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      uriOverride: map['uriOverride'] == null ? null : (QueueHttpTargetUriOverride.fromMap((map['uriOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

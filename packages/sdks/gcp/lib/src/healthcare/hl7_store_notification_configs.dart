@@ -39,7 +39,7 @@ class Hl7StoreNotificationConfigs {
 
   factory Hl7StoreNotificationConfigs.fromMap(Map<String, dynamic> map) {
     return Hl7StoreNotificationConfigs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       pubsubTopic: (map['pubsubTopic'] as String).input(),
     );
   }

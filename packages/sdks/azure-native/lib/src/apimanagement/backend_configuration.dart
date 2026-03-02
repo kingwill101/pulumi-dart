@@ -22,7 +22,7 @@ class BackendConfiguration {
 
   factory BackendConfiguration.fromMap(Map<String, dynamic> map) {
     return BackendConfiguration(
-      subnet: map['subnet'] == null ? null : (BackendSubnetConfiguration.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      subnet: map['subnet'] == null ? null : (BackendSubnetConfiguration.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class GetTrustConfigArgs {
   factory GetTrustConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetTrustConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       trustConfigId: (map['trustConfigId'] as String).input(),
     );
   }

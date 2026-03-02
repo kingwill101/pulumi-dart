@@ -42,7 +42,7 @@ class VMBackupDataResponse {
     return VMBackupDataResponse(
       backupPolicy: (VMBackupPolicyPropertiesResponse.fromMap((map['backupPolicy'] as Map).cast<String, dynamic>())).input(),
       backupType: (map['backupType'] as String).input(),
-      diskExclusionProperties: map['diskExclusionProperties'] == null ? null : (DiskExclusionPropertiesResponse.fromMap((map['diskExclusionProperties'] as Map).cast<String, dynamic>())).input(),
+      diskExclusionProperties: map['diskExclusionProperties'] == null ? null : (DiskExclusionPropertiesResponse.fromMap((map['diskExclusionProperties']! as Map).cast<String, dynamic>())).input(),
       recoveryServicesVault: (ExistingRecoveryServicesVaultResponse.fromMap((map['recoveryServicesVault'] as Map).cast<String, dynamic>())).input(),
     );
   }

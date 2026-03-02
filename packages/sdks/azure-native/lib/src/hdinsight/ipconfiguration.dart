@@ -43,10 +43,10 @@ class IPConfiguration {
   factory IPConfiguration.fromMap(Map<String, dynamic> map) {
     return IPConfiguration(
       name: (map['name'] as String).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as bool).input(),
-      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress'] as String).input(),
-      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod'] as String).input(),
-      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet'] as Map).cast<String, dynamic>())).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as bool).input(),
+      privateIPAddress: map['privateIPAddress'] == null ? null : (map['privateIPAddress']! as String).input(),
+      privateIPAllocationMethod: map['privateIPAllocationMethod'] == null ? null : (map['privateIPAllocationMethod']! as String).input(),
+      subnet: map['subnet'] == null ? null : (ResourceId.fromMap((map['subnet']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

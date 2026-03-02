@@ -40,7 +40,7 @@ class DatabaseCmekConfig {
 
   factory DatabaseCmekConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseCmekConfig(
-      activeKeyVersions: map['activeKeyVersions'] == null ? null : ((map['activeKeyVersions'] as List).cast<String>()).input(),
+      activeKeyVersions: map['activeKeyVersions'] == null ? null : ((map['activeKeyVersions']! as List).cast<String>()).input(),
       kmsKeyName: (map['kmsKeyName'] as String).input(),
     );
   }

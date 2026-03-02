@@ -31,8 +31,8 @@ class PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster {
   factory PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfigStepEksResourceScalingConfigEksCluster(
       clusterArn: (map['clusterArn'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
     );
   }
 }

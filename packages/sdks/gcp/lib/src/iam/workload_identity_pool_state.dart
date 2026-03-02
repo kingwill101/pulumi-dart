@@ -107,16 +107,16 @@ class WorkloadIdentityPoolState {
 
   factory WorkloadIdentityPoolState.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      inlineCertificateIssuanceConfig: map['inlineCertificateIssuanceConfig'] == null ? null : (WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((map['inlineCertificateIssuanceConfig'] as Map).cast<String, dynamic>())).input(),
-      inlineTrustConfig: map['inlineTrustConfig'] == null ? null : (WorkloadIdentityPoolInlineTrustConfig.fromMap((map['inlineTrustConfig'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      inlineCertificateIssuanceConfig: map['inlineCertificateIssuanceConfig'] == null ? null : (WorkloadIdentityPoolInlineCertificateIssuanceConfig.fromMap((map['inlineCertificateIssuanceConfig']! as Map).cast<String, dynamic>())).input(),
+      inlineTrustConfig: map['inlineTrustConfig'] == null ? null : (WorkloadIdentityPoolInlineTrustConfig.fromMap((map['inlineTrustConfig']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      workloadIdentityPoolId: map['workloadIdentityPoolId'] == null ? null : (map['workloadIdentityPoolId']! as String).input(),
     );
   }
 }

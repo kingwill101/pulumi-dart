@@ -30,8 +30,8 @@ class GetRequiredAmlFSSubnetsSizeArgs {
 
   factory GetRequiredAmlFSSubnetsSizeArgs.fromMap(Map<String, dynamic> map) {
     return GetRequiredAmlFSSubnetsSizeArgs(
-      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      storageCapacityTiB: map['storageCapacityTiB'] == null ? null : (map['storageCapacityTiB'] as double).input(),
+      sku: map['sku'] == null ? null : (SkuName.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      storageCapacityTiB: map['storageCapacityTiB'] == null ? null : (map['storageCapacityTiB']! as double).input(),
     );
   }
 }

@@ -55,7 +55,7 @@ class ContactArgs {
 
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
-      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
       contactProfile: (ContactsPropertiesContactProfile.fromMap((map['contactProfile'] as Map).cast<String, dynamic>())).input(),
       groundStationName: (map['groundStationName'] as String).input(),
       reservationEndTime: (map['reservationEndTime'] as String).input(),

@@ -22,7 +22,7 @@ class DedicatedHostAvailableCapacityResponse {
 
   factory DedicatedHostAvailableCapacityResponse.fromMap(Map<String, dynamic> map) {
     return DedicatedHostAvailableCapacityResponse(
-      allocatableVMs: map['allocatableVMs'] == null ? null : (pulumi.Input.decodeList<DedicatedHostAllocatableVMResponse>(map['allocatableVMs'], (value) => DedicatedHostAllocatableVMResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocatableVMs: map['allocatableVMs'] == null ? null : (pulumi.Input.decodeList<DedicatedHostAllocatableVMResponse>(map['allocatableVMs']!, (value) => DedicatedHostAllocatableVMResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

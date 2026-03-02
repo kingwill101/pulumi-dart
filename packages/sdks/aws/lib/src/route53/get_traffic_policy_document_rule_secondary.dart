@@ -31,10 +31,10 @@ class GetTrafficPolicyDocumentRuleSecondary {
 
   factory GetTrafficPolicyDocumentRuleSecondary.fromMap(Map<String, dynamic> map) {
     return GetTrafficPolicyDocumentRuleSecondary(
-      endpointReference: map['endpointReference'] == null ? null : (map['endpointReference'] as String).input(),
-      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : (map['evaluateTargetHealth'] as bool).input(),
-      healthCheck: map['healthCheck'] == null ? null : (map['healthCheck'] as String).input(),
-      ruleReference: map['ruleReference'] == null ? null : (map['ruleReference'] as String).input(),
+      endpointReference: map['endpointReference'] == null ? null : ((map['endpointReference'] as String).input()).input(),
+      evaluateTargetHealth: map['evaluateTargetHealth'] == null ? null : ((map['evaluateTargetHealth'] as bool).input()).input(),
+      healthCheck: map['healthCheck'] == null ? null : ((map['healthCheck'] as String).input()).input(),
+      ruleReference: map['ruleReference'] == null ? null : ((map['ruleReference'] as String).input()).input(),
     );
   }
 }

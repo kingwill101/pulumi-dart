@@ -37,9 +37,9 @@ class SignatureHealthcareV1beta1 {
 
   factory SignatureHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return SignatureHealthcareV1beta1(
-      image: map['image'] == null ? null : (ImageHealthcareV1beta1.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      signatureTime: map['signatureTime'] == null ? null : (map['signatureTime'] as String).input(),
+      image: map['image'] == null ? null : (ImageHealthcareV1beta1.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      signatureTime: map['signatureTime'] == null ? null : (map['signatureTime']! as String).input(),
       userId: (map['userId'] as String).input(),
     );
   }

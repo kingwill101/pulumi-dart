@@ -26,7 +26,7 @@ class VirtualMachineInstanceStatusProvisioningStatusResponse {
 
   factory VirtualMachineInstanceStatusProvisioningStatusResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstanceStatusProvisioningStatusResponse(
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
       status: (map['status'] as String).input(),
     );
   }

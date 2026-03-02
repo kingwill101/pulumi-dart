@@ -27,7 +27,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue {
   factory WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue(
       plainText: (map['plainText'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

@@ -58,11 +58,11 @@ class PolicyVMWorkloadProtectionPolicy {
     return PolicyVMWorkloadProtectionPolicy(
       backup: (PolicyVMWorkloadProtectionPolicyBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
       policyType: (map['policyType'] as String).input(),
-      retentionDaily: map['retentionDaily'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap((map['retentionDaily'] as Map).cast<String, dynamic>())).input(),
-      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionMonthly.fromMap((map['retentionMonthly'] as Map).cast<String, dynamic>())).input(),
-      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap((map['retentionWeekly'] as Map).cast<String, dynamic>())).input(),
-      retentionYearly: map['retentionYearly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionYearly.fromMap((map['retentionYearly'] as Map).cast<String, dynamic>())).input(),
-      simpleRetention: map['simpleRetention'] == null ? null : (PolicyVMWorkloadProtectionPolicySimpleRetention.fromMap((map['simpleRetention'] as Map).cast<String, dynamic>())).input(),
+      retentionDaily: map['retentionDaily'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionDaily.fromMap((map['retentionDaily']! as Map).cast<String, dynamic>())).input(),
+      retentionMonthly: map['retentionMonthly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionMonthly.fromMap((map['retentionMonthly']! as Map).cast<String, dynamic>())).input(),
+      retentionWeekly: map['retentionWeekly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionWeekly.fromMap((map['retentionWeekly']! as Map).cast<String, dynamic>())).input(),
+      retentionYearly: map['retentionYearly'] == null ? null : (PolicyVMWorkloadProtectionPolicyRetentionYearly.fromMap((map['retentionYearly']! as Map).cast<String, dynamic>())).input(),
+      simpleRetention: map['simpleRetention'] == null ? null : (PolicyVMWorkloadProtectionPolicySimpleRetention.fromMap((map['simpleRetention']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class CnameRecordResponse {
 
   factory CnameRecordResponse.fromMap(Map<String, dynamic> map) {
     return CnameRecordResponse(
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
     );
   }
 }

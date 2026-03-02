@@ -41,8 +41,8 @@ class ProviderInstanceArgs {
   factory ProviderInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ProviderInstanceArgs(
       monitorName: (map['monitorName'] as String).input(),
-      providerInstanceName: map['providerInstanceName'] == null ? null : (map['providerInstanceName'] as String).input(),
-      providerSettings: map['providerSettings'] == null ? null : (Db2ProviderInstanceProperties.fromMap((map['providerSettings'] as Map).cast<String, dynamic>())).input(),
+      providerInstanceName: map['providerInstanceName'] == null ? null : (map['providerInstanceName']! as String).input(),
+      providerSettings: map['providerSettings'] == null ? null : (Db2ProviderInstanceProperties.fromMap((map['providerSettings']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

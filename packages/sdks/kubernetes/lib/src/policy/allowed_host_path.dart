@@ -28,8 +28,8 @@ class AllowedHostPath {
 
   factory AllowedHostPath.fromMap(Map<String, dynamic> map) {
     return AllowedHostPath(
-      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
+      pathPrefix: map['pathPrefix'] == null ? null : (map['pathPrefix']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
     );
   }
 }

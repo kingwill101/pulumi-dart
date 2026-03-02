@@ -69,7 +69,7 @@ class GetConnectorDryrunResult {
       id: map['id'] as String,
       name: map['name'] as String,
       operationPreviews: pulumi.Input.decodeList<DryrunOperationPreviewResponse>(map['operationPreviews'], (value) => DryrunOperationPreviewResponse.fromMap((value as Map).cast<String, dynamic>())),
-      parameters: map['parameters'] == null ? null : CreateOrUpdateDryrunParametersResponse.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null ? null : CreateOrUpdateDryrunParametersResponse.fromMap((map['parameters']! as Map).cast<String, dynamic>()),
       prerequisiteResults: pulumi.Input.decodeList<BasicErrorDryrunPrerequisiteResultResponse>(map['prerequisiteResults'], (value) => BasicErrorDryrunPrerequisiteResultResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

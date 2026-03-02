@@ -55,10 +55,10 @@ class AppArgs {
   factory AppArgs.fromMap(Map<String, dynamic> map) {
     return AppArgs(
       appName: (map['appName'] as String).input(),
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      encodedIcon: map['encodedIcon'] == null ? null : (map['encodedIcon'] as String).input(),
-      industryId: map['industryId'] == null ? null : (map['industryId'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
+      encodedIcon: map['encodedIcon'] == null ? null : (map['encodedIcon']! as String).input(),
+      industryId: map['industryId'] == null ? null : (map['industryId']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
       productId: (map['productId'] as String).input(),
       type: (map['type'] as String).input(),
     );

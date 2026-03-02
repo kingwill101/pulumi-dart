@@ -36,10 +36,10 @@ class SCClusterNetworkEnvironmentEntity {
 
   factory SCClusterNetworkEnvironmentEntity.fromMap(Map<String, dynamic> map) {
     return SCClusterNetworkEnvironmentEntity(
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      related: map['related'] == null ? null : (map['related'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      related: map['related'] == null ? null : (map['related']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
     );
   }
 }

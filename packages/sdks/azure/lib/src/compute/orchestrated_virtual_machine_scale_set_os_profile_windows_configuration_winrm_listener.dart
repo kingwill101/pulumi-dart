@@ -27,7 +27,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListen
 
   factory OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener.fromMap(Map<String, dynamic> map) {
     return OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListener(
-      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl'] as String).input(),
+      certificateUrl: map['certificateUrl'] == null ? null : (map['certificateUrl']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

@@ -57,14 +57,14 @@ class BackupInstanceKubernetesClusterState {
 
   factory BackupInstanceKubernetesClusterState.fromMap(Map<String, dynamic> map) {
     return BackupInstanceKubernetesClusterState(
-      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters'] as Map).cast<String, dynamic>())).input(),
-      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId'] as String).input(),
-      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protectionState: map['protectionState'] == null ? null : (map['protectionState'] as String).input(),
-      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : (map['snapshotResourceGroupName'] as String).input(),
-      vaultId: map['vaultId'] == null ? null : (map['vaultId'] as String).input(),
+      backupDatasourceParameters: map['backupDatasourceParameters'] == null ? null : (BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((map['backupDatasourceParameters']! as Map).cast<String, dynamic>())).input(),
+      backupPolicyId: map['backupPolicyId'] == null ? null : (map['backupPolicyId']! as String).input(),
+      kubernetesClusterId: map['kubernetesClusterId'] == null ? null : (map['kubernetesClusterId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protectionState: map['protectionState'] == null ? null : (map['protectionState']! as String).input(),
+      snapshotResourceGroupName: map['snapshotResourceGroupName'] == null ? null : (map['snapshotResourceGroupName']! as String).input(),
+      vaultId: map['vaultId'] == null ? null : (map['vaultId']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class DomainDevicesTpmBackend {
 
   factory DomainDevicesTpmBackend.fromMap(Map<String, dynamic> map) {
     return DomainDevicesTpmBackend(
-      emulator: map['emulator'] == null ? null : (DomainDevicesTpmBackendEmulator.fromMap((map['emulator'] as Map).cast<String, dynamic>())).input(),
-      external: map['external'] == null ? null : (DomainDevicesTpmBackendExternal.fromMap((map['external'] as Map).cast<String, dynamic>())).input(),
-      passthrough: map['passthrough'] == null ? null : (DomainDevicesTpmBackendPassthrough.fromMap((map['passthrough'] as Map).cast<String, dynamic>())).input(),
+      emulator: map['emulator'] == null ? null : (DomainDevicesTpmBackendEmulator.fromMap((map['emulator']! as Map).cast<String, dynamic>())).input(),
+      external: map['external'] == null ? null : (DomainDevicesTpmBackendExternal.fromMap((map['external']! as Map).cast<String, dynamic>())).input(),
+      passthrough: map['passthrough'] == null ? null : (DomainDevicesTpmBackendPassthrough.fromMap((map['passthrough']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

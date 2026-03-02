@@ -32,9 +32,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings {
 
   factory GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType.fromValue(map['resourceType'] as String)).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsResourceType.fromValue(map['resourceType']! as String)).input(),
     );
   }
 }

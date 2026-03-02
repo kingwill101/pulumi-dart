@@ -49,12 +49,12 @@ class SoftwareRecipe {
 
   factory SoftwareRecipe.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipe(
-      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeArtifact>(map['artifacts'], (value) => SoftwareRecipeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      desiredState: map['desiredState'] == null ? null : (SoftwareRecipeDesiredState.fromValue(map['desiredState'] as String)).input(),
-      installSteps: map['installSteps'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeStep>(map['installSteps'], (value) => SoftwareRecipeStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      artifacts: map['artifacts'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeArtifact>(map['artifacts']!, (value) => SoftwareRecipeArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      desiredState: map['desiredState'] == null ? null : (SoftwareRecipeDesiredState.fromValue(map['desiredState']! as String)).input(),
+      installSteps: map['installSteps'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeStep>(map['installSteps']!, (value) => SoftwareRecipeStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      updateSteps: map['updateSteps'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeStep>(map['updateSteps'], (value) => SoftwareRecipeStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      updateSteps: map['updateSteps'] == null ? null : (pulumi.Input.decodeList<SoftwareRecipeStep>(map['updateSteps']!, (value) => SoftwareRecipeStep.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

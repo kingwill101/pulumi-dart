@@ -44,9 +44,9 @@ class ImageLibArgs {
 
   factory ImageLibArgs.fromMap(Map<String, dynamic> map) {
     return ImageLibArgs(
-      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes'] as List).cast<String>()).input(),
+      bizTypes: map['bizTypes'] == null ? null : ((map['bizTypes']! as List).cast<String>()).input(),
       category: (map['category'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
       imageLibName: (map['imageLibName'] as String).input(),
       scene: (map['scene'] as String).input(),
     );

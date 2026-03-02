@@ -26,8 +26,8 @@ class PythonPackage {
 
   factory PythonPackage.fromMap(Map<String, dynamic> map) {
     return PythonPackage(
-      paths: map['paths'] == null ? null : ((map['paths'] as List).cast<String>()).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      paths: map['paths'] == null ? null : ((map['paths']! as List).cast<String>()).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

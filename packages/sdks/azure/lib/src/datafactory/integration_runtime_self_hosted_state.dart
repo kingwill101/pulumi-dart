@@ -52,13 +52,13 @@ class IntegrationRuntimeSelfHostedState {
 
   factory IntegrationRuntimeSelfHostedState.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedState(
-      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryAuthorizationKey: map['primaryAuthorizationKey'] == null ? null : (map['primaryAuthorizationKey'] as String).input(),
-      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations'], (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secondaryAuthorizationKey: map['secondaryAuthorizationKey'] == null ? null : (map['secondaryAuthorizationKey'] as String).input(),
-      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : (map['selfContainedInteractiveAuthoringEnabled'] as bool).input(),
+      dataFactoryId: map['dataFactoryId'] == null ? null : (map['dataFactoryId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryAuthorizationKey: map['primaryAuthorizationKey'] == null ? null : (map['primaryAuthorizationKey']! as String).input(),
+      rbacAuthorizations: map['rbacAuthorizations'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSelfHostedRbacAuthorization>(map['rbacAuthorizations']!, (value) => IntegrationRuntimeSelfHostedRbacAuthorization.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secondaryAuthorizationKey: map['secondaryAuthorizationKey'] == null ? null : (map['secondaryAuthorizationKey']! as String).input(),
+      selfContainedInteractiveAuthoringEnabled: map['selfContainedInteractiveAuthoringEnabled'] == null ? null : (map['selfContainedInteractiveAuthoringEnabled']! as bool).input(),
     );
   }
 }

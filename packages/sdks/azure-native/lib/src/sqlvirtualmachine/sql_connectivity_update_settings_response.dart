@@ -26,8 +26,8 @@ class SqlConnectivityUpdateSettingsResponse {
 
   factory SqlConnectivityUpdateSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlConnectivityUpdateSettingsResponse(
-      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      connectivityType: map['connectivityType'] == null ? null : (map['connectivityType']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class PipelineDescription {
 
   factory PipelineDescription.fromMap(Map<String, dynamic> map) {
     return PipelineDescription(
-      displayData: map['displayData'] == null ? null : (pulumi.Input.decodeList<DisplayData>(map['displayData'], (value) => DisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      executionPipelineStage: map['executionPipelineStage'] == null ? null : (pulumi.Input.decodeList<ExecutionStageSummary>(map['executionPipelineStage'], (value) => ExecutionStageSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      originalPipelineTransform: map['originalPipelineTransform'] == null ? null : (pulumi.Input.decodeList<TransformSummary>(map['originalPipelineTransform'], (value) => TransformSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stepNamesHash: map['stepNamesHash'] == null ? null : (map['stepNamesHash'] as String).input(),
+      displayData: map['displayData'] == null ? null : (pulumi.Input.decodeList<DisplayData>(map['displayData']!, (value) => DisplayData.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      executionPipelineStage: map['executionPipelineStage'] == null ? null : (pulumi.Input.decodeList<ExecutionStageSummary>(map['executionPipelineStage']!, (value) => ExecutionStageSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      originalPipelineTransform: map['originalPipelineTransform'] == null ? null : (pulumi.Input.decodeList<TransformSummary>(map['originalPipelineTransform']!, (value) => TransformSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stepNamesHash: map['stepNamesHash'] == null ? null : (map['stepNamesHash']! as String).input(),
     );
   }
 }

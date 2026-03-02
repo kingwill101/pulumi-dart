@@ -56,9 +56,9 @@ class FleetManagedNamespacePropertiesResponse {
     return FleetManagedNamespacePropertiesResponse(
       adoptionPolicy: (map['adoptionPolicy'] as String).input(),
       deletePolicy: (map['deletePolicy'] as String).input(),
-      managedNamespaceProperties: map['managedNamespaceProperties'] == null ? null : (ManagedNamespacePropertiesResponse.fromMap((map['managedNamespaceProperties'] as Map).cast<String, dynamic>())).input(),
+      managedNamespaceProperties: map['managedNamespaceProperties'] == null ? null : (ManagedNamespacePropertiesResponse.fromMap((map['managedNamespaceProperties']! as Map).cast<String, dynamic>())).input(),
       portalFqdn: (map['portalFqdn'] as String).input(),
-      propagationPolicy: map['propagationPolicy'] == null ? null : (PropagationPolicyResponse.fromMap((map['propagationPolicy'] as Map).cast<String, dynamic>())).input(),
+      propagationPolicy: map['propagationPolicy'] == null ? null : (PropagationPolicyResponse.fromMap((map['propagationPolicy']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       status: (FleetManagedNamespaceStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
     );

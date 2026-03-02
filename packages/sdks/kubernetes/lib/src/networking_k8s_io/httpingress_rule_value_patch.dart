@@ -22,7 +22,7 @@ class HTTPIngressRuleValuePatch {
 
   factory HTTPIngressRuleValuePatch.fromMap(Map<String, dynamic> map) {
     return HTTPIngressRuleValuePatch(
-      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<HTTPIngressPathPatch>(map['paths'], (value) => HTTPIngressPathPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paths: map['paths'] == null ? null : (pulumi.Input.decodeList<HTTPIngressPathPatch>(map['paths']!, (value) => HTTPIngressPathPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

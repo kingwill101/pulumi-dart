@@ -31,9 +31,9 @@ class FastTemplateState {
 
   factory FastTemplateState.fromMap(Map<String, dynamic> map) {
     return FastTemplateState(
-      md5Hash: map['md5Hash'] == null ? null : (map['md5Hash'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      md5Hash: map['md5Hash'] == null ? null : (map['md5Hash']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

@@ -19,7 +19,7 @@ class ApplicationReadinessV2TcpSocket {
 
   factory ApplicationReadinessV2TcpSocket.fromMap(Map<String, dynamic> map) {
     return ApplicationReadinessV2TcpSocket(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

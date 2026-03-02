@@ -27,8 +27,8 @@ class ListMonitorLinkedResourcesResult {
 
   factory ListMonitorLinkedResourcesResult.fromMap(Map<String, dynamic> map) {
     return ListMonitorLinkedResourcesResult(
-      nextLink: map['nextLink'] == null ? null : map['nextLink'] as String,
-      value: map['value'] == null ? null : pulumi.Input.decodeList<LinkedResourceResponse>(map['value'], (value) => LinkedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: map['nextLink'] == null ? null : map['nextLink']! as String,
+      value: map['value'] == null ? null : pulumi.Input.decodeList<LinkedResourceResponse>(map['value']!, (value) => LinkedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

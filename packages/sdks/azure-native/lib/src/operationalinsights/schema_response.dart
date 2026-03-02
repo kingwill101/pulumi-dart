@@ -73,11 +73,11 @@ class SchemaResponse {
   factory SchemaResponse.fromMap(Map<String, dynamic> map) {
     return SchemaResponse(
       categories: ((map['categories'] as List).cast<String>()).input(),
-      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnResponse>(map['columns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      columns: map['columns'] == null ? null : (pulumi.Input.decodeList<ColumnResponse>(map['columns']!, (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       labels: ((map['labels'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       solutions: ((map['solutions'] as List).cast<String>()).input(),
       source: (map['source'] as String).input(),
       standardColumns: (pulumi.Input.decodeList<ColumnResponse>(map['standardColumns'], (value) => ColumnResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),

@@ -26,8 +26,8 @@ class OfflineConfigurationResponse {
 
   factory OfflineConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return OfflineConfigurationResponse(
-      lastBackupName: map['lastBackupName'] == null ? null : (map['lastBackupName'] as String).input(),
-      offline: map['offline'] == null ? null : (map['offline'] as bool).input(),
+      lastBackupName: map['lastBackupName'] == null ? null : (map['lastBackupName']! as String).input(),
+      offline: map['offline'] == null ? null : (map['offline']! as bool).input(),
     );
   }
 }

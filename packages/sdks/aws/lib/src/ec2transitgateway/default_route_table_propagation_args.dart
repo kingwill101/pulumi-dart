@@ -39,8 +39,8 @@ class DefaultRouteTablePropagationArgs {
 
   factory DefaultRouteTablePropagationArgs.fromMap(Map<String, dynamic> map) {
     return DefaultRouteTablePropagationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((DefaultRouteTablePropagationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       transitGatewayId: (map['transitGatewayId'] as String).input(),
       transitGatewayRouteTableId: (map['transitGatewayRouteTableId'] as String).input(),
     );

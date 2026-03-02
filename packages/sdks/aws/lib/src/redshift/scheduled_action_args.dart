@@ -65,15 +65,15 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enable: map['enable'] == null ? null : ((map['enable'] as bool).input()).input(),
+      endTime: map['endTime'] == null ? null : ((map['endTime'] as String).input()).input(),
       iamRole: (map['iamRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       schedule: (map['schedule'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      targetAction: (ScheduledActionTargetAction.fromMap((map['targetAction'] as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      targetAction: (ScheduledActionTargetAction.fromMap((map['targetAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

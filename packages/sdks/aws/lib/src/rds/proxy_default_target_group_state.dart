@@ -42,11 +42,11 @@ class ProxyDefaultTargetGroupState {
 
   factory ProxyDefaultTargetGroupState.fromMap(Map<String, dynamic> map) {
     return ProxyDefaultTargetGroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : (ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig'] as Map).cast<String, dynamic>())).input(),
-      dbProxyName: map['dbProxyName'] == null ? null : (map['dbProxyName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      connectionPoolConfig: map['connectionPoolConfig'] == null ? null : ((ProxyDefaultTargetGroupConnectionPoolConfig.fromMap((map['connectionPoolConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      dbProxyName: map['dbProxyName'] == null ? null : ((map['dbProxyName'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

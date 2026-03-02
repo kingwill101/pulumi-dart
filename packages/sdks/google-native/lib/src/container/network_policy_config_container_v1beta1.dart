@@ -21,7 +21,7 @@ class NetworkPolicyConfigContainerV1beta1 {
 
   factory NetworkPolicyConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyConfigContainerV1beta1(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
     );
   }
 }

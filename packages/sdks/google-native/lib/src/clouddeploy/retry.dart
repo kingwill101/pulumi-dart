@@ -33,8 +33,8 @@ class Retry {
   factory Retry.fromMap(Map<String, dynamic> map) {
     return Retry(
       attempts: (map['attempts'] as String).input(),
-      backoffMode: map['backoffMode'] == null ? null : (RetryBackoffMode.fromValue(map['backoffMode'] as String)).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as String).input(),
+      backoffMode: map['backoffMode'] == null ? null : (RetryBackoffMode.fromValue(map['backoffMode']! as String)).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
     );
   }
 }

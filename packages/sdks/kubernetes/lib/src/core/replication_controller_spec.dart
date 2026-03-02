@@ -37,10 +37,10 @@ class ReplicationControllerSpec {
 
   factory ReplicationControllerSpec.fromMap(Map<String, dynamic> map) {
     return ReplicationControllerSpec(
-      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds'] as int).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      selector: map['selector'] == null ? null : ((map['selector'] as Map).cast<String, String>()).input(),
-      template: map['template'] == null ? null : (PodTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>())).input(),
+      minReadySeconds: map['minReadySeconds'] == null ? null : (map['minReadySeconds']! as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      selector: map['selector'] == null ? null : ((map['selector']! as Map).cast<String, String>()).input(),
+      template: map['template'] == null ? null : (PodTemplateSpec.fromMap((map['template']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

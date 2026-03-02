@@ -21,7 +21,7 @@ class GoogleCloudContentwarehouseV1EnumArray {
 
   factory GoogleCloudContentwarehouseV1EnumArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1EnumArray(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

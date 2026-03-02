@@ -59,14 +59,14 @@ class AwsSecretsManagerSecretProperties {
 
   factory AwsSecretsManagerSecretProperties.fromMap(Map<String, dynamic> map) {
     return AwsSecretsManagerSecretProperties(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      generateSecretString: map['generateSecretString'] == null ? null : (GenerateSecretString.fromMap((map['generateSecretString'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      replicaRegions: map['replicaRegions'] == null ? null : (pulumi.Input.decodeList<ReplicaRegion>(map['replicaRegions'], (value) => ReplicaRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretString: map['secretString'] == null ? null : (map['secretString'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      generateSecretString: map['generateSecretString'] == null ? null : (GenerateSecretString.fromMap((map['generateSecretString']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      replicaRegions: map['replicaRegions'] == null ? null : (pulumi.Input.decodeList<ReplicaRegion>(map['replicaRegions']!, (value) => ReplicaRegion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretString: map['secretString'] == null ? null : (map['secretString']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

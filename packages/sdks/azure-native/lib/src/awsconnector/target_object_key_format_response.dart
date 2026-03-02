@@ -27,8 +27,8 @@ class TargetObjectKeyFormatResponse {
 
   factory TargetObjectKeyFormatResponse.fromMap(Map<String, dynamic> map) {
     return TargetObjectKeyFormatResponse(
-      partitionedPrefix: map['partitionedPrefix'] == null ? null : (PartitionedPrefixResponse.fromMap((map['partitionedPrefix'] as Map).cast<String, dynamic>())).input(),
-      simplePrefix: map['simplePrefix'] == null ? null : (map['simplePrefix']).input(),
+      partitionedPrefix: map['partitionedPrefix'] == null ? null : (PartitionedPrefixResponse.fromMap((map['partitionedPrefix']! as Map).cast<String, dynamic>())).input(),
+      simplePrefix: map['simplePrefix'] == null ? null : (map['simplePrefix']!).input(),
     );
   }
 }

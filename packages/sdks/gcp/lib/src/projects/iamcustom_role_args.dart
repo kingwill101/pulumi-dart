@@ -52,11 +52,11 @@ class IAMCustomRoleArgs {
 
   factory IAMCustomRoleArgs.fromMap(Map<String, dynamic> map) {
     return IAMCustomRoleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       permissions: ((map['permissions'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
       title: (map['title'] as String).input(),
     );
   }

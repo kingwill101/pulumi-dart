@@ -65,14 +65,14 @@ class DedicatedHostGroupArgs {
 
   factory DedicatedHostGroupArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHostGroupArgs(
-      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy'] as String).input(),
-      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : (map['cpuAllocationRatio'] as int).input(),
-      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : (map['dedicatedHostGroupDesc'] as String).input(),
-      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : (map['diskAllocationRatio'] as int).input(),
+      allocationPolicy: map['allocationPolicy'] == null ? null : (map['allocationPolicy']! as String).input(),
+      cpuAllocationRatio: map['cpuAllocationRatio'] == null ? null : (map['cpuAllocationRatio']! as int).input(),
+      dedicatedHostGroupDesc: map['dedicatedHostGroupDesc'] == null ? null : (map['dedicatedHostGroupDesc']! as String).input(),
+      diskAllocationRatio: map['diskAllocationRatio'] == null ? null : (map['diskAllocationRatio']! as int).input(),
       engine: (map['engine'] as String).input(),
-      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : (map['hostReplacePolicy'] as String).input(),
-      memAllocationRatio: map['memAllocationRatio'] == null ? null : (map['memAllocationRatio'] as int).input(),
-      openPermission: map['openPermission'] == null ? null : (map['openPermission'] as bool).input(),
+      hostReplacePolicy: map['hostReplacePolicy'] == null ? null : (map['hostReplacePolicy']! as String).input(),
+      memAllocationRatio: map['memAllocationRatio'] == null ? null : (map['memAllocationRatio']! as int).input(),
+      openPermission: map['openPermission'] == null ? null : (map['openPermission']! as bool).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

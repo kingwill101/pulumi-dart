@@ -28,8 +28,8 @@ class JsonFileFormatDatastreamV1alpha1 {
 
   factory JsonFileFormatDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return JsonFileFormatDatastreamV1alpha1(
-      compression: map['compression'] == null ? null : (JsonFileFormatCompressionDatastreamV1alpha1.fromValue(map['compression'] as String)).input(),
-      schemaFileFormat: map['schemaFileFormat'] == null ? null : (JsonFileFormatSchemaFileFormatDatastreamV1alpha1.fromValue(map['schemaFileFormat'] as String)).input(),
+      compression: map['compression'] == null ? null : (JsonFileFormatCompressionDatastreamV1alpha1.fromValue(map['compression']! as String)).input(),
+      schemaFileFormat: map['schemaFileFormat'] == null ? null : (JsonFileFormatSchemaFileFormatDatastreamV1alpha1.fromValue(map['schemaFileFormat']! as String)).input(),
     );
   }
 }

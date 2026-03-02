@@ -20,7 +20,7 @@ class PacketMirroringForwardingRuleInfoComputeV1 {
 
   factory PacketMirroringForwardingRuleInfoComputeV1.fromMap(Map<String, dynamic> map) {
     return PacketMirroringForwardingRuleInfoComputeV1(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

@@ -35,10 +35,10 @@ class ClusterTrialMetadata {
 
   factory ClusterTrialMetadata.fromMap(Map<String, dynamic> map) {
     return ClusterTrialMetadata(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      graceEndTime: map['graceEndTime'] == null ? null : (map['graceEndTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      upgradeTime: map['upgradeTime'] == null ? null : (map['upgradeTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      graceEndTime: map['graceEndTime'] == null ? null : (map['graceEndTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      upgradeTime: map['upgradeTime'] == null ? null : (map['upgradeTime']! as String).input(),
     );
   }
 }

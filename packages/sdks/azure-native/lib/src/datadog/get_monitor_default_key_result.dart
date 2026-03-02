@@ -35,10 +35,10 @@ class GetMonitorDefaultKeyResult {
 
   factory GetMonitorDefaultKeyResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorDefaultKeyResult(
-      created: map['created'] == null ? null : map['created'] as String,
-      createdBy: map['createdBy'] == null ? null : map['createdBy'] as String,
+      created: map['created'] == null ? null : map['created']! as String,
+      createdBy: map['createdBy'] == null ? null : map['createdBy']! as String,
       key: map['key'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
     );
   }
 }

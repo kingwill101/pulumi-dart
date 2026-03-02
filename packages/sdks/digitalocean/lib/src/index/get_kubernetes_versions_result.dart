@@ -37,7 +37,7 @@ class GetKubernetesVersionsResult {
       id: map['id'] as String,
       latestVersion: map['latestVersion'] as String,
       validVersions: (map['validVersions'] as List).cast<String>(),
-      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix'] as String,
+      versionPrefix: map['versionPrefix'] == null ? null : map['versionPrefix']! as String,
     );
   }
 }

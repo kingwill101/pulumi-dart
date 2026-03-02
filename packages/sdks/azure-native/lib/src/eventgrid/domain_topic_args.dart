@@ -35,7 +35,7 @@ class DomainTopicArgs {
   factory DomainTopicArgs.fromMap(Map<String, dynamic> map) {
     return DomainTopicArgs(
       domainName: (map['domainName'] as String).input(),
-      domainTopicName: map['domainTopicName'] == null ? null : (map['domainTopicName'] as String).input(),
+      domainTopicName: map['domainTopicName'] == null ? null : (map['domainTopicName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

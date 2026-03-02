@@ -31,9 +31,9 @@ class DestinationOptionsModelProperties {
 
   factory DestinationOptionsModelProperties.fromMap(Map<String, dynamic> map) {
     return DestinationOptionsModelProperties(
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : (map['hiveCompatiblePartitions'] as bool).input(),
-      perHourPartition: map['perHourPartition'] == null ? null : (map['perHourPartition'] as bool).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      hiveCompatiblePartitions: map['hiveCompatiblePartitions'] == null ? null : (map['hiveCompatiblePartitions']! as bool).input(),
+      perHourPartition: map['perHourPartition'] == null ? null : (map['perHourPartition']! as bool).input(),
     );
   }
 }

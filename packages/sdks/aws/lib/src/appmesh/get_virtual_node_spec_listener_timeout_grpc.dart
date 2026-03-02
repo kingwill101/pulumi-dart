@@ -25,8 +25,8 @@ class GetVirtualNodeSpecListenerTimeoutGrpc {
 
   factory GetVirtualNodeSpecListenerTimeoutGrpc.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecListenerTimeoutGrpc(
-      idles: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcIdle>(map['idles'], (value) => GetVirtualNodeSpecListenerTimeoutGrpcIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      perRequests: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcPerRequest>(map['perRequests'], (value) => GetVirtualNodeSpecListenerTimeoutGrpcPerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      idles: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcIdle>(map['idles']!, (value) => GetVirtualNodeSpecListenerTimeoutGrpcIdle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      perRequests: (pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcPerRequest>(map['perRequests']!, (value) => GetVirtualNodeSpecListenerTimeoutGrpcPerRequest.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

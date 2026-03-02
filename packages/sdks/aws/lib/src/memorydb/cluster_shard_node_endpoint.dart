@@ -25,8 +25,8 @@ class ClusterShardNodeEndpoint {
 
   factory ClusterShardNodeEndpoint.fromMap(Map<String, dynamic> map) {
     return ClusterShardNodeEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
     );
   }
 }

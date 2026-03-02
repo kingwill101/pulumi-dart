@@ -38,7 +38,7 @@ class SubjectRulesReviewStatusAuthorizationK8sIoV1beta1 {
 
   factory SubjectRulesReviewStatusAuthorizationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return SubjectRulesReviewStatusAuthorizationK8sIoV1beta1(
-      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError'] as String).input(),
+      evaluationError: map['evaluationError'] == null ? null : (map['evaluationError']! as String).input(),
       incomplete: (map['incomplete'] as bool).input(),
       nonResourceRules: (pulumi.Input.decodeList<NonResourceRuleAuthorizationK8sIoV1beta1>(map['nonResourceRules'], (value) => NonResourceRuleAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceRules: (pulumi.Input.decodeList<ResourceRuleAuthorizationK8sIoV1beta1>(map['resourceRules'], (value) => ResourceRuleAuthorizationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),

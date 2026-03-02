@@ -55,13 +55,13 @@ class InstancePolicy {
 
   factory InstancePolicy.fromMap(Map<String, dynamic> map) {
     return InstancePolicy(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<Accelerator>(map['accelerators'], (value) => Accelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootDisk: map['bootDisk'] == null ? null : (Disk.fromMap((map['bootDisk'] as Map).cast<String, dynamic>())).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<AttachedDisk>(map['disks'], (value) => AttachedDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      provisioningModel: map['provisioningModel'] == null ? null : (InstancePolicyProvisioningModel.fromValue(map['provisioningModel'] as String)).input(),
-      reservation: map['reservation'] == null ? null : (map['reservation'] as String).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<Accelerator>(map['accelerators']!, (value) => Accelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootDisk: map['bootDisk'] == null ? null : (Disk.fromMap((map['bootDisk']! as Map).cast<String, dynamic>())).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<AttachedDisk>(map['disks']!, (value) => AttachedDisk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      provisioningModel: map['provisioningModel'] == null ? null : (InstancePolicyProvisioningModel.fromValue(map['provisioningModel']! as String)).input(),
+      reservation: map['reservation'] == null ? null : (map['reservation']! as String).input(),
     );
   }
 }

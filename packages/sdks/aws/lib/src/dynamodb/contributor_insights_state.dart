@@ -36,10 +36,10 @@ class ContributorInsightsState {
 
   factory ContributorInsightsState.fromMap(Map<String, dynamic> map) {
     return ContributorInsightsState(
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
+      mode: map['mode'] == null ? null : ((map['mode'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class ResourceTypeRegistrationArgs {
 
   factory ResourceTypeRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationArgs(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (ResourceTypeRegistrationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      properties: map['properties'] == null ? null : (ResourceTypeRegistrationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       providerNamespace: (map['providerNamespace'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

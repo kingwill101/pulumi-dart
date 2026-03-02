@@ -21,7 +21,7 @@ class DatabaseInstanceProperties {
 
   factory DatabaseInstanceProperties.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceProperties(
-      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId'] as String).input(),
+      databaseInstanceId: map['databaseInstanceId'] == null ? null : (map['databaseInstanceId']! as String).input(),
     );
   }
 }

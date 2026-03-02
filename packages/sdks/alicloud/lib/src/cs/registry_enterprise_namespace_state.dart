@@ -38,10 +38,10 @@ class RegistryEnterpriseNamespaceState {
 
   factory RegistryEnterpriseNamespaceState.fromMap(Map<String, dynamic> map) {
     return RegistryEnterpriseNamespaceState(
-      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate'] as bool).input(),
-      defaultVisibility: map['defaultVisibility'] == null ? null : (map['defaultVisibility'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoCreate: map['autoCreate'] == null ? null : (map['autoCreate']! as bool).input(),
+      defaultVisibility: map['defaultVisibility'] == null ? null : (map['defaultVisibility']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

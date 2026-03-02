@@ -39,10 +39,10 @@ class InstanceHostConfig {
 
   factory InstanceHostConfig.fromMap(Map<String, dynamic> map) {
     return InstanceHostConfig(
-      api: map['api'] == null ? null : (map['api'] as String).input(),
-      gitHttp: map['gitHttp'] == null ? null : (map['gitHttp'] as String).input(),
-      gitSsh: map['gitSsh'] == null ? null : (map['gitSsh'] as String).input(),
-      html: map['html'] == null ? null : (map['html'] as String).input(),
+      api: map['api'] == null ? null : (map['api']! as String).input(),
+      gitHttp: map['gitHttp'] == null ? null : (map['gitHttp']! as String).input(),
+      gitSsh: map['gitSsh'] == null ? null : (map['gitSsh']! as String).input(),
+      html: map['html'] == null ? null : (map['html']! as String).input(),
     );
   }
 }

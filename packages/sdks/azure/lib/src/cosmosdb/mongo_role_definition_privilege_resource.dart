@@ -25,8 +25,8 @@ class MongoRoleDefinitionPrivilegeResource {
 
   factory MongoRoleDefinitionPrivilegeResource.fromMap(Map<String, dynamic> map) {
     return MongoRoleDefinitionPrivilegeResource(
-      collectionName: map['collectionName'] == null ? null : (map['collectionName'] as String).input(),
-      dbName: map['dbName'] == null ? null : (map['dbName'] as String).input(),
+      collectionName: map['collectionName'] == null ? null : (map['collectionName']! as String).input(),
+      dbName: map['dbName'] == null ? null : (map['dbName']! as String).input(),
     );
   }
 }

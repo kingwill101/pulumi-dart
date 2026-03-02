@@ -27,7 +27,7 @@ class ManualCertMethodResponse {
   factory ManualCertMethodResponse.fromMap(Map<String, dynamic> map) {
     return ManualCertMethodResponse(
       secretName: (map['secretName'] as String).input(),
-      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace'] as String).input(),
+      secretNamespace: map['secretNamespace'] == null ? null : (map['secretNamespace']! as String).input(),
     );
   }
 }

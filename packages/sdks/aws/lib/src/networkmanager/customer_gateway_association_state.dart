@@ -38,10 +38,10 @@ class CustomerGatewayAssociationState {
 
   factory CustomerGatewayAssociationState.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayAssociationState(
-      customerGatewayArn: map['customerGatewayArn'] == null ? null : (map['customerGatewayArn'] as String).input(),
-      deviceId: map['deviceId'] == null ? null : (map['deviceId'] as String).input(),
-      globalNetworkId: map['globalNetworkId'] == null ? null : (map['globalNetworkId'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
+      customerGatewayArn: map['customerGatewayArn'] == null ? null : ((map['customerGatewayArn'] as String).input()).input(),
+      deviceId: map['deviceId'] == null ? null : ((map['deviceId'] as String).input()).input(),
+      globalNetworkId: map['globalNetworkId'] == null ? null : ((map['globalNetworkId'] as String).input()).input(),
+      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
     );
   }
 }

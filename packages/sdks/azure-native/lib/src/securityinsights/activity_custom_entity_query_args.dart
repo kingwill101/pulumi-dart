@@ -86,18 +86,18 @@ class ActivityCustomEntityQueryArgs {
 
   factory ActivityCustomEntityQueryArgs.fromMap(Map<String, dynamic> map) {
     return ActivityCustomEntityQueryArgs(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      entitiesFilter: map['entitiesFilter'] == null ? null : ((map['entitiesFilter'] as Map).cast<String, List<String>>()).input(),
-      entityQueryId: map['entityQueryId'] == null ? null : (map['entityQueryId'] as String).input(),
-      inputEntityType: map['inputEntityType'] == null ? null : (map['inputEntityType'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      entitiesFilter: map['entitiesFilter'] == null ? null : ((map['entitiesFilter']! as Map).cast<String, List<String>>()).input(),
+      entityQueryId: map['entityQueryId'] == null ? null : (map['entityQueryId']! as String).input(),
+      inputEntityType: map['inputEntityType'] == null ? null : (map['inputEntityType']! as String).input(),
       kind: (map['kind'] as String).input(),
-      queryDefinitions: map['queryDefinitions'] == null ? null : (ActivityEntityQueriesPropertiesQueryDefinitions.fromMap((map['queryDefinitions'] as Map).cast<String, dynamic>())).input(),
-      requiredInputFieldsSets: map['requiredInputFieldsSets'] == null ? null : ((map['requiredInputFieldsSets'] as List).cast<List<String>>()).input(),
+      queryDefinitions: map['queryDefinitions'] == null ? null : (ActivityEntityQueriesPropertiesQueryDefinitions.fromMap((map['queryDefinitions']! as Map).cast<String, dynamic>())).input(),
+      requiredInputFieldsSets: map['requiredInputFieldsSets'] == null ? null : ((map['requiredInputFieldsSets']! as List).cast<List<String>>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

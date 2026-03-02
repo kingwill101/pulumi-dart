@@ -45,9 +45,9 @@ class ApiMappingArgs {
   factory ApiMappingArgs.fromMap(Map<String, dynamic> map) {
     return ApiMappingArgs(
       apiId: (map['apiId'] as String).input(),
-      apiMappingKey: map['apiMappingKey'] == null ? null : (map['apiMappingKey'] as String).input(),
+      apiMappingKey: map['apiMappingKey'] == null ? null : ((map['apiMappingKey'] as String).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       stage: (map['stage'] as String).input(),
     );
   }

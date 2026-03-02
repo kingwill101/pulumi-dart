@@ -88,16 +88,16 @@ class WorkspaceApiOperationArgs {
   factory WorkspaceApiOperationArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceApiOperationArgs(
       apiId: (map['apiId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       method: (map['method'] as String).input(),
-      operationId: map['operationId'] == null ? null : (map['operationId'] as String).input(),
-      policies: map['policies'] == null ? null : (map['policies'] as String).input(),
-      request: map['request'] == null ? null : (RequestContract.fromMap((map['request'] as Map).cast<String, dynamic>())).input(),
+      operationId: map['operationId'] == null ? null : (map['operationId']! as String).input(),
+      policies: map['policies'] == null ? null : (map['policies']! as String).input(),
+      request: map['request'] == null ? null : (RequestContract.fromMap((map['request']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ResponseContract>(map['responses'], (value) => ResponseContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      responses: map['responses'] == null ? null : (pulumi.Input.decodeList<ResponseContract>(map['responses']!, (value) => ResponseContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceName: (map['serviceName'] as String).input(),
-      templateParameters: map['templateParameters'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['templateParameters'], (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateParameters: map['templateParameters'] == null ? null : (pulumi.Input.decodeList<ParameterContract>(map['templateParameters']!, (value) => ParameterContract.fromMap((value as Map).cast<String, dynamic>()))).input(),
       urlTemplate: (map['urlTemplate'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );

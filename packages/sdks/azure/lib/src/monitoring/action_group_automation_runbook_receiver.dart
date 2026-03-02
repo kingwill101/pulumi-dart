@@ -55,7 +55,7 @@ class ActionGroupAutomationRunbookReceiver {
       name: (map['name'] as String).input(),
       runbookName: (map['runbookName'] as String).input(),
       serviceUri: (map['serviceUri'] as String).input(),
-      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema'] as bool).input(),
+      useCommonAlertSchema: map['useCommonAlertSchema'] == null ? null : (map['useCommonAlertSchema']! as bool).input(),
       webhookResourceId: (map['webhookResourceId'] as String).input(),
     );
   }

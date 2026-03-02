@@ -37,9 +37,9 @@ class CinderVolumeSource {
 
   factory CinderVolumeSource.fromMap(Map<String, dynamic> map) {
     return CinderVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
       volumeID: (map['volumeID'] as String).input(),
     );
   }

@@ -41,8 +41,8 @@ class VirtualMachineConfigurationAssignmentArgs {
   factory VirtualMachineConfigurationAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineConfigurationAssignmentArgs(
       configuration: (VirtualMachineConfigurationAssignmentConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       virtualMachineId: (map['virtualMachineId'] as String).input(),
     );
   }

@@ -24,7 +24,7 @@ class GetDataGroupRecord {
 
   factory GetDataGroupRecord.fromMap(Map<String, dynamic> map) {
     return GetDataGroupRecord(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -88,8 +88,8 @@ class GetSharedImageVersionResult {
       osDiskImageSizeGb: map['osDiskImageSizeGb'] as int,
       osDiskSnapshotId: map['osDiskSnapshotId'] as String,
       resourceGroupName: map['resourceGroupName'] as String,
-      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : map['sortVersionsBySemver'] as bool,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sortVersionsBySemver: map['sortVersionsBySemver'] == null ? null : map['sortVersionsBySemver']! as bool,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       targetRegions: pulumi.Input.decodeList<GetSharedImageVersionTargetRegion>(map['targetRegions'], (value) => GetSharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

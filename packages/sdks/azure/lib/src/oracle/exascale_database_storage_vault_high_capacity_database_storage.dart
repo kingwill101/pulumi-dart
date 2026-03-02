@@ -25,7 +25,7 @@ class ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
 
   factory ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap(Map<String, dynamic> map) {
     return ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage(
-      availableSizeInGb: map['availableSizeInGb'] == null ? null : (map['availableSizeInGb'] as int).input(),
+      availableSizeInGb: map['availableSizeInGb'] == null ? null : (map['availableSizeInGb']! as int).input(),
       totalSizeInGb: (map['totalSizeInGb'] as int).input(),
     );
   }

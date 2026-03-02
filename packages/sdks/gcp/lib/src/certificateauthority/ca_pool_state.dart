@@ -83,16 +83,16 @@ class CaPoolState {
 
   factory CaPoolState.fromMap(Map<String, dynamic> map) {
     return CaPoolState(
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (CaPoolEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      issuancePolicy: map['issuancePolicy'] == null ? null : (CaPoolIssuancePolicy.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      publishingOptions: map['publishingOptions'] == null ? null : (CaPoolPublishingOptions.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>())).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (CaPoolEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      issuancePolicy: map['issuancePolicy'] == null ? null : (CaPoolIssuancePolicy.fromMap((map['issuancePolicy']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      publishingOptions: map['publishingOptions'] == null ? null : (CaPoolPublishingOptions.fromMap((map['publishingOptions']! as Map).cast<String, dynamic>())).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

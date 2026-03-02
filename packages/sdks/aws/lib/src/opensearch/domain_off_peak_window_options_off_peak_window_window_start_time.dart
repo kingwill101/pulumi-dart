@@ -25,8 +25,8 @@ class DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
 
   factory DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap(Map<String, dynamic> map) {
     return DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime(
-      hours: map['hours'] == null ? null : (map['hours'] as int).input(),
-      minutes: map['minutes'] == null ? null : (map['minutes'] as int).input(),
+      hours: map['hours'] == null ? null : ((map['hours'] as int).input()).input(),
+      minutes: map['minutes'] == null ? null : ((map['minutes'] as int).input()).input(),
     );
   }
 }

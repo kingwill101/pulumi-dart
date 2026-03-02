@@ -50,12 +50,12 @@ class SharedPrivateLinkResourceState {
 
   factory SharedPrivateLinkResourceState.fromMap(Map<String, dynamic> map) {
     return SharedPrivateLinkResourceState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName'] as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
-      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requestMessage: map['requestMessage'] == null ? null : (map['requestMessage']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      subresourceName: map['subresourceName'] == null ? null : (map['subresourceName']! as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      webPubsubId: map['webPubsubId'] == null ? null : (map['webPubsubId']! as String).input(),
     );
   }
 }

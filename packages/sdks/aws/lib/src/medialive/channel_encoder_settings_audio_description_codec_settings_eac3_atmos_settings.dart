@@ -50,13 +50,13 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
 
   factory ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings(
-      bitrate: map['bitrate'] == null ? null : (map['bitrate'] as double).input(),
-      codingMode: map['codingMode'] == null ? null : (map['codingMode'] as String).input(),
-      dialnorm: map['dialnorm'] == null ? null : (map['dialnorm'] as double).input(),
-      drcLine: map['drcLine'] == null ? null : (map['drcLine'] as String).input(),
-      drcRf: map['drcRf'] == null ? null : (map['drcRf'] as String).input(),
-      heightTrim: map['heightTrim'] == null ? null : (map['heightTrim'] as double).input(),
-      surroundTrim: map['surroundTrim'] == null ? null : (map['surroundTrim'] as double).input(),
+      bitrate: map['bitrate'] == null ? null : ((map['bitrate'] as double).input()).input(),
+      codingMode: map['codingMode'] == null ? null : ((map['codingMode'] as String).input()).input(),
+      dialnorm: map['dialnorm'] == null ? null : ((map['dialnorm'] as double).input()).input(),
+      drcLine: map['drcLine'] == null ? null : ((map['drcLine'] as String).input()).input(),
+      drcRf: map['drcRf'] == null ? null : ((map['drcRf'] as String).input()).input(),
+      heightTrim: map['heightTrim'] == null ? null : ((map['heightTrim'] as double).input()).input(),
+      surroundTrim: map['surroundTrim'] == null ? null : ((map['surroundTrim'] as double).input()).input(),
     );
   }
 }

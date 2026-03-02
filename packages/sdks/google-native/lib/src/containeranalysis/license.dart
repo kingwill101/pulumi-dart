@@ -26,8 +26,8 @@ class License {
 
   factory License.fromMap(Map<String, dynamic> map) {
     return License(
-      comments: map['comments'] == null ? null : (map['comments'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      comments: map['comments'] == null ? null : (map['comments']! as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
     );
   }
 }

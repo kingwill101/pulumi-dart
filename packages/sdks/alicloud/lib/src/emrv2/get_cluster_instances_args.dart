@@ -64,15 +64,15 @@ class GetClusterInstancesArgs {
 
   factory GetClusterInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterInstancesArgs(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      instanceStates: map['instanceStates'] == null ? null : ((map['instanceStates'] as List).cast<String>()).input(),
-      maxResults: map['maxResults'] == null ? null : (map['maxResults'] as int).input(),
-      nextToken: map['nextToken'] == null ? null : (map['nextToken'] as String).input(),
-      nodeGroupIds: map['nodeGroupIds'] == null ? null : ((map['nodeGroupIds'] as List).cast<String>()).input(),
-      nodeGroupNames: map['nodeGroupNames'] == null ? null : ((map['nodeGroupNames'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      instanceStates: map['instanceStates'] == null ? null : ((map['instanceStates']! as List).cast<String>()).input(),
+      maxResults: map['maxResults'] == null ? null : (map['maxResults']! as int).input(),
+      nextToken: map['nextToken'] == null ? null : (map['nextToken']! as String).input(),
+      nodeGroupIds: map['nodeGroupIds'] == null ? null : ((map['nodeGroupIds']! as List).cast<String>()).input(),
+      nodeGroupNames: map['nodeGroupNames'] == null ? null : ((map['nodeGroupNames']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -52,7 +52,7 @@ class SmtpUsernameArgs {
       communicationServiceName: (map['communicationServiceName'] as String).input(),
       entraApplicationId: (map['entraApplicationId'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      smtpUsername: map['smtpUsername'] == null ? null : (map['smtpUsername'] as String).input(),
+      smtpUsername: map['smtpUsername'] == null ? null : (map['smtpUsername']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
       username: (map['username'] as String).input(),
     );

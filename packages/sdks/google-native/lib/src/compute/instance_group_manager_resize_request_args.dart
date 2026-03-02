@@ -68,16 +68,16 @@ class InstanceGroupManagerResizeRequestArgs {
 
   factory InstanceGroupManagerResizeRequestArgs.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerResizeRequestArgs(
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       instanceGroupManager: (map['instanceGroupManager'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queuingPolicy: map['queuingPolicy'] == null ? null : (QueuingPolicy.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      requestedRunDuration: map['requestedRunDuration'] == null ? null : (Duration.fromMap((map['requestedRunDuration'] as Map).cast<String, dynamic>())).input(),
-      resizeBy: map['resizeBy'] == null ? null : (map['resizeBy'] as int).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queuingPolicy: map['queuingPolicy'] == null ? null : (QueuingPolicy.fromMap((map['queuingPolicy']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      requestedRunDuration: map['requestedRunDuration'] == null ? null : (Duration.fromMap((map['requestedRunDuration']! as Map).cast<String, dynamic>())).input(),
+      resizeBy: map['resizeBy'] == null ? null : (map['resizeBy']! as int).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

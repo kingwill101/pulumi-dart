@@ -35,7 +35,7 @@ class GetResourceArgs {
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
       path: (map['path'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApiId: (map['restApiId'] as String).input(),
     );
   }

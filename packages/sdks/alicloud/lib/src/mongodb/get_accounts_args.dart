@@ -34,9 +34,9 @@ class GetAccountsArgs {
 
   factory GetAccountsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountsArgs(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

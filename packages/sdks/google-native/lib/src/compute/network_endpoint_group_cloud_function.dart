@@ -26,8 +26,8 @@ class NetworkEndpointGroupCloudFunction {
 
   factory NetworkEndpointGroupCloudFunction.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupCloudFunction(
-      function: map['function'] == null ? null : (map['function'] as String).input(),
-      urlMask: map['urlMask'] == null ? null : (map['urlMask'] as String).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
+      urlMask: map['urlMask'] == null ? null : (map['urlMask']! as String).input(),
     );
   }
 }

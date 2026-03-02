@@ -62,13 +62,13 @@ class SqlResourceSqlContainerArgs {
   factory SqlResourceSqlContainerArgs.fromMap(Map<String, dynamic> map) {
     return SqlResourceSqlContainerArgs(
       accountName: (map['accountName'] as String).input(),
-      containerName: map['containerName'] == null ? null : (map['containerName'] as String).input(),
+      containerName: map['containerName'] == null ? null : (map['containerName']! as String).input(),
       databaseName: (map['databaseName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      options: map['options'] == null ? null : (CreateUpdateOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
       resource: (SqlContainerResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

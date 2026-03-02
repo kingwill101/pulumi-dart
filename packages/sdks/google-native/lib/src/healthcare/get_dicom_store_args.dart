@@ -38,7 +38,7 @@ class GetDicomStoreArgs {
       datasetId: (map['datasetId'] as String).input(),
       dicomStoreId: (map['dicomStoreId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -70,14 +70,14 @@ class PreventionInspectTemplateInspectConfig {
 
   factory PreventionInspectTemplateInspectConfig.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfig(
-      contentOptions: map['contentOptions'] == null ? null : ((map['contentOptions'] as List).cast<String>()).input(),
-      customInfoTypes: map['customInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigCustomInfoType>(map['customInfoTypes'], (value) => PreventionInspectTemplateInspectConfigCustomInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes'] as bool).input(),
-      includeQuote: map['includeQuote'] == null ? null : (map['includeQuote'] as bool).input(),
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigInfoType>(map['infoTypes'], (value) => PreventionInspectTemplateInspectConfigInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      limits: map['limits'] == null ? null : (PreventionInspectTemplateInspectConfigLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      minLikelihood: map['minLikelihood'] == null ? null : (map['minLikelihood'] as String).input(),
-      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigRuleSet>(map['ruleSets'], (value) => PreventionInspectTemplateInspectConfigRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentOptions: map['contentOptions'] == null ? null : ((map['contentOptions']! as List).cast<String>()).input(),
+      customInfoTypes: map['customInfoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigCustomInfoType>(map['customInfoTypes']!, (value) => PreventionInspectTemplateInspectConfigCustomInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (map['excludeInfoTypes']! as bool).input(),
+      includeQuote: map['includeQuote'] == null ? null : (map['includeQuote']! as bool).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigInfoType>(map['infoTypes']!, (value) => PreventionInspectTemplateInspectConfigInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      limits: map['limits'] == null ? null : (PreventionInspectTemplateInspectConfigLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      minLikelihood: map['minLikelihood'] == null ? null : (map['minLikelihood']! as String).input(),
+      ruleSets: map['ruleSets'] == null ? null : (pulumi.Input.decodeList<PreventionInspectTemplateInspectConfigRuleSet>(map['ruleSets']!, (value) => PreventionInspectTemplateInspectConfigRuleSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

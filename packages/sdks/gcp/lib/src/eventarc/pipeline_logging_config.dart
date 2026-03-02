@@ -22,7 +22,7 @@ class PipelineLoggingConfig {
 
   factory PipelineLoggingConfig.fromMap(Map<String, dynamic> map) {
     return PipelineLoggingConfig(
-      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity'] as String).input(),
+      logSeverity: map['logSeverity'] == null ? null : (map['logSeverity']! as String).input(),
     );
   }
 }

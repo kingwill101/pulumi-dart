@@ -51,13 +51,13 @@ class BindingGkehubV1betaArgs {
 
   factory BindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return BindingGkehubV1betaArgs(
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       membershipBindingId: (map['membershipBindingId'] as String).input(),
       membershipId: (map['membershipId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

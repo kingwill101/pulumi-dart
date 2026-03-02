@@ -25,7 +25,7 @@ class ServiceObservabilityConfiguration {
 
   factory ServiceObservabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceObservabilityConfiguration(
-      observabilityConfigurationArn: map['observabilityConfigurationArn'] == null ? null : (map['observabilityConfigurationArn'] as String).input(),
+      observabilityConfigurationArn: map['observabilityConfigurationArn'] == null ? null : ((map['observabilityConfigurationArn'] as String).input()).input(),
       observabilityEnabled: (map['observabilityEnabled'] as bool).input(),
     );
   }

@@ -60,15 +60,15 @@ class DomainDevicesFilesystemDriver {
 
   factory DomainDevicesFilesystemDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesFilesystemDriver(
-      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
-      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
-      queue: map['queue'] == null ? null : (map['queue'] as double).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      wrPolicy: map['wrPolicy'] == null ? null : (map['wrPolicy'] as String).input(),
+      ats: map['ats'] == null ? null : (map['ats']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packed: map['packed'] == null ? null : (map['packed']! as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq']! as String).input(),
+      queue: map['queue'] == null ? null : (map['queue']! as double).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      wrPolicy: map['wrPolicy'] == null ? null : (map['wrPolicy']! as String).input(),
     );
   }
 }

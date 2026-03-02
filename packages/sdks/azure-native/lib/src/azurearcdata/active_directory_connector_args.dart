@@ -40,7 +40,7 @@ class ActiveDirectoryConnectorArgs {
 
   factory ActiveDirectoryConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ActiveDirectoryConnectorArgs(
-      activeDirectoryConnectorName: map['activeDirectoryConnectorName'] == null ? null : (map['activeDirectoryConnectorName'] as String).input(),
+      activeDirectoryConnectorName: map['activeDirectoryConnectorName'] == null ? null : (map['activeDirectoryConnectorName']! as String).input(),
       dataControllerName: (map['dataControllerName'] as String).input(),
       properties: (ActiveDirectoryConnectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

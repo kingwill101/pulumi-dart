@@ -38,9 +38,9 @@ class EventActionArgs {
 
   factory EventActionArgs.fromMap(Map<String, dynamic> map) {
     return EventActionArgs(
-      action: (EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      event: (EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      action: (EventActionAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      event: (EventActionEvent.fromMap((map['event']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

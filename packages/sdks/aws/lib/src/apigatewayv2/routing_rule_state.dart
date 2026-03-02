@@ -55,13 +55,13 @@ class RoutingRuleState {
 
   factory RoutingRuleState.fromMap(Map<String, dynamic> map) {
     return RoutingRuleState(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<RoutingRuleAction>(map['actions'], (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions'], (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routingRuleArn: map['routingRuleArn'] == null ? null : (map['routingRuleArn'] as String).input(),
-      routingRuleId: map['routingRuleId'] == null ? null : (map['routingRuleId'] as String).input(),
+      actions: map['actions'] == null ? null : ((pulumi.Input.decodeList<RoutingRuleAction>(map['actions']!, (value) => RoutingRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<RoutingRuleCondition>(map['conditions']!, (value) => RoutingRuleCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      priority: map['priority'] == null ? null : ((map['priority'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routingRuleArn: map['routingRuleArn'] == null ? null : ((map['routingRuleArn'] as String).input()).input(),
+      routingRuleId: map['routingRuleId'] == null ? null : ((map['routingRuleId'] as String).input()).input(),
     );
   }
 }

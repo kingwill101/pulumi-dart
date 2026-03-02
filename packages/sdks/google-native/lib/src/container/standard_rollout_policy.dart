@@ -31,9 +31,9 @@ class StandardRolloutPolicy {
 
   factory StandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return StandardRolloutPolicy(
-      batchNodeCount: map['batchNodeCount'] == null ? null : (map['batchNodeCount'] as int).input(),
-      batchPercentage: map['batchPercentage'] == null ? null : (map['batchPercentage'] as double).input(),
-      batchSoakDuration: map['batchSoakDuration'] == null ? null : (map['batchSoakDuration'] as String).input(),
+      batchNodeCount: map['batchNodeCount'] == null ? null : (map['batchNodeCount']! as int).input(),
+      batchPercentage: map['batchPercentage'] == null ? null : (map['batchPercentage']! as double).input(),
+      batchSoakDuration: map['batchSoakDuration'] == null ? null : (map['batchSoakDuration']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class SasTrailServiceTrail {
 
   factory SasTrailServiceTrail.fromMap(Map<String, dynamic> map) {
     return SasTrailServiceTrail(
-      config: map['config'] == null ? null : (map['config'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as int).input(),
+      config: map['config'] == null ? null : (map['config']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as int).input(),
     );
   }
 }

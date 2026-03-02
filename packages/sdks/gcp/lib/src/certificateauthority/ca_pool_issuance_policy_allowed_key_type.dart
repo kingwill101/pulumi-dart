@@ -29,8 +29,8 @@ class CaPoolIssuancePolicyAllowedKeyType {
 
   factory CaPoolIssuancePolicyAllowedKeyType.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyAllowedKeyType(
-      ellipticCurve: map['ellipticCurve'] == null ? null : (CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap((map['ellipticCurve'] as Map).cast<String, dynamic>())).input(),
-      rsa: map['rsa'] == null ? null : (CaPoolIssuancePolicyAllowedKeyTypeRsa.fromMap((map['rsa'] as Map).cast<String, dynamic>())).input(),
+      ellipticCurve: map['ellipticCurve'] == null ? null : (CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve.fromMap((map['ellipticCurve']! as Map).cast<String, dynamic>())).input(),
+      rsa: map['rsa'] == null ? null : (CaPoolIssuancePolicyAllowedKeyTypeRsa.fromMap((map['rsa']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

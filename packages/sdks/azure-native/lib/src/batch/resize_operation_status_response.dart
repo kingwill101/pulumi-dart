@@ -47,12 +47,12 @@ class ResizeOperationStatusResponse {
 
   factory ResizeOperationStatusResponse.fromMap(Map<String, dynamic> map) {
     return ResizeOperationStatusResponse(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ResizeErrorResponse>(map['errors'], (value) => ResizeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nodeDeallocationOption: map['nodeDeallocationOption'] == null ? null : (map['nodeDeallocationOption'] as String).input(),
-      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes'] as int).input(),
-      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes'] as int).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<ResizeErrorResponse>(map['errors']!, (value) => ResizeErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeDeallocationOption: map['nodeDeallocationOption'] == null ? null : (map['nodeDeallocationOption']! as String).input(),
+      resizeTimeout: map['resizeTimeout'] == null ? null : (map['resizeTimeout']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      targetDedicatedNodes: map['targetDedicatedNodes'] == null ? null : (map['targetDedicatedNodes']! as int).input(),
+      targetLowPriorityNodes: map['targetLowPriorityNodes'] == null ? null : (map['targetLowPriorityNodes']! as int).input(),
     );
   }
 }

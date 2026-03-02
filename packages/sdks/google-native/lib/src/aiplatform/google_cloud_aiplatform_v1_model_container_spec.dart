@@ -74,17 +74,17 @@ class GoogleCloudAiplatformV1ModelContainerSpec {
 
   factory GoogleCloudAiplatformV1ModelContainerSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1ModelContainerSpec(
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      deploymentTimeout: map['deploymentTimeout'] == null ? null : (map['deploymentTimeout'] as String).input(),
-      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env'], (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      healthProbe: map['healthProbe'] == null ? null : (GoogleCloudAiplatformV1Probe.fromMap((map['healthProbe'] as Map).cast<String, dynamic>())).input(),
-      healthRoute: map['healthRoute'] == null ? null : (map['healthRoute'] as String).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      deploymentTimeout: map['deploymentTimeout'] == null ? null : (map['deploymentTimeout']! as String).input(),
+      env: map['env'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1EnvVar>(map['env']!, (value) => GoogleCloudAiplatformV1EnvVar.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      healthProbe: map['healthProbe'] == null ? null : (GoogleCloudAiplatformV1Probe.fromMap((map['healthProbe']! as Map).cast<String, dynamic>())).input(),
+      healthRoute: map['healthRoute'] == null ? null : (map['healthRoute']! as String).input(),
       imageUri: (map['imageUri'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1Port>(map['ports'], (value) => GoogleCloudAiplatformV1Port.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      predictRoute: map['predictRoute'] == null ? null : (map['predictRoute'] as String).input(),
-      sharedMemorySizeMb: map['sharedMemorySizeMb'] == null ? null : (map['sharedMemorySizeMb'] as String).input(),
-      startupProbe: map['startupProbe'] == null ? null : (GoogleCloudAiplatformV1Probe.fromMap((map['startupProbe'] as Map).cast<String, dynamic>())).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1Port>(map['ports']!, (value) => GoogleCloudAiplatformV1Port.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      predictRoute: map['predictRoute'] == null ? null : (map['predictRoute']! as String).input(),
+      sharedMemorySizeMb: map['sharedMemorySizeMb'] == null ? null : (map['sharedMemorySizeMb']! as String).input(),
+      startupProbe: map['startupProbe'] == null ? null : (GoogleCloudAiplatformV1Probe.fromMap((map['startupProbe']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

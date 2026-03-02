@@ -36,10 +36,10 @@ class SourceAddrResponse {
 
   factory SourceAddrResponse.fromMap(Map<String, dynamic> map) {
     return SourceAddrResponse(
-      cidrs: map['cidrs'] == null ? null : ((map['cidrs'] as List).cast<String>()).input(),
-      countries: map['countries'] == null ? null : ((map['countries'] as List).cast<String>()).input(),
-      feeds: map['feeds'] == null ? null : ((map['feeds'] as List).cast<String>()).input(),
-      prefixLists: map['prefixLists'] == null ? null : ((map['prefixLists'] as List).cast<String>()).input(),
+      cidrs: map['cidrs'] == null ? null : ((map['cidrs']! as List).cast<String>()).input(),
+      countries: map['countries'] == null ? null : ((map['countries']! as List).cast<String>()).input(),
+      feeds: map['feeds'] == null ? null : ((map['feeds']! as List).cast<String>()).input(),
+      prefixLists: map['prefixLists'] == null ? null : ((map['prefixLists']! as List).cast<String>()).input(),
     );
   }
 }

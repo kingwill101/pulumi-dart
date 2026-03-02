@@ -50,10 +50,10 @@ class ServiceConfigurationArgs {
   factory ServiceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ServiceConfigurationArgs(
       endpointName: (map['endpointName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as double).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as double).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      serviceConfigurationName: map['serviceConfigurationName'] == null ? null : (map['serviceConfigurationName'] as String).input(),
+      serviceConfigurationName: map['serviceConfigurationName'] == null ? null : (map['serviceConfigurationName']! as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );
   }

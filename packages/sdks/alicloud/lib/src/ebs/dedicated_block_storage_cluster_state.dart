@@ -96,22 +96,22 @@ class DedicatedBlockStorageClusterState {
 
   factory DedicatedBlockStorageClusterState.fromMap(Map<String, dynamic> map) {
     return DedicatedBlockStorageClusterState(
-      availableCapacity: map['availableCapacity'] == null ? null : (map['availableCapacity'] as String).input(),
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dedicatedBlockStorageClusterId: map['dedicatedBlockStorageClusterId'] == null ? null : (map['dedicatedBlockStorageClusterId'] as String).input(),
-      dedicatedBlockStorageClusterName: map['dedicatedBlockStorageClusterName'] == null ? null : (map['dedicatedBlockStorageClusterName'] as String).input(),
-      deliveryCapacity: map['deliveryCapacity'] == null ? null : (map['deliveryCapacity'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime'] as String).input(),
-      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      supportedCategory: map['supportedCategory'] == null ? null : (map['supportedCategory'] as String).input(),
-      totalCapacity: map['totalCapacity'] == null ? null : (map['totalCapacity'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      usedCapacity: map['usedCapacity'] == null ? null : (map['usedCapacity'] as String).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      availableCapacity: map['availableCapacity'] == null ? null : (map['availableCapacity']! as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      dedicatedBlockStorageClusterId: map['dedicatedBlockStorageClusterId'] == null ? null : (map['dedicatedBlockStorageClusterId']! as String).input(),
+      dedicatedBlockStorageClusterName: map['dedicatedBlockStorageClusterName'] == null ? null : (map['dedicatedBlockStorageClusterName']! as String).input(),
+      deliveryCapacity: map['deliveryCapacity'] == null ? null : (map['deliveryCapacity']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime']! as String).input(),
+      performanceLevel: map['performanceLevel'] == null ? null : (map['performanceLevel']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      supportedCategory: map['supportedCategory'] == null ? null : (map['supportedCategory']! as String).input(),
+      totalCapacity: map['totalCapacity'] == null ? null : (map['totalCapacity']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      usedCapacity: map['usedCapacity'] == null ? null : (map['usedCapacity']! as String).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

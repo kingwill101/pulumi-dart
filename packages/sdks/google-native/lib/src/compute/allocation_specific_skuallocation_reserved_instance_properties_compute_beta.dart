@@ -54,13 +54,13 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesComputeBeta {
 
   factory AllocationSpecificSKUAllocationReservedInstancePropertiesComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationSpecificSKUAllocationReservedInstancePropertiesComputeBeta(
-      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigComputeBeta>(map['guestAccelerators'], (value) => AcceleratorConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeBeta>(map['localSsds'], (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationHint: map['locationHint'] == null ? null : (map['locationHint'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : (map['maintenanceFreezeDurationHours'] as int).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta.fromValue(map['maintenanceInterval'] as String)).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
+      guestAccelerators: map['guestAccelerators'] == null ? null : (pulumi.Input.decodeList<AcceleratorConfigComputeBeta>(map['guestAccelerators']!, (value) => AcceleratorConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      localSsds: map['localSsds'] == null ? null : (pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeBeta>(map['localSsds']!, (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      locationHint: map['locationHint'] == null ? null : (map['locationHint']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      maintenanceFreezeDurationHours: map['maintenanceFreezeDurationHours'] == null ? null : (map['maintenanceFreezeDurationHours']! as int).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalComputeBeta.fromValue(map['maintenanceInterval']! as String)).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
     );
   }
 }

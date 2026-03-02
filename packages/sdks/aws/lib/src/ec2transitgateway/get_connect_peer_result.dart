@@ -83,7 +83,7 @@ class GetConnectPeerResult {
       bgpAsn: map['bgpAsn'] as String,
       bgpPeerAddress: map['bgpPeerAddress'] as String,
       bgpTransitGatewayAddresses: (map['bgpTransitGatewayAddresses'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters'], (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters']!, (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       insideCidrBlocks: (map['insideCidrBlocks'] as List).cast<String>(),
       peerAddress: map['peerAddress'] as String,

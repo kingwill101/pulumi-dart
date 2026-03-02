@@ -79,18 +79,18 @@ class EndpointArgs {
 
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : (map['enablePrivateServiceConnect'] as bool).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      endpointId: map['endpointId'] == null ? null : (map['endpointId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : (GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      trafficSplit: map['trafficSplit'] == null ? null : ((map['trafficSplit'] as Map).cast<String, String>()).input(),
+      enablePrivateServiceConnect: map['enablePrivateServiceConnect'] == null ? null : (map['enablePrivateServiceConnect']! as bool).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      endpointId: map['endpointId'] == null ? null : (map['endpointId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : (GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      trafficSplit: map['trafficSplit'] == null ? null : ((map['trafficSplit']! as Map).cast<String, String>()).input(),
     );
   }
 }

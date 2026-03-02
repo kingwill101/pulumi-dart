@@ -34,9 +34,9 @@ class SkuRecommendationResultsResponse {
 
   factory SkuRecommendationResultsResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsResponse(
-      azureSqlDatabase: map['azureSqlDatabase'] == null ? null : (SkuRecommendationResultsAzureSqlDatabaseResponse.fromMap((map['azureSqlDatabase'] as Map).cast<String, dynamic>())).input(),
-      azureSqlManagedInstance: map['azureSqlManagedInstance'] == null ? null : (SkuRecommendationResultsAzureSqlManagedInstanceResponse.fromMap((map['azureSqlManagedInstance'] as Map).cast<String, dynamic>())).input(),
-      azureSqlVirtualMachine: map['azureSqlVirtualMachine'] == null ? null : (SkuRecommendationResultsAzureSqlVirtualMachineResponse.fromMap((map['azureSqlVirtualMachine'] as Map).cast<String, dynamic>())).input(),
+      azureSqlDatabase: map['azureSqlDatabase'] == null ? null : (SkuRecommendationResultsAzureSqlDatabaseResponse.fromMap((map['azureSqlDatabase']! as Map).cast<String, dynamic>())).input(),
+      azureSqlManagedInstance: map['azureSqlManagedInstance'] == null ? null : (SkuRecommendationResultsAzureSqlManagedInstanceResponse.fromMap((map['azureSqlManagedInstance']! as Map).cast<String, dynamic>())).input(),
+      azureSqlVirtualMachine: map['azureSqlVirtualMachine'] == null ? null : (SkuRecommendationResultsAzureSqlVirtualMachineResponse.fromMap((map['azureSqlVirtualMachine']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

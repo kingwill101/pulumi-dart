@@ -27,8 +27,8 @@ class GoogleCloudDatacatalogV1VertexDatasetSpec {
 
   factory GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1VertexDatasetSpec(
-      dataItemCount: map['dataItemCount'] == null ? null : (map['dataItemCount'] as String).input(),
-      dataType: map['dataType'] == null ? null : (GoogleCloudDatacatalogV1VertexDatasetSpecDataType.fromValue(map['dataType'] as String)).input(),
+      dataItemCount: map['dataItemCount'] == null ? null : (map['dataItemCount']! as String).input(),
+      dataType: map['dataType'] == null ? null : (GoogleCloudDatacatalogV1VertexDatasetSpecDataType.fromValue(map['dataType']! as String)).input(),
     );
   }
 }

@@ -97,21 +97,21 @@ class TriggerTumblingWindowArgs {
 
   factory TriggerTumblingWindowArgs.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowArgs(
-      activated: map['activated'] == null ? null : (map['activated'] as bool).input(),
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      activated: map['activated'] == null ? null : (map['activated']! as bool).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      delay: map['delay'] == null ? null : (map['delay'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      delay: map['delay'] == null ? null : (map['delay']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       frequency: (map['frequency'] as String).input(),
       interval: (map['interval'] as int).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       pipeline: (TriggerTumblingWindowPipeline.fromMap((map['pipeline'] as Map).cast<String, dynamic>())).input(),
-      retry: map['retry'] == null ? null : (TriggerTumblingWindowRetry.fromMap((map['retry'] as Map).cast<String, dynamic>())).input(),
+      retry: map['retry'] == null ? null : (TriggerTumblingWindowRetry.fromMap((map['retry']! as Map).cast<String, dynamic>())).input(),
       startTime: (map['startTime'] as String).input(),
-      triggerDependencies: map['triggerDependencies'] == null ? null : (pulumi.Input.decodeList<TriggerTumblingWindowTriggerDependency>(map['triggerDependencies'], (value) => TriggerTumblingWindowTriggerDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      triggerDependencies: map['triggerDependencies'] == null ? null : (pulumi.Input.decodeList<TriggerTumblingWindowTriggerDependency>(map['triggerDependencies']!, (value) => TriggerTumblingWindowTriggerDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

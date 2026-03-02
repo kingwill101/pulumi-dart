@@ -51,13 +51,13 @@ class ComplianceNote {
 
   factory ComplianceNote.fromMap(Map<String, dynamic> map) {
     return ComplianceNote(
-      cisBenchmark: map['cisBenchmark'] == null ? null : (CisBenchmark.fromMap((map['cisBenchmark'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      rationale: map['rationale'] == null ? null : (map['rationale'] as String).input(),
-      remediation: map['remediation'] == null ? null : (map['remediation'] as String).input(),
-      scanInstructions: map['scanInstructions'] == null ? null : (map['scanInstructions'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      version: map['version'] == null ? null : (pulumi.Input.decodeList<ComplianceVersion>(map['version'], (value) => ComplianceVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cisBenchmark: map['cisBenchmark'] == null ? null : (CisBenchmark.fromMap((map['cisBenchmark']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      rationale: map['rationale'] == null ? null : (map['rationale']! as String).input(),
+      remediation: map['remediation'] == null ? null : (map['remediation']! as String).input(),
+      scanInstructions: map['scanInstructions'] == null ? null : (map['scanInstructions']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      version: map['version'] == null ? null : (pulumi.Input.decodeList<ComplianceVersion>(map['version']!, (value) => ComplianceVersion.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

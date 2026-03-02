@@ -28,8 +28,8 @@ class HttpLogsConfigResponse {
 
   factory HttpLogsConfigResponse.fromMap(Map<String, dynamic> map) {
     return HttpLogsConfigResponse(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageHttpLogsConfigResponse.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (FileSystemHttpLogsConfigResponse.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageHttpLogsConfigResponse.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (FileSystemHttpLogsConfigResponse.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

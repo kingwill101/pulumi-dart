@@ -69,14 +69,14 @@ class OauthClientCredentialState {
 
   factory OauthClientCredentialState.fromMap(Map<String, dynamic> map) {
     return OauthClientCredentialState(
-      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      oauthClientCredentialId: map['oauthClientCredentialId'] == null ? null : (map['oauthClientCredentialId'] as String).input(),
-      oauthclient: map['oauthclient'] == null ? null : (map['oauthclient'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      clientSecret: map['clientSecret'] == null ? null : (map['clientSecret']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      oauthClientCredentialId: map['oauthClientCredentialId'] == null ? null : (map['oauthClientCredentialId']! as String).input(),
+      oauthclient: map['oauthclient'] == null ? null : (map['oauthclient']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

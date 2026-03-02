@@ -33,9 +33,9 @@ class Options {
 
   factory Options.fromMap(Map<String, dynamic> map) {
     return Options(
-      cleanDescriptors: map['cleanDescriptors'] == null ? null : ((map['cleanDescriptors'] as Map).cast<String, dynamic>()).input(),
-      cleanImage: map['cleanImage'] == null ? null : (ImageConfigHealthcareV1beta1.fromMap((map['cleanImage'] as Map).cast<String, dynamic>())).input(),
-      primaryIds: map['primaryIds'] == null ? null : (OptionsPrimaryIds.fromValue(map['primaryIds'] as String)).input(),
+      cleanDescriptors: map['cleanDescriptors'] == null ? null : ((map['cleanDescriptors']! as Map).cast<String, dynamic>()).input(),
+      cleanImage: map['cleanImage'] == null ? null : (ImageConfigHealthcareV1beta1.fromMap((map['cleanImage']! as Map).cast<String, dynamic>())).input(),
+      primaryIds: map['primaryIds'] == null ? null : (OptionsPrimaryIds.fromValue(map['primaryIds']! as String)).input(),
     );
   }
 }

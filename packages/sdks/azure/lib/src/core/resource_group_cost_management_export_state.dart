@@ -63,15 +63,15 @@ class ResourceGroupCostManagementExportState {
 
   factory ResourceGroupCostManagementExportState.fromMap(Map<String, dynamic> map) {
     return ResourceGroupCostManagementExportState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      exportDataOptions: map['exportDataOptions'] == null ? null : (ResourceGroupCostManagementExportExportDataOptions.fromMap((map['exportDataOptions'] as Map).cast<String, dynamic>())).input(),
-      exportDataStorageLocation: map['exportDataStorageLocation'] == null ? null : (ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation'] as Map).cast<String, dynamic>())).input(),
-      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recurrencePeriodEndDate: map['recurrencePeriodEndDate'] == null ? null : (map['recurrencePeriodEndDate'] as String).input(),
-      recurrencePeriodStartDate: map['recurrencePeriodStartDate'] == null ? null : (map['recurrencePeriodStartDate'] as String).input(),
-      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      exportDataOptions: map['exportDataOptions'] == null ? null : (ResourceGroupCostManagementExportExportDataOptions.fromMap((map['exportDataOptions']! as Map).cast<String, dynamic>())).input(),
+      exportDataStorageLocation: map['exportDataStorageLocation'] == null ? null : (ResourceGroupCostManagementExportExportDataStorageLocation.fromMap((map['exportDataStorageLocation']! as Map).cast<String, dynamic>())).input(),
+      fileFormat: map['fileFormat'] == null ? null : (map['fileFormat']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recurrencePeriodEndDate: map['recurrencePeriodEndDate'] == null ? null : (map['recurrencePeriodEndDate']! as String).input(),
+      recurrencePeriodStartDate: map['recurrencePeriodStartDate'] == null ? null : (map['recurrencePeriodStartDate']! as String).input(),
+      recurrenceType: map['recurrenceType'] == null ? null : (map['recurrenceType']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
     );
   }
 }

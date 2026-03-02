@@ -68,14 +68,14 @@ class PoolArgs {
 
   factory PoolArgs.fromMap(Map<String, dynamic> map) {
     return PoolArgs(
-      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit'] as String).input(),
-      availableUnit: map['availableUnit'] == null ? null : (map['availableUnit'] as String).input(),
-      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit'] as String).input(),
-      features: map['features'] == null ? null : (PoolFeatures.fromMap((map['features'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      refresh: map['refresh'] == null ? null : (PoolRefresh.fromMap((map['refresh'] as Map).cast<String, dynamic>())).input(),
-      source: map['source'] == null ? null : (PoolSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (PoolTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      allocationUnit: map['allocationUnit'] == null ? null : (map['allocationUnit']! as String).input(),
+      availableUnit: map['availableUnit'] == null ? null : (map['availableUnit']! as String).input(),
+      capacityUnit: map['capacityUnit'] == null ? null : (map['capacityUnit']! as String).input(),
+      features: map['features'] == null ? null : (PoolFeatures.fromMap((map['features']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      refresh: map['refresh'] == null ? null : (PoolRefresh.fromMap((map['refresh']! as Map).cast<String, dynamic>())).input(),
+      source: map['source'] == null ? null : (PoolSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (PoolTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

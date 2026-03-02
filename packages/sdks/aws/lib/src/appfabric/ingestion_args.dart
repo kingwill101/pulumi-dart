@@ -53,8 +53,8 @@ class IngestionArgs {
       app: (map['app'] as String).input(),
       appBundleArn: (map['appBundleArn'] as String).input(),
       ingestionType: (map['ingestionType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

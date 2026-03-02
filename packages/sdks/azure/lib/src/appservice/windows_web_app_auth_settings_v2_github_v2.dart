@@ -34,7 +34,7 @@ class WindowsWebAppAuthSettingsV2GithubV2 {
     return WindowsWebAppAuthSettingsV2GithubV2(
       clientId: (map['clientId'] as String).input(),
       clientSecretSettingName: (map['clientSecretSettingName'] as String).input(),
-      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes'] as List).cast<String>()).input(),
+      loginScopes: map['loginScopes'] == null ? null : ((map['loginScopes']! as List).cast<String>()).input(),
     );
   }
 }

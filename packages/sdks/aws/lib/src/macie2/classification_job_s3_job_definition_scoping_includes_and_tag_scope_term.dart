@@ -36,10 +36,10 @@ class ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm {
 
   factory ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm.fromMap(Map<String, dynamic> map) {
     return ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm(
-      comparator: map['comparator'] == null ? null : (map['comparator'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      tagValues: map['tagValues'] == null ? null : (pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue>(map['tagValues'], (value) => ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      comparator: map['comparator'] == null ? null : ((map['comparator'] as String).input()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      tagValues: map['tagValues'] == null ? null : ((pulumi.Input.decodeList<ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue>(map['tagValues']!, (value) => ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
     );
   }
 }

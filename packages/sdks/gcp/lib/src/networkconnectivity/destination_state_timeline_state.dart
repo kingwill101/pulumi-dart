@@ -31,8 +31,8 @@ class DestinationStateTimelineState {
 
   factory DestinationStateTimelineState.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimelineState(
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

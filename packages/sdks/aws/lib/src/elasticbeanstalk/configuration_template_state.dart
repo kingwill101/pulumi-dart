@@ -55,13 +55,13 @@ class ConfigurationTemplateState {
 
   factory ConfigurationTemplateState.fromMap(Map<String, dynamic> map) {
     return ConfigurationTemplateState(
-      application: map['application'] == null ? null : (map['application'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      environmentId: map['environmentId'] == null ? null : (map['environmentId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settings: map['settings'] == null ? null : (pulumi.Input.decodeList<ConfigurationTemplateSetting>(map['settings'], (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
+      application: map['application'] == null ? null : ((map['application'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      environmentId: map['environmentId'] == null ? null : ((map['environmentId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((pulumi.Input.decodeList<ConfigurationTemplateSetting>(map['settings']!, (value) => ConfigurationTemplateSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : ((map['solutionStackName'] as String).input()).input(),
     );
   }
 }

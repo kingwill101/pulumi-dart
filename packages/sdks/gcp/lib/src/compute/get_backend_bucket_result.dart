@@ -87,7 +87,7 @@ class GetBackendBucketResult {
       loadBalancingScheme: map['loadBalancingScheme'] as String,
       name: map['name'] as String,
       params: pulumi.Input.decodeList<GetBackendBucketParam>(map['params'], (value) => GetBackendBucketParam.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       selfLink: map['selfLink'] as String,
     );
   }

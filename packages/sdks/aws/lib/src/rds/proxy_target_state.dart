@@ -73,17 +73,17 @@ class ProxyTargetState {
 
   factory ProxyTargetState.fromMap(Map<String, dynamic> map) {
     return ProxyTargetState(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
-      dbProxyName: map['dbProxyName'] == null ? null : (map['dbProxyName'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      rdsResourceId: map['rdsResourceId'] == null ? null : (map['rdsResourceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetArn: map['targetArn'] == null ? null : (map['targetArn'] as String).input(),
-      targetGroupName: map['targetGroupName'] == null ? null : (map['targetGroupName'] as String).input(),
-      trackedClusterId: map['trackedClusterId'] == null ? null : (map['trackedClusterId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : ((map['dbClusterIdentifier'] as String).input()).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : ((map['dbInstanceIdentifier'] as String).input()).input(),
+      dbProxyName: map['dbProxyName'] == null ? null : ((map['dbProxyName'] as String).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      rdsResourceId: map['rdsResourceId'] == null ? null : ((map['rdsResourceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetArn: map['targetArn'] == null ? null : ((map['targetArn'] as String).input()).input(),
+      targetGroupName: map['targetGroupName'] == null ? null : ((map['targetGroupName'] as String).input()).input(),
+      trackedClusterId: map['trackedClusterId'] == null ? null : ((map['trackedClusterId'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -63,14 +63,14 @@ class PostgreSqlConnectionProfile {
 
   factory PostgreSqlConnectionProfile.fromMap(Map<String, dynamic> map) {
     return PostgreSqlConnectionProfile(
-      alloydbClusterId: map['alloydbClusterId'] == null ? null : (map['alloydbClusterId'] as String).input(),
-      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId'] as String).input(),
+      alloydbClusterId: map['alloydbClusterId'] == null ? null : (map['alloydbClusterId']! as String).input(),
+      cloudSqlId: map['cloudSqlId'] == null ? null : (map['cloudSqlId']! as String).input(),
       host: (map['host'] as String).input(),
       password: (map['password'] as String).input(),
       port: (map['port'] as int).input(),
-      privateServiceConnectConnectivity: map['privateServiceConnectConnectivity'] == null ? null : (PrivateServiceConnectConnectivity.fromMap((map['privateServiceConnectConnectivity'] as Map).cast<String, dynamic>())).input(),
-      ssl: map['ssl'] == null ? null : (SslConfig.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
-      staticIpConnectivity: map['staticIpConnectivity'] == null ? null : ((map['staticIpConnectivity'] as Map).cast<String, dynamic>()).input(),
+      privateServiceConnectConnectivity: map['privateServiceConnectConnectivity'] == null ? null : (PrivateServiceConnectConnectivity.fromMap((map['privateServiceConnectConnectivity']! as Map).cast<String, dynamic>())).input(),
+      ssl: map['ssl'] == null ? null : (SslConfig.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
+      staticIpConnectivity: map['staticIpConnectivity'] == null ? null : ((map['staticIpConnectivity']! as Map).cast<String, dynamic>()).input(),
       username: (map['username'] as String).input(),
     );
   }

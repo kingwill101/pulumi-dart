@@ -27,7 +27,7 @@ class SparkChartView {
 
   factory SparkChartView.fromMap(Map<String, dynamic> map) {
     return SparkChartView(
-      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod'] as String).input(),
+      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod']! as String).input(),
       sparkChartType: (SparkChartViewSparkChartType.fromValue(map['sparkChartType'] as String)).input(),
     );
   }

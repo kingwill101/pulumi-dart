@@ -71,17 +71,17 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      assetSizeBytes: map['assetSizeBytes'] == null ? null : (map['assetSizeBytes'] as String).input(),
-      createdTime: map['createdTime'] == null ? null : (map['createdTime'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      encryptionKey: map['encryptionKey'] == null ? null : (map['encryptionKey'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      repositoryCount: map['repositoryCount'] == null ? null : (map['repositoryCount'] as int).input(),
-      s3BucketArn: map['s3BucketArn'] == null ? null : (map['s3BucketArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      assetSizeBytes: map['assetSizeBytes'] == null ? null : ((map['assetSizeBytes'] as String).input()).input(),
+      createdTime: map['createdTime'] == null ? null : ((map['createdTime'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      encryptionKey: map['encryptionKey'] == null ? null : ((map['encryptionKey'] as String).input()).input(),
+      owner: map['owner'] == null ? null : ((map['owner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      repositoryCount: map['repositoryCount'] == null ? null : ((map['repositoryCount'] as int).input()).input(),
+      s3BucketArn: map['s3BucketArn'] == null ? null : ((map['s3BucketArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

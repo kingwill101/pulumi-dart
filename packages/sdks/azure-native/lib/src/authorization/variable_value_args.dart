@@ -37,7 +37,7 @@ class VariableValueArgs {
     return VariableValueArgs(
       values: (pulumi.Input.decodeList<PolicyVariableValueColumnValue>(map['values'], (value) => PolicyVariableValueColumnValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
       variableName: (map['variableName'] as String).input(),
-      variableValueName: map['variableValueName'] == null ? null : (map['variableValueName'] as String).input(),
+      variableValueName: map['variableValueName'] == null ? null : (map['variableValueName']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetRuleArgs {
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetRuleArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

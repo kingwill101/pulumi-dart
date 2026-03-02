@@ -54,11 +54,11 @@ class SecurityProfile {
 
   factory SecurityProfile.fromMap(Map<String, dynamic> map) {
     return SecurityProfile(
-      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost'] as bool).input(),
-      encryptionIdentity: map['encryptionIdentity'] == null ? null : (EncryptionIdentity.fromMap((map['encryptionIdentity'] as Map).cast<String, dynamic>())).input(),
-      proxyAgentSettings: map['proxyAgentSettings'] == null ? null : (ProxyAgentSettings.fromMap((map['proxyAgentSettings'] as Map).cast<String, dynamic>())).input(),
-      securityType: map['securityType'] == null ? null : (map['securityType'] as String).input(),
-      uefiSettings: map['uefiSettings'] == null ? null : (UefiSettings.fromMap((map['uefiSettings'] as Map).cast<String, dynamic>())).input(),
+      encryptionAtHost: map['encryptionAtHost'] == null ? null : (map['encryptionAtHost']! as bool).input(),
+      encryptionIdentity: map['encryptionIdentity'] == null ? null : (EncryptionIdentity.fromMap((map['encryptionIdentity']! as Map).cast<String, dynamic>())).input(),
+      proxyAgentSettings: map['proxyAgentSettings'] == null ? null : (ProxyAgentSettings.fromMap((map['proxyAgentSettings']! as Map).cast<String, dynamic>())).input(),
+      securityType: map['securityType'] == null ? null : (map['securityType']! as String).input(),
+      uefiSettings: map['uefiSettings'] == null ? null : (UefiSettings.fromMap((map['uefiSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

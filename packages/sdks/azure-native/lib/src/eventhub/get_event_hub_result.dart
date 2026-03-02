@@ -94,20 +94,20 @@ class GetEventHubResult {
   factory GetEventHubResult.fromMap(Map<String, dynamic> map) {
     return GetEventHubResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      captureDescription: map['captureDescription'] == null ? null : CaptureDescriptionResponse.fromMap((map['captureDescription'] as Map).cast<String, dynamic>()),
+      captureDescription: map['captureDescription'] == null ? null : CaptureDescriptionResponse.fromMap((map['captureDescription']! as Map).cast<String, dynamic>()),
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       location: map['location'] as String,
-      messageRetentionInDays: map['messageRetentionInDays'] == null ? null : map['messageRetentionInDays'] as double,
+      messageRetentionInDays: map['messageRetentionInDays'] == null ? null : map['messageRetentionInDays']! as double,
       name: map['name'] as String,
-      partitionCount: map['partitionCount'] == null ? null : map['partitionCount'] as double,
+      partitionCount: map['partitionCount'] == null ? null : map['partitionCount']! as double,
       partitionIds: (map['partitionIds'] as List).cast<String>(),
-      retentionDescription: map['retentionDescription'] == null ? null : RetentionDescriptionResponse.fromMap((map['retentionDescription'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : map['status'] as String,
+      retentionDescription: map['retentionDescription'] == null ? null : RetentionDescriptionResponse.fromMap((map['retentionDescription']! as Map).cast<String, dynamic>()),
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       updatedAt: map['updatedAt'] as String,
-      userMetadata: map['userMetadata'] == null ? null : map['userMetadata'] as String,
+      userMetadata: map['userMetadata'] == null ? null : map['userMetadata']! as String,
     );
   }
 }

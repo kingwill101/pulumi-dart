@@ -36,10 +36,10 @@ class StaticSiteCustomDomainState {
 
   factory StaticSiteCustomDomainState.fromMap(Map<String, dynamic> map) {
     return StaticSiteCustomDomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      staticSiteId: map['staticSiteId'] == null ? null : (map['staticSiteId'] as String).input(),
-      validationToken: map['validationToken'] == null ? null : (map['validationToken'] as String).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      staticSiteId: map['staticSiteId'] == null ? null : (map['staticSiteId']! as String).input(),
+      validationToken: map['validationToken'] == null ? null : (map['validationToken']! as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
     );
   }
 }

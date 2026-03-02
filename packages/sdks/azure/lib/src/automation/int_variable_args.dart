@@ -50,11 +50,11 @@ class IntVariableArgs {
   factory IntVariableArgs.fromMap(Map<String, dynamic> map) {
     return IntVariableArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encrypted: map['encrypted'] == null ? null : (map['encrypted'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encrypted: map['encrypted'] == null ? null : (map['encrypted']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      value: map['value'] == null ? null : (map['value']! as int).input(),
     );
   }
 }

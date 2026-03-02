@@ -33,9 +33,9 @@ class JobTemplateTemplateVpcAccess {
 
   factory JobTemplateTemplateVpcAccess.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVpcAccess(
-      connector: map['connector'] == null ? null : (map['connector'] as String).input(),
-      egress: map['egress'] == null ? null : (map['egress'] as String).input(),
-      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateVpcAccessNetworkInterface>(map['networkInterfaces'], (value) => JobTemplateTemplateVpcAccessNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connector: map['connector'] == null ? null : (map['connector']! as String).input(),
+      egress: map['egress'] == null ? null : (map['egress']! as String).input(),
+      networkInterfaces: map['networkInterfaces'] == null ? null : (pulumi.Input.decodeList<JobTemplateTemplateVpcAccessNetworkInterface>(map['networkInterfaces']!, (value) => JobTemplateTemplateVpcAccessNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

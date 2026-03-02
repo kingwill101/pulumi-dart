@@ -84,19 +84,19 @@ class CaCertificateState {
 
   factory CaCertificateState.fromMap(Map<String, dynamic> map) {
     return CaCertificateState(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      allowAutoRegistration: map['allowAutoRegistration'] == null ? null : (map['allowAutoRegistration'] as bool).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      caCertificatePem: map['caCertificatePem'] == null ? null : (map['caCertificatePem'] as String).input(),
-      certificateMode: map['certificateMode'] == null ? null : (map['certificateMode'] as String).input(),
-      customerVersion: map['customerVersion'] == null ? null : (map['customerVersion'] as int).input(),
-      generationId: map['generationId'] == null ? null : (map['generationId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      registrationConfig: map['registrationConfig'] == null ? null : (CaCertificateRegistrationConfig.fromMap((map['registrationConfig'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      validities: map['validities'] == null ? null : (pulumi.Input.decodeList<CaCertificateValidity>(map['validities'], (value) => CaCertificateValidity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      verificationCertificatePem: map['verificationCertificatePem'] == null ? null : (map['verificationCertificatePem'] as String).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
+      allowAutoRegistration: map['allowAutoRegistration'] == null ? null : ((map['allowAutoRegistration'] as bool).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      caCertificatePem: map['caCertificatePem'] == null ? null : ((map['caCertificatePem'] as String).input()).input(),
+      certificateMode: map['certificateMode'] == null ? null : ((map['certificateMode'] as String).input()).input(),
+      customerVersion: map['customerVersion'] == null ? null : ((map['customerVersion'] as int).input()).input(),
+      generationId: map['generationId'] == null ? null : ((map['generationId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      registrationConfig: map['registrationConfig'] == null ? null : ((CaCertificateRegistrationConfig.fromMap((map['registrationConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      validities: map['validities'] == null ? null : ((pulumi.Input.decodeList<CaCertificateValidity>(map['validities']!, (value) => CaCertificateValidity.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      verificationCertificatePem: map['verificationCertificatePem'] == null ? null : ((map['verificationCertificatePem'] as String).input()).input(),
     );
   }
 }

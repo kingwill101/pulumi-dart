@@ -33,9 +33,9 @@ class CustomRolloutPropertiesStatus {
 
   factory CustomRolloutPropertiesStatus.fromMap(Map<String, dynamic> map) {
     return CustomRolloutPropertiesStatus(
-      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions'] as List).cast<String>()).input(),
-      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfo>(map['failedOrSkippedRegions'], (value) => ExtendedErrorInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (CustomRolloutStatusManifestCheckinStatus.fromMap((map['manifestCheckinStatus'] as Map).cast<String, dynamic>())).input(),
+      completedRegions: map['completedRegions'] == null ? null : ((map['completedRegions']! as List).cast<String>()).input(),
+      failedOrSkippedRegions: map['failedOrSkippedRegions'] == null ? null : (pulumi.Input.decodeMapValues<ExtendedErrorInfo>(map['failedOrSkippedRegions']!, (value) => ExtendedErrorInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      manifestCheckinStatus: map['manifestCheckinStatus'] == null ? null : (CustomRolloutStatusManifestCheckinStatus.fromMap((map['manifestCheckinStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -72,17 +72,17 @@ class DomainDevicesVideoModel {
 
   factory DomainDevicesVideoModel.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoModel(
-      accel: map['accel'] == null ? null : (DomainDevicesVideoModelAccel.fromMap((map['accel'] as Map).cast<String, dynamic>())).input(),
-      blob: map['blob'] == null ? null : (map['blob'] as String).input(),
-      edid: map['edid'] == null ? null : (map['edid'] as String).input(),
-      heads: map['heads'] == null ? null : (map['heads'] as double).input(),
-      primary: map['primary'] == null ? null : (map['primary'] as String).input(),
-      ram: map['ram'] == null ? null : (map['ram'] as double).input(),
-      resolution: map['resolution'] == null ? null : (DomainDevicesVideoModelResolution.fromMap((map['resolution'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vgaMem: map['vgaMem'] == null ? null : (map['vgaMem'] as double).input(),
-      vram: map['vram'] == null ? null : (map['vram'] as double).input(),
-      vram64: map['vram64'] == null ? null : (map['vram64'] as double).input(),
+      accel: map['accel'] == null ? null : (DomainDevicesVideoModelAccel.fromMap((map['accel']! as Map).cast<String, dynamic>())).input(),
+      blob: map['blob'] == null ? null : (map['blob']! as String).input(),
+      edid: map['edid'] == null ? null : (map['edid']! as String).input(),
+      heads: map['heads'] == null ? null : (map['heads']! as double).input(),
+      primary: map['primary'] == null ? null : (map['primary']! as String).input(),
+      ram: map['ram'] == null ? null : (map['ram']! as double).input(),
+      resolution: map['resolution'] == null ? null : (DomainDevicesVideoModelResolution.fromMap((map['resolution']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vgaMem: map['vgaMem'] == null ? null : (map['vgaMem']! as double).input(),
+      vram: map['vram'] == null ? null : (map['vram']! as double).input(),
+      vram64: map['vram64'] == null ? null : (map['vram64']! as double).input(),
     );
   }
 }

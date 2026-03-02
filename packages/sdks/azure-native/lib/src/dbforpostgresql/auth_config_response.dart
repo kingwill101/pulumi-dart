@@ -31,9 +31,9 @@ class AuthConfigResponse {
 
   factory AuthConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthConfigResponse(
-      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth'] as String).input(),
-      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      activeDirectoryAuth: map['activeDirectoryAuth'] == null ? null : (map['activeDirectoryAuth']! as String).input(),
+      passwordAuth: map['passwordAuth'] == null ? null : (map['passwordAuth']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

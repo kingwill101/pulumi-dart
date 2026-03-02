@@ -26,8 +26,8 @@ class DBClusterRole {
 
   factory DBClusterRole.fromMap(Map<String, dynamic> map) {
     return DBClusterRole(
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      featureName: map['featureName'] == null ? null : (map['featureName']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
     );
   }
 }

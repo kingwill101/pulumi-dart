@@ -56,14 +56,14 @@ class CosmosdbDataConnectionState {
 
   factory CosmosdbDataConnectionState.fromMap(Map<String, dynamic> map) {
     return CosmosdbDataConnectionState(
-      cosmosdbContainerId: map['cosmosdbContainerId'] == null ? null : (map['cosmosdbContainerId'] as String).input(),
-      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : (map['kustoDatabaseId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedIdentityId: map['managedIdentityId'] == null ? null : (map['managedIdentityId'] as String).input(),
-      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      cosmosdbContainerId: map['cosmosdbContainerId'] == null ? null : (map['cosmosdbContainerId']! as String).input(),
+      kustoDatabaseId: map['kustoDatabaseId'] == null ? null : (map['kustoDatabaseId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedIdentityId: map['managedIdentityId'] == null ? null : (map['managedIdentityId']! as String).input(),
+      mappingRuleName: map['mappingRuleName'] == null ? null : (map['mappingRuleName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retrievalStartDate: map['retrievalStartDate'] == null ? null : (map['retrievalStartDate']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

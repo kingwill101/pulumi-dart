@@ -83,12 +83,12 @@ class GetVersionResult {
       location: map['location'] as String,
       name: map['name'] as String,
       packageName: map['packageName'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       relatedTags: pulumi.Input.decodeList<GetVersionRelatedTag>(map['relatedTags'], (value) => GetVersionRelatedTag.fromMap((value as Map).cast<String, dynamic>())),
       repositoryId: map['repositoryId'] as String,
       updateTime: map['updateTime'] as String,
       versionName: map['versionName'] as String,
-      view: map['view'] == null ? null : map['view'] as String,
+      view: map['view'] == null ? null : map['view']! as String,
     );
   }
 }

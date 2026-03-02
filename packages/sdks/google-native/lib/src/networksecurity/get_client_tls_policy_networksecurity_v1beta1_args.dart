@@ -33,7 +33,7 @@ class GetClientTlsPolicyNetworksecurityV1beta1Args {
     return GetClientTlsPolicyNetworksecurityV1beta1Args(
       clientTlsPolicyId: (map['clientTlsPolicyId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

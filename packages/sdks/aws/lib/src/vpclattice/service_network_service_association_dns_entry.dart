@@ -25,8 +25,8 @@ class ServiceNetworkServiceAssociationDnsEntry {
 
   factory ServiceNetworkServiceAssociationDnsEntry.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkServiceAssociationDnsEntry(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
     );
   }
 }

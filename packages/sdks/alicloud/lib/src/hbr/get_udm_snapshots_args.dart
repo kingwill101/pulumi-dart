@@ -59,12 +59,12 @@ class GetUdmSnapshotsArgs {
 
   factory GetUdmSnapshotsArgs.fromMap(Map<String, dynamic> map) {
     return GetUdmSnapshotsArgs(
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
       endTime: (map['endTime'] as int).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
       sourceType: (map['sourceType'] as String).input(),
       startTime: (map['startTime'] as int).input(),
     );

@@ -77,16 +77,16 @@ class DomainRecordArgs {
   factory DomainRecordArgs.fromMap(Map<String, dynamic> map) {
     return DomainRecordArgs(
       domainId: (map['domainId'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       recordType: (map['recordType'] as String).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
       target: (map['target'] as String).input(),
-      ttlSec: map['ttlSec'] == null ? null : (map['ttlSec'] as int).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      ttlSec: map['ttlSec'] == null ? null : (map['ttlSec']! as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

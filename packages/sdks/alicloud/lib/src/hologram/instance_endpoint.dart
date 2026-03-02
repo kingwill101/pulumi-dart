@@ -50,13 +50,13 @@ class InstanceEndpoint {
 
   factory InstanceEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceEndpoint(
-      alternativeEndpoints: map['alternativeEndpoints'] == null ? null : (map['alternativeEndpoints'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      alternativeEndpoints: map['alternativeEndpoints'] == null ? null : (map['alternativeEndpoints']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vpcInstanceId: map['vpcInstanceId'] == null ? null : (map['vpcInstanceId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

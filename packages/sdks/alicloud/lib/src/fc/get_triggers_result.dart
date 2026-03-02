@@ -56,9 +56,9 @@ class GetTriggersResult {
       functionName: map['functionName'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       serviceName: map['serviceName'] as String,
       triggers: pulumi.Input.decodeList<GetTriggersTrigger>(map['triggers'], (value) => GetTriggersTrigger.fromMap((value as Map).cast<String, dynamic>())),
     );

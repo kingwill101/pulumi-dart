@@ -36,10 +36,10 @@ class ApplicationScalingRuleScalingRuleTimer {
 
   factory ApplicationScalingRuleScalingRuleTimer.fromMap(Map<String, dynamic> map) {
     return ApplicationScalingRuleScalingRuleTimer(
-      beginDate: map['beginDate'] == null ? null : (map['beginDate'] as String).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
-      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<ApplicationScalingRuleScalingRuleTimerSchedule>(map['schedules'], (value) => ApplicationScalingRuleScalingRuleTimerSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      beginDate: map['beginDate'] == null ? null : (map['beginDate']! as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
+      schedules: map['schedules'] == null ? null : (pulumi.Input.decodeList<ApplicationScalingRuleScalingRuleTimerSchedule>(map['schedules']!, (value) => ApplicationScalingRuleScalingRuleTimerSchedule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

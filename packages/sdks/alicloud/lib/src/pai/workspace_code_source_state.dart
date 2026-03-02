@@ -73,17 +73,17 @@ class WorkspaceCodeSourceState {
 
   factory WorkspaceCodeSourceState.fromMap(Map<String, dynamic> map) {
     return WorkspaceCodeSourceState(
-      accessibility: map['accessibility'] == null ? null : (map['accessibility'] as String).input(),
-      codeBranch: map['codeBranch'] == null ? null : (map['codeBranch'] as String).input(),
-      codeCommit: map['codeCommit'] == null ? null : (map['codeCommit'] as String).input(),
-      codeRepo: map['codeRepo'] == null ? null : (map['codeRepo'] as String).input(),
-      codeRepoAccessToken: map['codeRepoAccessToken'] == null ? null : (map['codeRepoAccessToken'] as String).input(),
-      codeRepoUserName: map['codeRepoUserName'] == null ? null : (map['codeRepoUserName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      mountPath: map['mountPath'] == null ? null : (map['mountPath'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      accessibility: map['accessibility'] == null ? null : (map['accessibility']! as String).input(),
+      codeBranch: map['codeBranch'] == null ? null : (map['codeBranch']! as String).input(),
+      codeCommit: map['codeCommit'] == null ? null : (map['codeCommit']! as String).input(),
+      codeRepo: map['codeRepo'] == null ? null : (map['codeRepo']! as String).input(),
+      codeRepoAccessToken: map['codeRepoAccessToken'] == null ? null : (map['codeRepoAccessToken']! as String).input(),
+      codeRepoUserName: map['codeRepoUserName'] == null ? null : (map['codeRepoUserName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      mountPath: map['mountPath'] == null ? null : (map['mountPath']! as String).input(),
+      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId']! as String).input(),
     );
   }
 }

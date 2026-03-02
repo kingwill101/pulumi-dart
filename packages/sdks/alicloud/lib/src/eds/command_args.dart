@@ -46,9 +46,9 @@ class CommandArgs {
     return CommandArgs(
       commandContent: (map['commandContent'] as String).input(),
       commandType: (map['commandType'] as String).input(),
-      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding'] as String).input(),
+      contentEncoding: map['contentEncoding'] == null ? null : (map['contentEncoding']! as String).input(),
       desktopId: (map['desktopId'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

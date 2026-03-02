@@ -32,9 +32,9 @@ class FirewallPolicyIntrusionDetectionResponse {
 
   factory FirewallPolicyIntrusionDetectionResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyIntrusionDetectionResponse(
-      configuration: map['configuration'] == null ? null : (FirewallPolicyIntrusionDetectionConfigurationResponse.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
+      configuration: map['configuration'] == null ? null : (FirewallPolicyIntrusionDetectionConfigurationResponse.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
     );
   }
 }

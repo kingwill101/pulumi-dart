@@ -33,7 +33,7 @@ class ManagedIdentityAuthenticationSettingProperties {
   factory ManagedIdentityAuthenticationSettingProperties.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityAuthenticationSettingProperties(
       authenticationKind: (map['authenticationKind'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       managedIdentityName: (map['managedIdentityName'] as String).input(),
     );
   }

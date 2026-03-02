@@ -48,8 +48,8 @@ class GetVpcEndpointZonesResult {
       endpointId: map['endpointId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       zones: pulumi.Input.decodeList<GetVpcEndpointZonesZone>(map['zones'], (value) => GetVpcEndpointZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

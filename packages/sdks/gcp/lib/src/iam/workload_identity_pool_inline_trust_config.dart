@@ -28,7 +28,7 @@ class WorkloadIdentityPoolInlineTrustConfig {
 
   factory WorkloadIdentityPoolInlineTrustConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolInlineTrustConfig(
-      additionalTrustBundles: map['additionalTrustBundles'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>(map['additionalTrustBundles'], (value) => WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalTrustBundles: map['additionalTrustBundles'] == null ? null : (pulumi.Input.decodeList<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>(map['additionalTrustBundles']!, (value) => WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

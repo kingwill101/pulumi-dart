@@ -27,8 +27,8 @@ class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
 
   factory RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig(
-      coreCount: map['coreCount'] == null ? null : (map['coreCount'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      coreCount: map['coreCount'] == null ? null : (map['coreCount']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

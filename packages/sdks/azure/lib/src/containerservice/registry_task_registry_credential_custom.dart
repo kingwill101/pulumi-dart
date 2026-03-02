@@ -35,10 +35,10 @@ class RegistryTaskRegistryCredentialCustom {
 
   factory RegistryTaskRegistryCredentialCustom.fromMap(Map<String, dynamic> map) {
     return RegistryTaskRegistryCredentialCustom(
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
+      identity: map['identity'] == null ? null : (map['identity']! as String).input(),
       loginServer: (map['loginServer'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

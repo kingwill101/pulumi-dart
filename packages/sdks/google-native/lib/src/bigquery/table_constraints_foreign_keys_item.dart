@@ -29,9 +29,9 @@ class TableConstraintsForeignKeysItem {
 
   factory TableConstraintsForeignKeysItem.fromMap(Map<String, dynamic> map) {
     return TableConstraintsForeignKeysItem(
-      columnReferences: map['columnReferences'] == null ? null : (pulumi.Input.decodeList<TableConstraintsForeignKeysItemColumnReferencesItem>(map['columnReferences'], (value) => TableConstraintsForeignKeysItemColumnReferencesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      referencedTable: map['referencedTable'] == null ? null : (TableConstraintsForeignKeysItemReferencedTable.fromMap((map['referencedTable'] as Map).cast<String, dynamic>())).input(),
+      columnReferences: map['columnReferences'] == null ? null : (pulumi.Input.decodeList<TableConstraintsForeignKeysItemColumnReferencesItem>(map['columnReferences']!, (value) => TableConstraintsForeignKeysItemColumnReferencesItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      referencedTable: map['referencedTable'] == null ? null : (TableConstraintsForeignKeysItemReferencedTable.fromMap((map['referencedTable']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

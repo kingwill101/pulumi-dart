@@ -34,8 +34,8 @@ class UnitKindInputVariableMapping {
 
   factory UnitKindInputVariableMapping.fromMap(Map<String, dynamic> map) {
     return UnitKindInputVariableMapping(
-      from: map['from'] == null ? null : (UnitKindInputVariableMappingFrom.fromMap((map['from'] as Map).cast<String, dynamic>())).input(),
-      to: map['to'] == null ? null : (UnitKindInputVariableMappingTo.fromMap((map['to'] as Map).cast<String, dynamic>())).input(),
+      from: map['from'] == null ? null : (UnitKindInputVariableMappingFrom.fromMap((map['from']! as Map).cast<String, dynamic>())).input(),
+      to: map['to'] == null ? null : (UnitKindInputVariableMappingTo.fromMap((map['to']! as Map).cast<String, dynamic>())).input(),
       variable: (map['variable'] as String).input(),
     );
   }

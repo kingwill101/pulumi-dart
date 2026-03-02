@@ -30,9 +30,9 @@ class DomainClockTimerCatchUp {
 
   factory DomainClockTimerCatchUp.fromMap(Map<String, dynamic> map) {
     return DomainClockTimerCatchUp(
-      limit: map['limit'] == null ? null : (map['limit'] as double).input(),
-      slew: map['slew'] == null ? null : (map['slew'] as double).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as double).input(),
+      slew: map['slew'] == null ? null : (map['slew']! as double).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
     );
   }
 }

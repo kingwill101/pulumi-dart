@@ -73,18 +73,18 @@ class GetZonesResult {
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyword: map['keyword'] == null ? null : map['keyword'] as String,
-      lang: map['lang'] == null ? null : map['lang'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyword: map['keyword'] == null ? null : map['keyword']! as String,
+      lang: map['lang'] == null ? null : map['lang']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      queryRegionId: map['queryRegionId'] == null ? null : map['queryRegionId'] as String,
-      queryVpcId: map['queryVpcId'] == null ? null : map['queryVpcId'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      searchMode: map['searchMode'] == null ? null : map['searchMode'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      queryRegionId: map['queryRegionId'] == null ? null : map['queryRegionId']! as String,
+      queryVpcId: map['queryVpcId'] == null ? null : map['queryVpcId']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      searchMode: map['searchMode'] == null ? null : map['searchMode']! as String,
       zones: pulumi.Input.decodeList<GetZonesZone>(map['zones'], (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

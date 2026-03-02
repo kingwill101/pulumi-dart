@@ -55,13 +55,13 @@ class GetVbrHealthChecksResult {
 
   factory GetVbrHealthChecksResult.fromMap(Map<String, dynamic> map) {
     return GetVbrHealthChecksResult(
-      cenId: map['cenId'] == null ? null : map['cenId'] as String,
+      cenId: map['cenId'] == null ? null : map['cenId']! as String,
       checks: pulumi.Input.decodeList<GetVbrHealthChecksCheck>(map['checks'], (value) => GetVbrHealthChecksCheck.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      vbrInstanceId: map['vbrInstanceId'] == null ? null : map['vbrInstanceId'] as String,
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : map['vbrInstanceOwnerId'] as int,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      vbrInstanceId: map['vbrInstanceId'] == null ? null : map['vbrInstanceId']! as String,
+      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : map['vbrInstanceOwnerId']! as int,
       vbrInstanceRegionId: map['vbrInstanceRegionId'] as String,
     );
   }

@@ -72,16 +72,16 @@ class GetRuntimeEnvironmentResult {
   factory GetRuntimeEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetRuntimeEnvironmentResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      defaultPackages: map['defaultPackages'] == null ? null : (map['defaultPackages'] as Map).cast<String, String>(),
-      description: map['description'] == null ? null : map['description'] as String,
+      defaultPackages: map['defaultPackages'] == null ? null : (map['defaultPackages']! as Map).cast<String, String>(),
+      description: map['description'] == null ? null : map['description']! as String,
       id: map['id'] as String,
-      language: map['language'] == null ? null : map['language'] as String,
+      language: map['language'] == null ? null : map['language']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
     );
   }
 }

@@ -25,8 +25,8 @@ class UserOwnedStorageResponse {
 
   factory UserOwnedStorageResponse.fromMap(Map<String, dynamic> map) {
     return UserOwnedStorageResponse(
-      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      identityClientId: map['identityClientId'] == null ? null : (map['identityClientId']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

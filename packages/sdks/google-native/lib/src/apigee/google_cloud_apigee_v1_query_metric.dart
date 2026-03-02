@@ -41,11 +41,11 @@ class GoogleCloudApigeeV1QueryMetric {
 
   factory GoogleCloudApigeeV1QueryMetric.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1QueryMetric(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      function: map['function'] == null ? null : (map['function'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      function: map['function'] == null ? null : (map['function']! as String).input(),
       name: (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

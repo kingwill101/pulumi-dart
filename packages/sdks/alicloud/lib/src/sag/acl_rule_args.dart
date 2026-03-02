@@ -70,13 +70,13 @@ class AclRuleArgs {
   factory AclRuleArgs.fromMap(Map<String, dynamic> map) {
     return AclRuleArgs(
       aclId: (map['aclId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destCidr: (map['destCidr'] as String).input(),
       destPortRange: (map['destPortRange'] as String).input(),
       direction: (map['direction'] as String).input(),
       ipProtocol: (map['ipProtocol'] as String).input(),
       policy: (map['policy'] as String).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
       sourceCidr: (map['sourceCidr'] as String).input(),
       sourcePortRange: (map['sourcePortRange'] as String).input(),
     );

@@ -49,12 +49,12 @@ class IpGroupArgs {
 
   factory IpGroupArgs.fromMap(Map<String, dynamic> map) {
     return IpGroupArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      ipGroupsName: map['ipGroupsName'] == null ? null : (map['ipGroupsName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      ipGroupsName: map['ipGroupsName'] == null ? null : (map['ipGroupsName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class AttachedDatabaseConfigurationSharing {
 
   factory AttachedDatabaseConfigurationSharing.fromMap(Map<String, dynamic> map) {
     return AttachedDatabaseConfigurationSharing(
-      externalTablesToExcludes: map['externalTablesToExcludes'] == null ? null : ((map['externalTablesToExcludes'] as List).cast<String>()).input(),
-      externalTablesToIncludes: map['externalTablesToIncludes'] == null ? null : ((map['externalTablesToIncludes'] as List).cast<String>()).input(),
-      materializedViewsToExcludes: map['materializedViewsToExcludes'] == null ? null : ((map['materializedViewsToExcludes'] as List).cast<String>()).input(),
-      materializedViewsToIncludes: map['materializedViewsToIncludes'] == null ? null : ((map['materializedViewsToIncludes'] as List).cast<String>()).input(),
-      tablesToExcludes: map['tablesToExcludes'] == null ? null : ((map['tablesToExcludes'] as List).cast<String>()).input(),
-      tablesToIncludes: map['tablesToIncludes'] == null ? null : ((map['tablesToIncludes'] as List).cast<String>()).input(),
+      externalTablesToExcludes: map['externalTablesToExcludes'] == null ? null : ((map['externalTablesToExcludes']! as List).cast<String>()).input(),
+      externalTablesToIncludes: map['externalTablesToIncludes'] == null ? null : ((map['externalTablesToIncludes']! as List).cast<String>()).input(),
+      materializedViewsToExcludes: map['materializedViewsToExcludes'] == null ? null : ((map['materializedViewsToExcludes']! as List).cast<String>()).input(),
+      materializedViewsToIncludes: map['materializedViewsToIncludes'] == null ? null : ((map['materializedViewsToIncludes']! as List).cast<String>()).input(),
+      tablesToExcludes: map['tablesToExcludes'] == null ? null : ((map['tablesToExcludes']! as List).cast<String>()).input(),
+      tablesToIncludes: map['tablesToIncludes'] == null ? null : ((map['tablesToIncludes']! as List).cast<String>()).input(),
     );
   }
 }

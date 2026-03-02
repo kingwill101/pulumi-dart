@@ -48,9 +48,9 @@ class FlavorprofileV2Args {
   factory FlavorprofileV2Args.fromMap(Map<String, dynamic> map) {
     return FlavorprofileV2Args(
       flavorData: (map['flavorData'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       providerName: (map['providerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

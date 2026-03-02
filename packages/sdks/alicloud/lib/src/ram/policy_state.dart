@@ -94,21 +94,21 @@ class PolicyState {
 
   factory PolicyState.fromMap(Map<String, dynamic> map) {
     return PolicyState(
-      attachmentCount: map['attachmentCount'] == null ? null : (map['attachmentCount'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      document: map['document'] == null ? null : (map['document'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      rotateStrategy: map['rotateStrategy'] == null ? null : (map['rotateStrategy'] as String).input(),
-      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<PolicyStatement>(map['statements'], (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versionId: map['versionId'] == null ? null : (map['versionId'] as String).input(),
+      attachmentCount: map['attachmentCount'] == null ? null : (map['attachmentCount']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      defaultVersion: map['defaultVersion'] == null ? null : (map['defaultVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      document: map['document'] == null ? null : (map['document']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      rotateStrategy: map['rotateStrategy'] == null ? null : (map['rotateStrategy']! as String).input(),
+      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<PolicyStatement>(map['statements']!, (value) => PolicyStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
+      versionId: map['versionId'] == null ? null : (map['versionId']! as String).input(),
     );
   }
 }

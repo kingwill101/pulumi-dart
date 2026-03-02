@@ -51,13 +51,13 @@ class SsisVariableResponse {
 
   factory SsisVariableResponse.fromMap(Map<String, dynamic> map) {
     return SsisVariableResponse(
-      dataType: map['dataType'] == null ? null : (map['dataType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sensitive: map['sensitive'] == null ? null : (map['sensitive'] as bool).input(),
-      sensitiveValue: map['sensitiveValue'] == null ? null : (map['sensitiveValue'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      dataType: map['dataType'] == null ? null : (map['dataType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sensitive: map['sensitive'] == null ? null : (map['sensitive']! as bool).input(),
+      sensitiveValue: map['sensitiveValue'] == null ? null : (map['sensitiveValue']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

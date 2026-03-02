@@ -26,8 +26,8 @@ class BucketV2ServerSideEncryptionConfigurationRule {
 
   factory BucketV2ServerSideEncryptionConfigurationRule.fromMap(Map<String, dynamic> map) {
     return BucketV2ServerSideEncryptionConfigurationRule(
-      applyServerSideEncryptionByDefaults: (pulumi.Input.decodeList<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>(map['applyServerSideEncryptionByDefaults'], (value) => BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : (map['bucketKeyEnabled'] as bool).input(),
+      applyServerSideEncryptionByDefaults: (pulumi.Input.decodeList<BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault>(map['applyServerSideEncryptionByDefaults']!, (value) => BucketV2ServerSideEncryptionConfigurationRuleApplyServerSideEncryptionByDefault.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : ((map['bucketKeyEnabled'] as bool).input()).input(),
     );
   }
 }

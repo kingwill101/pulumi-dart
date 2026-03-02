@@ -36,9 +36,9 @@ class GetSubnetsArgs {
 
   factory GetSubnetsArgs.fromMap(Map<String, dynamic> map) {
     return GetSubnetsArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetSubnetsFilter>(map['filters'], (value) => GetSubnetsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetSubnetsFilter>(map['filters']!, (value) => GetSubnetsFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

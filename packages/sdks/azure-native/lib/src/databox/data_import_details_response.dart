@@ -28,7 +28,7 @@ class DataImportDetailsResponse {
   factory DataImportDetailsResponse.fromMap(Map<String, dynamic> map) {
     return DataImportDetailsResponse(
       accountDetails: (ManagedDiskDetailsResponse.fromMap((map['accountDetails'] as Map).cast<String, dynamic>())).input(),
-      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel'] as String).input(),
+      logCollectionLevel: map['logCollectionLevel'] == null ? null : (map['logCollectionLevel']! as String).input(),
     );
   }
 }

@@ -42,9 +42,9 @@ class ApiKeyArgs {
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
       applicationInsightsId: (map['applicationInsightsId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions'] as List).cast<String>()).input(),
-      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      readPermissions: map['readPermissions'] == null ? null : ((map['readPermissions']! as List).cast<String>()).input(),
+      writePermissions: map['writePermissions'] == null ? null : ((map['writePermissions']! as List).cast<String>()).input(),
     );
   }
 }

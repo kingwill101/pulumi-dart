@@ -31,9 +31,9 @@ class ExistingLogGroup {
 
   factory ExistingLogGroup.fromMap(Map<String, dynamic> map) {
     return ExistingLogGroup(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -72,13 +72,13 @@ class CertificateMapEntryArgs {
   factory CertificateMapEntryArgs.fromMap(Map<String, dynamic> map) {
     return CertificateMapEntryArgs(
       certificates: ((map['certificates'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       map: (map['map'] as String).input(),
-      matcher: map['matcher'] == null ? null : (map['matcher'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      matcher: map['matcher'] == null ? null : (map['matcher']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

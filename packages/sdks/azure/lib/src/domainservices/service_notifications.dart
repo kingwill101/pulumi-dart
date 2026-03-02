@@ -30,9 +30,9 @@ class ServiceNotifications {
 
   factory ServiceNotifications.fromMap(Map<String, dynamic> map) {
     return ServiceNotifications(
-      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients'] as List).cast<String>()).input(),
-      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : (map['notifyDcAdmins'] as bool).input(),
-      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : (map['notifyGlobalAdmins'] as bool).input(),
+      additionalRecipients: map['additionalRecipients'] == null ? null : ((map['additionalRecipients']! as List).cast<String>()).input(),
+      notifyDcAdmins: map['notifyDcAdmins'] == null ? null : (map['notifyDcAdmins']! as bool).input(),
+      notifyGlobalAdmins: map['notifyGlobalAdmins'] == null ? null : (map['notifyGlobalAdmins']! as bool).input(),
     );
   }
 }

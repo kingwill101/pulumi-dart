@@ -32,9 +32,9 @@ class ToolDataStoreToolModalityConfigRewriterConfig {
 
   factory ToolDataStoreToolModalityConfigRewriterConfig.fromMap(Map<String, dynamic> map) {
     return ToolDataStoreToolModalityConfigRewriterConfig(
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       modelSettings: (ToolDataStoreToolModalityConfigRewriterConfigModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>())).input(),
-      prompt: map['prompt'] == null ? null : (map['prompt'] as String).input(),
+      prompt: map['prompt'] == null ? null : (map['prompt']! as String).input(),
     );
   }
 }

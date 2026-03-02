@@ -58,12 +58,12 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      column: map['column'] == null ? null : (map['column'] as String).input(),
-      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TagField>(map['fields'], (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
-      templateDisplayname: map['templateDisplayname'] == null ? null : (map['templateDisplayname'] as String).input(),
+      column: map['column'] == null ? null : (map['column']! as String).input(),
+      fields: map['fields'] == null ? null : (pulumi.Input.decodeList<TagField>(map['fields']!, (value) => TagField.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
+      templateDisplayname: map['templateDisplayname'] == null ? null : (map['templateDisplayname']! as String).input(),
     );
   }
 }

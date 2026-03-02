@@ -33,7 +33,7 @@ class GetInstanceBackupIamPolicyArgs {
     return GetInstanceBackupIamPolicyArgs(
       backupId: (map['backupId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

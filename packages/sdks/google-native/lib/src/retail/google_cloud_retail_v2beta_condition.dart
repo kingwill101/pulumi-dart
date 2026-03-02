@@ -33,9 +33,9 @@ class GoogleCloudRetailV2betaCondition {
 
   factory GoogleCloudRetailV2betaCondition.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaCondition(
-      activeTimeRange: map['activeTimeRange'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaConditionTimeRange>(map['activeTimeRange'], (value) => GoogleCloudRetailV2betaConditionTimeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      pageCategories: map['pageCategories'] == null ? null : ((map['pageCategories'] as List).cast<String>()).input(),
-      queryTerms: map['queryTerms'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaConditionQueryTerm>(map['queryTerms'], (value) => GoogleCloudRetailV2betaConditionQueryTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      activeTimeRange: map['activeTimeRange'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaConditionTimeRange>(map['activeTimeRange']!, (value) => GoogleCloudRetailV2betaConditionTimeRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pageCategories: map['pageCategories'] == null ? null : ((map['pageCategories']! as List).cast<String>()).input(),
+      queryTerms: map['queryTerms'] == null ? null : (pulumi.Input.decodeList<GoogleCloudRetailV2betaConditionQueryTerm>(map['queryTerms']!, (value) => GoogleCloudRetailV2betaConditionQueryTerm.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

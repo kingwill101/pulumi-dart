@@ -26,8 +26,8 @@ class TargetGroupStickinessConfigResponse {
 
   factory TargetGroupStickinessConfigResponse.fromMap(Map<String, dynamic> map) {
     return TargetGroupStickinessConfigResponse(
-      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

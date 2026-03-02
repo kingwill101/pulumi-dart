@@ -43,10 +43,10 @@ class ControlOrganizationIntelligenceConfigFilter {
 
   factory ControlOrganizationIntelligenceConfigFilter.fromMap(Map<String, dynamic> map) {
     return ControlOrganizationIntelligenceConfigFilter(
-      excludedCloudStorageBuckets: map['excludedCloudStorageBuckets'] == null ? null : (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap((map['excludedCloudStorageBuckets'] as Map).cast<String, dynamic>())).input(),
-      excludedCloudStorageLocations: map['excludedCloudStorageLocations'] == null ? null : (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap((map['excludedCloudStorageLocations'] as Map).cast<String, dynamic>())).input(),
-      includedCloudStorageBuckets: map['includedCloudStorageBuckets'] == null ? null : (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap((map['includedCloudStorageBuckets'] as Map).cast<String, dynamic>())).input(),
-      includedCloudStorageLocations: map['includedCloudStorageLocations'] == null ? null : (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap((map['includedCloudStorageLocations'] as Map).cast<String, dynamic>())).input(),
+      excludedCloudStorageBuckets: map['excludedCloudStorageBuckets'] == null ? null : (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap((map['excludedCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
+      excludedCloudStorageLocations: map['excludedCloudStorageLocations'] == null ? null : (ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap((map['excludedCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
+      includedCloudStorageBuckets: map['includedCloudStorageBuckets'] == null ? null : (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap((map['includedCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
+      includedCloudStorageLocations: map['includedCloudStorageLocations'] == null ? null : (ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap((map['includedCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

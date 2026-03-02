@@ -64,7 +64,7 @@ class GetFleetMemberResult {
       azureApiVersion: map['azureApiVersion'] as String,
       clusterResourceId: map['clusterResourceId'] as String,
       eTag: map['eTag'] as String,
-      group: map['group'] == null ? null : map['group'] as String,
+      group: map['group'] == null ? null : map['group']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,

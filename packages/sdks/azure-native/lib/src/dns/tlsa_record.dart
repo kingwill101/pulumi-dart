@@ -36,10 +36,10 @@ class TlsaRecord {
 
   factory TlsaRecord.fromMap(Map<String, dynamic> map) {
     return TlsaRecord(
-      certAssociationData: map['certAssociationData'] == null ? null : (map['certAssociationData'] as String).input(),
-      matchingType: map['matchingType'] == null ? null : (map['matchingType'] as int).input(),
-      selector: map['selector'] == null ? null : (map['selector'] as int).input(),
-      usage: map['usage'] == null ? null : (map['usage'] as int).input(),
+      certAssociationData: map['certAssociationData'] == null ? null : (map['certAssociationData']! as String).input(),
+      matchingType: map['matchingType'] == null ? null : (map['matchingType']! as int).input(),
+      selector: map['selector'] == null ? null : (map['selector']! as int).input(),
+      usage: map['usage'] == null ? null : (map['usage']! as int).input(),
     );
   }
 }

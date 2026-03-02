@@ -54,13 +54,13 @@ class ClusterState {
 
   factory ClusterState.fromMap(Map<String, dynamic> map) {
     return ClusterState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterEndpoints: map['clusterEndpoints'] == null ? null : (pulumi.Input.decodeList<ClusterClusterEndpoint>(map['clusterEndpoints'], (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterEndpoints: map['clusterEndpoints'] == null ? null : ((pulumi.Input.decodeList<ClusterClusterEndpoint>(map['clusterEndpoints']!, (value) => ClusterClusterEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      networkType: map['networkType'] == null ? null : ((map['networkType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

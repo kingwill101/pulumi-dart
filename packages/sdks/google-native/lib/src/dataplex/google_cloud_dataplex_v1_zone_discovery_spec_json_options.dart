@@ -26,8 +26,8 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
 
   factory GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions(
-      disableTypeInference: map['disableTypeInference'] == null ? null : (map['disableTypeInference'] as bool).input(),
-      encoding: map['encoding'] == null ? null : (map['encoding'] as String).input(),
+      disableTypeInference: map['disableTypeInference'] == null ? null : (map['disableTypeInference']! as bool).input(),
+      encoding: map['encoding'] == null ? null : (map['encoding']! as String).input(),
     );
   }
 }

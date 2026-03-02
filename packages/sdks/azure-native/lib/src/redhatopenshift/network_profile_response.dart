@@ -42,11 +42,11 @@ class NetworkProfileResponse {
 
   factory NetworkProfileResponse.fromMap(Map<String, dynamic> map) {
     return NetworkProfileResponse(
-      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (LoadBalancerProfileResponse.fromMap((map['loadBalancerProfile'] as Map).cast<String, dynamic>())).input(),
-      outboundType: map['outboundType'] == null ? null : (map['outboundType'] as String).input(),
-      podCidr: map['podCidr'] == null ? null : (map['podCidr'] as String).input(),
-      preconfiguredNSG: map['preconfiguredNSG'] == null ? null : (map['preconfiguredNSG'] as String).input(),
-      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr'] as String).input(),
+      loadBalancerProfile: map['loadBalancerProfile'] == null ? null : (LoadBalancerProfileResponse.fromMap((map['loadBalancerProfile']! as Map).cast<String, dynamic>())).input(),
+      outboundType: map['outboundType'] == null ? null : (map['outboundType']! as String).input(),
+      podCidr: map['podCidr'] == null ? null : (map['podCidr']! as String).input(),
+      preconfiguredNSG: map['preconfiguredNSG'] == null ? null : (map['preconfiguredNSG']! as String).input(),
+      serviceCidr: map['serviceCidr'] == null ? null : (map['serviceCidr']! as String).input(),
     );
   }
 }

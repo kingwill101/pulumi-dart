@@ -22,7 +22,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
 
   factory GcpUserAccessBindingScopedAccessSettingScopeClientScope.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSettingScopeClientScope(
-      restrictedClientApplication: map['restrictedClientApplication'] == null ? null : (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication.fromMap((map['restrictedClientApplication'] as Map).cast<String, dynamic>())).input(),
+      restrictedClientApplication: map['restrictedClientApplication'] == null ? null : (GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication.fromMap((map['restrictedClientApplication']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

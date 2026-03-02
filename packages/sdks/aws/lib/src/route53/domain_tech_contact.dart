@@ -86,20 +86,20 @@ class DomainTechContact {
 
   factory DomainTechContact.fromMap(Map<String, dynamic> map) {
     return DomainTechContact(
-      addressLine1: map['addressLine1'] == null ? null : (map['addressLine1'] as String).input(),
-      addressLine2: map['addressLine2'] == null ? null : (map['addressLine2'] as String).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      contactType: map['contactType'] == null ? null : (map['contactType'] as String).input(),
-      countryCode: map['countryCode'] == null ? null : (map['countryCode'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      extraParams: map['extraParams'] == null ? null : (pulumi.Input.decodeList<DomainTechContactExtraParam>(map['extraParams'], (value) => DomainTechContactExtraParam.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fax: map['fax'] == null ? null : (map['fax'] as String).input(),
-      firstName: map['firstName'] == null ? null : (map['firstName'] as String).input(),
-      lastName: map['lastName'] == null ? null : (map['lastName'] as String).input(),
-      organizationName: map['organizationName'] == null ? null : (map['organizationName'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      zipCode: map['zipCode'] == null ? null : (map['zipCode'] as String).input(),
+      addressLine1: map['addressLine1'] == null ? null : ((map['addressLine1'] as String).input()).input(),
+      addressLine2: map['addressLine2'] == null ? null : ((map['addressLine2'] as String).input()).input(),
+      city: map['city'] == null ? null : ((map['city'] as String).input()).input(),
+      contactType: map['contactType'] == null ? null : ((map['contactType'] as String).input()).input(),
+      countryCode: map['countryCode'] == null ? null : ((map['countryCode'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      extraParams: map['extraParams'] == null ? null : ((pulumi.Input.decodeList<DomainTechContactExtraParam>(map['extraParams']!, (value) => DomainTechContactExtraParam.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      fax: map['fax'] == null ? null : ((map['fax'] as String).input()).input(),
+      firstName: map['firstName'] == null ? null : ((map['firstName'] as String).input()).input(),
+      lastName: map['lastName'] == null ? null : ((map['lastName'] as String).input()).input(),
+      organizationName: map['organizationName'] == null ? null : ((map['organizationName'] as String).input()).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : ((map['phoneNumber'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      zipCode: map['zipCode'] == null ? null : ((map['zipCode'] as String).input()).input(),
     );
   }
 }

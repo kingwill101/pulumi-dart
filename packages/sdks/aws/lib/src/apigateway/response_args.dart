@@ -49,12 +49,12 @@ class ResponseArgs {
 
   factory ResponseArgs.fromMap(Map<String, dynamic> map) {
     return ResponseArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      responseParameters: map['responseParameters'] == null ? null : ((map['responseParameters'] as Map).cast<String, String>()).input(),
-      responseTemplates: map['responseTemplates'] == null ? null : ((map['responseTemplates'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      responseParameters: map['responseParameters'] == null ? null : (((map['responseParameters'] as Map).cast<String, String>()).input()).input(),
+      responseTemplates: map['responseTemplates'] == null ? null : (((map['responseTemplates'] as Map).cast<String, String>()).input()).input(),
       responseType: (map['responseType'] as String).input(),
       restApiId: (map['restApiId'] as String).input(),
-      statusCode: map['statusCode'] == null ? null : (map['statusCode'] as String).input(),
+      statusCode: map['statusCode'] == null ? null : ((map['statusCode'] as String).input()).input(),
     );
   }
 }

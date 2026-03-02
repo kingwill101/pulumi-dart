@@ -63,15 +63,15 @@ class ExpressRouteConnection {
 
   factory ExpressRouteConnection.fromMap(Map<String, dynamic> map) {
     return ExpressRouteConnection(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity'] as bool).input(),
-      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : (map['enablePrivateLinkFastPath'] as bool).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : (map['enableInternetSecurity']! as bool).input(),
+      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : (map['enablePrivateLinkFastPath']! as bool).input(),
       expressRouteCircuitPeering: (ExpressRouteCircuitPeeringId.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())).input(),
-      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : (map['expressRouteGatewayBypass'] as bool).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : (map['expressRouteGatewayBypass']! as bool).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
-      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight'] as int).input(),
+      routingConfiguration: map['routingConfiguration'] == null ? null : (RoutingConfiguration.fromMap((map['routingConfiguration']! as Map).cast<String, dynamic>())).input(),
+      routingWeight: map['routingWeight'] == null ? null : (map['routingWeight']! as int).input(),
     );
   }
 }

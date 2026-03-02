@@ -21,7 +21,7 @@ class ShieldedVmIntegrityPolicy {
 
   factory ShieldedVmIntegrityPolicy.fromMap(Map<String, dynamic> map) {
     return ShieldedVmIntegrityPolicy(
-      updateAutoLearnPolicy: map['updateAutoLearnPolicy'] == null ? null : (map['updateAutoLearnPolicy'] as bool).input(),
+      updateAutoLearnPolicy: map['updateAutoLearnPolicy'] == null ? null : (map['updateAutoLearnPolicy']! as bool).input(),
     );
   }
 }

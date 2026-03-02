@@ -70,16 +70,16 @@ class OriginResponse {
 
   factory OriginResponse.fromMap(Map<String, dynamic> map) {
     return OriginResponse(
-      connectionAttempts: map['connectionAttempts'] == null ? null : (map['connectionAttempts'] as int).input(),
-      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout'] as int).input(),
-      customOriginConfig: map['customOriginConfig'] == null ? null : (CustomOriginConfigResponse.fromMap((map['customOriginConfig'] as Map).cast<String, dynamic>())).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      originAccessControlId: map['originAccessControlId'] == null ? null : (map['originAccessControlId'] as String).input(),
-      originCustomHeaders: map['originCustomHeaders'] == null ? null : (pulumi.Input.decodeList<OriginCustomHeaderResponse>(map['originCustomHeaders'], (value) => OriginCustomHeaderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      originPath: map['originPath'] == null ? null : (map['originPath'] as String).input(),
-      originShield: map['originShield'] == null ? null : (OriginShieldResponse.fromMap((map['originShield'] as Map).cast<String, dynamic>())).input(),
-      s3OriginConfig: map['s3OriginConfig'] == null ? null : (S3OriginConfigResponse.fromMap((map['s3OriginConfig'] as Map).cast<String, dynamic>())).input(),
+      connectionAttempts: map['connectionAttempts'] == null ? null : (map['connectionAttempts']! as int).input(),
+      connectionTimeout: map['connectionTimeout'] == null ? null : (map['connectionTimeout']! as int).input(),
+      customOriginConfig: map['customOriginConfig'] == null ? null : (CustomOriginConfigResponse.fromMap((map['customOriginConfig']! as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      originAccessControlId: map['originAccessControlId'] == null ? null : (map['originAccessControlId']! as String).input(),
+      originCustomHeaders: map['originCustomHeaders'] == null ? null : (pulumi.Input.decodeList<OriginCustomHeaderResponse>(map['originCustomHeaders']!, (value) => OriginCustomHeaderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      originPath: map['originPath'] == null ? null : (map['originPath']! as String).input(),
+      originShield: map['originShield'] == null ? null : (OriginShieldResponse.fromMap((map['originShield']! as Map).cast<String, dynamic>())).input(),
+      s3OriginConfig: map['s3OriginConfig'] == null ? null : (S3OriginConfigResponse.fromMap((map['s3OriginConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

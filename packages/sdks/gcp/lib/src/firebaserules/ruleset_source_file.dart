@@ -31,7 +31,7 @@ class RulesetSourceFile {
   factory RulesetSourceFile.fromMap(Map<String, dynamic> map) {
     return RulesetSourceFile(
       content: (map['content'] as String).input(),
-      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint'] as String).input(),
+      fingerprint: map['fingerprint'] == null ? null : (map['fingerprint']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -47,12 +47,12 @@ class SecretRotationState {
 
   factory SecretRotationState.fromMap(Map<String, dynamic> map) {
     return SecretRotationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rotateImmediately: map['rotateImmediately'] == null ? null : (map['rotateImmediately'] as bool).input(),
-      rotationEnabled: map['rotationEnabled'] == null ? null : (map['rotationEnabled'] as bool).input(),
-      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : (map['rotationLambdaArn'] as String).input(),
-      rotationRules: map['rotationRules'] == null ? null : (SecretRotationRotationRules.fromMap((map['rotationRules'] as Map).cast<String, dynamic>())).input(),
-      secretId: map['secretId'] == null ? null : (map['secretId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rotateImmediately: map['rotateImmediately'] == null ? null : ((map['rotateImmediately'] as bool).input()).input(),
+      rotationEnabled: map['rotationEnabled'] == null ? null : ((map['rotationEnabled'] as bool).input()).input(),
+      rotationLambdaArn: map['rotationLambdaArn'] == null ? null : ((map['rotationLambdaArn'] as String).input()).input(),
+      rotationRules: map['rotationRules'] == null ? null : ((SecretRotationRotationRules.fromMap((map['rotationRules']! as Map).cast<String, dynamic>())).input()).input(),
+      secretId: map['secretId'] == null ? null : ((map['secretId'] as String).input()).input(),
     );
   }
 }

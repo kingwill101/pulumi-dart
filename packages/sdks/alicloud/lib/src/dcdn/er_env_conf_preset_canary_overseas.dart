@@ -30,9 +30,9 @@ class ErEnvConfPresetCanaryOverseas {
 
   factory ErEnvConfPresetCanaryOverseas.fromMap(Map<String, dynamic> map) {
     return ErEnvConfPresetCanaryOverseas(
-      allowedHosts: map['allowedHosts'] == null ? null : ((map['allowedHosts'] as List).cast<String>()).input(),
-      codeRev: map['codeRev'] == null ? null : (map['codeRev'] as String).input(),
-      specName: map['specName'] == null ? null : (map['specName'] as String).input(),
+      allowedHosts: map['allowedHosts'] == null ? null : ((map['allowedHosts']! as List).cast<String>()).input(),
+      codeRev: map['codeRev'] == null ? null : (map['codeRev']! as String).input(),
+      specName: map['specName'] == null ? null : (map['specName']! as String).input(),
     );
   }
 }

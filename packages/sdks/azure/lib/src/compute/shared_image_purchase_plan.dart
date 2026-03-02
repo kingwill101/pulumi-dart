@@ -31,8 +31,8 @@ class SharedImagePurchasePlan {
   factory SharedImagePurchasePlan.fromMap(Map<String, dynamic> map) {
     return SharedImagePurchasePlan(
       name: (map['name'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
     );
   }
 }

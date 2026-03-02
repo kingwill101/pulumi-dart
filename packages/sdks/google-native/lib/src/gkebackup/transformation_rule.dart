@@ -33,9 +33,9 @@ class TransformationRule {
 
   factory TransformationRule.fromMap(Map<String, dynamic> map) {
     return TransformationRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fieldActions: (pulumi.Input.decodeList<TransformationRuleAction>(map['fieldActions'], (value) => TransformationRuleAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceFilter: map['resourceFilter'] == null ? null : (ResourceFilter.fromMap((map['resourceFilter'] as Map).cast<String, dynamic>())).input(),
+      resourceFilter: map['resourceFilter'] == null ? null : (ResourceFilter.fromMap((map['resourceFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

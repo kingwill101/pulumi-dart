@@ -37,8 +37,8 @@ class GetNetworkVirtualApplianceConnectionResult {
   factory GetNetworkVirtualApplianceConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
       properties: NetworkVirtualApplianceConnectionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>()),
     );
   }

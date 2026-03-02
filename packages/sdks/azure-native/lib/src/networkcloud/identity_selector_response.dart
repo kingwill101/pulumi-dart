@@ -25,8 +25,8 @@ class IdentitySelectorResponse {
 
   factory IdentitySelectorResponse.fromMap(Map<String, dynamic> map) {
     return IdentitySelectorResponse(
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId'] as String).input(),
+      identityType: map['identityType'] == null ? null : (map['identityType']! as String).input(),
+      userAssignedIdentityResourceId: map['userAssignedIdentityResourceId'] == null ? null : (map['userAssignedIdentityResourceId']! as String).input(),
     );
   }
 }

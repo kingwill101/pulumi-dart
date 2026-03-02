@@ -27,8 +27,8 @@ class EnvironmentAddonsConfigState {
 
   factory EnvironmentAddonsConfigState.fromMap(Map<String, dynamic> map) {
     return EnvironmentAddonsConfigState(
-      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled'] as bool).input(),
-      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
+      analyticsEnabled: map['analyticsEnabled'] == null ? null : (map['analyticsEnabled']! as bool).input(),
+      envId: map['envId'] == null ? null : (map['envId']! as String).input(),
     );
   }
 }

@@ -64,8 +64,8 @@ class GetAATPDataConnectorResult {
   factory GetAATPDataConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetAATPDataConnectorResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      dataTypes: map['dataTypes'] == null ? null : AlertsDataTypeOfDataConnectorResponse.fromMap((map['dataTypes'] as Map).cast<String, dynamic>()),
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      dataTypes: map['dataTypes'] == null ? null : AlertsDataTypeOfDataConnectorResponse.fromMap((map['dataTypes']! as Map).cast<String, dynamic>()),
+      etag: map['etag'] == null ? null : map['etag']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       name: map['name'] as String,

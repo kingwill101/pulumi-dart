@@ -71,14 +71,14 @@ class MonitorDowntimeArgs {
 
   factory MonitorDowntimeArgs.fromMap(Map<String, dynamic> map) {
     return MonitorDowntimeArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      endRepeat: map['endRepeat'] == null ? null : (MonitorDowntimeEndRepeat.fromMap((map['endRepeat'] as Map).cast<String, dynamic>())).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      endRepeat: map['endRepeat'] == null ? null : (MonitorDowntimeEndRepeat.fromMap((map['endRepeat']! as Map).cast<String, dynamic>())).input(),
       endTime: (map['endTime'] as String).input(),
-      frequency: map['frequency'] == null ? null : (MonitorDowntimeFrequency.fromMap((map['frequency'] as Map).cast<String, dynamic>())).input(),
-      maintenanceDays: map['maintenanceDays'] == null ? null : ((map['maintenanceDays'] as List).cast<String>()).input(),
+      frequency: map['frequency'] == null ? null : (MonitorDowntimeFrequency.fromMap((map['frequency']! as Map).cast<String, dynamic>())).input(),
+      maintenanceDays: map['maintenanceDays'] == null ? null : ((map['maintenanceDays']! as List).cast<String>()).input(),
       mode: (map['mode'] as String).input(),
-      monitorGuids: map['monitorGuids'] == null ? null : ((map['monitorGuids'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      monitorGuids: map['monitorGuids'] == null ? null : ((map['monitorGuids']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       startTime: (map['startTime'] as String).input(),
       timeZone: (map['timeZone'] as String).input(),
     );

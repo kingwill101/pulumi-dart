@@ -49,11 +49,11 @@ class GetPlacementGroupResult {
     return GetPlacementGroupResult(
       id: map['id'] as int,
       labels: (map['labels'] as Map).cast<String, String>(),
-      mostRecent: map['mostRecent'] == null ? null : map['mostRecent'] as bool,
+      mostRecent: map['mostRecent'] == null ? null : map['mostRecent']! as bool,
       name: map['name'] as String,
       servers: (map['servers'] as List).cast<int>(),
       type: map['type'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

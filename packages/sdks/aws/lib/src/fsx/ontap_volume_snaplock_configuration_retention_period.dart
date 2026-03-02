@@ -33,9 +33,9 @@ class OntapVolumeSnaplockConfigurationRetentionPeriod {
 
   factory OntapVolumeSnaplockConfigurationRetentionPeriod.fromMap(Map<String, dynamic> map) {
     return OntapVolumeSnaplockConfigurationRetentionPeriod(
-      defaultRetention: map['defaultRetention'] == null ? null : (OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention.fromMap((map['defaultRetention'] as Map).cast<String, dynamic>())).input(),
-      maximumRetention: map['maximumRetention'] == null ? null : (OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention.fromMap((map['maximumRetention'] as Map).cast<String, dynamic>())).input(),
-      minimumRetention: map['minimumRetention'] == null ? null : (OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention.fromMap((map['minimumRetention'] as Map).cast<String, dynamic>())).input(),
+      defaultRetention: map['defaultRetention'] == null ? null : ((OntapVolumeSnaplockConfigurationRetentionPeriodDefaultRetention.fromMap((map['defaultRetention']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumRetention: map['maximumRetention'] == null ? null : ((OntapVolumeSnaplockConfigurationRetentionPeriodMaximumRetention.fromMap((map['maximumRetention']! as Map).cast<String, dynamic>())).input()).input(),
+      minimumRetention: map['minimumRetention'] == null ? null : ((OntapVolumeSnaplockConfigurationRetentionPeriodMinimumRetention.fromMap((map['minimumRetention']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

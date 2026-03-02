@@ -89,18 +89,18 @@ class AppHostingTrafficState {
 
   factory AppHostingTrafficState.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficState(
-      backend: map['backend'] == null ? null : (map['backend'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      currents: map['currents'] == null ? null : (pulumi.Input.decodeList<AppHostingTrafficCurrent>(map['currents'], (value) => AppHostingTrafficCurrent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rolloutPolicy: map['rolloutPolicy'] == null ? null : (AppHostingTrafficRolloutPolicy.fromMap((map['rolloutPolicy'] as Map).cast<String, dynamic>())).input(),
-      target: map['target'] == null ? null : (AppHostingTrafficTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      backend: map['backend'] == null ? null : (map['backend']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      currents: map['currents'] == null ? null : (pulumi.Input.decodeList<AppHostingTrafficCurrent>(map['currents']!, (value) => AppHostingTrafficCurrent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rolloutPolicy: map['rolloutPolicy'] == null ? null : (AppHostingTrafficRolloutPolicy.fromMap((map['rolloutPolicy']! as Map).cast<String, dynamic>())).input(),
+      target: map['target'] == null ? null : (AppHostingTrafficTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

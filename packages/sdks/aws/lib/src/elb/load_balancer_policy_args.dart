@@ -46,10 +46,10 @@ class LoadBalancerPolicyArgs {
   factory LoadBalancerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return LoadBalancerPolicyArgs(
       loadBalancerName: (map['loadBalancerName'] as String).input(),
-      policyAttributes: map['policyAttributes'] == null ? null : (pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(map['policyAttributes'], (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyAttributes: map['policyAttributes'] == null ? null : ((pulumi.Input.decodeList<LoadBalancerPolicyPolicyAttribute>(map['policyAttributes']!, (value) => LoadBalancerPolicyPolicyAttribute.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       policyName: (map['policyName'] as String).input(),
       policyTypeName: (map['policyTypeName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

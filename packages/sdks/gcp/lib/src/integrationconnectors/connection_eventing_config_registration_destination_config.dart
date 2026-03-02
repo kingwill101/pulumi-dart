@@ -27,8 +27,8 @@ class ConnectionEventingConfigRegistrationDestinationConfig {
 
   factory ConnectionEventingConfigRegistrationDestinationConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfigRegistrationDestinationConfig(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<ConnectionEventingConfigRegistrationDestinationConfigDestination>(map['destinations'], (value) => ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<ConnectionEventingConfigRegistrationDestinationConfigDestination>(map['destinations']!, (value) => ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

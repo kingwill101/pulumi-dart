@@ -35,8 +35,8 @@ class GetRecommendationsResult {
 
   factory GetRecommendationsResult.fromMap(Map<String, dynamic> map) {
     return GetRecommendationsResult(
-      filterByCategories: map['filterByCategories'] == null ? null : (map['filterByCategories'] as List).cast<String>(),
-      filterByResourceGroups: map['filterByResourceGroups'] == null ? null : (map['filterByResourceGroups'] as List).cast<String>(),
+      filterByCategories: map['filterByCategories'] == null ? null : (map['filterByCategories']! as List).cast<String>(),
+      filterByResourceGroups: map['filterByResourceGroups'] == null ? null : (map['filterByResourceGroups']! as List).cast<String>(),
       id: map['id'] as String,
       recommendations: pulumi.Input.decodeList<GetRecommendationsRecommendation>(map['recommendations'], (value) => GetRecommendationsRecommendation.fromMap((value as Map).cast<String, dynamic>())),
     );

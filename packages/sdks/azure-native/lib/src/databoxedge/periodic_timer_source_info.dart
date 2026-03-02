@@ -33,7 +33,7 @@ class PeriodicTimerSourceInfo {
     return PeriodicTimerSourceInfo(
       schedule: (map['schedule'] as String).input(),
       startTime: (map['startTime'] as String).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

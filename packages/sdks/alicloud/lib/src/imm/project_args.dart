@@ -30,7 +30,7 @@ class ProjectArgs {
   factory ProjectArgs.fromMap(Map<String, dynamic> map) {
     return ProjectArgs(
       project: (map['project'] as String).input(),
-      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole'] as String).input(),
+      serviceRole: map['serviceRole'] == null ? null : (map['serviceRole']! as String).input(),
     );
   }
 }

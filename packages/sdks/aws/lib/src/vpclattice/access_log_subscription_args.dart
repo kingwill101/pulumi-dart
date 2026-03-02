@@ -46,10 +46,10 @@ class AccessLogSubscriptionArgs {
   factory AccessLogSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AccessLogSubscriptionArgs(
       destinationArn: (map['destinationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceIdentifier: (map['resourceIdentifier'] as String).input(),
-      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : (map['serviceNetworkLogType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      serviceNetworkLogType: map['serviceNetworkLogType'] == null ? null : ((map['serviceNetworkLogType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -46,7 +46,7 @@ class FirewallRuleArgs {
     return FirewallRuleArgs(
       accountName: (map['accountName'] as String).input(),
       endIpAddress: (map['endIpAddress'] as String).input(),
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       startIpAddress: (map['startIpAddress'] as String).input(),
     );

@@ -47,11 +47,11 @@ class UserHierarchyStructureHierarchyStructure {
 
   factory UserHierarchyStructureHierarchyStructure.fromMap(Map<String, dynamic> map) {
     return UserHierarchyStructureHierarchyStructure(
-      levelFive: map['levelFive'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelFive.fromMap((map['levelFive'] as Map).cast<String, dynamic>())).input(),
-      levelFour: map['levelFour'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelFour.fromMap((map['levelFour'] as Map).cast<String, dynamic>())).input(),
-      levelOne: map['levelOne'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelOne.fromMap((map['levelOne'] as Map).cast<String, dynamic>())).input(),
-      levelThree: map['levelThree'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelThree.fromMap((map['levelThree'] as Map).cast<String, dynamic>())).input(),
-      levelTwo: map['levelTwo'] == null ? null : (UserHierarchyStructureHierarchyStructureLevelTwo.fromMap((map['levelTwo'] as Map).cast<String, dynamic>())).input(),
+      levelFive: map['levelFive'] == null ? null : ((UserHierarchyStructureHierarchyStructureLevelFive.fromMap((map['levelFive']! as Map).cast<String, dynamic>())).input()).input(),
+      levelFour: map['levelFour'] == null ? null : ((UserHierarchyStructureHierarchyStructureLevelFour.fromMap((map['levelFour']! as Map).cast<String, dynamic>())).input()).input(),
+      levelOne: map['levelOne'] == null ? null : ((UserHierarchyStructureHierarchyStructureLevelOne.fromMap((map['levelOne']! as Map).cast<String, dynamic>())).input()).input(),
+      levelThree: map['levelThree'] == null ? null : ((UserHierarchyStructureHierarchyStructureLevelThree.fromMap((map['levelThree']! as Map).cast<String, dynamic>())).input()).input(),
+      levelTwo: map['levelTwo'] == null ? null : ((UserHierarchyStructureHierarchyStructureLevelTwo.fromMap((map['levelTwo']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

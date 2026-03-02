@@ -21,7 +21,7 @@ class IpAddress {
 
   factory IpAddress.fromMap(Map<String, dynamic> map) {
     return IpAddress(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

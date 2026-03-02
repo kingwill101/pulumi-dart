@@ -32,9 +32,9 @@ class SecretState {
 
   factory SecretState.fromMap(Map<String, dynamic> map) {
     return SecretState(
-      data: map['data'] == null ? null : (map['data'] as String).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<SecretLabel>(map['labels'], (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      data: map['data'] == null ? null : (map['data']! as String).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<SecretLabel>(map['labels']!, (value) => SecretLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

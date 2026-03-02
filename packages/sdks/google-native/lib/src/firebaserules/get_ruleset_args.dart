@@ -27,7 +27,7 @@ class GetRulesetArgs {
 
   factory GetRulesetArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesetArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rulesetId: (map['rulesetId'] as String).input(),
     );
   }

@@ -42,8 +42,8 @@ class TableArgs {
     return TableArgs(
       accountName: (map['accountName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      signedIdentifiers: map['signedIdentifiers'] == null ? null : (pulumi.Input.decodeList<TableSignedIdentifier>(map['signedIdentifiers'], (value) => TableSignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      signedIdentifiers: map['signedIdentifiers'] == null ? null : (pulumi.Input.decodeList<TableSignedIdentifier>(map['signedIdentifiers']!, (value) => TableSignedIdentifier.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
     );
   }
 }

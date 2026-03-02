@@ -20,7 +20,7 @@ class BucketResponseHeaderRuleFilters {
 
   factory BucketResponseHeaderRuleFilters.fromMap(Map<String, dynamic> map) {
     return BucketResponseHeaderRuleFilters(
-      operations: map['operations'] == null ? null : ((map['operations'] as List).cast<String>()).input(),
+      operations: map['operations'] == null ? null : ((map['operations']! as List).cast<String>()).input(),
     );
   }
 }

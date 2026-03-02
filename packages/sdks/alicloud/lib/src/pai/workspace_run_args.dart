@@ -40,9 +40,9 @@ class WorkspaceRunArgs {
   factory WorkspaceRunArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceRunArgs(
       experimentId: (map['experimentId'] as String).input(),
-      runName: map['runName'] == null ? null : (map['runName'] as String).input(),
-      sourceId: map['sourceId'] == null ? null : (map['sourceId'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      runName: map['runName'] == null ? null : (map['runName']! as String).input(),
+      sourceId: map['sourceId'] == null ? null : (map['sourceId']! as String).input(),
+      sourceType: map['sourceType'] == null ? null : (map['sourceType']! as String).input(),
     );
   }
 }

@@ -43,7 +43,7 @@ class CopyToRemoteArgs {
       connection: (Connection.fromMap((map['connection'] as Map).cast<String, dynamic>())).input(),
       remotePath: (map['remotePath'] as String).input(),
       source: (map['source']).input(),
-      triggers: map['triggers'] == null ? null : ((map['triggers'] as List).cast<dynamic>()).input(),
+      triggers: map['triggers'] == null ? null : ((map['triggers']! as List).cast<dynamic>()).input(),
     );
   }
 }

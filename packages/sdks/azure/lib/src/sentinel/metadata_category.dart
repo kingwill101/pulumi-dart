@@ -25,8 +25,8 @@ class MetadataCategory {
 
   factory MetadataCategory.fromMap(Map<String, dynamic> map) {
     return MetadataCategory(
-      domains: map['domains'] == null ? null : ((map['domains'] as List).cast<String>()).input(),
-      verticals: map['verticals'] == null ? null : ((map['verticals'] as List).cast<String>()).input(),
+      domains: map['domains'] == null ? null : ((map['domains']! as List).cast<String>()).input(),
+      verticals: map['verticals'] == null ? null : ((map['verticals']! as List).cast<String>()).input(),
     );
   }
 }

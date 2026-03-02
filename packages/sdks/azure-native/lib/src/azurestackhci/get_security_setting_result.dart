@@ -71,12 +71,12 @@ class GetSecuritySettingResult {
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : map['securedCoreComplianceAssignment'] as String,
+      securedCoreComplianceAssignment: map['securedCoreComplianceAssignment'] == null ? null : map['securedCoreComplianceAssignment']! as String,
       securityComplianceStatus: SecurityComplianceStatusResponse.fromMap((map['securityComplianceStatus'] as Map).cast<String, dynamic>()),
-      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] as String,
+      smbEncryptionForIntraClusterTrafficComplianceAssignment: map['smbEncryptionForIntraClusterTrafficComplianceAssignment'] == null ? null : map['smbEncryptionForIntraClusterTrafficComplianceAssignment']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : map['wdacComplianceAssignment'] as String,
+      wdacComplianceAssignment: map['wdacComplianceAssignment'] == null ? null : map['wdacComplianceAssignment']! as String,
     );
   }
 }

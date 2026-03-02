@@ -27,7 +27,7 @@ class RuntimeTemplateIamBindingCondition {
 
   factory RuntimeTemplateIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

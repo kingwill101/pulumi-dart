@@ -35,8 +35,8 @@ class GetRegionSnapshotIamPolicyArgs {
 
   factory GetRegionSnapshotIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionSnapshotIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       resource: (map['resource'] as String).input(),
     );

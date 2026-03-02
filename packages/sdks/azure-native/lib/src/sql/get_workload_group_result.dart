@@ -67,13 +67,13 @@ class GetWorkloadGroupResult {
     return GetWorkloadGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      importance: map['importance'] == null ? null : map['importance'] as String,
+      importance: map['importance'] == null ? null : map['importance']! as String,
       maxResourcePercent: map['maxResourcePercent'] as int,
-      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : map['maxResourcePercentPerRequest'] as double,
+      maxResourcePercentPerRequest: map['maxResourcePercentPerRequest'] == null ? null : map['maxResourcePercentPerRequest']! as double,
       minResourcePercent: map['minResourcePercent'] as int,
       minResourcePercentPerRequest: map['minResourcePercentPerRequest'] as double,
       name: map['name'] as String,
-      queryExecutionTimeout: map['queryExecutionTimeout'] == null ? null : map['queryExecutionTimeout'] as int,
+      queryExecutionTimeout: map['queryExecutionTimeout'] == null ? null : map['queryExecutionTimeout']! as int,
       type: map['type'] as String,
     );
   }

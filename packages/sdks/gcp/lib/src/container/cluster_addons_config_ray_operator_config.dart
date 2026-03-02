@@ -32,8 +32,8 @@ class ClusterAddonsConfigRayOperatorConfig {
   factory ClusterAddonsConfigRayOperatorConfig.fromMap(Map<String, dynamic> map) {
     return ClusterAddonsConfigRayOperatorConfig(
       enabled: (map['enabled'] as bool).input(),
-      rayClusterLoggingConfig: map['rayClusterLoggingConfig'] == null ? null : (ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap((map['rayClusterLoggingConfig'] as Map).cast<String, dynamic>())).input(),
-      rayClusterMonitoringConfig: map['rayClusterMonitoringConfig'] == null ? null : (ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig.fromMap((map['rayClusterMonitoringConfig'] as Map).cast<String, dynamic>())).input(),
+      rayClusterLoggingConfig: map['rayClusterLoggingConfig'] == null ? null : (ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfig.fromMap((map['rayClusterLoggingConfig']! as Map).cast<String, dynamic>())).input(),
+      rayClusterMonitoringConfig: map['rayClusterMonitoringConfig'] == null ? null : (ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig.fromMap((map['rayClusterMonitoringConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

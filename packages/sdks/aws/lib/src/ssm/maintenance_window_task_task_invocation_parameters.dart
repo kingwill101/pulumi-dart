@@ -39,10 +39,10 @@ class MaintenanceWindowTaskTaskInvocationParameters {
 
   factory MaintenanceWindowTaskTaskInvocationParameters.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTaskTaskInvocationParameters(
-      automationParameters: map['automationParameters'] == null ? null : (MaintenanceWindowTaskTaskInvocationParametersAutomationParameters.fromMap((map['automationParameters'] as Map).cast<String, dynamic>())).input(),
-      lambdaParameters: map['lambdaParameters'] == null ? null : (MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap((map['lambdaParameters'] as Map).cast<String, dynamic>())).input(),
-      runCommandParameters: map['runCommandParameters'] == null ? null : (MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters.fromMap((map['runCommandParameters'] as Map).cast<String, dynamic>())).input(),
-      stepFunctionsParameters: map['stepFunctionsParameters'] == null ? null : (MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap((map['stepFunctionsParameters'] as Map).cast<String, dynamic>())).input(),
+      automationParameters: map['automationParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersAutomationParameters.fromMap((map['automationParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      lambdaParameters: map['lambdaParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersLambdaParameters.fromMap((map['lambdaParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      runCommandParameters: map['runCommandParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters.fromMap((map['runCommandParameters']! as Map).cast<String, dynamic>())).input()).input(),
+      stepFunctionsParameters: map['stepFunctionsParameters'] == null ? null : ((MaintenanceWindowTaskTaskInvocationParametersStepFunctionsParameters.fromMap((map['stepFunctionsParameters']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

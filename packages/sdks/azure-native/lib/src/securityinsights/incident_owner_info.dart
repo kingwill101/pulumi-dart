@@ -41,11 +41,11 @@ class IncidentOwnerInfo {
 
   factory IncidentOwnerInfo.fromMap(Map<String, dynamic> map) {
     return IncidentOwnerInfo(
-      assignedTo: map['assignedTo'] == null ? null : (map['assignedTo'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      ownerType: map['ownerType'] == null ? null : (map['ownerType'] as String).input(),
-      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName'] as String).input(),
+      assignedTo: map['assignedTo'] == null ? null : (map['assignedTo']! as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      ownerType: map['ownerType'] == null ? null : (map['ownerType']! as String).input(),
+      userPrincipalName: map['userPrincipalName'] == null ? null : (map['userPrincipalName']! as String).input(),
     );
   }
 }

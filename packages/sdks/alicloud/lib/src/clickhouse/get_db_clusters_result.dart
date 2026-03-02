@@ -47,12 +47,12 @@ class GetDbClustersResult {
   factory GetDbClustersResult.fromMap(Map<String, dynamic> map) {
     return GetDbClustersResult(
       clusters: pulumi.Input.decodeList<GetDbClustersCluster>(map['clusters'], (value) => GetDbClustersCluster.fromMap((value as Map).cast<String, dynamic>())),
-      dbClusterDescription: map['dbClusterDescription'] == null ? null : map['dbClusterDescription'] as String,
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      dbClusterDescription: map['dbClusterDescription'] == null ? null : map['dbClusterDescription']! as String,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

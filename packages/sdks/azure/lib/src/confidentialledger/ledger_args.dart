@@ -57,12 +57,12 @@ class LedgerArgs {
   factory LedgerArgs.fromMap(Map<String, dynamic> map) {
     return LedgerArgs(
       azureadBasedServicePrincipals: (pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(map['azureadBasedServicePrincipals'], (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals'], (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificateBasedSecurityPrincipals: map['certificateBasedSecurityPrincipals'] == null ? null : (pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(map['certificateBasedSecurityPrincipals']!, (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ledgerType: (map['ledgerType'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

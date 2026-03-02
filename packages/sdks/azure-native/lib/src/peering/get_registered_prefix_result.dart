@@ -65,7 +65,7 @@ class GetRegisteredPrefixResult {
       id: map['id'] as String,
       name: map['name'] as String,
       peeringServicePrefixKey: map['peeringServicePrefixKey'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
+      prefix: map['prefix'] == null ? null : map['prefix']! as String,
       prefixValidationState: map['prefixValidationState'] as String,
       provisioningState: map['provisioningState'] as String,
       type: map['type'] as String,

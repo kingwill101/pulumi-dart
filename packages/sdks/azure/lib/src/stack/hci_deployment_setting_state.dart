@@ -37,10 +37,10 @@ class HciDeploymentSettingState {
 
   factory HciDeploymentSettingState.fromMap(Map<String, dynamic> map) {
     return HciDeploymentSettingState(
-      arcResourceIds: map['arcResourceIds'] == null ? null : ((map['arcResourceIds'] as List).cast<String>()).input(),
-      scaleUnits: map['scaleUnits'] == null ? null : (pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(map['scaleUnits'], (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stackHciClusterId: map['stackHciClusterId'] == null ? null : (map['stackHciClusterId'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      arcResourceIds: map['arcResourceIds'] == null ? null : ((map['arcResourceIds']! as List).cast<String>()).input(),
+      scaleUnits: map['scaleUnits'] == null ? null : (pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(map['scaleUnits']!, (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stackHciClusterId: map['stackHciClusterId'] == null ? null : (map['stackHciClusterId']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

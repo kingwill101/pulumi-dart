@@ -27,8 +27,8 @@ class VirtualNodeSpecListenerTlsValidationTrust {
 
   factory VirtualNodeSpecListenerTlsValidationTrust.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTlsValidationTrust(
-      file: map['file'] == null ? null : (VirtualNodeSpecListenerTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualNodeSpecListenerTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : ((VirtualNodeSpecListenerTlsValidationTrustFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualNodeSpecListenerTlsValidationTrustSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

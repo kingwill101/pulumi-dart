@@ -21,7 +21,7 @@ class RollbackConfig {
 
   factory RollbackConfig.fromMap(Map<String, dynamic> map) {
     return RollbackConfig(
-      revision: map['revision'] == null ? null : (map['revision'] as int).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as int).input(),
     );
   }
 }

@@ -79,17 +79,17 @@ class IoTRoleArgs {
 
   factory IoTRoleArgs.fromMap(Map<String, dynamic> map) {
     return IoTRoleArgs(
-      computeResource: map['computeResource'] == null ? null : (ComputeResource.fromMap((map['computeResource'] as Map).cast<String, dynamic>())).input(),
+      computeResource: map['computeResource'] == null ? null : (ComputeResource.fromMap((map['computeResource']! as Map).cast<String, dynamic>())).input(),
       deviceName: (map['deviceName'] as String).input(),
       hostPlatform: (map['hostPlatform'] as String).input(),
       ioTDeviceDetails: (IoTDeviceInfo.fromMap((map['ioTDeviceDetails'] as Map).cast<String, dynamic>())).input(),
-      ioTEdgeAgentInfo: map['ioTEdgeAgentInfo'] == null ? null : (IoTEdgeAgentInfo.fromMap((map['ioTEdgeAgentInfo'] as Map).cast<String, dynamic>())).input(),
+      ioTEdgeAgentInfo: map['ioTEdgeAgentInfo'] == null ? null : (IoTEdgeAgentInfo.fromMap((map['ioTEdgeAgentInfo']! as Map).cast<String, dynamic>())).input(),
       ioTEdgeDeviceDetails: (IoTDeviceInfo.fromMap((map['ioTEdgeDeviceDetails'] as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       roleStatus: (map['roleStatus'] as String).input(),
-      shareMappings: map['shareMappings'] == null ? null : (pulumi.Input.decodeList<MountPointMap>(map['shareMappings'], (value) => MountPointMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      shareMappings: map['shareMappings'] == null ? null : (pulumi.Input.decodeList<MountPointMap>(map['shareMappings']!, (value) => MountPointMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -80,18 +80,18 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      autoResolveBestVoicesEnabled: map['autoResolveBestVoicesEnabled'] == null ? null : (map['autoResolveBestVoicesEnabled'] as bool).input(),
-      contactFlowLogsEnabled: map['contactFlowLogsEnabled'] == null ? null : (map['contactFlowLogsEnabled'] as bool).input(),
-      contactLensEnabled: map['contactLensEnabled'] == null ? null : (map['contactLensEnabled'] as bool).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      earlyMediaEnabled: map['earlyMediaEnabled'] == null ? null : (map['earlyMediaEnabled'] as bool).input(),
+      autoResolveBestVoicesEnabled: map['autoResolveBestVoicesEnabled'] == null ? null : ((map['autoResolveBestVoicesEnabled'] as bool).input()).input(),
+      contactFlowLogsEnabled: map['contactFlowLogsEnabled'] == null ? null : ((map['contactFlowLogsEnabled'] as bool).input()).input(),
+      contactLensEnabled: map['contactLensEnabled'] == null ? null : ((map['contactLensEnabled'] as bool).input()).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      earlyMediaEnabled: map['earlyMediaEnabled'] == null ? null : ((map['earlyMediaEnabled'] as bool).input()).input(),
       identityManagementType: (map['identityManagementType'] as String).input(),
       inboundCallsEnabled: (map['inboundCallsEnabled'] as bool).input(),
-      instanceAlias: map['instanceAlias'] == null ? null : (map['instanceAlias'] as String).input(),
-      multiPartyConferenceEnabled: map['multiPartyConferenceEnabled'] == null ? null : (map['multiPartyConferenceEnabled'] as bool).input(),
+      instanceAlias: map['instanceAlias'] == null ? null : ((map['instanceAlias'] as String).input()).input(),
+      multiPartyConferenceEnabled: map['multiPartyConferenceEnabled'] == null ? null : ((map['multiPartyConferenceEnabled'] as bool).input()).input(),
       outboundCallsEnabled: (map['outboundCallsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

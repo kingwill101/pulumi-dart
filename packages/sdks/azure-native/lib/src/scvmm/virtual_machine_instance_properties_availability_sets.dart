@@ -26,8 +26,8 @@ class VirtualMachineInstancePropertiesAvailabilitySets {
 
   factory VirtualMachineInstancePropertiesAvailabilitySets.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesAvailabilitySets(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

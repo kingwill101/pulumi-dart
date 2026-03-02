@@ -93,20 +93,20 @@ class TaskState {
 
   factory TaskState.fromMap(Map<String, dynamic> map) {
     return TaskState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : (map['cloudwatchLogGroupArn'] as String).input(),
-      destinationLocationArn: map['destinationLocationArn'] == null ? null : (map['destinationLocationArn'] as String).input(),
-      excludes: map['excludes'] == null ? null : (TaskExcludes.fromMap((map['excludes'] as Map).cast<String, dynamic>())).input(),
-      includes: map['includes'] == null ? null : (TaskIncludes.fromMap((map['includes'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      options: map['options'] == null ? null : (TaskOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: map['schedule'] == null ? null : (TaskSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      sourceLocationArn: map['sourceLocationArn'] == null ? null : (map['sourceLocationArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      taskMode: map['taskMode'] == null ? null : (map['taskMode'] as String).input(),
-      taskReportConfig: map['taskReportConfig'] == null ? null : (TaskTaskReportConfig.fromMap((map['taskReportConfig'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      cloudwatchLogGroupArn: map['cloudwatchLogGroupArn'] == null ? null : ((map['cloudwatchLogGroupArn'] as String).input()).input(),
+      destinationLocationArn: map['destinationLocationArn'] == null ? null : ((map['destinationLocationArn'] as String).input()).input(),
+      excludes: map['excludes'] == null ? null : ((TaskExcludes.fromMap((map['excludes']! as Map).cast<String, dynamic>())).input()).input(),
+      includes: map['includes'] == null ? null : ((TaskIncludes.fromMap((map['includes']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      options: map['options'] == null ? null : ((TaskOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((TaskSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input()).input(),
+      sourceLocationArn: map['sourceLocationArn'] == null ? null : ((map['sourceLocationArn'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      taskMode: map['taskMode'] == null ? null : ((map['taskMode'] as String).input()).input(),
+      taskReportConfig: map['taskReportConfig'] == null ? null : ((TaskTaskReportConfig.fromMap((map['taskReportConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

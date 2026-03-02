@@ -35,8 +35,8 @@ class GetSecretVersionsArgs {
 
   factory GetSecretVersionsArgs.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionsArgs(
-      includeDeprecated: map['includeDeprecated'] == null ? null : (map['includeDeprecated'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      includeDeprecated: map['includeDeprecated'] == null ? null : ((map['includeDeprecated'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       secretId: (map['secretId'] as String).input(),
     );
   }

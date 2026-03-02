@@ -45,12 +45,12 @@ class ProxyAuth {
 
   factory ProxyAuth.fromMap(Map<String, dynamic> map) {
     return ProxyAuth(
-      authScheme: map['authScheme'] == null ? null : (map['authScheme'] as String).input(),
-      clientPasswordAuthType: map['clientPasswordAuthType'] == null ? null : (map['clientPasswordAuthType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      iamAuth: map['iamAuth'] == null ? null : (map['iamAuth'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      authScheme: map['authScheme'] == null ? null : ((map['authScheme'] as String).input()).input(),
+      clientPasswordAuthType: map['clientPasswordAuthType'] == null ? null : ((map['clientPasswordAuthType'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      iamAuth: map['iamAuth'] == null ? null : ((map['iamAuth'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
+      username: map['username'] == null ? null : ((map['username'] as String).input()).input(),
     );
   }
 }

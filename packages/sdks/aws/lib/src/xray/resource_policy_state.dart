@@ -48,12 +48,12 @@ class ResourcePolicyState {
 
   factory ResourcePolicyState.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyState(
-      bypassPolicyLockoutCheck: map['bypassPolicyLockoutCheck'] == null ? null : (map['bypassPolicyLockoutCheck'] as bool).input(),
-      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : (map['lastUpdatedTime'] as String).input(),
-      policyDocument: map['policyDocument'] == null ? null : (map['policyDocument'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      policyRevisionId: map['policyRevisionId'] == null ? null : (map['policyRevisionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bypassPolicyLockoutCheck: map['bypassPolicyLockoutCheck'] == null ? null : ((map['bypassPolicyLockoutCheck'] as bool).input()).input(),
+      lastUpdatedTime: map['lastUpdatedTime'] == null ? null : ((map['lastUpdatedTime'] as String).input()).input(),
+      policyDocument: map['policyDocument'] == null ? null : ((map['policyDocument'] as String).input()).input(),
+      policyName: map['policyName'] == null ? null : ((map['policyName'] as String).input()).input(),
+      policyRevisionId: map['policyRevisionId'] == null ? null : ((map['policyRevisionId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

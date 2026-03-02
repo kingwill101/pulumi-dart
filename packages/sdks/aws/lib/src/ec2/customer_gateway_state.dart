@@ -67,16 +67,16 @@ class CustomerGatewayState {
 
   factory CustomerGatewayState.fromMap(Map<String, dynamic> map) {
     return CustomerGatewayState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bgpAsn: map['bgpAsn'] == null ? null : (map['bgpAsn'] as String).input(),
-      bgpAsnExtended: map['bgpAsnExtended'] == null ? null : (map['bgpAsnExtended'] as String).input(),
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bgpAsn: map['bgpAsn'] == null ? null : ((map['bgpAsn'] as String).input()).input(),
+      bgpAsnExtended: map['bgpAsnExtended'] == null ? null : ((map['bgpAsnExtended'] as String).input()).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      ipAddress: map['ipAddress'] == null ? null : ((map['ipAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

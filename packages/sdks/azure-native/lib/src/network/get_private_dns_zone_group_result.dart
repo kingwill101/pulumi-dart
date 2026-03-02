@@ -49,9 +49,9 @@ class GetPrivateDnsZoneGroupResult {
     return GetPrivateDnsZoneGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : pulumi.Input.decodeList<PrivateDnsZoneConfigResponse>(map['privateDnsZoneConfigs'], (value) => PrivateDnsZoneConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      privateDnsZoneConfigs: map['privateDnsZoneConfigs'] == null ? null : pulumi.Input.decodeList<PrivateDnsZoneConfigResponse>(map['privateDnsZoneConfigs']!, (value) => PrivateDnsZoneConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
     );
   }

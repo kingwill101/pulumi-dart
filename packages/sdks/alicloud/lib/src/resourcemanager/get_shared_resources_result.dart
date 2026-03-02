@@ -47,10 +47,10 @@ class GetSharedResourcesResult {
     return GetSharedResourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceShareId: map['resourceShareId'] == null ? null : map['resourceShareId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceShareId: map['resourceShareId'] == null ? null : map['resourceShareId']! as String,
       resources: pulumi.Input.decodeList<GetSharedResourcesResource>(map['resources'], (value) => GetSharedResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

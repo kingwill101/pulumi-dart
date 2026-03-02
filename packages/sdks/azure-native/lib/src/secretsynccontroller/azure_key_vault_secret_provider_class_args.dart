@@ -65,14 +65,14 @@ class AzureKeyVaultSecretProviderClassArgs {
 
   factory AzureKeyVaultSecretProviderClassArgs.fromMap(Map<String, dynamic> map) {
     return AzureKeyVaultSecretProviderClassArgs(
-      azureKeyVaultSecretProviderClassName: map['azureKeyVaultSecretProviderClassName'] == null ? null : (map['azureKeyVaultSecretProviderClassName'] as String).input(),
+      azureKeyVaultSecretProviderClassName: map['azureKeyVaultSecretProviderClassName'] == null ? null : (map['azureKeyVaultSecretProviderClassName']! as String).input(),
       clientId: (map['clientId'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (AzureResourceManagerCommonTypesExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       keyvaultName: (map['keyvaultName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      objects: map['objects'] == null ? null : (map['objects'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      objects: map['objects'] == null ? null : (map['objects']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

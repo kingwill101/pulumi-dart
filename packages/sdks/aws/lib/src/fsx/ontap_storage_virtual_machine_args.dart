@@ -55,13 +55,13 @@ class OntapStorageVirtualMachineArgs {
 
   factory OntapStorageVirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineArgs(
-      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : (OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration'] as Map).cast<String, dynamic>())).input(),
+      activeDirectoryConfiguration: map['activeDirectoryConfiguration'] == null ? null : ((OntapStorageVirtualMachineActiveDirectoryConfiguration.fromMap((map['activeDirectoryConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : (map['rootVolumeSecurityStyle'] as String).input(),
-      svmAdminPassword: map['svmAdminPassword'] == null ? null : (map['svmAdminPassword'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rootVolumeSecurityStyle: map['rootVolumeSecurityStyle'] == null ? null : ((map['rootVolumeSecurityStyle'] as String).input()).input(),
+      svmAdminPassword: map['svmAdminPassword'] == null ? null : ((map['svmAdminPassword'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

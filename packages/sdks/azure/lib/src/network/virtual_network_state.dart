@@ -105,21 +105,21 @@ class VirtualNetworkState {
 
   factory VirtualNetworkState.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkState(
-      addressSpaces: map['addressSpaces'] == null ? null : ((map['addressSpaces'] as List).cast<String>()).input(),
-      bgpCommunity: map['bgpCommunity'] == null ? null : (map['bgpCommunity'] as String).input(),
-      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (VirtualNetworkDdosProtectionPlan.fromMap((map['ddosProtectionPlan'] as Map).cast<String, dynamic>())).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone'] as String).input(),
-      encryption: map['encryption'] == null ? null : (VirtualNetworkEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : (map['flowTimeoutInMinutes'] as int).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(map['ipAddressPools'], (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateEndpointVnetPolicies: map['privateEndpointVnetPolicies'] == null ? null : (map['privateEndpointVnetPolicies'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkSubnet>(map['subnets'], (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      addressSpaces: map['addressSpaces'] == null ? null : ((map['addressSpaces']! as List).cast<String>()).input(),
+      bgpCommunity: map['bgpCommunity'] == null ? null : (map['bgpCommunity']! as String).input(),
+      ddosProtectionPlan: map['ddosProtectionPlan'] == null ? null : (VirtualNetworkDdosProtectionPlan.fromMap((map['ddosProtectionPlan']! as Map).cast<String, dynamic>())).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      edgeZone: map['edgeZone'] == null ? null : (map['edgeZone']! as String).input(),
+      encryption: map['encryption'] == null ? null : (VirtualNetworkEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      flowTimeoutInMinutes: map['flowTimeoutInMinutes'] == null ? null : (map['flowTimeoutInMinutes']! as int).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      ipAddressPools: map['ipAddressPools'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(map['ipAddressPools']!, (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateEndpointVnetPolicies: map['privateEndpointVnetPolicies'] == null ? null : (map['privateEndpointVnetPolicies']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      subnets: map['subnets'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkSubnet>(map['subnets']!, (value) => VirtualNetworkSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

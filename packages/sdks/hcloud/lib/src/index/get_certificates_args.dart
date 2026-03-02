@@ -24,7 +24,7 @@ class GetCertificatesArgs {
 
   factory GetCertificatesArgs.fromMap(Map<String, dynamic> map) {
     return GetCertificatesArgs(
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

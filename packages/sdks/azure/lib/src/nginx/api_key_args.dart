@@ -40,7 +40,7 @@ class ApiKeyArgs {
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
       endDateTime: (map['endDateTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nginxDeploymentId: (map['nginxDeploymentId'] as String).input(),
       secretText: (map['secretText'] as String).input(),
     );

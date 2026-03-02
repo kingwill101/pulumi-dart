@@ -90,20 +90,20 @@ class TlsInspectionConfigurationState {
 
   factory TlsInspectionConfigurationState.fromMap(Map<String, dynamic> map) {
     return TlsInspectionConfigurationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      certificateAuthorities: map['certificateAuthorities'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(map['certificateAuthorities'], (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      certificates: map['certificates'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(map['certificates'], (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : (pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(map['encryptionConfigurations'], (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfAssociations: map['numberOfAssociations'] == null ? null : (map['numberOfAssociations'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (TlsInspectionConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      tlsInspectionConfiguration: map['tlsInspectionConfiguration'] == null ? null : (TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((map['tlsInspectionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tlsInspectionConfigurationId: map['tlsInspectionConfigurationId'] == null ? null : (map['tlsInspectionConfigurationId'] as String).input(),
-      updateToken: map['updateToken'] == null ? null : (map['updateToken'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      certificateAuthorities: map['certificateAuthorities'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationCertificateAuthority>(map['certificateAuthorities']!, (value) => TlsInspectionConfigurationCertificateAuthority.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      certificates: map['certificates'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationCertificate>(map['certificates']!, (value) => TlsInspectionConfigurationCertificate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      encryptionConfigurations: map['encryptionConfigurations'] == null ? null : ((pulumi.Input.decodeList<TlsInspectionConfigurationEncryptionConfiguration>(map['encryptionConfigurations']!, (value) => TlsInspectionConfigurationEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      numberOfAssociations: map['numberOfAssociations'] == null ? null : ((map['numberOfAssociations'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((TlsInspectionConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      tlsInspectionConfiguration: map['tlsInspectionConfiguration'] == null ? null : ((TlsInspectionConfigurationTlsInspectionConfiguration.fromMap((map['tlsInspectionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tlsInspectionConfigurationId: map['tlsInspectionConfigurationId'] == null ? null : ((map['tlsInspectionConfigurationId'] as String).input()).input(),
+      updateToken: map['updateToken'] == null ? null : ((map['updateToken'] as String).input()).input(),
     );
   }
 }

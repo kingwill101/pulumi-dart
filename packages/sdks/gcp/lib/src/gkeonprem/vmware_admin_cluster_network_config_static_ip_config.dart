@@ -22,7 +22,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfig {
 
   factory VmwareAdminClusterNetworkConfigStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAdminClusterNetworkConfigStaticIpConfig(
-      ipBlocks: map['ipBlocks'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks'], (value) => VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipBlocks: map['ipBlocks'] == null ? null : (pulumi.Input.decodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks']!, (value) => VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

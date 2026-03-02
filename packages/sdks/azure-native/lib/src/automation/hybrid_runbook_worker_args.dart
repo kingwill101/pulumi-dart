@@ -51,10 +51,10 @@ class HybridRunbookWorkerArgs {
     return HybridRunbookWorkerArgs(
       automationAccountName: (map['automationAccountName'] as String).input(),
       hybridRunbookWorkerGroupName: (map['hybridRunbookWorkerGroupName'] as String).input(),
-      hybridRunbookWorkerId: map['hybridRunbookWorkerId'] == null ? null : (map['hybridRunbookWorkerId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      hybridRunbookWorkerId: map['hybridRunbookWorkerId'] == null ? null : (map['hybridRunbookWorkerId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId'] as String).input(),
+      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId']! as String).input(),
     );
   }
 }

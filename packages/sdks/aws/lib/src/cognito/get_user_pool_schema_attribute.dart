@@ -56,9 +56,9 @@ class GetUserPoolSchemaAttribute {
       developerOnlyAttribute: (map['developerOnlyAttribute'] as bool).input(),
       mutable: (map['mutable'] as bool).input(),
       name: (map['name'] as String).input(),
-      numberAttributeConstraints: (pulumi.Input.decodeList<GetUserPoolSchemaAttributeNumberAttributeConstraint>(map['numberAttributeConstraints'], (value) => GetUserPoolSchemaAttributeNumberAttributeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      numberAttributeConstraints: (pulumi.Input.decodeList<GetUserPoolSchemaAttributeNumberAttributeConstraint>(map['numberAttributeConstraints']!, (value) => GetUserPoolSchemaAttributeNumberAttributeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       required: (map['required'] as bool).input(),
-      stringAttributeConstraints: (pulumi.Input.decodeList<GetUserPoolSchemaAttributeStringAttributeConstraint>(map['stringAttributeConstraints'], (value) => GetUserPoolSchemaAttributeStringAttributeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stringAttributeConstraints: (pulumi.Input.decodeList<GetUserPoolSchemaAttributeStringAttributeConstraint>(map['stringAttributeConstraints']!, (value) => GetUserPoolSchemaAttributeStringAttributeConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

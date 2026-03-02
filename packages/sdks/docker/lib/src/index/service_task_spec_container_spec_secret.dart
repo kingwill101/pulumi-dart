@@ -45,12 +45,12 @@ class ServiceTaskSpecContainerSpecSecret {
 
   factory ServiceTaskSpecContainerSpecSecret.fromMap(Map<String, dynamic> map) {
     return ServiceTaskSpecContainerSpecSecret(
-      fileGid: map['fileGid'] == null ? null : (map['fileGid'] as String).input(),
-      fileMode: map['fileMode'] == null ? null : (map['fileMode'] as int).input(),
+      fileGid: map['fileGid'] == null ? null : (map['fileGid']! as String).input(),
+      fileMode: map['fileMode'] == null ? null : (map['fileMode']! as int).input(),
       fileName: (map['fileName'] as String).input(),
-      fileUid: map['fileUid'] == null ? null : (map['fileUid'] as String).input(),
+      fileUid: map['fileUid'] == null ? null : (map['fileUid']! as String).input(),
       secretId: (map['secretId'] as String).input(),
-      secretName: map['secretName'] == null ? null : (map['secretName'] as String).input(),
+      secretName: map['secretName'] == null ? null : (map['secretName']! as String).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ServiceIntegrationLogsAnomalyDetection {
 
   factory ServiceIntegrationLogsAnomalyDetection.fromMap(Map<String, dynamic> map) {
     return ServiceIntegrationLogsAnomalyDetection(
-      optInStatus: map['optInStatus'] == null ? null : (map['optInStatus'] as String).input(),
+      optInStatus: map['optInStatus'] == null ? null : ((map['optInStatus'] as String).input()).input(),
     );
   }
 }

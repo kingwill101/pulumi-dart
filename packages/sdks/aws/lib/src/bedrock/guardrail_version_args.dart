@@ -46,11 +46,11 @@ class GuardrailVersionArgs {
 
   factory GuardrailVersionArgs.fromMap(Map<String, dynamic> map) {
     return GuardrailVersionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       guardrailArn: (map['guardrailArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      timeouts: map['timeouts'] == null ? null : (GuardrailVersionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((GuardrailVersionTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

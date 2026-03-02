@@ -33,7 +33,7 @@ class GetDefaultObjectAccessControlArgs {
     return GetDefaultObjectAccessControlArgs(
       bucket: (map['bucket'] as String).input(),
       entity: (map['entity'] as String).input(),
-      userProject: map['userProject'] == null ? null : (map['userProject'] as String).input(),
+      userProject: map['userProject'] == null ? null : (map['userProject']! as String).input(),
     );
   }
 }

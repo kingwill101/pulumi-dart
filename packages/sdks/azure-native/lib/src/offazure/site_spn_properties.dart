@@ -58,12 +58,12 @@ class SiteSpnProperties {
 
   factory SiteSpnProperties.fromMap(Map<String, dynamic> map) {
     return SiteSpnProperties(
-      aadAuthority: map['aadAuthority'] == null ? null : (map['aadAuthority'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      audience: map['audience'] == null ? null : (map['audience'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      rawCertData: map['rawCertData'] == null ? null : (map['rawCertData'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      aadAuthority: map['aadAuthority'] == null ? null : (map['aadAuthority']! as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      audience: map['audience'] == null ? null : (map['audience']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      rawCertData: map['rawCertData'] == null ? null : (map['rawCertData']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

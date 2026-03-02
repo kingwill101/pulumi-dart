@@ -55,9 +55,9 @@ class AzureDevOpsOrgPropertiesResponse {
 
   factory AzureDevOpsOrgPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AzureDevOpsOrgPropertiesResponse(
-      actionableRemediation: map['actionableRemediation'] == null ? null : (ActionableRemediationResponse.fromMap((map['actionableRemediation'] as Map).cast<String, dynamic>())).input(),
-      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      actionableRemediation: map['actionableRemediation'] == null ? null : (ActionableRemediationResponse.fromMap((map['actionableRemediation']! as Map).cast<String, dynamic>())).input(),
+      onboardingState: map['onboardingState'] == null ? null : (map['onboardingState']! as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       provisioningStatusMessage: (map['provisioningStatusMessage'] as String).input(),
       provisioningStatusUpdateTimeUtc: (map['provisioningStatusUpdateTimeUtc'] as String).input(),
     );

@@ -27,7 +27,7 @@ class ConnectToTargetSqlDbTaskInputResponse {
 
   factory ConnectToTargetSqlDbTaskInputResponse.fromMap(Map<String, dynamic> map) {
     return ConnectToTargetSqlDbTaskInputResponse(
-      queryObjectCounts: map['queryObjectCounts'] == null ? null : (map['queryObjectCounts'] as bool).input(),
+      queryObjectCounts: map['queryObjectCounts'] == null ? null : (map['queryObjectCounts']! as bool).input(),
       targetConnectionInfo: (SqlConnectionInfoResponse.fromMap((map['targetConnectionInfo'] as Map).cast<String, dynamic>())).input(),
     );
   }

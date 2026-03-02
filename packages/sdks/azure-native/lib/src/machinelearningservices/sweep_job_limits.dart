@@ -42,10 +42,10 @@ class SweepJobLimits {
   factory SweepJobLimits.fromMap(Map<String, dynamic> map) {
     return SweepJobLimits(
       jobLimitsType: (map['jobLimitsType'] as String).input(),
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials'] as int).input(),
-      maxTotalTrials: map['maxTotalTrials'] == null ? null : (map['maxTotalTrials'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      trialTimeout: map['trialTimeout'] == null ? null : (map['trialTimeout'] as String).input(),
+      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials']! as int).input(),
+      maxTotalTrials: map['maxTotalTrials'] == null ? null : (map['maxTotalTrials']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      trialTimeout: map['trialTimeout'] == null ? null : (map['trialTimeout']! as String).input(),
     );
   }
 }

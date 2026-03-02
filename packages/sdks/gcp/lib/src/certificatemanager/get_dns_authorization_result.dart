@@ -68,9 +68,9 @@ class GetDnsAuthorizationResult {
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       type: map['type'] as String,
     );

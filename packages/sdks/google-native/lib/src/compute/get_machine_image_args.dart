@@ -28,7 +28,7 @@ class GetMachineImageArgs {
   factory GetMachineImageArgs.fromMap(Map<String, dynamic> map) {
     return GetMachineImageArgs(
       machineImage: (map['machineImage'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

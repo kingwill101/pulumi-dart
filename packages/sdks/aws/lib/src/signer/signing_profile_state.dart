@@ -94,21 +94,21 @@ class SigningProfileState {
 
   factory SigningProfileState.fromMap(Map<String, dynamic> map) {
     return SigningProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
-      platformDisplayName: map['platformDisplayName'] == null ? null : (map['platformDisplayName'] as String).input(),
-      platformId: map['platformId'] == null ? null : (map['platformId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revocationRecords: map['revocationRecords'] == null ? null : (pulumi.Input.decodeList<SigningProfileRevocationRecord>(map['revocationRecords'], (value) => SigningProfileRevocationRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      signatureValidityPeriod: map['signatureValidityPeriod'] == null ? null : (SigningProfileSignatureValidityPeriod.fromMap((map['signatureValidityPeriod'] as Map).cast<String, dynamic>())).input(),
-      signingMaterial: map['signingMaterial'] == null ? null : (SigningProfileSigningMaterial.fromMap((map['signingMaterial'] as Map).cast<String, dynamic>())).input(),
-      signingParameters: map['signingParameters'] == null ? null : ((map['signingParameters'] as Map).cast<String, String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
-      versionArn: map['versionArn'] == null ? null : (map['versionArn'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      namePrefix: map['namePrefix'] == null ? null : ((map['namePrefix'] as String).input()).input(),
+      platformDisplayName: map['platformDisplayName'] == null ? null : ((map['platformDisplayName'] as String).input()).input(),
+      platformId: map['platformId'] == null ? null : ((map['platformId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revocationRecords: map['revocationRecords'] == null ? null : ((pulumi.Input.decodeList<SigningProfileRevocationRecord>(map['revocationRecords']!, (value) => SigningProfileRevocationRecord.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      signatureValidityPeriod: map['signatureValidityPeriod'] == null ? null : ((SigningProfileSignatureValidityPeriod.fromMap((map['signatureValidityPeriod']! as Map).cast<String, dynamic>())).input()).input(),
+      signingMaterial: map['signingMaterial'] == null ? null : ((SigningProfileSigningMaterial.fromMap((map['signingMaterial']! as Map).cast<String, dynamic>())).input()).input(),
+      signingParameters: map['signingParameters'] == null ? null : (((map['signingParameters'] as Map).cast<String, String>()).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as String).input()).input(),
+      versionArn: map['versionArn'] == null ? null : ((map['versionArn'] as String).input()).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class IntegrationRuntimeSsisExpressCustomSetupComponent {
 
   factory IntegrationRuntimeSsisExpressCustomSetupComponent.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisExpressCustomSetupComponent(
-      keyVaultLicense: map['keyVaultLicense'] == null ? null : (IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense.fromMap((map['keyVaultLicense'] as Map).cast<String, dynamic>())).input(),
-      license: map['license'] == null ? null : (map['license'] as String).input(),
+      keyVaultLicense: map['keyVaultLicense'] == null ? null : (IntegrationRuntimeSsisExpressCustomSetupComponentKeyVaultLicense.fromMap((map['keyVaultLicense']! as Map).cast<String, dynamic>())).input(),
+      license: map['license'] == null ? null : (map['license']! as String).input(),
       name: (map['name'] as String).input(),
     );
   }

@@ -44,9 +44,9 @@ class GoogleCloudApigeeV1GrpcOperationConfig {
   factory GoogleCloudApigeeV1GrpcOperationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1GrpcOperationConfig(
       apiSource: (map['apiSource'] as String).input(),
-      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes'], (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      methods: map['methods'] == null ? null : ((map['methods'] as List).cast<String>()).input(),
-      quota: map['quota'] == null ? null : (GoogleCloudApigeeV1Quota.fromMap((map['quota'] as Map).cast<String, dynamic>())).input(),
+      attributes: map['attributes'] == null ? null : (pulumi.Input.decodeList<GoogleCloudApigeeV1Attribute>(map['attributes']!, (value) => GoogleCloudApigeeV1Attribute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      methods: map['methods'] == null ? null : ((map['methods']! as List).cast<String>()).input(),
+      quota: map['quota'] == null ? null : (GoogleCloudApigeeV1Quota.fromMap((map['quota']! as Map).cast<String, dynamic>())).input(),
       service: (map['service'] as String).input(),
     );
   }

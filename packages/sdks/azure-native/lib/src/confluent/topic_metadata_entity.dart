@@ -26,8 +26,8 @@ class TopicMetadataEntity {
 
   factory TopicMetadataEntity.fromMap(Map<String, dynamic> map) {
     return TopicMetadataEntity(
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      self: map['self'] == null ? null : (map['self'] as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      self: map['self'] == null ? null : (map['self']! as String).input(),
     );
   }
 }

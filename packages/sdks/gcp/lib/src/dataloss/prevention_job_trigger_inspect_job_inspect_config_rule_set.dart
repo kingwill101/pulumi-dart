@@ -29,7 +29,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet {
 
   factory PreventionJobTriggerInspectJobInspectConfigRuleSet.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobInspectConfigRuleSet(
-      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType>(map['infoTypes'], (value) => PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      infoTypes: map['infoTypes'] == null ? null : (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType>(map['infoTypes']!, (value) => PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType.fromMap((value as Map).cast<String, dynamic>()))).input(),
       rules: (pulumi.Input.decodeList<PreventionJobTriggerInspectJobInspectConfigRuleSetRule>(map['rules'], (value) => PreventionJobTriggerInspectJobInspectConfigRuleSetRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

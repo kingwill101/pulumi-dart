@@ -27,7 +27,7 @@ class SKU {
   factory SKU.fromMap(Map<String, dynamic> map) {
     return SKU(
       name: (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

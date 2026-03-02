@@ -31,8 +31,8 @@ class GetBackendBucketIamPolicyComputeV1Args {
 
   factory GetBackendBucketIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resource: (map['resource'] as String).input(),
     );
   }

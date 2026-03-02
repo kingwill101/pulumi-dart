@@ -33,9 +33,9 @@ class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary {
 
   factory GoogleCloudDiscoveryengineV1alphaSearchResponseSummary.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaSearchResponseSummary(
-      safetyAttributes: map['safetyAttributes'] == null ? null : (GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes.fromMap((map['safetyAttributes'] as Map).cast<String, dynamic>())).input(),
-      summarySkippedReasons: map['summarySkippedReasons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem>(map['summarySkippedReasons'], (value) => GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem.fromValue(value as String))).input(),
-      summaryText: map['summaryText'] == null ? null : (map['summaryText'] as String).input(),
+      safetyAttributes: map['safetyAttributes'] == null ? null : (GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes.fromMap((map['safetyAttributes']! as Map).cast<String, dynamic>())).input(),
+      summarySkippedReasons: map['summarySkippedReasons'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem>(map['summarySkippedReasons']!, (value) => GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySummarySkippedReasonsItem.fromValue(value as String))).input(),
+      summaryText: map['summaryText'] == null ? null : (map['summaryText']! as String).input(),
     );
   }
 }

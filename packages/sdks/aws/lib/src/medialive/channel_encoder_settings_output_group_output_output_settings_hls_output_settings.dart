@@ -33,10 +33,10 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings(
-      h265PackagingType: map['h265PackagingType'] == null ? null : (map['h265PackagingType'] as String).input(),
-      hlsSettings: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap((map['hlsSettings'] as Map).cast<String, dynamic>())).input(),
-      nameModifier: map['nameModifier'] == null ? null : (map['nameModifier'] as String).input(),
-      segmentModifier: map['segmentModifier'] == null ? null : (map['segmentModifier'] as String).input(),
+      h265PackagingType: map['h265PackagingType'] == null ? null : ((map['h265PackagingType'] as String).input()).input(),
+      hlsSettings: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings.fromMap((map['hlsSettings']! as Map).cast<String, dynamic>())).input(),
+      nameModifier: map['nameModifier'] == null ? null : ((map['nameModifier'] as String).input()).input(),
+      segmentModifier: map['segmentModifier'] == null ? null : ((map['segmentModifier'] as String).input()).input(),
     );
   }
 }

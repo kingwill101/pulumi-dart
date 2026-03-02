@@ -22,7 +22,7 @@ class ElasticAccountProperties {
 
   factory ElasticAccountProperties.fromMap(Map<String, dynamic> map) {
     return ElasticAccountProperties(
-      encryption: map['encryption'] == null ? null : (ElasticEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (ElasticEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

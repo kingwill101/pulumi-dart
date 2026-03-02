@@ -75,12 +75,12 @@ class GetUserResult {
       domainId: map['domainId'] as String,
       enabled: map['enabled'] as bool,
       id: map['id'] as String,
-      idpId: map['idpId'] == null ? null : map['idpId'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : map['passwordExpiresAt'] as String,
-      protocolId: map['protocolId'] == null ? null : map['protocolId'] as String,
+      idpId: map['idpId'] == null ? null : map['idpId']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      passwordExpiresAt: map['passwordExpiresAt'] == null ? null : map['passwordExpiresAt']! as String,
+      protocolId: map['protocolId'] == null ? null : map['protocolId']! as String,
       region: map['region'] as String,
-      uniqueId: map['uniqueId'] == null ? null : map['uniqueId'] as String,
+      uniqueId: map['uniqueId'] == null ? null : map['uniqueId']! as String,
     );
   }
 }

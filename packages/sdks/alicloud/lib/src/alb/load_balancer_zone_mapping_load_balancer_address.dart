@@ -60,15 +60,15 @@ class LoadBalancerZoneMappingLoadBalancerAddress {
 
   factory LoadBalancerZoneMappingLoadBalancerAddress.fromMap(Map<String, dynamic> map) {
     return LoadBalancerZoneMappingLoadBalancerAddress(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      allocationId: map['allocationId'] == null ? null : (map['allocationId'] as String).input(),
-      eipType: map['eipType'] == null ? null : (map['eipType'] as String).input(),
-      intranetAddress: map['intranetAddress'] == null ? null : (map['intranetAddress'] as String).input(),
-      intranetAddressHcStatus: map['intranetAddressHcStatus'] == null ? null : (map['intranetAddressHcStatus'] as String).input(),
-      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : ((map['ipv4LocalAddresses'] as List).cast<String>()).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      ipv6AddressHcStatus: map['ipv6AddressHcStatus'] == null ? null : (map['ipv6AddressHcStatus'] as String).input(),
-      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : ((map['ipv6LocalAddresses'] as List).cast<String>()).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      allocationId: map['allocationId'] == null ? null : (map['allocationId']! as String).input(),
+      eipType: map['eipType'] == null ? null : (map['eipType']! as String).input(),
+      intranetAddress: map['intranetAddress'] == null ? null : (map['intranetAddress']! as String).input(),
+      intranetAddressHcStatus: map['intranetAddressHcStatus'] == null ? null : (map['intranetAddressHcStatus']! as String).input(),
+      ipv4LocalAddresses: map['ipv4LocalAddresses'] == null ? null : ((map['ipv4LocalAddresses']! as List).cast<String>()).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      ipv6AddressHcStatus: map['ipv6AddressHcStatus'] == null ? null : (map['ipv6AddressHcStatus']! as String).input(),
+      ipv6LocalAddresses: map['ipv6LocalAddresses'] == null ? null : ((map['ipv6LocalAddresses']! as List).cast<String>()).input(),
     );
   }
 }

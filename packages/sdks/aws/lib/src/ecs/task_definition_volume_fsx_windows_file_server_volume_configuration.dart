@@ -31,7 +31,7 @@ class TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
 
   factory TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration(
-      authorizationConfig: (TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig.fromMap((map['authorizationConfig'] as Map).cast<String, dynamic>())).input(),
+      authorizationConfig: (TaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig.fromMap((map['authorizationConfig']! as Map).cast<String, dynamic>())).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       rootDirectory: (map['rootDirectory'] as String).input(),
     );

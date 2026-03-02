@@ -35,10 +35,10 @@ class FunctionVpcConfig {
 
   factory FunctionVpcConfig.fromMap(Map<String, dynamic> map) {
     return FunctionVpcConfig(
-      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : (map['ipv6AllowedForDualStack'] as bool).input(),
+      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : ((map['ipv6AllowedForDualStack'] as bool).input()).input(),
       securityGroupIds: ((map['securityGroupIds'] as List).cast<String>()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

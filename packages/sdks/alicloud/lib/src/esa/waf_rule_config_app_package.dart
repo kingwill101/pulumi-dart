@@ -21,7 +21,7 @@ class WafRuleConfigAppPackage {
 
   factory WafRuleConfigAppPackage.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigAppPackage(
-      packageSigns: map['packageSigns'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigAppPackagePackageSign>(map['packageSigns'], (value) => WafRuleConfigAppPackagePackageSign.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageSigns: map['packageSigns'] == null ? null : (pulumi.Input.decodeList<WafRuleConfigAppPackagePackageSign>(map['packageSigns']!, (value) => WafRuleConfigAppPackagePackageSign.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

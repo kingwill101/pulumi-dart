@@ -26,8 +26,8 @@ class HttpFaultAbortComputeV1 {
 
   factory HttpFaultAbortComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpFaultAbortComputeV1(
-      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus'] as int).input(),
-      percentage: map['percentage'] == null ? null : (map['percentage'] as double).input(),
+      httpStatus: map['httpStatus'] == null ? null : (map['httpStatus']! as int).input(),
+      percentage: map['percentage'] == null ? null : (map['percentage']! as double).input(),
     );
   }
 }

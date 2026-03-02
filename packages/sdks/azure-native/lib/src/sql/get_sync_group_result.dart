@@ -98,21 +98,21 @@ class GetSyncGroupResult {
   factory GetSyncGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSyncGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      conflictLoggingRetentionInDays: map['conflictLoggingRetentionInDays'] == null ? null : map['conflictLoggingRetentionInDays'] as int,
-      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : map['conflictResolutionPolicy'] as String,
-      enableConflictLogging: map['enableConflictLogging'] == null ? null : map['enableConflictLogging'] as bool,
-      hubDatabaseUserName: map['hubDatabaseUserName'] == null ? null : map['hubDatabaseUserName'] as String,
+      conflictLoggingRetentionInDays: map['conflictLoggingRetentionInDays'] == null ? null : map['conflictLoggingRetentionInDays']! as int,
+      conflictResolutionPolicy: map['conflictResolutionPolicy'] == null ? null : map['conflictResolutionPolicy']! as String,
+      enableConflictLogging: map['enableConflictLogging'] == null ? null : map['enableConflictLogging']! as bool,
+      hubDatabaseUserName: map['hubDatabaseUserName'] == null ? null : map['hubDatabaseUserName']! as String,
       id: map['id'] as String,
-      interval: map['interval'] == null ? null : map['interval'] as int,
+      interval: map['interval'] == null ? null : map['interval']! as int,
       lastSyncTime: map['lastSyncTime'] as String,
       name: map['name'] as String,
       privateEndpointName: map['privateEndpointName'] as String,
-      schema: map['schema'] == null ? null : SyncGroupSchemaResponse.fromMap((map['schema'] as Map).cast<String, dynamic>()),
-      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      syncDatabaseId: map['syncDatabaseId'] == null ? null : map['syncDatabaseId'] as String,
+      schema: map['schema'] == null ? null : SyncGroupSchemaResponse.fromMap((map['schema']! as Map).cast<String, dynamic>()),
+      sku: map['sku'] == null ? null : SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      syncDatabaseId: map['syncDatabaseId'] == null ? null : map['syncDatabaseId']! as String,
       syncState: map['syncState'] as String,
       type: map['type'] as String,
-      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : map['usePrivateLinkConnection'] as bool,
+      usePrivateLinkConnection: map['usePrivateLinkConnection'] == null ? null : map['usePrivateLinkConnection']! as bool,
     );
   }
 }

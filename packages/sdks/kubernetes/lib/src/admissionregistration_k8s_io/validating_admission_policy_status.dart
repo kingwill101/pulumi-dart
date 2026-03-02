@@ -33,9 +33,9 @@ class ValidatingAdmissionPolicyStatus {
 
   factory ValidatingAdmissionPolicyStatus.fromMap(Map<String, dynamic> map) {
     return ValidatingAdmissionPolicyStatus(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions'], (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
-      typeChecking: map['typeChecking'] == null ? null : (TypeChecking.fromMap((map['typeChecking'] as Map).cast<String, dynamic>())).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<Condition>(map['conditions']!, (value) => Condition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
+      typeChecking: map['typeChecking'] == null ? null : (TypeChecking.fromMap((map['typeChecking']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

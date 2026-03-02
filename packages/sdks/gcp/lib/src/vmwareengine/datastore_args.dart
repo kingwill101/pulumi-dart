@@ -56,11 +56,11 @@ class DatastoreArgs {
 
   factory DatastoreArgs.fromMap(Map<String, dynamic> map) {
     return DatastoreArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nfsDatastore: (DatastoreNfsDatastore.fromMap((map['nfsDatastore'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

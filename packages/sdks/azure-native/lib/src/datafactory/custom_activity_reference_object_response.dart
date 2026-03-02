@@ -28,8 +28,8 @@ class CustomActivityReferenceObjectResponse {
 
   factory CustomActivityReferenceObjectResponse.fromMap(Map<String, dynamic> map) {
     return CustomActivityReferenceObjectResponse(
-      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DatasetReferenceResponse>(map['datasets'], (value) => DatasetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      linkedServices: map['linkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReferenceResponse>(map['linkedServices'], (value) => LinkedServiceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      datasets: map['datasets'] == null ? null : (pulumi.Input.decodeList<DatasetReferenceResponse>(map['datasets']!, (value) => DatasetReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linkedServices: map['linkedServices'] == null ? null : (pulumi.Input.decodeList<LinkedServiceReferenceResponse>(map['linkedServices']!, (value) => LinkedServiceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

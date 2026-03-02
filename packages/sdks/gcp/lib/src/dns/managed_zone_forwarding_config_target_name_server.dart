@@ -42,10 +42,10 @@ class ManagedZoneForwardingConfigTargetNameServer {
 
   factory ManagedZoneForwardingConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfigTargetNameServer(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      forwardingPath: map['forwardingPath'] == null ? null : (map['forwardingPath'] as String).input(),
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      forwardingPath: map['forwardingPath'] == null ? null : (map['forwardingPath']! as String).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
     );
   }
 }

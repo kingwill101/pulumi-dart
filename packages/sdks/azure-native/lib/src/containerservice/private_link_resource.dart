@@ -41,11 +41,11 @@ class PrivateLinkResource {
 
   factory PrivateLinkResource.fromMap(Map<String, dynamic> map) {
     return PrivateLinkResource(
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      requiredMembers: map['requiredMembers'] == null ? null : ((map['requiredMembers'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      requiredMembers: map['requiredMembers'] == null ? null : ((map['requiredMembers']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

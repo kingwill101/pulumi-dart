@@ -31,9 +31,9 @@ class CloudServiceRoleSkuResponse {
 
   factory CloudServiceRoleSkuResponse.fromMap(Map<String, dynamic> map) {
     return CloudServiceRoleSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

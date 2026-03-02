@@ -84,19 +84,19 @@ class RuntimeState {
 
   factory RuntimeState.fromMap(Map<String, dynamic> map) {
     return RuntimeState(
-      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      desiredState: map['desiredState'] == null ? null : (map['desiredState'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime'] as String).input(),
-      isUpgradable: map['isUpgradable'] == null ? null : (map['isUpgradable'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : (RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef'] as Map).cast<String, dynamic>())).input(),
-      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : (map['notebookRuntimeType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runtimeUser: map['runtimeUser'] == null ? null : (map['runtimeUser'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      autoUpgrade: map['autoUpgrade'] == null ? null : (map['autoUpgrade']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      desiredState: map['desiredState'] == null ? null : (map['desiredState']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      expirationTime: map['expirationTime'] == null ? null : (map['expirationTime']! as String).input(),
+      isUpgradable: map['isUpgradable'] == null ? null : (map['isUpgradable']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notebookRuntimeTemplateRef: map['notebookRuntimeTemplateRef'] == null ? null : (RuntimeNotebookRuntimeTemplateRef.fromMap((map['notebookRuntimeTemplateRef']! as Map).cast<String, dynamic>())).input(),
+      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : (map['notebookRuntimeType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runtimeUser: map['runtimeUser'] == null ? null : (map['runtimeUser']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

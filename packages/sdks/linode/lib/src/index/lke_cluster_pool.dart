@@ -83,19 +83,19 @@ class LkeClusterPool {
 
   factory LkeClusterPool.fromMap(Map<String, dynamic> map) {
     return LkeClusterPool(
-      autoscaler: map['autoscaler'] == null ? null : (LkeClusterPoolAutoscaler.fromMap((map['autoscaler'] as Map).cast<String, dynamic>())).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
-      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption'] as String).input(),
-      firewallId: map['firewallId'] == null ? null : (map['firewallId'] as int).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<LkeClusterPoolNode>(map['nodes'], (value) => LkeClusterPoolNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<LkeClusterPoolTaint>(map['taints'], (value) => LkeClusterPoolTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      autoscaler: map['autoscaler'] == null ? null : (LkeClusterPoolAutoscaler.fromMap((map['autoscaler']! as Map).cast<String, dynamic>())).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
+      diskEncryption: map['diskEncryption'] == null ? null : (map['diskEncryption']! as String).input(),
+      firewallId: map['firewallId'] == null ? null : (map['firewallId']! as int).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      k8sVersion: map['k8sVersion'] == null ? null : (map['k8sVersion']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      nodes: map['nodes'] == null ? null : (pulumi.Input.decodeList<LkeClusterPoolNode>(map['nodes']!, (value) => LkeClusterPoolNode.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      taints: map['taints'] == null ? null : (pulumi.Input.decodeList<LkeClusterPoolTaint>(map['taints']!, (value) => LkeClusterPoolTaint.fromMap((value as Map).cast<String, dynamic>()))).input(),
       type: (map['type'] as String).input(),
-      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy'] as String).input(),
+      updateStrategy: map['updateStrategy'] == null ? null : (map['updateStrategy']! as String).input(),
     );
   }
 }

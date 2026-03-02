@@ -44,11 +44,11 @@ class WebAppAssessmentV3PropertiesResponse {
 
   factory WebAppAssessmentV3PropertiesResponse.fromMap(Map<String, dynamic> map) {
     return WebAppAssessmentV3PropertiesResponse(
-      details: map['details'] == null ? null : (AssessmentDetailsResponse.fromMap((map['details'] as Map).cast<String, dynamic>())).input(),
-      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId'] as String).input(),
+      details: map['details'] == null ? null : (AssessmentDetailsResponse.fromMap((map['details']! as Map).cast<String, dynamic>())).input(),
+      fallbackMachineAssessmentArmId: map['fallbackMachineAssessmentArmId'] == null ? null : (map['fallbackMachineAssessmentArmId']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope'] as Map).cast<String, dynamic>())).input(),
-      settings: map['settings'] == null ? null : (WebAppAssessmentSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (ScopeResponse.fromMap((map['scope']! as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (WebAppAssessmentSettingsResponse.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

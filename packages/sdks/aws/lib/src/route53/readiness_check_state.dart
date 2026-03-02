@@ -43,11 +43,11 @@ class ReadinessCheckState {
 
   factory ReadinessCheckState.fromMap(Map<String, dynamic> map) {
     return ReadinessCheckState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      readinessCheckName: map['readinessCheckName'] == null ? null : (map['readinessCheckName'] as String).input(),
-      resourceSetName: map['resourceSetName'] == null ? null : (map['resourceSetName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      readinessCheckName: map['readinessCheckName'] == null ? null : ((map['readinessCheckName'] as String).input()).input(),
+      resourceSetName: map['resourceSetName'] == null ? null : ((map['resourceSetName'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -51,13 +51,13 @@ class CommandState {
 
   factory CommandState.fromMap(Map<String, dynamic> map) {
     return CommandState(
-      commandContent: map['commandContent'] == null ? null : (map['commandContent'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableParameter: map['enableParameter'] == null ? null : (map['enableParameter'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      workingDir: map['workingDir'] == null ? null : (map['workingDir'] as String).input(),
+      commandContent: map['commandContent'] == null ? null : (map['commandContent']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableParameter: map['enableParameter'] == null ? null : (map['enableParameter']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      workingDir: map['workingDir'] == null ? null : (map['workingDir']! as String).input(),
     );
   }
 }

@@ -50,12 +50,12 @@ class BiReservationState {
 
   factory BiReservationState.fromMap(Map<String, dynamic> map) {
     return BiReservationState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preferredTables: map['preferredTables'] == null ? null : (pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables'], (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      preferredTables: map['preferredTables'] == null ? null : (pulumi.Input.decodeList<BiReservationPreferredTable>(map['preferredTables']!, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

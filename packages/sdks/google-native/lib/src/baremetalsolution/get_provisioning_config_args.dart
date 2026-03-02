@@ -32,7 +32,7 @@ class GetProvisioningConfigArgs {
   factory GetProvisioningConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetProvisioningConfigArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       provisioningConfigId: (map['provisioningConfigId'] as String).input(),
     );
   }

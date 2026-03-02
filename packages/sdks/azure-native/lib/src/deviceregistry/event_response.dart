@@ -42,11 +42,11 @@ class EventResponse {
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration'] as String).input(),
+      eventConfiguration: map['eventConfiguration'] == null ? null : (map['eventConfiguration']! as String).input(),
       eventNotifier: (map['eventNotifier'] as String).input(),
       name: (map['name'] as String).input(),
-      observabilityMode: map['observabilityMode'] == null ? null : (map['observabilityMode'] as String).input(),
-      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic'] as Map).cast<String, dynamic>())).input(),
+      observabilityMode: map['observabilityMode'] == null ? null : (map['observabilityMode']! as String).input(),
+      topic: map['topic'] == null ? null : (TopicResponse.fromMap((map['topic']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

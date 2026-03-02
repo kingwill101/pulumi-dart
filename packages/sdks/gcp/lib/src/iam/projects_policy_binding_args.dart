@@ -96,14 +96,14 @@ class ProjectsPolicyBindingArgs {
 
   factory ProjectsPolicyBindingArgs.fromMap(Map<String, dynamic> map) {
     return ProjectsPolicyBindingArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      condition: map['condition'] == null ? null : (ProjectsPolicyBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      condition: map['condition'] == null ? null : (ProjectsPolicyBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       policy: (map['policy'] as String).input(),
       policyBindingId: (map['policyBindingId'] as String).input(),
-      policyKind: map['policyKind'] == null ? null : (map['policyKind'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      policyKind: map['policyKind'] == null ? null : (map['policyKind']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       target: (ProjectsPolicyBindingTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
     );
   }

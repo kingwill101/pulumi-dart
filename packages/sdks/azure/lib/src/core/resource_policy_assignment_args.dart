@@ -97,20 +97,20 @@ class ResourcePolicyAssignmentArgs {
 
   factory ResourcePolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyAssignmentArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
-      identity: map['identity'] == null ? null : (ResourcePolicyAssignmentIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (map['metadata'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nonComplianceMessages: map['nonComplianceMessages'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages'], (value) => ResourcePolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notScopes: map['notScopes'] == null ? null : ((map['notScopes'] as List).cast<String>()).input(),
-      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyAssignmentOverride>(map['overrides'], (value) => ResourcePolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enforce: map['enforce'] == null ? null : (map['enforce']! as bool).input(),
+      identity: map['identity'] == null ? null : (ResourcePolicyAssignmentIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nonComplianceMessages: map['nonComplianceMessages'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages']!, (value) => ResourcePolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notScopes: map['notScopes'] == null ? null : ((map['notScopes']! as List).cast<String>()).input(),
+      overrides: map['overrides'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyAssignmentOverride>(map['overrides']!, (value) => ResourcePolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
       policyDefinitionId: (map['policyDefinitionId'] as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyAssignmentResourceSelector>(map['resourceSelectors'], (value) => ResourcePolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceSelectors: map['resourceSelectors'] == null ? null : (pulumi.Input.decodeList<ResourcePolicyAssignmentResourceSelector>(map['resourceSelectors']!, (value) => ResourcePolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

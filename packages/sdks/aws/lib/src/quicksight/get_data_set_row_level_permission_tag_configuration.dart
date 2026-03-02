@@ -25,7 +25,7 @@ class GetDataSetRowLevelPermissionTagConfiguration {
   factory GetDataSetRowLevelPermissionTagConfiguration.fromMap(Map<String, dynamic> map) {
     return GetDataSetRowLevelPermissionTagConfiguration(
       status: (map['status'] as String).input(),
-      tagRules: (pulumi.Input.decodeList<GetDataSetRowLevelPermissionTagConfigurationTagRule>(map['tagRules'], (value) => GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tagRules: (pulumi.Input.decodeList<GetDataSetRowLevelPermissionTagConfigurationTagRule>(map['tagRules']!, (value) => GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

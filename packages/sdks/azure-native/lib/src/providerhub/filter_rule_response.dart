@@ -26,8 +26,8 @@ class FilterRuleResponse {
 
   factory FilterRuleResponse.fromMap(Map<String, dynamic> map) {
     return FilterRuleResponse(
-      endpointInformation: map['endpointInformation'] == null ? null : (pulumi.Input.decodeList<EndpointInformationResponse>(map['endpointInformation'], (value) => EndpointInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filterQuery: map['filterQuery'] == null ? null : (map['filterQuery'] as String).input(),
+      endpointInformation: map['endpointInformation'] == null ? null : (pulumi.Input.decodeList<EndpointInformationResponse>(map['endpointInformation']!, (value) => EndpointInformationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filterQuery: map['filterQuery'] == null ? null : (map['filterQuery']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class BucketIamConfigurationBucketPolicyOnly {
 
   factory BucketIamConfigurationBucketPolicyOnly.fromMap(Map<String, dynamic> map) {
     return BucketIamConfigurationBucketPolicyOnly(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      lockedTime: map['lockedTime'] == null ? null : (map['lockedTime'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      lockedTime: map['lockedTime'] == null ? null : (map['lockedTime']! as String).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class DatasetKustoDatabaseArgs {
   factory DatasetKustoDatabaseArgs.fromMap(Map<String, dynamic> map) {
     return DatasetKustoDatabaseArgs(
       kustoDatabaseId: (map['kustoDatabaseId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       shareId: (map['shareId'] as String).input(),
     );
   }

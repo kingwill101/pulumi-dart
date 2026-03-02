@@ -55,12 +55,12 @@ class HoursOfOperationArgs {
 
   factory HoursOfOperationArgs.fromMap(Map<String, dynamic> map) {
     return HoursOfOperationArgs(
-      configs: (pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs'], (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      configs: (pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs']!, (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       timeZone: (map['timeZone'] as String).input(),
     );
   }

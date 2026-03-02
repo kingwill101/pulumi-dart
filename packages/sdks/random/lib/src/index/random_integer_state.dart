@@ -41,11 +41,11 @@ class RandomIntegerState {
 
   factory RandomIntegerState.fromMap(Map<String, dynamic> map) {
     return RandomIntegerState(
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      max: map['max'] == null ? null : (map['max'] as int).input(),
-      min: map['min'] == null ? null : (map['min'] as int).input(),
-      result: map['result'] == null ? null : (map['result'] as int).input(),
-      seed: map['seed'] == null ? null : (map['seed'] as String).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      max: map['max'] == null ? null : (map['max']! as int).input(),
+      min: map['min'] == null ? null : (map['min']! as int).input(),
+      result: map['result'] == null ? null : (map['result']! as int).input(),
+      seed: map['seed'] == null ? null : (map['seed']! as String).input(),
     );
   }
 }

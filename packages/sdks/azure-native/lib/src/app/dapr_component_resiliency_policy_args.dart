@@ -52,9 +52,9 @@ class DaprComponentResiliencyPolicyArgs {
     return DaprComponentResiliencyPolicyArgs(
       componentName: (map['componentName'] as String).input(),
       environmentName: (map['environmentName'] as String).input(),
-      inboundPolicy: map['inboundPolicy'] == null ? null : (DaprComponentResiliencyPolicyConfiguration.fromMap((map['inboundPolicy'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outboundPolicy: map['outboundPolicy'] == null ? null : (DaprComponentResiliencyPolicyConfiguration.fromMap((map['outboundPolicy'] as Map).cast<String, dynamic>())).input(),
+      inboundPolicy: map['inboundPolicy'] == null ? null : (DaprComponentResiliencyPolicyConfiguration.fromMap((map['inboundPolicy']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outboundPolicy: map['outboundPolicy'] == null ? null : (DaprComponentResiliencyPolicyConfiguration.fromMap((map['outboundPolicy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

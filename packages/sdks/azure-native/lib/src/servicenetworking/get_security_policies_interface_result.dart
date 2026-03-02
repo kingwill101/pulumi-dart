@@ -74,9 +74,9 @@ class GetSecurityPoliciesInterfaceResult {
       policyType: map['policyType'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      wafPolicy: map['wafPolicy'] == null ? null : WafPolicyResponse.fromMap((map['wafPolicy'] as Map).cast<String, dynamic>()),
+      wafPolicy: map['wafPolicy'] == null ? null : WafPolicyResponse.fromMap((map['wafPolicy']! as Map).cast<String, dynamic>()),
     );
   }
 }

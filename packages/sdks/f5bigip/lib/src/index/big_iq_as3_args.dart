@@ -122,13 +122,13 @@ class BigIqAs3Args {
     return BigIqAs3Args(
       as3Json: (map['as3Json'] as String).input(),
       bigiqAddress: (map['bigiqAddress'] as String).input(),
-      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef'] as String).input(),
+      bigiqLoginRef: map['bigiqLoginRef'] == null ? null : (map['bigiqLoginRef']! as String).input(),
       bigiqPassword: (map['bigiqPassword'] as String).input(),
-      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort'] as String).input(),
-      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth'] as bool).input(),
+      bigiqPort: map['bigiqPort'] == null ? null : (map['bigiqPort']! as String).input(),
+      bigiqTokenAuth: map['bigiqTokenAuth'] == null ? null : (map['bigiqTokenAuth']! as bool).input(),
       bigiqUser: (map['bigiqUser'] as String).input(),
-      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata'] as bool).input(),
-      tenantList: map['tenantList'] == null ? null : (map['tenantList'] as String).input(),
+      ignoreMetadata: map['ignoreMetadata'] == null ? null : (map['ignoreMetadata']! as bool).input(),
+      tenantList: map['tenantList'] == null ? null : (map['tenantList']! as String).input(),
     );
   }
 }

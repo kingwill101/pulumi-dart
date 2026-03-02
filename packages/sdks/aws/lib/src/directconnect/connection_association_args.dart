@@ -36,7 +36,7 @@ class ConnectionAssociationArgs {
     return ConnectionAssociationArgs(
       connectionId: (map['connectionId'] as String).input(),
       lagId: (map['lagId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

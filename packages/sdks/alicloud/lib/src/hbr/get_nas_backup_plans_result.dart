@@ -50,14 +50,14 @@ class GetNasBackupPlansResult {
 
   factory GetNasBackupPlansResult.fromMap(Map<String, dynamic> map) {
     return GetNasBackupPlansResult(
-      fileSystemId: map['fileSystemId'] == null ? null : map['fileSystemId'] as String,
+      fileSystemId: map['fileSystemId'] == null ? null : map['fileSystemId']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       plans: pulumi.Input.decodeList<GetNasBackupPlansPlan>(map['plans'], (value) => GetNasBackupPlansPlan.fromMap((value as Map).cast<String, dynamic>())),
-      vaultId: map['vaultId'] == null ? null : map['vaultId'] as String,
+      vaultId: map['vaultId'] == null ? null : map['vaultId']! as String,
     );
   }
 }

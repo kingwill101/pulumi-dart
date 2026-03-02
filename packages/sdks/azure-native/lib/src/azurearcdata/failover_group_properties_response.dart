@@ -40,7 +40,7 @@ class FailoverGroupPropertiesResponse {
       partnerManagedInstanceId: (map['partnerManagedInstanceId'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       spec: (FailoverGroupSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status']).input(),
+      status: map['status'] == null ? null : (map['status']!).input(),
     );
   }
 }

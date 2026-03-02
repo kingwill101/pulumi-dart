@@ -28,8 +28,8 @@ class AuxiliaryServicesConfig {
 
   factory AuxiliaryServicesConfig.fromMap(Map<String, dynamic> map) {
     return AuxiliaryServicesConfig(
-      metastoreConfig: map['metastoreConfig'] == null ? null : (MetastoreConfig.fromMap((map['metastoreConfig'] as Map).cast<String, dynamic>())).input(),
-      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (SparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>())).input(),
+      metastoreConfig: map['metastoreConfig'] == null ? null : (MetastoreConfig.fromMap((map['metastoreConfig']! as Map).cast<String, dynamic>())).input(),
+      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (SparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -40,10 +40,10 @@ class IdentitySourceArgs {
 
   factory IdentitySourceArgs.fromMap(Map<String, dynamic> map) {
     return IdentitySourceArgs(
-      configuration: (IdentitySourceConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
+      configuration: (IdentitySourceConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
       policyStoreId: (map['policyStoreId'] as String).input(),
-      principalEntityType: map['principalEntityType'] == null ? null : (map['principalEntityType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      principalEntityType: map['principalEntityType'] == null ? null : ((map['principalEntityType'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

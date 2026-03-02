@@ -111,23 +111,23 @@ class GetGalleryImageResult {
   factory GetGalleryImageResult.fromMap(Map<String, dynamic> map) {
     return GetGalleryImageResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : map['cloudInitDataSource'] as String,
-      containerId: map['containerId'] == null ? null : map['containerId'] as String,
-      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>()),
-      hyperVGeneration: map['hyperVGeneration'] == null ? null : map['hyperVGeneration'] as String,
+      cloudInitDataSource: map['cloudInitDataSource'] == null ? null : map['cloudInitDataSource']! as String,
+      containerId: map['containerId'] == null ? null : map['containerId']! as String,
+      extendedLocation: map['extendedLocation'] == null ? null : ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : map['hyperVGeneration']! as String,
       id: map['id'] as String,
-      identifier: map['identifier'] == null ? null : GalleryImageIdentifierResponse.fromMap((map['identifier'] as Map).cast<String, dynamic>()),
-      imagePath: map['imagePath'] == null ? null : map['imagePath'] as String,
+      identifier: map['identifier'] == null ? null : GalleryImageIdentifierResponse.fromMap((map['identifier']! as Map).cast<String, dynamic>()),
+      imagePath: map['imagePath'] == null ? null : map['imagePath']! as String,
       location: map['location'] as String,
       name: map['name'] as String,
       osType: map['osType'] as String,
       provisioningState: map['provisioningState'] as String,
-      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : map['sourceVirtualMachineId'] as String,
+      sourceVirtualMachineId: map['sourceVirtualMachineId'] == null ? null : map['sourceVirtualMachineId']! as String,
       status: GalleryImageStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      version: map['version'] == null ? null : GalleryImageVersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      version: map['version'] == null ? null : GalleryImageVersionResponse.fromMap((map['version']! as Map).cast<String, dynamic>()),
     );
   }
 }

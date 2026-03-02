@@ -84,19 +84,19 @@ class AgentKnowledgeBaseState {
 
   factory AgentKnowledgeBaseState.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      failureReasons: map['failureReasons'] == null ? null : ((map['failureReasons'] as List).cast<String>()).input(),
-      knowledgeBaseConfiguration: map['knowledgeBaseConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((map['knowledgeBaseConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (AgentKnowledgeBaseStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentKnowledgeBaseTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      failureReasons: map['failureReasons'] == null ? null : (((map['failureReasons'] as List).cast<String>()).input()).input(),
+      knowledgeBaseConfiguration: map['knowledgeBaseConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfiguration.fromMap((map['knowledgeBaseConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : ((AgentKnowledgeBaseStorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentKnowledgeBaseTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      updatedAt: map['updatedAt'] == null ? null : ((map['updatedAt'] as String).input()).input(),
     );
   }
 }

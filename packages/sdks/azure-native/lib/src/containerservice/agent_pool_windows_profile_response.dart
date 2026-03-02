@@ -21,7 +21,7 @@ class AgentPoolWindowsProfileResponse {
 
   factory AgentPoolWindowsProfileResponse.fromMap(Map<String, dynamic> map) {
     return AgentPoolWindowsProfileResponse(
-      disableOutboundNat: map['disableOutboundNat'] == null ? null : (map['disableOutboundNat'] as bool).input(),
+      disableOutboundNat: map['disableOutboundNat'] == null ? null : (map['disableOutboundNat']! as bool).input(),
     );
   }
 }

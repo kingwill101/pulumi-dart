@@ -22,7 +22,7 @@ class WidgetConfigUiBranding {
 
   factory WidgetConfigUiBranding.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiBranding(
-      logo: map['logo'] == null ? null : (WidgetConfigUiBrandingLogo.fromMap((map['logo'] as Map).cast<String, dynamic>())).input(),
+      logo: map['logo'] == null ? null : (WidgetConfigUiBrandingLogo.fromMap((map['logo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

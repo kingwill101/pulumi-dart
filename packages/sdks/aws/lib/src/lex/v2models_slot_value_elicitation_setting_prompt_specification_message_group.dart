@@ -30,8 +30,8 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup {
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup(
-      message: map['message'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage.fromMap((map['message'] as Map).cast<String, dynamic>())).input(),
-      variations: map['variations'] == null ? null : (pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariation>(map['variations'], (value) => V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      message: map['message'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage.fromMap((map['message']! as Map).cast<String, dynamic>())).input()).input(),
+      variations: map['variations'] == null ? null : ((pulumi.Input.decodeList<V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariation>(map['variations']!, (value) => V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

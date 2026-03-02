@@ -82,19 +82,19 @@ class ClusterNodeType {
 
   factory ClusterNodeType.fromMap(Map<String, dynamic> map) {
     return ClusterNodeType(
-      applicationPorts: map['applicationPorts'] == null ? null : (ClusterNodeTypeApplicationPorts.fromMap((map['applicationPorts'] as Map).cast<String, dynamic>())).input(),
-      capacities: map['capacities'] == null ? null : ((map['capacities'] as Map).cast<String, String>()).input(),
+      applicationPorts: map['applicationPorts'] == null ? null : (ClusterNodeTypeApplicationPorts.fromMap((map['applicationPorts']! as Map).cast<String, dynamic>())).input(),
+      capacities: map['capacities'] == null ? null : ((map['capacities']! as Map).cast<String, String>()).input(),
       clientEndpointPort: (map['clientEndpointPort'] as int).input(),
-      durabilityLevel: map['durabilityLevel'] == null ? null : (map['durabilityLevel'] as String).input(),
-      ephemeralPorts: map['ephemeralPorts'] == null ? null : (ClusterNodeTypeEphemeralPorts.fromMap((map['ephemeralPorts'] as Map).cast<String, dynamic>())).input(),
+      durabilityLevel: map['durabilityLevel'] == null ? null : (map['durabilityLevel']! as String).input(),
+      ephemeralPorts: map['ephemeralPorts'] == null ? null : (ClusterNodeTypeEphemeralPorts.fromMap((map['ephemeralPorts']! as Map).cast<String, dynamic>())).input(),
       httpEndpointPort: (map['httpEndpointPort'] as int).input(),
       instanceCount: (map['instanceCount'] as int).input(),
       isPrimary: (map['isPrimary'] as bool).input(),
-      isStateless: map['isStateless'] == null ? null : (map['isStateless'] as bool).input(),
-      multipleAvailabilityZones: map['multipleAvailabilityZones'] == null ? null : (map['multipleAvailabilityZones'] as bool).input(),
+      isStateless: map['isStateless'] == null ? null : (map['isStateless']! as bool).input(),
+      multipleAvailabilityZones: map['multipleAvailabilityZones'] == null ? null : (map['multipleAvailabilityZones']! as bool).input(),
       name: (map['name'] as String).input(),
-      placementProperties: map['placementProperties'] == null ? null : ((map['placementProperties'] as Map).cast<String, String>()).input(),
-      reverseProxyEndpointPort: map['reverseProxyEndpointPort'] == null ? null : (map['reverseProxyEndpointPort'] as int).input(),
+      placementProperties: map['placementProperties'] == null ? null : ((map['placementProperties']! as Map).cast<String, String>()).input(),
+      reverseProxyEndpointPort: map['reverseProxyEndpointPort'] == null ? null : (map['reverseProxyEndpointPort']! as int).input(),
     );
   }
 }

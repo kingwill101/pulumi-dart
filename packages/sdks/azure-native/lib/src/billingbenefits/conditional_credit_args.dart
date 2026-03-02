@@ -107,23 +107,23 @@ class ConditionalCreditArgs {
 
   factory ConditionalCreditArgs.fromMap(Map<String, dynamic> map) {
     return ConditionalCreditArgs(
-      billingAccountResourceId: map['billingAccountResourceId'] == null ? null : (map['billingAccountResourceId'] as String).input(),
-      conditionalCreditName: map['conditionalCreditName'] == null ? null : (map['conditionalCreditName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      endAt: map['endAt'] == null ? null : (map['endAt'] as String).input(),
+      billingAccountResourceId: map['billingAccountResourceId'] == null ? null : (map['billingAccountResourceId']! as String).input(),
+      conditionalCreditName: map['conditionalCreditName'] == null ? null : (map['conditionalCreditName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      endAt: map['endAt'] == null ? null : (map['endAt']! as String).input(),
       entityType: (map['entityType'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      plan: map['plan'] == null ? null : (Plan.fromMap((map['plan']! as Map).cast<String, dynamic>())).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      startAt: map['startAt'] == null ? null : (map['startAt'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      startAt: map['startAt'] == null ? null : (map['startAt']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

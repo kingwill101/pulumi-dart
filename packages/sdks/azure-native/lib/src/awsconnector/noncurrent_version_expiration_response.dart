@@ -26,8 +26,8 @@ class NoncurrentVersionExpirationResponse {
 
   factory NoncurrentVersionExpirationResponse.fromMap(Map<String, dynamic> map) {
     return NoncurrentVersionExpirationResponse(
-      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : (map['newerNoncurrentVersions'] as int).input(),
-      noncurrentDays: map['noncurrentDays'] == null ? null : (map['noncurrentDays'] as int).input(),
+      newerNoncurrentVersions: map['newerNoncurrentVersions'] == null ? null : (map['newerNoncurrentVersions']! as int).input(),
+      noncurrentDays: map['noncurrentDays'] == null ? null : (map['noncurrentDays']! as int).input(),
     );
   }
 }

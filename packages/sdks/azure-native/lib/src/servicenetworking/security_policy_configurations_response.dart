@@ -22,7 +22,7 @@ class SecurityPolicyConfigurationsResponse {
 
   factory SecurityPolicyConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyConfigurationsResponse(
-      wafSecurityPolicy: map['wafSecurityPolicy'] == null ? null : (WafSecurityPolicyResponse.fromMap((map['wafSecurityPolicy'] as Map).cast<String, dynamic>())).input(),
+      wafSecurityPolicy: map['wafSecurityPolicy'] == null ? null : (WafSecurityPolicyResponse.fromMap((map['wafSecurityPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

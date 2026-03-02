@@ -31,9 +31,9 @@ class ExternalVpnGatewayInterface {
 
   factory ExternalVpnGatewayInterface.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayInterface(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
     );
   }
 }

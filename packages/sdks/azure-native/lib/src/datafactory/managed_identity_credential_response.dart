@@ -37,9 +37,9 @@ class ManagedIdentityCredentialResponse {
 
   factory ManagedIdentityCredentialResponse.fromMap(Map<String, dynamic> map) {
     return ManagedIdentityCredentialResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

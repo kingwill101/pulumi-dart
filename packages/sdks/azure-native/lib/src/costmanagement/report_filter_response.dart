@@ -42,11 +42,11 @@ class ReportFilterResponse {
 
   factory ReportFilterResponse.fromMap(Map<String, dynamic> map) {
     return ReportFilterResponse(
-      and: map['and'] == null ? null : (pulumi.Input.decodeList<ReportFilterResponse>(map['and'], (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dimension: map['dimension'] == null ? null : (ReportComparisonExpressionResponse.fromMap((map['dimension'] as Map).cast<String, dynamic>())).input(),
-      not: map['not'] == null ? null : (ReportFilterResponse.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
-      or: map['or'] == null ? null : (pulumi.Input.decodeList<ReportFilterResponse>(map['or'], (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: map['tag'] == null ? null : (ReportComparisonExpressionResponse.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      and: map['and'] == null ? null : (pulumi.Input.decodeList<ReportFilterResponse>(map['and']!, (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dimension: map['dimension'] == null ? null : (ReportComparisonExpressionResponse.fromMap((map['dimension']! as Map).cast<String, dynamic>())).input(),
+      not: map['not'] == null ? null : (ReportFilterResponse.fromMap((map['not']! as Map).cast<String, dynamic>())).input(),
+      or: map['or'] == null ? null : (pulumi.Input.decodeList<ReportFilterResponse>(map['or']!, (value) => ReportFilterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (ReportComparisonExpressionResponse.fromMap((map['tag']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

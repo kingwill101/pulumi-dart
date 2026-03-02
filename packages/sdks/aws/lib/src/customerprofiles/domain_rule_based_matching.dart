@@ -58,14 +58,14 @@ class DomainRuleBasedMatching {
 
   factory DomainRuleBasedMatching.fromMap(Map<String, dynamic> map) {
     return DomainRuleBasedMatching(
-      attributeTypesSelector: map['attributeTypesSelector'] == null ? null : (DomainRuleBasedMatchingAttributeTypesSelector.fromMap((map['attributeTypesSelector'] as Map).cast<String, dynamic>())).input(),
-      conflictResolution: map['conflictResolution'] == null ? null : (DomainRuleBasedMatchingConflictResolution.fromMap((map['conflictResolution'] as Map).cast<String, dynamic>())).input(),
+      attributeTypesSelector: map['attributeTypesSelector'] == null ? null : ((DomainRuleBasedMatchingAttributeTypesSelector.fromMap((map['attributeTypesSelector']! as Map).cast<String, dynamic>())).input()).input(),
+      conflictResolution: map['conflictResolution'] == null ? null : ((DomainRuleBasedMatchingConflictResolution.fromMap((map['conflictResolution']! as Map).cast<String, dynamic>())).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      exportingConfig: map['exportingConfig'] == null ? null : (DomainRuleBasedMatchingExportingConfig.fromMap((map['exportingConfig'] as Map).cast<String, dynamic>())).input(),
-      matchingRules: map['matchingRules'] == null ? null : (pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(map['matchingRules'], (value) => DomainRuleBasedMatchingMatchingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxAllowedRuleLevelForMatching: map['maxAllowedRuleLevelForMatching'] == null ? null : (map['maxAllowedRuleLevelForMatching'] as int).input(),
-      maxAllowedRuleLevelForMerging: map['maxAllowedRuleLevelForMerging'] == null ? null : (map['maxAllowedRuleLevelForMerging'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      exportingConfig: map['exportingConfig'] == null ? null : ((DomainRuleBasedMatchingExportingConfig.fromMap((map['exportingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      matchingRules: map['matchingRules'] == null ? null : ((pulumi.Input.decodeList<DomainRuleBasedMatchingMatchingRule>(map['matchingRules']!, (value) => DomainRuleBasedMatchingMatchingRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      maxAllowedRuleLevelForMatching: map['maxAllowedRuleLevelForMatching'] == null ? null : ((map['maxAllowedRuleLevelForMatching'] as int).input()).input(),
+      maxAllowedRuleLevelForMerging: map['maxAllowedRuleLevelForMerging'] == null ? null : ((map['maxAllowedRuleLevelForMerging'] as int).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

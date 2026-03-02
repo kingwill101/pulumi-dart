@@ -86,19 +86,19 @@ class BandwidthPackageState {
 
   factory BandwidthPackageState.fromMap(Map<String, dynamic> map) {
     return BandwidthPackageState(
-      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew'] as bool).input(),
-      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth'] as int).input(),
-      cenBandwidthPackageName: map['cenBandwidthPackageName'] == null ? null : (map['cenBandwidthPackageName'] as String).input(),
-      chargeType: map['chargeType'] == null ? null : (map['chargeType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime'] as String).input(),
-      geographicRegionAId: map['geographicRegionAId'] == null ? null : (map['geographicRegionAId'] as String).input(),
-      geographicRegionBId: map['geographicRegionBId'] == null ? null : (map['geographicRegionBId'] as String).input(),
-      geographicRegionIds: map['geographicRegionIds'] == null ? null : ((map['geographicRegionIds'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      autoRenew: map['autoRenew'] == null ? null : (map['autoRenew']! as bool).input(),
+      bandwidth: map['bandwidth'] == null ? null : (map['bandwidth']! as int).input(),
+      cenBandwidthPackageName: map['cenBandwidthPackageName'] == null ? null : (map['cenBandwidthPackageName']! as String).input(),
+      chargeType: map['chargeType'] == null ? null : (map['chargeType']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expiredTime: map['expiredTime'] == null ? null : (map['expiredTime']! as String).input(),
+      geographicRegionAId: map['geographicRegionAId'] == null ? null : (map['geographicRegionAId']! as String).input(),
+      geographicRegionBId: map['geographicRegionBId'] == null ? null : (map['geographicRegionBId']! as String).input(),
+      geographicRegionIds: map['geographicRegionIds'] == null ? null : ((map['geographicRegionIds']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      period: map['period'] == null ? null : (map['period']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

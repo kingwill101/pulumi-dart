@@ -107,22 +107,22 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      activeDirectoryConfig: map['activeDirectoryConfig'] == null ? null : (DirectoryActiveDirectoryConfig.fromMap((map['activeDirectoryConfig'] as Map).cast<String, dynamic>())).input(),
-      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : (DirectoryCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties'] as Map).cast<String, dynamic>())).input(),
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      ipGroupIds: map['ipGroupIds'] == null ? null : ((map['ipGroupIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      samlProperties: map['samlProperties'] == null ? null : (DirectorySamlProperties.fromMap((map['samlProperties'] as Map).cast<String, dynamic>())).input(),
-      selfServicePermissions: map['selfServicePermissions'] == null ? null : (DirectorySelfServicePermissions.fromMap((map['selfServicePermissions'] as Map).cast<String, dynamic>())).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tenancy: map['tenancy'] == null ? null : (map['tenancy'] as String).input(),
-      userIdentityType: map['userIdentityType'] == null ? null : (map['userIdentityType'] as String).input(),
-      workspaceAccessProperties: map['workspaceAccessProperties'] == null ? null : (DirectoryWorkspaceAccessProperties.fromMap((map['workspaceAccessProperties'] as Map).cast<String, dynamic>())).input(),
-      workspaceCreationProperties: map['workspaceCreationProperties'] == null ? null : (DirectoryWorkspaceCreationProperties.fromMap((map['workspaceCreationProperties'] as Map).cast<String, dynamic>())).input(),
-      workspaceDirectoryDescription: map['workspaceDirectoryDescription'] == null ? null : (map['workspaceDirectoryDescription'] as String).input(),
-      workspaceDirectoryName: map['workspaceDirectoryName'] == null ? null : (map['workspaceDirectoryName'] as String).input(),
-      workspaceType: map['workspaceType'] == null ? null : (map['workspaceType'] as String).input(),
+      activeDirectoryConfig: map['activeDirectoryConfig'] == null ? null : ((DirectoryActiveDirectoryConfig.fromMap((map['activeDirectoryConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : ((DirectoryCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      ipGroupIds: map['ipGroupIds'] == null ? null : (((map['ipGroupIds'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      samlProperties: map['samlProperties'] == null ? null : ((DirectorySamlProperties.fromMap((map['samlProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      selfServicePermissions: map['selfServicePermissions'] == null ? null : ((DirectorySelfServicePermissions.fromMap((map['selfServicePermissions']! as Map).cast<String, dynamic>())).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tenancy: map['tenancy'] == null ? null : ((map['tenancy'] as String).input()).input(),
+      userIdentityType: map['userIdentityType'] == null ? null : ((map['userIdentityType'] as String).input()).input(),
+      workspaceAccessProperties: map['workspaceAccessProperties'] == null ? null : ((DirectoryWorkspaceAccessProperties.fromMap((map['workspaceAccessProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      workspaceCreationProperties: map['workspaceCreationProperties'] == null ? null : ((DirectoryWorkspaceCreationProperties.fromMap((map['workspaceCreationProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      workspaceDirectoryDescription: map['workspaceDirectoryDescription'] == null ? null : ((map['workspaceDirectoryDescription'] as String).input()).input(),
+      workspaceDirectoryName: map['workspaceDirectoryName'] == null ? null : ((map['workspaceDirectoryName'] as String).input()).input(),
+      workspaceType: map['workspaceType'] == null ? null : ((map['workspaceType'] as String).input()).input(),
     );
   }
 }

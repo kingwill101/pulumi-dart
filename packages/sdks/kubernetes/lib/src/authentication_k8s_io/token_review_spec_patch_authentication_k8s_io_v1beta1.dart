@@ -26,8 +26,8 @@ class TokenReviewSpecPatchAuthenticationK8sIoV1beta1 {
 
   factory TokenReviewSpecPatchAuthenticationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return TokenReviewSpecPatchAuthenticationK8sIoV1beta1(
-      audiences: map['audiences'] == null ? null : ((map['audiences'] as List).cast<String>()).input(),
-      token: map['token'] == null ? null : (map['token'] as String).input(),
+      audiences: map['audiences'] == null ? null : ((map['audiences']! as List).cast<String>()).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
     );
   }
 }

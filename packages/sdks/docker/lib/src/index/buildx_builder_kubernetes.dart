@@ -98,22 +98,22 @@ class BuildxBuilderKubernetes {
 
   factory BuildxBuilderKubernetes.fromMap(Map<String, dynamic> map) {
     return BuildxBuilderKubernetes(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as String).input(),
-      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad'] as bool).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      labels: map['labels'] == null ? null : (map['labels'] as String).input(),
-      limits: map['limits'] == null ? null : (BuildxBuilderKubernetesLimits.fromMap((map['limits'] as Map).cast<String, dynamic>())).input(),
-      loadbalance: map['loadbalance'] == null ? null : (map['loadbalance'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      nodeselector: map['nodeselector'] == null ? null : (map['nodeselector'] as String).input(),
-      qemu: map['qemu'] == null ? null : (BuildxBuilderKubernetesQemu.fromMap((map['qemu'] as Map).cast<String, dynamic>())).input(),
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
-      requests: map['requests'] == null ? null : (BuildxBuilderKubernetesRequests.fromMap((map['requests'] as Map).cast<String, dynamic>())).input(),
-      rootless: map['rootless'] == null ? null : (map['rootless'] as bool).input(),
-      schedulername: map['schedulername'] == null ? null : (map['schedulername'] as String).input(),
-      serviceaccount: map['serviceaccount'] == null ? null : (map['serviceaccount'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
-      tolerations: map['tolerations'] == null ? null : (map['tolerations'] as String).input(),
+      annotations: map['annotations'] == null ? null : (map['annotations']! as String).input(),
+      defaultLoad: map['defaultLoad'] == null ? null : (map['defaultLoad']! as bool).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      labels: map['labels'] == null ? null : (map['labels']! as String).input(),
+      limits: map['limits'] == null ? null : (BuildxBuilderKubernetesLimits.fromMap((map['limits']! as Map).cast<String, dynamic>())).input(),
+      loadbalance: map['loadbalance'] == null ? null : (map['loadbalance']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      nodeselector: map['nodeselector'] == null ? null : (map['nodeselector']! as String).input(),
+      qemu: map['qemu'] == null ? null : (BuildxBuilderKubernetesQemu.fromMap((map['qemu']! as Map).cast<String, dynamic>())).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
+      requests: map['requests'] == null ? null : (BuildxBuilderKubernetesRequests.fromMap((map['requests']! as Map).cast<String, dynamic>())).input(),
+      rootless: map['rootless'] == null ? null : (map['rootless']! as bool).input(),
+      schedulername: map['schedulername'] == null ? null : (map['schedulername']! as String).input(),
+      serviceaccount: map['serviceaccount'] == null ? null : (map['serviceaccount']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
+      tolerations: map['tolerations'] == null ? null : (map['tolerations']! as String).input(),
     );
   }
 }

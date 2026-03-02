@@ -21,7 +21,7 @@ class S3OriginConfigResponse {
 
   factory S3OriginConfigResponse.fromMap(Map<String, dynamic> map) {
     return S3OriginConfigResponse(
-      originAccessIdentity: map['originAccessIdentity'] == null ? null : (map['originAccessIdentity'] as String).input(),
+      originAccessIdentity: map['originAccessIdentity'] == null ? null : (map['originAccessIdentity']! as String).input(),
     );
   }
 }

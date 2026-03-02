@@ -28,7 +28,7 @@ class AddonArcProperties {
   factory AddonArcProperties.fromMap(Map<String, dynamic> map) {
     return AddonArcProperties(
       addonType: (map['addonType'] as String).input(),
-      vCenter: map['vCenter'] == null ? null : (map['vCenter'] as String).input(),
+      vCenter: map['vCenter'] == null ? null : (map['vCenter']! as String).input(),
     );
   }
 }

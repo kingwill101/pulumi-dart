@@ -36,7 +36,7 @@ class GetParametersResult {
 
   factory GetParametersResult.fromMap(Map<String, dynamic> map) {
     return GetParametersResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       parameters: pulumi.Input.decodeList<GetParametersParameter>(map['parameters'], (value) => GetParametersParameter.fromMap((value as Map).cast<String, dynamic>())),
       project: map['project'] as String,

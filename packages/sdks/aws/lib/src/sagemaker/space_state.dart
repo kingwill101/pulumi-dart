@@ -79,18 +79,18 @@ class SpaceState {
 
   factory SpaceState.fromMap(Map<String, dynamic> map) {
     return SpaceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      domainId: map['domainId'] == null ? null : (map['domainId'] as String).input(),
-      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : (map['homeEfsFileSystemUid'] as String).input(),
-      ownershipSettings: map['ownershipSettings'] == null ? null : (SpaceOwnershipSettings.fromMap((map['ownershipSettings'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      spaceDisplayName: map['spaceDisplayName'] == null ? null : (map['spaceDisplayName'] as String).input(),
-      spaceName: map['spaceName'] == null ? null : (map['spaceName'] as String).input(),
-      spaceSettings: map['spaceSettings'] == null ? null : (SpaceSpaceSettings.fromMap((map['spaceSettings'] as Map).cast<String, dynamic>())).input(),
-      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : (SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      domainId: map['domainId'] == null ? null : ((map['domainId'] as String).input()).input(),
+      homeEfsFileSystemUid: map['homeEfsFileSystemUid'] == null ? null : ((map['homeEfsFileSystemUid'] as String).input()).input(),
+      ownershipSettings: map['ownershipSettings'] == null ? null : ((SpaceOwnershipSettings.fromMap((map['ownershipSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      spaceDisplayName: map['spaceDisplayName'] == null ? null : ((map['spaceDisplayName'] as String).input()).input(),
+      spaceName: map['spaceName'] == null ? null : ((map['spaceName'] as String).input()).input(),
+      spaceSettings: map['spaceSettings'] == null ? null : ((SpaceSpaceSettings.fromMap((map['spaceSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      spaceSharingSettings: map['spaceSharingSettings'] == null ? null : ((SpaceSpaceSharingSettings.fromMap((map['spaceSharingSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

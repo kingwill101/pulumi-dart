@@ -89,20 +89,20 @@ class RouteServerPeerState {
 
   factory RouteServerPeerState.fromMap(Map<String, dynamic> map) {
     return RouteServerPeerState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bgpOptions: map['bgpOptions'] == null ? null : (RouteServerPeerBgpOptions.fromMap((map['bgpOptions'] as Map).cast<String, dynamic>())).input(),
-      endpointEniAddress: map['endpointEniAddress'] == null ? null : (map['endpointEniAddress'] as String).input(),
-      endpointEniId: map['endpointEniId'] == null ? null : (map['endpointEniId'] as String).input(),
-      peerAddress: map['peerAddress'] == null ? null : (map['peerAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      routeServerEndpointId: map['routeServerEndpointId'] == null ? null : (map['routeServerEndpointId'] as String).input(),
-      routeServerId: map['routeServerId'] == null ? null : (map['routeServerId'] as String).input(),
-      routeServerPeerId: map['routeServerPeerId'] == null ? null : (map['routeServerPeerId'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (RouteServerPeerTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      bgpOptions: map['bgpOptions'] == null ? null : ((RouteServerPeerBgpOptions.fromMap((map['bgpOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      endpointEniAddress: map['endpointEniAddress'] == null ? null : ((map['endpointEniAddress'] as String).input()).input(),
+      endpointEniId: map['endpointEniId'] == null ? null : ((map['endpointEniId'] as String).input()).input(),
+      peerAddress: map['peerAddress'] == null ? null : ((map['peerAddress'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      routeServerEndpointId: map['routeServerEndpointId'] == null ? null : ((map['routeServerEndpointId'] as String).input()).input(),
+      routeServerId: map['routeServerId'] == null ? null : ((map['routeServerId'] as String).input()).input(),
+      routeServerPeerId: map['routeServerPeerId'] == null ? null : ((map['routeServerPeerId'] as String).input()).input(),
+      subnetId: map['subnetId'] == null ? null : ((map['subnetId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((RouteServerPeerTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

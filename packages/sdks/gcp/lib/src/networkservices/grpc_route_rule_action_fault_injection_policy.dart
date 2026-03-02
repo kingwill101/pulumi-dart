@@ -29,8 +29,8 @@ class GrpcRouteRuleActionFaultInjectionPolicy {
 
   factory GrpcRouteRuleActionFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRuleActionFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : (GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>())).input(),
-      delay: map['delay'] == null ? null : (GrpcRouteRuleActionFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>())).input(),
+      abort: map['abort'] == null ? null : (GrpcRouteRuleActionFaultInjectionPolicyAbort.fromMap((map['abort']! as Map).cast<String, dynamic>())).input(),
+      delay: map['delay'] == null ? null : (GrpcRouteRuleActionFaultInjectionPolicyDelay.fromMap((map['delay']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

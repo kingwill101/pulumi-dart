@@ -31,9 +31,9 @@ class InstanceInstanceEncryptionKey {
 
   factory InstanceInstanceEncryptionKey.fromMap(Map<String, dynamic> map) {
     return InstanceInstanceEncryptionKey(
-      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink'] as String).input(),
-      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount'] as String).input(),
-      sha256: map['sha256'] == null ? null : (map['sha256'] as String).input(),
+      kmsKeySelfLink: map['kmsKeySelfLink'] == null ? null : (map['kmsKeySelfLink']! as String).input(),
+      kmsKeyServiceAccount: map['kmsKeyServiceAccount'] == null ? null : (map['kmsKeyServiceAccount']! as String).input(),
+      sha256: map['sha256'] == null ? null : (map['sha256']! as String).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class GetAccountKeyResult {
       keyAlgorithm: map['keyAlgorithm'] as String,
       name: map['name'] as String,
       publicKey: map['publicKey'] as String,
-      publicKeyType: map['publicKeyType'] == null ? null : map['publicKeyType'] as String,
+      publicKeyType: map['publicKeyType'] == null ? null : map['publicKeyType']! as String,
     );
   }
 }

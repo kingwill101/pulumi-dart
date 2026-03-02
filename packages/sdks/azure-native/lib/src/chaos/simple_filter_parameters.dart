@@ -21,7 +21,7 @@ class SimpleFilterParameters {
 
   factory SimpleFilterParameters.fromMap(Map<String, dynamic> map) {
     return SimpleFilterParameters(
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

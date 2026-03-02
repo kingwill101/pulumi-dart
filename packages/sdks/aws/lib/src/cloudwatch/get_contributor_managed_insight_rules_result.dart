@@ -37,7 +37,7 @@ class GetContributorManagedInsightRulesResult {
   factory GetContributorManagedInsightRulesResult.fromMap(Map<String, dynamic> map) {
     return GetContributorManagedInsightRulesResult(
       id: map['id'] as String,
-      managedRules: pulumi.Input.decodeList<GetContributorManagedInsightRulesManagedRule>(map['managedRules'], (value) => GetContributorManagedInsightRulesManagedRule.fromMap((value as Map).cast<String, dynamic>())),
+      managedRules: pulumi.Input.decodeList<GetContributorManagedInsightRulesManagedRule>(map['managedRules']!, (value) => GetContributorManagedInsightRulesManagedRule.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
       resourceArn: map['resourceArn'] as String,
     );

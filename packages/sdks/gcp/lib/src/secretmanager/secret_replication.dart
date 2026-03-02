@@ -29,8 +29,8 @@ class SecretReplication {
 
   factory SecretReplication.fromMap(Map<String, dynamic> map) {
     return SecretReplication(
-      auto: map['auto'] == null ? null : (SecretReplicationAuto.fromMap((map['auto'] as Map).cast<String, dynamic>())).input(),
-      userManaged: map['userManaged'] == null ? null : (SecretReplicationUserManaged.fromMap((map['userManaged'] as Map).cast<String, dynamic>())).input(),
+      auto: map['auto'] == null ? null : (SecretReplicationAuto.fromMap((map['auto']! as Map).cast<String, dynamic>())).input(),
+      userManaged: map['userManaged'] == null ? null : (SecretReplicationUserManaged.fromMap((map['userManaged']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

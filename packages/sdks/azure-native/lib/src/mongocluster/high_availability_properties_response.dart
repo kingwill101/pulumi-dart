@@ -21,7 +21,7 @@ class HighAvailabilityPropertiesResponse {
 
   factory HighAvailabilityPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityPropertiesResponse(
-      targetMode: map['targetMode'] == null ? null : (map['targetMode'] as String).input(),
+      targetMode: map['targetMode'] == null ? null : (map['targetMode']! as String).input(),
     );
   }
 }

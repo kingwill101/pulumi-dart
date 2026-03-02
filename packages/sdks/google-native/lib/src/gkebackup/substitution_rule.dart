@@ -42,11 +42,11 @@ class SubstitutionRule {
 
   factory SubstitutionRule.fromMap(Map<String, dynamic> map) {
     return SubstitutionRule(
-      newValue: map['newValue'] == null ? null : (map['newValue'] as String).input(),
-      originalValuePattern: map['originalValuePattern'] == null ? null : (map['originalValuePattern'] as String).input(),
-      targetGroupKinds: map['targetGroupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['targetGroupKinds'], (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      newValue: map['newValue'] == null ? null : (map['newValue']! as String).input(),
+      originalValuePattern: map['originalValuePattern'] == null ? null : (map['originalValuePattern']! as String).input(),
+      targetGroupKinds: map['targetGroupKinds'] == null ? null : (pulumi.Input.decodeList<GroupKind>(map['targetGroupKinds']!, (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>()))).input(),
       targetJsonPath: (map['targetJsonPath'] as String).input(),
-      targetNamespaces: map['targetNamespaces'] == null ? null : ((map['targetNamespaces'] as List).cast<String>()).input(),
+      targetNamespaces: map['targetNamespaces'] == null ? null : ((map['targetNamespaces']! as List).cast<String>()).input(),
     );
   }
 }

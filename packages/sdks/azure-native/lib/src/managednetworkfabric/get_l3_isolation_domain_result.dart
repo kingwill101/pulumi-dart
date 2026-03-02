@@ -99,20 +99,20 @@ class GetL3IsolationDomainResult {
   factory GetL3IsolationDomainResult.fromMap(Map<String, dynamic> map) {
     return GetL3IsolationDomainResult(
       administrativeState: map['administrativeState'] as String,
-      aggregateRouteConfiguration: map['aggregateRouteConfiguration'] == null ? null : AggregateRouteConfigurationResponse.fromMap((map['aggregateRouteConfiguration'] as Map).cast<String, dynamic>()),
-      annotation: map['annotation'] == null ? null : map['annotation'] as String,
+      aggregateRouteConfiguration: map['aggregateRouteConfiguration'] == null ? null : AggregateRouteConfigurationResponse.fromMap((map['aggregateRouteConfiguration']! as Map).cast<String, dynamic>()),
+      annotation: map['annotation'] == null ? null : map['annotation']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
       configurationState: map['configurationState'] as String,
-      connectedSubnetRoutePolicy: map['connectedSubnetRoutePolicy'] == null ? null : ConnectedSubnetRoutePolicyResponse.fromMap((map['connectedSubnetRoutePolicy'] as Map).cast<String, dynamic>()),
+      connectedSubnetRoutePolicy: map['connectedSubnetRoutePolicy'] == null ? null : ConnectedSubnetRoutePolicyResponse.fromMap((map['connectedSubnetRoutePolicy']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
       networkFabricId: map['networkFabricId'] as String,
       provisioningState: map['provisioningState'] as String,
-      redistributeConnectedSubnets: map['redistributeConnectedSubnets'] == null ? null : map['redistributeConnectedSubnets'] as String,
-      redistributeStaticRoutes: map['redistributeStaticRoutes'] == null ? null : map['redistributeStaticRoutes'] as String,
+      redistributeConnectedSubnets: map['redistributeConnectedSubnets'] == null ? null : map['redistributeConnectedSubnets']! as String,
+      redistributeStaticRoutes: map['redistributeStaticRoutes'] == null ? null : map['redistributeStaticRoutes']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

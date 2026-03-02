@@ -30,9 +30,9 @@ class EnvironmentLastUpdated {
 
   factory EnvironmentLastUpdated.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastUpdated(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<EnvironmentLastUpdatedError>(map['errors'], (value) => EnvironmentLastUpdatedError.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      errors: map['errors'] == null ? null : ((pulumi.Input.decodeList<EnvironmentLastUpdatedError>(map['errors']!, (value) => EnvironmentLastUpdatedError.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

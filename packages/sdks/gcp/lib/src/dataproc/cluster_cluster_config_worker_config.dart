@@ -70,14 +70,14 @@ class ClusterClusterConfigWorkerConfig {
 
   factory ClusterClusterConfigWorkerConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigWorkerConfig(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigWorkerConfigAccelerator>(map['accelerators'], (value) => ClusterClusterConfigWorkerConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      diskConfig: map['diskConfig'] == null ? null : (ClusterClusterConfigWorkerConfigDiskConfig.fromMap((map['diskConfig'] as Map).cast<String, dynamic>())).input(),
-      imageUri: map['imageUri'] == null ? null : (map['imageUri'] as String).input(),
-      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames'] as List).cast<String>()).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      minNumInstances: map['minNumInstances'] == null ? null : (map['minNumInstances'] as int).input(),
-      numInstances: map['numInstances'] == null ? null : (map['numInstances'] as int).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<ClusterClusterConfigWorkerConfigAccelerator>(map['accelerators']!, (value) => ClusterClusterConfigWorkerConfigAccelerator.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      diskConfig: map['diskConfig'] == null ? null : (ClusterClusterConfigWorkerConfigDiskConfig.fromMap((map['diskConfig']! as Map).cast<String, dynamic>())).input(),
+      imageUri: map['imageUri'] == null ? null : (map['imageUri']! as String).input(),
+      instanceNames: map['instanceNames'] == null ? null : ((map['instanceNames']! as List).cast<String>()).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      minNumInstances: map['minNumInstances'] == null ? null : (map['minNumInstances']! as int).input(),
+      numInstances: map['numInstances'] == null ? null : (map['numInstances']! as int).input(),
     );
   }
 }

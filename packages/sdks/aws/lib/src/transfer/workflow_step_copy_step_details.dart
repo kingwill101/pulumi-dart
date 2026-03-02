@@ -36,10 +36,10 @@ class WorkflowStepCopyStepDetails {
 
   factory WorkflowStepCopyStepDetails.fromMap(Map<String, dynamic> map) {
     return WorkflowStepCopyStepDetails(
-      destinationFileLocation: map['destinationFileLocation'] == null ? null : (WorkflowStepCopyStepDetailsDestinationFileLocation.fromMap((map['destinationFileLocation'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overwriteExisting: map['overwriteExisting'] == null ? null : (map['overwriteExisting'] as String).input(),
-      sourceFileLocation: map['sourceFileLocation'] == null ? null : (map['sourceFileLocation'] as String).input(),
+      destinationFileLocation: map['destinationFileLocation'] == null ? null : ((WorkflowStepCopyStepDetailsDestinationFileLocation.fromMap((map['destinationFileLocation']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      overwriteExisting: map['overwriteExisting'] == null ? null : ((map['overwriteExisting'] as String).input()).input(),
+      sourceFileLocation: map['sourceFileLocation'] == null ? null : ((map['sourceFileLocation'] as String).input()).input(),
     );
   }
 }

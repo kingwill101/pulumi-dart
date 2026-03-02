@@ -53,10 +53,10 @@ class GetDatabaseBackupsArgs {
     return GetDatabaseBackupsArgs(
       databaseId: (map['databaseId'] as int).input(),
       databaseType: (map['databaseType'] as String).input(),
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseBackupsFilter>(map['filters'], (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      latest: map['latest'] == null ? null : (map['latest'] as bool).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      orderBy: map['orderBy'] == null ? null : (map['orderBy'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetDatabaseBackupsFilter>(map['filters']!, (value) => GetDatabaseBackupsFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      latest: map['latest'] == null ? null : (map['latest']! as bool).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      orderBy: map['orderBy'] == null ? null : (map['orderBy']! as String).input(),
     );
   }
 }

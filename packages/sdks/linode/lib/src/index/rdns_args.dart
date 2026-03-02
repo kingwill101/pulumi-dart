@@ -41,8 +41,8 @@ class RdnsArgs {
     return RdnsArgs(
       address: (map['address'] as String).input(),
       rdns: (map['rdns'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (RdnsTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      waitForAvailable: map['waitForAvailable'] == null ? null : (map['waitForAvailable'] as bool).input(),
+      timeouts: map['timeouts'] == null ? null : (RdnsTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input(),
+      waitForAvailable: map['waitForAvailable'] == null ? null : (map['waitForAvailable']! as bool).input(),
     );
   }
 }

@@ -44,9 +44,9 @@ class DirectLineChannelResponse {
   factory DirectLineChannelResponse.fromMap(Map<String, dynamic> map) {
     return DirectLineChannelResponse(
       channelName: (map['channelName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (DirectLineChannelPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (DirectLineChannelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

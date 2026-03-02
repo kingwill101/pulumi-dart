@@ -27,7 +27,7 @@ class ParentProperties {
 
   factory ParentProperties.fromMap(Map<String, dynamic> map) {
     return ParentProperties(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       syncProperties: (SyncProperties.fromMap((map['syncProperties'] as Map).cast<String, dynamic>())).input(),
     );
   }

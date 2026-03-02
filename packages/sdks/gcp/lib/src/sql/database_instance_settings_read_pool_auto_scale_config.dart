@@ -51,13 +51,13 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
 
   factory DatabaseInstanceSettingsReadPoolAutoScaleConfig.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsReadPoolAutoScaleConfig(
-      disableScaleIn: map['disableScaleIn'] == null ? null : (map['disableScaleIn'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as int).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as int).input(),
-      scaleInCooldownSeconds: map['scaleInCooldownSeconds'] == null ? null : (map['scaleInCooldownSeconds'] as int).input(),
-      scaleOutCooldownSeconds: map['scaleOutCooldownSeconds'] == null ? null : (map['scaleOutCooldownSeconds'] as int).input(),
-      targetMetrics: map['targetMetrics'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric>(map['targetMetrics'], (value) => DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disableScaleIn: map['disableScaleIn'] == null ? null : (map['disableScaleIn']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as int).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as int).input(),
+      scaleInCooldownSeconds: map['scaleInCooldownSeconds'] == null ? null : (map['scaleInCooldownSeconds']! as int).input(),
+      scaleOutCooldownSeconds: map['scaleOutCooldownSeconds'] == null ? null : (map['scaleOutCooldownSeconds']! as int).input(),
+      targetMetrics: map['targetMetrics'] == null ? null : (pulumi.Input.decodeList<DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric>(map['targetMetrics']!, (value) => DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

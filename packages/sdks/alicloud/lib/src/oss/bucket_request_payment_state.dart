@@ -26,8 +26,8 @@ class BucketRequestPaymentState {
 
   factory BucketRequestPaymentState.fromMap(Map<String, dynamic> map) {
     return BucketRequestPaymentState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      payer: map['payer'] == null ? null : (map['payer'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      payer: map['payer'] == null ? null : (map['payer']! as String).input(),
     );
   }
 }

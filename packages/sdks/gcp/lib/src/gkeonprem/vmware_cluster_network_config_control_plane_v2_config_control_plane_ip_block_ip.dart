@@ -25,8 +25,8 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp {
 
   factory VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      ip: map['ip'] == null ? null : (map['ip'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      ip: map['ip'] == null ? null : (map['ip']! as String).input(),
     );
   }
 }

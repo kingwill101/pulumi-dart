@@ -64,13 +64,13 @@ class ServiceServiceProperty {
 
   factory ServiceServiceProperty.fromMap(Map<String, dynamic> map) {
     return ServiceServiceProperty(
-      extendedMetadatas: map['extendedMetadatas'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadata>(map['extendedMetadatas'], (value) => ServiceServicePropertyExtendedMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      functionalTypes: map['functionalTypes'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyFunctionalType>(map['functionalTypes'], (value) => ServiceServicePropertyFunctionalType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject'] as String).input(),
-      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyIdentity>(map['identities'], (value) => ServiceServicePropertyIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      registrationTypes: map['registrationTypes'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyRegistrationType>(map['registrationTypes'], (value) => ServiceServicePropertyRegistrationType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      extendedMetadatas: map['extendedMetadatas'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyExtendedMetadata>(map['extendedMetadatas']!, (value) => ServiceServicePropertyExtendedMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functionalTypes: map['functionalTypes'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyFunctionalType>(map['functionalTypes']!, (value) => ServiceServicePropertyFunctionalType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      gcpProject: map['gcpProject'] == null ? null : (map['gcpProject']! as String).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyIdentity>(map['identities']!, (value) => ServiceServicePropertyIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      registrationTypes: map['registrationTypes'] == null ? null : (pulumi.Input.decodeList<ServiceServicePropertyRegistrationType>(map['registrationTypes']!, (value) => ServiceServicePropertyRegistrationType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

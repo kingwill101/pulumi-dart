@@ -46,11 +46,11 @@ class RoutingEndpoints {
 
   factory RoutingEndpoints.fromMap(Map<String, dynamic> map) {
     return RoutingEndpoints(
-      cosmosDBSqlContainers: map['cosmosDBSqlContainers'] == null ? null : (pulumi.Input.decodeList<RoutingCosmosDBSqlApiProperties>(map['cosmosDBSqlContainers'], (value) => RoutingCosmosDBSqlApiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      eventHubs: map['eventHubs'] == null ? null : (pulumi.Input.decodeList<RoutingEventHubProperties>(map['eventHubs'], (value) => RoutingEventHubProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceBusQueues: map['serviceBusQueues'] == null ? null : (pulumi.Input.decodeList<RoutingServiceBusQueueEndpointProperties>(map['serviceBusQueues'], (value) => RoutingServiceBusQueueEndpointProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      serviceBusTopics: map['serviceBusTopics'] == null ? null : (pulumi.Input.decodeList<RoutingServiceBusTopicEndpointProperties>(map['serviceBusTopics'], (value) => RoutingServiceBusTopicEndpointProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageContainers: map['storageContainers'] == null ? null : (pulumi.Input.decodeList<RoutingStorageContainerProperties>(map['storageContainers'], (value) => RoutingStorageContainerProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cosmosDBSqlContainers: map['cosmosDBSqlContainers'] == null ? null : (pulumi.Input.decodeList<RoutingCosmosDBSqlApiProperties>(map['cosmosDBSqlContainers']!, (value) => RoutingCosmosDBSqlApiProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      eventHubs: map['eventHubs'] == null ? null : (pulumi.Input.decodeList<RoutingEventHubProperties>(map['eventHubs']!, (value) => RoutingEventHubProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceBusQueues: map['serviceBusQueues'] == null ? null : (pulumi.Input.decodeList<RoutingServiceBusQueueEndpointProperties>(map['serviceBusQueues']!, (value) => RoutingServiceBusQueueEndpointProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      serviceBusTopics: map['serviceBusTopics'] == null ? null : (pulumi.Input.decodeList<RoutingServiceBusTopicEndpointProperties>(map['serviceBusTopics']!, (value) => RoutingServiceBusTopicEndpointProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageContainers: map['storageContainers'] == null ? null : (pulumi.Input.decodeList<RoutingStorageContainerProperties>(map['storageContainers']!, (value) => RoutingStorageContainerProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

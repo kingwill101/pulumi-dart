@@ -44,10 +44,10 @@ class GenaiAgentRouteArgs {
   factory GenaiAgentRouteArgs.fromMap(Map<String, dynamic> map) {
     return GenaiAgentRouteArgs(
       childAgentUuid: (map['childAgentUuid'] as String).input(),
-      ifCase: map['ifCase'] == null ? null : (map['ifCase'] as String).input(),
+      ifCase: map['ifCase'] == null ? null : (map['ifCase']! as String).input(),
       parentAgentUuid: (map['parentAgentUuid'] as String).input(),
-      rollback: map['rollback'] == null ? null : (map['rollback'] as bool).input(),
-      routeName: map['routeName'] == null ? null : (map['routeName'] as String).input(),
+      rollback: map['rollback'] == null ? null : (map['rollback']! as bool).input(),
+      routeName: map['routeName'] == null ? null : (map['routeName']! as String).input(),
     );
   }
 }

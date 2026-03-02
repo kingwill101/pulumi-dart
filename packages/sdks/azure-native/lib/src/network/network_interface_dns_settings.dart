@@ -26,8 +26,8 @@ class NetworkInterfaceDnsSettings {
 
   factory NetworkInterfaceDnsSettings.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceDnsSettings(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : (map['internalDnsNameLabel'] as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : (map['internalDnsNameLabel']! as String).input(),
     );
   }
 }

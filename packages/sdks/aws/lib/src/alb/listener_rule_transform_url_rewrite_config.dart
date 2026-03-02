@@ -21,7 +21,7 @@ class ListenerRuleTransformUrlRewriteConfig {
 
   factory ListenerRuleTransformUrlRewriteConfig.fromMap(Map<String, dynamic> map) {
     return ListenerRuleTransformUrlRewriteConfig(
-      rewrite: map['rewrite'] == null ? null : (ListenerRuleTransformUrlRewriteConfigRewrite.fromMap((map['rewrite'] as Map).cast<String, dynamic>())).input(),
+      rewrite: map['rewrite'] == null ? null : ((ListenerRuleTransformUrlRewriteConfigRewrite.fromMap((map['rewrite']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

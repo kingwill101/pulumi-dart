@@ -45,12 +45,12 @@ class EndpointModelSkuPropertiesResponse {
 
   factory EndpointModelSkuPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuPropertiesResponse(
-      capacity: map['capacity'] == null ? null : (EndpointModelSkuCapacityPropertiesResponse.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
-      connectionIds: map['connectionIds'] == null ? null : ((map['connectionIds'] as List).cast<String>()).input(),
-      deprecationDate: map['deprecationDate'] == null ? null : (map['deprecationDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rateLimits: map['rateLimits'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuRateLimitPropertiesResponse>(map['rateLimits'], (value) => EndpointModelSkuRateLimitPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      usageName: map['usageName'] == null ? null : (map['usageName'] as String).input(),
+      capacity: map['capacity'] == null ? null : (EndpointModelSkuCapacityPropertiesResponse.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
+      connectionIds: map['connectionIds'] == null ? null : ((map['connectionIds']! as List).cast<String>()).input(),
+      deprecationDate: map['deprecationDate'] == null ? null : (map['deprecationDate']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rateLimits: map['rateLimits'] == null ? null : (pulumi.Input.decodeList<EndpointModelSkuRateLimitPropertiesResponse>(map['rateLimits']!, (value) => EndpointModelSkuRateLimitPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      usageName: map['usageName'] == null ? null : (map['usageName']! as String).input(),
     );
   }
 }

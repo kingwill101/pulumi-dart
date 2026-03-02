@@ -55,9 +55,9 @@ class ManagementAssociationArgs {
 
   factory ManagementAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ManagementAssociationArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementAssociationName: map['managementAssociationName'] == null ? null : (map['managementAssociationName'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagementAssociationProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementAssociationName: map['managementAssociationName'] == null ? null : (map['managementAssociationName']! as String).input(),
+      properties: map['properties'] == null ? null : (ManagementAssociationProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       providerName: (map['providerName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),

@@ -21,7 +21,7 @@ class Requests {
 
   factory Requests.fromMap(Map<String, dynamic> map) {
     return Requests(
-      storage: map['storage'] == null ? null : (map['storage'] as double).input(),
+      storage: map['storage'] == null ? null : (map['storage']! as double).input(),
     );
   }
 }

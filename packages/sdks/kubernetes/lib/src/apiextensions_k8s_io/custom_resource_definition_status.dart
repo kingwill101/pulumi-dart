@@ -39,8 +39,8 @@ class CustomResourceDefinitionStatus {
   factory CustomResourceDefinitionStatus.fromMap(Map<String, dynamic> map) {
     return CustomResourceDefinitionStatus(
       acceptedNames: (CustomResourceDefinitionNames.fromMap((map['acceptedNames'] as Map).cast<String, dynamic>())).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionCondition>(map['conditions'], (value) => CustomResourceDefinitionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CustomResourceDefinitionCondition>(map['conditions']!, (value) => CustomResourceDefinitionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
       storedVersions: ((map['storedVersions'] as List).cast<String>()).input(),
     );
   }

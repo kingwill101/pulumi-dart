@@ -91,21 +91,21 @@ class TopicState {
 
   factory TopicState.fromMap(Map<String, dynamic> map) {
     return TopicState(
-      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle'] as String).input(),
-      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : (map['batchedOperationsEnabled'] as bool).input(),
-      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : (map['defaultMessageTtl'] as String).input(),
-      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : (map['duplicateDetectionHistoryTimeWindow'] as String).input(),
-      expressEnabled: map['expressEnabled'] == null ? null : (map['expressEnabled'] as bool).input(),
-      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : (map['maxMessageSizeInKilobytes'] as int).input(),
-      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : (map['maxSizeInMegabytes'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      partitioningEnabled: map['partitioningEnabled'] == null ? null : (map['partitioningEnabled'] as bool).input(),
-      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : (map['requiresDuplicateDetection'] as bool).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      supportOrdering: map['supportOrdering'] == null ? null : (map['supportOrdering'] as bool).input(),
+      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : (map['autoDeleteOnIdle']! as String).input(),
+      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : (map['batchedOperationsEnabled']! as bool).input(),
+      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : (map['defaultMessageTtl']! as String).input(),
+      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : (map['duplicateDetectionHistoryTimeWindow']! as String).input(),
+      expressEnabled: map['expressEnabled'] == null ? null : (map['expressEnabled']! as bool).input(),
+      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : (map['maxMessageSizeInKilobytes']! as int).input(),
+      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : (map['maxSizeInMegabytes']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceId: map['namespaceId'] == null ? null : (map['namespaceId']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      partitioningEnabled: map['partitioningEnabled'] == null ? null : (map['partitioningEnabled']! as bool).input(),
+      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : (map['requiresDuplicateDetection']! as bool).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      supportOrdering: map['supportOrdering'] == null ? null : (map['supportOrdering']! as bool).input(),
     );
   }
 }

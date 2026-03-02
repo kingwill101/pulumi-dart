@@ -70,15 +70,15 @@ class DnsRecordArgs {
   factory DnsRecordArgs.fromMap(Map<String, dynamic> map) {
     return DnsRecordArgs(
       domain: (map['domain'] as String).input(),
-      flags: map['flags'] == null ? null : (map['flags'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      flags: map['flags'] == null ? null : (map['flags']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
       type: (map['type'] as String).input(),
       value: (map['value'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

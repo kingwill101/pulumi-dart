@@ -32,7 +32,7 @@ class GetJobDataprocV1beta2Args {
   factory GetJobDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetJobDataprocV1beta2Args(
       jobId: (map['jobId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
     );
   }

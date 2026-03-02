@@ -38,7 +38,7 @@ class GetCiphertextResult {
   factory GetCiphertextResult.fromMap(Map<String, dynamic> map) {
     return GetCiphertextResult(
       ciphertextBlob: map['ciphertextBlob'] as String,
-      encryptionContext: map['encryptionContext'] == null ? null : (map['encryptionContext'] as Map).cast<String, String>(),
+      encryptionContext: map['encryptionContext'] == null ? null : (map['encryptionContext']! as Map).cast<String, String>(),
       id: map['id'] as String,
       keyId: map['keyId'] as String,
       plaintext: map['plaintext'] as String,

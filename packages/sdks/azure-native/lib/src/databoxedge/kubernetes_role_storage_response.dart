@@ -28,7 +28,7 @@ class KubernetesRoleStorageResponse {
 
   factory KubernetesRoleStorageResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleStorageResponse(
-      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<MountPointMapResponse>(map['endpoints'], (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endpoints: map['endpoints'] == null ? null : (pulumi.Input.decodeList<MountPointMapResponse>(map['endpoints']!, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       storageClasses: (pulumi.Input.decodeList<KubernetesRoleStorageClassInfoResponse>(map['storageClasses'], (value) => KubernetesRoleStorageClassInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

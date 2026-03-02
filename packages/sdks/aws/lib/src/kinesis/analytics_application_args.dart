@@ -76,16 +76,16 @@ class AnalyticsApplicationArgs {
 
   factory AnalyticsApplicationArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsApplicationArgs(
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (AnalyticsApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      inputs: map['inputs'] == null ? null : (AnalyticsApplicationInputs.fromMap((map['inputs'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputs: map['outputs'] == null ? null : (pulumi.Input.decodeList<AnalyticsApplicationOutput>(map['outputs'], (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      referenceDataSources: map['referenceDataSources'] == null ? null : (AnalyticsApplicationReferenceDataSources.fromMap((map['referenceDataSources'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      startApplication: map['startApplication'] == null ? null : (map['startApplication'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((AnalyticsApplicationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      code: map['code'] == null ? null : ((map['code'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      inputs: map['inputs'] == null ? null : ((AnalyticsApplicationInputs.fromMap((map['inputs']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      outputs: map['outputs'] == null ? null : ((pulumi.Input.decodeList<AnalyticsApplicationOutput>(map['outputs']!, (value) => AnalyticsApplicationOutput.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      referenceDataSources: map['referenceDataSources'] == null ? null : ((AnalyticsApplicationReferenceDataSources.fromMap((map['referenceDataSources']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      startApplication: map['startApplication'] == null ? null : ((map['startApplication'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

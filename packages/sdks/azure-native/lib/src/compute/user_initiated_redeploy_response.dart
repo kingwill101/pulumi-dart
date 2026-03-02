@@ -21,7 +21,7 @@ class UserInitiatedRedeployResponse {
 
   factory UserInitiatedRedeployResponse.fromMap(Map<String, dynamic> map) {
     return UserInitiatedRedeployResponse(
-      automaticallyApprove: map['automaticallyApprove'] == null ? null : (map['automaticallyApprove'] as bool).input(),
+      automaticallyApprove: map['automaticallyApprove'] == null ? null : (map['automaticallyApprove']! as bool).input(),
     );
   }
 }

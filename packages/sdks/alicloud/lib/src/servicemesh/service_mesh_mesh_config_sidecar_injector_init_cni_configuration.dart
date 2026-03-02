@@ -25,8 +25,8 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
 
   factory ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      excludeNamespaces: map['excludeNamespaces'] == null ? null : (map['excludeNamespaces'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      excludeNamespaces: map['excludeNamespaces'] == null ? null : (map['excludeNamespaces']! as String).input(),
     );
   }
 }

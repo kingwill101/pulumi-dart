@@ -75,17 +75,17 @@ class ScheduleState {
 
   factory ScheduleState.fromMap(Map<String, dynamic> map) {
     return ScheduleState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : (map['autoscalingGroupName'] as String).input(),
-      desiredCapacity: map['desiredCapacity'] == null ? null : (map['desiredCapacity'] as int).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
-      recurrence: map['recurrence'] == null ? null : (map['recurrence'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      scheduledActionName: map['scheduledActionName'] == null ? null : (map['scheduledActionName'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : ((map['autoscalingGroupName'] as String).input()).input(),
+      desiredCapacity: map['desiredCapacity'] == null ? null : ((map['desiredCapacity'] as int).input()).input(),
+      endTime: map['endTime'] == null ? null : ((map['endTime'] as String).input()).input(),
+      maxSize: map['maxSize'] == null ? null : ((map['maxSize'] as int).input()).input(),
+      minSize: map['minSize'] == null ? null : ((map['minSize'] as int).input()).input(),
+      recurrence: map['recurrence'] == null ? null : ((map['recurrence'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      scheduledActionName: map['scheduledActionName'] == null ? null : ((map['scheduledActionName'] as String).input()).input(),
+      startTime: map['startTime'] == null ? null : ((map['startTime'] as String).input()).input(),
+      timeZone: map['timeZone'] == null ? null : ((map['timeZone'] as String).input()).input(),
     );
   }
 }

@@ -40,11 +40,11 @@ class DomainDevicesInterfaceDriverGuest {
 
   factory DomainDevicesInterfaceDriverGuest.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceDriverGuest(
-      csum: map['csum'] == null ? null : (map['csum'] as String).input(),
-      ecn: map['ecn'] == null ? null : (map['ecn'] as String).input(),
-      tso4: map['tso4'] == null ? null : (map['tso4'] as String).input(),
-      tso6: map['tso6'] == null ? null : (map['tso6'] as String).input(),
-      ufo: map['ufo'] == null ? null : (map['ufo'] as String).input(),
+      csum: map['csum'] == null ? null : (map['csum']! as String).input(),
+      ecn: map['ecn'] == null ? null : (map['ecn']! as String).input(),
+      tso4: map['tso4'] == null ? null : (map['tso4']! as String).input(),
+      tso6: map['tso6'] == null ? null : (map['tso6']! as String).input(),
+      ufo: map['ufo'] == null ? null : (map['ufo']! as String).input(),
     );
   }
 }

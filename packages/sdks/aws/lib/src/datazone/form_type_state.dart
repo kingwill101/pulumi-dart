@@ -87,20 +87,20 @@ class FormTypeState {
 
   factory FormTypeState.fromMap(Map<String, dynamic> map) {
     return FormTypeState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
-      imports: map['imports'] == null ? null : (pulumi.Input.decodeList<FormTypeImport>(map['imports'], (value) => FormTypeImport.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      model: map['model'] == null ? null : (FormTypeModel.fromMap((map['model'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      originDomainId: map['originDomainId'] == null ? null : (map['originDomainId'] as String).input(),
-      originProjectId: map['originProjectId'] == null ? null : (map['originProjectId'] as String).input(),
-      owningProjectIdentifier: map['owningProjectIdentifier'] == null ? null : (map['owningProjectIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (FormTypeTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      createdAt: map['createdAt'] == null ? null : ((map['createdAt'] as String).input()).input(),
+      createdBy: map['createdBy'] == null ? null : ((map['createdBy'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : ((map['domainIdentifier'] as String).input()).input(),
+      imports: map['imports'] == null ? null : ((pulumi.Input.decodeList<FormTypeImport>(map['imports']!, (value) => FormTypeImport.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      model: map['model'] == null ? null : ((FormTypeModel.fromMap((map['model']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      originDomainId: map['originDomainId'] == null ? null : ((map['originDomainId'] as String).input()).input(),
+      originProjectId: map['originProjectId'] == null ? null : ((map['originProjectId'] as String).input()).input(),
+      owningProjectIdentifier: map['owningProjectIdentifier'] == null ? null : ((map['owningProjectIdentifier'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      revision: map['revision'] == null ? null : ((map['revision'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((FormTypeTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

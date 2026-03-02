@@ -33,7 +33,7 @@ class NetworkingConfigurationResponse {
   factory NetworkingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigurationResponse(
       externalNetworkingMode: (map['externalNetworkingMode'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
       routes: (pulumi.Input.decodeList<NetworkingRouteResponse>(map['routes'], (value) => NetworkingRouteResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

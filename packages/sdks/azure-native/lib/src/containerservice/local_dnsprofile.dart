@@ -32,9 +32,9 @@ class LocalDNSProfile {
 
   factory LocalDNSProfile.fromMap(Map<String, dynamic> map) {
     return LocalDNSProfile(
-      kubeDNSOverrides: map['kubeDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverride>(map['kubeDNSOverrides'], (value) => LocalDNSOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      vnetDNSOverrides: map['vnetDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverride>(map['vnetDNSOverrides'], (value) => LocalDNSOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kubeDNSOverrides: map['kubeDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverride>(map['kubeDNSOverrides']!, (value) => LocalDNSOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      vnetDNSOverrides: map['vnetDNSOverrides'] == null ? null : (pulumi.Input.decodeMapValues<LocalDNSOverride>(map['vnetDNSOverrides']!, (value) => LocalDNSOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

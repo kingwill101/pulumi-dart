@@ -66,16 +66,16 @@ class AutoSnapShotPolicyState {
 
   factory AutoSnapShotPolicyState.fromMap(Map<String, dynamic> map) {
     return AutoSnapShotPolicyState(
-      appliedDbfsNumber: map['appliedDbfsNumber'] == null ? null : (map['appliedDbfsNumber'] as int).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      policyId: map['policyId'] == null ? null : (map['policyId'] as String).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays'] as List).cast<String>()).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      statusDetail: map['statusDetail'] == null ? null : (map['statusDetail'] as String).input(),
-      timePoints: map['timePoints'] == null ? null : ((map['timePoints'] as List).cast<String>()).input(),
+      appliedDbfsNumber: map['appliedDbfsNumber'] == null ? null : (map['appliedDbfsNumber']! as int).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      lastModified: map['lastModified'] == null ? null : (map['lastModified']! as String).input(),
+      policyId: map['policyId'] == null ? null : (map['policyId']! as String).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      repeatWeekdays: map['repeatWeekdays'] == null ? null : ((map['repeatWeekdays']! as List).cast<String>()).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      statusDetail: map['statusDetail'] == null ? null : (map['statusDetail']! as String).input(),
+      timePoints: map['timePoints'] == null ? null : ((map['timePoints']! as List).cast<String>()).input(),
     );
   }
 }

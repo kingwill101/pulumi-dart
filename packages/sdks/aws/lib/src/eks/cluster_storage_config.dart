@@ -21,7 +21,7 @@ class ClusterStorageConfig {
 
   factory ClusterStorageConfig.fromMap(Map<String, dynamic> map) {
     return ClusterStorageConfig(
-      blockStorage: map['blockStorage'] == null ? null : (ClusterStorageConfigBlockStorage.fromMap((map['blockStorage'] as Map).cast<String, dynamic>())).input(),
+      blockStorage: map['blockStorage'] == null ? null : ((ClusterStorageConfigBlockStorage.fromMap((map['blockStorage']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

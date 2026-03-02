@@ -28,7 +28,7 @@ class MetastoreServiceNetworkConfig {
   factory MetastoreServiceNetworkConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceNetworkConfig(
       consumers: (pulumi.Input.decodeList<MetastoreServiceNetworkConfigConsumer>(map['consumers'], (value) => MetastoreServiceNetworkConfigConsumer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customRoutesEnabled: map['customRoutesEnabled'] == null ? null : (map['customRoutesEnabled'] as bool).input(),
+      customRoutesEnabled: map['customRoutesEnabled'] == null ? null : (map['customRoutesEnabled']! as bool).input(),
     );
   }
 }

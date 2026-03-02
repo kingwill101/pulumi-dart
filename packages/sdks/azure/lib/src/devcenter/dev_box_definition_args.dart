@@ -57,12 +57,12 @@ class DevBoxDefinitionArgs {
   factory DevBoxDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return DevBoxDefinitionArgs(
       devCenterId: (map['devCenterId'] as String).input(),
-      hibernateSupportEnabled: map['hibernateSupportEnabled'] == null ? null : (map['hibernateSupportEnabled'] as bool).input(),
+      hibernateSupportEnabled: map['hibernateSupportEnabled'] == null ? null : (map['hibernateSupportEnabled']! as bool).input(),
       imageReferenceId: (map['imageReferenceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       skuName: (map['skuName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

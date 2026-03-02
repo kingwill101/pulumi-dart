@@ -21,7 +21,7 @@ class ApiEntityReferenceResponse {
 
   factory ApiEntityReferenceResponse.fromMap(Map<String, dynamic> map) {
     return ApiEntityReferenceResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

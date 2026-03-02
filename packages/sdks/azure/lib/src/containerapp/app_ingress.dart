@@ -78,17 +78,17 @@ class AppIngress {
 
   factory AppIngress.fromMap(Map<String, dynamic> map) {
     return AppIngress(
-      allowInsecureConnections: map['allowInsecureConnections'] == null ? null : (map['allowInsecureConnections'] as bool).input(),
-      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode'] as String).input(),
-      cors: map['cors'] == null ? null : (AppIngressCors.fromMap((map['cors'] as Map).cast<String, dynamic>())).input(),
-      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<AppIngressCustomDomain>(map['customDomains'], (value) => AppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort'] as int).input(),
-      externalEnabled: map['externalEnabled'] == null ? null : (map['externalEnabled'] as bool).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<AppIngressIpSecurityRestriction>(map['ipSecurityRestrictions'], (value) => AppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowInsecureConnections: map['allowInsecureConnections'] == null ? null : (map['allowInsecureConnections']! as bool).input(),
+      clientCertificateMode: map['clientCertificateMode'] == null ? null : (map['clientCertificateMode']! as String).input(),
+      cors: map['cors'] == null ? null : (AppIngressCors.fromMap((map['cors']! as Map).cast<String, dynamic>())).input(),
+      customDomains: map['customDomains'] == null ? null : (pulumi.Input.decodeList<AppIngressCustomDomain>(map['customDomains']!, (value) => AppIngressCustomDomain.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      exposedPort: map['exposedPort'] == null ? null : (map['exposedPort']! as int).input(),
+      externalEnabled: map['externalEnabled'] == null ? null : (map['externalEnabled']! as bool).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      ipSecurityRestrictions: map['ipSecurityRestrictions'] == null ? null : (pulumi.Input.decodeList<AppIngressIpSecurityRestriction>(map['ipSecurityRestrictions']!, (value) => AppIngressIpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       targetPort: (map['targetPort'] as int).input(),
       trafficWeights: (pulumi.Input.decodeList<AppIngressTrafficWeight>(map['trafficWeights'], (value) => AppIngressTrafficWeight.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transport: map['transport'] == null ? null : (map['transport'] as String).input(),
+      transport: map['transport'] == null ? null : (map['transport']! as String).input(),
     );
   }
 }

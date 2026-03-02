@@ -31,7 +31,7 @@ class NamespaceEventDataPoint {
 
   factory NamespaceEventDataPoint.fromMap(Map<String, dynamic> map) {
     return NamespaceEventDataPoint(
-      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration'] as String).input(),
+      dataPointConfiguration: map['dataPointConfiguration'] == null ? null : (map['dataPointConfiguration']! as String).input(),
       dataSource: (map['dataSource'] as String).input(),
       name: (map['name'] as String).input(),
     );

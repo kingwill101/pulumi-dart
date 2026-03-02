@@ -37,10 +37,10 @@ class ContentSource {
 
   factory ContentSource.fromMap(Map<String, dynamic> map) {
     return ContentSource(
-      hash: map['hash'] == null ? null : (ContentHash.fromMap((map['hash'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      hash: map['hash'] == null ? null : (ContentHash.fromMap((map['hash']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

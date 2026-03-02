@@ -38,11 +38,11 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
 
   factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(Map<String, dynamic> map) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : (map['allowInterrupt'] as bool).input(),
-      allowedInputTypes: map['allowedInputTypes'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes'] as Map).cast<String, dynamic>())).input(),
-      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification'] as Map).cast<String, dynamic>())).input(),
+      allowInterrupt: map['allowInterrupt'] == null ? null : ((map['allowInterrupt'] as bool).input()).input(),
+      allowedInputTypes: map['allowedInputTypes'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes']! as Map).cast<String, dynamic>())).input()).input(),
+      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
       mapBlockKey: (map['mapBlockKey'] as String).input(),
-      textInputSpecification: map['textInputSpecification'] == null ? null : (V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification'] as Map).cast<String, dynamic>())).input(),
+      textInputSpecification: map['textInputSpecification'] == null ? null : ((V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

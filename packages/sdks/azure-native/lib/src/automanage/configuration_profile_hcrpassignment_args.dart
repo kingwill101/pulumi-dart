@@ -40,9 +40,9 @@ class ConfigurationProfileHCRPAssignmentArgs {
 
   factory ConfigurationProfileHCRPAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileHCRPAssignmentArgs(
-      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName'] as String).input(),
+      configurationProfileAssignmentName: map['configurationProfileAssignmentName'] == null ? null : (map['configurationProfileAssignmentName']! as String).input(),
       machineName: (map['machineName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ConfigurationProfileAssignmentProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

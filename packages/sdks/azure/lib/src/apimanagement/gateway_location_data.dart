@@ -35,10 +35,10 @@ class GatewayLocationData {
 
   factory GatewayLocationData.fromMap(Map<String, dynamic> map) {
     return GatewayLocationData(
-      city: map['city'] == null ? null : (map['city'] as String).input(),
-      district: map['district'] == null ? null : (map['district'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
+      district: map['district'] == null ? null : (map['district']! as String).input(),
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

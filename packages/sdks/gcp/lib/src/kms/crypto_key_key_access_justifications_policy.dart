@@ -22,7 +22,7 @@ class CryptoKeyKeyAccessJustificationsPolicy {
 
   factory CryptoKeyKeyAccessJustificationsPolicy.fromMap(Map<String, dynamic> map) {
     return CryptoKeyKeyAccessJustificationsPolicy(
-      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : ((map['allowedAccessReasons'] as List).cast<String>()).input(),
+      allowedAccessReasons: map['allowedAccessReasons'] == null ? null : ((map['allowedAccessReasons']! as List).cast<String>()).input(),
     );
   }
 }

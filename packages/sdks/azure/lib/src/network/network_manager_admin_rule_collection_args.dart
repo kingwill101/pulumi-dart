@@ -39,8 +39,8 @@ class NetworkManagerAdminRuleCollectionArgs {
 
   factory NetworkManagerAdminRuleCollectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerAdminRuleCollectionArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkGroupIds: ((map['networkGroupIds'] as List).cast<String>()).input(),
       securityAdminConfigurationId: (map['securityAdminConfigurationId'] as String).input(),
     );

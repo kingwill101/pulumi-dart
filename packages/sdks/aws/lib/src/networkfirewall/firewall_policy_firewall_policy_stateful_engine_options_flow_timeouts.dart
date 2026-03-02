@@ -20,7 +20,7 @@ class FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts {
 
   factory FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyStatefulEngineOptionsFlowTimeouts(
-      tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] == null ? null : (map['tcpIdleTimeoutSeconds'] as int).input(),
+      tcpIdleTimeoutSeconds: map['tcpIdleTimeoutSeconds'] == null ? null : ((map['tcpIdleTimeoutSeconds'] as int).input()).input(),
     );
   }
 }

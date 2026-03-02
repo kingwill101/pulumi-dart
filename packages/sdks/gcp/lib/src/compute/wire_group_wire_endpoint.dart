@@ -25,8 +25,8 @@ class WireGroupWireEndpoint {
 
   factory WireGroupWireEndpoint.fromMap(Map<String, dynamic> map) {
     return WireGroupWireEndpoint(
-      interconnect: map['interconnect'] == null ? null : (map['interconnect'] as String).input(),
-      vlanTag: map['vlanTag'] == null ? null : (map['vlanTag'] as int).input(),
+      interconnect: map['interconnect'] == null ? null : (map['interconnect']! as String).input(),
+      vlanTag: map['vlanTag'] == null ? null : (map['vlanTag']! as int).input(),
     );
   }
 }

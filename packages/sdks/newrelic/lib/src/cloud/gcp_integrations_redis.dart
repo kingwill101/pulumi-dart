@@ -20,7 +20,7 @@ class GcpIntegrationsRedis {
 
   factory GcpIntegrationsRedis.fromMap(Map<String, dynamic> map) {
     return GcpIntegrationsRedis(
-      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval'] as int).input(),
+      metricsPollingInterval: map['metricsPollingInterval'] == null ? null : (map['metricsPollingInterval']! as int).input(),
     );
   }
 }

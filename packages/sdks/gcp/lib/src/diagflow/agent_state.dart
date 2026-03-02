@@ -107,19 +107,19 @@ class AgentState {
 
   factory AgentState.fromMap(Map<String, dynamic> map) {
     return AgentState(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      avatarUri: map['avatarUri'] == null ? null : (map['avatarUri'] as String).input(),
-      avatarUriBackend: map['avatarUriBackend'] == null ? null : (map['avatarUriBackend'] as String).input(),
-      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold'] as double).input(),
-      defaultLanguageCode: map['defaultLanguageCode'] == null ? null : (map['defaultLanguageCode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging'] as bool).input(),
-      matchMode: map['matchMode'] == null ? null : (map['matchMode'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : ((map['supportedLanguageCodes'] as List).cast<String>()).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      avatarUri: map['avatarUri'] == null ? null : (map['avatarUri']! as String).input(),
+      avatarUriBackend: map['avatarUriBackend'] == null ? null : (map['avatarUriBackend']! as String).input(),
+      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold']! as double).input(),
+      defaultLanguageCode: map['defaultLanguageCode'] == null ? null : (map['defaultLanguageCode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableLogging: map['enableLogging'] == null ? null : (map['enableLogging']! as bool).input(),
+      matchMode: map['matchMode'] == null ? null : (map['matchMode']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : ((map['supportedLanguageCodes']! as List).cast<String>()).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

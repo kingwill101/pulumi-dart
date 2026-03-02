@@ -33,9 +33,9 @@ class DomainDevicesChannelTarget {
 
   factory DomainDevicesChannelTarget.fromMap(Map<String, dynamic> map) {
     return DomainDevicesChannelTarget(
-      guestFwd: map['guestFwd'] == null ? null : (DomainDevicesChannelTargetGuestFwd.fromMap((map['guestFwd'] as Map).cast<String, dynamic>())).input(),
-      virtIo: map['virtIo'] == null ? null : (DomainDevicesChannelTargetVirtIo.fromMap((map['virtIo'] as Map).cast<String, dynamic>())).input(),
-      xen: map['xen'] == null ? null : (DomainDevicesChannelTargetXen.fromMap((map['xen'] as Map).cast<String, dynamic>())).input(),
+      guestFwd: map['guestFwd'] == null ? null : (DomainDevicesChannelTargetGuestFwd.fromMap((map['guestFwd']! as Map).cast<String, dynamic>())).input(),
+      virtIo: map['virtIo'] == null ? null : (DomainDevicesChannelTargetVirtIo.fromMap((map['virtIo']! as Map).cast<String, dynamic>())).input(),
+      xen: map['xen'] == null ? null : (DomainDevicesChannelTargetXen.fromMap((map['xen']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

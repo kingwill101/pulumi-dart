@@ -20,7 +20,7 @@ class WidgetConfigUiBrandingLogo {
 
   factory WidgetConfigUiBrandingLogo.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiBrandingLogo(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

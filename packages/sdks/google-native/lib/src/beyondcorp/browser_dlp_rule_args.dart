@@ -47,7 +47,7 @@ class BrowserDlpRuleArgs {
       group: (GoogleCloudBeyondcorpPartnerservicesV1alphaGroup.fromMap((map['group'] as Map).cast<String, dynamic>())).input(),
       organizationId: (map['organizationId'] as String).input(),
       partnerTenantId: (map['partnerTenantId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       ruleSetting: (GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSetting.fromMap((map['ruleSetting'] as Map).cast<String, dynamic>())).input(),
     );
   }

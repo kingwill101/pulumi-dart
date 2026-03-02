@@ -30,7 +30,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConn
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties(
       oauth2GrantType: (map['oauth2GrantType'] as String).input(),
       tokenUrl: (map['tokenUrl'] as String).input(),
-      tokenUrlCustomProperties: map['tokenUrlCustomProperties'] == null ? null : ((map['tokenUrlCustomProperties'] as Map).cast<String, String>()).input(),
+      tokenUrlCustomProperties: map['tokenUrlCustomProperties'] == null ? null : (((map['tokenUrlCustomProperties'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -75,16 +75,16 @@ class SearchApplicationArgs {
 
   factory SearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return SearchApplicationArgs(
-      dataSourceRestrictions: map['dataSourceRestrictions'] == null ? null : (pulumi.Input.decodeList<DataSourceRestriction>(map['dataSourceRestrictions'], (value) => DataSourceRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultFacetOptions: map['defaultFacetOptions'] == null ? null : (pulumi.Input.decodeList<FacetOptions>(map['defaultFacetOptions'], (value) => FacetOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultSortOptions: map['defaultSortOptions'] == null ? null : (SortOptions.fromMap((map['defaultSortOptions'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      enableAuditLog: map['enableAuditLog'] == null ? null : (map['enableAuditLog'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryInterpretationConfig: map['queryInterpretationConfig'] == null ? null : (QueryInterpretationConfig.fromMap((map['queryInterpretationConfig'] as Map).cast<String, dynamic>())).input(),
-      returnResultThumbnailUrls: map['returnResultThumbnailUrls'] == null ? null : (map['returnResultThumbnailUrls'] as bool).input(),
-      scoringConfig: map['scoringConfig'] == null ? null : (ScoringConfig.fromMap((map['scoringConfig'] as Map).cast<String, dynamic>())).input(),
-      sourceConfig: map['sourceConfig'] == null ? null : (pulumi.Input.decodeList<SourceConfig>(map['sourceConfig'], (value) => SourceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSourceRestrictions: map['dataSourceRestrictions'] == null ? null : (pulumi.Input.decodeList<DataSourceRestriction>(map['dataSourceRestrictions']!, (value) => DataSourceRestriction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultFacetOptions: map['defaultFacetOptions'] == null ? null : (pulumi.Input.decodeList<FacetOptions>(map['defaultFacetOptions']!, (value) => FacetOptions.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultSortOptions: map['defaultSortOptions'] == null ? null : (SortOptions.fromMap((map['defaultSortOptions']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      enableAuditLog: map['enableAuditLog'] == null ? null : (map['enableAuditLog']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      queryInterpretationConfig: map['queryInterpretationConfig'] == null ? null : (QueryInterpretationConfig.fromMap((map['queryInterpretationConfig']! as Map).cast<String, dynamic>())).input(),
+      returnResultThumbnailUrls: map['returnResultThumbnailUrls'] == null ? null : (map['returnResultThumbnailUrls']! as bool).input(),
+      scoringConfig: map['scoringConfig'] == null ? null : (ScoringConfig.fromMap((map['scoringConfig']! as Map).cast<String, dynamic>())).input(),
+      sourceConfig: map['sourceConfig'] == null ? null : (pulumi.Input.decodeList<SourceConfig>(map['sourceConfig']!, (value) => SourceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

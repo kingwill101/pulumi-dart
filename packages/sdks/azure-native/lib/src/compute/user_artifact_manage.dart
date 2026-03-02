@@ -32,7 +32,7 @@ class UserArtifactManage {
     return UserArtifactManage(
       install: (map['install'] as String).input(),
       remove: (map['remove'] as String).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      update: map['update'] == null ? null : (map['update']! as String).input(),
     );
   }
 }

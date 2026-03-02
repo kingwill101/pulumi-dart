@@ -76,17 +76,17 @@ class MongoCollectionState {
 
   factory MongoCollectionState.fromMap(Map<String, dynamic> map) {
     return MongoCollectionState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl'] as int).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (MongoCollectionAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      defaultTtlSeconds: map['defaultTtlSeconds'] == null ? null : (map['defaultTtlSeconds'] as int).input(),
-      indices: map['indices'] == null ? null : (pulumi.Input.decodeList<MongoCollectionIndex>(map['indices'], (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      shardKey: map['shardKey'] == null ? null : (map['shardKey'] as String).input(),
-      systemIndexes: map['systemIndexes'] == null ? null : (pulumi.Input.decodeList<MongoCollectionSystemIndex>(map['systemIndexes'], (value) => MongoCollectionSystemIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      analyticalStorageTtl: map['analyticalStorageTtl'] == null ? null : (map['analyticalStorageTtl']! as int).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (MongoCollectionAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      defaultTtlSeconds: map['defaultTtlSeconds'] == null ? null : (map['defaultTtlSeconds']! as int).input(),
+      indices: map['indices'] == null ? null : (pulumi.Input.decodeList<MongoCollectionIndex>(map['indices']!, (value) => MongoCollectionIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      shardKey: map['shardKey'] == null ? null : (map['shardKey']! as String).input(),
+      systemIndexes: map['systemIndexes'] == null ? null : (pulumi.Input.decodeList<MongoCollectionSystemIndex>(map['systemIndexes']!, (value) => MongoCollectionSystemIndex.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

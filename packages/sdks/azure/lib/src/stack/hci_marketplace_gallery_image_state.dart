@@ -67,16 +67,16 @@ class HciMarketplaceGalleryImageState {
 
   factory HciMarketplaceGalleryImageState.fromMap(Map<String, dynamic> map) {
     return HciMarketplaceGalleryImageState(
-      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId'] as String).input(),
-      hypervGeneration: map['hypervGeneration'] == null ? null : (map['hypervGeneration'] as String).input(),
-      identifier: map['identifier'] == null ? null : (HciMarketplaceGalleryImageIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      customLocationId: map['customLocationId'] == null ? null : (map['customLocationId']! as String).input(),
+      hypervGeneration: map['hypervGeneration'] == null ? null : (map['hypervGeneration']! as String).input(),
+      identifier: map['identifier'] == null ? null : (HciMarketplaceGalleryImageIdentifier.fromMap((map['identifier']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      storagePathId: map['storagePathId'] == null ? null : (map['storagePathId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

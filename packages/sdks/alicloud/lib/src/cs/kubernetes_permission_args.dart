@@ -30,7 +30,7 @@ class KubernetesPermissionArgs {
 
   factory KubernetesPermissionArgs.fromMap(Map<String, dynamic> map) {
     return KubernetesPermissionArgs(
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions'], (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions']!, (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
       uid: (map['uid'] as String).input(),
     );
   }

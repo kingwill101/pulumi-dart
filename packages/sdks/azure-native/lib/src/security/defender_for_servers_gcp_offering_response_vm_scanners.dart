@@ -27,8 +27,8 @@ class DefenderForServersGcpOfferingResponseVmScanners {
 
   factory DefenderForServersGcpOfferingResponseVmScanners.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingResponseVmScanners(
-      configuration: map['configuration'] == null ? null : (VmScannersBaseResponseConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      configuration: map['configuration'] == null ? null : (VmScannersBaseResponseConfiguration.fromMap((map['configuration']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

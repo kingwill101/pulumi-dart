@@ -31,9 +31,9 @@ class ListenerCertificateState {
 
   factory ListenerCertificateState.fromMap(Map<String, dynamic> map) {
     return ListenerCertificateState(
-      certificateArn: map['certificateArn'] == null ? null : (map['certificateArn'] as String).input(),
-      listenerArn: map['listenerArn'] == null ? null : (map['listenerArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      certificateArn: map['certificateArn'] == null ? null : ((map['certificateArn'] as String).input()).input(),
+      listenerArn: map['listenerArn'] == null ? null : ((map['listenerArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

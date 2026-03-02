@@ -20,7 +20,7 @@ class TableGlobalTableWitness {
 
   factory TableGlobalTableWitness.fromMap(Map<String, dynamic> map) {
     return TableGlobalTableWitness(
-      regionName: map['regionName'] == null ? null : (map['regionName'] as String).input(),
+      regionName: map['regionName'] == null ? null : ((map['regionName'] as String).input()).input(),
     );
   }
 }

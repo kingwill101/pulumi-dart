@@ -82,20 +82,20 @@ class DefaultSubnetArgs {
 
   factory DefaultSubnetArgs.fromMap(Map<String, dynamic> map) {
     return DefaultSubnetArgs(
-      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : (map['assignIpv6AddressOnCreation'] as bool).input(),
+      assignIpv6AddressOnCreation: map['assignIpv6AddressOnCreation'] == null ? null : ((map['assignIpv6AddressOnCreation'] as bool).input()).input(),
       availabilityZone: (map['availabilityZone'] as String).input(),
-      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : (map['customerOwnedIpv4Pool'] as String).input(),
-      enableDns64: map['enableDns64'] == null ? null : (map['enableDns64'] as bool).input(),
-      enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] == null ? null : (map['enableResourceNameDnsARecordOnLaunch'] as bool).input(),
-      enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] == null ? null : (map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
-      ipv6Native: map['ipv6Native'] == null ? null : (map['ipv6Native'] as bool).input(),
-      mapCustomerOwnedIpOnLaunch: map['mapCustomerOwnedIpOnLaunch'] == null ? null : (map['mapCustomerOwnedIpOnLaunch'] as bool).input(),
-      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : (map['mapPublicIpOnLaunch'] as bool).input(),
-      privateDnsHostnameTypeOnLaunch: map['privateDnsHostnameTypeOnLaunch'] == null ? null : (map['privateDnsHostnameTypeOnLaunch'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      customerOwnedIpv4Pool: map['customerOwnedIpv4Pool'] == null ? null : ((map['customerOwnedIpv4Pool'] as String).input()).input(),
+      enableDns64: map['enableDns64'] == null ? null : ((map['enableDns64'] as bool).input()).input(),
+      enableResourceNameDnsARecordOnLaunch: map['enableResourceNameDnsARecordOnLaunch'] == null ? null : ((map['enableResourceNameDnsARecordOnLaunch'] as bool).input()).input(),
+      enableResourceNameDnsAaaaRecordOnLaunch: map['enableResourceNameDnsAaaaRecordOnLaunch'] == null ? null : ((map['enableResourceNameDnsAaaaRecordOnLaunch'] as bool).input()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : ((map['forceDestroy'] as bool).input()).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
+      ipv6Native: map['ipv6Native'] == null ? null : ((map['ipv6Native'] as bool).input()).input(),
+      mapCustomerOwnedIpOnLaunch: map['mapCustomerOwnedIpOnLaunch'] == null ? null : ((map['mapCustomerOwnedIpOnLaunch'] as bool).input()).input(),
+      mapPublicIpOnLaunch: map['mapPublicIpOnLaunch'] == null ? null : ((map['mapPublicIpOnLaunch'] as bool).input()).input(),
+      privateDnsHostnameTypeOnLaunch: map['privateDnsHostnameTypeOnLaunch'] == null ? null : ((map['privateDnsHostnameTypeOnLaunch'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

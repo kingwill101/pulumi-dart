@@ -21,7 +21,7 @@ class EnvironmentVariableTypeEnumValueResponse {
 
   factory EnvironmentVariableTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class AlertProcessingRuleSuppressionSchedule {
 
   factory AlertProcessingRuleSuppressionSchedule.fromMap(Map<String, dynamic> map) {
     return AlertProcessingRuleSuppressionSchedule(
-      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom'] as String).input(),
-      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil'] as String).input(),
-      recurrence: map['recurrence'] == null ? null : (AlertProcessingRuleSuppressionScheduleRecurrence.fromMap((map['recurrence'] as Map).cast<String, dynamic>())).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      effectiveFrom: map['effectiveFrom'] == null ? null : (map['effectiveFrom']! as String).input(),
+      effectiveUntil: map['effectiveUntil'] == null ? null : (map['effectiveUntil']! as String).input(),
+      recurrence: map['recurrence'] == null ? null : (AlertProcessingRuleSuppressionScheduleRecurrence.fromMap((map['recurrence']! as Map).cast<String, dynamic>())).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

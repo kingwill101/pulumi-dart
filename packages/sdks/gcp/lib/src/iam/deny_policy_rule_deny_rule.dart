@@ -46,11 +46,11 @@ class DenyPolicyRuleDenyRule {
 
   factory DenyPolicyRuleDenyRule.fromMap(Map<String, dynamic> map) {
     return DenyPolicyRuleDenyRule(
-      denialCondition: map['denialCondition'] == null ? null : (DenyPolicyRuleDenyRuleDenialCondition.fromMap((map['denialCondition'] as Map).cast<String, dynamic>())).input(),
-      deniedPermissions: map['deniedPermissions'] == null ? null : ((map['deniedPermissions'] as List).cast<String>()).input(),
-      deniedPrincipals: map['deniedPrincipals'] == null ? null : ((map['deniedPrincipals'] as List).cast<String>()).input(),
-      exceptionPermissions: map['exceptionPermissions'] == null ? null : ((map['exceptionPermissions'] as List).cast<String>()).input(),
-      exceptionPrincipals: map['exceptionPrincipals'] == null ? null : ((map['exceptionPrincipals'] as List).cast<String>()).input(),
+      denialCondition: map['denialCondition'] == null ? null : (DenyPolicyRuleDenyRuleDenialCondition.fromMap((map['denialCondition']! as Map).cast<String, dynamic>())).input(),
+      deniedPermissions: map['deniedPermissions'] == null ? null : ((map['deniedPermissions']! as List).cast<String>()).input(),
+      deniedPrincipals: map['deniedPrincipals'] == null ? null : ((map['deniedPrincipals']! as List).cast<String>()).input(),
+      exceptionPermissions: map['exceptionPermissions'] == null ? null : ((map['exceptionPermissions']! as List).cast<String>()).input(),
+      exceptionPrincipals: map['exceptionPrincipals'] == null ? null : ((map['exceptionPrincipals']! as List).cast<String>()).input(),
     );
   }
 }

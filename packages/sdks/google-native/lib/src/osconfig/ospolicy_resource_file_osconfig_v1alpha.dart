@@ -38,10 +38,10 @@ class OSPolicyResourceFileOsconfigV1alpha {
 
   factory OSPolicyResourceFileOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileOsconfigV1alpha(
-      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure'] as bool).input(),
-      gcs: map['gcs'] == null ? null : (OSPolicyResourceFileGcsOsconfigV1alpha.fromMap((map['gcs'] as Map).cast<String, dynamic>())).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      remote: map['remote'] == null ? null : (OSPolicyResourceFileRemoteOsconfigV1alpha.fromMap((map['remote'] as Map).cast<String, dynamic>())).input(),
+      allowInsecure: map['allowInsecure'] == null ? null : (map['allowInsecure']! as bool).input(),
+      gcs: map['gcs'] == null ? null : (OSPolicyResourceFileGcsOsconfigV1alpha.fromMap((map['gcs']! as Map).cast<String, dynamic>())).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
+      remote: map['remote'] == null ? null : (OSPolicyResourceFileRemoteOsconfigV1alpha.fromMap((map['remote']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

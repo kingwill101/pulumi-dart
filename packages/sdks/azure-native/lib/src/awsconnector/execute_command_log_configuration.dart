@@ -41,11 +41,11 @@ class ExecuteCommandLogConfiguration {
 
   factory ExecuteCommandLogConfiguration.fromMap(Map<String, dynamic> map) {
     return ExecuteCommandLogConfiguration(
-      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : (map['cloudWatchEncryptionEnabled'] as bool).input(),
-      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : (map['cloudWatchLogGroupName'] as String).input(),
-      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName'] as String).input(),
-      s3EncryptionEnabled: map['s3EncryptionEnabled'] == null ? null : (map['s3EncryptionEnabled'] as bool).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      cloudWatchEncryptionEnabled: map['cloudWatchEncryptionEnabled'] == null ? null : (map['cloudWatchEncryptionEnabled']! as bool).input(),
+      cloudWatchLogGroupName: map['cloudWatchLogGroupName'] == null ? null : (map['cloudWatchLogGroupName']! as String).input(),
+      s3BucketName: map['s3BucketName'] == null ? null : (map['s3BucketName']! as String).input(),
+      s3EncryptionEnabled: map['s3EncryptionEnabled'] == null ? null : (map['s3EncryptionEnabled']! as bool).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
     );
   }
 }

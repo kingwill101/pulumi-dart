@@ -51,10 +51,10 @@ class GuestAgentArgs {
 
   factory GuestAgentArgs.fromMap(Map<String, dynamic> map) {
     return GuestAgentArgs(
-      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      guestAgentName: map['guestAgentName'] == null ? null : (map['guestAgentName'] as String).input(),
-      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig'] as Map).cast<String, dynamic>())).input(),
-      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction'] as String).input(),
+      credentials: map['credentials'] == null ? null : (GuestCredential.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      guestAgentName: map['guestAgentName'] == null ? null : (map['guestAgentName']! as String).input(),
+      httpProxyConfig: map['httpProxyConfig'] == null ? null : (HttpProxyConfiguration.fromMap((map['httpProxyConfig']! as Map).cast<String, dynamic>())).input(),
+      provisioningAction: map['provisioningAction'] == null ? null : (map['provisioningAction']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualMachineName: (map['virtualMachineName'] as String).input(),
     );

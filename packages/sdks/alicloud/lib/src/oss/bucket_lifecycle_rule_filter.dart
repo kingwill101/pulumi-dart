@@ -31,9 +31,9 @@ class BucketLifecycleRuleFilter {
 
   factory BucketLifecycleRuleFilter.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleRuleFilter(
-      not: map['not'] == null ? null : (BucketLifecycleRuleFilterNot.fromMap((map['not'] as Map).cast<String, dynamic>())).input(),
-      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan'] as int).input(),
-      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan'] as int).input(),
+      not: map['not'] == null ? null : (BucketLifecycleRuleFilterNot.fromMap((map['not']! as Map).cast<String, dynamic>())).input(),
+      objectSizeGreaterThan: map['objectSizeGreaterThan'] == null ? null : (map['objectSizeGreaterThan']! as int).input(),
+      objectSizeLessThan: map['objectSizeLessThan'] == null ? null : (map['objectSizeLessThan']! as int).input(),
     );
   }
 }

@@ -52,11 +52,11 @@ class ResourceSkuResponse {
 
   factory ResourceSkuResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSkuResponse(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
       family: (map['family'] as String).input(),
       name: (map['name'] as String).input(),
       size: (map['size'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

@@ -31,7 +31,7 @@ class GetOrganizationalUnitDescendantAccountsResult {
 
   factory GetOrganizationalUnitDescendantAccountsResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationalUnitDescendantAccountsResult(
-      accounts: pulumi.Input.decodeList<GetOrganizationalUnitDescendantAccountsAccount>(map['accounts'], (value) => GetOrganizationalUnitDescendantAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetOrganizationalUnitDescendantAccountsAccount>(map['accounts']!, (value) => GetOrganizationalUnitDescendantAccountsAccount.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       parentId: map['parentId'] as String,
     );

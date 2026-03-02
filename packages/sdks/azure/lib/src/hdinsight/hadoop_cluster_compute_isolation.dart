@@ -25,8 +25,8 @@ class HadoopClusterComputeIsolation {
 
   factory HadoopClusterComputeIsolation.fromMap(Map<String, dynamic> map) {
     return HadoopClusterComputeIsolation(
-      computeIsolationEnabled: map['computeIsolationEnabled'] == null ? null : (map['computeIsolationEnabled'] as bool).input(),
-      hostSku: map['hostSku'] == null ? null : (map['hostSku'] as String).input(),
+      computeIsolationEnabled: map['computeIsolationEnabled'] == null ? null : (map['computeIsolationEnabled']! as bool).input(),
+      hostSku: map['hostSku'] == null ? null : (map['hostSku']! as String).input(),
     );
   }
 }

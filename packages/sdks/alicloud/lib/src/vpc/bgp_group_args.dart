@@ -73,15 +73,15 @@ class BgpGroupArgs {
 
   factory BgpGroupArgs.fromMap(Map<String, dynamic> map) {
     return BgpGroupArgs(
-      authKey: map['authKey'] == null ? null : (map['authKey'] as String).input(),
-      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName'] as String).input(),
-      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn'] as bool).input(),
-      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as int).input(),
+      authKey: map['authKey'] == null ? null : (map['authKey']! as String).input(),
+      bgpGroupName: map['bgpGroupName'] == null ? null : (map['bgpGroupName']! as String).input(),
+      clearAuthKey: map['clearAuthKey'] == null ? null : (map['clearAuthKey']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      isFakeAsn: map['isFakeAsn'] == null ? null : (map['isFakeAsn']! as bool).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn']! as int).input(),
       peerAsn: (map['peerAsn'] as int).input(),
-      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit'] as int).input(),
+      routeLimit: map['routeLimit'] == null ? null : (map['routeLimit']! as int).input(),
       routerId: (map['routerId'] as String).input(),
     );
   }

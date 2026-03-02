@@ -26,8 +26,8 @@ class VirtualDirectoryResponse {
 
   factory VirtualDirectoryResponse.fromMap(Map<String, dynamic> map) {
     return VirtualDirectoryResponse(
-      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath'] as String).input(),
-      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath'] as String).input(),
+      physicalPath: map['physicalPath'] == null ? null : (map['physicalPath']! as String).input(),
+      virtualPath: map['virtualPath'] == null ? null : (map['virtualPath']! as String).input(),
     );
   }
 }

@@ -25,7 +25,7 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
 
   factory CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       source: (map['source'] as String).input(),
     );
   }

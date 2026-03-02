@@ -39,9 +39,9 @@ class InstancePersistenceConfig {
 
   factory InstancePersistenceConfig.fromMap(Map<String, dynamic> map) {
     return InstancePersistenceConfig(
-      aofConfig: map['aofConfig'] == null ? null : (InstancePersistenceConfigAofConfig.fromMap((map['aofConfig'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      rdbConfig: map['rdbConfig'] == null ? null : (InstancePersistenceConfigRdbConfig.fromMap((map['rdbConfig'] as Map).cast<String, dynamic>())).input(),
+      aofConfig: map['aofConfig'] == null ? null : (InstancePersistenceConfigAofConfig.fromMap((map['aofConfig']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      rdbConfig: map['rdbConfig'] == null ? null : (InstancePersistenceConfigRdbConfig.fromMap((map['rdbConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

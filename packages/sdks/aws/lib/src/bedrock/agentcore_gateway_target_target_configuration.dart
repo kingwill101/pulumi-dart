@@ -21,7 +21,7 @@ class AgentcoreGatewayTargetTargetConfiguration {
 
   factory AgentcoreGatewayTargetTargetConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreGatewayTargetTargetConfiguration(
-      mcp: map['mcp'] == null ? null : (AgentcoreGatewayTargetTargetConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>())).input(),
+      mcp: map['mcp'] == null ? null : ((AgentcoreGatewayTargetTargetConfigurationMcp.fromMap((map['mcp']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

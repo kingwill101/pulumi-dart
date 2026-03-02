@@ -56,14 +56,14 @@ class GradientaiFunctionState {
 
   factory GradientaiFunctionState.fromMap(Map<String, dynamic> map) {
     return GradientaiFunctionState(
-      agentId: map['agentId'] == null ? null : (map['agentId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      faasName: map['faasName'] == null ? null : (map['faasName'] as String).input(),
-      faasNamespace: map['faasNamespace'] == null ? null : (map['faasNamespace'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      functionUuid: map['functionUuid'] == null ? null : (map['functionUuid'] as String).input(),
-      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema'] as String).input(),
-      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema'] as String).input(),
+      agentId: map['agentId'] == null ? null : (map['agentId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      faasName: map['faasName'] == null ? null : (map['faasName']! as String).input(),
+      faasNamespace: map['faasNamespace'] == null ? null : (map['faasNamespace']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      functionUuid: map['functionUuid'] == null ? null : (map['functionUuid']! as String).input(),
+      inputSchema: map['inputSchema'] == null ? null : (map['inputSchema']! as String).input(),
+      outputSchema: map['outputSchema'] == null ? null : (map['outputSchema']! as String).input(),
     );
   }
 }

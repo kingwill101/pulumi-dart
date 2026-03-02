@@ -31,7 +31,7 @@ class WindowsVirtualMachineInboundNatRule {
   factory WindowsVirtualMachineInboundNatRule.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineInboundNatRule(
       backendPort: (map['backendPort'] as int).input(),
-      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort'] as int).input(),
+      frontendPort: map['frontendPort'] == null ? null : (map['frontendPort']! as int).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

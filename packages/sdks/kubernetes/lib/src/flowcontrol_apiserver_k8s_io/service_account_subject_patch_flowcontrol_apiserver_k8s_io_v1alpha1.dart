@@ -26,8 +26,8 @@ class ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1alpha1 {
 
   factory ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1alpha1(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
     );
   }
 }

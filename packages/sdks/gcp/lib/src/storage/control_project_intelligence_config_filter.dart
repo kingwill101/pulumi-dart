@@ -43,10 +43,10 @@ class ControlProjectIntelligenceConfigFilter {
 
   factory ControlProjectIntelligenceConfigFilter.fromMap(Map<String, dynamic> map) {
     return ControlProjectIntelligenceConfigFilter(
-      excludedCloudStorageBuckets: map['excludedCloudStorageBuckets'] == null ? null : (ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap((map['excludedCloudStorageBuckets'] as Map).cast<String, dynamic>())).input(),
-      excludedCloudStorageLocations: map['excludedCloudStorageLocations'] == null ? null : (ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap((map['excludedCloudStorageLocations'] as Map).cast<String, dynamic>())).input(),
-      includedCloudStorageBuckets: map['includedCloudStorageBuckets'] == null ? null : (ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap((map['includedCloudStorageBuckets'] as Map).cast<String, dynamic>())).input(),
-      includedCloudStorageLocations: map['includedCloudStorageLocations'] == null ? null : (ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap((map['includedCloudStorageLocations'] as Map).cast<String, dynamic>())).input(),
+      excludedCloudStorageBuckets: map['excludedCloudStorageBuckets'] == null ? null : (ControlProjectIntelligenceConfigFilterExcludedCloudStorageBuckets.fromMap((map['excludedCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
+      excludedCloudStorageLocations: map['excludedCloudStorageLocations'] == null ? null : (ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocations.fromMap((map['excludedCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
+      includedCloudStorageBuckets: map['includedCloudStorageBuckets'] == null ? null : (ControlProjectIntelligenceConfigFilterIncludedCloudStorageBuckets.fromMap((map['includedCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
+      includedCloudStorageLocations: map['includedCloudStorageLocations'] == null ? null : (ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocations.fromMap((map['includedCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

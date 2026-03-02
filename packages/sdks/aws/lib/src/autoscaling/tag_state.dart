@@ -32,9 +32,9 @@ class TagState {
 
   factory TagState.fromMap(Map<String, dynamic> map) {
     return TagState(
-      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : (map['autoscalingGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tag: map['tag'] == null ? null : (TagTag.fromMap((map['tag'] as Map).cast<String, dynamic>())).input(),
+      autoscalingGroupName: map['autoscalingGroupName'] == null ? null : ((map['autoscalingGroupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tag: map['tag'] == null ? null : ((TagTag.fromMap((map['tag']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

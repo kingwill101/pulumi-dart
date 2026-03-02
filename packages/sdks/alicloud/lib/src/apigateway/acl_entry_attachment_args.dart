@@ -35,7 +35,7 @@ class AclEntryAttachmentArgs {
   factory AclEntryAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return AclEntryAttachmentArgs(
       aclId: (map['aclId'] as String).input(),
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
       entry: (map['entry'] as String).input(),
     );
   }

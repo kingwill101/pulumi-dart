@@ -20,7 +20,7 @@ class SystraceSetup {
 
   factory SystraceSetup.fromMap(Map<String, dynamic> map) {
     return SystraceSetup(
-      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds']! as int).input(),
     );
   }
 }

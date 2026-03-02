@@ -45,10 +45,10 @@ class VswitchArgs {
   factory VswitchArgs.fromMap(Map<String, dynamic> map) {
     return VswitchArgs(
       cidrBlock: (map['cidrBlock'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       ensRegionId: (map['ensRegionId'] as String).input(),
-      networkId: map['networkId'] == null ? null : (map['networkId'] as String).input(),
-      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName'] as String).input(),
+      networkId: map['networkId'] == null ? null : (map['networkId']! as String).input(),
+      vswitchName: map['vswitchName'] == null ? null : (map['vswitchName']! as String).input(),
     );
   }
 }

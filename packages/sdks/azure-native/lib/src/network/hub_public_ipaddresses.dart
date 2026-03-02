@@ -27,8 +27,8 @@ class HubPublicIPAddresses {
 
   factory HubPublicIPAddresses.fromMap(Map<String, dynamic> map) {
     return HubPublicIPAddresses(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<AzureFirewallPublicIPAddress>(map['addresses'], (value) => AzureFirewallPublicIPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      count: map['count'] == null ? null : (map['count'] as int).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<AzureFirewallPublicIPAddress>(map['addresses']!, (value) => AzureFirewallPublicIPAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      count: map['count'] == null ? null : (map['count']! as int).input(),
     );
   }
 }

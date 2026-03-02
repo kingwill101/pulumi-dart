@@ -71,9 +71,9 @@ class GetAccessPointResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       ownerId: map['ownerId'] as String,
-      posixUsers: pulumi.Input.decodeList<GetAccessPointPosixUser>(map['posixUsers'], (value) => GetAccessPointPosixUser.fromMap((value as Map).cast<String, dynamic>())),
+      posixUsers: pulumi.Input.decodeList<GetAccessPointPosixUser>(map['posixUsers']!, (value) => GetAccessPointPosixUser.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
-      rootDirectories: pulumi.Input.decodeList<GetAccessPointRootDirectory>(map['rootDirectories'], (value) => GetAccessPointRootDirectory.fromMap((value as Map).cast<String, dynamic>())),
+      rootDirectories: pulumi.Input.decodeList<GetAccessPointRootDirectory>(map['rootDirectories']!, (value) => GetAccessPointRootDirectory.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }

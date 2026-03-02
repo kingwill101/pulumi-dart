@@ -37,7 +37,7 @@ class GetCryptoKeyLatestVersionArgs {
   factory GetCryptoKeyLatestVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeyLatestVersionArgs(
       cryptoKey: (map['cryptoKey'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

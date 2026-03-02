@@ -32,7 +32,7 @@ class ServiceSignUpTermsOfService {
     return ServiceSignUpTermsOfService(
       consentRequired: (map['consentRequired'] as bool).input(),
       enabled: (map['enabled'] as bool).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

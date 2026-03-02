@@ -27,8 +27,8 @@ class StandardAssignmentPropertiesResponseExemptionData {
 
   factory StandardAssignmentPropertiesResponseExemptionData.fromMap(Map<String, dynamic> map) {
     return StandardAssignmentPropertiesResponseExemptionData(
-      assignedAssessment: map['assignedAssessment'] == null ? null : (AssignedAssessmentItemResponse.fromMap((map['assignedAssessment'] as Map).cast<String, dynamic>())).input(),
-      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory'] as String).input(),
+      assignedAssessment: map['assignedAssessment'] == null ? null : (AssignedAssessmentItemResponse.fromMap((map['assignedAssessment']! as Map).cast<String, dynamic>())).input(),
+      exemptionCategory: map['exemptionCategory'] == null ? null : (map['exemptionCategory']! as String).input(),
     );
   }
 }

@@ -58,14 +58,14 @@ class NetworkConfigurationResponse {
 
   factory NetworkConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigurationResponse(
-      attachedNetworkConfiguration: map['attachedNetworkConfiguration'] == null ? null : (AttachedNetworkConfigurationResponse.fromMap((map['attachedNetworkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      bgpServiceLoadBalancerConfiguration: map['bgpServiceLoadBalancerConfiguration'] == null ? null : (BgpServiceLoadBalancerConfigurationResponse.fromMap((map['bgpServiceLoadBalancerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      attachedNetworkConfiguration: map['attachedNetworkConfiguration'] == null ? null : (AttachedNetworkConfigurationResponse.fromMap((map['attachedNetworkConfiguration']! as Map).cast<String, dynamic>())).input(),
+      bgpServiceLoadBalancerConfiguration: map['bgpServiceLoadBalancerConfiguration'] == null ? null : (BgpServiceLoadBalancerConfigurationResponse.fromMap((map['bgpServiceLoadBalancerConfiguration']! as Map).cast<String, dynamic>())).input(),
       cloudServicesNetworkId: (map['cloudServicesNetworkId'] as String).input(),
       cniNetworkId: (map['cniNetworkId'] as String).input(),
-      dnsServiceIp: map['dnsServiceIp'] == null ? null : (map['dnsServiceIp'] as String).input(),
-      l2ServiceLoadBalancerConfiguration: map['l2ServiceLoadBalancerConfiguration'] == null ? null : (L2ServiceLoadBalancerConfigurationResponse.fromMap((map['l2ServiceLoadBalancerConfiguration'] as Map).cast<String, dynamic>())).input(),
-      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs'] as List).cast<String>()).input(),
-      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs'] as List).cast<String>()).input(),
+      dnsServiceIp: map['dnsServiceIp'] == null ? null : (map['dnsServiceIp']! as String).input(),
+      l2ServiceLoadBalancerConfiguration: map['l2ServiceLoadBalancerConfiguration'] == null ? null : (L2ServiceLoadBalancerConfigurationResponse.fromMap((map['l2ServiceLoadBalancerConfiguration']! as Map).cast<String, dynamic>())).input(),
+      podCidrs: map['podCidrs'] == null ? null : ((map['podCidrs']! as List).cast<String>()).input(),
+      serviceCidrs: map['serviceCidrs'] == null ? null : ((map['serviceCidrs']! as List).cast<String>()).input(),
     );
   }
 }

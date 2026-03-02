@@ -27,8 +27,8 @@ class ServerSideEncryptionRuleResponse {
 
   factory ServerSideEncryptionRuleResponse.fromMap(Map<String, dynamic> map) {
     return ServerSideEncryptionRuleResponse(
-      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : (map['bucketKeyEnabled'] as bool).input(),
-      serverSideEncryptionByDefault: map['serverSideEncryptionByDefault'] == null ? null : (ServerSideEncryptionByDefaultResponse.fromMap((map['serverSideEncryptionByDefault'] as Map).cast<String, dynamic>())).input(),
+      bucketKeyEnabled: map['bucketKeyEnabled'] == null ? null : (map['bucketKeyEnabled']! as bool).input(),
+      serverSideEncryptionByDefault: map['serverSideEncryptionByDefault'] == null ? null : (ServerSideEncryptionByDefaultResponse.fromMap((map['serverSideEncryptionByDefault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

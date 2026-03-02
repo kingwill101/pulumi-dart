@@ -40,9 +40,9 @@ class GetBucketObjectsArgs {
   factory GetBucketObjectsArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectsArgs(
       bucketName: (map['bucketName'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
-      keyRegex: map['keyRegex'] == null ? null : (map['keyRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix']! as String).input(),
+      keyRegex: map['keyRegex'] == null ? null : (map['keyRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
     );
   }
 }

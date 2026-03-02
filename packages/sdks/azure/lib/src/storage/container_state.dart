@@ -72,16 +72,16 @@ class ContainerState {
 
   factory ContainerState.fromMap(Map<String, dynamic> map) {
     return ContainerState(
-      containerAccessType: map['containerAccessType'] == null ? null : (map['containerAccessType'] as String).input(),
-      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope'] as String).input(),
-      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : (map['encryptionScopeOverrideEnabled'] as bool).input(),
-      hasImmutabilityPolicy: map['hasImmutabilityPolicy'] == null ? null : (map['hasImmutabilityPolicy'] as bool).input(),
-      hasLegalHold: map['hasLegalHold'] == null ? null : (map['hasLegalHold'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId'] as String).input(),
-      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId'] as String).input(),
-      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName'] as String).input(),
+      containerAccessType: map['containerAccessType'] == null ? null : (map['containerAccessType']! as String).input(),
+      defaultEncryptionScope: map['defaultEncryptionScope'] == null ? null : (map['defaultEncryptionScope']! as String).input(),
+      encryptionScopeOverrideEnabled: map['encryptionScopeOverrideEnabled'] == null ? null : (map['encryptionScopeOverrideEnabled']! as bool).input(),
+      hasImmutabilityPolicy: map['hasImmutabilityPolicy'] == null ? null : (map['hasImmutabilityPolicy']! as bool).input(),
+      hasLegalHold: map['hasLegalHold'] == null ? null : (map['hasLegalHold']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceManagerId: map['resourceManagerId'] == null ? null : (map['resourceManagerId']! as String).input(),
+      storageAccountId: map['storageAccountId'] == null ? null : (map['storageAccountId']! as String).input(),
+      storageAccountName: map['storageAccountName'] == null ? null : (map['storageAccountName']! as String).input(),
     );
   }
 }

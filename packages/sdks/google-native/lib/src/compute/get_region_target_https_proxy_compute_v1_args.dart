@@ -31,7 +31,7 @@ class GetRegionTargetHttpsProxyComputeV1Args {
 
   factory GetRegionTargetHttpsProxyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetHttpsProxyComputeV1Args(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       targetHttpsProxy: (map['targetHttpsProxy'] as String).input(),
     );

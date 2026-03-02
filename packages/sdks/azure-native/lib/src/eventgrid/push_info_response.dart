@@ -62,11 +62,11 @@ class PushInfoResponse {
 
   factory PushInfoResponse.fromMap(Map<String, dynamic> map) {
     return PushInfoResponse(
-      deadLetterDestinationWithResourceIdentity: map['deadLetterDestinationWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentityResponse.fromMap((map['deadLetterDestinationWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
-      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : (DeliveryWithResourceIdentityResponse.fromMap((map['deliveryWithResourceIdentity'] as Map).cast<String, dynamic>())).input(),
-      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestinationResponse.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      eventTimeToLive: map['eventTimeToLive'] == null ? null : (map['eventTimeToLive'] as String).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
+      deadLetterDestinationWithResourceIdentity: map['deadLetterDestinationWithResourceIdentity'] == null ? null : (DeadLetterWithResourceIdentityResponse.fromMap((map['deadLetterDestinationWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
+      deliveryWithResourceIdentity: map['deliveryWithResourceIdentity'] == null ? null : (DeliveryWithResourceIdentityResponse.fromMap((map['deliveryWithResourceIdentity']! as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (AzureFunctionEventSubscriptionDestinationResponse.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      eventTimeToLive: map['eventTimeToLive'] == null ? null : (map['eventTimeToLive']! as String).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
     );
   }
 }

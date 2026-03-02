@@ -21,7 +21,7 @@ class GoogleCloudRunV2ServiceScaling {
 
   factory GoogleCloudRunV2ServiceScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ServiceScaling(
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
     );
   }
 }

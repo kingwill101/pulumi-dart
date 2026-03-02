@@ -39,9 +39,9 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
       networkDeviceName: (map['networkDeviceName'] as String).input(),
-      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName'] as String).input(),
+      networkInterfaceName: map['networkInterfaceName'] == null ? null : (map['networkInterfaceName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

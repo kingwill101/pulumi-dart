@@ -20,7 +20,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

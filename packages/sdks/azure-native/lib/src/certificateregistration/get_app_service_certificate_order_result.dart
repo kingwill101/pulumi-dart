@@ -155,19 +155,19 @@ class GetAppServiceCertificateOrderResult {
   factory GetAppServiceCertificateOrderResult.fromMap(Map<String, dynamic> map) {
     return GetAppServiceCertificateOrderResult(
       appServiceCertificateNotRenewableReasons: (map['appServiceCertificateNotRenewableReasons'] as List).cast<String>(),
-      autoRenew: map['autoRenew'] == null ? null : map['autoRenew'] as bool,
+      autoRenew: map['autoRenew'] == null ? null : map['autoRenew']! as bool,
       azureApiVersion: map['azureApiVersion'] as String,
-      certificates: map['certificates'] == null ? null : pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(map['certificates'], (value) => AppServiceCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
+      certificates: map['certificates'] == null ? null : pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(map['certificates']!, (value) => AppServiceCertificateResponse.fromMap((value as Map).cast<String, dynamic>())),
       contact: CertificateOrderContactResponse.fromMap((map['contact'] as Map).cast<String, dynamic>()),
-      csr: map['csr'] == null ? null : map['csr'] as String,
-      distinguishedName: map['distinguishedName'] == null ? null : map['distinguishedName'] as String,
+      csr: map['csr'] == null ? null : map['csr']! as String,
+      distinguishedName: map['distinguishedName'] == null ? null : map['distinguishedName']! as String,
       domainVerificationToken: map['domainVerificationToken'] as String,
       expirationTime: map['expirationTime'] as String,
       id: map['id'] as String,
       intermediate: CertificateDetailsResponse.fromMap((map['intermediate'] as Map).cast<String, dynamic>()),
       isPrivateKeyExternal: map['isPrivateKeyExternal'] as bool,
-      keySize: map['keySize'] == null ? null : map['keySize'] as int,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      keySize: map['keySize'] == null ? null : map['keySize']! as int,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       lastCertificateIssuanceTime: map['lastCertificateIssuanceTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
@@ -178,9 +178,9 @@ class GetAppServiceCertificateOrderResult {
       serialNumber: map['serialNumber'] as String,
       signedCertificate: CertificateDetailsResponse.fromMap((map['signedCertificate'] as Map).cast<String, dynamic>()),
       status: map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
-      validityInYears: map['validityInYears'] == null ? null : map['validityInYears'] as int,
+      validityInYears: map['validityInYears'] == null ? null : map['validityInYears']! as int,
     );
   }
 }

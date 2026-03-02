@@ -34,7 +34,7 @@ class GetCiphertextArgs {
 
   factory GetCiphertextArgs.fromMap(Map<String, dynamic> map) {
     return GetCiphertextArgs(
-      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext'] as Map).cast<String, String>()).input(),
+      encryptionContext: map['encryptionContext'] == null ? null : ((map['encryptionContext']! as Map).cast<String, String>()).input(),
       keyId: (map['keyId'] as String).input(),
       plaintext: (map['plaintext'] as String).input(),
     );

@@ -75,17 +75,17 @@ class LifecyclePolicyState {
 
   factory LifecyclePolicyState.fromMap(Map<String, dynamic> map) {
     return LifecyclePolicyState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policyDetails: map['policyDetails'] == null ? null : (pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(map['policyDetails'], (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceSelection: map['resourceSelection'] == null ? null : (LifecyclePolicyResourceSelection.fromMap((map['resourceSelection'] as Map).cast<String, dynamic>())).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      executionRole: map['executionRole'] == null ? null : ((map['executionRole'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      policyDetails: map['policyDetails'] == null ? null : ((pulumi.Input.decodeList<LifecyclePolicyPolicyDetail>(map['policyDetails']!, (value) => LifecyclePolicyPolicyDetail.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceSelection: map['resourceSelection'] == null ? null : ((LifecyclePolicyResourceSelection.fromMap((map['resourceSelection']! as Map).cast<String, dynamic>())).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

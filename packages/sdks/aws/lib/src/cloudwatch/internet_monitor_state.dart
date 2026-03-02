@@ -75,17 +75,17 @@ class InternetMonitorState {
 
   factory InternetMonitorState.fromMap(Map<String, dynamic> map) {
     return InternetMonitorState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      healthEventsConfig: map['healthEventsConfig'] == null ? null : (InternetMonitorHealthEventsConfig.fromMap((map['healthEventsConfig'] as Map).cast<String, dynamic>())).input(),
-      internetMeasurementsLogDelivery: map['internetMeasurementsLogDelivery'] == null ? null : (InternetMonitorInternetMeasurementsLogDelivery.fromMap((map['internetMeasurementsLogDelivery'] as Map).cast<String, dynamic>())).input(),
-      maxCityNetworksToMonitor: map['maxCityNetworksToMonitor'] == null ? null : (map['maxCityNetworksToMonitor'] as int).input(),
-      monitorName: map['monitorName'] == null ? null : (map['monitorName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      trafficPercentageToMonitor: map['trafficPercentageToMonitor'] == null ? null : (map['trafficPercentageToMonitor'] as int).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      healthEventsConfig: map['healthEventsConfig'] == null ? null : ((InternetMonitorHealthEventsConfig.fromMap((map['healthEventsConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      internetMeasurementsLogDelivery: map['internetMeasurementsLogDelivery'] == null ? null : ((InternetMonitorInternetMeasurementsLogDelivery.fromMap((map['internetMeasurementsLogDelivery']! as Map).cast<String, dynamic>())).input()).input(),
+      maxCityNetworksToMonitor: map['maxCityNetworksToMonitor'] == null ? null : ((map['maxCityNetworksToMonitor'] as int).input()).input(),
+      monitorName: map['monitorName'] == null ? null : ((map['monitorName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resources: map['resources'] == null ? null : (((map['resources'] as List).cast<String>()).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      trafficPercentageToMonitor: map['trafficPercentageToMonitor'] == null ? null : ((map['trafficPercentageToMonitor'] as int).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ModelSettings {
 
   factory ModelSettings.fromMap(Map<String, dynamic> map) {
     return ModelSettings(
-      modelId: map['modelId'] == null ? null : (map['modelId'] as String).input(),
+      modelId: map['modelId'] == null ? null : (map['modelId']! as String).input(),
     );
   }
 }

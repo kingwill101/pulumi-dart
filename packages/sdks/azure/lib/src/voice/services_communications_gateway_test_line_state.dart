@@ -46,12 +46,12 @@ class ServicesCommunicationsGatewayTestLineState {
 
   factory ServicesCommunicationsGatewayTestLineState.fromMap(Map<String, dynamic> map) {
     return ServicesCommunicationsGatewayTestLineState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber'] as String).input(),
-      purpose: map['purpose'] == null ? null : (map['purpose'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      voiceServicesCommunicationsGatewayId: map['voiceServicesCommunicationsGatewayId'] == null ? null : (map['voiceServicesCommunicationsGatewayId'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phoneNumber: map['phoneNumber'] == null ? null : (map['phoneNumber']! as String).input(),
+      purpose: map['purpose'] == null ? null : (map['purpose']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      voiceServicesCommunicationsGatewayId: map['voiceServicesCommunicationsGatewayId'] == null ? null : (map['voiceServicesCommunicationsGatewayId']! as String).input(),
     );
   }
 }

@@ -83,19 +83,19 @@ class GetRulesArgs {
 
   factory GetRulesArgs.fromMap(Map<String, dynamic> map) {
     return GetRulesArgs(
-      category: map['category'] == null ? null : (map['category'] as int).input(),
-      contentCategory: map['contentCategory'] == null ? null : (map['contentCategory'] as String).input(),
-      customType: map['customType'] == null ? null : (map['customType'] as int).input(),
-      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails'] as bool).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      riskLevelId: map['riskLevelId'] == null ? null : (map['riskLevelId'] as String).input(),
-      ruleType: map['ruleType'] == null ? null : (map['ruleType'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      warnLevel: map['warnLevel'] == null ? null : (map['warnLevel'] as int).input(),
+      category: map['category'] == null ? null : (map['category']! as int).input(),
+      contentCategory: map['contentCategory'] == null ? null : (map['contentCategory']! as String).input(),
+      customType: map['customType'] == null ? null : (map['customType']! as int).input(),
+      enableDetails: map['enableDetails'] == null ? null : (map['enableDetails']! as bool).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      riskLevelId: map['riskLevelId'] == null ? null : (map['riskLevelId']! as String).input(),
+      ruleType: map['ruleType'] == null ? null : (map['ruleType']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      warnLevel: map['warnLevel'] == null ? null : (map['warnLevel']! as int).input(),
     );
   }
 }

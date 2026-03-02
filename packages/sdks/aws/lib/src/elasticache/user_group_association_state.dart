@@ -31,9 +31,9 @@ class UserGroupAssociationState {
 
   factory UserGroupAssociationState.fromMap(Map<String, dynamic> map) {
     return UserGroupAssociationState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userGroupId: map['userGroupId'] == null ? null : ((map['userGroupId'] as String).input()).input(),
+      userId: map['userId'] == null ? null : ((map['userId'] as String).input()).input(),
     );
   }
 }

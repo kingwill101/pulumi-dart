@@ -21,7 +21,7 @@ class FileDestination {
 
   factory FileDestination.fromMap(Map<String, dynamic> map) {
     return FileDestination(
-      fileFormats: map['fileFormats'] == null ? null : ((map['fileFormats'] as List).cast<String>()).input(),
+      fileFormats: map['fileFormats'] == null ? null : ((map['fileFormats']! as List).cast<String>()).input(),
     );
   }
 }

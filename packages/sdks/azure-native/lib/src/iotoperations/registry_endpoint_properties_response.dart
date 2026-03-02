@@ -41,7 +41,7 @@ class RegistryEndpointPropertiesResponse {
       authentication: (RegistryEndpointAnonymousAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
       host: (map['host'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      trustSettings: map['trustSettings'] == null ? null : (RegistryEndpointTrustedSettingsResponse.fromMap((map['trustSettings'] as Map).cast<String, dynamic>())).input(),
+      trustSettings: map['trustSettings'] == null ? null : (RegistryEndpointTrustedSettingsResponse.fromMap((map['trustSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

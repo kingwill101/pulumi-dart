@@ -33,7 +33,7 @@ class AnalyticsConnectorDataLakeDataDestinationResponse {
   factory AnalyticsConnectorDataLakeDataDestinationResponse.fromMap(Map<String, dynamic> map) {
     return AnalyticsConnectorDataLakeDataDestinationResponse(
       dataLakeName: (map['dataLakeName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

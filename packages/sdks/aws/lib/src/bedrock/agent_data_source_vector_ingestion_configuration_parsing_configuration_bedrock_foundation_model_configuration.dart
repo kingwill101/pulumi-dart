@@ -32,8 +32,8 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
   factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration(
       modelArn: (map['modelArn'] as String).input(),
-      parsingModality: map['parsingModality'] == null ? null : (map['parsingModality'] as String).input(),
-      parsingPrompt: map['parsingPrompt'] == null ? null : (AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap((map['parsingPrompt'] as Map).cast<String, dynamic>())).input(),
+      parsingModality: map['parsingModality'] == null ? null : ((map['parsingModality'] as String).input()).input(),
+      parsingPrompt: map['parsingPrompt'] == null ? null : ((AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap((map['parsingPrompt']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

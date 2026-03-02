@@ -21,7 +21,7 @@ class GceConfidentialInstanceConfig {
 
   factory GceConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
     return GceConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

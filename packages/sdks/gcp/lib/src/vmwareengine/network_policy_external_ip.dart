@@ -26,8 +26,8 @@ class NetworkPolicyExternalIp {
 
   factory NetworkPolicyExternalIp.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyExternalIp(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

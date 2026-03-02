@@ -55,11 +55,11 @@ class ResolverFirewallRuleGroupAssociationArgs {
   factory ResolverFirewallRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return ResolverFirewallRuleGroupAssociationArgs(
       firewallRuleGroupId: (map['firewallRuleGroupId'] as String).input(),
-      mutationProtection: map['mutationProtection'] == null ? null : (map['mutationProtection'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      mutationProtection: map['mutationProtection'] == null ? null : ((map['mutationProtection'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       priority: (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
     );
   }

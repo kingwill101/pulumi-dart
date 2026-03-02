@@ -26,8 +26,8 @@ class ResourcePolicyHourlyCycle {
 
   factory ResourcePolicyHourlyCycle.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyHourlyCycle(
-      hoursInCycle: map['hoursInCycle'] == null ? null : (map['hoursInCycle'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      hoursInCycle: map['hoursInCycle'] == null ? null : (map['hoursInCycle']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

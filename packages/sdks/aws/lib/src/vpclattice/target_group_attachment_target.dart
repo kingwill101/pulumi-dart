@@ -26,7 +26,7 @@ class TargetGroupAttachmentTarget {
   factory TargetGroupAttachmentTarget.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentTarget(
       id: (map['id'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
     );
   }
 }

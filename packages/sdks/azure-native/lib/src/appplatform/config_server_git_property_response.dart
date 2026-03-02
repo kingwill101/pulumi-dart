@@ -67,16 +67,16 @@ class ConfigServerGitPropertyResponse {
 
   factory ConfigServerGitPropertyResponse.fromMap(Map<String, dynamic> map) {
     return ConfigServerGitPropertyResponse(
-      hostKey: map['hostKey'] == null ? null : (map['hostKey'] as String).input(),
-      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<GitPatternRepositoryResponse>(map['repositories'], (value) => GitPatternRepositoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths'] as List).cast<String>()).input(),
-      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : (map['strictHostKeyChecking'] as bool).input(),
+      hostKey: map['hostKey'] == null ? null : (map['hostKey']! as String).input(),
+      hostKeyAlgorithm: map['hostKeyAlgorithm'] == null ? null : (map['hostKeyAlgorithm']! as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      repositories: map['repositories'] == null ? null : (pulumi.Input.decodeList<GitPatternRepositoryResponse>(map['repositories']!, (value) => GitPatternRepositoryResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      searchPaths: map['searchPaths'] == null ? null : ((map['searchPaths']! as List).cast<String>()).input(),
+      strictHostKeyChecking: map['strictHostKeyChecking'] == null ? null : (map['strictHostKeyChecking']! as bool).input(),
       uri: (map['uri'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

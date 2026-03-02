@@ -21,7 +21,7 @@ class AssignedAssessmentItem {
 
   factory AssignedAssessmentItem.fromMap(Map<String, dynamic> map) {
     return AssignedAssessmentItem(
-      assessmentKey: map['assessmentKey'] == null ? null : (map['assessmentKey'] as String).input(),
+      assessmentKey: map['assessmentKey'] == null ? null : (map['assessmentKey']! as String).input(),
     );
   }
 }

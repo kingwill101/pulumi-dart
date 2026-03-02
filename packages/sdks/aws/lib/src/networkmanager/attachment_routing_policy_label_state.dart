@@ -31,9 +31,9 @@ class AttachmentRoutingPolicyLabelState {
 
   factory AttachmentRoutingPolicyLabelState.fromMap(Map<String, dynamic> map) {
     return AttachmentRoutingPolicyLabelState(
-      attachmentId: map['attachmentId'] == null ? null : (map['attachmentId'] as String).input(),
-      coreNetworkId: map['coreNetworkId'] == null ? null : (map['coreNetworkId'] as String).input(),
-      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : (map['routingPolicyLabel'] as String).input(),
+      attachmentId: map['attachmentId'] == null ? null : ((map['attachmentId'] as String).input()).input(),
+      coreNetworkId: map['coreNetworkId'] == null ? null : ((map['coreNetworkId'] as String).input()).input(),
+      routingPolicyLabel: map['routingPolicyLabel'] == null ? null : ((map['routingPolicyLabel'] as String).input()).input(),
     );
   }
 }

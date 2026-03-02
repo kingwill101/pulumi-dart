@@ -100,22 +100,22 @@ class MySQLServerArgs {
 
   factory MySQLServerArgs.fromMap(Map<String, dynamic> map) {
     return MySQLServerArgs(
-      edition: map['edition'] == null ? null : (map['edition'] as String).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Error>(map['errors'], (value) => Error.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hostIp: map['hostIp'] == null ? null : ((map['hostIp'] as List).cast<String>()).input(),
+      edition: map['edition'] == null ? null : (map['edition']! as String).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Error>(map['errors']!, (value) => Error.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostIp: map['hostIp'] == null ? null : ((map['hostIp']! as List).cast<String>()).input(),
       hostName: (map['hostName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      machineId: map['machineId'] == null ? null : (map['machineId'] as String).input(),
-      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion'] as String).input(),
-      numberOfDatabase: map['numberOfDatabase'] == null ? null : (map['numberOfDatabase'] as double).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      machineId: map['machineId'] == null ? null : (map['machineId']! as String).input(),
+      mysqlVersion: map['mysqlVersion'] == null ? null : (map['mysqlVersion']! as String).input(),
+      numberOfDatabase: map['numberOfDatabase'] == null ? null : (map['numberOfDatabase']! as double).input(),
       portNumber: (map['portNumber'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serverName: map['serverName'] == null ? null : (map['serverName'] as String).input(),
+      serverName: map['serverName'] == null ? null : (map['serverName']! as String).input(),
       siteName: (map['siteName'] as String).input(),
-      supportEndIn: map['supportEndIn'] == null ? null : (map['supportEndIn'] as String).input(),
-      supportStatus: map['supportStatus'] == null ? null : (map['supportStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      supportEndIn: map['supportEndIn'] == null ? null : (map['supportEndIn']! as String).input(),
+      supportStatus: map['supportStatus'] == null ? null : (map['supportStatus']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -29,7 +29,7 @@ class InstanceAccessLoggingConfig {
   factory InstanceAccessLoggingConfig.fromMap(Map<String, dynamic> map) {
     return InstanceAccessLoggingConfig(
       enabled: (map['enabled'] as bool).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

@@ -99,22 +99,22 @@ class EventSourceV2SourceRocketmqParameters {
 
   factory EventSourceV2SourceRocketmqParameters.fromMap(Map<String, dynamic> map) {
     return EventSourceV2SourceRocketmqParameters(
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      instanceEndpoint: map['instanceEndpoint'] == null ? null : (map['instanceEndpoint'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceNetwork: map['instanceNetwork'] == null ? null : (map['instanceNetwork'] as String).input(),
-      instancePassword: map['instancePassword'] == null ? null : (map['instancePassword'] as String).input(),
-      instanceSecurityGroupId: map['instanceSecurityGroupId'] == null ? null : (map['instanceSecurityGroupId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      instanceUsername: map['instanceUsername'] == null ? null : (map['instanceUsername'] as String).input(),
-      instanceVpcId: map['instanceVpcId'] == null ? null : (map['instanceVpcId'] as String).input(),
-      instanceVswitchIds: map['instanceVswitchIds'] == null ? null : (map['instanceVswitchIds'] as String).input(),
-      offset: map['offset'] == null ? null : (map['offset'] as String).input(),
-      regionId: map['regionId'] == null ? null : (map['regionId'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      timestamp: map['timestamp'] == null ? null : (map['timestamp'] as double).input(),
-      topic: map['topic'] == null ? null : (map['topic'] as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      instanceEndpoint: map['instanceEndpoint'] == null ? null : (map['instanceEndpoint']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceNetwork: map['instanceNetwork'] == null ? null : (map['instanceNetwork']! as String).input(),
+      instancePassword: map['instancePassword'] == null ? null : (map['instancePassword']! as String).input(),
+      instanceSecurityGroupId: map['instanceSecurityGroupId'] == null ? null : (map['instanceSecurityGroupId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      instanceUsername: map['instanceUsername'] == null ? null : (map['instanceUsername']! as String).input(),
+      instanceVpcId: map['instanceVpcId'] == null ? null : (map['instanceVpcId']! as String).input(),
+      instanceVswitchIds: map['instanceVswitchIds'] == null ? null : (map['instanceVswitchIds']! as String).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as String).input(),
+      regionId: map['regionId'] == null ? null : (map['regionId']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      timestamp: map['timestamp'] == null ? null : (map['timestamp']! as double).input(),
+      topic: map['topic'] == null ? null : (map['topic']! as String).input(),
     );
   }
 }

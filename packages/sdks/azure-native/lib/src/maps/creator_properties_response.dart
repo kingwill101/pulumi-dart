@@ -36,10 +36,10 @@ class CreatorPropertiesResponse {
 
   factory CreatorPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CreatorPropertiesResponse(
-      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : (map['consumedStorageUnitSizeInBytes'] as int).input(),
+      consumedStorageUnitSizeInBytes: map['consumedStorageUnitSizeInBytes'] == null ? null : (map['consumedStorageUnitSizeInBytes']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       storageUnits: (map['storageUnits'] as int).input(),
-      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : (map['totalStorageUnitSizeInBytes'] as int).input(),
+      totalStorageUnitSizeInBytes: map['totalStorageUnitSizeInBytes'] == null ? null : (map['totalStorageUnitSizeInBytes']! as int).input(),
     );
   }
 }

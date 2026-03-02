@@ -44,7 +44,7 @@ class GetNamespaceVirtualNetworkRuleResult {
       id: map['id'] as String,
       name: map['name'] as String,
       type: map['type'] as String,
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : map['virtualNetworkSubnetId'] as String,
+      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] == null ? null : map['virtualNetworkSubnetId']! as String,
     );
   }
 }

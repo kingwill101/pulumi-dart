@@ -40,8 +40,8 @@ class CloudinitDiskArgs {
   factory CloudinitDiskArgs.fromMap(Map<String, dynamic> map) {
     return CloudinitDiskArgs(
       metaData: (map['metaData'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (map['networkConfig']! as String).input(),
       userData: (map['userData'] as String).input(),
     );
   }

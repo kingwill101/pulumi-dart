@@ -35,10 +35,10 @@ class AlertRuleAnomalyBuiltInMultiSelectObservation {
 
   factory AlertRuleAnomalyBuiltInMultiSelectObservation.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyBuiltInMultiSelectObservation(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues'] as List).cast<String>()).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      supportedValues: map['supportedValues'] == null ? null : ((map['supportedValues']! as List).cast<String>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TxtRecordResponse {
 
   factory TxtRecordResponse.fromMap(Map<String, dynamic> map) {
     return TxtRecordResponse(
-      value: map['value'] == null ? null : ((map['value'] as List).cast<String>()).input(),
+      value: map['value'] == null ? null : ((map['value']! as List).cast<String>()).input(),
     );
   }
 }

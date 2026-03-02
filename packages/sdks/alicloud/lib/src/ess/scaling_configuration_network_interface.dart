@@ -35,10 +35,10 @@ class ScalingConfigurationNetworkInterface {
 
   factory ScalingConfigurationNetworkInterface.fromMap(Map<String, dynamic> map) {
     return ScalingConfigurationNetworkInterface(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      ipv6AddressCount: map['ipv6AddressCount'] == null ? null : (map['ipv6AddressCount'] as int).input(),
-      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : (map['networkInterfaceTrafficMode'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      ipv6AddressCount: map['ipv6AddressCount'] == null ? null : (map['ipv6AddressCount']! as int).input(),
+      networkInterfaceTrafficMode: map['networkInterfaceTrafficMode'] == null ? null : (map['networkInterfaceTrafficMode']! as String).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds']! as List).cast<String>()).input(),
     );
   }
 }

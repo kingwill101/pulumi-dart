@@ -41,11 +41,11 @@ class SecurityPolicyUserDefinedFieldComputeV1 {
 
   factory SecurityPolicyUserDefinedFieldComputeV1.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyUserDefinedFieldComputeV1(
-      base: map['base'] == null ? null : (SecurityPolicyUserDefinedFieldBaseComputeV1.fromValue(map['base'] as String)).input(),
-      mask: map['mask'] == null ? null : (map['mask'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      offset: map['offset'] == null ? null : (map['offset'] as int).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      base: map['base'] == null ? null : (SecurityPolicyUserDefinedFieldBaseComputeV1.fromValue(map['base']! as String)).input(),
+      mask: map['mask'] == null ? null : (map['mask']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      offset: map['offset'] == null ? null : (map['offset']! as int).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
     );
   }
 }

@@ -44,7 +44,7 @@ class DomainSource {
   factory DomainSource.fromMap(Map<String, dynamic> map) {
     return DomainSource(
       content: (map['content'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as String).input(),
       port: (map['port'] as int).input(),
       priority: (map['priority'] as String).input(),
       type: (map['type'] as String).input(),

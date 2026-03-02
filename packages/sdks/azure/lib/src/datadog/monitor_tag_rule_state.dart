@@ -38,10 +38,10 @@ class MonitorTagRuleState {
 
   factory MonitorTagRuleState.fromMap(Map<String, dynamic> map) {
     return MonitorTagRuleState(
-      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId'] as String).input(),
-      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleLog>(map['logs'], (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleMetric>(map['metrics'], (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId']! as String).input(),
+      logs: map['logs'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleLog>(map['logs']!, (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metrics: map['metrics'] == null ? null : (pulumi.Input.decodeList<MonitorTagRuleMetric>(map['metrics']!, (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

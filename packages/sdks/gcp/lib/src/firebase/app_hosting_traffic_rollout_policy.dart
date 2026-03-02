@@ -32,9 +32,9 @@ class AppHostingTrafficRolloutPolicy {
 
   factory AppHostingTrafficRolloutPolicy.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficRolloutPolicy(
-      codebaseBranch: map['codebaseBranch'] == null ? null : (map['codebaseBranch'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      disabledTime: map['disabledTime'] == null ? null : (map['disabledTime'] as String).input(),
+      codebaseBranch: map['codebaseBranch'] == null ? null : (map['codebaseBranch']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      disabledTime: map['disabledTime'] == null ? null : (map['disabledTime']! as String).input(),
     );
   }
 }

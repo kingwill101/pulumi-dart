@@ -53,11 +53,11 @@ class MultiplexArgs {
   factory MultiplexArgs.fromMap(Map<String, dynamic> map) {
     return MultiplexArgs(
       availabilityZones: ((map['availabilityZones'] as List).cast<String>()).input(),
-      multiplexSettings: map['multiplexSettings'] == null ? null : (MultiplexMultiplexSettings.fromMap((map['multiplexSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      startMultiplex: map['startMultiplex'] == null ? null : (map['startMultiplex'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      multiplexSettings: map['multiplexSettings'] == null ? null : ((MultiplexMultiplexSettings.fromMap((map['multiplexSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      startMultiplex: map['startMultiplex'] == null ? null : ((map['startMultiplex'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -97,19 +97,19 @@ class SiteDeliveryTaskState {
 
   factory SiteDeliveryTaskState.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskState(
-      businessType: map['businessType'] == null ? null : (map['businessType'] as String).input(),
-      dataCenter: map['dataCenter'] == null ? null : (map['dataCenter'] as String).input(),
-      deliveryType: map['deliveryType'] == null ? null : (map['deliveryType'] as String).input(),
-      discardRate: map['discardRate'] == null ? null : (map['discardRate'] as double).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
-      httpDelivery: map['httpDelivery'] == null ? null : (SiteDeliveryTaskHttpDelivery.fromMap((map['httpDelivery'] as Map).cast<String, dynamic>())).input(),
-      kafkaDelivery: map['kafkaDelivery'] == null ? null : (SiteDeliveryTaskKafkaDelivery.fromMap((map['kafkaDelivery'] as Map).cast<String, dynamic>())).input(),
-      ossDelivery: map['ossDelivery'] == null ? null : (SiteDeliveryTaskOssDelivery.fromMap((map['ossDelivery'] as Map).cast<String, dynamic>())).input(),
-      s3Delivery: map['s3Delivery'] == null ? null : (SiteDeliveryTaskS3Delivery.fromMap((map['s3Delivery'] as Map).cast<String, dynamic>())).input(),
-      siteId: map['siteId'] == null ? null : (map['siteId'] as String).input(),
-      slsDelivery: map['slsDelivery'] == null ? null : (SiteDeliveryTaskSlsDelivery.fromMap((map['slsDelivery'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      taskName: map['taskName'] == null ? null : (map['taskName'] as String).input(),
+      businessType: map['businessType'] == null ? null : (map['businessType']! as String).input(),
+      dataCenter: map['dataCenter'] == null ? null : (map['dataCenter']! as String).input(),
+      deliveryType: map['deliveryType'] == null ? null : (map['deliveryType']! as String).input(),
+      discardRate: map['discardRate'] == null ? null : (map['discardRate']! as double).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
+      httpDelivery: map['httpDelivery'] == null ? null : (SiteDeliveryTaskHttpDelivery.fromMap((map['httpDelivery']! as Map).cast<String, dynamic>())).input(),
+      kafkaDelivery: map['kafkaDelivery'] == null ? null : (SiteDeliveryTaskKafkaDelivery.fromMap((map['kafkaDelivery']! as Map).cast<String, dynamic>())).input(),
+      ossDelivery: map['ossDelivery'] == null ? null : (SiteDeliveryTaskOssDelivery.fromMap((map['ossDelivery']! as Map).cast<String, dynamic>())).input(),
+      s3Delivery: map['s3Delivery'] == null ? null : (SiteDeliveryTaskS3Delivery.fromMap((map['s3Delivery']! as Map).cast<String, dynamic>())).input(),
+      siteId: map['siteId'] == null ? null : (map['siteId']! as String).input(),
+      slsDelivery: map['slsDelivery'] == null ? null : (SiteDeliveryTaskSlsDelivery.fromMap((map['slsDelivery']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      taskName: map['taskName'] == null ? null : (map['taskName']! as String).input(),
     );
   }
 }

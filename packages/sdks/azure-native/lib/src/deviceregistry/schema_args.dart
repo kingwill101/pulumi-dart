@@ -59,14 +59,14 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       format: (map['format'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      schemaName: map['schemaName'] == null ? null : (map['schemaName'] as String).input(),
+      schemaName: map['schemaName'] == null ? null : (map['schemaName']! as String).input(),
       schemaRegistryName: (map['schemaRegistryName'] as String).input(),
       schemaType: (map['schemaType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

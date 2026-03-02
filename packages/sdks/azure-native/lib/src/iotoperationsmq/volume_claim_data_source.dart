@@ -31,7 +31,7 @@ class VolumeClaimDataSource {
 
   factory VolumeClaimDataSource.fromMap(Map<String, dynamic> map) {
     return VolumeClaimDataSource(
-      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup'] as String).input(),
+      apiGroup: map['apiGroup'] == null ? null : (map['apiGroup']! as String).input(),
       kind: (map['kind'] as String).input(),
       name: (map['name'] as String).input(),
     );

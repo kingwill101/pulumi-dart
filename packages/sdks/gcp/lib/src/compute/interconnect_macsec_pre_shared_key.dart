@@ -45,9 +45,9 @@ class InterconnectMacsecPreSharedKey {
 
   factory InterconnectMacsecPreSharedKey.fromMap(Map<String, dynamic> map) {
     return InterconnectMacsecPreSharedKey(
-      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen']! as bool).input(),
       name: (map['name'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

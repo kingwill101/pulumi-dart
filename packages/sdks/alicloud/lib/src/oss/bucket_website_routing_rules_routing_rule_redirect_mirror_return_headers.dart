@@ -21,7 +21,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders(
-      returnHeaders: map['returnHeaders'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader>(map['returnHeaders'], (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnHeaders: map['returnHeaders'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader>(map['returnHeaders']!, (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

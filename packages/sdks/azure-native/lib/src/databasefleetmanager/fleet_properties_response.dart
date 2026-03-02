@@ -26,7 +26,7 @@ class FleetPropertiesResponse {
 
   factory FleetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

@@ -41,7 +41,7 @@ class SharedImageGallerySharingCommunityGallery {
   factory SharedImageGallerySharingCommunityGallery.fromMap(Map<String, dynamic> map) {
     return SharedImageGallerySharingCommunityGallery(
       eula: (map['eula'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       prefix: (map['prefix'] as String).input(),
       publisherEmail: (map['publisherEmail'] as String).input(),
       publisherUri: (map['publisherUri'] as String).input(),

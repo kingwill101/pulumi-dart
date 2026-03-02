@@ -31,7 +31,7 @@ class GetTargetPoolComputeBetaArgs {
 
   factory GetTargetPoolComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetTargetPoolComputeBetaArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
       targetPool: (map['targetPool'] as String).input(),
     );

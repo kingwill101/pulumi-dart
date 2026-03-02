@@ -21,7 +21,7 @@ class SecondaryConfigAlloydbV1alpha {
 
   factory SecondaryConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
     return SecondaryConfigAlloydbV1alpha(
-      primaryClusterName: map['primaryClusterName'] == null ? null : (map['primaryClusterName'] as String).input(),
+      primaryClusterName: map['primaryClusterName'] == null ? null : (map['primaryClusterName']! as String).input(),
     );
   }
 }

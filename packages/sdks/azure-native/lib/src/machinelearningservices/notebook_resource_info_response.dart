@@ -30,9 +30,9 @@ class NotebookResourceInfoResponse {
 
   factory NotebookResourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return NotebookResourceInfoResponse(
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      notebookPreparationError: map['notebookPreparationError'] == null ? null : (NotebookPreparationErrorResponse.fromMap((map['notebookPreparationError'] as Map).cast<String, dynamic>())).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      notebookPreparationError: map['notebookPreparationError'] == null ? null : (NotebookPreparationErrorResponse.fromMap((map['notebookPreparationError']! as Map).cast<String, dynamic>())).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
     );
   }
 }

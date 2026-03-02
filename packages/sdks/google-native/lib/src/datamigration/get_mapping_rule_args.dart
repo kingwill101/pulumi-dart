@@ -38,7 +38,7 @@ class GetMappingRuleArgs {
       conversionWorkspaceId: (map['conversionWorkspaceId'] as String).input(),
       location: (map['location'] as String).input(),
       mappingRuleId: (map['mappingRuleId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

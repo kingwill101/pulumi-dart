@@ -33,10 +33,10 @@ class PoolStartTaskContainerRegistry {
 
   factory PoolStartTaskContainerRegistry.fromMap(Map<String, dynamic> map) {
     return PoolStartTaskContainerRegistry(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
       registryServer: (map['registryServer'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
     );
   }
 }

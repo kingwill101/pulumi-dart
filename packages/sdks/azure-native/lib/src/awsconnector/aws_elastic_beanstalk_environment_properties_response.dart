@@ -84,19 +84,19 @@ class AwsElasticBeanstalkEnvironmentPropertiesResponse {
 
   factory AwsElasticBeanstalkEnvironmentPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsElasticBeanstalkEnvironmentPropertiesResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      cnamePrefix: map['cnamePrefix'] == null ? null : (map['cnamePrefix'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      endpointURL: map['endpointURL'] == null ? null : (map['endpointURL'] as String).input(),
-      environmentName: map['environmentName'] == null ? null : (map['environmentName'] as String).input(),
-      operationsRole: map['operationsRole'] == null ? null : (map['operationsRole'] as String).input(),
-      optionSettings: map['optionSettings'] == null ? null : (pulumi.Input.decodeList<OptionSettingResponse>(map['optionSettings'], (value) => OptionSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformArn: map['platformArn'] == null ? null : (map['platformArn'] as String).input(),
-      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      templateName: map['templateName'] == null ? null : (map['templateName'] as String).input(),
-      tier: map['tier'] == null ? null : (TierResponse.fromMap((map['tier'] as Map).cast<String, dynamic>())).input(),
-      versionLabel: map['versionLabel'] == null ? null : (map['versionLabel'] as String).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      cnamePrefix: map['cnamePrefix'] == null ? null : (map['cnamePrefix']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      endpointURL: map['endpointURL'] == null ? null : (map['endpointURL']! as String).input(),
+      environmentName: map['environmentName'] == null ? null : (map['environmentName']! as String).input(),
+      operationsRole: map['operationsRole'] == null ? null : (map['operationsRole']! as String).input(),
+      optionSettings: map['optionSettings'] == null ? null : (pulumi.Input.decodeList<OptionSettingResponse>(map['optionSettings']!, (value) => OptionSettingResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformArn: map['platformArn'] == null ? null : (map['platformArn']! as String).input(),
+      solutionStackName: map['solutionStackName'] == null ? null : (map['solutionStackName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      templateName: map['templateName'] == null ? null : (map['templateName']! as String).input(),
+      tier: map['tier'] == null ? null : (TierResponse.fromMap((map['tier']! as Map).cast<String, dynamic>())).input(),
+      versionLabel: map['versionLabel'] == null ? null : (map['versionLabel']! as String).input(),
     );
   }
 }

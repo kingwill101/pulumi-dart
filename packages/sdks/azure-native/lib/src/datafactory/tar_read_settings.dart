@@ -27,7 +27,7 @@ class TarReadSettings {
 
   factory TarReadSettings.fromMap(Map<String, dynamic> map) {
     return TarReadSettings(
-      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : (map['preserveCompressionFileNameAsFolder']).input(),
+      preserveCompressionFileNameAsFolder: map['preserveCompressionFileNameAsFolder'] == null ? null : (map['preserveCompressionFileNameAsFolder']!).input(),
       type: (map['type'] as String).input(),
     );
   }

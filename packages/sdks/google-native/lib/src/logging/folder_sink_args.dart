@@ -81,18 +81,18 @@ class FolderSinkArgs {
 
   factory FolderSinkArgs.fromMap(Map<String, dynamic> map) {
     return FolderSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
-      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
+      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions'], (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions']!, (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       folderId: (map['folderId'] as String).input(),
-      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputVersionFormat: map['outputVersionFormat'] == null ? null : (FolderSinkOutputVersionFormat.fromValue(map['outputVersionFormat'] as String)).input(),
-      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity'] as bool).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputVersionFormat: map['outputVersionFormat'] == null ? null : (FolderSinkOutputVersionFormat.fromValue(map['outputVersionFormat']! as String)).input(),
+      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity']! as bool).input(),
     );
   }
 }

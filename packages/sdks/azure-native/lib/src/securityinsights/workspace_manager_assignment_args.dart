@@ -48,7 +48,7 @@ class WorkspaceManagerAssignmentArgs {
       items: (pulumi.Input.decodeList<AssignmentItem>(map['items'], (value) => AssignmentItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       targetResourceName: (map['targetResourceName'] as String).input(),
-      workspaceManagerAssignmentName: map['workspaceManagerAssignmentName'] == null ? null : (map['workspaceManagerAssignmentName'] as String).input(),
+      workspaceManagerAssignmentName: map['workspaceManagerAssignmentName'] == null ? null : (map['workspaceManagerAssignmentName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class KxClusterSavedownStorageConfiguration {
 
   factory KxClusterSavedownStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return KxClusterSavedownStorageConfiguration(
-      size: map['size'] == null ? null : (map['size'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      volumeName: map['volumeName'] == null ? null : (map['volumeName'] as String).input(),
+      size: map['size'] == null ? null : ((map['size'] as int).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      volumeName: map['volumeName'] == null ? null : ((map['volumeName'] as String).input()).input(),
     );
   }
 }

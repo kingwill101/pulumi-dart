@@ -41,11 +41,11 @@ class PlanResponse {
 
   factory PlanResponse.fromMap(Map<String, dynamic> map) {
     return PlanResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      promotionCode: map['promotionCode'] == null ? null : (map['promotionCode']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

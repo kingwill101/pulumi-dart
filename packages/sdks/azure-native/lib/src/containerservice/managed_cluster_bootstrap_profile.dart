@@ -26,8 +26,8 @@ class ManagedClusterBootstrapProfile {
 
   factory ManagedClusterBootstrapProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterBootstrapProfile(
-      artifactSource: map['artifactSource'] == null ? null : (map['artifactSource'] as String).input(),
-      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId'] as String).input(),
+      artifactSource: map['artifactSource'] == null ? null : (map['artifactSource']! as String).input(),
+      containerRegistryId: map['containerRegistryId'] == null ? null : (map['containerRegistryId']! as String).input(),
     );
   }
 }

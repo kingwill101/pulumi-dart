@@ -41,11 +41,11 @@ class ContactDetailsResponse {
 
   factory ContactDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ContactDetailsResponse(
-      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
-      emailList: map['emailList'] == null ? null : ((map['emailList'] as List).cast<String>()).input(),
-      mobile: map['mobile'] == null ? null : (map['mobile'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
+      emailList: map['emailList'] == null ? null : ((map['emailList']! as List).cast<String>()).input(),
+      mobile: map['mobile'] == null ? null : (map['mobile']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      phoneExtension: map['phoneExtension'] == null ? null : (map['phoneExtension']! as String).input(),
     );
   }
 }

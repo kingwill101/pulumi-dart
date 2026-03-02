@@ -27,8 +27,8 @@ class BrokerAuthenticatorMethodX509Response {
 
   factory BrokerAuthenticatorMethodX509Response.fromMap(Map<String, dynamic> map) {
     return BrokerAuthenticatorMethodX509Response(
-      attributes: map['attributes'] == null ? null : (BrokerAuthenticatorMethodX509AttributesResponse.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      trustedClientCaCertConfigMap: map['trustedClientCaCertConfigMap'] == null ? null : (map['trustedClientCaCertConfigMap'] as String).input(),
+      attributes: map['attributes'] == null ? null : (BrokerAuthenticatorMethodX509AttributesResponse.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      trustedClientCaCertConfigMap: map['trustedClientCaCertConfigMap'] == null ? null : (map['trustedClientCaCertConfigMap']! as String).input(),
     );
   }
 }

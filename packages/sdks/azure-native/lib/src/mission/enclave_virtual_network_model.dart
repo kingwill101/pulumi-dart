@@ -42,11 +42,11 @@ class EnclaveVirtualNetworkModel {
 
   factory EnclaveVirtualNetworkModel.fromMap(Map<String, dynamic> map) {
     return EnclaveVirtualNetworkModel(
-      allowSubnetCommunication: map['allowSubnetCommunication'] == null ? null : (map['allowSubnetCommunication'] as bool).input(),
-      customCidrRange: map['customCidrRange'] == null ? null : (map['customCidrRange'] as String).input(),
-      networkName: map['networkName'] == null ? null : (map['networkName'] as String).input(),
-      networkSize: map['networkSize'] == null ? null : (map['networkSize'] as String).input(),
-      subnetConfigurations: map['subnetConfigurations'] == null ? null : (pulumi.Input.decodeList<SubnetConfiguration>(map['subnetConfigurations'], (value) => SubnetConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowSubnetCommunication: map['allowSubnetCommunication'] == null ? null : (map['allowSubnetCommunication']! as bool).input(),
+      customCidrRange: map['customCidrRange'] == null ? null : (map['customCidrRange']! as String).input(),
+      networkName: map['networkName'] == null ? null : (map['networkName']! as String).input(),
+      networkSize: map['networkSize'] == null ? null : (map['networkSize']! as String).input(),
+      subnetConfigurations: map['subnetConfigurations'] == null ? null : (pulumi.Input.decodeList<SubnetConfiguration>(map['subnetConfigurations']!, (value) => SubnetConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

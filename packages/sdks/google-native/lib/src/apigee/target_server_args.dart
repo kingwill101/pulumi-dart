@@ -64,15 +64,15 @@ class TargetServerArgs {
 
   factory TargetServerArgs.fromMap(Map<String, dynamic> map) {
     return TargetServerArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       environmentId: (map['environmentId'] as String).input(),
       host: (map['host'] as String).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
       port: (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (TargetServerProtocol.fromValue(map['protocol'] as String)).input(),
-      sSLInfo: map['sSLInfo'] == null ? null : (GoogleCloudApigeeV1TlsInfo.fromMap((map['sSLInfo'] as Map).cast<String, dynamic>())).input(),
+      protocol: map['protocol'] == null ? null : (TargetServerProtocol.fromValue(map['protocol']! as String)).input(),
+      sSLInfo: map['sSLInfo'] == null ? null : (GoogleCloudApigeeV1TlsInfo.fromMap((map['sSLInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

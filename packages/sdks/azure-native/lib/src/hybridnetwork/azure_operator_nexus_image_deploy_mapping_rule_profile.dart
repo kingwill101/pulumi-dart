@@ -27,8 +27,8 @@ class AzureOperatorNexusImageDeployMappingRuleProfile {
 
   factory AzureOperatorNexusImageDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusImageDeployMappingRuleProfile(
-      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement'] as String).input(),
-      imageMappingRuleProfile: map['imageMappingRuleProfile'] == null ? null : (ImageMappingRuleProfile.fromMap((map['imageMappingRuleProfile'] as Map).cast<String, dynamic>())).input(),
+      applicationEnablement: map['applicationEnablement'] == null ? null : (map['applicationEnablement']! as String).input(),
+      imageMappingRuleProfile: map['imageMappingRuleProfile'] == null ? null : (ImageMappingRuleProfile.fromMap((map['imageMappingRuleProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

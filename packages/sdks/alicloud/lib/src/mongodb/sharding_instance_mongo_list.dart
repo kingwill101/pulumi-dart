@@ -35,10 +35,10 @@ class ShardingInstanceMongoList {
 
   factory ShardingInstanceMongoList.fromMap(Map<String, dynamic> map) {
     return ShardingInstanceMongoList(
-      connectString: map['connectString'] == null ? null : (map['connectString'] as String).input(),
+      connectString: map['connectString'] == null ? null : (map['connectString']! as String).input(),
       nodeClass: (map['nodeClass'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

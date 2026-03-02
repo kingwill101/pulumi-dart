@@ -58,14 +58,14 @@ class ImageImportState {
 
   factory ImageImportState.fromMap(Map<String, dynamic> map) {
     return ImageImportState(
-      architecture: map['architecture'] == null ? null : (map['architecture'] as String).input(),
-      bootMode: map['bootMode'] == null ? null : (map['bootMode'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskDeviceMappings: map['diskDeviceMappings'] == null ? null : (pulumi.Input.decodeList<ImageImportDiskDeviceMapping>(map['diskDeviceMappings'], (value) => ImageImportDiskDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      licenseType: map['licenseType'] == null ? null : (map['licenseType'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      architecture: map['architecture'] == null ? null : (map['architecture']! as String).input(),
+      bootMode: map['bootMode'] == null ? null : (map['bootMode']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskDeviceMappings: map['diskDeviceMappings'] == null ? null : (pulumi.Input.decodeList<ImageImportDiskDeviceMapping>(map['diskDeviceMappings']!, (value) => ImageImportDiskDeviceMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      licenseType: map['licenseType'] == null ? null : (map['licenseType']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
     );
   }
 }

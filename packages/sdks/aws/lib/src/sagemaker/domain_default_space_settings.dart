@@ -61,14 +61,14 @@ class DomainDefaultSpaceSettings {
 
   factory DomainDefaultSpaceSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultSpaceSettings(
-      customFileSystemConfigs: map['customFileSystemConfigs'] == null ? null : (pulumi.Input.decodeList<DomainDefaultSpaceSettingsCustomFileSystemConfig>(map['customFileSystemConfigs'], (value) => DomainDefaultSpaceSettingsCustomFileSystemConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      customPosixUserConfig: map['customPosixUserConfig'] == null ? null : (DomainDefaultSpaceSettingsCustomPosixUserConfig.fromMap((map['customPosixUserConfig'] as Map).cast<String, dynamic>())).input(),
+      customFileSystemConfigs: map['customFileSystemConfigs'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultSpaceSettingsCustomFileSystemConfig>(map['customFileSystemConfigs']!, (value) => DomainDefaultSpaceSettingsCustomFileSystemConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      customPosixUserConfig: map['customPosixUserConfig'] == null ? null : ((DomainDefaultSpaceSettingsCustomPosixUserConfig.fromMap((map['customPosixUserConfig']! as Map).cast<String, dynamic>())).input()).input(),
       executionRole: (map['executionRole'] as String).input(),
-      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : (DomainDefaultSpaceSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings'] as Map).cast<String, dynamic>())).input(),
-      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : (DomainDefaultSpaceSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings'] as Map).cast<String, dynamic>())).input(),
-      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : (DomainDefaultSpaceSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings'] as Map).cast<String, dynamic>())).input(),
-      securityGroups: map['securityGroups'] == null ? null : ((map['securityGroups'] as List).cast<String>()).input(),
-      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : (DomainDefaultSpaceSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings'] as Map).cast<String, dynamic>())).input(),
+      jupyterLabAppSettings: map['jupyterLabAppSettings'] == null ? null : ((DomainDefaultSpaceSettingsJupyterLabAppSettings.fromMap((map['jupyterLabAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      jupyterServerAppSettings: map['jupyterServerAppSettings'] == null ? null : ((DomainDefaultSpaceSettingsJupyterServerAppSettings.fromMap((map['jupyterServerAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      kernelGatewayAppSettings: map['kernelGatewayAppSettings'] == null ? null : ((DomainDefaultSpaceSettingsKernelGatewayAppSettings.fromMap((map['kernelGatewayAppSettings']! as Map).cast<String, dynamic>())).input()).input(),
+      securityGroups: map['securityGroups'] == null ? null : (((map['securityGroups'] as List).cast<String>()).input()).input(),
+      spaceStorageSettings: map['spaceStorageSettings'] == null ? null : ((DomainDefaultSpaceSettingsSpaceStorageSettings.fromMap((map['spaceStorageSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

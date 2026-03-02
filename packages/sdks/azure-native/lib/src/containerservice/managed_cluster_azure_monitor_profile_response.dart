@@ -22,7 +22,7 @@ class ManagedClusterAzureMonitorProfileResponse {
 
   factory ManagedClusterAzureMonitorProfileResponse.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAzureMonitorProfileResponse(
-      metrics: map['metrics'] == null ? null : (ManagedClusterAzureMonitorProfileMetricsResponse.fromMap((map['metrics'] as Map).cast<String, dynamic>())).input(),
+      metrics: map['metrics'] == null ? null : (ManagedClusterAzureMonitorProfileMetricsResponse.fromMap((map['metrics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

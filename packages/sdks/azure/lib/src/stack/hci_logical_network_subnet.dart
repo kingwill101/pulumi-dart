@@ -44,11 +44,11 @@ class HciLogicalNetworkSubnet {
 
   factory HciLogicalNetworkSubnet.fromMap(Map<String, dynamic> map) {
     return HciLogicalNetworkSubnet(
-      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix'] as String).input(),
+      addressPrefix: map['addressPrefix'] == null ? null : (map['addressPrefix']! as String).input(),
       ipAllocationMethod: (map['ipAllocationMethod'] as String).input(),
-      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<HciLogicalNetworkSubnetIpPool>(map['ipPools'], (value) => HciLogicalNetworkSubnetIpPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<HciLogicalNetworkSubnetRoute>(map['routes'], (value) => HciLogicalNetworkSubnetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as int).input(),
+      ipPools: map['ipPools'] == null ? null : (pulumi.Input.decodeList<HciLogicalNetworkSubnetIpPool>(map['ipPools']!, (value) => HciLogicalNetworkSubnetIpPool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<HciLogicalNetworkSubnetRoute>(map['routes']!, (value) => HciLogicalNetworkSubnetRoute.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as int).input(),
     );
   }
 }

@@ -38,7 +38,7 @@ class WorkspaceRootDbfsCustomerManagedKeyArgs {
 
   factory WorkspaceRootDbfsCustomerManagedKeyArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceRootDbfsCustomerManagedKeyArgs(
-      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId'] as String).input(),
+      keyVaultId: map['keyVaultId'] == null ? null : (map['keyVaultId']! as String).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );

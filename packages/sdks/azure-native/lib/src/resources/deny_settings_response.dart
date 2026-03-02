@@ -36,9 +36,9 @@ class DenySettingsResponse {
 
   factory DenySettingsResponse.fromMap(Map<String, dynamic> map) {
     return DenySettingsResponse(
-      applyToChildScopes: map['applyToChildScopes'] == null ? null : (map['applyToChildScopes'] as bool).input(),
-      excludedActions: map['excludedActions'] == null ? null : ((map['excludedActions'] as List).cast<String>()).input(),
-      excludedPrincipals: map['excludedPrincipals'] == null ? null : ((map['excludedPrincipals'] as List).cast<String>()).input(),
+      applyToChildScopes: map['applyToChildScopes'] == null ? null : (map['applyToChildScopes']! as bool).input(),
+      excludedActions: map['excludedActions'] == null ? null : ((map['excludedActions']! as List).cast<String>()).input(),
+      excludedPrincipals: map['excludedPrincipals'] == null ? null : ((map['excludedPrincipals']! as List).cast<String>()).input(),
       mode: (map['mode'] as String).input(),
     );
   }

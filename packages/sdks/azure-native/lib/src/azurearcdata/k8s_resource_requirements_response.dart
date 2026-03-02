@@ -26,8 +26,8 @@ class K8sResourceRequirementsResponse {
 
   factory K8sResourceRequirementsResponse.fromMap(Map<String, dynamic> map) {
     return K8sResourceRequirementsResponse(
-      limits: map['limits'] == null ? null : ((map['limits'] as Map).cast<String, String>()).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as Map).cast<String, String>()).input(),
+      limits: map['limits'] == null ? null : ((map['limits']! as Map).cast<String, String>()).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as Map).cast<String, String>()).input(),
     );
   }
 }

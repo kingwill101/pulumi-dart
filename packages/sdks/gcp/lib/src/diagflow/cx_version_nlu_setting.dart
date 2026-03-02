@@ -37,9 +37,9 @@ class CxVersionNluSetting {
 
   factory CxVersionNluSetting.fromMap(Map<String, dynamic> map) {
     return CxVersionNluSetting(
-      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold'] as double).input(),
-      modelTrainingMode: map['modelTrainingMode'] == null ? null : (map['modelTrainingMode'] as String).input(),
-      modelType: map['modelType'] == null ? null : (map['modelType'] as String).input(),
+      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold']! as double).input(),
+      modelTrainingMode: map['modelTrainingMode'] == null ? null : (map['modelTrainingMode']! as String).input(),
+      modelType: map['modelType'] == null ? null : (map['modelType']! as String).input(),
     );
   }
 }

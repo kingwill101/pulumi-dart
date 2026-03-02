@@ -96,21 +96,21 @@ class ExecutionTemplate {
 
   factory ExecutionTemplate.fromMap(Map<String, dynamic> map) {
     return ExecutionTemplate(
-      acceleratorConfig: map['acceleratorConfig'] == null ? null : (SchedulerAcceleratorConfig.fromMap((map['acceleratorConfig'] as Map).cast<String, dynamic>())).input(),
-      containerImageUri: map['containerImageUri'] == null ? null : (map['containerImageUri'] as String).input(),
-      dataprocParameters: map['dataprocParameters'] == null ? null : (DataprocParameters.fromMap((map['dataprocParameters'] as Map).cast<String, dynamic>())).input(),
-      inputNotebookFile: map['inputNotebookFile'] == null ? null : (map['inputNotebookFile'] as String).input(),
-      jobType: map['jobType'] == null ? null : (ExecutionTemplateJobType.fromValue(map['jobType'] as String)).input(),
-      kernelSpec: map['kernelSpec'] == null ? null : (map['kernelSpec'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      masterType: map['masterType'] == null ? null : (map['masterType'] as String).input(),
-      outputNotebookFolder: map['outputNotebookFolder'] == null ? null : (map['outputNotebookFolder'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
-      paramsYamlFile: map['paramsYamlFile'] == null ? null : (map['paramsYamlFile'] as String).input(),
+      acceleratorConfig: map['acceleratorConfig'] == null ? null : (SchedulerAcceleratorConfig.fromMap((map['acceleratorConfig']! as Map).cast<String, dynamic>())).input(),
+      containerImageUri: map['containerImageUri'] == null ? null : (map['containerImageUri']! as String).input(),
+      dataprocParameters: map['dataprocParameters'] == null ? null : (DataprocParameters.fromMap((map['dataprocParameters']! as Map).cast<String, dynamic>())).input(),
+      inputNotebookFile: map['inputNotebookFile'] == null ? null : (map['inputNotebookFile']! as String).input(),
+      jobType: map['jobType'] == null ? null : (ExecutionTemplateJobType.fromValue(map['jobType']! as String)).input(),
+      kernelSpec: map['kernelSpec'] == null ? null : (map['kernelSpec']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      masterType: map['masterType'] == null ? null : (map['masterType']! as String).input(),
+      outputNotebookFolder: map['outputNotebookFolder'] == null ? null : (map['outputNotebookFolder']! as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
+      paramsYamlFile: map['paramsYamlFile'] == null ? null : (map['paramsYamlFile']! as String).input(),
       scaleTier: (ExecutionTemplateScaleTier.fromValue(map['scaleTier'] as String)).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      tensorboard: map['tensorboard'] == null ? null : (map['tensorboard'] as String).input(),
-      vertexAiParameters: map['vertexAiParameters'] == null ? null : (VertexAIParameters.fromMap((map['vertexAiParameters'] as Map).cast<String, dynamic>())).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      tensorboard: map['tensorboard'] == null ? null : (map['tensorboard']! as String).input(),
+      vertexAiParameters: map['vertexAiParameters'] == null ? null : (VertexAIParameters.fromMap((map['vertexAiParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

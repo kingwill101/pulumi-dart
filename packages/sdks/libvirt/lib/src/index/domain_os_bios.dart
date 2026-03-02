@@ -25,8 +25,8 @@ class DomainOsBios {
 
   factory DomainOsBios.fromMap(Map<String, dynamic> map) {
     return DomainOsBios(
-      rebootTimeout: map['rebootTimeout'] == null ? null : (map['rebootTimeout'] as double).input(),
-      useSerial: map['useSerial'] == null ? null : (map['useSerial'] as String).input(),
+      rebootTimeout: map['rebootTimeout'] == null ? null : (map['rebootTimeout']! as double).input(),
+      useSerial: map['useSerial'] == null ? null : (map['useSerial']! as String).input(),
     );
   }
 }

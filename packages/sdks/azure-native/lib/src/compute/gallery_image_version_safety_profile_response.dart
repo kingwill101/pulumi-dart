@@ -37,8 +37,8 @@ class GalleryImageVersionSafetyProfileResponse {
 
   factory GalleryImageVersionSafetyProfileResponse.fromMap(Map<String, dynamic> map) {
     return GalleryImageVersionSafetyProfileResponse(
-      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations'] as bool).input(),
-      blockDeletionBeforeEndOfLife: map['blockDeletionBeforeEndOfLife'] == null ? null : (map['blockDeletionBeforeEndOfLife'] as bool).input(),
+      allowDeletionOfReplicatedLocations: map['allowDeletionOfReplicatedLocations'] == null ? null : (map['allowDeletionOfReplicatedLocations']! as bool).input(),
+      blockDeletionBeforeEndOfLife: map['blockDeletionBeforeEndOfLife'] == null ? null : (map['blockDeletionBeforeEndOfLife']! as bool).input(),
       policyViolations: (pulumi.Input.decodeList<PolicyViolationResponse>(map['policyViolations'], (value) => PolicyViolationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       reportedForPolicyViolation: (map['reportedForPolicyViolation'] as bool).input(),
     );

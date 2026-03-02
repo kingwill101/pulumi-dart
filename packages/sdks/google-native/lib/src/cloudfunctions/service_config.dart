@@ -96,21 +96,21 @@ class ServiceConfig {
 
   factory ServiceConfig.fromMap(Map<String, dynamic> map) {
     return ServiceConfig(
-      allTrafficOnLatestRevision: map['allTrafficOnLatestRevision'] == null ? null : (map['allTrafficOnLatestRevision'] as bool).input(),
-      availableCpu: map['availableCpu'] == null ? null : (map['availableCpu'] as String).input(),
-      availableMemory: map['availableMemory'] == null ? null : (map['availableMemory'] as String).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables'] as Map).cast<String, String>()).input(),
-      ingressSettings: map['ingressSettings'] == null ? null : (ServiceConfigIngressSettings.fromValue(map['ingressSettings'] as String)).input(),
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount'] as int).input(),
-      maxInstanceRequestConcurrency: map['maxInstanceRequestConcurrency'] == null ? null : (map['maxInstanceRequestConcurrency'] as int).input(),
-      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount'] as int).input(),
-      secretEnvironmentVariables: map['secretEnvironmentVariables'] == null ? null : (pulumi.Input.decodeList<SecretEnvVarCloudfunctionsV2>(map['secretEnvironmentVariables'], (value) => SecretEnvVarCloudfunctionsV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secretVolumes: map['secretVolumes'] == null ? null : (pulumi.Input.decodeList<SecretVolumeCloudfunctionsV2>(map['secretVolumes'], (value) => SecretVolumeCloudfunctionsV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      securityLevel: map['securityLevel'] == null ? null : (ServiceConfigSecurityLevel.fromValue(map['securityLevel'] as String)).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
-      vpcConnector: map['vpcConnector'] == null ? null : (map['vpcConnector'] as String).input(),
-      vpcConnectorEgressSettings: map['vpcConnectorEgressSettings'] == null ? null : (ServiceConfigVpcConnectorEgressSettings.fromValue(map['vpcConnectorEgressSettings'] as String)).input(),
+      allTrafficOnLatestRevision: map['allTrafficOnLatestRevision'] == null ? null : (map['allTrafficOnLatestRevision']! as bool).input(),
+      availableCpu: map['availableCpu'] == null ? null : (map['availableCpu']! as String).input(),
+      availableMemory: map['availableMemory'] == null ? null : (map['availableMemory']! as String).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((map['environmentVariables']! as Map).cast<String, String>()).input(),
+      ingressSettings: map['ingressSettings'] == null ? null : (ServiceConfigIngressSettings.fromValue(map['ingressSettings']! as String)).input(),
+      maxInstanceCount: map['maxInstanceCount'] == null ? null : (map['maxInstanceCount']! as int).input(),
+      maxInstanceRequestConcurrency: map['maxInstanceRequestConcurrency'] == null ? null : (map['maxInstanceRequestConcurrency']! as int).input(),
+      minInstanceCount: map['minInstanceCount'] == null ? null : (map['minInstanceCount']! as int).input(),
+      secretEnvironmentVariables: map['secretEnvironmentVariables'] == null ? null : (pulumi.Input.decodeList<SecretEnvVarCloudfunctionsV2>(map['secretEnvironmentVariables']!, (value) => SecretEnvVarCloudfunctionsV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secretVolumes: map['secretVolumes'] == null ? null : (pulumi.Input.decodeList<SecretVolumeCloudfunctionsV2>(map['secretVolumes']!, (value) => SecretVolumeCloudfunctionsV2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityLevel: map['securityLevel'] == null ? null : (ServiceConfigSecurityLevel.fromValue(map['securityLevel']! as String)).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
+      vpcConnector: map['vpcConnector'] == null ? null : (map['vpcConnector']! as String).input(),
+      vpcConnectorEgressSettings: map['vpcConnectorEgressSettings'] == null ? null : (ServiceConfigVpcConnectorEgressSettings.fromValue(map['vpcConnectorEgressSettings']! as String)).input(),
     );
   }
 }

@@ -36,9 +36,9 @@ class GetEntityTypeDialogflowV2beta1Args {
   factory GetEntityTypeDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeDialogflowV2beta1Args(
       entityTypeId: (map['entityTypeId'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

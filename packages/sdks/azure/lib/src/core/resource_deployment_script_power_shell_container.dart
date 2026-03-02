@@ -20,7 +20,7 @@ class ResourceDeploymentScriptPowerShellContainer {
 
   factory ResourceDeploymentScriptPowerShellContainer.fromMap(Map<String, dynamic> map) {
     return ResourceDeploymentScriptPowerShellContainer(
-      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName'] as String).input(),
+      containerGroupName: map['containerGroupName'] == null ? null : (map['containerGroupName']! as String).input(),
     );
   }
 }

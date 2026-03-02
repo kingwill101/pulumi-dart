@@ -60,14 +60,14 @@ class StreamArgs {
 
   factory StreamArgs.fromMap(Map<String, dynamic> map) {
     return StreamArgs(
-      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : (map['exclusiveEndTime'] as String).input(),
+      exclusiveEndTime: map['exclusiveEndTime'] == null ? null : ((map['exclusiveEndTime'] as String).input()).input(),
       inclusiveStartTime: (map['inclusiveStartTime'] as String).input(),
-      kinesisConfiguration: (StreamKinesisConfiguration.fromMap((map['kinesisConfiguration'] as Map).cast<String, dynamic>())).input(),
+      kinesisConfiguration: (StreamKinesisConfiguration.fromMap((map['kinesisConfiguration']! as Map).cast<String, dynamic>())).input(),
       ledgerName: (map['ledgerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
       streamName: (map['streamName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

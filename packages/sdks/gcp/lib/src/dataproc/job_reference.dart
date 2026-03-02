@@ -20,7 +20,7 @@ class JobReference {
 
   factory JobReference.fromMap(Map<String, dynamic> map) {
     return JobReference(
-      jobId: map['jobId'] == null ? null : (map['jobId'] as String).input(),
+      jobId: map['jobId'] == null ? null : (map['jobId']! as String).input(),
     );
   }
 }

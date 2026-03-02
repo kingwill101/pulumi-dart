@@ -65,11 +65,11 @@ class IncidentTaskArgs {
 
   factory IncidentTaskArgs.fromMap(Map<String, dynamic> map) {
     return IncidentTaskArgs(
-      createdBy: map['createdBy'] == null ? null : (ClientInfo.fromMap((map['createdBy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      createdBy: map['createdBy'] == null ? null : (ClientInfo.fromMap((map['createdBy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       incidentId: (map['incidentId'] as String).input(),
-      incidentTaskId: map['incidentTaskId'] == null ? null : (map['incidentTaskId'] as String).input(),
-      lastModifiedBy: map['lastModifiedBy'] == null ? null : (ClientInfo.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>())).input(),
+      incidentTaskId: map['incidentTaskId'] == null ? null : (map['incidentTaskId']! as String).input(),
+      lastModifiedBy: map['lastModifiedBy'] == null ? null : (ClientInfo.fromMap((map['lastModifiedBy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       status: (map['status'] as String).input(),
       title: (map['title'] as String).input(),

@@ -26,8 +26,8 @@ class ResourceSetDescriptionResponse {
 
   factory ResourceSetDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return ResourceSetDescriptionResponse(
-      elements: map['elements'] == null ? null : ((map['elements'] as List).cast<String>()).input(),
-      exceptions: map['exceptions'] == null ? null : ((map['exceptions'] as List).cast<String>()).input(),
+      elements: map['elements'] == null ? null : ((map['elements']! as List).cast<String>()).input(),
+      exceptions: map['exceptions'] == null ? null : ((map['exceptions']! as List).cast<String>()).input(),
     );
   }
 }

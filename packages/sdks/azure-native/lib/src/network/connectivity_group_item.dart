@@ -37,9 +37,9 @@ class ConnectivityGroupItem {
   factory ConnectivityGroupItem.fromMap(Map<String, dynamic> map) {
     return ConnectivityGroupItem(
       groupConnectivity: (map['groupConnectivity'] as String).input(),
-      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal'] as String).input(),
+      isGlobal: map['isGlobal'] == null ? null : (map['isGlobal']! as String).input(),
       networkGroupId: (map['networkGroupId'] as String).input(),
-      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway'] as String).input(),
+      useHubGateway: map['useHubGateway'] == null ? null : (map['useHubGateway']! as String).input(),
     );
   }
 }

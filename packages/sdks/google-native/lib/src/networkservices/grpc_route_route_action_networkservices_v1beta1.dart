@@ -45,11 +45,11 @@ class GrpcRouteRouteActionNetworkservicesV1beta1 {
 
   factory GrpcRouteRouteActionNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteActionNetworkservicesV1beta1(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<GrpcRouteDestinationNetworkservicesV1beta1>(map['destinations'], (value) => GrpcRouteDestinationNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap((map['faultInjectionPolicy'] as Map).cast<String, dynamic>())).input(),
-      retryPolicy: map['retryPolicy'] == null ? null : (GrpcRouteRetryPolicyNetworkservicesV1beta1.fromMap((map['retryPolicy'] as Map).cast<String, dynamic>())).input(),
-      statefulSessionAffinity: map['statefulSessionAffinity'] == null ? null : (GrpcRouteStatefulSessionAffinityPolicyNetworkservicesV1beta1.fromMap((map['statefulSessionAffinity'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<GrpcRouteDestinationNetworkservicesV1beta1>(map['destinations']!, (value) => GrpcRouteDestinationNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      faultInjectionPolicy: map['faultInjectionPolicy'] == null ? null : (GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap((map['faultInjectionPolicy']! as Map).cast<String, dynamic>())).input(),
+      retryPolicy: map['retryPolicy'] == null ? null : (GrpcRouteRetryPolicyNetworkservicesV1beta1.fromMap((map['retryPolicy']! as Map).cast<String, dynamic>())).input(),
+      statefulSessionAffinity: map['statefulSessionAffinity'] == null ? null : (GrpcRouteStatefulSessionAffinityPolicyNetworkservicesV1beta1.fromMap((map['statefulSessionAffinity']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

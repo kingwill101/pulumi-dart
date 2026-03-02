@@ -36,10 +36,10 @@ class DashboardState {
 
   factory DashboardState.fromMap(Map<String, dynamic> map) {
     return DashboardState(
-      dashboardArn: map['dashboardArn'] == null ? null : (map['dashboardArn'] as String).input(),
-      dashboardBody: map['dashboardBody'] == null ? null : (map['dashboardBody'] as String).input(),
-      dashboardName: map['dashboardName'] == null ? null : (map['dashboardName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dashboardArn: map['dashboardArn'] == null ? null : ((map['dashboardArn'] as String).input()).input(),
+      dashboardBody: map['dashboardBody'] == null ? null : ((map['dashboardBody'] as String).input()).input(),
+      dashboardName: map['dashboardName'] == null ? null : ((map['dashboardName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

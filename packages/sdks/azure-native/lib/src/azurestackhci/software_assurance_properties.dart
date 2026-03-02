@@ -21,7 +21,7 @@ class SoftwareAssuranceProperties {
 
   factory SoftwareAssuranceProperties.fromMap(Map<String, dynamic> map) {
     return SoftwareAssuranceProperties(
-      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : (map['softwareAssuranceIntent'] as String).input(),
+      softwareAssuranceIntent: map['softwareAssuranceIntent'] == null ? null : (map['softwareAssuranceIntent']! as String).input(),
     );
   }
 }

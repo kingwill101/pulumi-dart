@@ -78,17 +78,17 @@ class SapNetWeaverProviderInstancePropertiesResponse {
   factory SapNetWeaverProviderInstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SapNetWeaverProviderInstancePropertiesResponse(
       providerType: (map['providerType'] as String).input(),
-      sapClientId: map['sapClientId'] == null ? null : (map['sapClientId'] as String).input(),
-      sapHostFileEntries: map['sapHostFileEntries'] == null ? null : ((map['sapHostFileEntries'] as List).cast<String>()).input(),
-      sapHostname: map['sapHostname'] == null ? null : (map['sapHostname'] as String).input(),
-      sapInstanceNr: map['sapInstanceNr'] == null ? null : (map['sapInstanceNr'] as String).input(),
-      sapPassword: map['sapPassword'] == null ? null : (map['sapPassword'] as String).input(),
-      sapPasswordUri: map['sapPasswordUri'] == null ? null : (map['sapPasswordUri'] as String).input(),
-      sapPortNumber: map['sapPortNumber'] == null ? null : (map['sapPortNumber'] as String).input(),
-      sapSid: map['sapSid'] == null ? null : (map['sapSid'] as String).input(),
-      sapUsername: map['sapUsername'] == null ? null : (map['sapUsername'] as String).input(),
-      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri'] as String).input(),
-      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference'] as String).input(),
+      sapClientId: map['sapClientId'] == null ? null : (map['sapClientId']! as String).input(),
+      sapHostFileEntries: map['sapHostFileEntries'] == null ? null : ((map['sapHostFileEntries']! as List).cast<String>()).input(),
+      sapHostname: map['sapHostname'] == null ? null : (map['sapHostname']! as String).input(),
+      sapInstanceNr: map['sapInstanceNr'] == null ? null : (map['sapInstanceNr']! as String).input(),
+      sapPassword: map['sapPassword'] == null ? null : (map['sapPassword']! as String).input(),
+      sapPasswordUri: map['sapPasswordUri'] == null ? null : (map['sapPasswordUri']! as String).input(),
+      sapPortNumber: map['sapPortNumber'] == null ? null : (map['sapPortNumber']! as String).input(),
+      sapSid: map['sapSid'] == null ? null : (map['sapSid']! as String).input(),
+      sapUsername: map['sapUsername'] == null ? null : (map['sapUsername']! as String).input(),
+      sslCertificateUri: map['sslCertificateUri'] == null ? null : (map['sslCertificateUri']! as String).input(),
+      sslPreference: map['sslPreference'] == null ? null : (map['sslPreference']! as String).input(),
     );
   }
 }

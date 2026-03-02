@@ -76,15 +76,15 @@ class AppVersionSnapshotExample {
 
   factory AppVersionSnapshotExample.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotExample(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      invalid: map['invalid'] == null ? null : (map['invalid'] as bool).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(map['messages'], (value) => AppVersionSnapshotExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      entryAgent: map['entryAgent'] == null ? null : (map['entryAgent']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      invalid: map['invalid'] == null ? null : (map['invalid']! as bool).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<AppVersionSnapshotExampleMessage>(map['messages']!, (value) => AppVersionSnapshotExampleMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

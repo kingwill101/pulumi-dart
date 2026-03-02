@@ -25,8 +25,8 @@ class AgentAgentActionGroupTimeouts {
 
   factory AgentAgentActionGroupTimeouts.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
+      update: map['update'] == null ? null : ((map['update'] as String).input()).input(),
     );
   }
 }

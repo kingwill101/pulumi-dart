@@ -32,8 +32,8 @@ class EnvironmentVariableResponse {
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableResponse(
       name: (map['name'] as String).input(),
-      secureValue: map['secureValue'] == null ? null : (map['secureValue'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      secureValue: map['secureValue'] == null ? null : (map['secureValue']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

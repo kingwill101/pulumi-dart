@@ -46,12 +46,12 @@ class VirtualMachineSchemaResponseProperties {
 
   factory VirtualMachineSchemaResponseProperties.fromMap(Map<String, dynamic> map) {
     return VirtualMachineSchemaResponseProperties(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      administratorAccount: map['administratorAccount'] == null ? null : (VirtualMachineSshCredentialsResponse.fromMap((map['administratorAccount'] as Map).cast<String, dynamic>())).input(),
-      isNotebookInstanceCompute: map['isNotebookInstanceCompute'] == null ? null : (map['isNotebookInstanceCompute'] as bool).input(),
-      notebookServerPort: map['notebookServerPort'] == null ? null : (map['notebookServerPort'] as int).input(),
-      sshPort: map['sshPort'] == null ? null : (map['sshPort'] as int).input(),
-      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
+      administratorAccount: map['administratorAccount'] == null ? null : (VirtualMachineSshCredentialsResponse.fromMap((map['administratorAccount']! as Map).cast<String, dynamic>())).input(),
+      isNotebookInstanceCompute: map['isNotebookInstanceCompute'] == null ? null : (map['isNotebookInstanceCompute']! as bool).input(),
+      notebookServerPort: map['notebookServerPort'] == null ? null : (map['notebookServerPort']! as int).input(),
+      sshPort: map['sshPort'] == null ? null : (map['sshPort']! as int).input(),
+      virtualMachineSize: map['virtualMachineSize'] == null ? null : (map['virtualMachineSize']! as String).input(),
     );
   }
 }

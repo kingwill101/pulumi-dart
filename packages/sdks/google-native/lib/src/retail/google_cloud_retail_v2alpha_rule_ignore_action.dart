@@ -21,7 +21,7 @@ class GoogleCloudRetailV2alphaRuleIgnoreAction {
 
   factory GoogleCloudRetailV2alphaRuleIgnoreAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleIgnoreAction(
-      ignoreTerms: map['ignoreTerms'] == null ? null : ((map['ignoreTerms'] as List).cast<String>()).input(),
+      ignoreTerms: map['ignoreTerms'] == null ? null : ((map['ignoreTerms']! as List).cast<String>()).input(),
     );
   }
 }

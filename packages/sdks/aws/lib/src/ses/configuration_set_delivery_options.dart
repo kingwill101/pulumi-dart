@@ -20,7 +20,7 @@ class ConfigurationSetDeliveryOptions {
 
   factory ConfigurationSetDeliveryOptions.fromMap(Map<String, dynamic> map) {
     return ConfigurationSetDeliveryOptions(
-      tlsPolicy: map['tlsPolicy'] == null ? null : (map['tlsPolicy'] as String).input(),
+      tlsPolicy: map['tlsPolicy'] == null ? null : ((map['tlsPolicy'] as String).input()).input(),
     );
   }
 }

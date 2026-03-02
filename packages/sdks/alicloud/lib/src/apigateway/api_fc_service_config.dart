@@ -76,16 +76,16 @@ class ApiFcServiceConfig {
   factory ApiFcServiceConfig.fromMap(Map<String, dynamic> map) {
     return ApiFcServiceConfig(
       arnRole: (map['arnRole'] as String).input(),
-      functionBaseUrl: map['functionBaseUrl'] == null ? null : (map['functionBaseUrl'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      functionType: map['functionType'] == null ? null : (map['functionType'] as String).input(),
-      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      onlyBusinessPath: map['onlyBusinessPath'] == null ? null : (map['onlyBusinessPath'] as bool).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      qualifier: map['qualifier'] == null ? null : (map['qualifier'] as String).input(),
+      functionBaseUrl: map['functionBaseUrl'] == null ? null : (map['functionBaseUrl']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      functionType: map['functionType'] == null ? null : (map['functionType']! as String).input(),
+      functionVersion: map['functionVersion'] == null ? null : (map['functionVersion']! as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      onlyBusinessPath: map['onlyBusinessPath'] == null ? null : (map['onlyBusinessPath']! as bool).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      qualifier: map['qualifier'] == null ? null : (map['qualifier']! as String).input(),
       region: (map['region'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
       timeout: (map['timeout'] as int).input(),
     );
   }

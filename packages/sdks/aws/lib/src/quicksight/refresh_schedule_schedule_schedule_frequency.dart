@@ -37,9 +37,9 @@ class RefreshScheduleScheduleScheduleFrequency {
   factory RefreshScheduleScheduleScheduleFrequency.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleScheduleScheduleFrequency(
       interval: (map['interval'] as String).input(),
-      refreshOnDay: map['refreshOnDay'] == null ? null : (RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap((map['refreshOnDay'] as Map).cast<String, dynamic>())).input(),
-      timeOfTheDay: map['timeOfTheDay'] == null ? null : (map['timeOfTheDay'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
+      refreshOnDay: map['refreshOnDay'] == null ? null : ((RefreshScheduleScheduleScheduleFrequencyRefreshOnDay.fromMap((map['refreshOnDay']! as Map).cast<String, dynamic>())).input()).input(),
+      timeOfTheDay: map['timeOfTheDay'] == null ? null : ((map['timeOfTheDay'] as String).input()).input(),
+      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
     );
   }
 }

@@ -96,22 +96,22 @@ class DraftPackageIntuneAppMetadataItemResponse {
 
   factory DraftPackageIntuneAppMetadataItemResponse.fromMap(Map<String, dynamic> map) {
     return DraftPackageIntuneAppMetadataItemResponse(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      createDate: map['createDate'] == null ? null : (map['createDate'] as String).input(),
-      dependencyIds: map['dependencyIds'] == null ? null : ((map['dependencyIds'] as List).cast<String>()).input(),
-      dependentAppCount: map['dependentAppCount'] == null ? null : (map['dependentAppCount'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expectedExitCodes: map['expectedExitCodes'] == null ? null : ((map['expectedExitCodes'] as List).cast<String>()).input(),
-      installCommand: map['installCommand'] == null ? null : (map['installCommand'] as String).input(),
-      lastProcessed: map['lastProcessed'] == null ? null : (map['lastProcessed'] as double).input(),
-      minimumSupportedOS: map['minimumSupportedOS'] == null ? null : (map['minimumSupportedOS'] as String).input(),
-      owner: map['owner'] == null ? null : (map['owner'] as String).input(),
-      publisher: map['publisher'] == null ? null : (map['publisher'] as String).input(),
-      setupFile: map['setupFile'] == null ? null : (map['setupFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      uninstallCommand: map['uninstallCommand'] == null ? null : (map['uninstallCommand'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      createDate: map['createDate'] == null ? null : (map['createDate']! as String).input(),
+      dependencyIds: map['dependencyIds'] == null ? null : ((map['dependencyIds']! as List).cast<String>()).input(),
+      dependentAppCount: map['dependentAppCount'] == null ? null : (map['dependentAppCount']! as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expectedExitCodes: map['expectedExitCodes'] == null ? null : ((map['expectedExitCodes']! as List).cast<String>()).input(),
+      installCommand: map['installCommand'] == null ? null : (map['installCommand']! as String).input(),
+      lastProcessed: map['lastProcessed'] == null ? null : (map['lastProcessed']! as double).input(),
+      minimumSupportedOS: map['minimumSupportedOS'] == null ? null : (map['minimumSupportedOS']! as String).input(),
+      owner: map['owner'] == null ? null : (map['owner']! as String).input(),
+      publisher: map['publisher'] == null ? null : (map['publisher']! as String).input(),
+      setupFile: map['setupFile'] == null ? null : (map['setupFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      uninstallCommand: map['uninstallCommand'] == null ? null : (map['uninstallCommand']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

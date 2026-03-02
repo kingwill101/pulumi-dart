@@ -73,17 +73,17 @@ class LinkState {
 
   factory LinkState.fromMap(Map<String, dynamic> map) {
     return LinkState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      labelTemplate: map['labelTemplate'] == null ? null : (map['labelTemplate'] as String).input(),
-      linkConfiguration: map['linkConfiguration'] == null ? null : (LinkLinkConfiguration.fromMap((map['linkConfiguration'] as Map).cast<String, dynamic>())).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : ((map['resourceTypes'] as List).cast<String>()).input(),
-      sinkArn: map['sinkArn'] == null ? null : (map['sinkArn'] as String).input(),
-      sinkIdentifier: map['sinkIdentifier'] == null ? null : (map['sinkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
+      labelTemplate: map['labelTemplate'] == null ? null : ((map['labelTemplate'] as String).input()).input(),
+      linkConfiguration: map['linkConfiguration'] == null ? null : ((LinkLinkConfiguration.fromMap((map['linkConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (((map['resourceTypes'] as List).cast<String>()).input()).input(),
+      sinkArn: map['sinkArn'] == null ? null : ((map['sinkArn'] as String).input()).input(),
+      sinkIdentifier: map['sinkIdentifier'] == null ? null : ((map['sinkIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

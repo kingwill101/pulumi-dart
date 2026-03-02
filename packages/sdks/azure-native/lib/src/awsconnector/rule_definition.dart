@@ -27,8 +27,8 @@ class RuleDefinition {
 
   factory RuleDefinition.fromMap(Map<String, dynamic> map) {
     return RuleDefinition(
-      actions: map['actions'] == null ? null : ((map['actions'] as List).cast<String>()).input(),
-      matchAttributes: map['matchAttributes'] == null ? null : (MatchAttributes.fromMap((map['matchAttributes'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : ((map['actions']! as List).cast<String>()).input(),
+      matchAttributes: map['matchAttributes'] == null ? null : (MatchAttributes.fromMap((map['matchAttributes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

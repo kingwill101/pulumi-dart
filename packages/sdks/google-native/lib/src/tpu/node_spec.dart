@@ -38,9 +38,9 @@ class NodeSpec {
 
   factory NodeSpec.fromMap(Map<String, dynamic> map) {
     return NodeSpec(
-      multiNodeParams: map['multiNodeParams'] == null ? null : (MultiNodeParams.fromMap((map['multiNodeParams'] as Map).cast<String, dynamic>())).input(),
+      multiNodeParams: map['multiNodeParams'] == null ? null : (MultiNodeParams.fromMap((map['multiNodeParams']! as Map).cast<String, dynamic>())).input(),
       node: (Node.fromMap((map['node'] as Map).cast<String, dynamic>())).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class SqlVmSettingsResponse {
 
   factory SqlVmSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlVmSettingsResponse(
-      instanceSeries: map['instanceSeries'] == null ? null : ((map['instanceSeries'] as List).cast<String>()).input(),
+      instanceSeries: map['instanceSeries'] == null ? null : ((map['instanceSeries']! as List).cast<String>()).input(),
     );
   }
 }

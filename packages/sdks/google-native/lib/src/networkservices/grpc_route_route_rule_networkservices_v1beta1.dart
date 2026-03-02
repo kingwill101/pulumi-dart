@@ -29,7 +29,7 @@ class GrpcRouteRouteRuleNetworkservicesV1beta1 {
   factory GrpcRouteRouteRuleNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return GrpcRouteRouteRuleNetworkservicesV1beta1(
       action: (GrpcRouteRouteActionNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRouteMatchNetworkservicesV1beta1>(map['matches'], (value) => GrpcRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      matches: map['matches'] == null ? null : (pulumi.Input.decodeList<GrpcRouteRouteMatchNetworkservicesV1beta1>(map['matches']!, (value) => GrpcRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AppliancePropertiesInfrastructureConfigResponse {
 
   factory AppliancePropertiesInfrastructureConfigResponse.fromMap(Map<String, dynamic> map) {
     return AppliancePropertiesInfrastructureConfigResponse(
-      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
+      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
     );
   }
 }

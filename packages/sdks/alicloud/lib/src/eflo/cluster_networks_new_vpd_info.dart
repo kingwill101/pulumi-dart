@@ -51,13 +51,13 @@ class ClusterNetworksNewVpdInfo {
 
   factory ClusterNetworksNewVpdInfo.fromMap(Map<String, dynamic> map) {
     return ClusterNetworksNewVpdInfo(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      cloudLinkCidr: map['cloudLinkCidr'] == null ? null : (map['cloudLinkCidr'] as String).input(),
-      cloudLinkId: map['cloudLinkId'] == null ? null : (map['cloudLinkId'] as String).input(),
-      monitorVpcId: map['monitorVpcId'] == null ? null : (map['monitorVpcId'] as String).input(),
-      monitorVswitchId: map['monitorVswitchId'] == null ? null : (map['monitorVswitchId'] as String).input(),
-      vpdCidr: map['vpdCidr'] == null ? null : (map['vpdCidr'] as String).input(),
-      vpdSubnets: map['vpdSubnets'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksNewVpdInfoVpdSubnet>(map['vpdSubnets'], (value) => ClusterNetworksNewVpdInfoVpdSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      cloudLinkCidr: map['cloudLinkCidr'] == null ? null : (map['cloudLinkCidr']! as String).input(),
+      cloudLinkId: map['cloudLinkId'] == null ? null : (map['cloudLinkId']! as String).input(),
+      monitorVpcId: map['monitorVpcId'] == null ? null : (map['monitorVpcId']! as String).input(),
+      monitorVswitchId: map['monitorVswitchId'] == null ? null : (map['monitorVswitchId']! as String).input(),
+      vpdCidr: map['vpdCidr'] == null ? null : (map['vpdCidr']! as String).input(),
+      vpdSubnets: map['vpdSubnets'] == null ? null : (pulumi.Input.decodeList<ClusterNetworksNewVpdInfoVpdSubnet>(map['vpdSubnets']!, (value) => ClusterNetworksNewVpdInfoVpdSubnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

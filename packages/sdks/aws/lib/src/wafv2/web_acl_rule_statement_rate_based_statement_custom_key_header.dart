@@ -27,7 +27,7 @@ class WebAclRuleStatementRateBasedStatementCustomKeyHeader {
   factory WebAclRuleStatementRateBasedStatementCustomKeyHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRateBasedStatementCustomKeyHeader(
       name: (map['name'] as String).input(),
-      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      textTransformations: (pulumi.Input.decodeList<WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation>(map['textTransformations']!, (value) => WebAclRuleStatementRateBasedStatementCustomKeyHeaderTextTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

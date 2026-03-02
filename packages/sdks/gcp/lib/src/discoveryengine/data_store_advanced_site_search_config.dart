@@ -25,8 +25,8 @@ class DataStoreAdvancedSiteSearchConfig {
 
   factory DataStoreAdvancedSiteSearchConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreAdvancedSiteSearchConfig(
-      disableAutomaticRefresh: map['disableAutomaticRefresh'] == null ? null : (map['disableAutomaticRefresh'] as bool).input(),
-      disableInitialIndex: map['disableInitialIndex'] == null ? null : (map['disableInitialIndex'] as bool).input(),
+      disableAutomaticRefresh: map['disableAutomaticRefresh'] == null ? null : (map['disableAutomaticRefresh']! as bool).input(),
+      disableInitialIndex: map['disableInitialIndex'] == null ? null : (map['disableInitialIndex']! as bool).input(),
     );
   }
 }

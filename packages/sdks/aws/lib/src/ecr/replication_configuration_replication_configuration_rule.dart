@@ -27,8 +27,8 @@ class ReplicationConfigurationReplicationConfigurationRule {
 
   factory ReplicationConfigurationReplicationConfigurationRule.fromMap(Map<String, dynamic> map) {
     return ReplicationConfigurationReplicationConfigurationRule(
-      destinations: (pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRuleDestination>(map['destinations'], (value) => ReplicationConfigurationReplicationConfigurationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      repositoryFilters: map['repositoryFilters'] == null ? null : (pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>(map['repositoryFilters'], (value) => ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      destinations: (pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRuleDestination>(map['destinations']!, (value) => ReplicationConfigurationReplicationConfigurationRuleDestination.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      repositoryFilters: map['repositoryFilters'] == null ? null : ((pulumi.Input.decodeList<ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter>(map['repositoryFilters']!, (value) => ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

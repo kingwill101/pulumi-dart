@@ -41,11 +41,11 @@ class BaiduChannelState {
 
   factory BaiduChannelState.fromMap(Map<String, dynamic> map) {
     return BaiduChannelState(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretKey: map['secretKey'] == null ? null : (map['secretKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : ((map['apiKey'] as String).input()).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretKey: map['secretKey'] == null ? null : ((map['secretKey'] as String).input()).input(),
     );
   }
 }

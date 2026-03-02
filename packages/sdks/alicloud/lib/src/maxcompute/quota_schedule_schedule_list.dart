@@ -33,7 +33,7 @@ class QuotaScheduleScheduleList {
 
   factory QuotaScheduleScheduleList.fromMap(Map<String, dynamic> map) {
     return QuotaScheduleScheduleList(
-      condition: map['condition'] == null ? null : (QuotaScheduleScheduleListCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (QuotaScheduleScheduleListCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       plan: (map['plan'] as String).input(),
       type: (map['type'] as String).input(),
     );

@@ -32,7 +32,7 @@ class AsymmetricEncryptedSecretResponse {
   factory AsymmetricEncryptedSecretResponse.fromMap(Map<String, dynamic> map) {
     return AsymmetricEncryptedSecretResponse(
       encryptionAlgorithm: (map['encryptionAlgorithm'] as String).input(),
-      encryptionCertThumbprint: map['encryptionCertThumbprint'] == null ? null : (map['encryptionCertThumbprint'] as String).input(),
+      encryptionCertThumbprint: map['encryptionCertThumbprint'] == null ? null : (map['encryptionCertThumbprint']! as String).input(),
       value: (map['value'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class KeyVaultKeyResponse {
 
   factory KeyVaultKeyResponse.fromMap(Map<String, dynamic> map) {
     return KeyVaultKeyResponse(
-      attributes: map['attributes'] == null ? null : (KeyVaultKeyResponseAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>())).input(),
-      kid: map['kid'] == null ? null : (map['kid'] as String).input(),
+      attributes: map['attributes'] == null ? null : (KeyVaultKeyResponseAttributes.fromMap((map['attributes']! as Map).cast<String, dynamic>())).input(),
+      kid: map['kid'] == null ? null : (map['kid']! as String).input(),
     );
   }
 }

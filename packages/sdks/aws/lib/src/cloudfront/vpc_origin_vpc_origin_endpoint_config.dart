@@ -51,7 +51,7 @@ class VpcOriginVpcOriginEndpointConfig {
       httpsPort: (map['httpsPort'] as int).input(),
       name: (map['name'] as String).input(),
       originProtocolPolicy: (map['originProtocolPolicy'] as String).input(),
-      originSslProtocols: (VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap((map['originSslProtocols'] as Map).cast<String, dynamic>())).input(),
+      originSslProtocols: (VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap((map['originSslProtocols']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

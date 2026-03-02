@@ -36,7 +36,7 @@ class GetScopeRbacRoleBindingArgs {
   factory GetScopeRbacRoleBindingArgs.fromMap(Map<String, dynamic> map) {
     return GetScopeRbacRoleBindingArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rbacrolebindingId: (map['rbacrolebindingId'] as String).input(),
       scopeId: (map['scopeId'] as String).input(),
     );

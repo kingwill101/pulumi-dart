@@ -37,7 +37,7 @@ class UserSettingsAssociationArgs {
   factory UserSettingsAssociationArgs.fromMap(Map<String, dynamic> map) {
     return UserSettingsAssociationArgs(
       portalArn: (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       userSettingsArn: (map['userSettingsArn'] as String).input(),
     );
   }

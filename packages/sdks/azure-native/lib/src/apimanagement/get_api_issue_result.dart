@@ -65,13 +65,13 @@ class GetApiIssueResult {
 
   factory GetApiIssueResult.fromMap(Map<String, dynamic> map) {
     return GetApiIssueResult(
-      apiId: map['apiId'] == null ? null : map['apiId'] as String,
+      apiId: map['apiId'] == null ? null : map['apiId']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      createdDate: map['createdDate'] == null ? null : map['createdDate'] as String,
+      createdDate: map['createdDate'] == null ? null : map['createdDate']! as String,
       description: map['description'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      state: map['state'] == null ? null : map['state'] as String,
+      state: map['state'] == null ? null : map['state']! as String,
       title: map['title'] as String,
       type: map['type'] as String,
       userId: map['userId'] as String,

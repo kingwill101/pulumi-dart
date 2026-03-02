@@ -31,9 +31,9 @@ class ProfessionalServicePropertiesResponseTerm {
 
   factory ProfessionalServicePropertiesResponseTerm.fromMap(Map<String, dynamic> map) {
     return ProfessionalServicePropertiesResponseTerm(
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      termUnit: map['termUnit'] == null ? null : (map['termUnit'] as String).input(),
+      endDate: map['endDate'] == null ? null : (map['endDate']! as String).input(),
+      startDate: map['startDate'] == null ? null : (map['startDate']! as String).input(),
+      termUnit: map['termUnit'] == null ? null : (map['termUnit']! as String).input(),
     );
   }
 }

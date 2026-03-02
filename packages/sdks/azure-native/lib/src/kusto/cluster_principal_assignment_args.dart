@@ -55,12 +55,12 @@ class ClusterPrincipalAssignmentArgs {
   factory ClusterPrincipalAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ClusterPrincipalAssignmentArgs(
       clusterName: (map['clusterName'] as String).input(),
-      principalAssignmentName: map['principalAssignmentName'] == null ? null : (map['principalAssignmentName'] as String).input(),
+      principalAssignmentName: map['principalAssignmentName'] == null ? null : (map['principalAssignmentName']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       principalType: (map['principalType'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       role: (map['role'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

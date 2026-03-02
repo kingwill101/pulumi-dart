@@ -85,20 +85,20 @@ class LocallySignedCertState {
 
   factory LocallySignedCertState.fromMap(Map<String, dynamic> map) {
     return LocallySignedCertState(
-      allowedUses: map['allowedUses'] == null ? null : ((map['allowedUses'] as List).cast<String>()).input(),
-      caCertPem: map['caCertPem'] == null ? null : (map['caCertPem'] as String).input(),
-      caKeyAlgorithm: map['caKeyAlgorithm'] == null ? null : (map['caKeyAlgorithm'] as String).input(),
-      caPrivateKeyPem: map['caPrivateKeyPem'] == null ? null : (map['caPrivateKeyPem'] as String).input(),
-      certPem: map['certPem'] == null ? null : (map['certPem'] as String).input(),
-      certRequestPem: map['certRequestPem'] == null ? null : (map['certRequestPem'] as String).input(),
-      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours'] as int).input(),
-      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate'] as bool).input(),
-      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength'] as int).input(),
-      readyForRenewal: map['readyForRenewal'] == null ? null : (map['readyForRenewal'] as bool).input(),
-      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId'] as bool).input(),
-      validityEndTime: map['validityEndTime'] == null ? null : (map['validityEndTime'] as String).input(),
-      validityPeriodHours: map['validityPeriodHours'] == null ? null : (map['validityPeriodHours'] as int).input(),
-      validityStartTime: map['validityStartTime'] == null ? null : (map['validityStartTime'] as String).input(),
+      allowedUses: map['allowedUses'] == null ? null : ((map['allowedUses']! as List).cast<String>()).input(),
+      caCertPem: map['caCertPem'] == null ? null : (map['caCertPem']! as String).input(),
+      caKeyAlgorithm: map['caKeyAlgorithm'] == null ? null : (map['caKeyAlgorithm']! as String).input(),
+      caPrivateKeyPem: map['caPrivateKeyPem'] == null ? null : (map['caPrivateKeyPem']! as String).input(),
+      certPem: map['certPem'] == null ? null : (map['certPem']! as String).input(),
+      certRequestPem: map['certRequestPem'] == null ? null : (map['certRequestPem']! as String).input(),
+      earlyRenewalHours: map['earlyRenewalHours'] == null ? null : (map['earlyRenewalHours']! as int).input(),
+      isCaCertificate: map['isCaCertificate'] == null ? null : (map['isCaCertificate']! as bool).input(),
+      maxPathLength: map['maxPathLength'] == null ? null : (map['maxPathLength']! as int).input(),
+      readyForRenewal: map['readyForRenewal'] == null ? null : (map['readyForRenewal']! as bool).input(),
+      setSubjectKeyId: map['setSubjectKeyId'] == null ? null : (map['setSubjectKeyId']! as bool).input(),
+      validityEndTime: map['validityEndTime'] == null ? null : (map['validityEndTime']! as String).input(),
+      validityPeriodHours: map['validityPeriodHours'] == null ? null : (map['validityPeriodHours']! as int).input(),
+      validityStartTime: map['validityStartTime'] == null ? null : (map['validityStartTime']! as String).input(),
     );
   }
 }

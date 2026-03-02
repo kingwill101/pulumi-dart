@@ -27,7 +27,7 @@ class BucketReplicationConfigRuleDestinationReplicationTime {
   factory BucketReplicationConfigRuleDestinationReplicationTime.fromMap(Map<String, dynamic> map) {
     return BucketReplicationConfigRuleDestinationReplicationTime(
       status: (map['status'] as String).input(),
-      time: (BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap((map['time'] as Map).cast<String, dynamic>())).input(),
+      time: (BucketReplicationConfigRuleDestinationReplicationTimeTime.fromMap((map['time']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

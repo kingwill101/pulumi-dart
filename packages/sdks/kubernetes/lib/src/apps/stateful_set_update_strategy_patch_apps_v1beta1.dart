@@ -27,8 +27,8 @@ class StatefulSetUpdateStrategyPatchAppsV1beta1 {
 
   factory StatefulSetUpdateStrategyPatchAppsV1beta1.fromMap(Map<String, dynamic> map) {
     return StatefulSetUpdateStrategyPatchAppsV1beta1(
-      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateStatefulSetStrategyPatchAppsV1beta1.fromMap((map['rollingUpdate'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      rollingUpdate: map['rollingUpdate'] == null ? null : (RollingUpdateStatefulSetStrategyPatchAppsV1beta1.fromMap((map['rollingUpdate']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

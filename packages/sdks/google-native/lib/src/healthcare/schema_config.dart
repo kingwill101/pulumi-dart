@@ -33,9 +33,9 @@ class SchemaConfig {
 
   factory SchemaConfig.fromMap(Map<String, dynamic> map) {
     return SchemaConfig(
-      lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null ? null : (TimePartitioning.fromMap((map['lastUpdatedPartitionConfig'] as Map).cast<String, dynamic>())).input(),
-      recursiveStructureDepth: map['recursiveStructureDepth'] == null ? null : (map['recursiveStructureDepth'] as String).input(),
-      schemaType: map['schemaType'] == null ? null : (SchemaConfigSchemaType.fromValue(map['schemaType'] as String)).input(),
+      lastUpdatedPartitionConfig: map['lastUpdatedPartitionConfig'] == null ? null : (TimePartitioning.fromMap((map['lastUpdatedPartitionConfig']! as Map).cast<String, dynamic>())).input(),
+      recursiveStructureDepth: map['recursiveStructureDepth'] == null ? null : (map['recursiveStructureDepth']! as String).input(),
+      schemaType: map['schemaType'] == null ? null : (SchemaConfigSchemaType.fromValue(map['schemaType']! as String)).input(),
     );
   }
 }

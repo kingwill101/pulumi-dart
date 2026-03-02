@@ -35,7 +35,7 @@ class GetIpSetArgs {
   factory GetIpSetArgs.fromMap(Map<String, dynamic> map) {
     return GetIpSetArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scope: (map['scope'] as String).input(),
     );
   }

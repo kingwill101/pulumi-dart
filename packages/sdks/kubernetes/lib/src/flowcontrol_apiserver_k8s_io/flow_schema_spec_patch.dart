@@ -39,10 +39,10 @@ class FlowSchemaSpecPatch {
 
   factory FlowSchemaSpecPatch.fromMap(Map<String, dynamic> map) {
     return FlowSchemaSpecPatch(
-      distinguisherMethod: map['distinguisherMethod'] == null ? null : (FlowDistinguisherMethodPatch.fromMap((map['distinguisherMethod'] as Map).cast<String, dynamic>())).input(),
-      matchingPrecedence: map['matchingPrecedence'] == null ? null : (map['matchingPrecedence'] as int).input(),
-      priorityLevelConfiguration: map['priorityLevelConfiguration'] == null ? null : (PriorityLevelConfigurationReferencePatch.fromMap((map['priorityLevelConfiguration'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulesWithSubjectsPatch>(map['rules'], (value) => PolicyRulesWithSubjectsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      distinguisherMethod: map['distinguisherMethod'] == null ? null : (FlowDistinguisherMethodPatch.fromMap((map['distinguisherMethod']! as Map).cast<String, dynamic>())).input(),
+      matchingPrecedence: map['matchingPrecedence'] == null ? null : (map['matchingPrecedence']! as int).input(),
+      priorityLevelConfiguration: map['priorityLevelConfiguration'] == null ? null : (PriorityLevelConfigurationReferencePatch.fromMap((map['priorityLevelConfiguration']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRulesWithSubjectsPatch>(map['rules']!, (value) => PolicyRulesWithSubjectsPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

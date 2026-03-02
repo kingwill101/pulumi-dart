@@ -50,10 +50,10 @@ class EndpointAccessArgs {
   factory EndpointAccessArgs.fromMap(Map<String, dynamic> map) {
     return EndpointAccessArgs(
       endpointName: (map['endpointName'] as String).input(),
-      ownerAccount: map['ownerAccount'] == null ? null : (map['ownerAccount'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ownerAccount: map['ownerAccount'] == null ? null : ((map['ownerAccount'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       subnetIds: ((map['subnetIds'] as List).cast<String>()).input(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : ((map['vpcSecurityGroupIds'] as List).cast<String>()).input(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (((map['vpcSecurityGroupIds'] as List).cast<String>()).input()).input(),
       workgroupName: (map['workgroupName'] as String).input(),
     );
   }

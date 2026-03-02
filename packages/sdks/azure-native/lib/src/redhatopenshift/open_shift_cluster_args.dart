@@ -86,18 +86,18 @@ class OpenShiftClusterArgs {
 
   factory OpenShiftClusterArgs.fromMap(Map<String, dynamic> map) {
     return OpenShiftClusterArgs(
-      apiserverProfile: map['apiserverProfile'] == null ? null : (APIServerProfile.fromMap((map['apiserverProfile'] as Map).cast<String, dynamic>())).input(),
-      clusterProfile: map['clusterProfile'] == null ? null : (ClusterProfile.fromMap((map['clusterProfile'] as Map).cast<String, dynamic>())).input(),
-      ingressProfiles: map['ingressProfiles'] == null ? null : (pulumi.Input.decodeList<IngressProfile>(map['ingressProfiles'], (value) => IngressProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      masterProfile: map['masterProfile'] == null ? null : (MasterProfile.fromMap((map['masterProfile'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      apiserverProfile: map['apiserverProfile'] == null ? null : (APIServerProfile.fromMap((map['apiserverProfile']! as Map).cast<String, dynamic>())).input(),
+      clusterProfile: map['clusterProfile'] == null ? null : (ClusterProfile.fromMap((map['clusterProfile']! as Map).cast<String, dynamic>())).input(),
+      ingressProfiles: map['ingressProfiles'] == null ? null : (pulumi.Input.decodeList<IngressProfile>(map['ingressProfiles']!, (value) => IngressProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      masterProfile: map['masterProfile'] == null ? null : (MasterProfile.fromMap((map['masterProfile']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      servicePrincipalProfile: map['servicePrincipalProfile'] == null ? null : (ServicePrincipalProfile.fromMap((map['servicePrincipalProfile'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workerProfiles: map['workerProfiles'] == null ? null : (pulumi.Input.decodeList<WorkerProfile>(map['workerProfiles'], (value) => WorkerProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      servicePrincipalProfile: map['servicePrincipalProfile'] == null ? null : (ServicePrincipalProfile.fromMap((map['servicePrincipalProfile']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      workerProfiles: map['workerProfiles'] == null ? null : (pulumi.Input.decodeList<WorkerProfile>(map['workerProfiles']!, (value) => WorkerProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

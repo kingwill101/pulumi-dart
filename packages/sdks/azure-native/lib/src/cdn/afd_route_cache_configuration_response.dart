@@ -32,9 +32,9 @@ class AfdRouteCacheConfigurationResponse {
 
   factory AfdRouteCacheConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AfdRouteCacheConfigurationResponse(
-      compressionSettings: map['compressionSettings'] == null ? null : (CompressionSettingsResponse.fromMap((map['compressionSettings'] as Map).cast<String, dynamic>())).input(),
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as String).input(),
-      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior'] as String).input(),
+      compressionSettings: map['compressionSettings'] == null ? null : (CompressionSettingsResponse.fromMap((map['compressionSettings']! as Map).cast<String, dynamic>())).input(),
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']! as String).input(),
+      queryStringCachingBehavior: map['queryStringCachingBehavior'] == null ? null : (map['queryStringCachingBehavior']! as String).input(),
     );
   }
 }

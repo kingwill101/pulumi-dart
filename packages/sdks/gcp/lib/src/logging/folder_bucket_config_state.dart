@@ -63,15 +63,15 @@ class FolderBucketConfigState {
 
   factory FolderBucketConfigState.fromMap(Map<String, dynamic> map) {
     return FolderBucketConfigState(
-      bucketId: map['bucketId'] == null ? null : (map['bucketId'] as String).input(),
-      cmekSettings: map['cmekSettings'] == null ? null : (FolderBucketConfigCmekSettings.fromMap((map['cmekSettings'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
-      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(map['indexConfigs'], (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays'] as int).input(),
+      bucketId: map['bucketId'] == null ? null : (map['bucketId']! as String).input(),
+      cmekSettings: map['cmekSettings'] == null ? null : (FolderBucketConfigCmekSettings.fromMap((map['cmekSettings']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
+      indexConfigs: map['indexConfigs'] == null ? null : (pulumi.Input.decodeList<FolderBucketConfigIndexConfig>(map['indexConfigs']!, (value) => FolderBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lifecycleState: map['lifecycleState'] == null ? null : (map['lifecycleState']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      retentionDays: map['retentionDays'] == null ? null : (map['retentionDays']! as int).input(),
     );
   }
 }

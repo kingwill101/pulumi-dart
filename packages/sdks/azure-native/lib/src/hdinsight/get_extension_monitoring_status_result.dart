@@ -31,8 +31,8 @@ class GetExtensionMonitoringStatusResult {
   factory GetExtensionMonitoringStatusResult.fromMap(Map<String, dynamic> map) {
     return GetExtensionMonitoringStatusResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      clusterMonitoringEnabled: map['clusterMonitoringEnabled'] == null ? null : map['clusterMonitoringEnabled'] as bool,
-      workspaceId: map['workspaceId'] == null ? null : map['workspaceId'] as String,
+      clusterMonitoringEnabled: map['clusterMonitoringEnabled'] == null ? null : map['clusterMonitoringEnabled']! as bool,
+      workspaceId: map['workspaceId'] == null ? null : map['workspaceId']! as String,
     );
   }
 }

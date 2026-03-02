@@ -86,19 +86,19 @@ class ConfigurationArgs {
 
   factory ConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ConfigurationArgs(
-      antimalware: map['antimalware'] == null ? null : (ConfigurationAntimalware.fromMap((map['antimalware'] as Map).cast<String, dynamic>())).input(),
-      automationAccountEnabled: map['automationAccountEnabled'] == null ? null : (map['automationAccountEnabled'] as bool).input(),
-      azureSecurityBaseline: map['azureSecurityBaseline'] == null ? null : (ConfigurationAzureSecurityBaseline.fromMap((map['azureSecurityBaseline'] as Map).cast<String, dynamic>())).input(),
-      backup: map['backup'] == null ? null : (ConfigurationBackup.fromMap((map['backup'] as Map).cast<String, dynamic>())).input(),
-      bootDiagnosticsEnabled: map['bootDiagnosticsEnabled'] == null ? null : (map['bootDiagnosticsEnabled'] as bool).input(),
-      defenderForCloudEnabled: map['defenderForCloudEnabled'] == null ? null : (map['defenderForCloudEnabled'] as bool).input(),
-      guestConfigurationEnabled: map['guestConfigurationEnabled'] == null ? null : (map['guestConfigurationEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logAnalyticsEnabled: map['logAnalyticsEnabled'] == null ? null : (map['logAnalyticsEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      antimalware: map['antimalware'] == null ? null : (ConfigurationAntimalware.fromMap((map['antimalware']! as Map).cast<String, dynamic>())).input(),
+      automationAccountEnabled: map['automationAccountEnabled'] == null ? null : (map['automationAccountEnabled']! as bool).input(),
+      azureSecurityBaseline: map['azureSecurityBaseline'] == null ? null : (ConfigurationAzureSecurityBaseline.fromMap((map['azureSecurityBaseline']! as Map).cast<String, dynamic>())).input(),
+      backup: map['backup'] == null ? null : (ConfigurationBackup.fromMap((map['backup']! as Map).cast<String, dynamic>())).input(),
+      bootDiagnosticsEnabled: map['bootDiagnosticsEnabled'] == null ? null : (map['bootDiagnosticsEnabled']! as bool).input(),
+      defenderForCloudEnabled: map['defenderForCloudEnabled'] == null ? null : (map['defenderForCloudEnabled']! as bool).input(),
+      guestConfigurationEnabled: map['guestConfigurationEnabled'] == null ? null : (map['guestConfigurationEnabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logAnalyticsEnabled: map['logAnalyticsEnabled'] == null ? null : (map['logAnalyticsEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      statusChangeAlertEnabled: map['statusChangeAlertEnabled'] == null ? null : (map['statusChangeAlertEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      statusChangeAlertEnabled: map['statusChangeAlertEnabled'] == null ? null : (map['statusChangeAlertEnabled']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

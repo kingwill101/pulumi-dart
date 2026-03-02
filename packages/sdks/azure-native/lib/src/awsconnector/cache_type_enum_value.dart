@@ -21,7 +21,7 @@ class CacheTypeEnumValue {
 
   factory CacheTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return CacheTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

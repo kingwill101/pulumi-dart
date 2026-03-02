@@ -51,13 +51,13 @@ class GetEventBusesResult {
   factory GetEventBusesResult.fromMap(Map<String, dynamic> map) {
     return GetEventBusesResult(
       buses: pulumi.Input.decodeList<GetEventBusesBus>(map['buses'], (value) => GetEventBusesBus.fromMap((value as Map).cast<String, dynamic>())),
-      eventBusType: map['eventBusType'] == null ? null : map['eventBusType'] as String,
+      eventBusType: map['eventBusType'] == null ? null : map['eventBusType']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      namePrefix: map['namePrefix'] == null ? null : map['namePrefix']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

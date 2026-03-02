@@ -67,14 +67,14 @@ class AutoscaleSettingArgs {
 
   factory AutoscaleSettingArgs.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingArgs(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notification: map['notification'] == null ? null : (AutoscaleSettingNotification.fromMap((map['notification'] as Map).cast<String, dynamic>())).input(),
-      predictive: map['predictive'] == null ? null : (AutoscaleSettingPredictive.fromMap((map['predictive'] as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      notification: map['notification'] == null ? null : (AutoscaleSettingNotification.fromMap((map['notification']! as Map).cast<String, dynamic>())).input(),
+      predictive: map['predictive'] == null ? null : (AutoscaleSettingPredictive.fromMap((map['predictive']! as Map).cast<String, dynamic>())).input(),
       profiles: (pulumi.Input.decodeList<AutoscaleSettingProfile>(map['profiles'], (value) => AutoscaleSettingProfile.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
     );
   }

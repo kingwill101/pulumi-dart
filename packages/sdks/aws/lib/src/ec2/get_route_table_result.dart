@@ -76,14 +76,14 @@ class GetRouteTableResult {
   factory GetRouteTableResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableResult(
       arn: map['arn'] as String,
-      associations: pulumi.Input.decodeList<GetRouteTableAssociation>(map['associations'], (value) => GetRouteTableAssociation.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouteTableFilter>(map['filters'], (value) => GetRouteTableFilter.fromMap((value as Map).cast<String, dynamic>())),
+      associations: pulumi.Input.decodeList<GetRouteTableAssociation>(map['associations']!, (value) => GetRouteTableAssociation.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetRouteTableFilter>(map['filters']!, (value) => GetRouteTableFilter.fromMap((value as Map).cast<String, dynamic>())),
       gatewayId: map['gatewayId'] as String,
       id: map['id'] as String,
       ownerId: map['ownerId'] as String,
       region: map['region'] as String,
       routeTableId: map['routeTableId'] as String,
-      routes: pulumi.Input.decodeList<GetRouteTableRoute>(map['routes'], (value) => GetRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
+      routes: pulumi.Input.decodeList<GetRouteTableRoute>(map['routes']!, (value) => GetRouteTableRoute.fromMap((value as Map).cast<String, dynamic>())),
       subnetId: map['subnetId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       vpcId: map['vpcId'] as String,

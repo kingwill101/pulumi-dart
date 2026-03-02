@@ -46,8 +46,8 @@ class FlowArgs {
     return FlowArgs(
       definition: (map['definition'] as String).input(),
       description: (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      roleArn: map['roleArn'] == null ? null : (map['roleArn']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -56,14 +56,14 @@ class SlbAttachmentState {
 
   factory SlbAttachmentState.fromMap(Map<String, dynamic> map) {
     return SlbAttachmentState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort'] as int).input(),
-      slbId: map['slbId'] == null ? null : (map['slbId'] as String).input(),
-      slbIp: map['slbIp'] == null ? null : (map['slbIp'] as String).input(),
-      slbStatus: map['slbStatus'] == null ? null : (map['slbStatus'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      listenerPort: map['listenerPort'] == null ? null : (map['listenerPort']! as int).input(),
+      slbId: map['slbId'] == null ? null : (map['slbId']! as String).input(),
+      slbIp: map['slbIp'] == null ? null : (map['slbIp']! as String).input(),
+      slbStatus: map['slbStatus'] == null ? null : (map['slbStatus']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      vserverGroupId: map['vserverGroupId'] == null ? null : (map['vserverGroupId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

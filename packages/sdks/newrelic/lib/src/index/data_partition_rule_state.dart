@@ -51,13 +51,13 @@ class DataPartitionRuleState {
 
   factory DataPartitionRuleState.fromMap(Map<String, dynamic> map) {
     return DataPartitionRuleState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      deleted: map['deleted'] == null ? null : (map['deleted'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      nrql: map['nrql'] == null ? null : (map['nrql'] as String).input(),
-      retentionPolicy: map['retentionPolicy'] == null ? null : (map['retentionPolicy'] as String).input(),
-      targetDataPartition: map['targetDataPartition'] == null ? null : (map['targetDataPartition'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      deleted: map['deleted'] == null ? null : (map['deleted']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      nrql: map['nrql'] == null ? null : (map['nrql']! as String).input(),
+      retentionPolicy: map['retentionPolicy'] == null ? null : (map['retentionPolicy']! as String).input(),
+      targetDataPartition: map['targetDataPartition'] == null ? null : (map['targetDataPartition']! as String).input(),
     );
   }
 }

@@ -56,9 +56,9 @@ class ApiCacheArgs {
     return ApiCacheArgs(
       apiCachingBehavior: (map['apiCachingBehavior'] as String).input(),
       apiId: (map['apiId'] as String).input(),
-      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : (map['atRestEncryptionEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : (map['transitEncryptionEnabled'] as bool).input(),
+      atRestEncryptionEnabled: map['atRestEncryptionEnabled'] == null ? null : ((map['atRestEncryptionEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      transitEncryptionEnabled: map['transitEncryptionEnabled'] == null ? null : ((map['transitEncryptionEnabled'] as bool).input()).input(),
       ttl: (map['ttl'] as int).input(),
       type: (map['type'] as String).input(),
     );

@@ -50,12 +50,12 @@ class DataConnectorOffice365State {
 
   factory DataConnectorOffice365State.fromMap(Map<String, dynamic> map) {
     return DataConnectorOffice365State(
-      exchangeEnabled: map['exchangeEnabled'] == null ? null : (map['exchangeEnabled'] as bool).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      sharepointEnabled: map['sharepointEnabled'] == null ? null : (map['sharepointEnabled'] as bool).input(),
-      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled'] as bool).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      exchangeEnabled: map['exchangeEnabled'] == null ? null : (map['exchangeEnabled']! as bool).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      sharepointEnabled: map['sharepointEnabled'] == null ? null : (map['sharepointEnabled']! as bool).input(),
+      teamsEnabled: map['teamsEnabled'] == null ? null : (map['teamsEnabled']! as bool).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class PkixPublicKeyBinaryauthorizationV1beta1 {
 
   factory PkixPublicKeyBinaryauthorizationV1beta1.fromMap(Map<String, dynamic> map) {
     return PkixPublicKeyBinaryauthorizationV1beta1(
-      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem'] as String).input(),
-      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1.fromValue(map['signatureAlgorithm'] as String)).input(),
+      publicKeyPem: map['publicKeyPem'] == null ? null : (map['publicKeyPem']! as String).input(),
+      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : (PkixPublicKeySignatureAlgorithmBinaryauthorizationV1beta1.fromValue(map['signatureAlgorithm']! as String)).input(),
     );
   }
 }

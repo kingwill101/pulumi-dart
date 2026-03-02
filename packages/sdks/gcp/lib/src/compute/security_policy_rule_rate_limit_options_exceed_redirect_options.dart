@@ -25,8 +25,8 @@ class SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions {
 
   factory SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions(
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

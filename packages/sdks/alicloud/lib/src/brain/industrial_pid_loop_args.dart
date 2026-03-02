@@ -56,7 +56,7 @@ class IndustrialPidLoopArgs {
     return IndustrialPidLoopArgs(
       pidLoopConfiguration: (map['pidLoopConfiguration'] as String).input(),
       pidLoopDcsType: (map['pidLoopDcsType'] as String).input(),
-      pidLoopDesc: map['pidLoopDesc'] == null ? null : (map['pidLoopDesc'] as String).input(),
+      pidLoopDesc: map['pidLoopDesc'] == null ? null : (map['pidLoopDesc']! as String).input(),
       pidLoopIsCrucial: (map['pidLoopIsCrucial'] as bool).input(),
       pidLoopName: (map['pidLoopName'] as String).input(),
       pidLoopType: (map['pidLoopType'] as String).input(),

@@ -66,16 +66,16 @@ class GetLocalRuleCountersResult {
 
   factory GetLocalRuleCountersResult.fromMap(Map<String, dynamic> map) {
     return GetLocalRuleCountersResult(
-      appSeen: map['appSeen'] == null ? null : AppSeenDataResponse.fromMap((map['appSeen'] as Map).cast<String, dynamic>()),
-      firewallName: map['firewallName'] == null ? null : map['firewallName'] as String,
-      hitCount: map['hitCount'] == null ? null : map['hitCount'] as int,
-      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : map['lastUpdatedTimestamp'] as String,
+      appSeen: map['appSeen'] == null ? null : AppSeenDataResponse.fromMap((map['appSeen']! as Map).cast<String, dynamic>()),
+      firewallName: map['firewallName'] == null ? null : map['firewallName']! as String,
+      hitCount: map['hitCount'] == null ? null : map['hitCount']! as int,
+      lastUpdatedTimestamp: map['lastUpdatedTimestamp'] == null ? null : map['lastUpdatedTimestamp']! as String,
       priority: map['priority'] as String,
-      requestTimestamp: map['requestTimestamp'] == null ? null : map['requestTimestamp'] as String,
-      ruleListName: map['ruleListName'] == null ? null : map['ruleListName'] as String,
+      requestTimestamp: map['requestTimestamp'] == null ? null : map['requestTimestamp']! as String,
+      ruleListName: map['ruleListName'] == null ? null : map['ruleListName']! as String,
       ruleName: map['ruleName'] as String,
-      ruleStackName: map['ruleStackName'] == null ? null : map['ruleStackName'] as String,
-      timestamp: map['timestamp'] == null ? null : map['timestamp'] as String,
+      ruleStackName: map['ruleStackName'] == null ? null : map['ruleStackName']! as String,
+      timestamp: map['timestamp'] == null ? null : map['timestamp']! as String,
     );
   }
 }

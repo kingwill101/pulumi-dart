@@ -53,13 +53,13 @@ class ManagementGroupDetailsResponse {
 
   factory ManagementGroupDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ManagementGroupDetailsResponse(
-      managementGroupAncestors: map['managementGroupAncestors'] == null ? null : ((map['managementGroupAncestors'] as List).cast<String>()).input(),
-      managementGroupAncestorsChain: map['managementGroupAncestorsChain'] == null ? null : (pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['managementGroupAncestorsChain'], (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parent: map['parent'] == null ? null : (ParentGroupInfoResponse.fromMap((map['parent'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['path'], (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updatedBy: map['updatedBy'] == null ? null : (map['updatedBy'] as String).input(),
-      updatedTime: map['updatedTime'] == null ? null : (map['updatedTime'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      managementGroupAncestors: map['managementGroupAncestors'] == null ? null : ((map['managementGroupAncestors']! as List).cast<String>()).input(),
+      managementGroupAncestorsChain: map['managementGroupAncestorsChain'] == null ? null : (pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['managementGroupAncestorsChain']!, (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parent: map['parent'] == null ? null : (ParentGroupInfoResponse.fromMap((map['parent']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (pulumi.Input.decodeList<ManagementGroupPathElementResponse>(map['path']!, (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updatedBy: map['updatedBy'] == null ? null : (map['updatedBy']! as String).input(),
+      updatedTime: map['updatedTime'] == null ? null : (map['updatedTime']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

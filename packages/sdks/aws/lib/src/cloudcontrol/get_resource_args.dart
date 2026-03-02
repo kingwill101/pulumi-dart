@@ -47,10 +47,10 @@ class GetResourceArgs {
   factory GetResourceArgs.fromMap(Map<String, dynamic> map) {
     return GetResourceArgs(
       identifier: (map['identifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
       typeName: (map['typeName'] as String).input(),
-      typeVersionId: map['typeVersionId'] == null ? null : (map['typeVersionId'] as String).input(),
+      typeVersionId: map['typeVersionId'] == null ? null : ((map['typeVersionId'] as String).input()).input(),
     );
   }
 }

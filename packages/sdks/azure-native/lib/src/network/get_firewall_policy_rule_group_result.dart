@@ -59,11 +59,11 @@ class GetFirewallPolicyRuleGroupResult {
     return GetFirewallPolicyRuleGroupResult(
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
-      id: map['id'] == null ? null : map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      id: map['id'] == null ? null : map['id']! as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      priority: map['priority'] == null ? null : map['priority']! as int,
       provisioningState: map['provisioningState'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFilterRuleResponse>(map['rules'], (value) => FirewallPolicyFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<FirewallPolicyFilterRuleResponse>(map['rules']!, (value) => FirewallPolicyFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       type: map['type'] as String,
     );
   }

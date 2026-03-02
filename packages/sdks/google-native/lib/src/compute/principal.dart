@@ -66,16 +66,16 @@ class Principal {
 
   factory Principal.fromMap(Map<String, dynamic> map) {
     return Principal(
-      condition: map['condition'] == null ? null : (map['condition'] as String).input(),
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
-      ips: map['ips'] == null ? null : ((map['ips'] as List).cast<String>()).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      notGroups: map['notGroups'] == null ? null : ((map['notGroups'] as List).cast<String>()).input(),
-      notIps: map['notIps'] == null ? null : ((map['notIps'] as List).cast<String>()).input(),
-      notNamespaces: map['notNamespaces'] == null ? null : ((map['notNamespaces'] as List).cast<String>()).input(),
-      notUsers: map['notUsers'] == null ? null : ((map['notUsers'] as List).cast<String>()).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
-      users: map['users'] == null ? null : ((map['users'] as List).cast<String>()).input(),
+      condition: map['condition'] == null ? null : (map['condition']! as String).input(),
+      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
+      ips: map['ips'] == null ? null : ((map['ips']! as List).cast<String>()).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      notGroups: map['notGroups'] == null ? null : ((map['notGroups']! as List).cast<String>()).input(),
+      notIps: map['notIps'] == null ? null : ((map['notIps']! as List).cast<String>()).input(),
+      notNamespaces: map['notNamespaces'] == null ? null : ((map['notNamespaces']! as List).cast<String>()).input(),
+      notUsers: map['notUsers'] == null ? null : ((map['notUsers']! as List).cast<String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
+      users: map['users'] == null ? null : ((map['users']! as List).cast<String>()).input(),
     );
   }
 }

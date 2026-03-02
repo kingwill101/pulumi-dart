@@ -82,16 +82,16 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      bitbucketCloudConfig: map['bitbucketCloudConfig'] == null ? null : (ConnectionBitbucketCloudConfig.fromMap((map['bitbucketCloudConfig'] as Map).cast<String, dynamic>())).input(),
-      bitbucketDataCenterConfig: map['bitbucketDataCenterConfig'] == null ? null : (ConnectionBitbucketDataCenterConfig.fromMap((map['bitbucketDataCenterConfig'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      githubConfig: map['githubConfig'] == null ? null : (ConnectionGithubConfig.fromMap((map['githubConfig'] as Map).cast<String, dynamic>())).input(),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (ConnectionGithubEnterpriseConfig.fromMap((map['githubEnterpriseConfig'] as Map).cast<String, dynamic>())).input(),
-      gitlabConfig: map['gitlabConfig'] == null ? null : (ConnectionGitlabConfig.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      bitbucketCloudConfig: map['bitbucketCloudConfig'] == null ? null : (ConnectionBitbucketCloudConfig.fromMap((map['bitbucketCloudConfig']! as Map).cast<String, dynamic>())).input(),
+      bitbucketDataCenterConfig: map['bitbucketDataCenterConfig'] == null ? null : (ConnectionBitbucketDataCenterConfig.fromMap((map['bitbucketDataCenterConfig']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      githubConfig: map['githubConfig'] == null ? null : (ConnectionGithubConfig.fromMap((map['githubConfig']! as Map).cast<String, dynamic>())).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (ConnectionGithubEnterpriseConfig.fromMap((map['githubEnterpriseConfig']! as Map).cast<String, dynamic>())).input(),
+      gitlabConfig: map['gitlabConfig'] == null ? null : (ConnectionGitlabConfig.fromMap((map['gitlabConfig']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

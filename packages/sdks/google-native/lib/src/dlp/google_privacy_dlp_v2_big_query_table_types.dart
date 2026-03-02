@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
 
   factory GooglePrivacyDlpV2BigQueryTableTypes.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BigQueryTableTypes(
-      types: map['types'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(map['types'], (value) => GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(value as String))).input(),
+      types: map['types'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(map['types']!, (value) => GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(value as String))).input(),
     );
   }
 }

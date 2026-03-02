@@ -71,16 +71,16 @@ class RewriteUrlRuleArgs {
 
   factory RewriteUrlRuleArgs.fromMap(Map<String, dynamic> map) {
     return RewriteUrlRuleArgs(
-      queryString: map['queryString'] == null ? null : (map['queryString'] as String).input(),
-      rewriteQueryStringType: map['rewriteQueryStringType'] == null ? null : (map['rewriteQueryStringType'] as String).input(),
-      rewriteUriType: map['rewriteUriType'] == null ? null : (map['rewriteUriType'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      sequence: map['sequence'] == null ? null : (map['sequence'] as int).input(),
+      queryString: map['queryString'] == null ? null : (map['queryString']! as String).input(),
+      rewriteQueryStringType: map['rewriteQueryStringType'] == null ? null : (map['rewriteQueryStringType']! as String).input(),
+      rewriteUriType: map['rewriteUriType'] == null ? null : (map['rewriteUriType']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      ruleEnable: map['ruleEnable'] == null ? null : (map['ruleEnable']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      sequence: map['sequence'] == null ? null : (map['sequence']! as int).input(),
       siteId: (map['siteId'] as String).input(),
-      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion'] as int).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      siteVersion: map['siteVersion'] == null ? null : (map['siteVersion']! as int).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

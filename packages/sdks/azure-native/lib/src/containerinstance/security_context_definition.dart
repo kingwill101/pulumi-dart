@@ -47,12 +47,12 @@ class SecurityContextDefinition {
 
   factory SecurityContextDefinition.fromMap(Map<String, dynamic> map) {
     return SecurityContextDefinition(
-      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation'] as bool).input(),
-      capabilities: map['capabilities'] == null ? null : (SecurityContextCapabilitiesDefinition.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
-      privileged: map['privileged'] == null ? null : (map['privileged'] as bool).input(),
-      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup'] as int).input(),
-      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser'] as int).input(),
-      seccompProfile: map['seccompProfile'] == null ? null : (map['seccompProfile'] as String).input(),
+      allowPrivilegeEscalation: map['allowPrivilegeEscalation'] == null ? null : (map['allowPrivilegeEscalation']! as bool).input(),
+      capabilities: map['capabilities'] == null ? null : (SecurityContextCapabilitiesDefinition.fromMap((map['capabilities']! as Map).cast<String, dynamic>())).input(),
+      privileged: map['privileged'] == null ? null : (map['privileged']! as bool).input(),
+      runAsGroup: map['runAsGroup'] == null ? null : (map['runAsGroup']! as int).input(),
+      runAsUser: map['runAsUser'] == null ? null : (map['runAsUser']! as int).input(),
+      seccompProfile: map['seccompProfile'] == null ? null : (map['seccompProfile']! as String).input(),
     );
   }
 }

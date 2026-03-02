@@ -30,9 +30,9 @@ class ServiceCapacityProviderStrategy {
 
   factory ServiceCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
     return ServiceCapacityProviderStrategy(
-      base: map['base'] == null ? null : (map['base'] as int).input(),
+      base: map['base'] == null ? null : ((map['base'] as int).input()).input(),
       capacityProvider: (map['capacityProvider'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
     );
   }
 }

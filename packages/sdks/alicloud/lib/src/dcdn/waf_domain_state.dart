@@ -26,8 +26,8 @@ class WafDomainState {
 
   factory WafDomainState.fromMap(Map<String, dynamic> map) {
     return WafDomainState(
-      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      clientIpTag: map['clientIpTag'] == null ? null : (map['clientIpTag']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
     );
   }
 }

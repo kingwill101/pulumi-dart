@@ -38,10 +38,10 @@ class KeyPairAttachmentArgs {
 
   factory KeyPairAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return KeyPairAttachmentArgs(
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
       instanceIds: ((map['instanceIds'] as List).cast<String>()).input(),
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
-      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
+      keyPairName: map['keyPairName'] == null ? null : (map['keyPairName']! as String).input(),
     );
   }
 }

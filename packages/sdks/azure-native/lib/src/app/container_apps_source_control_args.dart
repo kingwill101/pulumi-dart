@@ -52,12 +52,12 @@ class ContainerAppsSourceControlArgs {
 
   factory ContainerAppsSourceControlArgs.fromMap(Map<String, dynamic> map) {
     return ContainerAppsSourceControlArgs(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
       containerAppName: (map['containerAppName'] as String).input(),
-      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (GithubActionConfiguration.fromMap((map['githubActionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl'] as String).input(),
+      githubActionConfiguration: map['githubActionConfiguration'] == null ? null : (GithubActionConfiguration.fromMap((map['githubActionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      repoUrl: map['repoUrl'] == null ? null : (map['repoUrl']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceControlName: map['sourceControlName'] == null ? null : (map['sourceControlName'] as String).input(),
+      sourceControlName: map['sourceControlName'] == null ? null : (map['sourceControlName']! as String).input(),
     );
   }
 }

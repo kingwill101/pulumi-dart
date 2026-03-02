@@ -37,7 +37,7 @@ class AccessPolicyEntry {
 
   factory AccessPolicyEntry.fromMap(Map<String, dynamic> map) {
     return AccessPolicyEntry(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
       objectId: (map['objectId'] as String).input(),
       permissions: (Permissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
       tenantId: (map['tenantId'] as String).input(),

@@ -78,17 +78,17 @@ class GetAlertResult {
 
   factory GetAlertResult.fromMap(Map<String, dynamic> map) {
     return GetAlertResult(
-      alertRuleProperties: map['alertRuleProperties'] == null ? null : AlertRulePropertiesResponse.fromMap((map['alertRuleProperties'] as Map).cast<String, dynamic>()),
+      alertRuleProperties: map['alertRuleProperties'] == null ? null : AlertRulePropertiesResponse.fromMap((map['alertRuleProperties']! as Map).cast<String, dynamic>()),
       alertRuleResourceId: map['alertRuleResourceId'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       errors: ErrorDetailResponse.fromMap((map['errors'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      providerNames: map['providerNames'] == null ? null : (map['providerNames'] as List).cast<String>(),
-      providerType: map['providerType'] == null ? null : map['providerType'] as String,
+      providerNames: map['providerNames'] == null ? null : (map['providerNames']! as List).cast<String>(),
+      providerType: map['providerType'] == null ? null : map['providerType']! as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      templateName: map['templateName'] == null ? null : map['templateName'] as String,
+      templateName: map['templateName'] == null ? null : map['templateName']! as String,
       type: map['type'] as String,
     );
   }

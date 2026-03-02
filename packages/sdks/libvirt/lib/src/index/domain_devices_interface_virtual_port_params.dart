@@ -45,11 +45,11 @@ class DomainDevicesInterfaceVirtualPortParams {
 
   factory DomainDevicesInterfaceVirtualPortParams.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParams(
-      any: map['any'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsAny.fromMap((map['any'] as Map).cast<String, dynamic>())).input(),
-      midoNet: map['midoNet'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsMidoNet.fromMap((map['midoNet'] as Map).cast<String, dynamic>())).input(),
-      openVSwitch: map['openVSwitch'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.fromMap((map['openVSwitch'] as Map).cast<String, dynamic>())).input(),
-      vepa8021qbg: map['vepa8021qbg'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.fromMap((map['vepa8021qbg'] as Map).cast<String, dynamic>())).input(),
-      vnTag8011qbh: map['vnTag8011qbh'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.fromMap((map['vnTag8011qbh'] as Map).cast<String, dynamic>())).input(),
+      any: map['any'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsAny.fromMap((map['any']! as Map).cast<String, dynamic>())).input(),
+      midoNet: map['midoNet'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsMidoNet.fromMap((map['midoNet']! as Map).cast<String, dynamic>())).input(),
+      openVSwitch: map['openVSwitch'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.fromMap((map['openVSwitch']! as Map).cast<String, dynamic>())).input(),
+      vepa8021qbg: map['vepa8021qbg'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsVepa8021qbg.fromMap((map['vepa8021qbg']! as Map).cast<String, dynamic>())).input(),
+      vnTag8011qbh: map['vnTag8011qbh'] == null ? null : (DomainDevicesInterfaceVirtualPortParamsVnTag8011qbh.fromMap((map['vnTag8011qbh']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

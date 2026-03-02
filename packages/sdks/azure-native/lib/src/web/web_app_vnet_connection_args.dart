@@ -60,14 +60,14 @@ class WebAppVnetConnectionArgs {
 
   factory WebAppVnetConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WebAppVnetConnectionArgs(
-      certBlob: map['certBlob'] == null ? null : (map['certBlob'] as String).input(),
-      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers'] as String).input(),
-      isSwift: map['isSwift'] == null ? null : (map['isSwift'] as bool).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      certBlob: map['certBlob'] == null ? null : (map['certBlob']! as String).input(),
+      dnsServers: map['dnsServers'] == null ? null : (map['dnsServers']! as String).input(),
+      isSwift: map['isSwift'] == null ? null : (map['isSwift']! as bool).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      vnetName: map['vnetName'] == null ? null : (map['vnetName'] as String).input(),
-      vnetResourceId: map['vnetResourceId'] == null ? null : (map['vnetResourceId'] as String).input(),
+      vnetName: map['vnetName'] == null ? null : (map['vnetName']! as String).input(),
+      vnetResourceId: map['vnetResourceId'] == null ? null : (map['vnetResourceId']! as String).input(),
     );
   }
 }

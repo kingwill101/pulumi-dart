@@ -22,7 +22,7 @@ class GoogleCloudContentwarehouseV1TimestampArray {
 
   factory GoogleCloudContentwarehouseV1TimestampArray.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1TimestampArray(
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1TimestampValue>(map['values'], (value) => GoogleCloudContentwarehouseV1TimestampValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<GoogleCloudContentwarehouseV1TimestampValue>(map['values']!, (value) => GoogleCloudContentwarehouseV1TimestampValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

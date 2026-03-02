@@ -88,19 +88,19 @@ class DataSourceState {
 
   factory DataSourceState.fromMap(Map<String, dynamic> map) {
     return DataSourceState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      credentials: map['credentials'] == null ? null : (DataSourceCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : (DataSourceParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<DataSourcePermission>(map['permissions'], (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sslProperties: map['sslProperties'] == null ? null : (DataSourceSslProperties.fromMap((map['sslProperties'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      vpcConnectionProperties: map['vpcConnectionProperties'] == null ? null : (DataSourceVpcConnectionProperties.fromMap((map['vpcConnectionProperties'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      credentials: map['credentials'] == null ? null : ((DataSourceCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input()).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : ((map['dataSourceId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((DataSourceParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<DataSourcePermission>(map['permissions']!, (value) => DataSourcePermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sslProperties: map['sslProperties'] == null ? null : ((DataSourceSslProperties.fromMap((map['sslProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      vpcConnectionProperties: map['vpcConnectionProperties'] == null ? null : ((DataSourceVpcConnectionProperties.fromMap((map['vpcConnectionProperties']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

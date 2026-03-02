@@ -97,21 +97,21 @@ class InstanceMemcacheV1beta2Args {
 
   factory InstanceMemcacheV1beta2Args.fromMap(Map<String, dynamic> map) {
     return InstanceMemcacheV1beta2Args(
-      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      authorizedNetwork: map['authorizedNetwork'] == null ? null : (map['authorizedNetwork']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      instanceMessages: map['instanceMessages'] == null ? null : (pulumi.Input.decodeList<InstanceMessageMemcacheV1beta2>(map['instanceMessages'], (value) => InstanceMessageMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (GoogleCloudMemcacheV1beta2MaintenancePolicy.fromMap((map['maintenancePolicy'] as Map).cast<String, dynamic>())).input(),
-      memcacheVersion: map['memcacheVersion'] == null ? null : (InstanceMemcacheVersionMemcacheV1beta2.fromValue(map['memcacheVersion'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      instanceMessages: map['instanceMessages'] == null ? null : (pulumi.Input.decodeList<InstanceMessageMemcacheV1beta2>(map['instanceMessages']!, (value) => InstanceMessageMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (GoogleCloudMemcacheV1beta2MaintenancePolicy.fromMap((map['maintenancePolicy']! as Map).cast<String, dynamic>())).input(),
+      memcacheVersion: map['memcacheVersion'] == null ? null : (InstanceMemcacheVersionMemcacheV1beta2.fromValue(map['memcacheVersion']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nodeConfig: (NodeConfigMemcacheV1beta2.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
       nodeCount: (map['nodeCount'] as int).input(),
-      parameters: map['parameters'] == null ? null : (MemcacheParametersMemcacheV1beta2.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservedIpRangeId: map['reservedIpRangeId'] == null ? null : ((map['reservedIpRangeId'] as List).cast<String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (MemcacheParametersMemcacheV1beta2.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservedIpRangeId: map['reservedIpRangeId'] == null ? null : ((map['reservedIpRangeId']! as List).cast<String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

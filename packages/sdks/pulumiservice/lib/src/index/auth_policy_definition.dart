@@ -53,13 +53,13 @@ class AuthPolicyDefinition {
 
   factory AuthPolicyDefinition.fromMap(Map<String, dynamic> map) {
     return AuthPolicyDefinition(
-      authorizedPermissions: map['authorizedPermissions'] == null ? null : (pulumi.Input.decodeList<AuthPolicyPermissionLevel>(map['authorizedPermissions'], (value) => AuthPolicyPermissionLevel.fromValue(value as String))).input(),
+      authorizedPermissions: map['authorizedPermissions'] == null ? null : (pulumi.Input.decodeList<AuthPolicyPermissionLevel>(map['authorizedPermissions']!, (value) => AuthPolicyPermissionLevel.fromValue(value as String))).input(),
       decision: (AuthPolicyDecision.fromValue(map['decision'] as String)).input(),
       rules: ((map['rules'] as Map).cast<String, String>()).input(),
-      runnerID: map['runnerID'] == null ? null : (map['runnerID'] as String).input(),
-      teamName: map['teamName'] == null ? null : (map['teamName'] as String).input(),
+      runnerID: map['runnerID'] == null ? null : (map['runnerID']! as String).input(),
+      teamName: map['teamName'] == null ? null : (map['teamName']! as String).input(),
       tokenType: (AuthPolicyTokenType.fromValue(map['tokenType'] as String)).input(),
-      userLogin: map['userLogin'] == null ? null : (map['userLogin'] as String).input(),
+      userLogin: map['userLogin'] == null ? null : (map['userLogin']! as String).input(),
     );
   }
 }

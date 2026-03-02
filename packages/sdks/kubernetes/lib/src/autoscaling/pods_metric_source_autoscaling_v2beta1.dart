@@ -33,7 +33,7 @@ class PodsMetricSourceAutoscalingV2beta1 {
   factory PodsMetricSourceAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return PodsMetricSourceAutoscalingV2beta1(
       metricName: (map['metricName'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
       targetAverageValue: (map['targetAverageValue'] as String).input(),
     );
   }

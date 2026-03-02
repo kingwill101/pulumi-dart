@@ -38,10 +38,10 @@ class EncryptionSettingsResponse {
 
   factory EncryptionSettingsResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionSettingsResponse(
-      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption'] as String).input(),
-      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentityResponse.fromMap((map['kekIdentity'] as Map).cast<String, dynamic>())).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      infrastructureEncryption: map['infrastructureEncryption'] == null ? null : (map['infrastructureEncryption']! as String).input(),
+      kekIdentity: map['kekIdentity'] == null ? null : (CmkKekIdentityResponse.fromMap((map['kekIdentity']! as Map).cast<String, dynamic>())).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (CmkKeyVaultPropertiesResponse.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

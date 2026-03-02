@@ -67,16 +67,16 @@ class HoursOfOperationState {
 
   factory HoursOfOperationState.fromMap(Map<String, dynamic> map) {
     return HoursOfOperationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      configs: map['configs'] == null ? null : (pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs'], (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      hoursOfOperationId: map['hoursOfOperationId'] == null ? null : (map['hoursOfOperationId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      configs: map['configs'] == null ? null : ((pulumi.Input.decodeList<HoursOfOperationConfig>(map['configs']!, (value) => HoursOfOperationConfig.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      hoursOfOperationId: map['hoursOfOperationId'] == null ? null : ((map['hoursOfOperationId'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeZone: map['timeZone'] == null ? null : ((map['timeZone'] as String).input()).input(),
     );
   }
 }

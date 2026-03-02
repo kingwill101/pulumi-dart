@@ -51,13 +51,13 @@ class SchedulePropertiesResponse {
 
   factory SchedulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SchedulePropertiesResponse(
-      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth'] as int).input(),
-      daysOfWeek: map['daysOfWeek'] == null ? null : ((map['daysOfWeek'] as List).cast<String>()).input(),
+      dayOfMonth: map['dayOfMonth'] == null ? null : (map['dayOfMonth']! as int).input(),
+      daysOfWeek: map['daysOfWeek'] == null ? null : ((map['daysOfWeek']! as List).cast<String>()).input(),
       endDate: (map['endDate'] as String).input(),
       frequency: (map['frequency'] as String).input(),
-      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay'] as int).input(),
+      hourOfDay: map['hourOfDay'] == null ? null : (map['hourOfDay']! as int).input(),
       startDate: (map['startDate'] as String).input(),
-      weeksOfMonth: map['weeksOfMonth'] == null ? null : ((map['weeksOfMonth'] as List).cast<String>()).input(),
+      weeksOfMonth: map['weeksOfMonth'] == null ? null : ((map['weeksOfMonth']! as List).cast<String>()).input(),
     );
   }
 }

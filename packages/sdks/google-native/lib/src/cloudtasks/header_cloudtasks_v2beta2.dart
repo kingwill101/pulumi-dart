@@ -26,8 +26,8 @@ class HeaderCloudtasksV2beta2 {
 
   factory HeaderCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return HeaderCloudtasksV2beta2(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

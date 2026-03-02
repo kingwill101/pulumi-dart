@@ -39,9 +39,9 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      keyAlgorithm: map['keyAlgorithm'] == null ? null : (KeyKeyAlgorithm.fromValue(map['keyAlgorithm'] as String)).input(),
-      privateKeyType: map['privateKeyType'] == null ? null : (KeyPrivateKeyType.fromValue(map['privateKeyType'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      keyAlgorithm: map['keyAlgorithm'] == null ? null : (KeyKeyAlgorithm.fromValue(map['keyAlgorithm']! as String)).input(),
+      privateKeyType: map['privateKeyType'] == null ? null : (KeyPrivateKeyType.fromValue(map['privateKeyType']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       serviceAccountId: (map['serviceAccountId'] as String).input(),
     );
   }

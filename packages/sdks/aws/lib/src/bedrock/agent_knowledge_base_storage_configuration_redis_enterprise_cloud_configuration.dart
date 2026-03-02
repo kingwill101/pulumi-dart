@@ -38,7 +38,7 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
     return AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration(
       credentialsSecretArn: (map['credentialsSecretArn'] as String).input(),
       endpoint: (map['endpoint'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
       vectorIndexName: (map['vectorIndexName'] as String).input(),
     );
   }

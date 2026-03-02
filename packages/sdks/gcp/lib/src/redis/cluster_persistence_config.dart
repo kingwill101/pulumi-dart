@@ -38,9 +38,9 @@ class ClusterPersistenceConfig {
 
   factory ClusterPersistenceConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPersistenceConfig(
-      aofConfig: map['aofConfig'] == null ? null : (ClusterPersistenceConfigAofConfig.fromMap((map['aofConfig'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      rdbConfig: map['rdbConfig'] == null ? null : (ClusterPersistenceConfigRdbConfig.fromMap((map['rdbConfig'] as Map).cast<String, dynamic>())).input(),
+      aofConfig: map['aofConfig'] == null ? null : (ClusterPersistenceConfigAofConfig.fromMap((map['aofConfig']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      rdbConfig: map['rdbConfig'] == null ? null : (ClusterPersistenceConfigRdbConfig.fromMap((map['rdbConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

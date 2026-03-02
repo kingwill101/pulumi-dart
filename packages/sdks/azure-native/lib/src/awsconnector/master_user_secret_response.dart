@@ -26,8 +26,8 @@ class MasterUserSecretResponse {
 
   factory MasterUserSecretResponse.fromMap(Map<String, dynamic> map) {
     return MasterUserSecretResponse(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId']! as String).input(),
+      secretArn: map['secretArn'] == null ? null : (map['secretArn']! as String).input(),
     );
   }
 }

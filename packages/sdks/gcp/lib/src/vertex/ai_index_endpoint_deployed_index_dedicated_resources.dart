@@ -33,7 +33,7 @@ class AiIndexEndpointDeployedIndexDedicatedResources {
   factory AiIndexEndpointDeployedIndexDedicatedResources.fromMap(Map<String, dynamic> map) {
     return AiIndexEndpointDeployedIndexDedicatedResources(
       machineSpec: (AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount'] as int).input(),
+      maxReplicaCount: map['maxReplicaCount'] == null ? null : (map['maxReplicaCount']! as int).input(),
       minReplicaCount: (map['minReplicaCount'] as int).input(),
     );
   }

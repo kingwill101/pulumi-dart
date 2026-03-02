@@ -51,14 +51,14 @@ class ProviderArgs {
 
   factory ProviderArgs.fromMap(Map<String, dynamic> map) {
     return ProviderArgs(
-      authenticationPlugin: map['authenticationPlugin'] == null ? null : (map['authenticationPlugin'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      maxConnLifetimeSec: map['maxConnLifetimeSec'] == null ? null : (map['maxConnLifetimeSec'] as int).input(),
-      maxOpenConns: map['maxOpenConns'] == null ? null : (map['maxOpenConns'] as int).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      proxy: map['proxy'] == null ? null : (map['proxy'] as String).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      authenticationPlugin: map['authenticationPlugin'] == null ? null : (map['authenticationPlugin']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      maxConnLifetimeSec: map['maxConnLifetimeSec'] == null ? null : (map['maxConnLifetimeSec']! as int).input(),
+      maxOpenConns: map['maxOpenConns'] == null ? null : (map['maxOpenConns']! as int).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      proxy: map['proxy'] == null ? null : (map['proxy']! as String).input(),
+      tls: map['tls'] == null ? null : (map['tls']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

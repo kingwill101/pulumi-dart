@@ -42,7 +42,7 @@ class GetTransitRouterMulticastDomainSourcesResult {
     return GetTransitRouterMulticastDomainSourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       sources: pulumi.Input.decodeList<GetTransitRouterMulticastDomainSourcesSource>(map['sources'], (value) => GetTransitRouterMulticastDomainSourcesSource.fromMap((value as Map).cast<String, dynamic>())),
       transitRouterMulticastDomainId: map['transitRouterMulticastDomainId'] as String,
     );

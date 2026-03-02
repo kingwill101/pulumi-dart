@@ -47,7 +47,7 @@ class CertificateCertificate {
   factory CertificateCertificate.fromMap(Map<String, dynamic> map) {
     return CertificateCertificate(
       contents: (map['contents'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

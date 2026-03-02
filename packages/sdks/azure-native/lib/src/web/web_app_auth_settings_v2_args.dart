@@ -64,13 +64,13 @@ class WebAppAuthSettingsV2Args {
 
   factory WebAppAuthSettingsV2Args.fromMap(Map<String, dynamic> map) {
     return WebAppAuthSettingsV2Args(
-      globalValidation: map['globalValidation'] == null ? null : (GlobalValidation.fromMap((map['globalValidation'] as Map).cast<String, dynamic>())).input(),
-      httpSettings: map['httpSettings'] == null ? null : (HttpSettings.fromMap((map['httpSettings'] as Map).cast<String, dynamic>())).input(),
-      identityProviders: map['identityProviders'] == null ? null : (IdentityProviders.fromMap((map['identityProviders'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      login: map['login'] == null ? null : (Login.fromMap((map['login'] as Map).cast<String, dynamic>())).input(),
+      globalValidation: map['globalValidation'] == null ? null : (GlobalValidation.fromMap((map['globalValidation']! as Map).cast<String, dynamic>())).input(),
+      httpSettings: map['httpSettings'] == null ? null : (HttpSettings.fromMap((map['httpSettings']! as Map).cast<String, dynamic>())).input(),
+      identityProviders: map['identityProviders'] == null ? null : (IdentityProviders.fromMap((map['identityProviders']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      login: map['login'] == null ? null : (Login.fromMap((map['login']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      platform: map['platform'] == null ? null : (AuthPlatform.fromMap((map['platform'] as Map).cast<String, dynamic>())).input(),
+      platform: map['platform'] == null ? null : (AuthPlatform.fromMap((map['platform']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

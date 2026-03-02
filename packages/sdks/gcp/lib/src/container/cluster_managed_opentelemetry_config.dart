@@ -20,7 +20,7 @@ class ClusterManagedOpentelemetryConfig {
 
   factory ClusterManagedOpentelemetryConfig.fromMap(Map<String, dynamic> map) {
     return ClusterManagedOpentelemetryConfig(
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
     );
   }
 }

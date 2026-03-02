@@ -31,9 +31,9 @@ class HourlyScheduleResponse {
 
   factory HourlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return HourlyScheduleResponse(
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
-      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes'] as double).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
+      usedBytes: map['usedBytes'] == null ? null : (map['usedBytes']! as double).input(),
     );
   }
 }

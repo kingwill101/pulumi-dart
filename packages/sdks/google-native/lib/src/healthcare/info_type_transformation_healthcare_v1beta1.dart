@@ -49,12 +49,12 @@ class InfoTypeTransformationHealthcareV1beta1 {
 
   factory InfoTypeTransformationHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return InfoTypeTransformationHealthcareV1beta1(
-      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfigHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>())).input(),
-      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfigHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>())).input(),
-      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfigHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>())).input(),
-      infoTypes: map['infoTypes'] == null ? null : ((map['infoTypes'] as List).cast<String>()).input(),
-      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig'] as Map).cast<String, dynamic>()).input(),
-      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>()).input(),
+      characterMaskConfig: map['characterMaskConfig'] == null ? null : (CharacterMaskConfigHealthcareV1beta1.fromMap((map['characterMaskConfig']! as Map).cast<String, dynamic>())).input(),
+      cryptoHashConfig: map['cryptoHashConfig'] == null ? null : (CryptoHashConfigHealthcareV1beta1.fromMap((map['cryptoHashConfig']! as Map).cast<String, dynamic>())).input(),
+      dateShiftConfig: map['dateShiftConfig'] == null ? null : (DateShiftConfigHealthcareV1beta1.fromMap((map['dateShiftConfig']! as Map).cast<String, dynamic>())).input(),
+      infoTypes: map['infoTypes'] == null ? null : ((map['infoTypes']! as List).cast<String>()).input(),
+      redactConfig: map['redactConfig'] == null ? null : ((map['redactConfig']! as Map).cast<String, dynamic>()).input(),
+      replaceWithInfoTypeConfig: map['replaceWithInfoTypeConfig'] == null ? null : ((map['replaceWithInfoTypeConfig']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

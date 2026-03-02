@@ -106,23 +106,23 @@ class IAppArgs {
 
   factory IAppArgs.fromMap(Map<String, dynamic> map) {
     return IAppArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      devicegroup: map['devicegroup'] == null ? null : (map['devicegroup'] as String).input(),
-      executeAction: map['executeAction'] == null ? null : (map['executeAction'] as String).input(),
-      inheritedDevicegroup: map['inheritedDevicegroup'] == null ? null : (map['inheritedDevicegroup'] as String).input(),
-      inheritedTrafficGroup: map['inheritedTrafficGroup'] == null ? null : (map['inheritedTrafficGroup'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      devicegroup: map['devicegroup'] == null ? null : (map['devicegroup']! as String).input(),
+      executeAction: map['executeAction'] == null ? null : (map['executeAction']! as String).input(),
+      inheritedDevicegroup: map['inheritedDevicegroup'] == null ? null : (map['inheritedDevicegroup']! as String).input(),
+      inheritedTrafficGroup: map['inheritedTrafficGroup'] == null ? null : (map['inheritedTrafficGroup']! as String).input(),
       jsonfile: (map['jsonfile'] as String).input(),
-      lists: map['lists'] == null ? null : (pulumi.Input.decodeList<IAppList>(map['lists'], (value) => IAppList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<IAppMetadata>(map['metadatas'], (value) => IAppMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lists: map['lists'] == null ? null : (pulumi.Input.decodeList<IAppList>(map['lists']!, (value) => IAppList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadatas: map['metadatas'] == null ? null : (pulumi.Input.decodeList<IAppMetadata>(map['metadatas']!, (value) => IAppMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      strictUpdates: map['strictUpdates'] == null ? null : (map['strictUpdates'] as String).input(),
-      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<IAppTable>(map['tables'], (value) => IAppTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
-      templateModified: map['templateModified'] == null ? null : (map['templateModified'] as String).input(),
-      templatePrerequisiteErrors: map['templatePrerequisiteErrors'] == null ? null : (map['templatePrerequisiteErrors'] as String).input(),
-      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
-      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<IAppVariable>(map['variables'], (value) => IAppVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      strictUpdates: map['strictUpdates'] == null ? null : (map['strictUpdates']! as String).input(),
+      tables: map['tables'] == null ? null : (pulumi.Input.decodeList<IAppTable>(map['tables']!, (value) => IAppTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
+      templateModified: map['templateModified'] == null ? null : (map['templateModified']! as String).input(),
+      templatePrerequisiteErrors: map['templatePrerequisiteErrors'] == null ? null : (map['templatePrerequisiteErrors']! as String).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup']! as String).input(),
+      variables: map['variables'] == null ? null : (pulumi.Input.decodeList<IAppVariable>(map['variables']!, (value) => IAppVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

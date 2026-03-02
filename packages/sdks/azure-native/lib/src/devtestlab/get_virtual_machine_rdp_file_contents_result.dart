@@ -20,7 +20,7 @@ class GetVirtualMachineRdpFileContentsResult {
 
   factory GetVirtualMachineRdpFileContentsResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineRdpFileContentsResult(
-      contents: map['contents'] == null ? null : map['contents'] as String,
+      contents: map['contents'] == null ? null : map['contents']! as String,
     );
   }
 }

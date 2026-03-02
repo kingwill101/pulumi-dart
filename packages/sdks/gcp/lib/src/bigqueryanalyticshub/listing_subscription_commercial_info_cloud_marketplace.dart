@@ -21,7 +21,7 @@ class ListingSubscriptionCommercialInfoCloudMarketplace {
 
   factory ListingSubscriptionCommercialInfoCloudMarketplace.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionCommercialInfoCloudMarketplace(
-      order: map['order'] == null ? null : (map['order'] as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
     );
   }
 }

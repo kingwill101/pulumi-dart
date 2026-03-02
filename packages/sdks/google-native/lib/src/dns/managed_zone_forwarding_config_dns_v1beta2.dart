@@ -25,8 +25,8 @@ class ManagedZoneForwardingConfigDnsV1beta2 {
 
   factory ManagedZoneForwardingConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return ManagedZoneForwardingConfigDnsV1beta2(
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTargetDnsV1beta2>(map['targetNameServers'], (value) => ManagedZoneForwardingConfigNameServerTargetDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      targetNameServers: map['targetNameServers'] == null ? null : (pulumi.Input.decodeList<ManagedZoneForwardingConfigNameServerTargetDnsV1beta2>(map['targetNameServers']!, (value) => ManagedZoneForwardingConfigNameServerTargetDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class CFNDataSourceConfigurationsResponse {
 
   factory CFNDataSourceConfigurationsResponse.fromMap(Map<String, dynamic> map) {
     return CFNDataSourceConfigurationsResponse(
-      kubernetes: map['kubernetes'] == null ? null : (CFNKubernetesConfigurationResponse.fromMap((map['kubernetes'] as Map).cast<String, dynamic>())).input(),
-      malwareProtection: map['malwareProtection'] == null ? null : (CFNMalwareProtectionConfigurationResponse.fromMap((map['malwareProtection'] as Map).cast<String, dynamic>())).input(),
-      s3Logs: map['s3Logs'] == null ? null : (CFNS3LogsConfigurationResponse.fromMap((map['s3Logs'] as Map).cast<String, dynamic>())).input(),
+      kubernetes: map['kubernetes'] == null ? null : (CFNKubernetesConfigurationResponse.fromMap((map['kubernetes']! as Map).cast<String, dynamic>())).input(),
+      malwareProtection: map['malwareProtection'] == null ? null : (CFNMalwareProtectionConfigurationResponse.fromMap((map['malwareProtection']! as Map).cast<String, dynamic>())).input(),
+      s3Logs: map['s3Logs'] == null ? null : (CFNS3LogsConfigurationResponse.fromMap((map['s3Logs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

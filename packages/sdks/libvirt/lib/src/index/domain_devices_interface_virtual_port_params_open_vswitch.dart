@@ -25,8 +25,8 @@ class DomainDevicesInterfaceVirtualPortParamsOpenVSwitch {
 
   factory DomainDevicesInterfaceVirtualPortParamsOpenVSwitch.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceVirtualPortParamsOpenVSwitch(
-      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId'] as String).input(),
-      profileId: map['profileId'] == null ? null : (map['profileId'] as String).input(),
+      interfaceId: map['interfaceId'] == null ? null : (map['interfaceId']! as String).input(),
+      profileId: map['profileId'] == null ? null : (map['profileId']! as String).input(),
     );
   }
 }

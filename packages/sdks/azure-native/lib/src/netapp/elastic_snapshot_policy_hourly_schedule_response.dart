@@ -26,8 +26,8 @@ class ElasticSnapshotPolicyHourlyScheduleResponse {
 
   factory ElasticSnapshotPolicyHourlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyHourlyScheduleResponse(
-      minute: map['minute'] == null ? null : (map['minute'] as int).input(),
-      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep'] as int).input(),
+      minute: map['minute'] == null ? null : (map['minute']! as int).input(),
+      snapshotsToKeep: map['snapshotsToKeep'] == null ? null : (map['snapshotsToKeep']! as int).input(),
     );
   }
 }

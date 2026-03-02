@@ -26,7 +26,7 @@ class GetDomainClusterConfigNodeOption {
 
   factory GetDomainClusterConfigNodeOption.fromMap(Map<String, dynamic> map) {
     return GetDomainClusterConfigNodeOption(
-      nodeConfigs: (pulumi.Input.decodeList<GetDomainClusterConfigNodeOptionNodeConfig>(map['nodeConfigs'], (value) => GetDomainClusterConfigNodeOptionNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeConfigs: (pulumi.Input.decodeList<GetDomainClusterConfigNodeOptionNodeConfig>(map['nodeConfigs']!, (value) => GetDomainClusterConfigNodeOptionNodeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       nodeType: (map['nodeType'] as String).input(),
     );
   }

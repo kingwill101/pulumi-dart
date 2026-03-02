@@ -34,9 +34,9 @@ class ResiliencyPolicyResponse {
 
   factory ResiliencyPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResiliencyPolicyResponse(
-      automaticZoneRebalancingPolicy: map['automaticZoneRebalancingPolicy'] == null ? null : (AutomaticZoneRebalancingPolicyResponse.fromMap((map['automaticZoneRebalancingPolicy'] as Map).cast<String, dynamic>())).input(),
-      resilientVMCreationPolicy: map['resilientVMCreationPolicy'] == null ? null : (ResilientVMCreationPolicyResponse.fromMap((map['resilientVMCreationPolicy'] as Map).cast<String, dynamic>())).input(),
-      resilientVMDeletionPolicy: map['resilientVMDeletionPolicy'] == null ? null : (ResilientVMDeletionPolicyResponse.fromMap((map['resilientVMDeletionPolicy'] as Map).cast<String, dynamic>())).input(),
+      automaticZoneRebalancingPolicy: map['automaticZoneRebalancingPolicy'] == null ? null : (AutomaticZoneRebalancingPolicyResponse.fromMap((map['automaticZoneRebalancingPolicy']! as Map).cast<String, dynamic>())).input(),
+      resilientVMCreationPolicy: map['resilientVMCreationPolicy'] == null ? null : (ResilientVMCreationPolicyResponse.fromMap((map['resilientVMCreationPolicy']! as Map).cast<String, dynamic>())).input(),
+      resilientVMDeletionPolicy: map['resilientVMDeletionPolicy'] == null ? null : (ResilientVMDeletionPolicyResponse.fromMap((map['resilientVMDeletionPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

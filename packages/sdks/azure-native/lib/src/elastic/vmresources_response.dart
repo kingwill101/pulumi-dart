@@ -21,7 +21,7 @@ class VMResourcesResponse {
 
   factory VMResourcesResponse.fromMap(Map<String, dynamic> map) {
     return VMResourcesResponse(
-      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId'] as String).input(),
+      vmResourceId: map['vmResourceId'] == null ? null : (map['vmResourceId']! as String).input(),
     );
   }
 }

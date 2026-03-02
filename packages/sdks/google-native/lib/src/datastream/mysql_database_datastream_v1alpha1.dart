@@ -27,8 +27,8 @@ class MysqlDatabaseDatastreamV1alpha1 {
 
   factory MysqlDatabaseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return MysqlDatabaseDatastreamV1alpha1(
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<MysqlTableDatastreamV1alpha1>(map['mysqlTables'], (value) => MysqlTableDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      mysqlTables: map['mysqlTables'] == null ? null : (pulumi.Input.decodeList<MysqlTableDatastreamV1alpha1>(map['mysqlTables']!, (value) => MysqlTableDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

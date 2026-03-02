@@ -33,9 +33,9 @@ class GoogleCloudAiplatformV1beta1UnmanagedContainerModel {
 
   factory GoogleCloudAiplatformV1beta1UnmanagedContainerModel.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1UnmanagedContainerModel(
-      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri'] as String).input(),
-      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ModelContainerSpec.fromMap((map['containerSpec'] as Map).cast<String, dynamic>())).input(),
-      predictSchemata: map['predictSchemata'] == null ? null : (GoogleCloudAiplatformV1beta1PredictSchemata.fromMap((map['predictSchemata'] as Map).cast<String, dynamic>())).input(),
+      artifactUri: map['artifactUri'] == null ? null : (map['artifactUri']! as String).input(),
+      containerSpec: map['containerSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ModelContainerSpec.fromMap((map['containerSpec']! as Map).cast<String, dynamic>())).input(),
+      predictSchemata: map['predictSchemata'] == null ? null : (GoogleCloudAiplatformV1beta1PredictSchemata.fromMap((map['predictSchemata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -268,7 +268,7 @@ class GetInstanceResult {
       iops: map['iops'] as int,
       kmsKeyId: map['kmsKeyId'] as String,
       licenseModel: map['licenseModel'] as String,
-      masterUserSecrets: pulumi.Input.decodeList<GetInstanceMasterUserSecret>(map['masterUserSecrets'], (value) => GetInstanceMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())),
+      masterUserSecrets: pulumi.Input.decodeList<GetInstanceMasterUserSecret>(map['masterUserSecrets']!, (value) => GetInstanceMasterUserSecret.fromMap((value as Map).cast<String, dynamic>())),
       masterUsername: map['masterUsername'] as String,
       maxAllocatedStorage: map['maxAllocatedStorage'] as int,
       monitoringInterval: map['monitoringInterval'] as int,

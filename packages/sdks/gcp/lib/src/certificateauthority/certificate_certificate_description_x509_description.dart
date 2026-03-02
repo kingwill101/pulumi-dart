@@ -62,12 +62,12 @@ class CertificateCertificateDescriptionX509Description {
 
   factory CertificateCertificateDescriptionX509Description.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionX509Description(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtension>(map['additionalExtensions'], (value) => CertificateCertificateDescriptionX509DescriptionAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
-      caOptions: map['caOptions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionCaOption>(map['caOptions'], (value) => CertificateCertificateDescriptionX509DescriptionCaOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      keyUsages: map['keyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsage>(map['keyUsages'], (value) => CertificateCertificateDescriptionX509DescriptionKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nameConstraints: map['nameConstraints'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionNameConstraint>(map['nameConstraints'], (value) => CertificateCertificateDescriptionX509DescriptionNameConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionPolicyId>(map['policyIds'], (value) => CertificateCertificateDescriptionX509DescriptionPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionAdditionalExtension>(map['additionalExtensions']!, (value) => CertificateCertificateDescriptionX509DescriptionAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers']! as List).cast<String>()).input(),
+      caOptions: map['caOptions'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionCaOption>(map['caOptions']!, (value) => CertificateCertificateDescriptionX509DescriptionCaOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyUsages: map['keyUsages'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionKeyUsage>(map['keyUsages']!, (value) => CertificateCertificateDescriptionX509DescriptionKeyUsage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionNameConstraint>(map['nameConstraints']!, (value) => CertificateCertificateDescriptionX509DescriptionNameConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CertificateCertificateDescriptionX509DescriptionPolicyId>(map['policyIds']!, (value) => CertificateCertificateDescriptionX509DescriptionPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -105,7 +105,7 @@ class GetSecretResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       replications: pulumi.Input.decodeList<GetSecretReplication>(map['replications'], (value) => GetSecretReplication.fromMap((value as Map).cast<String, dynamic>())),
       rotations: pulumi.Input.decodeList<GetSecretRotation>(map['rotations'], (value) => GetSecretRotation.fromMap((value as Map).cast<String, dynamic>())),

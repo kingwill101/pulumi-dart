@@ -67,10 +67,10 @@ class SecurityGatewayIamMemberArgs {
 
   factory SecurityGatewayIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayIamMemberArgs(
-      condition: map['condition'] == null ? null : (SecurityGatewayIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      condition: map['condition'] == null ? null : (SecurityGatewayIamMemberCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       member: (map['member'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       securityGatewayId: (map['securityGatewayId'] as String).input(),
     );

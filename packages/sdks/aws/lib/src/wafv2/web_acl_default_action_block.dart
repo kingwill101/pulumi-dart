@@ -21,7 +21,7 @@ class WebAclDefaultActionBlock {
 
   factory WebAclDefaultActionBlock.fromMap(Map<String, dynamic> map) {
     return WebAclDefaultActionBlock(
-      customResponse: map['customResponse'] == null ? null : (WebAclDefaultActionBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>())).input(),
+      customResponse: map['customResponse'] == null ? null : ((WebAclDefaultActionBlockCustomResponse.fromMap((map['customResponse']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

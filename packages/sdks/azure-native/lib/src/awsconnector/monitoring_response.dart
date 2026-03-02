@@ -22,7 +22,7 @@ class MonitoringResponse {
 
   factory MonitoringResponse.fromMap(Map<String, dynamic> map) {
     return MonitoringResponse(
-      state: map['state'] == null ? null : (MonitoringStateEnumValueResponse.fromMap((map['state'] as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (MonitoringStateEnumValueResponse.fromMap((map['state']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -42,7 +42,7 @@ class DataProductAccessGroup {
 
   factory DataProductAccessGroup.fromMap(Map<String, dynamic> map) {
     return DataProductAccessGroup(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       groupId: (map['groupId'] as String).input(),
       id: (map['id'] as String).input(),

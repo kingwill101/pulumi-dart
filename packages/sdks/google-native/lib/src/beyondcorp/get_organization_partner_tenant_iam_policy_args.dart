@@ -31,7 +31,7 @@ class GetOrganizationPartnerTenantIamPolicyArgs {
 
   factory GetOrganizationPartnerTenantIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetOrganizationPartnerTenantIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
       organizationId: (map['organizationId'] as String).input(),
       partnerTenantId: (map['partnerTenantId'] as String).input(),
     );

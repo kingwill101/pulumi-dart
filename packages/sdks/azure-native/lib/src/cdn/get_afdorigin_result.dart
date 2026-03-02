@@ -108,23 +108,23 @@ class GetAFDOriginResult {
   factory GetAFDOriginResult.fromMap(Map<String, dynamic> map) {
     return GetAFDOriginResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureOrigin: map['azureOrigin'] == null ? null : ResourceReferenceResponse.fromMap((map['azureOrigin'] as Map).cast<String, dynamic>()),
+      azureOrigin: map['azureOrigin'] == null ? null : ResourceReferenceResponse.fromMap((map['azureOrigin']! as Map).cast<String, dynamic>()),
       deploymentStatus: map['deploymentStatus'] as String,
-      enabledState: map['enabledState'] == null ? null : map['enabledState'] as String,
-      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : map['enforceCertificateNameCheck'] as bool,
-      hostName: map['hostName'] == null ? null : map['hostName'] as String,
-      httpPort: map['httpPort'] == null ? null : map['httpPort'] as int,
-      httpsPort: map['httpsPort'] == null ? null : map['httpsPort'] as int,
+      enabledState: map['enabledState'] == null ? null : map['enabledState']! as String,
+      enforceCertificateNameCheck: map['enforceCertificateNameCheck'] == null ? null : map['enforceCertificateNameCheck']! as bool,
+      hostName: map['hostName'] == null ? null : map['hostName']! as String,
+      httpPort: map['httpPort'] == null ? null : map['httpPort']! as int,
+      httpsPort: map['httpsPort'] == null ? null : map['httpsPort']! as int,
       id: map['id'] as String,
       name: map['name'] as String,
       originGroupName: map['originGroupName'] as String,
-      originHostHeader: map['originHostHeader'] == null ? null : map['originHostHeader'] as String,
-      priority: map['priority'] == null ? null : map['priority'] as int,
+      originHostHeader: map['originHostHeader'] == null ? null : map['originHostHeader']! as String,
+      priority: map['priority'] == null ? null : map['priority']! as int,
       provisioningState: map['provisioningState'] as String,
-      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : SharedPrivateLinkResourcePropertiesResponse.fromMap((map['sharedPrivateLinkResource'] as Map).cast<String, dynamic>()),
+      sharedPrivateLinkResource: map['sharedPrivateLinkResource'] == null ? null : SharedPrivateLinkResourcePropertiesResponse.fromMap((map['sharedPrivateLinkResource']! as Map).cast<String, dynamic>()),
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
-      weight: map['weight'] == null ? null : map['weight'] as int,
+      weight: map['weight'] == null ? null : map['weight']! as int,
     );
   }
 }

@@ -67,11 +67,11 @@ class ConnectionArgs {
       botName: (map['botName'] as String).input(),
       clientId: (map['clientId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as String).input(),
+      scopes: map['scopes'] == null ? null : (map['scopes']! as String).input(),
       serviceProviderName: (map['serviceProviderName'] as String).input(),
     );
   }

@@ -31,9 +31,9 @@ class WebServerResourceComposerV1beta1 {
 
   factory WebServerResourceComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WebServerResourceComposerV1beta1(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      storageGb: map['storageGb'] == null ? null : (map['storageGb'] as double).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      storageGb: map['storageGb'] == null ? null : (map['storageGb']! as double).input(),
     );
   }
 }

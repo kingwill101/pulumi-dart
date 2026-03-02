@@ -30,9 +30,9 @@ class RunDetailsContaineranalysisV1beta1 {
 
   factory RunDetailsContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RunDetailsContaineranalysisV1beta1(
-      builder: map['builder'] == null ? null : (ProvenanceBuilderContaineranalysisV1beta1.fromMap((map['builder'] as Map).cast<String, dynamic>())).input(),
-      byproducts: map['byproducts'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1beta1>(map['byproducts'], (value) => ResourceDescriptorContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metadata: map['metadata'] == null ? null : (BuildMetadataContaineranalysisV1beta1.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      builder: map['builder'] == null ? null : (ProvenanceBuilderContaineranalysisV1beta1.fromMap((map['builder']! as Map).cast<String, dynamic>())).input(),
+      byproducts: map['byproducts'] == null ? null : (pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1beta1>(map['byproducts']!, (value) => ResourceDescriptorContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metadata: map['metadata'] == null ? null : (BuildMetadataContaineranalysisV1beta1.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

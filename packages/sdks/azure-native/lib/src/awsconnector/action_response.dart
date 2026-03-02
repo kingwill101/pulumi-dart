@@ -61,14 +61,14 @@ class ActionResponse {
 
   factory ActionResponse.fromMap(Map<String, dynamic> map) {
     return ActionResponse(
-      authenticateCognitoConfig: map['authenticateCognitoConfig'] == null ? null : (AuthenticateCognitoConfigResponse.fromMap((map['authenticateCognitoConfig'] as Map).cast<String, dynamic>())).input(),
-      authenticateOidcConfig: map['authenticateOidcConfig'] == null ? null : (AuthenticateOidcConfigResponse.fromMap((map['authenticateOidcConfig'] as Map).cast<String, dynamic>())).input(),
-      fixedResponseConfig: map['fixedResponseConfig'] == null ? null : (FixedResponseConfigResponse.fromMap((map['fixedResponseConfig'] as Map).cast<String, dynamic>())).input(),
-      forwardConfig: map['forwardConfig'] == null ? null : (ForwardConfigResponse.fromMap((map['forwardConfig'] as Map).cast<String, dynamic>())).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      redirectConfig: map['redirectConfig'] == null ? null : (RedirectConfigResponse.fromMap((map['redirectConfig'] as Map).cast<String, dynamic>())).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      authenticateCognitoConfig: map['authenticateCognitoConfig'] == null ? null : (AuthenticateCognitoConfigResponse.fromMap((map['authenticateCognitoConfig']! as Map).cast<String, dynamic>())).input(),
+      authenticateOidcConfig: map['authenticateOidcConfig'] == null ? null : (AuthenticateOidcConfigResponse.fromMap((map['authenticateOidcConfig']! as Map).cast<String, dynamic>())).input(),
+      fixedResponseConfig: map['fixedResponseConfig'] == null ? null : (FixedResponseConfigResponse.fromMap((map['fixedResponseConfig']! as Map).cast<String, dynamic>())).input(),
+      forwardConfig: map['forwardConfig'] == null ? null : (ForwardConfigResponse.fromMap((map['forwardConfig']! as Map).cast<String, dynamic>())).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      redirectConfig: map['redirectConfig'] == null ? null : (RedirectConfigResponse.fromMap((map['redirectConfig']! as Map).cast<String, dynamic>())).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class Datapolicyv2DataPolicyIamBindingCondition {
 
   factory Datapolicyv2DataPolicyIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return Datapolicyv2DataPolicyIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

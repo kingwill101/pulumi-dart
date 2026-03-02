@@ -20,7 +20,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType(
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
+      dataSource: map['dataSource'] == null ? null : (map['dataSource']! as String).input(),
     );
   }
 }

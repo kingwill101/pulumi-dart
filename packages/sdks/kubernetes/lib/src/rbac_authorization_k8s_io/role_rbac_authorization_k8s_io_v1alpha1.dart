@@ -38,10 +38,10 @@ class RoleRbacAuthorizationK8sIoV1alpha1 {
 
   factory RoleRbacAuthorizationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return RoleRbacAuthorizationK8sIoV1alpha1(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1>(map['rules'], (value) => PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<PolicyRuleRbacAuthorizationK8sIoV1alpha1>(map['rules']!, (value) => PolicyRuleRbacAuthorizationK8sIoV1alpha1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

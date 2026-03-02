@@ -33,9 +33,9 @@ class SimpleCriterionForJobResponse {
 
   factory SimpleCriterionForJobResponse.fromMap(Map<String, dynamic> map) {
     return SimpleCriterionForJobResponse(
-      comparator: map['comparator'] == null ? null : (JobComparatorEnumValueResponse.fromMap((map['comparator'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (SimpleCriterionKeyForJobEnumValueResponse.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      comparator: map['comparator'] == null ? null : (JobComparatorEnumValueResponse.fromMap((map['comparator']! as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (SimpleCriterionKeyForJobEnumValueResponse.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

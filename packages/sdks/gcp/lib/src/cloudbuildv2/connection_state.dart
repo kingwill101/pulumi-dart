@@ -110,22 +110,22 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      bitbucketCloudConfig: map['bitbucketCloudConfig'] == null ? null : (ConnectionBitbucketCloudConfig.fromMap((map['bitbucketCloudConfig'] as Map).cast<String, dynamic>())).input(),
-      bitbucketDataCenterConfig: map['bitbucketDataCenterConfig'] == null ? null : (ConnectionBitbucketDataCenterConfig.fromMap((map['bitbucketDataCenterConfig'] as Map).cast<String, dynamic>())).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations'] as Map).cast<String, String>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      githubConfig: map['githubConfig'] == null ? null : (ConnectionGithubConfig.fromMap((map['githubConfig'] as Map).cast<String, dynamic>())).input(),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (ConnectionGithubEnterpriseConfig.fromMap((map['githubEnterpriseConfig'] as Map).cast<String, dynamic>())).input(),
-      gitlabConfig: map['gitlabConfig'] == null ? null : (ConnectionGitlabConfig.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>())).input(),
-      installationStates: map['installationStates'] == null ? null : (pulumi.Input.decodeList<ConnectionInstallationState>(map['installationStates'], (value) => ConnectionInstallationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      bitbucketCloudConfig: map['bitbucketCloudConfig'] == null ? null : (ConnectionBitbucketCloudConfig.fromMap((map['bitbucketCloudConfig']! as Map).cast<String, dynamic>())).input(),
+      bitbucketDataCenterConfig: map['bitbucketDataCenterConfig'] == null ? null : (ConnectionBitbucketDataCenterConfig.fromMap((map['bitbucketDataCenterConfig']! as Map).cast<String, dynamic>())).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      effectiveAnnotations: map['effectiveAnnotations'] == null ? null : ((map['effectiveAnnotations']! as Map).cast<String, String>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      githubConfig: map['githubConfig'] == null ? null : (ConnectionGithubConfig.fromMap((map['githubConfig']! as Map).cast<String, dynamic>())).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (ConnectionGithubEnterpriseConfig.fromMap((map['githubEnterpriseConfig']! as Map).cast<String, dynamic>())).input(),
+      gitlabConfig: map['gitlabConfig'] == null ? null : (ConnectionGitlabConfig.fromMap((map['gitlabConfig']! as Map).cast<String, dynamic>())).input(),
+      installationStates: map['installationStates'] == null ? null : (pulumi.Input.decodeList<ConnectionInstallationState>(map['installationStates']!, (value) => ConnectionInstallationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

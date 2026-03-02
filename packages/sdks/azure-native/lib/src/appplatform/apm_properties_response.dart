@@ -31,7 +31,7 @@ class ApmPropertiesResponse {
 
   factory ApmPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ApmPropertiesResponse(
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

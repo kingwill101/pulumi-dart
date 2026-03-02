@@ -21,7 +21,7 @@ class ApiVersionConstraint {
 
   factory ApiVersionConstraint.fromMap(Map<String, dynamic> map) {
     return ApiVersionConstraint(
-      minApiVersion: map['minApiVersion'] == null ? null : (map['minApiVersion'] as String).input(),
+      minApiVersion: map['minApiVersion'] == null ? null : (map['minApiVersion']! as String).input(),
     );
   }
 }

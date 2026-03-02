@@ -26,8 +26,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
 
   factory GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText(
-      ssml: map['ssml'] == null ? null : (map['ssml'] as String).input(),
-      text: map['text'] == null ? null : (map['text'] as String).input(),
+      ssml: map['ssml'] == null ? null : (map['ssml']! as String).input(),
+      text: map['text'] == null ? null : (map['text']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class MetricTransformation {
 
   factory MetricTransformation.fromMap(Map<String, dynamic> map) {
     return MetricTransformation(
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue'] as int).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions'], (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace'] as String).input(),
-      metricValue: map['metricValue'] == null ? null : (map['metricValue'] as String).input(),
-      unit: map['unit'] == null ? null : (map['unit'] as String).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']! as int).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<Dimension>(map['dimensions']!, (value) => Dimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      metricNamespace: map['metricNamespace'] == null ? null : (map['metricNamespace']! as String).input(),
+      metricValue: map['metricValue'] == null ? null : (map['metricValue']! as String).input(),
+      unit: map['unit'] == null ? null : (map['unit']! as String).input(),
     );
   }
 }

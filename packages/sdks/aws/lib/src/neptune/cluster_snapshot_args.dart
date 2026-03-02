@@ -36,7 +36,7 @@ class ClusterSnapshotArgs {
     return ClusterSnapshotArgs(
       dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
       dbClusterSnapshotIdentifier: (map['dbClusterSnapshotIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

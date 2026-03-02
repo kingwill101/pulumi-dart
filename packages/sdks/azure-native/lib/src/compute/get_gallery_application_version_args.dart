@@ -44,7 +44,7 @@ class GetGalleryApplicationVersionArgs {
 
   factory GetGalleryApplicationVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetGalleryApplicationVersionArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       galleryApplicationName: (map['galleryApplicationName'] as String).input(),
       galleryApplicationVersionName: (map['galleryApplicationVersionName'] as String).input(),
       galleryName: (map['galleryName'] as String).input(),

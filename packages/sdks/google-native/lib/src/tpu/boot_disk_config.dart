@@ -27,8 +27,8 @@ class BootDiskConfig {
 
   factory BootDiskConfig.fromMap(Map<String, dynamic> map) {
     return BootDiskConfig(
-      customerEncryptionKey: map['customerEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['customerEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute'] as bool).input(),
+      customerEncryptionKey: map['customerEncryptionKey'] == null ? null : (CustomerEncryptionKey.fromMap((map['customerEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : (map['enableConfidentialCompute']! as bool).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class DatabaseDumpMetastoreV1beta {
 
   factory DatabaseDumpMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return DatabaseDumpMetastoreV1beta(
-      databaseType: map['databaseType'] == null ? null : (DatabaseDumpDatabaseTypeMetastoreV1beta.fromValue(map['databaseType'] as String)).input(),
-      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri'] as String).input(),
-      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase'] as String).input(),
-      type: map['type'] == null ? null : (DatabaseDumpTypeMetastoreV1beta.fromValue(map['type'] as String)).input(),
+      databaseType: map['databaseType'] == null ? null : (DatabaseDumpDatabaseTypeMetastoreV1beta.fromValue(map['databaseType']! as String)).input(),
+      gcsUri: map['gcsUri'] == null ? null : (map['gcsUri']! as String).input(),
+      sourceDatabase: map['sourceDatabase'] == null ? null : (map['sourceDatabase']! as String).input(),
+      type: map['type'] == null ? null : (DatabaseDumpTypeMetastoreV1beta.fromValue(map['type']! as String)).input(),
     );
   }
 }

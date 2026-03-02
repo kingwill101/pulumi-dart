@@ -45,10 +45,10 @@ class DashboardArgs {
 
   factory DashboardArgs.fromMap(Map<String, dynamic> map) {
     return DashboardArgs(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
       charList: (map['charList'] as String).input(),
       dashboardName: (map['dashboardName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
     );
   }

@@ -46,10 +46,10 @@ class RaiTopicArgs {
   factory RaiTopicArgs.fromMap(Map<String, dynamic> map) {
     return RaiTopicArgs(
       accountName: (map['accountName'] as String).input(),
-      properties: map['properties'] == null ? null : (RaiTopicProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      raiTopicName: map['raiTopicName'] == null ? null : (map['raiTopicName'] as String).input(),
+      properties: map['properties'] == null ? null : (RaiTopicProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
+      raiTopicName: map['raiTopicName'] == null ? null : (map['raiTopicName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

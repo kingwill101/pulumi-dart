@@ -30,9 +30,9 @@ class BucketLifecycleConfigurationRuleExpirationS3Control {
 
   factory BucketLifecycleConfigurationRuleExpirationS3Control.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationRuleExpirationS3Control(
-      date: map['date'] == null ? null : (map['date'] as String).input(),
-      days: map['days'] == null ? null : (map['days'] as int).input(),
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : (map['expiredObjectDeleteMarker'] as bool).input(),
+      date: map['date'] == null ? null : ((map['date'] as String).input()).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : ((map['expiredObjectDeleteMarker'] as bool).input()).input(),
     );
   }
 }

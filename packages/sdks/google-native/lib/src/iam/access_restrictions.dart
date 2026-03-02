@@ -27,8 +27,8 @@ class AccessRestrictions {
 
   factory AccessRestrictions.fromMap(Map<String, dynamic> map) {
     return AccessRestrictions(
-      allowedServices: map['allowedServices'] == null ? null : (pulumi.Input.decodeList<ServiceConfig>(map['allowedServices'], (value) => ServiceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      disableProgrammaticSignin: map['disableProgrammaticSignin'] == null ? null : (map['disableProgrammaticSignin'] as bool).input(),
+      allowedServices: map['allowedServices'] == null ? null : (pulumi.Input.decodeList<ServiceConfig>(map['allowedServices']!, (value) => ServiceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      disableProgrammaticSignin: map['disableProgrammaticSignin'] == null ? null : (map['disableProgrammaticSignin']! as bool).input(),
     );
   }
 }

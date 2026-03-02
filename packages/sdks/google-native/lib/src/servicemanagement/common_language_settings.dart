@@ -27,8 +27,8 @@ class CommonLanguageSettings {
 
   factory CommonLanguageSettings.fromMap(Map<String, dynamic> map) {
     return CommonLanguageSettings(
-      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<CommonLanguageSettingsDestinationsItem>(map['destinations'], (value) => CommonLanguageSettingsDestinationsItem.fromValue(value as String))).input(),
-      referenceDocsUri: map['referenceDocsUri'] == null ? null : (map['referenceDocsUri'] as String).input(),
+      destinations: map['destinations'] == null ? null : (pulumi.Input.decodeList<CommonLanguageSettingsDestinationsItem>(map['destinations']!, (value) => CommonLanguageSettingsDestinationsItem.fromValue(value as String))).input(),
+      referenceDocsUri: map['referenceDocsUri'] == null ? null : (map['referenceDocsUri']! as String).input(),
     );
   }
 }

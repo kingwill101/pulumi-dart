@@ -27,8 +27,8 @@ class ConnectedSubnetRoutePolicy {
 
   factory ConnectedSubnetRoutePolicy.fromMap(Map<String, dynamic> map) {
     return ConnectedSubnetRoutePolicy(
-      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (L3ExportRoutePolicy.fromMap((map['exportRoutePolicy'] as Map).cast<String, dynamic>())).input(),
-      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : (map['exportRoutePolicyId'] as String).input(),
+      exportRoutePolicy: map['exportRoutePolicy'] == null ? null : (L3ExportRoutePolicy.fromMap((map['exportRoutePolicy']! as Map).cast<String, dynamic>())).input(),
+      exportRoutePolicyId: map['exportRoutePolicyId'] == null ? null : (map['exportRoutePolicyId']! as String).input(),
     );
   }
 }

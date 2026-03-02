@@ -21,7 +21,7 @@ class MonitoringSubscriptionMonitoringSubscription {
 
   factory MonitoringSubscriptionMonitoringSubscription.fromMap(Map<String, dynamic> map) {
     return MonitoringSubscriptionMonitoringSubscription(
-      realtimeMetricsSubscriptionConfig: (MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap((map['realtimeMetricsSubscriptionConfig'] as Map).cast<String, dynamic>())).input(),
+      realtimeMetricsSubscriptionConfig: (MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap((map['realtimeMetricsSubscriptionConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

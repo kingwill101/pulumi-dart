@@ -34,8 +34,8 @@ class UserVpcAuthorizationArgs {
 
   factory UserVpcAuthorizationArgs.fromMap(Map<String, dynamic> map) {
     return UserVpcAuthorizationArgs(
-      authChannel: map['authChannel'] == null ? null : (map['authChannel'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      authChannel: map['authChannel'] == null ? null : (map['authChannel']! as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
       authorizedUserId: (map['authorizedUserId'] as String).input(),
     );
   }

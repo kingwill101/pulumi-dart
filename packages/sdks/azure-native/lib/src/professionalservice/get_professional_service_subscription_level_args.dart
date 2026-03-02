@@ -36,7 +36,7 @@ class GetProfessionalServiceSubscriptionLevelArgs {
     return GetProfessionalServiceSubscriptionLevelArgs(
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceName: (map['resourceName'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

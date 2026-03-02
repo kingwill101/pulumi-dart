@@ -22,7 +22,7 @@ class ScheduledQueryRuleCriteriaResponse {
 
   factory ScheduledQueryRuleCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRuleCriteriaResponse(
-      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<ConditionResponse>(map['allOf'], (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allOf: map['allOf'] == null ? null : (pulumi.Input.decodeList<ConditionResponse>(map['allOf']!, (value) => ConditionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

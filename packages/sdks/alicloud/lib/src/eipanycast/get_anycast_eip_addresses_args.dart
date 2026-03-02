@@ -74,17 +74,17 @@ class GetAnycastEipAddressesArgs {
 
   factory GetAnycastEipAddressesArgs.fromMap(Map<String, dynamic> map) {
     return GetAnycastEipAddressesArgs(
-      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName'] as String).input(),
-      bindInstanceIds: map['bindInstanceIds'] == null ? null : ((map['bindInstanceIds'] as List).cast<String>()).input(),
-      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      serviceLocation: map['serviceLocation'] == null ? null : (map['serviceLocation'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      anycastEipAddressName: map['anycastEipAddressName'] == null ? null : (map['anycastEipAddressName']! as String).input(),
+      bindInstanceIds: map['bindInstanceIds'] == null ? null : ((map['bindInstanceIds']! as List).cast<String>()).input(),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      internetChargeType: map['internetChargeType'] == null ? null : (map['internetChargeType']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      serviceLocation: map['serviceLocation'] == null ? null : (map['serviceLocation']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

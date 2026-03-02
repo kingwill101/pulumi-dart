@@ -25,8 +25,8 @@ class FileShareResponseProperties {
 
   factory FileShareResponseProperties.fromMap(Map<String, dynamic> map) {
     return FileShareResponseProperties(
-      shareAccessTier: map['shareAccessTier'] == null ? null : (map['shareAccessTier'] as String).input(),
-      shareAccessType: map['shareAccessType'] == null ? null : (map['shareAccessType'] as String).input(),
+      shareAccessTier: map['shareAccessTier'] == null ? null : (map['shareAccessTier']! as String).input(),
+      shareAccessType: map['shareAccessType'] == null ? null : (map['shareAccessType']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class OSDiskImageEncryption {
 
   factory OSDiskImageEncryption.fromMap(Map<String, dynamic> map) {
     return OSDiskImageEncryption(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      securityProfile: map['securityProfile'] == null ? null : (OSDiskImageSecurityProfile.fromMap((map['securityProfile'] as Map).cast<String, dynamic>())).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      securityProfile: map['securityProfile'] == null ? null : (OSDiskImageSecurityProfile.fromMap((map['securityProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -90,18 +90,18 @@ class GetMetadataActivity {
   factory GetMetadataActivity.fromMap(Map<String, dynamic> map) {
     return GetMetadataActivity(
       dataset: (DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn'], (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      fieldList: map['fieldList'] == null ? null : ((map['fieldList'] as List).cast<dynamic>()).input(),
-      formatSettings: map['formatSettings'] == null ? null : (BinaryReadSettings.fromMap((map['formatSettings'] as Map).cast<String, dynamic>())).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependency>(map['dependsOn']!, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      fieldList: map['fieldList'] == null ? null : ((map['fieldList']! as List).cast<dynamic>()).input(),
+      formatSettings: map['formatSettings'] == null ? null : (BinaryReadSettings.fromMap((map['formatSettings']! as Map).cast<String, dynamic>())).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettings.fromMap((map['storeSettings'] as Map).cast<String, dynamic>())).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicy.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      storeSettings: map['storeSettings'] == null ? null : (AmazonS3CompatibleReadSettings.fromMap((map['storeSettings']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties'], (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserProperty>(map['userProperties']!, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

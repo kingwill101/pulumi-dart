@@ -56,14 +56,14 @@ class WorkflowTemplateJobHadoopJob {
 
   factory WorkflowTemplateJobHadoopJob.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplateJobHadoopJob(
-      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris'] as List).cast<String>()).input(),
-      args: map['args'] == null ? null : ((map['args'] as List).cast<String>()).input(),
-      fileUris: map['fileUris'] == null ? null : ((map['fileUris'] as List).cast<String>()).input(),
-      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris'] as List).cast<String>()).input(),
-      loggingConfig: map['loggingConfig'] == null ? null : (WorkflowTemplateJobHadoopJobLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
-      mainClass: map['mainClass'] == null ? null : (map['mainClass'] as String).input(),
-      mainJarFileUri: map['mainJarFileUri'] == null ? null : (map['mainJarFileUri'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      archiveUris: map['archiveUris'] == null ? null : ((map['archiveUris']! as List).cast<String>()).input(),
+      args: map['args'] == null ? null : ((map['args']! as List).cast<String>()).input(),
+      fileUris: map['fileUris'] == null ? null : ((map['fileUris']! as List).cast<String>()).input(),
+      jarFileUris: map['jarFileUris'] == null ? null : ((map['jarFileUris']! as List).cast<String>()).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (WorkflowTemplateJobHadoopJobLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
+      mainClass: map['mainClass'] == null ? null : (map['mainClass']! as String).input(),
+      mainJarFileUri: map['mainJarFileUri'] == null ? null : (map['mainJarFileUri']! as String).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

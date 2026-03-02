@@ -21,7 +21,7 @@ class OpenZfsVolumeNfsExports {
 
   factory OpenZfsVolumeNfsExports.fromMap(Map<String, dynamic> map) {
     return OpenZfsVolumeNfsExports(
-      clientConfigurations: (pulumi.Input.decodeList<OpenZfsVolumeNfsExportsClientConfiguration>(map['clientConfigurations'], (value) => OpenZfsVolumeNfsExportsClientConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clientConfigurations: (pulumi.Input.decodeList<OpenZfsVolumeNfsExportsClientConfiguration>(map['clientConfigurations']!, (value) => OpenZfsVolumeNfsExportsClientConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

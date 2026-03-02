@@ -81,16 +81,16 @@ class GuestConfigurationAssignmentPropertiesResponse {
     return GuestConfigurationAssignmentPropertiesResponse(
       assignmentHash: (map['assignmentHash'] as String).input(),
       complianceStatus: (map['complianceStatus'] as String).input(),
-      context: map['context'] == null ? null : (map['context'] as String).input(),
-      guestConfiguration: map['guestConfiguration'] == null ? null : (GuestConfigurationNavigationResponse.fromMap((map['guestConfiguration'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (map['context']! as String).input(),
+      guestConfiguration: map['guestConfiguration'] == null ? null : (GuestConfigurationNavigationResponse.fromMap((map['guestConfiguration']! as Map).cast<String, dynamic>())).input(),
       lastComplianceStatusChecked: (map['lastComplianceStatusChecked'] as String).input(),
-      latestAssignmentReport: map['latestAssignmentReport'] == null ? null : (AssignmentReportResponse.fromMap((map['latestAssignmentReport'] as Map).cast<String, dynamic>())).input(),
+      latestAssignmentReport: map['latestAssignmentReport'] == null ? null : (AssignmentReportResponse.fromMap((map['latestAssignmentReport']! as Map).cast<String, dynamic>())).input(),
       latestReportId: (map['latestReportId'] as String).input(),
       parameterHash: (map['parameterHash'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
-      vmssVMList: map['vmssVMList'] == null ? null : (pulumi.Input.decodeList<VMSSVMInfoResponse>(map['vmssVMList'], (value) => VMSSVMInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmssVMList: map['vmssVMList'] == null ? null : (pulumi.Input.decodeList<VMSSVMInfoResponse>(map['vmssVMList']!, (value) => VMSSVMInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

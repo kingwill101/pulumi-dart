@@ -20,7 +20,7 @@ class NodePoolAutoMode {
 
   factory NodePoolAutoMode.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoMode(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

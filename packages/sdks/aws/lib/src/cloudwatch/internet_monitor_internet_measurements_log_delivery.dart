@@ -20,7 +20,7 @@ class InternetMonitorInternetMeasurementsLogDelivery {
 
   factory InternetMonitorInternetMeasurementsLogDelivery.fromMap(Map<String, dynamic> map) {
     return InternetMonitorInternetMeasurementsLogDelivery(
-      s3Config: map['s3Config'] == null ? null : (InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>())).input(),
+      s3Config: map['s3Config'] == null ? null : ((InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap((map['s3Config']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

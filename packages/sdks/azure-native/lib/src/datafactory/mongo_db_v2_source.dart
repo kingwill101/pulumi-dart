@@ -68,15 +68,15 @@ class MongoDbV2Source {
 
   factory MongoDbV2Source.fromMap(Map<String, dynamic> map) {
     return MongoDbV2Source(
-      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']).input(),
-      batchSize: map['batchSize'] == null ? null : (map['batchSize']).input(),
-      cursorMethods: map['cursorMethods'] == null ? null : (MongoDbCursorMethodsProperties.fromMap((map['cursorMethods'] as Map).cast<String, dynamic>())).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      filter: map['filter'] == null ? null : (map['filter']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']).input(),
-      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']).input(),
-      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']).input(),
+      additionalColumns: map['additionalColumns'] == null ? null : (map['additionalColumns']!).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']!).input(),
+      cursorMethods: map['cursorMethods'] == null ? null : (MongoDbCursorMethodsProperties.fromMap((map['cursorMethods']! as Map).cast<String, dynamic>())).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      filter: map['filter'] == null ? null : (map['filter']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      queryTimeout: map['queryTimeout'] == null ? null : (map['queryTimeout']!).input(),
+      sourceRetryCount: map['sourceRetryCount'] == null ? null : (map['sourceRetryCount']!).input(),
+      sourceRetryWait: map['sourceRetryWait'] == null ? null : (map['sourceRetryWait']!).input(),
       type: (map['type'] as String).input(),
     );
   }

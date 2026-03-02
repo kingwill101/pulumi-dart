@@ -32,9 +32,9 @@ class EnvironmentVariableResponse {
 
   factory EnvironmentVariableResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentVariableResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (EnvironmentVariableTypeEnumValueResponse.fromMap((map['type'] as Map).cast<String, dynamic>())).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (EnvironmentVariableTypeEnumValueResponse.fromMap((map['type']! as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

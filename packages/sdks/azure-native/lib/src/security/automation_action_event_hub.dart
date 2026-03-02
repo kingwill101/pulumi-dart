@@ -38,9 +38,9 @@ class AutomationActionEventHub {
   factory AutomationActionEventHub.fromMap(Map<String, dynamic> map) {
     return AutomationActionEventHub(
       actionType: (map['actionType'] as String).input(),
-      connectionString: map['connectionString'] == null ? null : (map['connectionString'] as String).input(),
-      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId'] as String).input(),
-      isTrustedServiceEnabled: map['isTrustedServiceEnabled'] == null ? null : (map['isTrustedServiceEnabled'] as bool).input(),
+      connectionString: map['connectionString'] == null ? null : (map['connectionString']! as String).input(),
+      eventHubResourceId: map['eventHubResourceId'] == null ? null : (map['eventHubResourceId']! as String).input(),
+      isTrustedServiceEnabled: map['isTrustedServiceEnabled'] == null ? null : (map['isTrustedServiceEnabled']! as bool).input(),
     );
   }
 }

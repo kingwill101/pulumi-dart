@@ -87,20 +87,20 @@ class AwsKmsKeyProperties {
 
   factory AwsKmsKeyProperties.fromMap(Map<String, dynamic> map) {
     return AwsKmsKeyProperties(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableKeyRotation: map['enableKeyRotation'] == null ? null : (map['enableKeyRotation'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      keyPolicy: map['keyPolicy'] == null ? null : (map['keyPolicy']).input(),
-      keySpec: map['keySpec'] == null ? null : (map['keySpec'] as String).input(),
-      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
-      multiRegion: map['multiRegion'] == null ? null : (map['multiRegion'] as bool).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
-      pendingWindowInDays: map['pendingWindowInDays'] == null ? null : (map['pendingWindowInDays'] as int).input(),
-      rotationPeriodInDays: map['rotationPeriodInDays'] == null ? null : (map['rotationPeriodInDays'] as int).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableKeyRotation: map['enableKeyRotation'] == null ? null : (map['enableKeyRotation']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      keyPolicy: map['keyPolicy'] == null ? null : (map['keyPolicy']!).input(),
+      keySpec: map['keySpec'] == null ? null : (map['keySpec']! as String).input(),
+      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage']! as String).input(),
+      multiRegion: map['multiRegion'] == null ? null : (map['multiRegion']! as bool).input(),
+      origin: map['origin'] == null ? null : (map['origin']! as String).input(),
+      pendingWindowInDays: map['pendingWindowInDays'] == null ? null : (map['pendingWindowInDays']! as int).input(),
+      rotationPeriodInDays: map['rotationPeriodInDays'] == null ? null : (map['rotationPeriodInDays']! as int).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

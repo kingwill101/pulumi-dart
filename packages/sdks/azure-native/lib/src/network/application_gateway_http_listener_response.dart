@@ -93,20 +93,20 @@ class ApplicationGatewayHttpListenerResponse {
 
   factory ApplicationGatewayHttpListenerResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHttpListenerResponse(
-      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayCustomErrorResponse>(map['customErrorConfigurations'], (value) => ApplicationGatewayCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayCustomErrorResponse>(map['customErrorConfigurations']!, (value) => ApplicationGatewayCustomErrorResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       etag: (map['etag'] as String).input(),
-      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResourceResponse.fromMap((map['firewallPolicy'] as Map).cast<String, dynamic>())).input(),
-      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['frontendIPConfiguration'] as Map).cast<String, dynamic>())).input(),
-      frontendPort: map['frontendPort'] == null ? null : (SubResourceResponse.fromMap((map['frontendPort'] as Map).cast<String, dynamic>())).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      firewallPolicy: map['firewallPolicy'] == null ? null : (SubResourceResponse.fromMap((map['firewallPolicy']! as Map).cast<String, dynamic>())).input(),
+      frontendIPConfiguration: map['frontendIPConfiguration'] == null ? null : (SubResourceResponse.fromMap((map['frontendIPConfiguration']! as Map).cast<String, dynamic>())).input(),
+      frontendPort: map['frontendPort'] == null ? null : (SubResourceResponse.fromMap((map['frontendPort']! as Map).cast<String, dynamic>())).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      requireServerNameIndication: map['requireServerNameIndication'] == null ? null : (map['requireServerNameIndication'] as bool).input(),
-      sslCertificate: map['sslCertificate'] == null ? null : (SubResourceResponse.fromMap((map['sslCertificate'] as Map).cast<String, dynamic>())).input(),
-      sslProfile: map['sslProfile'] == null ? null : (SubResourceResponse.fromMap((map['sslProfile'] as Map).cast<String, dynamic>())).input(),
+      requireServerNameIndication: map['requireServerNameIndication'] == null ? null : (map['requireServerNameIndication']! as bool).input(),
+      sslCertificate: map['sslCertificate'] == null ? null : (SubResourceResponse.fromMap((map['sslCertificate']! as Map).cast<String, dynamic>())).input(),
+      sslProfile: map['sslProfile'] == null ? null : (SubResourceResponse.fromMap((map['sslProfile']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -27,8 +27,8 @@ class WorkloadWorkloadPropertyExtendedMetadataValue {
 
   factory WorkloadWorkloadPropertyExtendedMetadataValue.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyExtendedMetadataValue(
-      extendedMetadataSchema: map['extendedMetadataSchema'] == null ? null : (map['extendedMetadataSchema'] as String).input(),
-      metadataStruct: map['metadataStruct'] == null ? null : (map['metadataStruct'] as String).input(),
+      extendedMetadataSchema: map['extendedMetadataSchema'] == null ? null : (map['extendedMetadataSchema']! as String).input(),
+      metadataStruct: map['metadataStruct'] == null ? null : (map['metadataStruct']! as String).input(),
     );
   }
 }

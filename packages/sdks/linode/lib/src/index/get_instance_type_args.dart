@@ -30,7 +30,7 @@ class GetInstanceTypeArgs {
   factory GetInstanceTypeArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeArgs(
       id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
     );
   }
 }

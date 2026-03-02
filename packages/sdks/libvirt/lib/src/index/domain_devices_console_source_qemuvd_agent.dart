@@ -27,8 +27,8 @@ class DomainDevicesConsoleSourceQemuvdAgent {
 
   factory DomainDevicesConsoleSourceQemuvdAgent.fromMap(Map<String, dynamic> map) {
     return DomainDevicesConsoleSourceQemuvdAgent(
-      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesConsoleSourceQemuvdAgentClipBoard.fromMap((map['clipBoard'] as Map).cast<String, dynamic>())).input(),
-      mouse: map['mouse'] == null ? null : (DomainDevicesConsoleSourceQemuvdAgentMouse.fromMap((map['mouse'] as Map).cast<String, dynamic>())).input(),
+      clipBoard: map['clipBoard'] == null ? null : (DomainDevicesConsoleSourceQemuvdAgentClipBoard.fromMap((map['clipBoard']! as Map).cast<String, dynamic>())).input(),
+      mouse: map['mouse'] == null ? null : (DomainDevicesConsoleSourceQemuvdAgentMouse.fromMap((map['mouse']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

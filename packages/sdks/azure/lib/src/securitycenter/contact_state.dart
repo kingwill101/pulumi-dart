@@ -41,11 +41,11 @@ class ContactState {
 
   factory ContactState.fromMap(Map<String, dynamic> map) {
     return ContactState(
-      alertNotifications: map['alertNotifications'] == null ? null : (map['alertNotifications'] as bool).input(),
-      alertsToAdmins: map['alertsToAdmins'] == null ? null : (map['alertsToAdmins'] as bool).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
+      alertNotifications: map['alertNotifications'] == null ? null : (map['alertNotifications']! as bool).input(),
+      alertsToAdmins: map['alertsToAdmins'] == null ? null : (map['alertsToAdmins']! as bool).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class OrderBy {
 
   factory OrderBy.fromMap(Map<String, dynamic> map) {
     return OrderBy(
-      field: map['field'] == null ? null : (map['field'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
+      field: map['field'] == null ? null : (map['field']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
     );
   }
 }

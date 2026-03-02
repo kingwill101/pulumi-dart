@@ -33,9 +33,9 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
 
   factory GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DeltaPresenceEstimationConfig(
-      auxiliaryTables: map['auxiliaryTables'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2StatisticalTable>(map['auxiliaryTables'], (value) => GooglePrivacyDlpV2StatisticalTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auxiliaryTables: map['auxiliaryTables'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2StatisticalTable>(map['auxiliaryTables']!, (value) => GooglePrivacyDlpV2StatisticalTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
       quasiIds: (pulumi.Input.decodeList<GooglePrivacyDlpV2QuasiId>(map['quasiIds'], (value) => GooglePrivacyDlpV2QuasiId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regionCode: map['regionCode'] == null ? null : (map['regionCode'] as String).input(),
+      regionCode: map['regionCode'] == null ? null : (map['regionCode']! as String).input(),
     );
   }
 }

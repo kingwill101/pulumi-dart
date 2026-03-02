@@ -56,13 +56,13 @@ class AuthorizationRuleArgs {
 
   factory AuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceName: (map['namespaceName'] as String).input(),
       notificationHubName: (map['notificationHubName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      send: map['send'] == null ? null : (map['send'] as bool).input(),
+      send: map['send'] == null ? null : (map['send']! as bool).input(),
     );
   }
 }

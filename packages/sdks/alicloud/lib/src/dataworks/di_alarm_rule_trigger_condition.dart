@@ -45,10 +45,10 @@ class DiAlarmRuleTriggerCondition {
 
   factory DiAlarmRuleTriggerCondition.fromMap(Map<String, dynamic> map) {
     return DiAlarmRuleTriggerCondition(
-      ddlReportTags: map['ddlReportTags'] == null ? null : ((map['ddlReportTags'] as List).cast<String>()).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      severity: map['severity'] == null ? null : (map['severity'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as int).input(),
+      ddlReportTags: map['ddlReportTags'] == null ? null : ((map['ddlReportTags']! as List).cast<String>()).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      severity: map['severity'] == null ? null : (map['severity']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as int).input(),
     );
   }
 }

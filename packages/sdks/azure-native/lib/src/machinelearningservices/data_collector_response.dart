@@ -37,8 +37,8 @@ class DataCollectorResponse {
   factory DataCollectorResponse.fromMap(Map<String, dynamic> map) {
     return DataCollectorResponse(
       collections: (pulumi.Input.decodeMapValues<CollectionResponse>(map['collections'], (value) => CollectionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestLogging: map['requestLogging'] == null ? null : (RequestLoggingResponse.fromMap((map['requestLogging'] as Map).cast<String, dynamic>())).input(),
-      rollingRate: map['rollingRate'] == null ? null : (map['rollingRate'] as String).input(),
+      requestLogging: map['requestLogging'] == null ? null : (RequestLoggingResponse.fromMap((map['requestLogging']! as Map).cast<String, dynamic>())).input(),
+      rollingRate: map['rollingRate'] == null ? null : (map['rollingRate']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
 
   factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel.fromMap(Map<String, dynamic> map) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevel(
-      storageMetrics: (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap((map['storageMetrics'] as Map).cast<String, dynamic>())).input(),
+      storageMetrics: (StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics.fromMap((map['storageMetrics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

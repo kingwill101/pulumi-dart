@@ -27,7 +27,7 @@ class GetNodeDevicesResult {
 
   factory GetNodeDevicesResult.fromMap(Map<String, dynamic> map) {
     return GetNodeDevicesResult(
-      capability: map['capability'] == null ? null : map['capability'] as String,
+      capability: map['capability'] == null ? null : map['capability']! as String,
       devices: (map['devices'] as List).cast<String>(),
       id: map['id'] as String,
     );

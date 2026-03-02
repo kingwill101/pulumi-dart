@@ -30,7 +30,7 @@ class GetCloudConnectorArgs {
   factory GetCloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return GetCloudConnectorArgs(
       connectorName: (map['connectorName'] as String).input(),
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
     );
   }
 }

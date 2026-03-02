@@ -39,9 +39,9 @@ class VpcEndpointServiceUserArgs {
 
   factory VpcEndpointServiceUserArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceUserArgs(
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       serviceId: (map['serviceId'] as String).input(),
-      userArn: map['userArn'] == null ? null : (map['userArn'] as String).input(),
+      userArn: map['userArn'] == null ? null : (map['userArn']! as String).input(),
       userId: (map['userId'] as String).input(),
     );
   }

@@ -30,7 +30,7 @@ class GetWafPolicyArgs {
   factory GetWafPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetWafPolicyArgs(
       policyId: (map['policyId'] as String).input(),
-      policyJson: map['policyJson'] == null ? null : (map['policyJson'] as String).input(),
+      policyJson: map['policyJson'] == null ? null : (map['policyJson']! as String).input(),
     );
   }
 }

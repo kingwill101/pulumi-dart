@@ -61,15 +61,15 @@ class EndpointAuthorizationState {
 
   factory EndpointAuthorizationState.fromMap(Map<String, dynamic> map) {
     return EndpointAuthorizationState(
-      account: map['account'] == null ? null : (map['account'] as String).input(),
-      allowedAllVpcs: map['allowedAllVpcs'] == null ? null : (map['allowedAllVpcs'] as bool).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      endpointCount: map['endpointCount'] == null ? null : (map['endpointCount'] as int).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      grantee: map['grantee'] == null ? null : (map['grantee'] as String).input(),
-      grantor: map['grantor'] == null ? null : (map['grantor'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      account: map['account'] == null ? null : ((map['account'] as String).input()).input(),
+      allowedAllVpcs: map['allowedAllVpcs'] == null ? null : ((map['allowedAllVpcs'] as bool).input()).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      endpointCount: map['endpointCount'] == null ? null : ((map['endpointCount'] as int).input()).input(),
+      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
+      grantee: map['grantee'] == null ? null : ((map['grantee'] as String).input()).input(),
+      grantor: map['grantor'] == null ? null : ((map['grantor'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcIds: map['vpcIds'] == null ? null : (((map['vpcIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

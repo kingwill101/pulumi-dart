@@ -44,11 +44,11 @@ class LoadTestMappingArgs {
 
   factory LoadTestMappingArgs.fromMap(Map<String, dynamic> map) {
     return LoadTestMappingArgs(
-      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : (map['azureLoadTestingResourceId'] as String).input(),
-      loadTestMappingName: map['loadTestMappingName'] == null ? null : (map['loadTestMappingName'] as String).input(),
+      azureLoadTestingResourceId: map['azureLoadTestingResourceId'] == null ? null : (map['azureLoadTestingResourceId']! as String).input(),
+      loadTestMappingName: map['loadTestMappingName'] == null ? null : (map['loadTestMappingName']! as String).input(),
       resourceUri: (map['resourceUri'] as String).input(),
-      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId'] as String).input(),
-      testId: map['testId'] == null ? null : (map['testId'] as String).input(),
+      sourceResourceId: map['sourceResourceId'] == null ? null : (map['sourceResourceId']! as String).input(),
+      testId: map['testId'] == null ? null : (map['testId']! as String).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class GitSource {
 
   factory GitSource.fromMap(Map<String, dynamic> map) {
     return GitSource(
-      dir: map['dir'] == null ? null : (map['dir'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      dir: map['dir'] == null ? null : (map['dir']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

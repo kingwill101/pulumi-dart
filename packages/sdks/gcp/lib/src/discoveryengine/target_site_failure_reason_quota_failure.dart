@@ -21,7 +21,7 @@ class TargetSiteFailureReasonQuotaFailure {
 
   factory TargetSiteFailureReasonQuotaFailure.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReasonQuotaFailure(
-      totalRequiredQuota: map['totalRequiredQuota'] == null ? null : (map['totalRequiredQuota'] as int).input(),
+      totalRequiredQuota: map['totalRequiredQuota'] == null ? null : (map['totalRequiredQuota']! as int).input(),
     );
   }
 }

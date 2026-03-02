@@ -88,17 +88,17 @@ class ShareArgs {
 
   factory ShareArgs.fromMap(Map<String, dynamic> map) {
     return ShareArgs(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shareNetworkId: map['shareNetworkId'] == null ? null : (map['shareNetworkId'] as String).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      shareNetworkId: map['shareNetworkId'] == null ? null : (map['shareNetworkId']! as String).input(),
       shareProto: (map['shareProto'] as String).input(),
-      shareType: map['shareType'] == null ? null : (map['shareType'] as String).input(),
+      shareType: map['shareType'] == null ? null : (map['shareType']! as String).input(),
       size: (map['size'] as int).input(),
-      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId'] as String).input(),
+      snapshotId: map['snapshotId'] == null ? null : (map['snapshotId']! as String).input(),
     );
   }
 }

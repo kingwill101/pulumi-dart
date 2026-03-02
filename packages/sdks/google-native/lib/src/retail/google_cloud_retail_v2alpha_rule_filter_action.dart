@@ -21,7 +21,7 @@ class GoogleCloudRetailV2alphaRuleFilterAction {
 
   factory GoogleCloudRetailV2alphaRuleFilterAction.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaRuleFilterAction(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

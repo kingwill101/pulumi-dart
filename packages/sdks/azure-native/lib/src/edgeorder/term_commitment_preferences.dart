@@ -26,7 +26,7 @@ class TermCommitmentPreferences {
 
   factory TermCommitmentPreferences.fromMap(Map<String, dynamic> map) {
     return TermCommitmentPreferences(
-      preferredTermCommitmentDuration: map['preferredTermCommitmentDuration'] == null ? null : (map['preferredTermCommitmentDuration'] as String).input(),
+      preferredTermCommitmentDuration: map['preferredTermCommitmentDuration'] == null ? null : (map['preferredTermCommitmentDuration']! as String).input(),
       preferredTermCommitmentType: (map['preferredTermCommitmentType'] as String).input(),
     );
   }

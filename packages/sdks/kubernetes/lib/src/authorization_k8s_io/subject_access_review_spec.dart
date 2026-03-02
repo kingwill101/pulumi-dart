@@ -48,12 +48,12 @@ class SubjectAccessReviewSpec {
 
   factory SubjectAccessReviewSpec.fromMap(Map<String, dynamic> map) {
     return SubjectAccessReviewSpec(
-      extra: map['extra'] == null ? null : ((map['extra'] as Map).cast<String, List<String>>()).input(),
-      groups: map['groups'] == null ? null : ((map['groups'] as List).cast<String>()).input(),
-      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributes.fromMap((map['nonResourceAttributes'] as Map).cast<String, dynamic>())).input(),
-      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributes.fromMap((map['resourceAttributes'] as Map).cast<String, dynamic>())).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      extra: map['extra'] == null ? null : ((map['extra']! as Map).cast<String, List<String>>()).input(),
+      groups: map['groups'] == null ? null : ((map['groups']! as List).cast<String>()).input(),
+      nonResourceAttributes: map['nonResourceAttributes'] == null ? null : (NonResourceAttributes.fromMap((map['nonResourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      resourceAttributes: map['resourceAttributes'] == null ? null : (ResourceAttributes.fromMap((map['resourceAttributes']! as Map).cast<String, dynamic>())).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

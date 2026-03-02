@@ -45,11 +45,11 @@ class Artifacts {
 
   factory Artifacts.fromMap(Map<String, dynamic> map) {
     return Artifacts(
-      images: map['images'] == null ? null : ((map['images'] as List).cast<String>()).input(),
-      mavenArtifacts: map['mavenArtifacts'] == null ? null : (pulumi.Input.decodeList<MavenArtifact>(map['mavenArtifacts'], (value) => MavenArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      npmPackages: map['npmPackages'] == null ? null : (pulumi.Input.decodeList<NpmPackage>(map['npmPackages'], (value) => NpmPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      objects: map['objects'] == null ? null : (ArtifactObjects.fromMap((map['objects'] as Map).cast<String, dynamic>())).input(),
-      pythonPackages: map['pythonPackages'] == null ? null : (pulumi.Input.decodeList<PythonPackage>(map['pythonPackages'], (value) => PythonPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      images: map['images'] == null ? null : ((map['images']! as List).cast<String>()).input(),
+      mavenArtifacts: map['mavenArtifacts'] == null ? null : (pulumi.Input.decodeList<MavenArtifact>(map['mavenArtifacts']!, (value) => MavenArtifact.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      npmPackages: map['npmPackages'] == null ? null : (pulumi.Input.decodeList<NpmPackage>(map['npmPackages']!, (value) => NpmPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      objects: map['objects'] == null ? null : (ArtifactObjects.fromMap((map['objects']! as Map).cast<String, dynamic>())).input(),
+      pythonPackages: map['pythonPackages'] == null ? null : (pulumi.Input.decodeList<PythonPackage>(map['pythonPackages']!, (value) => PythonPackage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

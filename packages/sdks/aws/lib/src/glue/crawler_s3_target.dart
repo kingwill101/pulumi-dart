@@ -45,12 +45,12 @@ class CrawlerS3Target {
 
   factory CrawlerS3Target.fromMap(Map<String, dynamic> map) {
     return CrawlerS3Target(
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : (map['dlqEventQueueArn'] as String).input(),
-      eventQueueArn: map['eventQueueArn'] == null ? null : (map['eventQueueArn'] as String).input(),
-      exclusions: map['exclusions'] == null ? null : ((map['exclusions'] as List).cast<String>()).input(),
+      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
+      dlqEventQueueArn: map['dlqEventQueueArn'] == null ? null : ((map['dlqEventQueueArn'] as String).input()).input(),
+      eventQueueArn: map['eventQueueArn'] == null ? null : ((map['eventQueueArn'] as String).input()).input(),
+      exclusions: map['exclusions'] == null ? null : (((map['exclusions'] as List).cast<String>()).input()).input(),
       path: (map['path'] as String).input(),
-      sampleSize: map['sampleSize'] == null ? null : (map['sampleSize'] as int).input(),
+      sampleSize: map['sampleSize'] == null ? null : ((map['sampleSize'] as int).input()).input(),
     );
   }
 }

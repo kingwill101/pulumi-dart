@@ -93,21 +93,21 @@ class EcsImagePipelineState {
 
   factory EcsImagePipelineState.fromMap(Map<String, dynamic> map) {
     return EcsImagePipelineState(
-      addAccounts: map['addAccounts'] == null ? null : ((map['addAccounts'] as List).cast<String>()).input(),
-      baseImage: map['baseImage'] == null ? null : (map['baseImage'] as String).input(),
-      baseImageType: map['baseImageType'] == null ? null : (map['baseImageType'] as String).input(),
-      buildContent: map['buildContent'] == null ? null : (map['buildContent'] as String).input(),
-      deleteInstanceOnFailure: map['deleteInstanceOnFailure'] == null ? null : (map['deleteInstanceOnFailure'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      imageName: map['imageName'] == null ? null : (map['imageName'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      internetMaxBandwidthOut: map['internetMaxBandwidthOut'] == null ? null : (map['internetMaxBandwidthOut'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      systemDiskSize: map['systemDiskSize'] == null ? null : (map['systemDiskSize'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      toRegionIds: map['toRegionIds'] == null ? null : ((map['toRegionIds'] as List).cast<String>()).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      addAccounts: map['addAccounts'] == null ? null : ((map['addAccounts']! as List).cast<String>()).input(),
+      baseImage: map['baseImage'] == null ? null : (map['baseImage']! as String).input(),
+      baseImageType: map['baseImageType'] == null ? null : (map['baseImageType']! as String).input(),
+      buildContent: map['buildContent'] == null ? null : (map['buildContent']! as String).input(),
+      deleteInstanceOnFailure: map['deleteInstanceOnFailure'] == null ? null : (map['deleteInstanceOnFailure']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      imageName: map['imageName'] == null ? null : (map['imageName']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      internetMaxBandwidthOut: map['internetMaxBandwidthOut'] == null ? null : (map['internetMaxBandwidthOut']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      systemDiskSize: map['systemDiskSize'] == null ? null : (map['systemDiskSize']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      toRegionIds: map['toRegionIds'] == null ? null : ((map['toRegionIds']! as List).cast<String>()).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

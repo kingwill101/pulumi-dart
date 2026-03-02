@@ -26,8 +26,8 @@ class InstanceFailoverReplica {
 
   factory InstanceFailoverReplica.fromMap(Map<String, dynamic> map) {
     return InstanceFailoverReplica(
-      available: map['available'] == null ? null : (map['available'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      available: map['available'] == null ? null : (map['available']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

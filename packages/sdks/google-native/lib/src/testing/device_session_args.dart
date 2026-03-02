@@ -45,10 +45,10 @@ class DeviceSessionArgs {
   factory DeviceSessionArgs.fromMap(Map<String, dynamic> map) {
     return DeviceSessionArgs(
       androidDevice: (AndroidDevice.fromMap((map['androidDevice'] as Map).cast<String, dynamic>())).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as String).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class WorkflowOnExceptionStep {
 
   factory WorkflowOnExceptionStep.fromMap(Map<String, dynamic> map) {
     return WorkflowOnExceptionStep(
-      copyStepDetails: map['copyStepDetails'] == null ? null : (WorkflowOnExceptionStepCopyStepDetails.fromMap((map['copyStepDetails'] as Map).cast<String, dynamic>())).input(),
-      customStepDetails: map['customStepDetails'] == null ? null : (WorkflowOnExceptionStepCustomStepDetails.fromMap((map['customStepDetails'] as Map).cast<String, dynamic>())).input(),
-      decryptStepDetails: map['decryptStepDetails'] == null ? null : (WorkflowOnExceptionStepDecryptStepDetails.fromMap((map['decryptStepDetails'] as Map).cast<String, dynamic>())).input(),
-      deleteStepDetails: map['deleteStepDetails'] == null ? null : (WorkflowOnExceptionStepDeleteStepDetails.fromMap((map['deleteStepDetails'] as Map).cast<String, dynamic>())).input(),
-      tagStepDetails: map['tagStepDetails'] == null ? null : (WorkflowOnExceptionStepTagStepDetails.fromMap((map['tagStepDetails'] as Map).cast<String, dynamic>())).input(),
+      copyStepDetails: map['copyStepDetails'] == null ? null : ((WorkflowOnExceptionStepCopyStepDetails.fromMap((map['copyStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      customStepDetails: map['customStepDetails'] == null ? null : ((WorkflowOnExceptionStepCustomStepDetails.fromMap((map['customStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      decryptStepDetails: map['decryptStepDetails'] == null ? null : ((WorkflowOnExceptionStepDecryptStepDetails.fromMap((map['decryptStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      deleteStepDetails: map['deleteStepDetails'] == null ? null : ((WorkflowOnExceptionStepDeleteStepDetails.fromMap((map['deleteStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
+      tagStepDetails: map['tagStepDetails'] == null ? null : ((WorkflowOnExceptionStepTagStepDetails.fromMap((map['tagStepDetails']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

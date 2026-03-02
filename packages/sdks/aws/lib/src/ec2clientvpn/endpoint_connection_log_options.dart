@@ -30,8 +30,8 @@ class EndpointConnectionLogOptions {
 
   factory EndpointConnectionLogOptions.fromMap(Map<String, dynamic> map) {
     return EndpointConnectionLogOptions(
-      cloudwatchLogGroup: map['cloudwatchLogGroup'] == null ? null : (map['cloudwatchLogGroup'] as String).input(),
-      cloudwatchLogStream: map['cloudwatchLogStream'] == null ? null : (map['cloudwatchLogStream'] as String).input(),
+      cloudwatchLogGroup: map['cloudwatchLogGroup'] == null ? null : ((map['cloudwatchLogGroup'] as String).input()).input(),
+      cloudwatchLogStream: map['cloudwatchLogStream'] == null ? null : ((map['cloudwatchLogStream'] as String).input()).input(),
       enabled: (map['enabled'] as bool).input(),
     );
   }

@@ -101,21 +101,21 @@ class DomainDevicesSmartcardPassthrough {
 
   factory DomainDevicesSmartcardPassthrough.fromMap(Map<String, dynamic> map) {
     return DomainDevicesSmartcardPassthrough(
-      dbus: map['dbus'] == null ? null : (DomainDevicesSmartcardPassthroughDbus.fromMap((map['dbus'] as Map).cast<String, dynamic>())).input(),
-      dev: map['dev'] == null ? null : (DomainDevicesSmartcardPassthroughDev.fromMap((map['dev'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (DomainDevicesSmartcardPassthroughFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      nmdm: map['nmdm'] == null ? null : (DomainDevicesSmartcardPassthroughNmdm.fromMap((map['nmdm'] as Map).cast<String, dynamic>())).input(),
-      null_: map['null'] == null ? null : (map['null'] as bool).input(),
-      pipe: map['pipe'] == null ? null : (DomainDevicesSmartcardPassthroughPipe.fromMap((map['pipe'] as Map).cast<String, dynamic>())).input(),
-      pty: map['pty'] == null ? null : (DomainDevicesSmartcardPassthroughPty.fromMap((map['pty'] as Map).cast<String, dynamic>())).input(),
-      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesSmartcardPassthroughQemuvdAgent.fromMap((map['qemuvdAgent'] as Map).cast<String, dynamic>())).input(),
-      spicePort: map['spicePort'] == null ? null : (DomainDevicesSmartcardPassthroughSpicePort.fromMap((map['spicePort'] as Map).cast<String, dynamic>())).input(),
-      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc'] as bool).input(),
-      stdIo: map['stdIo'] == null ? null : (map['stdIo'] as bool).input(),
-      tcp: map['tcp'] == null ? null : (DomainDevicesSmartcardPassthroughTcp.fromMap((map['tcp'] as Map).cast<String, dynamic>())).input(),
-      udp: map['udp'] == null ? null : (DomainDevicesSmartcardPassthroughUdp.fromMap((map['udp'] as Map).cast<String, dynamic>())).input(),
-      unix: map['unix'] == null ? null : (DomainDevicesSmartcardPassthroughUnix.fromMap((map['unix'] as Map).cast<String, dynamic>())).input(),
-      vc: map['vc'] == null ? null : (map['vc'] as bool).input(),
+      dbus: map['dbus'] == null ? null : (DomainDevicesSmartcardPassthroughDbus.fromMap((map['dbus']! as Map).cast<String, dynamic>())).input(),
+      dev: map['dev'] == null ? null : (DomainDevicesSmartcardPassthroughDev.fromMap((map['dev']! as Map).cast<String, dynamic>())).input(),
+      file: map['file'] == null ? null : (DomainDevicesSmartcardPassthroughFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input(),
+      nmdm: map['nmdm'] == null ? null : (DomainDevicesSmartcardPassthroughNmdm.fromMap((map['nmdm']! as Map).cast<String, dynamic>())).input(),
+      null_: map['null'] == null ? null : (map['null']! as bool).input(),
+      pipe: map['pipe'] == null ? null : (DomainDevicesSmartcardPassthroughPipe.fromMap((map['pipe']! as Map).cast<String, dynamic>())).input(),
+      pty: map['pty'] == null ? null : (DomainDevicesSmartcardPassthroughPty.fromMap((map['pty']! as Map).cast<String, dynamic>())).input(),
+      qemuvdAgent: map['qemuvdAgent'] == null ? null : (DomainDevicesSmartcardPassthroughQemuvdAgent.fromMap((map['qemuvdAgent']! as Map).cast<String, dynamic>())).input(),
+      spicePort: map['spicePort'] == null ? null : (DomainDevicesSmartcardPassthroughSpicePort.fromMap((map['spicePort']! as Map).cast<String, dynamic>())).input(),
+      spiceVmc: map['spiceVmc'] == null ? null : (map['spiceVmc']! as bool).input(),
+      stdIo: map['stdIo'] == null ? null : (map['stdIo']! as bool).input(),
+      tcp: map['tcp'] == null ? null : (DomainDevicesSmartcardPassthroughTcp.fromMap((map['tcp']! as Map).cast<String, dynamic>())).input(),
+      udp: map['udp'] == null ? null : (DomainDevicesSmartcardPassthroughUdp.fromMap((map['udp']! as Map).cast<String, dynamic>())).input(),
+      unix: map['unix'] == null ? null : (DomainDevicesSmartcardPassthroughUnix.fromMap((map['unix']! as Map).cast<String, dynamic>())).input(),
+      vc: map['vc'] == null ? null : (map['vc']! as bool).input(),
     );
   }
 }

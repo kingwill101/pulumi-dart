@@ -32,9 +32,9 @@ class NetworkConfig {
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      egressOption: map['egressOption'] == null ? null : (NetworkConfigEgressOption.fromValue(map['egressOption'] as String)).input(),
+      egressOption: map['egressOption'] == null ? null : (NetworkConfigEgressOption.fromValue(map['egressOption']! as String)).input(),
       peeredNetwork: (map['peeredNetwork'] as String).input(),
-      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange'] as String).input(),
+      peeredNetworkIpRange: map['peeredNetworkIpRange'] == null ? null : (map['peeredNetworkIpRange']! as String).input(),
     );
   }
 }

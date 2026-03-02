@@ -32,9 +32,9 @@ class MasterAuthorizedNetworksConfig {
 
   factory MasterAuthorizedNetworksConfig.fromMap(Map<String, dynamic> map) {
     return MasterAuthorizedNetworksConfig(
-      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<CidrBlock>(map['cidrBlocks'], (value) => CidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] == null ? null : (map['gcpPublicCidrsAccessEnabled'] as bool).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : (pulumi.Input.decodeList<CidrBlock>(map['cidrBlocks']!, (value) => CidrBlock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      gcpPublicCidrsAccessEnabled: map['gcpPublicCidrsAccessEnabled'] == null ? null : (map['gcpPublicCidrsAccessEnabled']! as bool).input(),
     );
   }
 }

@@ -66,14 +66,14 @@ class QueryArgs {
   factory QueryArgs.fromMap(Map<String, dynamic> map) {
     return QueryArgs(
       body: (map['body'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties']).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']!).input(),
       queryPackName: (map['queryPackName'] as String).input(),
-      related: map['related'] == null ? null : (LogAnalyticsQueryPackQueryPropertiesRelated.fromMap((map['related'] as Map).cast<String, dynamic>())).input(),
+      related: map['related'] == null ? null : (LogAnalyticsQueryPackQueryPropertiesRelated.fromMap((map['related']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, List<String>>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, List<String>>()).input(),
     );
   }
 }

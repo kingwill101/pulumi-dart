@@ -61,14 +61,14 @@ class SelectionArgs {
 
   factory SelectionArgs.fromMap(Map<String, dynamic> map) {
     return SelectionArgs(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<SelectionCondition>(map['conditions'], (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      conditions: map['conditions'] == null ? null : ((pulumi.Input.decodeList<SelectionCondition>(map['conditions']!, (value) => SelectionCondition.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       iamRoleArn: (map['iamRoleArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      notResources: map['notResources'] == null ? null : ((map['notResources'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      notResources: map['notResources'] == null ? null : (((map['notResources'] as List).cast<String>()).input()).input(),
       planId: (map['planId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      selectionTags: map['selectionTags'] == null ? null : (pulumi.Input.decodeList<SelectionSelectionTag>(map['selectionTags'], (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resources: map['resources'] == null ? null : (((map['resources'] as List).cast<String>()).input()).input(),
+      selectionTags: map['selectionTags'] == null ? null : ((pulumi.Input.decodeList<SelectionSelectionTag>(map['selectionTags']!, (value) => SelectionSelectionTag.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

@@ -61,13 +61,13 @@ class MySQLSiteArgs {
   factory MySQLSiteArgs.fromMap(Map<String, dynamic> map) {
     return MySQLSiteArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       masterSiteId: (map['masterSiteId'] as String).input(),
       migrateProjectId: (map['migrateProjectId'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

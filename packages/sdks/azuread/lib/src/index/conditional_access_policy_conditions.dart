@@ -82,16 +82,16 @@ class ConditionalAccessPolicyConditions {
   factory ConditionalAccessPolicyConditions.fromMap(Map<String, dynamic> map) {
     return ConditionalAccessPolicyConditions(
       applications: (ConditionalAccessPolicyConditionsApplications.fromMap((map['applications'] as Map).cast<String, dynamic>())).input(),
-      authenticationFlowTransferMethods: map['authenticationFlowTransferMethods'] == null ? null : ((map['authenticationFlowTransferMethods'] as List).cast<String>()).input(),
+      authenticationFlowTransferMethods: map['authenticationFlowTransferMethods'] == null ? null : ((map['authenticationFlowTransferMethods']! as List).cast<String>()).input(),
       clientAppTypes: ((map['clientAppTypes'] as List).cast<String>()).input(),
-      clientApplications: map['clientApplications'] == null ? null : (ConditionalAccessPolicyConditionsClientApplications.fromMap((map['clientApplications'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (ConditionalAccessPolicyConditionsDevices.fromMap((map['devices'] as Map).cast<String, dynamic>())).input(),
-      insiderRiskLevels: map['insiderRiskLevels'] == null ? null : (map['insiderRiskLevels'] as String).input(),
-      locations: map['locations'] == null ? null : (ConditionalAccessPolicyConditionsLocations.fromMap((map['locations'] as Map).cast<String, dynamic>())).input(),
-      platforms: map['platforms'] == null ? null : (ConditionalAccessPolicyConditionsPlatforms.fromMap((map['platforms'] as Map).cast<String, dynamic>())).input(),
-      servicePrincipalRiskLevels: map['servicePrincipalRiskLevels'] == null ? null : ((map['servicePrincipalRiskLevels'] as List).cast<String>()).input(),
-      signInRiskLevels: map['signInRiskLevels'] == null ? null : ((map['signInRiskLevels'] as List).cast<String>()).input(),
-      userRiskLevels: map['userRiskLevels'] == null ? null : ((map['userRiskLevels'] as List).cast<String>()).input(),
+      clientApplications: map['clientApplications'] == null ? null : (ConditionalAccessPolicyConditionsClientApplications.fromMap((map['clientApplications']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (ConditionalAccessPolicyConditionsDevices.fromMap((map['devices']! as Map).cast<String, dynamic>())).input(),
+      insiderRiskLevels: map['insiderRiskLevels'] == null ? null : (map['insiderRiskLevels']! as String).input(),
+      locations: map['locations'] == null ? null : (ConditionalAccessPolicyConditionsLocations.fromMap((map['locations']! as Map).cast<String, dynamic>())).input(),
+      platforms: map['platforms'] == null ? null : (ConditionalAccessPolicyConditionsPlatforms.fromMap((map['platforms']! as Map).cast<String, dynamic>())).input(),
+      servicePrincipalRiskLevels: map['servicePrincipalRiskLevels'] == null ? null : ((map['servicePrincipalRiskLevels']! as List).cast<String>()).input(),
+      signInRiskLevels: map['signInRiskLevels'] == null ? null : ((map['signInRiskLevels']! as List).cast<String>()).input(),
+      userRiskLevels: map['userRiskLevels'] == null ? null : ((map['userRiskLevels']! as List).cast<String>()).input(),
       users: (ConditionalAccessPolicyConditionsUsers.fromMap((map['users'] as Map).cast<String, dynamic>())).input(),
     );
   }

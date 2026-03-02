@@ -43,7 +43,7 @@ class StorageTaskAssignmentArgs {
       accountName: (map['accountName'] as String).input(),
       properties: (StorageTaskAssignmentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageTaskAssignmentName: map['storageTaskAssignmentName'] == null ? null : (map['storageTaskAssignmentName'] as String).input(),
+      storageTaskAssignmentName: map['storageTaskAssignmentName'] == null ? null : (map['storageTaskAssignmentName']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class EnvironmentIamPolicyState {
 
   factory EnvironmentIamPolicyState.fromMap(Map<String, dynamic> map) {
     return EnvironmentIamPolicyState(
-      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      policyData: map['policyData'] == null ? null : (map['policyData'] as String).input(),
+      envId: map['envId'] == null ? null : (map['envId']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      policyData: map['policyData'] == null ? null : (map['policyData']! as String).input(),
     );
   }
 }

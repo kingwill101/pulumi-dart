@@ -35,8 +35,8 @@ class GetParameterArgs {
   factory GetParameterArgs.fromMap(Map<String, dynamic> map) {
     return GetParameterArgs(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      withDecryption: map['withDecryption'] == null ? null : (map['withDecryption'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      withDecryption: map['withDecryption'] == null ? null : ((map['withDecryption'] as bool).input()).input(),
     );
   }
 }

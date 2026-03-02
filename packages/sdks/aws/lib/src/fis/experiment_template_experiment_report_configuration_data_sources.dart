@@ -21,7 +21,7 @@ class ExperimentTemplateExperimentReportConfigurationDataSources {
 
   factory ExperimentTemplateExperimentReportConfigurationDataSources.fromMap(Map<String, dynamic> map) {
     return ExperimentTemplateExperimentReportConfigurationDataSources(
-      cloudwatchDashboards: map['cloudwatchDashboards'] == null ? null : (pulumi.Input.decodeList<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>(map['cloudwatchDashboards'], (value) => ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudwatchDashboards: map['cloudwatchDashboards'] == null ? null : ((pulumi.Input.decodeList<ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard>(map['cloudwatchDashboards']!, (value) => ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

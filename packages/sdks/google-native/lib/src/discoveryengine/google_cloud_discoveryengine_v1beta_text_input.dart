@@ -27,8 +27,8 @@ class GoogleCloudDiscoveryengineV1betaTextInput {
 
   factory GoogleCloudDiscoveryengineV1betaTextInput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaTextInput(
-      context: map['context'] == null ? null : (GoogleCloudDiscoveryengineV1betaConversationContext.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      input: map['input'] == null ? null : (map['input'] as String).input(),
+      context: map['context'] == null ? null : (GoogleCloudDiscoveryengineV1betaConversationContext.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      input: map['input'] == null ? null : (map['input']! as String).input(),
     );
   }
 }

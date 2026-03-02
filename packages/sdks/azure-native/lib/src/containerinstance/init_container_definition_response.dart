@@ -55,13 +55,13 @@ class InitContainerDefinitionResponse {
 
   factory InitContainerDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return InitContainerDefinitionResponse(
-      command: map['command'] == null ? null : ((map['command'] as List).cast<String>()).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables'], (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
+      command: map['command'] == null ? null : ((map['command']! as List).cast<String>()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<EnvironmentVariableResponse>(map['environmentVariables']!, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
       instanceView: (InitContainerPropertiesDefinitionResponseInstanceView.fromMap((map['instanceView'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      securityContext: map['securityContext'] == null ? null : (SecurityContextDefinitionResponse.fromMap((map['securityContext'] as Map).cast<String, dynamic>())).input(),
-      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts'], (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityContext: map['securityContext'] == null ? null : (SecurityContextDefinitionResponse.fromMap((map['securityContext']! as Map).cast<String, dynamic>())).input(),
+      volumeMounts: map['volumeMounts'] == null ? null : (pulumi.Input.decodeList<VolumeMountResponse>(map['volumeMounts']!, (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

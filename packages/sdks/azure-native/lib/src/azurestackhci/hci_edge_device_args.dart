@@ -41,9 +41,9 @@ class HciEdgeDeviceArgs {
 
   factory HciEdgeDeviceArgs.fromMap(Map<String, dynamic> map) {
     return HciEdgeDeviceArgs(
-      edgeDeviceName: map['edgeDeviceName'] == null ? null : (map['edgeDeviceName'] as String).input(),
+      edgeDeviceName: map['edgeDeviceName'] == null ? null : (map['edgeDeviceName']! as String).input(),
       kind: (map['kind'] as String).input(),
-      properties: map['properties'] == null ? null : (HciEdgeDeviceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (HciEdgeDeviceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceUri: (map['resourceUri'] as String).input(),
     );
   }

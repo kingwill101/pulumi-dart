@@ -22,7 +22,7 @@ class ListControllerConnectionDetailsResult {
 
   factory ListControllerConnectionDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListControllerConnectionDetailsResult(
-      connectionDetailsList: map['connectionDetailsList'] == null ? null : pulumi.Input.decodeList<ControllerConnectionDetailsResponse>(map['connectionDetailsList'], (value) => ControllerConnectionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectionDetailsList: map['connectionDetailsList'] == null ? null : pulumi.Input.decodeList<ControllerConnectionDetailsResponse>(map['connectionDetailsList']!, (value) => ControllerConnectionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

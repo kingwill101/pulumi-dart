@@ -27,8 +27,8 @@ class ListingSubscriptionLinkedResource {
 
   factory ListingSubscriptionLinkedResource.fromMap(Map<String, dynamic> map) {
     return ListingSubscriptionLinkedResource(
-      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset'] as String).input(),
-      listing: map['listing'] == null ? null : (map['listing'] as String).input(),
+      linkedDataset: map['linkedDataset'] == null ? null : (map['linkedDataset']! as String).input(),
+      listing: map['listing'] == null ? null : (map['listing']! as String).input(),
     );
   }
 }

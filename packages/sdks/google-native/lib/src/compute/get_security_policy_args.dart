@@ -27,7 +27,7 @@ class GetSecurityPolicyArgs {
 
   factory GetSecurityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyArgs(
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       securityPolicy: (map['securityPolicy'] as String).input(),
     );
   }

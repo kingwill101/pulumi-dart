@@ -25,8 +25,8 @@ class ProviderFeaturesNetapp {
 
   factory ProviderFeaturesNetapp.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesNetapp(
-      deleteBackupsOnBackupVaultDestroy: map['deleteBackupsOnBackupVaultDestroy'] == null ? null : (map['deleteBackupsOnBackupVaultDestroy'] as bool).input(),
-      preventVolumeDestruction: map['preventVolumeDestruction'] == null ? null : (map['preventVolumeDestruction'] as bool).input(),
+      deleteBackupsOnBackupVaultDestroy: map['deleteBackupsOnBackupVaultDestroy'] == null ? null : (map['deleteBackupsOnBackupVaultDestroy']! as bool).input(),
+      preventVolumeDestruction: map['preventVolumeDestruction'] == null ? null : (map['preventVolumeDestruction']! as bool).input(),
     );
   }
 }

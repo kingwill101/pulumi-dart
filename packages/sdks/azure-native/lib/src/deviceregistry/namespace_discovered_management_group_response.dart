@@ -52,13 +52,13 @@ class NamespaceDiscoveredManagementGroupResponse {
 
   factory NamespaceDiscoveredManagementGroupResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceDiscoveredManagementGroupResponse(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredManagementActionResponse>(map['actions'], (value) => NamespaceDiscoveredManagementActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultTimeoutInSeconds: map['defaultTimeoutInSeconds'] == null ? null : (map['defaultTimeoutInSeconds'] as int).input(),
-      defaultTopic: map['defaultTopic'] == null ? null : (map['defaultTopic'] as String).input(),
-      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn'] as String).input(),
-      managementGroupConfiguration: map['managementGroupConfiguration'] == null ? null : (map['managementGroupConfiguration'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<NamespaceDiscoveredManagementActionResponse>(map['actions']!, (value) => NamespaceDiscoveredManagementActionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultTimeoutInSeconds: map['defaultTimeoutInSeconds'] == null ? null : (map['defaultTimeoutInSeconds']! as int).input(),
+      defaultTopic: map['defaultTopic'] == null ? null : (map['defaultTopic']! as String).input(),
+      lastUpdatedOn: map['lastUpdatedOn'] == null ? null : (map['lastUpdatedOn']! as String).input(),
+      managementGroupConfiguration: map['managementGroupConfiguration'] == null ? null : (map['managementGroupConfiguration']! as String).input(),
       name: (map['name'] as String).input(),
-      typeRef: map['typeRef'] == null ? null : (map['typeRef'] as String).input(),
+      typeRef: map['typeRef'] == null ? null : (map['typeRef']! as String).input(),
     );
   }
 }

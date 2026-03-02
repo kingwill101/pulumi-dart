@@ -35,9 +35,9 @@ class SiteArgs {
 
   factory SiteArgs.fromMap(Map<String, dynamic> map) {
     return SiteArgs(
-      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
     );
   }
 }

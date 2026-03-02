@@ -27,8 +27,8 @@ class StreamProcessorSettings {
 
   factory StreamProcessorSettings.fromMap(Map<String, dynamic> map) {
     return StreamProcessorSettings(
-      connectedHome: map['connectedHome'] == null ? null : (StreamProcessorSettingsConnectedHome.fromMap((map['connectedHome'] as Map).cast<String, dynamic>())).input(),
-      faceSearch: map['faceSearch'] == null ? null : (StreamProcessorSettingsFaceSearch.fromMap((map['faceSearch'] as Map).cast<String, dynamic>())).input(),
+      connectedHome: map['connectedHome'] == null ? null : ((StreamProcessorSettingsConnectedHome.fromMap((map['connectedHome']! as Map).cast<String, dynamic>())).input()).input(),
+      faceSearch: map['faceSearch'] == null ? null : ((StreamProcessorSettingsFaceSearch.fromMap((map['faceSearch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

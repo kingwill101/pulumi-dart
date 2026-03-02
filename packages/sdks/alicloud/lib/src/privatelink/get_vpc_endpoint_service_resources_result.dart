@@ -42,7 +42,7 @@ class GetVpcEndpointServiceResourcesResult {
     return GetVpcEndpointServiceResourcesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       resources: pulumi.Input.decodeList<GetVpcEndpointServiceResourcesResource>(map['resources'], (value) => GetVpcEndpointServiceResourcesResource.fromMap((value as Map).cast<String, dynamic>())),
       serviceId: map['serviceId'] as String,
     );

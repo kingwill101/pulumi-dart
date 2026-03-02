@@ -22,7 +22,7 @@ class PipelineMediation {
 
   factory PipelineMediation.fromMap(Map<String, dynamic> map) {
     return PipelineMediation(
-      transformation: map['transformation'] == null ? null : (PipelineMediationTransformation.fromMap((map['transformation'] as Map).cast<String, dynamic>())).input(),
+      transformation: map['transformation'] == null ? null : (PipelineMediationTransformation.fromMap((map['transformation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

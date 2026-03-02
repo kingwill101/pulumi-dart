@@ -31,9 +31,9 @@ class UploadServicePrincipalResponse {
 
   factory UploadServicePrincipalResponse.fromMap(Map<String, dynamic> map) {
     return UploadServicePrincipalResponse(
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

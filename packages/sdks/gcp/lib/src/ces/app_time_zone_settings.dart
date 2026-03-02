@@ -20,7 +20,7 @@ class AppTimeZoneSettings {
 
   factory AppTimeZoneSettings.fromMap(Map<String, dynamic> map) {
     return AppTimeZoneSettings(
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
     );
   }
 }

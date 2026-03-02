@@ -26,8 +26,8 @@ class IssuanceModes {
 
   factory IssuanceModes.fromMap(Map<String, dynamic> map) {
     return IssuanceModes(
-      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] == null ? null : (map['allowConfigBasedIssuance'] as bool).input(),
-      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] == null ? null : (map['allowCsrBasedIssuance'] as bool).input(),
+      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] == null ? null : (map['allowConfigBasedIssuance']! as bool).input(),
+      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] == null ? null : (map['allowCsrBasedIssuance']! as bool).input(),
     );
   }
 }

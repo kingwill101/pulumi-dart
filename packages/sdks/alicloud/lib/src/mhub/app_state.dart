@@ -51,13 +51,13 @@ class AppState {
 
   factory AppState.fromMap(Map<String, dynamic> map) {
     return AppState(
-      appName: map['appName'] == null ? null : (map['appName'] as String).input(),
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      encodedIcon: map['encodedIcon'] == null ? null : (map['encodedIcon'] as String).input(),
-      industryId: map['industryId'] == null ? null : (map['industryId'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      appName: map['appName'] == null ? null : (map['appName']! as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
+      encodedIcon: map['encodedIcon'] == null ? null : (map['encodedIcon']! as String).input(),
+      industryId: map['industryId'] == null ? null : (map['industryId']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

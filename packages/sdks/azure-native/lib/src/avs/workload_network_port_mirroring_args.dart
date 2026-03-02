@@ -59,14 +59,14 @@ class WorkloadNetworkPortMirroringArgs {
 
   factory WorkloadNetworkPortMirroringArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkPortMirroringArgs(
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      portMirroringId: map['portMirroringId'] == null ? null : (map['portMirroringId'] as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      portMirroringId: map['portMirroringId'] == null ? null : (map['portMirroringId']! as String).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

@@ -41,11 +41,11 @@ class BucketOverwriteConfigRule {
 
   factory BucketOverwriteConfigRule.fromMap(Map<String, dynamic> map) {
     return BucketOverwriteConfigRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      principals: map['principals'] == null ? null : (BucketOverwriteConfigRulePrincipals.fromMap((map['principals'] as Map).cast<String, dynamic>())).input(),
-      suffix: map['suffix'] == null ? null : (map['suffix'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
+      principals: map['principals'] == null ? null : (BucketOverwriteConfigRulePrincipals.fromMap((map['principals']! as Map).cast<String, dynamic>())).input(),
+      suffix: map['suffix'] == null ? null : (map['suffix']! as String).input(),
     );
   }
 }

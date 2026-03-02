@@ -47,12 +47,12 @@ class GitRepoSource {
 
   factory GitRepoSource.fromMap(Map<String, dynamic> map) {
     return GitRepoSource(
-      bitbucketServerConfig: map['bitbucketServerConfig'] == null ? null : (map['bitbucketServerConfig'] as String).input(),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (map['githubEnterpriseConfig'] as String).input(),
-      ref: map['ref'] == null ? null : (map['ref'] as String).input(),
-      repoType: map['repoType'] == null ? null : (GitRepoSourceRepoType.fromValue(map['repoType'] as String)).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      bitbucketServerConfig: map['bitbucketServerConfig'] == null ? null : (map['bitbucketServerConfig']! as String).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (map['githubEnterpriseConfig']! as String).input(),
+      ref: map['ref'] == null ? null : (map['ref']! as String).input(),
+      repoType: map['repoType'] == null ? null : (GitRepoSourceRepoType.fromValue(map['repoType']! as String)).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

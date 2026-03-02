@@ -38,7 +38,7 @@ class ServiceTemplateSpecVolumeSecretItem {
   factory ServiceTemplateSpecVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecVolumeSecretItem(
       key: (map['key'] as String).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as int).input(),
       path: (map['path'] as String).input(),
     );
   }

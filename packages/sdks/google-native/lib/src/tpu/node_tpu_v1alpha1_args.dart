@@ -85,18 +85,18 @@ class NodeTpuV1alpha1Args {
   factory NodeTpuV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return NodeTpuV1alpha1Args(
       acceleratorType: (map['acceleratorType'] as String).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      health: map['health'] == null ? null : (NodeHealthTpuV1alpha1.fromValue(map['health'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      schedulingConfig: map['schedulingConfig'] == null ? null : (SchedulingConfigTpuV1alpha1.fromMap((map['schedulingConfig'] as Map).cast<String, dynamic>())).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      health: map['health'] == null ? null : (NodeHealthTpuV1alpha1.fromValue(map['health']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      schedulingConfig: map['schedulingConfig'] == null ? null : (SchedulingConfigTpuV1alpha1.fromMap((map['schedulingConfig']! as Map).cast<String, dynamic>())).input(),
       tensorflowVersion: (map['tensorflowVersion'] as String).input(),
-      useServiceNetworking: map['useServiceNetworking'] == null ? null : (map['useServiceNetworking'] as bool).input(),
+      useServiceNetworking: map['useServiceNetworking'] == null ? null : (map['useServiceNetworking']! as bool).input(),
     );
   }
 }

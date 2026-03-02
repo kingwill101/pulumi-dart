@@ -50,12 +50,12 @@ class IpCommunityArgs {
 
   factory IpCommunityArgs.fromMap(Map<String, dynamic> map) {
     return IpCommunityArgs(
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      ipCommunityName: map['ipCommunityName'] == null ? null : (map['ipCommunityName'] as String).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      ipCommunityName: map['ipCommunityName'] == null ? null : (map['ipCommunityName']! as String).input(),
       ipCommunityRules: (pulumi.Input.decodeList<IpCommunityRule>(map['ipCommunityRules'], (value) => IpCommunityRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

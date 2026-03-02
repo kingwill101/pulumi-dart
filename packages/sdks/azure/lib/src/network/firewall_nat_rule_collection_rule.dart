@@ -62,13 +62,13 @@ class FirewallNatRuleCollectionRule {
 
   factory FirewallNatRuleCollectionRule.fromMap(Map<String, dynamic> map) {
     return FirewallNatRuleCollectionRule(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destinationAddresses: ((map['destinationAddresses'] as List).cast<String>()).input(),
       destinationPorts: ((map['destinationPorts'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       protocols: ((map['protocols'] as List).cast<String>()).input(),
-      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses'] as List).cast<String>()).input(),
-      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups'] as List).cast<String>()).input(),
+      sourceAddresses: map['sourceAddresses'] == null ? null : ((map['sourceAddresses']! as List).cast<String>()).input(),
+      sourceIpGroups: map['sourceIpGroups'] == null ? null : ((map['sourceIpGroups']! as List).cast<String>()).input(),
       translatedAddress: (map['translatedAddress'] as String).input(),
       translatedPort: (map['translatedPort'] as String).input(),
     );

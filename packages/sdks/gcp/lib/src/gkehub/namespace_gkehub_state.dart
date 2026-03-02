@@ -97,20 +97,20 @@ class NamespaceGkehubState {
 
   factory NamespaceGkehubState.fromMap(Map<String, dynamic> map) {
     return NamespaceGkehubState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
-      scopeNamespaceId: map['scopeNamespaceId'] == null ? null : (map['scopeNamespaceId'] as String).input(),
-      states: map['states'] == null ? null : (pulumi.Input.decodeList<NamespaceState>(map['states'], (value) => NamespaceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deleteTime: map['deleteTime'] == null ? null : (map['deleteTime']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespaceLabels: map['namespaceLabels'] == null ? null : ((map['namespaceLabels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId']! as String).input(),
+      scopeNamespaceId: map['scopeNamespaceId'] == null ? null : (map['scopeNamespaceId']! as String).input(),
+      states: map['states'] == null ? null : (pulumi.Input.decodeList<NamespaceState>(map['states']!, (value) => NamespaceState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

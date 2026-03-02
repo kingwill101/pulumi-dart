@@ -27,8 +27,8 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranch {
 
   factory V2modelsIntentInitialResponseSettingConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditionalDefaultBranch(
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
-      response: map['response'] == null ? null : (V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>())).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentInitialResponseSettingConditionalDefaultBranchNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
+      response: map['response'] == null ? null : ((V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponse.fromMap((map['response']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

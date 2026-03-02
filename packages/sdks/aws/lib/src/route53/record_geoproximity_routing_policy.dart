@@ -36,10 +36,10 @@ class RecordGeoproximityRoutingPolicy {
 
   factory RecordGeoproximityRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordGeoproximityRoutingPolicy(
-      awsRegion: map['awsRegion'] == null ? null : (map['awsRegion'] as String).input(),
-      bias: map['bias'] == null ? null : (map['bias'] as int).input(),
-      coordinates: map['coordinates'] == null ? null : (pulumi.Input.decodeList<RecordGeoproximityRoutingPolicyCoordinate>(map['coordinates'], (value) => RecordGeoproximityRoutingPolicyCoordinate.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      localZoneGroup: map['localZoneGroup'] == null ? null : (map['localZoneGroup'] as String).input(),
+      awsRegion: map['awsRegion'] == null ? null : ((map['awsRegion'] as String).input()).input(),
+      bias: map['bias'] == null ? null : ((map['bias'] as int).input()).input(),
+      coordinates: map['coordinates'] == null ? null : ((pulumi.Input.decodeList<RecordGeoproximityRoutingPolicyCoordinate>(map['coordinates']!, (value) => RecordGeoproximityRoutingPolicyCoordinate.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      localZoneGroup: map['localZoneGroup'] == null ? null : ((map['localZoneGroup'] as String).input()).input(),
     );
   }
 }

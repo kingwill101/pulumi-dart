@@ -25,8 +25,8 @@ class GetWorkspaceSharedKeysResult {
 
   factory GetWorkspaceSharedKeysResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceSharedKeysResult(
-      primarySharedKey: map['primarySharedKey'] == null ? null : map['primarySharedKey'] as String,
-      secondarySharedKey: map['secondarySharedKey'] == null ? null : map['secondarySharedKey'] as String,
+      primarySharedKey: map['primarySharedKey'] == null ? null : map['primarySharedKey']! as String,
+      secondarySharedKey: map['secondarySharedKey'] == null ? null : map['secondarySharedKey']! as String,
     );
   }
 }

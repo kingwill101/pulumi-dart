@@ -30,9 +30,9 @@ class TransferJobLoggingConfig {
 
   factory TransferJobLoggingConfig.fromMap(Map<String, dynamic> map) {
     return TransferJobLoggingConfig(
-      enableOnPremGcsTransferLogs: map['enableOnPremGcsTransferLogs'] == null ? null : (map['enableOnPremGcsTransferLogs'] as bool).input(),
-      logActionStates: map['logActionStates'] == null ? null : ((map['logActionStates'] as List).cast<String>()).input(),
-      logActions: map['logActions'] == null ? null : ((map['logActions'] as List).cast<String>()).input(),
+      enableOnPremGcsTransferLogs: map['enableOnPremGcsTransferLogs'] == null ? null : (map['enableOnPremGcsTransferLogs']! as bool).input(),
+      logActionStates: map['logActionStates'] == null ? null : ((map['logActionStates']! as List).cast<String>()).input(),
+      logActions: map['logActions'] == null ? null : ((map['logActions']! as List).cast<String>()).input(),
     );
   }
 }

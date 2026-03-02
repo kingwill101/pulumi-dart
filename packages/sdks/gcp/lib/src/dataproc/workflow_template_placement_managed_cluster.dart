@@ -33,7 +33,7 @@ class WorkflowTemplatePlacementManagedCluster {
     return WorkflowTemplatePlacementManagedCluster(
       clusterName: (map['clusterName'] as String).input(),
       config: (WorkflowTemplatePlacementManagedClusterConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

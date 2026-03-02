@@ -101,11 +101,11 @@ class GetKubernetesClusterFeatureResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      options: map['options'] == null ? null : pulumi.Input.decodeList<StringKeyValuePairResponse>(map['options'], (value) => StringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>())),
+      options: map['options'] == null ? null : pulumi.Input.decodeList<StringKeyValuePairResponse>(map['options']!, (value) => StringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>())),
       provisioningState: map['provisioningState'] as String,
       required: map['required'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       version: map['version'] as String,
     );

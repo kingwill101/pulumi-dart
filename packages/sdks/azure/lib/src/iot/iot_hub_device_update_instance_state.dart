@@ -47,12 +47,12 @@ class IotHubDeviceUpdateInstanceState {
 
   factory IotHubDeviceUpdateInstanceState.fromMap(Map<String, dynamic> map) {
     return IotHubDeviceUpdateInstanceState(
-      deviceUpdateAccountId: map['deviceUpdateAccountId'] == null ? null : (map['deviceUpdateAccountId'] as String).input(),
-      diagnosticEnabled: map['diagnosticEnabled'] == null ? null : (map['diagnosticEnabled'] as bool).input(),
-      diagnosticStorageAccount: map['diagnosticStorageAccount'] == null ? null : (IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((map['diagnosticStorageAccount'] as Map).cast<String, dynamic>())).input(),
-      iothubId: map['iothubId'] == null ? null : (map['iothubId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      deviceUpdateAccountId: map['deviceUpdateAccountId'] == null ? null : (map['deviceUpdateAccountId']! as String).input(),
+      diagnosticEnabled: map['diagnosticEnabled'] == null ? null : (map['diagnosticEnabled']! as bool).input(),
+      diagnosticStorageAccount: map['diagnosticStorageAccount'] == null ? null : (IotHubDeviceUpdateInstanceDiagnosticStorageAccount.fromMap((map['diagnosticStorageAccount']! as Map).cast<String, dynamic>())).input(),
+      iothubId: map['iothubId'] == null ? null : (map['iothubId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

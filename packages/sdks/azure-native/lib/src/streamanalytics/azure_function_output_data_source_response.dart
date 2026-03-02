@@ -47,11 +47,11 @@ class AzureFunctionOutputDataSourceResponse {
 
   factory AzureFunctionOutputDataSourceResponse.fromMap(Map<String, dynamic> map) {
     return AzureFunctionOutputDataSourceResponse(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      functionAppName: map['functionAppName'] == null ? null : (map['functionAppName'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      maxBatchCount: map['maxBatchCount'] == null ? null : (map['maxBatchCount'] as double).input(),
-      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize'] as double).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      functionAppName: map['functionAppName'] == null ? null : (map['functionAppName']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      maxBatchCount: map['maxBatchCount'] == null ? null : (map['maxBatchCount']! as double).input(),
+      maxBatchSize: map['maxBatchSize'] == null ? null : (map['maxBatchSize']! as double).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -65,15 +65,15 @@ class GetSecurityGroupRulesResult {
 
   factory GetSecurityGroupRulesResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityGroupRulesResult(
-      direction: map['direction'] == null ? null : map['direction'] as String,
+      direction: map['direction'] == null ? null : map['direction']! as String,
       groupDesc: map['groupDesc'] as String,
       groupId: map['groupId'] as String,
       groupName: map['groupName'] as String,
       id: map['id'] as String,
-      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol'] as String,
-      nicType: map['nicType'] == null ? null : map['nicType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      policy: map['policy'] == null ? null : map['policy'] as String,
+      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol']! as String,
+      nicType: map['nicType'] == null ? null : map['nicType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      policy: map['policy'] == null ? null : map['policy']! as String,
       rules: pulumi.Input.decodeList<GetSecurityGroupRulesRule>(map['rules'], (value) => GetSecurityGroupRulesRule.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

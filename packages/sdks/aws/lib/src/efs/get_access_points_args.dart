@@ -30,7 +30,7 @@ class GetAccessPointsArgs {
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessPointsArgs(
       fileSystemId: (map['fileSystemId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

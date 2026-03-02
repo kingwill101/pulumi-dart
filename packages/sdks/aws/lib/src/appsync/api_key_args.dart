@@ -40,9 +40,9 @@ class ApiKeyArgs {
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
       apiId: (map['apiId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expires: map['expires'] == null ? null : (map['expires'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      expires: map['expires'] == null ? null : ((map['expires'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class FeatureFleetDefaultMemberConfigConfigmanagement {
 
   factory FeatureFleetDefaultMemberConfigConfigmanagement.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigConfigmanagement(
-      configSync: map['configSync'] == null ? null : (FeatureFleetDefaultMemberConfigConfigmanagementConfigSync.fromMap((map['configSync'] as Map).cast<String, dynamic>())).input(),
-      management: map['management'] == null ? null : (map['management'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      configSync: map['configSync'] == null ? null : (FeatureFleetDefaultMemberConfigConfigmanagementConfigSync.fromMap((map['configSync']! as Map).cast<String, dynamic>())).input(),
+      management: map['management'] == null ? null : (map['management']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

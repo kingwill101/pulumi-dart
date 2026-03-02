@@ -34,7 +34,7 @@ class VpnGatewayAttachmentArgs {
 
   factory VpnGatewayAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayAttachmentArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcId: (map['vpcId'] as String).input(),
       vpnGatewayId: (map['vpnGatewayId'] as String).input(),
     );

@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
 
   factory GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess(
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
     );
   }
 }

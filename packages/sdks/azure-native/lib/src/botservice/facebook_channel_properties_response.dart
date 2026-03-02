@@ -48,10 +48,10 @@ class FacebookChannelPropertiesResponse {
   factory FacebookChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FacebookChannelPropertiesResponse(
       appId: (map['appId'] as String).input(),
-      appSecret: map['appSecret'] == null ? null : (map['appSecret'] as String).input(),
+      appSecret: map['appSecret'] == null ? null : (map['appSecret']! as String).input(),
       callbackUrl: (map['callbackUrl'] as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<FacebookPageResponse>(map['pages'], (value) => FacebookPageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      pages: map['pages'] == null ? null : (pulumi.Input.decodeList<FacebookPageResponse>(map['pages']!, (value) => FacebookPageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       verifyToken: (map['verifyToken'] as String).input(),
     );
   }

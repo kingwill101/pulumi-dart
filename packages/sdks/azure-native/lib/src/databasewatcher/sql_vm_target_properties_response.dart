@@ -59,13 +59,13 @@ class SqlVmTargetPropertiesResponse {
   factory SqlVmTargetPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return SqlVmTargetPropertiesResponse(
       connectionServerName: (map['connectionServerName'] as String).input(),
-      connectionTcpPort: map['connectionTcpPort'] == null ? null : (map['connectionTcpPort'] as int).input(),
+      connectionTcpPort: map['connectionTcpPort'] == null ? null : (map['connectionTcpPort']! as int).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      sqlNamedInstanceName: map['sqlNamedInstanceName'] == null ? null : (map['sqlNamedInstanceName'] as String).input(),
+      sqlNamedInstanceName: map['sqlNamedInstanceName'] == null ? null : (map['sqlNamedInstanceName']! as String).input(),
       sqlVmResourceId: (map['sqlVmResourceId'] as String).input(),
       targetAuthenticationType: (map['targetAuthenticationType'] as String).input(),
       targetType: (map['targetType'] as String).input(),
-      targetVault: map['targetVault'] == null ? null : (VaultSecretResponse.fromMap((map['targetVault'] as Map).cast<String, dynamic>())).input(),
+      targetVault: map['targetVault'] == null ? null : (VaultSecretResponse.fromMap((map['targetVault']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

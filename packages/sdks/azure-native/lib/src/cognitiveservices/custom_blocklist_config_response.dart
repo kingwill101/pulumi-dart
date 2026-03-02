@@ -31,9 +31,9 @@ class CustomBlocklistConfigResponse {
 
   factory CustomBlocklistConfigResponse.fromMap(Map<String, dynamic> map) {
     return CustomBlocklistConfigResponse(
-      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
-      blocklistName: map['blocklistName'] == null ? null : (map['blocklistName'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
+      blocklistName: map['blocklistName'] == null ? null : (map['blocklistName']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

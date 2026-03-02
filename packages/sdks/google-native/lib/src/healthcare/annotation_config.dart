@@ -26,8 +26,8 @@ class AnnotationConfig {
 
   factory AnnotationConfig.fromMap(Map<String, dynamic> map) {
     return AnnotationConfig(
-      annotationStoreName: map['annotationStoreName'] == null ? null : (map['annotationStoreName'] as String).input(),
-      storeQuote: map['storeQuote'] == null ? null : (map['storeQuote'] as bool).input(),
+      annotationStoreName: map['annotationStoreName'] == null ? null : (map['annotationStoreName']! as String).input(),
+      storeQuote: map['storeQuote'] == null ? null : (map['storeQuote']! as bool).input(),
     );
   }
 }

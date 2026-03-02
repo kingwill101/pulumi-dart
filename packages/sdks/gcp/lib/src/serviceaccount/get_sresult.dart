@@ -41,9 +41,9 @@ class GetSResult {
     return GetSResult(
       accounts: pulumi.Input.decodeList<GetSAccount>(map['accounts'], (value) => GetSAccount.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      regex: map['regex'] == null ? null : map['regex'] as String,
+      prefix: map['prefix'] == null ? null : map['prefix']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      regex: map['regex'] == null ? null : map['regex']! as String,
     );
   }
 }

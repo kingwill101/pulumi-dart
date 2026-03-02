@@ -21,7 +21,7 @@ class AnomalyResultEnumEnumValueResponse {
 
   factory AnomalyResultEnumEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return AnomalyResultEnumEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

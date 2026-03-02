@@ -47,10 +47,10 @@ class GetIpRangesArgs {
 
   factory GetIpRangesArgs.fromMap(Map<String, dynamic> map) {
     return GetIpRangesArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      regions: map['regions'] == null ? null : (((map['regions'] as List).cast<String>()).input()).input(),
       services: ((map['services'] as List).cast<String>()).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
     );
   }
 }

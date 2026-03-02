@@ -27,7 +27,7 @@ class StandbyVirtualMachinePoolElasticityProfile {
   factory StandbyVirtualMachinePoolElasticityProfile.fromMap(Map<String, dynamic> map) {
     return StandbyVirtualMachinePoolElasticityProfile(
       maxReadyCapacity: (map['maxReadyCapacity'] as double).input(),
-      minReadyCapacity: map['minReadyCapacity'] == null ? null : (map['minReadyCapacity'] as double).input(),
+      minReadyCapacity: map['minReadyCapacity'] == null ? null : (map['minReadyCapacity']! as double).input(),
     );
   }
 }

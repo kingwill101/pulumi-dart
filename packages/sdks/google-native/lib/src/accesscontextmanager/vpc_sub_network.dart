@@ -27,7 +27,7 @@ class VpcSubNetwork {
   factory VpcSubNetwork.fromMap(Map<String, dynamic> map) {
     return VpcSubNetwork(
       network: (map['network'] as String).input(),
-      vpcIpSubnetworks: map['vpcIpSubnetworks'] == null ? null : ((map['vpcIpSubnetworks'] as List).cast<String>()).input(),
+      vpcIpSubnetworks: map['vpcIpSubnetworks'] == null ? null : ((map['vpcIpSubnetworks']! as List).cast<String>()).input(),
     );
   }
 }

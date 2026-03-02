@@ -48,8 +48,8 @@ class CertificateSigningRequestStatus {
 
   factory CertificateSigningRequestStatus.fromMap(Map<String, dynamic> map) {
     return CertificateSigningRequestStatus(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestCondition>(map['conditions'], (value) => CertificateSigningRequestCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<CertificateSigningRequestCondition>(map['conditions']!, (value) => CertificateSigningRequestCondition.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

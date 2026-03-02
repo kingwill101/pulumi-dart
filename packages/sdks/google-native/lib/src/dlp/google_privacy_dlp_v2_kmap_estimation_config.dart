@@ -33,9 +33,9 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
 
   factory GooglePrivacyDlpV2KMapEstimationConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2KMapEstimationConfig(
-      auxiliaryTables: map['auxiliaryTables'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2AuxiliaryTable>(map['auxiliaryTables'], (value) => GooglePrivacyDlpV2AuxiliaryTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      auxiliaryTables: map['auxiliaryTables'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2AuxiliaryTable>(map['auxiliaryTables']!, (value) => GooglePrivacyDlpV2AuxiliaryTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
       quasiIds: (pulumi.Input.decodeList<GooglePrivacyDlpV2TaggedField>(map['quasiIds'], (value) => GooglePrivacyDlpV2TaggedField.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      regionCode: map['regionCode'] == null ? null : (map['regionCode'] as String).input(),
+      regionCode: map['regionCode'] == null ? null : (map['regionCode']! as String).input(),
     );
   }
 }

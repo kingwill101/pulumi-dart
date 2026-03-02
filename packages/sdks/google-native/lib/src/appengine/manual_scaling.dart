@@ -21,7 +21,7 @@ class ManualScaling {
 
   factory ManualScaling.fromMap(Map<String, dynamic> map) {
     return ManualScaling(
-      instances: map['instances'] == null ? null : (map['instances'] as int).input(),
+      instances: map['instances'] == null ? null : (map['instances']! as int).input(),
     );
   }
 }

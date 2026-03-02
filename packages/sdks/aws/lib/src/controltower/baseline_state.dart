@@ -68,16 +68,16 @@ class BaselineState {
 
   factory BaselineState.fromMap(Map<String, dynamic> map) {
     return BaselineState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      baselineIdentifier: map['baselineIdentifier'] == null ? null : (map['baselineIdentifier'] as String).input(),
-      baselineVersion: map['baselineVersion'] == null ? null : (map['baselineVersion'] as String).input(),
-      operationIdentifier: map['operationIdentifier'] == null ? null : (map['operationIdentifier'] as String).input(),
-      parameters: map['parameters'] == null ? null : (BaselineParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      targetIdentifier: map['targetIdentifier'] == null ? null : (map['targetIdentifier'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (BaselineTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      baselineIdentifier: map['baselineIdentifier'] == null ? null : ((map['baselineIdentifier'] as String).input()).input(),
+      baselineVersion: map['baselineVersion'] == null ? null : ((map['baselineVersion'] as String).input()).input(),
+      operationIdentifier: map['operationIdentifier'] == null ? null : ((map['operationIdentifier'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : ((BaselineParameters.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      targetIdentifier: map['targetIdentifier'] == null ? null : ((map['targetIdentifier'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((BaselineTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

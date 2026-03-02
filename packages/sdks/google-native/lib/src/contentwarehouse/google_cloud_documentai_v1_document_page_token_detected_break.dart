@@ -22,7 +22,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
 
   factory GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(
-      type: map['type'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType.fromValue(map['type']! as String)).input(),
     );
   }
 }

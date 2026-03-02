@@ -22,7 +22,7 @@ class ImageTemplatePropertiesVmBoot {
 
   factory ImageTemplatePropertiesVmBoot.fromMap(Map<String, dynamic> map) {
     return ImageTemplatePropertiesVmBoot(
-      state: map['state'] == null ? null : (VMBootOptimizationState.fromValue(map['state'] as String)).input(),
+      state: map['state'] == null ? null : (VMBootOptimizationState.fromValue(map['state']! as String)).input(),
     );
   }
 }

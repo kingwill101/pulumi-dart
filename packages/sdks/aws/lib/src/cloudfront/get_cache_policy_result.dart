@@ -68,7 +68,7 @@ class GetCachePolicyResult {
       maxTtl: map['maxTtl'] as int,
       minTtl: map['minTtl'] as int,
       name: map['name'] == null ? null : map['name'] as String,
-      parametersInCacheKeyAndForwardedToOrigins: pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOrigin>(map['parametersInCacheKeyAndForwardedToOrigins'], (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((value as Map).cast<String, dynamic>())),
+      parametersInCacheKeyAndForwardedToOrigins: pulumi.Input.decodeList<GetCachePolicyParametersInCacheKeyAndForwardedToOrigin>(map['parametersInCacheKeyAndForwardedToOrigins']!, (value) => GetCachePolicyParametersInCacheKeyAndForwardedToOrigin.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

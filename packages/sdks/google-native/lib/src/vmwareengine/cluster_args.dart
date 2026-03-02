@@ -53,12 +53,12 @@ class ClusterArgs {
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
       clusterId: (map['clusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       nodeTypeConfigs: ((map['nodeTypeConfigs'] as Map).cast<String, String>()).input(),
       privateCloudId: (map['privateCloudId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig'] as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      stretchedClusterConfig: map['stretchedClusterConfig'] == null ? null : (StretchedClusterConfig.fromMap((map['stretchedClusterConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

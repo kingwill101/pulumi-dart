@@ -30,7 +30,7 @@ class ContainerRestartRuleOnExitCodes {
   factory ContainerRestartRuleOnExitCodes.fromMap(Map<String, dynamic> map) {
     return ContainerRestartRuleOnExitCodes(
       operator: (map['operator'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<int>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<int>()).input(),
     );
   }
 }

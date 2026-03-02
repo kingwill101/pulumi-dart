@@ -40,10 +40,10 @@ class StaticWebAppCustomDomainState {
 
   factory StaticWebAppCustomDomainState.fromMap(Map<String, dynamic> map) {
     return StaticWebAppCustomDomainState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      staticWebAppId: map['staticWebAppId'] == null ? null : (map['staticWebAppId'] as String).input(),
-      validationToken: map['validationToken'] == null ? null : (map['validationToken'] as String).input(),
-      validationType: map['validationType'] == null ? null : (map['validationType'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      staticWebAppId: map['staticWebAppId'] == null ? null : (map['staticWebAppId']! as String).input(),
+      validationToken: map['validationToken'] == null ? null : (map['validationToken']! as String).input(),
+      validationType: map['validationType'] == null ? null : (map['validationType']! as String).input(),
     );
   }
 }

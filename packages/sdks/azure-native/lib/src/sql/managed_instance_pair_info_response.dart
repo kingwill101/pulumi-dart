@@ -26,8 +26,8 @@ class ManagedInstancePairInfoResponse {
 
   factory ManagedInstancePairInfoResponse.fromMap(Map<String, dynamic> map) {
     return ManagedInstancePairInfoResponse(
-      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId'] as String).input(),
-      primaryManagedInstanceId: map['primaryManagedInstanceId'] == null ? null : (map['primaryManagedInstanceId'] as String).input(),
+      partnerManagedInstanceId: map['partnerManagedInstanceId'] == null ? null : (map['partnerManagedInstanceId']! as String).input(),
+      primaryManagedInstanceId: map['primaryManagedInstanceId'] == null ? null : (map['primaryManagedInstanceId']! as String).input(),
     );
   }
 }

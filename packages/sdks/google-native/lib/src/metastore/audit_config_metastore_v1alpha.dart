@@ -27,8 +27,8 @@ class AuditConfigMetastoreV1alpha {
 
   factory AuditConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return AuditConfigMetastoreV1alpha(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigMetastoreV1alpha>(map['auditLogConfigs'], (value) => AuditLogConfigMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      service: map['service'] == null ? null : (map['service'] as String).input(),
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : (pulumi.Input.decodeList<AuditLogConfigMetastoreV1alpha>(map['auditLogConfigs']!, (value) => AuditLogConfigMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      service: map['service'] == null ? null : (map['service']! as String).input(),
     );
   }
 }

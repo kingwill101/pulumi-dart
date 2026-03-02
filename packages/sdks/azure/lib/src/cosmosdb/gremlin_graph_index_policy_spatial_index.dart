@@ -25,7 +25,7 @@ class GremlinGraphIndexPolicySpatialIndex {
   factory GremlinGraphIndexPolicySpatialIndex.fromMap(Map<String, dynamic> map) {
     return GremlinGraphIndexPolicySpatialIndex(
       path: (map['path'] as String).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class GroupPolicyAssignmentOverride {
 
   factory GroupPolicyAssignmentOverride.fromMap(Map<String, dynamic> map) {
     return GroupPolicyAssignmentOverride(
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentOverrideSelector>(map['selectors'], (value) => GroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<GroupPolicyAssignmentOverrideSelector>(map['selectors']!, (value) => GroupPolicyAssignmentOverrideSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
       value: (map['value'] as String).input(),
     );
   }

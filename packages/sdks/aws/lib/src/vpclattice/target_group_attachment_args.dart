@@ -35,8 +35,8 @@ class TargetGroupAttachmentArgs {
 
   factory TargetGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return TargetGroupAttachmentArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      target: (TargetGroupAttachmentTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      target: (TargetGroupAttachmentTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
       targetGroupIdentifier: (map['targetGroupIdentifier'] as String).input(),
     );
   }

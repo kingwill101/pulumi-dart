@@ -67,16 +67,16 @@ class KafkaAzureCosmosDBSourceConnectorInfoResponse {
 
   factory KafkaAzureCosmosDBSourceConnectorInfoResponse.fromMap(Map<String, dynamic> map) {
     return KafkaAzureCosmosDBSourceConnectorInfoResponse(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      apiSecret: map['apiSecret'] == null ? null : (map['apiSecret'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
-      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat'] as String).input(),
-      maxTasks: map['maxTasks'] == null ? null : (map['maxTasks'] as String).input(),
-      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      apiSecret: map['apiSecret'] == null ? null : (map['apiSecret']! as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
+      inputFormat: map['inputFormat'] == null ? null : (map['inputFormat']! as String).input(),
+      maxTasks: map['maxTasks'] == null ? null : (map['maxTasks']! as String).input(),
+      outputFormat: map['outputFormat'] == null ? null : (map['outputFormat']! as String).input(),
       partnerConnectorType: (map['partnerConnectorType'] as String).input(),
-      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId'] as String).input(),
-      topicRegex: map['topicRegex'] == null ? null : (map['topicRegex'] as String).input(),
-      topicsDir: map['topicsDir'] == null ? null : (map['topicsDir'] as String).input(),
+      serviceAccountId: map['serviceAccountId'] == null ? null : (map['serviceAccountId']! as String).input(),
+      topicRegex: map['topicRegex'] == null ? null : (map['topicRegex']! as String).input(),
+      topicsDir: map['topicsDir'] == null ? null : (map['topicsDir']! as String).input(),
     );
   }
 }

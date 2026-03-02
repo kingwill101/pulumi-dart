@@ -52,12 +52,12 @@ class ServiceAttachmentConnectedEndpoint {
 
   factory ServiceAttachmentConnectedEndpoint.fromMap(Map<String, dynamic> map) {
     return ServiceAttachmentConnectedEndpoint(
-      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      natIps: map['natIps'] == null ? null : ((map['natIps'] as List).cast<String>()).input(),
-      propagatedConnectionCount: map['propagatedConnectionCount'] == null ? null : (map['propagatedConnectionCount'] as int).input(),
-      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      consumerNetwork: map['consumerNetwork'] == null ? null : (map['consumerNetwork']! as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      natIps: map['natIps'] == null ? null : ((map['natIps']! as List).cast<String>()).input(),
+      propagatedConnectionCount: map['propagatedConnectionCount'] == null ? null : (map['propagatedConnectionCount']! as int).input(),
+      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

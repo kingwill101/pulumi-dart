@@ -82,12 +82,12 @@ class GetDeviceResult {
   factory GetDeviceResult.fromMap(Map<String, dynamic> map) {
     return GetDeviceResult(
       arn: map['arn'] as String,
-      awsLocations: pulumi.Input.decodeList<GetDeviceAwsLocation>(map['awsLocations'], (value) => GetDeviceAwsLocation.fromMap((value as Map).cast<String, dynamic>())),
+      awsLocations: pulumi.Input.decodeList<GetDeviceAwsLocation>(map['awsLocations']!, (value) => GetDeviceAwsLocation.fromMap((value as Map).cast<String, dynamic>())),
       description: map['description'] as String,
       deviceId: map['deviceId'] as String,
       globalNetworkId: map['globalNetworkId'] as String,
       id: map['id'] as String,
-      locations: pulumi.Input.decodeList<GetDeviceLocation>(map['locations'], (value) => GetDeviceLocation.fromMap((value as Map).cast<String, dynamic>())),
+      locations: pulumi.Input.decodeList<GetDeviceLocation>(map['locations']!, (value) => GetDeviceLocation.fromMap((value as Map).cast<String, dynamic>())),
       model: map['model'] as String,
       serialNumber: map['serialNumber'] as String,
       siteId: map['siteId'] as String,

@@ -44,8 +44,8 @@ class RouterNatRule {
 
   factory RouterNatRule.fromMap(Map<String, dynamic> map) {
     return RouterNatRule(
-      action: map['action'] == null ? null : (RouterNatRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      action: map['action'] == null ? null : (RouterNatRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       match: (map['match'] as String).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),
     );

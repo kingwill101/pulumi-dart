@@ -27,8 +27,8 @@ class AuditLogConfigNetworkconnectivityV1alpha1 {
 
   factory AuditLogConfigNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigNetworkconnectivityV1alpha1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers'] as List).cast<String>()).input(),
-      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeNetworkconnectivityV1alpha1.fromValue(map['logType'] as String)).input(),
+      exemptedMembers: map['exemptedMembers'] == null ? null : ((map['exemptedMembers']! as List).cast<String>()).input(),
+      logType: map['logType'] == null ? null : (AuditLogConfigLogTypeNetworkconnectivityV1alpha1.fromValue(map['logType']! as String)).input(),
     );
   }
 }

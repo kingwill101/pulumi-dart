@@ -43,11 +43,11 @@ class JobService {
 
   factory JobService.fromMap(Map<String, dynamic> map) {
     return JobService(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType'] as String).input(),
-      nodes: map['nodes'] == null ? null : (AllNodes.fromMap((map['nodes'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
+      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType']! as String).input(),
+      nodes: map['nodes'] == null ? null : (AllNodes.fromMap((map['nodes']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
     );
   }
 }

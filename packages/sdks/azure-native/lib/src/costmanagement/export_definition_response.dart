@@ -38,8 +38,8 @@ class ExportDefinitionResponse {
 
   factory ExportDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ExportDefinitionResponse(
-      dataSet: map['dataSet'] == null ? null : (ExportDatasetResponse.fromMap((map['dataSet'] as Map).cast<String, dynamic>())).input(),
-      timePeriod: map['timePeriod'] == null ? null : (ExportTimePeriodResponse.fromMap((map['timePeriod'] as Map).cast<String, dynamic>())).input(),
+      dataSet: map['dataSet'] == null ? null : (ExportDatasetResponse.fromMap((map['dataSet']! as Map).cast<String, dynamic>())).input(),
+      timePeriod: map['timePeriod'] == null ? null : (ExportTimePeriodResponse.fromMap((map['timePeriod']! as Map).cast<String, dynamic>())).input(),
       timeframe: (map['timeframe'] as String).input(),
       type: (map['type'] as String).input(),
     );

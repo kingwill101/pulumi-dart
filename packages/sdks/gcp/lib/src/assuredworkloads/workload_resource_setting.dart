@@ -30,9 +30,9 @@ class WorkloadResourceSetting {
 
   factory WorkloadResourceSetting.fromMap(Map<String, dynamic> map) {
     return WorkloadResourceSetting(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

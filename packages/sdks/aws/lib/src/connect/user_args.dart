@@ -77,17 +77,17 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      directoryUserId: map['directoryUserId'] == null ? null : (map['directoryUserId'] as String).input(),
-      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : (map['hierarchyGroupId'] as String).input(),
-      identityInfo: map['identityInfo'] == null ? null : (UserIdentityInfo.fromMap((map['identityInfo'] as Map).cast<String, dynamic>())).input(),
+      directoryUserId: map['directoryUserId'] == null ? null : ((map['directoryUserId'] as String).input()).input(),
+      hierarchyGroupId: map['hierarchyGroupId'] == null ? null : ((map['hierarchyGroupId'] as String).input()).input(),
+      identityInfo: map['identityInfo'] == null ? null : ((UserIdentityInfo.fromMap((map['identityInfo']! as Map).cast<String, dynamic>())).input()).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      phoneConfig: (UserPhoneConfig.fromMap((map['phoneConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      password: map['password'] == null ? null : ((map['password'] as String).input()).input(),
+      phoneConfig: (UserPhoneConfig.fromMap((map['phoneConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       routingProfileId: (map['routingProfileId'] as String).input(),
       securityProfileIds: ((map['securityProfileIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class PerformanceConfig {
 
   factory PerformanceConfig.fromMap(Map<String, dynamic> map) {
     return PerformanceConfig(
-      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : (PerformanceConfigDumpParallelLevel.fromValue(map['dumpParallelLevel'] as String)).input(),
+      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : (PerformanceConfigDumpParallelLevel.fromValue(map['dumpParallelLevel']! as String)).input(),
     );
   }
 }

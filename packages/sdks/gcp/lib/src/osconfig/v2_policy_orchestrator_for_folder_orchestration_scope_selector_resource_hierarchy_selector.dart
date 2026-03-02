@@ -27,8 +27,8 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
 
   factory V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector(
-      includedFolders: map['includedFolders'] == null ? null : ((map['includedFolders'] as List).cast<String>()).input(),
-      includedProjects: map['includedProjects'] == null ? null : ((map['includedProjects'] as List).cast<String>()).input(),
+      includedFolders: map['includedFolders'] == null ? null : ((map['includedFolders']! as List).cast<String>()).input(),
+      includedProjects: map['includedProjects'] == null ? null : ((map['includedProjects']! as List).cast<String>()).input(),
     );
   }
 }

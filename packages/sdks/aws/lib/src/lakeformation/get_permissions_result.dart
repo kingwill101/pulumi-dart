@@ -83,18 +83,18 @@ class GetPermissionsResult {
     return GetPermissionsResult(
       catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
       catalogResource: map['catalogResource'] == null ? null : map['catalogResource'] as bool,
-      dataCellsFilter: GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter'] as Map).cast<String, dynamic>()),
-      dataLocation: GetPermissionsDataLocation.fromMap((map['dataLocation'] as Map).cast<String, dynamic>()),
-      database: GetPermissionsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>()),
+      dataCellsFilter: GetPermissionsDataCellsFilter.fromMap((map['dataCellsFilter']! as Map).cast<String, dynamic>()),
+      dataLocation: GetPermissionsDataLocation.fromMap((map['dataLocation']! as Map).cast<String, dynamic>()),
+      database: GetPermissionsDatabase.fromMap((map['database']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      lfTag: GetPermissionsLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>()),
-      lfTagPolicy: GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy'] as Map).cast<String, dynamic>()),
+      lfTag: GetPermissionsLfTag.fromMap((map['lfTag']! as Map).cast<String, dynamic>()),
+      lfTagPolicy: GetPermissionsLfTagPolicy.fromMap((map['lfTagPolicy']! as Map).cast<String, dynamic>()),
       permissions: (map['permissions'] as List).cast<String>(),
       permissionsWithGrantOptions: (map['permissionsWithGrantOptions'] as List).cast<String>(),
       principal: map['principal'] as String,
       region: map['region'] as String,
-      table: GetPermissionsTable.fromMap((map['table'] as Map).cast<String, dynamic>()),
-      tableWithColumns: GetPermissionsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>()),
+      table: GetPermissionsTable.fromMap((map['table']! as Map).cast<String, dynamic>()),
+      tableWithColumns: GetPermissionsTableWithColumns.fromMap((map['tableWithColumns']! as Map).cast<String, dynamic>()),
     );
   }
 }

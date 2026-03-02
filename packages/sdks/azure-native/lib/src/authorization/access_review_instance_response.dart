@@ -62,13 +62,13 @@ class AccessReviewInstanceResponse {
 
   factory AccessReviewInstanceResponse.fromMap(Map<String, dynamic> map) {
     return AccessReviewInstanceResponse(
-      backupReviewers: map['backupReviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewerResponse>(map['backupReviewers'], (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime'] as String).input(),
+      backupReviewers: map['backupReviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewerResponse>(map['backupReviewers']!, (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      endDateTime: map['endDateTime'] == null ? null : (map['endDateTime']! as String).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewerResponse>(map['reviewers'], (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reviewers: map['reviewers'] == null ? null : (pulumi.Input.decodeList<AccessReviewReviewerResponse>(map['reviewers']!, (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       reviewersType: (map['reviewersType'] as String).input(),
-      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime'] as String).input(),
+      startDateTime: map['startDateTime'] == null ? null : (map['startDateTime']! as String).input(),
       status: (map['status'] as String).input(),
       type: (map['type'] as String).input(),
     );

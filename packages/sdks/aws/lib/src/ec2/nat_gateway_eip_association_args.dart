@@ -43,8 +43,8 @@ class NatGatewayEipAssociationArgs {
     return NatGatewayEipAssociationArgs(
       allocationId: (map['allocationId'] as String).input(),
       natGatewayId: (map['natGatewayId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (NatGatewayEipAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((NatGatewayEipAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

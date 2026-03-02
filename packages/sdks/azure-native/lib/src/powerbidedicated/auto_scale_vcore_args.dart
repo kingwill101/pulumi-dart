@@ -55,13 +55,13 @@ class AutoScaleVCoreArgs {
 
   factory AutoScaleVCoreArgs.fromMap(Map<String, dynamic> map) {
     return AutoScaleVCoreArgs(
-      capacityLimit: map['capacityLimit'] == null ? null : (map['capacityLimit'] as int).input(),
-      capacityObjectId: map['capacityObjectId'] == null ? null : (map['capacityObjectId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      capacityLimit: map['capacityLimit'] == null ? null : (map['capacityLimit']! as int).input(),
+      capacityObjectId: map['capacityObjectId'] == null ? null : (map['capacityObjectId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (AutoScaleVCoreSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      vcoreName: map['vcoreName'] == null ? null : (map['vcoreName'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      vcoreName: map['vcoreName'] == null ? null : (map['vcoreName']! as String).input(),
     );
   }
 }

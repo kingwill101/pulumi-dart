@@ -59,8 +59,8 @@ class DeploymentSettingArgs {
       clusterName: (map['clusterName'] as String).input(),
       deploymentConfiguration: (DeploymentConfiguration.fromMap((map['deploymentConfiguration'] as Map).cast<String, dynamic>())).input(),
       deploymentMode: (map['deploymentMode'] as String).input(),
-      deploymentSettingsName: map['deploymentSettingsName'] == null ? null : (map['deploymentSettingsName'] as String).input(),
-      operationType: map['operationType'] == null ? null : (map['operationType'] as String).input(),
+      deploymentSettingsName: map['deploymentSettingsName'] == null ? null : (map['deploymentSettingsName']! as String).input(),
+      operationType: map['operationType'] == null ? null : (map['operationType']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

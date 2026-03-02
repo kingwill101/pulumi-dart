@@ -39,10 +39,10 @@ class SiteNetworkServicePropertiesFormat {
 
   factory SiteNetworkServicePropertiesFormat.fromMap(Map<String, dynamic> map) {
     return SiteNetworkServicePropertiesFormat(
-      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResource>(map['desiredStateConfigurationGroupValueReferences'], (value) => ReferencedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration'] as Map).cast<String, dynamic>())).input(),
-      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : (OpenDeploymentResourceReference.fromMap((map['networkServiceDesignVersionResourceReference'] as Map).cast<String, dynamic>())).input(),
-      siteReference: map['siteReference'] == null ? null : (ReferencedResource.fromMap((map['siteReference'] as Map).cast<String, dynamic>())).input(),
+      desiredStateConfigurationGroupValueReferences: map['desiredStateConfigurationGroupValueReferences'] == null ? null : (pulumi.Input.decodeMapValues<ReferencedResource>(map['desiredStateConfigurationGroupValueReferences']!, (value) => ReferencedResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      managedResourceGroupConfiguration: map['managedResourceGroupConfiguration'] == null ? null : (ManagedResourceGroupConfiguration.fromMap((map['managedResourceGroupConfiguration']! as Map).cast<String, dynamic>())).input(),
+      networkServiceDesignVersionResourceReference: map['networkServiceDesignVersionResourceReference'] == null ? null : (OpenDeploymentResourceReference.fromMap((map['networkServiceDesignVersionResourceReference']! as Map).cast<String, dynamic>())).input(),
+      siteReference: map['siteReference'] == null ? null : (ReferencedResource.fromMap((map['siteReference']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

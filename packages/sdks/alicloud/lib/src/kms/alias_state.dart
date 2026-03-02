@@ -32,8 +32,8 @@ class AliasState {
 
   factory AliasState.fromMap(Map<String, dynamic> map) {
     return AliasState(
-      aliasName: map['aliasName'] == null ? null : (map['aliasName'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
+      aliasName: map['aliasName'] == null ? null : (map['aliasName']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
     );
   }
 }

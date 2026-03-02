@@ -30,9 +30,9 @@ class GetGatewayRouteSpecHttpRouteActionRewrite {
 
   factory GetGatewayRouteSpecHttpRouteActionRewrite.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRouteActionRewrite(
-      hostnames: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewriteHostname>(map['hostnames'], (value) => GetGatewayRouteSpecHttpRouteActionRewriteHostname.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      paths: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewritePath>(map['paths'], (value) => GetGatewayRouteSpecHttpRouteActionRewritePath.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prefixes: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewritePrefix>(map['prefixes'], (value) => GetGatewayRouteSpecHttpRouteActionRewritePrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hostnames: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewriteHostname>(map['hostnames']!, (value) => GetGatewayRouteSpecHttpRouteActionRewriteHostname.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      paths: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewritePath>(map['paths']!, (value) => GetGatewayRouteSpecHttpRouteActionRewritePath.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      prefixes: (pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteActionRewritePrefix>(map['prefixes']!, (value) => GetGatewayRouteSpecHttpRouteActionRewritePrefix.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

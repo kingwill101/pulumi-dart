@@ -43,10 +43,10 @@ class GetClusterBrokerNodeGroupInfo {
     return GetClusterBrokerNodeGroupInfo(
       azDistribution: (map['azDistribution'] as String).input(),
       clientSubnets: ((map['clientSubnets'] as List).cast<String>()).input(),
-      connectivityInfos: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfo>(map['connectivityInfos'], (value) => GetClusterBrokerNodeGroupInfoConnectivityInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectivityInfos: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfo>(map['connectivityInfos']!, (value) => GetClusterBrokerNodeGroupInfoConnectivityInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceType: (map['instanceType'] as String).input(),
       securityGroups: ((map['securityGroups'] as List).cast<String>()).input(),
-      storageInfos: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfo>(map['storageInfos'], (value) => GetClusterBrokerNodeGroupInfoStorageInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageInfos: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfo>(map['storageInfos']!, (value) => GetClusterBrokerNodeGroupInfoStorageInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

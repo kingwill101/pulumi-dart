@@ -41,11 +41,11 @@ class ReplicationPendingModifiedValuesResponse {
 
   factory ReplicationPendingModifiedValuesResponse.fromMap(Map<String, dynamic> map) {
     return ReplicationPendingModifiedValuesResponse(
-      allocatedStorage: map['allocatedStorage'] == null ? null : (map['allocatedStorage'] as int).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      multiAZ: map['multiAZ'] == null ? null : (map['multiAZ'] as bool).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      replicationInstanceClass: map['replicationInstanceClass'] == null ? null : (map['replicationInstanceClass'] as String).input(),
+      allocatedStorage: map['allocatedStorage'] == null ? null : (map['allocatedStorage']! as int).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
+      multiAZ: map['multiAZ'] == null ? null : (map['multiAZ']! as bool).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
+      replicationInstanceClass: map['replicationInstanceClass'] == null ? null : (map['replicationInstanceClass']! as String).input(),
     );
   }
 }

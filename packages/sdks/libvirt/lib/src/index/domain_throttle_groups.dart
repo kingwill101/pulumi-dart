@@ -21,7 +21,7 @@ class DomainThrottleGroups {
 
   factory DomainThrottleGroups.fromMap(Map<String, dynamic> map) {
     return DomainThrottleGroups(
-      throttleGroups: map['throttleGroups'] == null ? null : (pulumi.Input.decodeList<DomainThrottleGroupsThrottleGroup>(map['throttleGroups'], (value) => DomainThrottleGroupsThrottleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      throttleGroups: map['throttleGroups'] == null ? null : (pulumi.Input.decodeList<DomainThrottleGroupsThrottleGroup>(map['throttleGroups']!, (value) => DomainThrottleGroupsThrottleGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -49,10 +49,10 @@ class AzureLinkAccountArgs {
 
   factory AzureLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return AzureLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       applicationId: (map['applicationId'] as String).input(),
       clientSecret: (map['clientSecret'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       subscriptionId: (map['subscriptionId'] as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );

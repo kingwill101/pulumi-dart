@@ -36,10 +36,10 @@ class OrganizationState {
 
   factory OrganizationState.fromMap(Map<String, dynamic> map) {
     return OrganizationState(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      iotcentralApplicationId: map['iotcentralApplicationId'] == null ? null : (map['iotcentralApplicationId'] as String).input(),
-      organizationId: map['organizationId'] == null ? null : (map['organizationId'] as String).input(),
-      parentOrganizationId: map['parentOrganizationId'] == null ? null : (map['parentOrganizationId'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      iotcentralApplicationId: map['iotcentralApplicationId'] == null ? null : (map['iotcentralApplicationId']! as String).input(),
+      organizationId: map['organizationId'] == null ? null : (map['organizationId']! as String).input(),
+      parentOrganizationId: map['parentOrganizationId'] == null ? null : (map['parentOrganizationId']! as String).input(),
     );
   }
 }

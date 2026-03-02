@@ -22,7 +22,7 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
 
   factory GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1WeeklyRecurrence(
-      day: map['day'] == null ? null : (GoogleFirestoreAdminV1WeeklyRecurrenceDay.fromValue(map['day'] as String)).input(),
+      day: map['day'] == null ? null : (GoogleFirestoreAdminV1WeeklyRecurrenceDay.fromValue(map['day']! as String)).input(),
     );
   }
 }

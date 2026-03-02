@@ -48,12 +48,12 @@ class InboundEndpoints {
 
   factory InboundEndpoints.fromMap(Map<String, dynamic> map) {
     return InboundEndpoints(
-      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration'] as String).input(),
+      additionalConfiguration: map['additionalConfiguration'] == null ? null : (map['additionalConfiguration']! as String).input(),
       address: (map['address'] as String).input(),
-      authentication: map['authentication'] == null ? null : (HostAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
+      authentication: map['authentication'] == null ? null : (HostAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())).input(),
       endpointType: (map['endpointType'] as String).input(),
-      trustSettings: map['trustSettings'] == null ? null : (TrustSettings.fromMap((map['trustSettings'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      trustSettings: map['trustSettings'] == null ? null : (TrustSettings.fromMap((map['trustSettings']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

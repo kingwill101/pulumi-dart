@@ -31,9 +31,9 @@ class LogSubscriptionState {
 
   factory LogSubscriptionState.fromMap(Map<String, dynamic> map) {
     return LogSubscriptionState(
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      logGroupName: map['logGroupName'] == null ? null : ((map['logGroupName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

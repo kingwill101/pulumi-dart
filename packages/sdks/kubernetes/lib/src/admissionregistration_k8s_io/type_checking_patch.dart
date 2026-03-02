@@ -22,7 +22,7 @@ class TypeCheckingPatch {
 
   factory TypeCheckingPatch.fromMap(Map<String, dynamic> map) {
     return TypeCheckingPatch(
-      expressionWarnings: map['expressionWarnings'] == null ? null : (pulumi.Input.decodeList<ExpressionWarningPatch>(map['expressionWarnings'], (value) => ExpressionWarningPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expressionWarnings: map['expressionWarnings'] == null ? null : (pulumi.Input.decodeList<ExpressionWarningPatch>(map['expressionWarnings']!, (value) => ExpressionWarningPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

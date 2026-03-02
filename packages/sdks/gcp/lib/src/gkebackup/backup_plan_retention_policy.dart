@@ -48,9 +48,9 @@ class BackupPlanRetentionPolicy {
 
   factory BackupPlanRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return BackupPlanRetentionPolicy(
-      backupDeleteLockDays: map['backupDeleteLockDays'] == null ? null : (map['backupDeleteLockDays'] as int).input(),
-      backupRetainDays: map['backupRetainDays'] == null ? null : (map['backupRetainDays'] as int).input(),
-      locked: map['locked'] == null ? null : (map['locked'] as bool).input(),
+      backupDeleteLockDays: map['backupDeleteLockDays'] == null ? null : (map['backupDeleteLockDays']! as int).input(),
+      backupRetainDays: map['backupRetainDays'] == null ? null : (map['backupRetainDays']! as int).input(),
+      locked: map['locked'] == null ? null : (map['locked']! as bool).input(),
     );
   }
 }

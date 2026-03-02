@@ -39,10 +39,10 @@ class GetSubnetworksResult {
 
   factory GetSubnetworksResult.fromMap(Map<String, dynamic> map) {
     return GetSubnetworksResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
+      region: map['region'] == null ? null : map['region']! as String,
       subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(map['subnetworks'], (value) => GetSubnetworksSubnetwork.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

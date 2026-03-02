@@ -32,7 +32,7 @@ class TypePropertiesMapping {
 
   factory TypePropertiesMapping.fromMap(Map<String, dynamic> map) {
     return TypePropertiesMapping(
-      linkType: map['linkType'] == null ? null : (LinkTypes.fromValue(map['linkType'] as String)).input(),
+      linkType: map['linkType'] == null ? null : (LinkTypes.fromValue(map['linkType']! as String)).input(),
       sourcePropertyName: (map['sourcePropertyName'] as String).input(),
       targetPropertyName: (map['targetPropertyName'] as String).input(),
     );

@@ -20,7 +20,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec(
-      values: map['values'] == null ? null : ((map['values'] as List).cast<double>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<double>()).input(),
     );
   }
 }

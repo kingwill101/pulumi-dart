@@ -40,9 +40,9 @@ class ClusterIamRolesArgs {
   factory ClusterIamRolesArgs.fromMap(Map<String, dynamic> map) {
     return ClusterIamRolesArgs(
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : (map['defaultIamRoleArn'] as String).input(),
-      iamRoleArns: map['iamRoleArns'] == null ? null : ((map['iamRoleArns'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      defaultIamRoleArn: map['defaultIamRoleArn'] == null ? null : ((map['defaultIamRoleArn'] as String).input()).input(),
+      iamRoleArns: map['iamRoleArns'] == null ? null : (((map['iamRoleArns'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

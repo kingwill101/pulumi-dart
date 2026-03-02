@@ -74,16 +74,16 @@ class DataflowEndpointMqttResponse {
   factory DataflowEndpointMqttResponse.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointMqttResponse(
       authentication: (DataflowEndpointMqttAuthenticationResponse.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      clientIdPrefix: map['clientIdPrefix'] == null ? null : (map['clientIdPrefix'] as String).input(),
-      cloudEventAttributes: map['cloudEventAttributes'] == null ? null : (map['cloudEventAttributes'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      keepAliveSeconds: map['keepAliveSeconds'] == null ? null : (map['keepAliveSeconds'] as int).input(),
-      maxInflightMessages: map['maxInflightMessages'] == null ? null : (map['maxInflightMessages'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      qos: map['qos'] == null ? null : (map['qos'] as int).input(),
-      retain: map['retain'] == null ? null : (map['retain'] as String).input(),
-      sessionExpirySeconds: map['sessionExpirySeconds'] == null ? null : (map['sessionExpirySeconds'] as int).input(),
-      tls: map['tls'] == null ? null : (TlsPropertiesResponse.fromMap((map['tls'] as Map).cast<String, dynamic>())).input(),
+      clientIdPrefix: map['clientIdPrefix'] == null ? null : (map['clientIdPrefix']! as String).input(),
+      cloudEventAttributes: map['cloudEventAttributes'] == null ? null : (map['cloudEventAttributes']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      keepAliveSeconds: map['keepAliveSeconds'] == null ? null : (map['keepAliveSeconds']! as int).input(),
+      maxInflightMessages: map['maxInflightMessages'] == null ? null : (map['maxInflightMessages']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      qos: map['qos'] == null ? null : (map['qos']! as int).input(),
+      retain: map['retain'] == null ? null : (map['retain']! as String).input(),
+      sessionExpirySeconds: map['sessionExpirySeconds'] == null ? null : (map['sessionExpirySeconds']! as int).input(),
+      tls: map['tls'] == null ? null : (TlsPropertiesResponse.fromMap((map['tls']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

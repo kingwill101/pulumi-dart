@@ -31,9 +31,9 @@ class DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s {
 
   factory DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s.fromMap(Map<String, dynamic> map) {
     return DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ContainerRecipeInstanceConfigurationBlockDeviceMapping {
 
   factory ContainerRecipeInstanceConfigurationBlockDeviceMapping.fromMap(Map<String, dynamic> map) {
     return ContainerRecipeInstanceConfigurationBlockDeviceMapping(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      ebs: map['ebs'] == null ? null : (ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs.fromMap((map['ebs'] as Map).cast<String, dynamic>())).input(),
-      noDevice: map['noDevice'] == null ? null : (map['noDevice'] as bool).input(),
-      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      ebs: map['ebs'] == null ? null : ((ContainerRecipeInstanceConfigurationBlockDeviceMappingEbs.fromMap((map['ebs']! as Map).cast<String, dynamic>())).input()).input(),
+      noDevice: map['noDevice'] == null ? null : ((map['noDevice'] as bool).input()).input(),
+      virtualName: map['virtualName'] == null ? null : ((map['virtualName'] as String).input()).input(),
     );
   }
 }

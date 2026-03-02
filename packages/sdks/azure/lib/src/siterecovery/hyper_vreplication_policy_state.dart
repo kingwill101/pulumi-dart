@@ -41,11 +41,11 @@ class HyperVReplicationPolicyState {
 
   factory HyperVReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      recoveryPointRetentionInHours: map['recoveryPointRetentionInHours'] == null ? null : (map['recoveryPointRetentionInHours'] as int).input(),
-      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId'] as String).input(),
-      replicationIntervalInSeconds: map['replicationIntervalInSeconds'] == null ? null : (map['replicationIntervalInSeconds'] as int).input(),
+      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      recoveryPointRetentionInHours: map['recoveryPointRetentionInHours'] == null ? null : (map['recoveryPointRetentionInHours']! as int).input(),
+      recoveryVaultId: map['recoveryVaultId'] == null ? null : (map['recoveryVaultId']! as String).input(),
+      replicationIntervalInSeconds: map['replicationIntervalInSeconds'] == null ? null : (map['replicationIntervalInSeconds']! as int).input(),
     );
   }
 }

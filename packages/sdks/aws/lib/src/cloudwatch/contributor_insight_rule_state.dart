@@ -51,13 +51,13 @@ class ContributorInsightRuleState {
 
   factory ContributorInsightRuleState.fromMap(Map<String, dynamic> map) {
     return ContributorInsightRuleState(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
-      ruleDefinition: map['ruleDefinition'] == null ? null : (map['ruleDefinition'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      ruleState: map['ruleState'] == null ? null : (map['ruleState'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
+      ruleDefinition: map['ruleDefinition'] == null ? null : ((map['ruleDefinition'] as String).input()).input(),
+      ruleName: map['ruleName'] == null ? null : ((map['ruleName'] as String).input()).input(),
+      ruleState: map['ruleState'] == null ? null : ((map['ruleState'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

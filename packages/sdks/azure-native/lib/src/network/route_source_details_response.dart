@@ -30,9 +30,9 @@ class RouteSourceDetailsResponse {
 
   factory RouteSourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return RouteSourceDetailsResponse(
-      circuit: map['circuit'] == null ? null : (map['circuit'] as String).input(),
-      pri: map['pri'] == null ? null : (map['pri'] as String).input(),
-      sec: map['sec'] == null ? null : (map['sec'] as String).input(),
+      circuit: map['circuit'] == null ? null : (map['circuit']! as String).input(),
+      pri: map['pri'] == null ? null : (map['pri']! as String).input(),
+      sec: map['sec'] == null ? null : (map['sec']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class WebAclRuleOverrideAction {
 
   factory WebAclRuleOverrideAction.fromMap(Map<String, dynamic> map) {
     return WebAclRuleOverrideAction(
-      count: map['count'] == null ? null : ((map['count'] as Map).cast<String, dynamic>()).input(),
-      none: map['none'] == null ? null : ((map['none'] as Map).cast<String, dynamic>()).input(),
+      count: map['count'] == null ? null : (((map['count'] as Map).cast<String, dynamic>()).input()).input(),
+      none: map['none'] == null ? null : (((map['none'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

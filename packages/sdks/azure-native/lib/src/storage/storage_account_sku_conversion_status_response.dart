@@ -39,7 +39,7 @@ class StorageAccountSkuConversionStatusResponse {
       endTime: (map['endTime'] as String).input(),
       skuConversionStatus: (map['skuConversionStatus'] as String).input(),
       startTime: (map['startTime'] as String).input(),
-      targetSkuName: map['targetSkuName'] == null ? null : (map['targetSkuName'] as String).input(),
+      targetSkuName: map['targetSkuName'] == null ? null : (map['targetSkuName']! as String).input(),
     );
   }
 }

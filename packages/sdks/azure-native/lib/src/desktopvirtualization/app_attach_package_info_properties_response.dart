@@ -98,22 +98,22 @@ class AppAttachPackageInfoPropertiesResponse {
 
   factory AppAttachPackageInfoPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AppAttachPackageInfoPropertiesResponse(
-      certificateExpiry: map['certificateExpiry'] == null ? null : (map['certificateExpiry'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      imagePath: map['imagePath'] == null ? null : (map['imagePath'] as String).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive'] as bool).input(),
-      isPackageTimestamped: map['isPackageTimestamped'] == null ? null : (map['isPackageTimestamped'] as String).input(),
-      isRegularRegistration: map['isRegularRegistration'] == null ? null : (map['isRegularRegistration'] as bool).input(),
-      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated'] as String).input(),
-      packageAlias: map['packageAlias'] == null ? null : (map['packageAlias'] as String).input(),
-      packageApplications: map['packageApplications'] == null ? null : (pulumi.Input.decodeList<MsixPackageApplicationsResponse>(map['packageApplications'], (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packageDependencies: map['packageDependencies'] == null ? null : (pulumi.Input.decodeList<MsixPackageDependenciesResponse>(map['packageDependencies'], (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      packageFamilyName: map['packageFamilyName'] == null ? null : (map['packageFamilyName'] as String).input(),
-      packageFullName: map['packageFullName'] == null ? null : (map['packageFullName'] as String).input(),
-      packageName: map['packageName'] == null ? null : (map['packageName'] as String).input(),
-      packageRelativePath: map['packageRelativePath'] == null ? null : (map['packageRelativePath'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      certificateExpiry: map['certificateExpiry'] == null ? null : (map['certificateExpiry']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      imagePath: map['imagePath'] == null ? null : (map['imagePath']! as String).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive']! as bool).input(),
+      isPackageTimestamped: map['isPackageTimestamped'] == null ? null : (map['isPackageTimestamped']! as String).input(),
+      isRegularRegistration: map['isRegularRegistration'] == null ? null : (map['isRegularRegistration']! as bool).input(),
+      lastUpdated: map['lastUpdated'] == null ? null : (map['lastUpdated']! as String).input(),
+      packageAlias: map['packageAlias'] == null ? null : (map['packageAlias']! as String).input(),
+      packageApplications: map['packageApplications'] == null ? null : (pulumi.Input.decodeList<MsixPackageApplicationsResponse>(map['packageApplications']!, (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageDependencies: map['packageDependencies'] == null ? null : (pulumi.Input.decodeList<MsixPackageDependenciesResponse>(map['packageDependencies']!, (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      packageFamilyName: map['packageFamilyName'] == null ? null : (map['packageFamilyName']! as String).input(),
+      packageFullName: map['packageFullName'] == null ? null : (map['packageFullName']! as String).input(),
+      packageName: map['packageName'] == null ? null : (map['packageName']! as String).input(),
+      packageRelativePath: map['packageRelativePath'] == null ? null : (map['packageRelativePath']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

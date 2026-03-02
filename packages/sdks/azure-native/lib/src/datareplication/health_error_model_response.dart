@@ -89,11 +89,11 @@ class HealthErrorModelResponse {
 
   factory HealthErrorModelResponse.fromMap(Map<String, dynamic> map) {
     return HealthErrorModelResponse(
-      affectedResourceCorrelationIds: map['affectedResourceCorrelationIds'] == null ? null : ((map['affectedResourceCorrelationIds'] as List).cast<String>()).input(),
-      affectedResourceType: map['affectedResourceType'] == null ? null : (map['affectedResourceType'] as String).input(),
+      affectedResourceCorrelationIds: map['affectedResourceCorrelationIds'] == null ? null : ((map['affectedResourceCorrelationIds']! as List).cast<String>()).input(),
+      affectedResourceType: map['affectedResourceType'] == null ? null : (map['affectedResourceType']! as String).input(),
       category: (map['category'] as String).input(),
       causes: (map['causes'] as String).input(),
-      childErrors: map['childErrors'] == null ? null : (pulumi.Input.decodeList<InnerHealthErrorModelResponse>(map['childErrors'], (value) => InnerHealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      childErrors: map['childErrors'] == null ? null : (pulumi.Input.decodeList<InnerHealthErrorModelResponse>(map['childErrors']!, (value) => InnerHealthErrorModelResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       code: (map['code'] as String).input(),
       creationTime: (map['creationTime'] as String).input(),
       healthCategory: (map['healthCategory'] as String).input(),

@@ -41,11 +41,11 @@ class RandomShuffleState {
 
   factory RandomShuffleState.fromMap(Map<String, dynamic> map) {
     return RandomShuffleState(
-      inputs: map['inputs'] == null ? null : ((map['inputs'] as List).cast<String>()).input(),
-      keepers: map['keepers'] == null ? null : ((map['keepers'] as Map).cast<String, String>()).input(),
-      resultCount: map['resultCount'] == null ? null : (map['resultCount'] as int).input(),
-      results: map['results'] == null ? null : ((map['results'] as List).cast<String>()).input(),
-      seed: map['seed'] == null ? null : (map['seed'] as String).input(),
+      inputs: map['inputs'] == null ? null : ((map['inputs']! as List).cast<String>()).input(),
+      keepers: map['keepers'] == null ? null : ((map['keepers']! as Map).cast<String, String>()).input(),
+      resultCount: map['resultCount'] == null ? null : (map['resultCount']! as int).input(),
+      results: map['results'] == null ? null : ((map['results']! as List).cast<String>()).input(),
+      seed: map['seed'] == null ? null : (map['seed']! as String).input(),
     );
   }
 }

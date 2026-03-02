@@ -27,8 +27,8 @@ class DownwardAPIVolumeSourcePatch {
 
   factory DownwardAPIVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return DownwardAPIVolumeSourcePatch(
-      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode'] as int).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFilePatch>(map['items'], (value) => DownwardAPIVolumeFilePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultMode: map['defaultMode'] == null ? null : (map['defaultMode']! as int).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<DownwardAPIVolumeFilePatch>(map['items']!, (value) => DownwardAPIVolumeFilePatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

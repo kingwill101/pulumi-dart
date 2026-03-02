@@ -31,9 +31,9 @@ class IoTHubCloudToDevice {
 
   factory IoTHubCloudToDevice.fromMap(Map<String, dynamic> map) {
     return IoTHubCloudToDevice(
-      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl'] as String).input(),
-      feedbacks: map['feedbacks'] == null ? null : (pulumi.Input.decodeList<IoTHubCloudToDeviceFeedback>(map['feedbacks'], (value) => IoTHubCloudToDeviceFeedback.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount'] as int).input(),
+      defaultTtl: map['defaultTtl'] == null ? null : (map['defaultTtl']! as String).input(),
+      feedbacks: map['feedbacks'] == null ? null : (pulumi.Input.decodeList<IoTHubCloudToDeviceFeedback>(map['feedbacks']!, (value) => IoTHubCloudToDeviceFeedback.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxDeliveryCount: map['maxDeliveryCount'] == null ? null : (map['maxDeliveryCount']! as int).input(),
     );
   }
 }

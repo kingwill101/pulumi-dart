@@ -65,11 +65,11 @@ class NetworkAclIngress {
   factory NetworkAclIngress.fromMap(Map<String, dynamic> map) {
     return NetworkAclIngress(
       action: (map['action'] as String).input(),
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
       fromPort: (map['fromPort'] as int).input(),
-      icmpCode: map['icmpCode'] == null ? null : (map['icmpCode'] as int).input(),
-      icmpType: map['icmpType'] == null ? null : (map['icmpType'] as int).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      icmpCode: map['icmpCode'] == null ? null : ((map['icmpCode'] as int).input()).input(),
+      icmpType: map['icmpType'] == null ? null : ((map['icmpType'] as int).input()).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
       protocol: (map['protocol'] as String).input(),
       ruleNo: (map['ruleNo'] as int).input(),
       toPort: (map['toPort'] as int).input(),

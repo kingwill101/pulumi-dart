@@ -25,8 +25,8 @@ class DataLakeSettingsCreateTableDefaultPermission {
 
   factory DataLakeSettingsCreateTableDefaultPermission.fromMap(Map<String, dynamic> map) {
     return DataLakeSettingsCreateTableDefaultPermission(
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
+      permissions: map['permissions'] == null ? null : (((map['permissions'] as List).cast<String>()).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
     );
   }
 }

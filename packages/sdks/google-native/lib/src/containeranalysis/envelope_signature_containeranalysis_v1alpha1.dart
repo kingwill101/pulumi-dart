@@ -26,8 +26,8 @@ class EnvelopeSignatureContaineranalysisV1alpha1 {
 
   factory EnvelopeSignatureContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
     return EnvelopeSignatureContaineranalysisV1alpha1(
-      keyid: map['keyid'] == null ? null : (map['keyid'] as String).input(),
-      sig: map['sig'] == null ? null : (map['sig'] as String).input(),
+      keyid: map['keyid'] == null ? null : (map['keyid']! as String).input(),
+      sig: map['sig'] == null ? null : (map['sig']! as String).input(),
     );
   }
 }

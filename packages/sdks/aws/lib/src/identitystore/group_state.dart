@@ -54,13 +54,13 @@ class GroupState {
 
   factory GroupState.fromMap(Map<String, dynamic> map) {
     return GroupState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      externalIds: map['externalIds'] == null ? null : (pulumi.Input.decodeList<GroupExternalId>(map['externalIds'], (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      identityStoreId: map['identityStoreId'] == null ? null : (map['identityStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName'] as String).input()).input(),
+      externalIds: map['externalIds'] == null ? null : ((pulumi.Input.decodeList<GroupExternalId>(map['externalIds']!, (value) => GroupExternalId.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
+      identityStoreId: map['identityStoreId'] == null ? null : ((map['identityStoreId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class PushConfig {
 
   factory PushConfig.fromMap(Map<String, dynamic> map) {
     return PushConfig(
-      attributes: map['attributes'] == null ? null : ((map['attributes'] as Map).cast<String, String>()).input(),
-      noWrapper: map['noWrapper'] == null ? null : (NoWrapper.fromMap((map['noWrapper'] as Map).cast<String, dynamic>())).input(),
-      oidcToken: map['oidcToken'] == null ? null : (OidcToken.fromMap((map['oidcToken'] as Map).cast<String, dynamic>())).input(),
-      pubsubWrapper: map['pubsubWrapper'] == null ? null : ((map['pubsubWrapper'] as Map).cast<String, dynamic>()).input(),
-      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint'] as String).input(),
+      attributes: map['attributes'] == null ? null : ((map['attributes']! as Map).cast<String, String>()).input(),
+      noWrapper: map['noWrapper'] == null ? null : (NoWrapper.fromMap((map['noWrapper']! as Map).cast<String, dynamic>())).input(),
+      oidcToken: map['oidcToken'] == null ? null : (OidcToken.fromMap((map['oidcToken']! as Map).cast<String, dynamic>())).input(),
+      pubsubWrapper: map['pubsubWrapper'] == null ? null : ((map['pubsubWrapper']! as Map).cast<String, dynamic>()).input(),
+      pushEndpoint: map['pushEndpoint'] == null ? null : (map['pushEndpoint']! as String).input(),
     );
   }
 }

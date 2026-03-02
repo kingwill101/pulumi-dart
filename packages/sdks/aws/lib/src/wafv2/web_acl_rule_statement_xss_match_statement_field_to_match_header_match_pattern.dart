@@ -30,9 +30,9 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern {
 
   factory WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementXssMatchStatementFieldToMatchHeaderMatchPattern(
-      all: map['all'] == null ? null : ((map['all'] as Map).cast<String, dynamic>()).input(),
-      excludedHeaders: map['excludedHeaders'] == null ? null : ((map['excludedHeaders'] as List).cast<String>()).input(),
-      includedHeaders: map['includedHeaders'] == null ? null : ((map['includedHeaders'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (((map['all'] as Map).cast<String, dynamic>()).input()).input(),
+      excludedHeaders: map['excludedHeaders'] == null ? null : (((map['excludedHeaders'] as List).cast<String>()).input()).input(),
+      includedHeaders: map['includedHeaders'] == null ? null : (((map['includedHeaders'] as List).cast<String>()).input()).input(),
     );
   }
 }

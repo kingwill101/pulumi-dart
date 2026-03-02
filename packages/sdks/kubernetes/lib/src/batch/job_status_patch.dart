@@ -88,17 +88,17 @@ class JobStatusPatch {
 
   factory JobStatusPatch.fromMap(Map<String, dynamic> map) {
     return JobStatusPatch(
-      active: map['active'] == null ? null : (map['active'] as int).input(),
-      completedIndexes: map['completedIndexes'] == null ? null : (map['completedIndexes'] as String).input(),
-      completionTime: map['completionTime'] == null ? null : (map['completionTime'] as String).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<JobConditionPatch>(map['conditions'], (value) => JobConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      failed: map['failed'] == null ? null : (map['failed'] as int).input(),
-      failedIndexes: map['failedIndexes'] == null ? null : (map['failedIndexes'] as String).input(),
-      ready: map['ready'] == null ? null : (map['ready'] as int).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      succeeded: map['succeeded'] == null ? null : (map['succeeded'] as int).input(),
-      terminating: map['terminating'] == null ? null : (map['terminating'] as int).input(),
-      uncountedTerminatedPods: map['uncountedTerminatedPods'] == null ? null : (UncountedTerminatedPodsPatch.fromMap((map['uncountedTerminatedPods'] as Map).cast<String, dynamic>())).input(),
+      active: map['active'] == null ? null : (map['active']! as int).input(),
+      completedIndexes: map['completedIndexes'] == null ? null : (map['completedIndexes']! as String).input(),
+      completionTime: map['completionTime'] == null ? null : (map['completionTime']! as String).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<JobConditionPatch>(map['conditions']!, (value) => JobConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      failed: map['failed'] == null ? null : (map['failed']! as int).input(),
+      failedIndexes: map['failedIndexes'] == null ? null : (map['failedIndexes']! as String).input(),
+      ready: map['ready'] == null ? null : (map['ready']! as int).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      succeeded: map['succeeded'] == null ? null : (map['succeeded']! as int).input(),
+      terminating: map['terminating'] == null ? null : (map['terminating']! as int).input(),
+      uncountedTerminatedPods: map['uncountedTerminatedPods'] == null ? null : (UncountedTerminatedPodsPatch.fromMap((map['uncountedTerminatedPods']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

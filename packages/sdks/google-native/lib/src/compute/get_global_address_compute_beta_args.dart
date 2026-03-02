@@ -28,7 +28,7 @@ class GetGlobalAddressComputeBetaArgs {
   factory GetGlobalAddressComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalAddressComputeBetaArgs(
       address: (map['address'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

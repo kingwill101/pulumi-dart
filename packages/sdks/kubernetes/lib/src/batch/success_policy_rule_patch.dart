@@ -26,8 +26,8 @@ class SuccessPolicyRulePatch {
 
   factory SuccessPolicyRulePatch.fromMap(Map<String, dynamic> map) {
     return SuccessPolicyRulePatch(
-      succeededCount: map['succeededCount'] == null ? null : (map['succeededCount'] as int).input(),
-      succeededIndexes: map['succeededIndexes'] == null ? null : (map['succeededIndexes'] as String).input(),
+      succeededCount: map['succeededCount'] == null ? null : (map['succeededCount']! as int).input(),
+      succeededIndexes: map['succeededIndexes'] == null ? null : (map['succeededIndexes']! as String).input(),
     );
   }
 }

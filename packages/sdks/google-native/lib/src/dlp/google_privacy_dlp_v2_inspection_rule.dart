@@ -28,8 +28,8 @@ class GooglePrivacyDlpV2InspectionRule {
 
   factory GooglePrivacyDlpV2InspectionRule.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectionRule(
-      exclusionRule: map['exclusionRule'] == null ? null : (GooglePrivacyDlpV2ExclusionRule.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>())).input(),
-      hotwordRule: map['hotwordRule'] == null ? null : (GooglePrivacyDlpV2HotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>())).input(),
+      exclusionRule: map['exclusionRule'] == null ? null : (GooglePrivacyDlpV2ExclusionRule.fromMap((map['exclusionRule']! as Map).cast<String, dynamic>())).input(),
+      hotwordRule: map['hotwordRule'] == null ? null : (GooglePrivacyDlpV2HotwordRule.fromMap((map['hotwordRule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

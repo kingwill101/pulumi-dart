@@ -30,9 +30,9 @@ class KubernetesClusterNetworkProfileNatGatewayProfile {
 
   factory KubernetesClusterNetworkProfileNatGatewayProfile.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNetworkProfileNatGatewayProfile(
-      effectiveOutboundIps: map['effectiveOutboundIps'] == null ? null : ((map['effectiveOutboundIps'] as List).cast<String>()).input(),
-      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes'] as int).input(),
-      managedOutboundIpCount: map['managedOutboundIpCount'] == null ? null : (map['managedOutboundIpCount'] as int).input(),
+      effectiveOutboundIps: map['effectiveOutboundIps'] == null ? null : ((map['effectiveOutboundIps']! as List).cast<String>()).input(),
+      idleTimeoutInMinutes: map['idleTimeoutInMinutes'] == null ? null : (map['idleTimeoutInMinutes']! as int).input(),
+      managedOutboundIpCount: map['managedOutboundIpCount'] == null ? null : (map['managedOutboundIpCount']! as int).input(),
     );
   }
 }

@@ -131,20 +131,20 @@ class TrafficQosRuleArgs {
 
   factory TrafficQosRuleArgs.fromMap(Map<String, dynamic> map) {
     return TrafficQosRuleArgs(
-      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr'] as String).input(),
-      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : (map['dstIpv6Cidr'] as String).input(),
-      dstPortRange: map['dstPortRange'] == null ? null : (map['dstPortRange'] as String).input(),
-      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp'] as int).input(),
+      dstCidr: map['dstCidr'] == null ? null : (map['dstCidr']! as String).input(),
+      dstIpv6Cidr: map['dstIpv6Cidr'] == null ? null : (map['dstIpv6Cidr']! as String).input(),
+      dstPortRange: map['dstPortRange'] == null ? null : (map['dstPortRange']! as String).input(),
+      matchDscp: map['matchDscp'] == null ? null : (map['matchDscp']! as int).input(),
       priority: (map['priority'] as int).input(),
       protocol: (map['protocol'] as String).input(),
       qosId: (map['qosId'] as String).input(),
       queueId: (map['queueId'] as String).input(),
-      remarkingDscp: map['remarkingDscp'] == null ? null : (map['remarkingDscp'] as int).input(),
-      ruleDescription: map['ruleDescription'] == null ? null : (map['ruleDescription'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr'] as String).input(),
-      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : (map['srcIpv6Cidr'] as String).input(),
-      srcPortRange: map['srcPortRange'] == null ? null : (map['srcPortRange'] as String).input(),
+      remarkingDscp: map['remarkingDscp'] == null ? null : (map['remarkingDscp']! as int).input(),
+      ruleDescription: map['ruleDescription'] == null ? null : (map['ruleDescription']! as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      srcCidr: map['srcCidr'] == null ? null : (map['srcCidr']! as String).input(),
+      srcIpv6Cidr: map['srcIpv6Cidr'] == null ? null : (map['srcIpv6Cidr']! as String).input(),
+      srcPortRange: map['srcPortRange'] == null ? null : (map['srcPortRange']! as String).input(),
     );
   }
 }

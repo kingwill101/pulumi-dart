@@ -77,18 +77,18 @@ class CacheUsernameDownloadSettingsResponse {
 
   factory CacheUsernameDownloadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CacheUsernameDownloadSettingsResponse(
-      autoDownloadCertificate: map['autoDownloadCertificate'] == null ? null : (map['autoDownloadCertificate'] as bool).input(),
-      caCertificateURI: map['caCertificateURI'] == null ? null : (map['caCertificateURI'] as String).input(),
-      credentials: map['credentials'] == null ? null : (CacheUsernameDownloadSettingsResponseCredentials.fromMap((map['credentials'] as Map).cast<String, dynamic>())).input(),
-      encryptLdapConnection: map['encryptLdapConnection'] == null ? null : (map['encryptLdapConnection'] as bool).input(),
-      extendedGroups: map['extendedGroups'] == null ? null : (map['extendedGroups'] as bool).input(),
-      groupFileURI: map['groupFileURI'] == null ? null : (map['groupFileURI'] as String).input(),
-      ldapBaseDN: map['ldapBaseDN'] == null ? null : (map['ldapBaseDN'] as String).input(),
-      ldapServer: map['ldapServer'] == null ? null : (map['ldapServer'] as String).input(),
-      requireValidCertificate: map['requireValidCertificate'] == null ? null : (map['requireValidCertificate'] as bool).input(),
-      userFileURI: map['userFileURI'] == null ? null : (map['userFileURI'] as String).input(),
+      autoDownloadCertificate: map['autoDownloadCertificate'] == null ? null : (map['autoDownloadCertificate']! as bool).input(),
+      caCertificateURI: map['caCertificateURI'] == null ? null : (map['caCertificateURI']! as String).input(),
+      credentials: map['credentials'] == null ? null : (CacheUsernameDownloadSettingsResponseCredentials.fromMap((map['credentials']! as Map).cast<String, dynamic>())).input(),
+      encryptLdapConnection: map['encryptLdapConnection'] == null ? null : (map['encryptLdapConnection']! as bool).input(),
+      extendedGroups: map['extendedGroups'] == null ? null : (map['extendedGroups']! as bool).input(),
+      groupFileURI: map['groupFileURI'] == null ? null : (map['groupFileURI']! as String).input(),
+      ldapBaseDN: map['ldapBaseDN'] == null ? null : (map['ldapBaseDN']! as String).input(),
+      ldapServer: map['ldapServer'] == null ? null : (map['ldapServer']! as String).input(),
+      requireValidCertificate: map['requireValidCertificate'] == null ? null : (map['requireValidCertificate']! as bool).input(),
+      userFileURI: map['userFileURI'] == null ? null : (map['userFileURI']! as String).input(),
       usernameDownloaded: (map['usernameDownloaded'] as String).input(),
-      usernameSource: map['usernameSource'] == null ? null : (map['usernameSource'] as String).input(),
+      usernameSource: map['usernameSource'] == null ? null : (map['usernameSource']! as String).input(),
     );
   }
 }

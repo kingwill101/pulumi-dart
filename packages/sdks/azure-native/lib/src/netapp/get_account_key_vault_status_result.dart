@@ -37,10 +37,10 @@ class GetAccountKeyVaultStatusResult {
 
   factory GetAccountKeyVaultStatusResult.fromMap(Map<String, dynamic> map) {
     return GetAccountKeyVaultStatusResult(
-      keyName: map['keyName'] == null ? null : map['keyName'] as String,
-      keyVaultPrivateEndpoints: map['keyVaultPrivateEndpoints'] == null ? null : pulumi.Input.decodeList<KeyVaultPrivateEndpointResponse>(map['keyVaultPrivateEndpoints'], (value) => KeyVaultPrivateEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : map['keyVaultResourceId'] as String,
-      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri'] as String,
+      keyName: map['keyName'] == null ? null : map['keyName']! as String,
+      keyVaultPrivateEndpoints: map['keyVaultPrivateEndpoints'] == null ? null : pulumi.Input.decodeList<KeyVaultPrivateEndpointResponse>(map['keyVaultPrivateEndpoints']!, (value) => KeyVaultPrivateEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
+      keyVaultResourceId: map['keyVaultResourceId'] == null ? null : map['keyVaultResourceId']! as String,
+      keyVaultUri: map['keyVaultUri'] == null ? null : map['keyVaultUri']! as String,
     );
   }
 }

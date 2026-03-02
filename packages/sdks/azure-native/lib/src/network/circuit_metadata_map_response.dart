@@ -30,9 +30,9 @@ class CircuitMetadataMapResponse {
 
   factory CircuitMetadataMapResponse.fromMap(Map<String, dynamic> map) {
     return CircuitMetadataMapResponse(
-      link: map['link'] == null ? null : (map['link'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      link: map['link'] == null ? null : (map['link']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

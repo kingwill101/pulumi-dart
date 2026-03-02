@@ -59,14 +59,14 @@ class ImageDataDisk {
 
   factory ImageDataDisk.fromMap(Map<String, dynamic> map) {
     return ImageDataDisk(
-      blobUri: map['blobUri'] == null ? null : (map['blobUri'] as String).input(),
-      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching'] as String)).input(),
-      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet'] as Map).cast<String, dynamic>())).input(),
-      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB'] as int).input(),
+      blobUri: map['blobUri'] == null ? null : (map['blobUri']! as String).input(),
+      caching: map['caching'] == null ? null : (CachingTypes.fromValue(map['caching']! as String)).input(),
+      diskEncryptionSet: map['diskEncryptionSet'] == null ? null : (DiskEncryptionSetParameters.fromMap((map['diskEncryptionSet']! as Map).cast<String, dynamic>())).input(),
+      diskSizeGB: map['diskSizeGB'] == null ? null : (map['diskSizeGB']! as int).input(),
       lun: (map['lun'] as int).input(),
-      managedDisk: map['managedDisk'] == null ? null : (SubResource.fromMap((map['managedDisk'] as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (SubResource.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
+      managedDisk: map['managedDisk'] == null ? null : (SubResource.fromMap((map['managedDisk']! as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (SubResource.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
     );
   }
 }

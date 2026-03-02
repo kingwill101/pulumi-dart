@@ -33,9 +33,9 @@ class GoogleCloudDialogflowCxV3NluSettings {
 
   factory GoogleCloudDialogflowCxV3NluSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3NluSettings(
-      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold'] as double).input(),
-      modelTrainingMode: map['modelTrainingMode'] == null ? null : (GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode.fromValue(map['modelTrainingMode'] as String)).input(),
-      modelType: map['modelType'] == null ? null : (GoogleCloudDialogflowCxV3NluSettingsModelType.fromValue(map['modelType'] as String)).input(),
+      classificationThreshold: map['classificationThreshold'] == null ? null : (map['classificationThreshold']! as double).input(),
+      modelTrainingMode: map['modelTrainingMode'] == null ? null : (GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode.fromValue(map['modelTrainingMode']! as String)).input(),
+      modelType: map['modelType'] == null ? null : (GoogleCloudDialogflowCxV3NluSettingsModelType.fromValue(map['modelType']! as String)).input(),
     );
   }
 }

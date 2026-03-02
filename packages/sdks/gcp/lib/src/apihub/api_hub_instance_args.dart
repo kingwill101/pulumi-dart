@@ -60,12 +60,12 @@ class ApiHubInstanceArgs {
 
   factory ApiHubInstanceArgs.fromMap(Map<String, dynamic> map) {
     return ApiHubInstanceArgs(
-      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : (map['apiHubInstanceId'] as String).input(),
+      apiHubInstanceId: map['apiHubInstanceId'] == null ? null : (map['apiHubInstanceId']! as String).input(),
       config: (ApiHubInstanceConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

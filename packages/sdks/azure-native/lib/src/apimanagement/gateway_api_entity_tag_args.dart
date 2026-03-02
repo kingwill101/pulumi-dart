@@ -45,9 +45,9 @@ class GatewayApiEntityTagArgs {
 
   factory GatewayApiEntityTagArgs.fromMap(Map<String, dynamic> map) {
     return GatewayApiEntityTagArgs(
-      apiId: map['apiId'] == null ? null : (map['apiId'] as String).input(),
+      apiId: map['apiId'] == null ? null : (map['apiId']! as String).input(),
       gatewayId: (map['gatewayId'] as String).input(),
-      provisioningState: map['provisioningState'] == null ? null : (ProvisioningState.fromValue(map['provisioningState'] as String)).input(),
+      provisioningState: map['provisioningState'] == null ? null : (ProvisioningState.fromValue(map['provisioningState']! as String)).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

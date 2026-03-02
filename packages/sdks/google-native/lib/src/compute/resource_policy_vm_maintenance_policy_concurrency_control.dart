@@ -20,7 +20,7 @@ class ResourcePolicyVmMaintenancePolicyConcurrencyControl {
 
   factory ResourcePolicyVmMaintenancePolicyConcurrencyControl.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyConcurrencyControl(
-      concurrencyLimit: map['concurrencyLimit'] == null ? null : (map['concurrencyLimit'] as int).input(),
+      concurrencyLimit: map['concurrencyLimit'] == null ? null : (map['concurrencyLimit']! as int).input(),
     );
   }
 }

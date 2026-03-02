@@ -29,8 +29,8 @@ class FleetDefaultClusterConfig {
 
   factory FleetDefaultClusterConfig.fromMap(Map<String, dynamic> map) {
     return FleetDefaultClusterConfig(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>())).input(),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : (FleetDefaultClusterConfigSecurityPostureConfig.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>())).input(),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : (FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig']! as Map).cast<String, dynamic>())).input(),
+      securityPostureConfig: map['securityPostureConfig'] == null ? null : (FleetDefaultClusterConfigSecurityPostureConfig.fromMap((map['securityPostureConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

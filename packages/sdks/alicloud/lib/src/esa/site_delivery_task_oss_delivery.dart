@@ -32,10 +32,10 @@ class SiteDeliveryTaskOssDelivery {
 
   factory SiteDeliveryTaskOssDelivery.fromMap(Map<String, dynamic> map) {
     return SiteDeliveryTaskOssDelivery(
-      aliuid: map['aliuid'] == null ? null : (map['aliuid'] as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      prefixPath: map['prefixPath'] == null ? null : (map['prefixPath'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      aliuid: map['aliuid'] == null ? null : (map['aliuid']! as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      prefixPath: map['prefixPath'] == null ? null : (map['prefixPath']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

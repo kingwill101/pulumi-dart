@@ -32,9 +32,9 @@ class SqlAvailabilityGroupReplicaResourceProperties {
 
   factory SqlAvailabilityGroupReplicaResourceProperties.fromMap(Map<String, dynamic> map) {
     return SqlAvailabilityGroupReplicaResourceProperties(
-      configure: map['configure'] == null ? null : (AvailabilityGroupConfigure.fromMap((map['configure'] as Map).cast<String, dynamic>())).input(),
-      replicaName: map['replicaName'] == null ? null : (map['replicaName'] as String).input(),
-      replicaResourceId: map['replicaResourceId'] == null ? null : (map['replicaResourceId'] as String).input(),
+      configure: map['configure'] == null ? null : (AvailabilityGroupConfigure.fromMap((map['configure']! as Map).cast<String, dynamic>())).input(),
+      replicaName: map['replicaName'] == null ? null : (map['replicaName']! as String).input(),
+      replicaResourceId: map['replicaResourceId'] == null ? null : (map['replicaResourceId']! as String).input(),
     );
   }
 }

@@ -63,13 +63,13 @@ class WebAclRuleGroupAssociationArgs {
 
   factory WebAclRuleGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
     return WebAclRuleGroupAssociationArgs(
-      managedRuleGroup: map['managedRuleGroup'] == null ? null : (WebAclRuleGroupAssociationManagedRuleGroup.fromMap((map['managedRuleGroup'] as Map).cast<String, dynamic>())).input(),
-      overrideAction: map['overrideAction'] == null ? null : (map['overrideAction'] as String).input(),
+      managedRuleGroup: map['managedRuleGroup'] == null ? null : ((WebAclRuleGroupAssociationManagedRuleGroup.fromMap((map['managedRuleGroup']! as Map).cast<String, dynamic>())).input()).input(),
+      overrideAction: map['overrideAction'] == null ? null : ((map['overrideAction'] as String).input()).input(),
       priority: (map['priority'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      ruleGroupReference: map['ruleGroupReference'] == null ? null : (WebAclRuleGroupAssociationRuleGroupReference.fromMap((map['ruleGroupReference'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      ruleGroupReference: map['ruleGroupReference'] == null ? null : ((WebAclRuleGroupAssociationRuleGroupReference.fromMap((map['ruleGroupReference']! as Map).cast<String, dynamic>())).input()).input(),
       ruleName: (map['ruleName'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (WebAclRuleGroupAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((WebAclRuleGroupAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
       webAclArn: (map['webAclArn'] as String).input(),
     );
   }

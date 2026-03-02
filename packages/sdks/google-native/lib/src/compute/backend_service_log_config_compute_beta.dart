@@ -37,10 +37,10 @@ class BackendServiceLogConfigComputeBeta {
 
   factory BackendServiceLogConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return BackendServiceLogConfigComputeBeta(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      optionalFields: map['optionalFields'] == null ? null : ((map['optionalFields'] as List).cast<String>()).input(),
-      optionalMode: map['optionalMode'] == null ? null : (BackendServiceLogConfigOptionalModeComputeBeta.fromValue(map['optionalMode'] as String)).input(),
-      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate'] as double).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      optionalFields: map['optionalFields'] == null ? null : ((map['optionalFields']! as List).cast<String>()).input(),
+      optionalMode: map['optionalMode'] == null ? null : (BackendServiceLogConfigOptionalModeComputeBeta.fromValue(map['optionalMode']! as String)).input(),
+      sampleRate: map['sampleRate'] == null ? null : (map['sampleRate']! as double).input(),
     );
   }
 }

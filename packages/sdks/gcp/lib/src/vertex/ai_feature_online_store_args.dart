@@ -82,16 +82,16 @@ class AiFeatureOnlineStoreArgs {
 
   factory AiFeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreArgs(
-      bigtable: map['bigtable'] == null ? null : (AiFeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>())).input(),
-      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint'] as Map).cast<String, dynamic>())).input(),
-      embeddingManagement: map['embeddingManagement'] == null ? null : (AiFeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement'] as Map).cast<String, dynamic>())).input(),
-      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureOnlineStoreEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optimized: map['optimized'] == null ? null : ((map['optimized'] as Map).cast<String, dynamic>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      bigtable: map['bigtable'] == null ? null : (AiFeatureOnlineStoreBigtable.fromMap((map['bigtable']! as Map).cast<String, dynamic>())).input(),
+      dedicatedServingEndpoint: map['dedicatedServingEndpoint'] == null ? null : (AiFeatureOnlineStoreDedicatedServingEndpoint.fromMap((map['dedicatedServingEndpoint']! as Map).cast<String, dynamic>())).input(),
+      embeddingManagement: map['embeddingManagement'] == null ? null : (AiFeatureOnlineStoreEmbeddingManagement.fromMap((map['embeddingManagement']! as Map).cast<String, dynamic>())).input(),
+      encryptionSpec: map['encryptionSpec'] == null ? null : (AiFeatureOnlineStoreEncryptionSpec.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>())).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optimized: map['optimized'] == null ? null : ((map['optimized']! as Map).cast<String, dynamic>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

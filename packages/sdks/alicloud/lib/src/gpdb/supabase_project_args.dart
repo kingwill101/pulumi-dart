@@ -71,11 +71,11 @@ class SupabaseProjectArgs {
   factory SupabaseProjectArgs.fromMap(Map<String, dynamic> map) {
     return SupabaseProjectArgs(
       accountPassword: (map['accountPassword'] as String).input(),
-      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel'] as String).input(),
+      diskPerformanceLevel: map['diskPerformanceLevel'] == null ? null : (map['diskPerformanceLevel']! as String).input(),
       projectName: (map['projectName'] as String).input(),
       projectSpec: (map['projectSpec'] as String).input(),
       securityIpLists: ((map['securityIpLists'] as List).cast<String>()).input(),
-      storageSize: map['storageSize'] == null ? null : (map['storageSize'] as int).input(),
+      storageSize: map['storageSize'] == null ? null : (map['storageSize']! as int).input(),
       vpcId: (map['vpcId'] as String).input(),
       vswitchId: (map['vswitchId'] as String).input(),
       zoneId: (map['zoneId'] as String).input(),

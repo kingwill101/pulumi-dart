@@ -45,11 +45,11 @@ class LinuxVirtualMachineGalleryApplication {
 
   factory LinuxVirtualMachineGalleryApplication.fromMap(Map<String, dynamic> map) {
     return LinuxVirtualMachineGalleryApplication(
-      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled'] as bool).input(),
-      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      treatFailureAsDeploymentFailureEnabled: map['treatFailureAsDeploymentFailureEnabled'] == null ? null : (map['treatFailureAsDeploymentFailureEnabled'] as bool).input(),
+      automaticUpgradeEnabled: map['automaticUpgradeEnabled'] == null ? null : (map['automaticUpgradeEnabled']! as bool).input(),
+      configurationBlobUri: map['configurationBlobUri'] == null ? null : (map['configurationBlobUri']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      treatFailureAsDeploymentFailureEnabled: map['treatFailureAsDeploymentFailureEnabled'] == null ? null : (map['treatFailureAsDeploymentFailureEnabled']! as bool).input(),
       versionId: (map['versionId'] as String).input(),
     );
   }

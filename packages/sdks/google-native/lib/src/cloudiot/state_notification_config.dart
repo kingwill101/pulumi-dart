@@ -21,7 +21,7 @@ class StateNotificationConfig {
 
   factory StateNotificationConfig.fromMap(Map<String, dynamic> map) {
     return StateNotificationConfig(
-      pubsubTopicName: map['pubsubTopicName'] == null ? null : (map['pubsubTopicName'] as String).input(),
+      pubsubTopicName: map['pubsubTopicName'] == null ? null : (map['pubsubTopicName']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class BatchRuntimeInfoApproximateUsage {
 
   factory BatchRuntimeInfoApproximateUsage.fromMap(Map<String, dynamic> map) {
     return BatchRuntimeInfoApproximateUsage(
-      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType'] as String).input(),
-      milliAcceleratorSeconds: map['milliAcceleratorSeconds'] == null ? null : (map['milliAcceleratorSeconds'] as String).input(),
-      milliDcuSeconds: map['milliDcuSeconds'] == null ? null : (map['milliDcuSeconds'] as String).input(),
-      shuffleStorageGbSeconds: map['shuffleStorageGbSeconds'] == null ? null : (map['shuffleStorageGbSeconds'] as String).input(),
+      acceleratorType: map['acceleratorType'] == null ? null : (map['acceleratorType']! as String).input(),
+      milliAcceleratorSeconds: map['milliAcceleratorSeconds'] == null ? null : (map['milliAcceleratorSeconds']! as String).input(),
+      milliDcuSeconds: map['milliDcuSeconds'] == null ? null : (map['milliDcuSeconds']! as String).input(),
+      shuffleStorageGbSeconds: map['shuffleStorageGbSeconds'] == null ? null : (map['shuffleStorageGbSeconds']! as String).input(),
     );
   }
 }

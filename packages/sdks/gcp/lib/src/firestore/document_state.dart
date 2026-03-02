@@ -63,15 +63,15 @@ class DocumentState {
 
   factory DocumentState.fromMap(Map<String, dynamic> map) {
     return DocumentState(
-      collection: map['collection'] == null ? null : (map['collection'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      documentId: map['documentId'] == null ? null : (map['documentId'] as String).input(),
-      fields: map['fields'] == null ? null : (map['fields'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      collection: map['collection'] == null ? null : (map['collection']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      documentId: map['documentId'] == null ? null : (map['documentId']! as String).input(),
+      fields: map['fields'] == null ? null : (map['fields']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

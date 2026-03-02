@@ -20,7 +20,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineC
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineConstraintsResource(
-      s3Uri: map['s3Uri'] == null ? null : (map['s3Uri'] as String).input(),
+      s3Uri: map['s3Uri'] == null ? null : ((map['s3Uri'] as String).input()).input(),
     );
   }
 }

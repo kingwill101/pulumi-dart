@@ -57,14 +57,14 @@ class RRSetRoutingPolicyLoadBalancerTarget {
 
   factory RRSetRoutingPolicyLoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyLoadBalancerTarget(
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (RRSetRoutingPolicyLoadBalancerTargetIpProtocol.fromValue(map['ipProtocol'] as String)).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      loadBalancerType: map['loadBalancerType'] == null ? null : (RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType.fromValue(map['loadBalancerType'] as String)).input(),
-      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (RRSetRoutingPolicyLoadBalancerTargetIpProtocol.fromValue(map['ipProtocol']! as String)).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      loadBalancerType: map['loadBalancerType'] == null ? null : (RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType.fromValue(map['loadBalancerType']! as String)).input(),
+      networkUrl: map['networkUrl'] == null ? null : (map['networkUrl']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

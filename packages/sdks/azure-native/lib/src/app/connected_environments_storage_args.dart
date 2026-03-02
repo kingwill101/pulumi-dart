@@ -41,9 +41,9 @@ class ConnectedEnvironmentsStorageArgs {
   factory ConnectedEnvironmentsStorageArgs.fromMap(Map<String, dynamic> map) {
     return ConnectedEnvironmentsStorageArgs(
       connectedEnvironmentName: (map['connectedEnvironmentName'] as String).input(),
-      properties: map['properties'] == null ? null : (ConnectedEnvironmentStorageProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ConnectedEnvironmentStorageProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageName: map['storageName'] == null ? null : (map['storageName'] as String).input(),
+      storageName: map['storageName'] == null ? null : (map['storageName']! as String).input(),
     );
   }
 }

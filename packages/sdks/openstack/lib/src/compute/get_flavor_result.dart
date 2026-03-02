@@ -73,20 +73,20 @@ class GetFlavorResult {
 
   factory GetFlavorResult.fromMap(Map<String, dynamic> map) {
     return GetFlavorResult(
-      description: map['description'] == null ? null : map['description'] as String,
-      disk: map['disk'] == null ? null : map['disk'] as int,
+      description: map['description'] == null ? null : map['description']! as String,
+      disk: map['disk'] == null ? null : map['disk']! as int,
       extraSpecs: (map['extraSpecs'] as Map).cast<String, String>(),
-      flavorId: map['flavorId'] == null ? null : map['flavorId'] as String,
+      flavorId: map['flavorId'] == null ? null : map['flavorId']! as String,
       id: map['id'] as String,
-      isPublic: map['isPublic'] == null ? null : map['isPublic'] as bool,
-      minDisk: map['minDisk'] == null ? null : map['minDisk'] as int,
-      minRam: map['minRam'] == null ? null : map['minRam'] as int,
-      name: map['name'] == null ? null : map['name'] as String,
-      ram: map['ram'] == null ? null : map['ram'] as int,
+      isPublic: map['isPublic'] == null ? null : map['isPublic']! as bool,
+      minDisk: map['minDisk'] == null ? null : map['minDisk']! as int,
+      minRam: map['minRam'] == null ? null : map['minRam']! as int,
+      name: map['name'] == null ? null : map['name']! as String,
+      ram: map['ram'] == null ? null : map['ram']! as int,
       region: map['region'] as String,
-      rxTxFactor: map['rxTxFactor'] == null ? null : map['rxTxFactor'] as double,
-      swap: map['swap'] == null ? null : map['swap'] as int,
-      vcpus: map['vcpus'] == null ? null : map['vcpus'] as int,
+      rxTxFactor: map['rxTxFactor'] == null ? null : map['rxTxFactor']! as double,
+      swap: map['swap'] == null ? null : map['swap']! as int,
+      vcpus: map['vcpus'] == null ? null : map['vcpus']! as int,
     );
   }
 }

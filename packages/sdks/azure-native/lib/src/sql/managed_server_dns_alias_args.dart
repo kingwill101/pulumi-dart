@@ -38,8 +38,8 @@ class ManagedServerDnsAliasArgs {
 
   factory ManagedServerDnsAliasArgs.fromMap(Map<String, dynamic> map) {
     return ManagedServerDnsAliasArgs(
-      createDnsRecord: map['createDnsRecord'] == null ? null : (map['createDnsRecord'] as bool).input(),
-      dnsAliasName: map['dnsAliasName'] == null ? null : (map['dnsAliasName'] as String).input(),
+      createDnsRecord: map['createDnsRecord'] == null ? null : (map['createDnsRecord']! as bool).input(),
+      dnsAliasName: map['dnsAliasName'] == null ? null : (map['dnsAliasName']! as String).input(),
       managedInstanceName: (map['managedInstanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

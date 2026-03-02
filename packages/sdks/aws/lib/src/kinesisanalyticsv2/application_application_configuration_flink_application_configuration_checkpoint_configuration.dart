@@ -38,10 +38,10 @@ class ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpoint
 
   factory ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationFlinkApplicationConfigurationCheckpointConfiguration(
-      checkpointInterval: map['checkpointInterval'] == null ? null : (map['checkpointInterval'] as int).input(),
-      checkpointingEnabled: map['checkpointingEnabled'] == null ? null : (map['checkpointingEnabled'] as bool).input(),
+      checkpointInterval: map['checkpointInterval'] == null ? null : ((map['checkpointInterval'] as int).input()).input(),
+      checkpointingEnabled: map['checkpointingEnabled'] == null ? null : ((map['checkpointingEnabled'] as bool).input()).input(),
       configurationType: (map['configurationType'] as String).input(),
-      minPauseBetweenCheckpoints: map['minPauseBetweenCheckpoints'] == null ? null : (map['minPauseBetweenCheckpoints'] as int).input(),
+      minPauseBetweenCheckpoints: map['minPauseBetweenCheckpoints'] == null ? null : ((map['minPauseBetweenCheckpoints'] as int).input()).input(),
     );
   }
 }

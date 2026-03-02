@@ -33,9 +33,9 @@ class PolicyBasedRouteWarning {
 
   factory PolicyBasedRouteWarning.fromMap(Map<String, dynamic> map) {
     return PolicyBasedRouteWarning(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      data: map['data'] == null ? null : ((map['data'] as Map).cast<String, String>()).input(),
-      warningMessage: map['warningMessage'] == null ? null : (map['warningMessage'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      data: map['data'] == null ? null : ((map['data']! as Map).cast<String, String>()).input(),
+      warningMessage: map['warningMessage'] == null ? null : (map['warningMessage']! as String).input(),
     );
   }
 }

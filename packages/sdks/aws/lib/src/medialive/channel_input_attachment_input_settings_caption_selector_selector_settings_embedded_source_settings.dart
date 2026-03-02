@@ -30,9 +30,9 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbedded
 
   factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings(
-      convert608To708: map['convert608To708'] == null ? null : (map['convert608To708'] as String).input(),
-      scte20Detection: map['scte20Detection'] == null ? null : (map['scte20Detection'] as String).input(),
-      source608ChannelNumber: map['source608ChannelNumber'] == null ? null : (map['source608ChannelNumber'] as int).input(),
+      convert608To708: map['convert608To708'] == null ? null : ((map['convert608To708'] as String).input()).input(),
+      scte20Detection: map['scte20Detection'] == null ? null : ((map['scte20Detection'] as String).input()).input(),
+      source608ChannelNumber: map['source608ChannelNumber'] == null ? null : ((map['source608ChannelNumber'] as int).input()).input(),
     );
   }
 }

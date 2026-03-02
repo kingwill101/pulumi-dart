@@ -35,10 +35,10 @@ class CanaryTimeline {
 
   factory CanaryTimeline.fromMap(Map<String, dynamic> map) {
     return CanaryTimeline(
-      created: map['created'] == null ? null : (map['created'] as String).input(),
-      lastModified: map['lastModified'] == null ? null : (map['lastModified'] as String).input(),
-      lastStarted: map['lastStarted'] == null ? null : (map['lastStarted'] as String).input(),
-      lastStopped: map['lastStopped'] == null ? null : (map['lastStopped'] as String).input(),
+      created: map['created'] == null ? null : ((map['created'] as String).input()).input(),
+      lastModified: map['lastModified'] == null ? null : ((map['lastModified'] as String).input()).input(),
+      lastStarted: map['lastStarted'] == null ? null : ((map['lastStarted'] as String).input()).input(),
+      lastStopped: map['lastStopped'] == null ? null : ((map['lastStopped'] as String).input()).input(),
     );
   }
 }

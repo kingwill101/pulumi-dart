@@ -48,9 +48,9 @@ class GetKubernetesNodePoolsResult {
       clusterId: map['clusterId'] as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nodePoolName: map['nodePoolName'] == null ? null : map['nodePoolName'] as String,
+      nodePoolName: map['nodePoolName'] == null ? null : map['nodePoolName']! as String,
       nodepools: pulumi.Input.decodeList<GetKubernetesNodePoolsNodepool>(map['nodepools'], (value) => GetKubernetesNodePoolsNodepool.fromMap((value as Map).cast<String, dynamic>())),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

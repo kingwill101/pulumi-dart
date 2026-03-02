@@ -35,9 +35,9 @@ class SitesByServiceGroupArgs {
 
   factory SitesByServiceGroupArgs.fromMap(Map<String, dynamic> map) {
     return SitesByServiceGroupArgs(
-      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SiteProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       servicegroupName: (map['servicegroupName'] as String).input(),
-      siteName: map['siteName'] == null ? null : (map['siteName'] as String).input(),
+      siteName: map['siteName'] == null ? null : (map['siteName']! as String).input(),
     );
   }
 }

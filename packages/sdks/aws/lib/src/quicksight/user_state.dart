@@ -73,17 +73,17 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      iamArn: map['iamArn'] == null ? null : (map['iamArn'] as String).input(),
-      identityType: map['identityType'] == null ? null : (map['identityType'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sessionName: map['sessionName'] == null ? null : (map['sessionName'] as String).input(),
-      userInvitationUrl: map['userInvitationUrl'] == null ? null : (map['userInvitationUrl'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      userRole: map['userRole'] == null ? null : (map['userRole'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      iamArn: map['iamArn'] == null ? null : ((map['iamArn'] as String).input()).input(),
+      identityType: map['identityType'] == null ? null : ((map['identityType'] as String).input()).input(),
+      namespace: map['namespace'] == null ? null : ((map['namespace'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sessionName: map['sessionName'] == null ? null : ((map['sessionName'] as String).input()).input(),
+      userInvitationUrl: map['userInvitationUrl'] == null ? null : ((map['userInvitationUrl'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
+      userRole: map['userRole'] == null ? null : ((map['userRole'] as String).input()).input(),
     );
   }
 }

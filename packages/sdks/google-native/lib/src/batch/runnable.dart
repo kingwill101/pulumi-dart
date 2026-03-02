@@ -70,16 +70,16 @@ class Runnable {
 
   factory Runnable.fromMap(Map<String, dynamic> map) {
     return Runnable(
-      alwaysRun: map['alwaysRun'] == null ? null : (map['alwaysRun'] as bool).input(),
-      background: map['background'] == null ? null : (map['background'] as bool).input(),
-      barrier: map['barrier'] == null ? null : (Barrier.fromMap((map['barrier'] as Map).cast<String, dynamic>())).input(),
-      container: map['container'] == null ? null : (Container.fromMap((map['container'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      environment: map['environment'] == null ? null : (Environment.fromMap((map['environment'] as Map).cast<String, dynamic>())).input(),
-      ignoreExitStatus: map['ignoreExitStatus'] == null ? null : (map['ignoreExitStatus'] as bool).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      script: map['script'] == null ? null : (Script.fromMap((map['script'] as Map).cast<String, dynamic>())).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      alwaysRun: map['alwaysRun'] == null ? null : (map['alwaysRun']! as bool).input(),
+      background: map['background'] == null ? null : (map['background']! as bool).input(),
+      barrier: map['barrier'] == null ? null : (Barrier.fromMap((map['barrier']! as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (Container.fromMap((map['container']! as Map).cast<String, dynamic>())).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      environment: map['environment'] == null ? null : (Environment.fromMap((map['environment']! as Map).cast<String, dynamic>())).input(),
+      ignoreExitStatus: map['ignoreExitStatus'] == null ? null : (map['ignoreExitStatus']! as bool).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      script: map['script'] == null ? null : (Script.fromMap((map['script']! as Map).cast<String, dynamic>())).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

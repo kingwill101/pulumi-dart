@@ -21,7 +21,7 @@ class BasicLoginInformationResponse {
 
   factory BasicLoginInformationResponse.fromMap(Map<String, dynamic> map) {
     return BasicLoginInformationResponse(
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

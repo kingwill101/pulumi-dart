@@ -64,15 +64,15 @@ class GetRestoreJobsArgs {
 
   factory GetRestoreJobsArgs.fromMap(Map<String, dynamic> map) {
     return GetRestoreJobsArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      restoreIds: map['restoreIds'] == null ? null : ((map['restoreIds'] as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      restoreIds: map['restoreIds'] == null ? null : ((map['restoreIds']! as List).cast<String>()).input(),
       restoreType: (map['restoreType'] as String).input(),
-      sourceTypes: map['sourceTypes'] == null ? null : ((map['sourceTypes'] as List).cast<String>()).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      targetBuckets: map['targetBuckets'] == null ? null : ((map['targetBuckets'] as List).cast<String>()).input(),
-      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : ((map['targetFileSystemIds'] as List).cast<String>()).input(),
-      targetInstanceIds: map['targetInstanceIds'] == null ? null : ((map['targetInstanceIds'] as List).cast<String>()).input(),
-      vaultIds: map['vaultIds'] == null ? null : ((map['vaultIds'] as List).cast<String>()).input(),
+      sourceTypes: map['sourceTypes'] == null ? null : ((map['sourceTypes']! as List).cast<String>()).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      targetBuckets: map['targetBuckets'] == null ? null : ((map['targetBuckets']! as List).cast<String>()).input(),
+      targetFileSystemIds: map['targetFileSystemIds'] == null ? null : ((map['targetFileSystemIds']! as List).cast<String>()).input(),
+      targetInstanceIds: map['targetInstanceIds'] == null ? null : ((map['targetInstanceIds']! as List).cast<String>()).input(),
+      vaultIds: map['vaultIds'] == null ? null : ((map['vaultIds']! as List).cast<String>()).input(),
     );
   }
 }

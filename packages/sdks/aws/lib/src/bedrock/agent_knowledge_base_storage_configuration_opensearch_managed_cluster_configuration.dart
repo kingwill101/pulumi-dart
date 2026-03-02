@@ -38,7 +38,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguratio
     return AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration(
       domainArn: (map['domainArn'] as String).input(),
       domainEndpoint: (map['domainEndpoint'] as String).input(),
-      fieldMapping: (AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>())).input(),
+      fieldMapping: (AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfigurationFieldMapping.fromMap((map['fieldMapping']! as Map).cast<String, dynamic>())).input(),
       vectorIndexName: (map['vectorIndexName'] as String).input(),
     );
   }

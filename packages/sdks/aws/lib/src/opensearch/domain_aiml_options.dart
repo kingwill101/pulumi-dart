@@ -33,9 +33,9 @@ class DomainAimlOptions {
 
   factory DomainAimlOptions.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptions(
-      naturalLanguageQueryGenerationOptions: map['naturalLanguageQueryGenerationOptions'] == null ? null : (DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap((map['naturalLanguageQueryGenerationOptions'] as Map).cast<String, dynamic>())).input(),
-      s3VectorsEngine: map['s3VectorsEngine'] == null ? null : (DomainAimlOptionsS3VectorsEngine.fromMap((map['s3VectorsEngine'] as Map).cast<String, dynamic>())).input(),
-      serverlessVectorAcceleration: map['serverlessVectorAcceleration'] == null ? null : (DomainAimlOptionsServerlessVectorAcceleration.fromMap((map['serverlessVectorAcceleration'] as Map).cast<String, dynamic>())).input(),
+      naturalLanguageQueryGenerationOptions: map['naturalLanguageQueryGenerationOptions'] == null ? null : ((DomainAimlOptionsNaturalLanguageQueryGenerationOptions.fromMap((map['naturalLanguageQueryGenerationOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      s3VectorsEngine: map['s3VectorsEngine'] == null ? null : ((DomainAimlOptionsS3VectorsEngine.fromMap((map['s3VectorsEngine']! as Map).cast<String, dynamic>())).input()).input(),
+      serverlessVectorAcceleration: map['serverlessVectorAcceleration'] == null ? null : ((DomainAimlOptionsServerlessVectorAcceleration.fromMap((map['serverlessVectorAcceleration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

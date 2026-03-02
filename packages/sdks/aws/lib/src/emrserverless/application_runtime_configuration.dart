@@ -26,7 +26,7 @@ class ApplicationRuntimeConfiguration {
   factory ApplicationRuntimeConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationRuntimeConfiguration(
       classification: (map['classification'] as String).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      properties: map['properties'] == null ? null : (((map['properties'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

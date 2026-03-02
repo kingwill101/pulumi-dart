@@ -24,8 +24,8 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings(
-      audioRenditionSets: map['audioRenditionSets'] == null ? null : (map['audioRenditionSets'] as String).input(),
-      m3u8Settings: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap((map['m3u8Settings'] as Map).cast<String, dynamic>())).input(),
+      audioRenditionSets: map['audioRenditionSets'] == null ? null : ((map['audioRenditionSets'] as String).input()).input(),
+      m3u8Settings: (ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettingsM3u8Settings.fromMap((map['m3u8Settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

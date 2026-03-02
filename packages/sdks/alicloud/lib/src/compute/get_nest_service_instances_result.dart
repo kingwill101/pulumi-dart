@@ -59,15 +59,15 @@ class GetNestServiceInstancesResult {
 
   factory GetNestServiceInstancesResult.fromMap(Map<String, dynamic> map) {
     return GetNestServiceInstancesResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNestServiceInstancesFilter>(map['filters'], (value) => GetNestServiceInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetNestServiceInstancesFilter>(map['filters']!, (value) => GetNestServiceInstancesFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       serviceInstances: pulumi.Input.decodeList<GetNestServiceInstancesServiceInstance>(map['serviceInstances'], (value) => GetNestServiceInstancesServiceInstance.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

@@ -62,11 +62,11 @@ class ServerPropertiesForDefaultCreate {
       administratorLogin: (map['administratorLogin'] as String).input(),
       administratorLoginPassword: (map['administratorLoginPassword'] as String).input(),
       createMode: (map['createMode'] as String).input(),
-      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion'] as String).input(),
-      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess'] as String).input(),
-      sslEnforcement: map['sslEnforcement'] == null ? null : (SslEnforcementEnum.fromValue(map['sslEnforcement'] as String)).input(),
-      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      minimalTlsVersion: map['minimalTlsVersion'] == null ? null : (map['minimalTlsVersion']! as String).input(),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : (map['publicNetworkAccess']! as String).input(),
+      sslEnforcement: map['sslEnforcement'] == null ? null : (SslEnforcementEnum.fromValue(map['sslEnforcement']! as String)).input(),
+      storageProfile: map['storageProfile'] == null ? null : (StorageProfile.fromMap((map['storageProfile']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

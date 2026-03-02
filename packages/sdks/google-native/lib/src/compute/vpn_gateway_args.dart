@@ -70,16 +70,16 @@ class VpnGatewayArgs {
 
   factory VpnGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : (VpnGatewayGatewayIpVersion.fromValue(map['gatewayIpVersion'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      gatewayIpVersion: map['gatewayIpVersion'] == null ? null : (VpnGatewayGatewayIpVersion.fromValue(map['gatewayIpVersion']! as String)).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       region: (map['region'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
-      stackType: map['stackType'] == null ? null : (VpnGatewayStackType.fromValue(map['stackType'] as String)).input(),
-      vpnInterfaces: map['vpnInterfaces'] == null ? null : (pulumi.Input.decodeList<VpnGatewayVpnGatewayInterface>(map['vpnInterfaces'], (value) => VpnGatewayVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
+      stackType: map['stackType'] == null ? null : (VpnGatewayStackType.fromValue(map['stackType']! as String)).input(),
+      vpnInterfaces: map['vpnInterfaces'] == null ? null : (pulumi.Input.decodeList<VpnGatewayVpnGatewayInterface>(map['vpnInterfaces']!, (value) => VpnGatewayVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

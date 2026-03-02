@@ -58,11 +58,11 @@ class JobCopy {
 
   factory JobCopy.fromMap(Map<String, dynamic> map) {
     return JobCopy(
-      createDisposition: map['createDisposition'] == null ? null : (map['createDisposition'] as String).input(),
-      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : (JobCopyDestinationEncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      destinationTable: map['destinationTable'] == null ? null : (JobCopyDestinationTable.fromMap((map['destinationTable'] as Map).cast<String, dynamic>())).input(),
+      createDisposition: map['createDisposition'] == null ? null : (map['createDisposition']! as String).input(),
+      destinationEncryptionConfiguration: map['destinationEncryptionConfiguration'] == null ? null : (JobCopyDestinationEncryptionConfiguration.fromMap((map['destinationEncryptionConfiguration']! as Map).cast<String, dynamic>())).input(),
+      destinationTable: map['destinationTable'] == null ? null : (JobCopyDestinationTable.fromMap((map['destinationTable']! as Map).cast<String, dynamic>())).input(),
       sourceTables: (pulumi.Input.decodeList<JobCopySourceTable>(map['sourceTables'], (value) => JobCopySourceTable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      writeDisposition: map['writeDisposition'] == null ? null : (map['writeDisposition'] as String).input(),
+      writeDisposition: map['writeDisposition'] == null ? null : (map['writeDisposition']! as String).input(),
     );
   }
 }

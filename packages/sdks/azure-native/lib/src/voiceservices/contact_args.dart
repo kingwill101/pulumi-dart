@@ -60,13 +60,13 @@ class ContactArgs {
   factory ContactArgs.fromMap(Map<String, dynamic> map) {
     return ContactArgs(
       communicationsGatewayName: (map['communicationsGatewayName'] as String).input(),
-      contactName: map['contactName'] == null ? null : (map['contactName'] as String).input(),
+      contactName: map['contactName'] == null ? null : (map['contactName']! as String).input(),
       email: (map['email'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       phoneNumber: (map['phoneNumber'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       role: (map['role'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

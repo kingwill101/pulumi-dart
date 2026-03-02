@@ -53,12 +53,12 @@ class JobServiceResponse {
 
   factory JobServiceResponse.fromMap(Map<String, dynamic> map) {
     return JobServiceResponse(
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
+      endpoint: map['endpoint'] == null ? null : (map['endpoint']! as String).input(),
       errorMessage: (map['errorMessage'] as String).input(),
-      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType'] as String).input(),
-      nodes: map['nodes'] == null ? null : (AllNodesResponse.fromMap((map['nodes'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      properties: map['properties'] == null ? null : ((map['properties'] as Map).cast<String, String>()).input(),
+      jobServiceType: map['jobServiceType'] == null ? null : (map['jobServiceType']! as String).input(),
+      nodes: map['nodes'] == null ? null : (AllNodesResponse.fromMap((map['nodes']! as Map).cast<String, dynamic>())).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      properties: map['properties'] == null ? null : ((map['properties']! as Map).cast<String, String>()).input(),
       status: (map['status'] as String).input(),
     );
   }

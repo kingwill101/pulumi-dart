@@ -35,7 +35,7 @@ class FolderReplayPolicysimulatorV1beta1Args {
     return FolderReplayPolicysimulatorV1beta1Args(
       config: (GoogleCloudPolicysimulatorV1beta1ReplayConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
       folderId: (map['folderId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
     );
   }
 }

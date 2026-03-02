@@ -27,8 +27,8 @@ class DataExport {
 
   factory DataExport.fromMap(Map<String, dynamic> map) {
     return DataExport(
-      destination: map['destination'] == null ? null : (Destination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : (map['outputSchemaVersion'] as String).input(),
+      destination: map['destination'] == null ? null : (Destination.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
+      outputSchemaVersion: map['outputSchemaVersion'] == null ? null : (map['outputSchemaVersion']! as String).input(),
     );
   }
 }

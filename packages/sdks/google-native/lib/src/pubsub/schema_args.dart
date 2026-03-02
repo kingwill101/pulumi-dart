@@ -44,11 +44,11 @@ class SchemaArgs {
 
   factory SchemaArgs.fromMap(Map<String, dynamic> map) {
     return SchemaArgs(
-      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schemaId: map['schemaId'] == null ? null : (map['schemaId'] as String).input(),
-      type: map['type'] == null ? null : (SchemaType.fromValue(map['type'] as String)).input(),
+      definition: map['definition'] == null ? null : (map['definition']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schemaId: map['schemaId'] == null ? null : (map['schemaId']! as String).input(),
+      type: map['type'] == null ? null : (SchemaType.fromValue(map['type']! as String)).input(),
     );
   }
 }

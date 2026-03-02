@@ -37,7 +37,7 @@ class ExportExportDestinationConfigurationS3Destination {
   factory ExportExportDestinationConfigurationS3Destination.fromMap(Map<String, dynamic> map) {
     return ExportExportDestinationConfigurationS3Destination(
       s3Bucket: (map['s3Bucket'] as String).input(),
-      s3OutputConfigurations: map['s3OutputConfigurations'] == null ? null : (pulumi.Input.decodeList<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>(map['s3OutputConfigurations'], (value) => ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3OutputConfigurations: map['s3OutputConfigurations'] == null ? null : ((pulumi.Input.decodeList<ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration>(map['s3OutputConfigurations']!, (value) => ExportExportDestinationConfigurationS3DestinationS3OutputConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       s3Prefix: (map['s3Prefix'] as String).input(),
       s3Region: (map['s3Region'] as String).input(),
     );

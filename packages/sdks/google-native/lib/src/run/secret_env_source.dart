@@ -32,9 +32,9 @@ class SecretEnvSource {
 
   factory SecretEnvSource.fromMap(Map<String, dynamic> map) {
     return SecretEnvSource(
-      localObjectReference: map['localObjectReference'] == null ? null : (LocalObjectReference.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      localObjectReference: map['localObjectReference'] == null ? null : (LocalObjectReference.fromMap((map['localObjectReference']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

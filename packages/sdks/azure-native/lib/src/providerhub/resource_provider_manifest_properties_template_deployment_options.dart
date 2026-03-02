@@ -26,8 +26,8 @@ class ResourceProviderManifestPropertiesTemplateDeploymentOptions {
 
   factory ResourceProviderManifestPropertiesTemplateDeploymentOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesTemplateDeploymentOptions(
-      preflightOptions: map['preflightOptions'] == null ? null : ((map['preflightOptions'] as List).cast<String>()).input(),
-      preflightSupported: map['preflightSupported'] == null ? null : (map['preflightSupported'] as bool).input(),
+      preflightOptions: map['preflightOptions'] == null ? null : ((map['preflightOptions']! as List).cast<String>()).input(),
+      preflightSupported: map['preflightSupported'] == null ? null : (map['preflightSupported']! as bool).input(),
     );
   }
 }

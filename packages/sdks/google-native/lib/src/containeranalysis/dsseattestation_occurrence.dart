@@ -27,8 +27,8 @@ class DSSEAttestationOccurrence {
 
   factory DSSEAttestationOccurrence.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationOccurrence(
-      envelope: map['envelope'] == null ? null : (Envelope.fromMap((map['envelope'] as Map).cast<String, dynamic>())).input(),
-      statement: map['statement'] == null ? null : (InTotoStatement.fromMap((map['statement'] as Map).cast<String, dynamic>())).input(),
+      envelope: map['envelope'] == null ? null : (Envelope.fromMap((map['envelope']! as Map).cast<String, dynamic>())).input(),
+      statement: map['statement'] == null ? null : (InTotoStatement.fromMap((map['statement']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

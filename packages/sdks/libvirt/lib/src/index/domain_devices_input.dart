@@ -59,13 +59,13 @@ class DomainDevicesInput {
 
   factory DomainDevicesInput.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInput(
-      acpi: map['acpi'] == null ? null : (DomainDevicesInputAcpi.fromMap((map['acpi'] as Map).cast<String, dynamic>())).input(),
-      address: map['address'] == null ? null : ((map['address'] as Map).cast<String, dynamic>()).input(),
-      alias: map['alias'] == null ? null : (DomainDevicesInputAlias.fromMap((map['alias'] as Map).cast<String, dynamic>())).input(),
-      bus: map['bus'] == null ? null : (map['bus'] as String).input(),
-      driver: map['driver'] == null ? null : (DomainDevicesInputDriver.fromMap((map['driver'] as Map).cast<String, dynamic>())).input(),
-      model: map['model'] == null ? null : (map['model'] as String).input(),
-      source: map['source'] == null ? null : (DomainDevicesInputSource.fromMap((map['source'] as Map).cast<String, dynamic>())).input(),
+      acpi: map['acpi'] == null ? null : (DomainDevicesInputAcpi.fromMap((map['acpi']! as Map).cast<String, dynamic>())).input(),
+      address: map['address'] == null ? null : ((map['address']! as Map).cast<String, dynamic>()).input(),
+      alias: map['alias'] == null ? null : (DomainDevicesInputAlias.fromMap((map['alias']! as Map).cast<String, dynamic>())).input(),
+      bus: map['bus'] == null ? null : (map['bus']! as String).input(),
+      driver: map['driver'] == null ? null : (DomainDevicesInputDriver.fromMap((map['driver']! as Map).cast<String, dynamic>())).input(),
+      model: map['model'] == null ? null : (map['model']! as String).input(),
+      source: map['source'] == null ? null : (DomainDevicesInputSource.fromMap((map['source']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

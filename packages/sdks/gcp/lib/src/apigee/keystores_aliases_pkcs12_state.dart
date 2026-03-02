@@ -65,15 +65,15 @@ class KeystoresAliasesPkcs12State {
 
   factory KeystoresAliasesPkcs12State.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesPkcs12State(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(map['certsInfos'], (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      file: map['file'] == null ? null : (map['file'] as String).input(),
-      filehash: map['filehash'] == null ? null : (map['filehash'] as String).input(),
-      keystore: map['keystore'] == null ? null : (map['keystore'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesPkcs12CertsInfo>(map['certsInfos']!, (value) => KeystoresAliasesPkcs12CertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      file: map['file'] == null ? null : (map['file']! as String).input(),
+      filehash: map['filehash'] == null ? null : (map['filehash']! as String).input(),
+      keystore: map['keystore'] == null ? null : (map['keystore']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

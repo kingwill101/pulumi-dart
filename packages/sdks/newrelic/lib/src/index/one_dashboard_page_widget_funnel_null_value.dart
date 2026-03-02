@@ -26,8 +26,8 @@ class OneDashboardPageWidgetFunnelNullValue {
 
   factory OneDashboardPageWidgetFunnelNullValue.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetFunnelNullValue(
-      nullValue: map['nullValue'] == null ? null : (map['nullValue'] as String).input(),
-      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnelNullValueSeriesOverride>(map['seriesOverrides'], (value) => OneDashboardPageWidgetFunnelNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']! as String).input(),
+      seriesOverrides: map['seriesOverrides'] == null ? null : (pulumi.Input.decodeList<OneDashboardPageWidgetFunnelNullValueSeriesOverride>(map['seriesOverrides']!, (value) => OneDashboardPageWidgetFunnelNullValueSeriesOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

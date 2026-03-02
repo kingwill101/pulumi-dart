@@ -71,15 +71,15 @@ class CertificateTemplateArgs {
   factory CertificateTemplateArgs.fromMap(Map<String, dynamic> map) {
     return CertificateTemplateArgs(
       certificateTemplateId: (map['certificateTemplateId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identityConstraints: map['identityConstraints'] == null ? null : (CertificateIdentityConstraints.fromMap((map['identityConstraints'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime'] as String).input(),
-      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateExtensionConstraints.fromMap((map['passthroughExtensions'] as Map).cast<String, dynamic>())).input(),
-      predefinedValues: map['predefinedValues'] == null ? null : (X509Parameters.fromMap((map['predefinedValues'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identityConstraints: map['identityConstraints'] == null ? null : (CertificateIdentityConstraints.fromMap((map['identityConstraints']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maximumLifetime: map['maximumLifetime'] == null ? null : (map['maximumLifetime']! as String).input(),
+      passthroughExtensions: map['passthroughExtensions'] == null ? null : (CertificateExtensionConstraints.fromMap((map['passthroughExtensions']! as Map).cast<String, dynamic>())).input(),
+      predefinedValues: map['predefinedValues'] == null ? null : (X509Parameters.fromMap((map['predefinedValues']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

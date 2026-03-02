@@ -31,7 +31,7 @@ class GetSResult {
 
   factory GetSResult.fromMap(Map<String, dynamic> map) {
     return GetSResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       organizations: pulumi.Input.decodeList<GetSOrganization>(map['organizations'], (value) => GetSOrganization.fromMap((value as Map).cast<String, dynamic>())),
     );

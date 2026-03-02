@@ -36,10 +36,10 @@ class VpcSecurityGroupRulesExclusiveState {
 
   factory VpcSecurityGroupRulesExclusiveState.fromMap(Map<String, dynamic> map) {
     return VpcSecurityGroupRulesExclusiveState(
-      egressRuleIds: map['egressRuleIds'] == null ? null : ((map['egressRuleIds'] as List).cast<String>()).input(),
-      ingressRuleIds: map['ingressRuleIds'] == null ? null : ((map['ingressRuleIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupId: map['securityGroupId'] == null ? null : (map['securityGroupId'] as String).input(),
+      egressRuleIds: map['egressRuleIds'] == null ? null : (((map['egressRuleIds'] as List).cast<String>()).input()).input(),
+      ingressRuleIds: map['ingressRuleIds'] == null ? null : (((map['ingressRuleIds'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupId: map['securityGroupId'] == null ? null : ((map['securityGroupId'] as String).input()).input(),
     );
   }
 }

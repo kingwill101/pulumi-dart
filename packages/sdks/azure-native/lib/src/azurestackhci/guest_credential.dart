@@ -26,8 +26,8 @@ class GuestCredential {
 
   factory GuestCredential.fromMap(Map<String, dynamic> map) {
     return GuestCredential(
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
     );
   }
 }

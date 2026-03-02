@@ -32,8 +32,8 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureN
   factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntentSlot.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntentSlot(
       mapBlockKey: (map['mapBlockKey'] as String).input(),
-      shape: map['shape'] == null ? null : (map['shape'] as String).input(),
-      value: map['value'] == null ? null : (V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntentSlotValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      shape: map['shape'] == null ? null : ((map['shape'] as String).input()).input(),
+      value: map['value'] == null ? null : ((V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntentSlotValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

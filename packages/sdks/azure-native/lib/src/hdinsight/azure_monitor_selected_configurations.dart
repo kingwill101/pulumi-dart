@@ -32,9 +32,9 @@ class AzureMonitorSelectedConfigurations {
 
   factory AzureMonitorSelectedConfigurations.fromMap(Map<String, dynamic> map) {
     return AzureMonitorSelectedConfigurations(
-      configurationVersion: map['configurationVersion'] == null ? null : (map['configurationVersion'] as String).input(),
-      globalConfigurations: map['globalConfigurations'] == null ? null : ((map['globalConfigurations'] as Map).cast<String, String>()).input(),
-      tableList: map['tableList'] == null ? null : (pulumi.Input.decodeList<AzureMonitorTableConfiguration>(map['tableList'], (value) => AzureMonitorTableConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      configurationVersion: map['configurationVersion'] == null ? null : (map['configurationVersion']! as String).input(),
+      globalConfigurations: map['globalConfigurations'] == null ? null : ((map['globalConfigurations']! as Map).cast<String, String>()).input(),
+      tableList: map['tableList'] == null ? null : (pulumi.Input.decodeList<AzureMonitorTableConfiguration>(map['tableList']!, (value) => AzureMonitorTableConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

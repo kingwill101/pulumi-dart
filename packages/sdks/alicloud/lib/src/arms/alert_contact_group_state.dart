@@ -26,8 +26,8 @@ class AlertContactGroupState {
 
   factory AlertContactGroupState.fromMap(Map<String, dynamic> map) {
     return AlertContactGroupState(
-      alertContactGroupName: map['alertContactGroupName'] == null ? null : (map['alertContactGroupName'] as String).input(),
-      contactIds: map['contactIds'] == null ? null : ((map['contactIds'] as List).cast<String>()).input(),
+      alertContactGroupName: map['alertContactGroupName'] == null ? null : (map['alertContactGroupName']! as String).input(),
+      contactIds: map['contactIds'] == null ? null : ((map['contactIds']! as List).cast<String>()).input(),
     );
   }
 }

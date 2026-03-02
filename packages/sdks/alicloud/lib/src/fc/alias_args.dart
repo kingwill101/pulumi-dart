@@ -46,8 +46,8 @@ class AliasArgs {
   factory AliasArgs.fromMap(Map<String, dynamic> map) {
     return AliasArgs(
       aliasName: (map['aliasName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      routingConfig: map['routingConfig'] == null ? null : (AliasRoutingConfig.fromMap((map['routingConfig']! as Map).cast<String, dynamic>())).input(),
       serviceName: (map['serviceName'] as String).input(),
       serviceVersion: (map['serviceVersion'] as String).input(),
     );

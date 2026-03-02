@@ -32,7 +32,7 @@ class Processor {
 
   factory Processor.fromMap(Map<String, dynamic> map) {
     return Processor(
-      batch: map['batch'] == null ? null : (BatchProcessor.fromMap((map['batch'] as Map).cast<String, dynamic>())).input(),
+      batch: map['batch'] == null ? null : (BatchProcessor.fromMap((map['batch']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
       type: (map['type'] as String).input(),
     );

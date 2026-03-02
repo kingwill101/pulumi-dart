@@ -35,10 +35,10 @@ class SqlScheduledMaintenance {
 
   factory SqlScheduledMaintenance.fromMap(Map<String, dynamic> map) {
     return SqlScheduledMaintenance(
-      canDefer: map['canDefer'] == null ? null : (map['canDefer'] as bool).input(),
-      canReschedule: map['canReschedule'] == null ? null : (map['canReschedule'] as bool).input(),
-      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : (map['scheduleDeadlineTime'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      canDefer: map['canDefer'] == null ? null : (map['canDefer']! as bool).input(),
+      canReschedule: map['canReschedule'] == null ? null : (map['canReschedule']! as bool).input(),
+      scheduleDeadlineTime: map['scheduleDeadlineTime'] == null ? null : (map['scheduleDeadlineTime']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

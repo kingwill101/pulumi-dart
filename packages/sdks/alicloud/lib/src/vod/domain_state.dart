@@ -94,21 +94,21 @@ class DomainState {
 
   factory DomainState.fromMap(Map<String, dynamic> map) {
     return DomainState(
-      certName: map['certName'] == null ? null : (map['certName'] as String).input(),
-      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl'] as String).input(),
-      cname: map['cname'] == null ? null : (map['cname'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated'] as String).input(),
-      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DomainSource>(map['sources'], (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sslProtocol: map['sslProtocol'] == null ? null : (map['sslProtocol'] as String).input(),
-      sslPub: map['sslPub'] == null ? null : (map['sslPub'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      topLevelDomain: map['topLevelDomain'] == null ? null : (map['topLevelDomain'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as String).input(),
+      certName: map['certName'] == null ? null : (map['certName']! as String).input(),
+      checkUrl: map['checkUrl'] == null ? null : (map['checkUrl']! as String).input(),
+      cname: map['cname'] == null ? null : (map['cname']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      gmtCreated: map['gmtCreated'] == null ? null : (map['gmtCreated']! as String).input(),
+      gmtModified: map['gmtModified'] == null ? null : (map['gmtModified']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      sources: map['sources'] == null ? null : (pulumi.Input.decodeList<DomainSource>(map['sources']!, (value) => DomainSource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sslProtocol: map['sslProtocol'] == null ? null : (map['sslProtocol']! as String).input(),
+      sslPub: map['sslPub'] == null ? null : (map['sslPub']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      topLevelDomain: map['topLevelDomain'] == null ? null : (map['topLevelDomain']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as String).input(),
     );
   }
 }

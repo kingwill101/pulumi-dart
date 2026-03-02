@@ -46,10 +46,10 @@ class SourceRepositoryArgs {
 
   factory SourceRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return SourceRepositoryArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       projectName: (map['projectName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       spaceName: (map['spaceName'] as String).input(),
     );
   }

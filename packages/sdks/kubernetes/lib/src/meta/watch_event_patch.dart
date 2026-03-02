@@ -29,8 +29,8 @@ class WatchEventPatch {
 
   factory WatchEventPatch.fromMap(Map<String, dynamic> map) {
     return WatchEventPatch(
-      object: map['object'] == null ? null : (map['object']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      object: map['object'] == null ? null : (map['object']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

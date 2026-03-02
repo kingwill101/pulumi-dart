@@ -71,16 +71,16 @@ class ServingConfigArgs {
 
   factory ServingConfigArgs.fromMap(Map<String, dynamic> map) {
     return ServingConfigArgs(
-      boostControlIds: map['boostControlIds'] == null ? null : ((map['boostControlIds'] as List).cast<String>()).input(),
-      collectionId: map['collectionId'] == null ? null : (map['collectionId'] as String).input(),
+      boostControlIds: map['boostControlIds'] == null ? null : ((map['boostControlIds']! as List).cast<String>()).input(),
+      collectionId: map['collectionId'] == null ? null : (map['collectionId']! as String).input(),
       engineId: (map['engineId'] as String).input(),
-      filterControlIds: map['filterControlIds'] == null ? null : ((map['filterControlIds'] as List).cast<String>()).input(),
+      filterControlIds: map['filterControlIds'] == null ? null : ((map['filterControlIds']! as List).cast<String>()).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      promoteControlIds: map['promoteControlIds'] == null ? null : ((map['promoteControlIds'] as List).cast<String>()).input(),
-      redirectControlIds: map['redirectControlIds'] == null ? null : ((map['redirectControlIds'] as List).cast<String>()).input(),
-      servingConfigId: map['servingConfigId'] == null ? null : (map['servingConfigId'] as String).input(),
-      synonymsControlIds: map['synonymsControlIds'] == null ? null : ((map['synonymsControlIds'] as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      promoteControlIds: map['promoteControlIds'] == null ? null : ((map['promoteControlIds']! as List).cast<String>()).input(),
+      redirectControlIds: map['redirectControlIds'] == null ? null : ((map['redirectControlIds']! as List).cast<String>()).input(),
+      servingConfigId: map['servingConfigId'] == null ? null : (map['servingConfigId']! as String).input(),
+      synonymsControlIds: map['synonymsControlIds'] == null ? null : ((map['synonymsControlIds']! as List).cast<String>()).input(),
     );
   }
 }

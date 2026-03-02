@@ -40,8 +40,8 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      jobName: map['jobName'] == null ? null : (map['jobName'] as String).input(),
-      properties: map['properties'] == null ? null : (JobResourceProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      jobName: map['jobName'] == null ? null : (map['jobName']! as String).input(),
+      properties: map['properties'] == null ? null : (JobResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serviceName: (map['serviceName'] as String).input(),
     );

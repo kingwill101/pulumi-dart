@@ -28,7 +28,7 @@ class GetPeeringManagedidentitiesV1beta1Args {
   factory GetPeeringManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetPeeringManagedidentitiesV1beta1Args(
       peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

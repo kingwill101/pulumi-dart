@@ -26,8 +26,8 @@ class DataQualityJobDefinitionDataQualityJobOutputConfig {
 
   factory DataQualityJobDefinitionDataQualityJobOutputConfig.fromMap(Map<String, dynamic> map) {
     return DataQualityJobDefinitionDataQualityJobOutputConfig(
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      monitoringOutputs: (DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap((map['monitoringOutputs'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      monitoringOutputs: (DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs.fromMap((map['monitoringOutputs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

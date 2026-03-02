@@ -25,7 +25,7 @@ class DelegationSetArgs {
 
   factory DelegationSetArgs.fromMap(Map<String, dynamic> map) {
     return DelegationSetArgs(
-      referenceName: map['referenceName'] == null ? null : (map['referenceName'] as String).input(),
+      referenceName: map['referenceName'] == null ? null : ((map['referenceName'] as String).input()).input(),
     );
   }
 }

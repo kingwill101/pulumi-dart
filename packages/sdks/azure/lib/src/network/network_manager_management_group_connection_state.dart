@@ -41,11 +41,11 @@ class NetworkManagerManagementGroupConnectionState {
 
   factory NetworkManagerManagementGroupConnectionState.fromMap(Map<String, dynamic> map) {
     return NetworkManagerManagementGroupConnectionState(
-      connectionState: map['connectionState'] == null ? null : (map['connectionState'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId'] as String).input(),
+      connectionState: map['connectionState'] == null ? null : (map['connectionState']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkManagerId: map['networkManagerId'] == null ? null : (map['networkManagerId']! as String).input(),
     );
   }
 }

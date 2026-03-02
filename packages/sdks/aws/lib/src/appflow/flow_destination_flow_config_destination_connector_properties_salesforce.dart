@@ -36,11 +36,11 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce(
-      dataTransferApi: map['dataTransferApi'] == null ? null : (map['dataTransferApi'] as String).input(),
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : (FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>())).input(),
-      idFieldNames: map['idFieldNames'] == null ? null : ((map['idFieldNames'] as List).cast<String>()).input(),
+      dataTransferApi: map['dataTransferApi'] == null ? null : ((map['dataTransferApi'] as String).input()).input(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : ((FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforceErrorHandlingConfig.fromMap((map['errorHandlingConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      idFieldNames: map['idFieldNames'] == null ? null : (((map['idFieldNames'] as List).cast<String>()).input()).input(),
       object: (map['object'] as String).input(),
-      writeOperationType: map['writeOperationType'] == null ? null : (map['writeOperationType'] as String).input(),
+      writeOperationType: map['writeOperationType'] == null ? null : ((map['writeOperationType'] as String).input()).input(),
     );
   }
 }

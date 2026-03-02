@@ -21,7 +21,7 @@ class CloudDataLineageIntegration {
 
   factory CloudDataLineageIntegration.fromMap(Map<String, dynamic> map) {
     return CloudDataLineageIntegration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

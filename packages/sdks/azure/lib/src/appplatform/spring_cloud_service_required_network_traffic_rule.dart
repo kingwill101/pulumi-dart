@@ -40,11 +40,11 @@ class SpringCloudServiceRequiredNetworkTrafficRule {
 
   factory SpringCloudServiceRequiredNetworkTrafficRule.fromMap(Map<String, dynamic> map) {
     return SpringCloudServiceRequiredNetworkTrafficRule(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

@@ -57,13 +57,13 @@ class CustomProviderArgs {
 
   factory CustomProviderArgs.fromMap(Map<String, dynamic> map) {
     return CustomProviderArgs(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<CustomProviderAction>(map['actions'], (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<CustomProviderAction>(map['actions']!, (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      resourceTypes: map['resourceTypes'] == null ? null : (pulumi.Input.decodeList<CustomProviderResourceType>(map['resourceTypes'], (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<CustomProviderValidation>(map['validations'], (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceTypes: map['resourceTypes'] == null ? null : (pulumi.Input.decodeList<CustomProviderResourceType>(map['resourceTypes']!, (value) => CustomProviderResourceType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      validations: map['validations'] == null ? null : (pulumi.Input.decodeList<CustomProviderValidation>(map['validations']!, (value) => CustomProviderValidation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

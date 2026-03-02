@@ -73,17 +73,17 @@ class ScheduleAiplatformV1beta1Args {
 
   factory ScheduleAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ScheduleAiplatformV1beta1Args(
-      allowQueueing: map['allowQueueing'] == null ? null : (map['allowQueueing'] as bool).input(),
-      createPipelineJobRequest: map['createPipelineJobRequest'] == null ? null : (GoogleCloudAiplatformV1beta1CreatePipelineJobRequest.fromMap((map['createPipelineJobRequest'] as Map).cast<String, dynamic>())).input(),
-      cron: map['cron'] == null ? null : (map['cron'] as String).input(),
+      allowQueueing: map['allowQueueing'] == null ? null : (map['allowQueueing']! as bool).input(),
+      createPipelineJobRequest: map['createPipelineJobRequest'] == null ? null : (GoogleCloudAiplatformV1beta1CreatePipelineJobRequest.fromMap((map['createPipelineJobRequest']! as Map).cast<String, dynamic>())).input(),
+      cron: map['cron'] == null ? null : (map['cron']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       maxConcurrentRunCount: (map['maxConcurrentRunCount'] as String).input(),
-      maxRunCount: map['maxRunCount'] == null ? null : (map['maxRunCount'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      maxRunCount: map['maxRunCount'] == null ? null : (map['maxRunCount']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

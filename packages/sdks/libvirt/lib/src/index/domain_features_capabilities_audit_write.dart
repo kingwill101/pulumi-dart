@@ -20,7 +20,7 @@ class DomainFeaturesCapabilitiesAuditWrite {
 
   factory DomainFeaturesCapabilitiesAuditWrite.fromMap(Map<String, dynamic> map) {
     return DomainFeaturesCapabilitiesAuditWrite(
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

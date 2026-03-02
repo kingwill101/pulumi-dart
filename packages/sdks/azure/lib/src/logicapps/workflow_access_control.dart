@@ -39,10 +39,10 @@ class WorkflowAccessControl {
 
   factory WorkflowAccessControl.fromMap(Map<String, dynamic> map) {
     return WorkflowAccessControl(
-      action: map['action'] == null ? null : (WorkflowAccessControlAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
-      content: map['content'] == null ? null : (WorkflowAccessControlContent.fromMap((map['content'] as Map).cast<String, dynamic>())).input(),
-      trigger: map['trigger'] == null ? null : (WorkflowAccessControlTrigger.fromMap((map['trigger'] as Map).cast<String, dynamic>())).input(),
-      workflowManagement: map['workflowManagement'] == null ? null : (WorkflowAccessControlWorkflowManagement.fromMap((map['workflowManagement'] as Map).cast<String, dynamic>())).input(),
+      action: map['action'] == null ? null : (WorkflowAccessControlAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
+      content: map['content'] == null ? null : (WorkflowAccessControlContent.fromMap((map['content']! as Map).cast<String, dynamic>())).input(),
+      trigger: map['trigger'] == null ? null : (WorkflowAccessControlTrigger.fromMap((map['trigger']! as Map).cast<String, dynamic>())).input(),
+      workflowManagement: map['workflowManagement'] == null ? null : (WorkflowAccessControlWorkflowManagement.fromMap((map['workflowManagement']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

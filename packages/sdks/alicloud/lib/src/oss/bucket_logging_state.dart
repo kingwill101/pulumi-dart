@@ -36,10 +36,10 @@ class BucketLoggingState {
 
   factory BucketLoggingState.fromMap(Map<String, dynamic> map) {
     return BucketLoggingState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      loggingRole: map['loggingRole'] == null ? null : (map['loggingRole'] as String).input(),
-      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket'] as String).input(),
-      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      loggingRole: map['loggingRole'] == null ? null : (map['loggingRole']! as String).input(),
+      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket']! as String).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix']! as String).input(),
     );
   }
 }

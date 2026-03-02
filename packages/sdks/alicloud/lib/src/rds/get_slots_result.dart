@@ -41,8 +41,8 @@ class GetSlotsResult {
     return GetSlotsResult(
       dbInstanceId: map['dbInstanceId'] as String,
       id: map['id'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
       slots: pulumi.Input.decodeList<GetSlotsSlot>(map['slots'], (value) => GetSlotsSlot.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

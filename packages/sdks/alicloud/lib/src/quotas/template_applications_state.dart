@@ -91,18 +91,18 @@ class TemplateApplicationsState {
 
   factory TemplateApplicationsState.fromMap(Map<String, dynamic> map) {
     return TemplateApplicationsState(
-      aliyunUids: map['aliyunUids'] == null ? null : ((map['aliyunUids'] as List).cast<String>()).input(),
-      desireValue: map['desireValue'] == null ? null : (map['desireValue'] as double).input(),
-      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<TemplateApplicationsDimension>(map['dimensions'], (value) => TemplateApplicationsDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage'] as String).input(),
-      expireTime: map['expireTime'] == null ? null : (map['expireTime'] as String).input(),
-      noticeType: map['noticeType'] == null ? null : (map['noticeType'] as int).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode'] as String).input(),
-      quotaApplicationDetails: map['quotaApplicationDetails'] == null ? null : (pulumi.Input.decodeList<TemplateApplicationsQuotaApplicationDetail>(map['quotaApplicationDetails'], (value) => TemplateApplicationsQuotaApplicationDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory'] as String).input(),
-      reason: map['reason'] == null ? null : (map['reason'] as String).input(),
+      aliyunUids: map['aliyunUids'] == null ? null : ((map['aliyunUids']! as List).cast<String>()).input(),
+      desireValue: map['desireValue'] == null ? null : (map['desireValue']! as double).input(),
+      dimensions: map['dimensions'] == null ? null : (pulumi.Input.decodeList<TemplateApplicationsDimension>(map['dimensions']!, (value) => TemplateApplicationsDimension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      envLanguage: map['envLanguage'] == null ? null : (map['envLanguage']! as String).input(),
+      expireTime: map['expireTime'] == null ? null : (map['expireTime']! as String).input(),
+      noticeType: map['noticeType'] == null ? null : (map['noticeType']! as int).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      quotaActionCode: map['quotaActionCode'] == null ? null : (map['quotaActionCode']! as String).input(),
+      quotaApplicationDetails: map['quotaApplicationDetails'] == null ? null : (pulumi.Input.decodeList<TemplateApplicationsQuotaApplicationDetail>(map['quotaApplicationDetails']!, (value) => TemplateApplicationsQuotaApplicationDetail.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      quotaCategory: map['quotaCategory'] == null ? null : (map['quotaCategory']! as String).input(),
+      reason: map['reason'] == null ? null : (map['reason']! as String).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class IntegrationRuntimeSsisExpressCustomSetup {
 
   factory IntegrationRuntimeSsisExpressCustomSetup.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisExpressCustomSetup(
-      commandKeys: map['commandKeys'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupCommandKey>(map['commandKeys'], (value) => IntegrationRuntimeSsisExpressCustomSetupCommandKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      components: map['components'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupComponent>(map['components'], (value) => IntegrationRuntimeSsisExpressCustomSetupComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : ((map['environment'] as Map).cast<String, String>()).input(),
-      powershellVersion: map['powershellVersion'] == null ? null : (map['powershellVersion'] as String).input(),
+      commandKeys: map['commandKeys'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupCommandKey>(map['commandKeys']!, (value) => IntegrationRuntimeSsisExpressCustomSetupCommandKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      components: map['components'] == null ? null : (pulumi.Input.decodeList<IntegrationRuntimeSsisExpressCustomSetupComponent>(map['components']!, (value) => IntegrationRuntimeSsisExpressCustomSetupComponent.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : ((map['environment']! as Map).cast<String, String>()).input(),
+      powershellVersion: map['powershellVersion'] == null ? null : (map['powershellVersion']! as String).input(),
     );
   }
 }

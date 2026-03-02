@@ -34,9 +34,9 @@ class JobLatestCreatedExecution {
 
   factory JobLatestCreatedExecution.fromMap(Map<String, dynamic> map) {
     return JobLatestCreatedExecution(
-      completionTime: map['completionTime'] == null ? null : (map['completionTime'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      completionTime: map['completionTime'] == null ? null : (map['completionTime']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

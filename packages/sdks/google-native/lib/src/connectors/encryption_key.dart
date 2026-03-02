@@ -27,8 +27,8 @@ class EncryptionKey {
 
   factory EncryptionKey.fromMap(Map<String, dynamic> map) {
     return EncryptionKey(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      type: map['type'] == null ? null : (EncryptionKeyType.fromValue(map['type'] as String)).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      type: map['type'] == null ? null : (EncryptionKeyType.fromValue(map['type']! as String)).input(),
     );
   }
 }

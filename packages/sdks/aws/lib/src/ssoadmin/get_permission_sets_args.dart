@@ -30,7 +30,7 @@ class GetPermissionSetsArgs {
   factory GetPermissionSetsArgs.fromMap(Map<String, dynamic> map) {
     return GetPermissionSetsArgs(
       instanceArn: (map['instanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class RuleGroupRuleStatementAndStatement {
 
   factory RuleGroupRuleStatementAndStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementAndStatement(
-      statements: (pulumi.Input.decodeList<RuleGroupRuleStatement>(map['statements'], (value) => RuleGroupRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      statements: (pulumi.Input.decodeList<RuleGroupRuleStatement>(map['statements']!, (value) => RuleGroupRuleStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

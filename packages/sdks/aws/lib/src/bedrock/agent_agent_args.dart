@@ -104,22 +104,22 @@ class AgentAgentArgs {
 
   factory AgentAgentArgs.fromMap(Map<String, dynamic> map) {
     return AgentAgentArgs(
-      agentCollaboration: map['agentCollaboration'] == null ? null : (map['agentCollaboration'] as String).input(),
+      agentCollaboration: map['agentCollaboration'] == null ? null : ((map['agentCollaboration'] as String).input()).input(),
       agentName: (map['agentName'] as String).input(),
       agentResourceRoleArn: (map['agentResourceRoleArn'] as String).input(),
-      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : (map['customerEncryptionKeyArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      customerEncryptionKeyArn: map['customerEncryptionKeyArn'] == null ? null : ((map['customerEncryptionKeyArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       foundationModel: (map['foundationModel'] as String).input(),
-      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(map['guardrailConfigurations'], (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      idleSessionTtlInSeconds: map['idleSessionTtlInSeconds'] == null ? null : (map['idleSessionTtlInSeconds'] as int).input(),
-      instruction: map['instruction'] == null ? null : (map['instruction'] as String).input(),
-      memoryConfigurations: map['memoryConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(map['memoryConfigurations'], (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      prepareAgent: map['prepareAgent'] == null ? null : (map['prepareAgent'] as bool).input(),
-      promptOverrideConfigurations: map['promptOverrideConfigurations'] == null ? null : (pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(map['promptOverrideConfigurations'], (value) => AgentAgentPromptOverrideConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipResourceInUseCheck: map['skipResourceInUseCheck'] == null ? null : (map['skipResourceInUseCheck'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (AgentAgentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      guardrailConfigurations: map['guardrailConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentAgentGuardrailConfiguration>(map['guardrailConfigurations']!, (value) => AgentAgentGuardrailConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      idleSessionTtlInSeconds: map['idleSessionTtlInSeconds'] == null ? null : ((map['idleSessionTtlInSeconds'] as int).input()).input(),
+      instruction: map['instruction'] == null ? null : ((map['instruction'] as String).input()).input(),
+      memoryConfigurations: map['memoryConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentAgentMemoryConfiguration>(map['memoryConfigurations']!, (value) => AgentAgentMemoryConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      prepareAgent: map['prepareAgent'] == null ? null : ((map['prepareAgent'] as bool).input()).input(),
+      promptOverrideConfigurations: map['promptOverrideConfigurations'] == null ? null : ((pulumi.Input.decodeList<AgentAgentPromptOverrideConfiguration>(map['promptOverrideConfigurations']!, (value) => AgentAgentPromptOverrideConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipResourceInUseCheck: map['skipResourceInUseCheck'] == null ? null : ((map['skipResourceInUseCheck'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((AgentAgentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class ListConfigurationStoreKeysArgs {
     return ListConfigurationStoreKeysArgs(
       configStoreName: (map['configStoreName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      skipToken: map['skipToken'] == null ? null : (map['skipToken'] as String).input(),
+      skipToken: map['skipToken'] == null ? null : (map['skipToken']! as String).input(),
     );
   }
 }

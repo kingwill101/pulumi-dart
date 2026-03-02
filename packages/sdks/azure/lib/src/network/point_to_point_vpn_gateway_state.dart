@@ -67,16 +67,16 @@ class PointToPointVpnGatewayState {
 
   factory PointToPointVpnGatewayState.fromMap(Map<String, dynamic> map) {
     return PointToPointVpnGatewayState(
-      connectionConfigurations: map['connectionConfigurations'] == null ? null : (pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(map['connectionConfigurations'], (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      routingPreferenceInternetEnabled: map['routingPreferenceInternetEnabled'] == null ? null : (map['routingPreferenceInternetEnabled'] as bool).input(),
-      scaleUnit: map['scaleUnit'] == null ? null : (map['scaleUnit'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
-      vpnServerConfigurationId: map['vpnServerConfigurationId'] == null ? null : (map['vpnServerConfigurationId'] as String).input(),
+      connectionConfigurations: map['connectionConfigurations'] == null ? null : (pulumi.Input.decodeList<PointToPointVpnGatewayConnectionConfiguration>(map['connectionConfigurations']!, (value) => PointToPointVpnGatewayConnectionConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      routingPreferenceInternetEnabled: map['routingPreferenceInternetEnabled'] == null ? null : (map['routingPreferenceInternetEnabled']! as bool).input(),
+      scaleUnit: map['scaleUnit'] == null ? null : (map['scaleUnit']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
+      vpnServerConfigurationId: map['vpnServerConfigurationId'] == null ? null : (map['vpnServerConfigurationId']! as String).input(),
     );
   }
 }

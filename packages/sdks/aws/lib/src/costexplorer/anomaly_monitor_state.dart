@@ -51,13 +51,13 @@ class AnomalyMonitorState {
 
   factory AnomalyMonitorState.fromMap(Map<String, dynamic> map) {
     return AnomalyMonitorState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      monitorDimension: map['monitorDimension'] == null ? null : (map['monitorDimension'] as String).input(),
-      monitorSpecification: map['monitorSpecification'] == null ? null : (map['monitorSpecification'] as String).input(),
-      monitorType: map['monitorType'] == null ? null : (map['monitorType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      monitorDimension: map['monitorDimension'] == null ? null : ((map['monitorDimension'] as String).input()).input(),
+      monitorSpecification: map['monitorSpecification'] == null ? null : ((map['monitorSpecification'] as String).input()).input(),
+      monitorType: map['monitorType'] == null ? null : ((map['monitorType'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

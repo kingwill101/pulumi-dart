@@ -41,7 +41,7 @@ class GetRegionalSecretsResult {
 
   factory GetRegionalSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretsResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] as String,

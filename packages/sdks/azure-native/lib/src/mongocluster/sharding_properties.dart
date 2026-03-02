@@ -21,7 +21,7 @@ class ShardingProperties {
 
   factory ShardingProperties.fromMap(Map<String, dynamic> map) {
     return ShardingProperties(
-      shardCount: map['shardCount'] == null ? null : (map['shardCount'] as int).input(),
+      shardCount: map['shardCount'] == null ? null : (map['shardCount']! as int).input(),
     );
   }
 }

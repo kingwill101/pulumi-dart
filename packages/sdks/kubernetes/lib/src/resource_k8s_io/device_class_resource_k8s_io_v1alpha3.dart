@@ -44,9 +44,9 @@ class DeviceClassResourceK8sIoV1alpha3 {
 
   factory DeviceClassResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return DeviceClassResourceK8sIoV1alpha3(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       spec: (DeviceClassSpecResourceK8sIoV1alpha3.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
     );
   }

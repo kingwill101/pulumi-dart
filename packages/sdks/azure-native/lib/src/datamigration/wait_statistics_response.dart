@@ -31,9 +31,9 @@ class WaitStatisticsResponse {
 
   factory WaitStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return WaitStatisticsResponse(
-      waitCount: map['waitCount'] == null ? null : (map['waitCount'] as double).input(),
-      waitTimeMs: map['waitTimeMs'] == null ? null : (map['waitTimeMs'] as double).input(),
-      waitType: map['waitType'] == null ? null : (map['waitType'] as String).input(),
+      waitCount: map['waitCount'] == null ? null : (map['waitCount']! as double).input(),
+      waitTimeMs: map['waitTimeMs'] == null ? null : (map['waitTimeMs']! as double).input(),
+      waitType: map['waitType'] == null ? null : (map['waitType']! as String).input(),
     );
   }
 }

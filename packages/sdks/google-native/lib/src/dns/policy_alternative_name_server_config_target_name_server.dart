@@ -35,10 +35,10 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
 
   factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
     return PolicyAlternativeNameServerConfigTargetNameServer(
-      forwardingPath: map['forwardingPath'] == null ? null : (PolicyAlternativeNameServerConfigTargetNameServerForwardingPath.fromValue(map['forwardingPath'] as String)).input(),
-      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address'] as String).input(),
-      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      forwardingPath: map['forwardingPath'] == null ? null : (PolicyAlternativeNameServerConfigTargetNameServerForwardingPath.fromValue(map['forwardingPath']! as String)).input(),
+      ipv4Address: map['ipv4Address'] == null ? null : (map['ipv4Address']! as String).input(),
+      ipv6Address: map['ipv6Address'] == null ? null : (map['ipv6Address']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

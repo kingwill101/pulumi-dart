@@ -82,7 +82,7 @@ class GetSecretResult {
       resourceVersionlessId: map['resourceVersionlessId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
       value: map['value'] as String,
-      version: map['version'] == null ? null : map['version'] as String,
+      version: map['version'] == null ? null : map['version']! as String,
       versionlessId: map['versionlessId'] as String,
     );
   }

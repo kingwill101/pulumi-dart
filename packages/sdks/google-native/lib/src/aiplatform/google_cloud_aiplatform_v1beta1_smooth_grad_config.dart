@@ -32,9 +32,9 @@ class GoogleCloudAiplatformV1beta1SmoothGradConfig {
 
   factory GoogleCloudAiplatformV1beta1SmoothGradConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1SmoothGradConfig(
-      featureNoiseSigma: map['featureNoiseSigma'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureNoiseSigma.fromMap((map['featureNoiseSigma'] as Map).cast<String, dynamic>())).input(),
-      noiseSigma: map['noiseSigma'] == null ? null : (map['noiseSigma'] as double).input(),
-      noisySampleCount: map['noisySampleCount'] == null ? null : (map['noisySampleCount'] as int).input(),
+      featureNoiseSigma: map['featureNoiseSigma'] == null ? null : (GoogleCloudAiplatformV1beta1FeatureNoiseSigma.fromMap((map['featureNoiseSigma']! as Map).cast<String, dynamic>())).input(),
+      noiseSigma: map['noiseSigma'] == null ? null : (map['noiseSigma']! as double).input(),
+      noisySampleCount: map['noisySampleCount'] == null ? null : (map['noisySampleCount']! as int).input(),
     );
   }
 }

@@ -31,9 +31,9 @@ class TargetDescriptionResponse {
 
   factory TargetDescriptionResponse.fromMap(Map<String, dynamic> map) {
     return TargetDescriptionResponse(
-      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      availabilityZone: map['availabilityZone'] == null ? null : (map['availabilityZone']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
     );
   }
 }

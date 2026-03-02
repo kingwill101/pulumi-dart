@@ -31,8 +31,8 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
 
   factory V2PolicyOrchestratorForFolderOrchestrationState.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationState(
-      currentIterationStates: map['currentIterationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState>(map['currentIterationStates'], (value) => V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      previousIterationStates: map['previousIterationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState>(map['previousIterationStates'], (value) => V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentIterationStates: map['currentIterationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState>(map['currentIterationStates']!, (value) => V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      previousIterationStates: map['previousIterationStates'] == null ? null : (pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState>(map['previousIterationStates']!, (value) => V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

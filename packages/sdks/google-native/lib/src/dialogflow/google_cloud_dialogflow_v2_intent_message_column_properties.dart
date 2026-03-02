@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
   factory GoogleCloudDialogflowV2IntentMessageColumnProperties.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2IntentMessageColumnProperties(
       header: (map['header'] as String).input(),
-      horizontalAlignment: map['horizontalAlignment'] == null ? null : (GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment.fromValue(map['horizontalAlignment'] as String)).input(),
+      horizontalAlignment: map['horizontalAlignment'] == null ? null : (GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment.fromValue(map['horizontalAlignment']! as String)).input(),
     );
   }
 }

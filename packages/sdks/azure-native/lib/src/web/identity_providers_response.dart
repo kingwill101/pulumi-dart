@@ -71,15 +71,15 @@ class IdentityProvidersResponse {
 
   factory IdentityProvidersResponse.fromMap(Map<String, dynamic> map) {
     return IdentityProvidersResponse(
-      apple: map['apple'] == null ? null : (AppleResponse.fromMap((map['apple'] as Map).cast<String, dynamic>())).input(),
-      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (AzureActiveDirectoryResponse.fromMap((map['azureActiveDirectory'] as Map).cast<String, dynamic>())).input(),
-      azureStaticWebApps: map['azureStaticWebApps'] == null ? null : (AzureStaticWebAppsResponse.fromMap((map['azureStaticWebApps'] as Map).cast<String, dynamic>())).input(),
-      customOpenIdConnectProviders: map['customOpenIdConnectProviders'] == null ? null : (pulumi.Input.decodeMapValues<CustomOpenIdConnectProviderResponse>(map['customOpenIdConnectProviders'], (value) => CustomOpenIdConnectProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      facebook: map['facebook'] == null ? null : (FacebookResponse.fromMap((map['facebook'] as Map).cast<String, dynamic>())).input(),
-      gitHub: map['gitHub'] == null ? null : (GitHubResponse.fromMap((map['gitHub'] as Map).cast<String, dynamic>())).input(),
-      google: map['google'] == null ? null : (GoogleResponse.fromMap((map['google'] as Map).cast<String, dynamic>())).input(),
-      legacyMicrosoftAccount: map['legacyMicrosoftAccount'] == null ? null : (LegacyMicrosoftAccountResponse.fromMap((map['legacyMicrosoftAccount'] as Map).cast<String, dynamic>())).input(),
-      twitter: map['twitter'] == null ? null : (TwitterResponse.fromMap((map['twitter'] as Map).cast<String, dynamic>())).input(),
+      apple: map['apple'] == null ? null : (AppleResponse.fromMap((map['apple']! as Map).cast<String, dynamic>())).input(),
+      azureActiveDirectory: map['azureActiveDirectory'] == null ? null : (AzureActiveDirectoryResponse.fromMap((map['azureActiveDirectory']! as Map).cast<String, dynamic>())).input(),
+      azureStaticWebApps: map['azureStaticWebApps'] == null ? null : (AzureStaticWebAppsResponse.fromMap((map['azureStaticWebApps']! as Map).cast<String, dynamic>())).input(),
+      customOpenIdConnectProviders: map['customOpenIdConnectProviders'] == null ? null : (pulumi.Input.decodeMapValues<CustomOpenIdConnectProviderResponse>(map['customOpenIdConnectProviders']!, (value) => CustomOpenIdConnectProviderResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      facebook: map['facebook'] == null ? null : (FacebookResponse.fromMap((map['facebook']! as Map).cast<String, dynamic>())).input(),
+      gitHub: map['gitHub'] == null ? null : (GitHubResponse.fromMap((map['gitHub']! as Map).cast<String, dynamic>())).input(),
+      google: map['google'] == null ? null : (GoogleResponse.fromMap((map['google']! as Map).cast<String, dynamic>())).input(),
+      legacyMicrosoftAccount: map['legacyMicrosoftAccount'] == null ? null : (LegacyMicrosoftAccountResponse.fromMap((map['legacyMicrosoftAccount']! as Map).cast<String, dynamic>())).input(),
+      twitter: map['twitter'] == null ? null : (TwitterResponse.fromMap((map['twitter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

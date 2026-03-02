@@ -31,9 +31,9 @@ class DynamicExecutorAllocationResponse {
 
   factory DynamicExecutorAllocationResponse.fromMap(Map<String, dynamic> map) {
     return DynamicExecutorAllocationResponse(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      maxExecutors: map['maxExecutors'] == null ? null : (map['maxExecutors'] as int).input(),
-      minExecutors: map['minExecutors'] == null ? null : (map['minExecutors'] as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      maxExecutors: map['maxExecutors'] == null ? null : (map['maxExecutors']! as int).input(),
+      minExecutors: map['minExecutors'] == null ? null : (map['minExecutors']! as int).input(),
     );
   }
 }

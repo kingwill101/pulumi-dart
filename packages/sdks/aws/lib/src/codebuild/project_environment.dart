@@ -82,15 +82,15 @@ class ProjectEnvironment {
 
   factory ProjectEnvironment.fromMap(Map<String, dynamic> map) {
     return ProjectEnvironment(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate'] as String).input()).input(),
       computeType: (map['computeType'] as String).input(),
-      dockerServer: map['dockerServer'] == null ? null : (ProjectEnvironmentDockerServer.fromMap((map['dockerServer'] as Map).cast<String, dynamic>())).input(),
-      environmentVariables: map['environmentVariables'] == null ? null : (pulumi.Input.decodeList<ProjectEnvironmentEnvironmentVariable>(map['environmentVariables'], (value) => ProjectEnvironmentEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fleet: map['fleet'] == null ? null : (ProjectEnvironmentFleet.fromMap((map['fleet'] as Map).cast<String, dynamic>())).input(),
+      dockerServer: map['dockerServer'] == null ? null : ((ProjectEnvironmentDockerServer.fromMap((map['dockerServer']! as Map).cast<String, dynamic>())).input()).input(),
+      environmentVariables: map['environmentVariables'] == null ? null : ((pulumi.Input.decodeList<ProjectEnvironmentEnvironmentVariable>(map['environmentVariables']!, (value) => ProjectEnvironmentEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      fleet: map['fleet'] == null ? null : ((ProjectEnvironmentFleet.fromMap((map['fleet']! as Map).cast<String, dynamic>())).input()).input(),
       image: (map['image'] as String).input(),
-      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : (map['imagePullCredentialsType'] as String).input(),
-      privilegedMode: map['privilegedMode'] == null ? null : (map['privilegedMode'] as bool).input(),
-      registryCredential: map['registryCredential'] == null ? null : (ProjectEnvironmentRegistryCredential.fromMap((map['registryCredential'] as Map).cast<String, dynamic>())).input(),
+      imagePullCredentialsType: map['imagePullCredentialsType'] == null ? null : ((map['imagePullCredentialsType'] as String).input()).input(),
+      privilegedMode: map['privilegedMode'] == null ? null : ((map['privilegedMode'] as bool).input()).input(),
+      registryCredential: map['registryCredential'] == null ? null : ((ProjectEnvironmentRegistryCredential.fromMap((map['registryCredential']! as Map).cast<String, dynamic>())).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

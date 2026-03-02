@@ -56,11 +56,11 @@ class RetrohuntArgs {
 
   factory RetrohuntArgs.fromMap(Map<String, dynamic> map) {
     return RetrohuntArgs(
-      retrohuntId: map['RetrohuntId'] == null ? null : (map['RetrohuntId'] as String).input(),
+      retrohuntId: map['RetrohuntId'] == null ? null : (map['RetrohuntId']! as String).input(),
       instance: (map['instance'] as String).input(),
       location: (map['location'] as String).input(),
       processInterval: (RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rule: (map['rule'] as String).input(),
     );
   }

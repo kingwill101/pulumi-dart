@@ -26,7 +26,7 @@ class TableServerSideEncryption {
   factory TableServerSideEncryption.fromMap(Map<String, dynamic> map) {
     return TableServerSideEncryption(
       enabled: (map['enabled'] as bool).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
     );
   }
 }

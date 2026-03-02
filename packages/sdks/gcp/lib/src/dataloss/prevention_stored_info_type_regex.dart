@@ -26,7 +26,7 @@ class PreventionStoredInfoTypeRegex {
 
   factory PreventionStoredInfoTypeRegex.fromMap(Map<String, dynamic> map) {
     return PreventionStoredInfoTypeRegex(
-      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes'] as List).cast<int>()).input(),
+      groupIndexes: map['groupIndexes'] == null ? null : ((map['groupIndexes']! as List).cast<int>()).input(),
       pattern: (map['pattern'] as String).input(),
     );
   }

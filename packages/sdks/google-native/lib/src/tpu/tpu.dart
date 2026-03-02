@@ -22,7 +22,7 @@ class Tpu {
 
   factory Tpu.fromMap(Map<String, dynamic> map) {
     return Tpu(
-      nodeSpec: map['nodeSpec'] == null ? null : (pulumi.Input.decodeList<NodeSpec>(map['nodeSpec'], (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nodeSpec: map['nodeSpec'] == null ? null : (pulumi.Input.decodeList<NodeSpec>(map['nodeSpec']!, (value) => NodeSpec.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

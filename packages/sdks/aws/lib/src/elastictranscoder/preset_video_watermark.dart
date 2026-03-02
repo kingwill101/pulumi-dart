@@ -65,16 +65,16 @@ class PresetVideoWatermark {
 
   factory PresetVideoWatermark.fromMap(Map<String, dynamic> map) {
     return PresetVideoWatermark(
-      horizontalAlign: map['horizontalAlign'] == null ? null : (map['horizontalAlign'] as String).input(),
-      horizontalOffset: map['horizontalOffset'] == null ? null : (map['horizontalOffset'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      maxHeight: map['maxHeight'] == null ? null : (map['maxHeight'] as String).input(),
-      maxWidth: map['maxWidth'] == null ? null : (map['maxWidth'] as String).input(),
-      opacity: map['opacity'] == null ? null : (map['opacity'] as String).input(),
-      sizingPolicy: map['sizingPolicy'] == null ? null : (map['sizingPolicy'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      verticalAlign: map['verticalAlign'] == null ? null : (map['verticalAlign'] as String).input(),
-      verticalOffset: map['verticalOffset'] == null ? null : (map['verticalOffset'] as String).input(),
+      horizontalAlign: map['horizontalAlign'] == null ? null : ((map['horizontalAlign'] as String).input()).input(),
+      horizontalOffset: map['horizontalOffset'] == null ? null : ((map['horizontalOffset'] as String).input()).input(),
+      id: map['id'] == null ? null : ((map['id'] as String).input()).input(),
+      maxHeight: map['maxHeight'] == null ? null : ((map['maxHeight'] as String).input()).input(),
+      maxWidth: map['maxWidth'] == null ? null : ((map['maxWidth'] as String).input()).input(),
+      opacity: map['opacity'] == null ? null : ((map['opacity'] as String).input()).input(),
+      sizingPolicy: map['sizingPolicy'] == null ? null : ((map['sizingPolicy'] as String).input()).input(),
+      target: map['target'] == null ? null : ((map['target'] as String).input()).input(),
+      verticalAlign: map['verticalAlign'] == null ? null : ((map['verticalAlign'] as String).input()).input(),
+      verticalOffset: map['verticalOffset'] == null ? null : ((map['verticalOffset'] as String).input()).input(),
     );
   }
 }

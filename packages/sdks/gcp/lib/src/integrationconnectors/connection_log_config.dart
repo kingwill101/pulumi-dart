@@ -27,7 +27,7 @@ class ConnectionLogConfig {
   factory ConnectionLogConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionLogConfig(
       enabled: (map['enabled'] as bool).input(),
-      level: map['level'] == null ? null : (map['level'] as String).input(),
+      level: map['level'] == null ? null : (map['level']! as String).input(),
     );
   }
 }

@@ -41,7 +41,7 @@ class VpcSecurityGroupRulesExclusiveArgs {
     return VpcSecurityGroupRulesExclusiveArgs(
       egressRuleIds: ((map['egressRuleIds'] as List).cast<String>()).input(),
       ingressRuleIds: ((map['ingressRuleIds'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
     );
   }

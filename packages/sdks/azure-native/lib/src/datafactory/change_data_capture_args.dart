@@ -73,15 +73,15 @@ class ChangeDataCaptureArgs {
 
   factory ChangeDataCaptureArgs.fromMap(Map<String, dynamic> map) {
     return ChangeDataCaptureArgs(
-      allowVNetOverride: map['allowVNetOverride'] == null ? null : (map['allowVNetOverride'] as bool).input(),
-      changeDataCaptureName: map['changeDataCaptureName'] == null ? null : (map['changeDataCaptureName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      allowVNetOverride: map['allowVNetOverride'] == null ? null : (map['allowVNetOverride']! as bool).input(),
+      changeDataCaptureName: map['changeDataCaptureName'] == null ? null : (map['changeDataCaptureName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       factoryName: (map['factoryName'] as String).input(),
-      folder: map['folder'] == null ? null : (ChangeDataCaptureFolder.fromMap((map['folder'] as Map).cast<String, dynamic>())).input(),
+      folder: map['folder'] == null ? null : (ChangeDataCaptureFolder.fromMap((map['folder']! as Map).cast<String, dynamic>())).input(),
       policy: (MapperPolicy.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sourceConnectionsInfo: (pulumi.Input.decodeList<MapperSourceConnectionsInfo>(map['sourceConnectionsInfo'], (value) => MapperSourceConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       targetConnectionsInfo: (pulumi.Input.decodeList<MapperTargetConnectionsInfo>(map['targetConnectionsInfo'], (value) => MapperTargetConnectionsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

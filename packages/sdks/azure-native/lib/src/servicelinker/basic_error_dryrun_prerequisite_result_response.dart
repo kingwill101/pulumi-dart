@@ -32,8 +32,8 @@ class BasicErrorDryrunPrerequisiteResultResponse {
 
   factory BasicErrorDryrunPrerequisiteResultResponse.fromMap(Map<String, dynamic> map) {
     return BasicErrorDryrunPrerequisiteResultResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

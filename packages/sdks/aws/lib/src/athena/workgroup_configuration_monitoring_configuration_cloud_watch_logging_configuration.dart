@@ -36,9 +36,9 @@ class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguratio
   factory WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration(
       enabled: (map['enabled'] as bool).input(),
-      logGroup: map['logGroup'] == null ? null : (map['logGroup'] as String).input(),
-      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : (map['logStreamNamePrefix'] as String).input(),
-      logTypes: map['logTypes'] == null ? null : (pulumi.Input.decodeList<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType>(map['logTypes'], (value) => WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logGroup: map['logGroup'] == null ? null : ((map['logGroup'] as String).input()).input(),
+      logStreamNamePrefix: map['logStreamNamePrefix'] == null ? null : ((map['logStreamNamePrefix'] as String).input()).input(),
+      logTypes: map['logTypes'] == null ? null : ((pulumi.Input.decodeList<WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType>(map['logTypes']!, (value) => WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

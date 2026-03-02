@@ -36,10 +36,10 @@ class HostGroupAccountUserGroupAttachmentState {
 
   factory HostGroupAccountUserGroupAttachmentState.fromMap(Map<String, dynamic> map) {
     return HostGroupAccountUserGroupAttachmentState(
-      hostAccountNames: map['hostAccountNames'] == null ? null : ((map['hostAccountNames'] as List).cast<String>()).input(),
-      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId'] as String).input(),
+      hostAccountNames: map['hostAccountNames'] == null ? null : ((map['hostAccountNames']! as List).cast<String>()).input(),
+      hostGroupId: map['hostGroupId'] == null ? null : (map['hostGroupId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      userGroupId: map['userGroupId'] == null ? null : (map['userGroupId']! as String).input(),
     );
   }
 }

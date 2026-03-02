@@ -59,13 +59,13 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration {
   factory FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfiguration(
       bucketArn: (map['bucketArn'] as String).input(),
-      bufferingInterval: map['bufferingInterval'] == null ? null : (map['bufferingInterval'] as int).input(),
-      bufferingSize: map['bufferingSize'] == null ? null : (map['bufferingSize'] as int).input(),
-      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : (FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions'] as Map).cast<String, dynamic>())).input(),
-      compressionFormat: map['compressionFormat'] == null ? null : (map['compressionFormat'] as String).input(),
-      errorOutputPrefix: map['errorOutputPrefix'] == null ? null : (map['errorOutputPrefix'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      bufferingInterval: map['bufferingInterval'] == null ? null : ((map['bufferingInterval'] as int).input()).input(),
+      bufferingSize: map['bufferingSize'] == null ? null : ((map['bufferingSize'] as int).input()).input(),
+      cloudwatchLoggingOptions: map['cloudwatchLoggingOptions'] == null ? null : ((FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions.fromMap((map['cloudwatchLoggingOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      compressionFormat: map['compressionFormat'] == null ? null : ((map['compressionFormat'] as String).input()).input(),
+      errorOutputPrefix: map['errorOutputPrefix'] == null ? null : ((map['errorOutputPrefix'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
       roleArn: (map['roleArn'] as String).input(),
     );
   }

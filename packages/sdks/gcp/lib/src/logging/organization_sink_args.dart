@@ -83,15 +83,15 @@ class OrganizationSinkArgs {
 
   factory OrganizationSinkArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationSinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (OrganizationSinkBigqueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (OrganizationSinkBigqueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<OrganizationSinkExclusion>(map['exclusions'], (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
-      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<OrganizationSinkExclusion>(map['exclusions']!, (value) => OrganizationSinkExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren']! as bool).input(),
+      interceptChildren: map['interceptChildren'] == null ? null : (map['interceptChildren']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       orgId: (map['orgId'] as String).input(),
     );
   }

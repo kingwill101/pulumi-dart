@@ -42,10 +42,10 @@ class GetRegionalParameterVersionRenderArgs {
 
   factory GetRegionalParameterVersionRenderArgs.fromMap(Map<String, dynamic> map) {
     return GetRegionalParameterVersionRenderArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       parameter: (map['parameter'] as String).input(),
       parameterVersionId: (map['parameterVersionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

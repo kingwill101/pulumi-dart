@@ -45,12 +45,12 @@ class DatasetDelimitedTextAzureBlobFsLocation {
 
   factory DatasetDelimitedTextAzureBlobFsLocation.fromMap(Map<String, dynamic> map) {
     return DatasetDelimitedTextAzureBlobFsLocation(
-      dynamicFileSystemEnabled: map['dynamicFileSystemEnabled'] == null ? null : (map['dynamicFileSystemEnabled'] as bool).input(),
-      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled'] as bool).input(),
-      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled'] as bool).input(),
-      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      dynamicFileSystemEnabled: map['dynamicFileSystemEnabled'] == null ? null : (map['dynamicFileSystemEnabled']! as bool).input(),
+      dynamicFilenameEnabled: map['dynamicFilenameEnabled'] == null ? null : (map['dynamicFilenameEnabled']! as bool).input(),
+      dynamicPathEnabled: map['dynamicPathEnabled'] == null ? null : (map['dynamicPathEnabled']! as bool).input(),
+      fileSystem: map['fileSystem'] == null ? null : (map['fileSystem']! as String).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
     );
   }
 }

@@ -27,7 +27,7 @@ class AgentcoreAgentRuntimeNetworkConfiguration {
   factory AgentcoreAgentRuntimeNetworkConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentcoreAgentRuntimeNetworkConfiguration(
       networkMode: (map['networkMode'] as String).input(),
-      networkModeConfig: map['networkModeConfig'] == null ? null : (AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap((map['networkModeConfig'] as Map).cast<String, dynamic>())).input(),
+      networkModeConfig: map['networkModeConfig'] == null ? null : ((AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap((map['networkModeConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

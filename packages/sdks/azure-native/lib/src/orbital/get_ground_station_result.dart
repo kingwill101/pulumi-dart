@@ -92,20 +92,20 @@ class GetGroundStationResult {
 
   factory GetGroundStationResult.fromMap(Map<String, dynamic> map) {
     return GetGroundStationResult(
-      altitudeMeters: map['altitudeMeters'] == null ? null : map['altitudeMeters'] as double,
+      altitudeMeters: map['altitudeMeters'] == null ? null : map['altitudeMeters']! as double,
       azureApiVersion: map['azureApiVersion'] as String,
       capabilities: (map['capabilities'] as List).cast<String>(),
-      city: map['city'] == null ? null : map['city'] as String,
+      city: map['city'] == null ? null : map['city']! as String,
       globalCommunicationsSite: GroundStationsPropertiesResponseGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite'] as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      latitudeDegrees: map['latitudeDegrees'] == null ? null : map['latitudeDegrees'] as double,
+      latitudeDegrees: map['latitudeDegrees'] == null ? null : map['latitudeDegrees']! as double,
       location: map['location'] as String,
-      longitudeDegrees: map['longitudeDegrees'] == null ? null : map['longitudeDegrees'] as double,
+      longitudeDegrees: map['longitudeDegrees'] == null ? null : map['longitudeDegrees']! as double,
       name: map['name'] as String,
-      providerName: map['providerName'] == null ? null : map['providerName'] as String,
+      providerName: map['providerName'] == null ? null : map['providerName']! as String,
       releaseMode: map['releaseMode'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

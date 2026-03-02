@@ -51,13 +51,13 @@ class DownloadOsProfileResponse {
 
   factory DownloadOsProfileResponse.fromMap(Map<String, dynamic> map) {
     return DownloadOsProfileResponse(
-      gpgPubKey: map['gpgPubKey'] == null ? null : (map['gpgPubKey'] as String).input(),
-      imageHash: map['imageHash'] == null ? null : (map['imageHash'] as String).input(),
-      osImageLocation: map['osImageLocation'] == null ? null : (map['osImageLocation'] as String).input(),
-      osName: map['osName'] == null ? null : (map['osName'] as String).input(),
-      osType: map['osType'] == null ? null : (map['osType'] as String).input(),
-      osVersion: map['osVersion'] == null ? null : (map['osVersion'] as String).input(),
-      vsrVersion: map['vsrVersion'] == null ? null : (map['vsrVersion'] as String).input(),
+      gpgPubKey: map['gpgPubKey'] == null ? null : (map['gpgPubKey']! as String).input(),
+      imageHash: map['imageHash'] == null ? null : (map['imageHash']! as String).input(),
+      osImageLocation: map['osImageLocation'] == null ? null : (map['osImageLocation']! as String).input(),
+      osName: map['osName'] == null ? null : (map['osName']! as String).input(),
+      osType: map['osType'] == null ? null : (map['osType']! as String).input(),
+      osVersion: map['osVersion'] == null ? null : (map['osVersion']! as String).input(),
+      vsrVersion: map['vsrVersion'] == null ? null : (map['vsrVersion']! as String).input(),
     );
   }
 }

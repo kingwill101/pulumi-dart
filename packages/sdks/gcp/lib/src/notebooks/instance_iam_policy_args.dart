@@ -44,9 +44,9 @@ class InstanceIamPolicyArgs {
   factory InstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamPolicyArgs(
       instanceName: (map['instanceName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       policyData: (map['policyData'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

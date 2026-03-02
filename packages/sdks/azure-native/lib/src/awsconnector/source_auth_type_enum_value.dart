@@ -21,7 +21,7 @@ class SourceAuthTypeEnumValue {
 
   factory SourceAuthTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return SourceAuthTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class AccelerateConfigurationResponse {
 
   factory AccelerateConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AccelerateConfigurationResponse(
-      accelerationStatus: map['accelerationStatus'] == null ? null : (map['accelerationStatus'] as String).input(),
+      accelerationStatus: map['accelerationStatus'] == null ? null : (map['accelerationStatus']! as String).input(),
     );
   }
 }

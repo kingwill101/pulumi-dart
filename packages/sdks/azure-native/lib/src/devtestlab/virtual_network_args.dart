@@ -66,15 +66,15 @@ class VirtualNetworkArgs {
 
   factory VirtualNetworkArgs.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkArgs(
-      allowedSubnets: map['allowedSubnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['allowedSubnets'], (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      externalProviderResourceId: map['externalProviderResourceId'] == null ? null : (map['externalProviderResourceId'] as String).input(),
+      allowedSubnets: map['allowedSubnets'] == null ? null : (pulumi.Input.decodeList<Subnet>(map['allowedSubnets']!, (value) => Subnet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      externalProviderResourceId: map['externalProviderResourceId'] == null ? null : (map['externalProviderResourceId']! as String).input(),
       labName: (map['labName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnetOverrides: map['subnetOverrides'] == null ? null : (pulumi.Input.decodeList<SubnetOverride>(map['subnetOverrides'], (value) => SubnetOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subnetOverrides: map['subnetOverrides'] == null ? null : (pulumi.Input.decodeList<SubnetOverride>(map['subnetOverrides']!, (value) => SubnetOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

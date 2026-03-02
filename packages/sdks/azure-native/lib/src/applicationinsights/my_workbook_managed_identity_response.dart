@@ -27,8 +27,8 @@ class MyWorkbookManagedIdentityResponse {
 
   factory MyWorkbookManagedIdentityResponse.fromMap(Map<String, dynamic> map) {
     return MyWorkbookManagedIdentityResponse(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (MyWorkbookUserAssignedIdentitiesResponse.fromMap((map['userAssignedIdentities'] as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (MyWorkbookUserAssignedIdentitiesResponse.fromMap((map['userAssignedIdentities']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

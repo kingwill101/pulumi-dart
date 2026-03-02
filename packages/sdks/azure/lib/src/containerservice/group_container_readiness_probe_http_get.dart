@@ -35,10 +35,10 @@ class GroupContainerReadinessProbeHttpGet {
 
   factory GroupContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return GroupContainerReadinessProbeHttpGet(
-      httpHeaders: map['httpHeaders'] == null ? null : ((map['httpHeaders'] as Map).cast<String, String>()).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      httpHeaders: map['httpHeaders'] == null ? null : ((map['httpHeaders']! as Map).cast<String, String>()).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      scheme: map['scheme'] == null ? null : (map['scheme']! as String).input(),
     );
   }
 }

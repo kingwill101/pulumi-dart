@@ -66,11 +66,11 @@ class DatascanIamBindingArgs {
 
   factory DatascanIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return DatascanIamBindingArgs(
-      condition: map['condition'] == null ? null : (DatascanIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (DatascanIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       dataScanId: (map['dataScanId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
     );
   }

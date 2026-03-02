@@ -28,7 +28,7 @@ class OptInResourceDataLfTag {
 
   factory OptInResourceDataLfTag.fromMap(Map<String, dynamic> map) {
     return OptInResourceDataLfTag(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
       key: (map['key'] as String).input(),
       value: (map['value'] as String).input(),
     );

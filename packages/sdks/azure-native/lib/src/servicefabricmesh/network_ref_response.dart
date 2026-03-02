@@ -27,8 +27,8 @@ class NetworkRefResponse {
 
   factory NetworkRefResponse.fromMap(Map<String, dynamic> map) {
     return NetworkRefResponse(
-      endpointRefs: map['endpointRefs'] == null ? null : (pulumi.Input.decodeList<EndpointRefResponse>(map['endpointRefs'], (value) => EndpointRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      endpointRefs: map['endpointRefs'] == null ? null : (pulumi.Input.decodeList<EndpointRefResponse>(map['endpointRefs']!, (value) => EndpointRefResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -57,14 +57,14 @@ class RBDVolumeSource {
 
   factory RBDVolumeSource.fromMap(Map<String, dynamic> map) {
     return RBDVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
       image: (map['image'] as String).input(),
-      keyring: map['keyring'] == null ? null : (map['keyring'] as String).input(),
+      keyring: map['keyring'] == null ? null : (map['keyring']! as String).input(),
       monitors: ((map['monitors'] as List).cast<String>()).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
-      user: map['user'] == null ? null : (map['user'] as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReference.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
+      user: map['user'] == null ? null : (map['user']! as String).input(),
     );
   }
 }

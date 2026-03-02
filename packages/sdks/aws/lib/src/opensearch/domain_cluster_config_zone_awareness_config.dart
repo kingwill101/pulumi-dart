@@ -20,7 +20,7 @@ class DomainClusterConfigZoneAwarenessConfig {
 
   factory DomainClusterConfigZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
     return DomainClusterConfigZoneAwarenessConfig(
-      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : (map['availabilityZoneCount'] as int).input(),
+      availabilityZoneCount: map['availabilityZoneCount'] == null ? null : ((map['availabilityZoneCount'] as int).input()).input(),
     );
   }
 }

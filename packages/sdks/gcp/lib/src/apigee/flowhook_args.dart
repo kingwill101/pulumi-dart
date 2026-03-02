@@ -49,8 +49,8 @@ class FlowhookArgs {
 
   factory FlowhookArgs.fromMap(Map<String, dynamic> map) {
     return FlowhookArgs(
-      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      continueOnError: map['continueOnError'] == null ? null : (map['continueOnError']! as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       environment: (map['environment'] as String).input(),
       flowHookPoint: (map['flowHookPoint'] as String).input(),
       orgId: (map['orgId'] as String).input(),

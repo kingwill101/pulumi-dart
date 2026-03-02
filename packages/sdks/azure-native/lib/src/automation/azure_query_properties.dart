@@ -32,9 +32,9 @@ class AzureQueryProperties {
 
   factory AzureQueryProperties.fromMap(Map<String, dynamic> map) {
     return AzureQueryProperties(
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      scope: map['scope'] == null ? null : ((map['scope'] as List).cast<String>()).input(),
-      tagSettings: map['tagSettings'] == null ? null : (TagSettingsProperties.fromMap((map['tagSettings'] as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      scope: map['scope'] == null ? null : ((map['scope']! as List).cast<String>()).input(),
+      tagSettings: map['tagSettings'] == null ? null : (TagSettingsProperties.fromMap((map['tagSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

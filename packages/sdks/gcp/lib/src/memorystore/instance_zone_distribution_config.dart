@@ -30,8 +30,8 @@ class InstanceZoneDistributionConfig {
 
   factory InstanceZoneDistributionConfig.fromMap(Map<String, dynamic> map) {
     return InstanceZoneDistributionConfig(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

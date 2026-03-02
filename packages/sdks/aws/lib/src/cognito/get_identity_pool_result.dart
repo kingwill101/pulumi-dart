@@ -78,7 +78,7 @@ class GetIdentityPoolResult {
       allowClassicFlow: map['allowClassicFlow'] as bool,
       allowUnauthenticatedIdentities: map['allowUnauthenticatedIdentities'] as bool,
       arn: map['arn'] as String,
-      cognitoIdentityProviders: pulumi.Input.decodeList<GetIdentityPoolCognitoIdentityProvider>(map['cognitoIdentityProviders'], (value) => GetIdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>())),
+      cognitoIdentityProviders: pulumi.Input.decodeList<GetIdentityPoolCognitoIdentityProvider>(map['cognitoIdentityProviders']!, (value) => GetIdentityPoolCognitoIdentityProvider.fromMap((value as Map).cast<String, dynamic>())),
       developerProviderName: map['developerProviderName'] as String,
       id: map['id'] as String,
       identityPoolName: map['identityPoolName'] as String,

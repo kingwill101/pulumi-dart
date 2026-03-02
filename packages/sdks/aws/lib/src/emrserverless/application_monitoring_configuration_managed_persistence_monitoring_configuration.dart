@@ -25,8 +25,8 @@ class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguratio
 
   factory ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : (map['encryptionKeyArn'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      encryptionKeyArn: map['encryptionKeyArn'] == null ? null : ((map['encryptionKeyArn'] as String).input()).input(),
     );
   }
 }

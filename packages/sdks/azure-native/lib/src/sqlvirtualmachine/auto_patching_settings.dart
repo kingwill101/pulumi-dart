@@ -42,11 +42,11 @@ class AutoPatchingSettings {
 
   factory AutoPatchingSettings.fromMap(Map<String, dynamic> map) {
     return AutoPatchingSettings(
-      additionalVmPatch: map['additionalVmPatch'] == null ? null : (map['additionalVmPatch'] as String).input(),
-      dayOfWeek: map['dayOfWeek'] == null ? null : (DayOfWeek.fromValue(map['dayOfWeek'] as String)).input(),
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      maintenanceWindowDuration: map['maintenanceWindowDuration'] == null ? null : (map['maintenanceWindowDuration'] as int).input(),
-      maintenanceWindowStartingHour: map['maintenanceWindowStartingHour'] == null ? null : (map['maintenanceWindowStartingHour'] as int).input(),
+      additionalVmPatch: map['additionalVmPatch'] == null ? null : (map['additionalVmPatch']! as String).input(),
+      dayOfWeek: map['dayOfWeek'] == null ? null : (DayOfWeek.fromValue(map['dayOfWeek']! as String)).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      maintenanceWindowDuration: map['maintenanceWindowDuration'] == null ? null : (map['maintenanceWindowDuration']! as int).input(),
+      maintenanceWindowStartingHour: map['maintenanceWindowStartingHour'] == null ? null : (map['maintenanceWindowStartingHour']! as int).input(),
     );
   }
 }

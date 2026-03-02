@@ -41,11 +41,11 @@ class DataflowBuiltInTransformationMapResponse {
 
   factory DataflowBuiltInTransformationMapResponse.fromMap(Map<String, dynamic> map) {
     return DataflowBuiltInTransformationMapResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
       inputs: ((map['inputs'] as List).cast<String>()).input(),
       output: (map['output'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

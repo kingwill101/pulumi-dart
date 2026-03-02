@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration {
 
   factory AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationRetrievalServiceConfiguration(
-      s3: map['s3'] == null ? null : (AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3.fromMap((map['s3'] as Map).cast<String, dynamic>())).input(),
+      s3: map['s3'] == null ? null : ((AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3.fromMap((map['s3']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

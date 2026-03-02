@@ -50,12 +50,12 @@ class IpamPoolArgs {
 
   factory IpamPoolArgs.fromMap(Map<String, dynamic> map) {
     return IpamPoolArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkManagerName: (map['networkManagerName'] as String).input(),
-      poolName: map['poolName'] == null ? null : (map['poolName'] as String).input(),
+      poolName: map['poolName'] == null ? null : (map['poolName']! as String).input(),
       properties: (IpamPoolProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

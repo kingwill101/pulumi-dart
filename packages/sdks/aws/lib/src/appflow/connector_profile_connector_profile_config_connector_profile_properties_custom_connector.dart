@@ -26,8 +26,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConn
 
   factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector.fromMap(Map<String, dynamic> map) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnector(
-      oauth2Properties: map['oauth2Properties'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties.fromMap((map['oauth2Properties'] as Map).cast<String, dynamic>())).input(),
-      profileProperties: map['profileProperties'] == null ? null : ((map['profileProperties'] as Map).cast<String, String>()).input(),
+      oauth2Properties: map['oauth2Properties'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties.fromMap((map['oauth2Properties']! as Map).cast<String, dynamic>())).input()).input(),
+      profileProperties: map['profileProperties'] == null ? null : (((map['profileProperties'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -71,17 +71,17 @@ class SpriteSheet {
 
   factory SpriteSheet.fromMap(Map<String, dynamic> map) {
     return SpriteSheet(
-      columnCount: map['columnCount'] == null ? null : (map['columnCount'] as int).input(),
-      endTimeOffset: map['endTimeOffset'] == null ? null : (map['endTimeOffset'] as String).input(),
+      columnCount: map['columnCount'] == null ? null : (map['columnCount']! as int).input(),
+      endTimeOffset: map['endTimeOffset'] == null ? null : (map['endTimeOffset']! as String).input(),
       filePrefix: (map['filePrefix'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      quality: map['quality'] == null ? null : (map['quality'] as int).input(),
-      rowCount: map['rowCount'] == null ? null : (map['rowCount'] as int).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      quality: map['quality'] == null ? null : (map['quality']! as int).input(),
+      rowCount: map['rowCount'] == null ? null : (map['rowCount']! as int).input(),
       spriteHeightPixels: (map['spriteHeightPixels'] as int).input(),
       spriteWidthPixels: (map['spriteWidthPixels'] as int).input(),
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
-      totalCount: map['totalCount'] == null ? null : (map['totalCount'] as int).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset']! as String).input(),
+      totalCount: map['totalCount'] == null ? null : (map['totalCount']! as int).input(),
     );
   }
 }

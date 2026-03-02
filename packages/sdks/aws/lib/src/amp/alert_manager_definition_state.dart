@@ -31,9 +31,9 @@ class AlertManagerDefinitionState {
 
   factory AlertManagerDefinitionState.fromMap(Map<String, dynamic> map) {
     return AlertManagerDefinitionState(
-      definition: map['definition'] == null ? null : (map['definition'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      workspaceId: map['workspaceId'] == null ? null : (map['workspaceId'] as String).input(),
+      definition: map['definition'] == null ? null : ((map['definition'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      workspaceId: map['workspaceId'] == null ? null : ((map['workspaceId'] as String).input()).input(),
     );
   }
 }

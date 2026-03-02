@@ -27,8 +27,8 @@ class PublicNetworkAddressState {
 
   factory PublicNetworkAddressState.fromMap(Map<String, dynamic> map) {
     return PublicNetworkAddressState(
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<PublicNetworkAddressReplicaSet>(map['replicaSets'], (value) => PublicNetworkAddressReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      replicaSets: map['replicaSets'] == null ? null : (pulumi.Input.decodeList<PublicNetworkAddressReplicaSet>(map['replicaSets']!, (value) => PublicNetworkAddressReplicaSet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

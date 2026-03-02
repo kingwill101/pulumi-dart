@@ -31,9 +31,9 @@ class LambdaFunctionAssociation {
 
   factory LambdaFunctionAssociation.fromMap(Map<String, dynamic> map) {
     return LambdaFunctionAssociation(
-      eventType: map['eventType'] == null ? null : (map['eventType'] as String).input(),
-      includeBody: map['includeBody'] == null ? null : (map['includeBody'] as bool).input(),
-      lambdaFunctionARN: map['lambdaFunctionARN'] == null ? null : (map['lambdaFunctionARN'] as String).input(),
+      eventType: map['eventType'] == null ? null : (map['eventType']! as String).input(),
+      includeBody: map['includeBody'] == null ? null : (map['includeBody']! as bool).input(),
+      lambdaFunctionARN: map['lambdaFunctionARN'] == null ? null : (map['lambdaFunctionARN']! as String).input(),
     );
   }
 }

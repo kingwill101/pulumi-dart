@@ -59,8 +59,8 @@ class DefaultPrivilegArgs {
       owner: (map['owner'] as String).input(),
       privileges: ((map['privileges'] as List).cast<String>()).input(),
       role: (map['role'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption'] as bool).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      withGrantOption: map['withGrantOption'] == null ? null : (map['withGrantOption']! as bool).input(),
     );
   }
 }

@@ -38,10 +38,10 @@ class DsRecordDomainsV1alpha2 {
 
   factory DsRecordDomainsV1alpha2.fromMap(Map<String, dynamic> map) {
     return DsRecordDomainsV1alpha2(
-      algorithm: map['algorithm'] == null ? null : (DsRecordAlgorithmDomainsV1alpha2.fromValue(map['algorithm'] as String)).input(),
-      digest: map['digest'] == null ? null : (map['digest'] as String).input(),
-      digestType: map['digestType'] == null ? null : (DsRecordDigestTypeDomainsV1alpha2.fromValue(map['digestType'] as String)).input(),
-      keyTag: map['keyTag'] == null ? null : (map['keyTag'] as int).input(),
+      algorithm: map['algorithm'] == null ? null : (DsRecordAlgorithmDomainsV1alpha2.fromValue(map['algorithm']! as String)).input(),
+      digest: map['digest'] == null ? null : (map['digest']! as String).input(),
+      digestType: map['digestType'] == null ? null : (DsRecordDigestTypeDomainsV1alpha2.fromValue(map['digestType']! as String)).input(),
+      keyTag: map['keyTag'] == null ? null : (map['keyTag']! as int).input(),
     );
   }
 }

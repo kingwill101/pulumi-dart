@@ -60,14 +60,14 @@ class GroupRoleManagementPolicyState {
 
   factory GroupRoleManagementPolicyState.fromMap(Map<String, dynamic> map) {
     return GroupRoleManagementPolicyState(
-      activationRules: map['activationRules'] == null ? null : (GroupRoleManagementPolicyActivationRules.fromMap((map['activationRules'] as Map).cast<String, dynamic>())).input(),
-      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : (GroupRoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : (GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules'] as Map).cast<String, dynamic>())).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      notificationRules: map['notificationRules'] == null ? null : (GroupRoleManagementPolicyNotificationRules.fromMap((map['notificationRules'] as Map).cast<String, dynamic>())).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
+      activationRules: map['activationRules'] == null ? null : (GroupRoleManagementPolicyActivationRules.fromMap((map['activationRules']! as Map).cast<String, dynamic>())).input(),
+      activeAssignmentRules: map['activeAssignmentRules'] == null ? null : (GroupRoleManagementPolicyActiveAssignmentRules.fromMap((map['activeAssignmentRules']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      eligibleAssignmentRules: map['eligibleAssignmentRules'] == null ? null : (GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((map['eligibleAssignmentRules']! as Map).cast<String, dynamic>())).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      notificationRules: map['notificationRules'] == null ? null : (GroupRoleManagementPolicyNotificationRules.fromMap((map['notificationRules']! as Map).cast<String, dynamic>())).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
     );
   }
 }

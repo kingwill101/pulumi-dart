@@ -27,8 +27,8 @@ class BucketAclAccessControlPolicy {
 
   factory BucketAclAccessControlPolicy.fromMap(Map<String, dynamic> map) {
     return BucketAclAccessControlPolicy(
-      grants: map['grants'] == null ? null : (pulumi.Input.decodeList<BucketAclAccessControlPolicyGrant>(map['grants'], (value) => BucketAclAccessControlPolicyGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      owner: (BucketAclAccessControlPolicyOwner.fromMap((map['owner'] as Map).cast<String, dynamic>())).input(),
+      grants: map['grants'] == null ? null : ((pulumi.Input.decodeList<BucketAclAccessControlPolicyGrant>(map['grants']!, (value) => BucketAclAccessControlPolicyGrant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      owner: (BucketAclAccessControlPolicyOwner.fromMap((map['owner']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

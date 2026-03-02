@@ -118,6 +118,25 @@ class _RegistryMonitorService extends ResourceMonitorServiceBase {
   }
 }
 
+Input<String> _acceptInputString(Input<String> value) => value;
+
+class _InputIdSourceResource extends CustomResource {
+  _InputIdSourceResource(String name)
+      : super('test:index:InputIdSource', name, const {}, CustomResourceOptions());
+}
+
+class _InputIdConsumerResource extends CustomResource {
+  final Input<String> targetId;
+
+  _InputIdConsumerResource(String name, this.targetId)
+      : super(
+          'test:index:InputIdConsumer',
+          name,
+          {'targetId': targetId},
+          CustomResourceOptions(),
+        );
+}
+
 void main() {
   group('input asset registry', () {
     tearDown(() {
@@ -224,6 +243,32 @@ void main() {
         expect(await staticOutputFromOutput.getValue(), 222);
       },
     );
+
+    test('CustomResource.id can be used wherever Input<String> is expected', () async {
+      final source = _InputIdSourceResource('source');
+      source.resolveId('source-id', isKnown: true);
+
+      final Input<String> idAsInput = source.id;
+      final Input<String> idViaStaticInput = Input.input<String>(source.id);
+      final Input<String> idViaFromOutput = Input.fromOutput(source.id);
+      final Input<String>? idViaOptionalInput =
+          Input.asOptionalInput<String>(source.id);
+
+      final mapped = Input.mapInputValue<String, String>(idAsInput, (value) {
+        return 'mapped-$value';
+      });
+      final consumer = _InputIdConsumerResource('consumer', idAsInput);
+
+      expect(await idAsInput.toOutput().getValue(), 'source-id');
+      expect(await idViaStaticInput.toOutput().getValue(), 'source-id');
+      expect(await idViaFromOutput.toOutput().getValue(), 'source-id');
+      expect(await idViaOptionalInput!.toOutput().getValue(), 'source-id');
+      expect(await mapped.toOutput().getValue(), 'mapped-source-id');
+      expect(identical(consumer.targetId, idAsInput), isTrue);
+      expect(source.id is Input<String>, isTrue);
+      expect(Output.create('inline') is Input<String>, isTrue);
+      expect(_acceptInputString(source.id), same(source.id));
+    });
 
     test(
       'ResourceRegistry.constructResource uses registered factory and fallback',

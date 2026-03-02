@@ -52,11 +52,11 @@ class ManagedLoginBrandingArgs {
 
   factory ManagedLoginBrandingArgs.fromMap(Map<String, dynamic> map) {
     return ManagedLoginBrandingArgs(
-      assets: map['assets'] == null ? null : (pulumi.Input.decodeList<ManagedLoginBrandingAsset>(map['assets'], (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      assets: map['assets'] == null ? null : ((pulumi.Input.decodeList<ManagedLoginBrandingAsset>(map['assets']!, (value) => ManagedLoginBrandingAsset.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       clientId: (map['clientId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      settings: map['settings'] == null ? null : (map['settings'] as String).input(),
-      useCognitoProvidedValues: map['useCognitoProvidedValues'] == null ? null : (map['useCognitoProvidedValues'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      settings: map['settings'] == null ? null : ((map['settings'] as String).input()).input(),
+      useCognitoProvidedValues: map['useCognitoProvidedValues'] == null ? null : ((map['useCognitoProvidedValues'] as bool).input()).input(),
       userPoolId: (map['userPoolId'] as String).input(),
     );
   }

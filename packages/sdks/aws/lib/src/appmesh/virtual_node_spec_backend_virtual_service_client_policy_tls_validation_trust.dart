@@ -33,9 +33,9 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust {
 
   factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrust(
-      acm: map['acm'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcm.fromMap((map['acm'] as Map).cast<String, dynamic>())).input(),
-      file: map['file'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile.fromMap((map['file'] as Map).cast<String, dynamic>())).input(),
-      sds: map['sds'] == null ? null : (VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustSds.fromMap((map['sds'] as Map).cast<String, dynamic>())).input(),
+      acm: map['acm'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustAcm.fromMap((map['acm']! as Map).cast<String, dynamic>())).input()).input(),
+      file: map['file'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustFile.fromMap((map['file']! as Map).cast<String, dynamic>())).input()).input(),
+      sds: map['sds'] == null ? null : ((VirtualNodeSpecBackendVirtualServiceClientPolicyTlsValidationTrustSds.fromMap((map['sds']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

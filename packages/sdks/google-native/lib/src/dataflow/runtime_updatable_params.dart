@@ -26,8 +26,8 @@ class RuntimeUpdatableParams {
 
   factory RuntimeUpdatableParams.fromMap(Map<String, dynamic> map) {
     return RuntimeUpdatableParams(
-      maxNumWorkers: map['maxNumWorkers'] == null ? null : (map['maxNumWorkers'] as int).input(),
-      minNumWorkers: map['minNumWorkers'] == null ? null : (map['minNumWorkers'] as int).input(),
+      maxNumWorkers: map['maxNumWorkers'] == null ? null : (map['maxNumWorkers']! as int).input(),
+      minNumWorkers: map['minNumWorkers'] == null ? null : (map['minNumWorkers']! as int).input(),
     );
   }
 }

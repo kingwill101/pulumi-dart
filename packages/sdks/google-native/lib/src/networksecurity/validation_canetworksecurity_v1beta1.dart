@@ -28,8 +28,8 @@ class ValidationCANetworksecurityV1beta1 {
 
   factory ValidationCANetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return ValidationCANetworksecurityV1beta1(
-      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : (CertificateProviderInstanceNetworksecurityV1beta1.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>())).input(),
-      grpcEndpoint: map['grpcEndpoint'] == null ? null : (GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>())).input(),
+      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : (CertificateProviderInstanceNetworksecurityV1beta1.fromMap((map['certificateProviderInstance']! as Map).cast<String, dynamic>())).input(),
+      grpcEndpoint: map['grpcEndpoint'] == null ? null : (GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap((map['grpcEndpoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

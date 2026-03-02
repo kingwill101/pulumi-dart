@@ -32,9 +32,9 @@ class MetricDescriptorLabel {
 
   factory MetricDescriptorLabel.fromMap(Map<String, dynamic> map) {
     return MetricDescriptorLabel(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       key: (map['key'] as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
     );
   }
 }

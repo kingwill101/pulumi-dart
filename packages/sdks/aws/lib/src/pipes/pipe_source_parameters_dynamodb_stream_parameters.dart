@@ -56,13 +56,13 @@ class PipeSourceParametersDynamodbStreamParameters {
 
   factory PipeSourceParametersDynamodbStreamParameters.fromMap(Map<String, dynamic> map) {
     return PipeSourceParametersDynamodbStreamParameters(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      deadLetterConfig: map['deadLetterConfig'] == null ? null : (PipeSourceParametersDynamodbStreamParametersDeadLetterConfig.fromMap((map['deadLetterConfig'] as Map).cast<String, dynamic>())).input(),
-      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : (map['maximumBatchingWindowInSeconds'] as int).input(),
-      maximumRecordAgeInSeconds: map['maximumRecordAgeInSeconds'] == null ? null : (map['maximumRecordAgeInSeconds'] as int).input(),
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : (map['maximumRetryAttempts'] as int).input(),
-      onPartialBatchItemFailure: map['onPartialBatchItemFailure'] == null ? null : (map['onPartialBatchItemFailure'] as String).input(),
-      parallelizationFactor: map['parallelizationFactor'] == null ? null : (map['parallelizationFactor'] as int).input(),
+      batchSize: map['batchSize'] == null ? null : ((map['batchSize'] as int).input()).input(),
+      deadLetterConfig: map['deadLetterConfig'] == null ? null : ((PipeSourceParametersDynamodbStreamParametersDeadLetterConfig.fromMap((map['deadLetterConfig']! as Map).cast<String, dynamic>())).input()).input(),
+      maximumBatchingWindowInSeconds: map['maximumBatchingWindowInSeconds'] == null ? null : ((map['maximumBatchingWindowInSeconds'] as int).input()).input(),
+      maximumRecordAgeInSeconds: map['maximumRecordAgeInSeconds'] == null ? null : ((map['maximumRecordAgeInSeconds'] as int).input()).input(),
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : ((map['maximumRetryAttempts'] as int).input()).input(),
+      onPartialBatchItemFailure: map['onPartialBatchItemFailure'] == null ? null : ((map['onPartialBatchItemFailure'] as String).input()).input(),
+      parallelizationFactor: map['parallelizationFactor'] == null ? null : ((map['parallelizationFactor'] as int).input()).input(),
       startingPosition: (map['startingPosition'] as String).input(),
     );
   }

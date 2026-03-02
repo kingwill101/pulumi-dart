@@ -26,8 +26,8 @@ class ConfigurationGroupSchemaPropertiesFormat {
 
   factory ConfigurationGroupSchemaPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ConfigurationGroupSchemaPropertiesFormat(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      schemaDefinition: map['schemaDefinition'] == null ? null : (map['schemaDefinition']! as String).input(),
     );
   }
 }

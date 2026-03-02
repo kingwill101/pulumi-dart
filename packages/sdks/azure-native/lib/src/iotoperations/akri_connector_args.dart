@@ -46,8 +46,8 @@ class AkriConnectorArgs {
   factory AkriConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AkriConnectorArgs(
       akriConnectorTemplateName: (map['akriConnectorTemplateName'] as String).input(),
-      connectorName: map['connectorName'] == null ? null : (map['connectorName'] as String).input(),
-      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
+      connectorName: map['connectorName'] == null ? null : (map['connectorName']! as String).input(),
+      extendedLocation: map['extendedLocation'] == null ? null : (ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())).input(),
       instanceName: (map['instanceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );

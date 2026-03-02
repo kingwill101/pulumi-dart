@@ -28,7 +28,7 @@ class ElasticSanSku {
   factory ElasticSanSku.fromMap(Map<String, dynamic> map) {
     return ElasticSanSku(
       name: (map['name'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

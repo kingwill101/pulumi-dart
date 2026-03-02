@@ -84,17 +84,17 @@ class OssScanConfigArgs {
 
   factory OssScanConfigArgs.fromMap(Map<String, dynamic> map) {
     return OssScanConfigArgs(
-      allKeyPrefix: map['allKeyPrefix'] == null ? null : (map['allKeyPrefix'] as bool).input(),
+      allKeyPrefix: map['allKeyPrefix'] == null ? null : (map['allKeyPrefix']! as bool).input(),
       bucketNameLists: ((map['bucketNameLists'] as List).cast<String>()).input(),
-      decompressMaxFileCount: map['decompressMaxFileCount'] == null ? null : (map['decompressMaxFileCount'] as int).input(),
-      decompressMaxLayer: map['decompressMaxLayer'] == null ? null : (map['decompressMaxLayer'] as int).input(),
-      decryptionLists: map['decryptionLists'] == null ? null : ((map['decryptionLists'] as List).cast<String>()).input(),
+      decompressMaxFileCount: map['decompressMaxFileCount'] == null ? null : (map['decompressMaxFileCount']! as int).input(),
+      decompressMaxLayer: map['decompressMaxLayer'] == null ? null : (map['decompressMaxLayer']! as int).input(),
+      decryptionLists: map['decryptionLists'] == null ? null : ((map['decryptionLists']! as List).cast<String>()).input(),
       enable: (map['enable'] as int).input(),
       endTime: (map['endTime'] as String).input(),
-      keyPrefixLists: map['keyPrefixLists'] == null ? null : ((map['keyPrefixLists'] as List).cast<String>()).input(),
+      keyPrefixLists: map['keyPrefixLists'] == null ? null : ((map['keyPrefixLists']! as List).cast<String>()).input(),
       keySuffixLists: ((map['keySuffixLists'] as List).cast<String>()).input(),
-      lastModifiedStartTime: map['lastModifiedStartTime'] == null ? null : (map['lastModifiedStartTime'] as int).input(),
-      ossScanConfigName: map['ossScanConfigName'] == null ? null : (map['ossScanConfigName'] as String).input(),
+      lastModifiedStartTime: map['lastModifiedStartTime'] == null ? null : (map['lastModifiedStartTime']! as int).input(),
+      ossScanConfigName: map['ossScanConfigName'] == null ? null : (map['ossScanConfigName']! as String).input(),
       scanDayLists: ((map['scanDayLists'] as List).cast<int>()).input(),
       startTime: (map['startTime'] as String).input(),
     );

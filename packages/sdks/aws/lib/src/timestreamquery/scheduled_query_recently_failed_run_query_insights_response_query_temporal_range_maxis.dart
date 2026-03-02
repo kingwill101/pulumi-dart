@@ -25,8 +25,8 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxi
 
   factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis.fromMap(Map<String, dynamic> map) {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis(
-      tableArn: map['tableArn'] == null ? null : (map['tableArn'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as int).input(),
+      tableArn: map['tableArn'] == null ? null : ((map['tableArn'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as int).input()).input(),
     );
   }
 }

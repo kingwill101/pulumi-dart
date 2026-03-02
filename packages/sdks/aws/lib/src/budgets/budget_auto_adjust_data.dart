@@ -32,8 +32,8 @@ class BudgetAutoAdjustData {
   factory BudgetAutoAdjustData.fromMap(Map<String, dynamic> map) {
     return BudgetAutoAdjustData(
       autoAdjustType: (map['autoAdjustType'] as String).input(),
-      historicalOptions: map['historicalOptions'] == null ? null : (BudgetAutoAdjustDataHistoricalOptions.fromMap((map['historicalOptions'] as Map).cast<String, dynamic>())).input(),
-      lastAutoAdjustTime: map['lastAutoAdjustTime'] == null ? null : (map['lastAutoAdjustTime'] as String).input(),
+      historicalOptions: map['historicalOptions'] == null ? null : ((BudgetAutoAdjustDataHistoricalOptions.fromMap((map['historicalOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      lastAutoAdjustTime: map['lastAutoAdjustTime'] == null ? null : ((map['lastAutoAdjustTime'] as String).input()).input(),
     );
   }
 }

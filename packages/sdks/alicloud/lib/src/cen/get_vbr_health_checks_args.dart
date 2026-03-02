@@ -44,10 +44,10 @@ class GetVbrHealthChecksArgs {
 
   factory GetVbrHealthChecksArgs.fromMap(Map<String, dynamic> map) {
     return GetVbrHealthChecksArgs(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      vbrInstanceId: map['vbrInstanceId'] == null ? null : (map['vbrInstanceId'] as String).input(),
-      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId'] as int).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      vbrInstanceId: map['vbrInstanceId'] == null ? null : (map['vbrInstanceId']! as String).input(),
+      vbrInstanceOwnerId: map['vbrInstanceOwnerId'] == null ? null : (map['vbrInstanceOwnerId']! as int).input(),
       vbrInstanceRegionId: (map['vbrInstanceRegionId'] as String).input(),
     );
   }

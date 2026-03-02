@@ -32,9 +32,9 @@ class AwsElasticBeanstalkApplicationPropertiesResponse {
 
   factory AwsElasticBeanstalkApplicationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsElasticBeanstalkApplicationPropertiesResponse(
-      applicationName: map['applicationName'] == null ? null : (map['applicationName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      resourceLifecycleConfig: map['resourceLifecycleConfig'] == null ? null : (ApplicationResourceLifecycleConfigResponse.fromMap((map['resourceLifecycleConfig'] as Map).cast<String, dynamic>())).input(),
+      applicationName: map['applicationName'] == null ? null : (map['applicationName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      resourceLifecycleConfig: map['resourceLifecycleConfig'] == null ? null : (ApplicationResourceLifecycleConfigResponse.fromMap((map['resourceLifecycleConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

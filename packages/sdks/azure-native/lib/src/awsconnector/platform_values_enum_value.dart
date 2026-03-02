@@ -21,7 +21,7 @@ class PlatformValuesEnumValue {
 
   factory PlatformValuesEnumValue.fromMap(Map<String, dynamic> map) {
     return PlatformValuesEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

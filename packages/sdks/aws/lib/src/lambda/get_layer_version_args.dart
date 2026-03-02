@@ -46,11 +46,11 @@ class GetLayerVersionArgs {
 
   factory GetLayerVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetLayerVersionArgs(
-      compatibleArchitecture: map['compatibleArchitecture'] == null ? null : (map['compatibleArchitecture'] as String).input(),
-      compatibleRuntime: map['compatibleRuntime'] == null ? null : (map['compatibleRuntime'] as String).input(),
+      compatibleArchitecture: map['compatibleArchitecture'] == null ? null : ((map['compatibleArchitecture'] as String).input()).input(),
+      compatibleRuntime: map['compatibleRuntime'] == null ? null : ((map['compatibleRuntime'] as String).input()).input(),
       layerName: (map['layerName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      version: map['version'] == null ? null : ((map['version'] as int).input()).input(),
     );
   }
 }

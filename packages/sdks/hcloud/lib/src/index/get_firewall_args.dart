@@ -56,13 +56,13 @@ class GetFirewallArgs {
 
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
-      applyTos: map['applyTos'] == null ? null : (pulumi.Input.decodeList<GetFirewallApplyTo>(map['applyTos'], (value) => GetFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GetFirewallRule>(map['rules'], (value) => GetFirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      withSelector: map['withSelector'] == null ? null : (map['withSelector'] as String).input(),
+      applyTos: map['applyTos'] == null ? null : (pulumi.Input.decodeList<GetFirewallApplyTo>(map['applyTos']!, (value) => GetFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      mostRecent: map['mostRecent'] == null ? null : (map['mostRecent']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<GetFirewallRule>(map['rules']!, (value) => GetFirewallRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      withSelector: map['withSelector'] == null ? null : (map['withSelector']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class RepositoryEventConfig {
 
   factory RepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryEventConfig(
-      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>())).input(),
-      push: map['push'] == null ? null : (PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>())).input(),
-      repository: map['repository'] == null ? null : (map['repository'] as String).input(),
+      pullRequest: map['pullRequest'] == null ? null : (PullRequestFilter.fromMap((map['pullRequest']! as Map).cast<String, dynamic>())).input(),
+      push: map['push'] == null ? null : (PushFilter.fromMap((map['push']! as Map).cast<String, dynamic>())).input(),
+      repository: map['repository'] == null ? null : (map['repository']! as String).input(),
     );
   }
 }

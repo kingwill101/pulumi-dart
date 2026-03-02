@@ -57,9 +57,9 @@ class HostAccountArgs {
       hostAccountName: (map['hostAccountName'] as String).input(),
       hostId: (map['hostId'] as String).input(),
       instanceId: (map['instanceId'] as String).input(),
-      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
       protocolName: (map['protocolName'] as String).input(),
     );
   }

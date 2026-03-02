@@ -72,14 +72,14 @@ class MulticastGroupRangeActivationArgs {
 
   factory MulticastGroupRangeActivationArgs.fromMap(Map<String, dynamic> map) {
     return MulticastGroupRangeActivationArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       location: (map['location'] as String).input(),
-      logConfig: map['logConfig'] == null ? null : (MulticastGroupRangeActivationLogConfig.fromMap((map['logConfig'] as Map).cast<String, dynamic>())).input(),
+      logConfig: map['logConfig'] == null ? null : (MulticastGroupRangeActivationLogConfig.fromMap((map['logConfig']! as Map).cast<String, dynamic>())).input(),
       multicastDomainActivation: (map['multicastDomainActivation'] as String).input(),
       multicastGroupRange: (map['multicastGroupRange'] as String).input(),
       multicastGroupRangeActivationId: (map['multicastGroupRangeActivationId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

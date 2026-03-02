@@ -36,9 +36,9 @@ class VsphereVirtualDiskVolumeSource {
 
   factory VsphereVirtualDiskVolumeSource.fromMap(Map<String, dynamic> map) {
     return VsphereVirtualDiskVolumeSource(
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      storagePolicyID: map['storagePolicyID'] == null ? null : (map['storagePolicyID'] as String).input(),
-      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName'] as String).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      storagePolicyID: map['storagePolicyID'] == null ? null : (map['storagePolicyID']! as String).input(),
+      storagePolicyName: map['storagePolicyName'] == null ? null : (map['storagePolicyName']! as String).input(),
       volumePath: (map['volumePath'] as String).input(),
     );
   }

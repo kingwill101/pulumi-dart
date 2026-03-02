@@ -39,10 +39,10 @@ class ProviderMonitorSettingArgs {
 
   factory ProviderMonitorSettingArgs.fromMap(Map<String, dynamic> map) {
     return ProviderMonitorSettingArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      providerMonitorSettingName: map['providerMonitorSettingName'] == null ? null : (map['providerMonitorSettingName'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      providerMonitorSettingName: map['providerMonitorSettingName'] == null ? null : (map['providerMonitorSettingName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

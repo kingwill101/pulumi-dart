@@ -31,9 +31,9 @@ class GoogleCloudRetailV2Image {
 
   factory GoogleCloudRetailV2Image.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2Image(
-      height: map['height'] == null ? null : (map['height'] as int).input(),
+      height: map['height'] == null ? null : (map['height']! as int).input(),
       uri: (map['uri'] as String).input(),
-      width: map['width'] == null ? null : (map['width'] as int).input(),
+      width: map['width'] == null ? null : (map['width']! as int).input(),
     );
   }
 }

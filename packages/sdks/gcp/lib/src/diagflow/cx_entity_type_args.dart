@@ -81,15 +81,15 @@ class CxEntityTypeArgs {
 
   factory CxEntityTypeArgs.fromMap(Map<String, dynamic> map) {
     return CxEntityTypeArgs(
-      autoExpansionMode: map['autoExpansionMode'] == null ? null : (map['autoExpansionMode'] as String).input(),
+      autoExpansionMode: map['autoExpansionMode'] == null ? null : (map['autoExpansionMode']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction'] as bool).input(),
+      enableFuzzyExtraction: map['enableFuzzyExtraction'] == null ? null : (map['enableFuzzyExtraction']! as bool).input(),
       entities: (pulumi.Input.decodeList<CxEntityTypeEntity>(map['entities'], (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(map['excludedPhrases'], (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      excludedPhrases: map['excludedPhrases'] == null ? null : (pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(map['excludedPhrases']!, (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>()))).input(),
       kind: (map['kind'] as String).input(),
-      languageCode: map['languageCode'] == null ? null : (map['languageCode'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
+      languageCode: map['languageCode'] == null ? null : (map['languageCode']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      redact: map['redact'] == null ? null : (map['redact']! as bool).input(),
     );
   }
 }

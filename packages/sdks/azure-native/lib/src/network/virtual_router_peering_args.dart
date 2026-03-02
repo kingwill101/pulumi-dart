@@ -54,11 +54,11 @@ class VirtualRouterPeeringArgs {
 
   factory VirtualRouterPeeringArgs.fromMap(Map<String, dynamic> map) {
     return VirtualRouterPeeringArgs(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as double).input(),
-      peerIp: map['peerIp'] == null ? null : (map['peerIp'] as String).input(),
-      peeringName: map['peeringName'] == null ? null : (map['peeringName'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as double).input(),
+      peerIp: map['peerIp'] == null ? null : (map['peerIp']! as String).input(),
+      peeringName: map['peeringName'] == null ? null : (map['peeringName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       virtualRouterName: (map['virtualRouterName'] as String).input(),
     );

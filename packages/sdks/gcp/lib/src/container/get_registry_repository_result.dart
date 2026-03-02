@@ -35,7 +35,7 @@ class GetRegistryRepositoryResult {
     return GetRegistryRepositoryResult(
       id: map['id'] as String,
       project: map['project'] as String,
-      region: map['region'] == null ? null : map['region'] as String,
+      region: map['region'] == null ? null : map['region']! as String,
       repositoryUrl: map['repositoryUrl'] as String,
     );
   }

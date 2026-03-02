@@ -78,16 +78,16 @@ class AclState {
 
   factory AclState.fromMap(Map<String, dynamic> map) {
     return AclState(
-      aclEntries: map['aclEntries'] == null ? null : (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aclId: map['aclId'] == null ? null : (map['aclId'] as String).input(),
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      patternType: map['patternType'] == null ? null : (map['patternType'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceName: map['resourceName'] == null ? null : (map['resourceName'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      aclEntries: map['aclEntries'] == null ? null : (pulumi.Input.decodeList<AclAclEntry>(map['aclEntries']!, (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aclId: map['aclId'] == null ? null : (map['aclId']! as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      patternType: map['patternType'] == null ? null : (map['patternType']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceName: map['resourceName'] == null ? null : (map['resourceName']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

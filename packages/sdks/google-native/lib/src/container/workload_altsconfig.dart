@@ -21,7 +21,7 @@ class WorkloadALTSConfig {
 
   factory WorkloadALTSConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadALTSConfig(
-      enableAlts: map['enableAlts'] == null ? null : (map['enableAlts'] as bool).input(),
+      enableAlts: map['enableAlts'] == null ? null : (map['enableAlts']! as bool).input(),
     );
   }
 }

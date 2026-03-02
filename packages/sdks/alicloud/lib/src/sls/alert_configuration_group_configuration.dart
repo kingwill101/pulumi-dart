@@ -24,8 +24,8 @@ class AlertConfigurationGroupConfiguration {
 
   factory AlertConfigurationGroupConfiguration.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationGroupConfiguration(
-      fields: map['fields'] == null ? null : ((map['fields'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      fields: map['fields'] == null ? null : ((map['fields']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

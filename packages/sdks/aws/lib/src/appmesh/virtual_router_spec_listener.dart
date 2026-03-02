@@ -21,7 +21,7 @@ class VirtualRouterSpecListener {
 
   factory VirtualRouterSpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualRouterSpecListener(
-      portMapping: (VirtualRouterSpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>())).input(),
+      portMapping: (VirtualRouterSpecListenerPortMapping.fromMap((map['portMapping']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

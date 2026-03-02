@@ -40,9 +40,9 @@ class GetTaskArgs {
   factory GetTaskArgs.fromMap(Map<String, dynamic> map) {
     return GetTaskArgs(
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       queueId: (map['queueId'] as String).input(),
-      responseView: map['responseView'] == null ? null : (map['responseView'] as String).input(),
+      responseView: map['responseView'] == null ? null : (map['responseView']! as String).input(),
       taskId: (map['taskId'] as String).input(),
     );
   }

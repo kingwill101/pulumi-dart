@@ -103,22 +103,22 @@ class AppResourcePropertiesResponse {
 
   factory AppResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AppResourcePropertiesResponse(
-      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs'] as Map).cast<String, dynamic>()).input(),
-      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<CustomPersistentDiskResourceResponse>(map['customPersistentDisks'], (value) => CustomPersistentDiskResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableEndToEndTLS: map['enableEndToEndTLS'] == null ? null : (map['enableEndToEndTLS'] as bool).input(),
+      addonConfigs: map['addonConfigs'] == null ? null : ((map['addonConfigs']! as Map).cast<String, dynamic>()).input(),
+      customPersistentDisks: map['customPersistentDisks'] == null ? null : (pulumi.Input.decodeList<CustomPersistentDiskResourceResponse>(map['customPersistentDisks']!, (value) => CustomPersistentDiskResourceResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableEndToEndTLS: map['enableEndToEndTLS'] == null ? null : (map['enableEndToEndTLS']! as bool).input(),
       fqdn: (map['fqdn'] as String).input(),
-      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly'] as bool).input(),
-      ingressSettings: map['ingressSettings'] == null ? null : (IngressSettingsResponse.fromMap((map['ingressSettings'] as Map).cast<String, dynamic>())).input(),
-      loadedCertificates: map['loadedCertificates'] == null ? null : (pulumi.Input.decodeList<LoadedCertificateResponse>(map['loadedCertificates'], (value) => LoadedCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      persistentDisk: map['persistentDisk'] == null ? null : (PersistentDiskResponse.fromMap((map['persistentDisk'] as Map).cast<String, dynamic>())).input(),
+      httpsOnly: map['httpsOnly'] == null ? null : (map['httpsOnly']! as bool).input(),
+      ingressSettings: map['ingressSettings'] == null ? null : (IngressSettingsResponse.fromMap((map['ingressSettings']! as Map).cast<String, dynamic>())).input(),
+      loadedCertificates: map['loadedCertificates'] == null ? null : (pulumi.Input.decodeList<LoadedCertificateResponse>(map['loadedCertificates']!, (value) => LoadedCertificateResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      persistentDisk: map['persistentDisk'] == null ? null : (PersistentDiskResponse.fromMap((map['persistentDisk']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretResponse>(map['secrets'], (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      temporaryDisk: map['temporaryDisk'] == null ? null : (TemporaryDiskResponse.fromMap((map['temporaryDisk'] as Map).cast<String, dynamic>())).input(),
-      testEndpointAuthState: map['testEndpointAuthState'] == null ? null : (map['testEndpointAuthState'] as String).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<SecretResponse>(map['secrets']!, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      temporaryDisk: map['temporaryDisk'] == null ? null : (TemporaryDiskResponse.fromMap((map['temporaryDisk']! as Map).cast<String, dynamic>())).input(),
+      testEndpointAuthState: map['testEndpointAuthState'] == null ? null : (map['testEndpointAuthState']! as String).input(),
       url: (map['url'] as String).input(),
-      vnetAddons: map['vnetAddons'] == null ? null : (AppVNetAddonsResponse.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>())).input(),
-      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName'] as String).input(),
+      vnetAddons: map['vnetAddons'] == null ? null : (AppVNetAddonsResponse.fromMap((map['vnetAddons']! as Map).cast<String, dynamic>())).input(),
+      workloadProfileName: map['workloadProfileName'] == null ? null : (map['workloadProfileName']! as String).input(),
     );
   }
 }

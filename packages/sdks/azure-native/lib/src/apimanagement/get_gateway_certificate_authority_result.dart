@@ -42,7 +42,7 @@ class GetGatewayCertificateAuthorityResult {
     return GetGatewayCertificateAuthorityResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      isTrusted: map['isTrusted'] == null ? null : map['isTrusted'] as bool,
+      isTrusted: map['isTrusted'] == null ? null : map['isTrusted']! as bool,
       name: map['name'] as String,
       type: map['type'] as String,
     );

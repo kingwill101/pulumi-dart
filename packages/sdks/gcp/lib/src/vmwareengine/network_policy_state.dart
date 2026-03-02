@@ -93,18 +93,18 @@ class NetworkPolicyState {
 
   factory NetworkPolicyState.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      edgeServicesCidr: map['edgeServicesCidr'] == null ? null : (map['edgeServicesCidr'] as String).input(),
-      externalIp: map['externalIp'] == null ? null : (NetworkPolicyExternalIp.fromMap((map['externalIp'] as Map).cast<String, dynamic>())).input(),
-      internetAccess: map['internetAccess'] == null ? null : (NetworkPolicyInternetAccess.fromMap((map['internetAccess'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      uid: map['uid'] == null ? null : (map['uid'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork'] as String).input(),
-      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      edgeServicesCidr: map['edgeServicesCidr'] == null ? null : (map['edgeServicesCidr']! as String).input(),
+      externalIp: map['externalIp'] == null ? null : (NetworkPolicyExternalIp.fromMap((map['externalIp']! as Map).cast<String, dynamic>())).input(),
+      internetAccess: map['internetAccess'] == null ? null : (NetworkPolicyInternetAccess.fromMap((map['internetAccess']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      uid: map['uid'] == null ? null : (map['uid']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : (map['vmwareEngineNetwork']! as String).input(),
+      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] == null ? null : (map['vmwareEngineNetworkCanonical']! as String).input(),
     );
   }
 }

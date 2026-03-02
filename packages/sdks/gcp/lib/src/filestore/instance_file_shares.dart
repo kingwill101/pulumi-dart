@@ -42,8 +42,8 @@ class InstanceFileShares {
     return InstanceFileShares(
       capacityGb: (map['capacityGb'] as int).input(),
       name: (map['name'] as String).input(),
-      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<InstanceFileSharesNfsExportOption>(map['nfsExportOptions'], (value) => InstanceFileSharesNfsExportOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sourceBackup: map['sourceBackup'] == null ? null : (map['sourceBackup'] as String).input(),
+      nfsExportOptions: map['nfsExportOptions'] == null ? null : (pulumi.Input.decodeList<InstanceFileSharesNfsExportOption>(map['nfsExportOptions']!, (value) => InstanceFileSharesNfsExportOption.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sourceBackup: map['sourceBackup'] == null ? null : (map['sourceBackup']! as String).input(),
     );
   }
 }

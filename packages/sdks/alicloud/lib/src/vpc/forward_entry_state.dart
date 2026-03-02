@@ -73,17 +73,17 @@ class ForwardEntryState {
 
   factory ForwardEntryState.fromMap(Map<String, dynamic> map) {
     return ForwardEntryState(
-      externalIp: map['externalIp'] == null ? null : (map['externalIp'] as String).input(),
-      externalPort: map['externalPort'] == null ? null : (map['externalPort'] as String).input(),
-      forwardEntryId: map['forwardEntryId'] == null ? null : (map['forwardEntryId'] as String).input(),
-      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName'] as String).input(),
-      forwardTableId: map['forwardTableId'] == null ? null : (map['forwardTableId'] as String).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as String).input(),
-      internalPort: map['internalPort'] == null ? null : (map['internalPort'] as String).input(),
-      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portBreak: map['portBreak'] == null ? null : (map['portBreak'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      externalIp: map['externalIp'] == null ? null : (map['externalIp']! as String).input(),
+      externalPort: map['externalPort'] == null ? null : (map['externalPort']! as String).input(),
+      forwardEntryId: map['forwardEntryId'] == null ? null : (map['forwardEntryId']! as String).input(),
+      forwardEntryName: map['forwardEntryName'] == null ? null : (map['forwardEntryName']! as String).input(),
+      forwardTableId: map['forwardTableId'] == null ? null : (map['forwardTableId']! as String).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as String).input(),
+      internalPort: map['internalPort'] == null ? null : (map['internalPort']! as String).input(),
+      ipProtocol: map['ipProtocol'] == null ? null : (map['ipProtocol']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      portBreak: map['portBreak'] == null ? null : (map['portBreak']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class ServiceNetworkResourceAssociationState {
 
   factory ServiceNetworkResourceAssociationState.fromMap(Map<String, dynamic> map) {
     return ServiceNetworkResourceAssociationState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      dnsEntries: map['dnsEntries'] == null ? null : (pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(map['dnsEntries'], (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : (map['privateDnsEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceConfigurationIdentifier: map['resourceConfigurationIdentifier'] == null ? null : (map['resourceConfigurationIdentifier'] as String).input(),
-      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : (map['serviceNetworkIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      dnsEntries: map['dnsEntries'] == null ? null : ((pulumi.Input.decodeList<ServiceNetworkResourceAssociationDnsEntry>(map['dnsEntries']!, (value) => ServiceNetworkResourceAssociationDnsEntry.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      privateDnsEnabled: map['privateDnsEnabled'] == null ? null : ((map['privateDnsEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceConfigurationIdentifier: map['resourceConfigurationIdentifier'] == null ? null : ((map['resourceConfigurationIdentifier'] as String).input()).input(),
+      serviceNetworkIdentifier: map['serviceNetworkIdentifier'] == null ? null : ((map['serviceNetworkIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ServiceNetworkResourceAssociationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

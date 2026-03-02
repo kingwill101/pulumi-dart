@@ -30,7 +30,7 @@ class GetFolderArgs {
   factory GetFolderArgs.fromMap(Map<String, dynamic> map) {
     return GetFolderArgs(
       folder: (map['folder'] as String).input(),
-      lookupOrganization: map['lookupOrganization'] == null ? null : (map['lookupOrganization'] as bool).input(),
+      lookupOrganization: map['lookupOrganization'] == null ? null : (map['lookupOrganization']! as bool).input(),
     );
   }
 }

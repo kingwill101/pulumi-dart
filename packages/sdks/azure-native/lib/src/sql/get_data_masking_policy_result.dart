@@ -68,7 +68,7 @@ class GetDataMaskingPolicyResult {
       applicationPrincipals: map['applicationPrincipals'] as String,
       azureApiVersion: map['azureApiVersion'] as String,
       dataMaskingState: map['dataMaskingState'] as String,
-      exemptPrincipals: map['exemptPrincipals'] == null ? null : map['exemptPrincipals'] as String,
+      exemptPrincipals: map['exemptPrincipals'] == null ? null : map['exemptPrincipals']! as String,
       id: map['id'] as String,
       kind: map['kind'] as String,
       location: map['location'] as String,

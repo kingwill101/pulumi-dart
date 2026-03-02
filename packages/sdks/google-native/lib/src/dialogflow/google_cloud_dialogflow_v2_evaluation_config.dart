@@ -35,8 +35,8 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   factory GoogleCloudDialogflowV2EvaluationConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2EvaluationConfig(
       datasets: (pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(map['datasets'], (value) => GoogleCloudDialogflowV2InputDataset.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      smartComposeConfig: map['smartComposeConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromMap((map['smartComposeConfig'] as Map).cast<String, dynamic>())).input(),
-      smartReplyConfig: map['smartReplyConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromMap((map['smartReplyConfig'] as Map).cast<String, dynamic>())).input(),
+      smartComposeConfig: map['smartComposeConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromMap((map['smartComposeConfig']! as Map).cast<String, dynamic>())).input(),
+      smartReplyConfig: map['smartReplyConfig'] == null ? null : (GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromMap((map['smartReplyConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

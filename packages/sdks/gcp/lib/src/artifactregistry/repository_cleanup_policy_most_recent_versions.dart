@@ -25,8 +25,8 @@ class RepositoryCleanupPolicyMostRecentVersions {
 
   factory RepositoryCleanupPolicyMostRecentVersions.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicyMostRecentVersions(
-      keepCount: map['keepCount'] == null ? null : (map['keepCount'] as int).input(),
-      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : ((map['packageNamePrefixes'] as List).cast<String>()).input(),
+      keepCount: map['keepCount'] == null ? null : (map['keepCount']! as int).input(),
+      packageNamePrefixes: map['packageNamePrefixes'] == null ? null : ((map['packageNamePrefixes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -82,17 +82,17 @@ class AddonsConfig {
 
   factory AddonsConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfig(
-      cloudRunConfig: map['cloudRunConfig'] == null ? null : (CloudRunConfig.fromMap((map['cloudRunConfig'] as Map).cast<String, dynamic>())).input(),
-      configConnectorConfig: map['configConnectorConfig'] == null ? null : (ConfigConnectorConfig.fromMap((map['configConnectorConfig'] as Map).cast<String, dynamic>())).input(),
-      dnsCacheConfig: map['dnsCacheConfig'] == null ? null : (DnsCacheConfig.fromMap((map['dnsCacheConfig'] as Map).cast<String, dynamic>())).input(),
-      gcePersistentDiskCsiDriverConfig: map['gcePersistentDiskCsiDriverConfig'] == null ? null : (GcePersistentDiskCsiDriverConfig.fromMap((map['gcePersistentDiskCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gcpFilestoreCsiDriverConfig: map['gcpFilestoreCsiDriverConfig'] == null ? null : (GcpFilestoreCsiDriverConfig.fromMap((map['gcpFilestoreCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gcsFuseCsiDriverConfig: map['gcsFuseCsiDriverConfig'] == null ? null : (GcsFuseCsiDriverConfig.fromMap((map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>())).input(),
-      gkeBackupAgentConfig: map['gkeBackupAgentConfig'] == null ? null : (GkeBackupAgentConfig.fromMap((map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>())).input(),
-      horizontalPodAutoscaling: map['horizontalPodAutoscaling'] == null ? null : (HorizontalPodAutoscaling.fromMap((map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>())).input(),
-      httpLoadBalancing: map['httpLoadBalancing'] == null ? null : (HttpLoadBalancing.fromMap((map['httpLoadBalancing'] as Map).cast<String, dynamic>())).input(),
-      kubernetesDashboard: map['kubernetesDashboard'] == null ? null : (KubernetesDashboard.fromMap((map['kubernetesDashboard'] as Map).cast<String, dynamic>())).input(),
-      networkPolicyConfig: map['networkPolicyConfig'] == null ? null : (NetworkPolicyConfig.fromMap((map['networkPolicyConfig'] as Map).cast<String, dynamic>())).input(),
+      cloudRunConfig: map['cloudRunConfig'] == null ? null : (CloudRunConfig.fromMap((map['cloudRunConfig']! as Map).cast<String, dynamic>())).input(),
+      configConnectorConfig: map['configConnectorConfig'] == null ? null : (ConfigConnectorConfig.fromMap((map['configConnectorConfig']! as Map).cast<String, dynamic>())).input(),
+      dnsCacheConfig: map['dnsCacheConfig'] == null ? null : (DnsCacheConfig.fromMap((map['dnsCacheConfig']! as Map).cast<String, dynamic>())).input(),
+      gcePersistentDiskCsiDriverConfig: map['gcePersistentDiskCsiDriverConfig'] == null ? null : (GcePersistentDiskCsiDriverConfig.fromMap((map['gcePersistentDiskCsiDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      gcpFilestoreCsiDriverConfig: map['gcpFilestoreCsiDriverConfig'] == null ? null : (GcpFilestoreCsiDriverConfig.fromMap((map['gcpFilestoreCsiDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      gcsFuseCsiDriverConfig: map['gcsFuseCsiDriverConfig'] == null ? null : (GcsFuseCsiDriverConfig.fromMap((map['gcsFuseCsiDriverConfig']! as Map).cast<String, dynamic>())).input(),
+      gkeBackupAgentConfig: map['gkeBackupAgentConfig'] == null ? null : (GkeBackupAgentConfig.fromMap((map['gkeBackupAgentConfig']! as Map).cast<String, dynamic>())).input(),
+      horizontalPodAutoscaling: map['horizontalPodAutoscaling'] == null ? null : (HorizontalPodAutoscaling.fromMap((map['horizontalPodAutoscaling']! as Map).cast<String, dynamic>())).input(),
+      httpLoadBalancing: map['httpLoadBalancing'] == null ? null : (HttpLoadBalancing.fromMap((map['httpLoadBalancing']! as Map).cast<String, dynamic>())).input(),
+      kubernetesDashboard: map['kubernetesDashboard'] == null ? null : (KubernetesDashboard.fromMap((map['kubernetesDashboard']! as Map).cast<String, dynamic>())).input(),
+      networkPolicyConfig: map['networkPolicyConfig'] == null ? null : (NetworkPolicyConfig.fromMap((map['networkPolicyConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class ApplicationApplicationConfigurationApplicationCodeConfiguration {
 
   factory ApplicationApplicationConfigurationApplicationCodeConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationApplicationCodeConfiguration(
-      codeContent: map['codeContent'] == null ? null : (ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap((map['codeContent'] as Map).cast<String, dynamic>())).input(),
+      codeContent: map['codeContent'] == null ? null : ((ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent.fromMap((map['codeContent']! as Map).cast<String, dynamic>())).input()).input(),
       codeContentType: (map['codeContentType'] as String).input(),
     );
   }

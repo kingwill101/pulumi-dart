@@ -36,10 +36,10 @@ class SrvRecordResponse {
 
   factory SrvRecordResponse.fromMap(Map<String, dynamic> map) {
     return SrvRecordResponse(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
+      weight: map['weight'] == null ? null : (map['weight']! as int).input(),
     );
   }
 }

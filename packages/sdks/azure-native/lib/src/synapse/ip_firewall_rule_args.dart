@@ -44,10 +44,10 @@ class IpFirewallRuleArgs {
 
   factory IpFirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return IpFirewallRuleArgs(
-      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleName: map['ruleName'] == null ? null : (map['ruleName'] as String).input(),
-      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
+      ruleName: map['ruleName'] == null ? null : (map['ruleName']! as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

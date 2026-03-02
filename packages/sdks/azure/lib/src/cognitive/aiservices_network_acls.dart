@@ -36,10 +36,10 @@ class AIServicesNetworkAcls {
 
   factory AIServicesNetworkAcls.fromMap(Map<String, dynamic> map) {
     return AIServicesNetworkAcls(
-      bypass: map['bypass'] == null ? null : (map['bypass'] as String).input(),
+      bypass: map['bypass'] == null ? null : (map['bypass']! as String).input(),
       defaultAction: (map['defaultAction'] as String).input(),
-      ipRules: map['ipRules'] == null ? null : ((map['ipRules'] as List).cast<String>()).input(),
-      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<AIServicesNetworkAclsVirtualNetworkRule>(map['virtualNetworkRules'], (value) => AIServicesNetworkAclsVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipRules: map['ipRules'] == null ? null : ((map['ipRules']! as List).cast<String>()).input(),
+      virtualNetworkRules: map['virtualNetworkRules'] == null ? null : (pulumi.Input.decodeList<AIServicesNetworkAclsVirtualNetworkRule>(map['virtualNetworkRules']!, (value) => AIServicesNetworkAclsVirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -35,9 +35,9 @@ class GetPolicyDocumentArgs {
 
   factory GetPolicyDocumentArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyDocumentArgs(
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      statements: map['statements'] == null ? null : (pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements']!, (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

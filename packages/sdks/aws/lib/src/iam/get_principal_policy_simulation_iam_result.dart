@@ -76,7 +76,7 @@ class GetPrincipalPolicySimulationIamResult {
       additionalPoliciesJsons: map['additionalPoliciesJsons'] == null ? null : (map['additionalPoliciesJsons'] as List).cast<String>(),
       allAllowed: map['allAllowed'] as bool,
       callerArn: map['callerArn'] == null ? null : map['callerArn'] as String,
-      contexts: map['contexts'] == null ? null : pulumi.Input.decodeList<GetPrincipalPolicySimulationContext>(map['contexts'], (value) => GetPrincipalPolicySimulationContext.fromMap((value as Map).cast<String, dynamic>())),
+      contexts: map['contexts'] == null ? null : pulumi.Input.decodeList<GetPrincipalPolicySimulationContext>(map['contexts']!, (value) => GetPrincipalPolicySimulationContext.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       permissionsBoundaryPoliciesJsons: map['permissionsBoundaryPoliciesJsons'] == null ? null : (map['permissionsBoundaryPoliciesJsons'] as List).cast<String>(),
       policySourceArn: map['policySourceArn'] as String,
@@ -84,7 +84,7 @@ class GetPrincipalPolicySimulationIamResult {
       resourceHandlingOption: map['resourceHandlingOption'] == null ? null : map['resourceHandlingOption'] as String,
       resourceOwnerAccountId: map['resourceOwnerAccountId'] == null ? null : map['resourceOwnerAccountId'] as String,
       resourcePolicyJson: map['resourcePolicyJson'] == null ? null : map['resourcePolicyJson'] as String,
-      results: pulumi.Input.decodeList<GetPrincipalPolicySimulationResult>(map['results'], (value) => GetPrincipalPolicySimulationResult.fromMap((value as Map).cast<String, dynamic>())),
+      results: pulumi.Input.decodeList<GetPrincipalPolicySimulationResult>(map['results']!, (value) => GetPrincipalPolicySimulationResult.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

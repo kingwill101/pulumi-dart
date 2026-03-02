@@ -90,16 +90,16 @@ class ProtocolMountTargetArgs {
 
   factory ProtocolMountTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProtocolMountTargetArgs(
-      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      accessGroupName: map['accessGroupName'] == null ? null : (map['accessGroupName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
-      fsetId: map['fsetId'] == null ? null : (map['fsetId'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      fsetId: map['fsetId'] == null ? null : (map['fsetId']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       protocolServiceId: (map['protocolServiceId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
-      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds'] as List).cast<String>()).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
+      vswitchIds: map['vswitchIds'] == null ? null : ((map['vswitchIds']! as List).cast<String>()).input(),
     );
   }
 }

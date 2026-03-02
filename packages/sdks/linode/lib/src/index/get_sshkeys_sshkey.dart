@@ -36,7 +36,7 @@ class GetSshkeysSshkey {
   factory GetSshkeysSshkey.fromMap(Map<String, dynamic> map) {
     return GetSshkeysSshkey(
       created: (map['created'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       label: (map['label'] as String).input(),
       sshKey: (map['sshKey'] as String).input(),
     );

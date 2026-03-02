@@ -36,10 +36,10 @@ class PostgresqlFirewallRuleState {
 
   factory PostgresqlFirewallRuleState.fromMap(Map<String, dynamic> map) {
     return PostgresqlFirewallRuleState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      endIpAddress: map['endIpAddress'] == null ? null : (map['endIpAddress']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      startIpAddress: map['startIpAddress'] == null ? null : (map['startIpAddress']! as String).input(),
     );
   }
 }

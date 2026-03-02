@@ -43,11 +43,11 @@ class ConversationDialogflowV2beta1Args {
 
   factory ConversationDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return ConversationDialogflowV2beta1Args(
-      conversationId: map['conversationId'] == null ? null : (map['conversationId'] as String).input(),
+      conversationId: map['conversationId'] == null ? null : (map['conversationId']! as String).input(),
       conversationProfile: (map['conversationProfile'] as String).input(),
-      conversationStage: map['conversationStage'] == null ? null : (ConversationConversationStageDialogflowV2beta1.fromValue(map['conversationStage'] as String)).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      conversationStage: map['conversationStage'] == null ? null : (ConversationConversationStageDialogflowV2beta1.fromValue(map['conversationStage']! as String)).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

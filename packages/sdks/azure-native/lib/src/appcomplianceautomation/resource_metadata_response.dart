@@ -41,11 +41,11 @@ class ResourceMetadataResponse {
 
   factory ResourceMetadataResponse.fromMap(Map<String, dynamic> map) {
     return ResourceMetadataResponse(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       resourceId: (map['resourceId'] as String).input(),
-      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind'] as String).input(),
-      resourceOrigin: map['resourceOrigin'] == null ? null : (map['resourceOrigin'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      resourceKind: map['resourceKind'] == null ? null : (map['resourceKind']! as String).input(),
+      resourceOrigin: map['resourceOrigin'] == null ? null : (map['resourceOrigin']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

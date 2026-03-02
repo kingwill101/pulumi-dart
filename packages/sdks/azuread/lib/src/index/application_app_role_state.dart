@@ -50,12 +50,12 @@ class ApplicationAppRoleState {
 
   factory ApplicationAppRoleState.fromMap(Map<String, dynamic> map) {
     return ApplicationAppRoleState(
-      allowedMemberTypes: map['allowedMemberTypes'] == null ? null : ((map['allowedMemberTypes'] as List).cast<String>()).input(),
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      roleId: map['roleId'] == null ? null : (map['roleId'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      allowedMemberTypes: map['allowedMemberTypes'] == null ? null : ((map['allowedMemberTypes']! as List).cast<String>()).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      roleId: map['roleId'] == null ? null : (map['roleId']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

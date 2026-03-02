@@ -49,11 +49,11 @@ class ClusterClusterConfigLifecycleConfig {
 
   factory ClusterClusterConfigLifecycleConfig.fromMap(Map<String, dynamic> map) {
     return ClusterClusterConfigLifecycleConfig(
-      autoDeleteTime: map['autoDeleteTime'] == null ? null : (map['autoDeleteTime'] as String).input(),
-      autoStopTime: map['autoStopTime'] == null ? null : (map['autoStopTime'] as String).input(),
-      idleDeleteTtl: map['idleDeleteTtl'] == null ? null : (map['idleDeleteTtl'] as String).input(),
-      idleStartTime: map['idleStartTime'] == null ? null : (map['idleStartTime'] as String).input(),
-      idleStopTtl: map['idleStopTtl'] == null ? null : (map['idleStopTtl'] as String).input(),
+      autoDeleteTime: map['autoDeleteTime'] == null ? null : (map['autoDeleteTime']! as String).input(),
+      autoStopTime: map['autoStopTime'] == null ? null : (map['autoStopTime']! as String).input(),
+      idleDeleteTtl: map['idleDeleteTtl'] == null ? null : (map['idleDeleteTtl']! as String).input(),
+      idleStartTime: map['idleStartTime'] == null ? null : (map['idleStartTime']! as String).input(),
+      idleStopTtl: map['idleStopTtl'] == null ? null : (map['idleStopTtl']! as String).input(),
     );
   }
 }

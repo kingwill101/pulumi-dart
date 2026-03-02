@@ -42,11 +42,11 @@ class ParameterDefinitionsValueResponse {
 
   factory ParameterDefinitionsValueResponse.fromMap(Map<String, dynamic> map) {
     return ParameterDefinitionsValueResponse(
-      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues'] as List).cast<dynamic>()).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
-      metadata: map['metadata'] == null ? null : (ParameterDefinitionsValueResponseMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      schema: map['schema'] == null ? null : (map['schema']).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      allowedValues: map['allowedValues'] == null ? null : ((map['allowedValues']! as List).cast<dynamic>()).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']!).input(),
+      metadata: map['metadata'] == null ? null : (ParameterDefinitionsValueResponseMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      schema: map['schema'] == null ? null : (map['schema']!).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

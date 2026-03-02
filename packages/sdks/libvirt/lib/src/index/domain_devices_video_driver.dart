@@ -45,12 +45,12 @@ class DomainDevicesVideoDriver {
 
   factory DomainDevicesVideoDriver.fromMap(Map<String, dynamic> map) {
     return DomainDevicesVideoDriver(
-      ats: map['ats'] == null ? null : (map['ats'] as String).input(),
-      iommu: map['iommu'] == null ? null : (map['iommu'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packed: map['packed'] == null ? null : (map['packed'] as String).input(),
-      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq'] as String).input(),
-      vgaConf: map['vgaConf'] == null ? null : (map['vgaConf'] as String).input(),
+      ats: map['ats'] == null ? null : (map['ats']! as String).input(),
+      iommu: map['iommu'] == null ? null : (map['iommu']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      packed: map['packed'] == null ? null : (map['packed']! as String).input(),
+      pagePerVq: map['pagePerVq'] == null ? null : (map['pagePerVq']! as String).input(),
+      vgaConf: map['vgaConf'] == null ? null : (map['vgaConf']! as String).input(),
     );
   }
 }

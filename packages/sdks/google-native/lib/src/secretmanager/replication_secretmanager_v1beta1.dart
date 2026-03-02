@@ -27,8 +27,8 @@ class ReplicationSecretmanagerV1beta1 {
 
   factory ReplicationSecretmanagerV1beta1.fromMap(Map<String, dynamic> map) {
     return ReplicationSecretmanagerV1beta1(
-      automatic: map['automatic'] == null ? null : ((map['automatic'] as Map).cast<String, dynamic>()).input(),
-      userManaged: map['userManaged'] == null ? null : (UserManagedSecretmanagerV1beta1.fromMap((map['userManaged'] as Map).cast<String, dynamic>())).input(),
+      automatic: map['automatic'] == null ? null : ((map['automatic']! as Map).cast<String, dynamic>()).input(),
+      userManaged: map['userManaged'] == null ? null : (UserManagedSecretmanagerV1beta1.fromMap((map['userManaged']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

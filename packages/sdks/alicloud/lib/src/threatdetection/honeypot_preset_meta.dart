@@ -31,8 +31,8 @@ class HoneypotPresetMeta {
   factory HoneypotPresetMeta.fromMap(Map<String, dynamic> map) {
     return HoneypotPresetMeta(
       burp: (map['burp'] as String).input(),
-      portraitOption: map['portraitOption'] == null ? null : (map['portraitOption'] as bool).input(),
-      trojanGit: map['trojanGit'] == null ? null : (map['trojanGit'] as String).input(),
+      portraitOption: map['portraitOption'] == null ? null : (map['portraitOption']! as bool).input(),
+      trojanGit: map['trojanGit'] == null ? null : (map['trojanGit']! as String).input(),
     );
   }
 }

@@ -64,15 +64,15 @@ class ScaleSetPacketCaptureState {
 
   factory ScaleSetPacketCaptureState.fromMap(Map<String, dynamic> map) {
     return ScaleSetPacketCaptureState(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ScaleSetPacketCaptureFilter>(map['filters'], (value) => ScaleSetPacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      machineScope: map['machineScope'] == null ? null : (ScaleSetPacketCaptureMachineScope.fromMap((map['machineScope'] as Map).cast<String, dynamic>())).input(),
-      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : (map['maximumBytesPerPacket'] as int).input(),
-      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : (map['maximumBytesPerSession'] as int).input(),
-      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : (map['maximumCaptureDurationInSeconds'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkWatcherId: map['networkWatcherId'] == null ? null : (map['networkWatcherId'] as String).input(),
-      storageLocation: map['storageLocation'] == null ? null : (ScaleSetPacketCaptureStorageLocation.fromMap((map['storageLocation'] as Map).cast<String, dynamic>())).input(),
-      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : (map['virtualMachineScaleSetId'] as String).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<ScaleSetPacketCaptureFilter>(map['filters']!, (value) => ScaleSetPacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      machineScope: map['machineScope'] == null ? null : (ScaleSetPacketCaptureMachineScope.fromMap((map['machineScope']! as Map).cast<String, dynamic>())).input(),
+      maximumBytesPerPacket: map['maximumBytesPerPacket'] == null ? null : (map['maximumBytesPerPacket']! as int).input(),
+      maximumBytesPerSession: map['maximumBytesPerSession'] == null ? null : (map['maximumBytesPerSession']! as int).input(),
+      maximumCaptureDurationInSeconds: map['maximumCaptureDurationInSeconds'] == null ? null : (map['maximumCaptureDurationInSeconds']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkWatcherId: map['networkWatcherId'] == null ? null : (map['networkWatcherId']! as String).input(),
+      storageLocation: map['storageLocation'] == null ? null : (ScaleSetPacketCaptureStorageLocation.fromMap((map['storageLocation']! as Map).cast<String, dynamic>())).input(),
+      virtualMachineScaleSetId: map['virtualMachineScaleSetId'] == null ? null : (map['virtualMachineScaleSetId']! as String).input(),
     );
   }
 }

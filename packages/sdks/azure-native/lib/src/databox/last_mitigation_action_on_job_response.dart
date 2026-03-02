@@ -32,9 +32,9 @@ class LastMitigationActionOnJobResponse {
 
   factory LastMitigationActionOnJobResponse.fromMap(Map<String, dynamic> map) {
     return LastMitigationActionOnJobResponse(
-      actionDateTimeInUtc: map['actionDateTimeInUtc'] == null ? null : (map['actionDateTimeInUtc'] as String).input(),
-      customerResolution: map['customerResolution'] == null ? null : (map['customerResolution'] as String).input(),
-      isPerformedByCustomer: map['isPerformedByCustomer'] == null ? null : (map['isPerformedByCustomer'] as bool).input(),
+      actionDateTimeInUtc: map['actionDateTimeInUtc'] == null ? null : (map['actionDateTimeInUtc']! as String).input(),
+      customerResolution: map['customerResolution'] == null ? null : (map['customerResolution']! as String).input(),
+      isPerformedByCustomer: map['isPerformedByCustomer'] == null ? null : (map['isPerformedByCustomer']! as bool).input(),
     );
   }
 }

@@ -80,17 +80,17 @@ class ClusterResourcePropertiesResponse {
   factory ClusterResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ClusterResourcePropertiesResponse(
       fqdn: (map['fqdn'] as String).input(),
-      infraResourceGroup: map['infraResourceGroup'] == null ? null : (map['infraResourceGroup'] as String).input(),
-      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : (WeeklyMaintenanceScheduleConfigurationResponse.fromMap((map['maintenanceScheduleConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId'] as String).input(),
-      marketplaceResource: map['marketplaceResource'] == null ? null : (MarketplaceResourceResponse.fromMap((map['marketplaceResource'] as Map).cast<String, dynamic>())).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      infraResourceGroup: map['infraResourceGroup'] == null ? null : (map['infraResourceGroup']! as String).input(),
+      maintenanceScheduleConfiguration: map['maintenanceScheduleConfiguration'] == null ? null : (WeeklyMaintenanceScheduleConfigurationResponse.fromMap((map['maintenanceScheduleConfiguration']! as Map).cast<String, dynamic>())).input(),
+      managedEnvironmentId: map['managedEnvironmentId'] == null ? null : (map['managedEnvironmentId']! as String).input(),
+      marketplaceResource: map['marketplaceResource'] == null ? null : (MarketplaceResourceResponse.fromMap((map['marketplaceResource']! as Map).cast<String, dynamic>())).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfileResponse.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
       powerState: (map['powerState'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       serviceId: (map['serviceId'] as String).input(),
       version: (map['version'] as int).input(),
-      vnetAddons: map['vnetAddons'] == null ? null : (ServiceVNetAddonsResponse.fromMap((map['vnetAddons'] as Map).cast<String, dynamic>())).input(),
-      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant'] as bool).input(),
+      vnetAddons: map['vnetAddons'] == null ? null : (ServiceVNetAddonsResponse.fromMap((map['vnetAddons']! as Map).cast<String, dynamic>())).input(),
+      zoneRedundant: map['zoneRedundant'] == null ? null : (map['zoneRedundant']! as bool).input(),
     );
   }
 }

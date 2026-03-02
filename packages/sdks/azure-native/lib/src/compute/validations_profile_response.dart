@@ -32,9 +32,9 @@ class ValidationsProfileResponse {
 
   factory ValidationsProfileResponse.fromMap(Map<String, dynamic> map) {
     return ValidationsProfileResponse(
-      executedValidations: map['executedValidations'] == null ? null : (pulumi.Input.decodeList<ExecutedValidationResponse>(map['executedValidations'], (value) => ExecutedValidationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      platformAttributes: map['platformAttributes'] == null ? null : (pulumi.Input.decodeList<PlatformAttributeResponse>(map['platformAttributes'], (value) => PlatformAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validationEtag: map['validationEtag'] == null ? null : (map['validationEtag'] as String).input(),
+      executedValidations: map['executedValidations'] == null ? null : (pulumi.Input.decodeList<ExecutedValidationResponse>(map['executedValidations']!, (value) => ExecutedValidationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      platformAttributes: map['platformAttributes'] == null ? null : (pulumi.Input.decodeList<PlatformAttributeResponse>(map['platformAttributes']!, (value) => PlatformAttributeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationEtag: map['validationEtag'] == null ? null : (map['validationEtag']! as String).input(),
     );
   }
 }

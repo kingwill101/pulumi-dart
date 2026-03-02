@@ -27,8 +27,8 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs(
-      batchTransformInput: map['batchTransformInput'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap((map['batchTransformInput'] as Map).cast<String, dynamic>())).input(),
-      endpointInput: map['endpointInput'] == null ? null : (MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap((map['endpointInput'] as Map).cast<String, dynamic>())).input(),
+      batchTransformInput: map['batchTransformInput'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput.fromMap((map['batchTransformInput']! as Map).cast<String, dynamic>())).input()).input(),
+      endpointInput: map['endpointInput'] == null ? null : ((MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap((map['endpointInput']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

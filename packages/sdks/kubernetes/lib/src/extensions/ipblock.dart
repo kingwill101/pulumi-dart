@@ -27,7 +27,7 @@ class IPBlock {
   factory IPBlock.fromMap(Map<String, dynamic> map) {
     return IPBlock(
       cidr: (map['cidr'] as String).input(),
-      except: map['except'] == null ? null : ((map['except'] as List).cast<String>()).input(),
+      except: map['except'] == null ? null : ((map['except']! as List).cast<String>()).input(),
     );
   }
 }

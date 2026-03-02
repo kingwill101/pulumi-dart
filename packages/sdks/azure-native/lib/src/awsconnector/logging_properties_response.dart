@@ -26,8 +26,8 @@ class LoggingPropertiesResponse {
 
   factory LoggingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return LoggingPropertiesResponse(
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : (map['s3KeyPrefix']! as String).input(),
     );
   }
 }

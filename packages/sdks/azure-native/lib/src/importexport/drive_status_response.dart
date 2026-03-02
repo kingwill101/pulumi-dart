@@ -76,18 +76,18 @@ class DriveStatusResponse {
 
   factory DriveStatusResponse.fromMap(Map<String, dynamic> map) {
     return DriveStatusResponse(
-      bitLockerKey: map['bitLockerKey'] == null ? null : (map['bitLockerKey'] as String).input(),
-      bytesSucceeded: map['bytesSucceeded'] == null ? null : (map['bytesSucceeded'] as double).input(),
-      copyStatus: map['copyStatus'] == null ? null : (map['copyStatus'] as String).input(),
-      driveHeaderHash: map['driveHeaderHash'] == null ? null : (map['driveHeaderHash'] as String).input(),
-      driveId: map['driveId'] == null ? null : (map['driveId'] as String).input(),
-      errorLogUri: map['errorLogUri'] == null ? null : (map['errorLogUri'] as String).input(),
-      manifestFile: map['manifestFile'] == null ? null : (map['manifestFile'] as String).input(),
-      manifestHash: map['manifestHash'] == null ? null : (map['manifestHash'] as String).input(),
-      manifestUri: map['manifestUri'] == null ? null : (map['manifestUri'] as String).input(),
-      percentComplete: map['percentComplete'] == null ? null : (map['percentComplete'] as double).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      verboseLogUri: map['verboseLogUri'] == null ? null : (map['verboseLogUri'] as String).input(),
+      bitLockerKey: map['bitLockerKey'] == null ? null : (map['bitLockerKey']! as String).input(),
+      bytesSucceeded: map['bytesSucceeded'] == null ? null : (map['bytesSucceeded']! as double).input(),
+      copyStatus: map['copyStatus'] == null ? null : (map['copyStatus']! as String).input(),
+      driveHeaderHash: map['driveHeaderHash'] == null ? null : (map['driveHeaderHash']! as String).input(),
+      driveId: map['driveId'] == null ? null : (map['driveId']! as String).input(),
+      errorLogUri: map['errorLogUri'] == null ? null : (map['errorLogUri']! as String).input(),
+      manifestFile: map['manifestFile'] == null ? null : (map['manifestFile']! as String).input(),
+      manifestHash: map['manifestHash'] == null ? null : (map['manifestHash']! as String).input(),
+      manifestUri: map['manifestUri'] == null ? null : (map['manifestUri']! as String).input(),
+      percentComplete: map['percentComplete'] == null ? null : (map['percentComplete']! as double).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      verboseLogUri: map['verboseLogUri'] == null ? null : (map['verboseLogUri']! as String).input(),
     );
   }
 }

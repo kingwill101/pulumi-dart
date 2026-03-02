@@ -73,16 +73,16 @@ class GetDelegatedSubnetServiceDetailsResult {
 
   factory GetDelegatedSubnetServiceDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedSubnetServiceDetailsResult(
-      allocationBlockPrefixSize: map['allocationBlockPrefixSize'] == null ? null : map['allocationBlockPrefixSize'] as int,
+      allocationBlockPrefixSize: map['allocationBlockPrefixSize'] == null ? null : map['allocationBlockPrefixSize']! as int,
       azureApiVersion: map['azureApiVersion'] as String,
-      controllerDetails: map['controllerDetails'] == null ? null : ControllerDetailsResponse.fromMap((map['controllerDetails'] as Map).cast<String, dynamic>()),
+      controllerDetails: map['controllerDetails'] == null ? null : ControllerDetailsResponse.fromMap((map['controllerDetails']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       resourceGuid: map['resourceGuid'] as String,
-      subnetDetails: map['subnetDetails'] == null ? null : SubnetDetailsResponse.fromMap((map['subnetDetails'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      subnetDetails: map['subnetDetails'] == null ? null : SubnetDetailsResponse.fromMap((map['subnetDetails']! as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

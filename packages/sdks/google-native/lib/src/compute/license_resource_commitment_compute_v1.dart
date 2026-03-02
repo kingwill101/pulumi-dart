@@ -31,9 +31,9 @@ class LicenseResourceCommitmentComputeV1 {
 
   factory LicenseResourceCommitmentComputeV1.fromMap(Map<String, dynamic> map) {
     return LicenseResourceCommitmentComputeV1(
-      amount: map['amount'] == null ? null : (map['amount'] as String).input(),
-      coresPerLicense: map['coresPerLicense'] == null ? null : (map['coresPerLicense'] as String).input(),
-      license: map['license'] == null ? null : (map['license'] as String).input(),
+      amount: map['amount'] == null ? null : (map['amount']! as String).input(),
+      coresPerLicense: map['coresPerLicense'] == null ? null : (map['coresPerLicense']! as String).input(),
+      license: map['license'] == null ? null : (map['license']! as String).input(),
     );
   }
 }

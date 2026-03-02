@@ -25,8 +25,8 @@ class ThreatIntelligenceIndicatorParsedPatternPatternTypeValue {
 
   factory ThreatIntelligenceIndicatorParsedPatternPatternTypeValue.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorParsedPatternPatternTypeValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
-      valueType: map['valueType'] == null ? null : (map['valueType'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
+      valueType: map['valueType'] == null ? null : (map['valueType']! as String).input(),
     );
   }
 }

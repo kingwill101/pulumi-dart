@@ -28,7 +28,7 @@ class GetBackendServiceComputeBetaArgs {
   factory GetBackendServiceComputeBetaArgs.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceComputeBetaArgs(
       backendService: (map['backendService'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

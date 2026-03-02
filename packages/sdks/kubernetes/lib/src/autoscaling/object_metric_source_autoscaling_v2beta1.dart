@@ -43,9 +43,9 @@ class ObjectMetricSourceAutoscalingV2beta1 {
 
   factory ObjectMetricSourceAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ObjectMetricSourceAutoscalingV2beta1(
-      averageValue: map['averageValue'] == null ? null : (map['averageValue'] as String).input(),
+      averageValue: map['averageValue'] == null ? null : (map['averageValue']! as String).input(),
       metricName: (map['metricName'] as String).input(),
-      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector'] as Map).cast<String, dynamic>())).input(),
+      selector: map['selector'] == null ? null : (LabelSelector.fromMap((map['selector']! as Map).cast<String, dynamic>())).input(),
       target: (CrossVersionObjectReferenceAutoscalingV2beta1.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
       targetValue: (map['targetValue'] as String).input(),
     );

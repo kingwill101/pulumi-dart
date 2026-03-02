@@ -39,7 +39,7 @@ class GetConnectionsResult {
       connections: pulumi.Input.decodeList<GetConnectionsConnection>(map['connections'], (value) => GetConnectionsConnection.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: map['ids'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

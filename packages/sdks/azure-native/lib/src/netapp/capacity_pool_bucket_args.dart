@@ -62,12 +62,12 @@ class CapacityPoolBucketArgs {
   factory CapacityPoolBucketArgs.fromMap(Map<String, dynamic> map) {
     return CapacityPoolBucketArgs(
       accountName: (map['accountName'] as String).input(),
-      bucketName: map['bucketName'] == null ? null : (map['bucketName'] as String).input(),
-      fileSystemUser: map['fileSystemUser'] == null ? null : (FileSystemUser.fromMap((map['fileSystemUser'] as Map).cast<String, dynamic>())).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
+      bucketName: map['bucketName'] == null ? null : (map['bucketName']! as String).input(),
+      fileSystemUser: map['fileSystemUser'] == null ? null : (FileSystemUser.fromMap((map['fileSystemUser']! as Map).cast<String, dynamic>())).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
       poolName: (map['poolName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      server: map['server'] == null ? null : (BucketServerProperties.fromMap((map['server'] as Map).cast<String, dynamic>())).input(),
+      server: map['server'] == null ? null : (BucketServerProperties.fromMap((map['server']! as Map).cast<String, dynamic>())).input(),
       volumeName: (map['volumeName'] as String).input(),
     );
   }

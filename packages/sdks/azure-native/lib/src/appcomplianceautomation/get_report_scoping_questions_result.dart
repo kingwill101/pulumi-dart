@@ -22,7 +22,7 @@ class GetReportScopingQuestionsResult {
 
   factory GetReportScopingQuestionsResult.fromMap(Map<String, dynamic> map) {
     return GetReportScopingQuestionsResult(
-      questions: map['questions'] == null ? null : pulumi.Input.decodeList<ScopingQuestionResponse>(map['questions'], (value) => ScopingQuestionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      questions: map['questions'] == null ? null : pulumi.Input.decodeList<ScopingQuestionResponse>(map['questions']!, (value) => ScopingQuestionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

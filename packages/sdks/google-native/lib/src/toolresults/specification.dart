@@ -28,8 +28,8 @@ class Specification {
 
   factory Specification.fromMap(Map<String, dynamic> map) {
     return Specification(
-      androidTest: map['androidTest'] == null ? null : (AndroidTest.fromMap((map['androidTest'] as Map).cast<String, dynamic>())).input(),
-      iosTest: map['iosTest'] == null ? null : (IosTest.fromMap((map['iosTest'] as Map).cast<String, dynamic>())).input(),
+      androidTest: map['androidTest'] == null ? null : (AndroidTest.fromMap((map['androidTest']! as Map).cast<String, dynamic>())).input(),
+      iosTest: map['iosTest'] == null ? null : (IosTest.fromMap((map['iosTest']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -26,7 +26,7 @@ class NodePoolNodeConfigSoleTenantConfig {
 
   factory NodePoolNodeConfigSoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSoleTenantConfig(
-      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus'] as int).input(),
+      minNodeCpus: map['minNodeCpus'] == null ? null : (map['minNodeCpus']! as int).input(),
       nodeAffinities: (pulumi.Input.decodeList<NodePoolNodeConfigSoleTenantConfigNodeAffinity>(map['nodeAffinities'], (value) => NodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }

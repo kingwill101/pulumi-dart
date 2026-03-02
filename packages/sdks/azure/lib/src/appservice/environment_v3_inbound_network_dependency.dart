@@ -30,9 +30,9 @@ class EnvironmentV3InboundNetworkDependency {
 
   factory EnvironmentV3InboundNetworkDependency.fromMap(Map<String, dynamic> map) {
     return EnvironmentV3InboundNetworkDependency(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
+      ports: map['ports'] == null ? null : ((map['ports']! as List).cast<String>()).input(),
     );
   }
 }

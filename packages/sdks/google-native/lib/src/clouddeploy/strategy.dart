@@ -28,8 +28,8 @@ class Strategy {
 
   factory Strategy.fromMap(Map<String, dynamic> map) {
     return Strategy(
-      canary: map['canary'] == null ? null : (Canary.fromMap((map['canary'] as Map).cast<String, dynamic>())).input(),
-      standard: map['standard'] == null ? null : (Standard.fromMap((map['standard'] as Map).cast<String, dynamic>())).input(),
+      canary: map['canary'] == null ? null : (Canary.fromMap((map['canary']! as Map).cast<String, dynamic>())).input(),
+      standard: map['standard'] == null ? null : (Standard.fromMap((map['standard']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

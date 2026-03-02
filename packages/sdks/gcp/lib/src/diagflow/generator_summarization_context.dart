@@ -39,10 +39,10 @@ class GeneratorSummarizationContext {
 
   factory GeneratorSummarizationContext.fromMap(Map<String, dynamic> map) {
     return GeneratorSummarizationContext(
-      fewShotExamples: map['fewShotExamples'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExample>(map['fewShotExamples'], (value) => GeneratorSummarizationContextFewShotExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outputLanguageCode: map['outputLanguageCode'] == null ? null : (map['outputLanguageCode'] as String).input(),
-      summarizationSections: map['summarizationSections'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextSummarizationSection>(map['summarizationSections'], (value) => GeneratorSummarizationContextSummarizationSection.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      fewShotExamples: map['fewShotExamples'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextFewShotExample>(map['fewShotExamples']!, (value) => GeneratorSummarizationContextFewShotExample.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputLanguageCode: map['outputLanguageCode'] == null ? null : (map['outputLanguageCode']! as String).input(),
+      summarizationSections: map['summarizationSections'] == null ? null : (pulumi.Input.decodeList<GeneratorSummarizationContextSummarizationSection>(map['summarizationSections']!, (value) => GeneratorSummarizationContextSummarizationSection.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

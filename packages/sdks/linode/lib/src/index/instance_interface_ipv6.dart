@@ -36,9 +36,9 @@ class InstanceInterfaceIpv6 {
 
   factory InstanceInterfaceIpv6.fromMap(Map<String, dynamic> map) {
     return InstanceInterfaceIpv6(
-      isPublic: map['isPublic'] == null ? null : (map['isPublic'] as bool).input(),
-      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InstanceInterfaceIpv6Range>(map['ranges'], (value) => InstanceInterfaceIpv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      slaacs: map['slaacs'] == null ? null : (pulumi.Input.decodeList<InstanceInterfaceIpv6Slaac>(map['slaacs'], (value) => InstanceInterfaceIpv6Slaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      isPublic: map['isPublic'] == null ? null : (map['isPublic']! as bool).input(),
+      ranges: map['ranges'] == null ? null : (pulumi.Input.decodeList<InstanceInterfaceIpv6Range>(map['ranges']!, (value) => InstanceInterfaceIpv6Range.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      slaacs: map['slaacs'] == null ? null : (pulumi.Input.decodeList<InstanceInterfaceIpv6Slaac>(map['slaacs']!, (value) => InstanceInterfaceIpv6Slaac.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

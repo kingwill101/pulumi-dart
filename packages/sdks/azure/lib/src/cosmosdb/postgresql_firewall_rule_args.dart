@@ -41,7 +41,7 @@ class PostgresqlFirewallRuleArgs {
     return PostgresqlFirewallRuleArgs(
       clusterId: (map['clusterId'] as String).input(),
       endIpAddress: (map['endIpAddress'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       startIpAddress: (map['startIpAddress'] as String).input(),
     );
   }

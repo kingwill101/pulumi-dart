@@ -46,12 +46,12 @@ class AssociatedTenantPropertiesResponse {
 
   factory AssociatedTenantPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AssociatedTenantPropertiesResponse(
-      billingManagementState: map['billingManagementState'] == null ? null : (map['billingManagementState'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      billingManagementState: map['billingManagementState'] == null ? null : (map['billingManagementState']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       provisioningBillingRequestId: (map['provisioningBillingRequestId'] as String).input(),
-      provisioningManagementState: map['provisioningManagementState'] == null ? null : (map['provisioningManagementState'] as String).input(),
+      provisioningManagementState: map['provisioningManagementState'] == null ? null : (map['provisioningManagementState']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TargetHealthStateEnumEnumValueResponse {
 
   factory TargetHealthStateEnumEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return TargetHealthStateEnumEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

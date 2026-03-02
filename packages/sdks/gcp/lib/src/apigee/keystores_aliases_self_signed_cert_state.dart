@@ -79,17 +79,17 @@ class KeystoresAliasesSelfSignedCertState {
 
   factory KeystoresAliasesSelfSignedCertState.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertState(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      certValidityInDays: map['certValidityInDays'] == null ? null : (map['certValidityInDays'] as int).input(),
-      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfo>(map['certsInfos'], (value) => KeystoresAliasesSelfSignedCertCertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      keySize: map['keySize'] == null ? null : (map['keySize'] as String).input(),
-      keystore: map['keystore'] == null ? null : (map['keystore'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      sigAlg: map['sigAlg'] == null ? null : (map['sigAlg'] as String).input(),
-      subject: map['subject'] == null ? null : (KeystoresAliasesSelfSignedCertSubject.fromMap((map['subject'] as Map).cast<String, dynamic>())).input(),
-      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((map['subjectAlternativeDnsNames'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      certValidityInDays: map['certValidityInDays'] == null ? null : (map['certValidityInDays']! as int).input(),
+      certsInfos: map['certsInfos'] == null ? null : (pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfo>(map['certsInfos']!, (value) => KeystoresAliasesSelfSignedCertCertsInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      keySize: map['keySize'] == null ? null : (map['keySize']! as String).input(),
+      keystore: map['keystore'] == null ? null : (map['keystore']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      sigAlg: map['sigAlg'] == null ? null : (map['sigAlg']! as String).input(),
+      subject: map['subject'] == null ? null : (KeystoresAliasesSelfSignedCertSubject.fromMap((map['subject']! as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeDnsNames: map['subjectAlternativeDnsNames'] == null ? null : (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((map['subjectAlternativeDnsNames']! as Map).cast<String, dynamic>())).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -65,16 +65,16 @@ class ResourceMachineTypes {
 
   factory ResourceMachineTypes.fromMap(Map<String, dynamic> map) {
     return ResourceMachineTypes(
-      bondNum: map['bondNum'] == null ? null : (map['bondNum'] as int).input(),
+      bondNum: map['bondNum'] == null ? null : (map['bondNum']! as int).input(),
       cpuInfo: (map['cpuInfo'] as String).input(),
-      diskInfo: map['diskInfo'] == null ? null : (map['diskInfo'] as String).input(),
+      diskInfo: map['diskInfo'] == null ? null : (map['diskInfo']! as String).input(),
       gpuInfo: (map['gpuInfo'] as String).input(),
-      memoryInfo: map['memoryInfo'] == null ? null : (map['memoryInfo'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkInfo: map['networkInfo'] == null ? null : (map['networkInfo'] as String).input(),
-      networkMode: map['networkMode'] == null ? null : (map['networkMode'] as String).input(),
-      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount'] as int).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      memoryInfo: map['memoryInfo'] == null ? null : (map['memoryInfo']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkInfo: map['networkInfo'] == null ? null : (map['networkInfo']! as String).input(),
+      networkMode: map['networkMode'] == null ? null : (map['networkMode']! as String).input(),
+      nodeCount: map['nodeCount'] == null ? null : (map['nodeCount']! as int).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

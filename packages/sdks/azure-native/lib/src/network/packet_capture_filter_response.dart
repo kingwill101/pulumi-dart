@@ -41,11 +41,11 @@ class PacketCaptureFilterResponse {
 
   factory PacketCaptureFilterResponse.fromMap(Map<String, dynamic> map) {
     return PacketCaptureFilterResponse(
-      localIPAddress: map['localIPAddress'] == null ? null : (map['localIPAddress'] as String).input(),
-      localPort: map['localPort'] == null ? null : (map['localPort'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      remoteIPAddress: map['remoteIPAddress'] == null ? null : (map['remoteIPAddress'] as String).input(),
-      remotePort: map['remotePort'] == null ? null : (map['remotePort'] as String).input(),
+      localIPAddress: map['localIPAddress'] == null ? null : (map['localIPAddress']! as String).input(),
+      localPort: map['localPort'] == null ? null : (map['localPort']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      remoteIPAddress: map['remoteIPAddress'] == null ? null : (map['remoteIPAddress']! as String).input(),
+      remotePort: map['remotePort'] == null ? null : (map['remotePort']! as String).input(),
     );
   }
 }

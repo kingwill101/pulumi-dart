@@ -23,7 +23,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
 
   factory EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginOriginOverrideActionHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : (pulumi.Input.decodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds']!, (value) => EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

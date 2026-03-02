@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
 
   factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(
-      type: map['type'] == null ? null : (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.fromValue(map['type']! as String)).input(),
     );
   }
 }

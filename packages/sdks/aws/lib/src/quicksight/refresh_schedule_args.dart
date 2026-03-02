@@ -47,10 +47,10 @@ class RefreshScheduleArgs {
 
   factory RefreshScheduleArgs.fromMap(Map<String, dynamic> map) {
     return RefreshScheduleArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: (RefreshScheduleSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: (RefreshScheduleSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
       scheduleId: (map['scheduleId'] as String).input(),
     );
   }

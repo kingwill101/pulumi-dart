@@ -93,19 +93,19 @@ class WorkgroupArgs {
 
   factory WorkgroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkgroupArgs(
-      baseCapacity: map['baseCapacity'] == null ? null : (map['baseCapacity'] as int).input(),
-      configParameters: map['configParameters'] == null ? null : (pulumi.Input.decodeList<WorkgroupConfigParameter>(map['configParameters'], (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enhancedVpcRouting: map['enhancedVpcRouting'] == null ? null : (map['enhancedVpcRouting'] as bool).input(),
-      maxCapacity: map['maxCapacity'] == null ? null : (map['maxCapacity'] as int).input(),
+      baseCapacity: map['baseCapacity'] == null ? null : ((map['baseCapacity'] as int).input()).input(),
+      configParameters: map['configParameters'] == null ? null : ((pulumi.Input.decodeList<WorkgroupConfigParameter>(map['configParameters']!, (value) => WorkgroupConfigParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enhancedVpcRouting: map['enhancedVpcRouting'] == null ? null : ((map['enhancedVpcRouting'] as bool).input()).input(),
+      maxCapacity: map['maxCapacity'] == null ? null : ((map['maxCapacity'] as int).input()).input(),
       namespaceName: (map['namespaceName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      pricePerformanceTarget: map['pricePerformanceTarget'] == null ? null : (WorkgroupPricePerformanceTarget.fromMap((map['pricePerformanceTarget'] as Map).cast<String, dynamic>())).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      trackName: map['trackName'] == null ? null : (map['trackName'] as String).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      pricePerformanceTarget: map['pricePerformanceTarget'] == null ? null : ((WorkgroupPricePerformanceTarget.fromMap((map['pricePerformanceTarget']! as Map).cast<String, dynamic>())).input()).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : ((map['publiclyAccessible'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      trackName: map['trackName'] == null ? null : ((map['trackName'] as String).input()).input(),
       workgroupName: (map['workgroupName'] as String).input(),
     );
   }

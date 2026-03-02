@@ -48,7 +48,7 @@ class DbProxyPublicArgs {
       dbInstanceId: (map['dbInstanceId'] as String).input(),
       dbProxyConnectionStringNetType: (map['dbProxyConnectionStringNetType'] as String).input(),
       dbProxyEndpointId: (map['dbProxyEndpointId'] as String).input(),
-      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort'] as String).input(),
+      dbProxyNewConnectStringPort: map['dbProxyNewConnectStringPort'] == null ? null : (map['dbProxyNewConnectStringPort']! as String).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class CustomLineState {
 
   factory CustomLineState.fromMap(Map<String, dynamic> map) {
     return CustomLineState(
-      customLineName: map['customLineName'] == null ? null : (map['customLineName'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      ipSegmentLists: map['ipSegmentLists'] == null ? null : (pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists'], (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
+      customLineName: map['customLineName'] == null ? null : (map['customLineName']! as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      ipSegmentLists: map['ipSegmentLists'] == null ? null : (pulumi.Input.decodeList<CustomLineIpSegmentList>(map['ipSegmentLists']!, (value) => CustomLineIpSegmentList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
     );
   }
 }

@@ -50,13 +50,13 @@ class LoadBalancerForwardingRule {
 
   factory LoadBalancerForwardingRule.fromMap(Map<String, dynamic> map) {
     return LoadBalancerForwardingRule(
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      certificateName: map['certificateName'] == null ? null : (map['certificateName'] as String).input(),
+      certificateId: map['certificateId'] == null ? null : (map['certificateId']! as String).input(),
+      certificateName: map['certificateName'] == null ? null : (map['certificateName']! as String).input(),
       entryPort: (map['entryPort'] as int).input(),
       entryProtocol: (map['entryProtocol'] as String).input(),
       targetPort: (map['targetPort'] as int).input(),
       targetProtocol: (map['targetProtocol'] as String).input(),
-      tlsPassthrough: map['tlsPassthrough'] == null ? null : (map['tlsPassthrough'] as bool).input(),
+      tlsPassthrough: map['tlsPassthrough'] == null ? null : (map['tlsPassthrough']! as bool).input(),
     );
   }
 }

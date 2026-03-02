@@ -33,9 +33,9 @@ class OperationContextOIDC {
 
   factory OperationContextOIDC.fromMap(Map<String, dynamic> map) {
     return OperationContextOIDC(
-      aws: map['aws'] == null ? null : (AWSOIDCConfiguration.fromMap((map['aws'] as Map).cast<String, dynamic>())).input(),
-      azure: map['azure'] == null ? null : (AzureOIDCConfiguration.fromMap((map['azure'] as Map).cast<String, dynamic>())).input(),
-      gcp: map['gcp'] == null ? null : (GCPOIDCConfiguration.fromMap((map['gcp'] as Map).cast<String, dynamic>())).input(),
+      aws: map['aws'] == null ? null : (AWSOIDCConfiguration.fromMap((map['aws']! as Map).cast<String, dynamic>())).input(),
+      azure: map['azure'] == null ? null : (AzureOIDCConfiguration.fromMap((map['azure']! as Map).cast<String, dynamic>())).input(),
+      gcp: map['gcp'] == null ? null : (GCPOIDCConfiguration.fromMap((map['gcp']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

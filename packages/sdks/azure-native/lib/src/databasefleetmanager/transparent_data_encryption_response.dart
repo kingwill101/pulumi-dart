@@ -31,9 +31,9 @@ class TransparentDataEncryptionResponse {
 
   factory TransparentDataEncryptionResponse.fromMap(Map<String, dynamic> map) {
     return TransparentDataEncryptionResponse(
-      enableAutoRotation: map['enableAutoRotation'] == null ? null : (map['enableAutoRotation'] as bool).input(),
-      keyUri: map['keyUri'] == null ? null : (map['keyUri'] as String).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      enableAutoRotation: map['enableAutoRotation'] == null ? null : (map['enableAutoRotation']! as bool).input(),
+      keyUri: map['keyUri'] == null ? null : (map['keyUri']! as String).input(),
+      keys: map['keys'] == null ? null : ((map['keys']! as List).cast<String>()).input(),
     );
   }
 }

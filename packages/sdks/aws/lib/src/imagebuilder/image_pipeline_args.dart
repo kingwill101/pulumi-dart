@@ -106,22 +106,22 @@ class ImagePipelineArgs {
 
   factory ImagePipelineArgs.fromMap(Map<String, dynamic> map) {
     return ImagePipelineArgs(
-      containerRecipeArn: map['containerRecipeArn'] == null ? null : (map['containerRecipeArn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distributionConfigurationArn: map['distributionConfigurationArn'] == null ? null : (map['distributionConfigurationArn'] as String).input(),
-      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null ? null : (map['enhancedImageMetadataEnabled'] as bool).input(),
-      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
-      imageRecipeArn: map['imageRecipeArn'] == null ? null : (map['imageRecipeArn'] as String).input(),
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : (ImagePipelineImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>())).input(),
-      imageTestsConfiguration: map['imageTestsConfiguration'] == null ? null : (ImagePipelineImageTestsConfiguration.fromMap((map['imageTestsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      containerRecipeArn: map['containerRecipeArn'] == null ? null : ((map['containerRecipeArn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      distributionConfigurationArn: map['distributionConfigurationArn'] == null ? null : ((map['distributionConfigurationArn'] as String).input()).input(),
+      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null ? null : ((map['enhancedImageMetadataEnabled'] as bool).input()).input(),
+      executionRole: map['executionRole'] == null ? null : ((map['executionRole'] as String).input()).input(),
+      imageRecipeArn: map['imageRecipeArn'] == null ? null : ((map['imageRecipeArn'] as String).input()).input(),
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : ((ImagePipelineImageScanningConfiguration.fromMap((map['imageScanningConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      imageTestsConfiguration: map['imageTestsConfiguration'] == null ? null : ((ImagePipelineImageTestsConfiguration.fromMap((map['imageTestsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       infrastructureConfigurationArn: (map['infrastructureConfigurationArn'] as String).input(),
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : (ImagePipelineLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      schedule: map['schedule'] == null ? null : (ImagePipelineSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workflows: map['workflows'] == null ? null : (pulumi.Input.decodeList<ImagePipelineWorkflow>(map['workflows'], (value) => ImagePipelineWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      loggingConfiguration: map['loggingConfiguration'] == null ? null : ((ImagePipelineLoggingConfiguration.fromMap((map['loggingConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      schedule: map['schedule'] == null ? null : ((ImagePipelineSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      workflows: map['workflows'] == null ? null : ((pulumi.Input.decodeList<ImagePipelineWorkflow>(map['workflows']!, (value) => ImagePipelineWorkflow.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

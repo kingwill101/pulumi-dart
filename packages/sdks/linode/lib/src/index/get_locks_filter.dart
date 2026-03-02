@@ -30,7 +30,7 @@ class GetLocksFilter {
 
   factory GetLocksFilter.fromMap(Map<String, dynamic> map) {
     return GetLocksFilter(
-      matchBy: map['matchBy'] == null ? null : (map['matchBy'] as String).input(),
+      matchBy: map['matchBy'] == null ? null : (map['matchBy']! as String).input(),
       name: (map['name'] as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );

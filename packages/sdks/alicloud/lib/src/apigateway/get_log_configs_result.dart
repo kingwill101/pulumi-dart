@@ -41,8 +41,8 @@ class GetLogConfigsResult {
       configs: pulumi.Input.decodeList<GetLogConfigsConfig>(map['configs'], (value) => GetLogConfigsConfig.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : map['logType'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      logType: map['logType'] == null ? null : map['logType']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
     );
   }
 }

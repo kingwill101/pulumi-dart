@@ -43,11 +43,11 @@ class ConnectionState {
 
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
-      authParameters: map['authParameters'] == null ? null : (ConnectionAuthParameters.fromMap((map['authParameters'] as Map).cast<String, dynamic>())).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      networkParameters: map['networkParameters'] == null ? null : (ConnectionNetworkParameters.fromMap((map['networkParameters'] as Map).cast<String, dynamic>())).input(),
+      authParameters: map['authParameters'] == null ? null : (ConnectionAuthParameters.fromMap((map['authParameters']! as Map).cast<String, dynamic>())).input(),
+      connectionName: map['connectionName'] == null ? null : (map['connectionName']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      networkParameters: map['networkParameters'] == null ? null : (ConnectionNetworkParameters.fromMap((map['networkParameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

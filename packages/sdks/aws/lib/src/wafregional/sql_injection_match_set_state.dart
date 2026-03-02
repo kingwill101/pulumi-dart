@@ -32,9 +32,9 @@ class SqlInjectionMatchSetState {
 
   factory SqlInjectionMatchSetState.fromMap(Map<String, dynamic> map) {
     return SqlInjectionMatchSetState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : (pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples'], (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sqlInjectionMatchTuples: map['sqlInjectionMatchTuples'] == null ? null : ((pulumi.Input.decodeList<SqlInjectionMatchSetSqlInjectionMatchTuple>(map['sqlInjectionMatchTuples']!, (value) => SqlInjectionMatchSetSqlInjectionMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

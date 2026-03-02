@@ -37,8 +37,8 @@ class OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha {
   factory OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResourceYumRepositoryOsconfigV1alpha(
       baseUrl: (map['baseUrl'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      gpgKeys: map['gpgKeys'] == null ? null : ((map['gpgKeys'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      gpgKeys: map['gpgKeys'] == null ? null : ((map['gpgKeys']! as List).cast<String>()).input(),
       id: (map['id'] as String).input(),
     );
   }

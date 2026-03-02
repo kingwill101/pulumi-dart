@@ -31,8 +31,8 @@ class GetSchemaIamPolicyArgs {
 
   factory GetSchemaIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetSchemaIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : (map['optionsRequestedPolicyVersion']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       schemaId: (map['schemaId'] as String).input(),
     );
   }

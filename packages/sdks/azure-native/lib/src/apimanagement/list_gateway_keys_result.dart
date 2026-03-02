@@ -25,8 +25,8 @@ class ListGatewayKeysResult {
 
   factory ListGatewayKeysResult.fromMap(Map<String, dynamic> map) {
     return ListGatewayKeysResult(
-      primary: map['primary'] == null ? null : map['primary'] as String,
-      secondary: map['secondary'] == null ? null : map['secondary'] as String,
+      primary: map['primary'] == null ? null : map['primary']! as String,
+      secondary: map['secondary'] == null ? null : map['secondary']! as String,
     );
   }
 }

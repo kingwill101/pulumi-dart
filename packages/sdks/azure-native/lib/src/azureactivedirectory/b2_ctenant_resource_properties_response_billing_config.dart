@@ -26,7 +26,7 @@ class B2CTenantResourcePropertiesResponseBillingConfig {
 
   factory B2CTenantResourcePropertiesResponseBillingConfig.fromMap(Map<String, dynamic> map) {
     return B2CTenantResourcePropertiesResponseBillingConfig(
-      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
+      billingType: map['billingType'] == null ? null : (map['billingType']! as String).input(),
       effectiveStartDateUtc: (map['effectiveStartDateUtc'] as String).input(),
     );
   }

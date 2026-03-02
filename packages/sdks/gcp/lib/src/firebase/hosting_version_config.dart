@@ -39,9 +39,9 @@ class HostingVersionConfig {
 
   factory HostingVersionConfig.fromMap(Map<String, dynamic> map) {
     return HostingVersionConfig(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HostingVersionConfigHeader>(map['headers'], (value) => HostingVersionConfigHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      redirects: map['redirects'] == null ? null : (pulumi.Input.decodeList<HostingVersionConfigRedirect>(map['redirects'], (value) => HostingVersionConfigRedirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      rewrites: map['rewrites'] == null ? null : (pulumi.Input.decodeList<HostingVersionConfigRewrite>(map['rewrites'], (value) => HostingVersionConfigRewrite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<HostingVersionConfigHeader>(map['headers']!, (value) => HostingVersionConfigHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      redirects: map['redirects'] == null ? null : (pulumi.Input.decodeList<HostingVersionConfigRedirect>(map['redirects']!, (value) => HostingVersionConfigRedirect.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      rewrites: map['rewrites'] == null ? null : (pulumi.Input.decodeList<HostingVersionConfigRewrite>(map['rewrites']!, (value) => HostingVersionConfigRewrite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

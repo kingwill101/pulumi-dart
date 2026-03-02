@@ -48,10 +48,10 @@ class GetPipelineDefinitionResult {
   factory GetPipelineDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetPipelineDefinitionResult(
       id: map['id'] as String,
-      parameterObjects: pulumi.Input.decodeList<GetPipelineDefinitionParameterObject>(map['parameterObjects'], (value) => GetPipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>())),
-      parameterValues: map['parameterValues'] == null ? null : pulumi.Input.decodeList<GetPipelineDefinitionParameterValue>(map['parameterValues'], (value) => GetPipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>())),
+      parameterObjects: pulumi.Input.decodeList<GetPipelineDefinitionParameterObject>(map['parameterObjects']!, (value) => GetPipelineDefinitionParameterObject.fromMap((value as Map).cast<String, dynamic>())),
+      parameterValues: map['parameterValues'] == null ? null : pulumi.Input.decodeList<GetPipelineDefinitionParameterValue>(map['parameterValues']!, (value) => GetPipelineDefinitionParameterValue.fromMap((value as Map).cast<String, dynamic>())),
       pipelineId: map['pipelineId'] as String,
-      pipelineObjects: pulumi.Input.decodeList<GetPipelineDefinitionPipelineObject>(map['pipelineObjects'], (value) => GetPipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>())),
+      pipelineObjects: pulumi.Input.decodeList<GetPipelineDefinitionPipelineObject>(map['pipelineObjects']!, (value) => GetPipelineDefinitionPipelineObject.fromMap((value as Map).cast<String, dynamic>())),
       region: map['region'] as String,
     );
   }

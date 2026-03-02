@@ -88,19 +88,19 @@ class DomainOsNvRamSourceNetwork {
 
   factory DomainOsNvRamSourceNetwork.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceNetwork(
-      auth: map['auth'] == null ? null : (DomainOsNvRamSourceNetworkAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      config: map['config'] == null ? null : (DomainOsNvRamSourceNetworkConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceNetworkHost>(map['hosts'], (value) => DomainOsNvRamSourceNetworkHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      identity: map['identity'] == null ? null : (DomainOsNvRamSourceNetworkIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      initiator: map['initiator'] == null ? null : (DomainOsNvRamSourceNetworkInitiator.fromMap((map['initiator'] as Map).cast<String, dynamic>())).input(),
-      knownHosts: map['knownHosts'] == null ? null : (DomainOsNvRamSourceNetworkKnownHosts.fromMap((map['knownHosts'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainOsNvRamSourceNetworkReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      snapshot: map['snapshot'] == null ? null : (DomainOsNvRamSourceNetworkSnapshot.fromMap((map['snapshot'] as Map).cast<String, dynamic>())).input(),
-      tls: map['tls'] == null ? null : (map['tls'] as String).input(),
-      tlsHostname: map['tlsHostname'] == null ? null : (map['tlsHostname'] as String).input(),
+      auth: map['auth'] == null ? null : (DomainOsNvRamSourceNetworkAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (DomainOsNvRamSourceNetworkConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
+      hosts: map['hosts'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceNetworkHost>(map['hosts']!, (value) => DomainOsNvRamSourceNetworkHost.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identity: map['identity'] == null ? null : (DomainOsNvRamSourceNetworkIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      initiator: map['initiator'] == null ? null : (DomainOsNvRamSourceNetworkInitiator.fromMap((map['initiator']! as Map).cast<String, dynamic>())).input(),
+      knownHosts: map['knownHosts'] == null ? null : (DomainOsNvRamSourceNetworkKnownHosts.fromMap((map['knownHosts']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainOsNvRamSourceNetworkReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      snapshot: map['snapshot'] == null ? null : (DomainOsNvRamSourceNetworkSnapshot.fromMap((map['snapshot']! as Map).cast<String, dynamic>())).input(),
+      tls: map['tls'] == null ? null : (map['tls']! as String).input(),
+      tlsHostname: map['tlsHostname'] == null ? null : (map['tlsHostname']! as String).input(),
     );
   }
 }

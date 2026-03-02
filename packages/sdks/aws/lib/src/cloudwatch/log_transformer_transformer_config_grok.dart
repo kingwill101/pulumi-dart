@@ -26,7 +26,7 @@ class LogTransformerTransformerConfigGrok {
   factory LogTransformerTransformerConfigGrok.fromMap(Map<String, dynamic> map) {
     return LogTransformerTransformerConfigGrok(
       match: (map['match'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      source: map['source'] == null ? null : ((map['source'] as String).input()).input(),
     );
   }
 }

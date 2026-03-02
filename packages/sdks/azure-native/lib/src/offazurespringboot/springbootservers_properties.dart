@@ -62,15 +62,15 @@ class SpringbootserversProperties {
 
   factory SpringbootserversProperties.fromMap(Map<String, dynamic> map) {
     return SpringbootserversProperties(
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Error>(map['errors'], (value) => Error.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      fqdnAndIpAddressList: map['fqdnAndIpAddressList'] == null ? null : ((map['fqdnAndIpAddressList'] as List).cast<String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      machineArmId: map['machineArmId'] == null ? null : (map['machineArmId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Error>(map['errors']!, (value) => Error.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      fqdnAndIpAddressList: map['fqdnAndIpAddressList'] == null ? null : ((map['fqdnAndIpAddressList']! as List).cast<String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      machineArmId: map['machineArmId'] == null ? null : (map['machineArmId']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
       server: (map['server'] as String).input(),
-      springBootApps: map['springBootApps'] == null ? null : (map['springBootApps'] as int).input(),
-      totalApps: map['totalApps'] == null ? null : (map['totalApps'] as int).input(),
+      springBootApps: map['springBootApps'] == null ? null : (map['springBootApps']! as int).input(),
+      totalApps: map['totalApps'] == null ? null : (map['totalApps']! as int).input(),
     );
   }
 }

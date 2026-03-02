@@ -45,12 +45,12 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe(
-      blockSizeBytes: map['blockSizeBytes'] == null ? null : (map['blockSizeBytes'] as int).input(),
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      enableDictionaryCompression: map['enableDictionaryCompression'] == null ? null : (map['enableDictionaryCompression'] as bool).input(),
-      maxPaddingBytes: map['maxPaddingBytes'] == null ? null : (map['maxPaddingBytes'] as int).input(),
-      pageSizeBytes: map['pageSizeBytes'] == null ? null : (map['pageSizeBytes'] as int).input(),
-      writerVersion: map['writerVersion'] == null ? null : (map['writerVersion'] as String).input(),
+      blockSizeBytes: map['blockSizeBytes'] == null ? null : ((map['blockSizeBytes'] as int).input()).input(),
+      compression: map['compression'] == null ? null : ((map['compression'] as String).input()).input(),
+      enableDictionaryCompression: map['enableDictionaryCompression'] == null ? null : ((map['enableDictionaryCompression'] as bool).input()).input(),
+      maxPaddingBytes: map['maxPaddingBytes'] == null ? null : ((map['maxPaddingBytes'] as int).input()).input(),
+      pageSizeBytes: map['pageSizeBytes'] == null ? null : ((map['pageSizeBytes'] as int).input()).input(),
+      writerVersion: map['writerVersion'] == null ? null : ((map['writerVersion'] as String).input()).input(),
     );
   }
 }

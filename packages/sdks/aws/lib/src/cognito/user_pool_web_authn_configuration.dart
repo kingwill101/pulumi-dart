@@ -25,8 +25,8 @@ class UserPoolWebAuthnConfiguration {
 
   factory UserPoolWebAuthnConfiguration.fromMap(Map<String, dynamic> map) {
     return UserPoolWebAuthnConfiguration(
-      relyingPartyId: map['relyingPartyId'] == null ? null : (map['relyingPartyId'] as String).input(),
-      userVerification: map['userVerification'] == null ? null : (map['userVerification'] as String).input(),
+      relyingPartyId: map['relyingPartyId'] == null ? null : ((map['relyingPartyId'] as String).input()).input(),
+      userVerification: map['userVerification'] == null ? null : ((map['userVerification'] as String).input()).input(),
     );
   }
 }

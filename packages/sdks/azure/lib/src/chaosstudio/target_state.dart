@@ -31,9 +31,9 @@ class TargetState {
 
   factory TargetState.fromMap(Map<String, dynamic> map) {
     return TargetState(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId'] as String).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      targetResourceId: map['targetResourceId'] == null ? null : (map['targetResourceId']! as String).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
     );
   }
 }

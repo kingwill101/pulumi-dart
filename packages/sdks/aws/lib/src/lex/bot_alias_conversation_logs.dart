@@ -27,7 +27,7 @@ class BotAliasConversationLogs {
   factory BotAliasConversationLogs.fromMap(Map<String, dynamic> map) {
     return BotAliasConversationLogs(
       iamRoleArn: (map['iamRoleArn'] as String).input(),
-      logSettings: map['logSettings'] == null ? null : (pulumi.Input.decodeList<BotAliasConversationLogsLogSetting>(map['logSettings'], (value) => BotAliasConversationLogsLogSetting.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logSettings: map['logSettings'] == null ? null : ((pulumi.Input.decodeList<BotAliasConversationLogsLogSetting>(map['logSettings']!, (value) => BotAliasConversationLogsLogSetting.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

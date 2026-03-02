@@ -31,9 +31,9 @@ class SecretKeySelectorPatch {
 
   factory SecretKeySelectorPatch.fromMap(Map<String, dynamic> map) {
     return SecretKeySelectorPatch(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      optional: map['optional'] == null ? null : (map['optional'] as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      optional: map['optional'] == null ? null : (map['optional']! as bool).input(),
     );
   }
 }

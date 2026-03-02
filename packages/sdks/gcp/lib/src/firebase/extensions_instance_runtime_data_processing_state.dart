@@ -28,8 +28,8 @@ class ExtensionsInstanceRuntimeDataProcessingState {
 
   factory ExtensionsInstanceRuntimeDataProcessingState.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceRuntimeDataProcessingState(
-      detailMessage: map['detailMessage'] == null ? null : (map['detailMessage'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      detailMessage: map['detailMessage'] == null ? null : (map['detailMessage']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

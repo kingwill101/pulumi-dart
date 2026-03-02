@@ -37,10 +37,10 @@ class AppServiceLogs {
 
   factory AppServiceLogs.fromMap(Map<String, dynamic> map) {
     return AppServiceLogs(
-      applicationLogs: map['applicationLogs'] == null ? null : (AppServiceLogsApplicationLogs.fromMap((map['applicationLogs'] as Map).cast<String, dynamic>())).input(),
-      detailedErrorMessagesEnabled: map['detailedErrorMessagesEnabled'] == null ? null : (map['detailedErrorMessagesEnabled'] as bool).input(),
-      failedRequestTracingEnabled: map['failedRequestTracingEnabled'] == null ? null : (map['failedRequestTracingEnabled'] as bool).input(),
-      httpLogs: map['httpLogs'] == null ? null : (AppServiceLogsHttpLogs.fromMap((map['httpLogs'] as Map).cast<String, dynamic>())).input(),
+      applicationLogs: map['applicationLogs'] == null ? null : (AppServiceLogsApplicationLogs.fromMap((map['applicationLogs']! as Map).cast<String, dynamic>())).input(),
+      detailedErrorMessagesEnabled: map['detailedErrorMessagesEnabled'] == null ? null : (map['detailedErrorMessagesEnabled']! as bool).input(),
+      failedRequestTracingEnabled: map['failedRequestTracingEnabled'] == null ? null : (map['failedRequestTracingEnabled']! as bool).input(),
+      httpLogs: map['httpLogs'] == null ? null : (AppServiceLogsHttpLogs.fromMap((map['httpLogs']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -45,12 +45,12 @@ class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
 
   factory ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod(
-      imagefsAvailable: map['imagefsAvailable'] == null ? null : (map['imagefsAvailable'] as String).input(),
-      imagefsInodesFree: map['imagefsInodesFree'] == null ? null : (map['imagefsInodesFree'] as String).input(),
-      memoryAvailable: map['memoryAvailable'] == null ? null : (map['memoryAvailable'] as String).input(),
-      nodefsAvailable: map['nodefsAvailable'] == null ? null : (map['nodefsAvailable'] as String).input(),
-      nodefsInodesFree: map['nodefsInodesFree'] == null ? null : (map['nodefsInodesFree'] as String).input(),
-      pidAvailable: map['pidAvailable'] == null ? null : (map['pidAvailable'] as String).input(),
+      imagefsAvailable: map['imagefsAvailable'] == null ? null : (map['imagefsAvailable']! as String).input(),
+      imagefsInodesFree: map['imagefsInodesFree'] == null ? null : (map['imagefsInodesFree']! as String).input(),
+      memoryAvailable: map['memoryAvailable'] == null ? null : (map['memoryAvailable']! as String).input(),
+      nodefsAvailable: map['nodefsAvailable'] == null ? null : (map['nodefsAvailable']! as String).input(),
+      nodefsInodesFree: map['nodefsInodesFree'] == null ? null : (map['nodefsInodesFree']! as String).input(),
+      pidAvailable: map['pidAvailable'] == null ? null : (map['pidAvailable']! as String).input(),
     );
   }
 }

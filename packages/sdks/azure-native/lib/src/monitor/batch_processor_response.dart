@@ -26,8 +26,8 @@ class BatchProcessorResponse {
 
   factory BatchProcessorResponse.fromMap(Map<String, dynamic> map) {
     return BatchProcessorResponse(
-      batchSize: map['batchSize'] == null ? null : (map['batchSize'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as int).input(),
+      batchSize: map['batchSize'] == null ? null : (map['batchSize']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as int).input(),
     );
   }
 }

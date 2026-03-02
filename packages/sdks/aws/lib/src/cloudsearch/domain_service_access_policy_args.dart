@@ -36,7 +36,7 @@ class DomainServiceAccessPolicyArgs {
     return DomainServiceAccessPolicyArgs(
       accessPolicy: (map['accessPolicy'] as String).input(),
       domainName: (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

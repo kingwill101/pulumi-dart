@@ -35,8 +35,8 @@ class MLTransformInputRecordTable {
 
   factory MLTransformInputRecordTable.fromMap(Map<String, dynamic> map) {
     return MLTransformInputRecordTable(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      connectionName: map['connectionName'] == null ? null : (map['connectionName'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      connectionName: map['connectionName'] == null ? null : ((map['connectionName'] as String).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
       tableName: (map['tableName'] as String).input(),
     );

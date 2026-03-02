@@ -71,16 +71,16 @@ class L3IsolationDomainArgs {
 
   factory L3IsolationDomainArgs.fromMap(Map<String, dynamic> map) {
     return L3IsolationDomainArgs(
-      aggregateRouteConfiguration: map['aggregateRouteConfiguration'] == null ? null : (AggregateRouteConfiguration.fromMap((map['aggregateRouteConfiguration'] as Map).cast<String, dynamic>())).input(),
-      annotation: map['annotation'] == null ? null : (map['annotation'] as String).input(),
-      connectedSubnetRoutePolicy: map['connectedSubnetRoutePolicy'] == null ? null : (ConnectedSubnetRoutePolicy.fromMap((map['connectedSubnetRoutePolicy'] as Map).cast<String, dynamic>())).input(),
-      l3IsolationDomainName: map['l3IsolationDomainName'] == null ? null : (map['l3IsolationDomainName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      aggregateRouteConfiguration: map['aggregateRouteConfiguration'] == null ? null : (AggregateRouteConfiguration.fromMap((map['aggregateRouteConfiguration']! as Map).cast<String, dynamic>())).input(),
+      annotation: map['annotation'] == null ? null : (map['annotation']! as String).input(),
+      connectedSubnetRoutePolicy: map['connectedSubnetRoutePolicy'] == null ? null : (ConnectedSubnetRoutePolicy.fromMap((map['connectedSubnetRoutePolicy']! as Map).cast<String, dynamic>())).input(),
+      l3IsolationDomainName: map['l3IsolationDomainName'] == null ? null : (map['l3IsolationDomainName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       networkFabricId: (map['networkFabricId'] as String).input(),
-      redistributeConnectedSubnets: map['redistributeConnectedSubnets'] == null ? null : (map['redistributeConnectedSubnets'] as String).input(),
-      redistributeStaticRoutes: map['redistributeStaticRoutes'] == null ? null : (map['redistributeStaticRoutes'] as String).input(),
+      redistributeConnectedSubnets: map['redistributeConnectedSubnets'] == null ? null : (map['redistributeConnectedSubnets']! as String).input(),
+      redistributeStaticRoutes: map['redistributeStaticRoutes'] == null ? null : (map['redistributeStaticRoutes']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

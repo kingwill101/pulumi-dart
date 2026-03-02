@@ -47,12 +47,12 @@ class CacheToLocal {
 
   factory CacheToLocal.fromMap(Map<String, dynamic> map) {
     return CacheToLocal(
-      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression'] as String)).input(),
-      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel'] as int).input(),
+      compression: map['compression'] == null ? null : (CompressionType.fromValue(map['compression']! as String)).input(),
+      compressionLevel: map['compressionLevel'] == null ? null : (map['compressionLevel']! as int).input(),
       dest: (map['dest'] as String).input(),
-      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression'] as bool).input(),
-      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError'] as bool).input(),
-      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode'] as String)).input(),
+      forceCompression: map['forceCompression'] == null ? null : (map['forceCompression']! as bool).input(),
+      ignoreError: map['ignoreError'] == null ? null : (map['ignoreError']! as bool).input(),
+      mode: map['mode'] == null ? null : (CacheMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

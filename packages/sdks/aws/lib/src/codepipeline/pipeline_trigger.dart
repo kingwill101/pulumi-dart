@@ -26,7 +26,7 @@ class PipelineTrigger {
 
   factory PipelineTrigger.fromMap(Map<String, dynamic> map) {
     return PipelineTrigger(
-      gitConfiguration: (PipelineTriggerGitConfiguration.fromMap((map['gitConfiguration'] as Map).cast<String, dynamic>())).input(),
+      gitConfiguration: (PipelineTriggerGitConfiguration.fromMap((map['gitConfiguration']! as Map).cast<String, dynamic>())).input(),
       providerType: (map['providerType'] as String).input(),
     );
   }

@@ -39,11 +39,11 @@ class InstancePlacementGroup {
 
   factory InstancePlacementGroup.fromMap(Map<String, dynamic> map) {
     return InstancePlacementGroup(
-      compliantOnly: map['compliantOnly'] == null ? null : (map['compliantOnly'] as bool).input(),
+      compliantOnly: map['compliantOnly'] == null ? null : (map['compliantOnly']! as bool).input(),
       id: (map['id'] as int).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy'] as String).input(),
-      placementGroupType: map['placementGroupType'] == null ? null : (map['placementGroupType'] as String).input(),
+      label: map['label'] == null ? null : (map['label']! as String).input(),
+      placementGroupPolicy: map['placementGroupPolicy'] == null ? null : (map['placementGroupPolicy']! as String).input(),
+      placementGroupType: map['placementGroupType'] == null ? null : (map['placementGroupType']! as String).input(),
     );
   }
 }

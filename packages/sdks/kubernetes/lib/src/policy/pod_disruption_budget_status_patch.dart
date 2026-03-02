@@ -60,13 +60,13 @@ class PodDisruptionBudgetStatusPatch {
 
   factory PodDisruptionBudgetStatusPatch.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetStatusPatch(
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions'], (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentHealthy: map['currentHealthy'] == null ? null : (map['currentHealthy'] as int).input(),
-      desiredHealthy: map['desiredHealthy'] == null ? null : (map['desiredHealthy'] as int).input(),
-      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods'] as Map).cast<String, String>()).input(),
-      disruptionsAllowed: map['disruptionsAllowed'] == null ? null : (map['disruptionsAllowed'] as int).input(),
-      expectedPods: map['expectedPods'] == null ? null : (map['expectedPods'] as int).input(),
-      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration'] as int).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<ConditionPatch>(map['conditions']!, (value) => ConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentHealthy: map['currentHealthy'] == null ? null : (map['currentHealthy']! as int).input(),
+      desiredHealthy: map['desiredHealthy'] == null ? null : (map['desiredHealthy']! as int).input(),
+      disruptedPods: map['disruptedPods'] == null ? null : ((map['disruptedPods']! as Map).cast<String, String>()).input(),
+      disruptionsAllowed: map['disruptionsAllowed'] == null ? null : (map['disruptionsAllowed']! as int).input(),
+      expectedPods: map['expectedPods'] == null ? null : (map['expectedPods']! as int).input(),
+      observedGeneration: map['observedGeneration'] == null ? null : (map['observedGeneration']! as int).input(),
     );
   }
 }

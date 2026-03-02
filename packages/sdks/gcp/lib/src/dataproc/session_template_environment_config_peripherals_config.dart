@@ -27,8 +27,8 @@ class SessionTemplateEnvironmentConfigPeripheralsConfig {
 
   factory SessionTemplateEnvironmentConfigPeripheralsConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateEnvironmentConfigPeripheralsConfig(
-      metastoreService: map['metastoreService'] == null ? null : (map['metastoreService'] as String).input(),
-      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>())).input(),
+      metastoreService: map['metastoreService'] == null ? null : (map['metastoreService']! as String).input(),
+      sparkHistoryServerConfig: map['sparkHistoryServerConfig'] == null ? null : (SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.fromMap((map['sparkHistoryServerConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

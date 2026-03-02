@@ -46,10 +46,10 @@ class BucketVersioningV2Args {
   factory BucketVersioningV2Args.fromMap(Map<String, dynamic> map) {
     return BucketVersioningV2Args(
       bucket: (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      mfa: map['mfa'] == null ? null : (map['mfa'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      versioningConfiguration: (BucketVersioningV2VersioningConfiguration.fromMap((map['versioningConfiguration'] as Map).cast<String, dynamic>())).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      mfa: map['mfa'] == null ? null : ((map['mfa'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      versioningConfiguration: (BucketVersioningV2VersioningConfiguration.fromMap((map['versioningConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -32,8 +32,8 @@ class ByteMatchSetArgs {
 
   factory ByteMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return ByteMatchSetArgs(
-      byteMatchTuples: map['byteMatchTuples'] == null ? null : (pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(map['byteMatchTuples'], (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      byteMatchTuples: map['byteMatchTuples'] == null ? null : ((pulumi.Input.decodeList<ByteMatchSetByteMatchTuple>(map['byteMatchTuples']!, (value) => ByteMatchSetByteMatchTuple.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
     );
   }
 }

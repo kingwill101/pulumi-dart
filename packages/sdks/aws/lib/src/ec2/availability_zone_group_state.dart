@@ -31,9 +31,9 @@ class AvailabilityZoneGroupState {
 
   factory AvailabilityZoneGroupState.fromMap(Map<String, dynamic> map) {
     return AvailabilityZoneGroupState(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      optInStatus: map['optInStatus'] == null ? null : (map['optInStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      groupName: map['groupName'] == null ? null : ((map['groupName'] as String).input()).input(),
+      optInStatus: map['optInStatus'] == null ? null : ((map['optInStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

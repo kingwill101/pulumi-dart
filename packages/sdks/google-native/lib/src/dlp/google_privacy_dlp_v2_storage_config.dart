@@ -45,11 +45,11 @@ class GooglePrivacyDlpV2StorageConfig {
 
   factory GooglePrivacyDlpV2StorageConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2StorageConfig(
-      bigQueryOptions: map['bigQueryOptions'] == null ? null : (GooglePrivacyDlpV2BigQueryOptions.fromMap((map['bigQueryOptions'] as Map).cast<String, dynamic>())).input(),
-      cloudStorageOptions: map['cloudStorageOptions'] == null ? null : (GooglePrivacyDlpV2CloudStorageOptions.fromMap((map['cloudStorageOptions'] as Map).cast<String, dynamic>())).input(),
-      datastoreOptions: map['datastoreOptions'] == null ? null : (GooglePrivacyDlpV2DatastoreOptions.fromMap((map['datastoreOptions'] as Map).cast<String, dynamic>())).input(),
-      hybridOptions: map['hybridOptions'] == null ? null : (GooglePrivacyDlpV2HybridOptions.fromMap((map['hybridOptions'] as Map).cast<String, dynamic>())).input(),
-      timespanConfig: map['timespanConfig'] == null ? null : (GooglePrivacyDlpV2TimespanConfig.fromMap((map['timespanConfig'] as Map).cast<String, dynamic>())).input(),
+      bigQueryOptions: map['bigQueryOptions'] == null ? null : (GooglePrivacyDlpV2BigQueryOptions.fromMap((map['bigQueryOptions']! as Map).cast<String, dynamic>())).input(),
+      cloudStorageOptions: map['cloudStorageOptions'] == null ? null : (GooglePrivacyDlpV2CloudStorageOptions.fromMap((map['cloudStorageOptions']! as Map).cast<String, dynamic>())).input(),
+      datastoreOptions: map['datastoreOptions'] == null ? null : (GooglePrivacyDlpV2DatastoreOptions.fromMap((map['datastoreOptions']! as Map).cast<String, dynamic>())).input(),
+      hybridOptions: map['hybridOptions'] == null ? null : (GooglePrivacyDlpV2HybridOptions.fromMap((map['hybridOptions']! as Map).cast<String, dynamic>())).input(),
+      timespanConfig: map['timespanConfig'] == null ? null : (GooglePrivacyDlpV2TimespanConfig.fromMap((map['timespanConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

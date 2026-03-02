@@ -26,7 +26,7 @@ class DomainDevicesInterfaceSourceVhostUser {
 
   factory DomainDevicesInterfaceSourceVhostUser.fromMap(Map<String, dynamic> map) {
     return DomainDevicesInterfaceSourceVhostUser(
-      chardev: map['chardev'] == null ? null : (DomainDevicesInterfaceSourceVhostUserChardev.fromMap((map['chardev'] as Map).cast<String, dynamic>())).input(),
+      chardev: map['chardev'] == null ? null : (DomainDevicesInterfaceSourceVhostUserChardev.fromMap((map['chardev']! as Map).cast<String, dynamic>())).input(),
       dev: (map['dev'] as String).input(),
     );
   }

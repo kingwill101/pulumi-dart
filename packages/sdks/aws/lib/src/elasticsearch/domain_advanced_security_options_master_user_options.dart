@@ -30,9 +30,9 @@ class DomainAdvancedSecurityOptionsMasterUserOptions {
 
   factory DomainAdvancedSecurityOptionsMasterUserOptions.fromMap(Map<String, dynamic> map) {
     return DomainAdvancedSecurityOptionsMasterUserOptions(
-      masterUserArn: map['masterUserArn'] == null ? null : (map['masterUserArn'] as String).input(),
-      masterUserName: map['masterUserName'] == null ? null : (map['masterUserName'] as String).input(),
-      masterUserPassword: map['masterUserPassword'] == null ? null : (map['masterUserPassword'] as String).input(),
+      masterUserArn: map['masterUserArn'] == null ? null : ((map['masterUserArn'] as String).input()).input(),
+      masterUserName: map['masterUserName'] == null ? null : ((map['masterUserName'] as String).input()).input(),
+      masterUserPassword: map['masterUserPassword'] == null ? null : ((map['masterUserPassword'] as String).input()).input(),
     );
   }
 }

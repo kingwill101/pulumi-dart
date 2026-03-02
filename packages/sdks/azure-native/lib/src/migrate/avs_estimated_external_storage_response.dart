@@ -36,10 +36,10 @@ class AvsEstimatedExternalStorageResponse {
 
   factory AvsEstimatedExternalStorageResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedExternalStorageResponse(
-      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice'] as double).input(),
-      storageType: map['storageType'] == null ? null : (map['storageType'] as String).input(),
-      storageUtilization: map['storageUtilization'] == null ? null : (map['storageUtilization'] as double).input(),
-      totalStorageInGB: map['totalStorageInGB'] == null ? null : (map['totalStorageInGB'] as double).input(),
+      monthlyPrice: map['monthlyPrice'] == null ? null : (map['monthlyPrice']! as double).input(),
+      storageType: map['storageType'] == null ? null : (map['storageType']! as String).input(),
+      storageUtilization: map['storageUtilization'] == null ? null : (map['storageUtilization']! as double).input(),
+      totalStorageInGB: map['totalStorageInGB'] == null ? null : (map['totalStorageInGB']! as double).input(),
     );
   }
 }

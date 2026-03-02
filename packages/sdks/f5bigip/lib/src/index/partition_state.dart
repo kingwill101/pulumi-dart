@@ -31,9 +31,9 @@ class PartitionState {
 
   factory PartitionState.fromMap(Map<String, dynamic> map) {
     return PartitionState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routeDomainId: map['routeDomainId'] == null ? null : (map['routeDomainId'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routeDomainId: map['routeDomainId'] == null ? null : (map['routeDomainId']! as int).input(),
     );
   }
 }

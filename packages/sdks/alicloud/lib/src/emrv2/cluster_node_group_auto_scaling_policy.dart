@@ -27,8 +27,8 @@ class ClusterNodeGroupAutoScalingPolicy {
 
   factory ClusterNodeGroupAutoScalingPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNodeGroupAutoScalingPolicy(
-      constraints: map['constraints'] == null ? null : (ClusterNodeGroupAutoScalingPolicyConstraints.fromMap((map['constraints'] as Map).cast<String, dynamic>())).input(),
-      scalingRules: map['scalingRules'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRule>(map['scalingRules'], (value) => ClusterNodeGroupAutoScalingPolicyScalingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      constraints: map['constraints'] == null ? null : (ClusterNodeGroupAutoScalingPolicyConstraints.fromMap((map['constraints']! as Map).cast<String, dynamic>())).input(),
+      scalingRules: map['scalingRules'] == null ? null : (pulumi.Input.decodeList<ClusterNodeGroupAutoScalingPolicyScalingRule>(map['scalingRules']!, (value) => ClusterNodeGroupAutoScalingPolicyScalingRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

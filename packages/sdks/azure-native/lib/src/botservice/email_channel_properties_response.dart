@@ -41,11 +41,11 @@ class EmailChannelPropertiesResponse {
 
   factory EmailChannelPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EmailChannelPropertiesResponse(
-      authMethod: map['authMethod'] == null ? null : (map['authMethod'] as double).input(),
+      authMethod: map['authMethod'] == null ? null : (map['authMethod']! as double).input(),
       emailAddress: (map['emailAddress'] as String).input(),
       isEnabled: (map['isEnabled'] as bool).input(),
-      magicCode: map['magicCode'] == null ? null : (map['magicCode'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
+      magicCode: map['magicCode'] == null ? null : (map['magicCode']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
     );
   }
 }

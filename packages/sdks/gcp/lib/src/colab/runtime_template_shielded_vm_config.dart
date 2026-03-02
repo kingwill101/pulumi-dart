@@ -20,7 +20,7 @@ class RuntimeTemplateShieldedVmConfig {
 
   factory RuntimeTemplateShieldedVmConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateShieldedVmConfig(
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot'] as bool).input(),
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : (map['enableSecureBoot']! as bool).input(),
     );
   }
 }

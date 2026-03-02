@@ -22,7 +22,7 @@ class ListCustomApiWsdlInterfacesResult {
 
   factory ListCustomApiWsdlInterfacesResult.fromMap(Map<String, dynamic> map) {
     return ListCustomApiWsdlInterfacesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<WsdlServiceResponse>(map['value'], (value) => WsdlServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<WsdlServiceResponse>(map['value']!, (value) => WsdlServiceResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

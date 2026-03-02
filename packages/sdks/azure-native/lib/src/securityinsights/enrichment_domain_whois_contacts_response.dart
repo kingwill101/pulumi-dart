@@ -37,10 +37,10 @@ class EnrichmentDomainWhoisContactsResponse {
 
   factory EnrichmentDomainWhoisContactsResponse.fromMap(Map<String, dynamic> map) {
     return EnrichmentDomainWhoisContactsResponse(
-      admin: map['admin'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['admin'] as Map).cast<String, dynamic>())).input(),
-      billing: map['billing'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['billing'] as Map).cast<String, dynamic>())).input(),
-      registrant: map['registrant'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['registrant'] as Map).cast<String, dynamic>())).input(),
-      tech: map['tech'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['tech'] as Map).cast<String, dynamic>())).input(),
+      admin: map['admin'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['admin']! as Map).cast<String, dynamic>())).input(),
+      billing: map['billing'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['billing']! as Map).cast<String, dynamic>())).input(),
+      registrant: map['registrant'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['registrant']! as Map).cast<String, dynamic>())).input(),
+      tech: map['tech'] == null ? null : (EnrichmentDomainWhoisContactResponse.fromMap((map['tech']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

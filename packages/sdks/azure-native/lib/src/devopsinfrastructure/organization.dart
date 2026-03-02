@@ -36,9 +36,9 @@ class Organization {
 
   factory Organization.fromMap(Map<String, dynamic> map) {
     return Organization(
-      openAccess: map['openAccess'] == null ? null : (map['openAccess'] as bool).input(),
-      parallelism: map['parallelism'] == null ? null : (map['parallelism'] as int).input(),
-      projects: map['projects'] == null ? null : ((map['projects'] as List).cast<String>()).input(),
+      openAccess: map['openAccess'] == null ? null : (map['openAccess']! as bool).input(),
+      parallelism: map['parallelism'] == null ? null : (map['parallelism']! as int).input(),
+      projects: map['projects'] == null ? null : ((map['projects']! as List).cast<String>()).input(),
       url: (map['url'] as String).input(),
     );
   }

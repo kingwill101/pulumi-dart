@@ -56,12 +56,12 @@ class CaPoolIssuancePolicyBaselineValues {
 
   factory CaPoolIssuancePolicyBaselineValues.fromMap(Map<String, dynamic> map) {
     return CaPoolIssuancePolicyBaselineValues(
-      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesAdditionalExtension>(map['additionalExtensions'], (value) => CaPoolIssuancePolicyBaselineValuesAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers'] as List).cast<String>()).input(),
+      additionalExtensions: map['additionalExtensions'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesAdditionalExtension>(map['additionalExtensions']!, (value) => CaPoolIssuancePolicyBaselineValuesAdditionalExtension.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      aiaOcspServers: map['aiaOcspServers'] == null ? null : ((map['aiaOcspServers']! as List).cast<String>()).input(),
       caOptions: (CaPoolIssuancePolicyBaselineValuesCaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>())).input(),
       keyUsage: (CaPoolIssuancePolicyBaselineValuesKeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>())).input(),
-      nameConstraints: map['nameConstraints'] == null ? null : (CaPoolIssuancePolicyBaselineValuesNameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>())).input(),
-      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesPolicyId>(map['policyIds'], (value) => CaPoolIssuancePolicyBaselineValuesPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      nameConstraints: map['nameConstraints'] == null ? null : (CaPoolIssuancePolicyBaselineValuesNameConstraints.fromMap((map['nameConstraints']! as Map).cast<String, dynamic>())).input(),
+      policyIds: map['policyIds'] == null ? null : (pulumi.Input.decodeList<CaPoolIssuancePolicyBaselineValuesPolicyId>(map['policyIds']!, (value) => CaPoolIssuancePolicyBaselineValuesPolicyId.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

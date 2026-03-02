@@ -28,8 +28,8 @@ class InfraAlertConditionWarning {
   factory InfraAlertConditionWarning.fromMap(Map<String, dynamic> map) {
     return InfraAlertConditionWarning(
       duration: (map['duration'] as int).input(),
-      timeFunction: map['timeFunction'] == null ? null : (map['timeFunction'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as double).input(),
+      timeFunction: map['timeFunction'] == null ? null : (map['timeFunction']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as double).input(),
     );
   }
 }

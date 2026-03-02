@@ -77,17 +77,17 @@ class TextFormatResponse {
 
   factory TextFormatResponse.fromMap(Map<String, dynamic> map) {
     return TextFormatResponse(
-      columnDelimiter: map['columnDelimiter'] == null ? null : (map['columnDelimiter']).input(),
-      deserializer: map['deserializer'] == null ? null : (map['deserializer']).input(),
-      encodingName: map['encodingName'] == null ? null : (map['encodingName']).input(),
-      escapeChar: map['escapeChar'] == null ? null : (map['escapeChar']).input(),
-      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : (map['firstRowAsHeader']).input(),
-      nullValue: map['nullValue'] == null ? null : (map['nullValue']).input(),
-      quoteChar: map['quoteChar'] == null ? null : (map['quoteChar']).input(),
-      rowDelimiter: map['rowDelimiter'] == null ? null : (map['rowDelimiter']).input(),
-      serializer: map['serializer'] == null ? null : (map['serializer']).input(),
-      skipLineCount: map['skipLineCount'] == null ? null : (map['skipLineCount']).input(),
-      treatEmptyAsNull: map['treatEmptyAsNull'] == null ? null : (map['treatEmptyAsNull']).input(),
+      columnDelimiter: map['columnDelimiter'] == null ? null : (map['columnDelimiter']!).input(),
+      deserializer: map['deserializer'] == null ? null : (map['deserializer']!).input(),
+      encodingName: map['encodingName'] == null ? null : (map['encodingName']!).input(),
+      escapeChar: map['escapeChar'] == null ? null : (map['escapeChar']!).input(),
+      firstRowAsHeader: map['firstRowAsHeader'] == null ? null : (map['firstRowAsHeader']!).input(),
+      nullValue: map['nullValue'] == null ? null : (map['nullValue']!).input(),
+      quoteChar: map['quoteChar'] == null ? null : (map['quoteChar']!).input(),
+      rowDelimiter: map['rowDelimiter'] == null ? null : (map['rowDelimiter']!).input(),
+      serializer: map['serializer'] == null ? null : (map['serializer']!).input(),
+      skipLineCount: map['skipLineCount'] == null ? null : (map['skipLineCount']!).input(),
+      treatEmptyAsNull: map['treatEmptyAsNull'] == null ? null : (map['treatEmptyAsNull']!).input(),
       type: (map['type'] as String).input(),
     );
   }

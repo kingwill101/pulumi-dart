@@ -72,16 +72,16 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      billingType: map['billingType'] == null ? null : (map['billingType'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      isAvailabilityZonesEnabled: map['isAvailabilityZonesEnabled'] == null ? null : (map['isAvailabilityZonesEnabled'] as bool).input(),
-      isDoubleEncryptionEnabled: map['isDoubleEncryptionEnabled'] == null ? null : (map['isDoubleEncryptionEnabled'] as bool).input(),
-      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      billingType: map['billingType'] == null ? null : (map['billingType']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      isAvailabilityZonesEnabled: map['isAvailabilityZonesEnabled'] == null ? null : (map['isAvailabilityZonesEnabled']! as bool).input(),
+      isDoubleEncryptionEnabled: map['isDoubleEncryptionEnabled'] == null ? null : (map['isDoubleEncryptionEnabled']! as bool).input(),
+      keyVaultProperties: map['keyVaultProperties'] == null ? null : (KeyVaultProperties.fromMap((map['keyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sku: map['sku'] == null ? null : (ClusterSku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      sku: map['sku'] == null ? null : (ClusterSku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

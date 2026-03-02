@@ -36,10 +36,10 @@ class JobEventTriggerConfigScale {
 
   factory JobEventTriggerConfigScale.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfigScale(
-      maxExecutions: map['maxExecutions'] == null ? null : (map['maxExecutions'] as int).input(),
-      minExecutions: map['minExecutions'] == null ? null : (map['minExecutions'] as int).input(),
-      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds'] as int).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScaleRule>(map['rules'], (value) => JobEventTriggerConfigScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      maxExecutions: map['maxExecutions'] == null ? null : (map['maxExecutions']! as int).input(),
+      minExecutions: map['minExecutions'] == null ? null : (map['minExecutions']! as int).input(),
+      pollingIntervalInSeconds: map['pollingIntervalInSeconds'] == null ? null : (map['pollingIntervalInSeconds']! as int).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<JobEventTriggerConfigScaleRule>(map['rules']!, (value) => JobEventTriggerConfigScaleRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class AlertPolicyAlertStrategy {
 
   factory AlertPolicyAlertStrategy.fromMap(Map<String, dynamic> map) {
     return AlertPolicyAlertStrategy(
-      autoClose: map['autoClose'] == null ? null : (map['autoClose'] as String).input(),
-      notificationChannelStrategies: map['notificationChannelStrategies'] == null ? null : (pulumi.Input.decodeList<AlertPolicyAlertStrategyNotificationChannelStrategy>(map['notificationChannelStrategies'], (value) => AlertPolicyAlertStrategyNotificationChannelStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      notificationPrompts: map['notificationPrompts'] == null ? null : ((map['notificationPrompts'] as List).cast<String>()).input(),
-      notificationRateLimit: map['notificationRateLimit'] == null ? null : (AlertPolicyAlertStrategyNotificationRateLimit.fromMap((map['notificationRateLimit'] as Map).cast<String, dynamic>())).input(),
+      autoClose: map['autoClose'] == null ? null : (map['autoClose']! as String).input(),
+      notificationChannelStrategies: map['notificationChannelStrategies'] == null ? null : (pulumi.Input.decodeList<AlertPolicyAlertStrategyNotificationChannelStrategy>(map['notificationChannelStrategies']!, (value) => AlertPolicyAlertStrategyNotificationChannelStrategy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      notificationPrompts: map['notificationPrompts'] == null ? null : ((map['notificationPrompts']! as List).cast<String>()).input(),
+      notificationRateLimit: map['notificationRateLimit'] == null ? null : (AlertPolicyAlertStrategyNotificationRateLimit.fromMap((map['notificationRateLimit']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -31,8 +31,8 @@ class RuleRuleActionFixedResponseConfig {
   factory RuleRuleActionFixedResponseConfig.fromMap(Map<String, dynamic> map) {
     return RuleRuleActionFixedResponseConfig(
       content: (map['content'] as String).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      httpCode: map['httpCode'] == null ? null : (map['httpCode'] as String).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      httpCode: map['httpCode'] == null ? null : (map['httpCode']! as String).input(),
     );
   }
 }

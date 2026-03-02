@@ -22,7 +22,7 @@ class ListBotSecretsResult {
 
   factory ListBotSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListBotSecretsResult(
-      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<HealthBotKeyResponse>(map['secrets'], (value) => HealthBotKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: map['secrets'] == null ? null : pulumi.Input.decodeList<HealthBotKeyResponse>(map['secrets']!, (value) => HealthBotKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

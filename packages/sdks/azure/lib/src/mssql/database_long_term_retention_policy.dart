@@ -40,11 +40,11 @@ class DatabaseLongTermRetentionPolicy {
 
   factory DatabaseLongTermRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseLongTermRetentionPolicy(
-      immutableBackupsEnabled: map['immutableBackupsEnabled'] == null ? null : (map['immutableBackupsEnabled'] as bool).input(),
-      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention'] as String).input(),
-      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear'] as int).input(),
-      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention'] as String).input(),
-      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention'] as String).input(),
+      immutableBackupsEnabled: map['immutableBackupsEnabled'] == null ? null : (map['immutableBackupsEnabled']! as bool).input(),
+      monthlyRetention: map['monthlyRetention'] == null ? null : (map['monthlyRetention']! as String).input(),
+      weekOfYear: map['weekOfYear'] == null ? null : (map['weekOfYear']! as int).input(),
+      weeklyRetention: map['weeklyRetention'] == null ? null : (map['weeklyRetention']! as String).input(),
+      yearlyRetention: map['yearlyRetention'] == null ? null : (map['yearlyRetention']! as String).input(),
     );
   }
 }

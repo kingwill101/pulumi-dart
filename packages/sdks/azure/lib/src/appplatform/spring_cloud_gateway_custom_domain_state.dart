@@ -31,9 +31,9 @@ class SpringCloudGatewayCustomDomainState {
 
   factory SpringCloudGatewayCustomDomainState.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayCustomDomainState(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      springCloudGatewayId: map['springCloudGatewayId'] == null ? null : (map['springCloudGatewayId'] as String).input(),
-      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      springCloudGatewayId: map['springCloudGatewayId'] == null ? null : (map['springCloudGatewayId']! as String).input(),
+      thumbprint: map['thumbprint'] == null ? null : (map['thumbprint']! as String).input(),
     );
   }
 }

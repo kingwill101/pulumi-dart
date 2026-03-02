@@ -56,14 +56,14 @@ class StageStatusResponse {
 
   factory StageStatusResponse.fromMap(Map<String, dynamic> map) {
     return StageStatusResponse(
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      inputs: map['inputs'] == null ? null : (map['inputs']).input(),
-      isActive: map['isActive'] == null ? null : (map['isActive'] as String).input(),
-      nextstage: map['nextstage'] == null ? null : (map['nextstage'] as String).input(),
-      outputs: map['outputs'] == null ? null : (map['outputs']).input(),
-      stage: map['stage'] == null ? null : (map['stage'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
-      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage'] as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      inputs: map['inputs'] == null ? null : (map['inputs']!).input(),
+      isActive: map['isActive'] == null ? null : (map['isActive']! as String).input(),
+      nextstage: map['nextstage'] == null ? null : (map['nextstage']! as String).input(),
+      outputs: map['outputs'] == null ? null : (map['outputs']!).input(),
+      stage: map['stage'] == null ? null : (map['stage']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
+      statusMessage: map['statusMessage'] == null ? null : (map['statusMessage']! as String).input(),
     );
   }
 }

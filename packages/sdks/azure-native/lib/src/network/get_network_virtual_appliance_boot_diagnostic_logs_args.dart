@@ -44,11 +44,11 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsArgs {
 
   factory GetNetworkVirtualApplianceBootDiagnosticLogsArgs.fromMap(Map<String, dynamic> map) {
     return GetNetworkVirtualApplianceBootDiagnosticLogsArgs(
-      consoleScreenshotStorageSasUrl: map['consoleScreenshotStorageSasUrl'] == null ? null : (map['consoleScreenshotStorageSasUrl'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as int).input(),
+      consoleScreenshotStorageSasUrl: map['consoleScreenshotStorageSasUrl'] == null ? null : (map['consoleScreenshotStorageSasUrl']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as int).input(),
       networkVirtualApplianceName: (map['networkVirtualApplianceName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      serialConsoleStorageSasUrl: map['serialConsoleStorageSasUrl'] == null ? null : (map['serialConsoleStorageSasUrl'] as String).input(),
+      serialConsoleStorageSasUrl: map['serialConsoleStorageSasUrl'] == null ? null : (map['serialConsoleStorageSasUrl']! as String).input(),
     );
   }
 }

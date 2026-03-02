@@ -79,16 +79,16 @@ class GetPeeringResult {
   factory GetPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetPeeringResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      direct: map['direct'] == null ? null : PeeringPropertiesDirectResponse.fromMap((map['direct'] as Map).cast<String, dynamic>()),
-      exchange: map['exchange'] == null ? null : PeeringPropertiesExchangeResponse.fromMap((map['exchange'] as Map).cast<String, dynamic>()),
+      direct: map['direct'] == null ? null : PeeringPropertiesDirectResponse.fromMap((map['direct']! as Map).cast<String, dynamic>()),
+      exchange: map['exchange'] == null ? null : PeeringPropertiesExchangeResponse.fromMap((map['exchange']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       kind: map['kind'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      peeringLocation: map['peeringLocation'] == null ? null : map['peeringLocation'] as String,
+      peeringLocation: map['peeringLocation'] == null ? null : map['peeringLocation']! as String,
       provisioningState: map['provisioningState'] as String,
       sku: PeeringSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

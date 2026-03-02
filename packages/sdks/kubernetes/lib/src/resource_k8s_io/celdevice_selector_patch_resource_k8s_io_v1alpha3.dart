@@ -47,7 +47,7 @@ class CELDeviceSelectorPatchResourceK8sIoV1alpha3 {
 
   factory CELDeviceSelectorPatchResourceK8sIoV1alpha3.fromMap(Map<String, dynamic> map) {
     return CELDeviceSelectorPatchResourceK8sIoV1alpha3(
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
     );
   }
 }

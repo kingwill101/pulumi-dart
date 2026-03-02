@@ -24,7 +24,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenti
 
   factory GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication(
-      sasls: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>(map['sasls'], (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sasls: (pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>(map['sasls']!, (value) => GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl.fromMap((value as Map).cast<String, dynamic>()))).input(),
       tls: (map['tls'] as bool).input(),
     );
   }

@@ -26,8 +26,8 @@ class ExternalVpnGatewayInterfaceComputeV1 {
 
   factory ExternalVpnGatewayInterfaceComputeV1.fromMap(Map<String, dynamic> map) {
     return ExternalVpnGatewayInterfaceComputeV1(
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
     );
   }
 }

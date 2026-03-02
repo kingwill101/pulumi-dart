@@ -20,7 +20,7 @@ class DashboardDashboardPublishOptionsVisualMenuOption {
 
   factory DashboardDashboardPublishOptionsVisualMenuOption.fromMap(Map<String, dynamic> map) {
     return DashboardDashboardPublishOptionsVisualMenuOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : (map['availabilityStatus'] as String).input(),
+      availabilityStatus: map['availabilityStatus'] == null ? null : ((map['availabilityStatus'] as String).input()).input(),
     );
   }
 }

@@ -84,19 +84,19 @@ class AwsSnsTopicPropertiesResponse {
 
   factory AwsSnsTopicPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsSnsTopicPropertiesResponse(
-      archivePolicy: map['archivePolicy'] == null ? null : (map['archivePolicy']).input(),
-      contentBasedDeduplication: map['contentBasedDeduplication'] == null ? null : (map['contentBasedDeduplication'] as bool).input(),
-      dataProtectionPolicy: map['dataProtectionPolicy'] == null ? null : (map['dataProtectionPolicy']).input(),
-      deliveryStatusLogging: map['deliveryStatusLogging'] == null ? null : (pulumi.Input.decodeList<LoggingConfigResponse>(map['deliveryStatusLogging'], (value) => LoggingConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      fifoTopic: map['fifoTopic'] == null ? null : (map['fifoTopic'] as bool).input(),
-      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId'] as String).input(),
-      signatureVersion: map['signatureVersion'] == null ? null : (map['signatureVersion'] as String).input(),
-      subscription: map['subscription'] == null ? null : (pulumi.Input.decodeList<SubscriptionResponse>(map['subscription'], (value) => SubscriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      topicArn: map['topicArn'] == null ? null : (map['topicArn'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
-      tracingConfig: map['tracingConfig'] == null ? null : (map['tracingConfig'] as String).input(),
+      archivePolicy: map['archivePolicy'] == null ? null : (map['archivePolicy']!).input(),
+      contentBasedDeduplication: map['contentBasedDeduplication'] == null ? null : (map['contentBasedDeduplication']! as bool).input(),
+      dataProtectionPolicy: map['dataProtectionPolicy'] == null ? null : (map['dataProtectionPolicy']!).input(),
+      deliveryStatusLogging: map['deliveryStatusLogging'] == null ? null : (pulumi.Input.decodeList<LoggingConfigResponse>(map['deliveryStatusLogging']!, (value) => LoggingConfigResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      fifoTopic: map['fifoTopic'] == null ? null : (map['fifoTopic']! as bool).input(),
+      kmsMasterKeyId: map['kmsMasterKeyId'] == null ? null : (map['kmsMasterKeyId']! as String).input(),
+      signatureVersion: map['signatureVersion'] == null ? null : (map['signatureVersion']! as String).input(),
+      subscription: map['subscription'] == null ? null : (pulumi.Input.decodeList<SubscriptionResponse>(map['subscription']!, (value) => SubscriptionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      topicArn: map['topicArn'] == null ? null : (map['topicArn']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
+      tracingConfig: map['tracingConfig'] == null ? null : (map['tracingConfig']! as String).input(),
     );
   }
 }

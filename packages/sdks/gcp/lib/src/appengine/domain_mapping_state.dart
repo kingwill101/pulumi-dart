@@ -55,12 +55,12 @@ class DomainMappingState {
 
   factory DomainMappingState.fromMap(Map<String, dynamic> map) {
     return DomainMappingState(
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<DomainMappingResourceRecord>(map['resourceRecords'], (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sslSettings: map['sslSettings'] == null ? null : (DomainMappingSslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>())).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      overrideStrategy: map['overrideStrategy'] == null ? null : (map['overrideStrategy']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      resourceRecords: map['resourceRecords'] == null ? null : (pulumi.Input.decodeList<DomainMappingResourceRecord>(map['resourceRecords']!, (value) => DomainMappingResourceRecord.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sslSettings: map['sslSettings'] == null ? null : (DomainMappingSslSettings.fromMap((map['sslSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

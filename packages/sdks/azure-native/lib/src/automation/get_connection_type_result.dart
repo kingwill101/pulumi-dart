@@ -64,11 +64,11 @@ class GetConnectionTypeResult {
     return GetConnectionTypeResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationTime: map['creationTime'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
       fieldDefinitions: pulumi.Input.decodeMapValues<FieldDefinitionResponse>(map['fieldDefinitions'], (value) => FieldDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      isGlobal: map['isGlobal'] == null ? null : map['isGlobal'] as bool,
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime'] as String,
+      isGlobal: map['isGlobal'] == null ? null : map['isGlobal']! as bool,
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : map['lastModifiedTime']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

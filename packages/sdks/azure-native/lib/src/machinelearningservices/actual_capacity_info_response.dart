@@ -40,11 +40,11 @@ class ActualCapacityInfoResponse {
 
   factory ActualCapacityInfoResponse.fromMap(Map<String, dynamic> map) {
     return ActualCapacityInfoResponse(
-      failed: map['failed'] == null ? null : (map['failed'] as int).input(),
-      outdatedFailed: map['outdatedFailed'] == null ? null : (map['outdatedFailed'] as int).input(),
-      outdatedSucceeded: map['outdatedSucceeded'] == null ? null : (map['outdatedSucceeded'] as int).input(),
-      succeeded: map['succeeded'] == null ? null : (map['succeeded'] as int).input(),
-      total: map['total'] == null ? null : (map['total'] as int).input(),
+      failed: map['failed'] == null ? null : (map['failed']! as int).input(),
+      outdatedFailed: map['outdatedFailed'] == null ? null : (map['outdatedFailed']! as int).input(),
+      outdatedSucceeded: map['outdatedSucceeded'] == null ? null : (map['outdatedSucceeded']! as int).input(),
+      succeeded: map['succeeded'] == null ? null : (map['succeeded']! as int).input(),
+      total: map['total'] == null ? null : (map['total']! as int).input(),
     );
   }
 }

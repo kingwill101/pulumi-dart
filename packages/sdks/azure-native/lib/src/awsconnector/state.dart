@@ -26,8 +26,8 @@ class State {
 
   factory State.fromMap(Map<String, dynamic> map) {
     return State(
-      code: map['code'] == null ? null : (map['code'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

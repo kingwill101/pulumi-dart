@@ -31,9 +31,9 @@ class DomainDevicesDiskSourceEncryption {
 
   factory DomainDevicesDiskSourceEncryption.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceEncryption(
-      engine: map['engine'] == null ? null : (map['engine'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceEncryptionSecret>(map['secrets'], (value) => DomainDevicesDiskSourceEncryptionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      engine: map['engine'] == null ? null : (map['engine']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      secrets: map['secrets'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceEncryptionSecret>(map['secrets']!, (value) => DomainDevicesDiskSourceEncryptionSecret.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

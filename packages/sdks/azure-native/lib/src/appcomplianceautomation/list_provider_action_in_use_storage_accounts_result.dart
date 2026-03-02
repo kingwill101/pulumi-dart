@@ -22,7 +22,7 @@ class ListProviderActionInUseStorageAccountsResult {
 
   factory ListProviderActionInUseStorageAccountsResult.fromMap(Map<String, dynamic> map) {
     return ListProviderActionInUseStorageAccountsResult(
-      storageAccountList: map['storageAccountList'] == null ? null : pulumi.Input.decodeList<StorageInfoResponse>(map['storageAccountList'], (value) => StorageInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      storageAccountList: map['storageAccountList'] == null ? null : pulumi.Input.decodeList<StorageInfoResponse>(map['storageAccountList']!, (value) => StorageInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

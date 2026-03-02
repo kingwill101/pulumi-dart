@@ -41,7 +41,7 @@ class ListStaticSiteBuildAppSettingsResult {
   factory ListStaticSiteBuildAppSettingsResult.fromMap(Map<String, dynamic> map) {
     return ListStaticSiteBuildAppSettingsResult(
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),
       type: map['type'] as String,

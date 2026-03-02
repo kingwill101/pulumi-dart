@@ -45,10 +45,10 @@ class BackupInstanceArgs {
 
   factory BackupInstanceArgs.fromMap(Map<String, dynamic> map) {
     return BackupInstanceArgs(
-      backupInstanceName: map['backupInstanceName'] == null ? null : (map['backupInstanceName'] as String).input(),
-      properties: map['properties'] == null ? null : (map['properties'] as BackupInstanceDataprotection).input(),
+      backupInstanceName: map['backupInstanceName'] == null ? null : (map['backupInstanceName']! as String).input(),
+      properties: map['properties'] == null ? null : (map['properties']! as BackupInstanceDataprotection).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       vaultName: (map['vaultName'] as String).input(),
     );
   }

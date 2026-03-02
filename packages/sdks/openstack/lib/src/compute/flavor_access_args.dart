@@ -38,7 +38,7 @@ class FlavorAccessArgs {
   factory FlavorAccessArgs.fromMap(Map<String, dynamic> map) {
     return FlavorAccessArgs(
       flavorId: (map['flavorId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

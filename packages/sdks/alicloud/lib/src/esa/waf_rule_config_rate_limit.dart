@@ -42,11 +42,11 @@ class WafRuleConfigRateLimit {
 
   factory WafRuleConfigRateLimit.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigRateLimit(
-      characteristics: map['characteristics'] == null ? null : (WafRuleConfigRateLimitCharacteristics.fromMap((map['characteristics'] as Map).cast<String, dynamic>())).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as int).input(),
-      onHit: map['onHit'] == null ? null : (map['onHit'] as bool).input(),
-      threshold: map['threshold'] == null ? null : (WafRuleConfigRateLimitThreshold.fromMap((map['threshold'] as Map).cast<String, dynamic>())).input(),
-      ttl: map['ttl'] == null ? null : (map['ttl'] as int).input(),
+      characteristics: map['characteristics'] == null ? null : (WafRuleConfigRateLimitCharacteristics.fromMap((map['characteristics']! as Map).cast<String, dynamic>())).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as int).input(),
+      onHit: map['onHit'] == null ? null : (map['onHit']! as bool).input(),
+      threshold: map['threshold'] == null ? null : (WafRuleConfigRateLimitThreshold.fromMap((map['threshold']! as Map).cast<String, dynamic>())).input(),
+      ttl: map['ttl'] == null ? null : (map['ttl']! as int).input(),
     );
   }
 }

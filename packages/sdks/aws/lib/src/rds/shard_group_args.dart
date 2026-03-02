@@ -66,15 +66,15 @@ class ShardGroupArgs {
 
   factory ShardGroupArgs.fromMap(Map<String, dynamic> map) {
     return ShardGroupArgs(
-      computeRedundancy: map['computeRedundancy'] == null ? null : (map['computeRedundancy'] as int).input(),
+      computeRedundancy: map['computeRedundancy'] == null ? null : ((map['computeRedundancy'] as int).input()).input(),
       dbClusterIdentifier: (map['dbClusterIdentifier'] as String).input(),
       dbShardGroupIdentifier: (map['dbShardGroupIdentifier'] as String).input(),
       maxAcu: (map['maxAcu'] as double).input(),
-      minAcu: map['minAcu'] == null ? null : (map['minAcu'] as double).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ShardGroupTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      minAcu: map['minAcu'] == null ? null : ((map['minAcu'] as double).input()).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : ((map['publiclyAccessible'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ShardGroupTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

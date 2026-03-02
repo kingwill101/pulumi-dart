@@ -27,8 +27,8 @@ class FleetObservabilityLoggingConfigGkehubV1beta {
 
   factory FleetObservabilityLoggingConfigGkehubV1beta.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityLoggingConfigGkehubV1beta(
-      defaultConfig: map['defaultConfig'] == null ? null : (FleetObservabilityRoutingConfigGkehubV1beta.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>())).input(),
-      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : (FleetObservabilityRoutingConfigGkehubV1beta.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>())).input(),
+      defaultConfig: map['defaultConfig'] == null ? null : (FleetObservabilityRoutingConfigGkehubV1beta.fromMap((map['defaultConfig']! as Map).cast<String, dynamic>())).input(),
+      fleetScopeLogsConfig: map['fleetScopeLogsConfig'] == null ? null : (FleetObservabilityRoutingConfigGkehubV1beta.fromMap((map['fleetScopeLogsConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

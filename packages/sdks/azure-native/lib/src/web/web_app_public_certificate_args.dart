@@ -50,11 +50,11 @@ class WebAppPublicCertificateArgs {
 
   factory WebAppPublicCertificateArgs.fromMap(Map<String, dynamic> map) {
     return WebAppPublicCertificateArgs(
-      blob: map['blob'] == null ? null : (map['blob'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      blob: map['blob'] == null ? null : (map['blob']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
       name: (map['name'] as String).input(),
-      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : (PublicCertificateLocation.fromValue(map['publicCertificateLocation'] as String)).input(),
-      publicCertificateName: map['publicCertificateName'] == null ? null : (map['publicCertificateName'] as String).input(),
+      publicCertificateLocation: map['publicCertificateLocation'] == null ? null : (PublicCertificateLocation.fromValue(map['publicCertificateLocation']! as String)).input(),
+      publicCertificateName: map['publicCertificateName'] == null ? null : (map['publicCertificateName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

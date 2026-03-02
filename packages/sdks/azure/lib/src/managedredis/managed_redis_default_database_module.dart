@@ -36,9 +36,9 @@ class ManagedRedisDefaultDatabaseModule {
 
   factory ManagedRedisDefaultDatabaseModule.fromMap(Map<String, dynamic> map) {
     return ManagedRedisDefaultDatabaseModule(
-      args: map['args'] == null ? null : (map['args'] as String).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
       name: (map['name'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

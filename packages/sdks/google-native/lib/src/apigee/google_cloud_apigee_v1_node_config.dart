@@ -26,8 +26,8 @@ class GoogleCloudApigeeV1NodeConfig {
 
   factory GoogleCloudApigeeV1NodeConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1NodeConfig(
-      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount'] as String).input(),
-      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount'] as String).input(),
+      maxNodeCount: map['maxNodeCount'] == null ? null : (map['maxNodeCount']! as String).input(),
+      minNodeCount: map['minNodeCount'] == null ? null : (map['minNodeCount']! as String).input(),
     );
   }
 }

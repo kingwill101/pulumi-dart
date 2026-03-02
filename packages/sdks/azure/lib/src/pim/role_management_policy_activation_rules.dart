@@ -51,13 +51,13 @@ class RoleManagementPolicyActivationRules {
 
   factory RoleManagementPolicyActivationRules.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyActivationRules(
-      approvalStage: map['approvalStage'] == null ? null : (RoleManagementPolicyActivationRulesApprovalStage.fromMap((map['approvalStage'] as Map).cast<String, dynamic>())).input(),
-      maximumDuration: map['maximumDuration'] == null ? null : (map['maximumDuration'] as String).input(),
-      requireApproval: map['requireApproval'] == null ? null : (map['requireApproval'] as bool).input(),
-      requireJustification: map['requireJustification'] == null ? null : (map['requireJustification'] as bool).input(),
-      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] == null ? null : (map['requireMultifactorAuthentication'] as bool).input(),
-      requireTicketInfo: map['requireTicketInfo'] == null ? null : (map['requireTicketInfo'] as bool).input(),
-      requiredConditionalAccessAuthenticationContext: map['requiredConditionalAccessAuthenticationContext'] == null ? null : (map['requiredConditionalAccessAuthenticationContext'] as String).input(),
+      approvalStage: map['approvalStage'] == null ? null : (RoleManagementPolicyActivationRulesApprovalStage.fromMap((map['approvalStage']! as Map).cast<String, dynamic>())).input(),
+      maximumDuration: map['maximumDuration'] == null ? null : (map['maximumDuration']! as String).input(),
+      requireApproval: map['requireApproval'] == null ? null : (map['requireApproval']! as bool).input(),
+      requireJustification: map['requireJustification'] == null ? null : (map['requireJustification']! as bool).input(),
+      requireMultifactorAuthentication: map['requireMultifactorAuthentication'] == null ? null : (map['requireMultifactorAuthentication']! as bool).input(),
+      requireTicketInfo: map['requireTicketInfo'] == null ? null : (map['requireTicketInfo']! as bool).input(),
+      requiredConditionalAccessAuthenticationContext: map['requiredConditionalAccessAuthenticationContext'] == null ? null : (map['requiredConditionalAccessAuthenticationContext']! as String).input(),
     );
   }
 }

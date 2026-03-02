@@ -43,11 +43,11 @@ class GetFirewallFirewallStatus {
 
   factory GetFirewallFirewallStatus.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatus(
-      capacityUsageSummaries: (pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummary>(map['capacityUsageSummaries'], (value) => GetFirewallFirewallStatusCapacityUsageSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacityUsageSummaries: (pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummary>(map['capacityUsageSummaries']!, (value) => GetFirewallFirewallStatusCapacityUsageSummary.fromMap((value as Map).cast<String, dynamic>()))).input(),
       configurationSyncStateSummary: (map['configurationSyncStateSummary'] as String).input(),
       status: (map['status'] as String).input(),
-      syncStates: (pulumi.Input.decodeList<GetFirewallFirewallStatusSyncState>(map['syncStates'], (value) => GetFirewallFirewallStatusSyncState.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      transitGatewayAttachmentSyncStates: (pulumi.Input.decodeList<GetFirewallFirewallStatusTransitGatewayAttachmentSyncState>(map['transitGatewayAttachmentSyncStates'], (value) => GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      syncStates: (pulumi.Input.decodeList<GetFirewallFirewallStatusSyncState>(map['syncStates']!, (value) => GetFirewallFirewallStatusSyncState.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transitGatewayAttachmentSyncStates: (pulumi.Input.decodeList<GetFirewallFirewallStatusTransitGatewayAttachmentSyncState>(map['transitGatewayAttachmentSyncStates']!, (value) => GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

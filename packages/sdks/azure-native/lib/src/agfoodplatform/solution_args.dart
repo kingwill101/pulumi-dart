@@ -41,9 +41,9 @@ class SolutionArgs {
   factory SolutionArgs.fromMap(Map<String, dynamic> map) {
     return SolutionArgs(
       dataManagerForAgricultureResourceName: (map['dataManagerForAgricultureResourceName'] as String).input(),
-      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (SolutionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      solutionId: map['solutionId'] == null ? null : (map['solutionId'] as String).input(),
+      solutionId: map['solutionId'] == null ? null : (map['solutionId']! as String).input(),
     );
   }
 }

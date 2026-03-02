@@ -56,14 +56,14 @@ class RollingUpgradePolicy {
 
   factory RollingUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return RollingUpgradePolicy(
-      enableCrossZoneUpgrade: map['enableCrossZoneUpgrade'] == null ? null : (map['enableCrossZoneUpgrade'] as bool).input(),
-      maxBatchInstancePercent: map['maxBatchInstancePercent'] == null ? null : (map['maxBatchInstancePercent'] as int).input(),
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as bool).input(),
-      maxUnhealthyInstancePercent: map['maxUnhealthyInstancePercent'] == null ? null : (map['maxUnhealthyInstancePercent'] as int).input(),
-      maxUnhealthyUpgradedInstancePercent: map['maxUnhealthyUpgradedInstancePercent'] == null ? null : (map['maxUnhealthyUpgradedInstancePercent'] as int).input(),
-      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches'] as String).input(),
-      prioritizeUnhealthyInstances: map['prioritizeUnhealthyInstances'] == null ? null : (map['prioritizeUnhealthyInstances'] as bool).input(),
-      rollbackFailedInstancesOnPolicyBreach: map['rollbackFailedInstancesOnPolicyBreach'] == null ? null : (map['rollbackFailedInstancesOnPolicyBreach'] as bool).input(),
+      enableCrossZoneUpgrade: map['enableCrossZoneUpgrade'] == null ? null : (map['enableCrossZoneUpgrade']! as bool).input(),
+      maxBatchInstancePercent: map['maxBatchInstancePercent'] == null ? null : (map['maxBatchInstancePercent']! as int).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as bool).input(),
+      maxUnhealthyInstancePercent: map['maxUnhealthyInstancePercent'] == null ? null : (map['maxUnhealthyInstancePercent']! as int).input(),
+      maxUnhealthyUpgradedInstancePercent: map['maxUnhealthyUpgradedInstancePercent'] == null ? null : (map['maxUnhealthyUpgradedInstancePercent']! as int).input(),
+      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches']! as String).input(),
+      prioritizeUnhealthyInstances: map['prioritizeUnhealthyInstances'] == null ? null : (map['prioritizeUnhealthyInstances']! as bool).input(),
+      rollbackFailedInstancesOnPolicyBreach: map['rollbackFailedInstancesOnPolicyBreach'] == null ? null : (map['rollbackFailedInstancesOnPolicyBreach']! as bool).input(),
     );
   }
 }

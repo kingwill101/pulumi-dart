@@ -70,14 +70,14 @@ class FeedArgs {
 
   factory FeedArgs.fromMap(Map<String, dynamic> map) {
     return FeedArgs(
-      assetNames: map['assetNames'] == null ? null : ((map['assetNames'] as List).cast<String>()).input(),
-      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes'] as List).cast<String>()).input(),
-      condition: map['condition'] == null ? null : (Expr.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      contentType: map['contentType'] == null ? null : (FeedContentType.fromValue(map['contentType'] as String)).input(),
+      assetNames: map['assetNames'] == null ? null : ((map['assetNames']! as List).cast<String>()).input(),
+      assetTypes: map['assetTypes'] == null ? null : ((map['assetTypes']! as List).cast<String>()).input(),
+      condition: map['condition'] == null ? null : (Expr.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      contentType: map['contentType'] == null ? null : (FeedContentType.fromValue(map['contentType']! as String)).input(),
       feedId: (map['feedId'] as String).input(),
       feedOutputConfig: (FeedOutputConfig.fromMap((map['feedOutputConfig'] as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      relationshipTypes: map['relationshipTypes'] == null ? null : ((map['relationshipTypes'] as List).cast<String>()).input(),
+      relationshipTypes: map['relationshipTypes'] == null ? null : ((map['relationshipTypes']! as List).cast<String>()).input(),
       v1Id: (map['v1Id'] as String).input(),
       v1Id1: (map['v1Id1'] as String).input(),
     );

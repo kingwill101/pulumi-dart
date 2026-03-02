@@ -33,7 +33,7 @@ class GetPrivateConnectionArgs {
     return GetPrivateConnectionArgs(
       location: (map['location'] as String).input(),
       privateConnectionId: (map['privateConnectionId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

@@ -28,7 +28,7 @@ class GetDeploymentDeploymentmanagerV2Args {
   factory GetDeploymentDeploymentmanagerV2Args.fromMap(Map<String, dynamic> map) {
     return GetDeploymentDeploymentmanagerV2Args(
       deployment: (map['deployment'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

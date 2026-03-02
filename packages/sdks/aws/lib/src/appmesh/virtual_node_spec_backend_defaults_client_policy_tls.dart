@@ -37,10 +37,10 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTls {
 
   factory VirtualNodeSpecBackendDefaultsClientPolicyTls.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecBackendDefaultsClientPolicyTls(
-      certificate: map['certificate'] == null ? null : (VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      enforce: map['enforce'] == null ? null : (map['enforce'] as bool).input(),
-      ports: map['ports'] == null ? null : ((map['ports'] as List).cast<int>()).input(),
-      validation: (VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      certificate: map['certificate'] == null ? null : ((VirtualNodeSpecBackendDefaultsClientPolicyTlsCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input()).input(),
+      enforce: map['enforce'] == null ? null : ((map['enforce'] as bool).input()).input(),
+      ports: map['ports'] == null ? null : (((map['ports'] as List).cast<int>()).input()).input(),
+      validation: (VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

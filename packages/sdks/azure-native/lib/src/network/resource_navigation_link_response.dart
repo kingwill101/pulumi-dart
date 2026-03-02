@@ -53,9 +53,9 @@ class ResourceNavigationLinkResponse {
     return ResourceNavigationLinkResponse(
       etag: (map['etag'] as String).input(),
       id: (map['id'] as String).input(),
-      link: map['link'] == null ? null : (map['link'] as String).input(),
-      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      link: map['link'] == null ? null : (map['link']! as String).input(),
+      linkedResourceType: map['linkedResourceType'] == null ? null : (map['linkedResourceType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       type: (map['type'] as String).input(),
     );

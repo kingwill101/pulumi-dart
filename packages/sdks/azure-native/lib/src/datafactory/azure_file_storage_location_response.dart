@@ -32,8 +32,8 @@ class AzureFileStorageLocationResponse {
 
   factory AzureFileStorageLocationResponse.fromMap(Map<String, dynamic> map) {
     return AzureFileStorageLocationResponse(
-      fileName: map['fileName'] == null ? null : (map['fileName']).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']!).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -25,8 +25,8 @@ class BucketV2Versioning {
 
   factory BucketV2Versioning.fromMap(Map<String, dynamic> map) {
     return BucketV2Versioning(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      mfaDelete: map['mfaDelete'] == null ? null : (map['mfaDelete'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      mfaDelete: map['mfaDelete'] == null ? null : ((map['mfaDelete'] as bool).input()).input(),
     );
   }
 }

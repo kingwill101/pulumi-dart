@@ -27,8 +27,8 @@ class ScanConfigError {
 
   factory ScanConfigError.fromMap(Map<String, dynamic> map) {
     return ScanConfigError(
-      code: map['code'] == null ? null : (ScanConfigErrorCode.fromValue(map['code'] as String)).input(),
-      fieldName: map['fieldName'] == null ? null : (map['fieldName'] as String).input(),
+      code: map['code'] == null ? null : (ScanConfigErrorCode.fromValue(map['code']! as String)).input(),
+      fieldName: map['fieldName'] == null ? null : (map['fieldName']! as String).input(),
     );
   }
 }

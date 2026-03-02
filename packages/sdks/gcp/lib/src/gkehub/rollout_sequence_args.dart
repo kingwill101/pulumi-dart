@@ -50,9 +50,9 @@ class RolloutSequenceArgs {
 
   factory RolloutSequenceArgs.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       rolloutSequenceId: (map['rolloutSequenceId'] as String).input(),
       stages: (pulumi.Input.decodeList<RolloutSequenceStage>(map['stages'], (value) => RolloutSequenceStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

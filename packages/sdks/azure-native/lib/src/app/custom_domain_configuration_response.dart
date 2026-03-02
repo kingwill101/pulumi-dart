@@ -57,11 +57,11 @@ class CustomDomainConfigurationResponse {
 
   factory CustomDomainConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return CustomDomainConfigurationResponse(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      certificateValue: map['certificateValue'] == null ? null : (map['certificateValue'] as String).input(),
+      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultPropertiesResponse.fromMap((map['certificateKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      certificateValue: map['certificateValue'] == null ? null : (map['certificateValue']! as String).input(),
       customDomainVerificationId: (map['customDomainVerificationId'] as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
       expirationDate: (map['expirationDate'] as String).input(),
       subjectName: (map['subjectName'] as String).input(),
       thumbprint: (map['thumbprint'] as String).input(),

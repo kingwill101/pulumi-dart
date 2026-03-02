@@ -21,7 +21,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
 
   factory EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods.fromMap(Map<String, dynamic> map) {
     return EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods(
-      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods']! as List).cast<String>()).input(),
     );
   }
 }

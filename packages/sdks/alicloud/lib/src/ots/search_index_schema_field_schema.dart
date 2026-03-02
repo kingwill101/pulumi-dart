@@ -50,13 +50,13 @@ class SearchIndexSchemaFieldSchema {
 
   factory SearchIndexSchemaFieldSchema.fromMap(Map<String, dynamic> map) {
     return SearchIndexSchemaFieldSchema(
-      analyzer: map['analyzer'] == null ? null : (map['analyzer'] as String).input(),
-      enableSortAndAgg: map['enableSortAndAgg'] == null ? null : (map['enableSortAndAgg'] as bool).input(),
+      analyzer: map['analyzer'] == null ? null : (map['analyzer']! as String).input(),
+      enableSortAndAgg: map['enableSortAndAgg'] == null ? null : (map['enableSortAndAgg']! as bool).input(),
       fieldName: (map['fieldName'] as String).input(),
       fieldType: (map['fieldType'] as String).input(),
-      index: map['index'] == null ? null : (map['index'] as bool).input(),
-      isArray: map['isArray'] == null ? null : (map['isArray'] as bool).input(),
-      store: map['store'] == null ? null : (map['store'] as bool).input(),
+      index: map['index'] == null ? null : (map['index']! as bool).input(),
+      isArray: map['isArray'] == null ? null : (map['isArray']! as bool).input(),
+      store: map['store'] == null ? null : (map['store']! as bool).input(),
     );
   }
 }

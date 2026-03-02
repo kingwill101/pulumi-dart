@@ -31,9 +31,9 @@ class NetworkInterface {
 
   factory NetworkInterface.fromMap(Map<String, dynamic> map) {
     return NetworkInterface(
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      noExternalIpAddress: map['noExternalIpAddress'] == null ? null : (map['noExternalIpAddress'] as bool).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      noExternalIpAddress: map['noExternalIpAddress'] == null ? null : (map['noExternalIpAddress']! as bool).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
     );
   }
 }

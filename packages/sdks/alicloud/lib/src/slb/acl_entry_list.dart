@@ -23,8 +23,8 @@ class AclEntryList {
 
   factory AclEntryList.fromMap(Map<String, dynamic> map) {
     return AclEntryList(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      entry: map['entry'] == null ? null : (map['entry'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      entry: map['entry'] == null ? null : (map['entry']! as String).input(),
     );
   }
 }

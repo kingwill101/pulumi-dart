@@ -38,8 +38,8 @@ class GetClusterArgs {
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
     return GetClusterArgs(
       clusterId: (map['clusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

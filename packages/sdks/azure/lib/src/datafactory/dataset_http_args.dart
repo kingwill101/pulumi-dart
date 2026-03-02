@@ -82,18 +82,18 @@ class DatasetHttpArgs {
 
   factory DatasetHttpArgs.fromMap(Map<String, dynamic> map) {
     return DatasetHttpArgs(
-      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties'] as Map).cast<String, String>()).input(),
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<String>()).input(),
+      additionalProperties: map['additionalProperties'] == null ? null : ((map['additionalProperties']! as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<String>()).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folder: map['folder'] == null ? null : (map['folder'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folder: map['folder'] == null ? null : (map['folder']! as String).input(),
       linkedServiceName: (map['linkedServiceName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl'] as String).input(),
-      requestBody: map['requestBody'] == null ? null : (map['requestBody'] as String).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod'] as String).input(),
-      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetHttpSchemaColumn>(map['schemaColumns'], (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, String>()).input(),
+      relativeUrl: map['relativeUrl'] == null ? null : (map['relativeUrl']! as String).input(),
+      requestBody: map['requestBody'] == null ? null : (map['requestBody']! as String).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']! as String).input(),
+      schemaColumns: map['schemaColumns'] == null ? null : (pulumi.Input.decodeList<DatasetHttpSchemaColumn>(map['schemaColumns']!, (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

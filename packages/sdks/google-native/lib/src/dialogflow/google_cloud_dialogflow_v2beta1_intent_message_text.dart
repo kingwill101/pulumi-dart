@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
 
   factory GoogleCloudDialogflowV2beta1IntentMessageText.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2beta1IntentMessageText(
-      text: map['text'] == null ? null : ((map['text'] as List).cast<String>()).input(),
+      text: map['text'] == null ? null : ((map['text']! as List).cast<String>()).input(),
     );
   }
 }

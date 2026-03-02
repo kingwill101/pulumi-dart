@@ -85,17 +85,17 @@ class GetRoleManagementPolicyResult {
   factory GetRoleManagementPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetRoleManagementPolicyResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       effectiveRules: pulumi.Input.decodeList<RoleManagementPolicyApprovalRuleResponse>(map['effectiveRules'], (value) => RoleManagementPolicyApprovalRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      isOrganizationDefault: map['isOrganizationDefault'] == null ? null : map['isOrganizationDefault'] as bool,
+      isOrganizationDefault: map['isOrganizationDefault'] == null ? null : map['isOrganizationDefault']! as bool,
       lastModifiedBy: PrincipalResponse.fromMap((map['lastModifiedBy'] as Map).cast<String, dynamic>()),
       lastModifiedDateTime: map['lastModifiedDateTime'] as String,
       name: map['name'] as String,
       policyProperties: PolicyPropertiesResponse.fromMap((map['policyProperties'] as Map).cast<String, dynamic>()),
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RoleManagementPolicyApprovalRuleResponse>(map['rules'], (value) => RoleManagementPolicyApprovalRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      scope: map['scope'] == null ? null : map['scope'] as String,
+      rules: map['rules'] == null ? null : pulumi.Input.decodeList<RoleManagementPolicyApprovalRuleResponse>(map['rules']!, (value) => RoleManagementPolicyApprovalRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      scope: map['scope'] == null ? null : map['scope']! as String,
       type: map['type'] as String,
     );
   }

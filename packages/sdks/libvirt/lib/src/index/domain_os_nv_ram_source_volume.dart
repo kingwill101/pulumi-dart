@@ -36,10 +36,10 @@ class DomainOsNvRamSourceVolume {
 
   factory DomainOsNvRamSourceVolume.fromMap(Map<String, dynamic> map) {
     return DomainOsNvRamSourceVolume(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVolumeSecLabel>(map['secLabels'], (value) => DomainOsNvRamSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volume: map['volume'] == null ? null : (map['volume'] as String).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainOsNvRamSourceVolumeSecLabel>(map['secLabels']!, (value) => DomainOsNvRamSourceVolumeSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volume: map['volume'] == null ? null : (map['volume']! as String).input(),
     );
   }
 }

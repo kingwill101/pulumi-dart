@@ -79,14 +79,14 @@ class VMwareNodePoolArgs {
 
   factory VMwareNodePoolArgs.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       config: (VMwareNodePoolConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : (VMwareNodePoolNodePoolAutoscaling.fromMap((map['nodePoolAutoscaling'] as Map).cast<String, dynamic>())).input(),
-      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodePoolAutoscaling: map['nodePoolAutoscaling'] == null ? null : (VMwareNodePoolNodePoolAutoscaling.fromMap((map['nodePoolAutoscaling']! as Map).cast<String, dynamic>())).input(),
+      onPremVersion: map['onPremVersion'] == null ? null : (map['onPremVersion']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       vmwareCluster: (map['vmwareCluster'] as String).input(),
     );
   }

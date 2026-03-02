@@ -42,7 +42,7 @@ class GatewayLoggingArgs {
       gatewayId: (map['gatewayId'] as String).input(),
       slsLogstore: (map['slsLogstore'] as String).input(),
       slsProject: (map['slsProject'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

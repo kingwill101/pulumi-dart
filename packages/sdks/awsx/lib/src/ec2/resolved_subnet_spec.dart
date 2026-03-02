@@ -42,10 +42,10 @@ class ResolvedSubnetSpec {
 
   factory ResolvedSubnetSpec.fromMap(Map<String, dynamic> map) {
     return ResolvedSubnetSpec(
-      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks'] as List).cast<String>()).input(),
-      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as int).input(),
+      cidrBlocks: map['cidrBlocks'] == null ? null : ((map['cidrBlocks']! as List).cast<String>()).input(),
+      cidrMask: map['cidrMask'] == null ? null : (map['cidrMask']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      size: map['size'] == null ? null : (map['size']! as int).input(),
       type: (SubnetType.fromValue(map['type'] as String)).input(),
     );
   }

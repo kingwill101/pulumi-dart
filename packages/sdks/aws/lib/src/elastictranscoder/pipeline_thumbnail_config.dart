@@ -25,8 +25,8 @@ class PipelineThumbnailConfig {
 
   factory PipelineThumbnailConfig.fromMap(Map<String, dynamic> map) {
     return PipelineThumbnailConfig(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      storageClass: map['storageClass'] == null ? null : (map['storageClass'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      storageClass: map['storageClass'] == null ? null : ((map['storageClass'] as String).input()).input(),
     );
   }
 }

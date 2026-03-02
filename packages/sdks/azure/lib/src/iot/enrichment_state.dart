@@ -41,11 +41,11 @@ class EnrichmentState {
 
   factory EnrichmentState.fromMap(Map<String, dynamic> map) {
     return EnrichmentState(
-      endpointNames: map['endpointNames'] == null ? null : ((map['endpointNames'] as List).cast<String>()).input(),
-      iothubName: map['iothubName'] == null ? null : (map['iothubName'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      endpointNames: map['endpointNames'] == null ? null : ((map['endpointNames']! as List).cast<String>()).input(),
+      iothubName: map['iothubName'] == null ? null : (map['iothubName']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

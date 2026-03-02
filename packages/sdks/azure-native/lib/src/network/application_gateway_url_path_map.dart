@@ -58,14 +58,14 @@ class ApplicationGatewayUrlPathMap {
 
   factory ApplicationGatewayUrlPathMap.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayUrlPathMap(
-      defaultBackendAddressPool: map['defaultBackendAddressPool'] == null ? null : (SubResource.fromMap((map['defaultBackendAddressPool'] as Map).cast<String, dynamic>())).input(),
-      defaultBackendHttpSettings: map['defaultBackendHttpSettings'] == null ? null : (SubResource.fromMap((map['defaultBackendHttpSettings'] as Map).cast<String, dynamic>())).input(),
-      defaultLoadDistributionPolicy: map['defaultLoadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['defaultLoadDistributionPolicy'] as Map).cast<String, dynamic>())).input(),
-      defaultRedirectConfiguration: map['defaultRedirectConfiguration'] == null ? null : (SubResource.fromMap((map['defaultRedirectConfiguration'] as Map).cast<String, dynamic>())).input(),
-      defaultRewriteRuleSet: map['defaultRewriteRuleSet'] == null ? null : (SubResource.fromMap((map['defaultRewriteRuleSet'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayPathRule>(map['pathRules'], (value) => ApplicationGatewayPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      defaultBackendAddressPool: map['defaultBackendAddressPool'] == null ? null : (SubResource.fromMap((map['defaultBackendAddressPool']! as Map).cast<String, dynamic>())).input(),
+      defaultBackendHttpSettings: map['defaultBackendHttpSettings'] == null ? null : (SubResource.fromMap((map['defaultBackendHttpSettings']! as Map).cast<String, dynamic>())).input(),
+      defaultLoadDistributionPolicy: map['defaultLoadDistributionPolicy'] == null ? null : (SubResource.fromMap((map['defaultLoadDistributionPolicy']! as Map).cast<String, dynamic>())).input(),
+      defaultRedirectConfiguration: map['defaultRedirectConfiguration'] == null ? null : (SubResource.fromMap((map['defaultRedirectConfiguration']! as Map).cast<String, dynamic>())).input(),
+      defaultRewriteRuleSet: map['defaultRewriteRuleSet'] == null ? null : (SubResource.fromMap((map['defaultRewriteRuleSet']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      pathRules: map['pathRules'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayPathRule>(map['pathRules']!, (value) => ApplicationGatewayPathRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -44,11 +44,11 @@ class TimeSeriesFilter {
 
   factory TimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return TimeSeriesFilter(
-      aggregation: map['aggregation'] == null ? null : (Aggregation.fromMap((map['aggregation'] as Map).cast<String, dynamic>())).input(),
+      aggregation: map['aggregation'] == null ? null : (Aggregation.fromMap((map['aggregation']! as Map).cast<String, dynamic>())).input(),
       filter: (map['filter'] as String).input(),
-      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : (PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
-      secondaryAggregation: map['secondaryAggregation'] == null ? null : (Aggregation.fromMap((map['secondaryAggregation'] as Map).cast<String, dynamic>())).input(),
-      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : (StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter'] as Map).cast<String, dynamic>())).input(),
+      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : (PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter']! as Map).cast<String, dynamic>())).input(),
+      secondaryAggregation: map['secondaryAggregation'] == null ? null : (Aggregation.fromMap((map['secondaryAggregation']! as Map).cast<String, dynamic>())).input(),
+      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : (StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

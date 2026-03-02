@@ -26,8 +26,8 @@ class MigrationReportResultResponse {
 
   factory MigrationReportResultResponse.fromMap(Map<String, dynamic> map) {
     return MigrationReportResultResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      reportUrl: map['reportUrl'] == null ? null : (map['reportUrl'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      reportUrl: map['reportUrl'] == null ? null : (map['reportUrl']! as String).input(),
     );
   }
 }

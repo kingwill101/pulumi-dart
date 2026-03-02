@@ -43,10 +43,10 @@ class NetworkManagerIpamPoolStaticCidrArgs {
 
   factory NetworkManagerIpamPoolStaticCidrArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerIpamPoolStaticCidrArgs(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
       ipamPoolId: (map['ipamPoolId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      numberOfIpAddressesToAllocate: map['numberOfIpAddressesToAllocate'] == null ? null : (map['numberOfIpAddressesToAllocate'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      numberOfIpAddressesToAllocate: map['numberOfIpAddressesToAllocate'] == null ? null : (map['numberOfIpAddressesToAllocate']! as String).input(),
     );
   }
 }

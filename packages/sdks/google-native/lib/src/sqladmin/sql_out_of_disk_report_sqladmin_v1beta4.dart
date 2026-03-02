@@ -27,8 +27,8 @@ class SqlOutOfDiskReportSqladminV1beta4 {
 
   factory SqlOutOfDiskReportSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SqlOutOfDiskReportSqladminV1beta4(
-      sqlMinRecommendedIncreaseSizeGb: map['sqlMinRecommendedIncreaseSizeGb'] == null ? null : (map['sqlMinRecommendedIncreaseSizeGb'] as int).input(),
-      sqlOutOfDiskState: map['sqlOutOfDiskState'] == null ? null : (SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4.fromValue(map['sqlOutOfDiskState'] as String)).input(),
+      sqlMinRecommendedIncreaseSizeGb: map['sqlMinRecommendedIncreaseSizeGb'] == null ? null : (map['sqlMinRecommendedIncreaseSizeGb']! as int).input(),
+      sqlOutOfDiskState: map['sqlOutOfDiskState'] == null ? null : (SqlOutOfDiskReportSqlOutOfDiskStateSqladminV1beta4.fromValue(map['sqlOutOfDiskState']! as String)).input(),
     );
   }
 }

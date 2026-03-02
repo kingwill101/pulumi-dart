@@ -42,11 +42,11 @@ class UserState {
 
   factory UserState.fromMap(Map<String, dynamic> map) {
     return UserState(
-      identityProviderType: map['identityProviderType'] == null ? null : (map['identityProviderType'] as String).input(),
-      mongoClusterId: map['mongoClusterId'] == null ? null : (map['mongoClusterId'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<UserRole>(map['roles'], (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identityProviderType: map['identityProviderType'] == null ? null : (map['identityProviderType']! as String).input(),
+      mongoClusterId: map['mongoClusterId'] == null ? null : (map['mongoClusterId']! as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<UserRole>(map['roles']!, (value) => UserRole.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

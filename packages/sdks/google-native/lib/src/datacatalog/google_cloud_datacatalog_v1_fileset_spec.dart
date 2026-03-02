@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1FilesetSpec {
 
   factory GoogleCloudDatacatalogV1FilesetSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1FilesetSpec(
-      dataplexFileset: map['dataplexFileset'] == null ? null : (GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap((map['dataplexFileset'] as Map).cast<String, dynamic>())).input(),
+      dataplexFileset: map['dataplexFileset'] == null ? null : (GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap((map['dataplexFileset']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

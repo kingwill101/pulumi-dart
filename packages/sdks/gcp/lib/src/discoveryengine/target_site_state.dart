@@ -102,20 +102,20 @@ class TargetSiteState {
 
   factory TargetSiteState.fromMap(Map<String, dynamic> map) {
     return TargetSiteState(
-      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId'] as String).input(),
-      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch'] as bool).input(),
-      failureReasons: map['failureReasons'] == null ? null : (pulumi.Input.decodeList<TargetSiteFailureReason>(map['failureReasons'], (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      generatedUriPattern: map['generatedUriPattern'] == null ? null : (map['generatedUriPattern'] as String).input(),
-      indexingStatus: map['indexingStatus'] == null ? null : (map['indexingStatus'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      providedUriPattern: map['providedUriPattern'] == null ? null : (map['providedUriPattern'] as String).input(),
-      rootDomainUri: map['rootDomainUri'] == null ? null : (map['rootDomainUri'] as String).input(),
-      siteVerificationInfos: map['siteVerificationInfos'] == null ? null : (pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(map['siteVerificationInfos'], (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetSiteId: map['targetSiteId'] == null ? null : (map['targetSiteId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      dataStoreId: map['dataStoreId'] == null ? null : (map['dataStoreId']! as String).input(),
+      exactMatch: map['exactMatch'] == null ? null : (map['exactMatch']! as bool).input(),
+      failureReasons: map['failureReasons'] == null ? null : (pulumi.Input.decodeList<TargetSiteFailureReason>(map['failureReasons']!, (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      generatedUriPattern: map['generatedUriPattern'] == null ? null : (map['generatedUriPattern']! as String).input(),
+      indexingStatus: map['indexingStatus'] == null ? null : (map['indexingStatus']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      providedUriPattern: map['providedUriPattern'] == null ? null : (map['providedUriPattern']! as String).input(),
+      rootDomainUri: map['rootDomainUri'] == null ? null : (map['rootDomainUri']! as String).input(),
+      siteVerificationInfos: map['siteVerificationInfos'] == null ? null : (pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(map['siteVerificationInfos']!, (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetSiteId: map['targetSiteId'] == null ? null : (map['targetSiteId']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

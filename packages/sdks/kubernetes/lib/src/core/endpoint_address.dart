@@ -37,10 +37,10 @@ class EndpointAddress {
 
   factory EndpointAddress.fromMap(Map<String, dynamic> map) {
     return EndpointAddress(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
       ip: (map['ip'] as String).input(),
-      nodeName: map['nodeName'] == null ? null : (map['nodeName'] as String).input(),
-      targetRef: map['targetRef'] == null ? null : (ObjectReference.fromMap((map['targetRef'] as Map).cast<String, dynamic>())).input(),
+      nodeName: map['nodeName'] == null ? null : (map['nodeName']! as String).input(),
+      targetRef: map['targetRef'] == null ? null : (ObjectReference.fromMap((map['targetRef']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

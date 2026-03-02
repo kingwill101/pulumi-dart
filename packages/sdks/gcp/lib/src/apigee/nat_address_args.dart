@@ -35,9 +35,9 @@ class NatAddressArgs {
 
   factory NatAddressArgs.fromMap(Map<String, dynamic> map) {
     return NatAddressArgs(
-      activate: map['activate'] == null ? null : (map['activate'] as bool).input(),
+      activate: map['activate'] == null ? null : (map['activate']! as bool).input(),
       instanceId: (map['instanceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

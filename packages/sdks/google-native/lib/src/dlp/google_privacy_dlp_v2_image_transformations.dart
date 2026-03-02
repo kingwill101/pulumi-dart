@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2ImageTransformations {
 
   factory GooglePrivacyDlpV2ImageTransformations.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ImageTransformations(
-      transforms: map['transforms'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2ImageTransformation>(map['transforms'], (value) => GooglePrivacyDlpV2ImageTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      transforms: map['transforms'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2ImageTransformation>(map['transforms']!, (value) => GooglePrivacyDlpV2ImageTransformation.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

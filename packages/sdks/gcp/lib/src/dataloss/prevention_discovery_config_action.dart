@@ -41,10 +41,10 @@ class PreventionDiscoveryConfigAction {
 
   factory PreventionDiscoveryConfigAction.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigAction(
-      exportData: map['exportData'] == null ? null : (PreventionDiscoveryConfigActionExportData.fromMap((map['exportData'] as Map).cast<String, dynamic>())).input(),
-      pubSubNotification: map['pubSubNotification'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotification.fromMap((map['pubSubNotification'] as Map).cast<String, dynamic>())).input(),
-      publishToDataplexCatalog: map['publishToDataplexCatalog'] == null ? null : ((map['publishToDataplexCatalog'] as Map).cast<String, dynamic>()).input(),
-      tagResources: map['tagResources'] == null ? null : (PreventionDiscoveryConfigActionTagResources.fromMap((map['tagResources'] as Map).cast<String, dynamic>())).input(),
+      exportData: map['exportData'] == null ? null : (PreventionDiscoveryConfigActionExportData.fromMap((map['exportData']! as Map).cast<String, dynamic>())).input(),
+      pubSubNotification: map['pubSubNotification'] == null ? null : (PreventionDiscoveryConfigActionPubSubNotification.fromMap((map['pubSubNotification']! as Map).cast<String, dynamic>())).input(),
+      publishToDataplexCatalog: map['publishToDataplexCatalog'] == null ? null : ((map['publishToDataplexCatalog']! as Map).cast<String, dynamic>()).input(),
+      tagResources: map['tagResources'] == null ? null : (PreventionDiscoveryConfigActionTagResources.fromMap((map['tagResources']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

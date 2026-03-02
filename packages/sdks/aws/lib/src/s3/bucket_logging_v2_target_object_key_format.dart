@@ -26,8 +26,8 @@ class BucketLoggingV2TargetObjectKeyFormat {
 
   factory BucketLoggingV2TargetObjectKeyFormat.fromMap(Map<String, dynamic> map) {
     return BucketLoggingV2TargetObjectKeyFormat(
-      partitionedPrefix: map['partitionedPrefix'] == null ? null : (BucketLoggingV2TargetObjectKeyFormatPartitionedPrefix.fromMap((map['partitionedPrefix'] as Map).cast<String, dynamic>())).input(),
-      simplePrefix: map['simplePrefix'] == null ? null : ((map['simplePrefix'] as Map).cast<String, dynamic>()).input(),
+      partitionedPrefix: map['partitionedPrefix'] == null ? null : ((BucketLoggingV2TargetObjectKeyFormatPartitionedPrefix.fromMap((map['partitionedPrefix']! as Map).cast<String, dynamic>())).input()).input(),
+      simplePrefix: map['simplePrefix'] == null ? null : (((map['simplePrefix'] as Map).cast<String, dynamic>()).input()).input(),
     );
   }
 }

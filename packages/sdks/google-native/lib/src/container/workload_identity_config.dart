@@ -21,7 +21,7 @@ class WorkloadIdentityConfig {
 
   factory WorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityConfig(
-      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool'] as String).input(),
+      workloadPool: map['workloadPool'] == null ? null : (map['workloadPool']! as String).input(),
     );
   }
 }

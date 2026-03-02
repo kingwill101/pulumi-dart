@@ -49,12 +49,12 @@ class RouterNatAddressState {
 
   factory RouterNatAddressState.fromMap(Map<String, dynamic> map) {
     return RouterNatAddressState(
-      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps'] as List).cast<String>()).input(),
-      natIps: map['natIps'] == null ? null : ((map['natIps'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      router: map['router'] == null ? null : (map['router'] as String).input(),
-      routerNat: map['routerNat'] == null ? null : (map['routerNat'] as String).input(),
+      drainNatIps: map['drainNatIps'] == null ? null : ((map['drainNatIps']! as List).cast<String>()).input(),
+      natIps: map['natIps'] == null ? null : ((map['natIps']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      router: map['router'] == null ? null : (map['router']! as String).input(),
+      routerNat: map['routerNat'] == null ? null : (map['routerNat']! as String).input(),
     );
   }
 }

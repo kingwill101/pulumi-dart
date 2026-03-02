@@ -52,13 +52,13 @@ class ThingTypeState {
 
   factory ThingTypeState.fromMap(Map<String, dynamic> map) {
     return ThingTypeState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deprecated: map['deprecated'] == null ? null : (map['deprecated'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (ThingTypeProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deprecated: map['deprecated'] == null ? null : ((map['deprecated'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      properties: map['properties'] == null ? null : ((ThingTypeProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

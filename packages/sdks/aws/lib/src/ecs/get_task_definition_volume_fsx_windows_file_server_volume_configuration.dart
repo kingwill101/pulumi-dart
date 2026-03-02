@@ -31,7 +31,7 @@ class GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration {
 
   factory GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfiguration(
-      authorizationConfigs: (pulumi.Input.decodeList<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs'], (value) => GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authorizationConfigs: (pulumi.Input.decodeList<GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig>(map['authorizationConfigs']!, (value) => GetTaskDefinitionVolumeFsxWindowsFileServerVolumeConfigurationAuthorizationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
       fileSystemId: (map['fileSystemId'] as String).input(),
       rootDirectory: (map['rootDirectory'] as String).input(),
     );

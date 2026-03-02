@@ -50,12 +50,12 @@ class KeyVaultAccessPolicy {
 
   factory KeyVaultAccessPolicy.fromMap(Map<String, dynamic> map) {
     return KeyVaultAccessPolicy(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      certificatePermissions: map['certificatePermissions'] == null ? null : ((map['certificatePermissions'] as List).cast<String>()).input(),
-      keyPermissions: map['keyPermissions'] == null ? null : ((map['keyPermissions'] as List).cast<String>()).input(),
+      applicationId: map['applicationId'] == null ? null : (map['applicationId']! as String).input(),
+      certificatePermissions: map['certificatePermissions'] == null ? null : ((map['certificatePermissions']! as List).cast<String>()).input(),
+      keyPermissions: map['keyPermissions'] == null ? null : ((map['keyPermissions']! as List).cast<String>()).input(),
       objectId: (map['objectId'] as String).input(),
-      secretPermissions: map['secretPermissions'] == null ? null : ((map['secretPermissions'] as List).cast<String>()).input(),
-      storagePermissions: map['storagePermissions'] == null ? null : ((map['storagePermissions'] as List).cast<String>()).input(),
+      secretPermissions: map['secretPermissions'] == null ? null : ((map['secretPermissions']! as List).cast<String>()).input(),
+      storagePermissions: map['storagePermissions'] == null ? null : ((map['storagePermissions']! as List).cast<String>()).input(),
       tenantId: (map['tenantId'] as String).input(),
     );
   }

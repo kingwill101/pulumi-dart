@@ -21,7 +21,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
 
   factory ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity.fromMap(Map<String, dynamic> map) {
     return ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity(
-      clientAuthentication: map['clientAuthentication'] == null ? null : (ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap((map['clientAuthentication'] as Map).cast<String, dynamic>())).input(),
+      clientAuthentication: map['clientAuthentication'] == null ? null : ((ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication.fromMap((map['clientAuthentication']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

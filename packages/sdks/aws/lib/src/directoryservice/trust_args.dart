@@ -73,15 +73,15 @@ class TrustArgs {
 
   factory TrustArgs.fromMap(Map<String, dynamic> map) {
     return TrustArgs(
-      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : ((map['conditionalForwarderIpAddrs'] as List).cast<String>()).input(),
-      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : (map['deleteAssociatedConditionalForwarder'] as bool).input(),
+      conditionalForwarderIpAddrs: map['conditionalForwarderIpAddrs'] == null ? null : (((map['conditionalForwarderIpAddrs'] as List).cast<String>()).input()).input(),
+      deleteAssociatedConditionalForwarder: map['deleteAssociatedConditionalForwarder'] == null ? null : ((map['deleteAssociatedConditionalForwarder'] as bool).input()).input(),
       directoryId: (map['directoryId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       remoteDomainName: (map['remoteDomainName'] as String).input(),
-      selectiveAuth: map['selectiveAuth'] == null ? null : (map['selectiveAuth'] as String).input(),
+      selectiveAuth: map['selectiveAuth'] == null ? null : ((map['selectiveAuth'] as String).input()).input(),
       trustDirection: (map['trustDirection'] as String).input(),
       trustPassword: (map['trustPassword'] as String).input(),
-      trustType: map['trustType'] == null ? null : (map['trustType'] as String).input(),
+      trustType: map['trustType'] == null ? null : ((map['trustType'] as String).input()).input(),
     );
   }
 }

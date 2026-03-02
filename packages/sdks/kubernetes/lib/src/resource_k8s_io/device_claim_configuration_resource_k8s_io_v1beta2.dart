@@ -29,8 +29,8 @@ class DeviceClaimConfigurationResourceK8sIoV1beta2 {
 
   factory DeviceClaimConfigurationResourceK8sIoV1beta2.fromMap(Map<String, dynamic> map) {
     return DeviceClaimConfigurationResourceK8sIoV1beta2(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationResourceK8sIoV1beta2.fromMap((map['opaque'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
+      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationResourceK8sIoV1beta2.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
     );
   }
 }

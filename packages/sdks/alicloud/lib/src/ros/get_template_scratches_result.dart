@@ -46,13 +46,13 @@ class GetTemplateScratchesResult {
 
   factory GetTemplateScratchesResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateScratchesResult(
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       scratches: pulumi.Input.decodeList<GetTemplateScratchesScratch>(map['scratches'], (value) => GetTemplateScratchesScratch.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      templateScratchType: map['templateScratchType'] == null ? null : map['templateScratchType'] as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      templateScratchType: map['templateScratchType'] == null ? null : map['templateScratchType']! as String,
     );
   }
 }

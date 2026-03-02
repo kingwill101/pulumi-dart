@@ -41,9 +41,9 @@ class CodeRepositoryArgs {
   factory CodeRepositoryArgs.fromMap(Map<String, dynamic> map) {
     return CodeRepositoryArgs(
       codeRepositoryName: (map['codeRepositoryName'] as String).input(),
-      gitConfig: (CodeRepositoryGitConfig.fromMap((map['gitConfig'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      gitConfig: (CodeRepositoryGitConfig.fromMap((map['gitConfig']! as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

@@ -44,10 +44,10 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : (GetUserAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>())).input(),
+      alternateIdentifier: map['alternateIdentifier'] == null ? null : ((GetUserAlternateIdentifier.fromMap((map['alternateIdentifier']! as Map).cast<String, dynamic>())).input()).input(),
       identityStoreId: (map['identityStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      userId: map['userId'] == null ? null : ((map['userId'] as String).input()).input(),
     );
   }
 }

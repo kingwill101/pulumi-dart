@@ -83,7 +83,7 @@ class GetResolverRuleResult {
       ruleType: map['ruleType'] as String,
       shareStatus: map['shareStatus'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
-      targetIps: pulumi.Input.decodeList<GetResolverRuleTargetIp>(map['targetIps'], (value) => GetResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>())),
+      targetIps: pulumi.Input.decodeList<GetResolverRuleTargetIp>(map['targetIps']!, (value) => GetResolverRuleTargetIp.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

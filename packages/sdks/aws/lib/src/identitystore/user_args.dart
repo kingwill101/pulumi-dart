@@ -102,21 +102,21 @@ class UserArgs {
 
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
-      addresses: map['addresses'] == null ? null : (UserAddresses.fromMap((map['addresses'] as Map).cast<String, dynamic>())).input(),
+      addresses: map['addresses'] == null ? null : ((UserAddresses.fromMap((map['addresses']! as Map).cast<String, dynamic>())).input()).input(),
       displayName: (map['displayName'] as String).input(),
-      emails: map['emails'] == null ? null : (UserEmails.fromMap((map['emails'] as Map).cast<String, dynamic>())).input(),
+      emails: map['emails'] == null ? null : ((UserEmails.fromMap((map['emails']! as Map).cast<String, dynamic>())).input()).input(),
       identityStoreId: (map['identityStoreId'] as String).input(),
-      locale: map['locale'] == null ? null : (map['locale'] as String).input(),
-      name: map['name'] == null ? null : (UserName.fromMap((map['name'] as Map).cast<String, dynamic>())).input(),
-      nickname: map['nickname'] == null ? null : (map['nickname'] as String).input(),
-      phoneNumbers: map['phoneNumbers'] == null ? null : (UserPhoneNumbers.fromMap((map['phoneNumbers'] as Map).cast<String, dynamic>())).input(),
-      preferredLanguage: map['preferredLanguage'] == null ? null : (map['preferredLanguage'] as String).input(),
-      profileUrl: map['profileUrl'] == null ? null : (map['profileUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timezone: map['timezone'] == null ? null : (map['timezone'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
+      locale: map['locale'] == null ? null : ((map['locale'] as String).input()).input(),
+      name: map['name'] == null ? null : ((UserName.fromMap((map['name']! as Map).cast<String, dynamic>())).input()).input(),
+      nickname: map['nickname'] == null ? null : ((map['nickname'] as String).input()).input(),
+      phoneNumbers: map['phoneNumbers'] == null ? null : ((UserPhoneNumbers.fromMap((map['phoneNumbers']! as Map).cast<String, dynamic>())).input()).input(),
+      preferredLanguage: map['preferredLanguage'] == null ? null : ((map['preferredLanguage'] as String).input()).input(),
+      profileUrl: map['profileUrl'] == null ? null : ((map['profileUrl'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timezone: map['timezone'] == null ? null : ((map['timezone'] as String).input()).input(),
+      title: map['title'] == null ? null : ((map['title'] as String).input()).input(),
       userName: (map['userName'] as String).input(),
-      userType: map['userType'] == null ? null : (map['userType'] as String).input(),
+      userType: map['userType'] == null ? null : ((map['userType'] as String).input()).input(),
     );
   }
 }

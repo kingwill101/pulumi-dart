@@ -32,9 +32,9 @@ class NetworkForwardNat {
 
   factory NetworkForwardNat.fromMap(Map<String, dynamic> map) {
     return NetworkForwardNat(
-      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<NetworkForwardNatAddress>(map['addresses'], (value) => NetworkForwardNatAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipv6: map['ipv6'] == null ? null : (map['ipv6'] as String).input(),
-      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<NetworkForwardNatPort>(map['ports'], (value) => NetworkForwardNatPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      addresses: map['addresses'] == null ? null : (pulumi.Input.decodeList<NetworkForwardNatAddress>(map['addresses']!, (value) => NetworkForwardNatAddress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipv6: map['ipv6'] == null ? null : (map['ipv6']! as String).input(),
+      ports: map['ports'] == null ? null : (pulumi.Input.decodeList<NetworkForwardNatPort>(map['ports']!, (value) => NetworkForwardNatPort.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

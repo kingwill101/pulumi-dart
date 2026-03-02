@@ -55,12 +55,12 @@ class GetWebAppSlotConfigurationNamesResult {
 
   factory GetWebAppSlotConfigurationNamesResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSlotConfigurationNamesResult(
-      appSettingNames: map['appSettingNames'] == null ? null : (map['appSettingNames'] as List).cast<String>(),
+      appSettingNames: map['appSettingNames'] == null ? null : (map['appSettingNames']! as List).cast<String>(),
       azureApiVersion: map['azureApiVersion'] as String,
-      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : (map['azureStorageConfigNames'] as List).cast<String>(),
-      connectionStringNames: map['connectionStringNames'] == null ? null : (map['connectionStringNames'] as List).cast<String>(),
+      azureStorageConfigNames: map['azureStorageConfigNames'] == null ? null : (map['azureStorageConfigNames']! as List).cast<String>(),
+      connectionStringNames: map['connectionStringNames'] == null ? null : (map['connectionStringNames']! as List).cast<String>(),
       id: map['id'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

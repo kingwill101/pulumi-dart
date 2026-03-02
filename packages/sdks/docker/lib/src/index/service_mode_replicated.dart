@@ -20,7 +20,7 @@ class ServiceModeReplicated {
 
   factory ServiceModeReplicated.fromMap(Map<String, dynamic> map) {
     return ServiceModeReplicated(
-      replicas: map['replicas'] == null ? null : (map['replicas'] as int).input(),
+      replicas: map['replicas'] == null ? null : (map['replicas']! as int).input(),
     );
   }
 }

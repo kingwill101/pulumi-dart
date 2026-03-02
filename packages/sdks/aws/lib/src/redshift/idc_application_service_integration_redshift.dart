@@ -21,7 +21,7 @@ class IdcApplicationServiceIntegrationRedshift {
 
   factory IdcApplicationServiceIntegrationRedshift.fromMap(Map<String, dynamic> map) {
     return IdcApplicationServiceIntegrationRedshift(
-      connect: map['connect'] == null ? null : (IdcApplicationServiceIntegrationRedshiftConnect.fromMap((map['connect'] as Map).cast<String, dynamic>())).input(),
+      connect: map['connect'] == null ? null : ((IdcApplicationServiceIntegrationRedshiftConnect.fromMap((map['connect']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

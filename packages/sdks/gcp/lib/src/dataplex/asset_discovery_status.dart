@@ -46,12 +46,12 @@ class AssetDiscoveryStatus {
 
   factory AssetDiscoveryStatus.fromMap(Map<String, dynamic> map) {
     return AssetDiscoveryStatus(
-      lastRunDuration: map['lastRunDuration'] == null ? null : (map['lastRunDuration'] as String).input(),
-      lastRunTime: map['lastRunTime'] == null ? null : (map['lastRunTime'] as String).input(),
-      message: map['message'] == null ? null : (map['message'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      stats: map['stats'] == null ? null : (pulumi.Input.decodeList<AssetDiscoveryStatusStat>(map['stats'], (value) => AssetDiscoveryStatusStat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      lastRunDuration: map['lastRunDuration'] == null ? null : (map['lastRunDuration']! as String).input(),
+      lastRunTime: map['lastRunTime'] == null ? null : (map['lastRunTime']! as String).input(),
+      message: map['message'] == null ? null : (map['message']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      stats: map['stats'] == null ? null : (pulumi.Input.decodeList<AssetDiscoveryStatusStat>(map['stats']!, (value) => AssetDiscoveryStatusStat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

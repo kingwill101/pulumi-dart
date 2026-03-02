@@ -76,18 +76,18 @@ class AppMonitorState {
 
   factory AppMonitorState.fromMap(Map<String, dynamic> map) {
     return AppMonitorState(
-      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : (AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration'] as Map).cast<String, dynamic>())).input(),
-      appMonitorId: map['appMonitorId'] == null ? null : (map['appMonitorId'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      customEvents: map['customEvents'] == null ? null : (AppMonitorCustomEvents.fromMap((map['customEvents'] as Map).cast<String, dynamic>())).input(),
-      cwLogEnabled: map['cwLogEnabled'] == null ? null : (map['cwLogEnabled'] as bool).input(),
-      cwLogGroup: map['cwLogGroup'] == null ? null : (map['cwLogGroup'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      domainLists: map['domainLists'] == null ? null : ((map['domainLists'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      appMonitorConfiguration: map['appMonitorConfiguration'] == null ? null : ((AppMonitorAppMonitorConfiguration.fromMap((map['appMonitorConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      appMonitorId: map['appMonitorId'] == null ? null : ((map['appMonitorId'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      customEvents: map['customEvents'] == null ? null : ((AppMonitorCustomEvents.fromMap((map['customEvents']! as Map).cast<String, dynamic>())).input()).input(),
+      cwLogEnabled: map['cwLogEnabled'] == null ? null : ((map['cwLogEnabled'] as bool).input()).input(),
+      cwLogGroup: map['cwLogGroup'] == null ? null : ((map['cwLogGroup'] as String).input()).input(),
+      domain: map['domain'] == null ? null : ((map['domain'] as String).input()).input(),
+      domainLists: map['domainLists'] == null ? null : (((map['domainLists'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

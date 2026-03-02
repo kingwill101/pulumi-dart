@@ -31,9 +31,9 @@ class PosixGroup {
 
   factory PosixGroup.fromMap(Map<String, dynamic> map) {
     return PosixGroup(
-      gid: map['gid'] == null ? null : (map['gid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      systemId: map['systemId'] == null ? null : (map['systemId'] as String).input(),
+      gid: map['gid'] == null ? null : (map['gid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      systemId: map['systemId'] == null ? null : (map['systemId']! as String).input(),
     );
   }
 }

@@ -52,13 +52,13 @@ class AwsIamServerCertificatePropertiesResponse {
 
   factory AwsIamServerCertificatePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsIamServerCertificatePropertiesResponse(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      serverCertificateName: map['serverCertificateName'] == null ? null : (map['serverCertificateName'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags'], (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody']! as String).input(),
+      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      serverCertificateName: map['serverCertificateName'] == null ? null : (map['serverCertificateName']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<TagResponse>(map['tags']!, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

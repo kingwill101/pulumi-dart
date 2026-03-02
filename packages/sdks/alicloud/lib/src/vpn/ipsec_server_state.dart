@@ -68,16 +68,16 @@ class IpsecServerState {
 
   factory IpsecServerState.fromMap(Map<String, dynamic> map) {
     return IpsecServerState(
-      clientIpPool: map['clientIpPool'] == null ? null : (map['clientIpPool'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
-      effectImmediately: map['effectImmediately'] == null ? null : (map['effectImmediately'] as bool).input(),
-      ikeConfigs: map['ikeConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIkeConfig>(map['ikeConfigs'], (value) => IpsecServerIkeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipsecConfigs: map['ipsecConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIpsecConfig>(map['ipsecConfigs'], (value) => IpsecServerIpsecConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ipsecServerName: map['ipsecServerName'] == null ? null : (map['ipsecServerName'] as String).input(),
-      localSubnet: map['localSubnet'] == null ? null : (map['localSubnet'] as String).input(),
-      psk: map['psk'] == null ? null : (map['psk'] as String).input(),
-      pskEnabled: map['pskEnabled'] == null ? null : (map['pskEnabled'] as bool).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      clientIpPool: map['clientIpPool'] == null ? null : (map['clientIpPool']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
+      effectImmediately: map['effectImmediately'] == null ? null : (map['effectImmediately']! as bool).input(),
+      ikeConfigs: map['ikeConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIkeConfig>(map['ikeConfigs']!, (value) => IpsecServerIkeConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipsecConfigs: map['ipsecConfigs'] == null ? null : (pulumi.Input.decodeList<IpsecServerIpsecConfig>(map['ipsecConfigs']!, (value) => IpsecServerIpsecConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ipsecServerName: map['ipsecServerName'] == null ? null : (map['ipsecServerName']! as String).input(),
+      localSubnet: map['localSubnet'] == null ? null : (map['localSubnet']! as String).input(),
+      psk: map['psk'] == null ? null : (map['psk']! as String).input(),
+      pskEnabled: map['pskEnabled'] == null ? null : (map['pskEnabled']! as bool).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId']! as String).input(),
     );
   }
 }

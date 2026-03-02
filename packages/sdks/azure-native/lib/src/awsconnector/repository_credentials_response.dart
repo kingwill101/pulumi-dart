@@ -21,7 +21,7 @@ class RepositoryCredentialsResponse {
 
   factory RepositoryCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryCredentialsResponse(
-      credentialsParameter: map['credentialsParameter'] == null ? null : (map['credentialsParameter'] as String).input(),
+      credentialsParameter: map['credentialsParameter'] == null ? null : (map['credentialsParameter']! as String).input(),
     );
   }
 }

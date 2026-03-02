@@ -63,15 +63,15 @@ class RouteCalculationState {
 
   factory RouteCalculationState.fromMap(Map<String, dynamic> map) {
     return RouteCalculationState(
-      calculatorArn: map['calculatorArn'] == null ? null : (map['calculatorArn'] as String).input(),
-      calculatorName: map['calculatorName'] == null ? null : (map['calculatorName'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      dataSource: map['dataSource'] == null ? null : (map['dataSource'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      calculatorArn: map['calculatorArn'] == null ? null : ((map['calculatorArn'] as String).input()).input(),
+      calculatorName: map['calculatorName'] == null ? null : ((map['calculatorName'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      dataSource: map['dataSource'] == null ? null : ((map['dataSource'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

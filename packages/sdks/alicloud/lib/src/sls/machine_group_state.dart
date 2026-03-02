@@ -57,12 +57,12 @@ class MachineGroupState {
 
   factory MachineGroupState.fromMap(Map<String, dynamic> map) {
     return MachineGroupState(
-      groupAttribute: map['groupAttribute'] == null ? null : (MachineGroupGroupAttribute.fromMap((map['groupAttribute'] as Map).cast<String, dynamic>())).input(),
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
-      groupType: map['groupType'] == null ? null : (map['groupType'] as String).input(),
-      machineIdentifyType: map['machineIdentifyType'] == null ? null : (map['machineIdentifyType'] as String).input(),
-      machineLists: map['machineLists'] == null ? null : ((map['machineLists'] as List).cast<String>()).input(),
-      projectName: map['projectName'] == null ? null : (map['projectName'] as String).input(),
+      groupAttribute: map['groupAttribute'] == null ? null : (MachineGroupGroupAttribute.fromMap((map['groupAttribute']! as Map).cast<String, dynamic>())).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
+      groupType: map['groupType'] == null ? null : (map['groupType']! as String).input(),
+      machineIdentifyType: map['machineIdentifyType'] == null ? null : (map['machineIdentifyType']! as String).input(),
+      machineLists: map['machineLists'] == null ? null : ((map['machineLists']! as List).cast<String>()).input(),
+      projectName: map['projectName'] == null ? null : (map['projectName']! as String).input(),
     );
   }
 }

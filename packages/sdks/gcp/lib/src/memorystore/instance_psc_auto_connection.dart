@@ -80,15 +80,15 @@ class InstancePscAutoConnection {
 
   factory InstancePscAutoConnection.fromMap(Map<String, dynamic> map) {
     return InstancePscAutoConnection(
-      connectionType: map['connectionType'] == null ? null : (map['connectionType'] as String).input(),
-      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId'] as String).input(),
-      pscConnectionStatus: map['pscConnectionStatus'] == null ? null : (map['pscConnectionStatus'] as String).input(),
-      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment'] as String).input(),
+      connectionType: map['connectionType'] == null ? null : (map['connectionType']! as String).input(),
+      forwardingRule: map['forwardingRule'] == null ? null : (map['forwardingRule']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      pscConnectionId: map['pscConnectionId'] == null ? null : (map['pscConnectionId']! as String).input(),
+      pscConnectionStatus: map['pscConnectionStatus'] == null ? null : (map['pscConnectionStatus']! as String).input(),
+      serviceAttachment: map['serviceAttachment'] == null ? null : (map['serviceAttachment']! as String).input(),
     );
   }
 }

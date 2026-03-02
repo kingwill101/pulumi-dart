@@ -32,7 +32,7 @@ class OSPolicyResourceFileGcs {
   factory OSPolicyResourceFileGcs.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileGcs(
       bucket: (map['bucket'] as String).input(),
-      generation: map['generation'] == null ? null : (map['generation'] as String).input(),
+      generation: map['generation'] == null ? null : (map['generation']! as String).input(),
       object: (map['object'] as String).input(),
     );
   }

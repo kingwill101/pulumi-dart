@@ -34,7 +34,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
   factory RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader(
       operator: (map['operator'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

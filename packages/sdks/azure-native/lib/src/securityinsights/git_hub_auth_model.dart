@@ -27,7 +27,7 @@ class GitHubAuthModel {
 
   factory GitHubAuthModel.fromMap(Map<String, dynamic> map) {
     return GitHubAuthModel(
-      installationId: map['installationId'] == null ? null : (map['installationId'] as String).input(),
+      installationId: map['installationId'] == null ? null : (map['installationId']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

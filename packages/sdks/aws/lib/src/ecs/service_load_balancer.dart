@@ -43,11 +43,11 @@ class ServiceLoadBalancer {
 
   factory ServiceLoadBalancer.fromMap(Map<String, dynamic> map) {
     return ServiceLoadBalancer(
-      advancedConfiguration: map['advancedConfiguration'] == null ? null : (ServiceLoadBalancerAdvancedConfiguration.fromMap((map['advancedConfiguration'] as Map).cast<String, dynamic>())).input(),
+      advancedConfiguration: map['advancedConfiguration'] == null ? null : ((ServiceLoadBalancerAdvancedConfiguration.fromMap((map['advancedConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       containerName: (map['containerName'] as String).input(),
       containerPort: (map['containerPort'] as int).input(),
-      elbName: map['elbName'] == null ? null : (map['elbName'] as String).input(),
-      targetGroupArn: map['targetGroupArn'] == null ? null : (map['targetGroupArn'] as String).input(),
+      elbName: map['elbName'] == null ? null : ((map['elbName'] as String).input()).input(),
+      targetGroupArn: map['targetGroupArn'] == null ? null : ((map['targetGroupArn'] as String).input()).input(),
     );
   }
 }

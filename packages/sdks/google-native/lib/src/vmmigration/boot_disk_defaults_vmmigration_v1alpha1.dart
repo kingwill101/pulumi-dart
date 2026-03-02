@@ -44,11 +44,11 @@ class BootDiskDefaultsVmmigrationV1alpha1 {
 
   factory BootDiskDefaultsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return BootDiskDefaultsVmmigrationV1alpha1(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskType: map['diskType'] == null ? null : (BootDiskDefaultsDiskTypeVmmigrationV1alpha1.fromValue(map['diskType'] as String)).input(),
-      encryption: map['encryption'] == null ? null : (EncryptionVmmigrationV1alpha1.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      image: map['image'] == null ? null : (DiskImageDefaultsVmmigrationV1alpha1.fromMap((map['image'] as Map).cast<String, dynamic>())).input(),
+      deviceName: map['deviceName'] == null ? null : (map['deviceName']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskType: map['diskType'] == null ? null : (BootDiskDefaultsDiskTypeVmmigrationV1alpha1.fromValue(map['diskType']! as String)).input(),
+      encryption: map['encryption'] == null ? null : (EncryptionVmmigrationV1alpha1.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      image: map['image'] == null ? null : (DiskImageDefaultsVmmigrationV1alpha1.fromMap((map['image']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

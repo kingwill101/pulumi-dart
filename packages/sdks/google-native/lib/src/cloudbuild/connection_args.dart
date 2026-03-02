@@ -70,16 +70,16 @@ class ConnectionArgs {
 
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
       connectionId: (map['connectionId'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      githubConfig: map['githubConfig'] == null ? null : (GitHubConfig.fromMap((map['githubConfig'] as Map).cast<String, dynamic>())).input(),
-      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromMap((map['githubEnterpriseConfig'] as Map).cast<String, dynamic>())).input(),
-      gitlabConfig: map['gitlabConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2GitLabConfig.fromMap((map['gitlabConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      githubConfig: map['githubConfig'] == null ? null : (GitHubConfig.fromMap((map['githubConfig']! as Map).cast<String, dynamic>())).input(),
+      githubEnterpriseConfig: map['githubEnterpriseConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig.fromMap((map['githubEnterpriseConfig']! as Map).cast<String, dynamic>())).input(),
+      gitlabConfig: map['gitlabConfig'] == null ? null : (GoogleDevtoolsCloudbuildV2GitLabConfig.fromMap((map['gitlabConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

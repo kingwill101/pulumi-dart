@@ -20,7 +20,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSetti
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings(
-      temporalFilterSettings: map['temporalFilterSettings'] == null ? null : (ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap((map['temporalFilterSettings'] as Map).cast<String, dynamic>())).input(),
+      temporalFilterSettings: map['temporalFilterSettings'] == null ? null : ((ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettingsTemporalFilterSettings.fromMap((map['temporalFilterSettings']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -36,8 +36,8 @@ class AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1 {
 
   factory AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1.fromMap(Map<String, dynamic> map) {
     return AuditAnnotationPatchAdmissionregistrationK8sIoV1alpha1(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      valueExpression: map['valueExpression'] == null ? null : (map['valueExpression'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      valueExpression: map['valueExpression'] == null ? null : (map['valueExpression']! as String).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class PortAssociateV2Route {
 
   factory PortAssociateV2Route.fromMap(Map<String, dynamic> map) {
     return PortAssociateV2Route(
-      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId'] as String).input(),
-      localPref: map['localPref'] == null ? null : (map['localPref'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      bgpvpnId: map['bgpvpnId'] == null ? null : (map['bgpvpnId']! as String).input(),
+      localPref: map['localPref'] == null ? null : (map['localPref']! as int).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

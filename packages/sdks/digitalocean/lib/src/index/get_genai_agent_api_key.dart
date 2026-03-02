@@ -20,7 +20,7 @@ class GetGenaiAgentApiKey {
 
   factory GetGenaiAgentApiKey.fromMap(Map<String, dynamic> map) {
     return GetGenaiAgentApiKey(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
     );
   }
 }

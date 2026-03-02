@@ -27,7 +27,7 @@ class ElasticAccountPropertiesResponse {
 
   factory ElasticAccountPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticAccountPropertiesResponse(
-      encryption: map['encryption'] == null ? null : (ElasticEncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (ElasticEncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
     );
   }

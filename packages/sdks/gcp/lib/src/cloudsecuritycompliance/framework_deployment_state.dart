@@ -132,21 +132,21 @@ class FrameworkDeploymentState {
 
   factory FrameworkDeploymentState.fromMap(Map<String, dynamic> map) {
     return FrameworkDeploymentState(
-      cloudControlDeploymentReferences: map['cloudControlDeploymentReferences'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(map['cloudControlDeploymentReferences'], (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      cloudControlMetadatas: map['cloudControlMetadatas'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(map['cloudControlMetadatas'], (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      computedTargetResource: map['computedTargetResource'] == null ? null : (map['computedTargetResource'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      framework: map['framework'] == null ? null : (FrameworkDeploymentFramework.fromMap((map['framework'] as Map).cast<String, dynamic>())).input(),
-      frameworkDeploymentId: map['frameworkDeploymentId'] == null ? null : (map['frameworkDeploymentId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organization: map['organization'] == null ? null : (map['organization'] as String).input(),
-      targetResourceConfig: map['targetResourceConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfig.fromMap((map['targetResourceConfig'] as Map).cast<String, dynamic>())).input(),
-      targetResourceDisplayName: map['targetResourceDisplayName'] == null ? null : (map['targetResourceDisplayName'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      cloudControlDeploymentReferences: map['cloudControlDeploymentReferences'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(map['cloudControlDeploymentReferences']!, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cloudControlMetadatas: map['cloudControlMetadatas'] == null ? null : (pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(map['cloudControlMetadatas']!, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      computedTargetResource: map['computedTargetResource'] == null ? null : (map['computedTargetResource']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deploymentState: map['deploymentState'] == null ? null : (map['deploymentState']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      framework: map['framework'] == null ? null : (FrameworkDeploymentFramework.fromMap((map['framework']! as Map).cast<String, dynamic>())).input(),
+      frameworkDeploymentId: map['frameworkDeploymentId'] == null ? null : (map['frameworkDeploymentId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      organization: map['organization'] == null ? null : (map['organization']! as String).input(),
+      targetResourceConfig: map['targetResourceConfig'] == null ? null : (FrameworkDeploymentTargetResourceConfig.fromMap((map['targetResourceConfig']! as Map).cast<String, dynamic>())).input(),
+      targetResourceDisplayName: map['targetResourceDisplayName'] == null ? null : (map['targetResourceDisplayName']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class TimeoutConfiguration {
 
   factory TimeoutConfiguration.fromMap(Map<String, dynamic> map) {
     return TimeoutConfiguration(
-      idleTimeoutSeconds: map['idleTimeoutSeconds'] == null ? null : (map['idleTimeoutSeconds'] as int).input(),
-      perRequestTimeoutSeconds: map['perRequestTimeoutSeconds'] == null ? null : (map['perRequestTimeoutSeconds'] as int).input(),
+      idleTimeoutSeconds: map['idleTimeoutSeconds'] == null ? null : (map['idleTimeoutSeconds']! as int).input(),
+      perRequestTimeoutSeconds: map['perRequestTimeoutSeconds'] == null ? null : (map['perRequestTimeoutSeconds']! as int).input(),
     );
   }
 }

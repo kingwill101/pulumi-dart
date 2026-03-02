@@ -29,7 +29,7 @@ class GetContainersArgs {
 
   factory GetContainersArgs.fromMap(Map<String, dynamic> map) {
     return GetContainersArgs(
-      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix'] as String).input(),
+      namePrefix: map['namePrefix'] == null ? null : (map['namePrefix']! as String).input(),
       storageAccountId: (map['storageAccountId'] as String).input(),
     );
   }

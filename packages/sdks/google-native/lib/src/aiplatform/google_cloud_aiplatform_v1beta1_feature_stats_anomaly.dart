@@ -51,13 +51,13 @@ class GoogleCloudAiplatformV1beta1FeatureStatsAnomaly {
 
   factory GoogleCloudAiplatformV1beta1FeatureStatsAnomaly.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1FeatureStatsAnomaly(
-      anomalyDetectionThreshold: map['anomalyDetectionThreshold'] == null ? null : (map['anomalyDetectionThreshold'] as double).input(),
-      anomalyUri: map['anomalyUri'] == null ? null : (map['anomalyUri'] as String).input(),
-      distributionDeviation: map['distributionDeviation'] == null ? null : (map['distributionDeviation'] as double).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      score: map['score'] == null ? null : (map['score'] as double).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      statsUri: map['statsUri'] == null ? null : (map['statsUri'] as String).input(),
+      anomalyDetectionThreshold: map['anomalyDetectionThreshold'] == null ? null : (map['anomalyDetectionThreshold']! as double).input(),
+      anomalyUri: map['anomalyUri'] == null ? null : (map['anomalyUri']! as String).input(),
+      distributionDeviation: map['distributionDeviation'] == null ? null : (map['distributionDeviation']! as double).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      score: map['score'] == null ? null : (map['score']! as double).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      statsUri: map['statsUri'] == null ? null : (map['statsUri']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class WorkloadWorkloadPropertyFunctionalType {
 
   factory WorkloadWorkloadPropertyFunctionalType.fromMap(Map<String, dynamic> map) {
     return WorkloadWorkloadPropertyFunctionalType(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

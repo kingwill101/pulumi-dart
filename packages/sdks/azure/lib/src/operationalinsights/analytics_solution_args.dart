@@ -55,11 +55,11 @@ class AnalyticsSolutionArgs {
 
   factory AnalyticsSolutionArgs.fromMap(Map<String, dynamic> map) {
     return AnalyticsSolutionArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       plan: (AnalyticsSolutionPlan.fromMap((map['plan'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       solutionName: (map['solutionName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
       workspaceResourceId: (map['workspaceResourceId'] as String).input(),
     );

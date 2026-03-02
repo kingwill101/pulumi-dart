@@ -36,10 +36,10 @@ class RoleAssociationState {
 
   factory RoleAssociationState.fromMap(Map<String, dynamic> map) {
     return RoleAssociationState(
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : (map['dbInstanceIdentifier'] as String).input(),
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : ((map['dbInstanceIdentifier'] as String).input()).input(),
+      featureName: map['featureName'] == null ? null : ((map['featureName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

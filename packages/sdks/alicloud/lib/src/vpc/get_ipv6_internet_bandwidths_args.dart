@@ -44,11 +44,11 @@ class GetIpv6InternetBandwidthsArgs {
 
   factory GetIpv6InternetBandwidthsArgs.fromMap(Map<String, dynamic> map) {
     return GetIpv6InternetBandwidthsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId'] as String).input(),
-      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : (map['ipv6InternetBandwidthId'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      ipv6AddressId: map['ipv6AddressId'] == null ? null : (map['ipv6AddressId']! as String).input(),
+      ipv6InternetBandwidthId: map['ipv6InternetBandwidthId'] == null ? null : (map['ipv6InternetBandwidthId']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

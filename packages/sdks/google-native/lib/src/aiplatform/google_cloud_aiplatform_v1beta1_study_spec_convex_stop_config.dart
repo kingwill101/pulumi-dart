@@ -41,11 +41,11 @@ class GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig {
 
   factory GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1StudySpecConvexStopConfig(
-      autoregressiveOrder: map['autoregressiveOrder'] == null ? null : (map['autoregressiveOrder'] as String).input(),
-      learningRateParameterName: map['learningRateParameterName'] == null ? null : (map['learningRateParameterName'] as String).input(),
-      maxNumSteps: map['maxNumSteps'] == null ? null : (map['maxNumSteps'] as String).input(),
-      minNumSteps: map['minNumSteps'] == null ? null : (map['minNumSteps'] as String).input(),
-      useSeconds: map['useSeconds'] == null ? null : (map['useSeconds'] as bool).input(),
+      autoregressiveOrder: map['autoregressiveOrder'] == null ? null : (map['autoregressiveOrder']! as String).input(),
+      learningRateParameterName: map['learningRateParameterName'] == null ? null : (map['learningRateParameterName']! as String).input(),
+      maxNumSteps: map['maxNumSteps'] == null ? null : (map['maxNumSteps']! as String).input(),
+      minNumSteps: map['minNumSteps'] == null ? null : (map['minNumSteps']! as String).input(),
+      useSeconds: map['useSeconds'] == null ? null : (map['useSeconds']! as bool).input(),
     );
   }
 }

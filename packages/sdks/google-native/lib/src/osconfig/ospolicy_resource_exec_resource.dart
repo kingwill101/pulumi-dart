@@ -27,7 +27,7 @@ class OSPolicyResourceExecResource {
 
   factory OSPolicyResourceExecResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceExecResource(
-      enforce: map['enforce'] == null ? null : (OSPolicyResourceExecResourceExec.fromMap((map['enforce'] as Map).cast<String, dynamic>())).input(),
+      enforce: map['enforce'] == null ? null : (OSPolicyResourceExecResourceExec.fromMap((map['enforce']! as Map).cast<String, dynamic>())).input(),
       validate: (OSPolicyResourceExecResourceExec.fromMap((map['validate'] as Map).cast<String, dynamic>())).input(),
     );
   }

@@ -25,8 +25,8 @@ class WindowsWebAppSlotSiteConfigCors {
 
   factory WindowsWebAppSlotSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotSiteConfigCors(
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
-      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials']! as bool).input(),
     );
   }
 }

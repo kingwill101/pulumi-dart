@@ -43,9 +43,9 @@ class VpnGatewayBgpSettings {
   factory VpnGatewayBgpSettings.fromMap(Map<String, dynamic> map) {
     return VpnGatewayBgpSettings(
       asn: (map['asn'] as int).input(),
-      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress'] as String).input(),
-      instance0BgpPeeringAddress: map['instance0BgpPeeringAddress'] == null ? null : (VpnGatewayBgpSettingsInstance0BgpPeeringAddress.fromMap((map['instance0BgpPeeringAddress'] as Map).cast<String, dynamic>())).input(),
-      instance1BgpPeeringAddress: map['instance1BgpPeeringAddress'] == null ? null : (VpnGatewayBgpSettingsInstance1BgpPeeringAddress.fromMap((map['instance1BgpPeeringAddress'] as Map).cast<String, dynamic>())).input(),
+      bgpPeeringAddress: map['bgpPeeringAddress'] == null ? null : (map['bgpPeeringAddress']! as String).input(),
+      instance0BgpPeeringAddress: map['instance0BgpPeeringAddress'] == null ? null : (VpnGatewayBgpSettingsInstance0BgpPeeringAddress.fromMap((map['instance0BgpPeeringAddress']! as Map).cast<String, dynamic>())).input(),
+      instance1BgpPeeringAddress: map['instance1BgpPeeringAddress'] == null ? null : (VpnGatewayBgpSettingsInstance1BgpPeeringAddress.fromMap((map['instance1BgpPeeringAddress']! as Map).cast<String, dynamic>())).input(),
       peerWeight: (map['peerWeight'] as int).input(),
     );
   }

@@ -52,10 +52,10 @@ class ClusterNetworking {
   factory ClusterNetworking.fromMap(Map<String, dynamic> map) {
     return ClusterNetworking(
       clusterIpv4CidrBlocks: ((map['clusterIpv4CidrBlocks'] as List).cast<String>()).input(),
-      clusterIpv6CidrBlocks: map['clusterIpv6CidrBlocks'] == null ? null : ((map['clusterIpv6CidrBlocks'] as List).cast<String>()).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
+      clusterIpv6CidrBlocks: map['clusterIpv6CidrBlocks'] == null ? null : ((map['clusterIpv6CidrBlocks']! as List).cast<String>()).input(),
+      networkType: map['networkType'] == null ? null : (map['networkType']! as String).input(),
       servicesIpv4CidrBlocks: ((map['servicesIpv4CidrBlocks'] as List).cast<String>()).input(),
-      servicesIpv6CidrBlocks: map['servicesIpv6CidrBlocks'] == null ? null : ((map['servicesIpv6CidrBlocks'] as List).cast<String>()).input(),
+      servicesIpv6CidrBlocks: map['servicesIpv6CidrBlocks'] == null ? null : ((map['servicesIpv6CidrBlocks']! as List).cast<String>()).input(),
     );
   }
 }

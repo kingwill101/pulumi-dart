@@ -41,11 +41,11 @@ class RunbookDraftResponse {
 
   factory RunbookDraftResponse.fromMap(Map<String, dynamic> map) {
     return RunbookDraftResponse(
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      inEdit: map['inEdit'] == null ? null : (map['inEdit'] as bool).input(),
-      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime'] as String).input(),
-      outputTypes: map['outputTypes'] == null ? null : ((map['outputTypes'] as List).cast<String>()).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<RunbookParameterResponse>(map['parameters'], (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationTime: map['creationTime'] == null ? null : (map['creationTime']! as String).input(),
+      inEdit: map['inEdit'] == null ? null : (map['inEdit']! as bool).input(),
+      lastModifiedTime: map['lastModifiedTime'] == null ? null : (map['lastModifiedTime']! as String).input(),
+      outputTypes: map['outputTypes'] == null ? null : ((map['outputTypes']! as List).cast<String>()).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<RunbookParameterResponse>(map['parameters']!, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

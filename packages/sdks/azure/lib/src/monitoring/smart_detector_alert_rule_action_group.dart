@@ -30,9 +30,9 @@ class SmartDetectorAlertRuleActionGroup {
 
   factory SmartDetectorAlertRuleActionGroup.fromMap(Map<String, dynamic> map) {
     return SmartDetectorAlertRuleActionGroup(
-      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject'] as String).input(),
+      emailSubject: map['emailSubject'] == null ? null : (map['emailSubject']! as String).input(),
       ids: ((map['ids'] as List).cast<String>()).input(),
-      webhookPayload: map['webhookPayload'] == null ? null : (map['webhookPayload'] as String).input(),
+      webhookPayload: map['webhookPayload'] == null ? null : (map['webhookPayload']! as String).input(),
     );
   }
 }

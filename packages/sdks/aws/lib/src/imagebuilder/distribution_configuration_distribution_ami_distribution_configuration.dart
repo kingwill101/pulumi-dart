@@ -46,12 +46,12 @@ class DistributionConfigurationDistributionAmiDistributionConfiguration {
 
   factory DistributionConfigurationDistributionAmiDistributionConfiguration.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistributionAmiDistributionConfiguration(
-      amiTags: map['amiTags'] == null ? null : ((map['amiTags'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      launchPermission: map['launchPermission'] == null ? null : (DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap((map['launchPermission'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      targetAccountIds: map['targetAccountIds'] == null ? null : ((map['targetAccountIds'] as List).cast<String>()).input(),
+      amiTags: map['amiTags'] == null ? null : (((map['amiTags'] as Map).cast<String, String>()).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      launchPermission: map['launchPermission'] == null ? null : ((DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission.fromMap((map['launchPermission']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      targetAccountIds: map['targetAccountIds'] == null ? null : (((map['targetAccountIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

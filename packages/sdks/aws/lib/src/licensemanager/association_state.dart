@@ -31,9 +31,9 @@ class AssociationState {
 
   factory AssociationState.fromMap(Map<String, dynamic> map) {
     return AssociationState(
-      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : (map['licenseConfigurationArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceArn: map['resourceArn'] == null ? null : (map['resourceArn'] as String).input(),
+      licenseConfigurationArn: map['licenseConfigurationArn'] == null ? null : ((map['licenseConfigurationArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceArn: map['resourceArn'] == null ? null : ((map['resourceArn'] as String).input()).input(),
     );
   }
 }

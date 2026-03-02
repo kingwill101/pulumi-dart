@@ -26,8 +26,8 @@ class IosXcTest {
 
   factory IosXcTest.fromMap(Map<String, dynamic> map) {
     return IosXcTest(
-      bundleId: map['bundleId'] == null ? null : (map['bundleId'] as String).input(),
-      xcodeVersion: map['xcodeVersion'] == null ? null : (map['xcodeVersion'] as String).input(),
+      bundleId: map['bundleId'] == null ? null : (map['bundleId']! as String).input(),
+      xcodeVersion: map['xcodeVersion'] == null ? null : (map['xcodeVersion']! as String).input(),
     );
   }
 }

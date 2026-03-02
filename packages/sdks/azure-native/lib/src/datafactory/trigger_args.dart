@@ -43,7 +43,7 @@ class TriggerArgs {
       factoryName: (map['factoryName'] as String).input(),
       properties: (BlobEventsTrigger.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      triggerName: map['triggerName'] == null ? null : (map['triggerName'] as String).input(),
+      triggerName: map['triggerName'] == null ? null : (map['triggerName']! as String).input(),
     );
   }
 }

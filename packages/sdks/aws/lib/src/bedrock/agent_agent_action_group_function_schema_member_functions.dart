@@ -21,7 +21,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctions {
 
   factory AgentAgentActionGroupFunctionSchemaMemberFunctions.fromMap(Map<String, dynamic> map) {
     return AgentAgentActionGroupFunctionSchemaMemberFunctions(
-      functions: map['functions'] == null ? null : (pulumi.Input.decodeList<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction>(map['functions'], (value) => AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      functions: map['functions'] == null ? null : ((pulumi.Input.decodeList<AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction>(map['functions']!, (value) => AgentAgentActionGroupFunctionSchemaMemberFunctionsFunction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

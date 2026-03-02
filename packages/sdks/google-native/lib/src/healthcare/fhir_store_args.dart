@@ -97,21 +97,21 @@ class FhirStoreArgs {
 
   factory FhirStoreArgs.fromMap(Map<String, dynamic> map) {
     return FhirStoreArgs(
-      complexDataTypeReferenceParsing: map['complexDataTypeReferenceParsing'] == null ? null : (FhirStoreComplexDataTypeReferenceParsing.fromValue(map['complexDataTypeReferenceParsing'] as String)).input(),
+      complexDataTypeReferenceParsing: map['complexDataTypeReferenceParsing'] == null ? null : (FhirStoreComplexDataTypeReferenceParsing.fromValue(map['complexDataTypeReferenceParsing']! as String)).input(),
       datasetId: (map['datasetId'] as String).input(),
-      defaultSearchHandlingStrict: map['defaultSearchHandlingStrict'] == null ? null : (map['defaultSearchHandlingStrict'] as bool).input(),
-      disableReferentialIntegrity: map['disableReferentialIntegrity'] == null ? null : (map['disableReferentialIntegrity'] as bool).input(),
-      disableResourceVersioning: map['disableResourceVersioning'] == null ? null : (map['disableResourceVersioning'] as bool).input(),
-      enableUpdateCreate: map['enableUpdateCreate'] == null ? null : (map['enableUpdateCreate'] as bool).input(),
-      fhirStoreId: map['fhirStoreId'] == null ? null : (map['fhirStoreId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>())).input(),
-      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<FhirNotificationConfig>(map['notificationConfigs'], (value) => FhirNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<StreamConfig>(map['streamConfigs'], (value) => StreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      validationConfig: map['validationConfig'] == null ? null : (ValidationConfig.fromMap((map['validationConfig'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (FhirStoreVersion.fromValue(map['version'] as String)).input(),
+      defaultSearchHandlingStrict: map['defaultSearchHandlingStrict'] == null ? null : (map['defaultSearchHandlingStrict']! as bool).input(),
+      disableReferentialIntegrity: map['disableReferentialIntegrity'] == null ? null : (map['disableReferentialIntegrity']! as bool).input(),
+      disableResourceVersioning: map['disableResourceVersioning'] == null ? null : (map['disableResourceVersioning']! as bool).input(),
+      enableUpdateCreate: map['enableUpdateCreate'] == null ? null : (map['enableUpdateCreate']! as bool).input(),
+      fhirStoreId: map['fhirStoreId'] == null ? null : (map['fhirStoreId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      notificationConfig: map['notificationConfig'] == null ? null : (NotificationConfig.fromMap((map['notificationConfig']! as Map).cast<String, dynamic>())).input(),
+      notificationConfigs: map['notificationConfigs'] == null ? null : (pulumi.Input.decodeList<FhirNotificationConfig>(map['notificationConfigs']!, (value) => FhirNotificationConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      streamConfigs: map['streamConfigs'] == null ? null : (pulumi.Input.decodeList<StreamConfig>(map['streamConfigs']!, (value) => StreamConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      validationConfig: map['validationConfig'] == null ? null : (ValidationConfig.fromMap((map['validationConfig']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (FhirStoreVersion.fromValue(map['version']! as String)).input(),
     );
   }
 }

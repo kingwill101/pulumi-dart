@@ -32,9 +32,9 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration {
 
   factory JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration.fromMap(Map<String, dynamic> map) {
     return JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfiguration(
-      cloudWatchMonitoringConfiguration: map['cloudWatchMonitoringConfiguration'] == null ? null : (JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap((map['cloudWatchMonitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
-      persistentAppUi: map['persistentAppUi'] == null ? null : (map['persistentAppUi'] as String).input(),
-      s3MonitoringConfiguration: map['s3MonitoringConfiguration'] == null ? null : (JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration.fromMap((map['s3MonitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
+      cloudWatchMonitoringConfiguration: map['cloudWatchMonitoringConfiguration'] == null ? null : ((JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration.fromMap((map['cloudWatchMonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      persistentAppUi: map['persistentAppUi'] == null ? null : ((map['persistentAppUi'] as String).input()).input(),
+      s3MonitoringConfiguration: map['s3MonitoringConfiguration'] == null ? null : ((JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration.fromMap((map['s3MonitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

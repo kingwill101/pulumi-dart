@@ -37,7 +37,7 @@ class NotificationPropertiesResponse {
   factory NotificationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NotificationPropertiesResponse(
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
       language: (map['language'] as String).input(),
       type: (map['type'] as String).input(),
     );

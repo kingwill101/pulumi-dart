@@ -27,7 +27,7 @@ class ActionGroupResponse {
   factory ActionGroupResponse.fromMap(Map<String, dynamic> map) {
     return ActionGroupResponse(
       actionGroupId: (map['actionGroupId'] as String).input(),
-      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties'] as Map).cast<String, String>()).input(),
+      webhookProperties: map['webhookProperties'] == null ? null : ((map['webhookProperties']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class SourceConfigurationResponse {
   factory SourceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigurationResponse(
       configType: (map['configType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : (map['keyVaultReferenceIdentity']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

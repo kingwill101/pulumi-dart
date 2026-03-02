@@ -57,14 +57,14 @@ class ServiceSoftwareOptions {
 
   factory ServiceSoftwareOptions.fromMap(Map<String, dynamic> map) {
     return ServiceSoftwareOptions(
-      automatedUpdateDate: map['automatedUpdateDate'] == null ? null : (map['automatedUpdateDate'] as String).input(),
-      cancellable: map['cancellable'] == null ? null : (map['cancellable'] as bool).input(),
-      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      newVersion: map['newVersion'] == null ? null : (map['newVersion'] as String).input(),
-      optionalDeployment: map['optionalDeployment'] == null ? null : (map['optionalDeployment'] as bool).input(),
-      updateAvailable: map['updateAvailable'] == null ? null : (map['updateAvailable'] as bool).input(),
-      updateStatus: map['updateStatus'] == null ? null : (DeploymentStatusEnumValue.fromMap((map['updateStatus'] as Map).cast<String, dynamic>())).input(),
+      automatedUpdateDate: map['automatedUpdateDate'] == null ? null : (map['automatedUpdateDate']! as String).input(),
+      cancellable: map['cancellable'] == null ? null : (map['cancellable']! as bool).input(),
+      currentVersion: map['currentVersion'] == null ? null : (map['currentVersion']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      newVersion: map['newVersion'] == null ? null : (map['newVersion']! as String).input(),
+      optionalDeployment: map['optionalDeployment'] == null ? null : (map['optionalDeployment']! as bool).input(),
+      updateAvailable: map['updateAvailable'] == null ? null : (map['updateAvailable']! as bool).input(),
+      updateStatus: map['updateStatus'] == null ? null : (DeploymentStatusEnumValue.fromMap((map['updateStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

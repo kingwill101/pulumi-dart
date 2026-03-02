@@ -21,7 +21,7 @@ class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice {
 
   factory FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice.fromMap(Map<String, dynamic> map) {
     return FlowDefinitionHumanLoopConfigPublicWorkforceTaskPrice(
-      amountInUsd: map['amountInUsd'] == null ? null : (FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd.fromMap((map['amountInUsd'] as Map).cast<String, dynamic>())).input(),
+      amountInUsd: map['amountInUsd'] == null ? null : ((FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd.fromMap((map['amountInUsd']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

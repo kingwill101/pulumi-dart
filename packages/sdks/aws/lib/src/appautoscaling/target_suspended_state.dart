@@ -30,9 +30,9 @@ class TargetSuspendedState {
 
   factory TargetSuspendedState.fromMap(Map<String, dynamic> map) {
     return TargetSuspendedState(
-      dynamicScalingInSuspended: map['dynamicScalingInSuspended'] == null ? null : (map['dynamicScalingInSuspended'] as bool).input(),
-      dynamicScalingOutSuspended: map['dynamicScalingOutSuspended'] == null ? null : (map['dynamicScalingOutSuspended'] as bool).input(),
-      scheduledScalingSuspended: map['scheduledScalingSuspended'] == null ? null : (map['scheduledScalingSuspended'] as bool).input(),
+      dynamicScalingInSuspended: map['dynamicScalingInSuspended'] == null ? null : ((map['dynamicScalingInSuspended'] as bool).input()).input(),
+      dynamicScalingOutSuspended: map['dynamicScalingOutSuspended'] == null ? null : ((map['dynamicScalingOutSuspended'] as bool).input()).input(),
+      scheduledScalingSuspended: map['scheduledScalingSuspended'] == null ? null : ((map['scheduledScalingSuspended'] as bool).input()).input(),
     );
   }
 }

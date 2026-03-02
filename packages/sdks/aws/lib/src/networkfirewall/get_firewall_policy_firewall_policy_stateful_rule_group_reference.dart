@@ -33,7 +33,7 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   factory GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(Map<String, dynamic> map) {
     return GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference(
       deepThreatInspection: (map['deepThreatInspection'] as String).input(),
-      overrides: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>(map['overrides'], (value) => GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      overrides: (pulumi.Input.decodeList<GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride>(map['overrides']!, (value) => GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       priority: (map['priority'] as int).input(),
       resourceArn: (map['resourceArn'] as String).input(),
     );

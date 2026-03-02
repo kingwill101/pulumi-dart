@@ -44,7 +44,7 @@ class GetLocalGatewayVirtualInterfaceGroupsResult {
 
   factory GetLocalGatewayVirtualInterfaceGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetLocalGatewayVirtualInterfaceGroupsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupsFilter>(map['filters'], (value) => GetLocalGatewayVirtualInterfaceGroupsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceGroupsFilter>(map['filters']!, (value) => GetLocalGatewayVirtualInterfaceGroupsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       localGatewayVirtualInterfaceIds: (map['localGatewayVirtualInterfaceIds'] as List).cast<String>(),

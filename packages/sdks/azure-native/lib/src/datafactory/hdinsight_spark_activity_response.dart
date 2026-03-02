@@ -106,23 +106,23 @@ class HDInsightSparkActivityResponse {
 
   factory HDInsightSparkActivityResponse.fromMap(Map<String, dynamic> map) {
     return HDInsightSparkActivityResponse(
-      arguments: map['arguments'] == null ? null : ((map['arguments'] as List).cast<dynamic>()).input(),
-      className: map['className'] == null ? null : (map['className'] as String).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      arguments: map['arguments'] == null ? null : ((map['arguments']! as List).cast<dynamic>()).input(),
+      className: map['className'] == null ? null : (map['className']! as String).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn']!, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       entryFilePath: (map['entryFilePath']).input(),
-      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo'] as String).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      getDebugInfo: map['getDebugInfo'] == null ? null : (map['getDebugInfo']! as String).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      proxyUser: map['proxyUser'] == null ? null : (map['proxyUser']).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      proxyUser: map['proxyUser'] == null ? null : (map['proxyUser']!).input(),
       rootPath: (map['rootPath']).input(),
-      sparkConfig: map['sparkConfig'] == null ? null : ((map['sparkConfig'] as Map).cast<String, dynamic>()).input(),
-      sparkJobLinkedService: map['sparkJobLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['sparkJobLinkedService'] as Map).cast<String, dynamic>())).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      sparkConfig: map['sparkConfig'] == null ? null : ((map['sparkConfig']! as Map).cast<String, dynamic>()).input(),
+      sparkJobLinkedService: map['sparkJobLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['sparkJobLinkedService']! as Map).cast<String, dynamic>())).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties']!, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class GoogleCloudDiscoveryengineV1betaConversationMessage {
 
   factory GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1betaConversationMessage(
-      reply: map['reply'] == null ? null : (GoogleCloudDiscoveryengineV1betaReply.fromMap((map['reply'] as Map).cast<String, dynamic>())).input(),
-      userInput: map['userInput'] == null ? null : (GoogleCloudDiscoveryengineV1betaTextInput.fromMap((map['userInput'] as Map).cast<String, dynamic>())).input(),
+      reply: map['reply'] == null ? null : (GoogleCloudDiscoveryengineV1betaReply.fromMap((map['reply']! as Map).cast<String, dynamic>())).input(),
+      userInput: map['userInput'] == null ? null : (GoogleCloudDiscoveryengineV1betaTextInput.fromMap((map['userInput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

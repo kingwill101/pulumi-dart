@@ -41,8 +41,8 @@ class GetRepositoriesResult {
     return GetRepositoriesResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      nameFilter: map['nameFilter'] == null ? null : map['nameFilter'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      nameFilter: map['nameFilter'] == null ? null : map['nameFilter']! as String,
+      project: map['project'] == null ? null : map['project']! as String,
       repositories: pulumi.Input.decodeList<GetRepositoriesRepository>(map['repositories'], (value) => GetRepositoriesRepository.fromMap((value as Map).cast<String, dynamic>())),
     );
   }

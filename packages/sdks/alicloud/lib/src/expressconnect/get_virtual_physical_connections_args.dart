@@ -74,16 +74,16 @@ class GetVirtualPhysicalConnectionsArgs {
 
   factory GetVirtualPhysicalConnectionsArgs.fromMap(Map<String, dynamic> map) {
     return GetVirtualPhysicalConnectionsArgs(
-      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      isConfirmed: map['isConfirmed'] == null ? null : (map['isConfirmed'] as bool).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      parentPhysicalConnectionId: map['parentPhysicalConnectionId'] == null ? null : (map['parentPhysicalConnectionId'] as String).input(),
-      virtualPhysicalConnectionIds: map['virtualPhysicalConnectionIds'] == null ? null : ((map['virtualPhysicalConnectionIds'] as List).cast<String>()).input(),
-      virtualPhysicalConnectionStatus: map['virtualPhysicalConnectionStatus'] == null ? null : (map['virtualPhysicalConnectionStatus'] as String).input(),
-      vlanIds: map['vlanIds'] == null ? null : ((map['vlanIds'] as List).cast<int>()).input(),
-      vpconnAliUid: map['vpconnAliUid'] == null ? null : (map['vpconnAliUid'] as String).input(),
+      businessStatus: map['businessStatus'] == null ? null : (map['businessStatus']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      isConfirmed: map['isConfirmed'] == null ? null : (map['isConfirmed']! as bool).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      parentPhysicalConnectionId: map['parentPhysicalConnectionId'] == null ? null : (map['parentPhysicalConnectionId']! as String).input(),
+      virtualPhysicalConnectionIds: map['virtualPhysicalConnectionIds'] == null ? null : ((map['virtualPhysicalConnectionIds']! as List).cast<String>()).input(),
+      virtualPhysicalConnectionStatus: map['virtualPhysicalConnectionStatus'] == null ? null : (map['virtualPhysicalConnectionStatus']! as String).input(),
+      vlanIds: map['vlanIds'] == null ? null : ((map['vlanIds']! as List).cast<int>()).input(),
+      vpconnAliUid: map['vpconnAliUid'] == null ? null : (map['vpconnAliUid']! as String).input(),
     );
   }
 }

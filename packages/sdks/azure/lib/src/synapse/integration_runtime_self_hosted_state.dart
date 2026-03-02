@@ -41,11 +41,11 @@ class IntegrationRuntimeSelfHostedState {
 
   factory IntegrationRuntimeSelfHostedState.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSelfHostedState(
-      authorizationKeyPrimary: map['authorizationKeyPrimary'] == null ? null : (map['authorizationKeyPrimary'] as String).input(),
-      authorizationKeySecondary: map['authorizationKeySecondary'] == null ? null : (map['authorizationKeySecondary'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId'] as String).input(),
+      authorizationKeyPrimary: map['authorizationKeyPrimary'] == null ? null : (map['authorizationKeyPrimary']! as String).input(),
+      authorizationKeySecondary: map['authorizationKeySecondary'] == null ? null : (map['authorizationKeySecondary']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      synapseWorkspaceId: map['synapseWorkspaceId'] == null ? null : (map['synapseWorkspaceId']! as String).input(),
     );
   }
 }

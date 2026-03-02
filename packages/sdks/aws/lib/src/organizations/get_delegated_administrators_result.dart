@@ -31,7 +31,7 @@ class GetDelegatedAdministratorsResult {
 
   factory GetDelegatedAdministratorsResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedAdministratorsResult(
-      delegatedAdministrators: pulumi.Input.decodeList<GetDelegatedAdministratorsDelegatedAdministrator>(map['delegatedAdministrators'], (value) => GetDelegatedAdministratorsDelegatedAdministrator.fromMap((value as Map).cast<String, dynamic>())),
+      delegatedAdministrators: pulumi.Input.decodeList<GetDelegatedAdministratorsDelegatedAdministrator>(map['delegatedAdministrators']!, (value) => GetDelegatedAdministratorsDelegatedAdministrator.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       servicePrincipal: map['servicePrincipal'] == null ? null : map['servicePrincipal'] as String,
     );

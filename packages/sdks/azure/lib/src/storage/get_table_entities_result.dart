@@ -42,7 +42,7 @@ class GetTableEntitiesResult {
       filter: map['filter'] as String,
       id: map['id'] as String,
       items: pulumi.Input.decodeList<GetTableEntitiesItem>(map['items'], (value) => GetTableEntitiesItem.fromMap((value as Map).cast<String, dynamic>())),
-      selects: map['selects'] == null ? null : (map['selects'] as List).cast<String>(),
+      selects: map['selects'] == null ? null : (map['selects']! as List).cast<String>(),
       storageTableId: map['storageTableId'] as String,
     );
   }

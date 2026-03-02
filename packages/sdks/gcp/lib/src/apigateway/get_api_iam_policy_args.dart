@@ -31,7 +31,7 @@ class GetApiIamPolicyArgs {
   factory GetApiIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetApiIamPolicyArgs(
       api: (map['api'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

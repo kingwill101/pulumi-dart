@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2RecordSuppression {
 
   factory GooglePrivacyDlpV2RecordSuppression.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordSuppression(
-      condition: map['condition'] == null ? null : (GooglePrivacyDlpV2RecordCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (GooglePrivacyDlpV2RecordCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class AlertRuleAnomalyDuplicateRequiredDataConnector {
 
   factory AlertRuleAnomalyDuplicateRequiredDataConnector.fromMap(Map<String, dynamic> map) {
     return AlertRuleAnomalyDuplicateRequiredDataConnector(
-      connectorId: map['connectorId'] == null ? null : (map['connectorId'] as String).input(),
-      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes'] as List).cast<String>()).input(),
+      connectorId: map['connectorId'] == null ? null : (map['connectorId']! as String).input(),
+      dataTypes: map['dataTypes'] == null ? null : ((map['dataTypes']! as List).cast<String>()).input(),
     );
   }
 }

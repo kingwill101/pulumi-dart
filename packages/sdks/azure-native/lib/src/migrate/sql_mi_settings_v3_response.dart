@@ -26,8 +26,8 @@ class SqlMiSettingsV3Response {
 
   factory SqlMiSettingsV3Response.fromMap(Map<String, dynamic> map) {
     return SqlMiSettingsV3Response(
-      azureSqlInstanceType: map['azureSqlInstanceType'] == null ? null : (map['azureSqlInstanceType'] as String).input(),
-      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier'] as String).input(),
+      azureSqlInstanceType: map['azureSqlInstanceType'] == null ? null : (map['azureSqlInstanceType']! as String).input(),
+      azureSqlServiceTier: map['azureSqlServiceTier'] == null ? null : (map['azureSqlServiceTier']! as String).input(),
     );
   }
 }

@@ -46,8 +46,8 @@ class GetBillingHubServiceUsageArgs {
   factory GetBillingHubServiceUsageArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceUsageArgs(
       endTimeStamp: (map['endTimeStamp'] as String).input(),
-      pageIndex: map['pageIndex'] == null ? null : (map['pageIndex'] as int).input(),
-      pageSize: map['pageSize'] == null ? null : (map['pageSize'] as int).input(),
+      pageIndex: map['pageIndex'] == null ? null : (map['pageIndex']! as int).input(),
+      pageSize: map['pageSize'] == null ? null : (map['pageSize']! as int).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       startTimeStamp: (map['startTimeStamp'] as String).input(),
       testBaseAccountName: (map['testBaseAccountName'] as String).input(),

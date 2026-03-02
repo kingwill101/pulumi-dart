@@ -31,8 +31,8 @@ class AgentDataSourceDataSourceConfigurationS3Configuration {
   factory AgentDataSourceDataSourceConfigurationS3Configuration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationS3Configuration(
       bucketArn: (map['bucketArn'] as String).input(),
-      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : (map['bucketOwnerAccountId'] as String).input(),
-      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : ((map['inclusionPrefixes'] as List).cast<String>()).input(),
+      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : ((map['bucketOwnerAccountId'] as String).input()).input(),
+      inclusionPrefixes: map['inclusionPrefixes'] == null ? null : (((map['inclusionPrefixes'] as List).cast<String>()).input()).input(),
     );
   }
 }

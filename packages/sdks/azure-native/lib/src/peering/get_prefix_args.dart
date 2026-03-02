@@ -39,7 +39,7 @@ class GetPrefixArgs {
 
   factory GetPrefixArgs.fromMap(Map<String, dynamic> map) {
     return GetPrefixArgs(
-      expand: map['expand'] == null ? null : (map['expand'] as String).input(),
+      expand: map['expand'] == null ? null : (map['expand']! as String).input(),
       peeringServiceName: (map['peeringServiceName'] as String).input(),
       prefixName: (map['prefixName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

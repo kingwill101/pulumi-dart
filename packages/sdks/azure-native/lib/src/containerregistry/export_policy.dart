@@ -21,7 +21,7 @@ class ExportPolicy {
 
   factory ExportPolicy.fromMap(Map<String, dynamic> map) {
     return ExportPolicy(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

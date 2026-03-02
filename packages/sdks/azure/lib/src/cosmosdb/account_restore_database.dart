@@ -25,7 +25,7 @@ class AccountRestoreDatabase {
 
   factory AccountRestoreDatabase.fromMap(Map<String, dynamic> map) {
     return AccountRestoreDatabase(
-      collectionNames: map['collectionNames'] == null ? null : ((map['collectionNames'] as List).cast<String>()).input(),
+      collectionNames: map['collectionNames'] == null ? null : ((map['collectionNames']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

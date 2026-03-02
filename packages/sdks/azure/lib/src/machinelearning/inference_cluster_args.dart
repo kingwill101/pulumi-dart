@@ -68,15 +68,15 @@ class InferenceClusterArgs {
 
   factory InferenceClusterArgs.fromMap(Map<String, dynamic> map) {
     return InferenceClusterArgs(
-      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identity: map['identity'] == null ? null : (InferenceClusterIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
+      clusterPurpose: map['clusterPurpose'] == null ? null : (map['clusterPurpose']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identity: map['identity'] == null ? null : (InferenceClusterIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
       kubernetesClusterId: (map['kubernetesClusterId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       machineLearningWorkspaceId: (map['machineLearningWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      ssl: map['ssl'] == null ? null : (InferenceClusterSsl.fromMap((map['ssl'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      ssl: map['ssl'] == null ? null : (InferenceClusterSsl.fromMap((map['ssl']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

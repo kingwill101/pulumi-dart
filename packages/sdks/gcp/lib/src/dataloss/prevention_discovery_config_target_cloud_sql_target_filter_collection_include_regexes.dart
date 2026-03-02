@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
 
   factory PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexes(
-      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern>(map['patterns'], (value) => PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      patterns: map['patterns'] == null ? null : (pulumi.Input.decodeList<PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern>(map['patterns']!, (value) => PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

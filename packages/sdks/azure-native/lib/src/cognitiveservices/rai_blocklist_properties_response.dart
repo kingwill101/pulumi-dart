@@ -21,7 +21,7 @@ class RaiBlocklistPropertiesResponse {
 
   factory RaiBlocklistPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RaiBlocklistPropertiesResponse(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
     );
   }
 }

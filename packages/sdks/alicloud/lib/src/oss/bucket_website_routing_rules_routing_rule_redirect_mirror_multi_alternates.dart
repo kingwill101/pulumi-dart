@@ -21,7 +21,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
 
   factory BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates.fromMap(Map<String, dynamic> map) {
     return BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates(
-      mirrorMultiAlternates: map['mirrorMultiAlternates'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate>(map['mirrorMultiAlternates'], (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mirrorMultiAlternates: map['mirrorMultiAlternates'] == null ? null : (pulumi.Input.decodeList<BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate>(map['mirrorMultiAlternates']!, (value) => BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

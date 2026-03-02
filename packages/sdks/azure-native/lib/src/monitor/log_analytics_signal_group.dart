@@ -34,7 +34,7 @@ class LogAnalyticsSignalGroup {
     return LogAnalyticsSignalGroup(
       authenticationSetting: (map['authenticationSetting'] as String).input(),
       logAnalyticsWorkspaceResourceId: (map['logAnalyticsWorkspaceResourceId'] as String).input(),
-      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignment>(map['signalAssignments'], (value) => SignalAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signalAssignments: map['signalAssignments'] == null ? null : (pulumi.Input.decodeList<SignalAssignment>(map['signalAssignments']!, (value) => SignalAssignment.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -36,7 +36,7 @@ class GetAppEngineServiceIamPolicyArgs {
   factory GetAppEngineServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetAppEngineServiceIamPolicyArgs(
       appId: (map['appId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

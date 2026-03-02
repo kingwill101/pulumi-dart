@@ -44,11 +44,11 @@ class GoogleCloudAiplatformV1beta1ResourcePool {
 
   factory GoogleCloudAiplatformV1beta1ResourcePool.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ResourcePool(
-      autoscalingSpec: map['autoscalingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap((map['autoscalingSpec'] as Map).cast<String, dynamic>())).input(),
-      diskSpec: map['diskSpec'] == null ? null : (GoogleCloudAiplatformV1beta1DiskSpec.fromMap((map['diskSpec'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      autoscalingSpec: map['autoscalingSpec'] == null ? null : (GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap((map['autoscalingSpec']! as Map).cast<String, dynamic>())).input(),
+      diskSpec: map['diskSpec'] == null ? null : (GoogleCloudAiplatformV1beta1DiskSpec.fromMap((map['diskSpec']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       machineSpec: (GoogleCloudAiplatformV1beta1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount'] as String).input(),
+      replicaCount: map['replicaCount'] == null ? null : (map['replicaCount']! as String).input(),
     );
   }
 }

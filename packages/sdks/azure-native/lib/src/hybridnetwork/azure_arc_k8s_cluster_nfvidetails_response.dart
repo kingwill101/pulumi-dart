@@ -33,8 +33,8 @@ class AzureArcK8sClusterNFVIDetailsResponse {
 
   factory AzureArcK8sClusterNFVIDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcK8sClusterNFVIDetailsResponse(
-      customLocationReference: map['customLocationReference'] == null ? null : (ReferencedResourceResponse.fromMap((map['customLocationReference'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      customLocationReference: map['customLocationReference'] == null ? null : (ReferencedResourceResponse.fromMap((map['customLocationReference']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nfviType: (map['nfviType'] as String).input(),
     );
   }

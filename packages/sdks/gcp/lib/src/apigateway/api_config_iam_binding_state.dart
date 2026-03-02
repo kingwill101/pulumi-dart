@@ -66,13 +66,13 @@ class ApiConfigIamBindingState {
 
   factory ApiConfigIamBindingState.fromMap(Map<String, dynamic> map) {
     return ApiConfigIamBindingState(
-      api: map['api'] == null ? null : (map['api'] as String).input(),
-      apiConfig: map['apiConfig'] == null ? null : (map['apiConfig'] as String).input(),
-      condition: map['condition'] == null ? null : (ApiConfigIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      role: map['role'] == null ? null : (map['role'] as String).input(),
+      api: map['api'] == null ? null : (map['api']! as String).input(),
+      apiConfig: map['apiConfig'] == null ? null : (map['apiConfig']! as String).input(),
+      condition: map['condition'] == null ? null : (ApiConfigIamBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      members: map['members'] == null ? null : ((map['members']! as List).cast<String>()).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      role: map['role'] == null ? null : (map['role']! as String).input(),
     );
   }
 }

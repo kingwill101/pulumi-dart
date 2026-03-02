@@ -34,9 +34,9 @@ class AllocationAggregateReservationComputeBeta {
 
   factory AllocationAggregateReservationComputeBeta.fromMap(Map<String, dynamic> map) {
     return AllocationAggregateReservationComputeBeta(
-      reservedResources: map['reservedResources'] == null ? null : (pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoComputeBeta>(map['reservedResources'], (value) => AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vmFamily: map['vmFamily'] == null ? null : (AllocationAggregateReservationVmFamilyComputeBeta.fromValue(map['vmFamily'] as String)).input(),
-      workloadType: map['workloadType'] == null ? null : (AllocationAggregateReservationWorkloadTypeComputeBeta.fromValue(map['workloadType'] as String)).input(),
+      reservedResources: map['reservedResources'] == null ? null : (pulumi.Input.decodeList<AllocationAggregateReservationReservedResourceInfoComputeBeta>(map['reservedResources']!, (value) => AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      vmFamily: map['vmFamily'] == null ? null : (AllocationAggregateReservationVmFamilyComputeBeta.fromValue(map['vmFamily']! as String)).input(),
+      workloadType: map['workloadType'] == null ? null : (AllocationAggregateReservationWorkloadTypeComputeBeta.fromValue(map['workloadType']! as String)).input(),
     );
   }
 }

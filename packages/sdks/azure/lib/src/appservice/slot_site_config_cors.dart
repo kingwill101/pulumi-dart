@@ -26,7 +26,7 @@ class SlotSiteConfigCors {
   factory SlotSiteConfigCors.fromMap(Map<String, dynamic> map) {
     return SlotSiteConfigCors(
       allowedOrigins: ((map['allowedOrigins'] as List).cast<String>()).input(),
-      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials'] as bool).input(),
+      supportCredentials: map['supportCredentials'] == null ? null : (map['supportCredentials']! as bool).input(),
     );
   }
 }

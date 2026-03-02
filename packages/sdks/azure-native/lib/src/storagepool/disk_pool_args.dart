@@ -76,17 +76,17 @@ class DiskPoolArgs {
 
   factory DiskPoolArgs.fromMap(Map<String, dynamic> map) {
     return DiskPoolArgs(
-      additionalCapabilities: map['additionalCapabilities'] == null ? null : ((map['additionalCapabilities'] as List).cast<String>()).input(),
-      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones'] as List).cast<String>()).input(),
-      diskPoolName: map['diskPoolName'] == null ? null : (map['diskPoolName'] as String).input(),
-      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks'], (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedBy: map['managedBy'] == null ? null : (map['managedBy'] as String).input(),
-      managedByExtended: map['managedByExtended'] == null ? null : ((map['managedByExtended'] as List).cast<String>()).input(),
+      additionalCapabilities: map['additionalCapabilities'] == null ? null : ((map['additionalCapabilities']! as List).cast<String>()).input(),
+      availabilityZones: map['availabilityZones'] == null ? null : ((map['availabilityZones']! as List).cast<String>()).input(),
+      diskPoolName: map['diskPoolName'] == null ? null : (map['diskPoolName']! as String).input(),
+      disks: map['disks'] == null ? null : (pulumi.Input.decodeList<Disk>(map['disks']!, (value) => Disk.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedBy: map['managedBy'] == null ? null : (map['managedBy']! as String).input(),
+      managedByExtended: map['managedByExtended'] == null ? null : ((map['managedByExtended']! as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
       subnetId: (map['subnetId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

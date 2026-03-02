@@ -67,15 +67,15 @@ class GlossaryTermArgs {
 
   factory GlossaryTermArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryTermArgs(
-      domainIdentifier: map['domainIdentifier'] == null ? null : (map['domainIdentifier'] as String).input(),
+      domainIdentifier: map['domainIdentifier'] == null ? null : ((map['domainIdentifier'] as String).input()).input(),
       glossaryIdentifier: (map['glossaryIdentifier'] as String).input(),
-      longDescription: map['longDescription'] == null ? null : (map['longDescription'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      shortDescription: map['shortDescription'] == null ? null : (map['shortDescription'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      termRelations: map['termRelations'] == null ? null : (GlossaryTermTermRelations.fromMap((map['termRelations'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (GlossaryTermTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      longDescription: map['longDescription'] == null ? null : ((map['longDescription'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      shortDescription: map['shortDescription'] == null ? null : ((map['shortDescription'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      termRelations: map['termRelations'] == null ? null : ((GlossaryTermTermRelations.fromMap((map['termRelations']! as Map).cast<String, dynamic>())).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((GlossaryTermTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

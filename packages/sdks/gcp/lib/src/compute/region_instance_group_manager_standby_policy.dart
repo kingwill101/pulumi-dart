@@ -26,8 +26,8 @@ class RegionInstanceGroupManagerStandbyPolicy {
 
   factory RegionInstanceGroupManagerStandbyPolicy.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerStandbyPolicy(
-      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec'] as int).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
+      initialDelaySec: map['initialDelaySec'] == null ? null : (map['initialDelaySec']! as int).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
     );
   }
 }

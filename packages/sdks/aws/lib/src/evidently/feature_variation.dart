@@ -27,7 +27,7 @@ class FeatureVariation {
   factory FeatureVariation.fromMap(Map<String, dynamic> map) {
     return FeatureVariation(
       name: (map['name'] as String).input(),
-      value: (FeatureVariationValue.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: (FeatureVariationValue.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -34,9 +34,9 @@ class DeviceAllocationConfigurationPatch {
 
   factory DeviceAllocationConfigurationPatch.fromMap(Map<String, dynamic> map) {
     return DeviceAllocationConfigurationPatch(
-      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatch.fromMap((map['opaque'] as Map).cast<String, dynamic>())).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      opaque: map['opaque'] == null ? null : (OpaqueDeviceConfigurationPatch.fromMap((map['opaque']! as Map).cast<String, dynamic>())).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class MongoDbCollectionSettings {
 
   factory MongoDbCollectionSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbCollectionSettings(
-      canDelete: map['canDelete'] == null ? null : (map['canDelete'] as bool).input(),
-      shardKey: map['shardKey'] == null ? null : (MongoDbShardKeySetting.fromMap((map['shardKey'] as Map).cast<String, dynamic>())).input(),
-      targetRUs: map['targetRUs'] == null ? null : (map['targetRUs'] as int).input(),
+      canDelete: map['canDelete'] == null ? null : (map['canDelete']! as bool).input(),
+      shardKey: map['shardKey'] == null ? null : (MongoDbShardKeySetting.fromMap((map['shardKey']! as Map).cast<String, dynamic>())).input(),
+      targetRUs: map['targetRUs'] == null ? null : (map['targetRUs']! as int).input(),
     );
   }
 }

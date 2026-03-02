@@ -25,8 +25,8 @@ class RuntimeTemplateDataPersistentDiskSpec {
 
   factory RuntimeTemplateDataPersistentDiskSpec.fromMap(Map<String, dynamic> map) {
     return RuntimeTemplateDataPersistentDiskSpec(
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as String).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as String).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
     );
   }
 }

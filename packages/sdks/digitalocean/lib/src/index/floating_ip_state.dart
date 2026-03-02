@@ -36,10 +36,10 @@ class FloatingIpState {
 
   factory FloatingIpState.fromMap(Map<String, dynamic> map) {
     return FloatingIpState(
-      dropletId: map['dropletId'] == null ? null : (map['dropletId'] as int).input(),
-      floatingIpUrn: map['floatingIpUrn'] == null ? null : (map['floatingIpUrn'] as String).input(),
-      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      dropletId: map['dropletId'] == null ? null : (map['dropletId']! as int).input(),
+      floatingIpUrn: map['floatingIpUrn'] == null ? null : (map['floatingIpUrn']! as String).input(),
+      ipAddress: map['ipAddress'] == null ? null : (map['ipAddress']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

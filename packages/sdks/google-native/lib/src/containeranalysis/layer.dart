@@ -26,7 +26,7 @@ class Layer {
 
   factory Layer.fromMap(Map<String, dynamic> map) {
     return Layer(
-      arguments: map['arguments'] == null ? null : (map['arguments'] as String).input(),
+      arguments: map['arguments'] == null ? null : (map['arguments']! as String).input(),
       directive: (map['directive'] as String).input(),
     );
   }

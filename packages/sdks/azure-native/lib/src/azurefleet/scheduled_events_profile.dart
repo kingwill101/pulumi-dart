@@ -28,8 +28,8 @@ class ScheduledEventsProfile {
 
   factory ScheduledEventsProfile.fromMap(Map<String, dynamic> map) {
     return ScheduledEventsProfile(
-      osImageNotificationProfile: map['osImageNotificationProfile'] == null ? null : (OSImageNotificationProfile.fromMap((map['osImageNotificationProfile'] as Map).cast<String, dynamic>())).input(),
-      terminateNotificationProfile: map['terminateNotificationProfile'] == null ? null : (TerminateNotificationProfile.fromMap((map['terminateNotificationProfile'] as Map).cast<String, dynamic>())).input(),
+      osImageNotificationProfile: map['osImageNotificationProfile'] == null ? null : (OSImageNotificationProfile.fromMap((map['osImageNotificationProfile']! as Map).cast<String, dynamic>())).input(),
+      terminateNotificationProfile: map['terminateNotificationProfile'] == null ? null : (TerminateNotificationProfile.fromMap((map['terminateNotificationProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

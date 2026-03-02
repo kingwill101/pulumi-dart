@@ -22,7 +22,7 @@ class FreeInstanceMetadata {
 
   factory FreeInstanceMetadata.fromMap(Map<String, dynamic> map) {
     return FreeInstanceMetadata(
-      expireBehavior: map['expireBehavior'] == null ? null : (FreeInstanceMetadataExpireBehavior.fromValue(map['expireBehavior'] as String)).input(),
+      expireBehavior: map['expireBehavior'] == null ? null : (FreeInstanceMetadataExpireBehavior.fromValue(map['expireBehavior']! as String)).input(),
     );
   }
 }

@@ -24,7 +24,7 @@ class GetObjectStorageQuotasArgs {
 
   factory GetObjectStorageQuotasArgs.fromMap(Map<String, dynamic> map) {
     return GetObjectStorageQuotasArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetObjectStorageQuotasFilter>(map['filters'], (value) => GetObjectStorageQuotasFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetObjectStorageQuotasFilter>(map['filters']!, (value) => GetObjectStorageQuotasFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

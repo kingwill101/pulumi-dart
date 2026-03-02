@@ -33,9 +33,9 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
 
   factory AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration(
-      queryEngineConfiguration: (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration.fromMap((map['queryEngineConfiguration'] as Map).cast<String, dynamic>())).input(),
-      queryGenerationConfiguration: map['queryGenerationConfiguration'] == null ? null : (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap((map['queryGenerationConfiguration'] as Map).cast<String, dynamic>())).input(),
-      storageConfiguration: (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
+      queryEngineConfiguration: (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfiguration.fromMap((map['queryEngineConfiguration']! as Map).cast<String, dynamic>())).input(),
+      queryGenerationConfiguration: map['queryGenerationConfiguration'] == null ? null : ((AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfiguration.fromMap((map['queryGenerationConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      storageConfiguration: (AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationStorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

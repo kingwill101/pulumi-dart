@@ -98,19 +98,19 @@ class Route {
 
   factory Route.fromMap(Map<String, dynamic> map) {
     return Route(
-      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired'] as bool).input(),
-      authorizers: map['authorizers'] == null ? null : (pulumi.Input.decodeList<Authorizer>(map['authorizers'], (value) => Authorizer.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      contentType: map['contentType'] == null ? null : (map['contentType'] as String).input(),
-      data: map['data'] == null ? null : (map['data']).input(),
-      eventHandler: map['eventHandler'] == null ? null : (map['eventHandler'] as pulumi_aws_lambda.FunctionType).input(),
-      iamAuthEnabled: map['iamAuthEnabled'] == null ? null : (map['iamAuthEnabled'] as bool).input(),
-      index: map['index'] == null ? null : (map['index'] as String).input(),
-      localPath: map['localPath'] == null ? null : (map['localPath'] as String).input(),
-      method: map['method'] == null ? null : (Method.fromValue(map['method'] as String)).input(),
+      apiKeyRequired: map['apiKeyRequired'] == null ? null : (map['apiKeyRequired']! as bool).input(),
+      authorizers: map['authorizers'] == null ? null : (pulumi.Input.decodeList<Authorizer>(map['authorizers']!, (value) => Authorizer.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      contentType: map['contentType'] == null ? null : (map['contentType']! as String).input(),
+      data: map['data'] == null ? null : (map['data']!).input(),
+      eventHandler: map['eventHandler'] == null ? null : (map['eventHandler']! as pulumi_aws_lambda.FunctionType).input(),
+      iamAuthEnabled: map['iamAuthEnabled'] == null ? null : (map['iamAuthEnabled']! as bool).input(),
+      index: map['index'] == null ? null : (map['index']! as String).input(),
+      localPath: map['localPath'] == null ? null : (map['localPath']! as String).input(),
+      method: map['method'] == null ? null : (Method.fromValue(map['method']! as String)).input(),
       path: (map['path'] as String).input(),
-      requestValidator: map['requestValidator'] == null ? null : (RequestValidator.fromValue(map['requestValidator'] as String)).input(),
-      requiredParameters: map['requiredParameters'] == null ? null : (pulumi.Input.decodeList<RequiredParameter>(map['requiredParameters'], (value) => RequiredParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      target: map['target'] == null ? null : (Target.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      requestValidator: map['requestValidator'] == null ? null : (RequestValidator.fromValue(map['requestValidator']! as String)).input(),
+      requiredParameters: map['requiredParameters'] == null ? null : (pulumi.Input.decodeList<RequiredParameter>(map['requiredParameters']!, (value) => RequiredParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      target: map['target'] == null ? null : (Target.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

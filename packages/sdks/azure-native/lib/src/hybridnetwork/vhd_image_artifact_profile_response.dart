@@ -26,8 +26,8 @@ class VhdImageArtifactProfileResponse {
 
   factory VhdImageArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return VhdImageArtifactProfileResponse(
-      vhdName: map['vhdName'] == null ? null : (map['vhdName'] as String).input(),
-      vhdVersion: map['vhdVersion'] == null ? null : (map['vhdVersion'] as String).input(),
+      vhdName: map['vhdName'] == null ? null : (map['vhdName']! as String).input(),
+      vhdVersion: map['vhdVersion'] == null ? null : (map['vhdVersion']! as String).input(),
     );
   }
 }

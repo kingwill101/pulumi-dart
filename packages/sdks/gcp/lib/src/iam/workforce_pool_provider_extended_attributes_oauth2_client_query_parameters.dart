@@ -22,7 +22,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters {
 
   factory WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class SubscriberSource {
 
   factory SubscriberSource.fromMap(Map<String, dynamic> map) {
     return SubscriberSource(
-      awsLogSourceResource: map['awsLogSourceResource'] == null ? null : (SubscriberSourceAwsLogSourceResource.fromMap((map['awsLogSourceResource'] as Map).cast<String, dynamic>())).input(),
-      customLogSourceResource: map['customLogSourceResource'] == null ? null : (SubscriberSourceCustomLogSourceResource.fromMap((map['customLogSourceResource'] as Map).cast<String, dynamic>())).input(),
+      awsLogSourceResource: map['awsLogSourceResource'] == null ? null : ((SubscriberSourceAwsLogSourceResource.fromMap((map['awsLogSourceResource']! as Map).cast<String, dynamic>())).input()).input(),
+      customLogSourceResource: map['customLogSourceResource'] == null ? null : ((SubscriberSourceCustomLogSourceResource.fromMap((map['customLogSourceResource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class LoadBalancerInternetState {
 
   factory LoadBalancerInternetState.fromMap(Map<String, dynamic> map) {
     return LoadBalancerInternetState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      internetIp: map['internetIp'] == null ? null : (map['internetIp'] as String).input(),
-      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId'] as String).input(),
-      internets: map['internets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets'], (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      internetIp: map['internetIp'] == null ? null : (map['internetIp']! as String).input(),
+      internetSlbId: map['internetSlbId'] == null ? null : (map['internetSlbId']! as String).input(),
+      internets: map['internets'] == null ? null : (pulumi.Input.decodeList<LoadBalancerInternetInternet>(map['internets']!, (value) => LoadBalancerInternetInternet.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

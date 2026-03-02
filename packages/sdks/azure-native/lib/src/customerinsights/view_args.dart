@@ -50,11 +50,11 @@ class ViewArgs {
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
       definition: (map['definition'] as String).input(),
-      displayName: map['displayName'] == null ? null : ((map['displayName'] as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : ((map['displayName']! as Map).cast<String, String>()).input(),
       hubName: (map['hubName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      userId: map['userId'] == null ? null : (map['userId'] as String).input(),
-      viewName: map['viewName'] == null ? null : (map['viewName'] as String).input(),
+      userId: map['userId'] == null ? null : (map['userId']! as String).input(),
+      viewName: map['viewName'] == null ? null : (map['viewName']! as String).input(),
     );
   }
 }

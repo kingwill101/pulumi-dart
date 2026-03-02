@@ -21,7 +21,7 @@ class PowerStateResponse {
 
   factory PowerStateResponse.fromMap(Map<String, dynamic> map) {
     return PowerStateResponse(
-      code: map['code'] == null ? null : (map['code'] as String).input(),
+      code: map['code'] == null ? null : (map['code']! as String).input(),
     );
   }
 }

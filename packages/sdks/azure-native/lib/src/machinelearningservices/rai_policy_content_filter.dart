@@ -41,11 +41,11 @@ class RaiPolicyContentFilter {
 
   factory RaiPolicyContentFilter.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilter(
-      allowedContentLevel: map['allowedContentLevel'] == null ? null : (map['allowedContentLevel'] as String).input(),
-      blocking: map['blocking'] == null ? null : (map['blocking'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      source: map['source'] == null ? null : (map['source'] as String).input(),
+      allowedContentLevel: map['allowedContentLevel'] == null ? null : (map['allowedContentLevel']! as String).input(),
+      blocking: map['blocking'] == null ? null : (map['blocking']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      source: map['source'] == null ? null : (map['source']! as String).input(),
     );
   }
 }

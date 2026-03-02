@@ -97,21 +97,21 @@ class FirewallArgs {
 
   factory FirewallArgs.fromMap(Map<String, dynamic> map) {
     return FirewallArgs(
-      availabilityZoneChangeProtection: map['availabilityZoneChangeProtection'] == null ? null : (map['availabilityZoneChangeProtection'] as bool).input(),
-      availabilityZoneMappings: map['availabilityZoneMappings'] == null ? null : (pulumi.Input.decodeList<FirewallAvailabilityZoneMapping>(map['availabilityZoneMappings'], (value) => FirewallAvailabilityZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deleteProtection: map['deleteProtection'] == null ? null : (map['deleteProtection'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enabledAnalysisTypes: map['enabledAnalysisTypes'] == null ? null : ((map['enabledAnalysisTypes'] as List).cast<String>()).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (FirewallEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      availabilityZoneChangeProtection: map['availabilityZoneChangeProtection'] == null ? null : ((map['availabilityZoneChangeProtection'] as bool).input()).input(),
+      availabilityZoneMappings: map['availabilityZoneMappings'] == null ? null : ((pulumi.Input.decodeList<FirewallAvailabilityZoneMapping>(map['availabilityZoneMappings']!, (value) => FirewallAvailabilityZoneMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      deleteProtection: map['deleteProtection'] == null ? null : ((map['deleteProtection'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enabledAnalysisTypes: map['enabledAnalysisTypes'] == null ? null : (((map['enabledAnalysisTypes'] as List).cast<String>()).input()).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((FirewallEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       firewallPolicyArn: (map['firewallPolicyArn'] as String).input(),
-      firewallPolicyChangeProtection: map['firewallPolicyChangeProtection'] == null ? null : (map['firewallPolicyChangeProtection'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetChangeProtection: map['subnetChangeProtection'] == null ? null : (map['subnetChangeProtection'] as bool).input(),
-      subnetMappings: map['subnetMappings'] == null ? null : (pulumi.Input.decodeList<FirewallSubnetMapping>(map['subnetMappings'], (value) => FirewallSubnetMapping.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
+      firewallPolicyChangeProtection: map['firewallPolicyChangeProtection'] == null ? null : ((map['firewallPolicyChangeProtection'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      subnetChangeProtection: map['subnetChangeProtection'] == null ? null : ((map['subnetChangeProtection'] as bool).input()).input(),
+      subnetMappings: map['subnetMappings'] == null ? null : ((pulumi.Input.decodeList<FirewallSubnetMapping>(map['subnetMappings']!, (value) => FirewallSubnetMapping.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      vpcId: map['vpcId'] == null ? null : ((map['vpcId'] as String).input()).input(),
     );
   }
 }

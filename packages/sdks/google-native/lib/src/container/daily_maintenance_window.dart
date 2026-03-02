@@ -21,7 +21,7 @@ class DailyMaintenanceWindow {
 
   factory DailyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return DailyMaintenanceWindow(
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
     );
   }
 }

@@ -46,7 +46,7 @@ class EcsPrefixListArgs {
   factory EcsPrefixListArgs.fromMap(Map<String, dynamic> map) {
     return EcsPrefixListArgs(
       addressFamily: (map['addressFamily'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       entries: (pulumi.Input.decodeList<EcsPrefixListEntry>(map['entries'], (value) => EcsPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))).input(),
       maxEntries: (map['maxEntries'] as int).input(),
       prefixListName: (map['prefixListName'] as String).input(),

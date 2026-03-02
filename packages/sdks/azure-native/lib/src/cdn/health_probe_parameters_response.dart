@@ -36,10 +36,10 @@ class HealthProbeParametersResponse {
 
   factory HealthProbeParametersResponse.fromMap(Map<String, dynamic> map) {
     return HealthProbeParametersResponse(
-      probeIntervalInSeconds: map['probeIntervalInSeconds'] == null ? null : (map['probeIntervalInSeconds'] as int).input(),
-      probePath: map['probePath'] == null ? null : (map['probePath'] as String).input(),
-      probeProtocol: map['probeProtocol'] == null ? null : (map['probeProtocol'] as String).input(),
-      probeRequestType: map['probeRequestType'] == null ? null : (map['probeRequestType'] as String).input(),
+      probeIntervalInSeconds: map['probeIntervalInSeconds'] == null ? null : (map['probeIntervalInSeconds']! as int).input(),
+      probePath: map['probePath'] == null ? null : (map['probePath']! as String).input(),
+      probeProtocol: map['probeProtocol'] == null ? null : (map['probeProtocol']! as String).input(),
+      probeRequestType: map['probeRequestType'] == null ? null : (map['probeRequestType']! as String).input(),
     );
   }
 }

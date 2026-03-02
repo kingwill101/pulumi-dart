@@ -59,13 +59,13 @@ class ResourceLfTagState {
 
   factory ResourceLfTagState.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      database: map['database'] == null ? null : (ResourceLfTagDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
-      lfTag: map['lfTag'] == null ? null : (ResourceLfTagLfTag.fromMap((map['lfTag'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      table: map['table'] == null ? null : (ResourceLfTagTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
-      tableWithColumns: map['tableWithColumns'] == null ? null : (ResourceLfTagTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
-      timeouts: map['timeouts'] == null ? null : (ResourceLfTagTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      database: map['database'] == null ? null : ((ResourceLfTagDatabase.fromMap((map['database']! as Map).cast<String, dynamic>())).input()).input(),
+      lfTag: map['lfTag'] == null ? null : ((ResourceLfTagLfTag.fromMap((map['lfTag']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      table: map['table'] == null ? null : ((ResourceLfTagTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input()).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : ((ResourceLfTagTableWithColumns.fromMap((map['tableWithColumns']! as Map).cast<String, dynamic>())).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ResourceLfTagTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

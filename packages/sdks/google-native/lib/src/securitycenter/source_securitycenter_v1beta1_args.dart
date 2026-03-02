@@ -38,9 +38,9 @@ class SourceSecuritycenterV1beta1Args {
 
   factory SourceSecuritycenterV1beta1Args.fromMap(Map<String, dynamic> map) {
     return SourceSecuritycenterV1beta1Args(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       organizationId: (map['organizationId'] as String).input(),
     );
   }

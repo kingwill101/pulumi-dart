@@ -97,21 +97,21 @@ class InstanceFileV1beta1Args {
 
   factory InstanceFileV1beta1Args.fromMap(Map<String, dynamic> map) {
     return InstanceFileV1beta1Args(
-      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      directoryServices: map['directoryServices'] == null ? null : (DirectoryServicesConfig.fromMap((map['directoryServices'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareConfigFileV1beta1>(map['fileShares'], (value) => FileShareConfigFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      capacityGb: map['capacityGb'] == null ? null : (map['capacityGb']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      directoryServices: map['directoryServices'] == null ? null : (DirectoryServicesConfig.fromMap((map['directoryServices']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      fileShares: map['fileShares'] == null ? null : (pulumi.Input.decodeList<FileShareConfigFileV1beta1>(map['fileShares']!, (value) => FileShareConfigFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
       instanceId: (map['instanceId'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxShareCount: map['maxShareCount'] == null ? null : (map['maxShareCount'] as String).input(),
-      multiShareEnabled: map['multiShareEnabled'] == null ? null : (map['multiShareEnabled'] as bool).input(),
-      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<NetworkConfigFileV1beta1>(map['networks'], (value) => NetworkConfigFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      protocol: map['protocol'] == null ? null : (InstanceProtocol.fromValue(map['protocol'] as String)).input(),
-      tier: map['tier'] == null ? null : (InstanceTierFileV1beta1.fromValue(map['tier'] as String)).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxShareCount: map['maxShareCount'] == null ? null : (map['maxShareCount']! as String).input(),
+      multiShareEnabled: map['multiShareEnabled'] == null ? null : (map['multiShareEnabled']! as bool).input(),
+      networks: map['networks'] == null ? null : (pulumi.Input.decodeList<NetworkConfigFileV1beta1>(map['networks']!, (value) => NetworkConfigFileV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      protocol: map['protocol'] == null ? null : (InstanceProtocol.fromValue(map['protocol']! as String)).input(),
+      tier: map['tier'] == null ? null : (InstanceTierFileV1beta1.fromValue(map['tier']! as String)).input(),
     );
   }
 }

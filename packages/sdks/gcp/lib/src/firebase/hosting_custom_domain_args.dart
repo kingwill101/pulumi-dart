@@ -55,12 +55,12 @@ class HostingCustomDomainArgs {
 
   factory HostingCustomDomainArgs.fromMap(Map<String, dynamic> map) {
     return HostingCustomDomainArgs(
-      certPreference: map['certPreference'] == null ? null : (map['certPreference'] as String).input(),
+      certPreference: map['certPreference'] == null ? null : (map['certPreference']! as String).input(),
       customDomain: (map['customDomain'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      redirectTarget: map['redirectTarget'] == null ? null : (map['redirectTarget']! as String).input(),
       siteId: (map['siteId'] as String).input(),
-      waitDnsVerification: map['waitDnsVerification'] == null ? null : (map['waitDnsVerification'] as bool).input(),
+      waitDnsVerification: map['waitDnsVerification'] == null ? null : (map['waitDnsVerification']! as bool).input(),
     );
   }
 }

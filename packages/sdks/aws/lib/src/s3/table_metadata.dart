@@ -22,7 +22,7 @@ class TableMetadata {
 
   factory TableMetadata.fromMap(Map<String, dynamic> map) {
     return TableMetadata(
-      iceberg: (TableMetadataIceberg.fromMap((map['iceberg'] as Map).cast<String, dynamic>())).input(),
+      iceberg: (TableMetadataIceberg.fromMap((map['iceberg']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

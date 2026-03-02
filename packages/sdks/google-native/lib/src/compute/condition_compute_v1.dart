@@ -44,11 +44,11 @@ class ConditionComputeV1 {
 
   factory ConditionComputeV1.fromMap(Map<String, dynamic> map) {
     return ConditionComputeV1(
-      iam: map['iam'] == null ? null : (ConditionIamComputeV1.fromValue(map['iam'] as String)).input(),
-      op: map['op'] == null ? null : (ConditionOpComputeV1.fromValue(map['op'] as String)).input(),
-      svc: map['svc'] == null ? null : (map['svc'] as String).input(),
-      sys: map['sys'] == null ? null : (ConditionSysComputeV1.fromValue(map['sys'] as String)).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      iam: map['iam'] == null ? null : (ConditionIamComputeV1.fromValue(map['iam']! as String)).input(),
+      op: map['op'] == null ? null : (ConditionOpComputeV1.fromValue(map['op']! as String)).input(),
+      svc: map['svc'] == null ? null : (map['svc']! as String).input(),
+      sys: map['sys'] == null ? null : (ConditionSysComputeV1.fromValue(map['sys']! as String)).input(),
+      values: map['values'] == null ? null : ((map['values']! as List).cast<String>()).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class SecretVersionCloudfunctionsV2beta {
 
   factory SecretVersionCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
     return SecretVersionCloudfunctionsV2beta(
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

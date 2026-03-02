@@ -37,10 +37,10 @@ class VolumeGroupMetaData {
 
   factory VolumeGroupMetaData.fromMap(Map<String, dynamic> map) {
     return VolumeGroupMetaData(
-      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier'] as String).input(),
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      globalPlacementRules: map['globalPlacementRules'] == null ? null : (pulumi.Input.decodeList<PlacementKeyValuePairs>(map['globalPlacementRules'], (value) => PlacementKeyValuePairs.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription'] as String).input(),
+      applicationIdentifier: map['applicationIdentifier'] == null ? null : (map['applicationIdentifier']! as String).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType']! as String).input(),
+      globalPlacementRules: map['globalPlacementRules'] == null ? null : (pulumi.Input.decodeList<PlacementKeyValuePairs>(map['globalPlacementRules']!, (value) => PlacementKeyValuePairs.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupDescription: map['groupDescription'] == null ? null : (map['groupDescription']! as String).input(),
     );
   }
 }

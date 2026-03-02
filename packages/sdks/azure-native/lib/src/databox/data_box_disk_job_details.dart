@@ -80,16 +80,16 @@ class DataBoxDiskJobDetails {
   factory DataBoxDiskJobDetails.fromMap(Map<String, dynamic> map) {
     return DataBoxDiskJobDetails(
       contactDetails: (ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
-      dataExportDetails: map['dataExportDetails'] == null ? null : (pulumi.Input.decodeList<DataExportDetails>(map['dataExportDetails'], (value) => DataExportDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dataImportDetails: map['dataImportDetails'] == null ? null : (pulumi.Input.decodeList<DataImportDetails>(map['dataImportDetails'], (value) => DataImportDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedDataSizeInTeraBytes: map['expectedDataSizeInTeraBytes'] == null ? null : (map['expectedDataSizeInTeraBytes'] as int).input(),
+      dataExportDetails: map['dataExportDetails'] == null ? null : (pulumi.Input.decodeList<DataExportDetails>(map['dataExportDetails']!, (value) => DataExportDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataImportDetails: map['dataImportDetails'] == null ? null : (pulumi.Input.decodeList<DataImportDetails>(map['dataImportDetails']!, (value) => DataImportDetails.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedDataSizeInTeraBytes: map['expectedDataSizeInTeraBytes'] == null ? null : (map['expectedDataSizeInTeraBytes']! as int).input(),
       jobDetailsType: (map['jobDetailsType'] as String).input(),
-      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyEncryptionKey.fromMap((map['keyEncryptionKey'] as Map).cast<String, dynamic>())).input(),
-      passkey: map['passkey'] == null ? null : (map['passkey'] as String).input(),
-      preferences: map['preferences'] == null ? null : (Preferences.fromMap((map['preferences'] as Map).cast<String, dynamic>())).input(),
-      preferredDisks: map['preferredDisks'] == null ? null : ((map['preferredDisks'] as Map).cast<String, int>()).input(),
-      reverseShippingDetails: map['reverseShippingDetails'] == null ? null : (ReverseShippingDetails.fromMap((map['reverseShippingDetails'] as Map).cast<String, dynamic>())).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
+      keyEncryptionKey: map['keyEncryptionKey'] == null ? null : (KeyEncryptionKey.fromMap((map['keyEncryptionKey']! as Map).cast<String, dynamic>())).input(),
+      passkey: map['passkey'] == null ? null : (map['passkey']! as String).input(),
+      preferences: map['preferences'] == null ? null : (Preferences.fromMap((map['preferences']! as Map).cast<String, dynamic>())).input(),
+      preferredDisks: map['preferredDisks'] == null ? null : ((map['preferredDisks']! as Map).cast<String, int>()).input(),
+      reverseShippingDetails: map['reverseShippingDetails'] == null ? null : (ReverseShippingDetails.fromMap((map['reverseShippingDetails']! as Map).cast<String, dynamic>())).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -83,19 +83,19 @@ class AwsEc2FlowLogProperties {
 
   factory AwsEc2FlowLogProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2FlowLogProperties(
-      deliverCrossAccountRole: map['deliverCrossAccountRole'] == null ? null : (map['deliverCrossAccountRole'] as String).input(),
-      deliverLogsPermissionArn: map['deliverLogsPermissionArn'] == null ? null : (map['deliverLogsPermissionArn'] as String).input(),
-      destinationOptions: map['destinationOptions'] == null ? null : (DestinationOptionsModelProperties.fromMap((map['destinationOptions'] as Map).cast<String, dynamic>())).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      logDestination: map['logDestination'] == null ? null : (map['logDestination'] as String).input(),
-      logDestinationType: map['logDestinationType'] == null ? null : (map['logDestinationType'] as String).input(),
-      logFormat: map['logFormat'] == null ? null : (map['logFormat'] as String).input(),
-      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName'] as String).input(),
-      maxAggregationInterval: map['maxAggregationInterval'] == null ? null : (map['maxAggregationInterval'] as int).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags'], (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      trafficType: map['trafficType'] == null ? null : (map['trafficType'] as String).input(),
+      deliverCrossAccountRole: map['deliverCrossAccountRole'] == null ? null : (map['deliverCrossAccountRole']! as String).input(),
+      deliverLogsPermissionArn: map['deliverLogsPermissionArn'] == null ? null : (map['deliverLogsPermissionArn']! as String).input(),
+      destinationOptions: map['destinationOptions'] == null ? null : (DestinationOptionsModelProperties.fromMap((map['destinationOptions']! as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      logDestination: map['logDestination'] == null ? null : (map['logDestination']! as String).input(),
+      logDestinationType: map['logDestinationType'] == null ? null : (map['logDestinationType']! as String).input(),
+      logFormat: map['logFormat'] == null ? null : (map['logFormat']! as String).input(),
+      logGroupName: map['logGroupName'] == null ? null : (map['logGroupName']! as String).input(),
+      maxAggregationInterval: map['maxAggregationInterval'] == null ? null : (map['maxAggregationInterval']! as int).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      tags: map['tags'] == null ? null : (pulumi.Input.decodeList<Tag>(map['tags']!, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      trafficType: map['trafficType'] == null ? null : (map['trafficType']! as String).input(),
     );
   }
 }

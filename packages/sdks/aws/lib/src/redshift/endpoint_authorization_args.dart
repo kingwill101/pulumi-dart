@@ -46,9 +46,9 @@ class EndpointAuthorizationArgs {
     return EndpointAuthorizationArgs(
       account: (map['account'] as String).input(),
       clusterIdentifier: (map['clusterIdentifier'] as String).input(),
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpcIds: map['vpcIds'] == null ? null : ((map['vpcIds'] as List).cast<String>()).input(),
+      forceDelete: map['forceDelete'] == null ? null : ((map['forceDelete'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpcIds: map['vpcIds'] == null ? null : (((map['vpcIds'] as List).cast<String>()).input()).input(),
     );
   }
 }

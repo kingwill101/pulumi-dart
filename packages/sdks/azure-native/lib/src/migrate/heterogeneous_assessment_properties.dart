@@ -21,7 +21,7 @@ class HeterogeneousAssessmentProperties {
 
   factory HeterogeneousAssessmentProperties.fromMap(Map<String, dynamic> map) {
     return HeterogeneousAssessmentProperties(
-      assessmentArmIds: map['assessmentArmIds'] == null ? null : ((map['assessmentArmIds'] as List).cast<String>()).input(),
+      assessmentArmIds: map['assessmentArmIds'] == null ? null : ((map['assessmentArmIds']! as List).cast<String>()).input(),
     );
   }
 }

@@ -28,8 +28,8 @@ class AzureOperatorNexusArmTemplateArtifactProfileResponse {
 
   factory AzureOperatorNexusArmTemplateArtifactProfileResponse.fromMap(Map<String, dynamic> map) {
     return AzureOperatorNexusArmTemplateArtifactProfileResponse(
-      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore'] as Map).cast<String, dynamic>())).input(),
-      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfileResponse.fromMap((map['templateArtifactProfile'] as Map).cast<String, dynamic>())).input(),
+      artifactStore: map['artifactStore'] == null ? null : (ReferencedResourceResponse.fromMap((map['artifactStore']! as Map).cast<String, dynamic>())).input(),
+      templateArtifactProfile: map['templateArtifactProfile'] == null ? null : (ArmTemplateArtifactProfileResponse.fromMap((map['templateArtifactProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

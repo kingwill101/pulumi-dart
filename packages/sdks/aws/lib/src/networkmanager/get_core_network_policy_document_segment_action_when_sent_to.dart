@@ -20,7 +20,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo {
 
   factory GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap(Map<String, dynamic> map) {
     return GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo(
-      segments: map['segments'] == null ? null : ((map['segments'] as List).cast<String>()).input(),
+      segments: map['segments'] == null ? null : (((map['segments'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GuestPoliciesRecipeArtifactRemote {
 
   factory GuestPoliciesRecipeArtifactRemote.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesRecipeArtifactRemote(
-      checkSum: map['checkSum'] == null ? null : (map['checkSum'] as String).input(),
-      uri: map['uri'] == null ? null : (map['uri'] as String).input(),
+      checkSum: map['checkSum'] == null ? null : (map['checkSum']! as String).input(),
+      uri: map['uri'] == null ? null : (map['uri']! as String).input(),
     );
   }
 }

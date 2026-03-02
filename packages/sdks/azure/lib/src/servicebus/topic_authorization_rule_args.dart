@@ -46,10 +46,10 @@ class TopicAuthorizationRuleArgs {
 
   factory TopicAuthorizationRuleArgs.fromMap(Map<String, dynamic> map) {
     return TopicAuthorizationRuleArgs(
-      listen: map['listen'] == null ? null : (map['listen'] as bool).input(),
-      manage: map['manage'] == null ? null : (map['manage'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      send: map['send'] == null ? null : (map['send'] as bool).input(),
+      listen: map['listen'] == null ? null : (map['listen']! as bool).input(),
+      manage: map['manage'] == null ? null : (map['manage']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      send: map['send'] == null ? null : (map['send']! as bool).input(),
       topicId: (map['topicId'] as String).input(),
     );
   }

@@ -59,14 +59,14 @@ class IdentityProviderState {
 
   factory IdentityProviderState.fromMap(Map<String, dynamic> map) {
     return IdentityProviderState(
-      identityProviderArn: map['identityProviderArn'] == null ? null : (map['identityProviderArn'] as String).input(),
-      identityProviderDetails: map['identityProviderDetails'] == null ? null : ((map['identityProviderDetails'] as Map).cast<String, String>()).input(),
-      identityProviderName: map['identityProviderName'] == null ? null : (map['identityProviderName'] as String).input(),
-      identityProviderType: map['identityProviderType'] == null ? null : (map['identityProviderType'] as String).input(),
-      portalArn: map['portalArn'] == null ? null : (map['portalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      identityProviderArn: map['identityProviderArn'] == null ? null : ((map['identityProviderArn'] as String).input()).input(),
+      identityProviderDetails: map['identityProviderDetails'] == null ? null : (((map['identityProviderDetails'] as Map).cast<String, String>()).input()).input(),
+      identityProviderName: map['identityProviderName'] == null ? null : ((map['identityProviderName'] as String).input()).input(),
+      identityProviderType: map['identityProviderType'] == null ? null : ((map['identityProviderType'] as String).input()).input(),
+      portalArn: map['portalArn'] == null ? null : ((map['portalArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

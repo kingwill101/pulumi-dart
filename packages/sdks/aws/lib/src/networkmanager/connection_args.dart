@@ -57,12 +57,12 @@ class ConnectionArgs {
   factory ConnectionArgs.fromMap(Map<String, dynamic> map) {
     return ConnectionArgs(
       connectedDeviceId: (map['connectedDeviceId'] as String).input(),
-      connectedLinkId: map['connectedLinkId'] == null ? null : (map['connectedLinkId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      connectedLinkId: map['connectedLinkId'] == null ? null : ((map['connectedLinkId'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       deviceId: (map['deviceId'] as String).input(),
       globalNetworkId: (map['globalNetworkId'] as String).input(),
-      linkId: map['linkId'] == null ? null : (map['linkId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      linkId: map['linkId'] == null ? null : ((map['linkId'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

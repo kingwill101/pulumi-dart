@@ -36,10 +36,10 @@ class ChartNamespaceState {
 
   factory ChartNamespaceState.fromMap(Map<String, dynamic> map) {
     return ChartNamespaceState(
-      autoCreateRepo: map['autoCreateRepo'] == null ? null : (map['autoCreateRepo'] as bool).input(),
-      defaultRepoType: map['defaultRepoType'] == null ? null : (map['defaultRepoType'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
+      autoCreateRepo: map['autoCreateRepo'] == null ? null : (map['autoCreateRepo']! as bool).input(),
+      defaultRepoType: map['defaultRepoType'] == null ? null : (map['defaultRepoType']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
     );
   }
 }

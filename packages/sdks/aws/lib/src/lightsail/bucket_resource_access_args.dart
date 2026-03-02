@@ -35,7 +35,7 @@ class BucketResourceAccessArgs {
   factory BucketResourceAccessArgs.fromMap(Map<String, dynamic> map) {
     return BucketResourceAccessArgs(
       bucketName: (map['bucketName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       resourceName: (map['resourceName'] as String).input(),
     );
   }

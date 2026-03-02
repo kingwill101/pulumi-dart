@@ -32,8 +32,8 @@ class AzureFilesIdentityBasedAuthentication {
 
   factory AzureFilesIdentityBasedAuthentication.fromMap(Map<String, dynamic> map) {
     return AzureFilesIdentityBasedAuthentication(
-      activeDirectoryProperties: map['activeDirectoryProperties'] == null ? null : (ActiveDirectoryProperties.fromMap((map['activeDirectoryProperties'] as Map).cast<String, dynamic>())).input(),
-      defaultSharePermission: map['defaultSharePermission'] == null ? null : (map['defaultSharePermission'] as String).input(),
+      activeDirectoryProperties: map['activeDirectoryProperties'] == null ? null : (ActiveDirectoryProperties.fromMap((map['activeDirectoryProperties']! as Map).cast<String, dynamic>())).input(),
+      defaultSharePermission: map['defaultSharePermission'] == null ? null : (map['defaultSharePermission']! as String).input(),
       directoryServiceOptions: (map['directoryServiceOptions'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
 
   factory GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings(
-      enableInsightsExport: map['enableInsightsExport'] == null ? null : (map['enableInsightsExport'] as bool).input(),
+      enableInsightsExport: map['enableInsightsExport'] == null ? null : (map['enableInsightsExport']! as bool).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class UserProfileUserSettingsRStudioServerProAppSettings {
 
   factory UserProfileUserSettingsRStudioServerProAppSettings.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsRStudioServerProAppSettings(
-      accessStatus: map['accessStatus'] == null ? null : (map['accessStatus'] as String).input(),
-      userGroup: map['userGroup'] == null ? null : (map['userGroup'] as String).input(),
+      accessStatus: map['accessStatus'] == null ? null : ((map['accessStatus'] as String).input()).input(),
+      userGroup: map['userGroup'] == null ? null : ((map['userGroup'] as String).input()).input(),
     );
   }
 }

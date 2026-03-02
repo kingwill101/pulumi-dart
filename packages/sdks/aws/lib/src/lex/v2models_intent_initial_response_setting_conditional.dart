@@ -33,8 +33,8 @@ class V2modelsIntentInitialResponseSettingConditional {
   factory V2modelsIntentInitialResponseSettingConditional.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentInitialResponseSettingConditional(
       active: (map['active'] as bool).input(),
-      conditionalBranches: map['conditionalBranches'] == null ? null : (pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranch>(map['conditionalBranches'], (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultBranch: map['defaultBranch'] == null ? null : (V2modelsIntentInitialResponseSettingConditionalDefaultBranch.fromMap((map['defaultBranch'] as Map).cast<String, dynamic>())).input(),
+      conditionalBranches: map['conditionalBranches'] == null ? null : ((pulumi.Input.decodeList<V2modelsIntentInitialResponseSettingConditionalConditionalBranch>(map['conditionalBranches']!, (value) => V2modelsIntentInitialResponseSettingConditionalConditionalBranch.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultBranch: map['defaultBranch'] == null ? null : ((V2modelsIntentInitialResponseSettingConditionalDefaultBranch.fromMap((map['defaultBranch']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

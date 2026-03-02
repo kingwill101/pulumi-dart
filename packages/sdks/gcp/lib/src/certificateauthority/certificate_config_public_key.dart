@@ -27,7 +27,7 @@ class CertificateConfigPublicKey {
   factory CertificateConfigPublicKey.fromMap(Map<String, dynamic> map) {
     return CertificateConfigPublicKey(
       format: (map['format'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

@@ -47,8 +47,8 @@ class FrontdoorFirewallPolicyManagedRuleOverrideRule {
   factory FrontdoorFirewallPolicyManagedRuleOverrideRule.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyManagedRuleOverrideRule(
       action: (map['action'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusion>(map['exclusions'], (value) => FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusion>(map['exclusions']!, (value) => FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
       ruleId: (map['ruleId'] as String).input(),
     );
   }

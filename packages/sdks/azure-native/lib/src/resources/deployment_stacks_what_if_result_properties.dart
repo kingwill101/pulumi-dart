@@ -101,20 +101,20 @@ class DeploymentStacksWhatIfResultProperties {
   factory DeploymentStacksWhatIfResultProperties.fromMap(Map<String, dynamic> map) {
     return DeploymentStacksWhatIfResultProperties(
       actionOnUnmanage: (ActionOnUnmanage.fromMap((map['actionOnUnmanage'] as Map).cast<String, dynamic>())).input(),
-      debugSetting: map['debugSetting'] == null ? null : (DeploymentStacksDebugSetting.fromMap((map['debugSetting'] as Map).cast<String, dynamic>())).input(),
+      debugSetting: map['debugSetting'] == null ? null : (DeploymentStacksDebugSetting.fromMap((map['debugSetting']! as Map).cast<String, dynamic>())).input(),
       denySettings: (DenySettings.fromMap((map['denySettings'] as Map).cast<String, dynamic>())).input(),
-      deploymentScope: map['deploymentScope'] == null ? null : (map['deploymentScope'] as String).input(),
+      deploymentScope: map['deploymentScope'] == null ? null : (map['deploymentScope']! as String).input(),
       deploymentStackResourceId: (map['deploymentStackResourceId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      extensionConfigs: map['extensionConfigs'] == null ? null : (pulumi.Input.decodeMapValues<Map<String, DeploymentExtensionConfigItem>>(map['extensionConfigs'], (value) => pulumi.Input.decodeMapValues<DeploymentExtensionConfigItem>(value, (value) => DeploymentExtensionConfigItem.fromMap((value as Map).cast<String, dynamic>())))).input(),
-      externalInputDefinitions: map['externalInputDefinitions'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentExternalInputDefinition>(map['externalInputDefinitions'], (value) => DeploymentExternalInputDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      externalInputs: map['externalInputs'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentExternalInput>(map['externalInputs'], (value) => DeploymentExternalInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters'], (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      parametersLink: map['parametersLink'] == null ? null : (DeploymentStacksParametersLink.fromMap((map['parametersLink'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      extensionConfigs: map['extensionConfigs'] == null ? null : (pulumi.Input.decodeMapValues<Map<String, DeploymentExtensionConfigItem>>(map['extensionConfigs']!, (value) => pulumi.Input.decodeMapValues<DeploymentExtensionConfigItem>(value, (value) => DeploymentExtensionConfigItem.fromMap((value as Map).cast<String, dynamic>())))).input(),
+      externalInputDefinitions: map['externalInputDefinitions'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentExternalInputDefinition>(map['externalInputDefinitions']!, (value) => DeploymentExternalInputDefinition.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      externalInputs: map['externalInputs'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentExternalInput>(map['externalInputs']!, (value) => DeploymentExternalInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<DeploymentParameter>(map['parameters']!, (value) => DeploymentParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parametersLink: map['parametersLink'] == null ? null : (DeploymentStacksParametersLink.fromMap((map['parametersLink']! as Map).cast<String, dynamic>())).input(),
       retentionInterval: (map['retentionInterval'] as String).input(),
-      template: map['template'] == null ? null : (map['template']).input(),
-      templateLink: map['templateLink'] == null ? null : (DeploymentStacksTemplateLink.fromMap((map['templateLink'] as Map).cast<String, dynamic>())).input(),
-      validationLevel: map['validationLevel'] == null ? null : (map['validationLevel'] as String).input(),
+      template: map['template'] == null ? null : (map['template']!).input(),
+      templateLink: map['templateLink'] == null ? null : (DeploymentStacksTemplateLink.fromMap((map['templateLink']! as Map).cast<String, dynamic>())).input(),
+      validationLevel: map['validationLevel'] == null ? null : (map['validationLevel']! as String).input(),
     );
   }
 }

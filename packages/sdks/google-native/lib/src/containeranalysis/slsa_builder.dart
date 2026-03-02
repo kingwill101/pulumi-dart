@@ -19,7 +19,7 @@ class SlsaBuilder {
 
   factory SlsaBuilder.fromMap(Map<String, dynamic> map) {
     return SlsaBuilder(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

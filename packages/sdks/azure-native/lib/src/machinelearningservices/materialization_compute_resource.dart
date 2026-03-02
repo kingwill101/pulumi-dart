@@ -21,7 +21,7 @@ class MaterializationComputeResource {
 
   factory MaterializationComputeResource.fromMap(Map<String, dynamic> map) {
     return MaterializationComputeResource(
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
     );
   }
 }

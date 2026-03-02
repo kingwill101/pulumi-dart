@@ -26,7 +26,7 @@ class EndpointDeliveryRuleCacheKeyQueryStringAction {
   factory EndpointDeliveryRuleCacheKeyQueryStringAction.fromMap(Map<String, dynamic> map) {
     return EndpointDeliveryRuleCacheKeyQueryStringAction(
       behavior: (map['behavior'] as String).input(),
-      parameters: map['parameters'] == null ? null : (map['parameters'] as String).input(),
+      parameters: map['parameters'] == null ? null : (map['parameters']! as String).input(),
     );
   }
 }

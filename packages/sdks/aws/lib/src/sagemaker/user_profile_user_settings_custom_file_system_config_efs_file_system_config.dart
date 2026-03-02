@@ -26,7 +26,7 @@ class UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig {
   factory UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig.fromMap(Map<String, dynamic> map) {
     return UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig(
       fileSystemId: (map['fileSystemId'] as String).input(),
-      fileSystemPath: map['fileSystemPath'] == null ? null : (map['fileSystemPath'] as String).input(),
+      fileSystemPath: map['fileSystemPath'] == null ? null : ((map['fileSystemPath'] as String).input()).input(),
     );
   }
 }

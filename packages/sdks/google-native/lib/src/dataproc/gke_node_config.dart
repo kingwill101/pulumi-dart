@@ -52,13 +52,13 @@ class GkeNodeConfig {
 
   factory GkeNodeConfig.fromMap(Map<String, dynamic> map) {
     return GkeNodeConfig(
-      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<GkeNodePoolAcceleratorConfig>(map['accelerators'], (value) => GkeNodePoolAcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : (map['bootDiskKmsKey'] as String).input(),
-      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount'] as int).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform'] as String).input(),
-      preemptible: map['preemptible'] == null ? null : (map['preemptible'] as bool).input(),
-      spot: map['spot'] == null ? null : (map['spot'] as bool).input(),
+      accelerators: map['accelerators'] == null ? null : (pulumi.Input.decodeList<GkeNodePoolAcceleratorConfig>(map['accelerators']!, (value) => GkeNodePoolAcceleratorConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bootDiskKmsKey: map['bootDiskKmsKey'] == null ? null : (map['bootDiskKmsKey']! as String).input(),
+      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount']! as int).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      minCpuPlatform: map['minCpuPlatform'] == null ? null : (map['minCpuPlatform']! as String).input(),
+      preemptible: map['preemptible'] == null ? null : (map['preemptible']! as bool).input(),
+      spot: map['spot'] == null ? null : (map['spot']! as bool).input(),
     );
   }
 }

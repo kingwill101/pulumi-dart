@@ -78,14 +78,14 @@ class SiteMonitorArgs {
   factory SiteMonitorArgs.fromMap(Map<String, dynamic> map) {
     return SiteMonitorArgs(
       address: (map['address'] as String).input(),
-      agentGroup: map['agentGroup'] == null ? null : (map['agentGroup'] as String).input(),
-      alertIds: map['alertIds'] == null ? null : ((map['alertIds'] as List).cast<String>()).input(),
-      customSchedule: map['customSchedule'] == null ? null : (SiteMonitorCustomSchedule.fromMap((map['customSchedule'] as Map).cast<String, dynamic>())).input(),
-      interval: map['interval'] == null ? null : (map['interval'] as String).input(),
-      ispCities: map['ispCities'] == null ? null : (pulumi.Input.decodeList<SiteMonitorIspCity>(map['ispCities'], (value) => SiteMonitorIspCity.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      optionJson: map['optionJson'] == null ? null : (SiteMonitorOptionJson.fromMap((map['optionJson'] as Map).cast<String, dynamic>())).input(),
-      optionsJson: map['optionsJson'] == null ? null : (map['optionsJson'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      agentGroup: map['agentGroup'] == null ? null : (map['agentGroup']! as String).input(),
+      alertIds: map['alertIds'] == null ? null : ((map['alertIds']! as List).cast<String>()).input(),
+      customSchedule: map['customSchedule'] == null ? null : (SiteMonitorCustomSchedule.fromMap((map['customSchedule']! as Map).cast<String, dynamic>())).input(),
+      interval: map['interval'] == null ? null : (map['interval']! as String).input(),
+      ispCities: map['ispCities'] == null ? null : (pulumi.Input.decodeList<SiteMonitorIspCity>(map['ispCities']!, (value) => SiteMonitorIspCity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      optionJson: map['optionJson'] == null ? null : (SiteMonitorOptionJson.fromMap((map['optionJson']! as Map).cast<String, dynamic>())).input(),
+      optionsJson: map['optionsJson'] == null ? null : (map['optionsJson']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       taskName: (map['taskName'] as String).input(),
       taskType: (map['taskType'] as String).input(),
     );

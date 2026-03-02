@@ -45,10 +45,10 @@ class MigrateProjectsControllerMigrateProjectArgs {
 
   factory MigrateProjectsControllerMigrateProjectArgs.fromMap(Map<String, dynamic> map) {
     return MigrateProjectsControllerMigrateProjectArgs(
-      eTag: map['eTag'] == null ? null : (map['eTag'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      migrateProjectName: map['migrateProjectName'] == null ? null : (map['migrateProjectName'] as String).input(),
-      properties: map['properties'] == null ? null : (MigrateProjectProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      eTag: map['eTag'] == null ? null : (map['eTag']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      migrateProjectName: map['migrateProjectName'] == null ? null : (map['migrateProjectName']! as String).input(),
+      properties: map['properties'] == null ? null : (MigrateProjectProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

@@ -24,7 +24,7 @@ class DeploymentChannelProfilePersonaProperty {
 
   factory DeploymentChannelProfilePersonaProperty.fromMap(Map<String, dynamic> map) {
     return DeploymentChannelProfilePersonaProperty(
-      persona: map['persona'] == null ? null : (map['persona'] as String).input(),
+      persona: map['persona'] == null ? null : (map['persona']! as String).input(),
     );
   }
 }

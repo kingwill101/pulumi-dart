@@ -30,9 +30,9 @@ class ServiceInstanceConfiguration {
 
   factory ServiceInstanceConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceInstanceConfiguration(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as String).input(),
-      instanceRoleArn: map['instanceRoleArn'] == null ? null : (map['instanceRoleArn'] as String).input(),
-      memory: map['memory'] == null ? null : (map['memory'] as String).input(),
+      cpu: map['cpu'] == null ? null : ((map['cpu'] as String).input()).input(),
+      instanceRoleArn: map['instanceRoleArn'] == null ? null : ((map['instanceRoleArn'] as String).input()).input(),
+      memory: map['memory'] == null ? null : ((map['memory'] as String).input()).input(),
     );
   }
 }

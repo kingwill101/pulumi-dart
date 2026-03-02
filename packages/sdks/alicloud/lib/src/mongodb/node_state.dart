@@ -121,22 +121,22 @@ class NodeState {
 
   factory NodeState.fromMap(Map<String, dynamic> map) {
     return NodeState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      autoPay: map['autoPay'] == null ? null : (map['autoPay'] as bool).input(),
-      businessInfo: map['businessInfo'] == null ? null : (map['businessInfo'] as String).input(),
-      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId'] as String).input(),
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      fromApp: map['fromApp'] == null ? null : (map['fromApp'] as String).input(),
-      nodeClass: map['nodeClass'] == null ? null : (map['nodeClass'] as String).input(),
-      nodeId: map['nodeId'] == null ? null : (map['nodeId'] as String).input(),
-      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage'] as int).input(),
-      nodeType: map['nodeType'] == null ? null : (map['nodeType'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
-      readonlyReplicas: map['readonlyReplicas'] == null ? null : (map['readonlyReplicas'] as int).input(),
-      shardDirect: map['shardDirect'] == null ? null : (map['shardDirect'] as bool).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      switchTime: map['switchTime'] == null ? null : (map['switchTime'] as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      autoPay: map['autoPay'] == null ? null : (map['autoPay']! as bool).input(),
+      businessInfo: map['businessInfo'] == null ? null : (map['businessInfo']! as String).input(),
+      dbInstanceId: map['dbInstanceId'] == null ? null : (map['dbInstanceId']! as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      fromApp: map['fromApp'] == null ? null : (map['fromApp']! as String).input(),
+      nodeClass: map['nodeClass'] == null ? null : (map['nodeClass']! as String).input(),
+      nodeId: map['nodeId'] == null ? null : (map['nodeId']! as String).input(),
+      nodeStorage: map['nodeStorage'] == null ? null : (map['nodeStorage']! as int).input(),
+      nodeType: map['nodeType'] == null ? null : (map['nodeType']! as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
+      readonlyReplicas: map['readonlyReplicas'] == null ? null : (map['readonlyReplicas']! as int).input(),
+      shardDirect: map['shardDirect'] == null ? null : (map['shardDirect']! as bool).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      switchTime: map['switchTime'] == null ? null : (map['switchTime']! as String).input(),
     );
   }
 }

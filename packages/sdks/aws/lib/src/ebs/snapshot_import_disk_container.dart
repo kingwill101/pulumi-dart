@@ -36,10 +36,10 @@ class SnapshotImportDiskContainer {
 
   factory SnapshotImportDiskContainer.fromMap(Map<String, dynamic> map) {
     return SnapshotImportDiskContainer(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       format: (map['format'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
-      userBucket: map['userBucket'] == null ? null : (SnapshotImportDiskContainerUserBucket.fromMap((map['userBucket'] as Map).cast<String, dynamic>())).input(),
+      url: map['url'] == null ? null : ((map['url'] as String).input()).input(),
+      userBucket: map['userBucket'] == null ? null : ((SnapshotImportDiskContainerUserBucket.fromMap((map['userBucket']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      hiveOptions: map['hiveOptions'] == null ? null : (TableHiveOptions.fromMap((map['hiveOptions'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      hiveOptions: map['hiveOptions'] == null ? null : (TableHiveOptions.fromMap((map['hiveOptions']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

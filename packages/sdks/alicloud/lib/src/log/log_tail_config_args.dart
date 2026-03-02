@@ -56,9 +56,9 @@ class LogTailConfigArgs {
     return LogTailConfigArgs(
       inputDetail: (map['inputDetail'] as String).input(),
       inputType: (map['inputType'] as String).input(),
-      logSample: map['logSample'] == null ? null : (map['logSample'] as String).input(),
+      logSample: map['logSample'] == null ? null : (map['logSample']! as String).input(),
       logstore: (map['logstore'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       outputType: (map['outputType'] as String).input(),
       project: (map['project'] as String).input(),
     );

@@ -39,10 +39,10 @@ class CxGeneratorModelParameter {
 
   factory CxGeneratorModelParameter.fromMap(Map<String, dynamic> map) {
     return CxGeneratorModelParameter(
-      maxDecodeSteps: map['maxDecodeSteps'] == null ? null : (map['maxDecodeSteps'] as int).input(),
-      temperature: map['temperature'] == null ? null : (map['temperature'] as double).input(),
-      topK: map['topK'] == null ? null : (map['topK'] as int).input(),
-      topP: map['topP'] == null ? null : (map['topP'] as double).input(),
+      maxDecodeSteps: map['maxDecodeSteps'] == null ? null : (map['maxDecodeSteps']! as int).input(),
+      temperature: map['temperature'] == null ? null : (map['temperature']! as double).input(),
+      topK: map['topK'] == null ? null : (map['topK']! as int).input(),
+      topP: map['topP'] == null ? null : (map['topP']! as double).input(),
     );
   }
 }

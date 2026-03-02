@@ -64,7 +64,7 @@ class GetAvailabilityZonesResult {
       allAvailabilityZones: map['allAvailabilityZones'] == null ? null : map['allAvailabilityZones'] as bool,
       excludeNames: map['excludeNames'] == null ? null : (map['excludeNames'] as List).cast<String>(),
       excludeZoneIds: map['excludeZoneIds'] == null ? null : (map['excludeZoneIds'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAvailabilityZonesFilter>(map['filters'], (value) => GetAvailabilityZonesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAvailabilityZonesFilter>(map['filters']!, (value) => GetAvailabilityZonesFilter.fromMap((value as Map).cast<String, dynamic>())),
       groupNames: (map['groupNames'] as List).cast<String>(),
       id: map['id'] as String,
       names: (map['names'] as List).cast<String>(),

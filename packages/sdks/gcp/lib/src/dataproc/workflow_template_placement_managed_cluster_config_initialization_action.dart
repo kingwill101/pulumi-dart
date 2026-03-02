@@ -25,8 +25,8 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction {
 
   factory WorkflowTemplatePlacementManagedClusterConfigInitializationAction.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementManagedClusterConfigInitializationAction(
-      executableFile: map['executableFile'] == null ? null : (map['executableFile'] as String).input(),
-      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout'] as String).input(),
+      executableFile: map['executableFile'] == null ? null : (map['executableFile']! as String).input(),
+      executionTimeout: map['executionTimeout'] == null ? null : (map['executionTimeout']! as String).input(),
     );
   }
 }

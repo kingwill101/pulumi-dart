@@ -53,9 +53,9 @@ class EndpointV3Args {
   factory EndpointV3Args.fromMap(Map<String, dynamic> map) {
     return EndpointV3Args(
       endpointRegion: (map['endpointRegion'] as String).input(),
-      interface: map['interface'] == null ? null : (map['interface'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      interface: map['interface'] == null ? null : (map['interface']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
       serviceId: (map['serviceId'] as String).input(),
       url: (map['url'] as String).input(),
     );

@@ -98,20 +98,20 @@ class ConnectorArgs {
 
   factory ConnectorArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorArgs(
-      capacity: (ConnectorCapacity.fromMap((map['capacity'] as Map).cast<String, dynamic>())).input(),
+      capacity: (ConnectorCapacity.fromMap((map['capacity']! as Map).cast<String, dynamic>())).input(),
       connectorConfiguration: ((map['connectorConfiguration'] as Map).cast<String, String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      kafkaCluster: (ConnectorKafkaCluster.fromMap((map['kafkaCluster'] as Map).cast<String, dynamic>())).input(),
-      kafkaClusterClientAuthentication: (ConnectorKafkaClusterClientAuthentication.fromMap((map['kafkaClusterClientAuthentication'] as Map).cast<String, dynamic>())).input(),
-      kafkaClusterEncryptionInTransit: (ConnectorKafkaClusterEncryptionInTransit.fromMap((map['kafkaClusterEncryptionInTransit'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      kafkaCluster: (ConnectorKafkaCluster.fromMap((map['kafkaCluster']! as Map).cast<String, dynamic>())).input(),
+      kafkaClusterClientAuthentication: (ConnectorKafkaClusterClientAuthentication.fromMap((map['kafkaClusterClientAuthentication']! as Map).cast<String, dynamic>())).input(),
+      kafkaClusterEncryptionInTransit: (ConnectorKafkaClusterEncryptionInTransit.fromMap((map['kafkaClusterEncryptionInTransit']! as Map).cast<String, dynamic>())).input(),
       kafkaconnectVersion: (map['kafkaconnectVersion'] as String).input(),
-      logDelivery: map['logDelivery'] == null ? null : (ConnectorLogDelivery.fromMap((map['logDelivery'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      plugins: (pulumi.Input.decodeList<ConnectorPlugin>(map['plugins'], (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      logDelivery: map['logDelivery'] == null ? null : ((ConnectorLogDelivery.fromMap((map['logDelivery']! as Map).cast<String, dynamic>())).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      plugins: (pulumi.Input.decodeList<ConnectorPlugin>(map['plugins']!, (value) => ConnectorPlugin.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       serviceExecutionRoleArn: (map['serviceExecutionRoleArn'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      workerConfiguration: map['workerConfiguration'] == null ? null : (ConnectorWorkerConfiguration.fromMap((map['workerConfiguration'] as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      workerConfiguration: map['workerConfiguration'] == null ? null : ((ConnectorWorkerConfiguration.fromMap((map['workerConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

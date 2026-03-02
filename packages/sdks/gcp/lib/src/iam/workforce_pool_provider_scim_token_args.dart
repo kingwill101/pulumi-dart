@@ -49,7 +49,7 @@ class WorkforcePoolProviderScimTokenArgs {
 
   factory WorkforcePoolProviderScimTokenArgs.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderScimTokenArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
       location: (map['location'] as String).input(),
       providerId: (map['providerId'] as String).input(),
       scimTenantId: (map['scimTenantId'] as String).input(),

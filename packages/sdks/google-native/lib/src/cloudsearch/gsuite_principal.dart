@@ -30,9 +30,9 @@ class GSuitePrincipal {
 
   factory GSuitePrincipal.fromMap(Map<String, dynamic> map) {
     return GSuitePrincipal(
-      gsuiteDomain: map['gsuiteDomain'] == null ? null : (map['gsuiteDomain'] as bool).input(),
-      gsuiteGroupEmail: map['gsuiteGroupEmail'] == null ? null : (map['gsuiteGroupEmail'] as String).input(),
-      gsuiteUserEmail: map['gsuiteUserEmail'] == null ? null : (map['gsuiteUserEmail'] as String).input(),
+      gsuiteDomain: map['gsuiteDomain'] == null ? null : (map['gsuiteDomain']! as bool).input(),
+      gsuiteGroupEmail: map['gsuiteGroupEmail'] == null ? null : (map['gsuiteGroupEmail']! as String).input(),
+      gsuiteUserEmail: map['gsuiteUserEmail'] == null ? null : (map['gsuiteUserEmail']! as String).input(),
     );
   }
 }

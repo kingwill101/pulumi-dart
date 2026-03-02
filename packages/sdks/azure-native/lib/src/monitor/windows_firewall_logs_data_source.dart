@@ -27,7 +27,7 @@ class WindowsFirewallLogsDataSource {
 
   factory WindowsFirewallLogsDataSource.fromMap(Map<String, dynamic> map) {
     return WindowsFirewallLogsDataSource(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       streams: ((map['streams'] as List).cast<String>()).input(),
     );
   }

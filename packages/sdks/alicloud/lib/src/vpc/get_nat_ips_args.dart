@@ -58,14 +58,14 @@ class GetNatIpsArgs {
 
   factory GetNatIpsArgs.fromMap(Map<String, dynamic> map) {
     return GetNatIpsArgs(
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
       natGatewayId: (map['natGatewayId'] as String).input(),
-      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr'] as String).input(),
-      natIpIds: map['natIpIds'] == null ? null : ((map['natIpIds'] as List).cast<String>()).input(),
-      natIpNames: map['natIpNames'] == null ? null : ((map['natIpNames'] as List).cast<String>()).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      natIpCidr: map['natIpCidr'] == null ? null : (map['natIpCidr']! as String).input(),
+      natIpIds: map['natIpIds'] == null ? null : ((map['natIpIds']! as List).cast<String>()).input(),
+      natIpNames: map['natIpNames'] == null ? null : ((map['natIpNames']! as List).cast<String>()).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection 
 
   factory DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection.fromMap(Map<String, dynamic> map) {
     return DefenderForContainersGcpOfferingResponseDataPipelineNativeCloudConnection(
-      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress'] as String).input(),
-      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId'] as String).input(),
+      serviceAccountEmailAddress: map['serviceAccountEmailAddress'] == null ? null : (map['serviceAccountEmailAddress']! as String).input(),
+      workloadIdentityProviderId: map['workloadIdentityProviderId'] == null ? null : (map['workloadIdentityProviderId']! as String).input(),
     );
   }
 }

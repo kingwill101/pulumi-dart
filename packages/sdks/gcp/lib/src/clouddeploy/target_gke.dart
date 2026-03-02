@@ -35,10 +35,10 @@ class TargetGke {
 
   factory TargetGke.fromMap(Map<String, dynamic> map) {
     return TargetGke(
-      cluster: map['cluster'] == null ? null : (map['cluster'] as String).input(),
-      dnsEndpoint: map['dnsEndpoint'] == null ? null : (map['dnsEndpoint'] as bool).input(),
-      internalIp: map['internalIp'] == null ? null : (map['internalIp'] as bool).input(),
-      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl'] as String).input(),
+      cluster: map['cluster'] == null ? null : (map['cluster']! as String).input(),
+      dnsEndpoint: map['dnsEndpoint'] == null ? null : (map['dnsEndpoint']! as bool).input(),
+      internalIp: map['internalIp'] == null ? null : (map['internalIp']! as bool).input(),
+      proxyUrl: map['proxyUrl'] == null ? null : (map['proxyUrl']! as String).input(),
     );
   }
 }

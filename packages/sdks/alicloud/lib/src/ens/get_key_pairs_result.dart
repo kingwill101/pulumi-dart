@@ -52,10 +52,10 @@ class GetKeyPairsResult {
     return GetKeyPairsResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      keyPairName: map['keyPairName'] == null ? null : map['keyPairName'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      keyPairName: map['keyPairName'] == null ? null : map['keyPairName']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       pairs: pulumi.Input.decodeList<GetKeyPairsPair>(map['pairs'], (value) => GetKeyPairsPair.fromMap((value as Map).cast<String, dynamic>())),
       version: map['version'] as String,
     );

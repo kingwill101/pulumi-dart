@@ -42,7 +42,7 @@ class DiskAttachmentArgs {
       diskName: (map['diskName'] as String).input(),
       diskPath: (map['diskPath'] as String).input(),
       instanceName: (map['instanceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -43,10 +43,10 @@ class ForwardingConfigurationResponse {
 
   factory ForwardingConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ForwardingConfigurationResponse(
-      backendPool: map['backendPool'] == null ? null : (SubResourceResponse.fromMap((map['backendPool'] as Map).cast<String, dynamic>())).input(),
-      cacheConfiguration: map['cacheConfiguration'] == null ? null : (CacheConfigurationResponse.fromMap((map['cacheConfiguration'] as Map).cast<String, dynamic>())).input(),
-      customForwardingPath: map['customForwardingPath'] == null ? null : (map['customForwardingPath'] as String).input(),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
+      backendPool: map['backendPool'] == null ? null : (SubResourceResponse.fromMap((map['backendPool']! as Map).cast<String, dynamic>())).input(),
+      cacheConfiguration: map['cacheConfiguration'] == null ? null : (CacheConfigurationResponse.fromMap((map['cacheConfiguration']! as Map).cast<String, dynamic>())).input(),
+      customForwardingPath: map['customForwardingPath'] == null ? null : (map['customForwardingPath']! as String).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
       odataType: (map['odataType'] as String).input(),
     );
   }

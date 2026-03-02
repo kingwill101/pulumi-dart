@@ -51,13 +51,13 @@ class BgpPeerState {
 
   factory BgpPeerState.fromMap(Map<String, dynamic> map) {
     return BgpPeerState(
-      bfdMultiHop: map['bfdMultiHop'] == null ? null : (map['bfdMultiHop'] as int).input(),
-      bgpGroupId: map['bgpGroupId'] == null ? null : (map['bgpGroupId'] as String).input(),
-      bgpPeerName: map['bgpPeerName'] == null ? null : (map['bgpPeerName'] as String).input(),
-      enableBfd: map['enableBfd'] == null ? null : (map['enableBfd'] as bool).input(),
-      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion'] as String).input(),
-      peerIpAddress: map['peerIpAddress'] == null ? null : (map['peerIpAddress'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bfdMultiHop: map['bfdMultiHop'] == null ? null : (map['bfdMultiHop']! as int).input(),
+      bgpGroupId: map['bgpGroupId'] == null ? null : (map['bgpGroupId']! as String).input(),
+      bgpPeerName: map['bgpPeerName'] == null ? null : (map['bgpPeerName']! as String).input(),
+      enableBfd: map['enableBfd'] == null ? null : (map['enableBfd']! as bool).input(),
+      ipVersion: map['ipVersion'] == null ? null : (map['ipVersion']! as String).input(),
+      peerIpAddress: map['peerIpAddress'] == null ? null : (map['peerIpAddress']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

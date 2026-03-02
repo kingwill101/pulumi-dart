@@ -66,16 +66,16 @@ class PartitionState {
 
   factory PartitionState.fromMap(Map<String, dynamic> map) {
     return PartitionState(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      creationTime: map['creationTime'] == null ? null : (map['creationTime'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      lastAccessedTime: map['lastAccessedTime'] == null ? null : (map['lastAccessedTime'] as String).input(),
-      lastAnalyzedTime: map['lastAnalyzedTime'] == null ? null : (map['lastAnalyzedTime'] as String).input(),
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, String>()).input(),
-      partitionValues: map['partitionValues'] == null ? null : ((map['partitionValues'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      storageDescriptor: map['storageDescriptor'] == null ? null : (PartitionStorageDescriptor.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>())).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      creationTime: map['creationTime'] == null ? null : ((map['creationTime'] as String).input()).input(),
+      databaseName: map['databaseName'] == null ? null : ((map['databaseName'] as String).input()).input(),
+      lastAccessedTime: map['lastAccessedTime'] == null ? null : ((map['lastAccessedTime'] as String).input()).input(),
+      lastAnalyzedTime: map['lastAnalyzedTime'] == null ? null : ((map['lastAnalyzedTime'] as String).input()).input(),
+      parameters: map['parameters'] == null ? null : (((map['parameters'] as Map).cast<String, String>()).input()).input(),
+      partitionValues: map['partitionValues'] == null ? null : (((map['partitionValues'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      storageDescriptor: map['storageDescriptor'] == null ? null : ((PartitionStorageDescriptor.fromMap((map['storageDescriptor']! as Map).cast<String, dynamic>())).input()).input(),
+      tableName: map['tableName'] == null ? null : ((map['tableName'] as String).input()).input(),
     );
   }
 }

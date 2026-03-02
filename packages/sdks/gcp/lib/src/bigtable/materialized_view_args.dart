@@ -45,10 +45,10 @@ class MaterializedViewArgs {
 
   factory MaterializedViewArgs.fromMap(Map<String, dynamic> map) {
     return MaterializedViewArgs(
-      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection'] as bool).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
+      deletionProtection: map['deletionProtection'] == null ? null : (map['deletionProtection']! as bool).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
       materializedViewId: (map['materializedViewId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       query: (map['query'] as String).input(),
     );
   }

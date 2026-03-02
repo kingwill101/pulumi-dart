@@ -75,17 +75,17 @@ class ProviderState {
 
   factory ProviderState.fromMap(Map<String, dynamic> map) {
     return ProviderState(
-      attestationUri: map['attestationUri'] == null ? null : (map['attestationUri'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      openEnclavePolicyBase64: map['openEnclavePolicyBase64'] == null ? null : (map['openEnclavePolicyBase64'] as String).input(),
-      policySigningCertificateData: map['policySigningCertificateData'] == null ? null : (map['policySigningCertificateData'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sevSnpPolicyBase64: map['sevSnpPolicyBase64'] == null ? null : (map['sevSnpPolicyBase64'] as String).input(),
-      sgxEnclavePolicyBase64: map['sgxEnclavePolicyBase64'] == null ? null : (map['sgxEnclavePolicyBase64'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tpmPolicyBase64: map['tpmPolicyBase64'] == null ? null : (map['tpmPolicyBase64'] as String).input(),
-      trustModel: map['trustModel'] == null ? null : (map['trustModel'] as String).input(),
+      attestationUri: map['attestationUri'] == null ? null : (map['attestationUri']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      openEnclavePolicyBase64: map['openEnclavePolicyBase64'] == null ? null : (map['openEnclavePolicyBase64']! as String).input(),
+      policySigningCertificateData: map['policySigningCertificateData'] == null ? null : (map['policySigningCertificateData']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sevSnpPolicyBase64: map['sevSnpPolicyBase64'] == null ? null : (map['sevSnpPolicyBase64']! as String).input(),
+      sgxEnclavePolicyBase64: map['sgxEnclavePolicyBase64'] == null ? null : (map['sgxEnclavePolicyBase64']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      tpmPolicyBase64: map['tpmPolicyBase64'] == null ? null : (map['tpmPolicyBase64']! as String).input(),
+      trustModel: map['trustModel'] == null ? null : (map['trustModel']! as String).input(),
     );
   }
 }

@@ -57,11 +57,11 @@ class ConnectionArgs {
     return ConnectionArgs(
       appServiceId: (map['appServiceId'] as String).input(),
       authentication: (ConnectionAuthentication.fromMap((map['authentication'] as Map).cast<String, dynamic>())).input(),
-      clientType: map['clientType'] == null ? null : (map['clientType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretStore: map['secretStore'] == null ? null : (ConnectionSecretStore.fromMap((map['secretStore'] as Map).cast<String, dynamic>())).input(),
+      clientType: map['clientType'] == null ? null : (map['clientType']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretStore: map['secretStore'] == null ? null : (ConnectionSecretStore.fromMap((map['secretStore']! as Map).cast<String, dynamic>())).input(),
       targetResourceId: (map['targetResourceId'] as String).input(),
-      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution'] as String).input(),
+      vnetSolution: map['vnetSolution'] == null ? null : (map['vnetSolution']! as String).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class DestinationConfig {
 
   factory DestinationConfig.fromMap(Map<String, dynamic> map) {
     return DestinationConfig(
-      bigqueryDestinationConfig: map['bigqueryDestinationConfig'] == null ? null : (BigQueryDestinationConfig.fromMap((map['bigqueryDestinationConfig'] as Map).cast<String, dynamic>())).input(),
+      bigqueryDestinationConfig: map['bigqueryDestinationConfig'] == null ? null : (BigQueryDestinationConfig.fromMap((map['bigqueryDestinationConfig']! as Map).cast<String, dynamic>())).input(),
       destinationConnectionProfile: (map['destinationConnectionProfile'] as String).input(),
-      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : (GcsDestinationConfig.fromMap((map['gcsDestinationConfig'] as Map).cast<String, dynamic>())).input(),
+      gcsDestinationConfig: map['gcsDestinationConfig'] == null ? null : (GcsDestinationConfig.fromMap((map['gcsDestinationConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

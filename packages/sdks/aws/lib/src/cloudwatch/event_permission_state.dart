@@ -48,12 +48,12 @@ class EventPermissionState {
 
   factory EventPermissionState.fromMap(Map<String, dynamic> map) {
     return EventPermissionState(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      condition: map['condition'] == null ? null : (EventPermissionCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
-      eventBusName: map['eventBusName'] == null ? null : (map['eventBusName'] as String).input(),
-      principal: map['principal'] == null ? null : (map['principal'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      statementId: map['statementId'] == null ? null : (map['statementId'] as String).input(),
+      action: map['action'] == null ? null : ((map['action'] as String).input()).input(),
+      condition: map['condition'] == null ? null : ((EventPermissionCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input()).input(),
+      eventBusName: map['eventBusName'] == null ? null : ((map['eventBusName'] as String).input()).input(),
+      principal: map['principal'] == null ? null : ((map['principal'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      statementId: map['statementId'] == null ? null : ((map['statementId'] as String).input()).input(),
     );
   }
 }

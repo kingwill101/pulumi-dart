@@ -31,9 +31,9 @@ class PushFilter {
 
   factory PushFilter.fromMap(Map<String, dynamic> map) {
     return PushFilter(
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex'] as bool).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      invertRegex: map['invertRegex'] == null ? null : (map['invertRegex']! as bool).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

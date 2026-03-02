@@ -54,11 +54,11 @@ class QuotaState {
 
   factory QuotaState.fromMap(Map<String, dynamic> map) {
     return QuotaState(
-      commodityCode: map['commodityCode'] == null ? null : (map['commodityCode'] as String).input(),
-      commodityData: map['commodityData'] == null ? null : (map['commodityData'] as String).input(),
-      partNickName: map['partNickName'] == null ? null : (map['partNickName'] as String).input(),
-      paymentType: map['paymentType'] == null ? null : (map['paymentType'] as String).input(),
-      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : (pulumi.Input.decodeList<QuotaSubQuotaInfoList>(map['subQuotaInfoLists'], (value) => QuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commodityCode: map['commodityCode'] == null ? null : (map['commodityCode']! as String).input(),
+      commodityData: map['commodityData'] == null ? null : (map['commodityData']! as String).input(),
+      partNickName: map['partNickName'] == null ? null : (map['partNickName']! as String).input(),
+      paymentType: map['paymentType'] == null ? null : (map['paymentType']! as String).input(),
+      subQuotaInfoLists: map['subQuotaInfoLists'] == null ? null : (pulumi.Input.decodeList<QuotaSubQuotaInfoList>(map['subQuotaInfoLists']!, (value) => QuotaSubQuotaInfoList.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

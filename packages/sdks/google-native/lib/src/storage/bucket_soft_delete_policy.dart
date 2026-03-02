@@ -26,8 +26,8 @@ class BucketSoftDeletePolicy {
 
   factory BucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return BucketSoftDeletePolicy(
-      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime'] as String).input(),
-      retentionDurationSeconds: map['retentionDurationSeconds'] == null ? null : (map['retentionDurationSeconds'] as String).input(),
+      effectiveTime: map['effectiveTime'] == null ? null : (map['effectiveTime']! as String).input(),
+      retentionDurationSeconds: map['retentionDurationSeconds'] == null ? null : (map['retentionDurationSeconds']! as String).input(),
     );
   }
 }

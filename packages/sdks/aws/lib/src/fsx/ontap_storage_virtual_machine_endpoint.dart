@@ -39,10 +39,10 @@ class OntapStorageVirtualMachineEndpoint {
 
   factory OntapStorageVirtualMachineEndpoint.fromMap(Map<String, dynamic> map) {
     return OntapStorageVirtualMachineEndpoint(
-      iscsis: map['iscsis'] == null ? null : (pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointIscsi>(map['iscsis'], (value) => OntapStorageVirtualMachineEndpointIscsi.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      managements: map['managements'] == null ? null : (pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointManagement>(map['managements'], (value) => OntapStorageVirtualMachineEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      nfs: map['nfs'] == null ? null : (pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointNf>(map['nfs'], (value) => OntapStorageVirtualMachineEndpointNf.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      smbs: map['smbs'] == null ? null : (pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointSmb>(map['smbs'], (value) => OntapStorageVirtualMachineEndpointSmb.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      iscsis: map['iscsis'] == null ? null : ((pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointIscsi>(map['iscsis']!, (value) => OntapStorageVirtualMachineEndpointIscsi.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      managements: map['managements'] == null ? null : ((pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointManagement>(map['managements']!, (value) => OntapStorageVirtualMachineEndpointManagement.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      nfs: map['nfs'] == null ? null : ((pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointNf>(map['nfs']!, (value) => OntapStorageVirtualMachineEndpointNf.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      smbs: map['smbs'] == null ? null : ((pulumi.Input.decodeList<OntapStorageVirtualMachineEndpointSmb>(map['smbs']!, (value) => OntapStorageVirtualMachineEndpointSmb.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

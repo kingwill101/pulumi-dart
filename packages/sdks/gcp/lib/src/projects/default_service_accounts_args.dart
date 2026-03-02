@@ -39,7 +39,7 @@ class DefaultServiceAccountsArgs {
     return DefaultServiceAccountsArgs(
       action: (map['action'] as String).input(),
       project: (map['project'] as String).input(),
-      restorePolicy: map['restorePolicy'] == null ? null : (map['restorePolicy'] as String).input(),
+      restorePolicy: map['restorePolicy'] == null ? null : (map['restorePolicy']! as String).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class SavedSearchState {
 
   factory SavedSearchState.fromMap(Map<String, dynamic> map) {
     return SavedSearchState(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias'] as String).input(),
-      functionParameters: map['functionParameters'] == null ? null : ((map['functionParameters'] as List).cast<String>()).input(),
-      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      query: map['query'] == null ? null : (map['query'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      functionAlias: map['functionAlias'] == null ? null : (map['functionAlias']! as String).input(),
+      functionParameters: map['functionParameters'] == null ? null : ((map['functionParameters']! as List).cast<String>()).input(),
+      logAnalyticsWorkspaceId: map['logAnalyticsWorkspaceId'] == null ? null : (map['logAnalyticsWorkspaceId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      query: map['query'] == null ? null : (map['query']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

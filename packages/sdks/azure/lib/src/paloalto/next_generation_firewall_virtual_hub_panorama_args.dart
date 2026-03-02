@@ -74,16 +74,16 @@ class NextGenerationFirewallVirtualHubPanoramaArgs {
 
   factory NextGenerationFirewallVirtualHubPanoramaArgs.fromMap(Map<String, dynamic> map) {
     return NextGenerationFirewallVirtualHubPanoramaArgs(
-      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubPanoramaDestinationNat>(map['destinationNats'], (value) => NextGenerationFirewallVirtualHubPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualHubPanoramaDnsSettings.fromMap((map['dnsSettings'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      destinationNats: map['destinationNats'] == null ? null : (pulumi.Input.decodeList<NextGenerationFirewallVirtualHubPanoramaDestinationNat>(map['destinationNats']!, (value) => NextGenerationFirewallVirtualHubPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dnsSettings: map['dnsSettings'] == null ? null : (NextGenerationFirewallVirtualHubPanoramaDnsSettings.fromMap((map['dnsSettings']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      marketplaceOfferId: map['marketplaceOfferId'] == null ? null : (map['marketplaceOfferId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkProfile: (NextGenerationFirewallVirtualHubPanoramaNetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
       panoramaBase64Config: (map['panoramaBase64Config'] as String).input(),
-      planId: map['planId'] == null ? null : (map['planId'] as String).input(),
+      planId: map['planId'] == null ? null : (map['planId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class TimeBasedRetention {
 
   factory TimeBasedRetention.fromMap(Map<String, dynamic> map) {
     return TimeBasedRetention(
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as String).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod']! as String).input(),
     );
   }
 }

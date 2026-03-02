@@ -37,10 +37,10 @@ class CustomDomainConfiguration {
 
   factory CustomDomainConfiguration.fromMap(Map<String, dynamic> map) {
     return CustomDomainConfiguration(
-      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultProperties.fromMap((map['certificateKeyVaultProperties'] as Map).cast<String, dynamic>())).input(),
-      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword'] as String).input(),
-      certificateValue: map['certificateValue'] == null ? null : (map['certificateValue'] as String).input(),
-      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix'] as String).input(),
+      certificateKeyVaultProperties: map['certificateKeyVaultProperties'] == null ? null : (CertificateKeyVaultProperties.fromMap((map['certificateKeyVaultProperties']! as Map).cast<String, dynamic>())).input(),
+      certificatePassword: map['certificatePassword'] == null ? null : (map['certificatePassword']! as String).input(),
+      certificateValue: map['certificateValue'] == null ? null : (map['certificateValue']! as String).input(),
+      dnsSuffix: map['dnsSuffix'] == null ? null : (map['dnsSuffix']! as String).input(),
     );
   }
 }

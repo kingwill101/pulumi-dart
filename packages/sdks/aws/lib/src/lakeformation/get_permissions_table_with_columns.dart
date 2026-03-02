@@ -48,11 +48,11 @@ class GetPermissionsTableWithColumns {
   factory GetPermissionsTableWithColumns.fromMap(Map<String, dynamic> map) {
     return GetPermissionsTableWithColumns(
       catalogId: (map['catalogId'] as String).input(),
-      columnNames: map['columnNames'] == null ? null : ((map['columnNames'] as List).cast<String>()).input(),
+      columnNames: map['columnNames'] == null ? null : (((map['columnNames'] as List).cast<String>()).input()).input(),
       databaseName: (map['databaseName'] as String).input(),
-      excludedColumnNames: map['excludedColumnNames'] == null ? null : ((map['excludedColumnNames'] as List).cast<String>()).input(),
+      excludedColumnNames: map['excludedColumnNames'] == null ? null : (((map['excludedColumnNames'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
-      wildcard: map['wildcard'] == null ? null : (map['wildcard'] as bool).input(),
+      wildcard: map['wildcard'] == null ? null : ((map['wildcard'] as bool).input()).input(),
     );
   }
 }

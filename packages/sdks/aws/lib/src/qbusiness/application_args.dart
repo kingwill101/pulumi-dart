@@ -67,15 +67,15 @@ class ApplicationArgs {
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
-      attachmentsConfiguration: (ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      attachmentsConfiguration: (ApplicationAttachmentsConfiguration.fromMap((map['attachmentsConfiguration']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       displayName: (map['displayName'] as String).input(),
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : (ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : ((ApplicationEncryptionConfiguration.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       iamServiceRoleArn: (map['iamServiceRoleArn'] as String).input(),
       identityCenterInstanceArn: (map['identityCenterInstanceArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ApplicationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ApplicationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

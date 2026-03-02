@@ -31,7 +31,7 @@ class InstanceStorageConfigStorageConfigKinesisVideoStreamConfig {
 
   factory InstanceStorageConfigStorageConfigKinesisVideoStreamConfig.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigStorageConfigKinesisVideoStreamConfig(
-      encryptionConfig: (InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      encryptionConfig: (InstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
       prefix: (map['prefix'] as String).input(),
       retentionPeriodHours: (map['retentionPeriodHours'] as int).input(),
     );

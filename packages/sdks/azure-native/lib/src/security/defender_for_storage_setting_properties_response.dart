@@ -38,10 +38,10 @@ class DefenderForStorageSettingPropertiesResponse {
 
   factory DefenderForStorageSettingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return DefenderForStorageSettingPropertiesResponse(
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      malwareScanning: map['malwareScanning'] == null ? null : (MalwareScanningPropertiesResponse.fromMap((map['malwareScanning'] as Map).cast<String, dynamic>())).input(),
-      overrideSubscriptionLevelSettings: map['overrideSubscriptionLevelSettings'] == null ? null : (map['overrideSubscriptionLevelSettings'] as bool).input(),
-      sensitiveDataDiscovery: map['sensitiveDataDiscovery'] == null ? null : (SensitiveDataDiscoveryPropertiesResponse.fromMap((map['sensitiveDataDiscovery'] as Map).cast<String, dynamic>())).input(),
+      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled']! as bool).input(),
+      malwareScanning: map['malwareScanning'] == null ? null : (MalwareScanningPropertiesResponse.fromMap((map['malwareScanning']! as Map).cast<String, dynamic>())).input(),
+      overrideSubscriptionLevelSettings: map['overrideSubscriptionLevelSettings'] == null ? null : (map['overrideSubscriptionLevelSettings']! as bool).input(),
+      sensitiveDataDiscovery: map['sensitiveDataDiscovery'] == null ? null : (SensitiveDataDiscoveryPropertiesResponse.fromMap((map['sensitiveDataDiscovery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

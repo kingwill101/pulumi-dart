@@ -49,9 +49,9 @@ class ServiceProviderPropertiesResponse {
     return ServiceProviderPropertiesResponse(
       devPortalUrl: (map['devPortalUrl'] as String).input(),
       displayName: (map['displayName'] as String).input(),
-      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl'] as String).input(),
+      iconUrl: map['iconUrl'] == null ? null : (map['iconUrl']! as String).input(),
       id: (map['id'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ServiceProviderParameterResponse>(map['parameters'], (value) => ServiceProviderParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<ServiceProviderParameterResponse>(map['parameters']!, (value) => ServiceProviderParameterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       serviceProviderName: (map['serviceProviderName'] as String).input(),
     );
   }

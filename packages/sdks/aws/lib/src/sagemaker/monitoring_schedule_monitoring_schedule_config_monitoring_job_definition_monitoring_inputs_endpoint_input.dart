@@ -70,17 +70,17 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput.fromMap(Map<String, dynamic> map) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsEndpointInput(
-      endTimeOffset: map['endTimeOffset'] == null ? null : (map['endTimeOffset'] as String).input(),
+      endTimeOffset: map['endTimeOffset'] == null ? null : ((map['endTimeOffset'] as String).input()).input(),
       endpointName: (map['endpointName'] as String).input(),
-      excludeFeaturesAttribute: map['excludeFeaturesAttribute'] == null ? null : (map['excludeFeaturesAttribute'] as String).input(),
-      featuresAttribute: map['featuresAttribute'] == null ? null : (map['featuresAttribute'] as String).input(),
-      inferenceAttribute: map['inferenceAttribute'] == null ? null : (map['inferenceAttribute'] as String).input(),
+      excludeFeaturesAttribute: map['excludeFeaturesAttribute'] == null ? null : ((map['excludeFeaturesAttribute'] as String).input()).input(),
+      featuresAttribute: map['featuresAttribute'] == null ? null : ((map['featuresAttribute'] as String).input()).input(),
+      inferenceAttribute: map['inferenceAttribute'] == null ? null : ((map['inferenceAttribute'] as String).input()).input(),
       localPath: (map['localPath'] as String).input(),
-      probabilityAttribute: map['probabilityAttribute'] == null ? null : (map['probabilityAttribute'] as String).input(),
-      probabilityThresholdAttribute: map['probabilityThresholdAttribute'] == null ? null : (map['probabilityThresholdAttribute'] as double).input(),
-      s3DataDistributionType: map['s3DataDistributionType'] == null ? null : (map['s3DataDistributionType'] as String).input(),
-      s3InputMode: map['s3InputMode'] == null ? null : (map['s3InputMode'] as String).input(),
-      startTimeOffset: map['startTimeOffset'] == null ? null : (map['startTimeOffset'] as String).input(),
+      probabilityAttribute: map['probabilityAttribute'] == null ? null : ((map['probabilityAttribute'] as String).input()).input(),
+      probabilityThresholdAttribute: map['probabilityThresholdAttribute'] == null ? null : ((map['probabilityThresholdAttribute'] as double).input()).input(),
+      s3DataDistributionType: map['s3DataDistributionType'] == null ? null : ((map['s3DataDistributionType'] as String).input()).input(),
+      s3InputMode: map['s3InputMode'] == null ? null : ((map['s3InputMode'] as String).input()).input(),
+      startTimeOffset: map['startTimeOffset'] == null ? null : ((map['startTimeOffset'] as String).input()).input(),
     );
   }
 }

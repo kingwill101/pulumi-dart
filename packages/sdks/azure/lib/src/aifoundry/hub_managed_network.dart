@@ -20,7 +20,7 @@ class HubManagedNetwork {
 
   factory HubManagedNetwork.fromMap(Map<String, dynamic> map) {
     return HubManagedNetwork(
-      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode'] as String).input(),
+      isolationMode: map['isolationMode'] == null ? null : (map['isolationMode']! as String).input(),
     );
   }
 }

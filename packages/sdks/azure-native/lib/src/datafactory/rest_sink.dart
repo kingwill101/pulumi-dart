@@ -77,18 +77,18 @@ class RestSink {
 
   factory RestSink.fromMap(Map<String, dynamic> map) {
     return RestSink(
-      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']).input(),
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      httpCompressionType: map['httpCompressionType'] == null ? null : (map['httpCompressionType']).input(),
-      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      requestInterval: map['requestInterval'] == null ? null : (map['requestInterval']).input(),
-      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
+      additionalHeaders: map['additionalHeaders'] == null ? null : (map['additionalHeaders']!).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      httpCompressionType: map['httpCompressionType'] == null ? null : (map['httpCompressionType']!).input(),
+      httpRequestTimeout: map['httpRequestTimeout'] == null ? null : (map['httpRequestTimeout']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      requestInterval: map['requestInterval'] == null ? null : (map['requestInterval']!).input(),
+      requestMethod: map['requestMethod'] == null ? null : (map['requestMethod']!).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
       type: (map['type'] as String).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
     );
   }
 }

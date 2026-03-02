@@ -36,10 +36,10 @@ class ClusterRoleAssociationState {
 
   factory ClusterRoleAssociationState.fromMap(Map<String, dynamic> map) {
     return ClusterRoleAssociationState(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : (map['dbClusterIdentifier'] as String).input(),
-      featureName: map['featureName'] == null ? null : (map['featureName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : ((map['dbClusterIdentifier'] as String).input()).input(),
+      featureName: map['featureName'] == null ? null : ((map['featureName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

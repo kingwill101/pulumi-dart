@@ -25,8 +25,8 @@ class StreamProcessorOutputS3Destination {
 
   factory StreamProcessorOutputS3Destination.fromMap(Map<String, dynamic> map) {
     return StreamProcessorOutputS3Destination(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      keyPrefix: map['keyPrefix'] == null ? null : (map['keyPrefix'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      keyPrefix: map['keyPrefix'] == null ? null : ((map['keyPrefix'] as String).input()).input(),
     );
   }
 }

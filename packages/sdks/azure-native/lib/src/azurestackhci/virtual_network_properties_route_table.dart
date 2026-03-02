@@ -37,10 +37,10 @@ class VirtualNetworkPropertiesRouteTable {
 
   factory VirtualNetworkPropertiesRouteTable.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPropertiesRouteTable(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesRoutes>(map['routes'], (value) => VirtualNetworkPropertiesRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      routes: map['routes'] == null ? null : (pulumi.Input.decodeList<VirtualNetworkPropertiesRoutes>(map['routes']!, (value) => VirtualNetworkPropertiesRoutes.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

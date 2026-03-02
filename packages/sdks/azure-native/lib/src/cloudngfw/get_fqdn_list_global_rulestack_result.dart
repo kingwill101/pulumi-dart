@@ -66,10 +66,10 @@ class GetFqdnListGlobalRulestackResult {
 
   factory GetFqdnListGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetFqdnListGlobalRulestackResult(
-      auditComment: map['auditComment'] == null ? null : map['auditComment'] as String,
+      auditComment: map['auditComment'] == null ? null : map['auditComment']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      etag: map['etag'] == null ? null : map['etag'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      etag: map['etag'] == null ? null : map['etag']! as String,
       fqdnList: (map['fqdnList'] as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,

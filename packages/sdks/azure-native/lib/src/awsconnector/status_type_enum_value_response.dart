@@ -21,7 +21,7 @@ class StatusTypeEnumValueResponse {
 
   factory StatusTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return StatusTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

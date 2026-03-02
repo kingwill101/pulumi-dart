@@ -32,9 +32,9 @@ class SslCertSqladminV1beta4Args {
 
   factory SslCertSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return SslCertSqladminV1beta4Args(
-      commonName: map['commonName'] == null ? null : (map['commonName'] as String).input(),
+      commonName: map['commonName'] == null ? null : (map['commonName']! as String).input(),
       instance: (map['instance'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

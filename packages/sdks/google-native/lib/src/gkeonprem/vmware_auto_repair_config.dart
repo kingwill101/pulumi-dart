@@ -21,7 +21,7 @@ class VmwareAutoRepairConfig {
 
   factory VmwareAutoRepairConfig.fromMap(Map<String, dynamic> map) {
     return VmwareAutoRepairConfig(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

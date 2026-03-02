@@ -39,10 +39,10 @@ class SelectionCondition {
 
   factory SelectionCondition.fromMap(Map<String, dynamic> map) {
     return SelectionCondition(
-      stringEquals: map['stringEquals'] == null ? null : (pulumi.Input.decodeList<SelectionConditionStringEqual>(map['stringEquals'], (value) => SelectionConditionStringEqual.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stringLikes: map['stringLikes'] == null ? null : (pulumi.Input.decodeList<SelectionConditionStringLike>(map['stringLikes'], (value) => SelectionConditionStringLike.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stringNotEquals: map['stringNotEquals'] == null ? null : (pulumi.Input.decodeList<SelectionConditionStringNotEqual>(map['stringNotEquals'], (value) => SelectionConditionStringNotEqual.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stringNotLikes: map['stringNotLikes'] == null ? null : (pulumi.Input.decodeList<SelectionConditionStringNotLike>(map['stringNotLikes'], (value) => SelectionConditionStringNotLike.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stringEquals: map['stringEquals'] == null ? null : ((pulumi.Input.decodeList<SelectionConditionStringEqual>(map['stringEquals']!, (value) => SelectionConditionStringEqual.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stringLikes: map['stringLikes'] == null ? null : ((pulumi.Input.decodeList<SelectionConditionStringLike>(map['stringLikes']!, (value) => SelectionConditionStringLike.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stringNotEquals: map['stringNotEquals'] == null ? null : ((pulumi.Input.decodeList<SelectionConditionStringNotEqual>(map['stringNotEquals']!, (value) => SelectionConditionStringNotEqual.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stringNotLikes: map['stringNotLikes'] == null ? null : ((pulumi.Input.decodeList<SelectionConditionStringNotLike>(map['stringNotLikes']!, (value) => SelectionConditionStringNotLike.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

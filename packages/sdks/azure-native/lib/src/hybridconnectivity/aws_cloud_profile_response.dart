@@ -32,8 +32,8 @@ class AwsCloudProfileResponse {
   factory AwsCloudProfileResponse.fromMap(Map<String, dynamic> map) {
     return AwsCloudProfileResponse(
       accountId: (map['accountId'] as String).input(),
-      excludedAccounts: map['excludedAccounts'] == null ? null : ((map['excludedAccounts'] as List).cast<String>()).input(),
-      isOrganizationalAccount: map['isOrganizationalAccount'] == null ? null : (map['isOrganizationalAccount'] as bool).input(),
+      excludedAccounts: map['excludedAccounts'] == null ? null : ((map['excludedAccounts']! as List).cast<String>()).input(),
+      isOrganizationalAccount: map['isOrganizationalAccount'] == null ? null : (map['isOrganizationalAccount']! as bool).input(),
     );
   }
 }

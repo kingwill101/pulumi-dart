@@ -58,10 +58,10 @@ class DataSharingWithGoogleSettingBindingArgs {
   factory DataSharingWithGoogleSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return DataSharingWithGoogleSettingBindingArgs(
       dataSharingWithGoogleSettingId: (map['dataSharingWithGoogleSettingId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      product: map['product'] == null ? null : (map['product'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      product: map['product'] == null ? null : (map['product']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       settingBindingId: (map['settingBindingId'] as String).input(),
       target: (map['target'] as String).input(),
     );

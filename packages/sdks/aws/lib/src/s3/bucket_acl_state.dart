@@ -42,11 +42,11 @@ class BucketAclState {
 
   factory BucketAclState.fromMap(Map<String, dynamic> map) {
     return BucketAclState(
-      accessControlPolicy: map['accessControlPolicy'] == null ? null : (BucketAclAccessControlPolicy.fromMap((map['accessControlPolicy'] as Map).cast<String, dynamic>())).input(),
-      acl: map['acl'] == null ? null : (map['acl'] as String).input(),
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      accessControlPolicy: map['accessControlPolicy'] == null ? null : ((BucketAclAccessControlPolicy.fromMap((map['accessControlPolicy']! as Map).cast<String, dynamic>())).input()).input(),
+      acl: map['acl'] == null ? null : ((map['acl'] as String).input()).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptions {
 
   factory GoogleCloudRecaptchaenterpriseV1TestingOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRecaptchaenterpriseV1TestingOptions(
-      testingChallenge: map['testingChallenge'] == null ? null : (GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge.fromValue(map['testingChallenge'] as String)).input(),
-      testingScore: map['testingScore'] == null ? null : (map['testingScore'] as double).input(),
+      testingChallenge: map['testingChallenge'] == null ? null : (GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge.fromValue(map['testingChallenge']! as String)).input(),
+      testingScore: map['testingScore'] == null ? null : (map['testingScore']! as double).input(),
     );
   }
 }

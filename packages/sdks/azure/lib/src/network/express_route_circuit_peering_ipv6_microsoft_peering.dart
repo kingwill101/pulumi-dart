@@ -35,10 +35,10 @@ class ExpressRouteCircuitPeeringIpv6MicrosoftPeering {
 
   factory ExpressRouteCircuitPeeringIpv6MicrosoftPeering.fromMap(Map<String, dynamic> map) {
     return ExpressRouteCircuitPeeringIpv6MicrosoftPeering(
-      advertisedCommunities: map['advertisedCommunities'] == null ? null : ((map['advertisedCommunities'] as List).cast<String>()).input(),
-      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : ((map['advertisedPublicPrefixes'] as List).cast<String>()).input(),
-      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn'] as int).input(),
-      routingRegistryName: map['routingRegistryName'] == null ? null : (map['routingRegistryName'] as String).input(),
+      advertisedCommunities: map['advertisedCommunities'] == null ? null : ((map['advertisedCommunities']! as List).cast<String>()).input(),
+      advertisedPublicPrefixes: map['advertisedPublicPrefixes'] == null ? null : ((map['advertisedPublicPrefixes']! as List).cast<String>()).input(),
+      customerAsn: map['customerAsn'] == null ? null : (map['customerAsn']! as int).input(),
+      routingRegistryName: map['routingRegistryName'] == null ? null : (map['routingRegistryName']! as String).input(),
     );
   }
 }

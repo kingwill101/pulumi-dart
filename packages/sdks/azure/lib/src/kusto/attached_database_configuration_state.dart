@@ -66,16 +66,16 @@ class AttachedDatabaseConfigurationState {
 
   factory AttachedDatabaseConfigurationState.fromMap(Map<String, dynamic> map) {
     return AttachedDatabaseConfigurationState(
-      attachedDatabaseNames: map['attachedDatabaseNames'] == null ? null : ((map['attachedDatabaseNames'] as List).cast<String>()).input(),
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      clusterName: map['clusterName'] == null ? null : (map['clusterName'] as String).input(),
-      clusterResourceId: map['clusterResourceId'] == null ? null : (map['clusterResourceId'] as String).input(),
-      databaseName: map['databaseName'] == null ? null : (map['databaseName'] as String).input(),
-      defaultPrincipalModificationKind: map['defaultPrincipalModificationKind'] == null ? null : (map['defaultPrincipalModificationKind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      sharing: map['sharing'] == null ? null : (AttachedDatabaseConfigurationSharing.fromMap((map['sharing'] as Map).cast<String, dynamic>())).input(),
+      attachedDatabaseNames: map['attachedDatabaseNames'] == null ? null : ((map['attachedDatabaseNames']! as List).cast<String>()).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      clusterName: map['clusterName'] == null ? null : (map['clusterName']! as String).input(),
+      clusterResourceId: map['clusterResourceId'] == null ? null : (map['clusterResourceId']! as String).input(),
+      databaseName: map['databaseName'] == null ? null : (map['databaseName']! as String).input(),
+      defaultPrincipalModificationKind: map['defaultPrincipalModificationKind'] == null ? null : (map['defaultPrincipalModificationKind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      sharing: map['sharing'] == null ? null : (AttachedDatabaseConfigurationSharing.fromMap((map['sharing']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

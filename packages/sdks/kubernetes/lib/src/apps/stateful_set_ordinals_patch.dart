@@ -24,7 +24,7 @@ class StatefulSetOrdinalsPatch {
 
   factory StatefulSetOrdinalsPatch.fromMap(Map<String, dynamic> map) {
     return StatefulSetOrdinalsPatch(
-      start: map['start'] == null ? null : (map['start'] as int).input(),
+      start: map['start'] == null ? null : (map['start']! as int).input(),
     );
   }
 }

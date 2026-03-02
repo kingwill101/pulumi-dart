@@ -104,23 +104,23 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      applyChangesDuringMaintenanceWindow: map['applyChangesDuringMaintenanceWindow'] == null ? null : (map['applyChangesDuringMaintenanceWindow'] as bool).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      applyChangesDuringMaintenanceWindow: map['applyChangesDuringMaintenanceWindow'] == null ? null : ((map['applyChangesDuringMaintenanceWindow'] as bool).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       engineType: (map['engineType'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
-      forceUpdate: map['forceUpdate'] == null ? null : (map['forceUpdate'] as bool).input(),
-      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : (EnvironmentHighAvailabilityConfig.fromMap((map['highAvailabilityConfig'] as Map).cast<String, dynamic>())).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((map['engineVersion'] as String).input()).input(),
+      forceUpdate: map['forceUpdate'] == null ? null : ((map['forceUpdate'] as bool).input()).input(),
+      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : ((EnvironmentHighAvailabilityConfig.fromMap((map['highAvailabilityConfig']! as Map).cast<String, dynamic>())).input()).input(),
       instanceType: (map['instanceType'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : (map['preferredMaintenanceWindow'] as String).input(),
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : (map['publiclyAccessible'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      securityGroupIds: map['securityGroupIds'] == null ? null : ((map['securityGroupIds'] as List).cast<String>()).input(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : (EnvironmentStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>())).input(),
-      subnetIds: map['subnetIds'] == null ? null : ((map['subnetIds'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (EnvironmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : ((map['preferredMaintenanceWindow'] as String).input()).input(),
+      publiclyAccessible: map['publiclyAccessible'] == null ? null : ((map['publiclyAccessible'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      securityGroupIds: map['securityGroupIds'] == null ? null : (((map['securityGroupIds'] as List).cast<String>()).input()).input(),
+      storageConfiguration: map['storageConfiguration'] == null ? null : ((EnvironmentStorageConfiguration.fromMap((map['storageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      subnetIds: map['subnetIds'] == null ? null : (((map['subnetIds'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EnvironmentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

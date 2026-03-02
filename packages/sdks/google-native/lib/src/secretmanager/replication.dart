@@ -28,8 +28,8 @@ class Replication {
 
   factory Replication.fromMap(Map<String, dynamic> map) {
     return Replication(
-      automatic: map['automatic'] == null ? null : (Automatic.fromMap((map['automatic'] as Map).cast<String, dynamic>())).input(),
-      userManaged: map['userManaged'] == null ? null : (UserManaged.fromMap((map['userManaged'] as Map).cast<String, dynamic>())).input(),
+      automatic: map['automatic'] == null ? null : (Automatic.fromMap((map['automatic']! as Map).cast<String, dynamic>())).input(),
+      userManaged: map['userManaged'] == null ? null : (UserManaged.fromMap((map['userManaged']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

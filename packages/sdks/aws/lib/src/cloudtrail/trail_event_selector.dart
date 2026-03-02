@@ -36,10 +36,10 @@ class TrailEventSelector {
 
   factory TrailEventSelector.fromMap(Map<String, dynamic> map) {
     return TrailEventSelector(
-      dataResources: map['dataResources'] == null ? null : (pulumi.Input.decodeList<TrailEventSelectorDataResource>(map['dataResources'], (value) => TrailEventSelectorDataResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      excludeManagementEventSources: map['excludeManagementEventSources'] == null ? null : ((map['excludeManagementEventSources'] as List).cast<String>()).input(),
-      includeManagementEvents: map['includeManagementEvents'] == null ? null : (map['includeManagementEvents'] as bool).input(),
-      readWriteType: map['readWriteType'] == null ? null : (map['readWriteType'] as String).input(),
+      dataResources: map['dataResources'] == null ? null : ((pulumi.Input.decodeList<TrailEventSelectorDataResource>(map['dataResources']!, (value) => TrailEventSelectorDataResource.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      excludeManagementEventSources: map['excludeManagementEventSources'] == null ? null : (((map['excludeManagementEventSources'] as List).cast<String>()).input()).input(),
+      includeManagementEvents: map['includeManagementEvents'] == null ? null : ((map['includeManagementEvents'] as bool).input()).input(),
+      readWriteType: map['readWriteType'] == null ? null : ((map['readWriteType'] as String).input()).input(),
     );
   }
 }

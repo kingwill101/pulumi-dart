@@ -119,23 +119,23 @@ class InsightsDatasetConfigArgs {
 
   factory InsightsDatasetConfigArgs.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigArgs(
-      activityDataRetentionPeriodDays: map['activityDataRetentionPeriodDays'] == null ? null : (map['activityDataRetentionPeriodDays'] as int).input(),
+      activityDataRetentionPeriodDays: map['activityDataRetentionPeriodDays'] == null ? null : (map['activityDataRetentionPeriodDays']! as int).input(),
       datasetConfigId: (map['datasetConfigId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeCloudStorageBuckets: map['excludeCloudStorageBuckets'] == null ? null : (InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((map['excludeCloudStorageBuckets'] as Map).cast<String, dynamic>())).input(),
-      excludeCloudStorageLocations: map['excludeCloudStorageLocations'] == null ? null : (InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((map['excludeCloudStorageLocations'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      excludeCloudStorageBuckets: map['excludeCloudStorageBuckets'] == null ? null : (InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((map['excludeCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
+      excludeCloudStorageLocations: map['excludeCloudStorageLocations'] == null ? null : (InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((map['excludeCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
       identity: (InsightsDatasetConfigIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      includeCloudStorageBuckets: map['includeCloudStorageBuckets'] == null ? null : (InsightsDatasetConfigIncludeCloudStorageBuckets.fromMap((map['includeCloudStorageBuckets'] as Map).cast<String, dynamic>())).input(),
-      includeCloudStorageLocations: map['includeCloudStorageLocations'] == null ? null : (InsightsDatasetConfigIncludeCloudStorageLocations.fromMap((map['includeCloudStorageLocations'] as Map).cast<String, dynamic>())).input(),
-      includeNewlyCreatedBuckets: map['includeNewlyCreatedBuckets'] == null ? null : (map['includeNewlyCreatedBuckets'] as bool).input(),
-      linkDataset: map['linkDataset'] == null ? null : (map['linkDataset'] as bool).input(),
+      includeCloudStorageBuckets: map['includeCloudStorageBuckets'] == null ? null : (InsightsDatasetConfigIncludeCloudStorageBuckets.fromMap((map['includeCloudStorageBuckets']! as Map).cast<String, dynamic>())).input(),
+      includeCloudStorageLocations: map['includeCloudStorageLocations'] == null ? null : (InsightsDatasetConfigIncludeCloudStorageLocations.fromMap((map['includeCloudStorageLocations']! as Map).cast<String, dynamic>())).input(),
+      includeNewlyCreatedBuckets: map['includeNewlyCreatedBuckets'] == null ? null : (map['includeNewlyCreatedBuckets']! as bool).input(),
+      linkDataset: map['linkDataset'] == null ? null : (map['linkDataset']! as bool).input(),
       location: (map['location'] as String).input(),
-      organizationNumber: map['organizationNumber'] == null ? null : (map['organizationNumber'] as String).input(),
-      organizationScope: map['organizationScope'] == null ? null : (map['organizationScope'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      organizationNumber: map['organizationNumber'] == null ? null : (map['organizationNumber']! as String).input(),
+      organizationScope: map['organizationScope'] == null ? null : (map['organizationScope']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       retentionPeriodDays: (map['retentionPeriodDays'] as int).input(),
-      sourceFolders: map['sourceFolders'] == null ? null : (InsightsDatasetConfigSourceFolders.fromMap((map['sourceFolders'] as Map).cast<String, dynamic>())).input(),
-      sourceProjects: map['sourceProjects'] == null ? null : (InsightsDatasetConfigSourceProjects.fromMap((map['sourceProjects'] as Map).cast<String, dynamic>())).input(),
+      sourceFolders: map['sourceFolders'] == null ? null : (InsightsDatasetConfigSourceFolders.fromMap((map['sourceFolders']! as Map).cast<String, dynamic>())).input(),
+      sourceProjects: map['sourceProjects'] == null ? null : (InsightsDatasetConfigSourceProjects.fromMap((map['sourceProjects']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

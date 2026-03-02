@@ -66,16 +66,16 @@ class WebAppHybridConnectionState {
 
   factory WebAppHybridConnectionState.fromMap(Map<String, dynamic> map) {
     return WebAppHybridConnectionState(
-      hostname: map['hostname'] == null ? null : (map['hostname'] as String).input(),
-      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      relayId: map['relayId'] == null ? null : (map['relayId'] as String).input(),
-      relayName: map['relayName'] == null ? null : (map['relayName'] as String).input(),
-      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName'] as String).input(),
-      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue'] as String).input(),
-      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace'] as String).input(),
-      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix'] as String).input(),
-      webAppId: map['webAppId'] == null ? null : (map['webAppId'] as String).input(),
+      hostname: map['hostname'] == null ? null : (map['hostname']! as String).input(),
+      namespaceName: map['namespaceName'] == null ? null : (map['namespaceName']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      relayId: map['relayId'] == null ? null : (map['relayId']! as String).input(),
+      relayName: map['relayName'] == null ? null : (map['relayName']! as String).input(),
+      sendKeyName: map['sendKeyName'] == null ? null : (map['sendKeyName']! as String).input(),
+      sendKeyValue: map['sendKeyValue'] == null ? null : (map['sendKeyValue']! as String).input(),
+      serviceBusNamespace: map['serviceBusNamespace'] == null ? null : (map['serviceBusNamespace']! as String).input(),
+      serviceBusSuffix: map['serviceBusSuffix'] == null ? null : (map['serviceBusSuffix']! as String).input(),
+      webAppId: map['webAppId'] == null ? null : (map['webAppId']! as String).input(),
     );
   }
 }

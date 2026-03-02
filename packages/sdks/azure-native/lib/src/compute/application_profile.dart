@@ -22,7 +22,7 @@ class ApplicationProfile {
 
   factory ApplicationProfile.fromMap(Map<String, dynamic> map) {
     return ApplicationProfile(
-      galleryApplications: map['galleryApplications'] == null ? null : (pulumi.Input.decodeList<VMGalleryApplication>(map['galleryApplications'], (value) => VMGalleryApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      galleryApplications: map['galleryApplications'] == null ? null : (pulumi.Input.decodeList<VMGalleryApplication>(map['galleryApplications']!, (value) => VMGalleryApplication.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

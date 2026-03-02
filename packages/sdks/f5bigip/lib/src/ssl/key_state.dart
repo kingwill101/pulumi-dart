@@ -41,11 +41,11 @@ class KeyState {
 
   factory KeyState.fromMap(Map<String, dynamic> map) {
     return KeyState(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      fullPath: map['fullPath'] == null ? null : (map['fullPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      partition: map['partition'] == null ? null : (map['partition'] as String).input(),
-      passphrase: map['passphrase'] == null ? null : (map['passphrase'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      fullPath: map['fullPath'] == null ? null : (map['fullPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      partition: map['partition'] == null ? null : (map['partition']! as String).input(),
+      passphrase: map['passphrase'] == null ? null : (map['passphrase']! as String).input(),
     );
   }
 }

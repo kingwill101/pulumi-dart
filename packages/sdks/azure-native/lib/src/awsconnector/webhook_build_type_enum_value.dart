@@ -21,7 +21,7 @@ class WebhookBuildTypeEnumValue {
 
   factory WebhookBuildTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return WebhookBuildTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

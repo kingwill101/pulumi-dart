@@ -36,10 +36,10 @@ class GetGradientaiRegionsResult {
 
   factory GetGradientaiRegionsResult.fromMap(Map<String, dynamic> map) {
     return GetGradientaiRegionsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGradientaiRegionsFilter>(map['filters'], (value) => GetGradientaiRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetGradientaiRegionsFilter>(map['filters']!, (value) => GetGradientaiRegionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       regions: pulumi.Input.decodeList<GetGradientaiRegionsRegion>(map['regions'], (value) => GetGradientaiRegionsRegion.fromMap((value as Map).cast<String, dynamic>())),
-      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGradientaiRegionsSort>(map['sorts'], (value) => GetGradientaiRegionsSort.fromMap((value as Map).cast<String, dynamic>())),
+      sorts: map['sorts'] == null ? null : pulumi.Input.decodeList<GetGradientaiRegionsSort>(map['sorts']!, (value) => GetGradientaiRegionsSort.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

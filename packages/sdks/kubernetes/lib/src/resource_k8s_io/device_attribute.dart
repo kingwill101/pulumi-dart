@@ -36,10 +36,10 @@ class DeviceAttribute {
 
   factory DeviceAttribute.fromMap(Map<String, dynamic> map) {
     return DeviceAttribute(
-      bool: map['bool'] == null ? null : (map['bool'] as bool).input(),
-      int: map['int'] == null ? null : (map['int'] as int).input(),
-      string: map['string'] == null ? null : (map['string'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      bool: map['bool'] == null ? null : (map['bool']! as bool).input(),
+      int: map['int'] == null ? null : (map['int']! as int).input(),
+      string: map['string'] == null ? null : (map['string']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class FastSnapshotRestoreArgs {
   factory FastSnapshotRestoreArgs.fromMap(Map<String, dynamic> map) {
     return FastSnapshotRestoreArgs(
       availabilityZone: (map['availabilityZone'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       snapshotId: (map['snapshotId'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (FastSnapshotRestoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      timeouts: map['timeouts'] == null ? null : ((FastSnapshotRestoreTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

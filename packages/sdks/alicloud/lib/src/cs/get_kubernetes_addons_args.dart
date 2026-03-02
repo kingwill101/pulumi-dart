@@ -35,8 +35,8 @@ class GetKubernetesAddonsArgs {
   factory GetKubernetesAddonsArgs.fromMap(Map<String, dynamic> map) {
     return GetKubernetesAddonsArgs(
       clusterId: (map['clusterId'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
     );
   }
 }

@@ -47,12 +47,12 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
 
   factory AccessPackageAssignmentPolicyApprovalSettingsApprovalStage.fromMap(Map<String, dynamic> map) {
     return AccessPackageAssignmentPolicyApprovalSettingsApprovalStage(
-      alternativeApprovalEnabled: map['alternativeApprovalEnabled'] == null ? null : (map['alternativeApprovalEnabled'] as bool).input(),
-      alternativeApprovers: map['alternativeApprovers'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>(map['alternativeApprovers'], (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      alternativeApprovalEnabled: map['alternativeApprovalEnabled'] == null ? null : (map['alternativeApprovalEnabled']! as bool).input(),
+      alternativeApprovers: map['alternativeApprovers'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>(map['alternativeApprovers']!, (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
       approvalTimeoutInDays: (map['approvalTimeoutInDays'] as int).input(),
-      approverJustificationRequired: map['approverJustificationRequired'] == null ? null : (map['approverJustificationRequired'] as bool).input(),
-      enableAlternativeApprovalInDays: map['enableAlternativeApprovalInDays'] == null ? null : (map['enableAlternativeApprovalInDays'] as int).input(),
-      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>(map['primaryApprovers'], (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      approverJustificationRequired: map['approverJustificationRequired'] == null ? null : (map['approverJustificationRequired']! as bool).input(),
+      enableAlternativeApprovalInDays: map['enableAlternativeApprovalInDays'] == null ? null : (map['enableAlternativeApprovalInDays']! as int).input(),
+      primaryApprovers: map['primaryApprovers'] == null ? null : (pulumi.Input.decodeList<AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>(map['primaryApprovers']!, (value) => AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class GetProviderActionOverviewStatusResult {
 
   factory GetProviderActionOverviewStatusResult.fromMap(Map<String, dynamic> map) {
     return GetProviderActionOverviewStatusResult(
-      statusList: map['statusList'] == null ? null : pulumi.Input.decodeList<StatusItemResponse>(map['statusList'], (value) => StatusItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      statusList: map['statusList'] == null ? null : pulumi.Input.decodeList<StatusItemResponse>(map['statusList']!, (value) => StatusItemResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

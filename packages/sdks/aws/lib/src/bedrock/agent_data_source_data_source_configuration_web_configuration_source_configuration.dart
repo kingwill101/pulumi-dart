@@ -21,7 +21,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration 
 
   factory AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfiguration(
-      urlConfiguration: (AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration.fromMap((map['urlConfiguration'] as Map).cast<String, dynamic>())).input(),
+      urlConfiguration: (AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration.fromMap((map['urlConfiguration']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

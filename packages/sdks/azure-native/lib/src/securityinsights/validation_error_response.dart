@@ -27,7 +27,7 @@ class ValidationErrorResponse {
   factory ValidationErrorResponse.fromMap(Map<String, dynamic> map) {
     return ValidationErrorResponse(
       errorMessages: ((map['errorMessages'] as List).cast<String>()).input(),
-      recordIndex: map['recordIndex'] == null ? null : (map['recordIndex'] as int).input(),
+      recordIndex: map['recordIndex'] == null ? null : (map['recordIndex']! as int).input(),
     );
   }
 }

@@ -57,7 +57,7 @@ class GetAclsAcl {
       name: (map['name'] as String).input(),
       relatedListeners: (pulumi.Input.decodeList<GetAclsAclRelatedListener>(map['relatedListeners'], (value) => GetAclsAclRelatedListener.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupId: (map['resourceGroupId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

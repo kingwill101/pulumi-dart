@@ -58,14 +58,14 @@ class FeatureIamPolicyGkehubV1betaArgs {
 
   factory FeatureIamPolicyGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
     return FeatureIamPolicyGkehubV1betaArgs(
-      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigGkehubV1beta>(map['auditConfigs'], (value) => AuditConfigGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      bindings: map['bindings'] == null ? null : ((map['bindings'] as List).cast<BindingGkehubV1betaResource>()).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      auditConfigs: map['auditConfigs'] == null ? null : (pulumi.Input.decodeList<AuditConfigGkehubV1beta>(map['auditConfigs']!, (value) => AuditConfigGkehubV1beta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bindings: map['bindings'] == null ? null : ((map['bindings']! as List).cast<BindingGkehubV1betaResource>()).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featureId: (map['featureId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      updateMask: map['updateMask'] == null ? null : (map['updateMask'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      updateMask: map['updateMask'] == null ? null : (map['updateMask']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

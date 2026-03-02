@@ -54,13 +54,13 @@ class DomainMappingArgs {
 
   factory DomainMappingArgs.fromMap(Map<String, dynamic> map) {
     return DomainMappingArgs(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      spec: map['spec'] == null ? null : (DomainMappingSpec.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

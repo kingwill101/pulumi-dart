@@ -30,8 +30,8 @@ class DeviceAllocationResultPatch {
 
   factory DeviceAllocationResultPatch.fromMap(Map<String, dynamic> map) {
     return DeviceAllocationResultPatch(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceAllocationConfigurationPatch>(map['config'], (value) => DeviceAllocationConfigurationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      results: map['results'] == null ? null : (pulumi.Input.decodeList<DeviceRequestAllocationResultPatch>(map['results'], (value) => DeviceRequestAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceAllocationConfigurationPatch>(map['config']!, (value) => DeviceAllocationConfigurationPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      results: map['results'] == null ? null : (pulumi.Input.decodeList<DeviceRequestAllocationResultPatch>(map['results']!, (value) => DeviceRequestAllocationResultPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

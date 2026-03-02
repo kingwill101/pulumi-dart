@@ -94,18 +94,18 @@ class GetAFDCustomDomainResult {
   factory GetAFDCustomDomainResult.fromMap(Map<String, dynamic> map) {
     return GetAFDCustomDomainResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      azureDnsZone: map['azureDnsZone'] == null ? null : ResourceReferenceResponse.fromMap((map['azureDnsZone'] as Map).cast<String, dynamic>()),
+      azureDnsZone: map['azureDnsZone'] == null ? null : ResourceReferenceResponse.fromMap((map['azureDnsZone']! as Map).cast<String, dynamic>()),
       deploymentStatus: map['deploymentStatus'] as String,
       domainValidationState: map['domainValidationState'] as String,
-      extendedProperties: map['extendedProperties'] == null ? null : (map['extendedProperties'] as Map).cast<String, String>(),
+      extendedProperties: map['extendedProperties'] == null ? null : (map['extendedProperties']! as Map).cast<String, String>(),
       hostName: map['hostName'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      preValidatedCustomDomainResourceId: map['preValidatedCustomDomainResourceId'] == null ? null : ResourceReferenceResponse.fromMap((map['preValidatedCustomDomainResourceId'] as Map).cast<String, dynamic>()),
+      preValidatedCustomDomainResourceId: map['preValidatedCustomDomainResourceId'] == null ? null : ResourceReferenceResponse.fromMap((map['preValidatedCustomDomainResourceId']! as Map).cast<String, dynamic>()),
       profileName: map['profileName'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
-      tlsSettings: map['tlsSettings'] == null ? null : AFDDomainHttpsParametersResponse.fromMap((map['tlsSettings'] as Map).cast<String, dynamic>()),
+      tlsSettings: map['tlsSettings'] == null ? null : AFDDomainHttpsParametersResponse.fromMap((map['tlsSettings']! as Map).cast<String, dynamic>()),
       type: map['type'] as String,
       validationProperties: DomainValidationPropertiesResponse.fromMap((map['validationProperties'] as Map).cast<String, dynamic>()),
     );

@@ -25,8 +25,8 @@ class AwsNodePoolUpdateSettingsSurgeSettings {
 
   factory AwsNodePoolUpdateSettingsSurgeSettings.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolUpdateSettingsSurgeSettings(
-      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge'] as int).input(),
-      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable'] as int).input(),
+      maxSurge: map['maxSurge'] == null ? null : (map['maxSurge']! as int).input(),
+      maxUnavailable: map['maxUnavailable'] == null ? null : (map['maxUnavailable']! as int).input(),
     );
   }
 }

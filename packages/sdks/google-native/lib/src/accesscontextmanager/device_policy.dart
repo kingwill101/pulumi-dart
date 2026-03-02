@@ -49,12 +49,12 @@ class DevicePolicy {
 
   factory DevicePolicy.fromMap(Map<String, dynamic> map) {
     return DevicePolicy(
-      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItem>(map['allowedDeviceManagementLevels'], (value) => DevicePolicyAllowedDeviceManagementLevelsItem.fromValue(value as String))).input(),
-      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItem>(map['allowedEncryptionStatuses'], (value) => DevicePolicyAllowedEncryptionStatusesItem.fromValue(value as String))).input(),
-      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<OsConstraint>(map['osConstraints'], (value) => OsConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval'] as bool).input(),
-      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned'] as bool).input(),
-      requireScreenlock: map['requireScreenlock'] == null ? null : (map['requireScreenlock'] as bool).input(),
+      allowedDeviceManagementLevels: map['allowedDeviceManagementLevels'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedDeviceManagementLevelsItem>(map['allowedDeviceManagementLevels']!, (value) => DevicePolicyAllowedDeviceManagementLevelsItem.fromValue(value as String))).input(),
+      allowedEncryptionStatuses: map['allowedEncryptionStatuses'] == null ? null : (pulumi.Input.decodeList<DevicePolicyAllowedEncryptionStatusesItem>(map['allowedEncryptionStatuses']!, (value) => DevicePolicyAllowedEncryptionStatusesItem.fromValue(value as String))).input(),
+      osConstraints: map['osConstraints'] == null ? null : (pulumi.Input.decodeList<OsConstraint>(map['osConstraints']!, (value) => OsConstraint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requireAdminApproval: map['requireAdminApproval'] == null ? null : (map['requireAdminApproval']! as bool).input(),
+      requireCorpOwned: map['requireCorpOwned'] == null ? null : (map['requireCorpOwned']! as bool).input(),
+      requireScreenlock: map['requireScreenlock'] == null ? null : (map['requireScreenlock']! as bool).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class BareMetalNodePoolUpgradePolicy {
 
   factory BareMetalNodePoolUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return BareMetalNodePoolUpgradePolicy(
-      parallelUpgradeConfig: map['parallelUpgradeConfig'] == null ? null : (BareMetalParallelUpgradeConfig.fromMap((map['parallelUpgradeConfig'] as Map).cast<String, dynamic>())).input(),
+      parallelUpgradeConfig: map['parallelUpgradeConfig'] == null ? null : (BareMetalParallelUpgradeConfig.fromMap((map['parallelUpgradeConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -69,16 +69,16 @@ class FeatureViewArgs {
 
   factory FeatureViewArgs.fromMap(Map<String, dynamic> map) {
     return FeatureViewArgs(
-      bigQuerySource: map['bigQuerySource'] == null ? null : (GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>())).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      bigQuerySource: map['bigQuerySource'] == null ? null : (GoogleCloudAiplatformV1FeatureViewBigQuerySource.fromMap((map['bigQuerySource']! as Map).cast<String, dynamic>())).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       featureOnlineStoreId: (map['featureOnlineStoreId'] as String).input(),
-      featureRegistrySource: map['featureRegistrySource'] == null ? null : (GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromMap((map['featureRegistrySource'] as Map).cast<String, dynamic>())).input(),
+      featureRegistrySource: map['featureRegistrySource'] == null ? null : (GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource.fromMap((map['featureRegistrySource']! as Map).cast<String, dynamic>())).input(),
       featureViewId: (map['featureViewId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      runSyncImmediately: map['runSyncImmediately'] == null ? null : (map['runSyncImmediately'] as bool).input(),
-      syncConfig: map['syncConfig'] == null ? null : (GoogleCloudAiplatformV1FeatureViewSyncConfig.fromMap((map['syncConfig'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      runSyncImmediately: map['runSyncImmediately'] == null ? null : (map['runSyncImmediately']! as bool).input(),
+      syncConfig: map['syncConfig'] == null ? null : (GoogleCloudAiplatformV1FeatureViewSyncConfig.fromMap((map['syncConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

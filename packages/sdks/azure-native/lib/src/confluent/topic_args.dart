@@ -93,19 +93,19 @@ class TopicArgs {
   factory TopicArgs.fromMap(Map<String, dynamic> map) {
     return TopicArgs(
       clusterId: (map['clusterId'] as String).input(),
-      configs: map['configs'] == null ? null : (TopicsRelatedLink.fromMap((map['configs'] as Map).cast<String, dynamic>())).input(),
+      configs: map['configs'] == null ? null : (TopicsRelatedLink.fromMap((map['configs']! as Map).cast<String, dynamic>())).input(),
       environmentId: (map['environmentId'] as String).input(),
-      inputConfigs: map['inputConfigs'] == null ? null : (pulumi.Input.decodeList<TopicsInputConfig>(map['inputConfigs'], (value) => TopicsInputConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (TopicMetadataEntity.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
+      inputConfigs: map['inputConfigs'] == null ? null : (pulumi.Input.decodeList<TopicsInputConfig>(map['inputConfigs']!, (value) => TopicsInputConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (TopicMetadataEntity.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
       organizationName: (map['organizationName'] as String).input(),
-      partitions: map['partitions'] == null ? null : (TopicsRelatedLink.fromMap((map['partitions'] as Map).cast<String, dynamic>())).input(),
-      partitionsCount: map['partitionsCount'] == null ? null : (map['partitionsCount'] as String).input(),
-      partitionsReassignments: map['partitionsReassignments'] == null ? null : (TopicsRelatedLink.fromMap((map['partitionsReassignments'] as Map).cast<String, dynamic>())).input(),
-      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor'] as String).input(),
+      partitions: map['partitions'] == null ? null : (TopicsRelatedLink.fromMap((map['partitions']! as Map).cast<String, dynamic>())).input(),
+      partitionsCount: map['partitionsCount'] == null ? null : (map['partitionsCount']! as String).input(),
+      partitionsReassignments: map['partitionsReassignments'] == null ? null : (TopicsRelatedLink.fromMap((map['partitionsReassignments']! as Map).cast<String, dynamic>())).input(),
+      replicationFactor: map['replicationFactor'] == null ? null : (map['replicationFactor']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      topicId: map['topicId'] == null ? null : (map['topicId'] as String).input(),
-      topicName: map['topicName'] == null ? null : (map['topicName'] as String).input(),
+      topicId: map['topicId'] == null ? null : (map['topicId']! as String).input(),
+      topicName: map['topicName'] == null ? null : (map['topicName']! as String).input(),
     );
   }
 }

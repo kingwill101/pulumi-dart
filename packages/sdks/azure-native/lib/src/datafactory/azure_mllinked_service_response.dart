@@ -90,20 +90,20 @@ class AzureMLLinkedServiceResponse {
 
   factory AzureMLLinkedServiceResponse.fromMap(Map<String, dynamic> map) {
     return AzureMLLinkedServiceResponse(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as List).cast<dynamic>()).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as List).cast<dynamic>()).input(),
       apiKey: (AzureKeyVaultSecretReferenceResponse.fromMap((map['apiKey'] as Map).cast<String, dynamic>())).input(),
-      authentication: map['authentication'] == null ? null : (map['authentication']).input(),
-      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential'] as String).input(),
+      authentication: map['authentication'] == null ? null : (map['authentication']!).input(),
+      connectVia: map['connectVia'] == null ? null : (IntegrationRuntimeReferenceResponse.fromMap((map['connectVia']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      encryptedCredential: map['encryptedCredential'] == null ? null : (map['encryptedCredential']! as String).input(),
       mlEndpoint: (map['mlEndpoint']).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters'], (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']).input(),
-      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey'] as Map).cast<String, dynamic>())).input(),
-      tenant: map['tenant'] == null ? null : (map['tenant']).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(map['parameters']!, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      servicePrincipalId: map['servicePrincipalId'] == null ? null : (map['servicePrincipalId']!).input(),
+      servicePrincipalKey: map['servicePrincipalKey'] == null ? null : (AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())).input(),
+      tenant: map['tenant'] == null ? null : (map['tenant']!).input(),
       type: (map['type'] as String).input(),
-      updateResourceEndpoint: map['updateResourceEndpoint'] == null ? null : (map['updateResourceEndpoint']).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      updateResourceEndpoint: map['updateResourceEndpoint'] == null ? null : (map['updateResourceEndpoint']!).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

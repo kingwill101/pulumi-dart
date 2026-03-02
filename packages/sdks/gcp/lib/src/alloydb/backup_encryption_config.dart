@@ -20,7 +20,7 @@ class BackupEncryptionConfig {
 
   factory BackupEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return BackupEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
     );
   }
 }

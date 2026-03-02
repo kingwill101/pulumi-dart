@@ -21,7 +21,7 @@ class VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork {
 
   factory VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
     );
   }
 }

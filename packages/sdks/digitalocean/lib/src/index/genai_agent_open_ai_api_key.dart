@@ -45,12 +45,12 @@ class GenaiAgentOpenAiApiKey {
 
   factory GenaiAgentOpenAiApiKey.fromMap(Map<String, dynamic> map) {
     return GenaiAgentOpenAiApiKey(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      createdBy: map['createdBy'] == null ? null : (map['createdBy'] as String).input(),
-      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      uuid: map['uuid'] == null ? null : (map['uuid'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      createdBy: map['createdBy'] == null ? null : (map['createdBy']! as String).input(),
+      deletedAt: map['deletedAt'] == null ? null : (map['deletedAt']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      uuid: map['uuid'] == null ? null : (map['uuid']! as String).input(),
     );
   }
 }

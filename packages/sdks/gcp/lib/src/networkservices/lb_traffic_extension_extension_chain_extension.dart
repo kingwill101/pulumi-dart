@@ -72,14 +72,14 @@ class LbTrafficExtensionExtensionChainExtension {
 
   factory LbTrafficExtensionExtensionChainExtension.fromMap(Map<String, dynamic> map) {
     return LbTrafficExtensionExtensionChainExtension(
-      authority: map['authority'] == null ? null : (map['authority'] as String).input(),
-      failOpen: map['failOpen'] == null ? null : (map['failOpen'] as bool).input(),
-      forwardHeaders: map['forwardHeaders'] == null ? null : ((map['forwardHeaders'] as List).cast<String>()).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      authority: map['authority'] == null ? null : (map['authority']! as String).input(),
+      failOpen: map['failOpen'] == null ? null : (map['failOpen']! as bool).input(),
+      forwardHeaders: map['forwardHeaders'] == null ? null : ((map['forwardHeaders']! as List).cast<String>()).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       name: (map['name'] as String).input(),
       service: (map['service'] as String).input(),
-      supportedEvents: map['supportedEvents'] == null ? null : ((map['supportedEvents'] as List).cast<String>()).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      supportedEvents: map['supportedEvents'] == null ? null : ((map['supportedEvents']! as List).cast<String>()).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

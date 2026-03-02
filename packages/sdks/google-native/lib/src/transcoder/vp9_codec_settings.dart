@@ -67,15 +67,15 @@ class Vp9CodecSettings {
   factory Vp9CodecSettings.fromMap(Map<String, dynamic> map) {
     return Vp9CodecSettings(
       bitrateBps: (map['bitrateBps'] as int).input(),
-      crfLevel: map['crfLevel'] == null ? null : (map['crfLevel'] as int).input(),
+      crfLevel: map['crfLevel'] == null ? null : (map['crfLevel']! as int).input(),
       frameRate: (map['frameRate'] as double).input(),
-      gopDuration: map['gopDuration'] == null ? null : (map['gopDuration'] as String).input(),
-      gopFrameCount: map['gopFrameCount'] == null ? null : (map['gopFrameCount'] as int).input(),
-      heightPixels: map['heightPixels'] == null ? null : (map['heightPixels'] as int).input(),
-      pixelFormat: map['pixelFormat'] == null ? null : (map['pixelFormat'] as String).input(),
-      profile: map['profile'] == null ? null : (map['profile'] as String).input(),
-      rateControlMode: map['rateControlMode'] == null ? null : (map['rateControlMode'] as String).input(),
-      widthPixels: map['widthPixels'] == null ? null : (map['widthPixels'] as int).input(),
+      gopDuration: map['gopDuration'] == null ? null : (map['gopDuration']! as String).input(),
+      gopFrameCount: map['gopFrameCount'] == null ? null : (map['gopFrameCount']! as int).input(),
+      heightPixels: map['heightPixels'] == null ? null : (map['heightPixels']! as int).input(),
+      pixelFormat: map['pixelFormat'] == null ? null : (map['pixelFormat']! as String).input(),
+      profile: map['profile'] == null ? null : (map['profile']! as String).input(),
+      rateControlMode: map['rateControlMode'] == null ? null : (map['rateControlMode']! as String).input(),
+      widthPixels: map['widthPixels'] == null ? null : (map['widthPixels']! as int).input(),
     );
   }
 }

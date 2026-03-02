@@ -36,10 +36,10 @@ class ManagedHardwareSecurityModuleKeyRotationPolicyState {
 
   factory ManagedHardwareSecurityModuleKeyRotationPolicyState.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleKeyRotationPolicyState(
-      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter'] as String).input(),
-      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId'] as String).input(),
-      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation'] as String).input(),
-      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry'] as String).input(),
+      expireAfter: map['expireAfter'] == null ? null : (map['expireAfter']! as String).input(),
+      managedHsmKeyId: map['managedHsmKeyId'] == null ? null : (map['managedHsmKeyId']! as String).input(),
+      timeAfterCreation: map['timeAfterCreation'] == null ? null : (map['timeAfterCreation']! as String).input(),
+      timeBeforeExpiry: map['timeBeforeExpiry'] == null ? null : (map['timeBeforeExpiry']! as String).input(),
     );
   }
 }

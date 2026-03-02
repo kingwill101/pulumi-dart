@@ -61,15 +61,15 @@ class NrqlAlertConditionTerm {
 
   factory NrqlAlertConditionTerm.fromMap(Map<String, dynamic> map) {
     return NrqlAlertConditionTerm(
-      disableHealthStatusReporting: map['disableHealthStatusReporting'] == null ? null : (map['disableHealthStatusReporting'] as bool).input(),
-      duration: map['duration'] == null ? null : (map['duration'] as int).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      prediction: map['prediction'] == null ? null : (NrqlAlertConditionTermPrediction.fromMap((map['prediction'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as String).input(),
+      disableHealthStatusReporting: map['disableHealthStatusReporting'] == null ? null : (map['disableHealthStatusReporting']! as bool).input(),
+      duration: map['duration'] == null ? null : (map['duration']! as int).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      prediction: map['prediction'] == null ? null : (NrqlAlertConditionTermPrediction.fromMap((map['prediction']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as String).input(),
       threshold: (map['threshold'] as double).input(),
-      thresholdDuration: map['thresholdDuration'] == null ? null : (map['thresholdDuration'] as int).input(),
-      thresholdOccurrences: map['thresholdOccurrences'] == null ? null : (map['thresholdOccurrences'] as String).input(),
-      timeFunction: map['timeFunction'] == null ? null : (map['timeFunction'] as String).input(),
+      thresholdDuration: map['thresholdDuration'] == null ? null : (map['thresholdDuration']! as int).input(),
+      thresholdOccurrences: map['thresholdOccurrences'] == null ? null : (map['thresholdOccurrences']! as String).input(),
+      timeFunction: map['timeFunction'] == null ? null : (map['timeFunction']! as String).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class GetAuthorizationTokenArgs {
   factory GetAuthorizationTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationTokenArgs(
       domain: (map['domain'] as String).input(),
-      domainOwner: map['domainOwner'] == null ? null : (map['domainOwner'] as String).input(),
-      durationSeconds: map['durationSeconds'] == null ? null : (map['durationSeconds'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      domainOwner: map['domainOwner'] == null ? null : ((map['domainOwner'] as String).input()).input(),
+      durationSeconds: map['durationSeconds'] == null ? null : ((map['durationSeconds'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

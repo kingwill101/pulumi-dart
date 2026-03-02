@@ -40,11 +40,11 @@ class HadoopClusterRolesEdgeNodeHttpsEndpoint {
 
   factory HadoopClusterRolesEdgeNodeHttpsEndpoint.fromMap(Map<String, dynamic> map) {
     return HadoopClusterRolesEdgeNodeHttpsEndpoint(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
-      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort'] as int).input(),
-      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth'] as bool).input(),
-      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress'] as String).input(),
-      subDomainSuffix: map['subDomainSuffix'] == null ? null : (map['subDomainSuffix'] as String).input(),
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
+      destinationPort: map['destinationPort'] == null ? null : (map['destinationPort']! as int).input(),
+      disableGatewayAuth: map['disableGatewayAuth'] == null ? null : (map['disableGatewayAuth']! as bool).input(),
+      privateIpAddress: map['privateIpAddress'] == null ? null : (map['privateIpAddress']! as String).input(),
+      subDomainSuffix: map['subDomainSuffix'] == null ? null : (map['subDomainSuffix']! as String).input(),
     );
   }
 }

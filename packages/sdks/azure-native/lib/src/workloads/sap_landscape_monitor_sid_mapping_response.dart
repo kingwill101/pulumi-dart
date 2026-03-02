@@ -26,8 +26,8 @@ class SapLandscapeMonitorSidMappingResponse {
 
   factory SapLandscapeMonitorSidMappingResponse.fromMap(Map<String, dynamic> map) {
     return SapLandscapeMonitorSidMappingResponse(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      topSid: map['topSid'] == null ? null : ((map['topSid'] as List).cast<String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      topSid: map['topSid'] == null ? null : ((map['topSid']! as List).cast<String>()).input(),
     );
   }
 }

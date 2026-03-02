@@ -19,7 +19,7 @@ class WafRuleSharedMatchCriteriaCriteriaCriteria {
 
   factory WafRuleSharedMatchCriteriaCriteriaCriteria.fromMap(Map<String, dynamic> map) {
     return WafRuleSharedMatchCriteriaCriteriaCriteria(
-      matchType: map['matchType'] == null ? null : (map['matchType'] as String).input(),
+      matchType: map['matchType'] == null ? null : (map['matchType']! as String).input(),
     );
   }
 }

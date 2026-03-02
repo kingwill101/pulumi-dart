@@ -53,7 +53,7 @@ class GetScopingConfigurationResult {
 
   factory GetScopingConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetScopingConfigurationResult(
-      answers: map['answers'] == null ? null : pulumi.Input.decodeList<ScopingAnswerResponse>(map['answers'], (value) => ScopingAnswerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      answers: map['answers'] == null ? null : pulumi.Input.decodeList<ScopingAnswerResponse>(map['answers']!, (value) => ScopingAnswerResponse.fromMap((value as Map).cast<String, dynamic>())),
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
       name: map['name'] as String,

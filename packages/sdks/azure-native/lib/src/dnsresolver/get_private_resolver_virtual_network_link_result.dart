@@ -65,7 +65,7 @@ class GetPrivateResolverVirtualNetworkLinkResult {
       azureApiVersion: map['azureApiVersion'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
-      metadata: map['metadata'] == null ? null : (map['metadata'] as Map).cast<String, String>(),
+      metadata: map['metadata'] == null ? null : (map['metadata']! as Map).cast<String, String>(),
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),

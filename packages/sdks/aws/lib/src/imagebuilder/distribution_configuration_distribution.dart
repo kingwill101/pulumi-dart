@@ -61,14 +61,14 @@ class DistributionConfigurationDistribution {
 
   factory DistributionConfigurationDistribution.fromMap(Map<String, dynamic> map) {
     return DistributionConfigurationDistribution(
-      amiDistributionConfiguration: map['amiDistributionConfiguration'] == null ? null : (DistributionConfigurationDistributionAmiDistributionConfiguration.fromMap((map['amiDistributionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      containerDistributionConfiguration: map['containerDistributionConfiguration'] == null ? null : (DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap((map['containerDistributionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      fastLaunchConfigurations: map['fastLaunchConfigurations'] == null ? null : (pulumi.Input.decodeList<DistributionConfigurationDistributionFastLaunchConfiguration>(map['fastLaunchConfigurations'], (value) => DistributionConfigurationDistributionFastLaunchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      launchTemplateConfigurations: map['launchTemplateConfigurations'] == null ? null : (pulumi.Input.decodeList<DistributionConfigurationDistributionLaunchTemplateConfiguration>(map['launchTemplateConfigurations'], (value) => DistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      licenseConfigurationArns: map['licenseConfigurationArns'] == null ? null : ((map['licenseConfigurationArns'] as List).cast<String>()).input(),
+      amiDistributionConfiguration: map['amiDistributionConfiguration'] == null ? null : ((DistributionConfigurationDistributionAmiDistributionConfiguration.fromMap((map['amiDistributionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      containerDistributionConfiguration: map['containerDistributionConfiguration'] == null ? null : ((DistributionConfigurationDistributionContainerDistributionConfiguration.fromMap((map['containerDistributionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      fastLaunchConfigurations: map['fastLaunchConfigurations'] == null ? null : ((pulumi.Input.decodeList<DistributionConfigurationDistributionFastLaunchConfiguration>(map['fastLaunchConfigurations']!, (value) => DistributionConfigurationDistributionFastLaunchConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      launchTemplateConfigurations: map['launchTemplateConfigurations'] == null ? null : ((pulumi.Input.decodeList<DistributionConfigurationDistributionLaunchTemplateConfiguration>(map['launchTemplateConfigurations']!, (value) => DistributionConfigurationDistributionLaunchTemplateConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      licenseConfigurationArns: map['licenseConfigurationArns'] == null ? null : (((map['licenseConfigurationArns'] as List).cast<String>()).input()).input(),
       region: (map['region'] as String).input(),
-      s3ExportConfiguration: map['s3ExportConfiguration'] == null ? null : (DistributionConfigurationDistributionS3ExportConfiguration.fromMap((map['s3ExportConfiguration'] as Map).cast<String, dynamic>())).input(),
-      ssmParameterConfigurations: map['ssmParameterConfigurations'] == null ? null : (pulumi.Input.decodeList<DistributionConfigurationDistributionSsmParameterConfiguration>(map['ssmParameterConfigurations'], (value) => DistributionConfigurationDistributionSsmParameterConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      s3ExportConfiguration: map['s3ExportConfiguration'] == null ? null : ((DistributionConfigurationDistributionS3ExportConfiguration.fromMap((map['s3ExportConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      ssmParameterConfigurations: map['ssmParameterConfigurations'] == null ? null : ((pulumi.Input.decodeList<DistributionConfigurationDistributionSsmParameterConfiguration>(map['ssmParameterConfigurations']!, (value) => DistributionConfigurationDistributionSsmParameterConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

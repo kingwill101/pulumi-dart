@@ -49,12 +49,12 @@ class ServerlessSecurityConfigState {
 
   factory ServerlessSecurityConfigState.fromMap(Map<String, dynamic> map) {
     return ServerlessSecurityConfigState(
-      configVersion: map['configVersion'] == null ? null : (map['configVersion'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      samlOptions: map['samlOptions'] == null ? null : (ServerlessSecurityConfigSamlOptions.fromMap((map['samlOptions'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      configVersion: map['configVersion'] == null ? null : ((map['configVersion'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      samlOptions: map['samlOptions'] == null ? null : ((ServerlessSecurityConfigSamlOptions.fromMap((map['samlOptions']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

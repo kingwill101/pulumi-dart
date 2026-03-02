@@ -27,8 +27,8 @@ class IngressClassSpec {
 
   factory IngressClassSpec.fromMap(Map<String, dynamic> map) {
     return IngressClassSpec(
-      controller: map['controller'] == null ? null : (map['controller'] as String).input(),
-      parameters: map['parameters'] == null ? null : (IngressClassParametersReference.fromMap((map['parameters'] as Map).cast<String, dynamic>())).input(),
+      controller: map['controller'] == null ? null : (map['controller']! as String).input(),
+      parameters: map['parameters'] == null ? null : (IngressClassParametersReference.fromMap((map['parameters']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

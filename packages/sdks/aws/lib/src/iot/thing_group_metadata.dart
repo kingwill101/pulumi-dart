@@ -29,9 +29,9 @@ class ThingGroupMetadata {
 
   factory ThingGroupMetadata.fromMap(Map<String, dynamic> map) {
     return ThingGroupMetadata(
-      creationDate: map['creationDate'] == null ? null : (map['creationDate'] as String).input(),
-      parentGroupName: map['parentGroupName'] == null ? null : (map['parentGroupName'] as String).input(),
-      rootToParentGroups: map['rootToParentGroups'] == null ? null : (pulumi.Input.decodeList<ThingGroupMetadataRootToParentGroup>(map['rootToParentGroups'], (value) => ThingGroupMetadataRootToParentGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      creationDate: map['creationDate'] == null ? null : ((map['creationDate'] as String).input()).input(),
+      parentGroupName: map['parentGroupName'] == null ? null : ((map['parentGroupName'] as String).input()).input(),
+      rootToParentGroups: map['rootToParentGroups'] == null ? null : ((pulumi.Input.decodeList<ThingGroupMetadataRootToParentGroup>(map['rootToParentGroups']!, (value) => ThingGroupMetadataRootToParentGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

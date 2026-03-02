@@ -28,8 +28,8 @@ class AdministrativeUnitMemberState {
 
   factory AdministrativeUnitMemberState.fromMap(Map<String, dynamic> map) {
     return AdministrativeUnitMemberState(
-      administrativeUnitObjectId: map['administrativeUnitObjectId'] == null ? null : (map['administrativeUnitObjectId'] as String).input(),
-      memberObjectId: map['memberObjectId'] == null ? null : (map['memberObjectId'] as String).input(),
+      administrativeUnitObjectId: map['administrativeUnitObjectId'] == null ? null : (map['administrativeUnitObjectId']! as String).input(),
+      memberObjectId: map['memberObjectId'] == null ? null : (map['memberObjectId']! as String).input(),
     );
   }
 }

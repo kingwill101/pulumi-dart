@@ -57,11 +57,11 @@ class VpnGatewayConnectionArgs {
 
   factory VpnGatewayConnectionArgs.fromMap(Map<String, dynamic> map) {
     return VpnGatewayConnectionArgs(
-      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      internetSecurityEnabled: map['internetSecurityEnabled'] == null ? null : (map['internetSecurityEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       remoteVpnSiteId: (map['remoteVpnSiteId'] as String).input(),
-      routing: map['routing'] == null ? null : (VpnGatewayConnectionRouting.fromMap((map['routing'] as Map).cast<String, dynamic>())).input(),
-      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : (pulumi.Input.decodeList<VpnGatewayConnectionTrafficSelectorPolicy>(map['trafficSelectorPolicies'], (value) => VpnGatewayConnectionTrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      routing: map['routing'] == null ? null : (VpnGatewayConnectionRouting.fromMap((map['routing']! as Map).cast<String, dynamic>())).input(),
+      trafficSelectorPolicies: map['trafficSelectorPolicies'] == null ? null : (pulumi.Input.decodeList<VpnGatewayConnectionTrafficSelectorPolicy>(map['trafficSelectorPolicies']!, (value) => VpnGatewayConnectionTrafficSelectorPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
       vpnGatewayId: (map['vpnGatewayId'] as String).input(),
       vpnLinks: (pulumi.Input.decodeList<VpnGatewayConnectionVpnLink>(map['vpnLinks'], (value) => VpnGatewayConnectionVpnLink.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );

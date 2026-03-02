@@ -35,9 +35,9 @@ class GetVpnConnectionArgs {
 
   factory GetVpnConnectionArgs.fromMap(Map<String, dynamic> map) {
     return GetVpnConnectionArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetVpnConnectionFilter>(map['filters'], (value) => GetVpnConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      vpnConnectionId: map['vpnConnectionId'] == null ? null : (map['vpnConnectionId'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetVpnConnectionFilter>(map['filters']!, (value) => GetVpnConnectionFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      vpnConnectionId: map['vpnConnectionId'] == null ? null : ((map['vpnConnectionId'] as String).input()).input(),
     );
   }
 }

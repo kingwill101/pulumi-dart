@@ -50,11 +50,11 @@ class GetCapacityBlockOfferingArgs {
   factory GetCapacityBlockOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityBlockOfferingArgs(
       capacityDurationHours: (map['capacityDurationHours'] as int).input(),
-      endDateRange: map['endDateRange'] == null ? null : (map['endDateRange'] as String).input(),
+      endDateRange: map['endDateRange'] == null ? null : ((map['endDateRange'] as String).input()).input(),
       instanceCount: (map['instanceCount'] as int).input(),
       instanceType: (map['instanceType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      startDateRange: map['startDateRange'] == null ? null : (map['startDateRange'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      startDateRange: map['startDateRange'] == null ? null : ((map['startDateRange'] as String).input()).input(),
     );
   }
 }

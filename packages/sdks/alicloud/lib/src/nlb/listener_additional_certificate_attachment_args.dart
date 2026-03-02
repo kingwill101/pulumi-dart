@@ -35,7 +35,7 @@ class ListenerAdditionalCertificateAttachmentArgs {
   factory ListenerAdditionalCertificateAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return ListenerAdditionalCertificateAttachmentArgs(
       certificateId: (map['certificateId'] as String).input(),
-      dryRun: map['dryRun'] == null ? null : (map['dryRun'] as bool).input(),
+      dryRun: map['dryRun'] == null ? null : (map['dryRun']! as bool).input(),
       listenerId: (map['listenerId'] as String).input(),
     );
   }

@@ -28,7 +28,7 @@ class BinaryReadSettingsResponse {
 
   factory BinaryReadSettingsResponse.fromMap(Map<String, dynamic> map) {
     return BinaryReadSettingsResponse(
-      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettingsResponse.fromMap((map['compressionProperties'] as Map).cast<String, dynamic>())).input(),
+      compressionProperties: map['compressionProperties'] == null ? null : (TarGZipReadSettingsResponse.fromMap((map['compressionProperties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

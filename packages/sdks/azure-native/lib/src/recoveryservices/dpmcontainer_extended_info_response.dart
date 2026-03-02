@@ -21,7 +21,7 @@ class DPMContainerExtendedInfoResponse {
 
   factory DPMContainerExtendedInfoResponse.fromMap(Map<String, dynamic> map) {
     return DPMContainerExtendedInfoResponse(
-      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt'] as String).input(),
+      lastRefreshedAt: map['lastRefreshedAt'] == null ? null : (map['lastRefreshedAt']! as String).input(),
     );
   }
 }

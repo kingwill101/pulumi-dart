@@ -46,8 +46,8 @@ class SelfIpArgs {
     return SelfIpArgs(
       ip: (map['ip'] as String).input(),
       name: (map['name'] as String).input(),
-      portLockdowns: map['portLockdowns'] == null ? null : ((map['portLockdowns'] as List).cast<String>()).input(),
-      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup'] as String).input(),
+      portLockdowns: map['portLockdowns'] == null ? null : ((map['portLockdowns']! as List).cast<String>()).input(),
+      trafficGroup: map['trafficGroup'] == null ? null : (map['trafficGroup']! as String).input(),
       vlan: (map['vlan'] as String).input(),
     );
   }

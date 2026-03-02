@@ -72,12 +72,12 @@ class ServicePerimeterStatus {
 
   factory ServicePerimeterStatus.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterStatus(
-      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels'] as List).cast<String>()).input(),
-      egressPolicies: map['egressPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterStatusEgressPolicy>(map['egressPolicies'], (value) => ServicePerimeterStatusEgressPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      ingressPolicies: map['ingressPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterStatusIngressPolicy>(map['ingressPolicies'], (value) => ServicePerimeterStatusIngressPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resources: map['resources'] == null ? null : ((map['resources'] as List).cast<String>()).input(),
-      restrictedServices: map['restrictedServices'] == null ? null : ((map['restrictedServices'] as List).cast<String>()).input(),
-      vpcAccessibleServices: map['vpcAccessibleServices'] == null ? null : (ServicePerimeterStatusVpcAccessibleServices.fromMap((map['vpcAccessibleServices'] as Map).cast<String, dynamic>())).input(),
+      accessLevels: map['accessLevels'] == null ? null : ((map['accessLevels']! as List).cast<String>()).input(),
+      egressPolicies: map['egressPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterStatusEgressPolicy>(map['egressPolicies']!, (value) => ServicePerimeterStatusEgressPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      ingressPolicies: map['ingressPolicies'] == null ? null : (pulumi.Input.decodeList<ServicePerimeterStatusIngressPolicy>(map['ingressPolicies']!, (value) => ServicePerimeterStatusIngressPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: map['resources'] == null ? null : ((map['resources']! as List).cast<String>()).input(),
+      restrictedServices: map['restrictedServices'] == null ? null : ((map['restrictedServices']! as List).cast<String>()).input(),
+      vpcAccessibleServices: map['vpcAccessibleServices'] == null ? null : (ServicePerimeterStatusVpcAccessibleServices.fromMap((map['vpcAccessibleServices']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

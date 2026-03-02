@@ -27,8 +27,8 @@ class NetworkManagerScope {
 
   factory NetworkManagerScope.fromMap(Map<String, dynamic> map) {
     return NetworkManagerScope(
-      managementGroupIds: map['managementGroupIds'] == null ? null : ((map['managementGroupIds'] as List).cast<String>()).input(),
-      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds'] as List).cast<String>()).input(),
+      managementGroupIds: map['managementGroupIds'] == null ? null : ((map['managementGroupIds']! as List).cast<String>()).input(),
+      subscriptionIds: map['subscriptionIds'] == null ? null : ((map['subscriptionIds']! as List).cast<String>()).input(),
     );
   }
 }

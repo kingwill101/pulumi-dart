@@ -27,8 +27,8 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
 
   factory AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration(
-      inline: map['inline'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap((map['inline'] as Map).cast<String, dynamic>())).input(),
-      resource: map['resource'] == null ? null : (AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap((map['resource'] as Map).cast<String, dynamic>())).input(),
+      inline: map['inline'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap((map['inline']! as Map).cast<String, dynamic>())).input()).input(),
+      resource: map['resource'] == null ? null : ((AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap((map['resource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

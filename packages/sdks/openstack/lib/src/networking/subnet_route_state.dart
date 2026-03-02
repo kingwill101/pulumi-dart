@@ -42,10 +42,10 @@ class SubnetRouteState {
 
   factory SubnetRouteState.fromMap(Map<String, dynamic> map) {
     return SubnetRouteState(
-      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
-      nextHop: map['nextHop'] == null ? null : (map['nextHop'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      subnetId: map['subnetId'] == null ? null : (map['subnetId'] as String).input(),
+      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr']! as String).input(),
+      nextHop: map['nextHop'] == null ? null : (map['nextHop']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      subnetId: map['subnetId'] == null ? null : (map['subnetId']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class DomainDefaultIoThread {
 
   factory DomainDefaultIoThread.fromMap(Map<String, dynamic> map) {
     return DomainDefaultIoThread(
-      poolMax: map['poolMax'] == null ? null : (map['poolMax'] as double).input(),
-      poolMin: map['poolMin'] == null ? null : (map['poolMin'] as double).input(),
+      poolMax: map['poolMax'] == null ? null : (map['poolMax']! as double).input(),
+      poolMin: map['poolMin'] == null ? null : (map['poolMin']! as double).input(),
     );
   }
 }

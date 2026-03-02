@@ -46,12 +46,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta {
 
   factory SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionComputeBeta(
-      requestCookiesToExclude: map['requestCookiesToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestCookiesToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestHeadersToExclude: map['requestHeadersToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestHeadersToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestQueryParamsToExclude: map['requestQueryParamsToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestQueryParamsToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      requestUrisToExclude: map['requestUrisToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestUrisToExclude'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetRuleIds: map['targetRuleIds'] == null ? null : ((map['targetRuleIds'] as List).cast<String>()).input(),
-      targetRuleSet: map['targetRuleSet'] == null ? null : (map['targetRuleSet'] as String).input(),
+      requestCookiesToExclude: map['requestCookiesToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestCookiesToExclude']!, (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestHeadersToExclude: map['requestHeadersToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestHeadersToExclude']!, (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestQueryParamsToExclude: map['requestQueryParamsToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestQueryParamsToExclude']!, (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      requestUrisToExclude: map['requestUrisToExclude'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta>(map['requestUrisToExclude']!, (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsComputeBeta.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      targetRuleIds: map['targetRuleIds'] == null ? null : ((map['targetRuleIds']! as List).cast<String>()).input(),
+      targetRuleSet: map['targetRuleSet'] == null ? null : (map['targetRuleSet']! as String).input(),
     );
   }
 }

@@ -35,7 +35,7 @@ class GetAuthorizerArgs {
   factory GetAuthorizerArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorizerArgs(
       authorizerId: (map['authorizerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       restApiId: (map['restApiId'] as String).input(),
     );
   }

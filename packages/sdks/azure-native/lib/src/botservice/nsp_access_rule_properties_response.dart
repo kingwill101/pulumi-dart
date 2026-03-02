@@ -53,13 +53,13 @@ class NspAccessRulePropertiesResponse {
 
   factory NspAccessRulePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NspAccessRulePropertiesResponse(
-      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes'] as List).cast<String>()).input(),
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      addressPrefixes: map['addressPrefixes'] == null ? null : ((map['addressPrefixes']! as List).cast<String>()).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       emailAddresses: ((map['emailAddresses'] as List).cast<String>()).input(),
       fullyQualifiedDomainNames: ((map['fullyQualifiedDomainNames'] as List).cast<String>()).input(),
       networkSecurityPerimeters: (pulumi.Input.decodeList<NetworkSecurityPerimeterResponse>(map['networkSecurityPerimeters'], (value) => NetworkSecurityPerimeterResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       phoneNumbers: ((map['phoneNumbers'] as List).cast<String>()).input(),
-      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<NspAccessRulePropertiesSubscriptionsItemResponse>(map['subscriptions'], (value) => NspAccessRulePropertiesSubscriptionsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      subscriptions: map['subscriptions'] == null ? null : (pulumi.Input.decodeList<NspAccessRulePropertiesSubscriptionsItemResponse>(map['subscriptions']!, (value) => NspAccessRulePropertiesSubscriptionsItemResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

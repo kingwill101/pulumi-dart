@@ -28,8 +28,8 @@ class DiskRestorePointAttributes {
 
   factory DiskRestorePointAttributes.fromMap(Map<String, dynamic> map) {
     return DiskRestorePointAttributes(
-      encryption: map['encryption'] == null ? null : (RestorePointEncryption.fromMap((map['encryption'] as Map).cast<String, dynamic>())).input(),
-      sourceDiskRestorePoint: map['sourceDiskRestorePoint'] == null ? null : (ApiEntityReference.fromMap((map['sourceDiskRestorePoint'] as Map).cast<String, dynamic>())).input(),
+      encryption: map['encryption'] == null ? null : (RestorePointEncryption.fromMap((map['encryption']! as Map).cast<String, dynamic>())).input(),
+      sourceDiskRestorePoint: map['sourceDiskRestorePoint'] == null ? null : (ApiEntityReference.fromMap((map['sourceDiskRestorePoint']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

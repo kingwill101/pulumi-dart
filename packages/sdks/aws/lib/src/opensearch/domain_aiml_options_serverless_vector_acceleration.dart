@@ -20,7 +20,7 @@ class DomainAimlOptionsServerlessVectorAcceleration {
 
   factory DomainAimlOptionsServerlessVectorAcceleration.fromMap(Map<String, dynamic> map) {
     return DomainAimlOptionsServerlessVectorAcceleration(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

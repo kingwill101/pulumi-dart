@@ -75,17 +75,17 @@ class GetDedicatedHostsArgs {
 
   factory GetDedicatedHostsArgs.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHostsArgs(
-      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId'] as String).input(),
-      dedicatedHostName: map['dedicatedHostName'] == null ? null : (map['dedicatedHostName'] as String).input(),
-      dedicatedHostType: map['dedicatedHostType'] == null ? null : (map['dedicatedHostType'] as String).input(),
-      ids: map['ids'] == null ? null : ((map['ids'] as List).cast<String>()).input(),
-      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex'] as String).input(),
-      operationLocks: map['operationLocks'] == null ? null : (pulumi.Input.decodeList<GetDedicatedHostsOperationLock>(map['operationLocks'], (value) => GetDedicatedHostsOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      outputFile: map['outputFile'] == null ? null : (map['outputFile'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zoneId: map['zoneId'] == null ? null : (map['zoneId'] as String).input(),
+      dedicatedHostId: map['dedicatedHostId'] == null ? null : (map['dedicatedHostId']! as String).input(),
+      dedicatedHostName: map['dedicatedHostName'] == null ? null : (map['dedicatedHostName']! as String).input(),
+      dedicatedHostType: map['dedicatedHostType'] == null ? null : (map['dedicatedHostType']! as String).input(),
+      ids: map['ids'] == null ? null : ((map['ids']! as List).cast<String>()).input(),
+      nameRegex: map['nameRegex'] == null ? null : (map['nameRegex']! as String).input(),
+      operationLocks: map['operationLocks'] == null ? null : (pulumi.Input.decodeList<GetDedicatedHostsOperationLock>(map['operationLocks']!, (value) => GetDedicatedHostsOperationLock.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      outputFile: map['outputFile'] == null ? null : (map['outputFile']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zoneId: map['zoneId'] == null ? null : (map['zoneId']! as String).input(),
     );
   }
 }

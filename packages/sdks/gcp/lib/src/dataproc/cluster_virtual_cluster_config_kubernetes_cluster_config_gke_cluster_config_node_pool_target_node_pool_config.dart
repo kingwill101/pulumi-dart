@@ -35,8 +35,8 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
 
   factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig.fromMap(Map<String, dynamic> map) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig(
-      autoscaling: map['autoscaling'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap((map['autoscaling'] as Map).cast<String, dynamic>())).input(),
-      config: map['config'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap((map['config'] as Map).cast<String, dynamic>())).input(),
+      autoscaling: map['autoscaling'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap((map['autoscaling']! as Map).cast<String, dynamic>())).input(),
+      config: map['config'] == null ? null : (ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig.fromMap((map['config']! as Map).cast<String, dynamic>())).input(),
       locations: ((map['locations'] as List).cast<String>()).input(),
     );
   }

@@ -70,12 +70,12 @@ class GetJobStepResult {
     return GetJobStepResult(
       action: JobStepActionResponse.fromMap((map['action'] as Map).cast<String, dynamic>()),
       azureApiVersion: map['azureApiVersion'] as String,
-      credential: map['credential'] == null ? null : map['credential'] as String,
-      executionOptions: map['executionOptions'] == null ? null : JobStepExecutionOptionsResponse.fromMap((map['executionOptions'] as Map).cast<String, dynamic>()),
+      credential: map['credential'] == null ? null : map['credential']! as String,
+      executionOptions: map['executionOptions'] == null ? null : JobStepExecutionOptionsResponse.fromMap((map['executionOptions']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
-      output: map['output'] == null ? null : JobStepOutputResponse.fromMap((map['output'] as Map).cast<String, dynamic>()),
-      stepId: map['stepId'] == null ? null : map['stepId'] as int,
+      output: map['output'] == null ? null : JobStepOutputResponse.fromMap((map['output']! as Map).cast<String, dynamic>()),
+      stepId: map['stepId'] == null ? null : map['stepId']! as int,
       targetGroup: map['targetGroup'] as String,
       type: map['type'] as String,
     );

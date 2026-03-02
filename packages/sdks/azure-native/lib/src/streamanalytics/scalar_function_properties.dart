@@ -39,9 +39,9 @@ class ScalarFunctionProperties {
 
   factory ScalarFunctionProperties.fromMap(Map<String, dynamic> map) {
     return ScalarFunctionProperties(
-      binding: map['binding'] == null ? null : (AzureMachineLearningWebServiceFunctionBinding.fromMap((map['binding'] as Map).cast<String, dynamic>())).input(),
-      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionInput>(map['inputs'], (value) => FunctionInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      output: map['output'] == null ? null : (FunctionOutput.fromMap((map['output'] as Map).cast<String, dynamic>())).input(),
+      binding: map['binding'] == null ? null : (AzureMachineLearningWebServiceFunctionBinding.fromMap((map['binding']! as Map).cast<String, dynamic>())).input(),
+      inputs: map['inputs'] == null ? null : (pulumi.Input.decodeList<FunctionInput>(map['inputs']!, (value) => FunctionInput.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      output: map['output'] == null ? null : (FunctionOutput.fromMap((map['output']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

@@ -22,7 +22,7 @@ class AppEngineHttpTarget {
 
   factory AppEngineHttpTarget.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpTarget(
-      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (AppEngineRoutingCloudtasksV2beta2.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>())).input(),
+      appEngineRoutingOverride: map['appEngineRoutingOverride'] == null ? null : (AppEngineRoutingCloudtasksV2beta2.fromMap((map['appEngineRoutingOverride']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

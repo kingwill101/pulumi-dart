@@ -66,15 +66,15 @@ class DedicatedHsmArgs {
 
   factory DedicatedHsmArgs.fromMap(Map<String, dynamic> map) {
     return DedicatedHsmArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (NetworkProfile.fromMap((map['managementNetworkProfile'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managementNetworkProfile: map['managementNetworkProfile'] == null ? null : (NetworkProfile.fromMap((map['managementNetworkProfile']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkProfile: map['networkProfile'] == null ? null : (NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       sku: (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      stampId: map['stampId'] == null ? null : (map['stampId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      zones: map['zones'] == null ? null : ((map['zones'] as List).cast<String>()).input(),
+      stampId: map['stampId'] == null ? null : (map['stampId']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      zones: map['zones'] == null ? null : ((map['zones']! as List).cast<String>()).input(),
     );
   }
 }

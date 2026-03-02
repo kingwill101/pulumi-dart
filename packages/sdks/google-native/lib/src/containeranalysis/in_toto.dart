@@ -47,12 +47,12 @@ class InToto {
 
   factory InToto.fromMap(Map<String, dynamic> map) {
     return InToto(
-      expectedCommand: map['expectedCommand'] == null ? null : ((map['expectedCommand'] as List).cast<String>()).input(),
-      expectedMaterials: map['expectedMaterials'] == null ? null : (pulumi.Input.decodeList<ArtifactRule>(map['expectedMaterials'], (value) => ArtifactRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      expectedProducts: map['expectedProducts'] == null ? null : (pulumi.Input.decodeList<ArtifactRule>(map['expectedProducts'], (value) => ArtifactRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      signingKeys: map['signingKeys'] == null ? null : (pulumi.Input.decodeList<SigningKey>(map['signingKeys'], (value) => SigningKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stepName: map['stepName'] == null ? null : (map['stepName'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      expectedCommand: map['expectedCommand'] == null ? null : ((map['expectedCommand']! as List).cast<String>()).input(),
+      expectedMaterials: map['expectedMaterials'] == null ? null : (pulumi.Input.decodeList<ArtifactRule>(map['expectedMaterials']!, (value) => ArtifactRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      expectedProducts: map['expectedProducts'] == null ? null : (pulumi.Input.decodeList<ArtifactRule>(map['expectedProducts']!, (value) => ArtifactRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      signingKeys: map['signingKeys'] == null ? null : (pulumi.Input.decodeList<SigningKey>(map['signingKeys']!, (value) => SigningKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      stepName: map['stepName'] == null ? null : (map['stepName']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
     );
   }
 }

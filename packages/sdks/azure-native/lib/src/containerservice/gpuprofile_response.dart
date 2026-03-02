@@ -21,7 +21,7 @@ class GPUProfileResponse {
 
   factory GPUProfileResponse.fromMap(Map<String, dynamic> map) {
     return GPUProfileResponse(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
     );
   }
 }

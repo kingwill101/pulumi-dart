@@ -32,7 +32,7 @@ class AutokeyConfigArgs {
   factory AutokeyConfigArgs.fromMap(Map<String, dynamic> map) {
     return AutokeyConfigArgs(
       folder: (map['folder'] as String).input(),
-      keyProject: map['keyProject'] == null ? null : (map['keyProject'] as String).input(),
+      keyProject: map['keyProject'] == null ? null : (map['keyProject']! as String).input(),
     );
   }
 }

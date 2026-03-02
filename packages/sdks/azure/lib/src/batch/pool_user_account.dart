@@ -43,10 +43,10 @@ class PoolUserAccount {
   factory PoolUserAccount.fromMap(Map<String, dynamic> map) {
     return PoolUserAccount(
       elevationLevel: (map['elevationLevel'] as String).input(),
-      linuxUserConfigurations: map['linuxUserConfigurations'] == null ? null : (pulumi.Input.decodeList<PoolUserAccountLinuxUserConfiguration>(map['linuxUserConfigurations'], (value) => PoolUserAccountLinuxUserConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      linuxUserConfigurations: map['linuxUserConfigurations'] == null ? null : (pulumi.Input.decodeList<PoolUserAccountLinuxUserConfiguration>(map['linuxUserConfigurations']!, (value) => PoolUserAccountLinuxUserConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
       password: (map['password'] as String).input(),
-      windowsUserConfigurations: map['windowsUserConfigurations'] == null ? null : (pulumi.Input.decodeList<PoolUserAccountWindowsUserConfiguration>(map['windowsUserConfigurations'], (value) => PoolUserAccountWindowsUserConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      windowsUserConfigurations: map['windowsUserConfigurations'] == null ? null : (pulumi.Input.decodeList<PoolUserAccountWindowsUserConfiguration>(map['windowsUserConfigurations']!, (value) => PoolUserAccountWindowsUserConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

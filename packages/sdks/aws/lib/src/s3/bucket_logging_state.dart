@@ -53,13 +53,13 @@ class BucketLoggingState {
 
   factory BucketLoggingState.fromMap(Map<String, dynamic> map) {
     return BucketLoggingState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : (map['expectedBucketOwner'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetBucket: map['targetBucket'] == null ? null : (map['targetBucket'] as String).input(),
-      targetGrants: map['targetGrants'] == null ? null : (pulumi.Input.decodeList<BucketLoggingTargetGrant>(map['targetGrants'], (value) => BucketLoggingTargetGrant.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      targetObjectKeyFormat: map['targetObjectKeyFormat'] == null ? null : (BucketLoggingTargetObjectKeyFormat.fromMap((map['targetObjectKeyFormat'] as Map).cast<String, dynamic>())).input(),
-      targetPrefix: map['targetPrefix'] == null ? null : (map['targetPrefix'] as String).input(),
+      bucket: map['bucket'] == null ? null : ((map['bucket'] as String).input()).input(),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : ((map['expectedBucketOwner'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      targetBucket: map['targetBucket'] == null ? null : ((map['targetBucket'] as String).input()).input(),
+      targetGrants: map['targetGrants'] == null ? null : ((pulumi.Input.decodeList<BucketLoggingTargetGrant>(map['targetGrants']!, (value) => BucketLoggingTargetGrant.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      targetObjectKeyFormat: map['targetObjectKeyFormat'] == null ? null : ((BucketLoggingTargetObjectKeyFormat.fromMap((map['targetObjectKeyFormat']! as Map).cast<String, dynamic>())).input()).input(),
+      targetPrefix: map['targetPrefix'] == null ? null : ((map['targetPrefix'] as String).input()).input(),
     );
   }
 }

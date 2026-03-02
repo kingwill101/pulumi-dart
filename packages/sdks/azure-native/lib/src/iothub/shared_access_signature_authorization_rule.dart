@@ -38,9 +38,9 @@ class SharedAccessSignatureAuthorizationRule {
   factory SharedAccessSignatureAuthorizationRule.fromMap(Map<String, dynamic> map) {
     return SharedAccessSignatureAuthorizationRule(
       keyName: (map['keyName'] as String).input(),
-      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey'] as String).input(),
+      primaryKey: map['primaryKey'] == null ? null : (map['primaryKey']! as String).input(),
       rights: (AccessRights.fromValue(map['rights'] as String)).input(),
-      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey'] as String).input(),
+      secondaryKey: map['secondaryKey'] == null ? null : (map['secondaryKey']! as String).input(),
     );
   }
 }

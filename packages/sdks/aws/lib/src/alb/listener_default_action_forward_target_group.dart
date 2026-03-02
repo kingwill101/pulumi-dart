@@ -28,7 +28,7 @@ class ListenerDefaultActionForwardTargetGroup {
   factory ListenerDefaultActionForwardTargetGroup.fromMap(Map<String, dynamic> map) {
     return ListenerDefaultActionForwardTargetGroup(
       arn: (map['arn'] as String).input(),
-      weight: map['weight'] == null ? null : (map['weight'] as int).input(),
+      weight: map['weight'] == null ? null : ((map['weight'] as int).input()).input(),
     );
   }
 }

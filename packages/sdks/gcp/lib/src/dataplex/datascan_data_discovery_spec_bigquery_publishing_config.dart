@@ -36,10 +36,10 @@ class DatascanDataDiscoverySpecBigqueryPublishingConfig {
 
   factory DatascanDataDiscoverySpecBigqueryPublishingConfig.fromMap(Map<String, dynamic> map) {
     return DatascanDataDiscoverySpecBigqueryPublishingConfig(
-      connection: map['connection'] == null ? null : (map['connection'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tableType: map['tableType'] == null ? null : (map['tableType'] as String).input(),
+      connection: map['connection'] == null ? null : (map['connection']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tableType: map['tableType'] == null ? null : (map['tableType']! as String).input(),
     );
   }
 }

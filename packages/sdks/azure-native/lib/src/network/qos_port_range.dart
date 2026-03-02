@@ -26,8 +26,8 @@ class QosPortRange {
 
   factory QosPortRange.fromMap(Map<String, dynamic> map) {
     return QosPortRange(
-      end: map['end'] == null ? null : (map['end'] as int).input(),
-      start: map['start'] == null ? null : (map['start'] as int).input(),
+      end: map['end'] == null ? null : (map['end']! as int).input(),
+      start: map['start'] == null ? null : (map['start']! as int).input(),
     );
   }
 }

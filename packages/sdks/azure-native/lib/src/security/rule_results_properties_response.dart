@@ -21,7 +21,7 @@ class RuleResultsPropertiesResponse {
 
   factory RuleResultsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RuleResultsPropertiesResponse(
-      results: map['results'] == null ? null : ((map['results'] as List).cast<List<String>>()).input(),
+      results: map['results'] == null ? null : ((map['results']! as List).cast<List<String>>()).input(),
     );
   }
 }

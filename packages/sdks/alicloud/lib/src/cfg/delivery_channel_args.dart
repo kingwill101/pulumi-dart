@@ -58,12 +58,12 @@ class DeliveryChannelArgs {
   factory DeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelArgs(
       deliveryChannelAssumeRoleArn: (map['deliveryChannelAssumeRoleArn'] as String).input(),
-      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : (map['deliveryChannelCondition'] as String).input(),
-      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName'] as String).input(),
+      deliveryChannelCondition: map['deliveryChannelCondition'] == null ? null : (map['deliveryChannelCondition']! as String).input(),
+      deliveryChannelName: map['deliveryChannelName'] == null ? null : (map['deliveryChannelName']! as String).input(),
       deliveryChannelTargetArn: (map['deliveryChannelTargetArn'] as String).input(),
       deliveryChannelType: (map['deliveryChannelType'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as int).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as int).input(),
     );
   }
 }

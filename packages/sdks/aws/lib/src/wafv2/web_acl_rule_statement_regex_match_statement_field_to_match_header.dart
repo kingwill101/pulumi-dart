@@ -31,7 +31,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchHeader {
 
   factory WebAclRuleStatementRegexMatchStatementFieldToMatchHeader.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementRegexMatchStatementFieldToMatchHeader(
-      matchPattern: (WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>())).input(),
+      matchPattern: (WebAclRuleStatementRegexMatchStatementFieldToMatchHeaderMatchPattern.fromMap((map['matchPattern']! as Map).cast<String, dynamic>())).input(),
       matchScope: (map['matchScope'] as String).input(),
       oversizeHandling: (map['oversizeHandling'] as String).input(),
     );

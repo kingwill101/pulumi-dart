@@ -45,11 +45,11 @@ class TransitRouterMulticastDomainArgs {
 
   factory TransitRouterMulticastDomainArgs.fromMap(Map<String, dynamic> map) {
     return TransitRouterMulticastDomainArgs(
-      options: map['options'] == null ? null : (TransitRouterMulticastDomainOptions.fromMap((map['options'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      options: map['options'] == null ? null : (TransitRouterMulticastDomainOptions.fromMap((map['options']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       transitRouterId: (map['transitRouterId'] as String).input(),
-      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] == null ? null : (map['transitRouterMulticastDomainDescription'] as String).input(),
-      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] == null ? null : (map['transitRouterMulticastDomainName'] as String).input(),
+      transitRouterMulticastDomainDescription: map['transitRouterMulticastDomainDescription'] == null ? null : (map['transitRouterMulticastDomainDescription']! as String).input(),
+      transitRouterMulticastDomainName: map['transitRouterMulticastDomainName'] == null ? null : (map['transitRouterMulticastDomainName']! as String).input(),
     );
   }
 }

@@ -55,13 +55,13 @@ class CatalogArgs {
 
   factory CatalogArgs.fromMap(Map<String, dynamic> map) {
     return CatalogArgs(
-      adoGit: map['adoGit'] == null ? null : (GitCatalog.fromMap((map['adoGit'] as Map).cast<String, dynamic>())).input(),
-      catalogName: map['catalogName'] == null ? null : (map['catalogName'] as String).input(),
+      adoGit: map['adoGit'] == null ? null : (GitCatalog.fromMap((map['adoGit']! as Map).cast<String, dynamic>())).input(),
+      catalogName: map['catalogName'] == null ? null : (map['catalogName']! as String).input(),
       devCenterName: (map['devCenterName'] as String).input(),
-      gitHub: map['gitHub'] == null ? null : (GitCatalog.fromMap((map['gitHub'] as Map).cast<String, dynamic>())).input(),
+      gitHub: map['gitHub'] == null ? null : (GitCatalog.fromMap((map['gitHub']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      syncType: map['syncType'] == null ? null : (map['syncType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      syncType: map['syncType'] == null ? null : (map['syncType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

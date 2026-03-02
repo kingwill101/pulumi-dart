@@ -26,8 +26,8 @@ class PatientIdHealthcareV1beta1 {
 
   factory PatientIdHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
     return PatientIdHealthcareV1beta1(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

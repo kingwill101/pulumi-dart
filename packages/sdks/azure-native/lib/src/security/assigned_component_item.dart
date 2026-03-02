@@ -21,7 +21,7 @@ class AssignedComponentItem {
 
   factory AssignedComponentItem.fromMap(Map<String, dynamic> map) {
     return AssignedComponentItem(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
     );
   }
 }

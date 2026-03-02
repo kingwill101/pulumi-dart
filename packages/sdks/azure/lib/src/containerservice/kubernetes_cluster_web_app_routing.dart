@@ -31,9 +31,9 @@ class KubernetesClusterWebAppRouting {
 
   factory KubernetesClusterWebAppRouting.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterWebAppRouting(
-      defaultNginxController: map['defaultNginxController'] == null ? null : (map['defaultNginxController'] as String).input(),
+      defaultNginxController: map['defaultNginxController'] == null ? null : (map['defaultNginxController']! as String).input(),
       dnsZoneIds: ((map['dnsZoneIds'] as List).cast<String>()).input(),
-      webAppRoutingIdentities: map['webAppRoutingIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>(map['webAppRoutingIdentities'], (value) => KubernetesClusterWebAppRoutingWebAppRoutingIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      webAppRoutingIdentities: map['webAppRoutingIdentities'] == null ? null : (pulumi.Input.decodeList<KubernetesClusterWebAppRoutingWebAppRoutingIdentity>(map['webAppRoutingIdentities']!, (value) => KubernetesClusterWebAppRoutingWebAppRoutingIdentity.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -28,9 +28,9 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookiesMatchPatte
 
   factory RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern(
-      all: map['all'] == null ? null : ((map['all'] as Map).cast<String, dynamic>()).input(),
-      excludedCookies: map['excludedCookies'] == null ? null : ((map['excludedCookies'] as List).cast<String>()).input(),
-      includedCookies: map['includedCookies'] == null ? null : ((map['includedCookies'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (((map['all'] as Map).cast<String, dynamic>()).input()).input(),
+      excludedCookies: map['excludedCookies'] == null ? null : (((map['excludedCookies'] as List).cast<String>()).input()).input(),
+      includedCookies: map['includedCookies'] == null ? null : (((map['includedCookies'] as List).cast<String>()).input()).input(),
     );
   }
 }

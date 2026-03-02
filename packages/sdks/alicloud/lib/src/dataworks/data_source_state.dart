@@ -76,18 +76,18 @@ class DataSourceState {
 
   factory DataSourceState.fromMap(Map<String, dynamic> map) {
     return DataSourceState(
-      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties'] as String).input(),
-      connectionPropertiesMode: map['connectionPropertiesMode'] == null ? null : (map['connectionPropertiesMode'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      createUser: map['createUser'] == null ? null : (map['createUser'] as String).input(),
-      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId'] as int).input(),
-      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime'] as int).input(),
-      modifyUser: map['modifyUser'] == null ? null : (map['modifyUser'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as int).input(),
-      qualifiedName: map['qualifiedName'] == null ? null : (map['qualifiedName'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      connectionProperties: map['connectionProperties'] == null ? null : (map['connectionProperties']! as String).input(),
+      connectionPropertiesMode: map['connectionPropertiesMode'] == null ? null : (map['connectionPropertiesMode']! as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      createUser: map['createUser'] == null ? null : (map['createUser']! as String).input(),
+      dataSourceId: map['dataSourceId'] == null ? null : (map['dataSourceId']! as int).input(),
+      dataSourceName: map['dataSourceName'] == null ? null : (map['dataSourceName']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      modifyTime: map['modifyTime'] == null ? null : (map['modifyTime']! as int).input(),
+      modifyUser: map['modifyUser'] == null ? null : (map['modifyUser']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as int).input(),
+      qualifiedName: map['qualifiedName'] == null ? null : (map['qualifiedName']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

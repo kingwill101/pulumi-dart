@@ -42,11 +42,11 @@ class PackageInfoOccurrenceContaineranalysisV1beta1 {
 
   factory PackageInfoOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return PackageInfoOccurrenceContaineranalysisV1beta1(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      licenseConcluded: map['licenseConcluded'] == null ? null : (LicenseContaineranalysisV1beta1.fromMap((map['licenseConcluded'] as Map).cast<String, dynamic>())).input(),
-      sourceInfo: map['sourceInfo'] == null ? null : (map['sourceInfo'] as String).input(),
+      comment: map['comment'] == null ? null : (map['comment']! as String).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      licenseConcluded: map['licenseConcluded'] == null ? null : (LicenseContaineranalysisV1beta1.fromMap((map['licenseConcluded']! as Map).cast<String, dynamic>())).input(),
+      sourceInfo: map['sourceInfo'] == null ? null : (map['sourceInfo']! as String).input(),
     );
   }
 }

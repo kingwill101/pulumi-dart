@@ -52,11 +52,11 @@ class AuthorizedOrgsDescArgs {
   factory AuthorizedOrgsDescArgs.fromMap(Map<String, dynamic> map) {
     return AuthorizedOrgsDescArgs(
       accessPolicyId: (map['accessPolicyId'] as String).input(),
-      assetType: map['assetType'] == null ? null : (AuthorizedOrgsDescAssetType.fromValue(map['assetType'] as String)).input(),
-      authorizationDirection: map['authorizationDirection'] == null ? null : (AuthorizedOrgsDescAuthorizationDirection.fromValue(map['authorizationDirection'] as String)).input(),
-      authorizationType: map['authorizationType'] == null ? null : (AuthorizedOrgsDescAuthorizationType.fromValue(map['authorizationType'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgs: map['orgs'] == null ? null : ((map['orgs'] as List).cast<String>()).input(),
+      assetType: map['assetType'] == null ? null : (AuthorizedOrgsDescAssetType.fromValue(map['assetType']! as String)).input(),
+      authorizationDirection: map['authorizationDirection'] == null ? null : (AuthorizedOrgsDescAuthorizationDirection.fromValue(map['authorizationDirection']! as String)).input(),
+      authorizationType: map['authorizationType'] == null ? null : (AuthorizedOrgsDescAuthorizationType.fromValue(map['authorizationType']! as String)).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgs: map['orgs'] == null ? null : ((map['orgs']! as List).cast<String>()).input(),
     );
   }
 }

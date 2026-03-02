@@ -65,15 +65,15 @@ class ManagedGatewayPropertiesResponse {
 
   factory ManagedGatewayPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ManagedGatewayPropertiesResponse(
-      computerName: map['computerName'] == null ? null : (map['computerName'] as String).input(),
+      computerName: map['computerName'] == null ? null : (map['computerName']! as String).input(),
       connectionStatus: (map['connectionStatus'] as String).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
+      domainName: map['domainName'] == null ? null : (map['domainName']! as String).input(),
       healthStatus: (map['healthStatus'] as String).input(),
       installType: (map['installType'] as String).input(),
       managementServerEndpoint: (map['managementServerEndpoint'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      resourceLocation: map['resourceLocation'] == null ? null : (map['resourceLocation'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      resourceLocation: map['resourceLocation'] == null ? null : (map['resourceLocation']! as String).input(),
       version: (map['version'] as String).input(),
     );
   }

@@ -21,7 +21,7 @@ class HostnameTypeEnumValueResponse {
 
   factory HostnameTypeEnumValueResponse.fromMap(Map<String, dynamic> map) {
     return HostnameTypeEnumValueResponse(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

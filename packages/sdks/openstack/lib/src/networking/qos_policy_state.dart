@@ -87,18 +87,18 @@ class QosPolicyState {
 
   factory QosPolicyState.fromMap(Map<String, dynamic> map) {
     return QosPolicyState(
-      allTags: map['allTags'] == null ? null : ((map['allTags'] as List).cast<String>()).input(),
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      projectId: map['projectId'] == null ? null : (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      revisionNumber: map['revisionNumber'] == null ? null : (map['revisionNumber'] as int).input(),
-      shared: map['shared'] == null ? null : (map['shared'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      allTags: map['allTags'] == null ? null : ((map['allTags']! as List).cast<String>()).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      projectId: map['projectId'] == null ? null : (map['projectId']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      revisionNumber: map['revisionNumber'] == null ? null : (map['revisionNumber']! as int).input(),
+      shared: map['shared'] == null ? null : (map['shared']! as bool).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      updatedAt: map['updatedAt'] == null ? null : (map['updatedAt']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
     );
   }
 }

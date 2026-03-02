@@ -26,8 +26,8 @@ class ProvisionedThroughput {
 
   factory ProvisionedThroughput.fromMap(Map<String, dynamic> map) {
     return ProvisionedThroughput(
-      readCapacityUnits: map['readCapacityUnits'] == null ? null : (map['readCapacityUnits'] as int).input(),
-      writeCapacityUnits: map['writeCapacityUnits'] == null ? null : (map['writeCapacityUnits'] as int).input(),
+      readCapacityUnits: map['readCapacityUnits'] == null ? null : (map['readCapacityUnits']! as int).input(),
+      writeCapacityUnits: map['writeCapacityUnits'] == null ? null : (map['writeCapacityUnits']! as int).input(),
     );
   }
 }

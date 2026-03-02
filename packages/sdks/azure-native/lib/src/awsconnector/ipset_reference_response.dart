@@ -21,7 +21,7 @@ class IPSetReferenceResponse {
 
   factory IPSetReferenceResponse.fromMap(Map<String, dynamic> map) {
     return IPSetReferenceResponse(
-      referenceArn: map['referenceArn'] == null ? null : (map['referenceArn'] as String).input(),
+      referenceArn: map['referenceArn'] == null ? null : (map['referenceArn']! as String).input(),
     );
   }
 }

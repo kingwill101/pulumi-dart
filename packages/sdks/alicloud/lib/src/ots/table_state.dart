@@ -78,18 +78,18 @@ class TableState {
 
   factory TableState.fromMap(Map<String, dynamic> map) {
     return TableState(
-      allowUpdate: map['allowUpdate'] == null ? null : (map['allowUpdate'] as bool).input(),
-      definedColumns: map['definedColumns'] == null ? null : (pulumi.Input.decodeList<TableDefinedColumn>(map['definedColumns'], (value) => TableDefinedColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      deviationCellVersionInSec: map['deviationCellVersionInSec'] == null ? null : (map['deviationCellVersionInSec'] as String).input(),
-      enableSse: map['enableSse'] == null ? null : (map['enableSse'] as bool).input(),
-      instanceName: map['instanceName'] == null ? null : (map['instanceName'] as String).input(),
-      maxVersion: map['maxVersion'] == null ? null : (map['maxVersion'] as int).input(),
-      primaryKeys: map['primaryKeys'] == null ? null : (pulumi.Input.decodeList<TablePrimaryKey>(map['primaryKeys'], (value) => TablePrimaryKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sseKeyId: map['sseKeyId'] == null ? null : (map['sseKeyId'] as String).input(),
-      sseKeyType: map['sseKeyType'] == null ? null : (map['sseKeyType'] as String).input(),
-      sseRoleArn: map['sseRoleArn'] == null ? null : (map['sseRoleArn'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      allowUpdate: map['allowUpdate'] == null ? null : (map['allowUpdate']! as bool).input(),
+      definedColumns: map['definedColumns'] == null ? null : (pulumi.Input.decodeList<TableDefinedColumn>(map['definedColumns']!, (value) => TableDefinedColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deviationCellVersionInSec: map['deviationCellVersionInSec'] == null ? null : (map['deviationCellVersionInSec']! as String).input(),
+      enableSse: map['enableSse'] == null ? null : (map['enableSse']! as bool).input(),
+      instanceName: map['instanceName'] == null ? null : (map['instanceName']! as String).input(),
+      maxVersion: map['maxVersion'] == null ? null : (map['maxVersion']! as int).input(),
+      primaryKeys: map['primaryKeys'] == null ? null : (pulumi.Input.decodeList<TablePrimaryKey>(map['primaryKeys']!, (value) => TablePrimaryKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sseKeyId: map['sseKeyId'] == null ? null : (map['sseKeyId']! as String).input(),
+      sseKeyType: map['sseKeyType'] == null ? null : (map['sseKeyType']! as String).input(),
+      sseRoleArn: map['sseRoleArn'] == null ? null : (map['sseRoleArn']! as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

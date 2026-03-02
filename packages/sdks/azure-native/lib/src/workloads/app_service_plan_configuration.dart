@@ -26,8 +26,8 @@ class AppServicePlanConfiguration {
 
   factory AppServicePlanConfiguration.fromMap(Map<String, dynamic> map) {
     return AppServicePlanConfiguration(
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

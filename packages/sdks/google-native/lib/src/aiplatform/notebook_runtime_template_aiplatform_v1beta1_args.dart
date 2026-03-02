@@ -93,20 +93,20 @@ class NotebookRuntimeTemplateAiplatformV1beta1Args {
 
   factory NotebookRuntimeTemplateAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return NotebookRuntimeTemplateAiplatformV1beta1Args(
-      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : (GoogleCloudAiplatformV1beta1PersistentDiskSpec.fromMap((map['dataPersistentDiskSpec'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataPersistentDiskSpec: map['dataPersistentDiskSpec'] == null ? null : (GoogleCloudAiplatformV1beta1PersistentDiskSpec.fromMap((map['dataPersistentDiskSpec']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      eucConfig: map['eucConfig'] == null ? null : (GoogleCloudAiplatformV1beta1NotebookEucConfig.fromMap((map['eucConfig'] as Map).cast<String, dynamic>())).input(),
-      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : (GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig.fromMap((map['idleShutdownConfig'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineSpec: map['machineSpec'] == null ? null : (GoogleCloudAiplatformV1beta1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>())).input(),
-      networkSpec: map['networkSpec'] == null ? null : (GoogleCloudAiplatformV1beta1NetworkSpec.fromMap((map['networkSpec'] as Map).cast<String, dynamic>())).input(),
-      notebookRuntimeTemplateId: map['notebookRuntimeTemplateId'] == null ? null : (map['notebookRuntimeTemplateId'] as String).input(),
-      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : (NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1.fromValue(map['notebookRuntimeType'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      eucConfig: map['eucConfig'] == null ? null : (GoogleCloudAiplatformV1beta1NotebookEucConfig.fromMap((map['eucConfig']! as Map).cast<String, dynamic>())).input(),
+      idleShutdownConfig: map['idleShutdownConfig'] == null ? null : (GoogleCloudAiplatformV1beta1NotebookIdleShutdownConfig.fromMap((map['idleShutdownConfig']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineSpec: map['machineSpec'] == null ? null : (GoogleCloudAiplatformV1beta1MachineSpec.fromMap((map['machineSpec']! as Map).cast<String, dynamic>())).input(),
+      networkSpec: map['networkSpec'] == null ? null : (GoogleCloudAiplatformV1beta1NetworkSpec.fromMap((map['networkSpec']! as Map).cast<String, dynamic>())).input(),
+      notebookRuntimeTemplateId: map['notebookRuntimeTemplateId'] == null ? null : (map['notebookRuntimeTemplateId']! as String).input(),
+      notebookRuntimeType: map['notebookRuntimeType'] == null ? null : (NotebookRuntimeTemplateNotebookRuntimeTypeAiplatformV1beta1.fromValue(map['notebookRuntimeType']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
     );
   }
 }

@@ -26,8 +26,8 @@ class MetadataItem {
 
   factory MetadataItem.fromMap(Map<String, dynamic> map) {
     return MetadataItem(
-      name: map['name'] == null ? null : (map['name']).input(),
-      value: map['value'] == null ? null : (map['value']).input(),
+      name: map['name'] == null ? null : (map['name']!).input(),
+      value: map['value'] == null ? null : (map['value']!).input(),
     );
   }
 }

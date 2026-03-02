@@ -55,9 +55,9 @@ class GetServiceLevelAlertHelperArgs {
   factory GetServiceLevelAlertHelperArgs.fromMap(Map<String, dynamic> map) {
     return GetServiceLevelAlertHelperArgs(
       alertType: (map['alertType'] as String).input(),
-      customEvaluationPeriod: map['customEvaluationPeriod'] == null ? null : (map['customEvaluationPeriod'] as int).input(),
-      customToleratedBudgetConsumption: map['customToleratedBudgetConsumption'] == null ? null : (map['customToleratedBudgetConsumption'] as double).input(),
-      isBadEvents: map['isBadEvents'] == null ? null : (map['isBadEvents'] as bool).input(),
+      customEvaluationPeriod: map['customEvaluationPeriod'] == null ? null : (map['customEvaluationPeriod']! as int).input(),
+      customToleratedBudgetConsumption: map['customToleratedBudgetConsumption'] == null ? null : (map['customToleratedBudgetConsumption']! as double).input(),
+      isBadEvents: map['isBadEvents'] == null ? null : (map['isBadEvents']! as bool).input(),
       sliGuid: (map['sliGuid'] as String).input(),
       sloPeriod: (map['sloPeriod'] as int).input(),
       sloTarget: (map['sloTarget'] as double).input(),

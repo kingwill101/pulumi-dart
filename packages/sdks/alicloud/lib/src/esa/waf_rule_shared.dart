@@ -57,14 +57,14 @@ class WafRuleShared {
 
   factory WafRuleShared.fromMap(Map<String, dynamic> map) {
     return WafRuleShared(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      actions: map['actions'] == null ? null : (WafRuleSharedActions.fromMap((map['actions'] as Map).cast<String, dynamic>())).input(),
-      crossSiteId: map['crossSiteId'] == null ? null : (map['crossSiteId'] as int).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
-      match: map['match'] == null ? null : (WafRuleSharedMatch.fromMap((map['match'] as Map).cast<String, dynamic>())).input(),
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      actions: map['actions'] == null ? null : (WafRuleSharedActions.fromMap((map['actions']! as Map).cast<String, dynamic>())).input(),
+      crossSiteId: map['crossSiteId'] == null ? null : (map['crossSiteId']! as int).input(),
+      expression: map['expression'] == null ? null : (map['expression']! as String).input(),
+      match: map['match'] == null ? null : (WafRuleSharedMatch.fromMap((map['match']! as Map).cast<String, dynamic>())).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
     );
   }
 }

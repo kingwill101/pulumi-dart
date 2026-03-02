@@ -67,10 +67,10 @@ class WorkforcePoolProviderOidc {
   factory WorkforcePoolProviderOidc.fromMap(Map<String, dynamic> map) {
     return WorkforcePoolProviderOidc(
       clientId: (map['clientId'] as String).input(),
-      clientSecret: map['clientSecret'] == null ? null : (WorkforcePoolProviderOidcClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>())).input(),
+      clientSecret: map['clientSecret'] == null ? null : (WorkforcePoolProviderOidcClientSecret.fromMap((map['clientSecret']! as Map).cast<String, dynamic>())).input(),
       issuerUri: (map['issuerUri'] as String).input(),
-      jwksJson: map['jwksJson'] == null ? null : (map['jwksJson'] as String).input(),
-      webSsoConfig: map['webSsoConfig'] == null ? null : (WorkforcePoolProviderOidcWebSsoConfig.fromMap((map['webSsoConfig'] as Map).cast<String, dynamic>())).input(),
+      jwksJson: map['jwksJson'] == null ? null : (map['jwksJson']! as String).input(),
+      webSsoConfig: map['webSsoConfig'] == null ? null : (WorkforcePoolProviderOidcWebSsoConfig.fromMap((map['webSsoConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

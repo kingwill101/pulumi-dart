@@ -26,7 +26,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
   factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(
       bundle: (map['bundle'] as String).input(),
-      exemptedNamespaces: map['exemptedNamespaces'] == null ? null : ((map['exemptedNamespaces'] as List).cast<String>()).input(),
+      exemptedNamespaces: map['exemptedNamespaces'] == null ? null : ((map['exemptedNamespaces']! as List).cast<String>()).input(),
     );
   }
 }

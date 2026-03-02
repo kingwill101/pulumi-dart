@@ -56,12 +56,12 @@ class ServicePerimeterArgs {
   factory ServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterArgs(
       accessPolicyId: (map['accessPolicyId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      perimeterType: map['perimeterType'] == null ? null : (ServicePerimeterPerimeterType.fromValue(map['perimeterType'] as String)).input(),
-      spec: map['spec'] == null ? null : (ServicePerimeterConfig.fromMap((map['spec'] as Map).cast<String, dynamic>())).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec'] as bool).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      perimeterType: map['perimeterType'] == null ? null : (ServicePerimeterPerimeterType.fromValue(map['perimeterType']! as String)).input(),
+      spec: map['spec'] == null ? null : (ServicePerimeterConfig.fromMap((map['spec']! as Map).cast<String, dynamic>())).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : (map['useExplicitDryRunSpec']! as bool).input(),
     );
   }
 }

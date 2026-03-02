@@ -39,10 +39,10 @@ class AnalysisParameters {
 
   factory AnalysisParameters.fromMap(Map<String, dynamic> map) {
     return AnalysisParameters(
-      dateTimeParameters: map['dateTimeParameters'] == null ? null : (pulumi.Input.decodeList<AnalysisParametersDateTimeParameter>(map['dateTimeParameters'], (value) => AnalysisParametersDateTimeParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      decimalParameters: map['decimalParameters'] == null ? null : (pulumi.Input.decodeList<AnalysisParametersDecimalParameter>(map['decimalParameters'], (value) => AnalysisParametersDecimalParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      integerParameters: map['integerParameters'] == null ? null : (pulumi.Input.decodeList<AnalysisParametersIntegerParameter>(map['integerParameters'], (value) => AnalysisParametersIntegerParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      stringParameters: map['stringParameters'] == null ? null : (pulumi.Input.decodeList<AnalysisParametersStringParameter>(map['stringParameters'], (value) => AnalysisParametersStringParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dateTimeParameters: map['dateTimeParameters'] == null ? null : ((pulumi.Input.decodeList<AnalysisParametersDateTimeParameter>(map['dateTimeParameters']!, (value) => AnalysisParametersDateTimeParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      decimalParameters: map['decimalParameters'] == null ? null : ((pulumi.Input.decodeList<AnalysisParametersDecimalParameter>(map['decimalParameters']!, (value) => AnalysisParametersDecimalParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      integerParameters: map['integerParameters'] == null ? null : ((pulumi.Input.decodeList<AnalysisParametersIntegerParameter>(map['integerParameters']!, (value) => AnalysisParametersIntegerParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      stringParameters: map['stringParameters'] == null ? null : ((pulumi.Input.decodeList<AnalysisParametersStringParameter>(map['stringParameters']!, (value) => AnalysisParametersStringParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

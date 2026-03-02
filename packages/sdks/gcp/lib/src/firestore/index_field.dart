@@ -42,10 +42,10 @@ class IndexField {
 
   factory IndexField.fromMap(Map<String, dynamic> map) {
     return IndexField(
-      arrayConfig: map['arrayConfig'] == null ? null : (map['arrayConfig'] as String).input(),
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as String).input(),
-      vectorConfig: map['vectorConfig'] == null ? null : (IndexFieldVectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>())).input(),
+      arrayConfig: map['arrayConfig'] == null ? null : (map['arrayConfig']! as String).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as String).input(),
+      vectorConfig: map['vectorConfig'] == null ? null : (IndexFieldVectorConfig.fromMap((map['vectorConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

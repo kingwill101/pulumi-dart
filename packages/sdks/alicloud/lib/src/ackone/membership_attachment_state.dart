@@ -26,8 +26,8 @@ class MembershipAttachmentState {
 
   factory MembershipAttachmentState.fromMap(Map<String, dynamic> map) {
     return MembershipAttachmentState(
-      clusterId: map['clusterId'] == null ? null : (map['clusterId'] as String).input(),
-      subClusterId: map['subClusterId'] == null ? null : (map['subClusterId'] as String).input(),
+      clusterId: map['clusterId'] == null ? null : (map['clusterId']! as String).input(),
+      subClusterId: map['subClusterId'] == null ? null : (map['subClusterId']! as String).input(),
     );
   }
 }

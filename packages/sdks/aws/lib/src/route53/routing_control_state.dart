@@ -43,11 +43,11 @@ class RoutingControlState {
 
   factory RoutingControlState.fromMap(Map<String, dynamic> map) {
     return RoutingControlState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterArn: map['clusterArn'] == null ? null : (map['clusterArn'] as String).input(),
-      controlPanelArn: map['controlPanelArn'] == null ? null : (map['controlPanelArn'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterArn: map['clusterArn'] == null ? null : ((map['clusterArn'] as String).input()).input(),
+      controlPanelArn: map['controlPanelArn'] == null ? null : ((map['controlPanelArn'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
     );
   }
 }

@@ -29,8 +29,8 @@ class TemplateAssociationArgs {
 
   factory TemplateAssociationArgs.fromMap(Map<String, dynamic> map) {
     return TemplateAssociationArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
     );
   }
 }

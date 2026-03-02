@@ -51,13 +51,13 @@ class ManagedClusterAADProfile {
 
   factory ManagedClusterAADProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterAADProfile(
-      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs'] as List).cast<String>()).input(),
-      clientAppID: map['clientAppID'] == null ? null : (map['clientAppID'] as String).input(),
-      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : (map['enableAzureRBAC'] as bool).input(),
-      managed: map['managed'] == null ? null : (map['managed'] as bool).input(),
-      serverAppID: map['serverAppID'] == null ? null : (map['serverAppID'] as String).input(),
-      serverAppSecret: map['serverAppSecret'] == null ? null : (map['serverAppSecret'] as String).input(),
-      tenantID: map['tenantID'] == null ? null : (map['tenantID'] as String).input(),
+      adminGroupObjectIDs: map['adminGroupObjectIDs'] == null ? null : ((map['adminGroupObjectIDs']! as List).cast<String>()).input(),
+      clientAppID: map['clientAppID'] == null ? null : (map['clientAppID']! as String).input(),
+      enableAzureRBAC: map['enableAzureRBAC'] == null ? null : (map['enableAzureRBAC']! as bool).input(),
+      managed: map['managed'] == null ? null : (map['managed']! as bool).input(),
+      serverAppID: map['serverAppID'] == null ? null : (map['serverAppID']! as String).input(),
+      serverAppSecret: map['serverAppSecret'] == null ? null : (map['serverAppSecret']! as String).input(),
+      tenantID: map['tenantID'] == null ? null : (map['tenantID']! as String).input(),
     );
   }
 }

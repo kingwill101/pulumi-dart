@@ -64,12 +64,12 @@ class GetIntegrationAccountResult {
     return GetIntegrationAccountResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : ResourceReferenceResponse.fromMap((map['integrationServiceEnvironment'] as Map).cast<String, dynamic>()),
-      location: map['location'] == null ? null : map['location'] as String,
+      integrationServiceEnvironment: map['integrationServiceEnvironment'] == null ? null : ResourceReferenceResponse.fromMap((map['integrationServiceEnvironment']! as Map).cast<String, dynamic>()),
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
-      sku: map['sku'] == null ? null : IntegrationAccountSkuResponse.fromMap((map['sku'] as Map).cast<String, dynamic>()),
-      state: map['state'] == null ? null : map['state'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sku: map['sku'] == null ? null : IntegrationAccountSkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      state: map['state'] == null ? null : map['state']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

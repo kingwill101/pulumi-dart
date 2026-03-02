@@ -32,9 +32,9 @@ class QueueConfigurationResponse {
 
   factory QueueConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return QueueConfigurationResponse(
-      event: map['event'] == null ? null : (map['event'] as String).input(),
-      filter: map['filter'] == null ? null : (NotificationFilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      queue: map['queue'] == null ? null : (map['queue'] as String).input(),
+      event: map['event'] == null ? null : (map['event']! as String).input(),
+      filter: map['filter'] == null ? null : (NotificationFilterResponse.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      queue: map['queue'] == null ? null : (map['queue']! as String).input(),
     );
   }
 }

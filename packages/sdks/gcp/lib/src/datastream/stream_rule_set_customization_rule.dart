@@ -29,8 +29,8 @@ class StreamRuleSetCustomizationRule {
 
   factory StreamRuleSetCustomizationRule.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRule(
-      bigqueryClustering: map['bigqueryClustering'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryClustering.fromMap((map['bigqueryClustering'] as Map).cast<String, dynamic>())).input(),
-      bigqueryPartitioning: map['bigqueryPartitioning'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap((map['bigqueryPartitioning'] as Map).cast<String, dynamic>())).input(),
+      bigqueryClustering: map['bigqueryClustering'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryClustering.fromMap((map['bigqueryClustering']! as Map).cast<String, dynamic>())).input(),
+      bigqueryPartitioning: map['bigqueryPartitioning'] == null ? null : (StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap((map['bigqueryPartitioning']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

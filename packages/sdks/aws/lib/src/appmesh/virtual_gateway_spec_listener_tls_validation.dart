@@ -27,8 +27,8 @@ class VirtualGatewaySpecListenerTlsValidation {
 
   factory VirtualGatewaySpecListenerTlsValidation.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListenerTlsValidation(
-      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : (VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames'] as Map).cast<String, dynamic>())).input(),
-      trust: (VirtualGatewaySpecListenerTlsValidationTrust.fromMap((map['trust'] as Map).cast<String, dynamic>())).input(),
+      subjectAlternativeNames: map['subjectAlternativeNames'] == null ? null : ((VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames.fromMap((map['subjectAlternativeNames']! as Map).cast<String, dynamic>())).input()).input(),
+      trust: (VirtualGatewaySpecListenerTlsValidationTrust.fromMap((map['trust']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

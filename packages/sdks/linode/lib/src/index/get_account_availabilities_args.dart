@@ -24,7 +24,7 @@ class GetAccountAvailabilitiesArgs {
 
   factory GetAccountAvailabilitiesArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAvailabilitiesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAccountAvailabilitiesFilter>(map['filters'], (value) => GetAccountAvailabilitiesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetAccountAvailabilitiesFilter>(map['filters']!, (value) => GetAccountAvailabilitiesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

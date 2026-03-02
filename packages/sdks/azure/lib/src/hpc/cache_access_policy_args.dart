@@ -37,7 +37,7 @@ class CacheAccessPolicyArgs {
     return CacheAccessPolicyArgs(
       accessRules: (pulumi.Input.decodeList<CacheAccessPolicyAccessRule>(map['accessRules'], (value) => CacheAccessPolicyAccessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       hpcCacheId: (map['hpcCacheId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -57,12 +57,12 @@ class ResourceLfTagsArgs {
 
   factory ResourceLfTagsArgs.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagsArgs(
-      catalogId: map['catalogId'] == null ? null : (map['catalogId'] as String).input(),
-      database: map['database'] == null ? null : (ResourceLfTagsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>())).input(),
-      lfTags: (pulumi.Input.decodeList<ResourceLfTagsLfTag>(map['lfTags'], (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      table: map['table'] == null ? null : (ResourceLfTagsTable.fromMap((map['table'] as Map).cast<String, dynamic>())).input(),
-      tableWithColumns: map['tableWithColumns'] == null ? null : (ResourceLfTagsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>())).input(),
+      catalogId: map['catalogId'] == null ? null : ((map['catalogId'] as String).input()).input(),
+      database: map['database'] == null ? null : ((ResourceLfTagsDatabase.fromMap((map['database']! as Map).cast<String, dynamic>())).input()).input(),
+      lfTags: (pulumi.Input.decodeList<ResourceLfTagsLfTag>(map['lfTags']!, (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      table: map['table'] == null ? null : ((ResourceLfTagsTable.fromMap((map['table']! as Map).cast<String, dynamic>())).input()).input(),
+      tableWithColumns: map['tableWithColumns'] == null ? null : ((ResourceLfTagsTableWithColumns.fromMap((map['tableWithColumns']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

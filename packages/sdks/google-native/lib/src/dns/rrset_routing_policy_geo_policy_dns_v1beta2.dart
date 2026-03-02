@@ -31,9 +31,9 @@ class RRSetRoutingPolicyGeoPolicyDnsV1beta2 {
 
   factory RRSetRoutingPolicyGeoPolicyDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyGeoPolicyDnsV1beta2(
-      enableFencing: map['enableFencing'] == null ? null : (map['enableFencing'] as bool).input(),
-      items: map['items'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2>(map['items'], (value) => RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      enableFencing: map['enableFencing'] == null ? null : (map['enableFencing']! as bool).input(),
+      items: map['items'] == null ? null : (pulumi.Input.decodeList<RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2>(map['items']!, (value) => RRSetRoutingPolicyGeoPolicyGeoPolicyItemDnsV1beta2.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

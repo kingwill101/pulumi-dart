@@ -38,10 +38,10 @@ class HostNetwork {
 
   factory HostNetwork.fromMap(Map<String, dynamic> map) {
     return HostNetwork(
-      enableStorageAutoIp: map['enableStorageAutoIp'] == null ? null : (map['enableStorageAutoIp'] as bool).input(),
-      intents: map['intents'] == null ? null : (pulumi.Input.decodeList<Intents>(map['intents'], (value) => Intents.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      storageConnectivitySwitchless: map['storageConnectivitySwitchless'] == null ? null : (map['storageConnectivitySwitchless'] as bool).input(),
-      storageNetworks: map['storageNetworks'] == null ? null : (pulumi.Input.decodeList<StorageNetworks>(map['storageNetworks'], (value) => StorageNetworks.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableStorageAutoIp: map['enableStorageAutoIp'] == null ? null : (map['enableStorageAutoIp']! as bool).input(),
+      intents: map['intents'] == null ? null : (pulumi.Input.decodeList<Intents>(map['intents']!, (value) => Intents.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      storageConnectivitySwitchless: map['storageConnectivitySwitchless'] == null ? null : (map['storageConnectivitySwitchless']! as bool).input(),
+      storageNetworks: map['storageNetworks'] == null ? null : (pulumi.Input.decodeList<StorageNetworks>(map['storageNetworks']!, (value) => StorageNetworks.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -40,9 +40,9 @@ class ImportSqlCollectorOperationArgs {
 
   factory ImportSqlCollectorOperationArgs.fromMap(Map<String, dynamic> map) {
     return ImportSqlCollectorOperationArgs(
-      importSqlCollectorsName: map['importSqlCollectorsName'] == null ? null : (map['importSqlCollectorsName'] as String).input(),
+      importSqlCollectorsName: map['importSqlCollectorsName'] == null ? null : (map['importSqlCollectorsName']! as String).input(),
       projectName: (map['projectName'] as String).input(),
-      properties: map['properties'] == null ? null : (ImportSqlCollectorProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ImportSqlCollectorProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

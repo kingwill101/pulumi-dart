@@ -27,8 +27,8 @@ class GoogleCloudDataplexV1Trigger {
 
   factory GoogleCloudDataplexV1Trigger.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1Trigger(
-      onDemand: map['onDemand'] == null ? null : ((map['onDemand'] as Map).cast<String, dynamic>()).input(),
-      schedule: map['schedule'] == null ? null : (GoogleCloudDataplexV1TriggerSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
+      onDemand: map['onDemand'] == null ? null : ((map['onDemand']! as Map).cast<String, dynamic>()).input(),
+      schedule: map['schedule'] == null ? null : (GoogleCloudDataplexV1TriggerSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

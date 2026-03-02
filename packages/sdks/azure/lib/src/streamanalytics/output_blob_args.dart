@@ -90,16 +90,16 @@ class OutputBlobArgs {
 
   factory OutputBlobArgs.fromMap(Map<String, dynamic> map) {
     return OutputBlobArgs(
-      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode'] as String).input(),
-      batchMaxWaitTime: map['batchMaxWaitTime'] == null ? null : (map['batchMaxWaitTime'] as String).input(),
-      batchMinRows: map['batchMinRows'] == null ? null : (map['batchMinRows'] as int).input(),
-      blobWriteMode: map['blobWriteMode'] == null ? null : (map['blobWriteMode'] as String).input(),
+      authenticationMode: map['authenticationMode'] == null ? null : (map['authenticationMode']! as String).input(),
+      batchMaxWaitTime: map['batchMaxWaitTime'] == null ? null : (map['batchMaxWaitTime']! as String).input(),
+      batchMinRows: map['batchMinRows'] == null ? null : (map['batchMinRows']! as int).input(),
+      blobWriteMode: map['blobWriteMode'] == null ? null : (map['blobWriteMode']! as String).input(),
       dateFormat: (map['dateFormat'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       pathPattern: (map['pathPattern'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serialization: (OutputBlobSerialization.fromMap((map['serialization'] as Map).cast<String, dynamic>())).input(),
-      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey'] as String).input(),
+      storageAccountKey: map['storageAccountKey'] == null ? null : (map['storageAccountKey']! as String).input(),
       storageAccountName: (map['storageAccountName'] as String).input(),
       storageContainerName: (map['storageContainerName'] as String).input(),
       streamAnalyticsJobName: (map['streamAnalyticsJobName'] as String).input(),

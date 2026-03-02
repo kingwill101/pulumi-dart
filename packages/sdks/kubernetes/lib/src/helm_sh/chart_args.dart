@@ -71,15 +71,15 @@ class ChartArgs {
 
   factory ChartArgs.fromMap(Map<String, dynamic> map) {
     return ChartArgs(
-      chart: map['chart'] == null ? null : (map['chart'] as String).input(),
-      fetchOpts: map['fetchOpts'] == null ? null : (FetchOpts.fromMap((map['fetchOpts'] as Map).cast<String, dynamic>())).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
-      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix'] as String).input(),
-      transformations: map['transformations'] == null ? null : ((map['transformations'] as List).cast<dynamic>()).input(),
-      values: map['values'] == null ? null : ((map['values'] as Map).cast<String, dynamic>()).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      chart: map['chart'] == null ? null : (map['chart']! as String).input(),
+      fetchOpts: map['fetchOpts'] == null ? null : (FetchOpts.fromMap((map['fetchOpts']! as Map).cast<String, dynamic>())).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      repo: map['repo'] == null ? null : (map['repo']! as String).input(),
+      resourcePrefix: map['resourcePrefix'] == null ? null : (map['resourcePrefix']! as String).input(),
+      transformations: map['transformations'] == null ? null : ((map['transformations']! as List).cast<dynamic>()).input(),
+      values: map['values'] == null ? null : ((map['values']! as Map).cast<String, dynamic>()).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

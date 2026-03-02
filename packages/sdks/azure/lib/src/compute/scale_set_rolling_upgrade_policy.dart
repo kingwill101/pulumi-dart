@@ -35,10 +35,10 @@ class ScaleSetRollingUpgradePolicy {
 
   factory ScaleSetRollingUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return ScaleSetRollingUpgradePolicy(
-      maxBatchInstancePercent: map['maxBatchInstancePercent'] == null ? null : (map['maxBatchInstancePercent'] as int).input(),
-      maxUnhealthyInstancePercent: map['maxUnhealthyInstancePercent'] == null ? null : (map['maxUnhealthyInstancePercent'] as int).input(),
-      maxUnhealthyUpgradedInstancePercent: map['maxUnhealthyUpgradedInstancePercent'] == null ? null : (map['maxUnhealthyUpgradedInstancePercent'] as int).input(),
-      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches'] as String).input(),
+      maxBatchInstancePercent: map['maxBatchInstancePercent'] == null ? null : (map['maxBatchInstancePercent']! as int).input(),
+      maxUnhealthyInstancePercent: map['maxUnhealthyInstancePercent'] == null ? null : (map['maxUnhealthyInstancePercent']! as int).input(),
+      maxUnhealthyUpgradedInstancePercent: map['maxUnhealthyUpgradedInstancePercent'] == null ? null : (map['maxUnhealthyUpgradedInstancePercent']! as int).input(),
+      pauseTimeBetweenBatches: map['pauseTimeBetweenBatches'] == null ? null : (map['pauseTimeBetweenBatches']! as String).input(),
     );
   }
 }

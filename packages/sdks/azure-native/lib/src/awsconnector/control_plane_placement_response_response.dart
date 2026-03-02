@@ -21,7 +21,7 @@ class ControlPlanePlacementResponseResponse {
 
   factory ControlPlanePlacementResponseResponse.fromMap(Map<String, dynamic> map) {
     return ControlPlanePlacementResponseResponse(
-      groupName: map['groupName'] == null ? null : (map['groupName'] as String).input(),
+      groupName: map['groupName'] == null ? null : (map['groupName']! as String).input(),
     );
   }
 }

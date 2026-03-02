@@ -25,7 +25,7 @@ class CacheDns {
 
   factory CacheDns.fromMap(Map<String, dynamic> map) {
     return CacheDns(
-      searchDomain: map['searchDomain'] == null ? null : (map['searchDomain'] as String).input(),
+      searchDomain: map['searchDomain'] == null ? null : (map['searchDomain']! as String).input(),
       servers: ((map['servers'] as List).cast<String>()).input(),
     );
   }

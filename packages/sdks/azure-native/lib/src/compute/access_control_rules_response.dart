@@ -40,10 +40,10 @@ class AccessControlRulesResponse {
 
   factory AccessControlRulesResponse.fromMap(Map<String, dynamic> map) {
     return AccessControlRulesResponse(
-      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesIdentityResponse>(map['identities'], (value) => AccessControlRulesIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privileges: map['privileges'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesPrivilegeResponse>(map['privileges'], (value) => AccessControlRulesPrivilegeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roleAssignments: map['roleAssignments'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRoleAssignmentResponse>(map['roleAssignments'], (value) => AccessControlRulesRoleAssignmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRoleResponse>(map['roles'], (value) => AccessControlRulesRoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      identities: map['identities'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesIdentityResponse>(map['identities']!, (value) => AccessControlRulesIdentityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privileges: map['privileges'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesPrivilegeResponse>(map['privileges']!, (value) => AccessControlRulesPrivilegeResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roleAssignments: map['roleAssignments'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRoleAssignmentResponse>(map['roleAssignments']!, (value) => AccessControlRulesRoleAssignmentResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      roles: map['roles'] == null ? null : (pulumi.Input.decodeList<AccessControlRulesRoleResponse>(map['roles']!, (value) => AccessControlRulesRoleResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

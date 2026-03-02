@@ -49,9 +49,9 @@ class AppTemplateArgs {
     return AppTemplateArgs(
       appTemplateName: (map['appTemplateName'] as String).input(),
       componentLists: ((map['componentLists'] as List).cast<String>()).input(),
-      configLists: map['configLists'] == null ? null : (pulumi.Input.decodeList<AppTemplateConfigList>(map['configLists'], (value) => AppTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      integrationMode: map['integrationMode'] == null ? null : (map['integrationMode'] as String).input(),
-      scene: map['scene'] == null ? null : (map['scene'] as String).input(),
+      configLists: map['configLists'] == null ? null : (pulumi.Input.decodeList<AppTemplateConfigList>(map['configLists']!, (value) => AppTemplateConfigList.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      integrationMode: map['integrationMode'] == null ? null : (map['integrationMode']! as String).input(),
+      scene: map['scene'] == null ? null : (map['scene']! as String).input(),
     );
   }
 }

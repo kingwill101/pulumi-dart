@@ -38,7 +38,7 @@ class KeyKeyAttribute {
     return KeyKeyAttribute(
       keyAlgorithm: (map['keyAlgorithm'] as String).input(),
       keyClass: (map['keyClass'] as String).input(),
-      keyModesOfUses: map['keyModesOfUses'] == null ? null : (pulumi.Input.decodeList<KeyKeyAttributeKeyModesOfUse>(map['keyModesOfUses'], (value) => KeyKeyAttributeKeyModesOfUse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      keyModesOfUses: map['keyModesOfUses'] == null ? null : ((pulumi.Input.decodeList<KeyKeyAttributeKeyModesOfUse>(map['keyModesOfUses']!, (value) => KeyKeyAttributeKeyModesOfUse.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       keyUsage: (map['keyUsage'] as String).input(),
     );
   }

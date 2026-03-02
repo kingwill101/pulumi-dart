@@ -44,10 +44,10 @@ class GetGroupArgs {
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
     return GetGroupArgs(
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : (GetGroupAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>())).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
+      alternateIdentifier: map['alternateIdentifier'] == null ? null : ((GetGroupAlternateIdentifier.fromMap((map['alternateIdentifier']! as Map).cast<String, dynamic>())).input()).input(),
+      groupId: map['groupId'] == null ? null : ((map['groupId'] as String).input()).input(),
       identityStoreId: (map['identityStoreId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

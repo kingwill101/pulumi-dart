@@ -36,7 +36,7 @@ class GooglePrivacyDlpV2Condition {
     return GooglePrivacyDlpV2Condition(
       field: (GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>())).input(),
       operator: (GooglePrivacyDlpV2ConditionOperator.fromValue(map['operator'] as String)).input(),
-      value: map['value'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['value'] as Map).cast<String, dynamic>())).input(),
+      value: map['value'] == null ? null : (GooglePrivacyDlpV2Value.fromMap((map['value']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

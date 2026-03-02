@@ -41,11 +41,11 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
 
   factory GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings.fromMap(Map<String, dynamic> map) {
     return GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings(
-      maxInactivity: map['maxInactivity'] == null ? null : (map['maxInactivity'] as String).input(),
-      sessionLength: map['sessionLength'] == null ? null : (map['sessionLength'] as String).input(),
-      sessionLengthEnabled: map['sessionLengthEnabled'] == null ? null : (map['sessionLengthEnabled'] as bool).input(),
-      sessionReauthMethod: map['sessionReauthMethod'] == null ? null : (map['sessionReauthMethod'] as String).input(),
-      useOidcMaxAge: map['useOidcMaxAge'] == null ? null : (map['useOidcMaxAge'] as bool).input(),
+      maxInactivity: map['maxInactivity'] == null ? null : (map['maxInactivity']! as String).input(),
+      sessionLength: map['sessionLength'] == null ? null : (map['sessionLength']! as String).input(),
+      sessionLengthEnabled: map['sessionLengthEnabled'] == null ? null : (map['sessionLengthEnabled']! as bool).input(),
+      sessionReauthMethod: map['sessionReauthMethod'] == null ? null : (map['sessionReauthMethod']! as String).input(),
+      useOidcMaxAge: map['useOidcMaxAge'] == null ? null : (map['useOidcMaxAge']! as bool).input(),
     );
   }
 }

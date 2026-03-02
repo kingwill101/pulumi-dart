@@ -87,19 +87,19 @@ class ResourceConfigurationArgs {
 
   factory ResourceConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return ResourceConfigurationArgs(
-      allowAssociationToShareableServiceNetwork: map['allowAssociationToShareableServiceNetwork'] == null ? null : (map['allowAssociationToShareableServiceNetwork'] as bool).input(),
-      customDomainName: map['customDomainName'] == null ? null : (map['customDomainName'] as String).input(),
-      domainVerificationId: map['domainVerificationId'] == null ? null : (map['domainVerificationId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      portRanges: map['portRanges'] == null ? null : ((map['portRanges'] as List).cast<String>()).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceConfigurationDefinition: map['resourceConfigurationDefinition'] == null ? null : (ResourceConfigurationResourceConfigurationDefinition.fromMap((map['resourceConfigurationDefinition'] as Map).cast<String, dynamic>())).input(),
-      resourceConfigurationGroupId: map['resourceConfigurationGroupId'] == null ? null : (map['resourceConfigurationGroupId'] as String).input(),
-      resourceGatewayIdentifier: map['resourceGatewayIdentifier'] == null ? null : (map['resourceGatewayIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (ResourceConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      allowAssociationToShareableServiceNetwork: map['allowAssociationToShareableServiceNetwork'] == null ? null : ((map['allowAssociationToShareableServiceNetwork'] as bool).input()).input(),
+      customDomainName: map['customDomainName'] == null ? null : ((map['customDomainName'] as String).input()).input(),
+      domainVerificationId: map['domainVerificationId'] == null ? null : ((map['domainVerificationId'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      portRanges: map['portRanges'] == null ? null : (((map['portRanges'] as List).cast<String>()).input()).input(),
+      protocol: map['protocol'] == null ? null : ((map['protocol'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceConfigurationDefinition: map['resourceConfigurationDefinition'] == null ? null : ((ResourceConfigurationResourceConfigurationDefinition.fromMap((map['resourceConfigurationDefinition']! as Map).cast<String, dynamic>())).input()).input(),
+      resourceConfigurationGroupId: map['resourceConfigurationGroupId'] == null ? null : ((map['resourceConfigurationGroupId'] as String).input()).input(),
+      resourceGatewayIdentifier: map['resourceGatewayIdentifier'] == null ? null : ((map['resourceGatewayIdentifier'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((ResourceConfigurationTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

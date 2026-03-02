@@ -38,8 +38,8 @@ class GooglePrivacyDlpV2DateShiftConfig {
 
   factory GooglePrivacyDlpV2DateShiftConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DateShiftConfig(
-      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context'] as Map).cast<String, dynamic>())).input(),
-      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>())).input(),
+      context: map['context'] == null ? null : (GooglePrivacyDlpV2FieldId.fromMap((map['context']! as Map).cast<String, dynamic>())).input(),
+      cryptoKey: map['cryptoKey'] == null ? null : (GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey']! as Map).cast<String, dynamic>())).input(),
       lowerBoundDays: (map['lowerBoundDays'] as int).input(),
       upperBoundDays: (map['upperBoundDays'] as int).input(),
     );

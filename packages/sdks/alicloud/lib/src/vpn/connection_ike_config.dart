@@ -63,15 +63,15 @@ class ConnectionIkeConfig {
 
   factory ConnectionIkeConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionIkeConfig(
-      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : (map['ikeAuthAlg'] as String).input(),
-      ikeEncAlg: map['ikeEncAlg'] == null ? null : (map['ikeEncAlg'] as String).input(),
-      ikeLifetime: map['ikeLifetime'] == null ? null : (map['ikeLifetime'] as int).input(),
-      ikeLocalId: map['ikeLocalId'] == null ? null : (map['ikeLocalId'] as String).input(),
-      ikeMode: map['ikeMode'] == null ? null : (map['ikeMode'] as String).input(),
-      ikePfs: map['ikePfs'] == null ? null : (map['ikePfs'] as String).input(),
-      ikeRemoteId: map['ikeRemoteId'] == null ? null : (map['ikeRemoteId'] as String).input(),
-      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion'] as String).input(),
-      psk: map['psk'] == null ? null : (map['psk'] as String).input(),
+      ikeAuthAlg: map['ikeAuthAlg'] == null ? null : (map['ikeAuthAlg']! as String).input(),
+      ikeEncAlg: map['ikeEncAlg'] == null ? null : (map['ikeEncAlg']! as String).input(),
+      ikeLifetime: map['ikeLifetime'] == null ? null : (map['ikeLifetime']! as int).input(),
+      ikeLocalId: map['ikeLocalId'] == null ? null : (map['ikeLocalId']! as String).input(),
+      ikeMode: map['ikeMode'] == null ? null : (map['ikeMode']! as String).input(),
+      ikePfs: map['ikePfs'] == null ? null : (map['ikePfs']! as String).input(),
+      ikeRemoteId: map['ikeRemoteId'] == null ? null : (map['ikeRemoteId']! as String).input(),
+      ikeVersion: map['ikeVersion'] == null ? null : (map['ikeVersion']! as String).input(),
+      psk: map['psk'] == null ? null : (map['psk']! as String).input(),
     );
   }
 }

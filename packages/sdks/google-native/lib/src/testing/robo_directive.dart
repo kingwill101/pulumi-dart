@@ -33,7 +33,7 @@ class RoboDirective {
   factory RoboDirective.fromMap(Map<String, dynamic> map) {
     return RoboDirective(
       actionType: (RoboDirectiveActionType.fromValue(map['actionType'] as String)).input(),
-      inputText: map['inputText'] == null ? null : (map['inputText'] as String).input(),
+      inputText: map['inputText'] == null ? null : (map['inputText']! as String).input(),
       resourceName: (map['resourceName'] as String).input(),
     );
   }

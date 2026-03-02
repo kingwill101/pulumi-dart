@@ -61,15 +61,15 @@ class EmailChannelState {
 
   factory EmailChannelState.fromMap(Map<String, dynamic> map) {
     return EmailChannelState(
-      applicationId: map['applicationId'] == null ? null : (map['applicationId'] as String).input(),
-      configurationSet: map['configurationSet'] == null ? null : (map['configurationSet'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      fromAddress: map['fromAddress'] == null ? null : (map['fromAddress'] as String).input(),
-      identity: map['identity'] == null ? null : (map['identity'] as String).input(),
-      messagesPerSecond: map['messagesPerSecond'] == null ? null : (map['messagesPerSecond'] as int).input(),
-      orchestrationSendingRoleArn: map['orchestrationSendingRoleArn'] == null ? null : (map['orchestrationSendingRoleArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      roleArn: map['roleArn'] == null ? null : (map['roleArn'] as String).input(),
+      applicationId: map['applicationId'] == null ? null : ((map['applicationId'] as String).input()).input(),
+      configurationSet: map['configurationSet'] == null ? null : ((map['configurationSet'] as String).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      fromAddress: map['fromAddress'] == null ? null : ((map['fromAddress'] as String).input()).input(),
+      identity: map['identity'] == null ? null : ((map['identity'] as String).input()).input(),
+      messagesPerSecond: map['messagesPerSecond'] == null ? null : ((map['messagesPerSecond'] as int).input()).input(),
+      orchestrationSendingRoleArn: map['orchestrationSendingRoleArn'] == null ? null : ((map['orchestrationSendingRoleArn'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      roleArn: map['roleArn'] == null ? null : ((map['roleArn'] as String).input()).input(),
     );
   }
 }

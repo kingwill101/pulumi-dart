@@ -39,9 +39,9 @@ class NetworkManagerSecurityAdminConfigurationArgs {
 
   factory NetworkManagerSecurityAdminConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerSecurityAdminConfigurationArgs(
-      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      applyOnNetworkIntentPolicyBasedServices: map['applyOnNetworkIntentPolicyBasedServices'] == null ? null : (map['applyOnNetworkIntentPolicyBasedServices']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       networkManagerId: (map['networkManagerId'] as String).input(),
     );
   }

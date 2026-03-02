@@ -20,7 +20,7 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchBody {
 
   factory WebAclRuleStatementSizeConstraintStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
     return WebAclRuleStatementSizeConstraintStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : (map['oversizeHandling'] as String).input(),
+      oversizeHandling: map['oversizeHandling'] == null ? null : ((map['oversizeHandling'] as String).input()).input(),
     );
   }
 }

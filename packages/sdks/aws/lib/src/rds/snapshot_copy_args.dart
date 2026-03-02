@@ -74,16 +74,16 @@ class SnapshotCopyArgs {
 
   factory SnapshotCopyArgs.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyArgs(
-      copyTags: map['copyTags'] == null ? null : (map['copyTags'] as bool).input(),
-      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      optionGroupName: map['optionGroupName'] == null ? null : (map['optionGroupName'] as String).input(),
-      presignedUrl: map['presignedUrl'] == null ? null : (map['presignedUrl'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sharedAccounts: map['sharedAccounts'] == null ? null : ((map['sharedAccounts'] as List).cast<String>()).input(),
+      copyTags: map['copyTags'] == null ? null : ((map['copyTags'] as bool).input()).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : ((map['destinationRegion'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      optionGroupName: map['optionGroupName'] == null ? null : ((map['optionGroupName'] as String).input()).input(),
+      presignedUrl: map['presignedUrl'] == null ? null : ((map['presignedUrl'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sharedAccounts: map['sharedAccounts'] == null ? null : (((map['sharedAccounts'] as List).cast<String>()).input()).input(),
       sourceDbSnapshotIdentifier: (map['sourceDbSnapshotIdentifier'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      targetCustomAvailabilityZone: map['targetCustomAvailabilityZone'] == null ? null : (map['targetCustomAvailabilityZone'] as String).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      targetCustomAvailabilityZone: map['targetCustomAvailabilityZone'] == null ? null : ((map['targetCustomAvailabilityZone'] as String).input()).input(),
       targetDbSnapshotIdentifier: (map['targetDbSnapshotIdentifier'] as String).input(),
     );
   }

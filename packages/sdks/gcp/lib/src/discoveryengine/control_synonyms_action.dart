@@ -20,7 +20,7 @@ class ControlSynonymsAction {
 
   factory ControlSynonymsAction.fromMap(Map<String, dynamic> map) {
     return ControlSynonymsAction(
-      synonyms: map['synonyms'] == null ? null : ((map['synonyms'] as List).cast<String>()).input(),
+      synonyms: map['synonyms'] == null ? null : ((map['synonyms']! as List).cast<String>()).input(),
     );
   }
 }

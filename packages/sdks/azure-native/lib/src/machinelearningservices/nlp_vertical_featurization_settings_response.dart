@@ -20,7 +20,7 @@ class NlpVerticalFeaturizationSettingsResponse {
 
   factory NlpVerticalFeaturizationSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NlpVerticalFeaturizationSettingsResponse(
-      datasetLanguage: map['datasetLanguage'] == null ? null : (map['datasetLanguage'] as String).input(),
+      datasetLanguage: map['datasetLanguage'] == null ? null : (map['datasetLanguage']! as String).input(),
     );
   }
 }

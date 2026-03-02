@@ -32,7 +32,7 @@ class GetChannelArgs {
   factory GetChannelArgs.fromMap(Map<String, dynamic> map) {
     return GetChannelArgs(
       channelId: (map['channelId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       siteId: (map['siteId'] as String).input(),
     );
   }

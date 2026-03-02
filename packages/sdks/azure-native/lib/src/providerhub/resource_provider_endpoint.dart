@@ -61,15 +61,15 @@ class ResourceProviderEndpoint {
 
   factory ResourceProviderEndpoint.fromMap(Map<String, dynamic> map) {
     return ResourceProviderEndpoint(
-      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endpointType: map['endpointType'] == null ? null : (map['endpointType'] as String).input(),
-      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri'] as String).input(),
-      featuresRule: map['featuresRule'] == null ? null : (ResourceProviderEndpointFeaturesRule.fromMap((map['featuresRule'] as Map).cast<String, dynamic>())).input(),
-      locations: map['locations'] == null ? null : ((map['locations'] as List).cast<String>()).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
-      skuLink: map['skuLink'] == null ? null : (map['skuLink'] as String).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      apiVersions: map['apiVersions'] == null ? null : ((map['apiVersions']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      endpointType: map['endpointType'] == null ? null : (map['endpointType']! as String).input(),
+      endpointUri: map['endpointUri'] == null ? null : (map['endpointUri']! as String).input(),
+      featuresRule: map['featuresRule'] == null ? null : (ResourceProviderEndpointFeaturesRule.fromMap((map['featuresRule']! as Map).cast<String, dynamic>())).input(),
+      locations: map['locations'] == null ? null : ((map['locations']! as List).cast<String>()).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
+      skuLink: map['skuLink'] == null ? null : (map['skuLink']! as String).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

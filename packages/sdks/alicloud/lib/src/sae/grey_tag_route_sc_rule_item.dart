@@ -37,11 +37,11 @@ class GreyTagRouteScRuleItem {
 
   factory GreyTagRouteScRuleItem.fromMap(Map<String, dynamic> map) {
     return GreyTagRouteScRuleItem(
-      cond: map['cond'] == null ? null : (map['cond'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      operator: map['operator'] == null ? null : (map['operator'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      cond: map['cond'] == null ? null : (map['cond']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      operator: map['operator'] == null ? null : (map['operator']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

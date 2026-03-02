@@ -36,7 +36,7 @@ class CustomerManagedKeyArgs {
     return CustomerManagedKeyArgs(
       customerManagedKeyId: (map['customerManagedKeyId'] as String).input(),
       dataFactoryId: (map['dataFactoryId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

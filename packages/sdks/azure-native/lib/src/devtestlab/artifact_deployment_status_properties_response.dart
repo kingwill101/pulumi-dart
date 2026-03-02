@@ -31,9 +31,9 @@ class ArtifactDeploymentStatusPropertiesResponse {
 
   factory ArtifactDeploymentStatusPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ArtifactDeploymentStatusPropertiesResponse(
-      artifactsApplied: map['artifactsApplied'] == null ? null : (map['artifactsApplied'] as int).input(),
-      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus'] as String).input(),
-      totalArtifacts: map['totalArtifacts'] == null ? null : (map['totalArtifacts'] as int).input(),
+      artifactsApplied: map['artifactsApplied'] == null ? null : (map['artifactsApplied']! as int).input(),
+      deploymentStatus: map['deploymentStatus'] == null ? null : (map['deploymentStatus']! as String).input(),
+      totalArtifacts: map['totalArtifacts'] == null ? null : (map['totalArtifacts']! as int).input(),
     );
   }
 }

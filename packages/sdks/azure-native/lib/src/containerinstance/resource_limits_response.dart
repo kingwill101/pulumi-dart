@@ -32,9 +32,9 @@ class ResourceLimitsResponse {
 
   factory ResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitsResponse(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      gpu: map['gpu'] == null ? null : (GpuResourceResponse.fromMap((map['gpu'] as Map).cast<String, dynamic>())).input(),
-      memoryInGB: map['memoryInGB'] == null ? null : (map['memoryInGB'] as double).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      gpu: map['gpu'] == null ? null : (GpuResourceResponse.fromMap((map['gpu']! as Map).cast<String, dynamic>())).input(),
+      memoryInGB: map['memoryInGB'] == null ? null : (map['memoryInGB']! as double).input(),
     );
   }
 }

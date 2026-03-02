@@ -31,8 +31,8 @@ class GetSecretSecret {
 
   factory GetSecretSecret.fromMap(Map<String, dynamic> map) {
     return GetSecretSecret(
-      context: map['context'] == null ? null : ((map['context'] as Map).cast<String, String>()).input(),
-      grantTokens: map['grantTokens'] == null ? null : ((map['grantTokens'] as List).cast<String>()).input(),
+      context: map['context'] == null ? null : (((map['context'] as Map).cast<String, String>()).input()).input(),
+      grantTokens: map['grantTokens'] == null ? null : (((map['grantTokens'] as List).cast<String>()).input()).input(),
       name: (map['name'] as String).input(),
       payload: (map['payload'] as String).input(),
     );

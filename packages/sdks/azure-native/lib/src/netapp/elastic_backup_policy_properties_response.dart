@@ -47,11 +47,11 @@ class ElasticBackupPolicyPropertiesResponse {
   factory ElasticBackupPolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPolicyPropertiesResponse(
       assignedVolumesCount: (map['assignedVolumesCount'] as int).input(),
-      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep'] as int).input(),
-      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep'] as int).input(),
-      policyState: map['policyState'] == null ? null : (map['policyState'] as String).input(),
+      dailyBackupsToKeep: map['dailyBackupsToKeep'] == null ? null : (map['dailyBackupsToKeep']! as int).input(),
+      monthlyBackupsToKeep: map['monthlyBackupsToKeep'] == null ? null : (map['monthlyBackupsToKeep']! as int).input(),
+      policyState: map['policyState'] == null ? null : (map['policyState']! as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep'] as int).input(),
+      weeklyBackupsToKeep: map['weeklyBackupsToKeep'] == null ? null : (map['weeklyBackupsToKeep']! as int).input(),
     );
   }
 }

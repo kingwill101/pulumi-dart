@@ -27,8 +27,8 @@ class IntegrationRuntimeCustomSetupScriptPropertiesResponse {
 
   factory IntegrationRuntimeCustomSetupScriptPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeCustomSetupScriptPropertiesResponse(
-      blobContainerUri: map['blobContainerUri'] == null ? null : (map['blobContainerUri'] as String).input(),
-      sasToken: map['sasToken'] == null ? null : (SecureStringResponse.fromMap((map['sasToken'] as Map).cast<String, dynamic>())).input(),
+      blobContainerUri: map['blobContainerUri'] == null ? null : (map['blobContainerUri']! as String).input(),
+      sasToken: map['sasToken'] == null ? null : (SecureStringResponse.fromMap((map['sasToken']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

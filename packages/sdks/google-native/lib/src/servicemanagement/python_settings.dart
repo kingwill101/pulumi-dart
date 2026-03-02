@@ -22,7 +22,7 @@ class PythonSettings {
 
   factory PythonSettings.fromMap(Map<String, dynamic> map) {
     return PythonSettings(
-      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>())).input(),
+      common: map['common'] == null ? null : (CommonLanguageSettings.fromMap((map['common']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

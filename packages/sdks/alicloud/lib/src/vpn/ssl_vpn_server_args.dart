@@ -62,13 +62,13 @@ class SslVpnServerArgs {
 
   factory SslVpnServerArgs.fromMap(Map<String, dynamic> map) {
     return SslVpnServerArgs(
-      cipher: map['cipher'] == null ? null : (map['cipher'] as String).input(),
+      cipher: map['cipher'] == null ? null : (map['cipher']! as String).input(),
       clientIpPool: (map['clientIpPool'] as String).input(),
-      compress: map['compress'] == null ? null : (map['compress'] as bool).input(),
+      compress: map['compress'] == null ? null : (map['compress']! as bool).input(),
       localSubnet: (map['localSubnet'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
       vpnGatewayId: (map['vpnGatewayId'] as String).input(),
     );
   }

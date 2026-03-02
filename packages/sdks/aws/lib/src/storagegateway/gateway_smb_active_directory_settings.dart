@@ -51,12 +51,12 @@ class GatewaySmbActiveDirectorySettings {
 
   factory GatewaySmbActiveDirectorySettings.fromMap(Map<String, dynamic> map) {
     return GatewaySmbActiveDirectorySettings(
-      activeDirectoryStatus: map['activeDirectoryStatus'] == null ? null : (map['activeDirectoryStatus'] as String).input(),
-      domainControllers: map['domainControllers'] == null ? null : ((map['domainControllers'] as List).cast<String>()).input(),
+      activeDirectoryStatus: map['activeDirectoryStatus'] == null ? null : ((map['activeDirectoryStatus'] as String).input()).input(),
+      domainControllers: map['domainControllers'] == null ? null : (((map['domainControllers'] as List).cast<String>()).input()).input(),
       domainName: (map['domainName'] as String).input(),
-      organizationalUnit: map['organizationalUnit'] == null ? null : (map['organizationalUnit'] as String).input(),
+      organizationalUnit: map['organizationalUnit'] == null ? null : ((map['organizationalUnit'] as String).input()).input(),
       password: (map['password'] as String).input(),
-      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : (map['timeoutInSeconds'] as int).input(),
+      timeoutInSeconds: map['timeoutInSeconds'] == null ? null : ((map['timeoutInSeconds'] as int).input()).input(),
       username: (map['username'] as String).input(),
     );
   }

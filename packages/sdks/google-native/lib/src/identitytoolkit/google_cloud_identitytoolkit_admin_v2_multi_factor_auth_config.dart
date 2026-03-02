@@ -34,9 +34,9 @@ class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
 
   factory GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig(
-      enabledProviders: map['enabledProviders'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem>(map['enabledProviders'], (value) => GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem.fromValue(value as String))).input(),
-      providerConfigs: map['providerConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>(map['providerConfigs'], (value) => GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      state: map['state'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState.fromValue(map['state'] as String)).input(),
+      enabledProviders: map['enabledProviders'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem>(map['enabledProviders']!, (value) => GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem.fromValue(value as String))).input(),
+      providerConfigs: map['providerConfigs'] == null ? null : (pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>(map['providerConfigs']!, (value) => GoogleCloudIdentitytoolkitAdminV2ProviderConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      state: map['state'] == null ? null : (GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState.fromValue(map['state']! as String)).input(),
     );
   }
 }

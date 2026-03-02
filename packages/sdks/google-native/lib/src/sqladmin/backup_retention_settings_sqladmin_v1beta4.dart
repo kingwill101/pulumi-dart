@@ -27,8 +27,8 @@ class BackupRetentionSettingsSqladminV1beta4 {
 
   factory BackupRetentionSettingsSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return BackupRetentionSettingsSqladminV1beta4(
-      retainedBackups: map['retainedBackups'] == null ? null : (map['retainedBackups'] as int).input(),
-      retentionUnit: map['retentionUnit'] == null ? null : (BackupRetentionSettingsRetentionUnitSqladminV1beta4.fromValue(map['retentionUnit'] as String)).input(),
+      retainedBackups: map['retainedBackups'] == null ? null : (map['retainedBackups']! as int).input(),
+      retentionUnit: map['retentionUnit'] == null ? null : (BackupRetentionSettingsRetentionUnitSqladminV1beta4.fromValue(map['retentionUnit']! as String)).input(),
     );
   }
 }

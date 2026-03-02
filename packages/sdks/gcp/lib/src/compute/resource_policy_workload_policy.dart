@@ -34,8 +34,8 @@ class ResourcePolicyWorkloadPolicy {
 
   factory ResourcePolicyWorkloadPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyWorkloadPolicy(
-      acceleratorTopology: map['acceleratorTopology'] == null ? null : (map['acceleratorTopology'] as String).input(),
-      maxTopologyDistance: map['maxTopologyDistance'] == null ? null : (map['maxTopologyDistance'] as String).input(),
+      acceleratorTopology: map['acceleratorTopology'] == null ? null : (map['acceleratorTopology']! as String).input(),
+      maxTopologyDistance: map['maxTopologyDistance'] == null ? null : (map['maxTopologyDistance']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

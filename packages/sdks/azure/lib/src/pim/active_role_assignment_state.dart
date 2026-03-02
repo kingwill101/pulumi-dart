@@ -53,13 +53,13 @@ class ActiveRoleAssignmentState {
 
   factory ActiveRoleAssignmentState.fromMap(Map<String, dynamic> map) {
     return ActiveRoleAssignmentState(
-      justification: map['justification'] == null ? null : (map['justification'] as String).input(),
-      principalId: map['principalId'] == null ? null : (map['principalId'] as String).input(),
-      principalType: map['principalType'] == null ? null : (map['principalType'] as String).input(),
-      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId'] as String).input(),
-      schedule: map['schedule'] == null ? null : (ActiveRoleAssignmentSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      ticket: map['ticket'] == null ? null : (ActiveRoleAssignmentTicket.fromMap((map['ticket'] as Map).cast<String, dynamic>())).input(),
+      justification: map['justification'] == null ? null : (map['justification']! as String).input(),
+      principalId: map['principalId'] == null ? null : (map['principalId']! as String).input(),
+      principalType: map['principalType'] == null ? null : (map['principalType']! as String).input(),
+      roleDefinitionId: map['roleDefinitionId'] == null ? null : (map['roleDefinitionId']! as String).input(),
+      schedule: map['schedule'] == null ? null : (ActiveRoleAssignmentSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      ticket: map['ticket'] == null ? null : (ActiveRoleAssignmentTicket.fromMap((map['ticket']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

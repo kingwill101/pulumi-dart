@@ -80,18 +80,18 @@ class ZoneState {
 
   factory ZoneState.fromMap(Map<String, dynamic> map) {
     return ZoneState(
-      isPtr: map['isPtr'] == null ? null : (map['isPtr'] as bool).input(),
-      lang: map['lang'] == null ? null : (map['lang'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      proxyPattern: map['proxyPattern'] == null ? null : (map['proxyPattern'] as String).input(),
-      recordCount: map['recordCount'] == null ? null : (map['recordCount'] as int).input(),
-      remark: map['remark'] == null ? null : (map['remark'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
-      syncStatus: map['syncStatus'] == null ? null : (map['syncStatus'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp'] as String).input(),
-      userInfos: map['userInfos'] == null ? null : (pulumi.Input.decodeList<ZoneUserInfo>(map['userInfos'], (value) => ZoneUserInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      zoneName: map['zoneName'] == null ? null : (map['zoneName'] as String).input(),
+      isPtr: map['isPtr'] == null ? null : (map['isPtr']! as bool).input(),
+      lang: map['lang'] == null ? null : (map['lang']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      proxyPattern: map['proxyPattern'] == null ? null : (map['proxyPattern']! as String).input(),
+      recordCount: map['recordCount'] == null ? null : (map['recordCount']! as int).input(),
+      remark: map['remark'] == null ? null : (map['remark']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
+      syncStatus: map['syncStatus'] == null ? null : (map['syncStatus']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      userClientIp: map['userClientIp'] == null ? null : (map['userClientIp']! as String).input(),
+      userInfos: map['userInfos'] == null ? null : (pulumi.Input.decodeList<ZoneUserInfo>(map['userInfos']!, (value) => ZoneUserInfo.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      zoneName: map['zoneName'] == null ? null : (map['zoneName']! as String).input(),
     );
   }
 }

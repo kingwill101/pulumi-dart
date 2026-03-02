@@ -63,15 +63,15 @@ class TableReplicaState {
 
   factory TableReplicaState.fromMap(Map<String, dynamic> map) {
     return TableReplicaState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : (map['deletionProtectionEnabled'] as bool).input(),
-      globalTableArn: map['globalTableArn'] == null ? null : (map['globalTableArn'] as String).input(),
-      kmsKeyArn: map['kmsKeyArn'] == null ? null : (map['kmsKeyArn'] as String).input(),
-      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : (map['pointInTimeRecovery'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tableClassOverride: map['tableClassOverride'] == null ? null : (map['tableClassOverride'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      deletionProtectionEnabled: map['deletionProtectionEnabled'] == null ? null : ((map['deletionProtectionEnabled'] as bool).input()).input(),
+      globalTableArn: map['globalTableArn'] == null ? null : ((map['globalTableArn'] as String).input()).input(),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : ((map['kmsKeyArn'] as String).input()).input(),
+      pointInTimeRecovery: map['pointInTimeRecovery'] == null ? null : ((map['pointInTimeRecovery'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tableClassOverride: map['tableClassOverride'] == null ? null : ((map['tableClassOverride'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

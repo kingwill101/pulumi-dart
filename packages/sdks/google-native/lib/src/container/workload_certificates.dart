@@ -21,7 +21,7 @@ class WorkloadCertificates {
 
   factory WorkloadCertificates.fromMap(Map<String, dynamic> map) {
     return WorkloadCertificates(
-      enableCertificates: map['enableCertificates'] == null ? null : (map['enableCertificates'] as bool).input(),
+      enableCertificates: map['enableCertificates'] == null ? null : (map['enableCertificates']! as bool).input(),
     );
   }
 }

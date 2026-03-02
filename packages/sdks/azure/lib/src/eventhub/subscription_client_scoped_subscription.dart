@@ -32,9 +32,9 @@ class SubscriptionClientScopedSubscription {
 
   factory SubscriptionClientScopedSubscription.fromMap(Map<String, dynamic> map) {
     return SubscriptionClientScopedSubscription(
-      clientId: map['clientId'] == null ? null : (map['clientId'] as String).input(),
-      isClientScopedSubscriptionDurable: map['isClientScopedSubscriptionDurable'] == null ? null : (map['isClientScopedSubscriptionDurable'] as bool).input(),
-      isClientScopedSubscriptionShareable: map['isClientScopedSubscriptionShareable'] == null ? null : (map['isClientScopedSubscriptionShareable'] as bool).input(),
+      clientId: map['clientId'] == null ? null : (map['clientId']! as String).input(),
+      isClientScopedSubscriptionDurable: map['isClientScopedSubscriptionDurable'] == null ? null : (map['isClientScopedSubscriptionDurable']! as bool).input(),
+      isClientScopedSubscriptionShareable: map['isClientScopedSubscriptionShareable'] == null ? null : (map['isClientScopedSubscriptionShareable']! as bool).input(),
     );
   }
 }

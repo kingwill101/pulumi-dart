@@ -39,10 +39,10 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings {
 
   factory ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings(
-      audioHlsRenditionSelection: map['audioHlsRenditionSelection'] == null ? null : (ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection.fromMap((map['audioHlsRenditionSelection'] as Map).cast<String, dynamic>())).input(),
-      audioLanguageSelection: map['audioLanguageSelection'] == null ? null : (ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection.fromMap((map['audioLanguageSelection'] as Map).cast<String, dynamic>())).input(),
-      audioPidSelection: map['audioPidSelection'] == null ? null : (ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap((map['audioPidSelection'] as Map).cast<String, dynamic>())).input(),
-      audioTrackSelection: map['audioTrackSelection'] == null ? null : (ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection.fromMap((map['audioTrackSelection'] as Map).cast<String, dynamic>())).input(),
+      audioHlsRenditionSelection: map['audioHlsRenditionSelection'] == null ? null : ((ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection.fromMap((map['audioHlsRenditionSelection']! as Map).cast<String, dynamic>())).input()).input(),
+      audioLanguageSelection: map['audioLanguageSelection'] == null ? null : ((ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection.fromMap((map['audioLanguageSelection']! as Map).cast<String, dynamic>())).input()).input(),
+      audioPidSelection: map['audioPidSelection'] == null ? null : ((ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection.fromMap((map['audioPidSelection']! as Map).cast<String, dynamic>())).input()).input(),
+      audioTrackSelection: map['audioTrackSelection'] == null ? null : ((ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection.fromMap((map['audioTrackSelection']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

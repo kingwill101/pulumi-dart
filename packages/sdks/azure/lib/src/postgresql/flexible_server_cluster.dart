@@ -31,7 +31,7 @@ class FlexibleServerCluster {
 
   factory FlexibleServerCluster.fromMap(Map<String, dynamic> map) {
     return FlexibleServerCluster(
-      defaultDatabaseName: map['defaultDatabaseName'] == null ? null : (map['defaultDatabaseName'] as String).input(),
+      defaultDatabaseName: map['defaultDatabaseName'] == null ? null : (map['defaultDatabaseName']! as String).input(),
       size: (map['size'] as int).input(),
     );
   }

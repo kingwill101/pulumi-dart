@@ -103,20 +103,20 @@ class SqlPoolArgs {
 
   factory SqlPoolArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolArgs(
-      collation: map['collation'] == null ? null : (map['collation'] as String).input(),
-      createMode: map['createMode'] == null ? null : (map['createMode'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes'] as double).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      recoverableDatabaseId: map['recoverableDatabaseId'] == null ? null : (map['recoverableDatabaseId'] as String).input(),
+      collation: map['collation'] == null ? null : (map['collation']! as String).input(),
+      createMode: map['createMode'] == null ? null : (map['createMode']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      maxSizeBytes: map['maxSizeBytes'] == null ? null : (map['maxSizeBytes']! as double).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      recoverableDatabaseId: map['recoverableDatabaseId'] == null ? null : (map['recoverableDatabaseId']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      restorePointInTime: map['restorePointInTime'] == null ? null : (map['restorePointInTime'] as String).input(),
-      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku'] as Map).cast<String, dynamic>())).input(),
-      sourceDatabaseDeletionDate: map['sourceDatabaseDeletionDate'] == null ? null : (map['sourceDatabaseDeletionDate'] as String).input(),
-      sourceDatabaseId: map['sourceDatabaseId'] == null ? null : (map['sourceDatabaseId'] as String).input(),
-      sqlPoolName: map['sqlPoolName'] == null ? null : (map['sqlPoolName'] as String).input(),
-      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      restorePointInTime: map['restorePointInTime'] == null ? null : (map['restorePointInTime']! as String).input(),
+      sku: map['sku'] == null ? null : (Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())).input(),
+      sourceDatabaseDeletionDate: map['sourceDatabaseDeletionDate'] == null ? null : (map['sourceDatabaseDeletionDate']! as String).input(),
+      sourceDatabaseId: map['sourceDatabaseId'] == null ? null : (map['sourceDatabaseId']! as String).input(),
+      sqlPoolName: map['sqlPoolName'] == null ? null : (map['sqlPoolName']! as String).input(),
+      storageAccountType: map['storageAccountType'] == null ? null : (map['storageAccountType']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

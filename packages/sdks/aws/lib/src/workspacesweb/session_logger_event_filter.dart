@@ -25,8 +25,8 @@ class SessionLoggerEventFilter {
 
   factory SessionLoggerEventFilter.fromMap(Map<String, dynamic> map) {
     return SessionLoggerEventFilter(
-      all: map['all'] == null ? null : ((map['all'] as Map).cast<String, dynamic>()).input(),
-      includes: map['includes'] == null ? null : ((map['includes'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (((map['all'] as Map).cast<String, dynamic>()).input()).input(),
+      includes: map['includes'] == null ? null : (((map['includes'] as List).cast<String>()).input()).input(),
     );
   }
 }

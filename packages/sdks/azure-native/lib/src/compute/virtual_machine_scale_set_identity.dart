@@ -27,8 +27,8 @@ class VirtualMachineScaleSetIdentity {
 
   factory VirtualMachineScaleSetIdentity.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetIdentity(
-      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type'] as String)).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (ResourceIdentityType.fromValue(map['type']! as String)).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : ((map['userAssignedIdentities']! as List).cast<String>()).input(),
     );
   }
 }

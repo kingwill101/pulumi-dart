@@ -39,9 +39,9 @@ class StatementActionProperties {
   factory StatementActionProperties.fromMap(Map<String, dynamic> map) {
     return StatementActionProperties(
       actionType: (map['actionType'] as String).input(),
-      ipCommunityProperties: map['ipCommunityProperties'] == null ? null : (ActionIpCommunityProperties.fromMap((map['ipCommunityProperties'] as Map).cast<String, dynamic>())).input(),
-      ipExtendedCommunityProperties: map['ipExtendedCommunityProperties'] == null ? null : (ActionIpExtendedCommunityProperties.fromMap((map['ipExtendedCommunityProperties'] as Map).cast<String, dynamic>())).input(),
-      localPreference: map['localPreference'] == null ? null : (map['localPreference'] as double).input(),
+      ipCommunityProperties: map['ipCommunityProperties'] == null ? null : (ActionIpCommunityProperties.fromMap((map['ipCommunityProperties']! as Map).cast<String, dynamic>())).input(),
+      ipExtendedCommunityProperties: map['ipExtendedCommunityProperties'] == null ? null : (ActionIpExtendedCommunityProperties.fromMap((map['ipExtendedCommunityProperties']! as Map).cast<String, dynamic>())).input(),
+      localPreference: map['localPreference'] == null ? null : (map['localPreference']! as double).input(),
     );
   }
 }

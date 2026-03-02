@@ -25,8 +25,8 @@ class V3CustomDomainAuthConfig {
 
   factory V3CustomDomainAuthConfig.fromMap(Map<String, dynamic> map) {
     return V3CustomDomainAuthConfig(
-      authInfo: map['authInfo'] == null ? null : (map['authInfo'] as String).input(),
-      authType: map['authType'] == null ? null : (map['authType'] as String).input(),
+      authInfo: map['authInfo'] == null ? null : (map['authInfo']! as String).input(),
+      authType: map['authType'] == null ? null : (map['authType']! as String).input(),
     );
   }
 }

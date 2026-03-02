@@ -37,10 +37,10 @@ class TemplateParameterDataprocV1beta2 {
 
   factory TemplateParameterDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return TemplateParameterDataprocV1beta2(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       fields: ((map['fields'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
-      validation: map['validation'] == null ? null : (ParameterValidationDataprocV1beta2.fromMap((map['validation'] as Map).cast<String, dynamic>())).input(),
+      validation: map['validation'] == null ? null : (ParameterValidationDataprocV1beta2.fromMap((map['validation']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

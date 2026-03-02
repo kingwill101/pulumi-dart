@@ -84,19 +84,19 @@ class MaintenanceWindowArgs {
 
   factory MaintenanceWindowArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowArgs(
-      allowUnassociatedTargets: map['allowUnassociatedTargets'] == null ? null : (map['allowUnassociatedTargets'] as bool).input(),
+      allowUnassociatedTargets: map['allowUnassociatedTargets'] == null ? null : ((map['allowUnassociatedTargets'] as bool).input()).input(),
       cutoff: (map['cutoff'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       duration: (map['duration'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      endDate: map['endDate'] == null ? null : (map['endDate'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
+      endDate: map['endDate'] == null ? null : ((map['endDate'] as String).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       schedule: (map['schedule'] as String).input(),
-      scheduleOffset: map['scheduleOffset'] == null ? null : (map['scheduleOffset'] as int).input(),
-      scheduleTimezone: map['scheduleTimezone'] == null ? null : (map['scheduleTimezone'] as String).input(),
-      startDate: map['startDate'] == null ? null : (map['startDate'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      scheduleOffset: map['scheduleOffset'] == null ? null : ((map['scheduleOffset'] as int).input()).input(),
+      scheduleTimezone: map['scheduleTimezone'] == null ? null : ((map['scheduleTimezone'] as String).input()).input(),
+      startDate: map['startDate'] == null ? null : ((map['startDate'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

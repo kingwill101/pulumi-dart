@@ -21,7 +21,7 @@ class IdentityForCmk {
 
   factory IdentityForCmk.fromMap(Map<String, dynamic> map) {
     return IdentityForCmk(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

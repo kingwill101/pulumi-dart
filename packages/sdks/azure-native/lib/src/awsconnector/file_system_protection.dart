@@ -21,7 +21,7 @@ class FileSystemProtection {
 
   factory FileSystemProtection.fromMap(Map<String, dynamic> map) {
     return FileSystemProtection(
-      replicationOverwriteProtection: map['replicationOverwriteProtection'] == null ? null : (map['replicationOverwriteProtection'] as String).input(),
+      replicationOverwriteProtection: map['replicationOverwriteProtection'] == null ? null : (map['replicationOverwriteProtection']! as String).input(),
     );
   }
 }

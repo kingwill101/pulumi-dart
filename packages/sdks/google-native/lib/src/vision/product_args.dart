@@ -58,14 +58,14 @@ class ProductArgs {
 
   factory ProductArgs.fromMap(Map<String, dynamic> map) {
     return ProductArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      productCategory: map['productCategory'] == null ? null : (map['productCategory'] as String).input(),
-      productId: map['productId'] == null ? null : (map['productId'] as String).input(),
-      productLabels: map['productLabels'] == null ? null : (pulumi.Input.decodeList<KeyValue>(map['productLabels'], (value) => KeyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      productCategory: map['productCategory'] == null ? null : (map['productCategory']! as String).input(),
+      productId: map['productId'] == null ? null : (map['productId']! as String).input(),
+      productLabels: map['productLabels'] == null ? null : (pulumi.Input.decodeList<KeyValue>(map['productLabels']!, (value) => KeyValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

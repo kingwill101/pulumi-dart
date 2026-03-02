@@ -52,13 +52,13 @@ class BucketCnameState {
 
   factory BucketCnameState.fromMap(Map<String, dynamic> map) {
     return BucketCnameState(
-      bucket: map['bucket'] == null ? null : (map['bucket'] as String).input(),
-      certificate: map['certificate'] == null ? null : (BucketCnameCertificate.fromMap((map['certificate'] as Map).cast<String, dynamic>())).input(),
-      deleteCertificate: map['deleteCertificate'] == null ? null : (map['deleteCertificate'] as bool).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      force: map['force'] == null ? null : (map['force'] as bool).input(),
-      previousCertId: map['previousCertId'] == null ? null : (map['previousCertId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      bucket: map['bucket'] == null ? null : (map['bucket']! as String).input(),
+      certificate: map['certificate'] == null ? null : (BucketCnameCertificate.fromMap((map['certificate']! as Map).cast<String, dynamic>())).input(),
+      deleteCertificate: map['deleteCertificate'] == null ? null : (map['deleteCertificate']! as bool).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      force: map['force'] == null ? null : (map['force']! as bool).input(),
+      previousCertId: map['previousCertId'] == null ? null : (map['previousCertId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

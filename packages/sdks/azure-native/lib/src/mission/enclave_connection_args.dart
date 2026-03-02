@@ -61,12 +61,12 @@ class EnclaveConnectionArgs {
     return EnclaveConnectionArgs(
       communityResourceId: (map['communityResourceId'] as String).input(),
       destinationEndpointId: (map['destinationEndpointId'] as String).input(),
-      enclaveConnectionName: map['enclaveConnectionName'] == null ? null : (map['enclaveConnectionName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      enclaveConnectionName: map['enclaveConnectionName'] == null ? null : (map['enclaveConnectionName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr'] as String).input(),
+      sourceCidr: map['sourceCidr'] == null ? null : (map['sourceCidr']! as String).input(),
       sourceResourceId: (map['sourceResourceId'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

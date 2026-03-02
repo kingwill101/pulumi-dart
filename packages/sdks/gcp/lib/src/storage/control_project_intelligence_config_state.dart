@@ -52,12 +52,12 @@ class ControlProjectIntelligenceConfigState {
 
   factory ControlProjectIntelligenceConfigState.fromMap(Map<String, dynamic> map) {
     return ControlProjectIntelligenceConfigState(
-      editionConfig: map['editionConfig'] == null ? null : (map['editionConfig'] as String).input(),
-      effectiveIntelligenceConfigs: map['effectiveIntelligenceConfigs'] == null ? null : (pulumi.Input.decodeList<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs'], (value) => ControlProjectIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (ControlProjectIntelligenceConfigFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      trialConfigs: map['trialConfigs'] == null ? null : (pulumi.Input.decodeList<ControlProjectIntelligenceConfigTrialConfig>(map['trialConfigs'], (value) => ControlProjectIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      editionConfig: map['editionConfig'] == null ? null : (map['editionConfig']! as String).input(),
+      effectiveIntelligenceConfigs: map['effectiveIntelligenceConfigs'] == null ? null : (pulumi.Input.decodeList<ControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs']!, (value) => ControlProjectIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (ControlProjectIntelligenceConfigFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      trialConfigs: map['trialConfigs'] == null ? null : (pulumi.Input.decodeList<ControlProjectIntelligenceConfigTrialConfig>(map['trialConfigs']!, (value) => ControlProjectIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

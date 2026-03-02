@@ -27,7 +27,7 @@ class ManagedClusterServicePrincipalProfile {
   factory ManagedClusterServicePrincipalProfile.fromMap(Map<String, dynamic> map) {
     return ManagedClusterServicePrincipalProfile(
       clientId: (map['clientId'] as String).input(),
-      secret: map['secret'] == null ? null : (map['secret'] as String).input(),
+      secret: map['secret'] == null ? null : (map['secret']! as String).input(),
     );
   }
 }

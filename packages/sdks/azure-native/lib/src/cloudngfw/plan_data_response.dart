@@ -39,7 +39,7 @@ class PlanDataResponse {
       billingCycle: (map['billingCycle'] as String).input(),
       effectiveDate: (map['effectiveDate'] as String).input(),
       planId: (map['planId'] as String).input(),
-      usageType: map['usageType'] == null ? null : (map['usageType'] as String).input(),
+      usageType: map['usageType'] == null ? null : (map['usageType']! as String).input(),
     );
   }
 }

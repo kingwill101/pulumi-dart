@@ -46,9 +46,9 @@ class NetworkManagerRoutingRuleArgs {
 
   factory NetworkManagerRoutingRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkManagerRoutingRuleArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (NetworkManagerRoutingRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nextHop: (NetworkManagerRoutingRuleNextHop.fromMap((map['nextHop'] as Map).cast<String, dynamic>())).input(),
       ruleCollectionId: (map['ruleCollectionId'] as String).input(),
     );

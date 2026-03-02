@@ -35,10 +35,10 @@ class JobJobMonitorInfoContactInfo {
 
   factory JobJobMonitorInfoContactInfo.fromMap(Map<String, dynamic> map) {
     return JobJobMonitorInfoContactInfo(
-      ding: map['ding'] == null ? null : (map['ding'] as String).input(),
-      userMail: map['userMail'] == null ? null : (map['userMail'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
-      userPhone: map['userPhone'] == null ? null : (map['userPhone'] as String).input(),
+      ding: map['ding'] == null ? null : (map['ding']! as String).input(),
+      userMail: map['userMail'] == null ? null : (map['userMail']! as String).input(),
+      userName: map['userName'] == null ? null : (map['userName']! as String).input(),
+      userPhone: map['userPhone'] == null ? null : (map['userPhone']! as String).input(),
     );
   }
 }

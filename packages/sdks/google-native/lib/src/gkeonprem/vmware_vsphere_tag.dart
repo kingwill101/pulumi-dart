@@ -26,8 +26,8 @@ class VmwareVsphereTag {
 
   factory VmwareVsphereTag.fromMap(Map<String, dynamic> map) {
     return VmwareVsphereTag(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

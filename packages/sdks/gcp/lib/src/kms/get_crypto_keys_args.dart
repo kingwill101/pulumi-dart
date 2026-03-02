@@ -36,7 +36,7 @@ class GetCryptoKeysArgs {
 
   factory GetCryptoKeysArgs.fromMap(Map<String, dynamic> map) {
     return GetCryptoKeysArgs(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
       keyRing: (map['keyRing'] as String).input(),
     );
   }

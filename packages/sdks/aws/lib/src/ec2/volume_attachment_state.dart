@@ -60,13 +60,13 @@ class VolumeAttachmentState {
 
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      forceDetach: map['forceDetach'] == null ? null : (map['forceDetach'] as bool).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      skipDestroy: map['skipDestroy'] == null ? null : (map['skipDestroy'] as bool).input(),
-      stopInstanceBeforeDetaching: map['stopInstanceBeforeDetaching'] == null ? null : (map['stopInstanceBeforeDetaching'] as bool).input(),
-      volumeId: map['volumeId'] == null ? null : (map['volumeId'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      forceDetach: map['forceDetach'] == null ? null : ((map['forceDetach'] as bool).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      skipDestroy: map['skipDestroy'] == null ? null : ((map['skipDestroy'] as bool).input()).input(),
+      stopInstanceBeforeDetaching: map['stopInstanceBeforeDetaching'] == null ? null : ((map['stopInstanceBeforeDetaching'] as bool).input()).input(),
+      volumeId: map['volumeId'] == null ? null : ((map['volumeId'] as String).input()).input(),
     );
   }
 }

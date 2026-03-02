@@ -33,9 +33,9 @@ class EventConnectionAuthParametersInvocationHttpParameters {
 
   factory EventConnectionAuthParametersInvocationHttpParameters.fromMap(Map<String, dynamic> map) {
     return EventConnectionAuthParametersInvocationHttpParameters(
-      bodies: map['bodies'] == null ? null : (pulumi.Input.decodeList<EventConnectionAuthParametersInvocationHttpParametersBody>(map['bodies'], (value) => EventConnectionAuthParametersInvocationHttpParametersBody.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<EventConnectionAuthParametersInvocationHttpParametersHeader>(map['headers'], (value) => EventConnectionAuthParametersInvocationHttpParametersHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      queryStrings: map['queryStrings'] == null ? null : (pulumi.Input.decodeList<EventConnectionAuthParametersInvocationHttpParametersQueryString>(map['queryStrings'], (value) => EventConnectionAuthParametersInvocationHttpParametersQueryString.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      bodies: map['bodies'] == null ? null : ((pulumi.Input.decodeList<EventConnectionAuthParametersInvocationHttpParametersBody>(map['bodies']!, (value) => EventConnectionAuthParametersInvocationHttpParametersBody.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<EventConnectionAuthParametersInvocationHttpParametersHeader>(map['headers']!, (value) => EventConnectionAuthParametersInvocationHttpParametersHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      queryStrings: map['queryStrings'] == null ? null : ((pulumi.Input.decodeList<EventConnectionAuthParametersInvocationHttpParametersQueryString>(map['queryStrings']!, (value) => EventConnectionAuthParametersInvocationHttpParametersQueryString.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

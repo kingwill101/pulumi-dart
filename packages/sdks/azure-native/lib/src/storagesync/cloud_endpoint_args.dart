@@ -59,12 +59,12 @@ class CloudEndpointArgs {
 
   factory CloudEndpointArgs.fromMap(Map<String, dynamic> map) {
     return CloudEndpointArgs(
-      azureFileShareName: map['azureFileShareName'] == null ? null : (map['azureFileShareName'] as String).input(),
-      cloudEndpointName: map['cloudEndpointName'] == null ? null : (map['cloudEndpointName'] as String).input(),
-      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName'] as String).input(),
+      azureFileShareName: map['azureFileShareName'] == null ? null : (map['azureFileShareName']! as String).input(),
+      cloudEndpointName: map['cloudEndpointName'] == null ? null : (map['cloudEndpointName']! as String).input(),
+      friendlyName: map['friendlyName'] == null ? null : (map['friendlyName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId'] as String).input(),
-      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId'] as String).input(),
+      storageAccountResourceId: map['storageAccountResourceId'] == null ? null : (map['storageAccountResourceId']! as String).input(),
+      storageAccountTenantId: map['storageAccountTenantId'] == null ? null : (map['storageAccountTenantId']! as String).input(),
       storageSyncServiceName: (map['storageSyncServiceName'] as String).input(),
       syncGroupName: (map['syncGroupName'] as String).input(),
     );

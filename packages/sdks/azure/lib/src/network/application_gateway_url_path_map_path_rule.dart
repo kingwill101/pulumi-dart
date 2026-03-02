@@ -75,18 +75,18 @@ class ApplicationGatewayUrlPathMapPathRule {
 
   factory ApplicationGatewayUrlPathMapPathRule.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayUrlPathMapPathRule(
-      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId'] as String).input(),
-      backendAddressPoolName: map['backendAddressPoolName'] == null ? null : (map['backendAddressPoolName'] as String).input(),
-      backendHttpSettingsId: map['backendHttpSettingsId'] == null ? null : (map['backendHttpSettingsId'] as String).input(),
-      backendHttpSettingsName: map['backendHttpSettingsName'] == null ? null : (map['backendHttpSettingsName'] as String).input(),
-      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      backendAddressPoolId: map['backendAddressPoolId'] == null ? null : (map['backendAddressPoolId']! as String).input(),
+      backendAddressPoolName: map['backendAddressPoolName'] == null ? null : (map['backendAddressPoolName']! as String).input(),
+      backendHttpSettingsId: map['backendHttpSettingsId'] == null ? null : (map['backendHttpSettingsId']! as String).input(),
+      backendHttpSettingsName: map['backendHttpSettingsName'] == null ? null : (map['backendHttpSettingsName']! as String).input(),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       paths: ((map['paths'] as List).cast<String>()).input(),
-      redirectConfigurationId: map['redirectConfigurationId'] == null ? null : (map['redirectConfigurationId'] as String).input(),
-      redirectConfigurationName: map['redirectConfigurationName'] == null ? null : (map['redirectConfigurationName'] as String).input(),
-      rewriteRuleSetId: map['rewriteRuleSetId'] == null ? null : (map['rewriteRuleSetId'] as String).input(),
-      rewriteRuleSetName: map['rewriteRuleSetName'] == null ? null : (map['rewriteRuleSetName'] as String).input(),
+      redirectConfigurationId: map['redirectConfigurationId'] == null ? null : (map['redirectConfigurationId']! as String).input(),
+      redirectConfigurationName: map['redirectConfigurationName'] == null ? null : (map['redirectConfigurationName']! as String).input(),
+      rewriteRuleSetId: map['rewriteRuleSetId'] == null ? null : (map['rewriteRuleSetId']! as String).input(),
+      rewriteRuleSetName: map['rewriteRuleSetName'] == null ? null : (map['rewriteRuleSetName']! as String).input(),
     );
   }
 }

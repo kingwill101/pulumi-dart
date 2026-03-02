@@ -28,8 +28,8 @@ class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig {
 
   factory GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfig(
-      searchAddOns: map['searchAddOns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem>(map['searchAddOns'], (value) => GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem.fromValue(value as String))).input(),
-      searchTier: map['searchTier'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier.fromValue(map['searchTier'] as String)).input(),
+      searchAddOns: map['searchAddOns'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem>(map['searchAddOns']!, (value) => GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchAddOnsItem.fromValue(value as String))).input(),
+      searchTier: map['searchTier'] == null ? null : (GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigSearchTier.fromValue(map['searchTier']! as String)).input(),
     );
   }
 }

@@ -33,9 +33,9 @@ class DiJobResourceSettings {
 
   factory DiJobResourceSettings.fromMap(Map<String, dynamic> map) {
     return DiJobResourceSettings(
-      offlineResourceSettings: map['offlineResourceSettings'] == null ? null : (DiJobResourceSettingsOfflineResourceSettings.fromMap((map['offlineResourceSettings'] as Map).cast<String, dynamic>())).input(),
-      realtimeResourceSettings: map['realtimeResourceSettings'] == null ? null : (DiJobResourceSettingsRealtimeResourceSettings.fromMap((map['realtimeResourceSettings'] as Map).cast<String, dynamic>())).input(),
-      scheduleResourceSettings: map['scheduleResourceSettings'] == null ? null : (DiJobResourceSettingsScheduleResourceSettings.fromMap((map['scheduleResourceSettings'] as Map).cast<String, dynamic>())).input(),
+      offlineResourceSettings: map['offlineResourceSettings'] == null ? null : (DiJobResourceSettingsOfflineResourceSettings.fromMap((map['offlineResourceSettings']! as Map).cast<String, dynamic>())).input(),
+      realtimeResourceSettings: map['realtimeResourceSettings'] == null ? null : (DiJobResourceSettingsRealtimeResourceSettings.fromMap((map['realtimeResourceSettings']! as Map).cast<String, dynamic>())).input(),
+      scheduleResourceSettings: map['scheduleResourceSettings'] == null ? null : (DiJobResourceSettingsScheduleResourceSettings.fromMap((map['scheduleResourceSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

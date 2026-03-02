@@ -37,10 +37,10 @@ class AuthorizeVpcEndpointAccessState {
 
   factory AuthorizeVpcEndpointAccessState.fromMap(Map<String, dynamic> map) {
     return AuthorizeVpcEndpointAccessState(
-      account: map['account'] == null ? null : (map['account'] as String).input(),
-      authorizedPrincipals: map['authorizedPrincipals'] == null ? null : (pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(map['authorizedPrincipals'], (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      domainName: map['domainName'] == null ? null : (map['domainName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      account: map['account'] == null ? null : ((map['account'] as String).input()).input(),
+      authorizedPrincipals: map['authorizedPrincipals'] == null ? null : ((pulumi.Input.decodeList<AuthorizeVpcEndpointAccessAuthorizedPrincipal>(map['authorizedPrincipals']!, (value) => AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      domainName: map['domainName'] == null ? null : ((map['domainName'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

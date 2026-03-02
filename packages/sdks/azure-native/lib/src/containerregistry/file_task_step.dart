@@ -48,12 +48,12 @@ class FileTaskStep {
 
   factory FileTaskStep.fromMap(Map<String, dynamic> map) {
     return FileTaskStep(
-      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken'] as String).input(),
-      contextPath: map['contextPath'] == null ? null : (map['contextPath'] as String).input(),
+      contextAccessToken: map['contextAccessToken'] == null ? null : (map['contextAccessToken']! as String).input(),
+      contextPath: map['contextPath'] == null ? null : (map['contextPath']! as String).input(),
       taskFilePath: (map['taskFilePath'] as String).input(),
       type: (map['type'] as String).input(),
-      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values'], (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath'] as String).input(),
+      values: map['values'] == null ? null : (pulumi.Input.decodeList<SetValue>(map['values']!, (value) => SetValue.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      valuesFilePath: map['valuesFilePath'] == null ? null : (map['valuesFilePath']! as String).input(),
     );
   }
 }

@@ -78,7 +78,7 @@ class GetBackupPlanAssociationResult {
       lastSuccessfulBackupConsistencyTime: map['lastSuccessfulBackupConsistencyTime'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       resource: map['resource'] as String,
       resourceType: map['resourceType'] as String,
       rulesConfigInfos: pulumi.Input.decodeList<GetBackupPlanAssociationRulesConfigInfo>(map['rulesConfigInfos'], (value) => GetBackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>())),

@@ -92,16 +92,16 @@ class ReservationArgs {
 
   factory ReservationArgs.fromMap(Map<String, dynamic> map) {
     return ReservationArgs(
-      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : (ReservationDeleteAfterDuration.fromMap((map['deleteAfterDuration'] as Map).cast<String, dynamic>())).input(),
-      deleteAtTime: map['deleteAtTime'] == null ? null : (map['deleteAtTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableEmergentMaintenance: map['enableEmergentMaintenance'] == null ? null : (map['enableEmergentMaintenance'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      reservationSharingPolicy: map['reservationSharingPolicy'] == null ? null : (ReservationReservationSharingPolicy.fromMap((map['reservationSharingPolicy'] as Map).cast<String, dynamic>())).input(),
-      shareSettings: map['shareSettings'] == null ? null : (ReservationShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
+      deleteAfterDuration: map['deleteAfterDuration'] == null ? null : (ReservationDeleteAfterDuration.fromMap((map['deleteAfterDuration']! as Map).cast<String, dynamic>())).input(),
+      deleteAtTime: map['deleteAtTime'] == null ? null : (map['deleteAtTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      enableEmergentMaintenance: map['enableEmergentMaintenance'] == null ? null : (map['enableEmergentMaintenance']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      reservationSharingPolicy: map['reservationSharingPolicy'] == null ? null : (ReservationReservationSharingPolicy.fromMap((map['reservationSharingPolicy']! as Map).cast<String, dynamic>())).input(),
+      shareSettings: map['shareSettings'] == null ? null : (ReservationShareSettings.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
       specificReservation: (ReservationSpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>())).input(),
-      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired'] as bool).input(),
+      specificReservationRequired: map['specificReservationRequired'] == null ? null : (map['specificReservationRequired']! as bool).input(),
       zone: (map['zone'] as String).input(),
     );
   }

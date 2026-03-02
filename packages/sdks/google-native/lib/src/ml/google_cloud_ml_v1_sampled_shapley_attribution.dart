@@ -21,7 +21,7 @@ class GoogleCloudMlV1SampledShapleyAttribution {
 
   factory GoogleCloudMlV1SampledShapleyAttribution.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1SampledShapleyAttribution(
-      numPaths: map['numPaths'] == null ? null : (map['numPaths'] as int).input(),
+      numPaths: map['numPaths'] == null ? null : (map['numPaths']! as int).input(),
     );
   }
 }

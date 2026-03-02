@@ -52,13 +52,13 @@ class BudgetResourceGroupNotification {
 
   factory BudgetResourceGroupNotification.fromMap(Map<String, dynamic> map) {
     return BudgetResourceGroupNotification(
-      contactEmails: map['contactEmails'] == null ? null : ((map['contactEmails'] as List).cast<String>()).input(),
-      contactGroups: map['contactGroups'] == null ? null : ((map['contactGroups'] as List).cast<String>()).input(),
-      contactRoles: map['contactRoles'] == null ? null : ((map['contactRoles'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      contactEmails: map['contactEmails'] == null ? null : ((map['contactEmails']! as List).cast<String>()).input(),
+      contactGroups: map['contactGroups'] == null ? null : ((map['contactGroups']! as List).cast<String>()).input(),
+      contactRoles: map['contactRoles'] == null ? null : ((map['contactRoles']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
       operator: (map['operator'] as String).input(),
       threshold: (map['threshold'] as int).input(),
-      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType'] as String).input(),
+      thresholdType: map['thresholdType'] == null ? null : (map['thresholdType']! as String).input(),
     );
   }
 }

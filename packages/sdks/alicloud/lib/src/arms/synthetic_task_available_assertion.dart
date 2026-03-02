@@ -37,7 +37,7 @@ class SyntheticTaskAvailableAssertion {
     return SyntheticTaskAvailableAssertion(
       expect: (map['expect'] as String).input(),
       operator: (map['operator'] as String).input(),
-      target: map['target'] == null ? null : (map['target'] as String).input(),
+      target: map['target'] == null ? null : (map['target']! as String).input(),
       type: (map['type'] as String).input(),
     );
   }

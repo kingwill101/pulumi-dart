@@ -20,7 +20,7 @@ class PortConfig {
 
   factory PortConfig.fromMap(Map<String, dynamic> map) {
     return PortConfig(
-      persistenceTimeout: map['persistenceTimeout'] == null ? null : (map['persistenceTimeout'] as int).input(),
+      persistenceTimeout: map['persistenceTimeout'] == null ? null : (map['persistenceTimeout']! as int).input(),
     );
   }
 }

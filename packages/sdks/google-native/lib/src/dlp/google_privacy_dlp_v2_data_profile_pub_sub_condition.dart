@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2DataProfilePubSubCondition {
 
   factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DataProfilePubSubCondition(
-      expressions: map['expressions'] == null ? null : (GooglePrivacyDlpV2PubSubExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>())).input(),
+      expressions: map['expressions'] == null ? null : (GooglePrivacyDlpV2PubSubExpressions.fromMap((map['expressions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

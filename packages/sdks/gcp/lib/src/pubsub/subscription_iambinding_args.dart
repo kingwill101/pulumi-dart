@@ -54,9 +54,9 @@ class SubscriptionIAMBindingArgs {
 
   factory SubscriptionIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return SubscriptionIAMBindingArgs(
-      condition: map['condition'] == null ? null : (SubscriptionIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (SubscriptionIAMBindingCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       members: ((map['members'] as List).cast<String>()).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       role: (map['role'] as String).input(),
       subscription: (map['subscription'] as String).input(),
     );

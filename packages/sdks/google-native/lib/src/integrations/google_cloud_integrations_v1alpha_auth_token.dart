@@ -26,8 +26,8 @@ class GoogleCloudIntegrationsV1alphaAuthToken {
 
   factory GoogleCloudIntegrationsV1alphaAuthToken.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaAuthToken(
-      token: map['token'] == null ? null : (map['token'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      token: map['token'] == null ? null : (map['token']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

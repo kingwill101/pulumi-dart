@@ -25,8 +25,8 @@ class CostCategorySplitChargeRuleParameter {
 
   factory CostCategorySplitChargeRuleParameter.fromMap(Map<String, dynamic> map) {
     return CostCategorySplitChargeRuleParameter(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class ConnectorPlugin {
 
   factory ConnectorPlugin.fromMap(Map<String, dynamic> map) {
     return ConnectorPlugin(
-      customPlugin: (ConnectorPluginCustomPlugin.fromMap((map['customPlugin'] as Map).cast<String, dynamic>())).input(),
+      customPlugin: (ConnectorPluginCustomPlugin.fromMap((map['customPlugin']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

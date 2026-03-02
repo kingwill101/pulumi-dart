@@ -31,9 +31,9 @@ class DomainPurchaseConsent {
 
   factory DomainPurchaseConsent.fromMap(Map<String, dynamic> map) {
     return DomainPurchaseConsent(
-      agreedAt: map['agreedAt'] == null ? null : (map['agreedAt'] as String).input(),
-      agreedBy: map['agreedBy'] == null ? null : (map['agreedBy'] as String).input(),
-      agreementKeys: map['agreementKeys'] == null ? null : ((map['agreementKeys'] as List).cast<String>()).input(),
+      agreedAt: map['agreedAt'] == null ? null : (map['agreedAt']! as String).input(),
+      agreedBy: map['agreedBy'] == null ? null : (map['agreedBy']! as String).input(),
+      agreementKeys: map['agreementKeys'] == null ? null : ((map['agreementKeys']! as List).cast<String>()).input(),
     );
   }
 }

@@ -65,15 +65,15 @@ class GoogleCloudIntegrationsV1alphaValueType {
 
   factory GoogleCloudIntegrationsV1alphaValueType.fromMap(Map<String, dynamic> map) {
     return GoogleCloudIntegrationsV1alphaValueType(
-      booleanArray: map['booleanArray'] == null ? null : (GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromMap((map['booleanArray'] as Map).cast<String, dynamic>())).input(),
-      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue'] as bool).input(),
-      doubleArray: map['doubleArray'] == null ? null : (GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromMap((map['doubleArray'] as Map).cast<String, dynamic>())).input(),
-      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue'] as double).input(),
-      intArray: map['intArray'] == null ? null : (GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap((map['intArray'] as Map).cast<String, dynamic>())).input(),
-      intValue: map['intValue'] == null ? null : (map['intValue'] as String).input(),
-      jsonValue: map['jsonValue'] == null ? null : (map['jsonValue'] as String).input(),
-      stringArray: map['stringArray'] == null ? null : (GoogleCloudIntegrationsV1alphaStringParameterArray.fromMap((map['stringArray'] as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      booleanArray: map['booleanArray'] == null ? null : (GoogleCloudIntegrationsV1alphaBooleanParameterArray.fromMap((map['booleanArray']! as Map).cast<String, dynamic>())).input(),
+      booleanValue: map['booleanValue'] == null ? null : (map['booleanValue']! as bool).input(),
+      doubleArray: map['doubleArray'] == null ? null : (GoogleCloudIntegrationsV1alphaDoubleParameterArray.fromMap((map['doubleArray']! as Map).cast<String, dynamic>())).input(),
+      doubleValue: map['doubleValue'] == null ? null : (map['doubleValue']! as double).input(),
+      intArray: map['intArray'] == null ? null : (GoogleCloudIntegrationsV1alphaIntParameterArray.fromMap((map['intArray']! as Map).cast<String, dynamic>())).input(),
+      intValue: map['intValue'] == null ? null : (map['intValue']! as String).input(),
+      jsonValue: map['jsonValue'] == null ? null : (map['jsonValue']! as String).input(),
+      stringArray: map['stringArray'] == null ? null : (GoogleCloudIntegrationsV1alphaStringParameterArray.fromMap((map['stringArray']! as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

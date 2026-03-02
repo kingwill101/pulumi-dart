@@ -21,7 +21,7 @@ class PoolRefresh {
 
   factory PoolRefresh.fromMap(Map<String, dynamic> map) {
     return PoolRefresh(
-      volume: map['volume'] == null ? null : (PoolRefreshVolume.fromMap((map['volume'] as Map).cast<String, dynamic>())).input(),
+      volume: map['volume'] == null ? null : (PoolRefreshVolume.fromMap((map['volume']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

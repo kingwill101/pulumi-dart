@@ -47,7 +47,7 @@ class ReachabilityAnalysisIntentArgs {
     return ReachabilityAnalysisIntentArgs(
       networkManagerName: (map['networkManagerName'] as String).input(),
       properties: (ReachabilityAnalysisIntentProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
-      reachabilityAnalysisIntentName: map['reachabilityAnalysisIntentName'] == null ? null : (map['reachabilityAnalysisIntentName'] as String).input(),
+      reachabilityAnalysisIntentName: map['reachabilityAnalysisIntentName'] == null ? null : (map['reachabilityAnalysisIntentName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );

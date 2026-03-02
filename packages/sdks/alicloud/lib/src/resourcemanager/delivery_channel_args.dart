@@ -47,11 +47,11 @@ class DeliveryChannelArgs {
 
   factory DeliveryChannelArgs.fromMap(Map<String, dynamic> map) {
     return DeliveryChannelArgs(
-      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription'] as String).input(),
+      deliveryChannelDescription: map['deliveryChannelDescription'] == null ? null : (map['deliveryChannelDescription']! as String).input(),
       deliveryChannelFilter: (DeliveryChannelDeliveryChannelFilter.fromMap((map['deliveryChannelFilter'] as Map).cast<String, dynamic>())).input(),
       deliveryChannelName: (map['deliveryChannelName'] as String).input(),
-      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (DeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery'] as Map).cast<String, dynamic>())).input(),
-      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (DeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery'] as Map).cast<String, dynamic>())).input(),
+      resourceChangeDelivery: map['resourceChangeDelivery'] == null ? null : (DeliveryChannelResourceChangeDelivery.fromMap((map['resourceChangeDelivery']! as Map).cast<String, dynamic>())).input(),
+      resourceSnapshotDelivery: map['resourceSnapshotDelivery'] == null ? null : (DeliveryChannelResourceSnapshotDelivery.fromMap((map['resourceSnapshotDelivery']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

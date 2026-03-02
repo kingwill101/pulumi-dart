@@ -26,8 +26,8 @@ class SslCertificateSelfManagedSslCertificateComputeBeta {
 
   factory SslCertificateSelfManagedSslCertificateComputeBeta.fromMap(Map<String, dynamic> map) {
     return SslCertificateSelfManagedSslCertificateComputeBeta(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
+      certificate: map['certificate'] == null ? null : (map['certificate']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
     );
   }
 }

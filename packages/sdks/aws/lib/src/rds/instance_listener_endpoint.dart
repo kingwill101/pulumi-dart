@@ -30,9 +30,9 @@ class InstanceListenerEndpoint {
 
   factory InstanceListenerEndpoint.fromMap(Map<String, dynamic> map) {
     return InstanceListenerEndpoint(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
-      hostedZoneId: map['hostedZoneId'] == null ? null : (map['hostedZoneId'] as String).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
+      address: map['address'] == null ? null : ((map['address'] as String).input()).input(),
+      hostedZoneId: map['hostedZoneId'] == null ? null : ((map['hostedZoneId'] as String).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
     );
   }
 }

@@ -29,9 +29,9 @@ class WafRuleConfigManagedRulesetManagedRule {
 
   factory WafRuleConfigManagedRulesetManagedRule.fromMap(Map<String, dynamic> map) {
     return WafRuleConfigManagedRulesetManagedRule(
-      action: map['action'] == null ? null : (map['action'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as int).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      action: map['action'] == null ? null : (map['action']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as int).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

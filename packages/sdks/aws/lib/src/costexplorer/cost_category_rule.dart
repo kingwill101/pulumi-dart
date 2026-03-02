@@ -37,10 +37,10 @@ class CostCategoryRule {
 
   factory CostCategoryRule.fromMap(Map<String, dynamic> map) {
     return CostCategoryRule(
-      inheritedValue: map['inheritedValue'] == null ? null : (CostCategoryRuleInheritedValue.fromMap((map['inheritedValue'] as Map).cast<String, dynamic>())).input(),
-      rule: map['rule'] == null ? null : (CostCategoryRuleRule.fromMap((map['rule'] as Map).cast<String, dynamic>())).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      inheritedValue: map['inheritedValue'] == null ? null : ((CostCategoryRuleInheritedValue.fromMap((map['inheritedValue']! as Map).cast<String, dynamic>())).input()).input(),
+      rule: map['rule'] == null ? null : ((CostCategoryRuleRule.fromMap((map['rule']! as Map).cast<String, dynamic>())).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
+      value: map['value'] == null ? null : ((map['value'] as String).input()).input(),
     );
   }
 }

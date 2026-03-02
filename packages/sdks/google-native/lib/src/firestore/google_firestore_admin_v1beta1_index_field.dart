@@ -27,8 +27,8 @@ class GoogleFirestoreAdminV1beta1IndexField {
 
   factory GoogleFirestoreAdminV1beta1IndexField.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1beta1IndexField(
-      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath'] as String).input(),
-      mode: map['mode'] == null ? null : (GoogleFirestoreAdminV1beta1IndexFieldMode.fromValue(map['mode'] as String)).input(),
+      fieldPath: map['fieldPath'] == null ? null : (map['fieldPath']! as String).input(),
+      mode: map['mode'] == null ? null : (GoogleFirestoreAdminV1beta1IndexFieldMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

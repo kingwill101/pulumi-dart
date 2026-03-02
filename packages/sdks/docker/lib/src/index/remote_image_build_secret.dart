@@ -30,9 +30,9 @@ class RemoteImageBuildSecret {
 
   factory RemoteImageBuildSecret.fromMap(Map<String, dynamic> map) {
     return RemoteImageBuildSecret(
-      env: map['env'] == null ? null : (map['env'] as String).input(),
+      env: map['env'] == null ? null : (map['env']! as String).input(),
       id: (map['id'] as String).input(),
-      src: map['src'] == null ? null : (map['src'] as String).input(),
+      src: map['src'] == null ? null : (map['src']! as String).input(),
     );
   }
 }

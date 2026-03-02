@@ -72,17 +72,17 @@ class ISCSIVolumeSourcePatch {
 
   factory ISCSIVolumeSourcePatch.fromMap(Map<String, dynamic> map) {
     return ISCSIVolumeSourcePatch(
-      chapAuthDiscovery: map['chapAuthDiscovery'] == null ? null : (map['chapAuthDiscovery'] as bool).input(),
-      chapAuthSession: map['chapAuthSession'] == null ? null : (map['chapAuthSession'] as bool).input(),
-      fsType: map['fsType'] == null ? null : (map['fsType'] as String).input(),
-      initiatorName: map['initiatorName'] == null ? null : (map['initiatorName'] as String).input(),
-      iqn: map['iqn'] == null ? null : (map['iqn'] as String).input(),
-      iscsiInterface: map['iscsiInterface'] == null ? null : (map['iscsiInterface'] as String).input(),
-      lun: map['lun'] == null ? null : (map['lun'] as int).input(),
-      portals: map['portals'] == null ? null : ((map['portals'] as List).cast<String>()).input(),
-      readOnly: map['readOnly'] == null ? null : (map['readOnly'] as bool).input(),
-      secretRef: map['secretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['secretRef'] as Map).cast<String, dynamic>())).input(),
-      targetPortal: map['targetPortal'] == null ? null : (map['targetPortal'] as String).input(),
+      chapAuthDiscovery: map['chapAuthDiscovery'] == null ? null : (map['chapAuthDiscovery']! as bool).input(),
+      chapAuthSession: map['chapAuthSession'] == null ? null : (map['chapAuthSession']! as bool).input(),
+      fsType: map['fsType'] == null ? null : (map['fsType']! as String).input(),
+      initiatorName: map['initiatorName'] == null ? null : (map['initiatorName']! as String).input(),
+      iqn: map['iqn'] == null ? null : (map['iqn']! as String).input(),
+      iscsiInterface: map['iscsiInterface'] == null ? null : (map['iscsiInterface']! as String).input(),
+      lun: map['lun'] == null ? null : (map['lun']! as int).input(),
+      portals: map['portals'] == null ? null : ((map['portals']! as List).cast<String>()).input(),
+      readOnly: map['readOnly'] == null ? null : (map['readOnly']! as bool).input(),
+      secretRef: map['secretRef'] == null ? null : (LocalObjectReferencePatch.fromMap((map['secretRef']! as Map).cast<String, dynamic>())).input(),
+      targetPortal: map['targetPortal'] == null ? null : (map['targetPortal']! as String).input(),
     );
   }
 }

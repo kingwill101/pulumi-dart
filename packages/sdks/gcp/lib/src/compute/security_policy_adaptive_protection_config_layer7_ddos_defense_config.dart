@@ -31,9 +31,9 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
 
   factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(
-      enable: map['enable'] == null ? null : (map['enable'] as bool).input(),
-      ruleVisibility: map['ruleVisibility'] == null ? null : (map['ruleVisibility'] as String).input(),
-      thresholdConfigs: map['thresholdConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>(map['thresholdConfigs'], (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enable: map['enable'] == null ? null : (map['enable']! as bool).input(),
+      ruleVisibility: map['ruleVisibility'] == null ? null : (map['ruleVisibility']! as String).input(),
+      thresholdConfigs: map['thresholdConfigs'] == null ? null : (pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig>(map['thresholdConfigs']!, (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

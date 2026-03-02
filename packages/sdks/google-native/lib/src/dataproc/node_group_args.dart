@@ -69,14 +69,14 @@ class NodeGroupArgs {
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
       clusterId: (map['clusterId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (InstanceGroupConfig.fromMap((map['nodeGroupConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId'] as String).input(),
-      parentOperationId: map['parentOperationId'] == null ? null : (map['parentOperationId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nodeGroupConfig: map['nodeGroupConfig'] == null ? null : (InstanceGroupConfig.fromMap((map['nodeGroupConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeGroupId: map['nodeGroupId'] == null ? null : (map['nodeGroupId']! as String).input(),
+      parentOperationId: map['parentOperationId'] == null ? null : (map['parentOperationId']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       regionId: (map['regionId'] as String).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
       roles: (pulumi.Input.decodeList<NodeGroupRolesItem>(map['roles'], (value) => NodeGroupRolesItem.fromValue(value as String))).input(),
     );
   }

@@ -36,10 +36,10 @@ class StorageSpacesPropertiesResponse {
 
   factory StorageSpacesPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageSpacesPropertiesResponse(
-      hciStorageProfile: map['hciStorageProfile'] == null ? null : (StorageSpacesPropertiesResponseHciStorageProfile.fromMap((map['hciStorageProfile'] as Map).cast<String, dynamic>())).input(),
+      hciStorageProfile: map['hciStorageProfile'] == null ? null : (StorageSpacesPropertiesResponseHciStorageProfile.fromMap((map['hciStorageProfile']! as Map).cast<String, dynamic>())).input(),
       provisioningState: (map['provisioningState'] as String).input(),
-      status: map['status'] == null ? null : (StorageSpacesPropertiesResponseStatus.fromMap((map['status'] as Map).cast<String, dynamic>())).input(),
-      vmwareStorageProfile: map['vmwareStorageProfile'] == null ? null : (StorageSpacesPropertiesResponseVmwareStorageProfile.fromMap((map['vmwareStorageProfile'] as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (StorageSpacesPropertiesResponseStatus.fromMap((map['status']! as Map).cast<String, dynamic>())).input(),
+      vmwareStorageProfile: map['vmwareStorageProfile'] == null ? null : (StorageSpacesPropertiesResponseVmwareStorageProfile.fromMap((map['vmwareStorageProfile']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

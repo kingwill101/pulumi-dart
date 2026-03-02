@@ -51,12 +51,12 @@ class ServerMicrosoftSupportAuditingPolicyArgs {
 
   factory ServerMicrosoftSupportAuditingPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ServerMicrosoftSupportAuditingPolicyArgs(
-      blobStorageEndpoint: map['blobStorageEndpoint'] == null ? null : (map['blobStorageEndpoint'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled'] as bool).input(),
+      blobStorageEndpoint: map['blobStorageEndpoint'] == null ? null : (map['blobStorageEndpoint']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      logMonitoringEnabled: map['logMonitoringEnabled'] == null ? null : (map['logMonitoringEnabled']! as bool).input(),
       serverId: (map['serverId'] as String).input(),
-      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey'] as String).input(),
-      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId'] as String).input(),
+      storageAccountAccessKey: map['storageAccountAccessKey'] == null ? null : (map['storageAccountAccessKey']! as String).input(),
+      storageAccountSubscriptionId: map['storageAccountSubscriptionId'] == null ? null : (map['storageAccountSubscriptionId']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatCon
 
   factory FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig.fromMap(Map<String, dynamic> map) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig(
-      aggregationType: map['aggregationType'] == null ? null : (map['aggregationType'] as String).input(),
-      targetFileSize: map['targetFileSize'] == null ? null : (map['targetFileSize'] as int).input(),
+      aggregationType: map['aggregationType'] == null ? null : ((map['aggregationType'] as String).input()).input(),
+      targetFileSize: map['targetFileSize'] == null ? null : ((map['targetFileSize'] as int).input()).input(),
     );
   }
 }

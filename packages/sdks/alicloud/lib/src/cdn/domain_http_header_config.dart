@@ -27,7 +27,7 @@ class DomainHttpHeaderConfig {
 
   factory DomainHttpHeaderConfig.fromMap(Map<String, dynamic> map) {
     return DomainHttpHeaderConfig(
-      headerId: map['headerId'] == null ? null : (map['headerId'] as String).input(),
+      headerId: map['headerId'] == null ? null : (map['headerId']! as String).input(),
       headerKey: (map['headerKey'] as String).input(),
       headerValue: (map['headerValue'] as String).input(),
     );

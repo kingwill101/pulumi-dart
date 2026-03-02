@@ -31,8 +31,8 @@ class IdentitySourceConfigurationCognitoUserPoolConfiguration {
 
   factory IdentitySourceConfigurationCognitoUserPoolConfiguration.fromMap(Map<String, dynamic> map) {
     return IdentitySourceConfigurationCognitoUserPoolConfiguration(
-      clientIds: map['clientIds'] == null ? null : ((map['clientIds'] as List).cast<String>()).input(),
-      groupConfiguration: map['groupConfiguration'] == null ? null : (IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap((map['groupConfiguration'] as Map).cast<String, dynamic>())).input(),
+      clientIds: map['clientIds'] == null ? null : (((map['clientIds'] as List).cast<String>()).input()).input(),
+      groupConfiguration: map['groupConfiguration'] == null ? null : ((IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration.fromMap((map['groupConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
       userPoolArn: (map['userPoolArn'] as String).input(),
     );
   }

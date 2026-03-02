@@ -40,11 +40,11 @@ class EventRuleFcParameter {
 
   factory EventRuleFcParameter.fromMap(Map<String, dynamic> map) {
     return EventRuleFcParameter(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      fcParametersId: map['fcParametersId'] == null ? null : (map['fcParametersId'] as String).input(),
-      functionName: map['functionName'] == null ? null : (map['functionName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      arn: map['arn'] == null ? null : (map['arn']! as String).input(),
+      fcParametersId: map['fcParametersId'] == null ? null : (map['fcParametersId']! as String).input(),
+      functionName: map['functionName'] == null ? null : (map['functionName']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

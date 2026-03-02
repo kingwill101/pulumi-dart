@@ -26,8 +26,8 @@ class PrivateLinkScopedResourceResponse {
 
   factory PrivateLinkScopedResourceResponse.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceResponse(
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      scopeId: map['scopeId'] == null ? null : (map['scopeId'] as String).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      scopeId: map['scopeId'] == null ? null : (map['scopeId']! as String).input(),
     );
   }
 }

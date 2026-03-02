@@ -40,11 +40,11 @@ class SpringCloudGatewayApiMetadata {
 
   factory SpringCloudGatewayApiMetadata.fromMap(Map<String, dynamic> map) {
     return SpringCloudGatewayApiMetadata(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      documentationUrl: map['documentationUrl'] == null ? null : (map['documentationUrl'] as String).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
-      title: map['title'] == null ? null : (map['title'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      documentationUrl: map['documentationUrl'] == null ? null : (map['documentationUrl']! as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
+      title: map['title'] == null ? null : (map['title']! as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

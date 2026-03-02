@@ -30,8 +30,8 @@ class ServerlessCacheCacheUsageLimitsDataStorage {
 
   factory ServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheCacheUsageLimitsDataStorage(
-      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum'] as int).input(),
+      maximum: map['maximum'] == null ? null : ((map['maximum'] as int).input()).input(),
+      minimum: map['minimum'] == null ? null : ((map['minimum'] as int).input()).input(),
       unit: (map['unit'] as String).input(),
     );
   }

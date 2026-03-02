@@ -22,7 +22,7 @@ class AptRepository {
 
   factory AptRepository.fromMap(Map<String, dynamic> map) {
     return AptRepository(
-      publicRepository: map['publicRepository'] == null ? null : (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((map['publicRepository'] as Map).cast<String, dynamic>())).input(),
+      publicRepository: map['publicRepository'] == null ? null : (GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository.fromMap((map['publicRepository']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

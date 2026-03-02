@@ -73,15 +73,15 @@ class BusinessProcessArgs {
   factory BusinessProcessArgs.fromMap(Map<String, dynamic> map) {
     return BusinessProcessArgs(
       applicationName: (map['applicationName'] as String).input(),
-      businessProcessMapping: map['businessProcessMapping'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessMappingItem>(map['businessProcessMapping'], (value) => BusinessProcessMappingItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      businessProcessName: map['businessProcessName'] == null ? null : (map['businessProcessName'] as String).input(),
-      businessProcessStages: map['businessProcessStages'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessStage>(map['businessProcessStages'], (value) => BusinessProcessStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      identifier: map['identifier'] == null ? null : (BusinessProcessIdentifier.fromMap((map['identifier'] as Map).cast<String, dynamic>())).input(),
+      businessProcessMapping: map['businessProcessMapping'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessMappingItem>(map['businessProcessMapping']!, (value) => BusinessProcessMappingItem.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      businessProcessName: map['businessProcessName'] == null ? null : (map['businessProcessName']! as String).input(),
+      businessProcessStages: map['businessProcessStages'] == null ? null : (pulumi.Input.decodeMapValues<BusinessProcessStage>(map['businessProcessStages']!, (value) => BusinessProcessStage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      identifier: map['identifier'] == null ? null : (BusinessProcessIdentifier.fromMap((map['identifier']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       spaceName: (map['spaceName'] as String).input(),
-      tableName: map['tableName'] == null ? null : (map['tableName'] as String).input(),
-      trackingDataStoreReferenceName: map['trackingDataStoreReferenceName'] == null ? null : (map['trackingDataStoreReferenceName'] as String).input(),
+      tableName: map['tableName'] == null ? null : (map['tableName']! as String).input(),
+      trackingDataStoreReferenceName: map['trackingDataStoreReferenceName'] == null ? null : (map['trackingDataStoreReferenceName']! as String).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class MemberState {
 
   factory MemberState.fromMap(Map<String, dynamic> map) {
     return MemberState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      detectorId: map['detectorId'] == null ? null : (map['detectorId'] as String).input(),
-      disableEmailNotification: map['disableEmailNotification'] == null ? null : (map['disableEmailNotification'] as bool).input(),
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      invitationMessage: map['invitationMessage'] == null ? null : (map['invitationMessage'] as String).input(),
-      invite: map['invite'] == null ? null : (map['invite'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      relationshipStatus: map['relationshipStatus'] == null ? null : (map['relationshipStatus'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      detectorId: map['detectorId'] == null ? null : ((map['detectorId'] as String).input()).input(),
+      disableEmailNotification: map['disableEmailNotification'] == null ? null : ((map['disableEmailNotification'] as bool).input()).input(),
+      email: map['email'] == null ? null : ((map['email'] as String).input()).input(),
+      invitationMessage: map['invitationMessage'] == null ? null : ((map['invitationMessage'] as String).input()).input(),
+      invite: map['invite'] == null ? null : ((map['invite'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      relationshipStatus: map['relationshipStatus'] == null ? null : ((map['relationshipStatus'] as String).input()).input(),
     );
   }
 }

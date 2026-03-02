@@ -45,12 +45,12 @@ class MonitorSsoConfigurationState {
 
   factory MonitorSsoConfigurationState.fromMap(Map<String, dynamic> map) {
     return MonitorSsoConfigurationState(
-      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId'] as String).input(),
-      enterpriseApplicationId: map['enterpriseApplicationId'] == null ? null : (map['enterpriseApplicationId'] as String).input(),
-      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn'] as String).input(),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled'] as String).input(),
+      datadogMonitorId: map['datadogMonitorId'] == null ? null : (map['datadogMonitorId']! as String).input(),
+      enterpriseApplicationId: map['enterpriseApplicationId'] == null ? null : (map['enterpriseApplicationId']! as String).input(),
+      loginUrl: map['loginUrl'] == null ? null : (map['loginUrl']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      singleSignOn: map['singleSignOn'] == null ? null : (map['singleSignOn']! as String).input(),
+      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled']! as String).input(),
     );
   }
 }

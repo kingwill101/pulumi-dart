@@ -96,19 +96,19 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       artifact: (DeploymentArtifact.fromMap((map['artifact'] as Map).cast<String, dynamic>())).input(),
-      batchResourceSetting: map['batchResourceSetting'] == null ? null : (DeploymentBatchResourceSetting.fromMap((map['batchResourceSetting'] as Map).cast<String, dynamic>())).input(),
+      batchResourceSetting: map['batchResourceSetting'] == null ? null : (DeploymentBatchResourceSetting.fromMap((map['batchResourceSetting']! as Map).cast<String, dynamic>())).input(),
       deploymentName: (map['deploymentName'] as String).input(),
       deploymentTarget: (DeploymentDeploymentTarget.fromMap((map['deploymentTarget'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      engineVersion: map['engineVersion'] == null ? null : (map['engineVersion']! as String).input(),
       executionMode: (map['executionMode'] as String).input(),
-      flinkConf: map['flinkConf'] == null ? null : ((map['flinkConf'] as Map).cast<String, String>()).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      localVariables: map['localVariables'] == null ? null : (pulumi.Input.decodeList<DeploymentLocalVariable>(map['localVariables'], (value) => DeploymentLocalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      logging: map['logging'] == null ? null : (DeploymentLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
+      flinkConf: map['flinkConf'] == null ? null : ((map['flinkConf']! as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      localVariables: map['localVariables'] == null ? null : (pulumi.Input.decodeList<DeploymentLocalVariable>(map['localVariables']!, (value) => DeploymentLocalVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      logging: map['logging'] == null ? null : (DeploymentLogging.fromMap((map['logging']! as Map).cast<String, dynamic>())).input(),
       namespace: (map['namespace'] as String).input(),
-      resourceId: map['resourceId'] == null ? null : (map['resourceId'] as String).input(),
-      streamingResourceSetting: map['streamingResourceSetting'] == null ? null : (DeploymentStreamingResourceSetting.fromMap((map['streamingResourceSetting'] as Map).cast<String, dynamic>())).input(),
+      resourceId: map['resourceId'] == null ? null : (map['resourceId']! as String).input(),
+      streamingResourceSetting: map['streamingResourceSetting'] == null ? null : (DeploymentStreamingResourceSetting.fromMap((map['streamingResourceSetting']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

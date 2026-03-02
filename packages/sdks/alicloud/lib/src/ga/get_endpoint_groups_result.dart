@@ -63,15 +63,15 @@ class GetEndpointGroupsResult {
   factory GetEndpointGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointGroupsResult(
       acceleratorId: map['acceleratorId'] as String,
-      endpointGroupType: map['endpointGroupType'] == null ? null : map['endpointGroupType'] as String,
+      endpointGroupType: map['endpointGroupType'] == null ? null : map['endpointGroupType']! as String,
       groups: pulumi.Input.decodeList<GetEndpointGroupsGroup>(map['groups'], (value) => GetEndpointGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      listenerId: map['listenerId'] == null ? null : map['listenerId'] as String,
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      listenerId: map['listenerId'] == null ? null : map['listenerId']! as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
     );
   }
 }

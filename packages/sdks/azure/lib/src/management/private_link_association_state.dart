@@ -43,11 +43,11 @@ class PrivateLinkAssociationState {
 
   factory PrivateLinkAssociationState.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationState(
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled'] as bool).input(),
-      resourceManagementPrivateLinkId: map['resourceManagementPrivateLinkId'] == null ? null : (map['resourceManagementPrivateLinkId'] as String).input(),
-      tenantId: map['tenantId'] == null ? null : (map['tenantId'] as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] == null ? null : (map['publicNetworkAccessEnabled']! as bool).input(),
+      resourceManagementPrivateLinkId: map['resourceManagementPrivateLinkId'] == null ? null : (map['resourceManagementPrivateLinkId']! as String).input(),
+      tenantId: map['tenantId'] == null ? null : (map['tenantId']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ImageConfig {
 
   factory ImageConfig.fromMap(Map<String, dynamic> map) {
     return ImageConfig(
-      textRedactionMode: map['textRedactionMode'] == null ? null : (ImageConfigTextRedactionMode.fromValue(map['textRedactionMode'] as String)).input(),
+      textRedactionMode: map['textRedactionMode'] == null ? null : (ImageConfigTextRedactionMode.fromValue(map['textRedactionMode']! as String)).input(),
     );
   }
 }

@@ -127,12 +127,12 @@ class GetInstanceResult {
       network: map['network'] as String,
       perUnitStorageThroughput: map['perUnitStorageThroughput'] as String,
       placementPolicy: map['placementPolicy'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       state: map['state'] as String,
       stateReason: map['stateReason'] as String,
       updateTime: map['updateTime'] as String,
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

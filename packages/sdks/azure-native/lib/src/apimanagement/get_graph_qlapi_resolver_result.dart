@@ -51,11 +51,11 @@ class GetGraphQLApiResolverResult {
   factory GetGraphQLApiResolverResult.fromMap(Map<String, dynamic> map) {
     return GetGraphQLApiResolverResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null ? null : map['description']! as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      path: map['path'] == null ? null : map['path'] as String,
+      path: map['path'] == null ? null : map['path']! as String,
       type: map['type'] as String,
     );
   }

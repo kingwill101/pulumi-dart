@@ -58,14 +58,14 @@ class AccessConfigComputeBeta {
 
   factory AccessConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return AccessConfigComputeBeta(
-      externalIpv6: map['externalIpv6'] == null ? null : (map['externalIpv6'] as String).input(),
-      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : (map['externalIpv6PrefixLength'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      natIP: map['natIP'] == null ? null : (map['natIP'] as String).input(),
-      networkTier: map['networkTier'] == null ? null : (AccessConfigNetworkTierComputeBeta.fromValue(map['networkTier'] as String)).input(),
-      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName'] as String).input(),
-      setPublicPtr: map['setPublicPtr'] == null ? null : (map['setPublicPtr'] as bool).input(),
-      type: map['type'] == null ? null : (AccessConfigTypeComputeBeta.fromValue(map['type'] as String)).input(),
+      externalIpv6: map['externalIpv6'] == null ? null : (map['externalIpv6']! as String).input(),
+      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : (map['externalIpv6PrefixLength']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      natIP: map['natIP'] == null ? null : (map['natIP']! as String).input(),
+      networkTier: map['networkTier'] == null ? null : (AccessConfigNetworkTierComputeBeta.fromValue(map['networkTier']! as String)).input(),
+      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : (map['publicPtrDomainName']! as String).input(),
+      setPublicPtr: map['setPublicPtr'] == null ? null : (map['setPublicPtr']! as bool).input(),
+      type: map['type'] == null ? null : (AccessConfigTypeComputeBeta.fromValue(map['type']! as String)).input(),
     );
   }
 }

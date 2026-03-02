@@ -36,7 +36,7 @@ class GetDbNodesResult {
   factory GetDbNodesResult.fromMap(Map<String, dynamic> map) {
     return GetDbNodesResult(
       cloudVmClusterId: map['cloudVmClusterId'] as String,
-      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(map['dbNodes'], (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),
+      dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(map['dbNodes']!, (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       region: map['region'] as String,
     );

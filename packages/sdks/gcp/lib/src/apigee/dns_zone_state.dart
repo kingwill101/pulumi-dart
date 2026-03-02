@@ -50,12 +50,12 @@ class DnsZoneState {
 
   factory DnsZoneState.fromMap(Map<String, dynamic> map) {
     return DnsZoneState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      orgId: map['orgId'] == null ? null : (map['orgId'] as String).input(),
-      peeringConfig: map['peeringConfig'] == null ? null : (DnsZonePeeringConfig.fromMap((map['peeringConfig'] as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId']! as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      orgId: map['orgId'] == null ? null : (map['orgId']! as String).input(),
+      peeringConfig: map['peeringConfig'] == null ? null : (DnsZonePeeringConfig.fromMap((map['peeringConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

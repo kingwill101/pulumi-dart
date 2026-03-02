@@ -45,10 +45,10 @@ class VaultLockConfigurationArgs {
   factory VaultLockConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return VaultLockConfigurationArgs(
       backupVaultName: (map['backupVaultName'] as String).input(),
-      changeableForDays: map['changeableForDays'] == null ? null : (map['changeableForDays'] as int).input(),
-      maxRetentionDays: map['maxRetentionDays'] == null ? null : (map['maxRetentionDays'] as int).input(),
-      minRetentionDays: map['minRetentionDays'] == null ? null : (map['minRetentionDays'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      changeableForDays: map['changeableForDays'] == null ? null : ((map['changeableForDays'] as int).input()).input(),
+      maxRetentionDays: map['maxRetentionDays'] == null ? null : ((map['maxRetentionDays'] as int).input()).input(),
+      minRetentionDays: map['minRetentionDays'] == null ? null : ((map['minRetentionDays'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

@@ -75,17 +75,17 @@ class GroundStationArgs {
 
   factory GroundStationArgs.fromMap(Map<String, dynamic> map) {
     return GroundStationArgs(
-      altitudeMeters: map['altitudeMeters'] == null ? null : (map['altitudeMeters'] as double).input(),
+      altitudeMeters: map['altitudeMeters'] == null ? null : (map['altitudeMeters']! as double).input(),
       capabilities: ((map['capabilities'] as List).cast<String>()).input(),
-      city: map['city'] == null ? null : (map['city'] as String).input(),
+      city: map['city'] == null ? null : (map['city']! as String).input(),
       globalCommunicationsSite: (GroundStationsPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite'] as Map).cast<String, dynamic>())).input(),
-      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName'] as String).input(),
-      latitudeDegrees: map['latitudeDegrees'] == null ? null : (map['latitudeDegrees'] as double).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      longitudeDegrees: map['longitudeDegrees'] == null ? null : (map['longitudeDegrees'] as double).input(),
-      providerName: map['providerName'] == null ? null : (map['providerName'] as String).input(),
+      groundStationName: map['groundStationName'] == null ? null : (map['groundStationName']! as String).input(),
+      latitudeDegrees: map['latitudeDegrees'] == null ? null : (map['latitudeDegrees']! as double).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      longitudeDegrees: map['longitudeDegrees'] == null ? null : (map['longitudeDegrees']! as double).input(),
+      providerName: map['providerName'] == null ? null : (map['providerName']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

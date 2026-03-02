@@ -45,7 +45,7 @@ class ManagedHardwareSecurityModuleRoleAssignmentArgs {
   factory ManagedHardwareSecurityModuleRoleAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return ManagedHardwareSecurityModuleRoleAssignmentArgs(
       managedHsmId: (map['managedHsmId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       principalId: (map['principalId'] as String).input(),
       roleDefinitionId: (map['roleDefinitionId'] as String).input(),
       scope: (map['scope'] as String).input(),

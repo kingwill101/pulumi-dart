@@ -25,8 +25,8 @@ class ServerlessCacheCacheUsageLimitsEcpuPerSecond {
 
   factory ServerlessCacheCacheUsageLimitsEcpuPerSecond.fromMap(Map<String, dynamic> map) {
     return ServerlessCacheCacheUsageLimitsEcpuPerSecond(
-      maximum: map['maximum'] == null ? null : (map['maximum'] as int).input(),
-      minimum: map['minimum'] == null ? null : (map['minimum'] as int).input(),
+      maximum: map['maximum'] == null ? null : ((map['maximum'] as int).input()).input(),
+      minimum: map['minimum'] == null ? null : ((map['minimum'] as int).input()).input(),
     );
   }
 }

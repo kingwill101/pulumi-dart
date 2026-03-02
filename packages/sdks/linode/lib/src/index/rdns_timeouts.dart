@@ -25,8 +25,8 @@ class RdnsTimeouts {
 
   factory RdnsTimeouts.fromMap(Map<String, dynamic> map) {
     return RdnsTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
-      update: map['update'] == null ? null : (map['update'] as String).input(),
+      create: map['create'] == null ? null : (map['create']! as String).input(),
+      update: map['update'] == null ? null : (map['update']! as String).input(),
     );
   }
 }

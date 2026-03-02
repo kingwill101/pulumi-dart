@@ -33,9 +33,9 @@ class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
 
   factory GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext.fromMap(Map<String, dynamic> map) {
     return GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext(
-      aliasContext: map['aliasContext'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>())).input(),
-      repoId: map['repoId'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1RepoId.fromMap((map['repoId'] as Map).cast<String, dynamic>())).input(),
-      revisionId: map['revisionId'] == null ? null : (map['revisionId'] as String).input(),
+      aliasContext: map['aliasContext'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap((map['aliasContext']! as Map).cast<String, dynamic>())).input(),
+      repoId: map['repoId'] == null ? null : (GoogleDevtoolsContaineranalysisV1alpha1RepoId.fromMap((map['repoId']! as Map).cast<String, dynamic>())).input(),
+      revisionId: map['revisionId'] == null ? null : (map['revisionId']! as String).input(),
     );
   }
 }

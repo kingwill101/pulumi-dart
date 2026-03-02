@@ -25,7 +25,7 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationR
 
   factory BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration.fromMap(Map<String, dynamic> map) {
     return BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationRecordExpiration(
-      days: map['days'] == null ? null : (map['days'] as int).input(),
+      days: map['days'] == null ? null : ((map['days'] as int).input()).input(),
       expiration: (map['expiration'] as String).input(),
     );
   }

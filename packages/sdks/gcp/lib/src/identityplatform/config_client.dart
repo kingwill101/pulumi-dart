@@ -35,9 +35,9 @@ class ConfigClient {
 
   factory ConfigClient.fromMap(Map<String, dynamic> map) {
     return ConfigClient(
-      apiKey: map['apiKey'] == null ? null : (map['apiKey'] as String).input(),
-      firebaseSubdomain: map['firebaseSubdomain'] == null ? null : (map['firebaseSubdomain'] as String).input(),
-      permissions: map['permissions'] == null ? null : (ConfigClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>())).input(),
+      apiKey: map['apiKey'] == null ? null : (map['apiKey']! as String).input(),
+      firebaseSubdomain: map['firebaseSubdomain'] == null ? null : (map['firebaseSubdomain']! as String).input(),
+      permissions: map['permissions'] == null ? null : (ConfigClientPermissions.fromMap((map['permissions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -39,10 +39,10 @@ class AccountQueueProperties {
 
   factory AccountQueueProperties.fromMap(Map<String, dynamic> map) {
     return AccountQueueProperties(
-      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(map['corsRules'], (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      hourMetrics: map['hourMetrics'] == null ? null : (AccountQueuePropertiesHourMetrics.fromMap((map['hourMetrics'] as Map).cast<String, dynamic>())).input(),
-      logging: map['logging'] == null ? null : (AccountQueuePropertiesLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())).input(),
-      minuteMetrics: map['minuteMetrics'] == null ? null : (AccountQueuePropertiesMinuteMetrics.fromMap((map['minuteMetrics'] as Map).cast<String, dynamic>())).input(),
+      corsRules: map['corsRules'] == null ? null : (pulumi.Input.decodeList<AccountQueuePropertiesCorsRule>(map['corsRules']!, (value) => AccountQueuePropertiesCorsRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      hourMetrics: map['hourMetrics'] == null ? null : (AccountQueuePropertiesHourMetrics.fromMap((map['hourMetrics']! as Map).cast<String, dynamic>())).input(),
+      logging: map['logging'] == null ? null : (AccountQueuePropertiesLogging.fromMap((map['logging']! as Map).cast<String, dynamic>())).input(),
+      minuteMetrics: map['minuteMetrics'] == null ? null : (AccountQueuePropertiesMinuteMetrics.fromMap((map['minuteMetrics']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

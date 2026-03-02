@@ -25,8 +25,8 @@ class VMwareNodePoolConfigVsphereConfigTag {
 
   factory VMwareNodePoolConfigVsphereConfigTag.fromMap(Map<String, dynamic> map) {
     return VMwareNodePoolConfigVsphereConfigTag(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
     );
   }
 }

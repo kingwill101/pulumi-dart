@@ -73,7 +73,7 @@ class GetDedicatedCloudServiceResult {
       name: map['name'] as String,
       nodes: map['nodes'] as int,
       serviceURL: map['serviceURL'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
     );
   }

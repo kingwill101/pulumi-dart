@@ -41,10 +41,10 @@ class GetQosBandwidthLimitRuleArgs {
 
   factory GetQosBandwidthLimitRuleArgs.fromMap(Map<String, dynamic> map) {
     return GetQosBandwidthLimitRuleArgs(
-      maxBurstKbps: map['maxBurstKbps'] == null ? null : (map['maxBurstKbps'] as int).input(),
-      maxKbps: map['maxKbps'] == null ? null : (map['maxKbps'] as int).input(),
+      maxBurstKbps: map['maxBurstKbps'] == null ? null : (map['maxBurstKbps']! as int).input(),
+      maxKbps: map['maxKbps'] == null ? null : (map['maxKbps']! as int).input(),
       qosPolicyId: (map['qosPolicyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

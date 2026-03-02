@@ -63,14 +63,14 @@ class GoogleCloudContentwarehouseV1Action {
 
   factory GoogleCloudContentwarehouseV1Action.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1Action(
-      accessControl: map['accessControl'] == null ? null : (GoogleCloudContentwarehouseV1AccessControlAction.fromMap((map['accessControl'] as Map).cast<String, dynamic>())).input(),
-      actionId: map['actionId'] == null ? null : (map['actionId'] as String).input(),
-      addToFolder: map['addToFolder'] == null ? null : (GoogleCloudContentwarehouseV1AddToFolderAction.fromMap((map['addToFolder'] as Map).cast<String, dynamic>())).input(),
-      dataUpdate: map['dataUpdate'] == null ? null : (GoogleCloudContentwarehouseV1DataUpdateAction.fromMap((map['dataUpdate'] as Map).cast<String, dynamic>())).input(),
-      dataValidation: map['dataValidation'] == null ? null : (GoogleCloudContentwarehouseV1DataValidationAction.fromMap((map['dataValidation'] as Map).cast<String, dynamic>())).input(),
-      deleteDocumentAction: map['deleteDocumentAction'] == null ? null : (GoogleCloudContentwarehouseV1DeleteDocumentAction.fromMap((map['deleteDocumentAction'] as Map).cast<String, dynamic>())).input(),
-      publishToPubSub: map['publishToPubSub'] == null ? null : (GoogleCloudContentwarehouseV1PublishAction.fromMap((map['publishToPubSub'] as Map).cast<String, dynamic>())).input(),
-      removeFromFolderAction: map['removeFromFolderAction'] == null ? null : (GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromMap((map['removeFromFolderAction'] as Map).cast<String, dynamic>())).input(),
+      accessControl: map['accessControl'] == null ? null : (GoogleCloudContentwarehouseV1AccessControlAction.fromMap((map['accessControl']! as Map).cast<String, dynamic>())).input(),
+      actionId: map['actionId'] == null ? null : (map['actionId']! as String).input(),
+      addToFolder: map['addToFolder'] == null ? null : (GoogleCloudContentwarehouseV1AddToFolderAction.fromMap((map['addToFolder']! as Map).cast<String, dynamic>())).input(),
+      dataUpdate: map['dataUpdate'] == null ? null : (GoogleCloudContentwarehouseV1DataUpdateAction.fromMap((map['dataUpdate']! as Map).cast<String, dynamic>())).input(),
+      dataValidation: map['dataValidation'] == null ? null : (GoogleCloudContentwarehouseV1DataValidationAction.fromMap((map['dataValidation']! as Map).cast<String, dynamic>())).input(),
+      deleteDocumentAction: map['deleteDocumentAction'] == null ? null : (GoogleCloudContentwarehouseV1DeleteDocumentAction.fromMap((map['deleteDocumentAction']! as Map).cast<String, dynamic>())).input(),
+      publishToPubSub: map['publishToPubSub'] == null ? null : (GoogleCloudContentwarehouseV1PublishAction.fromMap((map['publishToPubSub']! as Map).cast<String, dynamic>())).input(),
+      removeFromFolderAction: map['removeFromFolderAction'] == null ? null : (GoogleCloudContentwarehouseV1RemoveFromFolderAction.fromMap((map['removeFromFolderAction']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -23,8 +23,8 @@ class ContainerGroupInitContainerPort {
 
   factory ContainerGroupInitContainerPort.fromMap(Map<String, dynamic> map) {
     return ContainerGroupInitContainerPort(
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
+      port: map['port'] == null ? null : (map['port']! as int).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
     );
   }
 }

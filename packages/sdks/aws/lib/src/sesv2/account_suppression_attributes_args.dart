@@ -29,7 +29,7 @@ class AccountSuppressionAttributesArgs {
 
   factory AccountSuppressionAttributesArgs.fromMap(Map<String, dynamic> map) {
     return AccountSuppressionAttributesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       suppressedReasons: ((map['suppressedReasons'] as List).cast<String>()).input(),
     );
   }

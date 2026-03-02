@@ -28,8 +28,8 @@ class GoogleCloudDialogflowCxV3ConversationTurn {
 
   factory GoogleCloudDialogflowCxV3ConversationTurn.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ConversationTurn(
-      userInput: map['userInput'] == null ? null : (GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromMap((map['userInput'] as Map).cast<String, dynamic>())).input(),
-      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : (GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput'] as Map).cast<String, dynamic>())).input(),
+      userInput: map['userInput'] == null ? null : (GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromMap((map['userInput']! as Map).cast<String, dynamic>())).input(),
+      virtualAgentOutput: map['virtualAgentOutput'] == null ? null : (GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput.fromMap((map['virtualAgentOutput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

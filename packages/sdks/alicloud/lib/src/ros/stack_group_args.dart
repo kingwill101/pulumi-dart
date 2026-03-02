@@ -94,20 +94,20 @@ class StackGroupArgs {
 
   factory StackGroupArgs.fromMap(Map<String, dynamic> map) {
     return StackGroupArgs(
-      administrationRoleName: map['administrationRoleName'] == null ? null : (map['administrationRoleName'] as String).input(),
-      autoDeployment: map['autoDeployment'] == null ? null : (StackGroupAutoDeployment.fromMap((map['autoDeployment'] as Map).cast<String, dynamic>())).input(),
-      capabilities: map['capabilities'] == null ? null : ((map['capabilities'] as List).cast<String>()).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      executionRoleName: map['executionRoleName'] == null ? null : (map['executionRoleName'] as String).input(),
-      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<StackGroupParameter>(map['parameters'], (value) => StackGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      permissionModel: map['permissionModel'] == null ? null : (map['permissionModel'] as String).input(),
-      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId'] as String).input(),
+      administrationRoleName: map['administrationRoleName'] == null ? null : (map['administrationRoleName']! as String).input(),
+      autoDeployment: map['autoDeployment'] == null ? null : (StackGroupAutoDeployment.fromMap((map['autoDeployment']! as Map).cast<String, dynamic>())).input(),
+      capabilities: map['capabilities'] == null ? null : ((map['capabilities']! as List).cast<String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      executionRoleName: map['executionRoleName'] == null ? null : (map['executionRoleName']! as String).input(),
+      parameters: map['parameters'] == null ? null : (pulumi.Input.decodeList<StackGroupParameter>(map['parameters']!, (value) => StackGroupParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      permissionModel: map['permissionModel'] == null ? null : (map['permissionModel']! as String).input(),
+      resourceGroupId: map['resourceGroupId'] == null ? null : (map['resourceGroupId']! as String).input(),
       stackGroupName: (map['stackGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      templateBody: map['templateBody'] == null ? null : (map['templateBody'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl'] as String).input(),
-      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion'] as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      templateBody: map['templateBody'] == null ? null : (map['templateBody']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      templateUrl: map['templateUrl'] == null ? null : (map['templateUrl']! as String).input(),
+      templateVersion: map['templateVersion'] == null ? null : (map['templateVersion']! as String).input(),
     );
   }
 }

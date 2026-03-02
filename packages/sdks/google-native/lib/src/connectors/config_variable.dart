@@ -48,12 +48,12 @@ class ConfigVariable {
 
   factory ConfigVariable.fromMap(Map<String, dynamic> map) {
     return ConfigVariable(
-      boolValue: map['boolValue'] == null ? null : (map['boolValue'] as bool).input(),
-      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : (EncryptionKey.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>())).input(),
-      intValue: map['intValue'] == null ? null : (map['intValue'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      secretValue: map['secretValue'] == null ? null : (Secret.fromMap((map['secretValue'] as Map).cast<String, dynamic>())).input(),
-      stringValue: map['stringValue'] == null ? null : (map['stringValue'] as String).input(),
+      boolValue: map['boolValue'] == null ? null : (map['boolValue']! as bool).input(),
+      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : (EncryptionKey.fromMap((map['encryptionKeyValue']! as Map).cast<String, dynamic>())).input(),
+      intValue: map['intValue'] == null ? null : (map['intValue']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      secretValue: map['secretValue'] == null ? null : (Secret.fromMap((map['secretValue']! as Map).cast<String, dynamic>())).input(),
+      stringValue: map['stringValue'] == null ? null : (map['stringValue']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class GrafeasV1FileLocation {
 
   factory GrafeasV1FileLocation.fromMap(Map<String, dynamic> map) {
     return GrafeasV1FileLocation(
-      filePath: map['filePath'] == null ? null : (map['filePath'] as String).input(),
+      filePath: map['filePath'] == null ? null : (map['filePath']! as String).input(),
     );
   }
 }

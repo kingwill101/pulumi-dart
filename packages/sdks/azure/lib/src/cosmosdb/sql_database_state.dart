@@ -46,11 +46,11 @@ class SqlDatabaseState {
 
   factory SqlDatabaseState.fromMap(Map<String, dynamic> map) {
     return SqlDatabaseState(
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      autoscaleSettings: map['autoscaleSettings'] == null ? null : (SqlDatabaseAutoscaleSettings.fromMap((map['autoscaleSettings'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      autoscaleSettings: map['autoscaleSettings'] == null ? null : (SqlDatabaseAutoscaleSettings.fromMap((map['autoscaleSettings']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
     );
   }
 }

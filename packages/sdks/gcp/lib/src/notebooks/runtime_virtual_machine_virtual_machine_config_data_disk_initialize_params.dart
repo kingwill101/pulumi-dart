@@ -51,11 +51,11 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
 
   factory RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams.fromMap(Map<String, dynamic> map) {
     return RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      diskName: map['diskName'] == null ? null : (map['diskName'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      diskType: map['diskType'] == null ? null : (map['diskType'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      diskName: map['diskName'] == null ? null : (map['diskName']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      diskType: map['diskType'] == null ? null : (map['diskType']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
     );
   }
 }

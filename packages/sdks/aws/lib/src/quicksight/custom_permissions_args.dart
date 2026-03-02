@@ -47,11 +47,11 @@ class CustomPermissionsArgs {
 
   factory CustomPermissionsArgs.fromMap(Map<String, dynamic> map) {
     return CustomPermissionsArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      capabilities: (CustomPermissionsCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>())).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      capabilities: (CustomPermissionsCapabilities.fromMap((map['capabilities']! as Map).cast<String, dynamic>())).input(),
       customPermissionsName: (map['customPermissionsName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

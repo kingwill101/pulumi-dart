@@ -43,11 +43,11 @@ class OSPolicyAssignmentInstanceFilterOsconfigV1alpha {
 
   factory OSPolicyAssignmentInstanceFilterOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
     return OSPolicyAssignmentInstanceFilterOsconfigV1alpha(
-      all: map['all'] == null ? null : (map['all'] as bool).input(),
-      exclusionLabels: map['exclusionLabels'] == null ? null : (pulumi.Input.decodeList<OSPolicyAssignmentLabelSetOsconfigV1alpha>(map['exclusionLabels'], (value) => OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inclusionLabels: map['inclusionLabels'] == null ? null : (pulumi.Input.decodeList<OSPolicyAssignmentLabelSetOsconfigV1alpha>(map['inclusionLabels'], (value) => OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inventories: map['inventories'] == null ? null : (pulumi.Input.decodeList<OSPolicyAssignmentInstanceFilterInventoryOsconfigV1alpha>(map['inventories'], (value) => OSPolicyAssignmentInstanceFilterInventoryOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      osShortNames: map['osShortNames'] == null ? null : ((map['osShortNames'] as List).cast<String>()).input(),
+      all: map['all'] == null ? null : (map['all']! as bool).input(),
+      exclusionLabels: map['exclusionLabels'] == null ? null : (pulumi.Input.decodeList<OSPolicyAssignmentLabelSetOsconfigV1alpha>(map['exclusionLabels']!, (value) => OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inclusionLabels: map['inclusionLabels'] == null ? null : (pulumi.Input.decodeList<OSPolicyAssignmentLabelSetOsconfigV1alpha>(map['inclusionLabels']!, (value) => OSPolicyAssignmentLabelSetOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inventories: map['inventories'] == null ? null : (pulumi.Input.decodeList<OSPolicyAssignmentInstanceFilterInventoryOsconfigV1alpha>(map['inventories']!, (value) => OSPolicyAssignmentInstanceFilterInventoryOsconfigV1alpha.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      osShortNames: map['osShortNames'] == null ? null : ((map['osShortNames']! as List).cast<String>()).input(),
     );
   }
 }

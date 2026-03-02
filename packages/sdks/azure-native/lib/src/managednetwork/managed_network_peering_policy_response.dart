@@ -43,9 +43,9 @@ class ManagedNetworkPeeringPolicyResponse {
   factory ManagedNetworkPeeringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkPeeringPolicyResponse(
       id: (map['id'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       name: (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (ManagedNetworkPeeringPolicyPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (ManagedNetworkPeeringPolicyPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

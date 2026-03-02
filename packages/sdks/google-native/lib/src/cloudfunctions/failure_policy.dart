@@ -21,7 +21,7 @@ class FailurePolicy {
 
   factory FailurePolicy.fromMap(Map<String, dynamic> map) {
     return FailurePolicy(
-      retry: map['retry'] == null ? null : ((map['retry'] as Map).cast<String, dynamic>()).input(),
+      retry: map['retry'] == null ? null : ((map['retry']! as Map).cast<String, dynamic>()).input(),
     );
   }
 }

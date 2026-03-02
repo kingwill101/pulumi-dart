@@ -82,19 +82,19 @@ class EventDataStoreState {
 
   factory EventDataStoreState.fromMap(Map<String, dynamic> map) {
     return EventDataStoreState(
-      advancedEventSelectors: map['advancedEventSelectors'] == null ? null : (pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(map['advancedEventSelectors'], (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      billingMode: map['billingMode'] == null ? null : (map['billingMode'] as String).input(),
-      kmsKeyId: map['kmsKeyId'] == null ? null : (map['kmsKeyId'] as String).input(),
-      multiRegionEnabled: map['multiRegionEnabled'] == null ? null : (map['multiRegionEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      organizationEnabled: map['organizationEnabled'] == null ? null : (map['organizationEnabled'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      suspend: map['suspend'] == null ? null : (map['suspend'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : (map['terminationProtectionEnabled'] as bool).input(),
+      advancedEventSelectors: map['advancedEventSelectors'] == null ? null : ((pulumi.Input.decodeList<EventDataStoreAdvancedEventSelector>(map['advancedEventSelectors']!, (value) => EventDataStoreAdvancedEventSelector.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      billingMode: map['billingMode'] == null ? null : ((map['billingMode'] as String).input()).input(),
+      kmsKeyId: map['kmsKeyId'] == null ? null : ((map['kmsKeyId'] as String).input()).input(),
+      multiRegionEnabled: map['multiRegionEnabled'] == null ? null : ((map['multiRegionEnabled'] as bool).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      organizationEnabled: map['organizationEnabled'] == null ? null : ((map['organizationEnabled'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
+      suspend: map['suspend'] == null ? null : ((map['suspend'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      terminationProtectionEnabled: map['terminationProtectionEnabled'] == null ? null : ((map['terminationProtectionEnabled'] as bool).input()).input(),
     );
   }
 }

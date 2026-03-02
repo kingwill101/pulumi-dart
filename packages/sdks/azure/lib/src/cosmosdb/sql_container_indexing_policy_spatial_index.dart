@@ -26,7 +26,7 @@ class SqlContainerIndexingPolicySpatialIndex {
   factory SqlContainerIndexingPolicySpatialIndex.fromMap(Map<String, dynamic> map) {
     return SqlContainerIndexingPolicySpatialIndex(
       path: (map['path'] as String).input(),
-      types: map['types'] == null ? null : ((map['types'] as List).cast<String>()).input(),
+      types: map['types'] == null ? null : ((map['types']! as List).cast<String>()).input(),
     );
   }
 }

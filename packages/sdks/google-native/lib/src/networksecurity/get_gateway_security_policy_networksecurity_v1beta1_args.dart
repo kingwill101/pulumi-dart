@@ -33,7 +33,7 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Args {
     return GetGatewaySecurityPolicyNetworksecurityV1beta1Args(
       gatewaySecurityPolicyId: (map['gatewaySecurityPolicyId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

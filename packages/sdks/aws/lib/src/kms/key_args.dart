@@ -98,20 +98,20 @@ class KeyArgs {
 
   factory KeyArgs.fromMap(Map<String, dynamic> map) {
     return KeyArgs(
-      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : (map['bypassPolicyLockoutSafetyCheck'] as bool).input(),
-      customKeyStoreId: map['customKeyStoreId'] == null ? null : (map['customKeyStoreId'] as String).input(),
-      customerMasterKeySpec: map['customerMasterKeySpec'] == null ? null : (map['customerMasterKeySpec'] as String).input(),
-      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : (map['deletionWindowInDays'] as int).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      enableKeyRotation: map['enableKeyRotation'] == null ? null : (map['enableKeyRotation'] as bool).input(),
-      isEnabled: map['isEnabled'] == null ? null : (map['isEnabled'] as bool).input(),
-      keyUsage: map['keyUsage'] == null ? null : (map['keyUsage'] as String).input(),
-      multiRegion: map['multiRegion'] == null ? null : (map['multiRegion'] as bool).input(),
-      policy: map['policy'] == null ? null : (map['policy'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rotationPeriodInDays: map['rotationPeriodInDays'] == null ? null : (map['rotationPeriodInDays'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      xksKeyId: map['xksKeyId'] == null ? null : (map['xksKeyId'] as String).input(),
+      bypassPolicyLockoutSafetyCheck: map['bypassPolicyLockoutSafetyCheck'] == null ? null : ((map['bypassPolicyLockoutSafetyCheck'] as bool).input()).input(),
+      customKeyStoreId: map['customKeyStoreId'] == null ? null : ((map['customKeyStoreId'] as String).input()).input(),
+      customerMasterKeySpec: map['customerMasterKeySpec'] == null ? null : ((map['customerMasterKeySpec'] as String).input()).input(),
+      deletionWindowInDays: map['deletionWindowInDays'] == null ? null : ((map['deletionWindowInDays'] as int).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      enableKeyRotation: map['enableKeyRotation'] == null ? null : ((map['enableKeyRotation'] as bool).input()).input(),
+      isEnabled: map['isEnabled'] == null ? null : ((map['isEnabled'] as bool).input()).input(),
+      keyUsage: map['keyUsage'] == null ? null : ((map['keyUsage'] as String).input()).input(),
+      multiRegion: map['multiRegion'] == null ? null : ((map['multiRegion'] as bool).input()).input(),
+      policy: map['policy'] == null ? null : ((map['policy'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rotationPeriodInDays: map['rotationPeriodInDays'] == null ? null : ((map['rotationPeriodInDays'] as int).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      xksKeyId: map['xksKeyId'] == null ? null : ((map['xksKeyId'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class SshProfile {
 
   factory SshProfile.fromMap(Map<String, dynamic> map) {
     return SshProfile(
-      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['publicKeys'], (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      publicKeys: map['publicKeys'] == null ? null : (pulumi.Input.decodeList<SshPublicKey>(map['publicKeys']!, (value) => SshPublicKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

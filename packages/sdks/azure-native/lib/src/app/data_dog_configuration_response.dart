@@ -26,8 +26,8 @@ class DataDogConfigurationResponse {
 
   factory DataDogConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return DataDogConfigurationResponse(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      site: map['site'] == null ? null : (map['site'] as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      site: map['site'] == null ? null : (map['site']! as String).input(),
     );
   }
 }

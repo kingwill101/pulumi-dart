@@ -27,7 +27,7 @@ class GoogleCloudContentwarehouseV1EnumTypeOptions {
   factory GoogleCloudContentwarehouseV1EnumTypeOptions.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1EnumTypeOptions(
       possibleValues: ((map['possibleValues'] as List).cast<String>()).input(),
-      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : (map['validationCheckDisabled'] as bool).input(),
+      validationCheckDisabled: map['validationCheckDisabled'] == null ? null : (map['validationCheckDisabled']! as bool).input(),
     );
   }
 }

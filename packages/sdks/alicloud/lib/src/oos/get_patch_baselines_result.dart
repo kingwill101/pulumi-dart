@@ -55,14 +55,14 @@ class GetPatchBaselinesResult {
   factory GetPatchBaselinesResult.fromMap(Map<String, dynamic> map) {
     return GetPatchBaselinesResult(
       baselines: pulumi.Input.decodeList<GetPatchBaselinesBaseline>(map['baselines'], (value) => GetPatchBaselinesBaseline.fromMap((value as Map).cast<String, dynamic>())),
-      enableDetails: map['enableDetails'] == null ? null : map['enableDetails'] as bool,
+      enableDetails: map['enableDetails'] == null ? null : map['enableDetails']! as bool,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      operationSystem: map['operationSystem'] == null ? null : map['operationSystem'] as String,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      shareType: map['shareType'] == null ? null : map['shareType'] as String,
+      operationSystem: map['operationSystem'] == null ? null : map['operationSystem']! as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      shareType: map['shareType'] == null ? null : map['shareType']! as String,
     );
   }
 }

@@ -21,7 +21,7 @@ class VirtualMachineNetworkInterfaceDnsSettingsConfiguration {
 
   factory VirtualMachineNetworkInterfaceDnsSettingsConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineNetworkInterfaceDnsSettingsConfiguration(
-      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers'] as List).cast<String>()).input(),
+      dnsServers: map['dnsServers'] == null ? null : ((map['dnsServers']! as List).cast<String>()).input(),
     );
   }
 }

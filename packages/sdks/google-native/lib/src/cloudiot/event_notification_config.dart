@@ -26,8 +26,8 @@ class EventNotificationConfig {
 
   factory EventNotificationConfig.fromMap(Map<String, dynamic> map) {
     return EventNotificationConfig(
-      pubsubTopicName: map['pubsubTopicName'] == null ? null : (map['pubsubTopicName'] as String).input(),
-      subfolderMatches: map['subfolderMatches'] == null ? null : (map['subfolderMatches'] as String).input(),
+      pubsubTopicName: map['pubsubTopicName'] == null ? null : (map['pubsubTopicName']! as String).input(),
+      subfolderMatches: map['subfolderMatches'] == null ? null : (map['subfolderMatches']! as String).input(),
     );
   }
 }

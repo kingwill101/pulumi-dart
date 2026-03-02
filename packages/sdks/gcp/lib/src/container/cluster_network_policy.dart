@@ -26,7 +26,7 @@ class ClusterNetworkPolicy {
   factory ClusterNetworkPolicy.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkPolicy(
       enabled: (map['enabled'] as bool).input(),
-      provider: map['provider'] == null ? null : (map['provider'] as String).input(),
+      provider: map['provider'] == null ? null : (map['provider']! as String).input(),
     );
   }
 }

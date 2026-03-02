@@ -27,8 +27,8 @@ class PolicyControllerPolicyContentSpecGkehubV1alpha {
 
   factory PolicyControllerPolicyContentSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return PolicyControllerPolicyContentSpecGkehubV1alpha(
-      bundles: map['bundles'] == null ? null : ((map['bundles'] as Map).cast<String, String>()).input(),
-      templateLibrary: map['templateLibrary'] == null ? null : (PolicyControllerTemplateLibraryConfigGkehubV1alpha.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>())).input(),
+      bundles: map['bundles'] == null ? null : ((map['bundles']! as Map).cast<String, String>()).input(),
+      templateLibrary: map['templateLibrary'] == null ? null : (PolicyControllerTemplateLibraryConfigGkehubV1alpha.fromMap((map['templateLibrary']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

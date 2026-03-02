@@ -49,11 +49,11 @@ class ConnectionCloudSpanner {
   factory ConnectionCloudSpanner.fromMap(Map<String, dynamic> map) {
     return ConnectionCloudSpanner(
       database: (map['database'] as String).input(),
-      databaseRole: map['databaseRole'] == null ? null : (map['databaseRole'] as String).input(),
-      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism'] as int).input(),
-      useDataBoost: map['useDataBoost'] == null ? null : (map['useDataBoost'] as bool).input(),
-      useParallelism: map['useParallelism'] == null ? null : (map['useParallelism'] as bool).input(),
-      useServerlessAnalytics: map['useServerlessAnalytics'] == null ? null : (map['useServerlessAnalytics'] as bool).input(),
+      databaseRole: map['databaseRole'] == null ? null : (map['databaseRole']! as String).input(),
+      maxParallelism: map['maxParallelism'] == null ? null : (map['maxParallelism']! as int).input(),
+      useDataBoost: map['useDataBoost'] == null ? null : (map['useDataBoost']! as bool).input(),
+      useParallelism: map['useParallelism'] == null ? null : (map['useParallelism']! as bool).input(),
+      useServerlessAnalytics: map['useServerlessAnalytics'] == null ? null : (map['useServerlessAnalytics']! as bool).input(),
     );
   }
 }

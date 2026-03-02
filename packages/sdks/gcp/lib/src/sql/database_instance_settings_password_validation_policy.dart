@@ -45,12 +45,12 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
 
   factory DatabaseInstanceSettingsPasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsPasswordValidationPolicy(
-      complexity: map['complexity'] == null ? null : (map['complexity'] as String).input(),
-      disallowUsernameSubstring: map['disallowUsernameSubstring'] == null ? null : (map['disallowUsernameSubstring'] as bool).input(),
+      complexity: map['complexity'] == null ? null : (map['complexity']! as String).input(),
+      disallowUsernameSubstring: map['disallowUsernameSubstring'] == null ? null : (map['disallowUsernameSubstring']! as bool).input(),
       enablePasswordPolicy: (map['enablePasswordPolicy'] as bool).input(),
-      minLength: map['minLength'] == null ? null : (map['minLength'] as int).input(),
-      passwordChangeInterval: map['passwordChangeInterval'] == null ? null : (map['passwordChangeInterval'] as String).input(),
-      reuseInterval: map['reuseInterval'] == null ? null : (map['reuseInterval'] as int).input(),
+      minLength: map['minLength'] == null ? null : (map['minLength']! as int).input(),
+      passwordChangeInterval: map['passwordChangeInterval'] == null ? null : (map['passwordChangeInterval']! as String).input(),
+      reuseInterval: map['reuseInterval'] == null ? null : (map['reuseInterval']! as int).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class ChannelAlexaState {
 
   factory ChannelAlexaState.fromMap(Map<String, dynamic> map) {
     return ChannelAlexaState(
-      botName: map['botName'] == null ? null : (map['botName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      skillId: map['skillId'] == null ? null : (map['skillId'] as String).input(),
+      botName: map['botName'] == null ? null : (map['botName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      skillId: map['skillId'] == null ? null : (map['skillId']! as String).input(),
     );
   }
 }

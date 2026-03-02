@@ -32,9 +32,9 @@ class AccessKeyInfoBaseResponse {
 
   factory AccessKeyInfoBaseResponse.fromMap(Map<String, dynamic> map) {
     return AccessKeyInfoBaseResponse(
-      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authMode: map['authMode'] == null ? null : (map['authMode']! as String).input(),
       authType: (map['authType'] as String).input(),
-      permissions: map['permissions'] == null ? null : ((map['permissions'] as List).cast<String>()).input(),
+      permissions: map['permissions'] == null ? null : ((map['permissions']! as List).cast<String>()).input(),
     );
   }
 }

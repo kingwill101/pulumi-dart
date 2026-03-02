@@ -51,13 +51,13 @@ class GatewayCorsPropertiesResponse {
 
   factory GatewayCorsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayCorsPropertiesResponse(
-      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials'] as bool).input(),
-      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders'] as List).cast<String>()).input(),
-      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods'] as List).cast<String>()).input(),
-      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : ((map['allowedOriginPatterns'] as List).cast<String>()).input(),
-      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins'] as List).cast<String>()).input(),
-      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders'] as List).cast<String>()).input(),
-      maxAge: map['maxAge'] == null ? null : (map['maxAge'] as int).input(),
+      allowCredentials: map['allowCredentials'] == null ? null : (map['allowCredentials']! as bool).input(),
+      allowedHeaders: map['allowedHeaders'] == null ? null : ((map['allowedHeaders']! as List).cast<String>()).input(),
+      allowedMethods: map['allowedMethods'] == null ? null : ((map['allowedMethods']! as List).cast<String>()).input(),
+      allowedOriginPatterns: map['allowedOriginPatterns'] == null ? null : ((map['allowedOriginPatterns']! as List).cast<String>()).input(),
+      allowedOrigins: map['allowedOrigins'] == null ? null : ((map['allowedOrigins']! as List).cast<String>()).input(),
+      exposedHeaders: map['exposedHeaders'] == null ? null : ((map['exposedHeaders']! as List).cast<String>()).input(),
+      maxAge: map['maxAge'] == null ? null : (map['maxAge']! as int).input(),
     );
   }
 }

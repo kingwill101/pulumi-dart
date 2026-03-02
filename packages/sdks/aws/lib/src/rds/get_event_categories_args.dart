@@ -29,8 +29,8 @@ class GetEventCategoriesArgs {
 
   factory GetEventCategoriesArgs.fromMap(Map<String, dynamic> map) {
     return GetEventCategoriesArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sourceType: map['sourceType'] == null ? null : (map['sourceType'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sourceType: map['sourceType'] == null ? null : ((map['sourceType'] as String).input()).input(),
     );
   }
 }

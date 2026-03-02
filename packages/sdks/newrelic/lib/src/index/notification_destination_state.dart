@@ -81,18 +81,18 @@ class NotificationDestinationState {
 
   factory NotificationDestinationState.fromMap(Map<String, dynamic> map) {
     return NotificationDestinationState(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      authBasic: map['authBasic'] == null ? null : (NotificationDestinationAuthBasic.fromMap((map['authBasic'] as Map).cast<String, dynamic>())).input(),
-      authCustomHeaders: map['authCustomHeaders'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationAuthCustomHeader>(map['authCustomHeaders'], (value) => NotificationDestinationAuthCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      authToken: map['authToken'] == null ? null : (NotificationDestinationAuthToken.fromMap((map['authToken'] as Map).cast<String, dynamic>())).input(),
-      guid: map['guid'] == null ? null : (map['guid'] as String).input(),
-      lastSent: map['lastSent'] == null ? null : (map['lastSent'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationProperty>(map['properties'], (value) => NotificationDestinationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      secureUrl: map['secureUrl'] == null ? null : (NotificationDestinationSecureUrl.fromMap((map['secureUrl'] as Map).cast<String, dynamic>())).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
+      active: map['active'] == null ? null : (map['active']! as bool).input(),
+      authBasic: map['authBasic'] == null ? null : (NotificationDestinationAuthBasic.fromMap((map['authBasic']! as Map).cast<String, dynamic>())).input(),
+      authCustomHeaders: map['authCustomHeaders'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationAuthCustomHeader>(map['authCustomHeaders']!, (value) => NotificationDestinationAuthCustomHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      authToken: map['authToken'] == null ? null : (NotificationDestinationAuthToken.fromMap((map['authToken']! as Map).cast<String, dynamic>())).input(),
+      guid: map['guid'] == null ? null : (map['guid']! as String).input(),
+      lastSent: map['lastSent'] == null ? null : (map['lastSent']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (pulumi.Input.decodeList<NotificationDestinationProperty>(map['properties']!, (value) => NotificationDestinationProperty.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      secureUrl: map['secureUrl'] == null ? null : (NotificationDestinationSecureUrl.fromMap((map['secureUrl']! as Map).cast<String, dynamic>())).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

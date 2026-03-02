@@ -85,18 +85,18 @@ class NetworkAclRuleArgs {
 
   factory NetworkAclRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkAclRuleArgs(
-      cidrBlock: map['cidrBlock'] == null ? null : (map['cidrBlock'] as String).input(),
-      egress: map['egress'] == null ? null : (map['egress'] as bool).input(),
-      fromPort: map['fromPort'] == null ? null : (map['fromPort'] as int).input(),
-      icmpCode: map['icmpCode'] == null ? null : (map['icmpCode'] as int).input(),
-      icmpType: map['icmpType'] == null ? null : (map['icmpType'] as int).input(),
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : (map['ipv6CidrBlock'] as String).input(),
+      cidrBlock: map['cidrBlock'] == null ? null : ((map['cidrBlock'] as String).input()).input(),
+      egress: map['egress'] == null ? null : ((map['egress'] as bool).input()).input(),
+      fromPort: map['fromPort'] == null ? null : ((map['fromPort'] as int).input()).input(),
+      icmpCode: map['icmpCode'] == null ? null : ((map['icmpCode'] as int).input()).input(),
+      icmpType: map['icmpType'] == null ? null : ((map['icmpType'] as int).input()).input(),
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : ((map['ipv6CidrBlock'] as String).input()).input(),
       networkAclId: (map['networkAclId'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       ruleAction: (map['ruleAction'] as String).input(),
       ruleNumber: (map['ruleNumber'] as int).input(),
-      toPort: map['toPort'] == null ? null : (map['toPort'] as int).input(),
+      toPort: map['toPort'] == null ? null : ((map['toPort'] as int).input()).input(),
     );
   }
 }

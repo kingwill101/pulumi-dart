@@ -21,7 +21,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
 
   factory V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector(
-      includedLocations: map['includedLocations'] == null ? null : ((map['includedLocations'] as List).cast<String>()).input(),
+      includedLocations: map['includedLocations'] == null ? null : ((map['includedLocations']! as List).cast<String>()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ClusterNodeConfigWindowsNodeConfig {
 
   factory ClusterNodeConfigWindowsNodeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigWindowsNodeConfig(
-      osversion: map['osversion'] == null ? null : (map['osversion'] as String).input(),
+      osversion: map['osversion'] == null ? null : (map['osversion']! as String).input(),
     );
   }
 }

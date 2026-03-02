@@ -89,20 +89,20 @@ class CollaborationState {
 
   factory CollaborationState.fromMap(Map<String, dynamic> map) {
     return CollaborationState(
-      analyticsEngine: map['analyticsEngine'] == null ? null : (map['analyticsEngine'] as String).input(),
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      creatorDisplayName: map['creatorDisplayName'] == null ? null : (map['creatorDisplayName'] as String).input(),
-      creatorMemberAbilities: map['creatorMemberAbilities'] == null ? null : ((map['creatorMemberAbilities'] as List).cast<String>()).input(),
-      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : (CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      members: map['members'] == null ? null : (pulumi.Input.decodeList<CollaborationMember>(map['members'], (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      queryLogStatus: map['queryLogStatus'] == null ? null : (map['queryLogStatus'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      analyticsEngine: map['analyticsEngine'] == null ? null : ((map['analyticsEngine'] as String).input()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      createTime: map['createTime'] == null ? null : ((map['createTime'] as String).input()).input(),
+      creatorDisplayName: map['creatorDisplayName'] == null ? null : ((map['creatorDisplayName'] as String).input()).input(),
+      creatorMemberAbilities: map['creatorMemberAbilities'] == null ? null : (((map['creatorMemberAbilities'] as List).cast<String>()).input()).input(),
+      dataEncryptionMetadata: map['dataEncryptionMetadata'] == null ? null : ((CollaborationDataEncryptionMetadata.fromMap((map['dataEncryptionMetadata']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      members: map['members'] == null ? null : ((pulumi.Input.decodeList<CollaborationMember>(map['members']!, (value) => CollaborationMember.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      queryLogStatus: map['queryLogStatus'] == null ? null : ((map['queryLogStatus'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      updateTime: map['updateTime'] == null ? null : ((map['updateTime'] as String).input()).input(),
     );
   }
 }

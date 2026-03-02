@@ -31,9 +31,9 @@ class PipelineExternalComputeScaleProperties {
 
   factory PipelineExternalComputeScaleProperties.fromMap(Map<String, dynamic> map) {
     return PipelineExternalComputeScaleProperties(
-      numberOfExternalNodes: map['numberOfExternalNodes'] == null ? null : (map['numberOfExternalNodes'] as int).input(),
-      numberOfPipelineNodes: map['numberOfPipelineNodes'] == null ? null : (map['numberOfPipelineNodes'] as int).input(),
-      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive'] as int).input(),
+      numberOfExternalNodes: map['numberOfExternalNodes'] == null ? null : (map['numberOfExternalNodes']! as int).input(),
+      numberOfPipelineNodes: map['numberOfPipelineNodes'] == null ? null : (map['numberOfPipelineNodes']! as int).input(),
+      timeToLive: map['timeToLive'] == null ? null : (map['timeToLive']! as int).input(),
     );
   }
 }

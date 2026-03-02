@@ -69,12 +69,12 @@ class GetTokenResult {
     return GetTokenResult(
       azureApiVersion: map['azureApiVersion'] as String,
       creationDate: map['creationDate'] as String,
-      credentials: map['credentials'] == null ? null : TokenCredentialsPropertiesResponse.fromMap((map['credentials'] as Map).cast<String, dynamic>()),
+      credentials: map['credentials'] == null ? null : TokenCredentialsPropertiesResponse.fromMap((map['credentials']! as Map).cast<String, dynamic>()),
       id: map['id'] as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      scopeMapId: map['scopeMapId'] == null ? null : map['scopeMapId'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
+      scopeMapId: map['scopeMapId'] == null ? null : map['scopeMapId']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
       systemData: SystemDataResponse.fromMap((map['systemData'] as Map).cast<String, dynamic>()),
       type: map['type'] as String,
     );

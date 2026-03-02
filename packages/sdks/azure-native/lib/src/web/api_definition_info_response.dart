@@ -21,7 +21,7 @@ class ApiDefinitionInfoResponse {
 
   factory ApiDefinitionInfoResponse.fromMap(Map<String, dynamic> map) {
     return ApiDefinitionInfoResponse(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

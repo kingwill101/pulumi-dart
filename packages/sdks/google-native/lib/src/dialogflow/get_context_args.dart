@@ -46,7 +46,7 @@ class GetContextArgs {
       contextId: (map['contextId'] as String).input(),
       environmentId: (map['environmentId'] as String).input(),
       location: (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       sessionId: (map['sessionId'] as String).input(),
       userId: (map['userId'] as String).input(),
     );

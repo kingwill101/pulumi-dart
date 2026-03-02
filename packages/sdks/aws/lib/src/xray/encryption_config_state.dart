@@ -31,9 +31,9 @@ class EncryptionConfigState {
 
   factory EncryptionConfigState.fromMap(Map<String, dynamic> map) {
     return EncryptionConfigState(
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      keyId: map['keyId'] == null ? null : ((map['keyId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

@@ -34,7 +34,7 @@ class ApiKeyArgs {
 
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       scope: (map['scope'] as String).input(),
       tokenDomains: ((map['tokenDomains'] as List).cast<String>()).input(),
     );

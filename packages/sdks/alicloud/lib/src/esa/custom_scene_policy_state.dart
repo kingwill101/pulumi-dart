@@ -48,12 +48,12 @@ class CustomScenePolicyState {
 
   factory CustomScenePolicyState.fromMap(Map<String, dynamic> map) {
     return CustomScenePolicyState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      customScenePolicyName: map['customScenePolicyName'] == null ? null : (map['customScenePolicyName'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
-      siteIds: map['siteIds'] == null ? null : (map['siteIds'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      template: map['template'] == null ? null : (map['template'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      customScenePolicyName: map['customScenePolicyName'] == null ? null : (map['customScenePolicyName']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
+      siteIds: map['siteIds'] == null ? null : (map['siteIds']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      template: map['template'] == null ? null : (map['template']! as String).input(),
     );
   }
 }

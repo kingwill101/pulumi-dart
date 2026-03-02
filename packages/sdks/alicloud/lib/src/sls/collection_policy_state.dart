@@ -68,15 +68,15 @@ class CollectionPolicyState {
 
   factory CollectionPolicyState.fromMap(Map<String, dynamic> map) {
     return CollectionPolicyState(
-      centralizeConfig: map['centralizeConfig'] == null ? null : (CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig'] as Map).cast<String, dynamic>())).input(),
-      centralizeEnabled: map['centralizeEnabled'] == null ? null : (map['centralizeEnabled'] as bool).input(),
-      dataCode: map['dataCode'] == null ? null : (map['dataCode'] as String).input(),
-      dataConfig: map['dataConfig'] == null ? null : (CollectionPolicyDataConfig.fromMap((map['dataConfig'] as Map).cast<String, dynamic>())).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      policyConfig: map['policyConfig'] == null ? null : (CollectionPolicyPolicyConfig.fromMap((map['policyConfig'] as Map).cast<String, dynamic>())).input(),
-      policyName: map['policyName'] == null ? null : (map['policyName'] as String).input(),
-      productCode: map['productCode'] == null ? null : (map['productCode'] as String).input(),
-      resourceDirectory: map['resourceDirectory'] == null ? null : (CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory'] as Map).cast<String, dynamic>())).input(),
+      centralizeConfig: map['centralizeConfig'] == null ? null : (CollectionPolicyCentralizeConfig.fromMap((map['centralizeConfig']! as Map).cast<String, dynamic>())).input(),
+      centralizeEnabled: map['centralizeEnabled'] == null ? null : (map['centralizeEnabled']! as bool).input(),
+      dataCode: map['dataCode'] == null ? null : (map['dataCode']! as String).input(),
+      dataConfig: map['dataConfig'] == null ? null : (CollectionPolicyDataConfig.fromMap((map['dataConfig']! as Map).cast<String, dynamic>())).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      policyConfig: map['policyConfig'] == null ? null : (CollectionPolicyPolicyConfig.fromMap((map['policyConfig']! as Map).cast<String, dynamic>())).input(),
+      policyName: map['policyName'] == null ? null : (map['policyName']! as String).input(),
+      productCode: map['productCode'] == null ? null : (map['productCode']! as String).input(),
+      resourceDirectory: map['resourceDirectory'] == null ? null : (CollectionPolicyResourceDirectory.fromMap((map['resourceDirectory']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

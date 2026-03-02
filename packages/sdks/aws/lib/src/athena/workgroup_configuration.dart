@@ -81,18 +81,18 @@ class WorkgroupConfiguration {
 
   factory WorkgroupConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfiguration(
-      bytesScannedCutoffPerQuery: map['bytesScannedCutoffPerQuery'] == null ? null : (map['bytesScannedCutoffPerQuery'] as int).input(),
-      customerContentEncryptionConfiguration: map['customerContentEncryptionConfiguration'] == null ? null : (WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap((map['customerContentEncryptionConfiguration'] as Map).cast<String, dynamic>())).input(),
-      enableMinimumEncryptionConfiguration: map['enableMinimumEncryptionConfiguration'] == null ? null : (map['enableMinimumEncryptionConfiguration'] as bool).input(),
-      enforceWorkgroupConfiguration: map['enforceWorkgroupConfiguration'] == null ? null : (map['enforceWorkgroupConfiguration'] as bool).input(),
-      engineVersion: map['engineVersion'] == null ? null : (WorkgroupConfigurationEngineVersion.fromMap((map['engineVersion'] as Map).cast<String, dynamic>())).input(),
-      executionRole: map['executionRole'] == null ? null : (map['executionRole'] as String).input(),
-      identityCenterConfiguration: map['identityCenterConfiguration'] == null ? null : (WorkgroupConfigurationIdentityCenterConfiguration.fromMap((map['identityCenterConfiguration'] as Map).cast<String, dynamic>())).input(),
-      managedQueryResultsConfiguration: map['managedQueryResultsConfiguration'] == null ? null : (WorkgroupConfigurationManagedQueryResultsConfiguration.fromMap((map['managedQueryResultsConfiguration'] as Map).cast<String, dynamic>())).input(),
-      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : (WorkgroupConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration'] as Map).cast<String, dynamic>())).input(),
-      publishCloudwatchMetricsEnabled: map['publishCloudwatchMetricsEnabled'] == null ? null : (map['publishCloudwatchMetricsEnabled'] as bool).input(),
-      requesterPaysEnabled: map['requesterPaysEnabled'] == null ? null : (map['requesterPaysEnabled'] as bool).input(),
-      resultConfiguration: map['resultConfiguration'] == null ? null : (WorkgroupConfigurationResultConfiguration.fromMap((map['resultConfiguration'] as Map).cast<String, dynamic>())).input(),
+      bytesScannedCutoffPerQuery: map['bytesScannedCutoffPerQuery'] == null ? null : ((map['bytesScannedCutoffPerQuery'] as int).input()).input(),
+      customerContentEncryptionConfiguration: map['customerContentEncryptionConfiguration'] == null ? null : ((WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap((map['customerContentEncryptionConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      enableMinimumEncryptionConfiguration: map['enableMinimumEncryptionConfiguration'] == null ? null : ((map['enableMinimumEncryptionConfiguration'] as bool).input()).input(),
+      enforceWorkgroupConfiguration: map['enforceWorkgroupConfiguration'] == null ? null : ((map['enforceWorkgroupConfiguration'] as bool).input()).input(),
+      engineVersion: map['engineVersion'] == null ? null : ((WorkgroupConfigurationEngineVersion.fromMap((map['engineVersion']! as Map).cast<String, dynamic>())).input()).input(),
+      executionRole: map['executionRole'] == null ? null : ((map['executionRole'] as String).input()).input(),
+      identityCenterConfiguration: map['identityCenterConfiguration'] == null ? null : ((WorkgroupConfigurationIdentityCenterConfiguration.fromMap((map['identityCenterConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      managedQueryResultsConfiguration: map['managedQueryResultsConfiguration'] == null ? null : ((WorkgroupConfigurationManagedQueryResultsConfiguration.fromMap((map['managedQueryResultsConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      monitoringConfiguration: map['monitoringConfiguration'] == null ? null : ((WorkgroupConfigurationMonitoringConfiguration.fromMap((map['monitoringConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      publishCloudwatchMetricsEnabled: map['publishCloudwatchMetricsEnabled'] == null ? null : ((map['publishCloudwatchMetricsEnabled'] as bool).input()).input(),
+      requesterPaysEnabled: map['requesterPaysEnabled'] == null ? null : ((map['requesterPaysEnabled'] as bool).input()).input(),
+      resultConfiguration: map['resultConfiguration'] == null ? null : ((WorkgroupConfigurationResultConfiguration.fromMap((map['resultConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -107,23 +107,23 @@ class InstanceArgs {
 
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      availabilityType: map['availabilityType'] == null ? null : (InstanceAvailabilityType.fromValue(map['availabilityType'] as String)).input(),
-      clientConnectionConfig: map['clientConnectionConfig'] == null ? null : (ClientConnectionConfig.fromMap((map['clientConnectionConfig'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      availabilityType: map['availabilityType'] == null ? null : (InstanceAvailabilityType.fromValue(map['availabilityType']! as String)).input(),
+      clientConnectionConfig: map['clientConnectionConfig'] == null ? null : (ClientConnectionConfig.fromMap((map['clientConnectionConfig']! as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
-      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags'] as Map).cast<String, String>()).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      gceZone: map['gceZone'] == null ? null : (map['gceZone'] as String).input(),
+      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags']! as Map).cast<String, String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      gceZone: map['gceZone'] == null ? null : (map['gceZone']! as String).input(),
       instanceId: (map['instanceId'] as String).input(),
       instanceType: (InstanceInstanceType.fromValue(map['instanceType'] as String)).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      machineConfig: map['machineConfig'] == null ? null : (MachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      queryInsightsConfig: map['queryInsightsConfig'] == null ? null : (QueryInsightsInstanceConfig.fromMap((map['queryInsightsConfig'] as Map).cast<String, dynamic>())).input(),
-      readPoolConfig: map['readPoolConfig'] == null ? null : (ReadPoolConfig.fromMap((map['readPoolConfig'] as Map).cast<String, dynamic>())).input(),
-      requestId: map['requestId'] == null ? null : (map['requestId'] as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      machineConfig: map['machineConfig'] == null ? null : (MachineConfig.fromMap((map['machineConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      queryInsightsConfig: map['queryInsightsConfig'] == null ? null : (QueryInsightsInstanceConfig.fromMap((map['queryInsightsConfig']! as Map).cast<String, dynamic>())).input(),
+      readPoolConfig: map['readPoolConfig'] == null ? null : (ReadPoolConfig.fromMap((map['readPoolConfig']! as Map).cast<String, dynamic>())).input(),
+      requestId: map['requestId'] == null ? null : (map['requestId']! as String).input(),
     );
   }
 }

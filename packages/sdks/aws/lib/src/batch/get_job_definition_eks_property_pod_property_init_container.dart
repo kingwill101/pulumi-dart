@@ -66,13 +66,13 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainer {
     return GetJobDefinitionEksPropertyPodPropertyInitContainer(
       args: ((map['args'] as List).cast<String>()).input(),
       commands: ((map['commands'] as List).cast<String>()).input(),
-      envs: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerEnv>(map['envs'], (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      envs: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerEnv>(map['envs']!, (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerEnv.fromMap((value as Map).cast<String, dynamic>()))).input(),
       image: (map['image'] as String).input(),
       imagePullPolicy: (map['imagePullPolicy'] as String).input(),
       name: (map['name'] as String).input(),
-      resources: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerResource>(map['resources'], (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      securityContexts: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerSecurityContext>(map['securityContexts'], (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerSecurityContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      volumeMounts: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount>(map['volumeMounts'], (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resources: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerResource>(map['resources']!, (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerResource.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      securityContexts: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerSecurityContext>(map['securityContexts']!, (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerSecurityContext.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      volumeMounts: (pulumi.Input.decodeList<GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount>(map['volumeMounts']!, (value) => GetJobDefinitionEksPropertyPodPropertyInitContainerVolumeMount.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -56,14 +56,14 @@ class ProtectionGroupState {
 
   factory ProtectionGroupState.fromMap(Map<String, dynamic> map) {
     return ProtectionGroupState(
-      aggregation: map['aggregation'] == null ? null : (map['aggregation'] as String).input(),
-      members: map['members'] == null ? null : ((map['members'] as List).cast<String>()).input(),
-      pattern: map['pattern'] == null ? null : (map['pattern'] as String).input(),
-      protectionGroupArn: map['protectionGroupArn'] == null ? null : (map['protectionGroupArn'] as String).input(),
-      protectionGroupId: map['protectionGroupId'] == null ? null : (map['protectionGroupId'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      aggregation: map['aggregation'] == null ? null : ((map['aggregation'] as String).input()).input(),
+      members: map['members'] == null ? null : (((map['members'] as List).cast<String>()).input()).input(),
+      pattern: map['pattern'] == null ? null : ((map['pattern'] as String).input()).input(),
+      protectionGroupArn: map['protectionGroupArn'] == null ? null : ((map['protectionGroupArn'] as String).input()).input(),
+      protectionGroupId: map['protectionGroupId'] == null ? null : ((map['protectionGroupId'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

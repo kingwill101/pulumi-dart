@@ -58,14 +58,14 @@ class RampUpRule {
 
   factory RampUpRule.fromMap(Map<String, dynamic> map) {
     return RampUpRule(
-      actionHostName: map['actionHostName'] == null ? null : (map['actionHostName'] as String).input(),
-      changeDecisionCallbackUrl: map['changeDecisionCallbackUrl'] == null ? null : (map['changeDecisionCallbackUrl'] as String).input(),
-      changeIntervalInMinutes: map['changeIntervalInMinutes'] == null ? null : (map['changeIntervalInMinutes'] as int).input(),
-      changeStep: map['changeStep'] == null ? null : (map['changeStep'] as double).input(),
-      maxReroutePercentage: map['maxReroutePercentage'] == null ? null : (map['maxReroutePercentage'] as double).input(),
-      minReroutePercentage: map['minReroutePercentage'] == null ? null : (map['minReroutePercentage'] as double).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reroutePercentage: map['reroutePercentage'] == null ? null : (map['reroutePercentage'] as double).input(),
+      actionHostName: map['actionHostName'] == null ? null : (map['actionHostName']! as String).input(),
+      changeDecisionCallbackUrl: map['changeDecisionCallbackUrl'] == null ? null : (map['changeDecisionCallbackUrl']! as String).input(),
+      changeIntervalInMinutes: map['changeIntervalInMinutes'] == null ? null : (map['changeIntervalInMinutes']! as int).input(),
+      changeStep: map['changeStep'] == null ? null : (map['changeStep']! as double).input(),
+      maxReroutePercentage: map['maxReroutePercentage'] == null ? null : (map['maxReroutePercentage']! as double).input(),
+      minReroutePercentage: map['minReroutePercentage'] == null ? null : (map['minReroutePercentage']! as double).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reroutePercentage: map['reroutePercentage'] == null ? null : (map['reroutePercentage']! as double).input(),
     );
   }
 }

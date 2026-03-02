@@ -36,10 +36,10 @@ class PromoteReleaseRule {
 
   factory PromoteReleaseRule.fromMap(Map<String, dynamic> map) {
     return PromoteReleaseRule(
-      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase'] as String).input(),
-      destinationTargetId: map['destinationTargetId'] == null ? null : (map['destinationTargetId'] as String).input(),
+      destinationPhase: map['destinationPhase'] == null ? null : (map['destinationPhase']! as String).input(),
+      destinationTargetId: map['destinationTargetId'] == null ? null : (map['destinationTargetId']! as String).input(),
       id: (map['id'] as String).input(),
-      wait: map['wait'] == null ? null : (map['wait'] as String).input(),
+      wait: map['wait'] == null ? null : (map['wait']! as String).input(),
     );
   }
 }

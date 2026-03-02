@@ -22,7 +22,7 @@ class AmlFilesystemHsm {
 
   factory AmlFilesystemHsm.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemHsm(
-      settings: map['settings'] == null ? null : (AmlFilesystemHsmSettings.fromMap((map['settings'] as Map).cast<String, dynamic>())).input(),
+      settings: map['settings'] == null ? null : (AmlFilesystemHsmSettings.fromMap((map['settings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

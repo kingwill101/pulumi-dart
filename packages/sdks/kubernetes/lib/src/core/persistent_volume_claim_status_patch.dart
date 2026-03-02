@@ -98,15 +98,15 @@ class PersistentVolumeClaimStatusPatch {
 
   factory PersistentVolumeClaimStatusPatch.fromMap(Map<String, dynamic> map) {
     return PersistentVolumeClaimStatusPatch(
-      accessModes: map['accessModes'] == null ? null : ((map['accessModes'] as List).cast<String>()).input(),
-      allocatedResourceStatuses: map['allocatedResourceStatuses'] == null ? null : ((map['allocatedResourceStatuses'] as Map).cast<String, String>()).input(),
-      allocatedResources: map['allocatedResources'] == null ? null : ((map['allocatedResources'] as Map).cast<String, String>()).input(),
-      capacity: map['capacity'] == null ? null : ((map['capacity'] as Map).cast<String, String>()).input(),
-      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaimConditionPatch>(map['conditions'], (value) => PersistentVolumeClaimConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      currentVolumeAttributesClassName: map['currentVolumeAttributesClassName'] == null ? null : (map['currentVolumeAttributesClassName'] as String).input(),
-      modifyVolumeStatus: map['modifyVolumeStatus'] == null ? null : (ModifyVolumeStatusPatch.fromMap((map['modifyVolumeStatus'] as Map).cast<String, dynamic>())).input(),
-      phase: map['phase'] == null ? null : (map['phase'] as String).input(),
-      resizeStatus: map['resizeStatus'] == null ? null : (map['resizeStatus'] as String).input(),
+      accessModes: map['accessModes'] == null ? null : ((map['accessModes']! as List).cast<String>()).input(),
+      allocatedResourceStatuses: map['allocatedResourceStatuses'] == null ? null : ((map['allocatedResourceStatuses']! as Map).cast<String, String>()).input(),
+      allocatedResources: map['allocatedResources'] == null ? null : ((map['allocatedResources']! as Map).cast<String, String>()).input(),
+      capacity: map['capacity'] == null ? null : ((map['capacity']! as Map).cast<String, String>()).input(),
+      conditions: map['conditions'] == null ? null : (pulumi.Input.decodeList<PersistentVolumeClaimConditionPatch>(map['conditions']!, (value) => PersistentVolumeClaimConditionPatch.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      currentVolumeAttributesClassName: map['currentVolumeAttributesClassName'] == null ? null : (map['currentVolumeAttributesClassName']! as String).input(),
+      modifyVolumeStatus: map['modifyVolumeStatus'] == null ? null : (ModifyVolumeStatusPatch.fromMap((map['modifyVolumeStatus']! as Map).cast<String, dynamic>())).input(),
+      phase: map['phase'] == null ? null : (map['phase']! as String).input(),
+      resizeStatus: map['resizeStatus'] == null ? null : (map['resizeStatus']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
 
   factory AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas.fromMap(Map<String, dynamic> map) {
     return AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(
-      fixed: map['fixed'] == null ? null : (map['fixed'] as int).input(),
-      percent: map['percent'] == null ? null : (map['percent'] as int).input(),
+      fixed: map['fixed'] == null ? null : (map['fixed']! as int).input(),
+      percent: map['percent'] == null ? null : (map['percent']! as int).input(),
     );
   }
 }

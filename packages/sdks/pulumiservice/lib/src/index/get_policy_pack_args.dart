@@ -36,7 +36,7 @@ class GetPolicyPackArgs {
     return GetPolicyPackArgs(
       organizationName: (map['organizationName'] as String).input(),
       policyPackName: (map['policyPackName'] as String).input(),
-      version: map['version'] == null ? null : (map['version'] as int).input(),
+      version: map['version'] == null ? null : (map['version']! as int).input(),
     );
   }
 }

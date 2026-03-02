@@ -28,7 +28,7 @@ class DeploymentConfiguration {
   factory DeploymentConfiguration.fromMap(Map<String, dynamic> map) {
     return DeploymentConfiguration(
       scaleUnits: (pulumi.Input.decodeList<ScaleUnits>(map['scaleUnits'], (value) => ScaleUnits.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

@@ -30,7 +30,7 @@ class GetNamespaceArgs {
   factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
     return GetNamespaceArgs(
       namespaceName: (map['namespaceName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

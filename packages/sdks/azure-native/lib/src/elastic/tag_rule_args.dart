@@ -41,9 +41,9 @@ class TagRuleArgs {
   factory TagRuleArgs.fromMap(Map<String, dynamic> map) {
     return TagRuleArgs(
       monitorName: (map['monitorName'] as String).input(),
-      properties: map['properties'] == null ? null : (MonitoringTagRulesProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      properties: map['properties'] == null ? null : (MonitoringTagRulesProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName'] as String).input(),
+      ruleSetName: map['ruleSetName'] == null ? null : (map['ruleSetName']! as String).input(),
     );
   }
 }

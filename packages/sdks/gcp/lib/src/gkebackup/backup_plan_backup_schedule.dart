@@ -38,9 +38,9 @@ class BackupPlanBackupSchedule {
 
   factory BackupPlanBackupSchedule.fromMap(Map<String, dynamic> map) {
     return BackupPlanBackupSchedule(
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      paused: map['paused'] == null ? null : (map['paused'] as bool).input(),
-      rpoConfig: map['rpoConfig'] == null ? null : (BackupPlanBackupScheduleRpoConfig.fromMap((map['rpoConfig'] as Map).cast<String, dynamic>())).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      paused: map['paused'] == null ? null : (map['paused']! as bool).input(),
+      rpoConfig: map['rpoConfig'] == null ? null : (BackupPlanBackupScheduleRpoConfig.fromMap((map['rpoConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

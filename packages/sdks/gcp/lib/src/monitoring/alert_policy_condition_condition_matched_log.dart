@@ -32,7 +32,7 @@ class AlertPolicyConditionConditionMatchedLog {
   factory AlertPolicyConditionConditionMatchedLog.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionMatchedLog(
       filter: (map['filter'] as String).input(),
-      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors'] as Map).cast<String, String>()).input(),
+      labelExtractors: map['labelExtractors'] == null ? null : ((map['labelExtractors']! as Map).cast<String, String>()).input(),
     );
   }
 }

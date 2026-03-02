@@ -89,20 +89,20 @@ class OciLinkAccountArgs {
 
   factory OciLinkAccountArgs.fromMap(Map<String, dynamic> map) {
     return OciLinkAccountArgs(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
+      accountId: map['accountId'] == null ? null : (map['accountId']! as String).input(),
       compartmentOcid: (map['compartmentOcid'] as String).input(),
-      ingestVaultOcid: map['ingestVaultOcid'] == null ? null : (map['ingestVaultOcid'] as String).input(),
-      instrumentationType: map['instrumentationType'] == null ? null : (map['instrumentationType'] as String).input(),
-      loggingStackOcid: map['loggingStackOcid'] == null ? null : (map['loggingStackOcid'] as String).input(),
-      metricStackOcid: map['metricStackOcid'] == null ? null : (map['metricStackOcid'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      ingestVaultOcid: map['ingestVaultOcid'] == null ? null : (map['ingestVaultOcid']! as String).input(),
+      instrumentationType: map['instrumentationType'] == null ? null : (map['instrumentationType']! as String).input(),
+      loggingStackOcid: map['loggingStackOcid'] == null ? null : (map['loggingStackOcid']! as String).input(),
+      metricStackOcid: map['metricStackOcid'] == null ? null : (map['metricStackOcid']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       ociClientId: (map['ociClientId'] as String).input(),
       ociClientSecret: (map['ociClientSecret'] as String).input(),
       ociDomainUrl: (map['ociDomainUrl'] as String).input(),
       ociHomeRegion: (map['ociHomeRegion'] as String).input(),
-      ociRegion: map['ociRegion'] == null ? null : (map['ociRegion'] as String).input(),
+      ociRegion: map['ociRegion'] == null ? null : (map['ociRegion']! as String).input(),
       tenantId: (map['tenantId'] as String).input(),
-      userVaultOcid: map['userVaultOcid'] == null ? null : (map['userVaultOcid'] as String).input(),
+      userVaultOcid: map['userVaultOcid'] == null ? null : (map['userVaultOcid']! as String).input(),
     );
   }
 }

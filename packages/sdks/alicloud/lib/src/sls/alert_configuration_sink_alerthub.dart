@@ -20,7 +20,7 @@ class AlertConfigurationSinkAlerthub {
 
   factory AlertConfigurationSinkAlerthub.fromMap(Map<String, dynamic> map) {
     return AlertConfigurationSinkAlerthub(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
     );
   }
 }

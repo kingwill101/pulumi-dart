@@ -43,11 +43,11 @@ class GroupArgs {
 
   factory GroupArgs.fromMap(Map<String, dynamic> map) {
     return GroupArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      isCluster: map['isCluster'] == null ? null : (map['isCluster'] as bool).input(),
-      parentName: map['parentName'] == null ? null : (map['parentName'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      isCluster: map['isCluster'] == null ? null : (map['isCluster']! as bool).input(),
+      parentName: map['parentName'] == null ? null : (map['parentName']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

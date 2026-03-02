@@ -22,7 +22,7 @@ class FleetObservabilityFeatureSpec {
 
   factory FleetObservabilityFeatureSpec.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityFeatureSpec(
-      loggingConfig: map['loggingConfig'] == null ? null : (FleetObservabilityLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>())).input(),
+      loggingConfig: map['loggingConfig'] == null ? null : (FleetObservabilityLoggingConfig.fromMap((map['loggingConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

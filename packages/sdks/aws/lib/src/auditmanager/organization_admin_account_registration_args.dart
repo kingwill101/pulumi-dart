@@ -30,7 +30,7 @@ class OrganizationAdminAccountRegistrationArgs {
   factory OrganizationAdminAccountRegistrationArgs.fromMap(Map<String, dynamic> map) {
     return OrganizationAdminAccountRegistrationArgs(
       adminAccountId: (map['adminAccountId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

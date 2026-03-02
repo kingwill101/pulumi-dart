@@ -62,14 +62,14 @@ class ApplicationProperties {
 
   factory ApplicationProperties.fromMap(Map<String, dynamic> map) {
     return ApplicationProperties(
-      applicationType: map['applicationType'] == null ? null : (map['applicationType'] as String).input(),
-      computeProfile: map['computeProfile'] == null ? null : (ComputeProfile.fromMap((map['computeProfile'] as Map).cast<String, dynamic>())).input(),
-      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Errors>(map['errors'], (value) => Errors.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      httpsEndpoints: map['httpsEndpoints'] == null ? null : (pulumi.Input.decodeList<ApplicationGetHttpsEndpoint>(map['httpsEndpoints'], (value) => ApplicationGetHttpsEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      installScriptActions: map['installScriptActions'] == null ? null : (pulumi.Input.decodeList<RuntimeScriptAction>(map['installScriptActions'], (value) => RuntimeScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      privateLinkConfigurations: map['privateLinkConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkConfiguration>(map['privateLinkConfigurations'], (value) => PrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sshEndpoints: map['sshEndpoints'] == null ? null : (pulumi.Input.decodeList<ApplicationGetEndpoint>(map['sshEndpoints'], (value) => ApplicationGetEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      uninstallScriptActions: map['uninstallScriptActions'] == null ? null : (pulumi.Input.decodeList<RuntimeScriptAction>(map['uninstallScriptActions'], (value) => RuntimeScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      applicationType: map['applicationType'] == null ? null : (map['applicationType']! as String).input(),
+      computeProfile: map['computeProfile'] == null ? null : (ComputeProfile.fromMap((map['computeProfile']! as Map).cast<String, dynamic>())).input(),
+      errors: map['errors'] == null ? null : (pulumi.Input.decodeList<Errors>(map['errors']!, (value) => Errors.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      httpsEndpoints: map['httpsEndpoints'] == null ? null : (pulumi.Input.decodeList<ApplicationGetHttpsEndpoint>(map['httpsEndpoints']!, (value) => ApplicationGetHttpsEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      installScriptActions: map['installScriptActions'] == null ? null : (pulumi.Input.decodeList<RuntimeScriptAction>(map['installScriptActions']!, (value) => RuntimeScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      privateLinkConfigurations: map['privateLinkConfigurations'] == null ? null : (pulumi.Input.decodeList<PrivateLinkConfiguration>(map['privateLinkConfigurations']!, (value) => PrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sshEndpoints: map['sshEndpoints'] == null ? null : (pulumi.Input.decodeList<ApplicationGetEndpoint>(map['sshEndpoints']!, (value) => ApplicationGetEndpoint.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      uninstallScriptActions: map['uninstallScriptActions'] == null ? null : (pulumi.Input.decodeList<RuntimeScriptAction>(map['uninstallScriptActions']!, (value) => RuntimeScriptAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

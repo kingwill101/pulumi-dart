@@ -37,7 +37,7 @@ class ApplicationGatewayPrivateLinkConfiguration {
 
   factory ApplicationGatewayPrivateLinkConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayPrivateLinkConfiguration(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       ipConfigurations: (pulumi.Input.decodeList<ApplicationGatewayPrivateLinkConfigurationIpConfiguration>(map['ipConfigurations'], (value) => ApplicationGatewayPrivateLinkConfigurationIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
     );

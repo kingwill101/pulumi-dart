@@ -54,13 +54,13 @@ class ObjectStatusDefinitionResponse {
 
   factory ObjectStatusDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return ObjectStatusDefinitionResponse(
-      appliedBy: map['appliedBy'] == null ? null : (ObjectReferenceDefinitionResponse.fromMap((map['appliedBy'] as Map).cast<String, dynamic>())).input(),
-      complianceState: map['complianceState'] == null ? null : (map['complianceState'] as String).input(),
-      helmReleaseProperties: map['helmReleaseProperties'] == null ? null : (HelmReleasePropertiesDefinitionResponse.fromMap((map['helmReleaseProperties'] as Map).cast<String, dynamic>())).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      namespace: map['namespace'] == null ? null : (map['namespace'] as String).input(),
-      statusConditions: map['statusConditions'] == null ? null : (pulumi.Input.decodeList<ObjectStatusConditionDefinitionResponse>(map['statusConditions'], (value) => ObjectStatusConditionDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      appliedBy: map['appliedBy'] == null ? null : (ObjectReferenceDefinitionResponse.fromMap((map['appliedBy']! as Map).cast<String, dynamic>())).input(),
+      complianceState: map['complianceState'] == null ? null : (map['complianceState']! as String).input(),
+      helmReleaseProperties: map['helmReleaseProperties'] == null ? null : (HelmReleasePropertiesDefinitionResponse.fromMap((map['helmReleaseProperties']! as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      namespace: map['namespace'] == null ? null : (map['namespace']! as String).input(),
+      statusConditions: map['statusConditions'] == null ? null : (pulumi.Input.decodeList<ObjectStatusConditionDefinitionResponse>(map['statusConditions']!, (value) => ObjectStatusConditionDefinitionResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

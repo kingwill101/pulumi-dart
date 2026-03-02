@@ -41,11 +41,11 @@ class WorkbookTemplateGalleryResponse {
 
   factory WorkbookTemplateGalleryResponse.fromMap(Map<String, dynamic> map) {
     return WorkbookTemplateGalleryResponse(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      order: map['order'] == null ? null : (map['order'] as int).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      order: map['order'] == null ? null : (map['order']! as int).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

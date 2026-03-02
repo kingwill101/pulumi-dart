@@ -26,8 +26,8 @@ class VpcSecurityGroupMembership {
 
   factory VpcSecurityGroupMembership.fromMap(Map<String, dynamic> map) {
     return VpcSecurityGroupMembership(
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcSecurityGroupId: map['vpcSecurityGroupId'] == null ? null : (map['vpcSecurityGroupId'] as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcSecurityGroupId: map['vpcSecurityGroupId'] == null ? null : (map['vpcSecurityGroupId']! as String).input(),
     );
   }
 }

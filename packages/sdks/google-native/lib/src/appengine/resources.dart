@@ -42,11 +42,11 @@ class Resources {
 
   factory Resources.fromMap(Map<String, dynamic> map) {
     return Resources(
-      cpu: map['cpu'] == null ? null : (map['cpu'] as double).input(),
-      diskGb: map['diskGb'] == null ? null : (map['diskGb'] as double).input(),
-      kmsKeyReference: map['kmsKeyReference'] == null ? null : (map['kmsKeyReference'] as String).input(),
-      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb'] as double).input(),
-      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes'], (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      cpu: map['cpu'] == null ? null : (map['cpu']! as double).input(),
+      diskGb: map['diskGb'] == null ? null : (map['diskGb']! as double).input(),
+      kmsKeyReference: map['kmsKeyReference'] == null ? null : (map['kmsKeyReference']! as String).input(),
+      memoryGb: map['memoryGb'] == null ? null : (map['memoryGb']! as double).input(),
+      volumes: map['volumes'] == null ? null : (pulumi.Input.decodeList<Volume>(map['volumes']!, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

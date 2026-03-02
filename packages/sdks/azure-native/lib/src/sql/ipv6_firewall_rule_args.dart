@@ -49,12 +49,12 @@ class IPv6FirewallRuleArgs {
 
   factory IPv6FirewallRuleArgs.fromMap(Map<String, dynamic> map) {
     return IPv6FirewallRuleArgs(
-      endIPv6Address: map['endIPv6Address'] == null ? null : (map['endIPv6Address'] as String).input(),
-      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      endIPv6Address: map['endIPv6Address'] == null ? null : (map['endIPv6Address']! as String).input(),
+      firewallRuleName: map['firewallRuleName'] == null ? null : (map['firewallRuleName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      startIPv6Address: map['startIPv6Address'] == null ? null : (map['startIPv6Address'] as String).input(),
+      startIPv6Address: map['startIPv6Address'] == null ? null : (map['startIPv6Address']! as String).input(),
     );
   }
 }

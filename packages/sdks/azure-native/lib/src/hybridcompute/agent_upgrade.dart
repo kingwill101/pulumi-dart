@@ -31,9 +31,9 @@ class AgentUpgrade {
 
   factory AgentUpgrade.fromMap(Map<String, dynamic> map) {
     return AgentUpgrade(
-      correlationId: map['correlationId'] == null ? null : (map['correlationId'] as String).input(),
-      desiredVersion: map['desiredVersion'] == null ? null : (map['desiredVersion'] as String).input(),
-      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade'] as bool).input(),
+      correlationId: map['correlationId'] == null ? null : (map['correlationId']! as String).input(),
+      desiredVersion: map['desiredVersion'] == null ? null : (map['desiredVersion']! as String).input(),
+      enableAutomaticUpgrade: map['enableAutomaticUpgrade'] == null ? null : (map['enableAutomaticUpgrade']! as bool).input(),
     );
   }
 }

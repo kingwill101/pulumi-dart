@@ -55,16 +55,16 @@ class NetworkInsightsAnalysisExplanationRouteTableRoute {
 
   factory NetworkInsightsAnalysisExplanationRouteTableRoute.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisExplanationRouteTableRoute(
-      destinationCidr: map['destinationCidr'] == null ? null : (map['destinationCidr'] as String).input(),
-      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : (map['destinationPrefixListId'] as String).input(),
-      egressOnlyInternetGatewayId: map['egressOnlyInternetGatewayId'] == null ? null : (map['egressOnlyInternetGatewayId'] as String).input(),
-      gatewayId: map['gatewayId'] == null ? null : (map['gatewayId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      natGatewayId: map['natGatewayId'] == null ? null : (map['natGatewayId'] as String).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
-      origin: map['origin'] == null ? null : (map['origin'] as String).input(),
-      transitGatewayId: map['transitGatewayId'] == null ? null : (map['transitGatewayId'] as String).input(),
-      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : (map['vpcPeeringConnectionId'] as String).input(),
+      destinationCidr: map['destinationCidr'] == null ? null : ((map['destinationCidr'] as String).input()).input(),
+      destinationPrefixListId: map['destinationPrefixListId'] == null ? null : ((map['destinationPrefixListId'] as String).input()).input(),
+      egressOnlyInternetGatewayId: map['egressOnlyInternetGatewayId'] == null ? null : ((map['egressOnlyInternetGatewayId'] as String).input()).input(),
+      gatewayId: map['gatewayId'] == null ? null : ((map['gatewayId'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      natGatewayId: map['natGatewayId'] == null ? null : ((map['natGatewayId'] as String).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
+      origin: map['origin'] == null ? null : ((map['origin'] as String).input()).input(),
+      transitGatewayId: map['transitGatewayId'] == null ? null : ((map['transitGatewayId'] as String).input()).input(),
+      vpcPeeringConnectionId: map['vpcPeeringConnectionId'] == null ? null : ((map['vpcPeeringConnectionId'] as String).input()).input(),
     );
   }
 }

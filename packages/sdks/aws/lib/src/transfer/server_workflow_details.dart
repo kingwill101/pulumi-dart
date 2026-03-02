@@ -27,8 +27,8 @@ class ServerWorkflowDetails {
 
   factory ServerWorkflowDetails.fromMap(Map<String, dynamic> map) {
     return ServerWorkflowDetails(
-      onPartialUpload: map['onPartialUpload'] == null ? null : (ServerWorkflowDetailsOnPartialUpload.fromMap((map['onPartialUpload'] as Map).cast<String, dynamic>())).input(),
-      onUpload: map['onUpload'] == null ? null : (ServerWorkflowDetailsOnUpload.fromMap((map['onUpload'] as Map).cast<String, dynamic>())).input(),
+      onPartialUpload: map['onPartialUpload'] == null ? null : ((ServerWorkflowDetailsOnPartialUpload.fromMap((map['onPartialUpload']! as Map).cast<String, dynamic>())).input()).input(),
+      onUpload: map['onUpload'] == null ? null : ((ServerWorkflowDetailsOnUpload.fromMap((map['onUpload']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

@@ -46,12 +46,12 @@ class MoverSourceEndpointState {
 
   factory MoverSourceEndpointState.fromMap(Map<String, dynamic> map) {
     return MoverSourceEndpointState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      export: map['export'] == null ? null : (map['export'] as String).input(),
-      host: map['host'] == null ? null : (map['host'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion'] as String).input(),
-      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      export: map['export'] == null ? null : (map['export']! as String).input(),
+      host: map['host'] == null ? null : (map['host']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      nfsVersion: map['nfsVersion'] == null ? null : (map['nfsVersion']! as String).input(),
+      storageMoverId: map['storageMoverId'] == null ? null : (map['storageMoverId']! as String).input(),
     );
   }
 }

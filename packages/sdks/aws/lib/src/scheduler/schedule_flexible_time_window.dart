@@ -25,7 +25,7 @@ class ScheduleFlexibleTimeWindow {
 
   factory ScheduleFlexibleTimeWindow.fromMap(Map<String, dynamic> map) {
     return ScheduleFlexibleTimeWindow(
-      maximumWindowInMinutes: map['maximumWindowInMinutes'] == null ? null : (map['maximumWindowInMinutes'] as int).input(),
+      maximumWindowInMinutes: map['maximumWindowInMinutes'] == null ? null : ((map['maximumWindowInMinutes'] as int).input()).input(),
       mode: (map['mode'] as String).input(),
     );
   }

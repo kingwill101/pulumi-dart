@@ -38,10 +38,10 @@ class SchemaComparisonValidationResultResponse {
 
   factory SchemaComparisonValidationResultResponse.fromMap(Map<String, dynamic> map) {
     return SchemaComparisonValidationResultResponse(
-      schemaDifferences: map['schemaDifferences'] == null ? null : (SchemaComparisonValidationResultTypeResponse.fromMap((map['schemaDifferences'] as Map).cast<String, dynamic>())).input(),
-      sourceDatabaseObjectCount: map['sourceDatabaseObjectCount'] == null ? null : ((map['sourceDatabaseObjectCount'] as Map).cast<String, double>()).input(),
-      targetDatabaseObjectCount: map['targetDatabaseObjectCount'] == null ? null : ((map['targetDatabaseObjectCount'] as Map).cast<String, double>()).input(),
-      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors'] as Map).cast<String, dynamic>())).input(),
+      schemaDifferences: map['schemaDifferences'] == null ? null : (SchemaComparisonValidationResultTypeResponse.fromMap((map['schemaDifferences']! as Map).cast<String, dynamic>())).input(),
+      sourceDatabaseObjectCount: map['sourceDatabaseObjectCount'] == null ? null : ((map['sourceDatabaseObjectCount']! as Map).cast<String, double>()).input(),
+      targetDatabaseObjectCount: map['targetDatabaseObjectCount'] == null ? null : ((map['targetDatabaseObjectCount']! as Map).cast<String, double>()).input(),
+      validationErrors: map['validationErrors'] == null ? null : (ValidationErrorResponse.fromMap((map['validationErrors']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

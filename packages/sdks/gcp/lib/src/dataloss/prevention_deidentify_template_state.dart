@@ -64,14 +64,14 @@ class PreventionDeidentifyTemplateState {
 
   factory PreventionDeidentifyTemplateState.fromMap(Map<String, dynamic> map) {
     return PreventionDeidentifyTemplateState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      deidentifyConfig: map['deidentifyConfig'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      templateId: map['templateId'] == null ? null : (map['templateId'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      deidentifyConfig: map['deidentifyConfig'] == null ? null : (PreventionDeidentifyTemplateDeidentifyConfig.fromMap((map['deidentifyConfig']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      templateId: map['templateId'] == null ? null : (map['templateId']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

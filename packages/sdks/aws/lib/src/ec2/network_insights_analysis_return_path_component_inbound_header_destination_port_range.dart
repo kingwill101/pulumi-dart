@@ -23,8 +23,8 @@ class NetworkInsightsAnalysisReturnPathComponentInboundHeaderDestinationPortRang
 
   factory NetworkInsightsAnalysisReturnPathComponentInboundHeaderDestinationPortRange.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisReturnPathComponentInboundHeaderDestinationPortRange(
-      from: map['from'] == null ? null : (map['from'] as int).input(),
-      to: map['to'] == null ? null : (map['to'] as int).input(),
+      from: map['from'] == null ? null : ((map['from'] as int).input()).input(),
+      to: map['to'] == null ? null : ((map['to'] as int).input()).input(),
     );
   }
 }

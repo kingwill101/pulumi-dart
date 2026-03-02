@@ -57,12 +57,12 @@ class HealthModelArgs {
   factory HealthModelArgs.fromMap(Map<String, dynamic> map) {
     return HealthModelArgs(
       azureMonitorWorkspaceName: (map['azureMonitorWorkspaceName'] as String).input(),
-      healthModelName: map['healthModelName'] == null ? null : (map['healthModelName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      properties: map['properties'] == null ? null : (HealthModelProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      healthModelName: map['healthModelName'] == null ? null : (map['healthModelName']! as String).input(),
+      identity: map['identity'] == null ? null : (ManagedServiceIdentity.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      properties: map['properties'] == null ? null : (HealthModelProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

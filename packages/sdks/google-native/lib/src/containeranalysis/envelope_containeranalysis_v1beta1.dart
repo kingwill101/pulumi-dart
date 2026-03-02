@@ -29,9 +29,9 @@ class EnvelopeContaineranalysisV1beta1 {
 
   factory EnvelopeContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return EnvelopeContaineranalysisV1beta1(
-      payload: map['payload'] == null ? null : (map['payload'] as String).input(),
-      payloadType: map['payloadType'] == null ? null : (map['payloadType'] as String).input(),
-      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      payload: map['payload'] == null ? null : (map['payload']! as String).input(),
+      payloadType: map['payloadType'] == null ? null : (map['payloadType']! as String).input(),
+      signatures: map['signatures'] == null ? null : (pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures']!, (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

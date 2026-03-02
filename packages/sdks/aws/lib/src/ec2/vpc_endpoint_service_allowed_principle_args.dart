@@ -35,7 +35,7 @@ class VpcEndpointServiceAllowedPrincipleArgs {
   factory VpcEndpointServiceAllowedPrincipleArgs.fromMap(Map<String, dynamic> map) {
     return VpcEndpointServiceAllowedPrincipleArgs(
       principalArn: (map['principalArn'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       vpcEndpointServiceId: (map['vpcEndpointServiceId'] as String).input(),
     );
   }

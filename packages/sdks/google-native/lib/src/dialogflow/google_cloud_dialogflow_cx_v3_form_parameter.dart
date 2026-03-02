@@ -58,14 +58,14 @@ class GoogleCloudDialogflowCxV3FormParameter {
 
   factory GoogleCloudDialogflowCxV3FormParameter.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3FormParameter(
-      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
-      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
+      defaultValue: map['defaultValue'] == null ? null : (map['defaultValue']!).input(),
       displayName: (map['displayName'] as String).input(),
       entityType: (map['entityType'] as String).input(),
       fillBehavior: (GoogleCloudDialogflowCxV3FormParameterFillBehavior.fromMap((map['fillBehavior'] as Map).cast<String, dynamic>())).input(),
-      isList: map['isList'] == null ? null : (map['isList'] as bool).input(),
-      redact: map['redact'] == null ? null : (map['redact'] as bool).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      isList: map['isList'] == null ? null : (map['isList']! as bool).input(),
+      redact: map['redact'] == null ? null : (map['redact']! as bool).input(),
+      required: map['required'] == null ? null : (map['required']! as bool).input(),
     );
   }
 }

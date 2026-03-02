@@ -27,8 +27,8 @@ class TriggerPipelineReferenceResponse {
 
   factory TriggerPipelineReferenceResponse.fromMap(Map<String, dynamic> map) {
     return TriggerPipelineReferenceResponse(
-      parameters: map['parameters'] == null ? null : ((map['parameters'] as Map).cast<String, dynamic>()).input(),
-      pipelineReference: map['pipelineReference'] == null ? null : (PipelineReferenceResponse.fromMap((map['pipelineReference'] as Map).cast<String, dynamic>())).input(),
+      parameters: map['parameters'] == null ? null : ((map['parameters']! as Map).cast<String, dynamic>()).input(),
+      pipelineReference: map['pipelineReference'] == null ? null : (PipelineReferenceResponse.fromMap((map['pipelineReference']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

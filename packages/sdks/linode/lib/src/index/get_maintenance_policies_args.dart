@@ -24,7 +24,7 @@ class GetMaintenancePoliciesArgs {
 
   factory GetMaintenancePoliciesArgs.fromMap(Map<String, dynamic> map) {
     return GetMaintenancePoliciesArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetMaintenancePoliciesFilter>(map['filters'], (value) => GetMaintenancePoliciesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetMaintenancePoliciesFilter>(map['filters']!, (value) => GetMaintenancePoliciesFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

@@ -32,9 +32,9 @@ class ManagedClusterIngressProfileWebAppRouting {
 
   factory ManagedClusterIngressProfileWebAppRouting.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfileWebAppRouting(
-      dnsZoneResourceIds: map['dnsZoneResourceIds'] == null ? null : ((map['dnsZoneResourceIds'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      nginx: map['nginx'] == null ? null : (ManagedClusterIngressProfileNginx.fromMap((map['nginx'] as Map).cast<String, dynamic>())).input(),
+      dnsZoneResourceIds: map['dnsZoneResourceIds'] == null ? null : ((map['dnsZoneResourceIds']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      nginx: map['nginx'] == null ? null : (ManagedClusterIngressProfileNginx.fromMap((map['nginx']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

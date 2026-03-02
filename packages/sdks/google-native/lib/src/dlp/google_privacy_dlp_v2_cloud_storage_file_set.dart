@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
 
   factory GooglePrivacyDlpV2CloudStorageFileSet.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageFileSet(
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

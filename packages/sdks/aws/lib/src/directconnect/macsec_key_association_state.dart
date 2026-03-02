@@ -53,13 +53,13 @@ class MacsecKeyAssociationState {
 
   factory MacsecKeyAssociationState.fromMap(Map<String, dynamic> map) {
     return MacsecKeyAssociationState(
-      cak: map['cak'] == null ? null : (map['cak'] as String).input(),
-      ckn: map['ckn'] == null ? null : (map['ckn'] as String).input(),
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secretArn: map['secretArn'] == null ? null : (map['secretArn'] as String).input(),
-      startOn: map['startOn'] == null ? null : (map['startOn'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      cak: map['cak'] == null ? null : ((map['cak'] as String).input()).input(),
+      ckn: map['ckn'] == null ? null : ((map['ckn'] as String).input()).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secretArn: map['secretArn'] == null ? null : ((map['secretArn'] as String).input()).input(),
+      startOn: map['startOn'] == null ? null : ((map['startOn'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
     );
   }
 }

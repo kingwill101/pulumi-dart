@@ -48,12 +48,12 @@ class SnapshotCopyState {
 
   factory SnapshotCopyState.fromMap(Map<String, dynamic> map) {
     return SnapshotCopyState(
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      destinationRegion: map['destinationRegion'] == null ? null : (map['destinationRegion'] as String).input(),
-      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : (map['manualSnapshotRetentionPeriod'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      retentionPeriod: map['retentionPeriod'] == null ? null : (map['retentionPeriod'] as int).input(),
-      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : (map['snapshotCopyGrantName'] as String).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      destinationRegion: map['destinationRegion'] == null ? null : ((map['destinationRegion'] as String).input()).input(),
+      manualSnapshotRetentionPeriod: map['manualSnapshotRetentionPeriod'] == null ? null : ((map['manualSnapshotRetentionPeriod'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      retentionPeriod: map['retentionPeriod'] == null ? null : ((map['retentionPeriod'] as int).input()).input(),
+      snapshotCopyGrantName: map['snapshotCopyGrantName'] == null ? null : ((map['snapshotCopyGrantName'] as String).input()).input(),
     );
   }
 }

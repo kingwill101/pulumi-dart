@@ -41,9 +41,9 @@ class ExternalAddressArgs {
 
   factory ExternalAddressArgs.fromMap(Map<String, dynamic> map) {
     return ExternalAddressArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       internalIp: (map['internalIp'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parent: (map['parent'] as String).input(),
     );
   }

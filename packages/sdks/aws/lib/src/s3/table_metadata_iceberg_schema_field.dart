@@ -31,7 +31,7 @@ class TableMetadataIcebergSchemaField {
   factory TableMetadataIcebergSchemaField.fromMap(Map<String, dynamic> map) {
     return TableMetadataIcebergSchemaField(
       name: (map['name'] as String).input(),
-      required: map['required'] == null ? null : (map['required'] as bool).input(),
+      required: map['required'] == null ? null : ((map['required'] as bool).input()).input(),
       type: (map['type'] as String).input(),
     );
   }

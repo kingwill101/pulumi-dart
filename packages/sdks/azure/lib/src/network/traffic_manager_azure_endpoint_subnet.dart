@@ -31,8 +31,8 @@ class TrafficManagerAzureEndpointSubnet {
   factory TrafficManagerAzureEndpointSubnet.fromMap(Map<String, dynamic> map) {
     return TrafficManagerAzureEndpointSubnet(
       first: (map['first'] as String).input(),
-      last: map['last'] == null ? null : (map['last'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as int).input(),
+      last: map['last'] == null ? null : (map['last']! as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as int).input(),
     );
   }
 }

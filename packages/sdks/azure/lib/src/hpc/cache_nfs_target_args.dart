@@ -61,13 +61,13 @@ class CacheNfsTargetArgs {
   factory CacheNfsTargetArgs.fromMap(Map<String, dynamic> map) {
     return CacheNfsTargetArgs(
       cacheName: (map['cacheName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       namespaceJunctions: (pulumi.Input.decodeList<CacheNfsTargetNamespaceJunction>(map['namespaceJunctions'], (value) => CacheNfsTargetNamespaceJunction.fromMap((value as Map).cast<String, dynamic>()))).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       targetHostName: (map['targetHostName'] as String).input(),
       usageModel: (map['usageModel'] as String).input(),
-      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds'] as int).input(),
-      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds'] as int).input(),
+      verificationTimerInSeconds: map['verificationTimerInSeconds'] == null ? null : (map['verificationTimerInSeconds']! as int).input(),
+      writeBackTimerInSeconds: map['writeBackTimerInSeconds'] == null ? null : (map['writeBackTimerInSeconds']! as int).input(),
     );
   }
 }

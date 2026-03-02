@@ -57,13 +57,13 @@ class MetricAlarmMetricQuery {
 
   factory MetricAlarmMetricQuery.fromMap(Map<String, dynamic> map) {
     return MetricAlarmMetricQuery(
-      accountId: map['accountId'] == null ? null : (map['accountId'] as String).input(),
-      expression: map['expression'] == null ? null : (map['expression'] as String).input(),
+      accountId: map['accountId'] == null ? null : ((map['accountId'] as String).input()).input(),
+      expression: map['expression'] == null ? null : ((map['expression'] as String).input()).input(),
       id: (map['id'] as String).input(),
-      label: map['label'] == null ? null : (map['label'] as String).input(),
-      metric: map['metric'] == null ? null : (MetricAlarmMetricQueryMetric.fromMap((map['metric'] as Map).cast<String, dynamic>())).input(),
-      period: map['period'] == null ? null : (map['period'] as int).input(),
-      returnData: map['returnData'] == null ? null : (map['returnData'] as bool).input(),
+      label: map['label'] == null ? null : ((map['label'] as String).input()).input(),
+      metric: map['metric'] == null ? null : ((MetricAlarmMetricQueryMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())).input()).input(),
+      period: map['period'] == null ? null : ((map['period'] as int).input()).input(),
+      returnData: map['returnData'] == null ? null : ((map['returnData'] as bool).input()).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class ResourceManagementPrivateLinkEndpointConnectionsResponse {
 
   factory ResourceManagementPrivateLinkEndpointConnectionsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceManagementPrivateLinkEndpointConnectionsResponse(
-      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections'] as List).cast<String>()).input(),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : ((map['privateEndpointConnections']! as List).cast<String>()).input(),
     );
   }
 }

@@ -43,11 +43,11 @@ class DomainDefaultUserSettingsCodeEditorAppSettings {
 
   factory DomainDefaultUserSettingsCodeEditorAppSettings.fromMap(Map<String, dynamic> map) {
     return DomainDefaultUserSettingsCodeEditorAppSettings(
-      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : (DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement'] as Map).cast<String, dynamic>())).input(),
-      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null ? null : (map['builtInLifecycleConfigArn'] as String).input(),
-      customImages: map['customImages'] == null ? null : (pulumi.Input.decodeList<DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage>(map['customImages'], (value) => DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : (DomainDefaultUserSettingsCodeEditorAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>())).input(),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : ((map['lifecycleConfigArns'] as List).cast<String>()).input(),
+      appLifecycleManagement: map['appLifecycleManagement'] == null ? null : ((DomainDefaultUserSettingsCodeEditorAppSettingsAppLifecycleManagement.fromMap((map['appLifecycleManagement']! as Map).cast<String, dynamic>())).input()).input(),
+      builtInLifecycleConfigArn: map['builtInLifecycleConfigArn'] == null ? null : ((map['builtInLifecycleConfigArn'] as String).input()).input(),
+      customImages: map['customImages'] == null ? null : ((pulumi.Input.decodeList<DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage>(map['customImages']!, (value) => DomainDefaultUserSettingsCodeEditorAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      defaultResourceSpec: map['defaultResourceSpec'] == null ? null : ((DomainDefaultUserSettingsCodeEditorAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec']! as Map).cast<String, dynamic>())).input()).input(),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (((map['lifecycleConfigArns'] as List).cast<String>()).input()).input(),
     );
   }
 }

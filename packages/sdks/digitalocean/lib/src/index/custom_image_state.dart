@@ -86,20 +86,20 @@ class CustomImageState {
 
   factory CustomImageState.fromMap(Map<String, dynamic> map) {
     return CustomImageState(
-      createdAt: map['createdAt'] == null ? null : (map['createdAt'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      distribution: map['distribution'] == null ? null : (map['distribution'] as String).input(),
-      imageId: map['imageId'] == null ? null : (map['imageId'] as int).input(),
-      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      public: map['public'] == null ? null : (map['public'] as bool).input(),
-      regions: map['regions'] == null ? null : ((map['regions'] as List).cast<String>()).input(),
-      sizeGigabytes: map['sizeGigabytes'] == null ? null : (map['sizeGigabytes'] as double).input(),
-      slug: map['slug'] == null ? null : (map['slug'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      createdAt: map['createdAt'] == null ? null : (map['createdAt']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      distribution: map['distribution'] == null ? null : (map['distribution']! as String).input(),
+      imageId: map['imageId'] == null ? null : (map['imageId']! as int).input(),
+      minDiskSize: map['minDiskSize'] == null ? null : (map['minDiskSize']! as int).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      public: map['public'] == null ? null : (map['public']! as bool).input(),
+      regions: map['regions'] == null ? null : ((map['regions']! as List).cast<String>()).input(),
+      sizeGigabytes: map['sizeGigabytes'] == null ? null : (map['sizeGigabytes']! as double).input(),
+      slug: map['slug'] == null ? null : (map['slug']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

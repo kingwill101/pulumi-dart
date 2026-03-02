@@ -26,8 +26,8 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
 
   factory GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      processorType: map['processorType'] == null ? null : (map['processorType'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      processorType: map['processorType'] == null ? null : (map['processorType']! as String).input(),
     );
   }
 }

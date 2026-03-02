@@ -30,9 +30,9 @@ class FeatureStoreSettingsResponse {
 
   factory FeatureStoreSettingsResponse.fromMap(Map<String, dynamic> map) {
     return FeatureStoreSettingsResponse(
-      computeRuntime: map['computeRuntime'] == null ? null : (ComputeRuntimeDtoResponse.fromMap((map['computeRuntime'] as Map).cast<String, dynamic>())).input(),
-      offlineStoreConnectionName: map['offlineStoreConnectionName'] == null ? null : (map['offlineStoreConnectionName'] as String).input(),
-      onlineStoreConnectionName: map['onlineStoreConnectionName'] == null ? null : (map['onlineStoreConnectionName'] as String).input(),
+      computeRuntime: map['computeRuntime'] == null ? null : (ComputeRuntimeDtoResponse.fromMap((map['computeRuntime']! as Map).cast<String, dynamic>())).input(),
+      offlineStoreConnectionName: map['offlineStoreConnectionName'] == null ? null : (map['offlineStoreConnectionName']! as String).input(),
+      onlineStoreConnectionName: map['onlineStoreConnectionName'] == null ? null : (map['onlineStoreConnectionName']! as String).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class RaiToolLabelPropertiesResponseAccountScope {
 
   factory RaiToolLabelPropertiesResponseAccountScope.fromMap(Map<String, dynamic> map) {
     return RaiToolLabelPropertiesResponseAccountScope(
-      labelValues: map['labelValues'] == null ? null : ((map['labelValues'] as Map).cast<String, String>()).input(),
+      labelValues: map['labelValues'] == null ? null : ((map['labelValues']! as Map).cast<String, String>()).input(),
     );
   }
 }

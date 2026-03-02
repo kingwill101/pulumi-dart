@@ -30,9 +30,9 @@ class BudgetFilterExpressionNotTags {
 
   factory BudgetFilterExpressionNotTags.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionNotTags(
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      matchOptions: map['matchOptions'] == null ? null : ((map['matchOptions'] as List).cast<String>()).input(),
-      values: map['values'] == null ? null : ((map['values'] as List).cast<String>()).input(),
+      key: map['key'] == null ? null : ((map['key'] as String).input()).input(),
+      matchOptions: map['matchOptions'] == null ? null : (((map['matchOptions'] as List).cast<String>()).input()).input(),
+      values: map['values'] == null ? null : (((map['values'] as List).cast<String>()).input()).input(),
     );
   }
 }

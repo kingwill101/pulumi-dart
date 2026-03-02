@@ -42,12 +42,12 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
 
   factory ConnectionTunnelOptionsSpecificationTunnelBgpConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionTunnelOptionsSpecificationTunnelBgpConfig(
-      bgpStatus: map['bgpStatus'] == null ? null : (map['bgpStatus'] as String).input(),
-      localAsn: map['localAsn'] == null ? null : (map['localAsn'] as String).input(),
-      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp'] as String).input(),
-      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn'] as String).input(),
-      peerBgpIp: map['peerBgpIp'] == null ? null : (map['peerBgpIp'] as String).input(),
-      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr'] as String).input(),
+      bgpStatus: map['bgpStatus'] == null ? null : (map['bgpStatus']! as String).input(),
+      localAsn: map['localAsn'] == null ? null : (map['localAsn']! as String).input(),
+      localBgpIp: map['localBgpIp'] == null ? null : (map['localBgpIp']! as String).input(),
+      peerAsn: map['peerAsn'] == null ? null : (map['peerAsn']! as String).input(),
+      peerBgpIp: map['peerBgpIp'] == null ? null : (map['peerBgpIp']! as String).input(),
+      tunnelCidr: map['tunnelCidr'] == null ? null : (map['tunnelCidr']! as String).input(),
     );
   }
 }

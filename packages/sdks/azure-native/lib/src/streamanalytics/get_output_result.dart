@@ -69,14 +69,14 @@ class GetOutputResult {
   factory GetOutputResult.fromMap(Map<String, dynamic> map) {
     return GetOutputResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      datasource: map['datasource'] == null ? null : AzureDataLakeStoreOutputDataSourceResponse.fromMap((map['datasource'] as Map).cast<String, dynamic>()),
+      datasource: map['datasource'] == null ? null : AzureDataLakeStoreOutputDataSourceResponse.fromMap((map['datasource']! as Map).cast<String, dynamic>()),
       diagnostics: DiagnosticsResponse.fromMap((map['diagnostics'] as Map).cast<String, dynamic>()),
       etag: map['etag'] as String,
       id: map['id'] as String,
-      name: map['name'] == null ? null : map['name'] as String,
-      serialization: map['serialization'] == null ? null : AvroSerializationResponse.fromMap((map['serialization'] as Map).cast<String, dynamic>()),
-      sizeWindow: map['sizeWindow'] == null ? null : map['sizeWindow'] as int,
-      timeWindow: map['timeWindow'] == null ? null : map['timeWindow'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
+      serialization: map['serialization'] == null ? null : AvroSerializationResponse.fromMap((map['serialization']! as Map).cast<String, dynamic>()),
+      sizeWindow: map['sizeWindow'] == null ? null : map['sizeWindow']! as int,
+      timeWindow: map['timeWindow'] == null ? null : map['timeWindow']! as String,
       type: map['type'] as String,
     );
   }

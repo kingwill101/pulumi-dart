@@ -53,10 +53,10 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
       applicationHostUrl: (map['applicationHostUrl'] as String).input(),
       applicationServicePath: (map['applicationServicePath'] as String).input(),
       clientNumber: (map['clientNumber'] as String).input(),
-      logonLanguage: map['logonLanguage'] == null ? null : (map['logonLanguage'] as String).input(),
-      oauthProperties: map['oauthProperties'] == null ? null : (ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((map['oauthProperties'] as Map).cast<String, dynamic>())).input(),
+      logonLanguage: map['logonLanguage'] == null ? null : ((map['logonLanguage'] as String).input()).input(),
+      oauthProperties: map['oauthProperties'] == null ? null : ((ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties.fromMap((map['oauthProperties']! as Map).cast<String, dynamic>())).input()).input(),
       portNumber: (map['portNumber'] as int).input(),
-      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : (map['privateLinkServiceName'] as String).input(),
+      privateLinkServiceName: map['privateLinkServiceName'] == null ? null : ((map['privateLinkServiceName'] as String).input()).input(),
     );
   }
 }

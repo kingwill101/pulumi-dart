@@ -21,7 +21,7 @@ class AllowedFlexVolumePatch {
 
   factory AllowedFlexVolumePatch.fromMap(Map<String, dynamic> map) {
     return AllowedFlexVolumePatch(
-      driver: map['driver'] == null ? null : (map['driver'] as String).input(),
+      driver: map['driver'] == null ? null : (map['driver']! as String).input(),
     );
   }
 }

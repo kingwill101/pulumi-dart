@@ -40,11 +40,11 @@ class V2FunctionCustomContainerConfig {
 
   factory V2FunctionCustomContainerConfig.fromMap(Map<String, dynamic> map) {
     return V2FunctionCustomContainerConfig(
-      accelerationType: map['accelerationType'] == null ? null : (map['accelerationType'] as String).input(),
-      args: map['args'] == null ? null : (map['args'] as String).input(),
-      command: map['command'] == null ? null : (map['command'] as String).input(),
-      image: map['image'] == null ? null : (map['image'] as String).input(),
-      webServerMode: map['webServerMode'] == null ? null : (map['webServerMode'] as bool).input(),
+      accelerationType: map['accelerationType'] == null ? null : (map['accelerationType']! as String).input(),
+      args: map['args'] == null ? null : (map['args']! as String).input(),
+      command: map['command'] == null ? null : (map['command']! as String).input(),
+      image: map['image'] == null ? null : (map['image']! as String).input(),
+      webServerMode: map['webServerMode'] == null ? null : (map['webServerMode']! as bool).input(),
     );
   }
 }

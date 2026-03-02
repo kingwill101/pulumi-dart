@@ -27,8 +27,8 @@ class BlueGreenSettingsContainerV1beta1 {
 
   factory BlueGreenSettingsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return BlueGreenSettingsContainerV1beta1(
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration'] as String).input(),
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (StandardRolloutPolicyContainerV1beta1.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>())).input(),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : (map['nodePoolSoakDuration']! as String).input(),
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : (StandardRolloutPolicyContainerV1beta1.fromMap((map['standardRolloutPolicy']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

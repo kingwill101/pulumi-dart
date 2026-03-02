@@ -73,12 +73,12 @@ class RouterBgp {
 
   factory RouterBgp.fromMap(Map<String, dynamic> map) {
     return RouterBgp(
-      advertiseMode: map['advertiseMode'] == null ? null : (map['advertiseMode'] as String).input(),
-      advertisedGroups: map['advertisedGroups'] == null ? null : ((map['advertisedGroups'] as List).cast<String>()).input(),
-      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : (pulumi.Input.decodeList<RouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => RouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      advertiseMode: map['advertiseMode'] == null ? null : (map['advertiseMode']! as String).input(),
+      advertisedGroups: map['advertisedGroups'] == null ? null : ((map['advertisedGroups']! as List).cast<String>()).input(),
+      advertisedIpRanges: map['advertisedIpRanges'] == null ? null : (pulumi.Input.decodeList<RouterBgpAdvertisedIpRange>(map['advertisedIpRanges']!, (value) => RouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
       asn: (map['asn'] as int).input(),
-      identifierRange: map['identifierRange'] == null ? null : (map['identifierRange'] as String).input(),
-      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval'] as int).input(),
+      identifierRange: map['identifierRange'] == null ? null : (map['identifierRange']! as String).input(),
+      keepaliveInterval: map['keepaliveInterval'] == null ? null : (map['keepaliveInterval']! as int).input(),
     );
   }
 }

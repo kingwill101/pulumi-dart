@@ -58,13 +58,13 @@ class DevCenterSkuResponse {
   factory DevCenterSkuResponse.fromMap(Map<String, dynamic> map) {
     return DevCenterSkuResponse(
       capabilities: (pulumi.Input.decodeList<CapabilityResponse>(map['capabilities'], (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      capacity: map['capacity'] == null ? null : (map['capacity'] as int).input(),
-      family: map['family'] == null ? null : (map['family'] as String).input(),
+      capacity: map['capacity'] == null ? null : (map['capacity']! as int).input(),
+      family: map['family'] == null ? null : (map['family']! as String).input(),
       locations: ((map['locations'] as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
       resourceType: (map['resourceType'] as String).input(),
-      size: map['size'] == null ? null : (map['size'] as String).input(),
-      tier: map['tier'] == null ? null : (map['tier'] as String).input(),
+      size: map['size'] == null ? null : (map['size']! as String).input(),
+      tier: map['tier'] == null ? null : (map['tier']! as String).input(),
     );
   }
 }

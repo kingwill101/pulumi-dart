@@ -73,15 +73,15 @@ class InstanceArgs {
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
       extendedLocation: (ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      reconciliationPolicy: map['reconciliationPolicy'] == null ? null : (ReconciliationPolicy.fromMap((map['reconciliationPolicy']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      scope: map['scope'] == null ? null : (map['scope'] as String).input(),
-      solution: map['solution'] == null ? null : (map['solution'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      target: map['target'] == null ? null : (TargetSelectorProperties.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      scope: map['scope'] == null ? null : (map['scope']! as String).input(),
+      solution: map['solution'] == null ? null : (map['solution']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      target: map['target'] == null ? null : (TargetSelectorProperties.fromMap((map['target']! as Map).cast<String, dynamic>())).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

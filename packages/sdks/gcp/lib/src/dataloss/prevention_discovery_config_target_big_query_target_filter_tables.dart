@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
 
   factory PreventionDiscoveryConfigTargetBigQueryTargetFilterTables.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetBigQueryTargetFilterTables(
-      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>())).input(),
+      includeRegexes: map['includeRegexes'] == null ? null : (PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexes.fromMap((map['includeRegexes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

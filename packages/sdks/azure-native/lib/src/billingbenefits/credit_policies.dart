@@ -26,8 +26,8 @@ class CreditPolicies {
 
   factory CreditPolicies.fromMap(Map<String, dynamic> map) {
     return CreditPolicies(
-      expiration: map['expiration'] == null ? null : (map['expiration'] as String).input(),
-      redemption: map['redemption'] == null ? null : (map['redemption'] as String).input(),
+      expiration: map['expiration'] == null ? null : (map['expiration']! as String).input(),
+      redemption: map['redemption'] == null ? null : (map['redemption']! as String).input(),
     );
   }
 }

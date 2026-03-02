@@ -42,11 +42,11 @@ class AdvancedSecurityOptionsResponse {
 
   factory AdvancedSecurityOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedSecurityOptionsResponse(
-      anonymousAuthDisableDate: map['anonymousAuthDisableDate'] == null ? null : (map['anonymousAuthDisableDate'] as String).input(),
-      anonymousAuthEnabled: map['anonymousAuthEnabled'] == null ? null : (map['anonymousAuthEnabled'] as bool).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : (map['internalUserDatabaseEnabled'] as bool).input(),
-      samlOptions: map['samlOptions'] == null ? null : (SAMLOptionsOutputResponse.fromMap((map['samlOptions'] as Map).cast<String, dynamic>())).input(),
+      anonymousAuthDisableDate: map['anonymousAuthDisableDate'] == null ? null : (map['anonymousAuthDisableDate']! as String).input(),
+      anonymousAuthEnabled: map['anonymousAuthEnabled'] == null ? null : (map['anonymousAuthEnabled']! as bool).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      internalUserDatabaseEnabled: map['internalUserDatabaseEnabled'] == null ? null : (map['internalUserDatabaseEnabled']! as bool).input(),
+      samlOptions: map['samlOptions'] == null ? null : (SAMLOptionsOutputResponse.fromMap((map['samlOptions']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

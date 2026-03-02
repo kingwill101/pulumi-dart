@@ -30,9 +30,9 @@ class FileSystemLifecyclePolicy {
 
   factory FileSystemLifecyclePolicy.fromMap(Map<String, dynamic> map) {
     return FileSystemLifecyclePolicy(
-      transitionToArchive: map['transitionToArchive'] == null ? null : (map['transitionToArchive'] as String).input(),
-      transitionToIa: map['transitionToIa'] == null ? null : (map['transitionToIa'] as String).input(),
-      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] == null ? null : (map['transitionToPrimaryStorageClass'] as String).input(),
+      transitionToArchive: map['transitionToArchive'] == null ? null : ((map['transitionToArchive'] as String).input()).input(),
+      transitionToIa: map['transitionToIa'] == null ? null : ((map['transitionToIa'] as String).input()).input(),
+      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] == null ? null : ((map['transitionToPrimaryStorageClass'] as String).input()).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class RelationshipNoteContaineranalysisV1beta1 {
 
   factory RelationshipNoteContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return RelationshipNoteContaineranalysisV1beta1(
-      type: map['type'] == null ? null : (RelationshipNoteTypeContaineranalysisV1beta1.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (RelationshipNoteTypeContaineranalysisV1beta1.fromValue(map['type']! as String)).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class VersionContaineranalysisV1beta1 {
 
   factory VersionContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return VersionContaineranalysisV1beta1(
-      epoch: map['epoch'] == null ? null : (map['epoch'] as int).input(),
-      inclusive: map['inclusive'] == null ? null : (map['inclusive'] as bool).input(),
+      epoch: map['epoch'] == null ? null : (map['epoch']! as int).input(),
+      inclusive: map['inclusive'] == null ? null : (map['inclusive']! as bool).input(),
       kind: (VersionKindContaineranalysisV1beta1.fromValue(map['kind'] as String)).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as String).input(),
     );
   }
 }

@@ -25,8 +25,8 @@ class InstanceServerlessConfig {
 
   factory InstanceServerlessConfig.fromMap(Map<String, dynamic> map) {
     return InstanceServerlessConfig(
-      reservedPublishCapacity: map['reservedPublishCapacity'] == null ? null : (map['reservedPublishCapacity'] as int).input(),
-      reservedSubscribeCapacity: map['reservedSubscribeCapacity'] == null ? null : (map['reservedSubscribeCapacity'] as int).input(),
+      reservedPublishCapacity: map['reservedPublishCapacity'] == null ? null : (map['reservedPublishCapacity']! as int).input(),
+      reservedSubscribeCapacity: map['reservedSubscribeCapacity'] == null ? null : (map['reservedSubscribeCapacity']! as int).input(),
     );
   }
 }

@@ -20,7 +20,7 @@ class CapacityBlockReservationTimeouts {
 
   factory CapacityBlockReservationTimeouts.fromMap(Map<String, dynamic> map) {
     return CapacityBlockReservationTimeouts(
-      create: map['create'] == null ? null : (map['create'] as String).input(),
+      create: map['create'] == null ? null : ((map['create'] as String).input()).input(),
     );
   }
 }

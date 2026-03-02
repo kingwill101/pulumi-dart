@@ -21,7 +21,7 @@ class ExportSourceTypeEnumValue {
 
   factory ExportSourceTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return ExportSourceTypeEnumValue(
-      value: map['value'] == null ? null : (map['value'] as String).input(),
+      value: map['value'] == null ? null : (map['value']! as String).input(),
     );
   }
 }

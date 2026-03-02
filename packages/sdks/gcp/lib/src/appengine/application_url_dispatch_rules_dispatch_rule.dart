@@ -33,7 +33,7 @@ class ApplicationUrlDispatchRulesDispatchRule {
 
   factory ApplicationUrlDispatchRulesDispatchRule.fromMap(Map<String, dynamic> map) {
     return ApplicationUrlDispatchRulesDispatchRule(
-      domain: map['domain'] == null ? null : (map['domain'] as String).input(),
+      domain: map['domain'] == null ? null : (map['domain']! as String).input(),
       path: (map['path'] as String).input(),
       service: (map['service'] as String).input(),
     );

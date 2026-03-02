@@ -26,8 +26,8 @@ class AmiCopyEphemeralBlockDevice {
 
   factory AmiCopyEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
     return AmiCopyEphemeralBlockDevice(
-      deviceName: map['deviceName'] == null ? null : (map['deviceName'] as String).input(),
-      virtualName: map['virtualName'] == null ? null : (map['virtualName'] as String).input(),
+      deviceName: map['deviceName'] == null ? null : ((map['deviceName'] as String).input()).input(),
+      virtualName: map['virtualName'] == null ? null : ((map['virtualName'] as String).input()).input(),
     );
   }
 }

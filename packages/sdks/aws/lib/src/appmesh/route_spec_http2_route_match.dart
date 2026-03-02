@@ -54,13 +54,13 @@ class RouteSpecHttp2RouteMatch {
 
   factory RouteSpecHttp2RouteMatch.fromMap(Map<String, dynamic> map) {
     return RouteSpecHttp2RouteMatch(
-      headers: map['headers'] == null ? null : (pulumi.Input.decodeList<RouteSpecHttp2RouteMatchHeader>(map['headers'], (value) => RouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      path: map['path'] == null ? null : (RouteSpecHttp2RouteMatchPath.fromMap((map['path'] as Map).cast<String, dynamic>())).input(),
-      port: map['port'] == null ? null : (map['port'] as int).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
-      queryParameters: map['queryParameters'] == null ? null : (pulumi.Input.decodeList<RouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters'], (value) => RouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      scheme: map['scheme'] == null ? null : (map['scheme'] as String).input(),
+      headers: map['headers'] == null ? null : ((pulumi.Input.decodeList<RouteSpecHttp2RouteMatchHeader>(map['headers']!, (value) => RouteSpecHttp2RouteMatchHeader.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      path: map['path'] == null ? null : ((RouteSpecHttp2RouteMatchPath.fromMap((map['path']! as Map).cast<String, dynamic>())).input()).input(),
+      port: map['port'] == null ? null : ((map['port'] as int).input()).input(),
+      prefix: map['prefix'] == null ? null : ((map['prefix'] as String).input()).input(),
+      queryParameters: map['queryParameters'] == null ? null : ((pulumi.Input.decodeList<RouteSpecHttp2RouteMatchQueryParameter>(map['queryParameters']!, (value) => RouteSpecHttp2RouteMatchQueryParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      scheme: map['scheme'] == null ? null : ((map['scheme'] as String).input()).input(),
     );
   }
 }

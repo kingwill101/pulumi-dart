@@ -130,22 +130,22 @@ class BareMetalAdminClusterArgs {
 
   factory BareMetalAdminClusterArgs.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterArgs(
-      annotations: map['annotations'] == null ? null : ((map['annotations'] as Map).cast<String, String>()).input(),
-      bareMetalVersion: map['bareMetalVersion'] == null ? null : (map['bareMetalVersion'] as String).input(),
-      clusterOperations: map['clusterOperations'] == null ? null : (BareMetalAdminClusterClusterOperations.fromMap((map['clusterOperations'] as Map).cast<String, dynamic>())).input(),
-      controlPlane: map['controlPlane'] == null ? null : (BareMetalAdminClusterControlPlane.fromMap((map['controlPlane'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      loadBalancer: map['loadBalancer'] == null ? null : (BareMetalAdminClusterLoadBalancer.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>())).input(),
+      annotations: map['annotations'] == null ? null : ((map['annotations']! as Map).cast<String, String>()).input(),
+      bareMetalVersion: map['bareMetalVersion'] == null ? null : (map['bareMetalVersion']! as String).input(),
+      clusterOperations: map['clusterOperations'] == null ? null : (BareMetalAdminClusterClusterOperations.fromMap((map['clusterOperations']! as Map).cast<String, dynamic>())).input(),
+      controlPlane: map['controlPlane'] == null ? null : (BareMetalAdminClusterControlPlane.fromMap((map['controlPlane']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      loadBalancer: map['loadBalancer'] == null ? null : (BareMetalAdminClusterLoadBalancer.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>())).input(),
       location: (map['location'] as String).input(),
-      maintenanceConfig: map['maintenanceConfig'] == null ? null : (BareMetalAdminClusterMaintenanceConfig.fromMap((map['maintenanceConfig'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      networkConfig: map['networkConfig'] == null ? null : (BareMetalAdminClusterNetworkConfig.fromMap((map['networkConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeAccessConfig: map['nodeAccessConfig'] == null ? null : (BareMetalAdminClusterNodeAccessConfig.fromMap((map['nodeAccessConfig'] as Map).cast<String, dynamic>())).input(),
-      nodeConfig: map['nodeConfig'] == null ? null : (BareMetalAdminClusterNodeConfig.fromMap((map['nodeConfig'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      proxy: map['proxy'] == null ? null : (BareMetalAdminClusterProxy.fromMap((map['proxy'] as Map).cast<String, dynamic>())).input(),
-      securityConfig: map['securityConfig'] == null ? null : (BareMetalAdminClusterSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())).input(),
-      storage: map['storage'] == null ? null : (BareMetalAdminClusterStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      maintenanceConfig: map['maintenanceConfig'] == null ? null : (BareMetalAdminClusterMaintenanceConfig.fromMap((map['maintenanceConfig']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      networkConfig: map['networkConfig'] == null ? null : (BareMetalAdminClusterNetworkConfig.fromMap((map['networkConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeAccessConfig: map['nodeAccessConfig'] == null ? null : (BareMetalAdminClusterNodeAccessConfig.fromMap((map['nodeAccessConfig']! as Map).cast<String, dynamic>())).input(),
+      nodeConfig: map['nodeConfig'] == null ? null : (BareMetalAdminClusterNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      proxy: map['proxy'] == null ? null : (BareMetalAdminClusterProxy.fromMap((map['proxy']! as Map).cast<String, dynamic>())).input(),
+      securityConfig: map['securityConfig'] == null ? null : (BareMetalAdminClusterSecurityConfig.fromMap((map['securityConfig']! as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (BareMetalAdminClusterStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

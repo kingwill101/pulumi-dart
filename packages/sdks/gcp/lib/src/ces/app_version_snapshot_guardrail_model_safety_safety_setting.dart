@@ -38,8 +38,8 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
 
   factory AppVersionSnapshotGuardrailModelSafetySafetySetting.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotGuardrailModelSafetySafetySetting(
-      category: map['category'] == null ? null : (map['category'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as String).input(),
+      category: map['category'] == null ? null : (map['category']! as String).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as String).input(),
     );
   }
 }

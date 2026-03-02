@@ -62,14 +62,14 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
       jobId: (map['jobId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      predictionInput: map['predictionInput'] == null ? null : (GoogleCloudMlV1PredictionInput.fromMap((map['predictionInput'] as Map).cast<String, dynamic>())).input(),
-      predictionOutput: map['predictionOutput'] == null ? null : (GoogleCloudMlV1PredictionOutput.fromMap((map['predictionOutput'] as Map).cast<String, dynamic>())).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      trainingInput: map['trainingInput'] == null ? null : (GoogleCloudMlV1TrainingInput.fromMap((map['trainingInput'] as Map).cast<String, dynamic>())).input(),
-      trainingOutput: map['trainingOutput'] == null ? null : (GoogleCloudMlV1TrainingOutput.fromMap((map['trainingOutput'] as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      predictionInput: map['predictionInput'] == null ? null : (GoogleCloudMlV1PredictionInput.fromMap((map['predictionInput']! as Map).cast<String, dynamic>())).input(),
+      predictionOutput: map['predictionOutput'] == null ? null : (GoogleCloudMlV1PredictionOutput.fromMap((map['predictionOutput']! as Map).cast<String, dynamic>())).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      trainingInput: map['trainingInput'] == null ? null : (GoogleCloudMlV1TrainingInput.fromMap((map['trainingInput']! as Map).cast<String, dynamic>())).input(),
+      trainingOutput: map['trainingOutput'] == null ? null : (GoogleCloudMlV1TrainingOutput.fromMap((map['trainingOutput']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

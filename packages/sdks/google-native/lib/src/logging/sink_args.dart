@@ -81,18 +81,18 @@ class SinkArgs {
 
   factory SinkArgs.fromMap(Map<String, dynamic> map) {
     return SinkArgs(
-      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions'] as Map).cast<String, dynamic>())).input(),
-      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      bigqueryOptions: map['bigqueryOptions'] == null ? null : (BigQueryOptions.fromMap((map['bigqueryOptions']! as Map).cast<String, dynamic>())).input(),
+      customWriterIdentity: map['customWriterIdentity'] == null ? null : (map['customWriterIdentity']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       destination: (map['destination'] as String).input(),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as bool).input(),
-      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions'], (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      outputVersionFormat: map['outputVersionFormat'] == null ? null : (SinkOutputVersionFormat.fromValue(map['outputVersionFormat'] as String)).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity'] as bool).input(),
+      disabled: map['disabled'] == null ? null : (map['disabled']! as bool).input(),
+      exclusions: map['exclusions'] == null ? null : (pulumi.Input.decodeList<LogExclusion>(map['exclusions']!, (value) => LogExclusion.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      includeChildren: map['includeChildren'] == null ? null : (map['includeChildren']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      outputVersionFormat: map['outputVersionFormat'] == null ? null : (SinkOutputVersionFormat.fromValue(map['outputVersionFormat']! as String)).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      uniqueWriterIdentity: map['uniqueWriterIdentity'] == null ? null : (map['uniqueWriterIdentity']! as bool).input(),
     );
   }
 }

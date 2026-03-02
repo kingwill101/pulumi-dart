@@ -24,8 +24,8 @@ class ManagedZonePrivateVisibilityConfigGKECluster {
 
   factory ManagedZonePrivateVisibilityConfigGKECluster.fromMap(Map<String, dynamic> map) {
     return ManagedZonePrivateVisibilityConfigGKECluster(
-      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
+      gkeClusterName: map['gkeClusterName'] == null ? null : (map['gkeClusterName']! as String).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
     );
   }
 }

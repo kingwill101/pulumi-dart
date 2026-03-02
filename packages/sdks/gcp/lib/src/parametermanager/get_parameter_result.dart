@@ -75,7 +75,7 @@ class GetParameterResult {
       name: map['name'] as String,
       parameterId: map['parameterId'] as String,
       policyMembers: pulumi.Input.decodeList<GetParameterPolicyMember>(map['policyMembers'], (value) => GetParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       updateTime: map['updateTime'] as String,
     );

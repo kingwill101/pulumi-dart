@@ -30,9 +30,9 @@ class ApplicationKafkaConfigsKafkaConfig {
 
   factory ApplicationKafkaConfigsKafkaConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationKafkaConfigsKafkaConfig(
-      kafkaTopic: map['kafkaTopic'] == null ? null : (map['kafkaTopic'] as String).input(),
-      logDir: map['logDir'] == null ? null : (map['logDir'] as String).input(),
-      logType: map['logType'] == null ? null : (map['logType'] as String).input(),
+      kafkaTopic: map['kafkaTopic'] == null ? null : (map['kafkaTopic']! as String).input(),
+      logDir: map['logDir'] == null ? null : (map['logDir']! as String).input(),
+      logType: map['logType'] == null ? null : (map['logType']! as String).input(),
     );
   }
 }

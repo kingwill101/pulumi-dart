@@ -45,12 +45,12 @@ class PlanWorkflowStepDocumentDbConfig {
   factory PlanWorkflowStepDocumentDbConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepDocumentDbConfig(
       behavior: (map['behavior'] as String).input(),
-      crossAccountRole: map['crossAccountRole'] == null ? null : (map['crossAccountRole'] as String).input(),
+      crossAccountRole: map['crossAccountRole'] == null ? null : ((map['crossAccountRole'] as String).input()).input(),
       databaseClusterArns: ((map['databaseClusterArns'] as List).cast<String>()).input(),
-      externalId: map['externalId'] == null ? null : (map['externalId'] as String).input(),
+      externalId: map['externalId'] == null ? null : ((map['externalId'] as String).input()).input(),
       globalClusterIdentifier: (map['globalClusterIdentifier'] as String).input(),
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : (map['timeoutMinutes'] as int).input(),
-      ungracefuls: map['ungracefuls'] == null ? null : (pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      timeoutMinutes: map['timeoutMinutes'] == null ? null : ((map['timeoutMinutes'] as int).input()).input(),
+      ungracefuls: map['ungracefuls'] == null ? null : ((pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(map['ungracefuls']!, (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

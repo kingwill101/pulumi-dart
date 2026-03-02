@@ -48,8 +48,8 @@ class SettingsPropertiesResponseCache {
       channel: (map['channel'] as String).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
-      parent: map['parent'] == null ? null : (map['parent'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      parent: map['parent'] == null ? null : (map['parent']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
       subchannel: (map['subchannel'] as String).input(),
     );
   }

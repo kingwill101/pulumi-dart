@@ -51,13 +51,13 @@ class ExpressRouteGatewayState {
 
   factory ExpressRouteGatewayState.fromMap(Map<String, dynamic> map) {
     return ExpressRouteGatewayState(
-      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : (map['allowNonVirtualWanTraffic'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
-      scaleUnits: map['scaleUnits'] == null ? null : (map['scaleUnits'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId'] as String).input(),
+      allowNonVirtualWanTraffic: map['allowNonVirtualWanTraffic'] == null ? null : (map['allowNonVirtualWanTraffic']! as bool).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
+      scaleUnits: map['scaleUnits'] == null ? null : (map['scaleUnits']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
+      virtualHubId: map['virtualHubId'] == null ? null : (map['virtualHubId']! as String).input(),
     );
   }
 }

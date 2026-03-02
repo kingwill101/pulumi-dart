@@ -35,7 +35,7 @@ class NetworkInterfaceSecurityGroupAttachmentArgs {
   factory NetworkInterfaceSecurityGroupAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceSecurityGroupAttachmentArgs(
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       securityGroupId: (map['securityGroupId'] as String).input(),
     );
   }

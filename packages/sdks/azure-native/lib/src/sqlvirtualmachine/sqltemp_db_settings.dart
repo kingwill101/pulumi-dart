@@ -66,16 +66,16 @@ class SQLTempDbSettings {
 
   factory SQLTempDbSettings.fromMap(Map<String, dynamic> map) {
     return SQLTempDbSettings(
-      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount'] as int).input(),
-      dataFileSize: map['dataFileSize'] == null ? null : (map['dataFileSize'] as int).input(),
-      dataGrowth: map['dataGrowth'] == null ? null : (map['dataGrowth'] as int).input(),
-      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath'] as String).input(),
-      logFileSize: map['logFileSize'] == null ? null : (map['logFileSize'] as int).input(),
-      logGrowth: map['logGrowth'] == null ? null : (map['logGrowth'] as int).input(),
-      luns: map['luns'] == null ? null : ((map['luns'] as List).cast<int>()).input(),
-      persistFolder: map['persistFolder'] == null ? null : (map['persistFolder'] as bool).input(),
-      persistFolderPath: map['persistFolderPath'] == null ? null : (map['persistFolderPath'] as String).input(),
-      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool'] as bool).input(),
+      dataFileCount: map['dataFileCount'] == null ? null : (map['dataFileCount']! as int).input(),
+      dataFileSize: map['dataFileSize'] == null ? null : (map['dataFileSize']! as int).input(),
+      dataGrowth: map['dataGrowth'] == null ? null : (map['dataGrowth']! as int).input(),
+      defaultFilePath: map['defaultFilePath'] == null ? null : (map['defaultFilePath']! as String).input(),
+      logFileSize: map['logFileSize'] == null ? null : (map['logFileSize']! as int).input(),
+      logGrowth: map['logGrowth'] == null ? null : (map['logGrowth']! as int).input(),
+      luns: map['luns'] == null ? null : ((map['luns']! as List).cast<int>()).input(),
+      persistFolder: map['persistFolder'] == null ? null : (map['persistFolder']! as bool).input(),
+      persistFolderPath: map['persistFolderPath'] == null ? null : (map['persistFolderPath']! as String).input(),
+      useStoragePool: map['useStoragePool'] == null ? null : (map['useStoragePool']! as bool).input(),
     );
   }
 }

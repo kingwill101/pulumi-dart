@@ -37,7 +37,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata(
       authorizationEndpoint: (map['authorizationEndpoint'] as String).input(),
       issuer: (map['issuer'] as String).input(),
-      responseTypes: map['responseTypes'] == null ? null : ((map['responseTypes'] as List).cast<String>()).input(),
+      responseTypes: map['responseTypes'] == null ? null : (((map['responseTypes'] as List).cast<String>()).input()).input(),
       tokenEndpoint: (map['tokenEndpoint'] as String).input(),
     );
   }

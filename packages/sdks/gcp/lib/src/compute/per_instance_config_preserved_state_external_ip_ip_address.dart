@@ -20,7 +20,7 @@ class PerInstanceConfigPreservedStateExternalIpIpAddress {
 
   factory PerInstanceConfigPreservedStateExternalIpIpAddress.fromMap(Map<String, dynamic> map) {
     return PerInstanceConfigPreservedStateExternalIpIpAddress(
-      address: map['address'] == null ? null : (map['address'] as String).input(),
+      address: map['address'] == null ? null : (map['address']! as String).input(),
     );
   }
 }

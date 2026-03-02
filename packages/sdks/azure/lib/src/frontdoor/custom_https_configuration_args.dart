@@ -35,7 +35,7 @@ class CustomHttpsConfigurationArgs {
 
   factory CustomHttpsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return CustomHttpsConfigurationArgs(
-      customHttpsConfiguration: map['customHttpsConfiguration'] == null ? null : (CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((map['customHttpsConfiguration'] as Map).cast<String, dynamic>())).input(),
+      customHttpsConfiguration: map['customHttpsConfiguration'] == null ? null : (CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((map['customHttpsConfiguration']! as Map).cast<String, dynamic>())).input(),
       customHttpsProvisioningEnabled: (map['customHttpsProvisioningEnabled'] as bool).input(),
       frontendEndpointId: (map['frontendEndpointId'] as String).input(),
     );

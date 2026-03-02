@@ -36,10 +36,10 @@ class Destination {
 
   factory Destination.fromMap(Map<String, dynamic> map) {
     return Destination(
-      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId'] as String).input(),
-      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn'] as String).input(),
-      format: map['format'] == null ? null : (map['format'] as String).input(),
-      prefix: map['prefix'] == null ? null : (map['prefix'] as String).input(),
+      bucketAccountId: map['bucketAccountId'] == null ? null : (map['bucketAccountId']! as String).input(),
+      bucketArn: map['bucketArn'] == null ? null : (map['bucketArn']! as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
+      prefix: map['prefix'] == null ? null : (map['prefix']! as String).input(),
     );
   }
 }

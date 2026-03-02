@@ -93,20 +93,20 @@ class FrontdoorRouteState {
 
   factory FrontdoorRouteState.fromMap(Map<String, dynamic> map) {
     return FrontdoorRouteState(
-      cache: map['cache'] == null ? null : (FrontdoorRouteCache.fromMap((map['cache'] as Map).cast<String, dynamic>())).input(),
-      cdnFrontdoorCustomDomainIds: map['cdnFrontdoorCustomDomainIds'] == null ? null : ((map['cdnFrontdoorCustomDomainIds'] as List).cast<String>()).input(),
-      cdnFrontdoorEndpointId: map['cdnFrontdoorEndpointId'] == null ? null : (map['cdnFrontdoorEndpointId'] as String).input(),
-      cdnFrontdoorOriginGroupId: map['cdnFrontdoorOriginGroupId'] == null ? null : (map['cdnFrontdoorOriginGroupId'] as String).input(),
-      cdnFrontdoorOriginIds: map['cdnFrontdoorOriginIds'] == null ? null : ((map['cdnFrontdoorOriginIds'] as List).cast<String>()).input(),
-      cdnFrontdoorOriginPath: map['cdnFrontdoorOriginPath'] == null ? null : (map['cdnFrontdoorOriginPath'] as String).input(),
-      cdnFrontdoorRuleSetIds: map['cdnFrontdoorRuleSetIds'] == null ? null : ((map['cdnFrontdoorRuleSetIds'] as List).cast<String>()).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol'] as String).input(),
-      httpsRedirectEnabled: map['httpsRedirectEnabled'] == null ? null : (map['httpsRedirectEnabled'] as bool).input(),
-      linkToDefaultDomain: map['linkToDefaultDomain'] == null ? null : (map['linkToDefaultDomain'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      patternsToMatches: map['patternsToMatches'] == null ? null : ((map['patternsToMatches'] as List).cast<String>()).input(),
-      supportedProtocols: map['supportedProtocols'] == null ? null : ((map['supportedProtocols'] as List).cast<String>()).input(),
+      cache: map['cache'] == null ? null : (FrontdoorRouteCache.fromMap((map['cache']! as Map).cast<String, dynamic>())).input(),
+      cdnFrontdoorCustomDomainIds: map['cdnFrontdoorCustomDomainIds'] == null ? null : ((map['cdnFrontdoorCustomDomainIds']! as List).cast<String>()).input(),
+      cdnFrontdoorEndpointId: map['cdnFrontdoorEndpointId'] == null ? null : (map['cdnFrontdoorEndpointId']! as String).input(),
+      cdnFrontdoorOriginGroupId: map['cdnFrontdoorOriginGroupId'] == null ? null : (map['cdnFrontdoorOriginGroupId']! as String).input(),
+      cdnFrontdoorOriginIds: map['cdnFrontdoorOriginIds'] == null ? null : ((map['cdnFrontdoorOriginIds']! as List).cast<String>()).input(),
+      cdnFrontdoorOriginPath: map['cdnFrontdoorOriginPath'] == null ? null : (map['cdnFrontdoorOriginPath']! as String).input(),
+      cdnFrontdoorRuleSetIds: map['cdnFrontdoorRuleSetIds'] == null ? null : ((map['cdnFrontdoorRuleSetIds']! as List).cast<String>()).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      forwardingProtocol: map['forwardingProtocol'] == null ? null : (map['forwardingProtocol']! as String).input(),
+      httpsRedirectEnabled: map['httpsRedirectEnabled'] == null ? null : (map['httpsRedirectEnabled']! as bool).input(),
+      linkToDefaultDomain: map['linkToDefaultDomain'] == null ? null : (map['linkToDefaultDomain']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      patternsToMatches: map['patternsToMatches'] == null ? null : ((map['patternsToMatches']! as List).cast<String>()).input(),
+      supportedProtocols: map['supportedProtocols'] == null ? null : ((map['supportedProtocols']! as List).cast<String>()).input(),
     );
   }
 }

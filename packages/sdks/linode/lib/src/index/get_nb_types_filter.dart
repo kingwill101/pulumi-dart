@@ -30,7 +30,7 @@ class GetNbTypesFilter {
 
   factory GetNbTypesFilter.fromMap(Map<String, dynamic> map) {
     return GetNbTypesFilter(
-      matchBy: map['matchBy'] == null ? null : (map['matchBy'] as String).input(),
+      matchBy: map['matchBy'] == null ? null : (map['matchBy']! as String).input(),
       name: (map['name'] as String).input(),
       values: ((map['values'] as List).cast<String>()).input(),
     );

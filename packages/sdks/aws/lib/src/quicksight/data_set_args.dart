@@ -116,23 +116,23 @@ class DataSetArgs {
 
   factory DataSetArgs.fromMap(Map<String, dynamic> map) {
     return DataSetArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : (map['awsAccountId'] as String).input(),
-      columnGroups: map['columnGroups'] == null ? null : (pulumi.Input.decodeList<DataSetColumnGroup>(map['columnGroups'], (value) => DataSetColumnGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      columnLevelPermissionRules: map['columnLevelPermissionRules'] == null ? null : (pulumi.Input.decodeList<DataSetColumnLevelPermissionRule>(map['columnLevelPermissionRules'], (value) => DataSetColumnLevelPermissionRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      awsAccountId: map['awsAccountId'] == null ? null : ((map['awsAccountId'] as String).input()).input(),
+      columnGroups: map['columnGroups'] == null ? null : ((pulumi.Input.decodeList<DataSetColumnGroup>(map['columnGroups']!, (value) => DataSetColumnGroup.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      columnLevelPermissionRules: map['columnLevelPermissionRules'] == null ? null : ((pulumi.Input.decodeList<DataSetColumnLevelPermissionRule>(map['columnLevelPermissionRules']!, (value) => DataSetColumnLevelPermissionRule.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       dataSetId: (map['dataSetId'] as String).input(),
-      dataSetUsageConfiguration: map['dataSetUsageConfiguration'] == null ? null : (DataSetDataSetUsageConfiguration.fromMap((map['dataSetUsageConfiguration'] as Map).cast<String, dynamic>())).input(),
-      fieldFolders: map['fieldFolders'] == null ? null : (pulumi.Input.decodeList<DataSetFieldFolder>(map['fieldFolders'], (value) => DataSetFieldFolder.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      dataSetUsageConfiguration: map['dataSetUsageConfiguration'] == null ? null : ((DataSetDataSetUsageConfiguration.fromMap((map['dataSetUsageConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      fieldFolders: map['fieldFolders'] == null ? null : ((pulumi.Input.decodeList<DataSetFieldFolder>(map['fieldFolders']!, (value) => DataSetFieldFolder.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
       importMode: (map['importMode'] as String).input(),
-      logicalTableMaps: map['logicalTableMaps'] == null ? null : (pulumi.Input.decodeList<DataSetLogicalTableMap>(map['logicalTableMaps'], (value) => DataSetLogicalTableMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      permissions: map['permissions'] == null ? null : (pulumi.Input.decodeList<DataSetPermission>(map['permissions'], (value) => DataSetPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      physicalTableMaps: map['physicalTableMaps'] == null ? null : (pulumi.Input.decodeList<DataSetPhysicalTableMap>(map['physicalTableMaps'], (value) => DataSetPhysicalTableMap.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      refreshProperties: map['refreshProperties'] == null ? null : (DataSetRefreshProperties.fromMap((map['refreshProperties'] as Map).cast<String, dynamic>())).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      rowLevelPermissionDataSet: map['rowLevelPermissionDataSet'] == null ? null : (DataSetRowLevelPermissionDataSet.fromMap((map['rowLevelPermissionDataSet'] as Map).cast<String, dynamic>())).input(),
-      rowLevelPermissionTagConfiguration: map['rowLevelPermissionTagConfiguration'] == null ? null : (DataSetRowLevelPermissionTagConfiguration.fromMap((map['rowLevelPermissionTagConfiguration'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      useAs: map['useAs'] == null ? null : (map['useAs'] as String).input(),
+      logicalTableMaps: map['logicalTableMaps'] == null ? null : ((pulumi.Input.decodeList<DataSetLogicalTableMap>(map['logicalTableMaps']!, (value) => DataSetLogicalTableMap.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      permissions: map['permissions'] == null ? null : ((pulumi.Input.decodeList<DataSetPermission>(map['permissions']!, (value) => DataSetPermission.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      physicalTableMaps: map['physicalTableMaps'] == null ? null : ((pulumi.Input.decodeList<DataSetPhysicalTableMap>(map['physicalTableMaps']!, (value) => DataSetPhysicalTableMap.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      refreshProperties: map['refreshProperties'] == null ? null : ((DataSetRefreshProperties.fromMap((map['refreshProperties']! as Map).cast<String, dynamic>())).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      rowLevelPermissionDataSet: map['rowLevelPermissionDataSet'] == null ? null : ((DataSetRowLevelPermissionDataSet.fromMap((map['rowLevelPermissionDataSet']! as Map).cast<String, dynamic>())).input()).input(),
+      rowLevelPermissionTagConfiguration: map['rowLevelPermissionTagConfiguration'] == null ? null : ((DataSetRowLevelPermissionTagConfiguration.fromMap((map['rowLevelPermissionTagConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      useAs: map['useAs'] == null ? null : ((map['useAs'] as String).input()).input(),
     );
   }
 }

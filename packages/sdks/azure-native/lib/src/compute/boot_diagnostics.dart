@@ -26,8 +26,8 @@ class BootDiagnostics {
 
   factory BootDiagnostics.fromMap(Map<String, dynamic> map) {
     return BootDiagnostics(
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      storageUri: map['storageUri'] == null ? null : (map['storageUri'] as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      storageUri: map['storageUri'] == null ? null : (map['storageUri']! as String).input(),
     );
   }
 }

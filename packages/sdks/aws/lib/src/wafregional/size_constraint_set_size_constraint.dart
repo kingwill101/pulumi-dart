@@ -45,7 +45,7 @@ class SizeConstraintSetSizeConstraint {
   factory SizeConstraintSetSizeConstraint.fromMap(Map<String, dynamic> map) {
     return SizeConstraintSetSizeConstraint(
       comparisonOperator: (map['comparisonOperator'] as String).input(),
-      fieldToMatch: (SizeConstraintSetSizeConstraintFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>())).input(),
+      fieldToMatch: (SizeConstraintSetSizeConstraintFieldToMatch.fromMap((map['fieldToMatch']! as Map).cast<String, dynamic>())).input(),
       size: (map['size'] as int).input(),
       textTransformation: (map['textTransformation'] as String).input(),
     );

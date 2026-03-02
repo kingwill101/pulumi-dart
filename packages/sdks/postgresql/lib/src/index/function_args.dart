@@ -84,18 +84,18 @@ class FunctionArgs {
 
   factory FunctionArgs.fromMap(Map<String, dynamic> map) {
     return FunctionArgs(
-      args: map['args'] == null ? null : (pulumi.Input.decodeList<FunctionArg>(map['args'], (value) => FunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      args: map['args'] == null ? null : (pulumi.Input.decodeList<FunctionArg>(map['args']!, (value) => FunctionArg.fromMap((value as Map).cast<String, dynamic>()))).input(),
       body: (map['body'] as String).input(),
-      database: map['database'] == null ? null : (map['database'] as String).input(),
-      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade'] as bool).input(),
-      language: map['language'] == null ? null : (map['language'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      parallel: map['parallel'] == null ? null : (map['parallel'] as String).input(),
-      returns: map['returns'] == null ? null : (map['returns'] as String).input(),
-      schema: map['schema'] == null ? null : (map['schema'] as String).input(),
-      securityDefiner: map['securityDefiner'] == null ? null : (map['securityDefiner'] as bool).input(),
-      strict: map['strict'] == null ? null : (map['strict'] as bool).input(),
-      volatility: map['volatility'] == null ? null : (map['volatility'] as String).input(),
+      database: map['database'] == null ? null : (map['database']! as String).input(),
+      dropCascade: map['dropCascade'] == null ? null : (map['dropCascade']! as bool).input(),
+      language: map['language'] == null ? null : (map['language']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      parallel: map['parallel'] == null ? null : (map['parallel']! as String).input(),
+      returns: map['returns'] == null ? null : (map['returns']! as String).input(),
+      schema: map['schema'] == null ? null : (map['schema']! as String).input(),
+      securityDefiner: map['securityDefiner'] == null ? null : (map['securityDefiner']! as bool).input(),
+      strict: map['strict'] == null ? null : (map['strict']! as bool).input(),
+      volatility: map['volatility'] == null ? null : (map['volatility']! as String).input(),
     );
   }
 }

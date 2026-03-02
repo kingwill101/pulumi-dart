@@ -35,9 +35,9 @@ class ApplicationGatewayBackendAddressPool {
 
   factory ApplicationGatewayBackendAddressPool.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayBackendAddressPool(
-      fqdns: map['fqdns'] == null ? null : ((map['fqdns'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses'] as List).cast<String>()).input(),
+      fqdns: map['fqdns'] == null ? null : ((map['fqdns']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      ipAddresses: map['ipAddresses'] == null ? null : ((map['ipAddresses']! as List).cast<String>()).input(),
       name: (map['name'] as String).input(),
     );
   }

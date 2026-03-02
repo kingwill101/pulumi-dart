@@ -91,21 +91,21 @@ class FetchOpts {
 
   factory FetchOpts.fromMap(Map<String, dynamic> map) {
     return FetchOpts(
-      caFile: map['caFile'] == null ? null : (map['caFile'] as String).input(),
-      certFile: map['certFile'] == null ? null : (map['certFile'] as String).input(),
-      destination: map['destination'] == null ? null : (map['destination'] as String).input(),
-      devel: map['devel'] == null ? null : (map['devel'] as bool).input(),
-      home: map['home'] == null ? null : (map['home'] as String).input(),
-      keyFile: map['keyFile'] == null ? null : (map['keyFile'] as String).input(),
-      keyring: map['keyring'] == null ? null : (map['keyring'] as String).input(),
-      password: map['password'] == null ? null : (map['password'] as String).input(),
-      prov: map['prov'] == null ? null : (map['prov'] as String).input(),
-      repo: map['repo'] == null ? null : (map['repo'] as String).input(),
-      untar: map['untar'] == null ? null : (map['untar'] as bool).input(),
-      untardir: map['untardir'] == null ? null : (map['untardir'] as String).input(),
-      username: map['username'] == null ? null : (map['username'] as String).input(),
-      verify: map['verify'] == null ? null : (map['verify'] as bool).input(),
-      version: map['version'] == null ? null : (map['version'] as String).input(),
+      caFile: map['caFile'] == null ? null : (map['caFile']! as String).input(),
+      certFile: map['certFile'] == null ? null : (map['certFile']! as String).input(),
+      destination: map['destination'] == null ? null : (map['destination']! as String).input(),
+      devel: map['devel'] == null ? null : (map['devel']! as bool).input(),
+      home: map['home'] == null ? null : (map['home']! as String).input(),
+      keyFile: map['keyFile'] == null ? null : (map['keyFile']! as String).input(),
+      keyring: map['keyring'] == null ? null : (map['keyring']! as String).input(),
+      password: map['password'] == null ? null : (map['password']! as String).input(),
+      prov: map['prov'] == null ? null : (map['prov']! as String).input(),
+      repo: map['repo'] == null ? null : (map['repo']! as String).input(),
+      untar: map['untar'] == null ? null : (map['untar']! as bool).input(),
+      untardir: map['untardir'] == null ? null : (map['untardir']! as String).input(),
+      username: map['username'] == null ? null : (map['username']! as String).input(),
+      verify: map['verify'] == null ? null : (map['verify']! as bool).input(),
+      version: map['version'] == null ? null : (map['version']! as String).input(),
     );
   }
 }

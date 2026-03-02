@@ -73,7 +73,7 @@ class HciCollectLogJobPropertiesResponse {
 
   factory HciCollectLogJobPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return HciCollectLogJobPropertiesResponse(
-      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode'] as String).input(),
+      deploymentMode: map['deploymentMode'] == null ? null : (map['deploymentMode']! as String).input(),
       endTimeUtc: (map['endTimeUtc'] as String).input(),
       fromDate: (map['fromDate'] as String).input(),
       jobId: (map['jobId'] as String).input(),

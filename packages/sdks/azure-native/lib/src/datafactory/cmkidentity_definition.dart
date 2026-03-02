@@ -21,7 +21,7 @@ class CMKIdentityDefinition {
 
   factory CMKIdentityDefinition.fromMap(Map<String, dynamic> map) {
     return CMKIdentityDefinition(
-      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity'] as String).input(),
+      userAssignedIdentity: map['userAssignedIdentity'] == null ? null : (map['userAssignedIdentity']! as String).input(),
     );
   }
 }

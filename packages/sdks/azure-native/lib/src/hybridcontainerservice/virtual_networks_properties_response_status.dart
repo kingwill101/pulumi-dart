@@ -22,7 +22,7 @@ class VirtualNetworksPropertiesResponseStatus {
 
   factory VirtualNetworksPropertiesResponseStatus.fromMap(Map<String, dynamic> map) {
     return VirtualNetworksPropertiesResponseStatus(
-      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualNetworksPropertiesResponseProvisioningStatus.fromMap((map['provisioningStatus'] as Map).cast<String, dynamic>())).input(),
+      provisioningStatus: map['provisioningStatus'] == null ? null : (VirtualNetworksPropertiesResponseProvisioningStatus.fromMap((map['provisioningStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class EnvironmentConfigWebServerNetworkAccessControl {
 
   factory EnvironmentConfigWebServerNetworkAccessControl.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWebServerNetworkAccessControl(
-      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>(map['allowedIpRanges'], (value) => EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allowedIpRanges: map['allowedIpRanges'] == null ? null : (pulumi.Input.decodeList<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>(map['allowedIpRanges']!, (value) => EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

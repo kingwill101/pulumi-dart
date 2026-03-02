@@ -122,7 +122,7 @@ class GetSubscriptionResult {
       messageRetentionDuration: map['messageRetentionDuration'] as String,
       messageTransforms: pulumi.Input.decodeList<GetSubscriptionMessageTransform>(map['messageTransforms'], (value) => GetSubscriptionMessageTransform.fromMap((value as Map).cast<String, dynamic>())),
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       pushConfigs: pulumi.Input.decodeList<GetSubscriptionPushConfig>(map['pushConfigs'], (value) => GetSubscriptionPushConfig.fromMap((value as Map).cast<String, dynamic>())),
       retainAckedMessages: map['retainAckedMessages'] as bool,

@@ -36,10 +36,10 @@ class SupportInfoResponse {
 
   factory SupportInfoResponse.fromMap(Map<String, dynamic> map) {
     return SupportInfoResponse(
-      email: map['email'] == null ? null : (map['email'] as String).input(),
-      instructions: map['instructions'] == null ? null : (map['instructions'] as String).input(),
-      phone: map['phone'] == null ? null : (map['phone'] as String).input(),
-      url: map['url'] == null ? null : (map['url'] as String).input(),
+      email: map['email'] == null ? null : (map['email']! as String).input(),
+      instructions: map['instructions'] == null ? null : (map['instructions']! as String).input(),
+      phone: map['phone'] == null ? null : (map['phone']! as String).input(),
+      url: map['url'] == null ? null : (map['url']! as String).input(),
     );
   }
 }

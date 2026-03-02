@@ -27,8 +27,8 @@ class DiskRestorePointInstanceViewResponse {
 
   factory DiskRestorePointInstanceViewResponse.fromMap(Map<String, dynamic> map) {
     return DiskRestorePointInstanceViewResponse(
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      replicationStatus: map['replicationStatus'] == null ? null : (DiskRestorePointReplicationStatusResponse.fromMap((map['replicationStatus'] as Map).cast<String, dynamic>())).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      replicationStatus: map['replicationStatus'] == null ? null : (DiskRestorePointReplicationStatusResponse.fromMap((map['replicationStatus']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

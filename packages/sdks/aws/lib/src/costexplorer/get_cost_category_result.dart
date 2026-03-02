@@ -73,8 +73,8 @@ class GetCostCategoryResult {
       id: map['id'] as String,
       name: map['name'] as String,
       ruleVersion: map['ruleVersion'] as String,
-      rules: pulumi.Input.decodeList<GetCostCategoryRule>(map['rules'], (value) => GetCostCategoryRule.fromMap((value as Map).cast<String, dynamic>())),
-      splitChargeRules: pulumi.Input.decodeList<GetCostCategorySplitChargeRule>(map['splitChargeRules'], (value) => GetCostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetCostCategoryRule>(map['rules']!, (value) => GetCostCategoryRule.fromMap((value as Map).cast<String, dynamic>())),
+      splitChargeRules: pulumi.Input.decodeList<GetCostCategorySplitChargeRule>(map['splitChargeRules']!, (value) => GetCostCategorySplitChargeRule.fromMap((value as Map).cast<String, dynamic>())),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }

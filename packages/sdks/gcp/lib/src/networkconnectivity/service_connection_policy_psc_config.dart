@@ -45,9 +45,9 @@ class ServiceConnectionPolicyPscConfig {
 
   factory ServiceConnectionPolicyPscConfig.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConfig(
-      allowedGoogleProducersResourceHierarchyLevels: map['allowedGoogleProducersResourceHierarchyLevels'] == null ? null : ((map['allowedGoogleProducersResourceHierarchyLevels'] as List).cast<String>()).input(),
-      limit: map['limit'] == null ? null : (map['limit'] as String).input(),
-      producerInstanceLocation: map['producerInstanceLocation'] == null ? null : (map['producerInstanceLocation'] as String).input(),
+      allowedGoogleProducersResourceHierarchyLevels: map['allowedGoogleProducersResourceHierarchyLevels'] == null ? null : ((map['allowedGoogleProducersResourceHierarchyLevels']! as List).cast<String>()).input(),
+      limit: map['limit'] == null ? null : (map['limit']! as String).input(),
+      producerInstanceLocation: map['producerInstanceLocation'] == null ? null : (map['producerInstanceLocation']! as String).input(),
       subnetworks: ((map['subnetworks'] as List).cast<String>()).input(),
     );
   }

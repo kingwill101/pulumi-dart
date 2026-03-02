@@ -69,16 +69,16 @@ class ClusterEndpointState {
 
   factory ClusterEndpointState.fromMap(Map<String, dynamic> map) {
     return ClusterEndpointState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      clusterEndpointIdentifier: map['clusterEndpointIdentifier'] == null ? null : (map['clusterEndpointIdentifier'] as String).input(),
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : (map['clusterIdentifier'] as String).input(),
-      customEndpointType: map['customEndpointType'] == null ? null : (map['customEndpointType'] as String).input(),
-      endpoint: map['endpoint'] == null ? null : (map['endpoint'] as String).input(),
-      excludedMembers: map['excludedMembers'] == null ? null : ((map['excludedMembers'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      staticMembers: map['staticMembers'] == null ? null : ((map['staticMembers'] as List).cast<String>()).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      clusterEndpointIdentifier: map['clusterEndpointIdentifier'] == null ? null : ((map['clusterEndpointIdentifier'] as String).input()).input(),
+      clusterIdentifier: map['clusterIdentifier'] == null ? null : ((map['clusterIdentifier'] as String).input()).input(),
+      customEndpointType: map['customEndpointType'] == null ? null : ((map['customEndpointType'] as String).input()).input(),
+      endpoint: map['endpoint'] == null ? null : ((map['endpoint'] as String).input()).input(),
+      excludedMembers: map['excludedMembers'] == null ? null : (((map['excludedMembers'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      staticMembers: map['staticMembers'] == null ? null : (((map['staticMembers'] as List).cast<String>()).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

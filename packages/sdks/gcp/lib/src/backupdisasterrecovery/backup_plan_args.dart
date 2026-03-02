@@ -71,11 +71,11 @@ class BackupPlanArgs {
       backupPlanId: (map['backupPlanId'] as String).input(),
       backupRules: (pulumi.Input.decodeList<BackupPlanBackupRule>(map['backupRules'], (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
       backupVault: (map['backupVault'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       location: (map['location'] as String).input(),
-      logRetentionDays: map['logRetentionDays'] == null ? null : (map['logRetentionDays'] as int).input(),
-      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] == null ? null : (map['maxCustomOnDemandRetentionDays'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      logRetentionDays: map['logRetentionDays'] == null ? null : (map['logRetentionDays']! as int).input(),
+      maxCustomOnDemandRetentionDays: map['maxCustomOnDemandRetentionDays'] == null ? null : (map['maxCustomOnDemandRetentionDays']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       resourceType: (map['resourceType'] as String).input(),
     );
   }

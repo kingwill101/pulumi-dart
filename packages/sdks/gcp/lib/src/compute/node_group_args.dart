@@ -86,17 +86,17 @@ class NodeGroupArgs {
 
   factory NodeGroupArgs.fromMap(Map<String, dynamic> map) {
     return NodeGroupArgs(
-      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (NodeGroupAutoscalingPolicy.fromMap((map['autoscalingPolicy'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      initialSize: map['initialSize'] == null ? null : (map['initialSize'] as int).input(),
-      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval'] as String).input(),
-      maintenancePolicy: map['maintenancePolicy'] == null ? null : (map['maintenancePolicy'] as String).input(),
-      maintenanceWindow: map['maintenanceWindow'] == null ? null : (NodeGroupMaintenanceWindow.fromMap((map['maintenanceWindow'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      autoscalingPolicy: map['autoscalingPolicy'] == null ? null : (NodeGroupAutoscalingPolicy.fromMap((map['autoscalingPolicy']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      initialSize: map['initialSize'] == null ? null : (map['initialSize']! as int).input(),
+      maintenanceInterval: map['maintenanceInterval'] == null ? null : (map['maintenanceInterval']! as String).input(),
+      maintenancePolicy: map['maintenancePolicy'] == null ? null : (map['maintenancePolicy']! as String).input(),
+      maintenanceWindow: map['maintenanceWindow'] == null ? null : (NodeGroupMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       nodeTemplate: (map['nodeTemplate'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      shareSettings: map['shareSettings'] == null ? null : (NodeGroupShareSettings.fromMap((map['shareSettings'] as Map).cast<String, dynamic>())).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      shareSettings: map['shareSettings'] == null ? null : (NodeGroupShareSettings.fromMap((map['shareSettings']! as Map).cast<String, dynamic>())).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

@@ -45,7 +45,7 @@ class DomainBackupIamMemberManagedidentitiesV1alpha1Args {
 
   factory DomainBackupIamMemberManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return DomainBackupIamMemberManagedidentitiesV1alpha1Args(
-      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition'] as Map).cast<String, dynamic>())).input(),
+      condition: map['condition'] == null ? null : (Condition.fromMap((map['condition']! as Map).cast<String, dynamic>())).input(),
       member: (map['member'] as String).input(),
       name: (map['name'] as String).input(),
       role: (map['role'] as String).input(),

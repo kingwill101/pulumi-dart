@@ -46,11 +46,11 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   factory GooglePrivacyDlpV2ExclusionRule.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ExclusionRule(
-      dictionary: map['dictionary'] == null ? null : (GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>())).input(),
-      excludeByHotword: map['excludeByHotword'] == null ? null : (GooglePrivacyDlpV2ExcludeByHotword.fromMap((map['excludeByHotword'] as Map).cast<String, dynamic>())).input(),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (GooglePrivacyDlpV2ExcludeInfoTypes.fromMap((map['excludeInfoTypes'] as Map).cast<String, dynamic>())).input(),
-      matchingType: map['matchingType'] == null ? null : (GooglePrivacyDlpV2ExclusionRuleMatchingType.fromValue(map['matchingType'] as String)).input(),
-      regex: map['regex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['regex'] as Map).cast<String, dynamic>())).input(),
+      dictionary: map['dictionary'] == null ? null : (GooglePrivacyDlpV2Dictionary.fromMap((map['dictionary']! as Map).cast<String, dynamic>())).input(),
+      excludeByHotword: map['excludeByHotword'] == null ? null : (GooglePrivacyDlpV2ExcludeByHotword.fromMap((map['excludeByHotword']! as Map).cast<String, dynamic>())).input(),
+      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : (GooglePrivacyDlpV2ExcludeInfoTypes.fromMap((map['excludeInfoTypes']! as Map).cast<String, dynamic>())).input(),
+      matchingType: map['matchingType'] == null ? null : (GooglePrivacyDlpV2ExclusionRuleMatchingType.fromValue(map['matchingType']! as String)).input(),
+      regex: map['regex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['regex']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

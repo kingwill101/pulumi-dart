@@ -67,16 +67,16 @@ class SourceControlState {
 
   factory SourceControlState.fromMap(Map<String, dynamic> map) {
     return SourceControlState(
-      automaticSync: map['automaticSync'] == null ? null : (map['automaticSync'] as bool).input(),
-      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId'] as String).input(),
-      branch: map['branch'] == null ? null : (map['branch'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      publishRunbookEnabled: map['publishRunbookEnabled'] == null ? null : (map['publishRunbookEnabled'] as bool).input(),
-      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl'] as String).input(),
-      security: map['security'] == null ? null : (SourceControlSecurity.fromMap((map['security'] as Map).cast<String, dynamic>())).input(),
-      sourceControlType: map['sourceControlType'] == null ? null : (map['sourceControlType'] as String).input(),
+      automaticSync: map['automaticSync'] == null ? null : (map['automaticSync']! as bool).input(),
+      automationAccountId: map['automationAccountId'] == null ? null : (map['automationAccountId']! as String).input(),
+      branch: map['branch'] == null ? null : (map['branch']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      publishRunbookEnabled: map['publishRunbookEnabled'] == null ? null : (map['publishRunbookEnabled']! as bool).input(),
+      repositoryUrl: map['repositoryUrl'] == null ? null : (map['repositoryUrl']! as String).input(),
+      security: map['security'] == null ? null : (SourceControlSecurity.fromMap((map['security']! as Map).cast<String, dynamic>())).input(),
+      sourceControlType: map['sourceControlType'] == null ? null : (map['sourceControlType']! as String).input(),
     );
   }
 }

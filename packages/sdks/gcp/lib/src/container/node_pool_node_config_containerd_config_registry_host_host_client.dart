@@ -28,7 +28,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   factory NodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigContainerdConfigRegistryHostHostClient(
       cert: (NodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>())).input(),
-      key: map['key'] == null ? null : (NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>())).input(),
+      key: map['key'] == null ? null : (NodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((map['key']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

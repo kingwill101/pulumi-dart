@@ -57,13 +57,13 @@ class WorkflowConfigArgs {
 
   factory WorkflowConfigArgs.fromMap(Map<String, dynamic> map) {
     return WorkflowConfigArgs(
-      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule'] as String).input(),
-      invocationConfig: map['invocationConfig'] == null ? null : (InvocationConfig.fromMap((map['invocationConfig'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      cronSchedule: map['cronSchedule'] == null ? null : (map['cronSchedule']! as String).input(),
+      invocationConfig: map['invocationConfig'] == null ? null : (InvocationConfig.fromMap((map['invocationConfig']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       releaseConfig: (map['releaseConfig'] as String).input(),
       repositoryId: (map['repositoryId'] as String).input(),
-      timeZone: map['timeZone'] == null ? null : (map['timeZone'] as String).input(),
+      timeZone: map['timeZone'] == null ? null : (map['timeZone']! as String).input(),
       workflowConfigId: (map['workflowConfigId'] as String).input(),
     );
   }

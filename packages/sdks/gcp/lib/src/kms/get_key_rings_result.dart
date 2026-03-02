@@ -39,11 +39,11 @@ class GetKeyRingsResult {
 
   factory GetKeyRingsResult.fromMap(Map<String, dynamic> map) {
     return GetKeyRingsResult(
-      filter: map['filter'] == null ? null : map['filter'] as String,
+      filter: map['filter'] == null ? null : map['filter']! as String,
       id: map['id'] as String,
       keyRings: pulumi.Input.decodeList<GetKeyRingsKeyRing>(map['keyRings'], (value) => GetKeyRingsKeyRing.fromMap((value as Map).cast<String, dynamic>())),
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

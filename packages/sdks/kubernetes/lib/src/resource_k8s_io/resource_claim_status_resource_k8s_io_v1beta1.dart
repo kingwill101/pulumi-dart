@@ -40,9 +40,9 @@ class ResourceClaimStatusResourceK8sIoV1beta1 {
 
   factory ResourceClaimStatusResourceK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return ResourceClaimStatusResourceK8sIoV1beta1(
-      allocation: map['allocation'] == null ? null : (AllocationResultResourceK8sIoV1beta1.fromMap((map['allocation'] as Map).cast<String, dynamic>())).input(),
-      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<AllocatedDeviceStatusResourceK8sIoV1beta1>(map['devices'], (value) => AllocatedDeviceStatusResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferenceResourceK8sIoV1beta1>(map['reservedFor'], (value) => ResourceClaimConsumerReferenceResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      allocation: map['allocation'] == null ? null : (AllocationResultResourceK8sIoV1beta1.fromMap((map['allocation']! as Map).cast<String, dynamic>())).input(),
+      devices: map['devices'] == null ? null : (pulumi.Input.decodeList<AllocatedDeviceStatusResourceK8sIoV1beta1>(map['devices']!, (value) => AllocatedDeviceStatusResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      reservedFor: map['reservedFor'] == null ? null : (pulumi.Input.decodeList<ResourceClaimConsumerReferenceResourceK8sIoV1beta1>(map['reservedFor']!, (value) => ResourceClaimConsumerReferenceResourceK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

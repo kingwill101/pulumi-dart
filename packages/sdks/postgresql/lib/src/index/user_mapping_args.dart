@@ -40,7 +40,7 @@ class UserMappingArgs {
 
   factory UserMappingArgs.fromMap(Map<String, dynamic> map) {
     return UserMappingArgs(
-      options: map['options'] == null ? null : ((map['options'] as Map).cast<String, String>()).input(),
+      options: map['options'] == null ? null : ((map['options']! as Map).cast<String, String>()).input(),
       serverName: (map['serverName'] as String).input(),
       userName: (map['userName'] as String).input(),
     );

@@ -20,7 +20,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
 
   factory FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDe(
-      timestampFormats: map['timestampFormats'] == null ? null : ((map['timestampFormats'] as List).cast<String>()).input(),
+      timestampFormats: map['timestampFormats'] == null ? null : (((map['timestampFormats'] as List).cast<String>()).input()).input(),
     );
   }
 }

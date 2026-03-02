@@ -20,7 +20,7 @@ class ProviderFeaturesDatabricksWorkspace {
 
   factory ProviderFeaturesDatabricksWorkspace.fromMap(Map<String, dynamic> map) {
     return ProviderFeaturesDatabricksWorkspace(
-      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete'] as bool).input(),
+      forceDelete: map['forceDelete'] == null ? null : (map['forceDelete']! as bool).input(),
     );
   }
 }

@@ -56,10 +56,10 @@ class RecurringScheduleOsconfigV1beta {
 
   factory RecurringScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return RecurringScheduleOsconfigV1beta(
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       frequency: (RecurringScheduleFrequencyOsconfigV1beta.fromValue(map['frequency'] as String)).input(),
       monthly: (MonthlyScheduleOsconfigV1beta.fromMap((map['monthly'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
       timeOfDay: (TimeOfDayOsconfigV1beta.fromMap((map['timeOfDay'] as Map).cast<String, dynamic>())).input(),
       timeZone: (TimeZoneOsconfigV1beta.fromMap((map['timeZone'] as Map).cast<String, dynamic>())).input(),
       weekly: (WeeklyScheduleOsconfigV1beta.fromMap((map['weekly'] as Map).cast<String, dynamic>())).input(),

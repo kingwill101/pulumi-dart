@@ -98,22 +98,22 @@ class SqlServerSink {
 
   factory SqlServerSink.fromMap(Map<String, dynamic> map) {
     return SqlServerSink(
-      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']).input(),
-      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']).input(),
-      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']).input(),
-      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']).input(),
-      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']).input(),
-      sqlWriterStoredProcedureName: map['sqlWriterStoredProcedureName'] == null ? null : (map['sqlWriterStoredProcedureName']).input(),
-      sqlWriterTableType: map['sqlWriterTableType'] == null ? null : (map['sqlWriterTableType']).input(),
-      sqlWriterUseTableLock: map['sqlWriterUseTableLock'] == null ? null : (map['sqlWriterUseTableLock']).input(),
-      storedProcedureParameters: map['storedProcedureParameters'] == null ? null : (map['storedProcedureParameters']).input(),
-      storedProcedureTableTypeParameterName: map['storedProcedureTableTypeParameterName'] == null ? null : (map['storedProcedureTableTypeParameterName']).input(),
-      tableOption: map['tableOption'] == null ? null : (map['tableOption']).input(),
+      disableMetricsCollection: map['disableMetricsCollection'] == null ? null : (map['disableMetricsCollection']!).input(),
+      maxConcurrentConnections: map['maxConcurrentConnections'] == null ? null : (map['maxConcurrentConnections']!).input(),
+      preCopyScript: map['preCopyScript'] == null ? null : (map['preCopyScript']!).input(),
+      sinkRetryCount: map['sinkRetryCount'] == null ? null : (map['sinkRetryCount']!).input(),
+      sinkRetryWait: map['sinkRetryWait'] == null ? null : (map['sinkRetryWait']!).input(),
+      sqlWriterStoredProcedureName: map['sqlWriterStoredProcedureName'] == null ? null : (map['sqlWriterStoredProcedureName']!).input(),
+      sqlWriterTableType: map['sqlWriterTableType'] == null ? null : (map['sqlWriterTableType']!).input(),
+      sqlWriterUseTableLock: map['sqlWriterUseTableLock'] == null ? null : (map['sqlWriterUseTableLock']!).input(),
+      storedProcedureParameters: map['storedProcedureParameters'] == null ? null : (map['storedProcedureParameters']!).input(),
+      storedProcedureTableTypeParameterName: map['storedProcedureTableTypeParameterName'] == null ? null : (map['storedProcedureTableTypeParameterName']!).input(),
+      tableOption: map['tableOption'] == null ? null : (map['tableOption']!).input(),
       type: (map['type'] as String).input(),
-      upsertSettings: map['upsertSettings'] == null ? null : (SqlUpsertSettings.fromMap((map['upsertSettings'] as Map).cast<String, dynamic>())).input(),
-      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']).input(),
-      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']).input(),
-      writeBehavior: map['writeBehavior'] == null ? null : (map['writeBehavior']).input(),
+      upsertSettings: map['upsertSettings'] == null ? null : (SqlUpsertSettings.fromMap((map['upsertSettings']! as Map).cast<String, dynamic>())).input(),
+      writeBatchSize: map['writeBatchSize'] == null ? null : (map['writeBatchSize']!).input(),
+      writeBatchTimeout: map['writeBatchTimeout'] == null ? null : (map['writeBatchTimeout']!).input(),
+      writeBehavior: map['writeBehavior'] == null ? null : (map['writeBehavior']!).input(),
     );
   }
 }

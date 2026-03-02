@@ -22,7 +22,7 @@ class HttpRouteRequestMirrorPolicyNetworkservicesV1beta1 {
 
   factory HttpRouteRequestMirrorPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
     return HttpRouteRequestMirrorPolicyNetworkservicesV1beta1(
-      destination: map['destination'] == null ? null : (HttpRouteDestinationNetworkservicesV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>())).input(),
+      destination: map['destination'] == null ? null : (HttpRouteDestinationNetworkservicesV1beta1.fromMap((map['destination']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

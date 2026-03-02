@@ -55,13 +55,13 @@ class FlowletDataFlowSource {
 
   factory FlowletDataFlowSource.fromMap(Map<String, dynamic> map) {
     return FlowletDataFlowSource(
-      dataset: map['dataset'] == null ? null : (FlowletDataFlowSourceDataset.fromMap((map['dataset'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      flowlet: map['flowlet'] == null ? null : (FlowletDataFlowSourceFlowlet.fromMap((map['flowlet'] as Map).cast<String, dynamic>())).input(),
-      linkedService: map['linkedService'] == null ? null : (FlowletDataFlowSourceLinkedService.fromMap((map['linkedService'] as Map).cast<String, dynamic>())).input(),
+      dataset: map['dataset'] == null ? null : (FlowletDataFlowSourceDataset.fromMap((map['dataset']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      flowlet: map['flowlet'] == null ? null : (FlowletDataFlowSourceFlowlet.fromMap((map['flowlet']! as Map).cast<String, dynamic>())).input(),
+      linkedService: map['linkedService'] == null ? null : (FlowletDataFlowSourceLinkedService.fromMap((map['linkedService']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      rejectedLinkedService: map['rejectedLinkedService'] == null ? null : (FlowletDataFlowSourceRejectedLinkedService.fromMap((map['rejectedLinkedService'] as Map).cast<String, dynamic>())).input(),
-      schemaLinkedService: map['schemaLinkedService'] == null ? null : (FlowletDataFlowSourceSchemaLinkedService.fromMap((map['schemaLinkedService'] as Map).cast<String, dynamic>())).input(),
+      rejectedLinkedService: map['rejectedLinkedService'] == null ? null : (FlowletDataFlowSourceRejectedLinkedService.fromMap((map['rejectedLinkedService']! as Map).cast<String, dynamic>())).input(),
+      schemaLinkedService: map['schemaLinkedService'] == null ? null : (FlowletDataFlowSourceSchemaLinkedService.fromMap((map['schemaLinkedService']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

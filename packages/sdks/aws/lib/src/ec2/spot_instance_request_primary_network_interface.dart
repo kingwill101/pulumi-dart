@@ -25,8 +25,8 @@ class SpotInstanceRequestPrimaryNetworkInterface {
 
   factory SpotInstanceRequestPrimaryNetworkInterface.fromMap(Map<String, dynamic> map) {
     return SpotInstanceRequestPrimaryNetworkInterface(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : (map['deleteOnTermination'] as bool).input(),
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : (map['networkInterfaceId'] as String).input(),
+      deleteOnTermination: map['deleteOnTermination'] == null ? null : ((map['deleteOnTermination'] as bool).input()).input(),
+      networkInterfaceId: map['networkInterfaceId'] == null ? null : ((map['networkInterfaceId'] as String).input()).input(),
     );
   }
 }

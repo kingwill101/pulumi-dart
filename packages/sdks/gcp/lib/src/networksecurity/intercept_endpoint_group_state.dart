@@ -116,21 +116,21 @@ class InterceptEndpointGroupState {
 
   factory InterceptEndpointGroupState.fromMap(Map<String, dynamic> map) {
     return InterceptEndpointGroupState(
-      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(map['associations'], (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      connectedDeploymentGroups: map['connectedDeploymentGroups'] == null ? null : (pulumi.Input.decodeList<InterceptEndpointGroupConnectedDeploymentGroup>(map['connectedDeploymentGroups'], (value) => InterceptEndpointGroupConnectedDeploymentGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels'] as Map).cast<String, String>()).input(),
-      interceptDeploymentGroup: map['interceptDeploymentGroup'] == null ? null : (map['interceptDeploymentGroup'] as String).input(),
-      interceptEndpointGroupId: map['interceptEndpointGroupId'] == null ? null : (map['interceptEndpointGroupId'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels'] as Map).cast<String, String>()).input(),
-      reconciling: map['reconciling'] == null ? null : (map['reconciling'] as bool).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      updateTime: map['updateTime'] == null ? null : (map['updateTime'] as String).input(),
+      associations: map['associations'] == null ? null : (pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(map['associations']!, (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      connectedDeploymentGroups: map['connectedDeploymentGroups'] == null ? null : (pulumi.Input.decodeList<InterceptEndpointGroupConnectedDeploymentGroup>(map['connectedDeploymentGroups']!, (value) => InterceptEndpointGroupConnectedDeploymentGroup.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      effectiveLabels: map['effectiveLabels'] == null ? null : ((map['effectiveLabels']! as Map).cast<String, String>()).input(),
+      interceptDeploymentGroup: map['interceptDeploymentGroup'] == null ? null : (map['interceptDeploymentGroup']! as String).input(),
+      interceptEndpointGroupId: map['interceptEndpointGroupId'] == null ? null : (map['interceptEndpointGroupId']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      pulumiLabels: map['pulumiLabels'] == null ? null : ((map['pulumiLabels']! as Map).cast<String, String>()).input(),
+      reconciling: map['reconciling'] == null ? null : (map['reconciling']! as bool).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
+      updateTime: map['updateTime'] == null ? null : (map['updateTime']! as String).input(),
     );
   }
 }

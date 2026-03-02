@@ -92,14 +92,14 @@ class X12AcknowledgementSettings {
   factory X12AcknowledgementSettings.fromMap(Map<String, dynamic> map) {
     return X12AcknowledgementSettings(
       acknowledgementControlNumberLowerBound: (map['acknowledgementControlNumberLowerBound'] as int).input(),
-      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : (map['acknowledgementControlNumberPrefix'] as String).input(),
-      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : (map['acknowledgementControlNumberSuffix'] as String).input(),
+      acknowledgementControlNumberPrefix: map['acknowledgementControlNumberPrefix'] == null ? null : (map['acknowledgementControlNumberPrefix']! as String).input(),
+      acknowledgementControlNumberSuffix: map['acknowledgementControlNumberSuffix'] == null ? null : (map['acknowledgementControlNumberSuffix']! as String).input(),
       acknowledgementControlNumberUpperBound: (map['acknowledgementControlNumberUpperBound'] as int).input(),
       batchFunctionalAcknowledgements: (map['batchFunctionalAcknowledgements'] as bool).input(),
       batchImplementationAcknowledgements: (map['batchImplementationAcknowledgements'] as bool).input(),
       batchTechnicalAcknowledgements: (map['batchTechnicalAcknowledgements'] as bool).input(),
-      functionalAcknowledgementVersion: map['functionalAcknowledgementVersion'] == null ? null : (map['functionalAcknowledgementVersion'] as String).input(),
-      implementationAcknowledgementVersion: map['implementationAcknowledgementVersion'] == null ? null : (map['implementationAcknowledgementVersion'] as String).input(),
+      functionalAcknowledgementVersion: map['functionalAcknowledgementVersion'] == null ? null : (map['functionalAcknowledgementVersion']! as String).input(),
+      implementationAcknowledgementVersion: map['implementationAcknowledgementVersion'] == null ? null : (map['implementationAcknowledgementVersion']! as String).input(),
       needFunctionalAcknowledgement: (map['needFunctionalAcknowledgement'] as bool).input(),
       needImplementationAcknowledgement: (map['needImplementationAcknowledgement'] as bool).input(),
       needLoopForValidMessages: (map['needLoopForValidMessages'] as bool).input(),

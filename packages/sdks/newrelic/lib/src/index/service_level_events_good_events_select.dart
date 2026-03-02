@@ -30,9 +30,9 @@ class ServiceLevelEventsGoodEventsSelect {
 
   factory ServiceLevelEventsGoodEventsSelect.fromMap(Map<String, dynamic> map) {
     return ServiceLevelEventsGoodEventsSelect(
-      attribute: map['attribute'] == null ? null : (map['attribute'] as String).input(),
+      attribute: map['attribute'] == null ? null : (map['attribute']! as String).input(),
       function: (map['function'] as String).input(),
-      threshold: map['threshold'] == null ? null : (map['threshold'] as double).input(),
+      threshold: map['threshold'] == null ? null : (map['threshold']! as double).input(),
     );
   }
 }

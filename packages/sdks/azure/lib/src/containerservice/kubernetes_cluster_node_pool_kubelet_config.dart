@@ -65,16 +65,16 @@ class KubernetesClusterNodePoolKubeletConfig {
 
   factory KubernetesClusterNodePoolKubeletConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterNodePoolKubeletConfig(
-      allowedUnsafeSysctls: map['allowedUnsafeSysctls'] == null ? null : ((map['allowedUnsafeSysctls'] as List).cast<String>()).input(),
-      containerLogMaxLine: map['containerLogMaxLine'] == null ? null : (map['containerLogMaxLine'] as int).input(),
-      containerLogMaxSizeMb: map['containerLogMaxSizeMb'] == null ? null : (map['containerLogMaxSizeMb'] as int).input(),
-      cpuCfsQuotaEnabled: map['cpuCfsQuotaEnabled'] == null ? null : (map['cpuCfsQuotaEnabled'] as bool).input(),
-      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod'] as String).input(),
-      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy'] as String).input(),
-      imageGcHighThreshold: map['imageGcHighThreshold'] == null ? null : (map['imageGcHighThreshold'] as int).input(),
-      imageGcLowThreshold: map['imageGcLowThreshold'] == null ? null : (map['imageGcLowThreshold'] as int).input(),
-      podMaxPid: map['podMaxPid'] == null ? null : (map['podMaxPid'] as int).input(),
-      topologyManagerPolicy: map['topologyManagerPolicy'] == null ? null : (map['topologyManagerPolicy'] as String).input(),
+      allowedUnsafeSysctls: map['allowedUnsafeSysctls'] == null ? null : ((map['allowedUnsafeSysctls']! as List).cast<String>()).input(),
+      containerLogMaxLine: map['containerLogMaxLine'] == null ? null : (map['containerLogMaxLine']! as int).input(),
+      containerLogMaxSizeMb: map['containerLogMaxSizeMb'] == null ? null : (map['containerLogMaxSizeMb']! as int).input(),
+      cpuCfsQuotaEnabled: map['cpuCfsQuotaEnabled'] == null ? null : (map['cpuCfsQuotaEnabled']! as bool).input(),
+      cpuCfsQuotaPeriod: map['cpuCfsQuotaPeriod'] == null ? null : (map['cpuCfsQuotaPeriod']! as String).input(),
+      cpuManagerPolicy: map['cpuManagerPolicy'] == null ? null : (map['cpuManagerPolicy']! as String).input(),
+      imageGcHighThreshold: map['imageGcHighThreshold'] == null ? null : (map['imageGcHighThreshold']! as int).input(),
+      imageGcLowThreshold: map['imageGcLowThreshold'] == null ? null : (map['imageGcLowThreshold']! as int).input(),
+      podMaxPid: map['podMaxPid'] == null ? null : (map['podMaxPid']! as int).input(),
+      topologyManagerPolicy: map['topologyManagerPolicy'] == null ? null : (map['topologyManagerPolicy']! as String).input(),
     );
   }
 }

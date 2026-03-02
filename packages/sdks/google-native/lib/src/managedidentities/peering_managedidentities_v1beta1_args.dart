@@ -45,9 +45,9 @@ class PeeringManagedidentitiesV1beta1Args {
     return PeeringManagedidentitiesV1beta1Args(
       authorizedNetwork: (map['authorizedNetwork'] as String).input(),
       domainResource: (map['domainResource'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       peeringId: (map['peeringId'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

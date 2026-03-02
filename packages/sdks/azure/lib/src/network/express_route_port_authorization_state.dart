@@ -41,11 +41,11 @@ class ExpressRoutePortAuthorizationState {
 
   factory ExpressRoutePortAuthorizationState.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortAuthorizationState(
-      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey'] as String).input(),
-      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus'] as String).input(),
-      expressRoutePortName: map['expressRoutePortName'] == null ? null : (map['expressRoutePortName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      authorizationKey: map['authorizationKey'] == null ? null : (map['authorizationKey']! as String).input(),
+      authorizationUseStatus: map['authorizationUseStatus'] == null ? null : (map['authorizationUseStatus']! as String).input(),
+      expressRoutePortName: map['expressRoutePortName'] == null ? null : (map['expressRoutePortName']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

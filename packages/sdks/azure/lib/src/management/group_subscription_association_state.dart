@@ -26,8 +26,8 @@ class GroupSubscriptionAssociationState {
 
   factory GroupSubscriptionAssociationState.fromMap(Map<String, dynamic> map) {
     return GroupSubscriptionAssociationState(
-      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      managementGroupId: map['managementGroupId'] == null ? null : (map['managementGroupId']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

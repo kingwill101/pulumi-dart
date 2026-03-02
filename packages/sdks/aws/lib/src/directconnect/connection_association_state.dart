@@ -31,9 +31,9 @@ class ConnectionAssociationState {
 
   factory ConnectionAssociationState.fromMap(Map<String, dynamic> map) {
     return ConnectionAssociationState(
-      connectionId: map['connectionId'] == null ? null : (map['connectionId'] as String).input(),
-      lagId: map['lagId'] == null ? null : (map['lagId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      connectionId: map['connectionId'] == null ? null : ((map['connectionId'] as String).input()).input(),
+      lagId: map['lagId'] == null ? null : ((map['lagId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

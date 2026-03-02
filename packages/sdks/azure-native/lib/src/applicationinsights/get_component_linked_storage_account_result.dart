@@ -42,7 +42,7 @@ class GetComponentLinkedStorageAccountResult {
     return GetComponentLinkedStorageAccountResult(
       azureApiVersion: map['azureApiVersion'] as String,
       id: map['id'] as String,
-      linkedStorageAccount: map['linkedStorageAccount'] == null ? null : map['linkedStorageAccount'] as String,
+      linkedStorageAccount: map['linkedStorageAccount'] == null ? null : map['linkedStorageAccount']! as String,
       name: map['name'] as String,
       type: map['type'] as String,
     );

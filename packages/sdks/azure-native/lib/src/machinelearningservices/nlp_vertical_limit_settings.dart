@@ -31,9 +31,9 @@ class NlpVerticalLimitSettings {
 
   factory NlpVerticalLimitSettings.fromMap(Map<String, dynamic> map) {
     return NlpVerticalLimitSettings(
-      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials'] as int).input(),
-      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials'] as int).input(),
-      timeout: map['timeout'] == null ? null : (map['timeout'] as String).input(),
+      maxConcurrentTrials: map['maxConcurrentTrials'] == null ? null : (map['maxConcurrentTrials']! as int).input(),
+      maxTrials: map['maxTrials'] == null ? null : (map['maxTrials']! as int).input(),
+      timeout: map['timeout'] == null ? null : (map['timeout']! as String).input(),
     );
   }
 }

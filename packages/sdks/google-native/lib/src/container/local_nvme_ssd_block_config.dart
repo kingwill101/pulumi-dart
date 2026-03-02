@@ -21,7 +21,7 @@ class LocalNvmeSsdBlockConfig {
 
   factory LocalNvmeSsdBlockConfig.fromMap(Map<String, dynamic> map) {
     return LocalNvmeSsdBlockConfig(
-      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount'] as int).input(),
+      localSsdCount: map['localSsdCount'] == null ? null : (map['localSsdCount']! as int).input(),
     );
   }
 }

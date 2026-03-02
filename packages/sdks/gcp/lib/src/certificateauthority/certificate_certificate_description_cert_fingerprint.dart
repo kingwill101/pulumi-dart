@@ -21,7 +21,7 @@ class CertificateCertificateDescriptionCertFingerprint {
 
   factory CertificateCertificateDescriptionCertFingerprint.fromMap(Map<String, dynamic> map) {
     return CertificateCertificateDescriptionCertFingerprint(
-      sha256Hash: map['sha256Hash'] == null ? null : (map['sha256Hash'] as String).input(),
+      sha256Hash: map['sha256Hash'] == null ? null : (map['sha256Hash']! as String).input(),
     );
   }
 }

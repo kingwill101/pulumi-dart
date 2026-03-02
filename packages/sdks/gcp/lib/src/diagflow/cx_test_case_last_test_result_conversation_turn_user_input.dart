@@ -37,10 +37,10 @@ class CxTestCaseLastTestResultConversationTurnUserInput {
 
   factory CxTestCaseLastTestResultConversationTurnUserInput.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResultConversationTurnUserInput(
-      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis'] as bool).input(),
-      injectedParameters: map['injectedParameters'] == null ? null : (map['injectedParameters'] as String).input(),
-      input: map['input'] == null ? null : (CxTestCaseLastTestResultConversationTurnUserInputInput.fromMap((map['input'] as Map).cast<String, dynamic>())).input(),
-      isWebhookEnabled: map['isWebhookEnabled'] == null ? null : (map['isWebhookEnabled'] as bool).input(),
+      enableSentimentAnalysis: map['enableSentimentAnalysis'] == null ? null : (map['enableSentimentAnalysis']! as bool).input(),
+      injectedParameters: map['injectedParameters'] == null ? null : (map['injectedParameters']! as String).input(),
+      input: map['input'] == null ? null : (CxTestCaseLastTestResultConversationTurnUserInputInput.fromMap((map['input']! as Map).cast<String, dynamic>())).input(),
+      isWebhookEnabled: map['isWebhookEnabled'] == null ? null : (map['isWebhookEnabled']! as bool).input(),
     );
   }
 }

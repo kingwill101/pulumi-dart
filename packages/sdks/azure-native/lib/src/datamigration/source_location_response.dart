@@ -33,8 +33,8 @@ class SourceLocationResponse {
 
   factory SourceLocationResponse.fromMap(Map<String, dynamic> map) {
     return SourceLocationResponse(
-      azureBlob: map['azureBlob'] == null ? null : (AzureBlobResponse.fromMap((map['azureBlob'] as Map).cast<String, dynamic>())).input(),
-      fileShare: map['fileShare'] == null ? null : (SqlFileShareResponse.fromMap((map['fileShare'] as Map).cast<String, dynamic>())).input(),
+      azureBlob: map['azureBlob'] == null ? null : (AzureBlobResponse.fromMap((map['azureBlob']! as Map).cast<String, dynamic>())).input(),
+      fileShare: map['fileShare'] == null ? null : (SqlFileShareResponse.fromMap((map['fileShare']! as Map).cast<String, dynamic>())).input(),
       fileStorageType: (map['fileStorageType'] as String).input(),
     );
   }

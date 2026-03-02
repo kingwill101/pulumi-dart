@@ -86,20 +86,20 @@ class InnerHealthErrorResponse {
 
   factory InnerHealthErrorResponse.fromMap(Map<String, dynamic> map) {
     return InnerHealthErrorResponse(
-      creationTimeUtc: map['creationTimeUtc'] == null ? null : (map['creationTimeUtc'] as String).input(),
-      customerResolvability: map['customerResolvability'] == null ? null : (map['customerResolvability'] as String).input(),
-      entityId: map['entityId'] == null ? null : (map['entityId'] as String).input(),
-      errorCategory: map['errorCategory'] == null ? null : (map['errorCategory'] as String).input(),
-      errorCode: map['errorCode'] == null ? null : (map['errorCode'] as String).input(),
-      errorId: map['errorId'] == null ? null : (map['errorId'] as String).input(),
-      errorLevel: map['errorLevel'] == null ? null : (map['errorLevel'] as String).input(),
-      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage'] as String).input(),
-      errorSource: map['errorSource'] == null ? null : (map['errorSource'] as String).input(),
-      errorType: map['errorType'] == null ? null : (map['errorType'] as String).input(),
-      possibleCauses: map['possibleCauses'] == null ? null : (map['possibleCauses'] as String).input(),
-      recommendedAction: map['recommendedAction'] == null ? null : (map['recommendedAction'] as String).input(),
-      recoveryProviderErrorMessage: map['recoveryProviderErrorMessage'] == null ? null : (map['recoveryProviderErrorMessage'] as String).input(),
-      summaryMessage: map['summaryMessage'] == null ? null : (map['summaryMessage'] as String).input(),
+      creationTimeUtc: map['creationTimeUtc'] == null ? null : (map['creationTimeUtc']! as String).input(),
+      customerResolvability: map['customerResolvability'] == null ? null : (map['customerResolvability']! as String).input(),
+      entityId: map['entityId'] == null ? null : (map['entityId']! as String).input(),
+      errorCategory: map['errorCategory'] == null ? null : (map['errorCategory']! as String).input(),
+      errorCode: map['errorCode'] == null ? null : (map['errorCode']! as String).input(),
+      errorId: map['errorId'] == null ? null : (map['errorId']! as String).input(),
+      errorLevel: map['errorLevel'] == null ? null : (map['errorLevel']! as String).input(),
+      errorMessage: map['errorMessage'] == null ? null : (map['errorMessage']! as String).input(),
+      errorSource: map['errorSource'] == null ? null : (map['errorSource']! as String).input(),
+      errorType: map['errorType'] == null ? null : (map['errorType']! as String).input(),
+      possibleCauses: map['possibleCauses'] == null ? null : (map['possibleCauses']! as String).input(),
+      recommendedAction: map['recommendedAction'] == null ? null : (map['recommendedAction']! as String).input(),
+      recoveryProviderErrorMessage: map['recoveryProviderErrorMessage'] == null ? null : (map['recoveryProviderErrorMessage']! as String).input(),
+      summaryMessage: map['summaryMessage'] == null ? null : (map['summaryMessage']! as String).input(),
     );
   }
 }

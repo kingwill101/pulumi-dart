@@ -35,8 +35,8 @@ class DataConnectorIotArgs {
   factory DataConnectorIotArgs.fromMap(Map<String, dynamic> map) {
     return DataConnectorIotArgs(
       logAnalyticsWorkspaceId: (map['logAnalyticsWorkspaceId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      subscriptionId: map['subscriptionId'] == null ? null : (map['subscriptionId']! as String).input(),
     );
   }
 }

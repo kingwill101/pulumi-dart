@@ -33,9 +33,9 @@ class AuthPlatformResponse {
 
   factory AuthPlatformResponse.fromMap(Map<String, dynamic> map) {
     return AuthPlatformResponse(
-      configFilePath: map['configFilePath'] == null ? null : (map['configFilePath'] as String).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion'] as String).input(),
+      configFilePath: map['configFilePath'] == null ? null : (map['configFilePath']! as String).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      runtimeVersion: map['runtimeVersion'] == null ? null : (map['runtimeVersion']! as String).input(),
     );
   }
 }

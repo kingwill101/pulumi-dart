@@ -60,11 +60,11 @@ class IotConnectorFhirDestinationArgs {
 
   factory IotConnectorFhirDestinationArgs.fromMap(Map<String, dynamic> map) {
     return IotConnectorFhirDestinationArgs(
-      fhirDestinationName: map['fhirDestinationName'] == null ? null : (map['fhirDestinationName'] as String).input(),
+      fhirDestinationName: map['fhirDestinationName'] == null ? null : (map['fhirDestinationName']! as String).input(),
       fhirMapping: (IotMappingProperties.fromMap((map['fhirMapping'] as Map).cast<String, dynamic>())).input(),
       fhirServiceResourceId: (map['fhirServiceResourceId'] as String).input(),
       iotConnectorName: (map['iotConnectorName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       resourceIdentityResolutionType: (map['resourceIdentityResolutionType'] as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),

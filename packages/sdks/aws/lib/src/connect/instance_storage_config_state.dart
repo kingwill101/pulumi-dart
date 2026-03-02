@@ -42,11 +42,11 @@ class InstanceStorageConfigState {
 
   factory InstanceStorageConfigState.fromMap(Map<String, dynamic> map) {
     return InstanceStorageConfigState(
-      associationId: map['associationId'] == null ? null : (map['associationId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
-      storageConfig: map['storageConfig'] == null ? null : (InstanceStorageConfigStorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      associationId: map['associationId'] == null ? null : ((map['associationId'] as String).input()).input(),
+      instanceId: map['instanceId'] == null ? null : ((map['instanceId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      resourceType: map['resourceType'] == null ? null : ((map['resourceType'] as String).input()).input(),
+      storageConfig: map['storageConfig'] == null ? null : ((InstanceStorageConfigStorageConfig.fromMap((map['storageConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

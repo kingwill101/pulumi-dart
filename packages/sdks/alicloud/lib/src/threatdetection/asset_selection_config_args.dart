@@ -35,7 +35,7 @@ class AssetSelectionConfigArgs {
   factory AssetSelectionConfigArgs.fromMap(Map<String, dynamic> map) {
     return AssetSelectionConfigArgs(
       businessType: (map['businessType'] as String).input(),
-      platform: map['platform'] == null ? null : (map['platform'] as String).input(),
+      platform: map['platform'] == null ? null : (map['platform']! as String).input(),
       targetType: (map['targetType'] as String).input(),
     );
   }

@@ -38,8 +38,8 @@ class VirtualMachineScaleSetExtensionResponse {
   factory VirtualMachineScaleSetExtensionResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetExtensionResponse(
       id: (map['id'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (VirtualMachineScaleSetExtensionPropertiesResponse.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (VirtualMachineScaleSetExtensionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       type: (map['type'] as String).input(),
     );
   }

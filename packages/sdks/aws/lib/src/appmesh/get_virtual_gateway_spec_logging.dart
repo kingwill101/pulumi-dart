@@ -20,7 +20,7 @@ class GetVirtualGatewaySpecLogging {
 
   factory GetVirtualGatewaySpecLogging.fromMap(Map<String, dynamic> map) {
     return GetVirtualGatewaySpecLogging(
-      accessLogs: (pulumi.Input.decodeList<GetVirtualGatewaySpecLoggingAccessLog>(map['accessLogs'], (value) => GetVirtualGatewaySpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessLogs: (pulumi.Input.decodeList<GetVirtualGatewaySpecLoggingAccessLog>(map['accessLogs']!, (value) => GetVirtualGatewaySpecLoggingAccessLog.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

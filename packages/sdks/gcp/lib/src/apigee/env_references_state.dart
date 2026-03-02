@@ -42,11 +42,11 @@ class EnvReferencesState {
 
   factory EnvReferencesState.fromMap(Map<String, dynamic> map) {
     return EnvReferencesState(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      envId: map['envId'] == null ? null : (map['envId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      refers: map['refers'] == null ? null : (map['refers'] as String).input(),
-      resourceType: map['resourceType'] == null ? null : (map['resourceType'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      envId: map['envId'] == null ? null : (map['envId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      refers: map['refers'] == null ? null : (map['refers']! as String).input(),
+      resourceType: map['resourceType'] == null ? null : (map['resourceType']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ListClusterFollowerDatabasesResult {
 
   factory ListClusterFollowerDatabasesResult.fromMap(Map<String, dynamic> map) {
     return ListClusterFollowerDatabasesResult(
-      value: map['value'] == null ? null : pulumi.Input.decodeList<FollowerDatabaseDefinitionResponse>(map['value'], (value) => FollowerDatabaseDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: map['value'] == null ? null : pulumi.Input.decodeList<FollowerDatabaseDefinitionResponse>(map['value']!, (value) => FollowerDatabaseDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

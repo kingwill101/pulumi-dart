@@ -64,11 +64,11 @@ class GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult {
   factory GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult(
       azureApiVersion: map['azureApiVersion'] as String,
-      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl'] as String,
-      dnsSuffix: map['dnsSuffix'] == null ? null : map['dnsSuffix'] as String,
+      certificateUrl: map['certificateUrl'] == null ? null : map['certificateUrl']! as String,
+      dnsSuffix: map['dnsSuffix'] == null ? null : map['dnsSuffix']! as String,
       id: map['id'] as String,
-      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : map['keyVaultReferenceIdentity'] as String,
-      kind: map['kind'] == null ? null : map['kind'] as String,
+      keyVaultReferenceIdentity: map['keyVaultReferenceIdentity'] == null ? null : map['keyVaultReferenceIdentity']! as String,
+      kind: map['kind'] == null ? null : map['kind']! as String,
       name: map['name'] as String,
       provisioningDetails: map['provisioningDetails'] as String,
       provisioningState: map['provisioningState'] as String,

@@ -78,15 +78,15 @@ class PacketMirroringState {
 
   factory PacketMirroringState.fromMap(Map<String, dynamic> map) {
     return PacketMirroringState(
-      collectorIlb: map['collectorIlb'] == null ? null : (PacketMirroringCollectorIlb.fromMap((map['collectorIlb'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      mirroredResources: map['mirroredResources'] == null ? null : (PacketMirroringMirroredResources.fromMap((map['mirroredResources'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      network: map['network'] == null ? null : (PacketMirroringNetwork.fromMap((map['network'] as Map).cast<String, dynamic>())).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      collectorIlb: map['collectorIlb'] == null ? null : (PacketMirroringCollectorIlb.fromMap((map['collectorIlb']! as Map).cast<String, dynamic>())).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      filter: map['filter'] == null ? null : (PacketMirroringFilter.fromMap((map['filter']! as Map).cast<String, dynamic>())).input(),
+      mirroredResources: map['mirroredResources'] == null ? null : (PacketMirroringMirroredResources.fromMap((map['mirroredResources']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      network: map['network'] == null ? null : (PacketMirroringNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

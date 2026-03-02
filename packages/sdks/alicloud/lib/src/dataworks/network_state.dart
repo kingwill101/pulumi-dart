@@ -41,11 +41,11 @@ class NetworkState {
 
   factory NetworkState.fromMap(Map<String, dynamic> map) {
     return NetworkState(
-      createTime: map['createTime'] == null ? null : (map['createTime'] as int).input(),
-      dwResourceGroupId: map['dwResourceGroupId'] == null ? null : (map['dwResourceGroupId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      vpcId: map['vpcId'] == null ? null : (map['vpcId'] as String).input(),
-      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId'] as String).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as int).input(),
+      dwResourceGroupId: map['dwResourceGroupId'] == null ? null : (map['dwResourceGroupId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
+      vpcId: map['vpcId'] == null ? null : (map['vpcId']! as String).input(),
+      vswitchId: map['vswitchId'] == null ? null : (map['vswitchId']! as String).input(),
     );
   }
 }

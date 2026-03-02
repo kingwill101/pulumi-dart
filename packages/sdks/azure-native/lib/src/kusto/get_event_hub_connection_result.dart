@@ -67,13 +67,13 @@ class GetEventHubConnectionResult {
     return GetEventHubConnectionResult(
       azureApiVersion: map['azureApiVersion'] as String,
       consumerGroup: map['consumerGroup'] as String,
-      dataFormat: map['dataFormat'] == null ? null : map['dataFormat'] as String,
+      dataFormat: map['dataFormat'] == null ? null : map['dataFormat']! as String,
       eventHubResourceId: map['eventHubResourceId'] as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
-      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
+      mappingRuleName: map['mappingRuleName'] == null ? null : map['mappingRuleName']! as String,
       name: map['name'] as String,
-      tableName: map['tableName'] == null ? null : map['tableName'] as String,
+      tableName: map['tableName'] == null ? null : map['tableName']! as String,
       type: map['type'] as String,
     );
   }

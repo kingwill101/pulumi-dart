@@ -30,9 +30,9 @@ class WorkspaceCustomerManagedKey {
 
   factory WorkspaceCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return WorkspaceCustomerManagedKey(
-      keyName: map['keyName'] == null ? null : (map['keyName'] as String).input(),
+      keyName: map['keyName'] == null ? null : (map['keyName']! as String).input(),
       keyVersionlessId: (map['keyVersionlessId'] as String).input(),
-      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId'] as String).input(),
+      userAssignedIdentityId: map['userAssignedIdentityId'] == null ? null : (map['userAssignedIdentityId']! as String).input(),
     );
   }
 }

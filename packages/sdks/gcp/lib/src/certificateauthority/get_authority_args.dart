@@ -42,10 +42,10 @@ class GetAuthorityArgs {
 
   factory GetAuthorityArgs.fromMap(Map<String, dynamic> map) {
     return GetAuthorityArgs(
-      certificateAuthorityId: map['certificateAuthorityId'] == null ? null : (map['certificateAuthorityId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      certificateAuthorityId: map['certificateAuthorityId'] == null ? null : (map['certificateAuthorityId']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
     );
   }
 }

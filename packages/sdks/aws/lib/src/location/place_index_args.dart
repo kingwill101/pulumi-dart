@@ -53,11 +53,11 @@ class PlaceIndexArgs {
   factory PlaceIndexArgs.fromMap(Map<String, dynamic> map) {
     return PlaceIndexArgs(
       dataSource: (map['dataSource'] as String).input(),
-      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : (PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration'] as Map).cast<String, dynamic>())).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      dataSourceConfiguration: map['dataSourceConfiguration'] == null ? null : ((PlaceIndexDataSourceConfiguration.fromMap((map['dataSourceConfiguration']! as Map).cast<String, dynamic>())).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       indexName: (map['indexName'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

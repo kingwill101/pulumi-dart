@@ -81,19 +81,19 @@ class EnvironmentConfigNodeConfig {
 
   factory EnvironmentConfigNodeConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigNodeConfig(
-      composerInternalIpv4CidrBlock: map['composerInternalIpv4CidrBlock'] == null ? null : (map['composerInternalIpv4CidrBlock'] as String).input(),
-      composerNetworkAttachment: map['composerNetworkAttachment'] == null ? null : (map['composerNetworkAttachment'] as String).input(),
-      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb'] as int).input(),
-      enableIpMasqAgent: map['enableIpMasqAgent'] == null ? null : (map['enableIpMasqAgent'] as bool).input(),
-      ipAllocationPolicy: map['ipAllocationPolicy'] == null ? null : (EnvironmentConfigNodeConfigIpAllocationPolicy.fromMap((map['ipAllocationPolicy'] as Map).cast<String, dynamic>())).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode'] as int).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes'] as List).cast<String>()).input(),
-      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as List).cast<String>()).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      composerInternalIpv4CidrBlock: map['composerInternalIpv4CidrBlock'] == null ? null : (map['composerInternalIpv4CidrBlock']! as String).input(),
+      composerNetworkAttachment: map['composerNetworkAttachment'] == null ? null : (map['composerNetworkAttachment']! as String).input(),
+      diskSizeGb: map['diskSizeGb'] == null ? null : (map['diskSizeGb']! as int).input(),
+      enableIpMasqAgent: map['enableIpMasqAgent'] == null ? null : (map['enableIpMasqAgent']! as bool).input(),
+      ipAllocationPolicy: map['ipAllocationPolicy'] == null ? null : (EnvironmentConfigNodeConfigIpAllocationPolicy.fromMap((map['ipAllocationPolicy']! as Map).cast<String, dynamic>())).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : (map['maxPodsPerNode']! as int).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      oauthScopes: map['oauthScopes'] == null ? null : ((map['oauthScopes']! as List).cast<String>()).input(),
+      serviceAccount: map['serviceAccount'] == null ? null : (map['serviceAccount']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as List).cast<String>()).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

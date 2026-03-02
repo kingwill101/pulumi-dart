@@ -41,11 +41,11 @@ class TransitRouterGrantAttachmentState {
 
   factory TransitRouterGrantAttachmentState.fromMap(Map<String, dynamic> map) {
     return TransitRouterGrantAttachmentState(
-      cenId: map['cenId'] == null ? null : (map['cenId'] as String).input(),
-      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      instanceType: map['instanceType'] == null ? null : (map['instanceType'] as String).input(),
-      orderType: map['orderType'] == null ? null : (map['orderType'] as String).input(),
+      cenId: map['cenId'] == null ? null : (map['cenId']! as String).input(),
+      cenOwnerId: map['cenOwnerId'] == null ? null : (map['cenOwnerId']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      instanceType: map['instanceType'] == null ? null : (map['instanceType']! as String).input(),
+      orderType: map['orderType'] == null ? null : (map['orderType']! as String).input(),
     );
   }
 }

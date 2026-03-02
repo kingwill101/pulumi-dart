@@ -60,14 +60,14 @@ class GoogleCloudDialogflowCxV3Fulfillment {
 
   factory GoogleCloudDialogflowCxV3Fulfillment.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3Fulfillment(
-      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>())).input(),
-      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>(map['conditionalCases'], (value) => GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enableGenerativeFallback: map['enableGenerativeFallback'] == null ? null : (map['enableGenerativeFallback'] as bool).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessage>(map['messages'], (value) => GoogleCloudDialogflowCxV3ResponseMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses'] as bool).input(),
-      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>(map['setParameterActions'], (value) => GoogleCloudDialogflowCxV3FulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      advancedSettings: map['advancedSettings'] == null ? null : (GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings']! as Map).cast<String, dynamic>())).input(),
+      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>(map['conditionalCases']!, (value) => GoogleCloudDialogflowCxV3FulfillmentConditionalCases.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enableGenerativeFallback: map['enableGenerativeFallback'] == null ? null : (map['enableGenerativeFallback']! as bool).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ResponseMessage>(map['messages']!, (value) => GoogleCloudDialogflowCxV3ResponseMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses']! as bool).input(),
+      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FulfillmentSetParameterAction>(map['setParameterActions']!, (value) => GoogleCloudDialogflowCxV3FulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

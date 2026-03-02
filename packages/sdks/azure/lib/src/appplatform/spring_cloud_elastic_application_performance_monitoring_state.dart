@@ -46,12 +46,12 @@ class SpringCloudElasticApplicationPerformanceMonitoringState {
 
   factory SpringCloudElasticApplicationPerformanceMonitoringState.fromMap(Map<String, dynamic> map) {
     return SpringCloudElasticApplicationPerformanceMonitoringState(
-      applicationPackages: map['applicationPackages'] == null ? null : ((map['applicationPackages'] as List).cast<String>()).input(),
-      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
-      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId'] as String).input(),
+      applicationPackages: map['applicationPackages'] == null ? null : ((map['applicationPackages']! as List).cast<String>()).input(),
+      globallyEnabled: map['globallyEnabled'] == null ? null : (map['globallyEnabled']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      serverUrl: map['serverUrl'] == null ? null : (map['serverUrl']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
+      springCloudServiceId: map['springCloudServiceId'] == null ? null : (map['springCloudServiceId']! as String).input(),
     );
   }
 }

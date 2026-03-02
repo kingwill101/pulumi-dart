@@ -41,11 +41,11 @@ class PolicyCustomRuleMatchCondition {
 
   factory PolicyCustomRuleMatchCondition.fromMap(Map<String, dynamic> map) {
     return PolicyCustomRuleMatchCondition(
-      matchValues: map['matchValues'] == null ? null : ((map['matchValues'] as List).cast<String>()).input(),
+      matchValues: map['matchValues'] == null ? null : ((map['matchValues']! as List).cast<String>()).input(),
       matchVariables: (pulumi.Input.decodeList<PolicyCustomRuleMatchConditionMatchVariable>(map['matchVariables'], (value) => PolicyCustomRuleMatchConditionMatchVariable.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      negationCondition: map['negationCondition'] == null ? null : (map['negationCondition'] as bool).input(),
+      negationCondition: map['negationCondition'] == null ? null : (map['negationCondition']! as bool).input(),
       operator: (map['operator'] as String).input(),
-      transforms: map['transforms'] == null ? null : ((map['transforms'] as List).cast<String>()).input(),
+      transforms: map['transforms'] == null ? null : ((map['transforms']! as List).cast<String>()).input(),
     );
   }
 }

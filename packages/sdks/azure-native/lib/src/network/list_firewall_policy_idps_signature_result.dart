@@ -27,8 +27,8 @@ class ListFirewallPolicyIdpsSignatureResult {
 
   factory ListFirewallPolicyIdpsSignatureResult.fromMap(Map<String, dynamic> map) {
     return ListFirewallPolicyIdpsSignatureResult(
-      matchingRecordsCount: map['matchingRecordsCount'] == null ? null : map['matchingRecordsCount'] as double,
-      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<SingleQueryResultResponse>(map['signatures'], (value) => SingleQueryResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      matchingRecordsCount: map['matchingRecordsCount'] == null ? null : map['matchingRecordsCount']! as double,
+      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<SingleQueryResultResponse>(map['signatures']!, (value) => SingleQueryResultResponse.fromMap((value as Map).cast<String, dynamic>())),
     );
   }
 }

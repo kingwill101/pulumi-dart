@@ -32,8 +32,8 @@ class PieChartDataSet {
 
   factory PieChartDataSet.fromMap(Map<String, dynamic> map) {
     return PieChartDataSet(
-      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod'] as String).input(),
-      sliceNameTemplate: map['sliceNameTemplate'] == null ? null : (map['sliceNameTemplate'] as String).input(),
+      minAlignmentPeriod: map['minAlignmentPeriod'] == null ? null : (map['minAlignmentPeriod']! as String).input(),
+      sliceNameTemplate: map['sliceNameTemplate'] == null ? null : (map['sliceNameTemplate']! as String).input(),
       timeSeriesQuery: (TimeSeriesQuery.fromMap((map['timeSeriesQuery'] as Map).cast<String, dynamic>())).input(),
     );
   }

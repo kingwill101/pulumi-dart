@@ -65,15 +65,15 @@ class PluginArgs {
 
   factory PluginArgs.fromMap(Map<String, dynamic> map) {
     return PluginArgs(
-      alias: map['alias'] == null ? null : (map['alias'] as String).input(),
-      enableTimeout: map['enableTimeout'] == null ? null : (map['enableTimeout'] as int).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      envs: map['envs'] == null ? null : ((map['envs'] as List).cast<String>()).input(),
-      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy'] as bool).input(),
-      forceDisable: map['forceDisable'] == null ? null : (map['forceDisable'] as bool).input(),
-      grantAllPermissions: map['grantAllPermissions'] == null ? null : (map['grantAllPermissions'] as bool).input(),
-      grantPermissions: map['grantPermissions'] == null ? null : (pulumi.Input.decodeList<PluginGrantPermission>(map['grantPermissions'], (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      alias: map['alias'] == null ? null : (map['alias']! as String).input(),
+      enableTimeout: map['enableTimeout'] == null ? null : (map['enableTimeout']! as int).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      envs: map['envs'] == null ? null : ((map['envs']! as List).cast<String>()).input(),
+      forceDestroy: map['forceDestroy'] == null ? null : (map['forceDestroy']! as bool).input(),
+      forceDisable: map['forceDisable'] == null ? null : (map['forceDisable']! as bool).input(),
+      grantAllPermissions: map['grantAllPermissions'] == null ? null : (map['grantAllPermissions']! as bool).input(),
+      grantPermissions: map['grantPermissions'] == null ? null : (pulumi.Input.decodeList<PluginGrantPermission>(map['grantPermissions']!, (value) => PluginGrantPermission.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
     );
   }
 }

@@ -36,10 +36,10 @@ class SigningCertificateState {
 
   factory SigningCertificateState.fromMap(Map<String, dynamic> map) {
     return SigningCertificateState(
-      certificateBody: map['certificateBody'] == null ? null : (map['certificateBody'] as String).input(),
-      certificateId: map['certificateId'] == null ? null : (map['certificateId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
-      userName: map['userName'] == null ? null : (map['userName'] as String).input(),
+      certificateBody: map['certificateBody'] == null ? null : ((map['certificateBody'] as String).input()).input(),
+      certificateId: map['certificateId'] == null ? null : ((map['certificateId'] as String).input()).input(),
+      status: map['status'] == null ? null : ((map['status'] as String).input()).input(),
+      userName: map['userName'] == null ? null : ((map['userName'] as String).input()).input(),
     );
   }
 }

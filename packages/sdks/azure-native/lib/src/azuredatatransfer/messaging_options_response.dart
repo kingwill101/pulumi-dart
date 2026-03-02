@@ -21,7 +21,7 @@ class MessagingOptionsResponse {
 
   factory MessagingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return MessagingOptionsResponse(
-      billingTier: map['billingTier'] == null ? null : (map['billingTier'] as String).input(),
+      billingTier: map['billingTier'] == null ? null : (map['billingTier']! as String).input(),
     );
   }
 }

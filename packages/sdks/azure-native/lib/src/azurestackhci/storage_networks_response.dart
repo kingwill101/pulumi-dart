@@ -46,7 +46,7 @@ class StorageNetworksResponse {
       networkAdapterName: (map['networkAdapterName'] as String).input(),
       storageAdapterIPInfo: (pulumi.Input.decodeList<StorageAdapterIPInfoResponse>(map['storageAdapterIPInfo'], (value) => StorageAdapterIPInfoResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       storageVlanId: (map['storageVlanId'] as String).input(),
-      vlanId: map['vlanId'] == null ? null : (map['vlanId'] as String).input(),
+      vlanId: map['vlanId'] == null ? null : (map['vlanId']! as String).input(),
     );
   }
 }

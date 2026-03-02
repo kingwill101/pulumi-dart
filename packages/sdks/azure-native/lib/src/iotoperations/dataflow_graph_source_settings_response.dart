@@ -31,7 +31,7 @@ class DataflowGraphSourceSettingsResponse {
 
   factory DataflowGraphSourceSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DataflowGraphSourceSettingsResponse(
-      assetRef: map['assetRef'] == null ? null : (map['assetRef'] as String).input(),
+      assetRef: map['assetRef'] == null ? null : (map['assetRef']! as String).input(),
       dataSources: ((map['dataSources'] as List).cast<String>()).input(),
       endpointRef: (map['endpointRef'] as String).input(),
     );

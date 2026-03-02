@@ -39,9 +39,9 @@ class LicenseAssociationArgs {
 
   factory LicenseAssociationArgs.fromMap(Map<String, dynamic> map) {
     return LicenseAssociationArgs(
-      grafanaToken: map['grafanaToken'] == null ? null : (map['grafanaToken'] as String).input(),
+      grafanaToken: map['grafanaToken'] == null ? null : ((map['grafanaToken'] as String).input()).input(),
       licenseType: (map['licenseType'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
       workspaceId: (map['workspaceId'] as String).input(),
     );
   }

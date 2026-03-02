@@ -34,9 +34,9 @@ class GooglePrivacyDlpV2HotwordRule {
 
   factory GooglePrivacyDlpV2HotwordRule.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2HotwordRule(
-      hotwordRegex: map['hotwordRegex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>())).input(),
-      likelihoodAdjustment: map['likelihoodAdjustment'] == null ? null : (GooglePrivacyDlpV2LikelihoodAdjustment.fromMap((map['likelihoodAdjustment'] as Map).cast<String, dynamic>())).input(),
-      proximity: map['proximity'] == null ? null : (GooglePrivacyDlpV2Proximity.fromMap((map['proximity'] as Map).cast<String, dynamic>())).input(),
+      hotwordRegex: map['hotwordRegex'] == null ? null : (GooglePrivacyDlpV2Regex.fromMap((map['hotwordRegex']! as Map).cast<String, dynamic>())).input(),
+      likelihoodAdjustment: map['likelihoodAdjustment'] == null ? null : (GooglePrivacyDlpV2LikelihoodAdjustment.fromMap((map['likelihoodAdjustment']! as Map).cast<String, dynamic>())).input(),
+      proximity: map['proximity'] == null ? null : (GooglePrivacyDlpV2Proximity.fromMap((map['proximity']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

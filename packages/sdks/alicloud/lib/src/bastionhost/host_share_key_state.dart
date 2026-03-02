@@ -46,12 +46,12 @@ class HostShareKeyState {
 
   factory HostShareKeyState.fromMap(Map<String, dynamic> map) {
     return HostShareKeyState(
-      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId'] as String).input(),
-      hostShareKeyName: map['hostShareKeyName'] == null ? null : (map['hostShareKeyName'] as String).input(),
-      instanceId: map['instanceId'] == null ? null : (map['instanceId'] as String).input(),
-      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      privateKeyFingerPrint: map['privateKeyFingerPrint'] == null ? null : (map['privateKeyFingerPrint'] as String).input(),
+      hostShareKeyId: map['hostShareKeyId'] == null ? null : (map['hostShareKeyId']! as String).input(),
+      hostShareKeyName: map['hostShareKeyName'] == null ? null : (map['hostShareKeyName']! as String).input(),
+      instanceId: map['instanceId'] == null ? null : (map['instanceId']! as String).input(),
+      passPhrase: map['passPhrase'] == null ? null : (map['passPhrase']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      privateKeyFingerPrint: map['privateKeyFingerPrint'] == null ? null : (map['privateKeyFingerPrint']! as String).input(),
     );
   }
 }

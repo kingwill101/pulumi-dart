@@ -43,9 +43,9 @@ class DeviceConstraintPatch {
 
   factory DeviceConstraintPatch.fromMap(Map<String, dynamic> map) {
     return DeviceConstraintPatch(
-      distinctAttribute: map['distinctAttribute'] == null ? null : (map['distinctAttribute'] as String).input(),
-      matchAttribute: map['matchAttribute'] == null ? null : (map['matchAttribute'] as String).input(),
-      requests: map['requests'] == null ? null : ((map['requests'] as List).cast<String>()).input(),
+      distinctAttribute: map['distinctAttribute'] == null ? null : (map['distinctAttribute']! as String).input(),
+      matchAttribute: map['matchAttribute'] == null ? null : (map['matchAttribute']! as String).input(),
+      requests: map['requests'] == null ? null : ((map['requests']! as List).cast<String>()).input(),
     );
   }
 }

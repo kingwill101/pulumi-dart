@@ -57,13 +57,13 @@ class AppCheckDeviceCheckConfigState {
 
   factory AppCheckDeviceCheckConfigState.fromMap(Map<String, dynamic> map) {
     return AppCheckDeviceCheckConfigState(
-      appId: map['appId'] == null ? null : (map['appId'] as String).input(),
-      keyId: map['keyId'] == null ? null : (map['keyId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      privateKey: map['privateKey'] == null ? null : (map['privateKey'] as String).input(),
-      privateKeySet: map['privateKeySet'] == null ? null : (map['privateKeySet'] as bool).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl'] as String).input(),
+      appId: map['appId'] == null ? null : (map['appId']! as String).input(),
+      keyId: map['keyId'] == null ? null : (map['keyId']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      privateKey: map['privateKey'] == null ? null : (map['privateKey']! as String).input(),
+      privateKeySet: map['privateKeySet'] == null ? null : (map['privateKeySet']! as bool).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      tokenTtl: map['tokenTtl'] == null ? null : (map['tokenTtl']! as String).input(),
     );
   }
 }

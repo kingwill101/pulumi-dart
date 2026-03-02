@@ -66,14 +66,14 @@ class ChannelArgs {
 
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
-      channelName: map['channelName'] == null ? null : (map['channelName'] as String).input(),
-      channelType: map['channelType'] == null ? null : (map['channelType'] as String).input(),
-      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc'] as String).input(),
-      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation'] as String).input(),
+      channelName: map['channelName'] == null ? null : (map['channelName']! as String).input(),
+      channelType: map['channelType'] == null ? null : (map['channelType']! as String).input(),
+      expirationTimeIfNotActivatedUtc: map['expirationTimeIfNotActivatedUtc'] == null ? null : (map['expirationTimeIfNotActivatedUtc']! as String).input(),
+      messageForActivation: map['messageForActivation'] == null ? null : (map['messageForActivation']! as String).input(),
       partnerNamespaceName: (map['partnerNamespaceName'] as String).input(),
-      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : (PartnerTopicInfo.fromMap((map['partnerTopicInfo'] as Map).cast<String, dynamic>())).input(),
-      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState'] as String).input(),
-      readinessState: map['readinessState'] == null ? null : (map['readinessState'] as String).input(),
+      partnerTopicInfo: map['partnerTopicInfo'] == null ? null : (PartnerTopicInfo.fromMap((map['partnerTopicInfo']! as Map).cast<String, dynamic>())).input(),
+      provisioningState: map['provisioningState'] == null ? null : (map['provisioningState']! as String).input(),
+      readinessState: map['readinessState'] == null ? null : (map['readinessState']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
     );
   }

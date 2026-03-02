@@ -100,23 +100,23 @@ class GetArtifactSourceResult {
 
   factory GetArtifactSourceResult.fromMap(Map<String, dynamic> map) {
     return GetArtifactSourceResult(
-      armTemplateFolderPath: map['armTemplateFolderPath'] == null ? null : map['armTemplateFolderPath'] as String,
+      armTemplateFolderPath: map['armTemplateFolderPath'] == null ? null : map['armTemplateFolderPath']! as String,
       azureApiVersion: map['azureApiVersion'] as String,
-      branchRef: map['branchRef'] == null ? null : map['branchRef'] as String,
+      branchRef: map['branchRef'] == null ? null : map['branchRef']! as String,
       createdDate: map['createdDate'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      folderPath: map['folderPath'] == null ? null : map['folderPath'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName']! as String,
+      folderPath: map['folderPath'] == null ? null : map['folderPath']! as String,
       id: map['id'] as String,
-      location: map['location'] == null ? null : map['location'] as String,
+      location: map['location'] == null ? null : map['location']! as String,
       name: map['name'] as String,
       provisioningState: map['provisioningState'] as String,
-      securityToken: map['securityToken'] == null ? null : map['securityToken'] as String,
-      sourceType: map['sourceType'] == null ? null : map['sourceType'] as String,
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      securityToken: map['securityToken'] == null ? null : map['securityToken']! as String,
+      sourceType: map['sourceType'] == null ? null : map['sourceType']! as String,
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
       type: map['type'] as String,
       uniqueIdentifier: map['uniqueIdentifier'] as String,
-      uri: map['uri'] == null ? null : map['uri'] as String,
+      uri: map['uri'] == null ? null : map['uri']! as String,
     );
   }
 }

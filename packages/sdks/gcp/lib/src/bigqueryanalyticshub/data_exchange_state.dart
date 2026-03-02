@@ -87,19 +87,19 @@ class DataExchangeState {
 
   factory DataExchangeState.fromMap(Map<String, dynamic> map) {
     return DataExchangeState(
-      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      discoveryType: map['discoveryType'] == null ? null : (map['discoveryType'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      documentation: map['documentation'] == null ? null : (map['documentation'] as String).input(),
-      icon: map['icon'] == null ? null : (map['icon'] as String).input(),
-      listingCount: map['listingCount'] == null ? null : (map['listingCount'] as int).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      logLinkedDatasetQueryUserEmail: map['logLinkedDatasetQueryUserEmail'] == null ? null : (map['logLinkedDatasetQueryUserEmail'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sharingEnvironmentConfig: map['sharingEnvironmentConfig'] == null ? null : (DataExchangeSharingEnvironmentConfig.fromMap((map['sharingEnvironmentConfig'] as Map).cast<String, dynamic>())).input(),
+      dataExchangeId: map['dataExchangeId'] == null ? null : (map['dataExchangeId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      discoveryType: map['discoveryType'] == null ? null : (map['discoveryType']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      documentation: map['documentation'] == null ? null : (map['documentation']! as String).input(),
+      icon: map['icon'] == null ? null : (map['icon']! as String).input(),
+      listingCount: map['listingCount'] == null ? null : (map['listingCount']! as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      logLinkedDatasetQueryUserEmail: map['logLinkedDatasetQueryUserEmail'] == null ? null : (map['logLinkedDatasetQueryUserEmail']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      primaryContact: map['primaryContact'] == null ? null : (map['primaryContact']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sharingEnvironmentConfig: map['sharingEnvironmentConfig'] == null ? null : (DataExchangeSharingEnvironmentConfig.fromMap((map['sharingEnvironmentConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

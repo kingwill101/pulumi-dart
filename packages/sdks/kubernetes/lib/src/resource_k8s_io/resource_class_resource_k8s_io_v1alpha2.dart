@@ -60,13 +60,13 @@ class ResourceClassResourceK8sIoV1alpha2 {
 
   factory ResourceClassResourceK8sIoV1alpha2.fromMap(Map<String, dynamic> map) {
     return ResourceClassResourceK8sIoV1alpha2(
-      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion'] as String).input(),
+      apiVersion: map['apiVersion'] == null ? null : (map['apiVersion']! as String).input(),
       driverName: (map['driverName'] as String).input(),
-      kind: map['kind'] == null ? null : (map['kind'] as String).input(),
-      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata'] as Map).cast<String, dynamic>())).input(),
-      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap((map['parametersRef'] as Map).cast<String, dynamic>())).input(),
-      structuredParameters: map['structuredParameters'] == null ? null : (map['structuredParameters'] as bool).input(),
-      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelector.fromMap((map['suitableNodes'] as Map).cast<String, dynamic>())).input(),
+      kind: map['kind'] == null ? null : (map['kind']! as String).input(),
+      metadata: map['metadata'] == null ? null : (ObjectMeta.fromMap((map['metadata']! as Map).cast<String, dynamic>())).input(),
+      parametersRef: map['parametersRef'] == null ? null : (ResourceClassParametersReferenceResourceK8sIoV1alpha2.fromMap((map['parametersRef']! as Map).cast<String, dynamic>())).input(),
+      structuredParameters: map['structuredParameters'] == null ? null : (map['structuredParameters']! as bool).input(),
+      suitableNodes: map['suitableNodes'] == null ? null : (NodeSelector.fromMap((map['suitableNodes']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

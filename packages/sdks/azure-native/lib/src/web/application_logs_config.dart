@@ -34,9 +34,9 @@ class ApplicationLogsConfig {
 
   factory ApplicationLogsConfig.fromMap(Map<String, dynamic> map) {
     return ApplicationLogsConfig(
-      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageApplicationLogsConfig.fromMap((map['azureBlobStorage'] as Map).cast<String, dynamic>())).input(),
-      azureTableStorage: map['azureTableStorage'] == null ? null : (AzureTableStorageApplicationLogsConfig.fromMap((map['azureTableStorage'] as Map).cast<String, dynamic>())).input(),
-      fileSystem: map['fileSystem'] == null ? null : (FileSystemApplicationLogsConfig.fromMap((map['fileSystem'] as Map).cast<String, dynamic>())).input(),
+      azureBlobStorage: map['azureBlobStorage'] == null ? null : (AzureBlobStorageApplicationLogsConfig.fromMap((map['azureBlobStorage']! as Map).cast<String, dynamic>())).input(),
+      azureTableStorage: map['azureTableStorage'] == null ? null : (AzureTableStorageApplicationLogsConfig.fromMap((map['azureTableStorage']! as Map).cast<String, dynamic>())).input(),
+      fileSystem: map['fileSystem'] == null ? null : (FileSystemApplicationLogsConfig.fromMap((map['fileSystem']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

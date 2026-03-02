@@ -42,10 +42,10 @@ class NetworkInterfaceAttachmentArgs {
   factory NetworkInterfaceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceAttachmentArgs(
       instanceId: (map['instanceId'] as String).input(),
-      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex'] as int).input(),
+      networkCardIndex: map['networkCardIndex'] == null ? null : (map['networkCardIndex']! as int).input(),
       networkInterfaceId: (map['networkInterfaceId'] as String).input(),
-      trunkNetworkInstanceId: map['trunkNetworkInstanceId'] == null ? null : (map['trunkNetworkInstanceId'] as String).input(),
-      waitForNetworkConfigurationReady: map['waitForNetworkConfigurationReady'] == null ? null : (map['waitForNetworkConfigurationReady'] as bool).input(),
+      trunkNetworkInstanceId: map['trunkNetworkInstanceId'] == null ? null : (map['trunkNetworkInstanceId']! as String).input(),
+      waitForNetworkConfigurationReady: map['waitForNetworkConfigurationReady'] == null ? null : (map['waitForNetworkConfigurationReady']! as bool).input(),
     );
   }
 }

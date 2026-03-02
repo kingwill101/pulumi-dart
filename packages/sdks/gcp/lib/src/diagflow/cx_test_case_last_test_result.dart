@@ -46,11 +46,11 @@ class CxTestCaseLastTestResult {
 
   factory CxTestCaseLastTestResult.fromMap(Map<String, dynamic> map) {
     return CxTestCaseLastTestResult(
-      conversationTurns: map['conversationTurns'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurn>(map['conversationTurns'], (value) => CxTestCaseLastTestResultConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      environment: map['environment'] == null ? null : (map['environment'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      testResult: map['testResult'] == null ? null : (map['testResult'] as String).input(),
-      testTime: map['testTime'] == null ? null : (map['testTime'] as String).input(),
+      conversationTurns: map['conversationTurns'] == null ? null : (pulumi.Input.decodeList<CxTestCaseLastTestResultConversationTurn>(map['conversationTurns']!, (value) => CxTestCaseLastTestResultConversationTurn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      environment: map['environment'] == null ? null : (map['environment']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      testResult: map['testResult'] == null ? null : (map['testResult']! as String).input(),
+      testTime: map['testTime'] == null ? null : (map['testTime']! as String).input(),
     );
   }
 }

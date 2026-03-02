@@ -39,9 +39,9 @@ class GetGiVersionsResult {
     return GetGiVersionsResult(
       id: map['id'] as String,
       location: map['location'] as String,
-      shape: map['shape'] == null ? null : map['shape'] as String,
+      shape: map['shape'] == null ? null : map['shape']! as String,
       versions: (map['versions'] as List).cast<String>(),
-      zone: map['zone'] == null ? null : map['zone'] as String,
+      zone: map['zone'] == null ? null : map['zone']! as String,
     );
   }
 }

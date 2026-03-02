@@ -21,7 +21,7 @@ class FirewallPolicyNatRuleCollectionAction {
 
   factory FirewallPolicyNatRuleCollectionAction.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyNatRuleCollectionAction(
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

@@ -37,10 +37,10 @@ class DomainMatchingAutoMerging {
 
   factory DomainMatchingAutoMerging.fromMap(Map<String, dynamic> map) {
     return DomainMatchingAutoMerging(
-      conflictResolution: map['conflictResolution'] == null ? null : (DomainMatchingAutoMergingConflictResolution.fromMap((map['conflictResolution'] as Map).cast<String, dynamic>())).input(),
-      consolidation: map['consolidation'] == null ? null : (DomainMatchingAutoMergingConsolidation.fromMap((map['consolidation'] as Map).cast<String, dynamic>())).input(),
+      conflictResolution: map['conflictResolution'] == null ? null : ((DomainMatchingAutoMergingConflictResolution.fromMap((map['conflictResolution']! as Map).cast<String, dynamic>())).input()).input(),
+      consolidation: map['consolidation'] == null ? null : ((DomainMatchingAutoMergingConsolidation.fromMap((map['consolidation']! as Map).cast<String, dynamic>())).input()).input(),
       enabled: (map['enabled'] as bool).input(),
-      minAllowedConfidenceScoreForMerging: map['minAllowedConfidenceScoreForMerging'] == null ? null : (map['minAllowedConfidenceScoreForMerging'] as double).input(),
+      minAllowedConfidenceScoreForMerging: map['minAllowedConfidenceScoreForMerging'] == null ? null : ((map['minAllowedConfidenceScoreForMerging'] as double).input()).input(),
     );
   }
 }

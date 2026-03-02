@@ -21,7 +21,7 @@ class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
 
   factory SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig(
-      userWorkloadAuthenticationType: map['userWorkloadAuthenticationType'] == null ? null : (map['userWorkloadAuthenticationType'] as String).input(),
+      userWorkloadAuthenticationType: map['userWorkloadAuthenticationType'] == null ? null : (map['userWorkloadAuthenticationType']! as String).input(),
     );
   }
 }

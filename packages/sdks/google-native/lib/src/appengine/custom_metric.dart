@@ -41,11 +41,11 @@ class CustomMetric {
 
   factory CustomMetric.fromMap(Map<String, dynamic> map) {
     return CustomMetric(
-      filter: map['filter'] == null ? null : (map['filter'] as String).input(),
-      metricName: map['metricName'] == null ? null : (map['metricName'] as String).input(),
-      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment'] as double).input(),
-      targetType: map['targetType'] == null ? null : (map['targetType'] as String).input(),
-      targetUtilization: map['targetUtilization'] == null ? null : (map['targetUtilization'] as double).input(),
+      filter: map['filter'] == null ? null : (map['filter']! as String).input(),
+      metricName: map['metricName'] == null ? null : (map['metricName']! as String).input(),
+      singleInstanceAssignment: map['singleInstanceAssignment'] == null ? null : (map['singleInstanceAssignment']! as double).input(),
+      targetType: map['targetType'] == null ? null : (map['targetType']! as String).input(),
+      targetUtilization: map['targetUtilization'] == null ? null : (map['targetUtilization']! as double).input(),
     );
   }
 }

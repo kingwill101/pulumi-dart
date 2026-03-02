@@ -31,7 +31,7 @@ class GetServergroupV2Args {
   factory GetServergroupV2Args.fromMap(Map<String, dynamic> map) {
     return GetServergroupV2Args(
       name: (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -102,22 +102,22 @@ class CustomActivityResponse {
 
   factory CustomActivityResponse.fromMap(Map<String, dynamic> map) {
     return CustomActivityResponse(
-      autoUserSpecification: map['autoUserSpecification'] == null ? null : (map['autoUserSpecification']).input(),
+      autoUserSpecification: map['autoUserSpecification'] == null ? null : (map['autoUserSpecification']!).input(),
       command: (map['command']).input(),
-      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn'], (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties'] as Map).cast<String, dynamic>()).input(),
-      folderPath: map['folderPath'] == null ? null : (map['folderPath']).input(),
-      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName'] as Map).cast<String, dynamic>())).input(),
+      dependsOn: map['dependsOn'] == null ? null : (pulumi.Input.decodeList<ActivityDependencyResponse>(map['dependsOn']!, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      extendedProperties: map['extendedProperties'] == null ? null : ((map['extendedProperties']! as Map).cast<String, dynamic>()).input(),
+      folderPath: map['folderPath'] == null ? null : (map['folderPath']!).input(),
+      linkedServiceName: map['linkedServiceName'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())).input(),
       name: (map['name'] as String).input(),
-      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs'] as String).input(),
-      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy'] as Map).cast<String, dynamic>())).input(),
-      referenceObjects: map['referenceObjects'] == null ? null : (CustomActivityReferenceObjectResponse.fromMap((map['referenceObjects'] as Map).cast<String, dynamic>())).input(),
-      resourceLinkedService: map['resourceLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['resourceLinkedService'] as Map).cast<String, dynamic>())).input(),
-      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays']).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      onInactiveMarkAs: map['onInactiveMarkAs'] == null ? null : (map['onInactiveMarkAs']! as String).input(),
+      policy: map['policy'] == null ? null : (ActivityPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>())).input(),
+      referenceObjects: map['referenceObjects'] == null ? null : (CustomActivityReferenceObjectResponse.fromMap((map['referenceObjects']! as Map).cast<String, dynamic>())).input(),
+      resourceLinkedService: map['resourceLinkedService'] == null ? null : (LinkedServiceReferenceResponse.fromMap((map['resourceLinkedService']! as Map).cast<String, dynamic>())).input(),
+      retentionTimeInDays: map['retentionTimeInDays'] == null ? null : (map['retentionTimeInDays']!).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
       type: (map['type'] as String).input(),
-      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties'], (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userProperties: map['userProperties'] == null ? null : (pulumi.Input.decodeList<UserPropertyResponse>(map['userProperties']!, (value) => UserPropertyResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

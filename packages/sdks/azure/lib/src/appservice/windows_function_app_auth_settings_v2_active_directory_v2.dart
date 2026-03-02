@@ -83,18 +83,18 @@ class WindowsFunctionAppAuthSettingsV2ActiveDirectoryV2 {
 
   factory WindowsFunctionAppAuthSettingsV2ActiveDirectoryV2.fromMap(Map<String, dynamic> map) {
     return WindowsFunctionAppAuthSettingsV2ActiveDirectoryV2(
-      allowedApplications: map['allowedApplications'] == null ? null : ((map['allowedApplications'] as List).cast<String>()).input(),
-      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences'] as List).cast<String>()).input(),
-      allowedGroups: map['allowedGroups'] == null ? null : ((map['allowedGroups'] as List).cast<String>()).input(),
-      allowedIdentities: map['allowedIdentities'] == null ? null : ((map['allowedIdentities'] as List).cast<String>()).input(),
+      allowedApplications: map['allowedApplications'] == null ? null : ((map['allowedApplications']! as List).cast<String>()).input(),
+      allowedAudiences: map['allowedAudiences'] == null ? null : ((map['allowedAudiences']! as List).cast<String>()).input(),
+      allowedGroups: map['allowedGroups'] == null ? null : ((map['allowedGroups']! as List).cast<String>()).input(),
+      allowedIdentities: map['allowedIdentities'] == null ? null : ((map['allowedIdentities']! as List).cast<String>()).input(),
       clientId: (map['clientId'] as String).input(),
-      clientSecretCertificateThumbprint: map['clientSecretCertificateThumbprint'] == null ? null : (map['clientSecretCertificateThumbprint'] as String).input(),
-      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName'] as String).input(),
-      jwtAllowedClientApplications: map['jwtAllowedClientApplications'] == null ? null : ((map['jwtAllowedClientApplications'] as List).cast<String>()).input(),
-      jwtAllowedGroups: map['jwtAllowedGroups'] == null ? null : ((map['jwtAllowedGroups'] as List).cast<String>()).input(),
-      loginParameters: map['loginParameters'] == null ? null : ((map['loginParameters'] as Map).cast<String, String>()).input(),
+      clientSecretCertificateThumbprint: map['clientSecretCertificateThumbprint'] == null ? null : (map['clientSecretCertificateThumbprint']! as String).input(),
+      clientSecretSettingName: map['clientSecretSettingName'] == null ? null : (map['clientSecretSettingName']! as String).input(),
+      jwtAllowedClientApplications: map['jwtAllowedClientApplications'] == null ? null : ((map['jwtAllowedClientApplications']! as List).cast<String>()).input(),
+      jwtAllowedGroups: map['jwtAllowedGroups'] == null ? null : ((map['jwtAllowedGroups']! as List).cast<String>()).input(),
+      loginParameters: map['loginParameters'] == null ? null : ((map['loginParameters']! as Map).cast<String, String>()).input(),
       tenantAuthEndpoint: (map['tenantAuthEndpoint'] as String).input(),
-      wwwAuthenticationDisabled: map['wwwAuthenticationDisabled'] == null ? null : (map['wwwAuthenticationDisabled'] as bool).input(),
+      wwwAuthenticationDisabled: map['wwwAuthenticationDisabled'] == null ? null : (map['wwwAuthenticationDisabled']! as bool).input(),
     );
   }
 }

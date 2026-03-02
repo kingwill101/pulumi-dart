@@ -88,16 +88,16 @@ class RetrohuntState {
 
   factory RetrohuntState.fromMap(Map<String, dynamic> map) {
     return RetrohuntState(
-      retrohuntId: map['RetrohuntId'] == null ? null : (map['RetrohuntId'] as String).input(),
-      executionIntervals: map['executionIntervals'] == null ? null : (pulumi.Input.decodeList<RetrohuntExecutionInterval>(map['executionIntervals'], (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      instance: map['instance'] == null ? null : (map['instance'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      processInterval: map['processInterval'] == null ? null : (RetrohuntProcessInterval.fromMap((map['processInterval'] as Map).cast<String, dynamic>())).input(),
-      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage'] as double).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      rule: map['rule'] == null ? null : (map['rule'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
+      retrohuntId: map['RetrohuntId'] == null ? null : (map['RetrohuntId']! as String).input(),
+      executionIntervals: map['executionIntervals'] == null ? null : (pulumi.Input.decodeList<RetrohuntExecutionInterval>(map['executionIntervals']!, (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      instance: map['instance'] == null ? null : (map['instance']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      processInterval: map['processInterval'] == null ? null : (RetrohuntProcessInterval.fromMap((map['processInterval']! as Map).cast<String, dynamic>())).input(),
+      progressPercentage: map['progressPercentage'] == null ? null : (map['progressPercentage']! as double).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      rule: map['rule'] == null ? null : (map['rule']! as String).input(),
+      state: map['state'] == null ? null : (map['state']! as String).input(),
     );
   }
 }

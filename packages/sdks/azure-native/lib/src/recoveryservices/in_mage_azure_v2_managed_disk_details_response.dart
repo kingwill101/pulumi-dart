@@ -41,11 +41,11 @@ class InMageAzureV2ManagedDiskDetailsResponse {
 
   factory InMageAzureV2ManagedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageAzureV2ManagedDiskDetailsResponse(
-      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId'] as String).input(),
-      diskId: map['diskId'] == null ? null : (map['diskId'] as String).input(),
-      replicaDiskType: map['replicaDiskType'] == null ? null : (map['replicaDiskType'] as String).input(),
-      seedManagedDiskId: map['seedManagedDiskId'] == null ? null : (map['seedManagedDiskId'] as String).input(),
-      targetDiskName: map['targetDiskName'] == null ? null : (map['targetDiskName'] as String).input(),
+      diskEncryptionSetId: map['diskEncryptionSetId'] == null ? null : (map['diskEncryptionSetId']! as String).input(),
+      diskId: map['diskId'] == null ? null : (map['diskId']! as String).input(),
+      replicaDiskType: map['replicaDiskType'] == null ? null : (map['replicaDiskType']! as String).input(),
+      seedManagedDiskId: map['seedManagedDiskId'] == null ? null : (map['seedManagedDiskId']! as String).input(),
+      targetDiskName: map['targetDiskName'] == null ? null : (map['targetDiskName']! as String).input(),
     );
   }
 }

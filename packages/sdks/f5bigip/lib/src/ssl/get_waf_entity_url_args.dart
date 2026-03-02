@@ -67,15 +67,15 @@ class GetWafEntityUrlArgs {
 
   factory GetWafEntityUrlArgs.fromMap(Map<String, dynamic> map) {
     return GetWafEntityUrlArgs(
-      crossOriginRequestsEnforcements: map['crossOriginRequestsEnforcements'] == null ? null : (pulumi.Input.decodeList<GetWafEntityUrlCrossOriginRequestsEnforcement>(map['crossOriginRequestsEnforcements'], (value) => GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      methodOverrides: map['methodOverrides'] == null ? null : (pulumi.Input.decodeList<GetWafEntityUrlMethodOverride>(map['methodOverrides'], (value) => GetWafEntityUrlMethodOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      crossOriginRequestsEnforcements: map['crossOriginRequestsEnforcements'] == null ? null : (pulumi.Input.decodeList<GetWafEntityUrlCrossOriginRequestsEnforcement>(map['crossOriginRequestsEnforcements']!, (value) => GetWafEntityUrlCrossOriginRequestsEnforcement.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      method: map['method'] == null ? null : (map['method']! as String).input(),
+      methodOverrides: map['methodOverrides'] == null ? null : (pulumi.Input.decodeList<GetWafEntityUrlMethodOverride>(map['methodOverrides']!, (value) => GetWafEntityUrlMethodOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
       name: (map['name'] as String).input(),
-      performStaging: map['performStaging'] == null ? null : (map['performStaging'] as bool).input(),
-      protocol: map['protocol'] == null ? null : (map['protocol'] as String).input(),
-      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : ((map['signatureOverridesDisables'] as List).cast<int>()).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      performStaging: map['performStaging'] == null ? null : (map['performStaging']! as bool).input(),
+      protocol: map['protocol'] == null ? null : (map['protocol']! as String).input(),
+      signatureOverridesDisables: map['signatureOverridesDisables'] == null ? null : ((map['signatureOverridesDisables']! as List).cast<int>()).input(),
+      type: map['type'] == null ? null : (map['type']! as String).input(),
     );
   }
 }

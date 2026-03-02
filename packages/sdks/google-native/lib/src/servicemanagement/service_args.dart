@@ -29,8 +29,8 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      producerProjectId: map['producerProjectId'] == null ? null : (map['producerProjectId'] as String).input(),
-      serviceName: map['serviceName'] == null ? null : (map['serviceName'] as String).input(),
+      producerProjectId: map['producerProjectId'] == null ? null : (map['producerProjectId']! as String).input(),
+      serviceName: map['serviceName'] == null ? null : (map['serviceName']! as String).input(),
     );
   }
 }

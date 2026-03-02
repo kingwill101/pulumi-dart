@@ -59,12 +59,12 @@ class TransferRequestArgs {
 
   factory TransferRequestArgs.fromMap(Map<String, dynamic> map) {
     return TransferRequestArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck'] as bool).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId'] as String).input(),
-      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs'] as Map).cast<String, String>()).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      disableStatusCheck: map['disableStatusCheck'] == null ? null : (map['disableStatusCheck']! as bool).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
+      targetProjectId: map['targetProjectId'] == null ? null : (map['targetProjectId']! as String).input(),
+      valueSpecs: map['valueSpecs'] == null ? null : ((map['valueSpecs']! as Map).cast<String, String>()).input(),
       zoneId: (map['zoneId'] as String).input(),
     );
   }

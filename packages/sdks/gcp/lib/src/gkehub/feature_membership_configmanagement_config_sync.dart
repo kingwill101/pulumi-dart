@@ -60,14 +60,14 @@ class FeatureMembershipConfigmanagementConfigSync {
 
   factory FeatureMembershipConfigmanagementConfigSync.fromMap(Map<String, dynamic> map) {
     return FeatureMembershipConfigmanagementConfigSync(
-      deploymentOverrides: map['deploymentOverrides'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride>(map['deploymentOverrides'], (value) => FeatureMembershipConfigmanagementConfigSyncDeploymentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
-      git: map['git'] == null ? null : (FeatureMembershipConfigmanagementConfigSyncGit.fromMap((map['git'] as Map).cast<String, dynamic>())).input(),
-      metricsGcpServiceAccountEmail: map['metricsGcpServiceAccountEmail'] == null ? null : (map['metricsGcpServiceAccountEmail'] as String).input(),
-      oci: map['oci'] == null ? null : (FeatureMembershipConfigmanagementConfigSyncOci.fromMap((map['oci'] as Map).cast<String, dynamic>())).input(),
-      preventDrift: map['preventDrift'] == null ? null : (map['preventDrift'] as bool).input(),
-      sourceFormat: map['sourceFormat'] == null ? null : (map['sourceFormat'] as String).input(),
-      stopSyncing: map['stopSyncing'] == null ? null : (map['stopSyncing'] as bool).input(),
+      deploymentOverrides: map['deploymentOverrides'] == null ? null : (pulumi.Input.decodeList<FeatureMembershipConfigmanagementConfigSyncDeploymentOverride>(map['deploymentOverrides']!, (value) => FeatureMembershipConfigmanagementConfigSyncDeploymentOverride.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      enabled: map['enabled'] == null ? null : (map['enabled']! as bool).input(),
+      git: map['git'] == null ? null : (FeatureMembershipConfigmanagementConfigSyncGit.fromMap((map['git']! as Map).cast<String, dynamic>())).input(),
+      metricsGcpServiceAccountEmail: map['metricsGcpServiceAccountEmail'] == null ? null : (map['metricsGcpServiceAccountEmail']! as String).input(),
+      oci: map['oci'] == null ? null : (FeatureMembershipConfigmanagementConfigSyncOci.fromMap((map['oci']! as Map).cast<String, dynamic>())).input(),
+      preventDrift: map['preventDrift'] == null ? null : (map['preventDrift']! as bool).input(),
+      sourceFormat: map['sourceFormat'] == null ? null : (map['sourceFormat']! as String).input(),
+      stopSyncing: map['stopSyncing'] == null ? null : (map['stopSyncing']! as bool).input(),
     );
   }
 }

@@ -49,11 +49,11 @@ class WorkspaceManagerGroupArgs {
 
   factory WorkspaceManagerGroupArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceManagerGroupArgs(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       displayName: (map['displayName'] as String).input(),
       memberResourceNames: ((map['memberResourceNames'] as List).cast<String>()).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      workspaceManagerGroupName: map['workspaceManagerGroupName'] == null ? null : (map['workspaceManagerGroupName'] as String).input(),
+      workspaceManagerGroupName: map['workspaceManagerGroupName'] == null ? null : (map['workspaceManagerGroupName']! as String).input(),
       workspaceName: (map['workspaceName'] as String).input(),
     );
   }

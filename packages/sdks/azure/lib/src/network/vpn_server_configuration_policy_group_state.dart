@@ -42,11 +42,11 @@ class VpnServerConfigurationPolicyGroupState {
 
   factory VpnServerConfigurationPolicyGroupState.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationPolicyGroupState(
-      isDefault: map['isDefault'] == null ? null : (map['isDefault'] as bool).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupPolicy>(map['policies'], (value) => VpnServerConfigurationPolicyGroupPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      priority: map['priority'] == null ? null : (map['priority'] as int).input(),
-      vpnServerConfigurationId: map['vpnServerConfigurationId'] == null ? null : (map['vpnServerConfigurationId'] as String).input(),
+      isDefault: map['isDefault'] == null ? null : (map['isDefault']! as bool).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      policies: map['policies'] == null ? null : (pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupPolicy>(map['policies']!, (value) => VpnServerConfigurationPolicyGroupPolicy.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      priority: map['priority'] == null ? null : (map['priority']! as int).input(),
+      vpnServerConfigurationId: map['vpnServerConfigurationId'] == null ? null : (map['vpnServerConfigurationId']! as String).input(),
     );
   }
 }

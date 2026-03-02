@@ -53,10 +53,10 @@ class LoadBalancingRule {
     return LoadBalancingRule(
       backendPort: (map['backendPort'] as int).input(),
       frontendPort: (map['frontendPort'] as int).input(),
-      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution'] as String).input(),
-      probePort: map['probePort'] == null ? null : (map['probePort'] as int).input(),
+      loadDistribution: map['loadDistribution'] == null ? null : (map['loadDistribution']! as String).input(),
+      probePort: map['probePort'] == null ? null : (map['probePort']! as int).input(),
       probeProtocol: (map['probeProtocol'] as String).input(),
-      probeRequestPath: map['probeRequestPath'] == null ? null : (map['probeRequestPath'] as String).input(),
+      probeRequestPath: map['probeRequestPath'] == null ? null : (map['probeRequestPath']! as String).input(),
       protocol: (map['protocol'] as String).input(),
     );
   }

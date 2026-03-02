@@ -26,8 +26,8 @@ class ConfigurationBackupRetentionPolicyWeeklySchedule {
 
   factory ConfigurationBackupRetentionPolicyWeeklySchedule.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackupRetentionPolicyWeeklySchedule(
-      retentionDuration: map['retentionDuration'] == null ? null : (ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration.fromMap((map['retentionDuration'] as Map).cast<String, dynamic>())).input(),
-      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes'] as List).cast<String>()).input(),
+      retentionDuration: map['retentionDuration'] == null ? null : (ConfigurationBackupRetentionPolicyWeeklyScheduleRetentionDuration.fromMap((map['retentionDuration']! as Map).cast<String, dynamic>())).input(),
+      retentionTimes: map['retentionTimes'] == null ? null : ((map['retentionTimes']! as List).cast<String>()).input(),
     );
   }
 }

@@ -42,11 +42,11 @@ class EBSOptions {
 
   factory EBSOptions.fromMap(Map<String, dynamic> map) {
     return EBSOptions(
-      ebsEnabled: map['ebsEnabled'] == null ? null : (map['ebsEnabled'] as bool).input(),
-      iops: map['iops'] == null ? null : (map['iops'] as int).input(),
-      throughput: map['throughput'] == null ? null : (map['throughput'] as int).input(),
-      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize'] as int).input(),
-      volumeType: map['volumeType'] == null ? null : (VolumeTypeEnumValue.fromMap((map['volumeType'] as Map).cast<String, dynamic>())).input(),
+      ebsEnabled: map['ebsEnabled'] == null ? null : (map['ebsEnabled']! as bool).input(),
+      iops: map['iops'] == null ? null : (map['iops']! as int).input(),
+      throughput: map['throughput'] == null ? null : (map['throughput']! as int).input(),
+      volumeSize: map['volumeSize'] == null ? null : (map['volumeSize']! as int).input(),
+      volumeType: map['volumeType'] == null ? null : (VolumeTypeEnumValue.fromMap((map['volumeType']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

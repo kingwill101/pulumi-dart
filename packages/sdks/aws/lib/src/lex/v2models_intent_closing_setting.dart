@@ -38,10 +38,10 @@ class V2modelsIntentClosingSetting {
 
   factory V2modelsIntentClosingSetting.fromMap(Map<String, dynamic> map) {
     return V2modelsIntentClosingSetting(
-      active: map['active'] == null ? null : (map['active'] as bool).input(),
-      closingResponse: map['closingResponse'] == null ? null : (V2modelsIntentClosingSettingClosingResponse.fromMap((map['closingResponse'] as Map).cast<String, dynamic>())).input(),
-      conditional: map['conditional'] == null ? null : (V2modelsIntentClosingSettingConditional.fromMap((map['conditional'] as Map).cast<String, dynamic>())).input(),
-      nextStep: map['nextStep'] == null ? null : (V2modelsIntentClosingSettingNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>())).input(),
+      active: map['active'] == null ? null : ((map['active'] as bool).input()).input(),
+      closingResponse: map['closingResponse'] == null ? null : ((V2modelsIntentClosingSettingClosingResponse.fromMap((map['closingResponse']! as Map).cast<String, dynamic>())).input()).input(),
+      conditional: map['conditional'] == null ? null : ((V2modelsIntentClosingSettingConditional.fromMap((map['conditional']! as Map).cast<String, dynamic>())).input()).input(),
+      nextStep: map['nextStep'] == null ? null : ((V2modelsIntentClosingSettingNextStep.fromMap((map['nextStep']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

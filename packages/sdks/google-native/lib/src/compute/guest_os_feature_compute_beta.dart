@@ -22,7 +22,7 @@ class GuestOsFeatureComputeBeta {
 
   factory GuestOsFeatureComputeBeta.fromMap(Map<String, dynamic> map) {
     return GuestOsFeatureComputeBeta(
-      type: map['type'] == null ? null : (GuestOsFeatureTypeComputeBeta.fromValue(map['type'] as String)).input(),
+      type: map['type'] == null ? null : (GuestOsFeatureTypeComputeBeta.fromValue(map['type']! as String)).input(),
     );
   }
 }

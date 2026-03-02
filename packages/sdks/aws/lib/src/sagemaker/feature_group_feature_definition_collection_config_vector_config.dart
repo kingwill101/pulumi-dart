@@ -19,7 +19,7 @@ class FeatureGroupFeatureDefinitionCollectionConfigVectorConfig {
 
   factory FeatureGroupFeatureDefinitionCollectionConfigVectorConfig.fromMap(Map<String, dynamic> map) {
     return FeatureGroupFeatureDefinitionCollectionConfigVectorConfig(
-      dimension: map['dimension'] == null ? null : (map['dimension'] as int).input(),
+      dimension: map['dimension'] == null ? null : ((map['dimension'] as int).input()).input(),
     );
   }
 }

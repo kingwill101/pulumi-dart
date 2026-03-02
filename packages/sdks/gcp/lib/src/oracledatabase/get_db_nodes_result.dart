@@ -42,7 +42,7 @@ class GetDbNodesResult {
       dbNodes: pulumi.Input.decodeList<GetDbNodesDbNode>(map['dbNodes'], (value) => GetDbNodesDbNode.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       location: map['location'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
     );
   }
 }

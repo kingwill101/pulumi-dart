@@ -31,7 +31,7 @@ class NamespaceCustomerManagedKey {
   factory NamespaceCustomerManagedKey.fromMap(Map<String, dynamic> map) {
     return NamespaceCustomerManagedKey(
       identityId: (map['identityId'] as String).input(),
-      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled'] as bool).input(),
+      infrastructureEncryptionEnabled: map['infrastructureEncryptionEnabled'] == null ? null : (map['infrastructureEncryptionEnabled']! as bool).input(),
       keyVaultKeyId: (map['keyVaultKeyId'] as String).input(),
     );
   }

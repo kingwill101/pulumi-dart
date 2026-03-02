@@ -33,7 +33,7 @@ class UserInfoResponse {
     return UserInfoResponse(
       email: (map['email'] as String).input(),
       name: (map['name'] as String).input(),
-      objectId: map['objectId'] == null ? null : (map['objectId'] as String).input(),
+      objectId: map['objectId'] == null ? null : (map['objectId']! as String).input(),
     );
   }
 }

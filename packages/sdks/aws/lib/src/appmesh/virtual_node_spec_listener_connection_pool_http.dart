@@ -26,7 +26,7 @@ class VirtualNodeSpecListenerConnectionPoolHttp {
   factory VirtualNodeSpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerConnectionPoolHttp(
       maxConnections: (map['maxConnections'] as int).input(),
-      maxPendingRequests: map['maxPendingRequests'] == null ? null : (map['maxPendingRequests'] as int).input(),
+      maxPendingRequests: map['maxPendingRequests'] == null ? null : ((map['maxPendingRequests'] as int).input()).input(),
     );
   }
 }

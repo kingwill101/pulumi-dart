@@ -20,7 +20,7 @@ class TableAutoscaleSettings {
 
   factory TableAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return TableAutoscaleSettings(
-      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput'] as int).input(),
+      maxThroughput: map['maxThroughput'] == null ? null : (map['maxThroughput']! as int).input(),
     );
   }
 }

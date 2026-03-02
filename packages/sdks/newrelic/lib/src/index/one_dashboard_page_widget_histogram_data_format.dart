@@ -35,9 +35,9 @@ class OneDashboardPageWidgetHistogramDataFormat {
 
   factory OneDashboardPageWidgetHistogramDataFormat.fromMap(Map<String, dynamic> map) {
     return OneDashboardPageWidgetHistogramDataFormat(
-      format: map['format'] == null ? null : (map['format'] as String).input(),
+      format: map['format'] == null ? null : (map['format']! as String).input(),
       name: (map['name'] as String).input(),
-      precision: map['precision'] == null ? null : (map['precision'] as int).input(),
+      precision: map['precision'] == null ? null : (map['precision']! as int).input(),
       type: (map['type'] as String).input(),
     );
   }

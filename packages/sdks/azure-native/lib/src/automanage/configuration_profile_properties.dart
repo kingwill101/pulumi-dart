@@ -21,7 +21,7 @@ class ConfigurationProfileProperties {
 
   factory ConfigurationProfileProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationProfileProperties(
-      configuration: map['configuration'] == null ? null : (map['configuration']).input(),
+      configuration: map['configuration'] == null ? null : (map['configuration']!).input(),
     );
   }
 }

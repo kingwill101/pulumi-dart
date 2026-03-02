@@ -84,7 +84,7 @@ class GetVpcDhcpOptionsResult {
       dhcpOptionsId: map['dhcpOptionsId'] as String,
       domainName: map['domainName'] as String,
       domainNameServers: (map['domainNameServers'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(map['filters'], (value) => GetVpcDhcpOptionsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetVpcDhcpOptionsFilter>(map['filters']!, (value) => GetVpcDhcpOptionsFilter.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
       ipv6AddressPreferredLeaseTime: map['ipv6AddressPreferredLeaseTime'] as String,
       netbiosNameServers: (map['netbiosNameServers'] as List).cast<String>(),

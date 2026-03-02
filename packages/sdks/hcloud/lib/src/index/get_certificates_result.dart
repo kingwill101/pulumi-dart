@@ -33,7 +33,7 @@ class GetCertificatesResult {
     return GetCertificatesResult(
       certificates: pulumi.Input.decodeList<GetCertificatesCertificate>(map['certificates'], (value) => GetCertificatesCertificate.fromMap((value as Map).cast<String, dynamic>())),
       id: map['id'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

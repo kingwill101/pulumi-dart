@@ -20,7 +20,7 @@ class DomainDevicesGraphicRdpListenerSocket {
 
   factory DomainDevicesGraphicRdpListenerSocket.fromMap(Map<String, dynamic> map) {
     return DomainDevicesGraphicRdpListenerSocket(
-      socket: map['socket'] == null ? null : (map['socket'] as String).input(),
+      socket: map['socket'] == null ? null : (map['socket']! as String).input(),
     );
   }
 }

@@ -22,7 +22,7 @@ class ClusterNetworkPerformanceConfigContainerV1beta1 {
 
   factory ClusterNetworkPerformanceConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterNetworkPerformanceConfigContainerV1beta1(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1.fromValue(map['totalEgressBandwidthTier'] as String)).input(),
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : (ClusterNetworkPerformanceConfigTotalEgressBandwidthTierContainerV1beta1.fromValue(map['totalEgressBandwidthTier']! as String)).input(),
     );
   }
 }

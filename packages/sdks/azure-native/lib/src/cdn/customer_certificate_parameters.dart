@@ -39,9 +39,9 @@ class CustomerCertificateParameters {
   factory CustomerCertificateParameters.fromMap(Map<String, dynamic> map) {
     return CustomerCertificateParameters(
       secretSource: (ResourceReference.fromMap((map['secretSource'] as Map).cast<String, dynamic>())).input(),
-      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion'] as String).input(),
+      secretVersion: map['secretVersion'] == null ? null : (map['secretVersion']! as String).input(),
       type: (map['type'] as String).input(),
-      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion'] as bool).input(),
+      useLatestVersion: map['useLatestVersion'] == null ? null : (map['useLatestVersion']! as bool).input(),
     );
   }
 }

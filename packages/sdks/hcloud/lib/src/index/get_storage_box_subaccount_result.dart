@@ -75,7 +75,7 @@ class GetStorageBoxSubaccountResult {
       server: map['server'] as String,
       storageBoxId: map['storageBoxId'] as int,
       username: map['username'] as String,
-      withSelector: map['withSelector'] == null ? null : map['withSelector'] as String,
+      withSelector: map['withSelector'] == null ? null : map['withSelector']! as String,
     );
   }
 }

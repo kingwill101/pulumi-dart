@@ -40,10 +40,10 @@ class GetInstanceTypeOfferingArgs {
 
   factory GetInstanceTypeOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingArgs(
-      filters: map['filters'] == null ? null : (pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(map['filters'], (value) => GetInstanceTypeOfferingFilter.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      locationType: map['locationType'] == null ? null : (map['locationType'] as String).input(),
-      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : ((map['preferredInstanceTypes'] as List).cast<String>()).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      filters: map['filters'] == null ? null : ((pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(map['filters']!, (value) => GetInstanceTypeOfferingFilter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      locationType: map['locationType'] == null ? null : ((map['locationType'] as String).input()).input(),
+      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : (((map['preferredInstanceTypes'] as List).cast<String>()).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

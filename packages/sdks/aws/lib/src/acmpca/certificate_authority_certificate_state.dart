@@ -36,10 +36,10 @@ class CertificateAuthorityCertificateState {
 
   factory CertificateAuthorityCertificateState.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityCertificateState(
-      certificate: map['certificate'] == null ? null : (map['certificate'] as String).input(),
-      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : (map['certificateAuthorityArn'] as String).input(),
-      certificateChain: map['certificateChain'] == null ? null : (map['certificateChain'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      certificate: map['certificate'] == null ? null : ((map['certificate'] as String).input()).input(),
+      certificateAuthorityArn: map['certificateAuthorityArn'] == null ? null : ((map['certificateAuthorityArn'] as String).input()).input(),
+      certificateChain: map['certificateChain'] == null ? null : ((map['certificateChain'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

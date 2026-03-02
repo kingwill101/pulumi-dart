@@ -51,12 +51,12 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
 
   factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment.fromMap(Map<String, dynamic> map) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment(
-      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase>(map['conditionalCases'], (value) => CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage>(map['messages'], (value) => CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses'] as bool).input(),
-      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction>(map['setParameterActions'], (value) => CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      tag: map['tag'] == null ? null : (map['tag'] as String).input(),
-      webhook: map['webhook'] == null ? null : (map['webhook'] as String).input(),
+      conditionalCases: map['conditionalCases'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase>(map['conditionalCases']!, (value) => CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      messages: map['messages'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage>(map['messages']!, (value) => CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      returnPartialResponses: map['returnPartialResponses'] == null ? null : (map['returnPartialResponses']! as bool).input(),
+      setParameterActions: map['setParameterActions'] == null ? null : (pulumi.Input.decodeList<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction>(map['setParameterActions']!, (value) => CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      tag: map['tag'] == null ? null : (map['tag']! as String).input(),
+      webhook: map['webhook'] == null ? null : (map['webhook']! as String).input(),
     );
   }
 }

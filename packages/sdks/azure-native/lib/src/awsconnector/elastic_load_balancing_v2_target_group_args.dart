@@ -45,11 +45,11 @@ class ElasticLoadBalancingV2TargetGroupArgs {
 
   factory ElasticLoadBalancingV2TargetGroupArgs.fromMap(Map<String, dynamic> map) {
     return ElasticLoadBalancingV2TargetGroupArgs(
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (ElasticLoadBalancingV2TargetGroupProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (ElasticLoadBalancingV2TargetGroupProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

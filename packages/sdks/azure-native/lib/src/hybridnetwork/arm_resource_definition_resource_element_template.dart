@@ -32,9 +32,9 @@ class ArmResourceDefinitionResourceElementTemplate {
 
   factory ArmResourceDefinitionResourceElementTemplate.fromMap(Map<String, dynamic> map) {
     return ArmResourceDefinitionResourceElementTemplate(
-      artifactProfile: map['artifactProfile'] == null ? null : (NSDArtifactProfile.fromMap((map['artifactProfile'] as Map).cast<String, dynamic>())).input(),
-      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues'] as String).input(),
-      templateType: map['templateType'] == null ? null : (map['templateType'] as String).input(),
+      artifactProfile: map['artifactProfile'] == null ? null : (NSDArtifactProfile.fromMap((map['artifactProfile']! as Map).cast<String, dynamic>())).input(),
+      parameterValues: map['parameterValues'] == null ? null : (map['parameterValues']! as String).input(),
+      templateType: map['templateType'] == null ? null : (map['templateType']! as String).input(),
     );
   }
 }

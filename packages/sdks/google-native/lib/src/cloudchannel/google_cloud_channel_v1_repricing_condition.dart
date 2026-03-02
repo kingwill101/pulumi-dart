@@ -22,7 +22,7 @@ class GoogleCloudChannelV1RepricingCondition {
 
   factory GoogleCloudChannelV1RepricingCondition.fromMap(Map<String, dynamic> map) {
     return GoogleCloudChannelV1RepricingCondition(
-      skuGroupCondition: map['skuGroupCondition'] == null ? null : (GoogleCloudChannelV1SkuGroupCondition.fromMap((map['skuGroupCondition'] as Map).cast<String, dynamic>())).input(),
+      skuGroupCondition: map['skuGroupCondition'] == null ? null : (GoogleCloudChannelV1SkuGroupCondition.fromMap((map['skuGroupCondition']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

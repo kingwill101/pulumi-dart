@@ -39,10 +39,10 @@ class ClusterNodePoolAutoConfig {
 
   factory ClusterNodePoolAutoConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolAutoConfig(
-      linuxNodeConfig: map['linuxNodeConfig'] == null ? null : (ClusterNodePoolAutoConfigLinuxNodeConfig.fromMap((map['linuxNodeConfig'] as Map).cast<String, dynamic>())).input(),
-      networkTags: map['networkTags'] == null ? null : (ClusterNodePoolAutoConfigNetworkTags.fromMap((map['networkTags'] as Map).cast<String, dynamic>())).input(),
-      nodeKubeletConfig: map['nodeKubeletConfig'] == null ? null : (ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap((map['nodeKubeletConfig'] as Map).cast<String, dynamic>())).input(),
-      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags'] as Map).cast<String, String>()).input(),
+      linuxNodeConfig: map['linuxNodeConfig'] == null ? null : (ClusterNodePoolAutoConfigLinuxNodeConfig.fromMap((map['linuxNodeConfig']! as Map).cast<String, dynamic>())).input(),
+      networkTags: map['networkTags'] == null ? null : (ClusterNodePoolAutoConfigNetworkTags.fromMap((map['networkTags']! as Map).cast<String, dynamic>())).input(),
+      nodeKubeletConfig: map['nodeKubeletConfig'] == null ? null : (ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap((map['nodeKubeletConfig']! as Map).cast<String, dynamic>())).input(),
+      resourceManagerTags: map['resourceManagerTags'] == null ? null : ((map['resourceManagerTags']! as Map).cast<String, String>()).input(),
     );
   }
 }

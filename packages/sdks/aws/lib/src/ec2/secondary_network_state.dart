@@ -71,17 +71,17 @@ class SecondaryNetworkState {
 
   factory SecondaryNetworkState.fromMap(Map<String, dynamic> map) {
     return SecondaryNetworkState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      ipv4CidrBlock: map['ipv4CidrBlock'] == null ? null : (map['ipv4CidrBlock'] as String).input(),
-      ipv4CidrBlockAssociations: map['ipv4CidrBlockAssociations'] == null ? null : (pulumi.Input.decodeList<SecondaryNetworkIpv4CidrBlockAssociation>(map['ipv4CidrBlockAssociations'], (value) => SecondaryNetworkIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      networkType: map['networkType'] == null ? null : (map['networkType'] as String).input(),
-      ownerId: map['ownerId'] == null ? null : (map['ownerId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      secondaryNetworkId: map['secondaryNetworkId'] == null ? null : (map['secondaryNetworkId'] as String).input(),
-      state: map['state'] == null ? null : (map['state'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
-      timeouts: map['timeouts'] == null ? null : (SecondaryNetworkTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      ipv4CidrBlock: map['ipv4CidrBlock'] == null ? null : ((map['ipv4CidrBlock'] as String).input()).input(),
+      ipv4CidrBlockAssociations: map['ipv4CidrBlockAssociations'] == null ? null : ((pulumi.Input.decodeList<SecondaryNetworkIpv4CidrBlockAssociation>(map['ipv4CidrBlockAssociations']!, (value) => SecondaryNetworkIpv4CidrBlockAssociation.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      networkType: map['networkType'] == null ? null : ((map['networkType'] as String).input()).input(),
+      ownerId: map['ownerId'] == null ? null : ((map['ownerId'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      secondaryNetworkId: map['secondaryNetworkId'] == null ? null : ((map['secondaryNetworkId'] as String).input()).input(),
+      state: map['state'] == null ? null : ((map['state'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((SecondaryNetworkTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

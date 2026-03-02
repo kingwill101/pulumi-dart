@@ -36,9 +36,9 @@ class FieldLevelEncryptionConfigArgs {
 
   factory FieldLevelEncryptionConfigArgs.fromMap(Map<String, dynamic> map) {
     return FieldLevelEncryptionConfigArgs(
-      comment: map['comment'] == null ? null : (map['comment'] as String).input(),
-      contentTypeProfileConfig: (FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig'] as Map).cast<String, dynamic>())).input(),
-      queryArgProfileConfig: (FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig'] as Map).cast<String, dynamic>())).input(),
+      comment: map['comment'] == null ? null : ((map['comment'] as String).input()).input(),
+      contentTypeProfileConfig: (FieldLevelEncryptionConfigContentTypeProfileConfig.fromMap((map['contentTypeProfileConfig']! as Map).cast<String, dynamic>())).input(),
+      queryArgProfileConfig: (FieldLevelEncryptionConfigQueryArgProfileConfig.fromMap((map['queryArgProfileConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ConfigurationServiceSettings {
 
   factory ConfigurationServiceSettings.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceSettings(
-      gitProperty: map['gitProperty'] == null ? null : (ConfigurationServiceGitProperty.fromMap((map['gitProperty'] as Map).cast<String, dynamic>())).input(),
-      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds'] as int).input(),
+      gitProperty: map['gitProperty'] == null ? null : (ConfigurationServiceGitProperty.fromMap((map['gitProperty']! as Map).cast<String, dynamic>())).input(),
+      refreshIntervalInSeconds: map['refreshIntervalInSeconds'] == null ? null : (map['refreshIntervalInSeconds']! as int).input(),
     );
   }
 }

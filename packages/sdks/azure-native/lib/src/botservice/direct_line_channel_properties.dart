@@ -37,10 +37,10 @@ class DirectLineChannelProperties {
 
   factory DirectLineChannelProperties.fromMap(Map<String, dynamic> map) {
     return DirectLineChannelProperties(
-      directLineEmbedCode: map['directLineEmbedCode'] == null ? null : (map['directLineEmbedCode'] as String).input(),
-      extensionKey1: map['extensionKey1'] == null ? null : (map['extensionKey1'] as String).input(),
-      extensionKey2: map['extensionKey2'] == null ? null : (map['extensionKey2'] as String).input(),
-      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<DirectLineSite>(map['sites'], (value) => DirectLineSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      directLineEmbedCode: map['directLineEmbedCode'] == null ? null : (map['directLineEmbedCode']! as String).input(),
+      extensionKey1: map['extensionKey1'] == null ? null : (map['extensionKey1']! as String).input(),
+      extensionKey2: map['extensionKey2'] == null ? null : (map['extensionKey2']! as String).input(),
+      sites: map['sites'] == null ? null : (pulumi.Input.decodeList<DirectLineSite>(map['sites']!, (value) => DirectLineSite.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

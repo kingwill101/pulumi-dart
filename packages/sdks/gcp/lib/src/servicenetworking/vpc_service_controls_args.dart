@@ -44,7 +44,7 @@ class VpcServiceControlsArgs {
     return VpcServiceControlsArgs(
       enabled: (map['enabled'] as bool).input(),
       network: (map['network'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
       service: (map['service'] as String).input(),
     );
   }

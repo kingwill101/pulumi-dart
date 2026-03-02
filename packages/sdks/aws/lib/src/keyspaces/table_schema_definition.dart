@@ -39,10 +39,10 @@ class TableSchemaDefinition {
 
   factory TableSchemaDefinition.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinition(
-      clusteringKeys: map['clusteringKeys'] == null ? null : (pulumi.Input.decodeList<TableSchemaDefinitionClusteringKey>(map['clusteringKeys'], (value) => TableSchemaDefinitionClusteringKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      columns: (pulumi.Input.decodeList<TableSchemaDefinitionColumn>(map['columns'], (value) => TableSchemaDefinitionColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      partitionKeys: (pulumi.Input.decodeList<TableSchemaDefinitionPartitionKey>(map['partitionKeys'], (value) => TableSchemaDefinitionPartitionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      staticColumns: map['staticColumns'] == null ? null : (pulumi.Input.decodeList<TableSchemaDefinitionStaticColumn>(map['staticColumns'], (value) => TableSchemaDefinitionStaticColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      clusteringKeys: map['clusteringKeys'] == null ? null : ((pulumi.Input.decodeList<TableSchemaDefinitionClusteringKey>(map['clusteringKeys']!, (value) => TableSchemaDefinitionClusteringKey.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      columns: (pulumi.Input.decodeList<TableSchemaDefinitionColumn>(map['columns']!, (value) => TableSchemaDefinitionColumn.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      partitionKeys: (pulumi.Input.decodeList<TableSchemaDefinitionPartitionKey>(map['partitionKeys']!, (value) => TableSchemaDefinitionPartitionKey.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      staticColumns: map['staticColumns'] == null ? null : ((pulumi.Input.decodeList<TableSchemaDefinitionStaticColumn>(map['staticColumns']!, (value) => TableSchemaDefinitionStaticColumn.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

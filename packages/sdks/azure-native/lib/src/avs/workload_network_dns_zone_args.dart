@@ -64,15 +64,15 @@ class WorkloadNetworkDnsZoneArgs {
 
   factory WorkloadNetworkDnsZoneArgs.fromMap(Map<String, dynamic> map) {
     return WorkloadNetworkDnsZoneArgs(
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      dnsServerIps: map['dnsServerIps'] == null ? null : ((map['dnsServerIps'] as List).cast<String>()).input(),
-      dnsServices: map['dnsServices'] == null ? null : (map['dnsServices'] as double).input(),
-      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId'] as String).input(),
-      domain: map['domain'] == null ? null : ((map['domain'] as List).cast<String>()).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      dnsServerIps: map['dnsServerIps'] == null ? null : ((map['dnsServerIps']! as List).cast<String>()).input(),
+      dnsServices: map['dnsServices'] == null ? null : (map['dnsServices']! as double).input(),
+      dnsZoneId: map['dnsZoneId'] == null ? null : (map['dnsZoneId']! as String).input(),
+      domain: map['domain'] == null ? null : ((map['domain']! as List).cast<String>()).input(),
       privateCloudName: (map['privateCloudName'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      revision: map['revision'] == null ? null : (map['revision'] as double).input(),
-      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp'] as String).input(),
+      revision: map['revision'] == null ? null : (map['revision']! as double).input(),
+      sourceIp: map['sourceIp'] == null ? null : (map['sourceIp']! as String).input(),
     );
   }
 }

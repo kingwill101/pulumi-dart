@@ -38,7 +38,7 @@ class WindowsWebAppSiteConfigVirtualApplication {
     return WindowsWebAppSiteConfigVirtualApplication(
       physicalPath: (map['physicalPath'] as String).input(),
       preload: (map['preload'] as bool).input(),
-      virtualDirectories: map['virtualDirectories'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory>(map['virtualDirectories'], (value) => WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      virtualDirectories: map['virtualDirectories'] == null ? null : (pulumi.Input.decodeList<WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory>(map['virtualDirectories']!, (value) => WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory.fromMap((value as Map).cast<String, dynamic>()))).input(),
       virtualPath: (map['virtualPath'] as String).input(),
     );
   }

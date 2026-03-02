@@ -44,10 +44,10 @@ class SingleServerVirtualNetworkRuleArgs {
 
   factory SingleServerVirtualNetworkRuleArgs.fromMap(Map<String, dynamic> map) {
     return SingleServerVirtualNetworkRuleArgs(
-      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint'] as bool).input(),
+      ignoreMissingVnetServiceEndpoint: map['ignoreMissingVnetServiceEndpoint'] == null ? null : (map['ignoreMissingVnetServiceEndpoint']! as bool).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
       serverName: (map['serverName'] as String).input(),
-      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName'] as String).input(),
+      virtualNetworkRuleName: map['virtualNetworkRuleName'] == null ? null : (map['virtualNetworkRuleName']! as String).input(),
       virtualNetworkSubnetId: (map['virtualNetworkSubnetId'] as String).input(),
     );
   }

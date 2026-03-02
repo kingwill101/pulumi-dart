@@ -27,8 +27,8 @@ class NGroupCGPropertyContainer {
 
   factory NGroupCGPropertyContainer.fromMap(Map<String, dynamic> map) {
     return NGroupCGPropertyContainer(
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      properties: map['properties'] == null ? null : (NGroupCGPropertyContainerProperties.fromMap((map['properties'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      properties: map['properties'] == null ? null : (NGroupCGPropertyContainerProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

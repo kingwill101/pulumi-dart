@@ -26,7 +26,7 @@ class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable {
 
   factory FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyFirewallPolicyPolicyVariablesRuleVariable(
-      ipSet: (FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet.fromMap((map['ipSet'] as Map).cast<String, dynamic>())).input(),
+      ipSet: (FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet.fromMap((map['ipSet']! as Map).cast<String, dynamic>())).input(),
       key: (map['key'] as String).input(),
     );
   }

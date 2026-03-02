@@ -48,11 +48,11 @@ class PreventionDiscoveryConfigTargetOtherCloudTarget {
 
   factory PreventionDiscoveryConfigTargetOtherCloudTarget.fromMap(Map<String, dynamic> map) {
     return PreventionDiscoveryConfigTargetOtherCloudTarget(
-      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>())).input(),
-      dataSourceType: map['dataSourceType'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap((map['dataSourceType'] as Map).cast<String, dynamic>())).input(),
-      disabled: map['disabled'] == null ? null : ((map['disabled'] as Map).cast<String, dynamic>()).input(),
+      conditions: map['conditions'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetConditions.fromMap((map['conditions']! as Map).cast<String, dynamic>())).input(),
+      dataSourceType: map['dataSourceType'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType.fromMap((map['dataSourceType']! as Map).cast<String, dynamic>())).input(),
+      disabled: map['disabled'] == null ? null : ((map['disabled']! as Map).cast<String, dynamic>()).input(),
       filter: (PreventionDiscoveryConfigTargetOtherCloudTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())).input(),
-      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence.fromMap((map['generationCadence'] as Map).cast<String, dynamic>())).input(),
+      generationCadence: map['generationCadence'] == null ? null : (PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence.fromMap((map['generationCadence']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

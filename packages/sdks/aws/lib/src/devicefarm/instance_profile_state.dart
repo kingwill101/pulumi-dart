@@ -61,15 +61,15 @@ class InstanceProfileState {
 
   factory InstanceProfileState.fromMap(Map<String, dynamic> map) {
     return InstanceProfileState(
-      arn: map['arn'] == null ? null : (map['arn'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      excludeAppPackagesFromCleanups: map['excludeAppPackagesFromCleanups'] == null ? null : ((map['excludeAppPackagesFromCleanups'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      packageCleanup: map['packageCleanup'] == null ? null : (map['packageCleanup'] as bool).input(),
-      rebootAfterUse: map['rebootAfterUse'] == null ? null : (map['rebootAfterUse'] as bool).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
-      tagsAll: map['tagsAll'] == null ? null : ((map['tagsAll'] as Map).cast<String, String>()).input(),
+      arn: map['arn'] == null ? null : ((map['arn'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
+      excludeAppPackagesFromCleanups: map['excludeAppPackagesFromCleanups'] == null ? null : (((map['excludeAppPackagesFromCleanups'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      packageCleanup: map['packageCleanup'] == null ? null : ((map['packageCleanup'] as bool).input()).input(),
+      rebootAfterUse: map['rebootAfterUse'] == null ? null : ((map['rebootAfterUse'] as bool).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
+      tagsAll: map['tagsAll'] == null ? null : (((map['tagsAll'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

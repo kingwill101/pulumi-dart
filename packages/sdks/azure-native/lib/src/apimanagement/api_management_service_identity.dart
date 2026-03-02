@@ -31,7 +31,7 @@ class ApiManagementServiceIdentity {
   factory ApiManagementServiceIdentity.fromMap(Map<String, dynamic> map) {
     return ApiManagementServiceIdentity(
       type: (map['type'] as String).input(),
-      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityProperties>(map['userAssignedIdentities'], (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      userAssignedIdentities: map['userAssignedIdentities'] == null ? null : (pulumi.Input.decodeMapValues<UserIdentityProperties>(map['userAssignedIdentities']!, (value) => UserIdentityProperties.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

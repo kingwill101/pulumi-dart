@@ -49,12 +49,12 @@ class SharedDirectoryState {
 
   factory SharedDirectoryState.fromMap(Map<String, dynamic> map) {
     return SharedDirectoryState(
-      directoryId: map['directoryId'] == null ? null : (map['directoryId'] as String).input(),
-      method: map['method'] == null ? null : (map['method'] as String).input(),
-      notes: map['notes'] == null ? null : (map['notes'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : (map['sharedDirectoryId'] as String).input(),
-      target: map['target'] == null ? null : (SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())).input(),
+      directoryId: map['directoryId'] == null ? null : ((map['directoryId'] as String).input()).input(),
+      method: map['method'] == null ? null : ((map['method'] as String).input()).input(),
+      notes: map['notes'] == null ? null : ((map['notes'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sharedDirectoryId: map['sharedDirectoryId'] == null ? null : ((map['sharedDirectoryId'] as String).input()).input(),
+      target: map['target'] == null ? null : ((SharedDirectoryTarget.fromMap((map['target']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

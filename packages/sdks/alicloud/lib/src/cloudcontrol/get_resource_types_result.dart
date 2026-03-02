@@ -43,7 +43,7 @@ class GetResourceTypesResult {
     return GetResourceTypesResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
       product: map['product'] as String,
       types: pulumi.Input.decodeList<GetResourceTypesType>(map['types'], (value) => GetResourceTypesType.fromMap((value as Map).cast<String, dynamic>())),
     );

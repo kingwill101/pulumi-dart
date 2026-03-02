@@ -26,8 +26,8 @@ class LibraryRequirements {
 
   factory LibraryRequirements.fromMap(Map<String, dynamic> map) {
     return LibraryRequirements(
-      content: map['content'] == null ? null : (map['content'] as String).input(),
-      filename: map['filename'] == null ? null : (map['filename'] as String).input(),
+      content: map['content'] == null ? null : (map['content']! as String).input(),
+      filename: map['filename'] == null ? null : (map['filename']! as String).input(),
     );
   }
 }

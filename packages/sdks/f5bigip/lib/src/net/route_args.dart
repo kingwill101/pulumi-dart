@@ -44,11 +44,11 @@ class RouteArgs {
 
   factory RouteArgs.fromMap(Map<String, dynamic> map) {
     return RouteArgs(
-      gw: map['gw'] == null ? null : (map['gw'] as String).input(),
+      gw: map['gw'] == null ? null : (map['gw']! as String).input(),
       name: (map['name'] as String).input(),
       network: (map['network'] as String).input(),
-      reject: map['reject'] == null ? null : (map['reject'] as bool).input(),
-      tunnelRef: map['tunnelRef'] == null ? null : (map['tunnelRef'] as String).input(),
+      reject: map['reject'] == null ? null : (map['reject']! as bool).input(),
+      tunnelRef: map['tunnelRef'] == null ? null : (map['tunnelRef']! as String).input(),
     );
   }
 }

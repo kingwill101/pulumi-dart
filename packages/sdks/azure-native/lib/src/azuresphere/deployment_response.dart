@@ -58,9 +58,9 @@ class DeploymentResponse {
 
   factory DeploymentResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentResponse(
-      deployedImages: map['deployedImages'] == null ? null : (pulumi.Input.decodeList<ImageResponse>(map['deployedImages'], (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      deployedImages: map['deployedImages'] == null ? null : (pulumi.Input.decodeList<ImageResponse>(map['deployedImages']!, (value) => ImageResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
       deploymentDateUtc: (map['deploymentDateUtc'] as String).input(),
-      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId'] as String).input(),
+      deploymentId: map['deploymentId'] == null ? null : (map['deploymentId']! as String).input(),
       id: (map['id'] as String).input(),
       name: (map['name'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),

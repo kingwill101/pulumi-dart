@@ -22,7 +22,7 @@ class GoogleCloudAiplatformV1FeatureNoiseSigma {
 
   factory GoogleCloudAiplatformV1FeatureNoiseSigma.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1FeatureNoiseSigma(
-      noiseSigma: map['noiseSigma'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>(map['noiseSigma'], (value) => GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      noiseSigma: map['noiseSigma'] == null ? null : (pulumi.Input.decodeList<GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature>(map['noiseSigma']!, (value) => GoogleCloudAiplatformV1FeatureNoiseSigmaNoiseSigmaForFeature.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

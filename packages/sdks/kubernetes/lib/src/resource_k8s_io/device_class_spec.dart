@@ -37,9 +37,9 @@ class DeviceClassSpec {
 
   factory DeviceClassSpec.fromMap(Map<String, dynamic> map) {
     return DeviceClassSpec(
-      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClassConfiguration>(map['config'], (value) => DeviceClassConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      extendedResourceName: map['extendedResourceName'] == null ? null : (map['extendedResourceName'] as String).input(),
-      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelector>(map['selectors'], (value) => DeviceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      config: map['config'] == null ? null : (pulumi.Input.decodeList<DeviceClassConfiguration>(map['config']!, (value) => DeviceClassConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      extendedResourceName: map['extendedResourceName'] == null ? null : (map['extendedResourceName']! as String).input(),
+      selectors: map['selectors'] == null ? null : (pulumi.Input.decodeList<DeviceSelector>(map['selectors']!, (value) => DeviceSelector.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

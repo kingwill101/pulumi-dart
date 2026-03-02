@@ -50,9 +50,9 @@ class FederatedIdentityCredentialArgs {
     return FederatedIdentityCredentialArgs(
       audience: (map['audience'] as String).input(),
       issuer: (map['issuer'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       parentId: (map['parentId'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
       subject: (map['subject'] as String).input(),
     );
   }

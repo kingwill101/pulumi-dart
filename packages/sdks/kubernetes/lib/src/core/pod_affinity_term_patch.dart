@@ -47,12 +47,12 @@ class PodAffinityTermPatch {
 
   factory PodAffinityTermPatch.fromMap(Map<String, dynamic> map) {
     return PodAffinityTermPatch(
-      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['labelSelector'] as Map).cast<String, dynamic>())).input(),
-      matchLabelKeys: map['matchLabelKeys'] == null ? null : ((map['matchLabelKeys'] as List).cast<String>()).input(),
-      mismatchLabelKeys: map['mismatchLabelKeys'] == null ? null : ((map['mismatchLabelKeys'] as List).cast<String>()).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      namespaces: map['namespaces'] == null ? null : ((map['namespaces'] as List).cast<String>()).input(),
-      topologyKey: map['topologyKey'] == null ? null : (map['topologyKey'] as String).input(),
+      labelSelector: map['labelSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['labelSelector']! as Map).cast<String, dynamic>())).input(),
+      matchLabelKeys: map['matchLabelKeys'] == null ? null : ((map['matchLabelKeys']! as List).cast<String>()).input(),
+      mismatchLabelKeys: map['mismatchLabelKeys'] == null ? null : ((map['mismatchLabelKeys']! as List).cast<String>()).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelectorPatch.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      namespaces: map['namespaces'] == null ? null : ((map['namespaces']! as List).cast<String>()).input(),
+      topologyKey: map['topologyKey'] == null ? null : (map['topologyKey']! as String).input(),
     );
   }
 }

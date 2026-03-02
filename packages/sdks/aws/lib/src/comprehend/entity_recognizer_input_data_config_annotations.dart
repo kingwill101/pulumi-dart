@@ -25,7 +25,7 @@ class EntityRecognizerInputDataConfigAnnotations {
   factory EntityRecognizerInputDataConfigAnnotations.fromMap(Map<String, dynamic> map) {
     return EntityRecognizerInputDataConfigAnnotations(
       s3Uri: (map['s3Uri'] as String).input(),
-      testS3Uri: map['testS3Uri'] == null ? null : (map['testS3Uri'] as String).input(),
+      testS3Uri: map['testS3Uri'] == null ? null : ((map['testS3Uri'] as String).input()).input(),
     );
   }
 }

@@ -116,17 +116,17 @@ class MutatingWebhookAdmissionregistrationK8sIoV1beta1 {
 
   factory MutatingWebhookAdmissionregistrationK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return MutatingWebhookAdmissionregistrationK8sIoV1beta1(
-      admissionReviewVersions: map['admissionReviewVersions'] == null ? null : ((map['admissionReviewVersions'] as List).cast<String>()).input(),
+      admissionReviewVersions: map['admissionReviewVersions'] == null ? null : ((map['admissionReviewVersions']! as List).cast<String>()).input(),
       clientConfig: (WebhookClientConfigAdmissionregistrationK8sIoV1beta1.fromMap((map['clientConfig'] as Map).cast<String, dynamic>())).input(),
-      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy'] as String).input(),
-      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy'] as String).input(),
+      failurePolicy: map['failurePolicy'] == null ? null : (map['failurePolicy']! as String).input(),
+      matchPolicy: map['matchPolicy'] == null ? null : (map['matchPolicy']! as String).input(),
       name: (map['name'] as String).input(),
-      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector'] as Map).cast<String, dynamic>())).input(),
-      objectSelector: map['objectSelector'] == null ? null : (LabelSelector.fromMap((map['objectSelector'] as Map).cast<String, dynamic>())).input(),
-      reinvocationPolicy: map['reinvocationPolicy'] == null ? null : (map['reinvocationPolicy'] as String).input(),
-      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleWithOperationsAdmissionregistrationK8sIoV1beta1>(map['rules'], (value) => RuleWithOperationsAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      sideEffects: map['sideEffects'] == null ? null : (map['sideEffects'] as String).input(),
-      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds'] as int).input(),
+      namespaceSelector: map['namespaceSelector'] == null ? null : (LabelSelector.fromMap((map['namespaceSelector']! as Map).cast<String, dynamic>())).input(),
+      objectSelector: map['objectSelector'] == null ? null : (LabelSelector.fromMap((map['objectSelector']! as Map).cast<String, dynamic>())).input(),
+      reinvocationPolicy: map['reinvocationPolicy'] == null ? null : (map['reinvocationPolicy']! as String).input(),
+      rules: map['rules'] == null ? null : (pulumi.Input.decodeList<RuleWithOperationsAdmissionregistrationK8sIoV1beta1>(map['rules']!, (value) => RuleWithOperationsAdmissionregistrationK8sIoV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      sideEffects: map['sideEffects'] == null ? null : (map['sideEffects']! as String).input(),
+      timeoutSeconds: map['timeoutSeconds'] == null ? null : (map['timeoutSeconds']! as int).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions {
 
   factory RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActions(
-      customActions: map['customActions'] == null ? null : (pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>(map['customActions'], (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      statelessRules: (pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>(map['statelessRules'], (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      customActions: map['customActions'] == null ? null : ((pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction>(map['customActions']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomAction.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      statelessRules: (pulumi.Input.decodeList<RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule>(map['statelessRules']!, (value) => RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRule.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

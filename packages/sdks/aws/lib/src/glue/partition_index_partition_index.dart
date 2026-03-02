@@ -29,9 +29,9 @@ class PartitionIndexPartitionIndex {
 
   factory PartitionIndexPartitionIndex.fromMap(Map<String, dynamic> map) {
     return PartitionIndexPartitionIndex(
-      indexName: map['indexName'] == null ? null : (map['indexName'] as String).input(),
-      indexStatus: map['indexStatus'] == null ? null : (map['indexStatus'] as String).input(),
-      keys: map['keys'] == null ? null : ((map['keys'] as List).cast<String>()).input(),
+      indexName: map['indexName'] == null ? null : ((map['indexName'] as String).input()).input(),
+      indexStatus: map['indexStatus'] == null ? null : ((map['indexStatus'] as String).input()).input(),
+      keys: map['keys'] == null ? null : (((map['keys'] as List).cast<String>()).input()).input(),
     );
   }
 }

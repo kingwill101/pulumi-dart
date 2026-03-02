@@ -58,10 +58,10 @@ class GetLocationResult {
       city: map['city'] as String,
       country: map['country'] as String,
       description: map['description'] as String,
-      id: map['id'] == null ? null : map['id'] as int,
+      id: map['id'] == null ? null : map['id']! as int,
       latitude: map['latitude'] as double,
       longitude: map['longitude'] as double,
-      name: map['name'] == null ? null : map['name'] as String,
+      name: map['name'] == null ? null : map['name']! as String,
       networkZone: map['networkZone'] as String,
     );
   }

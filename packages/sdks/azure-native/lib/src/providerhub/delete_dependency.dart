@@ -30,9 +30,9 @@ class DeleteDependency {
 
   factory DeleteDependency.fromMap(Map<String, dynamic> map) {
     return DeleteDependency(
-      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty'] as String).input(),
-      linkedType: map['linkedType'] == null ? null : (map['linkedType'] as String).input(),
-      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures'] as List).cast<String>()).input(),
+      linkedProperty: map['linkedProperty'] == null ? null : (map['linkedProperty']! as String).input(),
+      linkedType: map['linkedType'] == null ? null : (map['linkedType']! as String).input(),
+      requiredFeatures: map['requiredFeatures'] == null ? null : ((map['requiredFeatures']! as List).cast<String>()).input(),
     );
   }
 }

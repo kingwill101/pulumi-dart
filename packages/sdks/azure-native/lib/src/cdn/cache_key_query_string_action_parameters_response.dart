@@ -31,7 +31,7 @@ class CacheKeyQueryStringActionParametersResponse {
 
   factory CacheKeyQueryStringActionParametersResponse.fromMap(Map<String, dynamic> map) {
     return CacheKeyQueryStringActionParametersResponse(
-      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters'] as String).input(),
+      queryParameters: map['queryParameters'] == null ? null : (map['queryParameters']! as String).input(),
       queryStringBehavior: (map['queryStringBehavior'] as String).input(),
       typeName: (map['typeName'] as String).input(),
     );

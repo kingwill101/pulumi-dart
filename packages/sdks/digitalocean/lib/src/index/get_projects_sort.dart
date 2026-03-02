@@ -26,7 +26,7 @@ class GetProjectsSort {
 
   factory GetProjectsSort.fromMap(Map<String, dynamic> map) {
     return GetProjectsSort(
-      direction: map['direction'] == null ? null : (map['direction'] as String).input(),
+      direction: map['direction'] == null ? null : (map['direction']! as String).input(),
       key: (map['key'] as String).input(),
     );
   }

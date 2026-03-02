@@ -56,13 +56,13 @@ class AddressArgs {
 
   factory AddressArgs.fromMap(Map<String, dynamic> map) {
     return AddressArgs(
-      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification'] as String).input(),
-      addressName: map['addressName'] == null ? null : (map['addressName'] as String).input(),
-      contactDetails: map['contactDetails'] == null ? null : (ContactDetails.fromMap((map['contactDetails'] as Map).cast<String, dynamic>())).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      addressClassification: map['addressClassification'] == null ? null : (map['addressClassification']! as String).input(),
+      addressName: map['addressName'] == null ? null : (map['addressName']! as String).input(),
+      contactDetails: map['contactDetails'] == null ? null : (ContactDetails.fromMap((map['contactDetails']! as Map).cast<String, dynamic>())).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress'] as Map).cast<String, dynamic>())).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      shippingAddress: map['shippingAddress'] == null ? null : (ShippingAddress.fromMap((map['shippingAddress']! as Map).cast<String, dynamic>())).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

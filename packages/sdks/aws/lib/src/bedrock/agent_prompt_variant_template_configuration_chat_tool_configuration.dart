@@ -27,8 +27,8 @@ class AgentPromptVariantTemplateConfigurationChatToolConfiguration {
 
   factory AgentPromptVariantTemplateConfigurationChatToolConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantTemplateConfigurationChatToolConfiguration(
-      toolChoice: map['toolChoice'] == null ? null : (AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice.fromMap((map['toolChoice'] as Map).cast<String, dynamic>())).input(),
-      tools: map['tools'] == null ? null : (pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>(map['tools'], (value) => AgentPromptVariantTemplateConfigurationChatToolConfigurationTool.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      toolChoice: map['toolChoice'] == null ? null : ((AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoice.fromMap((map['toolChoice']! as Map).cast<String, dynamic>())).input()).input(),
+      tools: map['tools'] == null ? null : ((pulumi.Input.decodeList<AgentPromptVariantTemplateConfigurationChatToolConfigurationTool>(map['tools']!, (value) => AgentPromptVariantTemplateConfigurationChatToolConfigurationTool.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

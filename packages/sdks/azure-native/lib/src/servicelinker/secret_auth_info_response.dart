@@ -38,10 +38,10 @@ class SecretAuthInfoResponse {
 
   factory SecretAuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return SecretAuthInfoResponse(
-      authMode: map['authMode'] == null ? null : (map['authMode'] as String).input(),
+      authMode: map['authMode'] == null ? null : (map['authMode']! as String).input(),
       authType: (map['authType'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      secretInfo: map['secretInfo'] == null ? null : (KeyVaultSecretReferenceSecretInfoResponse.fromMap((map['secretInfo'] as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      secretInfo: map['secretInfo'] == null ? null : (KeyVaultSecretReferenceSecretInfoResponse.fromMap((map['secretInfo']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

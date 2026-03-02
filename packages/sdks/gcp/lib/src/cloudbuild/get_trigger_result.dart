@@ -153,7 +153,7 @@ class GetTriggerResult {
       includedFiles: (map['includedFiles'] as List).cast<String>(),
       location: map['location'] as String,
       name: map['name'] as String,
-      project: map['project'] == null ? null : map['project'] as String,
+      project: map['project'] == null ? null : map['project']! as String,
       pubsubConfigs: pulumi.Input.decodeList<GetTriggerPubsubConfig>(map['pubsubConfigs'], (value) => GetTriggerPubsubConfig.fromMap((value as Map).cast<String, dynamic>())),
       repositoryEventConfigs: pulumi.Input.decodeList<GetTriggerRepositoryEventConfig>(map['repositoryEventConfigs'], (value) => GetTriggerRepositoryEventConfig.fromMap((value as Map).cast<String, dynamic>())),
       serviceAccount: map['serviceAccount'] as String,

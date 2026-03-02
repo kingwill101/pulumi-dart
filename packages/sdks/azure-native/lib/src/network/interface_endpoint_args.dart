@@ -61,14 +61,14 @@ class InterfaceEndpointArgs {
 
   factory InterfaceEndpointArgs.fromMap(Map<String, dynamic> map) {
     return InterfaceEndpointArgs(
-      endpointService: map['endpointService'] == null ? null : (EndpointService.fromMap((map['endpointService'] as Map).cast<String, dynamic>())).input(),
-      fqdn: map['fqdn'] == null ? null : (map['fqdn'] as String).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
-      interfaceEndpointName: map['interfaceEndpointName'] == null ? null : (map['interfaceEndpointName'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
+      endpointService: map['endpointService'] == null ? null : (EndpointService.fromMap((map['endpointService']! as Map).cast<String, dynamic>())).input(),
+      fqdn: map['fqdn'] == null ? null : (map['fqdn']! as String).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
+      interfaceEndpointName: map['interfaceEndpointName'] == null ? null : (map['interfaceEndpointName']! as String).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),
-      subnet: map['subnet'] == null ? null : (map['subnet'] as SubnetNetwork).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      subnet: map['subnet'] == null ? null : (map['subnet']! as SubnetNetwork).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

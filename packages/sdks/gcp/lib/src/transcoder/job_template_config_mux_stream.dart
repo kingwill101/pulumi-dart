@@ -47,12 +47,12 @@ class JobTemplateConfigMuxStream {
 
   factory JobTemplateConfigMuxStream.fromMap(Map<String, dynamic> map) {
     return JobTemplateConfigMuxStream(
-      container: map['container'] == null ? null : (map['container'] as String).input(),
-      elementaryStreams: map['elementaryStreams'] == null ? null : ((map['elementaryStreams'] as List).cast<String>()).input(),
-      encryptionId: map['encryptionId'] == null ? null : (map['encryptionId'] as String).input(),
-      fileName: map['fileName'] == null ? null : (map['fileName'] as String).input(),
-      key: map['key'] == null ? null : (map['key'] as String).input(),
-      segmentSettings: map['segmentSettings'] == null ? null : (JobTemplateConfigMuxStreamSegmentSettings.fromMap((map['segmentSettings'] as Map).cast<String, dynamic>())).input(),
+      container: map['container'] == null ? null : (map['container']! as String).input(),
+      elementaryStreams: map['elementaryStreams'] == null ? null : ((map['elementaryStreams']! as List).cast<String>()).input(),
+      encryptionId: map['encryptionId'] == null ? null : (map['encryptionId']! as String).input(),
+      fileName: map['fileName'] == null ? null : (map['fileName']! as String).input(),
+      key: map['key'] == null ? null : (map['key']! as String).input(),
+      segmentSettings: map['segmentSettings'] == null ? null : (JobTemplateConfigMuxStreamSegmentSettings.fromMap((map['segmentSettings']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

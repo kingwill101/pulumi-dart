@@ -49,12 +49,12 @@ class SimpleSchedulePolicy {
 
   factory SimpleSchedulePolicy.fromMap(Map<String, dynamic> map) {
     return SimpleSchedulePolicy(
-      hourlySchedule: map['hourlySchedule'] == null ? null : (HourlySchedule.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>())).input(),
+      hourlySchedule: map['hourlySchedule'] == null ? null : (HourlySchedule.fromMap((map['hourlySchedule']! as Map).cast<String, dynamic>())).input(),
       schedulePolicyType: (map['schedulePolicyType'] as String).input(),
-      scheduleRunDays: map['scheduleRunDays'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['scheduleRunDays'], (value) => DayOfWeek.fromValue(value as String))).input(),
-      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency'] as String).input(),
-      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes'] as List).cast<String>()).input(),
-      scheduleWeeklyFrequency: map['scheduleWeeklyFrequency'] == null ? null : (map['scheduleWeeklyFrequency'] as int).input(),
+      scheduleRunDays: map['scheduleRunDays'] == null ? null : (pulumi.Input.decodeList<DayOfWeek>(map['scheduleRunDays']!, (value) => DayOfWeek.fromValue(value as String))).input(),
+      scheduleRunFrequency: map['scheduleRunFrequency'] == null ? null : (map['scheduleRunFrequency']! as String).input(),
+      scheduleRunTimes: map['scheduleRunTimes'] == null ? null : ((map['scheduleRunTimes']! as List).cast<String>()).input(),
+      scheduleWeeklyFrequency: map['scheduleWeeklyFrequency'] == null ? null : (map['scheduleWeeklyFrequency']! as int).input(),
     );
   }
 }

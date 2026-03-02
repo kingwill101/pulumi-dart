@@ -52,13 +52,13 @@ class LakeAccountState {
 
   factory LakeAccountState.fromMap(Map<String, dynamic> map) {
     return LakeAccountState(
-      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription'] as String).input(),
-      accountName: map['accountName'] == null ? null : (map['accountName'] as String).input(),
-      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword'] as String).input(),
-      accountPrivileges: map['accountPrivileges'] == null ? null : (pulumi.Input.decodeList<LakeAccountAccountPrivilege>(map['accountPrivileges'], (value) => LakeAccountAccountPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      accountType: map['accountType'] == null ? null : (map['accountType'] as String).input(),
-      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId'] as String).input(),
-      status: map['status'] == null ? null : (map['status'] as String).input(),
+      accountDescription: map['accountDescription'] == null ? null : (map['accountDescription']! as String).input(),
+      accountName: map['accountName'] == null ? null : (map['accountName']! as String).input(),
+      accountPassword: map['accountPassword'] == null ? null : (map['accountPassword']! as String).input(),
+      accountPrivileges: map['accountPrivileges'] == null ? null : (pulumi.Input.decodeList<LakeAccountAccountPrivilege>(map['accountPrivileges']!, (value) => LakeAccountAccountPrivilege.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accountType: map['accountType'] == null ? null : (map['accountType']! as String).input(),
+      dbClusterId: map['dbClusterId'] == null ? null : (map['dbClusterId']! as String).input(),
+      status: map['status'] == null ? null : (map['status']! as String).input(),
     );
   }
 }

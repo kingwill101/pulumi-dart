@@ -98,22 +98,22 @@ class ApplicationGatewayHttpListener {
 
   factory ApplicationGatewayHttpListener.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayHttpListener(
-      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayHttpListenerCustomErrorConfiguration>(map['customErrorConfigurations'], (value) => ApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId'] as String).input(),
-      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId'] as String).input(),
+      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : (pulumi.Input.decodeList<ApplicationGatewayHttpListenerCustomErrorConfiguration>(map['customErrorConfigurations']!, (value) => ApplicationGatewayHttpListenerCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : (map['firewallPolicyId']! as String).input(),
+      frontendIpConfigurationId: map['frontendIpConfigurationId'] == null ? null : (map['frontendIpConfigurationId']! as String).input(),
       frontendIpConfigurationName: (map['frontendIpConfigurationName'] as String).input(),
-      frontendPortId: map['frontendPortId'] == null ? null : (map['frontendPortId'] as String).input(),
+      frontendPortId: map['frontendPortId'] == null ? null : (map['frontendPortId']! as String).input(),
       frontendPortName: (map['frontendPortName'] as String).input(),
-      hostName: map['hostName'] == null ? null : (map['hostName'] as String).input(),
-      hostNames: map['hostNames'] == null ? null : ((map['hostNames'] as List).cast<String>()).input(),
-      id: map['id'] == null ? null : (map['id'] as String).input(),
+      hostName: map['hostName'] == null ? null : (map['hostName']! as String).input(),
+      hostNames: map['hostNames'] == null ? null : ((map['hostNames']! as List).cast<String>()).input(),
+      id: map['id'] == null ? null : (map['id']! as String).input(),
       name: (map['name'] as String).input(),
       protocol: (map['protocol'] as String).input(),
-      requireSni: map['requireSni'] == null ? null : (map['requireSni'] as bool).input(),
-      sslCertificateId: map['sslCertificateId'] == null ? null : (map['sslCertificateId'] as String).input(),
-      sslCertificateName: map['sslCertificateName'] == null ? null : (map['sslCertificateName'] as String).input(),
-      sslProfileId: map['sslProfileId'] == null ? null : (map['sslProfileId'] as String).input(),
-      sslProfileName: map['sslProfileName'] == null ? null : (map['sslProfileName'] as String).input(),
+      requireSni: map['requireSni'] == null ? null : (map['requireSni']! as bool).input(),
+      sslCertificateId: map['sslCertificateId'] == null ? null : (map['sslCertificateId']! as String).input(),
+      sslCertificateName: map['sslCertificateName'] == null ? null : (map['sslCertificateName']! as String).input(),
+      sslProfileId: map['sslProfileId'] == null ? null : (map['sslProfileId']! as String).input(),
+      sslProfileName: map['sslProfileName'] == null ? null : (map['sslProfileName']! as String).input(),
     );
   }
 }

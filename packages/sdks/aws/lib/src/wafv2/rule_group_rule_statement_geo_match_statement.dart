@@ -27,7 +27,7 @@ class RuleGroupRuleStatementGeoMatchStatement {
   factory RuleGroupRuleStatementGeoMatchStatement.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementGeoMatchStatement(
       countryCodes: ((map['countryCodes'] as List).cast<String>()).input(),
-      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : (RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig'] as Map).cast<String, dynamic>())).input(),
+      forwardedIpConfig: map['forwardedIpConfig'] == null ? null : ((RuleGroupRuleStatementGeoMatchStatementForwardedIpConfig.fromMap((map['forwardedIpConfig']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

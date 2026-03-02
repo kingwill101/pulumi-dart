@@ -20,7 +20,7 @@ class GraphVectorSearchConfiguration {
 
   factory GraphVectorSearchConfiguration.fromMap(Map<String, dynamic> map) {
     return GraphVectorSearchConfiguration(
-      vectorSearchDimension: map['vectorSearchDimension'] == null ? null : (map['vectorSearchDimension'] as int).input(),
+      vectorSearchDimension: map['vectorSearchDimension'] == null ? null : ((map['vectorSearchDimension'] as int).input()).input(),
     );
   }
 }

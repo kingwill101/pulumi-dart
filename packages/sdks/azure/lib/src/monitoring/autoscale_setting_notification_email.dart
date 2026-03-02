@@ -30,9 +30,9 @@ class AutoscaleSettingNotificationEmail {
 
   factory AutoscaleSettingNotificationEmail.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingNotificationEmail(
-      customEmails: map['customEmails'] == null ? null : ((map['customEmails'] as List).cast<String>()).input(),
-      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : (map['sendToSubscriptionAdministrator'] as bool).input(),
-      sendToSubscriptionCoAdministrator: map['sendToSubscriptionCoAdministrator'] == null ? null : (map['sendToSubscriptionCoAdministrator'] as bool).input(),
+      customEmails: map['customEmails'] == null ? null : ((map['customEmails']! as List).cast<String>()).input(),
+      sendToSubscriptionAdministrator: map['sendToSubscriptionAdministrator'] == null ? null : (map['sendToSubscriptionAdministrator']! as bool).input(),
+      sendToSubscriptionCoAdministrator: map['sendToSubscriptionCoAdministrator'] == null ? null : (map['sendToSubscriptionCoAdministrator']! as bool).input(),
     );
   }
 }

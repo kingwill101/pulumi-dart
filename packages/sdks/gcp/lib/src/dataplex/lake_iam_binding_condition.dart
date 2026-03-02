@@ -27,7 +27,7 @@ class LakeIamBindingCondition {
 
   factory LakeIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return LakeIamBindingCondition(
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
       expression: (map['expression'] as String).input(),
       title: (map['title'] as String).input(),
     );

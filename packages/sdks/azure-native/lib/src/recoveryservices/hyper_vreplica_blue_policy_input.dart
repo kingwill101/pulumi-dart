@@ -76,18 +76,18 @@ class HyperVReplicaBluePolicyInput {
 
   factory HyperVReplicaBluePolicyInput.fromMap(Map<String, dynamic> map) {
     return HyperVReplicaBluePolicyInput(
-      allowedAuthenticationType: map['allowedAuthenticationType'] == null ? null : (map['allowedAuthenticationType'] as int).input(),
-      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours'] as int).input(),
-      compression: map['compression'] == null ? null : (map['compression'] as String).input(),
-      initialReplicationMethod: map['initialReplicationMethod'] == null ? null : (map['initialReplicationMethod'] as String).input(),
+      allowedAuthenticationType: map['allowedAuthenticationType'] == null ? null : (map['allowedAuthenticationType']! as int).input(),
+      applicationConsistentSnapshotFrequencyInHours: map['applicationConsistentSnapshotFrequencyInHours'] == null ? null : (map['applicationConsistentSnapshotFrequencyInHours']! as int).input(),
+      compression: map['compression'] == null ? null : (map['compression']! as String).input(),
+      initialReplicationMethod: map['initialReplicationMethod'] == null ? null : (map['initialReplicationMethod']! as String).input(),
       instanceType: (map['instanceType'] as String).input(),
-      offlineReplicationExportPath: map['offlineReplicationExportPath'] == null ? null : (map['offlineReplicationExportPath'] as String).input(),
-      offlineReplicationImportPath: map['offlineReplicationImportPath'] == null ? null : (map['offlineReplicationImportPath'] as String).input(),
-      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime'] as String).input(),
-      recoveryPoints: map['recoveryPoints'] == null ? null : (map['recoveryPoints'] as int).input(),
-      replicaDeletion: map['replicaDeletion'] == null ? null : (map['replicaDeletion'] as String).input(),
-      replicationFrequencyInSeconds: map['replicationFrequencyInSeconds'] == null ? null : (map['replicationFrequencyInSeconds'] as int).input(),
-      replicationPort: map['replicationPort'] == null ? null : (map['replicationPort'] as int).input(),
+      offlineReplicationExportPath: map['offlineReplicationExportPath'] == null ? null : (map['offlineReplicationExportPath']! as String).input(),
+      offlineReplicationImportPath: map['offlineReplicationImportPath'] == null ? null : (map['offlineReplicationImportPath']! as String).input(),
+      onlineReplicationStartTime: map['onlineReplicationStartTime'] == null ? null : (map['onlineReplicationStartTime']! as String).input(),
+      recoveryPoints: map['recoveryPoints'] == null ? null : (map['recoveryPoints']! as int).input(),
+      replicaDeletion: map['replicaDeletion'] == null ? null : (map['replicaDeletion']! as String).input(),
+      replicationFrequencyInSeconds: map['replicationFrequencyInSeconds'] == null ? null : (map['replicationFrequencyInSeconds']! as int).input(),
+      replicationPort: map['replicationPort'] == null ? null : (map['replicationPort']! as int).input(),
     );
   }
 }

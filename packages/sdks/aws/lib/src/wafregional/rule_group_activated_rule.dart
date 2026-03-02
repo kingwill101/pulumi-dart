@@ -35,10 +35,10 @@ class RuleGroupActivatedRule {
 
   factory RuleGroupActivatedRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupActivatedRule(
-      action: (RuleGroupActivatedRuleAction.fromMap((map['action'] as Map).cast<String, dynamic>())).input(),
+      action: (RuleGroupActivatedRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())).input(),
       priority: (map['priority'] as int).input(),
       ruleId: (map['ruleId'] as String).input(),
-      type: map['type'] == null ? null : (map['type'] as String).input(),
+      type: map['type'] == null ? null : ((map['type'] as String).input()).input(),
     );
   }
 }

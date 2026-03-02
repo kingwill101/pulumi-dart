@@ -43,11 +43,11 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
 
   factory ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettingsPrimaryInstanceSettings(
-      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags'] as Map).cast<String, String>()).input(),
+      databaseFlags: map['databaseFlags'] == null ? null : ((map['databaseFlags']! as Map).cast<String, String>()).input(),
       id: (map['id'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
       machineConfig: (ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>())).input(),
-      privateIp: map['privateIp'] == null ? null : (map['privateIp'] as String).input(),
+      privateIp: map['privateIp'] == null ? null : (map['privateIp']! as String).input(),
     );
   }
 }

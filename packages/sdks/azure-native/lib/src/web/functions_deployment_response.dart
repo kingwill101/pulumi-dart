@@ -22,7 +22,7 @@ class FunctionsDeploymentResponse {
 
   factory FunctionsDeploymentResponse.fromMap(Map<String, dynamic> map) {
     return FunctionsDeploymentResponse(
-      storage: map['storage'] == null ? null : (FunctionsDeploymentResponseStorage.fromMap((map['storage'] as Map).cast<String, dynamic>())).input(),
+      storage: map['storage'] == null ? null : (FunctionsDeploymentResponseStorage.fromMap((map['storage']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

@@ -94,23 +94,23 @@ class GetSitesResult {
 
   factory GetSitesResult.fromMap(Map<String, dynamic> map) {
     return GetSitesResult(
-      accessType: map['accessType'] == null ? null : map['accessType'] as String,
-      coverage: map['coverage'] == null ? null : map['coverage'] as String,
+      accessType: map['accessType'] == null ? null : map['accessType']! as String,
+      coverage: map['coverage'] == null ? null : map['coverage']! as String,
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
+      nameRegex: map['nameRegex'] == null ? null : map['nameRegex']! as String,
       names: (map['names'] as List).cast<String>(),
-      onlyEnterprise: map['onlyEnterprise'] == null ? null : map['onlyEnterprise'] as bool,
-      outputFile: map['outputFile'] == null ? null : map['outputFile'] as String,
-      pageNumber: map['pageNumber'] == null ? null : map['pageNumber'] as int,
-      pageSize: map['pageSize'] == null ? null : map['pageSize'] as int,
-      planSubscribeType: map['planSubscribeType'] == null ? null : map['planSubscribeType'] as String,
-      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId'] as String,
-      siteName: map['siteName'] == null ? null : map['siteName'] as String,
-      siteSearchType: map['siteSearchType'] == null ? null : map['siteSearchType'] as String,
+      onlyEnterprise: map['onlyEnterprise'] == null ? null : map['onlyEnterprise']! as bool,
+      outputFile: map['outputFile'] == null ? null : map['outputFile']! as String,
+      pageNumber: map['pageNumber'] == null ? null : map['pageNumber']! as int,
+      pageSize: map['pageSize'] == null ? null : map['pageSize']! as int,
+      planSubscribeType: map['planSubscribeType'] == null ? null : map['planSubscribeType']! as String,
+      resourceGroupId: map['resourceGroupId'] == null ? null : map['resourceGroupId']! as String,
+      siteName: map['siteName'] == null ? null : map['siteName']! as String,
+      siteSearchType: map['siteSearchType'] == null ? null : map['siteSearchType']! as String,
       sites: pulumi.Input.decodeList<GetSitesSite>(map['sites'], (value) => GetSitesSite.fromMap((value as Map).cast<String, dynamic>())),
-      status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      status: map['status'] == null ? null : map['status']! as String,
+      tags: map['tags'] == null ? null : (map['tags']! as Map).cast<String, String>(),
     );
   }
 }

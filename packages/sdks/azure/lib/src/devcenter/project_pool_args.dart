@@ -75,12 +75,12 @@ class ProjectPoolArgs {
       devCenterAttachedNetworkName: (map['devCenterAttachedNetworkName'] as String).input(),
       devCenterProjectId: (map['devCenterProjectId'] as String).input(),
       localAdministratorEnabled: (map['localAdministratorEnabled'] as bool).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : (map['managedVirtualNetworkRegions'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled'] as bool).input(),
-      stopOnDisconnectGracePeriodMinutes: map['stopOnDisconnectGracePeriodMinutes'] == null ? null : (map['stopOnDisconnectGracePeriodMinutes'] as int).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      managedVirtualNetworkRegions: map['managedVirtualNetworkRegions'] == null ? null : (map['managedVirtualNetworkRegions']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      singleSignOnEnabled: map['singleSignOnEnabled'] == null ? null : (map['singleSignOnEnabled']! as bool).input(),
+      stopOnDisconnectGracePeriodMinutes: map['stopOnDisconnectGracePeriodMinutes'] == null ? null : (map['stopOnDisconnectGracePeriodMinutes']! as int).input(),
+      tags: map['tags'] == null ? null : ((map['tags']! as Map).cast<String, String>()).input(),
     );
   }
 }

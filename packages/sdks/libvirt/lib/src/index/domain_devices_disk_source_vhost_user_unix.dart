@@ -37,10 +37,10 @@ class DomainDevicesDiskSourceVhostUserUnix {
 
   factory DomainDevicesDiskSourceVhostUserUnix.fromMap(Map<String, dynamic> map) {
     return DomainDevicesDiskSourceVhostUserUnix(
-      mode: map['mode'] == null ? null : (map['mode'] as String).input(),
-      path: map['path'] == null ? null : (map['path'] as String).input(),
-      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskSourceVhostUserUnixReconnect.fromMap((map['reconnect'] as Map).cast<String, dynamic>())).input(),
-      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceVhostUserUnixSecLabel>(map['secLabels'], (value) => DomainDevicesDiskSourceVhostUserUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (map['mode']! as String).input(),
+      path: map['path'] == null ? null : (map['path']! as String).input(),
+      reconnect: map['reconnect'] == null ? null : (DomainDevicesDiskSourceVhostUserUnixReconnect.fromMap((map['reconnect']! as Map).cast<String, dynamic>())).input(),
+      secLabels: map['secLabels'] == null ? null : (pulumi.Input.decodeList<DomainDevicesDiskSourceVhostUserUnixSecLabel>(map['secLabels']!, (value) => DomainDevicesDiskSourceVhostUserUnixSecLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
     );
   }
 }

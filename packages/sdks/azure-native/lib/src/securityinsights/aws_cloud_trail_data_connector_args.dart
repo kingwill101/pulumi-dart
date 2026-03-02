@@ -51,8 +51,8 @@ class AwsCloudTrailDataConnectorArgs {
 
   factory AwsCloudTrailDataConnectorArgs.fromMap(Map<String, dynamic> map) {
     return AwsCloudTrailDataConnectorArgs(
-      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn'] as String).input(),
-      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId'] as String).input(),
+      awsRoleArn: map['awsRoleArn'] == null ? null : (map['awsRoleArn']! as String).input(),
+      dataConnectorId: map['dataConnectorId'] == null ? null : (map['dataConnectorId']! as String).input(),
       dataTypes: (AwsCloudTrailDataConnectorDataTypes.fromMap((map['dataTypes'] as Map).cast<String, dynamic>())).input(),
       kind: (map['kind'] as String).input(),
       resourceGroupName: (map['resourceGroupName'] as String).input(),

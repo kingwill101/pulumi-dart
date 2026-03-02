@@ -65,15 +65,15 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterConfig: map['clusterConfig'] == null ? null : (ClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>())).input(),
+      clusterConfig: map['clusterConfig'] == null ? null : (ClusterConfig.fromMap((map['clusterConfig']! as Map).cast<String, dynamic>())).input(),
       clusterId: (map['clusterId'] as String).input(),
-      defaultStorageType: map['defaultStorageType'] == null ? null : (ClusterDefaultStorageType.fromValue(map['defaultStorageType'] as String)).input(),
-      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>())).input(),
+      defaultStorageType: map['defaultStorageType'] == null ? null : (ClusterDefaultStorageType.fromValue(map['defaultStorageType']! as String)).input(),
+      encryptionConfig: map['encryptionConfig'] == null ? null : (EncryptionConfig.fromMap((map['encryptionConfig']! as Map).cast<String, dynamic>())).input(),
       instanceId: (map['instanceId'] as String).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      serveNodes: map['serveNodes'] == null ? null : (map['serveNodes'] as int).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      serveNodes: map['serveNodes'] == null ? null : (map['serveNodes']! as int).input(),
     );
   }
 }

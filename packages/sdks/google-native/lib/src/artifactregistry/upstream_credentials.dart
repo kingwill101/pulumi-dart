@@ -22,7 +22,7 @@ class UpstreamCredentials {
 
   factory UpstreamCredentials.fromMap(Map<String, dynamic> map) {
     return UpstreamCredentials(
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>())).input(),
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : (UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

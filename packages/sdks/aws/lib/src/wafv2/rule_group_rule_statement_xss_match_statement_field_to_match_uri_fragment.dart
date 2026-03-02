@@ -20,7 +20,7 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment {
 
   factory RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null ? null : (map['fallbackBehavior'] as String).input(),
+      fallbackBehavior: map['fallbackBehavior'] == null ? null : ((map['fallbackBehavior'] as String).input()).input(),
     );
   }
 }

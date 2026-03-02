@@ -25,8 +25,8 @@ class RecordingConfigurationThumbnailConfiguration {
 
   factory RecordingConfigurationThumbnailConfiguration.fromMap(Map<String, dynamic> map) {
     return RecordingConfigurationThumbnailConfiguration(
-      recordingMode: map['recordingMode'] == null ? null : (map['recordingMode'] as String).input(),
-      targetIntervalSeconds: map['targetIntervalSeconds'] == null ? null : (map['targetIntervalSeconds'] as int).input(),
+      recordingMode: map['recordingMode'] == null ? null : ((map['recordingMode'] as String).input()).input(),
+      targetIntervalSeconds: map['targetIntervalSeconds'] == null ? null : ((map['targetIntervalSeconds'] as int).input()).input(),
     );
   }
 }

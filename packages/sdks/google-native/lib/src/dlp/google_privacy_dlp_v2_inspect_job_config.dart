@@ -39,10 +39,10 @@ class GooglePrivacyDlpV2InspectJobConfig {
 
   factory GooglePrivacyDlpV2InspectJobConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InspectJobConfig(
-      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Action>(map['actions'], (value) => GooglePrivacyDlpV2Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      inspectConfig: map['inspectConfig'] == null ? null : (GooglePrivacyDlpV2InspectConfig.fromMap((map['inspectConfig'] as Map).cast<String, dynamic>())).input(),
-      inspectTemplateName: map['inspectTemplateName'] == null ? null : (map['inspectTemplateName'] as String).input(),
-      storageConfig: map['storageConfig'] == null ? null : (GooglePrivacyDlpV2StorageConfig.fromMap((map['storageConfig'] as Map).cast<String, dynamic>())).input(),
+      actions: map['actions'] == null ? null : (pulumi.Input.decodeList<GooglePrivacyDlpV2Action>(map['actions']!, (value) => GooglePrivacyDlpV2Action.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      inspectConfig: map['inspectConfig'] == null ? null : (GooglePrivacyDlpV2InspectConfig.fromMap((map['inspectConfig']! as Map).cast<String, dynamic>())).input(),
+      inspectTemplateName: map['inspectTemplateName'] == null ? null : (map['inspectTemplateName']! as String).input(),
+      storageConfig: map['storageConfig'] == null ? null : (GooglePrivacyDlpV2StorageConfig.fromMap((map['storageConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

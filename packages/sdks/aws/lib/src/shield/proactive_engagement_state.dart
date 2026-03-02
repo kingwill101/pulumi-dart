@@ -27,8 +27,8 @@ class ProactiveEngagementState {
 
   factory ProactiveEngagementState.fromMap(Map<String, dynamic> map) {
     return ProactiveEngagementState(
-      emergencyContacts: map['emergencyContacts'] == null ? null : (pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(map['emergencyContacts'], (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      enabled: map['enabled'] == null ? null : (map['enabled'] as bool).input(),
+      emergencyContacts: map['emergencyContacts'] == null ? null : ((pulumi.Input.decodeList<ProactiveEngagementEmergencyContact>(map['emergencyContacts']!, (value) => ProactiveEngagementEmergencyContact.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
+      enabled: map['enabled'] == null ? null : ((map['enabled'] as bool).input()).input(),
     );
   }
 }

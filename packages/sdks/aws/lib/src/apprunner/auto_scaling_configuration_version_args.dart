@@ -50,11 +50,11 @@ class AutoScalingConfigurationVersionArgs {
   factory AutoScalingConfigurationVersionArgs.fromMap(Map<String, dynamic> map) {
     return AutoScalingConfigurationVersionArgs(
       autoScalingConfigurationName: (map['autoScalingConfigurationName'] as String).input(),
-      maxConcurrency: map['maxConcurrency'] == null ? null : (map['maxConcurrency'] as int).input(),
-      maxSize: map['maxSize'] == null ? null : (map['maxSize'] as int).input(),
-      minSize: map['minSize'] == null ? null : (map['minSize'] as int).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      maxConcurrency: map['maxConcurrency'] == null ? null : ((map['maxConcurrency'] as int).input()).input(),
+      maxSize: map['maxSize'] == null ? null : ((map['maxSize'] as int).input()).input(),
+      minSize: map['minSize'] == null ? null : ((map['minSize'] as int).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
     );
   }
 }

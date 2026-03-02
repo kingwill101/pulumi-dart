@@ -76,18 +76,18 @@ class ContextAiplatformV1beta1Args {
 
   factory ContextAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ContextAiplatformV1beta1Args(
-      contextId: map['contextId'] == null ? null : (map['contextId'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
-      displayName: map['displayName'] == null ? null : (map['displayName'] as String).input(),
-      etag: map['etag'] == null ? null : (map['etag'] as String).input(),
-      labels: map['labels'] == null ? null : ((map['labels'] as Map).cast<String, String>()).input(),
-      location: map['location'] == null ? null : (map['location'] as String).input(),
-      metadata: map['metadata'] == null ? null : ((map['metadata'] as Map).cast<String, String>()).input(),
+      contextId: map['contextId'] == null ? null : (map['contextId']! as String).input(),
+      description: map['description'] == null ? null : (map['description']! as String).input(),
+      displayName: map['displayName'] == null ? null : (map['displayName']! as String).input(),
+      etag: map['etag'] == null ? null : (map['etag']! as String).input(),
+      labels: map['labels'] == null ? null : ((map['labels']! as Map).cast<String, String>()).input(),
+      location: map['location'] == null ? null : (map['location']! as String).input(),
+      metadata: map['metadata'] == null ? null : ((map['metadata']! as Map).cast<String, String>()).input(),
       metadataStoreId: (map['metadataStoreId'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      schemaTitle: map['schemaTitle'] == null ? null : (map['schemaTitle'] as String).input(),
-      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      schemaTitle: map['schemaTitle'] == null ? null : (map['schemaTitle']! as String).input(),
+      schemaVersion: map['schemaVersion'] == null ? null : (map['schemaVersion']! as String).input(),
     );
   }
 }

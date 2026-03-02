@@ -91,19 +91,19 @@ class PrivateVirtualInterfaceArgs {
   factory PrivateVirtualInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateVirtualInterfaceArgs(
       addressFamily: (map['addressFamily'] as String).input(),
-      amazonAddress: map['amazonAddress'] == null ? null : (map['amazonAddress'] as String).input(),
+      amazonAddress: map['amazonAddress'] == null ? null : ((map['amazonAddress'] as String).input()).input(),
       bgpAsn: (map['bgpAsn'] as int).input(),
-      bgpAuthKey: map['bgpAuthKey'] == null ? null : (map['bgpAuthKey'] as String).input(),
+      bgpAuthKey: map['bgpAuthKey'] == null ? null : ((map['bgpAuthKey'] as String).input()).input(),
       connectionId: (map['connectionId'] as String).input(),
-      customerAddress: map['customerAddress'] == null ? null : (map['customerAddress'] as String).input(),
-      dxGatewayId: map['dxGatewayId'] == null ? null : (map['dxGatewayId'] as String).input(),
-      mtu: map['mtu'] == null ? null : (map['mtu'] as int).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      sitelinkEnabled: map['sitelinkEnabled'] == null ? null : (map['sitelinkEnabled'] as bool).input(),
-      tags: map['tags'] == null ? null : ((map['tags'] as Map).cast<String, String>()).input(),
+      customerAddress: map['customerAddress'] == null ? null : ((map['customerAddress'] as String).input()).input(),
+      dxGatewayId: map['dxGatewayId'] == null ? null : ((map['dxGatewayId'] as String).input()).input(),
+      mtu: map['mtu'] == null ? null : ((map['mtu'] as int).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      sitelinkEnabled: map['sitelinkEnabled'] == null ? null : ((map['sitelinkEnabled'] as bool).input()).input(),
+      tags: map['tags'] == null ? null : (((map['tags'] as Map).cast<String, String>()).input()).input(),
       vlan: (map['vlan'] as int).input(),
-      vpnGatewayId: map['vpnGatewayId'] == null ? null : (map['vpnGatewayId'] as String).input(),
+      vpnGatewayId: map['vpnGatewayId'] == null ? null : ((map['vpnGatewayId'] as String).input()).input(),
     );
   }
 }

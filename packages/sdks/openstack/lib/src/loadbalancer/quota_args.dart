@@ -75,15 +75,15 @@ class QuotaArgs {
 
   factory QuotaArgs.fromMap(Map<String, dynamic> map) {
     return QuotaArgs(
-      healthMonitor: map['healthMonitor'] == null ? null : (map['healthMonitor'] as int).input(),
-      l7Policy: map['l7Policy'] == null ? null : (map['l7Policy'] as int).input(),
-      l7Rule: map['l7Rule'] == null ? null : (map['l7Rule'] as int).input(),
-      listener: map['listener'] == null ? null : (map['listener'] as int).input(),
-      loadbalancer: map['loadbalancer'] == null ? null : (map['loadbalancer'] as int).input(),
-      member: map['member'] == null ? null : (map['member'] as int).input(),
-      pool: map['pool'] == null ? null : (map['pool'] as int).input(),
+      healthMonitor: map['healthMonitor'] == null ? null : (map['healthMonitor']! as int).input(),
+      l7Policy: map['l7Policy'] == null ? null : (map['l7Policy']! as int).input(),
+      l7Rule: map['l7Rule'] == null ? null : (map['l7Rule']! as int).input(),
+      listener: map['listener'] == null ? null : (map['listener']! as int).input(),
+      loadbalancer: map['loadbalancer'] == null ? null : (map['loadbalancer']! as int).input(),
+      member: map['member'] == null ? null : (map['member']! as int).input(),
+      pool: map['pool'] == null ? null : (map['pool']! as int).input(),
       projectId: (map['projectId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : (map['region']! as String).input(),
     );
   }
 }

@@ -27,8 +27,8 @@ class ChartOptions {
 
   factory ChartOptions.fromMap(Map<String, dynamic> map) {
     return ChartOptions(
-      displayHorizontal: map['displayHorizontal'] == null ? null : (map['displayHorizontal'] as bool).input(),
-      mode: map['mode'] == null ? null : (ChartOptionsMode.fromValue(map['mode'] as String)).input(),
+      displayHorizontal: map['displayHorizontal'] == null ? null : (map['displayHorizontal']! as bool).input(),
+      mode: map['mode'] == null ? null : (ChartOptionsMode.fromValue(map['mode']! as String)).input(),
     );
   }
 }

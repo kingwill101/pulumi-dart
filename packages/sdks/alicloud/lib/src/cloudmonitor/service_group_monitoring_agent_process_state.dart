@@ -48,12 +48,12 @@ class ServiceGroupMonitoringAgentProcessState {
 
   factory ServiceGroupMonitoringAgentProcessState.fromMap(Map<String, dynamic> map) {
     return ServiceGroupMonitoringAgentProcessState(
-      alertConfigs: map['alertConfigs'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfig>(map['alertConfigs'], (value) => ServiceGroupMonitoringAgentProcessAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      groupId: map['groupId'] == null ? null : (map['groupId'] as String).input(),
-      groupMonitoringAgentProcessId: map['groupMonitoringAgentProcessId'] == null ? null : (map['groupMonitoringAgentProcessId'] as String).input(),
-      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation'] as String).input(),
-      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessMatchExpress>(map['matchExpresses'], (value) => ServiceGroupMonitoringAgentProcessMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      processName: map['processName'] == null ? null : (map['processName'] as String).input(),
+      alertConfigs: map['alertConfigs'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessAlertConfig>(map['alertConfigs']!, (value) => ServiceGroupMonitoringAgentProcessAlertConfig.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      groupId: map['groupId'] == null ? null : (map['groupId']! as String).input(),
+      groupMonitoringAgentProcessId: map['groupMonitoringAgentProcessId'] == null ? null : (map['groupMonitoringAgentProcessId']! as String).input(),
+      matchExpressFilterRelation: map['matchExpressFilterRelation'] == null ? null : (map['matchExpressFilterRelation']! as String).input(),
+      matchExpresses: map['matchExpresses'] == null ? null : (pulumi.Input.decodeList<ServiceGroupMonitoringAgentProcessMatchExpress>(map['matchExpresses']!, (value) => ServiceGroupMonitoringAgentProcessMatchExpress.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      processName: map['processName'] == null ? null : (map['processName']! as String).input(),
     );
   }
 }

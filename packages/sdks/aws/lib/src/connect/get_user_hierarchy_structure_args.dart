@@ -30,7 +30,7 @@ class GetUserHierarchyStructureArgs {
   factory GetUserHierarchyStructureArgs.fromMap(Map<String, dynamic> map) {
     return GetUserHierarchyStructureArgs(
       instanceId: (map['instanceId'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
     );
   }
 }

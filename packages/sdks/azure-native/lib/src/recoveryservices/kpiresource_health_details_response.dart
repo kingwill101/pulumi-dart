@@ -27,8 +27,8 @@ class KPIResourceHealthDetailsResponse {
 
   factory KPIResourceHealthDetailsResponse.fromMap(Map<String, dynamic> map) {
     return KPIResourceHealthDetailsResponse(
-      resourceHealthDetails: map['resourceHealthDetails'] == null ? null : (pulumi.Input.decodeList<ResourceHealthDetailsResponse>(map['resourceHealthDetails'], (value) => ResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus'] as String).input(),
+      resourceHealthDetails: map['resourceHealthDetails'] == null ? null : (pulumi.Input.decodeList<ResourceHealthDetailsResponse>(map['resourceHealthDetails']!, (value) => ResourceHealthDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      resourceHealthStatus: map['resourceHealthStatus'] == null ? null : (map['resourceHealthStatus']! as String).input(),
     );
   }
 }

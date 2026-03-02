@@ -29,7 +29,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
 
   factory PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(
-      infoType: map['infoType'] == null ? null : (PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>())).input(),
+      infoType: map['infoType'] == null ? null : (PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType']! as Map).cast<String, dynamic>())).input(),
       maxFindings: (map['maxFindings'] as int).input(),
     );
   }

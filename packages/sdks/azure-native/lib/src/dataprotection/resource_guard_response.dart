@@ -45,7 +45,7 @@ class ResourceGuardResponse {
       description: (map['description'] as String).input(),
       provisioningState: (map['provisioningState'] as String).input(),
       resourceGuardOperations: (pulumi.Input.decodeList<ResourceGuardOperationResponse>(map['resourceGuardOperations'], (value) => ResourceGuardOperationResponse.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : ((map['vaultCriticalOperationExclusionList'] as List).cast<String>()).input(),
+      vaultCriticalOperationExclusionList: map['vaultCriticalOperationExclusionList'] == null ? null : ((map['vaultCriticalOperationExclusionList']! as List).cast<String>()).input(),
     );
   }
 }

@@ -21,7 +21,7 @@ class OracleSslConfig {
 
   factory OracleSslConfig.fromMap(Map<String, dynamic> map) {
     return OracleSslConfig(
-      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate'] as String).input(),
+      caCertificate: map['caCertificate'] == null ? null : (map['caCertificate']! as String).input(),
     );
   }
 }

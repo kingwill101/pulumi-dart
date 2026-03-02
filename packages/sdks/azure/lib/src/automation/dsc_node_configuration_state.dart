@@ -40,11 +40,11 @@ class DscNodeConfigurationState {
 
   factory DscNodeConfigurationState.fromMap(Map<String, dynamic> map) {
     return DscNodeConfigurationState(
-      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName'] as String).input(),
-      configurationName: map['configurationName'] == null ? null : (map['configurationName'] as String).input(),
-      contentEmbedded: map['contentEmbedded'] == null ? null : (map['contentEmbedded'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName'] as String).input(),
+      automationAccountName: map['automationAccountName'] == null ? null : (map['automationAccountName']! as String).input(),
+      configurationName: map['configurationName'] == null ? null : (map['configurationName']! as String).input(),
+      contentEmbedded: map['contentEmbedded'] == null ? null : (map['contentEmbedded']! as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      resourceGroupName: map['resourceGroupName'] == null ? null : (map['resourceGroupName']! as String).input(),
     );
   }
 }

@@ -32,7 +32,7 @@ class AccessLevelsArgs {
 
   factory AccessLevelsArgs.fromMap(Map<String, dynamic> map) {
     return AccessLevelsArgs(
-      accessLevels: map['accessLevels'] == null ? null : (pulumi.Input.decodeList<AccessLevelsAccessLevel>(map['accessLevels'], (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      accessLevels: map['accessLevels'] == null ? null : (pulumi.Input.decodeList<AccessLevelsAccessLevel>(map['accessLevels']!, (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>()))).input(),
       parent: (map['parent'] as String).input(),
     );
   }

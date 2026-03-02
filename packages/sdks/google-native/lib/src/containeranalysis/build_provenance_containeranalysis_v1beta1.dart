@@ -84,19 +84,19 @@ class BuildProvenanceContaineranalysisV1beta1 {
 
   factory BuildProvenanceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return BuildProvenanceContaineranalysisV1beta1(
-      buildOptions: map['buildOptions'] == null ? null : ((map['buildOptions'] as Map).cast<String, String>()).input(),
-      builderVersion: map['builderVersion'] == null ? null : (map['builderVersion'] as String).input(),
-      builtArtifacts: map['builtArtifacts'] == null ? null : (pulumi.Input.decodeList<ArtifactContaineranalysisV1beta1>(map['builtArtifacts'], (value) => ArtifactContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      commands: map['commands'] == null ? null : (pulumi.Input.decodeList<CommandContaineranalysisV1beta1>(map['commands'], (value) => CommandContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      createTime: map['createTime'] == null ? null : (map['createTime'] as String).input(),
-      creator: map['creator'] == null ? null : (map['creator'] as String).input(),
-      endTime: map['endTime'] == null ? null : (map['endTime'] as String).input(),
+      buildOptions: map['buildOptions'] == null ? null : ((map['buildOptions']! as Map).cast<String, String>()).input(),
+      builderVersion: map['builderVersion'] == null ? null : (map['builderVersion']! as String).input(),
+      builtArtifacts: map['builtArtifacts'] == null ? null : (pulumi.Input.decodeList<ArtifactContaineranalysisV1beta1>(map['builtArtifacts']!, (value) => ArtifactContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      commands: map['commands'] == null ? null : (pulumi.Input.decodeList<CommandContaineranalysisV1beta1>(map['commands']!, (value) => CommandContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      createTime: map['createTime'] == null ? null : (map['createTime']! as String).input(),
+      creator: map['creator'] == null ? null : (map['creator']! as String).input(),
+      endTime: map['endTime'] == null ? null : (map['endTime']! as String).input(),
       id: (map['id'] as String).input(),
-      logsUri: map['logsUri'] == null ? null : (map['logsUri'] as String).input(),
-      project: map['project'] == null ? null : (map['project'] as String).input(),
-      sourceProvenance: map['sourceProvenance'] == null ? null : (SourceContaineranalysisV1beta1.fromMap((map['sourceProvenance'] as Map).cast<String, dynamic>())).input(),
-      startTime: map['startTime'] == null ? null : (map['startTime'] as String).input(),
-      triggerId: map['triggerId'] == null ? null : (map['triggerId'] as String).input(),
+      logsUri: map['logsUri'] == null ? null : (map['logsUri']! as String).input(),
+      project: map['project'] == null ? null : (map['project']! as String).input(),
+      sourceProvenance: map['sourceProvenance'] == null ? null : (SourceContaineranalysisV1beta1.fromMap((map['sourceProvenance']! as Map).cast<String, dynamic>())).input(),
+      startTime: map['startTime'] == null ? null : (map['startTime']! as String).input(),
+      triggerId: map['triggerId'] == null ? null : (map['triggerId']! as String).input(),
     );
   }
 }

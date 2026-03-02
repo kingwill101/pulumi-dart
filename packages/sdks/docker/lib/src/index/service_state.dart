@@ -69,15 +69,15 @@ class ServiceState {
 
   factory ServiceState.fromMap(Map<String, dynamic> map) {
     return ServiceState(
-      auth: map['auth'] == null ? null : (ServiceAuth.fromMap((map['auth'] as Map).cast<String, dynamic>())).input(),
-      convergeConfig: map['convergeConfig'] == null ? null : (ServiceConvergeConfig.fromMap((map['convergeConfig'] as Map).cast<String, dynamic>())).input(),
-      endpointSpec: map['endpointSpec'] == null ? null : (ServiceEndpointSpec.fromMap((map['endpointSpec'] as Map).cast<String, dynamic>())).input(),
-      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ServiceLabel>(map['labels'], (value) => ServiceLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
-      mode: map['mode'] == null ? null : (ServiceMode.fromMap((map['mode'] as Map).cast<String, dynamic>())).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
-      rollbackConfig: map['rollbackConfig'] == null ? null : (ServiceRollbackConfig.fromMap((map['rollbackConfig'] as Map).cast<String, dynamic>())).input(),
-      taskSpec: map['taskSpec'] == null ? null : (ServiceTaskSpec.fromMap((map['taskSpec'] as Map).cast<String, dynamic>())).input(),
-      updateConfig: map['updateConfig'] == null ? null : (ServiceUpdateConfig.fromMap((map['updateConfig'] as Map).cast<String, dynamic>())).input(),
+      auth: map['auth'] == null ? null : (ServiceAuth.fromMap((map['auth']! as Map).cast<String, dynamic>())).input(),
+      convergeConfig: map['convergeConfig'] == null ? null : (ServiceConvergeConfig.fromMap((map['convergeConfig']! as Map).cast<String, dynamic>())).input(),
+      endpointSpec: map['endpointSpec'] == null ? null : (ServiceEndpointSpec.fromMap((map['endpointSpec']! as Map).cast<String, dynamic>())).input(),
+      labels: map['labels'] == null ? null : (pulumi.Input.decodeList<ServiceLabel>(map['labels']!, (value) => ServiceLabel.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      mode: map['mode'] == null ? null : (ServiceMode.fromMap((map['mode']! as Map).cast<String, dynamic>())).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
+      rollbackConfig: map['rollbackConfig'] == null ? null : (ServiceRollbackConfig.fromMap((map['rollbackConfig']! as Map).cast<String, dynamic>())).input(),
+      taskSpec: map['taskSpec'] == null ? null : (ServiceTaskSpec.fromMap((map['taskSpec']! as Map).cast<String, dynamic>())).input(),
+      updateConfig: map['updateConfig'] == null ? null : (ServiceUpdateConfig.fromMap((map['updateConfig']! as Map).cast<String, dynamic>())).input(),
     );
   }
 }

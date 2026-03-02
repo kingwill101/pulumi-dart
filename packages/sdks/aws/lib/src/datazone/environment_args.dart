@@ -84,18 +84,18 @@ class EnvironmentArgs {
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      accountIdentifier: map['accountIdentifier'] == null ? null : (map['accountIdentifier'] as String).input(),
-      accountRegion: map['accountRegion'] == null ? null : (map['accountRegion'] as String).input(),
-      blueprintIdentifier: map['blueprintIdentifier'] == null ? null : (map['blueprintIdentifier'] as String).input(),
-      description: map['description'] == null ? null : (map['description'] as String).input(),
+      accountIdentifier: map['accountIdentifier'] == null ? null : ((map['accountIdentifier'] as String).input()).input(),
+      accountRegion: map['accountRegion'] == null ? null : ((map['accountRegion'] as String).input()).input(),
+      blueprintIdentifier: map['blueprintIdentifier'] == null ? null : ((map['blueprintIdentifier'] as String).input()).input(),
+      description: map['description'] == null ? null : ((map['description'] as String).input()).input(),
       domainIdentifier: (map['domainIdentifier'] as String).input(),
-      glossaryTerms: map['glossaryTerms'] == null ? null : ((map['glossaryTerms'] as List).cast<String>()).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      glossaryTerms: map['glossaryTerms'] == null ? null : (((map['glossaryTerms'] as List).cast<String>()).input()).input(),
+      name: map['name'] == null ? null : ((map['name'] as String).input()).input(),
       profileIdentifier: (map['profileIdentifier'] as String).input(),
       projectIdentifier: (map['projectIdentifier'] as String).input(),
-      region: map['region'] == null ? null : (map['region'] as String).input(),
-      timeouts: map['timeouts'] == null ? null : (EnvironmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())).input(),
-      userParameters: map['userParameters'] == null ? null : (pulumi.Input.decodeList<EnvironmentUserParameter>(map['userParameters'], (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input(),
+      region: map['region'] == null ? null : ((map['region'] as String).input()).input(),
+      timeouts: map['timeouts'] == null ? null : ((EnvironmentTimeouts.fromMap((map['timeouts']! as Map).cast<String, dynamic>())).input()).input(),
+      userParameters: map['userParameters'] == null ? null : ((pulumi.Input.decodeList<EnvironmentUserParameter>(map['userParameters']!, (value) => EnvironmentUserParameter.fromMap((value as Map).cast<String, dynamic>()))).input()).input(),
     );
   }
 }

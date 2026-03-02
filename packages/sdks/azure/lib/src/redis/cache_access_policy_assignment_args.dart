@@ -45,7 +45,7 @@ class CacheAccessPolicyAssignmentArgs {
   factory CacheAccessPolicyAssignmentArgs.fromMap(Map<String, dynamic> map) {
     return CacheAccessPolicyAssignmentArgs(
       accessPolicyName: (map['accessPolicyName'] as String).input(),
-      name: map['name'] == null ? null : (map['name'] as String).input(),
+      name: map['name'] == null ? null : (map['name']! as String).input(),
       objectId: (map['objectId'] as String).input(),
       objectIdAlias: (map['objectIdAlias'] as String).input(),
       redisCacheId: (map['redisCacheId'] as String).input(),

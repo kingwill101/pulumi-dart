@@ -31,7 +31,7 @@ class LiteTopicRetentionConfig {
   factory LiteTopicRetentionConfig.fromMap(Map<String, dynamic> map) {
     return LiteTopicRetentionConfig(
       perPartitionBytes: (map['perPartitionBytes'] as String).input(),
-      period: map['period'] == null ? null : (map['period'] as String).input(),
+      period: map['period'] == null ? null : (map['period']! as String).input(),
     );
   }
 }

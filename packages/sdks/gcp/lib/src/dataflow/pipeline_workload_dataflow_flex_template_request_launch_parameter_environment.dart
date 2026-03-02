@@ -101,22 +101,22 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment {
 
   factory PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment.fromMap(Map<String, dynamic> map) {
     return PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment(
-      additionalExperiments: map['additionalExperiments'] == null ? null : ((map['additionalExperiments'] as List).cast<String>()).input(),
-      additionalUserLabels: map['additionalUserLabels'] == null ? null : ((map['additionalUserLabels'] as Map).cast<String, String>()).input(),
-      enableStreamingEngine: map['enableStreamingEngine'] == null ? null : (map['enableStreamingEngine'] as bool).input(),
-      flexrsGoal: map['flexrsGoal'] == null ? null : (map['flexrsGoal'] as String).input(),
-      ipConfiguration: map['ipConfiguration'] == null ? null : (map['ipConfiguration'] as String).input(),
-      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName'] as String).input(),
-      machineType: map['machineType'] == null ? null : (map['machineType'] as String).input(),
-      maxWorkers: map['maxWorkers'] == null ? null : (map['maxWorkers'] as int).input(),
-      network: map['network'] == null ? null : (map['network'] as String).input(),
-      numWorkers: map['numWorkers'] == null ? null : (map['numWorkers'] as int).input(),
-      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail'] as String).input(),
-      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork'] as String).input(),
-      tempLocation: map['tempLocation'] == null ? null : (map['tempLocation'] as String).input(),
-      workerRegion: map['workerRegion'] == null ? null : (map['workerRegion'] as String).input(),
-      workerZone: map['workerZone'] == null ? null : (map['workerZone'] as String).input(),
-      zone: map['zone'] == null ? null : (map['zone'] as String).input(),
+      additionalExperiments: map['additionalExperiments'] == null ? null : ((map['additionalExperiments']! as List).cast<String>()).input(),
+      additionalUserLabels: map['additionalUserLabels'] == null ? null : ((map['additionalUserLabels']! as Map).cast<String, String>()).input(),
+      enableStreamingEngine: map['enableStreamingEngine'] == null ? null : (map['enableStreamingEngine']! as bool).input(),
+      flexrsGoal: map['flexrsGoal'] == null ? null : (map['flexrsGoal']! as String).input(),
+      ipConfiguration: map['ipConfiguration'] == null ? null : (map['ipConfiguration']! as String).input(),
+      kmsKeyName: map['kmsKeyName'] == null ? null : (map['kmsKeyName']! as String).input(),
+      machineType: map['machineType'] == null ? null : (map['machineType']! as String).input(),
+      maxWorkers: map['maxWorkers'] == null ? null : (map['maxWorkers']! as int).input(),
+      network: map['network'] == null ? null : (map['network']! as String).input(),
+      numWorkers: map['numWorkers'] == null ? null : (map['numWorkers']! as int).input(),
+      serviceAccountEmail: map['serviceAccountEmail'] == null ? null : (map['serviceAccountEmail']! as String).input(),
+      subnetwork: map['subnetwork'] == null ? null : (map['subnetwork']! as String).input(),
+      tempLocation: map['tempLocation'] == null ? null : (map['tempLocation']! as String).input(),
+      workerRegion: map['workerRegion'] == null ? null : (map['workerRegion']! as String).input(),
+      workerZone: map['workerZone'] == null ? null : (map['workerZone']! as String).input(),
+      zone: map['zone'] == null ? null : (map['zone']! as String).input(),
     );
   }
 }

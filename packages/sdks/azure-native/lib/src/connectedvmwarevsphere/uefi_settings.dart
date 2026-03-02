@@ -21,7 +21,7 @@ class UefiSettings {
 
   factory UefiSettings.fromMap(Map<String, dynamic> map) {
     return UefiSettings(
-      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled'] as bool).input(),
+      secureBootEnabled: map['secureBootEnabled'] == null ? null : (map['secureBootEnabled']! as bool).input(),
     );
   }
 }

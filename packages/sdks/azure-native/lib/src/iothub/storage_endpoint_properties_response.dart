@@ -42,11 +42,11 @@ class StorageEndpointPropertiesResponse {
 
   factory StorageEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return StorageEndpointPropertiesResponse(
-      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType'] as String).input(),
+      authenticationType: map['authenticationType'] == null ? null : (map['authenticationType']! as String).input(),
       connectionString: (map['connectionString'] as String).input(),
       containerName: (map['containerName'] as String).input(),
-      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity'] as Map).cast<String, dynamic>())).input(),
-      sasTtlAsIso8601: map['sasTtlAsIso8601'] == null ? null : (map['sasTtlAsIso8601'] as String).input(),
+      identity: map['identity'] == null ? null : (ManagedIdentityResponse.fromMap((map['identity']! as Map).cast<String, dynamic>())).input(),
+      sasTtlAsIso8601: map['sasTtlAsIso8601'] == null ? null : (map['sasTtlAsIso8601']! as String).input(),
     );
   }
 }

@@ -42,10 +42,10 @@ class ResourceSetResourceDnsTargetResource {
   factory ResourceSetResourceDnsTargetResource.fromMap(Map<String, dynamic> map) {
     return ResourceSetResourceDnsTargetResource(
       domainName: (map['domainName'] as String).input(),
-      hostedZoneArn: map['hostedZoneArn'] == null ? null : (map['hostedZoneArn'] as String).input(),
-      recordSetId: map['recordSetId'] == null ? null : (map['recordSetId'] as String).input(),
-      recordType: map['recordType'] == null ? null : (map['recordType'] as String).input(),
-      targetResource: map['targetResource'] == null ? null : (ResourceSetResourceDnsTargetResourceTargetResource.fromMap((map['targetResource'] as Map).cast<String, dynamic>())).input(),
+      hostedZoneArn: map['hostedZoneArn'] == null ? null : ((map['hostedZoneArn'] as String).input()).input(),
+      recordSetId: map['recordSetId'] == null ? null : ((map['recordSetId'] as String).input()).input(),
+      recordType: map['recordType'] == null ? null : ((map['recordType'] as String).input()).input(),
+      targetResource: map['targetResource'] == null ? null : ((ResourceSetResourceDnsTargetResourceTargetResource.fromMap((map['targetResource']! as Map).cast<String, dynamic>())).input()).input(),
     );
   }
 }

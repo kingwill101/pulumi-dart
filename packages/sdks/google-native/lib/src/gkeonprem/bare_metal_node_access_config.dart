@@ -21,7 +21,7 @@ class BareMetalNodeAccessConfig {
 
   factory BareMetalNodeAccessConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalNodeAccessConfig(
-      loginUser: map['loginUser'] == null ? null : (map['loginUser'] as String).input(),
+      loginUser: map['loginUser'] == null ? null : (map['loginUser']! as String).input(),
     );
   }
 }
